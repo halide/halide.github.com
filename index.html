@@ -84,7 +84,7 @@
 
         <p>The following function defines and sets the schedule for a 3x3 box filter defined as a series of two 3x1 passes:
         <pre class="prettyprint lang-cpp">Func blur_3x3(Func input) {
-  Func tmp, blurred;
+  Func blur_x, blur_y;
   Var x, y, xi, yi;
 
   // The algorithm - no storage or order
@@ -96,7 +96,7 @@
         .vectorize(xi, 8).parallel(y);
   blur_x.compute_at(blur_y, x).vectorize(x, 8);
 
-  return blurred;
+  return blur_y;
 }
 </pre></p>
       </section>
