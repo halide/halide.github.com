@@ -475,7 +475,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00374"></a>00374     int (*custom_do_task)(int (*)(int, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *), <span class="keywordtype">int</span>, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *);
 <a name="l00375"></a>00375     <span class="comment">// @}</span>
 <a name="l00376"></a>00376 <span class="comment"></span>
-<a name="l00377"></a>00377 <span class="comment">    /** The current custom tracing functions. May be NULL. */</span>
+<a name="l00377"></a>00377 <span class="comment">    /** The current custom tracing function. May be NULL. */</span>
 <a name="l00378"></a>00378     <span class="comment">// @{</span>
 <a name="l00379"></a>00379     void (*custom_trace)(<span class="keyword">const</span> <span class="keywordtype">char</span> *, <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>, <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>, <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>, <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>, <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>, <span class="keyword">const</span> <span class="keywordtype">void</span> *, <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>, <span class="keyword">const</span> <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> *);
 <a name="l00380"></a>00380     <span class="comment">// @}</span>
@@ -508,285 +508,285 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00407"></a>00407 <span class="comment">     * not contain free variables). */</span>
 <a name="l00408"></a>00408     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">explicit</span> <a class="code" href="class_halide_1_1_func.html#aed876d44c3e1dd0a72c4111afc63018b" title="Declare a new undefined function with an automatically-generated unique name.">Func</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e);
 <a name="l00409"></a>00409 <span class="comment"></span>
-<a name="l00410"></a>00410 <span class="comment">    /** Generate a new uniquely-named function that returns the given</span>
-<a name="l00411"></a>00411 <span class="comment">     * buffer. Has the same dimensionality as the buffer. Useful for</span>
-<a name="l00412"></a>00412 <span class="comment">     * passing Images to c++ functions that expect Funcs */</span><span class="comment"></span>
-<a name="l00413"></a>00413 <span class="comment">    //@{</span>
-<a name="l00414"></a>00414 <span class="comment"></span>    <span class="comment">//EXPORT Func(Buffer image);</span>
-<a name="l00415"></a>00415     <span class="comment">/*</span>
-<a name="l00416"></a>00416 <span class="comment">    template&lt;typename T&gt; Func(Image&lt;T&gt; image) {</span>
-<a name="l00417"></a>00417 <span class="comment">        (*this) = Func(Buffer(image));</span>
-<a name="l00418"></a>00418 <span class="comment">    }</span>
-<a name="l00419"></a>00419 <span class="comment">    */</span><span class="comment"></span>
-<a name="l00420"></a>00420 <span class="comment">    //@}</span>
-<a name="l00421"></a>00421 <span class="comment"></span><span class="comment"></span>
-<a name="l00422"></a>00422 <span class="comment">    /** Evaluate this function over some rectangular domain and return</span>
-<a name="l00423"></a>00423 <span class="comment">     * the resulting buffer or buffers. The buffer should probably be</span>
-<a name="l00424"></a>00424 <span class="comment">     * instantly wrapped in an Image class of the appropriate</span>
-<a name="l00425"></a>00425 <span class="comment">     * type. That is, do this:</span>
-<a name="l00426"></a>00426 <span class="comment">     *</span>
-<a name="l00427"></a>00427 <span class="comment">     * f(x) = sin(x);</span>
-<a name="l00428"></a>00428 <span class="comment">     * Image&lt;float&gt; im = f.realize(...);</span>
-<a name="l00429"></a>00429 <span class="comment">     *</span>
-<a name="l00430"></a>00430 <span class="comment">     * not this:</span>
-<a name="l00431"></a>00431 <span class="comment">     *</span>
-<a name="l00432"></a>00432 <span class="comment">     * f(x) = sin(x)</span>
-<a name="l00433"></a>00433 <span class="comment">     * Buffer im = f.realize(...)</span>
-<a name="l00434"></a>00434 <span class="comment">     *</span>
-<a name="l00435"></a>00435 <span class="comment">     * If your Func has multiple values, because you defined it using</span>
-<a name="l00436"></a>00436 <span class="comment">     * a Tuple, then casting the result of a realize call to a buffer</span>
-<a name="l00437"></a>00437 <span class="comment">     * or image will produce a run-time errorInstead you should do the</span>
-<a name="l00438"></a>00438 <span class="comment">     * following:</span>
-<a name="l00439"></a>00439 <span class="comment">     *</span>
-<a name="l00440"></a>00440 <span class="comment">     * f(x) = Tuple(x, sin(x));</span>
-<a name="l00441"></a>00441 <span class="comment">     * Realization r = f.realize(...);</span>
-<a name="l00442"></a>00442 <span class="comment">     * Image&lt;int&gt; im0 = r[0];</span>
-<a name="l00443"></a>00443 <span class="comment">     * Image&lt;float&gt; im1 = r[1];</span>
-<a name="l00444"></a>00444 <span class="comment">     *</span>
-<a name="l00445"></a>00445 <span class="comment">     */</span>
-<a name="l00446"></a>00446     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple buffers when you realize them.">Realization</a> <a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Generate a new uniquely-named function that returns the given buffer.">realize</a>(<span class="keywordtype">int</span> x_size = 0, <span class="keywordtype">int</span> y_size = 0, <span class="keywordtype">int</span> z_size = 0, <span class="keywordtype">int</span> w_size = 0);
-<a name="l00447"></a>00447 <span class="comment"></span>
-<a name="l00448"></a>00448 <span class="comment">    /** Evaluate this function into an existing allocated buffer or</span>
-<a name="l00449"></a>00449 <span class="comment">     * buffers. If the buffer is also one of the arguments to the</span>
-<a name="l00450"></a>00450 <span class="comment">     * function, strange things may happen, as the pipeline isn&#39;t</span>
-<a name="l00451"></a>00451 <span class="comment">     * necessarily safe to run in-place. If you pass multiple buffers,</span>
-<a name="l00452"></a>00452 <span class="comment">     * they must have matching sizes. */</span>
-<a name="l00453"></a>00453     <span class="comment">// @{</span>
-<a name="l00454"></a>00454     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Generate a new uniquely-named function that returns the given buffer.">realize</a>(<a class="code" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple buffers when you realize them.">Realization</a> dst);
-<a name="l00455"></a>00455     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Generate a new uniquely-named function that returns the given buffer.">realize</a>(<a class="code" href="class_halide_1_1_buffer.html" title="The internal representation of an image, or other dense array data.">Buffer</a> dst);
-<a name="l00456"></a>00456     <span class="comment">// @}</span>
-<a name="l00457"></a>00457 <span class="comment"></span>
-<a name="l00458"></a>00458 <span class="comment">    /** For a given size of output, or a given output buffer,</span>
-<a name="l00459"></a>00459 <span class="comment">     * determine the bounds required of all unbound ImageParams</span>
-<a name="l00460"></a>00460 <span class="comment">     * referenced. Communicates the result by allocating new buffers</span>
-<a name="l00461"></a>00461 <span class="comment">     * of the appropriate size and binding them to the unbound</span>
-<a name="l00462"></a>00462 <span class="comment">     * ImageParams. */</span>
-<a name="l00463"></a>00463     <span class="comment">// @{</span>
-<a name="l00464"></a>00464     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a7e4e93d5c38bf8094b6357e8900e5bd6" title="For a given size of output, or a given output buffer, determine the bounds required of all unbound Im...">infer_input_bounds</a>(<span class="keywordtype">int</span> x_size = 0, <span class="keywordtype">int</span> y_size = 0, <span class="keywordtype">int</span> z_size = 0, <span class="keywordtype">int</span> w_size = 0);
-<a name="l00465"></a>00465     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a7e4e93d5c38bf8094b6357e8900e5bd6" title="For a given size of output, or a given output buffer, determine the bounds required of all unbound Im...">infer_input_bounds</a>(<a class="code" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple buffers when you realize them.">Realization</a> dst);
-<a name="l00466"></a>00466     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a7e4e93d5c38bf8094b6357e8900e5bd6" title="For a given size of output, or a given output buffer, determine the bounds required of all unbound Im...">infer_input_bounds</a>(<a class="code" href="class_halide_1_1_buffer.html" title="The internal representation of an image, or other dense array data.">Buffer</a> dst);
-<a name="l00467"></a>00467     <span class="comment">// @}</span>
-<a name="l00468"></a>00468 <span class="comment"></span>
-<a name="l00469"></a>00469 <span class="comment">    /** Statically compile this function to llvm bitcode, with the</span>
-<a name="l00470"></a>00470 <span class="comment">     * given filename (which should probably end in .bc), type</span>
-<a name="l00471"></a>00471 <span class="comment">     * signature, and C function name (which defaults to the same name</span>
-<a name="l00472"></a>00472 <span class="comment">     * as this halide function */</span>
-<a name="l00473"></a>00473     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#af1766b2c9fe767ebe835b807db8b73cf" title="Statically compile this function to llvm bitcode, with the given filename (which should probably end ...">compile_to_bitcode</a>(<span class="keyword">const</span> std::string &amp;filename, std::vector&lt;Argument&gt;, <span class="keyword">const</span> std::string &amp;fn_name = <span class="stringliteral">&quot;&quot;</span>);
-<a name="l00474"></a>00474 <span class="comment"></span>
-<a name="l00475"></a>00475 <span class="comment">    /** Statically compile this function to an object file, with the</span>
-<a name="l00476"></a>00476 <span class="comment">     * given filename (which should probably end in .o or .obj), type</span>
-<a name="l00477"></a>00477 <span class="comment">     * signature, and C function name (which defaults to the same name</span>
-<a name="l00478"></a>00478 <span class="comment">     * as this halide function. You probably don&#39;t want to use this directly - instead call compile_to_file.  */</span>
-<a name="l00479"></a>00479     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a38ad88b379adececdd34bdfbc9c0fd2d" title="Statically compile this function to an object file, with the given filename (which should probably en...">compile_to_object</a>(<span class="keyword">const</span> std::string &amp;filename, std::vector&lt;Argument&gt;, <span class="keyword">const</span> std::string &amp;fn_name = <span class="stringliteral">&quot;&quot;</span>);
-<a name="l00480"></a>00480 <span class="comment"></span>
-<a name="l00481"></a>00481 <span class="comment">    /** Emit a header file with the given filename for this</span>
-<a name="l00482"></a>00482 <span class="comment">     * function. The header will define a function with the type</span>
-<a name="l00483"></a>00483 <span class="comment">     * signature given by the second argument, and a name given by the</span>
-<a name="l00484"></a>00484 <span class="comment">     * third. The name defaults to the same name as this halide</span>
-<a name="l00485"></a>00485 <span class="comment">     * function. You don&#39;t actually have to have defined this function</span>
-<a name="l00486"></a>00486 <span class="comment">     * yet to call this. You probably don&#39;t want to use this directly</span>
-<a name="l00487"></a>00487 <span class="comment">     * - instead call compile_to_file. */</span>
-<a name="l00488"></a>00488     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#aae9623ffff43b170735b65c490b68ffb" title="Emit a header file with the given filename for this function.">compile_to_header</a>(<span class="keyword">const</span> std::string &amp;filename, std::vector&lt;Argument&gt;, <span class="keyword">const</span> std::string &amp;fn_name = <span class="stringliteral">&quot;&quot;</span>);
-<a name="l00489"></a>00489 <span class="comment"></span>
-<a name="l00490"></a>00490 <span class="comment">    /** Statically compile this function to text assembly equivalent</span>
-<a name="l00491"></a>00491 <span class="comment">     * to the object file generated by compile_to_object. This is</span>
-<a name="l00492"></a>00492 <span class="comment">     * useful for checking what Halide is producing without having to</span>
-<a name="l00493"></a>00493 <span class="comment">     * disassemble anything, or if you need to feed the assembly into</span>
-<a name="l00494"></a>00494 <span class="comment">     * some custom toolchain to produce an object file (e.g. iOS) */</span>
-<a name="l00495"></a>00495     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a2d16f8fb285adf13ec7c10ff5bc1a4bf" title="Statically compile this function to text assembly equivalent to the object file generated by compile_...">compile_to_assembly</a>(<span class="keyword">const</span> std::string &amp;filename, std::vector&lt;Argument&gt;, <span class="keyword">const</span> std::string &amp;fn_name = <span class="stringliteral">&quot;&quot;</span>);<span class="comment"></span>
-<a name="l00496"></a>00496 <span class="comment">    /** Statically compile this function to C source code. This is</span>
-<a name="l00497"></a>00497 <span class="comment">     * useful for providing fallback code paths that will compile on</span>
-<a name="l00498"></a>00498 <span class="comment">     * many platforms. Vectorization will fail, and parallelization</span>
-<a name="l00499"></a>00499 <span class="comment">     * will produce serial code. */</span>
-<a name="l00500"></a>00500     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a04a6c208a0d447cb9e28c088d138e0a5" title="Statically compile this function to C source code.">compile_to_c</a>(<span class="keyword">const</span> std::string &amp;filename, std::vector&lt;Argument&gt;, <span class="keyword">const</span> std::string &amp;fn_name = <span class="stringliteral">&quot;&quot;</span>);
-<a name="l00501"></a>00501 <span class="comment"></span>
-<a name="l00502"></a>00502 <span class="comment">    /** Write out an internal representation of lowered code. Useful</span>
-<a name="l00503"></a>00503 <span class="comment">     * for analyzing and debugging scheduling. Canonical extension is</span>
-<a name="l00504"></a>00504 <span class="comment">     * .stmt, which must be supplied in filename. */</span>
-<a name="l00505"></a>00505     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a419beef1aa58ba75c4605d099931f056" title="Write out an internal representation of lowered code.">compile_to_lowered_stmt</a>(<span class="keyword">const</span> std::string &amp;filename);
-<a name="l00506"></a>00506 <span class="comment"></span>
-<a name="l00507"></a>00507 <span class="comment">    /** Compile to object file and header pair, with the given</span>
-<a name="l00508"></a>00508 <span class="comment">     * arguments. Also names the C function to match the first</span>
-<a name="l00509"></a>00509 <span class="comment">     * argument.</span>
-<a name="l00510"></a>00510 <span class="comment">     */</span><span class="comment"></span>
-<a name="l00511"></a>00511 <span class="comment">    //@{</span>
-<a name="l00512"></a>00512 <span class="comment"></span>    <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a68c638e672ab03f4c6d33b3d18a38bd1" title="Compile to object file and header pair, with the given arguments.">compile_to_file</a>(<span class="keyword">const</span> std::string &amp;filename_prefix, std::vector&lt;Argument&gt; <a class="code" href="class_halide_1_1_func.html#a830f40950d6695281dc4c5057767ca4f" title="Get the pure arguments.">args</a>);
-<a name="l00513"></a>00513     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a68c638e672ab03f4c6d33b3d18a38bd1" title="Compile to object file and header pair, with the given arguments.">compile_to_file</a>(<span class="keyword">const</span> std::string &amp;filename_prefix);
-<a name="l00514"></a>00514     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a68c638e672ab03f4c6d33b3d18a38bd1" title="Compile to object file and header pair, with the given arguments.">compile_to_file</a>(<span class="keyword">const</span> std::string &amp;filename_prefix, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> a);
-<a name="l00515"></a>00515     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a68c638e672ab03f4c6d33b3d18a38bd1" title="Compile to object file and header pair, with the given arguments.">compile_to_file</a>(<span class="keyword">const</span> std::string &amp;filename_prefix, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> a, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> b);
-<a name="l00516"></a>00516     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a68c638e672ab03f4c6d33b3d18a38bd1" title="Compile to object file and header pair, with the given arguments.">compile_to_file</a>(<span class="keyword">const</span> std::string &amp;filename_prefix, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> a, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> b, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> c);
-<a name="l00517"></a>00517     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a68c638e672ab03f4c6d33b3d18a38bd1" title="Compile to object file and header pair, with the given arguments.">compile_to_file</a>(<span class="keyword">const</span> std::string &amp;filename_prefix, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> a, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> b, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> c, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> d);
-<a name="l00518"></a>00518     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a68c638e672ab03f4c6d33b3d18a38bd1" title="Compile to object file and header pair, with the given arguments.">compile_to_file</a>(<span class="keyword">const</span> std::string &amp;filename_prefix, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> a, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> b, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> c, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> d, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> e);
-<a name="l00519"></a>00519     <span class="comment">// @}</span>
-<a name="l00520"></a>00520 <span class="comment"></span>
-<a name="l00521"></a>00521 <span class="comment">    /** Eagerly jit compile the function to machine code. This</span>
-<a name="l00522"></a>00522 <span class="comment">     * normally happens on the first call to realize. If you&#39;re</span>
-<a name="l00523"></a>00523 <span class="comment">     * running your halide pipeline inside time-sensitive code and</span>
-<a name="l00524"></a>00524 <span class="comment">     * wish to avoid including the time taken to compile a pipeline,</span>
-<a name="l00525"></a>00525 <span class="comment">     * then you can call this ahead of time. Returns the raw function</span>
-<a name="l00526"></a>00526 <span class="comment">     * pointer to the compiled pipeline. */</span>
-<a name="l00527"></a>00527     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> *<a class="code" href="class_halide_1_1_func.html#a43d7d8baab31e6e34f6862cb653b66f4" title="Eagerly jit compile the function to machine code.">compile_jit</a>();
-<a name="l00528"></a>00528 <span class="comment"></span>
-<a name="l00529"></a>00529 <span class="comment">    /** Set the error handler function that be called in the case of</span>
-<a name="l00530"></a>00530 <span class="comment">     * runtime errors during halide pipelines. If you are compiling</span>
-<a name="l00531"></a>00531 <span class="comment">     * statically, you can also just define your own function with</span>
-<a name="l00532"></a>00532 <span class="comment">     * signature</span>
-<a name="l00533"></a>00533 <span class="comment">     \code</span>
-<a name="l00534"></a>00534 <span class="comment">     extern &quot;C&quot; halide_error(const char *)</span>
-<a name="l00535"></a>00535 <span class="comment">     \endcode</span>
-<a name="l00536"></a>00536 <span class="comment">     * This will clobber Halide&#39;s version.</span>
-<a name="l00537"></a>00537 <span class="comment">     */</span>
-<a name="l00538"></a>00538     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a7f3829aa7004a2932ea421f437db522d" title="Set the error handler function that be called in the case of runtime errors during halide pipelines...">set_error_handler</a>(<span class="keywordtype">void</span> (*handler)(<span class="keyword">const</span> <span class="keywordtype">char</span> *));
-<a name="l00539"></a>00539 <span class="comment"></span>
-<a name="l00540"></a>00540 <span class="comment">    /** Set a custom malloc and free for halide to use. Malloc should</span>
-<a name="l00541"></a>00541 <span class="comment">     * return 32-byte aligned chunks of memory. If compiling</span>
-<a name="l00542"></a>00542 <span class="comment">     * statically, routines with appropriate signatures can be</span>
-<a name="l00543"></a>00543 <span class="comment">     * provided directly</span>
-<a name="l00544"></a>00544 <span class="comment">     \code</span>
-<a name="l00545"></a>00545 <span class="comment">     extern &quot;C&quot; void *halide_malloc(size_t)</span>
-<a name="l00546"></a>00546 <span class="comment">     extern &quot;C&quot; void halide_free(void *)</span>
-<a name="l00547"></a>00547 <span class="comment">     \endcode</span>
-<a name="l00548"></a>00548 <span class="comment">     * These will clobber Halide&#39;s versions. See \file HalideRuntime.h</span>
-<a name="l00549"></a>00549 <span class="comment">     * for declarations.</span>
-<a name="l00550"></a>00550 <span class="comment">     */</span>
-<a name="l00551"></a>00551     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#ab08dcceb9c5fb0205815c52100327f47">set_custom_allocator</a>(<span class="keywordtype">void</span> *(*malloc)(<span class="keywordtype">size_t</span>), <span class="keywordtype">void</span> (*free)(<span class="keywordtype">void</span> *));
-<a name="l00552"></a>00552 <span class="comment"></span>
-<a name="l00553"></a>00553 <span class="comment">    /** Set a custom task handler to be called by the parallel for</span>
-<a name="l00554"></a>00554 <span class="comment">     * loop. It is useful to set this if you want to do some</span>
-<a name="l00555"></a>00555 <span class="comment">     * additional bookkeeping at the granularity of parallel</span>
-<a name="l00556"></a>00556 <span class="comment">     * tasks. The default implementation does this:</span>
-<a name="l00557"></a>00557 <span class="comment">     \code</span>
-<a name="l00558"></a>00558 <span class="comment">     extern &quot;C&quot; int halide_do_task(int (*f)(int, uint8_t *), int idx, uint8_t *state) {</span>
-<a name="l00559"></a>00559 <span class="comment">         return f(idx, state);</span>
-<a name="l00560"></a>00560 <span class="comment">     }</span>
-<a name="l00561"></a>00561 <span class="comment">     \endcode</span>
-<a name="l00562"></a>00562 <span class="comment">     * If you are statically compiling, you can also just define your</span>
-<a name="l00563"></a>00563 <span class="comment">     * own version of the above function, and it will clobber Halide&#39;s</span>
-<a name="l00564"></a>00564 <span class="comment">     * version.</span>
-<a name="l00565"></a>00565 <span class="comment">     *</span>
-<a name="l00566"></a>00566 <span class="comment">     * If you&#39;re trying to use a custom parallel runtime, you probably</span>
-<a name="l00567"></a>00567 <span class="comment">     * don&#39;t want to call this. See instead \ref Func::set_custom_do_par_for .</span>
-<a name="l00568"></a>00568 <span class="comment">    */</span>
-<a name="l00569"></a>00569     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a7627cc3aaea7d1f70f5214ba4608b517" title="Set a custom task handler to be called by the parallel for loop.">set_custom_do_task</a>(<span class="keywordtype">int</span> (*custom_do_task)(<span class="keywordtype">int</span> (*)(<span class="keywordtype">int</span>, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *), <span class="keywordtype">int</span>, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *));
-<a name="l00570"></a>00570 <span class="comment"></span>
-<a name="l00571"></a>00571 <span class="comment">    /** Set a custom parallel for loop launcher. Useful if your app</span>
-<a name="l00572"></a>00572 <span class="comment">     * already manages a thread pool. The default implementation is</span>
-<a name="l00573"></a>00573 <span class="comment">     * equivalent to this:</span>
-<a name="l00574"></a>00574 <span class="comment">     \code</span>
-<a name="l00575"></a>00575 <span class="comment">     extern &quot;C&quot; int halide_do_par_for(int (*f)(int uint8_t *), int min, int extent, uint8_t *state) {</span>
-<a name="l00576"></a>00576 <span class="comment">         int exit_status = 0;</span>
-<a name="l00577"></a>00577 <span class="comment">         parallel for (int idx = min; idx &lt; min+extent; idx++) {</span>
-<a name="l00578"></a>00578 <span class="comment">             int job_status = halide_do_task(f, idx, state);</span>
-<a name="l00579"></a>00579 <span class="comment">             if (job_status) exit_status = job_status;</span>
-<a name="l00580"></a>00580 <span class="comment">         }</span>
-<a name="l00581"></a>00581 <span class="comment">         return exit_status;</span>
-<a name="l00582"></a>00582 <span class="comment">     }</span>
-<a name="l00583"></a>00583 <span class="comment">     \endcode</span>
-<a name="l00584"></a>00584 <span class="comment">     *</span>
-<a name="l00585"></a>00585 <span class="comment">     * However, notwithstanding the above example code, if one task</span>
-<a name="l00586"></a>00586 <span class="comment">     * fails, we may skip over other tasks, and if two tasks return</span>
-<a name="l00587"></a>00587 <span class="comment">     * different error codes, we may select one arbitrarily to return.</span>
-<a name="l00588"></a>00588 <span class="comment">     *</span>
-<a name="l00589"></a>00589 <span class="comment">     * If you are statically compiling, you can also just define your</span>
-<a name="l00590"></a>00590 <span class="comment">     * own version of the above function, and it will clobber Halide&#39;s</span>
-<a name="l00591"></a>00591 <span class="comment">     * version.</span>
-<a name="l00592"></a>00592 <span class="comment">     */</span>
-<a name="l00593"></a>00593     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a89a384323e192ac6f67df41f5612d5b5" title="Set a custom parallel for loop launcher.">set_custom_do_par_for</a>(<span class="keywordtype">int</span> (*custom_do_par_for)(<span class="keywordtype">int</span> (*)(<span class="keywordtype">int</span>, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *), <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *));
-<a name="l00594"></a>00594 <span class="comment"></span>
-<a name="l00595"></a>00595 <span class="comment">    /** Set custom routines to call when tracing is enabled. Call this</span>
-<a name="l00596"></a>00596 <span class="comment">     * on the output Func of your pipeline. This then sets custom</span>
-<a name="l00597"></a>00597 <span class="comment">     * routines for the entire pipeline, not just calls to this</span>
-<a name="l00598"></a>00598 <span class="comment">     * Func.</span>
-<a name="l00599"></a>00599 <span class="comment">     *</span>
-<a name="l00600"></a>00600 <span class="comment">     * If you are statically compiling, you can also just define your</span>
-<a name="l00601"></a>00601 <span class="comment">     * own versions of the tracing functions (see HalideRuntime.h),</span>
-<a name="l00602"></a>00602 <span class="comment">     * and they will clobber Halide&#39;s versions. */</span>
-<a name="l00603"></a>00603     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#aad5f2b878005cd24c3b49c4856652971" title="Set custom routines to call when tracing is enabled.">set_custom_trace</a>(<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a9d678f8fb81f834e3cfa6284a4e3adbf" title="Set a custom trace function.">Internal::JITCompiledModule::TraceFn</a>);
-<a name="l00604"></a>00604 <span class="comment"></span>
-<a name="l00605"></a>00605 <span class="comment">    /** When this function is compiled, include code that dumps its values</span>
-<a name="l00606"></a>00606 <span class="comment">     * to a file after it is realized, for the purpose of debugging.</span>
-<a name="l00607"></a>00607 <span class="comment">     * The file covers the realized extent at the point in the schedule that</span>
-<a name="l00608"></a>00608 <span class="comment">     * debug_to_file appears.</span>
+<a name="l00410"></a>00410 <span class="comment">    /** Evaluate this function over some rectangular domain and return</span>
+<a name="l00411"></a>00411 <span class="comment">     * the resulting buffer or buffers. Performs compilation if the</span>
+<a name="l00412"></a>00412 <span class="comment">     * Func has not previously been realized and jit_compile has not</span>
+<a name="l00413"></a>00413 <span class="comment">     * been called. The returned Buffer should probably be instantly</span>
+<a name="l00414"></a>00414 <span class="comment">     * wrapped in an Image class of the appropriate type. That is, do</span>
+<a name="l00415"></a>00415 <span class="comment">     * this:</span>
+<a name="l00416"></a>00416 <span class="comment">     *</span>
+<a name="l00417"></a>00417 <span class="comment">     \code</span>
+<a name="l00418"></a>00418 <span class="comment">     f(x) = sin(x);</span>
+<a name="l00419"></a>00419 <span class="comment">     Image&lt;float&gt; im = f.realize(...);</span>
+<a name="l00420"></a>00420 <span class="comment">     \endcode</span>
+<a name="l00421"></a>00421 <span class="comment">     *</span>
+<a name="l00422"></a>00422 <span class="comment">     * not this:</span>
+<a name="l00423"></a>00423 <span class="comment">     *</span>
+<a name="l00424"></a>00424 <span class="comment">     \code</span>
+<a name="l00425"></a>00425 <span class="comment">     f(x) = sin(x)</span>
+<a name="l00426"></a>00426 <span class="comment">     Buffer im = f.realize(...)</span>
+<a name="l00427"></a>00427 <span class="comment">     \endcode</span>
+<a name="l00428"></a>00428 <span class="comment">     *</span>
+<a name="l00429"></a>00429 <span class="comment">     * If your Func has multiple values, because you defined it using</span>
+<a name="l00430"></a>00430 <span class="comment">     * a Tuple, then casting the result of a realize call to a buffer</span>
+<a name="l00431"></a>00431 <span class="comment">     * or image will produce a run-time error. Instead you should do the</span>
+<a name="l00432"></a>00432 <span class="comment">     * following:</span>
+<a name="l00433"></a>00433 <span class="comment">     *</span>
+<a name="l00434"></a>00434 <span class="comment">     \code</span>
+<a name="l00435"></a>00435 <span class="comment">     f(x) = Tuple(x, sin(x));</span>
+<a name="l00436"></a>00436 <span class="comment">     Realization r = f.realize(...);</span>
+<a name="l00437"></a>00437 <span class="comment">     Image&lt;int&gt; im0 = r[0];</span>
+<a name="l00438"></a>00438 <span class="comment">     Image&lt;float&gt; im1 = r[1];</span>
+<a name="l00439"></a>00439 <span class="comment">     \endcode</span>
+<a name="l00440"></a>00440 <span class="comment">     *</span>
+<a name="l00441"></a>00441 <span class="comment">     */</span>
+<a name="l00442"></a>00442     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple buffers when you realize them.">Realization</a> <a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(<span class="keywordtype">int</span> x_size = 0, <span class="keywordtype">int</span> y_size = 0, <span class="keywordtype">int</span> z_size = 0, <span class="keywordtype">int</span> w_size = 0);
+<a name="l00443"></a>00443 <span class="comment"></span>
+<a name="l00444"></a>00444 <span class="comment">    /** Evaluate this function into an existing allocated buffer or</span>
+<a name="l00445"></a>00445 <span class="comment">     * buffers. If the buffer is also one of the arguments to the</span>
+<a name="l00446"></a>00446 <span class="comment">     * function, strange things may happen, as the pipeline isn&#39;t</span>
+<a name="l00447"></a>00447 <span class="comment">     * necessarily safe to run in-place. If you pass multiple buffers,</span>
+<a name="l00448"></a>00448 <span class="comment">     * they must have matching sizes. */</span>
+<a name="l00449"></a>00449     <span class="comment">// @{</span>
+<a name="l00450"></a>00450     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(<a class="code" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple buffers when you realize them.">Realization</a> dst);
+<a name="l00451"></a>00451     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(<a class="code" href="class_halide_1_1_buffer.html" title="The internal representation of an image, or other dense array data.">Buffer</a> dst);
+<a name="l00452"></a>00452     <span class="comment">// @}</span>
+<a name="l00453"></a>00453 <span class="comment"></span>
+<a name="l00454"></a>00454 <span class="comment">    /** For a given size of output, or a given output buffer,</span>
+<a name="l00455"></a>00455 <span class="comment">     * determine the bounds required of all unbound ImageParams</span>
+<a name="l00456"></a>00456 <span class="comment">     * referenced. Communicates the result by allocating new buffers</span>
+<a name="l00457"></a>00457 <span class="comment">     * of the appropriate size and binding them to the unbound</span>
+<a name="l00458"></a>00458 <span class="comment">     * ImageParams. */</span>
+<a name="l00459"></a>00459     <span class="comment">// @{</span>
+<a name="l00460"></a>00460     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a7e4e93d5c38bf8094b6357e8900e5bd6" title="For a given size of output, or a given output buffer, determine the bounds required of all unbound Im...">infer_input_bounds</a>(<span class="keywordtype">int</span> x_size = 0, <span class="keywordtype">int</span> y_size = 0, <span class="keywordtype">int</span> z_size = 0, <span class="keywordtype">int</span> w_size = 0);
+<a name="l00461"></a>00461     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a7e4e93d5c38bf8094b6357e8900e5bd6" title="For a given size of output, or a given output buffer, determine the bounds required of all unbound Im...">infer_input_bounds</a>(<a class="code" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple buffers when you realize them.">Realization</a> dst);
+<a name="l00462"></a>00462     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a7e4e93d5c38bf8094b6357e8900e5bd6" title="For a given size of output, or a given output buffer, determine the bounds required of all unbound Im...">infer_input_bounds</a>(<a class="code" href="class_halide_1_1_buffer.html" title="The internal representation of an image, or other dense array data.">Buffer</a> dst);
+<a name="l00463"></a>00463     <span class="comment">// @}</span>
+<a name="l00464"></a>00464 <span class="comment"></span>
+<a name="l00465"></a>00465 <span class="comment">    /** Statically compile this function to llvm bitcode, with the</span>
+<a name="l00466"></a>00466 <span class="comment">     * given filename (which should probably end in .bc), type</span>
+<a name="l00467"></a>00467 <span class="comment">     * signature, and C function name (which defaults to the same name</span>
+<a name="l00468"></a>00468 <span class="comment">     * as this halide function */</span>
+<a name="l00469"></a>00469     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#af1766b2c9fe767ebe835b807db8b73cf" title="Statically compile this function to llvm bitcode, with the given filename (which should probably end ...">compile_to_bitcode</a>(<span class="keyword">const</span> std::string &amp;filename, std::vector&lt;Argument&gt;, <span class="keyword">const</span> std::string &amp;fn_name = <span class="stringliteral">&quot;&quot;</span>);
+<a name="l00470"></a>00470 <span class="comment"></span>
+<a name="l00471"></a>00471 <span class="comment">    /** Statically compile this function to an object file, with the</span>
+<a name="l00472"></a>00472 <span class="comment">     * given filename (which should probably end in .o or .obj), type</span>
+<a name="l00473"></a>00473 <span class="comment">     * signature, and C function name (which defaults to the same name</span>
+<a name="l00474"></a>00474 <span class="comment">     * as this halide function. You probably don&#39;t want to use this</span>
+<a name="l00475"></a>00475 <span class="comment">     * directly; call compile_to_file instead. */</span>
+<a name="l00476"></a>00476     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a38ad88b379adececdd34bdfbc9c0fd2d" title="Statically compile this function to an object file, with the given filename (which should probably en...">compile_to_object</a>(<span class="keyword">const</span> std::string &amp;filename, std::vector&lt;Argument&gt;, <span class="keyword">const</span> std::string &amp;fn_name = <span class="stringliteral">&quot;&quot;</span>);
+<a name="l00477"></a>00477 <span class="comment"></span>
+<a name="l00478"></a>00478 <span class="comment">    /** Emit a header file with the given filename for this</span>
+<a name="l00479"></a>00479 <span class="comment">     * function. The header will define a function with the type</span>
+<a name="l00480"></a>00480 <span class="comment">     * signature given by the second argument, and a name given by the</span>
+<a name="l00481"></a>00481 <span class="comment">     * third. The name defaults to the same name as this halide</span>
+<a name="l00482"></a>00482 <span class="comment">     * function. You don&#39;t actually have to have defined this function</span>
+<a name="l00483"></a>00483 <span class="comment">     * yet to call this. You probably don&#39;t want to use this directly;</span>
+<a name="l00484"></a>00484 <span class="comment">     * call compile_to_file instead. */</span>
+<a name="l00485"></a>00485     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#aae9623ffff43b170735b65c490b68ffb" title="Emit a header file with the given filename for this function.">compile_to_header</a>(<span class="keyword">const</span> std::string &amp;filename, std::vector&lt;Argument&gt;, <span class="keyword">const</span> std::string &amp;fn_name = <span class="stringliteral">&quot;&quot;</span>);
+<a name="l00486"></a>00486 <span class="comment"></span>
+<a name="l00487"></a>00487 <span class="comment">    /** Statically compile this function to text assembly equivalent</span>
+<a name="l00488"></a>00488 <span class="comment">     * to the object file generated by compile_to_object. This is</span>
+<a name="l00489"></a>00489 <span class="comment">     * useful for checking what Halide is producing without having to</span>
+<a name="l00490"></a>00490 <span class="comment">     * disassemble anything, or if you need to feed the assembly into</span>
+<a name="l00491"></a>00491 <span class="comment">     * some custom toolchain to produce an object file (e.g. iOS) */</span>
+<a name="l00492"></a>00492     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a2d16f8fb285adf13ec7c10ff5bc1a4bf" title="Statically compile this function to text assembly equivalent to the object file generated by compile_...">compile_to_assembly</a>(<span class="keyword">const</span> std::string &amp;filename, std::vector&lt;Argument&gt;, <span class="keyword">const</span> std::string &amp;fn_name = <span class="stringliteral">&quot;&quot;</span>);<span class="comment"></span>
+<a name="l00493"></a>00493 <span class="comment">    /** Statically compile this function to C source code. This is</span>
+<a name="l00494"></a>00494 <span class="comment">     * useful for providing fallback code paths that will compile on</span>
+<a name="l00495"></a>00495 <span class="comment">     * many platforms. Vectorization will fail, and parallelization</span>
+<a name="l00496"></a>00496 <span class="comment">     * will produce serial code. */</span>
+<a name="l00497"></a>00497     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a04a6c208a0d447cb9e28c088d138e0a5" title="Statically compile this function to C source code.">compile_to_c</a>(<span class="keyword">const</span> std::string &amp;filename, std::vector&lt;Argument&gt;, <span class="keyword">const</span> std::string &amp;fn_name = <span class="stringliteral">&quot;&quot;</span>);
+<a name="l00498"></a>00498 <span class="comment"></span>
+<a name="l00499"></a>00499 <span class="comment">    /** Write out an internal representation of lowered code. Useful</span>
+<a name="l00500"></a>00500 <span class="comment">     * for analyzing and debugging scheduling. Canonical extension is</span>
+<a name="l00501"></a>00501 <span class="comment">     * .stmt, which must be supplied in filename. */</span>
+<a name="l00502"></a>00502     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a419beef1aa58ba75c4605d099931f056" title="Write out an internal representation of lowered code.">compile_to_lowered_stmt</a>(<span class="keyword">const</span> std::string &amp;filename);
+<a name="l00503"></a>00503 <span class="comment"></span>
+<a name="l00504"></a>00504 <span class="comment">    /** Compile to object file and header pair, with the given</span>
+<a name="l00505"></a>00505 <span class="comment">     * arguments. Also names the C function to match the first</span>
+<a name="l00506"></a>00506 <span class="comment">     * argument.</span>
+<a name="l00507"></a>00507 <span class="comment">     */</span><span class="comment"></span>
+<a name="l00508"></a>00508 <span class="comment">    //@{</span>
+<a name="l00509"></a>00509 <span class="comment"></span>    <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a68c638e672ab03f4c6d33b3d18a38bd1" title="Compile to object file and header pair, with the given arguments.">compile_to_file</a>(<span class="keyword">const</span> std::string &amp;filename_prefix, std::vector&lt;Argument&gt; <a class="code" href="class_halide_1_1_func.html#a830f40950d6695281dc4c5057767ca4f" title="Get the pure arguments.">args</a>);
+<a name="l00510"></a>00510     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a68c638e672ab03f4c6d33b3d18a38bd1" title="Compile to object file and header pair, with the given arguments.">compile_to_file</a>(<span class="keyword">const</span> std::string &amp;filename_prefix);
+<a name="l00511"></a>00511     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a68c638e672ab03f4c6d33b3d18a38bd1" title="Compile to object file and header pair, with the given arguments.">compile_to_file</a>(<span class="keyword">const</span> std::string &amp;filename_prefix, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> a);
+<a name="l00512"></a>00512     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a68c638e672ab03f4c6d33b3d18a38bd1" title="Compile to object file and header pair, with the given arguments.">compile_to_file</a>(<span class="keyword">const</span> std::string &amp;filename_prefix, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> a, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> b);
+<a name="l00513"></a>00513     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a68c638e672ab03f4c6d33b3d18a38bd1" title="Compile to object file and header pair, with the given arguments.">compile_to_file</a>(<span class="keyword">const</span> std::string &amp;filename_prefix, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> a, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> b, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> c);
+<a name="l00514"></a>00514     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a68c638e672ab03f4c6d33b3d18a38bd1" title="Compile to object file and header pair, with the given arguments.">compile_to_file</a>(<span class="keyword">const</span> std::string &amp;filename_prefix, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> a, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> b, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> c, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> d);
+<a name="l00515"></a>00515     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a68c638e672ab03f4c6d33b3d18a38bd1" title="Compile to object file and header pair, with the given arguments.">compile_to_file</a>(<span class="keyword">const</span> std::string &amp;filename_prefix, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> a, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> b, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> c, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> d, <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> e);
+<a name="l00516"></a>00516     <span class="comment">// @}</span>
+<a name="l00517"></a>00517 <span class="comment"></span>
+<a name="l00518"></a>00518 <span class="comment">    /** Eagerly jit compile the function to machine code. This</span>
+<a name="l00519"></a>00519 <span class="comment">     * normally happens on the first call to realize. If you&#39;re</span>
+<a name="l00520"></a>00520 <span class="comment">     * running your halide pipeline inside time-sensitive code and</span>
+<a name="l00521"></a>00521 <span class="comment">     * wish to avoid including the time taken to compile a pipeline,</span>
+<a name="l00522"></a>00522 <span class="comment">     * then you can call this ahead of time. Returns the raw function</span>
+<a name="l00523"></a>00523 <span class="comment">     * pointer to the compiled pipeline. */</span>
+<a name="l00524"></a>00524     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> *<a class="code" href="class_halide_1_1_func.html#a43d7d8baab31e6e34f6862cb653b66f4" title="Eagerly jit compile the function to machine code.">compile_jit</a>();
+<a name="l00525"></a>00525 <span class="comment"></span>
+<a name="l00526"></a>00526 <span class="comment">    /** Set the error handler function that be called in the case of</span>
+<a name="l00527"></a>00527 <span class="comment">     * runtime errors during halide pipelines. If you are compiling</span>
+<a name="l00528"></a>00528 <span class="comment">     * statically, you can also just define your own function with</span>
+<a name="l00529"></a>00529 <span class="comment">     * signature</span>
+<a name="l00530"></a>00530 <span class="comment">     \code</span>
+<a name="l00531"></a>00531 <span class="comment">     extern &quot;C&quot; void halide_error(const char *);</span>
+<a name="l00532"></a>00532 <span class="comment">     \endcode</span>
+<a name="l00533"></a>00533 <span class="comment">     * This will clobber Halide&#39;s version.</span>
+<a name="l00534"></a>00534 <span class="comment">     */</span>
+<a name="l00535"></a>00535     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a7f3829aa7004a2932ea421f437db522d" title="Set the error handler function that be called in the case of runtime errors during halide pipelines...">set_error_handler</a>(<span class="keywordtype">void</span> (*handler)(<span class="keyword">const</span> <span class="keywordtype">char</span> *));
+<a name="l00536"></a>00536 <span class="comment"></span>
+<a name="l00537"></a>00537 <span class="comment">    /** Set a custom malloc and free for halide to use. Malloc should</span>
+<a name="l00538"></a>00538 <span class="comment">     * return 32-byte aligned chunks of memory. If compiling</span>
+<a name="l00539"></a>00539 <span class="comment">     * statically, routines with appropriate signatures can be</span>
+<a name="l00540"></a>00540 <span class="comment">     * provided directly</span>
+<a name="l00541"></a>00541 <span class="comment">     \code</span>
+<a name="l00542"></a>00542 <span class="comment">     extern &quot;C&quot; void *halide_malloc(size_t)</span>
+<a name="l00543"></a>00543 <span class="comment">     extern &quot;C&quot; void halide_free(void *)</span>
+<a name="l00544"></a>00544 <span class="comment">     \endcode</span>
+<a name="l00545"></a>00545 <span class="comment">     * These will clobber Halide&#39;s versions. See \file HalideRuntime.h</span>
+<a name="l00546"></a>00546 <span class="comment">     * for declarations.</span>
+<a name="l00547"></a>00547 <span class="comment">     */</span>
+<a name="l00548"></a>00548     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#ab08dcceb9c5fb0205815c52100327f47">set_custom_allocator</a>(<span class="keywordtype">void</span> *(*malloc)(<span class="keywordtype">size_t</span>), <span class="keywordtype">void</span> (*free)(<span class="keywordtype">void</span> *));
+<a name="l00549"></a>00549 <span class="comment"></span>
+<a name="l00550"></a>00550 <span class="comment">    /** Set a custom task handler to be called by the parallel for</span>
+<a name="l00551"></a>00551 <span class="comment">     * loop. It is useful to set this if you want to do some</span>
+<a name="l00552"></a>00552 <span class="comment">     * additional bookkeeping at the granularity of parallel</span>
+<a name="l00553"></a>00553 <span class="comment">     * tasks. The default implementation does this:</span>
+<a name="l00554"></a>00554 <span class="comment">     \code</span>
+<a name="l00555"></a>00555 <span class="comment">     extern &quot;C&quot; int halide_do_task(int (*f)(int, uint8_t *), int idx, uint8_t *state) {</span>
+<a name="l00556"></a>00556 <span class="comment">         return f(idx, state);</span>
+<a name="l00557"></a>00557 <span class="comment">     }</span>
+<a name="l00558"></a>00558 <span class="comment">     \endcode</span>
+<a name="l00559"></a>00559 <span class="comment">     * If you are statically compiling, you can also just define your</span>
+<a name="l00560"></a>00560 <span class="comment">     * own version of the above function, and it will clobber Halide&#39;s</span>
+<a name="l00561"></a>00561 <span class="comment">     * version.</span>
+<a name="l00562"></a>00562 <span class="comment">     *</span>
+<a name="l00563"></a>00563 <span class="comment">     * If you&#39;re trying to use a custom parallel runtime, you probably</span>
+<a name="l00564"></a>00564 <span class="comment">     * don&#39;t want to call this. See instead \ref Func::set_custom_do_par_for .</span>
+<a name="l00565"></a>00565 <span class="comment">    */</span>
+<a name="l00566"></a>00566     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a7627cc3aaea7d1f70f5214ba4608b517" title="Set a custom task handler to be called by the parallel for loop.">set_custom_do_task</a>(<span class="keywordtype">int</span> (*custom_do_task)(<span class="keywordtype">int</span> (*)(<span class="keywordtype">int</span>, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *), <span class="keywordtype">int</span>, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *));
+<a name="l00567"></a>00567 <span class="comment"></span>
+<a name="l00568"></a>00568 <span class="comment">    /** Set a custom parallel for loop launcher. Useful if your app</span>
+<a name="l00569"></a>00569 <span class="comment">     * already manages a thread pool. The default implementation is</span>
+<a name="l00570"></a>00570 <span class="comment">     * equivalent to this:</span>
+<a name="l00571"></a>00571 <span class="comment">     \code</span>
+<a name="l00572"></a>00572 <span class="comment">     extern &quot;C&quot; int halide_do_par_for(int (*f)(int uint8_t *), int min, int extent, uint8_t *state) {</span>
+<a name="l00573"></a>00573 <span class="comment">         int exit_status = 0;</span>
+<a name="l00574"></a>00574 <span class="comment">         parallel for (int idx = min; idx &lt; min+extent; idx++) {</span>
+<a name="l00575"></a>00575 <span class="comment">             int job_status = halide_do_task(f, idx, state);</span>
+<a name="l00576"></a>00576 <span class="comment">             if (job_status) exit_status = job_status;</span>
+<a name="l00577"></a>00577 <span class="comment">         }</span>
+<a name="l00578"></a>00578 <span class="comment">         return exit_status;</span>
+<a name="l00579"></a>00579 <span class="comment">     }</span>
+<a name="l00580"></a>00580 <span class="comment">     \endcode</span>
+<a name="l00581"></a>00581 <span class="comment">     *</span>
+<a name="l00582"></a>00582 <span class="comment">     * However, notwithstanding the above example code, if one task</span>
+<a name="l00583"></a>00583 <span class="comment">     * fails, we may skip over other tasks, and if two tasks return</span>
+<a name="l00584"></a>00584 <span class="comment">     * different error codes, we may select one arbitrarily to return.</span>
+<a name="l00585"></a>00585 <span class="comment">     *</span>
+<a name="l00586"></a>00586 <span class="comment">     * If you are statically compiling, you can also just define your</span>
+<a name="l00587"></a>00587 <span class="comment">     * own version of the above function, and it will clobber Halide&#39;s</span>
+<a name="l00588"></a>00588 <span class="comment">     * version.</span>
+<a name="l00589"></a>00589 <span class="comment">     */</span>
+<a name="l00590"></a>00590     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#a89a384323e192ac6f67df41f5612d5b5" title="Set a custom parallel for loop launcher.">set_custom_do_par_for</a>(<span class="keywordtype">int</span> (*custom_do_par_for)(<span class="keywordtype">int</span> (*)(<span class="keywordtype">int</span>, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *), <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *));
+<a name="l00591"></a>00591 <span class="comment"></span>
+<a name="l00592"></a>00592 <span class="comment">    /** Set custom routines to call when tracing is enabled. Call this</span>
+<a name="l00593"></a>00593 <span class="comment">     * on the output Func of your pipeline. This then sets custom</span>
+<a name="l00594"></a>00594 <span class="comment">     * routines for the entire pipeline, not just calls to this</span>
+<a name="l00595"></a>00595 <span class="comment">     * Func.</span>
+<a name="l00596"></a>00596 <span class="comment">     *</span>
+<a name="l00597"></a>00597 <span class="comment">     * If you are statically compiling, you can also just define your</span>
+<a name="l00598"></a>00598 <span class="comment">     * own versions of the tracing functions (see HalideRuntime.h),</span>
+<a name="l00599"></a>00599 <span class="comment">     * and they will clobber Halide&#39;s versions. */</span>
+<a name="l00600"></a>00600     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#aad5f2b878005cd24c3b49c4856652971" title="Set custom routines to call when tracing is enabled.">set_custom_trace</a>(<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a9d678f8fb81f834e3cfa6284a4e3adbf" title="Set a custom trace function.">Internal::JITCompiledModule::TraceFn</a>);
+<a name="l00601"></a>00601 <span class="comment"></span>
+<a name="l00602"></a>00602 <span class="comment">    /** When this function is compiled, include code that dumps its</span>
+<a name="l00603"></a>00603 <span class="comment">     * values to a file after it is realized, for the purpose of</span>
+<a name="l00604"></a>00604 <span class="comment">     * debugging.</span>
+<a name="l00605"></a>00605 <span class="comment">     *</span>
+<a name="l00606"></a>00606 <span class="comment">     * If filename ends in &quot;.tif&quot; or &quot;.tiff&quot; (case insensitive) the file</span>
+<a name="l00607"></a>00607 <span class="comment">     * is in TIFF format and can be read by standard tools. Oherwise, the</span>
+<a name="l00608"></a>00608 <span class="comment">     * file format is as follows:</span>
 <a name="l00609"></a>00609 <span class="comment">     *</span>
-<a name="l00610"></a>00610 <span class="comment">     * If filename ends in &quot;.tif&quot; or &quot;.tiff&quot; (case insensitive) the file</span>
-<a name="l00611"></a>00611 <span class="comment">     * is in TIFF format and can be read by standard tools. Oherwise, the</span>
-<a name="l00612"></a>00612 <span class="comment">     * file format is as follows:</span>
-<a name="l00613"></a>00613 <span class="comment">     *</span>
-<a name="l00614"></a>00614 <span class="comment">     * All data is in the byte-order of the target platform.  First, a</span>
-<a name="l00615"></a>00615 <span class="comment">     * 20 byte-header containing four 32-bit ints, giving the extents</span>
-<a name="l00616"></a>00616 <span class="comment">     * of the first four dimensions.  Dimensions beyond four are</span>
-<a name="l00617"></a>00617 <span class="comment">     * folded into the fourth.  Then, a fifth 32-bit int giving the</span>
-<a name="l00618"></a>00618 <span class="comment">     * data type of the function. The typecodes are given by: float =</span>
-<a name="l00619"></a>00619 <span class="comment">     * 0, double = 1, uint8_t = 2, int8_t = 3, uint16_t = 4, int16_t =</span>
-<a name="l00620"></a>00620 <span class="comment">     * 5, uint32_t = 6, int32_t = 7, uint64_t = 8, int64_t = 9. The</span>
-<a name="l00621"></a>00621 <span class="comment">     * data follows the header, as a densely packed array of the given</span>
-<a name="l00622"></a>00622 <span class="comment">     * size and the given type. If given the extension .tmp, this file</span>
-<a name="l00623"></a>00623 <span class="comment">     * format can be natively read by the program ImageStack. */</span>
-<a name="l00624"></a>00624     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#ad698122392e50574c38e3d19b0c9c41e" title="When this function is compiled, include code that dumps its values to a file after it is realized...">debug_to_file</a>(<span class="keyword">const</span> std::string &amp;filename);
+<a name="l00610"></a>00610 <span class="comment">     * All data is in the byte-order of the target platform.  First, a</span>
+<a name="l00611"></a>00611 <span class="comment">     * 20 byte-header containing four 32-bit ints, giving the extents</span>
+<a name="l00612"></a>00612 <span class="comment">     * of the first four dimensions.  Dimensions beyond four are</span>
+<a name="l00613"></a>00613 <span class="comment">     * folded into the fourth.  Then, a fifth 32-bit int giving the</span>
+<a name="l00614"></a>00614 <span class="comment">     * data type of the function. The typecodes are given by: float =</span>
+<a name="l00615"></a>00615 <span class="comment">     * 0, double = 1, uint8_t = 2, int8_t = 3, uint16_t = 4, int16_t =</span>
+<a name="l00616"></a>00616 <span class="comment">     * 5, uint32_t = 6, int32_t = 7, uint64_t = 8, int64_t = 9. The</span>
+<a name="l00617"></a>00617 <span class="comment">     * data follows the header, as a densely packed array of the given</span>
+<a name="l00618"></a>00618 <span class="comment">     * size and the given type. If given the extension .tmp, this file</span>
+<a name="l00619"></a>00619 <span class="comment">     * format can be natively read by the program ImageStack. */</span>
+<a name="l00620"></a>00620     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#ad698122392e50574c38e3d19b0c9c41e" title="When this function is compiled, include code that dumps its values to a file after it is realized...">debug_to_file</a>(<span class="keyword">const</span> std::string &amp;filename);
+<a name="l00621"></a>00621 <span class="comment"></span>
+<a name="l00622"></a>00622 <span class="comment">    /** The name of this function, either given during construction,</span>
+<a name="l00623"></a>00623 <span class="comment">     * or automatically generated. */</span>
+<a name="l00624"></a>00624     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_func.html#a1c36026717d2f74a842983d65e6b3bf8" title="The name of this function, either given during construction, or automatically generated.">name</a>() <span class="keyword">const</span>;
 <a name="l00625"></a>00625 <span class="comment"></span>
-<a name="l00626"></a>00626 <span class="comment">    /** The name of this function, either given during construction,</span>
-<a name="l00627"></a>00627 <span class="comment">     * or automatically generated. */</span>
-<a name="l00628"></a>00628     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_func.html#a1c36026717d2f74a842983d65e6b3bf8" title="The name of this function, either given during construction, or automatically generated.">name</a>() <span class="keyword">const</span>;
-<a name="l00629"></a>00629 <span class="comment"></span>
-<a name="l00630"></a>00630 <span class="comment">    /** Get the pure arguments. */</span>
-<a name="l00631"></a>00631     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::vector&lt;Var&gt; <a class="code" href="class_halide_1_1_func.html#a830f40950d6695281dc4c5057767ca4f" title="Get the pure arguments.">args</a>() <span class="keyword">const</span>;
-<a name="l00632"></a>00632 <span class="comment"></span>
-<a name="l00633"></a>00633 <span class="comment">    /** The right-hand-side value of the pure definition of this</span>
-<a name="l00634"></a>00634 <span class="comment">     * function. Causes an error if there&#39;s no pure definition, or if</span>
-<a name="l00635"></a>00635 <span class="comment">     * the function is defined to return multiple values. */</span>
-<a name="l00636"></a>00636     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_func.html#a184f385b265e7ba488a2eed66a10b41a" title="The right-hand-side value of the pure definition of this function.">value</a>() <span class="keyword">const</span>;
-<a name="l00637"></a>00637 <span class="comment"></span>
-<a name="l00638"></a>00638 <span class="comment">    /** The values returned by this function. An error if the function</span>
-<a name="l00639"></a>00639 <span class="comment">     * has not been been defined. Returns a Tuple with one element for</span>
-<a name="l00640"></a>00640 <span class="comment">     * functions defined to return a single value. */</span>
-<a name="l00641"></a>00641     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a> <a class="code" href="class_halide_1_1_func.html#a2d2b62cf0249b0dcd24f41b246d82b3a" title="The values returned by this function.">values</a>() <span class="keyword">const</span>;
-<a name="l00642"></a>00642 <span class="comment"></span>
-<a name="l00643"></a>00643 <span class="comment">    /** Does this function have at least a pure definition. */</span>
-<a name="l00644"></a>00644     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_func.html#a6744d1c69eeba054cc16c019a99e888d" title="Does this function have at least a pure definition.">defined</a>() <span class="keyword">const</span>;
+<a name="l00626"></a>00626 <span class="comment">    /** Get the pure arguments. */</span>
+<a name="l00627"></a>00627     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::vector&lt;Var&gt; <a class="code" href="class_halide_1_1_func.html#a830f40950d6695281dc4c5057767ca4f" title="Get the pure arguments.">args</a>() <span class="keyword">const</span>;
+<a name="l00628"></a>00628 <span class="comment"></span>
+<a name="l00629"></a>00629 <span class="comment">    /** The right-hand-side value of the pure definition of this</span>
+<a name="l00630"></a>00630 <span class="comment">     * function. Causes an error if there&#39;s no pure definition, or if</span>
+<a name="l00631"></a>00631 <span class="comment">     * the function is defined to return multiple values. */</span>
+<a name="l00632"></a>00632     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_func.html#a184f385b265e7ba488a2eed66a10b41a" title="The right-hand-side value of the pure definition of this function.">value</a>() <span class="keyword">const</span>;
+<a name="l00633"></a>00633 <span class="comment"></span>
+<a name="l00634"></a>00634 <span class="comment">    /** The values returned by this function. An error if the function</span>
+<a name="l00635"></a>00635 <span class="comment">     * has not been been defined. Returns a Tuple with one element for</span>
+<a name="l00636"></a>00636 <span class="comment">     * functions defined to return a single value. */</span>
+<a name="l00637"></a>00637     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a> <a class="code" href="class_halide_1_1_func.html#a2d2b62cf0249b0dcd24f41b246d82b3a" title="The values returned by this function.">values</a>() <span class="keyword">const</span>;
+<a name="l00638"></a>00638 <span class="comment"></span>
+<a name="l00639"></a>00639 <span class="comment">    /** Does this function have at least a pure definition. */</span>
+<a name="l00640"></a>00640     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_func.html#a6744d1c69eeba054cc16c019a99e888d" title="Does this function have at least a pure definition.">defined</a>() <span class="keyword">const</span>;
+<a name="l00641"></a>00641 <span class="comment"></span>
+<a name="l00642"></a>00642 <span class="comment">    /** Get the left-hand-side of the reduction definition. An empty</span>
+<a name="l00643"></a>00643 <span class="comment">     * vector if there&#39;s no reduction definition. */</span>
+<a name="l00644"></a>00644     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">const</span> std::vector&lt;Expr&gt; &amp;<a class="code" href="class_halide_1_1_func.html#af35a2edd7af5b36b3649fb21ca0e488d" title="Get the left-hand-side of the reduction definition.">reduction_args</a>() <span class="keyword">const</span>;
 <a name="l00645"></a>00645 <span class="comment"></span>
-<a name="l00646"></a>00646 <span class="comment">    /** Get the left-hand-side of the reduction definition. An empty</span>
-<a name="l00647"></a>00647 <span class="comment">     * vector if there&#39;s no reduction definition. */</span>
-<a name="l00648"></a>00648     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">const</span> std::vector&lt;Expr&gt; &amp;<a class="code" href="class_halide_1_1_func.html#af35a2edd7af5b36b3649fb21ca0e488d" title="Get the left-hand-side of the reduction definition.">reduction_args</a>() <span class="keyword">const</span>;
+<a name="l00646"></a>00646 <span class="comment">    /** Get the right-hand-side of the reduction definition. An error</span>
+<a name="l00647"></a>00647 <span class="comment">     * if there&#39;s no reduction definition. */</span>
+<a name="l00648"></a>00648     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_func.html#a9110e2b999743b637c04884ef854d72f" title="Get the right-hand-side of the reduction definition.">reduction_value</a>() <span class="keyword">const</span>;
 <a name="l00649"></a>00649 <span class="comment"></span>
-<a name="l00650"></a>00650 <span class="comment">    /** Get the right-hand-side of the reduction definition. An error</span>
-<a name="l00651"></a>00651 <span class="comment">     * if there&#39;s no reduction definition. */</span>
-<a name="l00652"></a>00652     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_func.html#a9110e2b999743b637c04884ef854d72f" title="Get the right-hand-side of the reduction definition.">reduction_value</a>() <span class="keyword">const</span>;
-<a name="l00653"></a>00653 <span class="comment"></span>
-<a name="l00654"></a>00654 <span class="comment">    /** Get the right-hand-side of the reduction definition for</span>
-<a name="l00655"></a>00655 <span class="comment">     * functions that returns multiple values. An error if there&#39;s no</span>
-<a name="l00656"></a>00656 <span class="comment">     * reduction definition. Returns a Tuple with one element for</span>
-<a name="l00657"></a>00657 <span class="comment">     * functions that return a single value. */</span>
-<a name="l00658"></a>00658     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a> <a class="code" href="class_halide_1_1_func.html#af59f2c336e39323bfc77b099a9fc89d3" title="Get the right-hand-side of the reduction definition for functions that returns multiple values...">reduction_values</a>() <span class="keyword">const</span>;
+<a name="l00650"></a>00650 <span class="comment">    /** Get the right-hand-side of the reduction definition for</span>
+<a name="l00651"></a>00651 <span class="comment">     * functions that returns multiple values. An error if there&#39;s no</span>
+<a name="l00652"></a>00652 <span class="comment">     * reduction definition. Returns a Tuple with one element for</span>
+<a name="l00653"></a>00653 <span class="comment">     * functions that return a single value. */</span>
+<a name="l00654"></a>00654     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a> <a class="code" href="class_halide_1_1_func.html#af59f2c336e39323bfc77b099a9fc89d3" title="Get the right-hand-side of the reduction definition for functions that returns multiple values...">reduction_values</a>() <span class="keyword">const</span>;
+<a name="l00655"></a>00655 <span class="comment"></span>
+<a name="l00656"></a>00656 <span class="comment">    /** Get the reduction domain for the reduction definition. Returns</span>
+<a name="l00657"></a>00657 <span class="comment">     * an undefined RDom if there&#39;s no reduction definition. */</span>
+<a name="l00658"></a>00658     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a> <a class="code" href="class_halide_1_1_func.html#a00a595864dffa6bc83958ac0ddb816e5" title="Get the reduction domain for the reduction definition.">reduction_domain</a>() <span class="keyword">const</span>;
 <a name="l00659"></a>00659 <span class="comment"></span>
-<a name="l00660"></a>00660 <span class="comment">    /** Get the reduction domain for the reduction definition. Returns</span>
-<a name="l00661"></a>00661 <span class="comment">     * an undefined RDom if there&#39;s no reduction definition. */</span>
-<a name="l00662"></a>00662     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a> <a class="code" href="class_halide_1_1_func.html#a00a595864dffa6bc83958ac0ddb816e5" title="Get the reduction domain for the reduction definition.">reduction_domain</a>() <span class="keyword">const</span>;
-<a name="l00663"></a>00663 <span class="comment"></span>
-<a name="l00664"></a>00664 <span class="comment">    /** Is this function a reduction? */</span>
-<a name="l00665"></a>00665     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_func.html#a7037ff7ff29c32a2918f012a3bc897d8" title="Is this function a reduction?">is_reduction</a>() <span class="keyword">const</span>;
-<a name="l00666"></a>00666 <span class="comment"></span>
-<a name="l00667"></a>00667 <span class="comment">    /** Is this function external? */</span>
-<a name="l00668"></a>00668     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_func.html#a10ea6486f854455c7c6275c5a34400f8" title="Is this function external?">is_extern</a>() <span class="keyword">const</span>;
-<a name="l00669"></a>00669 <span class="comment"></span>
-<a name="l00670"></a>00670 <span class="comment">    /** Add an extern definition for this Func. */</span>
-<a name="l00671"></a>00671     <span class="comment">// @{</span>
-<a name="l00672"></a><a class="code" href="class_halide_1_1_func.html#ab0c6a7f94cc7fdb8c42f2bcbc9013bfc">00672</a>     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#ab0c6a7f94cc7fdb8c42f2bcbc9013bfc" title="Add an extern definition for this Func.">define_extern</a>(<span class="keyword">const</span> std::string &amp;function_name,
-<a name="l00673"></a>00673                               <span class="keyword">const</span> std::vector&lt;ExternFuncArgument&gt; &amp;params,
-<a name="l00674"></a>00674                               <a class="code" href="struct_halide_1_1_type.html" title="Types in the halide type system.">Type</a> t,
-<a name="l00675"></a>00675                               <span class="keywordtype">int</span> dimensionality) {
-<a name="l00676"></a>00676         <a class="code" href="class_halide_1_1_func.html#ab0c6a7f94cc7fdb8c42f2bcbc9013bfc" title="Add an extern definition for this Func.">define_extern</a>(function_name, params, Internal::vec&lt;Type&gt;(t), dimensionality);
-<a name="l00677"></a>00677     }
-<a name="l00678"></a>00678 
-<a name="l00679"></a>00679     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#ab0c6a7f94cc7fdb8c42f2bcbc9013bfc" title="Add an extern definition for this Func.">define_extern</a>(<span class="keyword">const</span> std::string &amp;function_name,
-<a name="l00680"></a>00680                               <span class="keyword">const</span> std::vector&lt;ExternFuncArgument&gt; &amp;params,
-<a name="l00681"></a>00681                               <span class="keyword">const</span> std::vector&lt;Type&gt; &amp;types,
-<a name="l00682"></a>00682                               <span class="keywordtype">int</span> dimensionality);
-<a name="l00683"></a>00683     <span class="comment">// @}</span>
-<a name="l00684"></a>00684 <span class="comment"></span>
-<a name="l00685"></a>00685 <span class="comment">    /** Get the types of the outputs of this Func. */</span>
-<a name="l00686"></a>00686     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">const</span> std::vector&lt;Type&gt; &amp;<a class="code" href="class_halide_1_1_func.html#a0622c8a11c948787eafbee82a0853030" title="Get the types of the outputs of this Func.">output_types</a>() <span class="keyword">const</span>;
-<a name="l00687"></a>00687 <span class="comment"></span>
-<a name="l00688"></a>00688 <span class="comment">    /** Get the number of outputs of this Func. */</span>
+<a name="l00660"></a>00660 <span class="comment">    /** Is this function a reduction? */</span>
+<a name="l00661"></a>00661     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_func.html#a7037ff7ff29c32a2918f012a3bc897d8" title="Is this function a reduction?">is_reduction</a>() <span class="keyword">const</span>;
+<a name="l00662"></a>00662 <span class="comment"></span>
+<a name="l00663"></a>00663 <span class="comment">    /** Is this function an external stage? That is, was it defined using define_extern? */</span>
+<a name="l00664"></a>00664     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_func.html#a10ea6486f854455c7c6275c5a34400f8" title="Is this function an external stage? That is, was it defined using define_extern?">is_extern</a>() <span class="keyword">const</span>;
+<a name="l00665"></a>00665 <span class="comment"></span>
+<a name="l00666"></a>00666 <span class="comment">    /** Add an extern definition for this Func. This lets you define a</span>
+<a name="l00667"></a>00667 <span class="comment">     * Func that represents an external pipeline stage. You can, for</span>
+<a name="l00668"></a>00668 <span class="comment">     * example, use it to wrap a call to an extern library such as</span>
+<a name="l00669"></a>00669 <span class="comment">     * fftw. */</span>
+<a name="l00670"></a>00670     <span class="comment">// @{</span>
+<a name="l00671"></a><a class="code" href="class_halide_1_1_func.html#ab0c6a7f94cc7fdb8c42f2bcbc9013bfc">00671</a>     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#ab0c6a7f94cc7fdb8c42f2bcbc9013bfc" title="Add an extern definition for this Func.">define_extern</a>(<span class="keyword">const</span> std::string &amp;function_name,
+<a name="l00672"></a>00672                               <span class="keyword">const</span> std::vector&lt;ExternFuncArgument&gt; &amp;params,
+<a name="l00673"></a>00673                               <a class="code" href="struct_halide_1_1_type.html" title="Types in the halide type system.">Type</a> t,
+<a name="l00674"></a>00674                               <span class="keywordtype">int</span> dimensionality) {
+<a name="l00675"></a>00675         <a class="code" href="class_halide_1_1_func.html#ab0c6a7f94cc7fdb8c42f2bcbc9013bfc" title="Add an extern definition for this Func.">define_extern</a>(function_name, params, Internal::vec&lt;Type&gt;(t), dimensionality);
+<a name="l00676"></a>00676     }
+<a name="l00677"></a>00677 
+<a name="l00678"></a>00678     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_func.html#ab0c6a7f94cc7fdb8c42f2bcbc9013bfc" title="Add an extern definition for this Func.">define_extern</a>(<span class="keyword">const</span> std::string &amp;function_name,
+<a name="l00679"></a>00679                               <span class="keyword">const</span> std::vector&lt;ExternFuncArgument&gt; &amp;params,
+<a name="l00680"></a>00680                               <span class="keyword">const</span> std::vector&lt;Type&gt; &amp;types,
+<a name="l00681"></a>00681                               <span class="keywordtype">int</span> dimensionality);
+<a name="l00682"></a>00682     <span class="comment">// @}</span>
+<a name="l00683"></a>00683 <span class="comment"></span>
+<a name="l00684"></a>00684 <span class="comment">    /** Get the types of the outputs of this Func. */</span>
+<a name="l00685"></a>00685     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">const</span> std::vector&lt;Type&gt; &amp;<a class="code" href="class_halide_1_1_func.html#a0622c8a11c948787eafbee82a0853030" title="Get the types of the outputs of this Func.">output_types</a>() <span class="keyword">const</span>;
+<a name="l00686"></a>00686 <span class="comment"></span>
+<a name="l00687"></a>00687 <span class="comment">    /** Get the number of outputs of this Func. Corresponds to the</span>
+<a name="l00688"></a>00688 <span class="comment">     * size of the Tuple this Func was defined to return. */</span>
 <a name="l00689"></a>00689     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">int</span> <a class="code" href="class_halide_1_1_func.html#a2ddfd0eef6173d668c0f76d6c52cefb7" title="Get the number of outputs of this Func.">outputs</a>() <span class="keyword">const</span>;
 <a name="l00690"></a>00690 <span class="comment"></span>
 <a name="l00691"></a>00691 <span class="comment">    /** Get the name of the extern function called for an extern</span>
@@ -1144,118 +1144,117 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l01043"></a>01043     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="class_halide_1_1_schedule_handle.html" title="A wrapper around a schedule used for common schedule manipulations.">ScheduleHandle</a> <a class="code" href="class_halide_1_1_func.html#acac11539aa8f54ae551f34b79bc68d19" title="Get a handle on the update step of a reduction for the purposes of scheduling it.">update</a>();
 <a name="l01044"></a>01044 <span class="comment"></span>
 <a name="l01045"></a>01045 <span class="comment">    /** Trace all loads from this Func by emitting calls to</span>
-<a name="l01046"></a>01046 <span class="comment">     * halide_trace_load. If the Func is inlined, this has no</span>
+<a name="l01046"></a>01046 <span class="comment">     * halide_trace. If the Func is inlined, this has no</span>
 <a name="l01047"></a>01047 <span class="comment">     * effect. */</span>
-<a name="l01048"></a>01048     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Func &amp;<a class="code" href="class_halide_1_1_func.html#a375c44be83cecdc181115a0018a7f31b" title="Trace all loads from this Func by emitting calls to halide_trace_load.">trace_loads</a>();
+<a name="l01048"></a>01048     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Func &amp;<a class="code" href="class_halide_1_1_func.html#a375c44be83cecdc181115a0018a7f31b" title="Trace all loads from this Func by emitting calls to halide_trace.">trace_loads</a>();
 <a name="l01049"></a>01049 <span class="comment"></span>
 <a name="l01050"></a>01050 <span class="comment">    /** Trace all stores to the buffer backing this Func by emitting</span>
-<a name="l01051"></a>01051 <span class="comment">     * calls to halide_trace_store. If the Func is inlined, this call</span>
+<a name="l01051"></a>01051 <span class="comment">     * calls to halide_trace. If the Func is inlined, this call</span>
 <a name="l01052"></a>01052 <span class="comment">     * has no effect. */</span>
-<a name="l01053"></a>01053     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Func &amp;<a class="code" href="class_halide_1_1_func.html#ad88d11ad4164bce72320f2c064fc87d2" title="Trace all stores to the buffer backing this Func by emitting calls to halide_trace_store.">trace_stores</a>();
+<a name="l01053"></a>01053     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Func &amp;<a class="code" href="class_halide_1_1_func.html#ad88d11ad4164bce72320f2c064fc87d2" title="Trace all stores to the buffer backing this Func by emitting calls to halide_trace.">trace_stores</a>();
 <a name="l01054"></a>01054 <span class="comment"></span>
 <a name="l01055"></a>01055 <span class="comment">    /** Trace all realizations of this Func by emitting calls to</span>
-<a name="l01056"></a>01056 <span class="comment">     * halide_trace_produce, halide_trace_update,</span>
-<a name="l01057"></a>01057 <span class="comment">     * halide_trace_consume, and halide_trace_dispose. */</span>
-<a name="l01058"></a>01058     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Func &amp;<a class="code" href="class_halide_1_1_func.html#aa3981c97ffef96ab12c229371d766fef" title="Trace all realizations of this Func by emitting calls to halide_trace_produce, halide_trace_update, halide_trace_consume, and halide_trace_dispose.">trace_realizations</a>();
-<a name="l01059"></a>01059 <span class="comment"></span>
-<a name="l01060"></a>01060 <span class="comment">    /** Get a handle on the internal halide function that this Func</span>
-<a name="l01061"></a>01061 <span class="comment">     * represents. Useful if you want to do introspection on Halide</span>
-<a name="l01062"></a>01062 <span class="comment">     * functions */</span>
-<a name="l01063"></a><a class="code" href="class_halide_1_1_func.html#af53d44302c15c4335e55a2887e2f780e">01063</a>     <a class="code" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Internal::Function</a> <span class="keyword">function</span>() <span class="keyword">const</span> {
-<a name="l01064"></a>01064         <span class="keywordflow">return</span> func;
-<a name="l01065"></a>01065     }
-<a name="l01066"></a>01066 <span class="comment"></span>
-<a name="l01067"></a>01067 <span class="comment">    /** Get a handle on the output buffer for this Func. Only relevant</span>
-<a name="l01068"></a>01068 <span class="comment">     * if this is the output Func in a pipeline. Useful for making</span>
-<a name="l01069"></a>01069 <span class="comment">     * static promises about strides, mins, and extents. */</span>
-<a name="l01070"></a>01070     <span class="comment">// @{</span>
-<a name="l01071"></a>01071     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="class_halide_1_1_output_image_param.html" title="A handle on the output buffer of a pipeline.">OutputImageParam</a> <a class="code" href="class_halide_1_1_func.html#a7ed1d8e36969e549cb42e2deb062ef37" title="Get a handle on the output buffer for this Func.">output_buffer</a>() <span class="keyword">const</span>;
-<a name="l01072"></a>01072     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::vector&lt;OutputImageParam&gt; <a class="code" href="class_halide_1_1_func.html#a196fa4dd98145740fe20e0a834b7d296" title="Get a handle on the output buffer for this Func.">output_buffers</a>() <span class="keyword">const</span>;
-<a name="l01073"></a>01073     <span class="comment">// @}</span>
-<a name="l01074"></a>01074 <span class="comment"></span>
-<a name="l01075"></a>01075 <span class="comment">    /** Casting a function to an expression is equivalent to calling</span>
-<a name="l01076"></a>01076 <span class="comment">     * the function with zero arguments. Implicit variables will be</span>
-<a name="l01077"></a>01077 <span class="comment">     * injected according to the function&#39;s dimensionality</span>
-<a name="l01078"></a>01078 <span class="comment">     * (see \ref Var::implicit).</span>
-<a name="l01079"></a>01079 <span class="comment">     *</span>
-<a name="l01080"></a>01080 <span class="comment">     * This lets you write things like:</span>
-<a name="l01081"></a>01081 <span class="comment">     *</span>
-<a name="l01082"></a>01082 <span class="comment">     \code</span>
-<a name="l01083"></a>01083 <span class="comment">     Func f, g;</span>
-<a name="l01084"></a>01084 <span class="comment">     Var x;</span>
-<a name="l01085"></a>01085 <span class="comment">     g(x) = ...</span>
-<a name="l01086"></a>01086 <span class="comment">     f(_) = g * 2;</span>
-<a name="l01087"></a>01087 <span class="comment">     \endcode</span>
-<a name="l01088"></a>01088 <span class="comment">    */</span>
-<a name="l01089"></a><a class="code" href="class_halide_1_1_func.html#af30b03fbc4252d7e3c4baa63feedf8bd">01089</a>     <a class="code" href="class_halide_1_1_func.html#af30b03fbc4252d7e3c4baa63feedf8bd" title="Casting a function to an expression is equivalent to calling the function with zero arguments...">operator Expr</a>()<span class="keyword"> const </span>{
-<a name="l01090"></a>01090         <span class="keywordflow">return</span> (*<span class="keyword">this</span>)(<a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>);
-<a name="l01091"></a>01091     }
-<a name="l01092"></a>01092 <span class="comment"></span>
-<a name="l01093"></a>01093 <span class="comment">    /** Use a Func as an argument to an external stage. */</span>
-<a name="l01094"></a><a class="code" href="class_halide_1_1_func.html#ab1d5c8ddfd40f829429c143ff05f9c9d">01094</a>     <a class="code" href="class_halide_1_1_func.html#ab1d5c8ddfd40f829429c143ff05f9c9d" title="Use a Func as an argument to an external stage.">operator ExternFuncArgument</a>()<span class="keyword"> const </span>{
-<a name="l01095"></a>01095         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_extern_func_argument.html" title="An argument to an extern-defined Func.">ExternFuncArgument</a>(func);
-<a name="l01096"></a>01096     }
-<a name="l01097"></a>01097 
-<a name="l01098"></a>01098 };
-<a name="l01099"></a>01099 <span class="comment"></span>
-<a name="l01100"></a>01100 <span class="comment">/** JIT-Compile and run enough code to evaluate a Halide</span>
-<a name="l01101"></a>01101 <span class="comment"> * expression. This can be thought of as a scalar version of</span>
-<a name="l01102"></a>01102 <span class="comment"> * \ref Func::realize */</span>
-<a name="l01103"></a>01103 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l01104"></a><a class="code" href="namespace_halide.html#a7542ab1823256bb847a2f18f22cf13b5">01104</a> T <a class="code" href="namespace_halide.html#a7542ab1823256bb847a2f18f22cf13b5" title="JIT-Compile and run enough code to evaluate a Halide expression.">evaluate</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e) {
-<a name="l01105"></a>01105     assert(e.<a class="code" href="struct_halide_1_1_expr.html#a095f7fe04aa7c2a2acbc2dc4597a505c" title="Get the type of this expression node.">type</a>() == type_of&lt;T&gt;());
-<a name="l01106"></a>01106     <a class="code" href="class_halide_1_1_func.html" title="A halide function.">Func</a> f;
-<a name="l01107"></a>01107     f(<a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>) = e;
-<a name="l01108"></a>01108     <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;T&gt;</a> im = f.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Generate a new uniquely-named function that returns the given buffer.">realize</a>();
-<a name="l01109"></a>01109     <span class="keywordflow">return</span> im(0);
-<a name="l01110"></a>01110 }
-<a name="l01111"></a>01111 <span class="comment"></span>
-<a name="l01112"></a>01112 <span class="comment">/** JIT-compile and run enough code to evaluate a Halide Tuple. */</span>
-<a name="l01113"></a>01113 <span class="comment">// @{</span>
-<a name="l01114"></a>01114 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> A, <span class="keyword">typename</span> B&gt;
-<a name="l01115"></a><a class="code" href="namespace_halide.html#a09eb5b4576b664ad8d3215df2c4194af">01115</a> <span class="keywordtype">void</span> <a class="code" href="namespace_halide.html#a7542ab1823256bb847a2f18f22cf13b5" title="JIT-Compile and run enough code to evaluate a Halide expression.">evaluate</a>(<a class="code" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a> t, A *a, B *b) {
-<a name="l01116"></a>01116     assert(t[0].type() == type_of&lt;A&gt;());
-<a name="l01117"></a>01117     assert(t[1].type() == type_of&lt;B&gt;());
-<a name="l01118"></a>01118     <a class="code" href="class_halide_1_1_func.html" title="A halide function.">Func</a> f;
-<a name="l01119"></a>01119     f(<a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>) = t;
-<a name="l01120"></a>01120     <a class="code" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple buffers when you realize them.">Realization</a> r = f.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Generate a new uniquely-named function that returns the given buffer.">realize</a>();
-<a name="l01121"></a>01121     *a = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;A&gt;</a>(r[0])(0);
-<a name="l01122"></a>01122     *b = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;B&gt;</a>(r[1])(0);
-<a name="l01123"></a>01123 }
-<a name="l01124"></a>01124 
-<a name="l01125"></a>01125 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> A, <span class="keyword">typename</span> B, <span class="keyword">typename</span> C&gt;
-<a name="l01126"></a><a class="code" href="namespace_halide.html#a86ad877a98b3fa7c2a87b52f9a83584c">01126</a> <span class="keywordtype">void</span> <a class="code" href="namespace_halide.html#a7542ab1823256bb847a2f18f22cf13b5" title="JIT-Compile and run enough code to evaluate a Halide expression.">evaluate</a>(<a class="code" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a> t, A *a, B *b, C *c) {
-<a name="l01127"></a>01127     assert(t[0].type() == type_of&lt;A&gt;());
-<a name="l01128"></a>01128     assert(t[1].type() == type_of&lt;B&gt;());
-<a name="l01129"></a>01129     assert(t[2].type() == type_of&lt;C&gt;());
-<a name="l01130"></a>01130     <a class="code" href="class_halide_1_1_func.html" title="A halide function.">Func</a> f;
-<a name="l01131"></a>01131     f(<a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>) = t;
-<a name="l01132"></a>01132     <a class="code" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple buffers when you realize them.">Realization</a> r = f.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Generate a new uniquely-named function that returns the given buffer.">realize</a>();
-<a name="l01133"></a>01133     *a = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;A&gt;</a>(r[0])(0);
-<a name="l01134"></a>01134     *b = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;B&gt;</a>(r[1])(0);
-<a name="l01135"></a>01135     *c = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;C&gt;</a>(r[2])(0);
-<a name="l01136"></a>01136 }
-<a name="l01137"></a>01137 
-<a name="l01138"></a>01138 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> A, <span class="keyword">typename</span> B, <span class="keyword">typename</span> C, <span class="keyword">typename</span> D&gt;
-<a name="l01139"></a><a class="code" href="namespace_halide.html#a9a2a699232b54d7bb8c478a54ffb7464">01139</a> <span class="keywordtype">void</span> <a class="code" href="namespace_halide.html#a7542ab1823256bb847a2f18f22cf13b5" title="JIT-Compile and run enough code to evaluate a Halide expression.">evaluate</a>(<a class="code" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a> t, A *a, B *b, C *c, D *d) {
-<a name="l01140"></a>01140     assert(t[0].type() == type_of&lt;A&gt;());
-<a name="l01141"></a>01141     assert(t[1].type() == type_of&lt;B&gt;());
-<a name="l01142"></a>01142     assert(t[2].type() == type_of&lt;C&gt;());
-<a name="l01143"></a>01143     assert(t[3].type() == type_of&lt;D&gt;());
-<a name="l01144"></a>01144     <a class="code" href="class_halide_1_1_func.html" title="A halide function.">Func</a> f;
-<a name="l01145"></a>01145     f(<a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>) = t;
-<a name="l01146"></a>01146     <a class="code" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple buffers when you realize them.">Realization</a> r = f.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Generate a new uniquely-named function that returns the given buffer.">realize</a>();
-<a name="l01147"></a>01147     *a = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;A&gt;</a>(r[0])(0);
-<a name="l01148"></a>01148     *b = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;B&gt;</a>(r[1])(0);
-<a name="l01149"></a>01149     *c = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;C&gt;</a>(r[2])(0);
-<a name="l01150"></a>01150     *d = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;D&gt;</a>(r[3])(0);
-<a name="l01151"></a>01151 }
-<a name="l01152"></a>01152 <span class="comment">// @}</span>
-<a name="l01153"></a>01153 
-<a name="l01154"></a>01154 }
+<a name="l01056"></a>01056 <span class="comment">     * halide_trace. */</span>
+<a name="l01057"></a>01057     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Func &amp;<a class="code" href="class_halide_1_1_func.html#aa3981c97ffef96ab12c229371d766fef" title="Trace all realizations of this Func by emitting calls to halide_trace.">trace_realizations</a>();
+<a name="l01058"></a>01058 <span class="comment"></span>
+<a name="l01059"></a>01059 <span class="comment">    /** Get a handle on the internal halide function that this Func</span>
+<a name="l01060"></a>01060 <span class="comment">     * represents. Useful if you want to do introspection on Halide</span>
+<a name="l01061"></a>01061 <span class="comment">     * functions */</span>
+<a name="l01062"></a><a class="code" href="class_halide_1_1_func.html#af53d44302c15c4335e55a2887e2f780e">01062</a>     <a class="code" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Internal::Function</a> <span class="keyword">function</span>() <span class="keyword">const</span> {
+<a name="l01063"></a>01063         <span class="keywordflow">return</span> func;
+<a name="l01064"></a>01064     }
+<a name="l01065"></a>01065 <span class="comment"></span>
+<a name="l01066"></a>01066 <span class="comment">    /** Get a handle on the output buffer for this Func. Only relevant</span>
+<a name="l01067"></a>01067 <span class="comment">     * if this is the output Func in a pipeline. Useful for making</span>
+<a name="l01068"></a>01068 <span class="comment">     * static promises about strides, mins, and extents. */</span>
+<a name="l01069"></a>01069     <span class="comment">// @{</span>
+<a name="l01070"></a>01070     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="class_halide_1_1_output_image_param.html" title="A handle on the output buffer of a pipeline.">OutputImageParam</a> <a class="code" href="class_halide_1_1_func.html#a7ed1d8e36969e549cb42e2deb062ef37" title="Get a handle on the output buffer for this Func.">output_buffer</a>() <span class="keyword">const</span>;
+<a name="l01071"></a>01071     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::vector&lt;OutputImageParam&gt; <a class="code" href="class_halide_1_1_func.html#a196fa4dd98145740fe20e0a834b7d296" title="Get a handle on the output buffer for this Func.">output_buffers</a>() <span class="keyword">const</span>;
+<a name="l01072"></a>01072     <span class="comment">// @}</span>
+<a name="l01073"></a>01073 <span class="comment"></span>
+<a name="l01074"></a>01074 <span class="comment">    /** Casting a function to an expression is equivalent to calling</span>
+<a name="l01075"></a>01075 <span class="comment">     * the function with zero arguments. Implicit variables will be</span>
+<a name="l01076"></a>01076 <span class="comment">     * injected according to the function&#39;s dimensionality</span>
+<a name="l01077"></a>01077 <span class="comment">     * (see \ref Var::implicit).</span>
+<a name="l01078"></a>01078 <span class="comment">     *</span>
+<a name="l01079"></a>01079 <span class="comment">     * This lets you write things like:</span>
+<a name="l01080"></a>01080 <span class="comment">     *</span>
+<a name="l01081"></a>01081 <span class="comment">     \code</span>
+<a name="l01082"></a>01082 <span class="comment">     Func f, g;</span>
+<a name="l01083"></a>01083 <span class="comment">     Var x;</span>
+<a name="l01084"></a>01084 <span class="comment">     g(x) = ...</span>
+<a name="l01085"></a>01085 <span class="comment">     f(_) = g * 2;</span>
+<a name="l01086"></a>01086 <span class="comment">     \endcode</span>
+<a name="l01087"></a>01087 <span class="comment">    */</span>
+<a name="l01088"></a><a class="code" href="class_halide_1_1_func.html#af30b03fbc4252d7e3c4baa63feedf8bd">01088</a>     <a class="code" href="class_halide_1_1_func.html#af30b03fbc4252d7e3c4baa63feedf8bd" title="Casting a function to an expression is equivalent to calling the function with zero arguments...">operator Expr</a>()<span class="keyword"> const </span>{
+<a name="l01089"></a>01089         <span class="keywordflow">return</span> (*<span class="keyword">this</span>)(<a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>);
+<a name="l01090"></a>01090     }
+<a name="l01091"></a>01091 <span class="comment"></span>
+<a name="l01092"></a>01092 <span class="comment">    /** Use a Func as an argument to an external stage. */</span>
+<a name="l01093"></a><a class="code" href="class_halide_1_1_func.html#ab1d5c8ddfd40f829429c143ff05f9c9d">01093</a>     <a class="code" href="class_halide_1_1_func.html#ab1d5c8ddfd40f829429c143ff05f9c9d" title="Use a Func as an argument to an external stage.">operator ExternFuncArgument</a>()<span class="keyword"> const </span>{
+<a name="l01094"></a>01094         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_extern_func_argument.html" title="An argument to an extern-defined Func.">ExternFuncArgument</a>(func);
+<a name="l01095"></a>01095     }
+<a name="l01096"></a>01096 
+<a name="l01097"></a>01097 };
+<a name="l01098"></a>01098 <span class="comment"></span>
+<a name="l01099"></a>01099 <span class="comment">/** JIT-Compile and run enough code to evaluate a Halide</span>
+<a name="l01100"></a>01100 <span class="comment"> * expression. This can be thought of as a scalar version of</span>
+<a name="l01101"></a>01101 <span class="comment"> * \ref Func::realize */</span>
+<a name="l01102"></a>01102 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l01103"></a><a class="code" href="namespace_halide.html#a7542ab1823256bb847a2f18f22cf13b5">01103</a> T <a class="code" href="namespace_halide.html#a7542ab1823256bb847a2f18f22cf13b5" title="JIT-Compile and run enough code to evaluate a Halide expression.">evaluate</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e) {
+<a name="l01104"></a>01104     assert(e.<a class="code" href="struct_halide_1_1_expr.html#a095f7fe04aa7c2a2acbc2dc4597a505c" title="Get the type of this expression node.">type</a>() == type_of&lt;T&gt;());
+<a name="l01105"></a>01105     <a class="code" href="class_halide_1_1_func.html" title="A halide function.">Func</a> f;
+<a name="l01106"></a>01106     f(<a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>) = e;
+<a name="l01107"></a>01107     <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;T&gt;</a> im = f.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>();
+<a name="l01108"></a>01108     <span class="keywordflow">return</span> im(0);
+<a name="l01109"></a>01109 }
+<a name="l01110"></a>01110 <span class="comment"></span>
+<a name="l01111"></a>01111 <span class="comment">/** JIT-compile and run enough code to evaluate a Halide Tuple. */</span>
+<a name="l01112"></a>01112 <span class="comment">// @{</span>
+<a name="l01113"></a>01113 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> A, <span class="keyword">typename</span> B&gt;
+<a name="l01114"></a><a class="code" href="namespace_halide.html#a09eb5b4576b664ad8d3215df2c4194af">01114</a> <span class="keywordtype">void</span> <a class="code" href="namespace_halide.html#a7542ab1823256bb847a2f18f22cf13b5" title="JIT-Compile and run enough code to evaluate a Halide expression.">evaluate</a>(<a class="code" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a> t, A *a, B *b) {
+<a name="l01115"></a>01115     assert(t[0].type() == type_of&lt;A&gt;());
+<a name="l01116"></a>01116     assert(t[1].type() == type_of&lt;B&gt;());
+<a name="l01117"></a>01117     <a class="code" href="class_halide_1_1_func.html" title="A halide function.">Func</a> f;
+<a name="l01118"></a>01118     f(<a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>) = t;
+<a name="l01119"></a>01119     <a class="code" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple buffers when you realize them.">Realization</a> r = f.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>();
+<a name="l01120"></a>01120     *a = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;A&gt;</a>(r[0])(0);
+<a name="l01121"></a>01121     *b = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;B&gt;</a>(r[1])(0);
+<a name="l01122"></a>01122 }
+<a name="l01123"></a>01123 
+<a name="l01124"></a>01124 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> A, <span class="keyword">typename</span> B, <span class="keyword">typename</span> C&gt;
+<a name="l01125"></a><a class="code" href="namespace_halide.html#a86ad877a98b3fa7c2a87b52f9a83584c">01125</a> <span class="keywordtype">void</span> <a class="code" href="namespace_halide.html#a7542ab1823256bb847a2f18f22cf13b5" title="JIT-Compile and run enough code to evaluate a Halide expression.">evaluate</a>(<a class="code" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a> t, A *a, B *b, C *c) {
+<a name="l01126"></a>01126     assert(t[0].type() == type_of&lt;A&gt;());
+<a name="l01127"></a>01127     assert(t[1].type() == type_of&lt;B&gt;());
+<a name="l01128"></a>01128     assert(t[2].type() == type_of&lt;C&gt;());
+<a name="l01129"></a>01129     <a class="code" href="class_halide_1_1_func.html" title="A halide function.">Func</a> f;
+<a name="l01130"></a>01130     f(<a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>) = t;
+<a name="l01131"></a>01131     <a class="code" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple buffers when you realize them.">Realization</a> r = f.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>();
+<a name="l01132"></a>01132     *a = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;A&gt;</a>(r[0])(0);
+<a name="l01133"></a>01133     *b = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;B&gt;</a>(r[1])(0);
+<a name="l01134"></a>01134     *c = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;C&gt;</a>(r[2])(0);
+<a name="l01135"></a>01135 }
+<a name="l01136"></a>01136 
+<a name="l01137"></a>01137 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> A, <span class="keyword">typename</span> B, <span class="keyword">typename</span> C, <span class="keyword">typename</span> D&gt;
+<a name="l01138"></a><a class="code" href="namespace_halide.html#a9a2a699232b54d7bb8c478a54ffb7464">01138</a> <span class="keywordtype">void</span> <a class="code" href="namespace_halide.html#a7542ab1823256bb847a2f18f22cf13b5" title="JIT-Compile and run enough code to evaluate a Halide expression.">evaluate</a>(<a class="code" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a> t, A *a, B *b, C *c, D *d) {
+<a name="l01139"></a>01139     assert(t[0].type() == type_of&lt;A&gt;());
+<a name="l01140"></a>01140     assert(t[1].type() == type_of&lt;B&gt;());
+<a name="l01141"></a>01141     assert(t[2].type() == type_of&lt;C&gt;());
+<a name="l01142"></a>01142     assert(t[3].type() == type_of&lt;D&gt;());
+<a name="l01143"></a>01143     <a class="code" href="class_halide_1_1_func.html" title="A halide function.">Func</a> f;
+<a name="l01144"></a>01144     f(<a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>) = t;
+<a name="l01145"></a>01145     <a class="code" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple buffers when you realize them.">Realization</a> r = f.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>();
+<a name="l01146"></a>01146     *a = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;A&gt;</a>(r[0])(0);
+<a name="l01147"></a>01147     *b = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;B&gt;</a>(r[1])(0);
+<a name="l01148"></a>01148     *c = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;C&gt;</a>(r[2])(0);
+<a name="l01149"></a>01149     *d = <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;D&gt;</a>(r[3])(0);
+<a name="l01150"></a>01150 }
+<a name="l01151"></a>01151 <span class="comment">// @}</span>
+<a name="l01152"></a>01152 
+<a name="l01153"></a>01153 }
+<a name="l01154"></a>01154 
 <a name="l01155"></a>01155 
-<a name="l01156"></a>01156 
-<a name="l01157"></a>01157 <span class="preprocessor">#endif</span>
+<a name="l01156"></a>01156 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -1276,7 +1275,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="_func_8h.html">Func.h</a>      </li>
 
-    <li class="footer">Generated on Mon Nov 4 2013 15:36:33 for Halide by
+    <li class="footer">Generated on Tue Nov 5 2013 08:59:09 for Halide by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

@@ -120,7 +120,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_func.html#a89aa00c3ee27c264979fd1b90f271085">Func</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Declare a new function with an automatically-generated unique name, and define it to return the given expression (which may not contain free variables).  <a href="#a89aa00c3ee27c264979fd1b90f271085"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_realization.html">Realization</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce">realize</a> (int x_size=0, int y_size=0, int z_size=0, int w_size=0)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a new uniquely-named function that returns the given buffer.  <a href="#ada38c15d53cdbab124bb602eab26b7ce"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate this function over some rectangular domain and return the resulting buffer or buffers.  <a href="#ada38c15d53cdbab124bb602eab26b7ce"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_func.html#af1766b2c9fe767ebe835b807db8b73cf">compile_to_bitcode</a> (const std::string &amp;filename, std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt;, const std::string &amp;fn_name=&quot;&quot;)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Statically compile this function to llvm bitcode, with the given filename (which should probably end in .bc), type signature, and C function name (which defaults to the same name as this halide function.  <a href="#af1766b2c9fe767ebe835b807db8b73cf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_func.html#a38ad88b379adececdd34bdfbc9c0fd2d">compile_to_object</a> (const std::string &amp;filename, std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt;, const std::string &amp;fn_name=&quot;&quot;)</td></tr>
@@ -167,7 +167,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_func.html#a7037ff7ff29c32a2918f012a3bc897d8">is_reduction</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Is this function a reduction?  <a href="#a7037ff7ff29c32a2918f012a3bc897d8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_func.html#a10ea6486f854455c7c6275c5a34400f8">is_extern</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Is this function external?  <a href="#a10ea6486f854455c7c6275c5a34400f8"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Is this function an external stage? That is, was it defined using define_extern?  <a href="#a10ea6486f854455c7c6275c5a34400f8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> const std::vector&lt; <a class="el" href="struct_halide_1_1_type.html">Type</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_func.html#a0622c8a11c948787eafbee82a0853030">output_types</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the types of the outputs of this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a>.  <a href="#a0622c8a11c948787eafbee82a0853030"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_func.html#a2ddfd0eef6173d668c0f76d6c52cefb7">outputs</a> () const </td></tr>
@@ -193,11 +193,11 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_func.html#acac11539aa8f54ae551f34b79bc68d19">update</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a handle on the update step of a reduction for the purposes of scheduling it.  <a href="#acac11539aa8f54ae551f34b79bc68d19"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_func.html">Func</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_func.html#a375c44be83cecdc181115a0018a7f31b">trace_loads</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Trace all loads from this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> by emitting calls to halide_trace_load.  <a href="#a375c44be83cecdc181115a0018a7f31b"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Trace all loads from this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> by emitting calls to halide_trace.  <a href="#a375c44be83cecdc181115a0018a7f31b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_func.html">Func</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_func.html#ad88d11ad4164bce72320f2c064fc87d2">trace_stores</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Trace all stores to the buffer backing this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> by emitting calls to halide_trace_store.  <a href="#ad88d11ad4164bce72320f2c064fc87d2"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Trace all stores to the buffer backing this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> by emitting calls to halide_trace.  <a href="#ad88d11ad4164bce72320f2c064fc87d2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_func.html">Func</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_func.html#aa3981c97ffef96ab12c229371d766fef">trace_realizations</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Trace all realizations of this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> by emitting calls to halide_trace_produce, halide_trace_update, halide_trace_consume, and halide_trace_dispose.  <a href="#aa3981c97ffef96ab12c229371d766fef"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Trace all realizations of this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> by emitting calls to halide_trace.  <a href="#aa3981c97ffef96ab12c229371d766fef"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_halide_1_1_internal_1_1_function.html">Internal::Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_func.html#af53d44302c15c4335e55a2887e2f780e">function</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a handle on the internal halide function that this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> represents.  <a href="#af53d44302c15c4335e55a2887e2f780e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_func.html#af30b03fbc4252d7e3c4baa63feedf8bd">operator Expr</a> () const </td></tr>
@@ -471,16 +471,21 @@ Static Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Generate a new uniquely-named function that returns the given buffer. </p>
-<p>Has the same dimensionality as the buffer. Useful for passing Images to c++ functions that expect Funcs Evaluate this function over some rectangular domain and return the resulting buffer or buffers. The buffer should probably be instantly wrapped in an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> class of the appropriate type. That is, do this:</p>
-<p>f(x) = sin(x); Image&lt;float&gt; im = f.realize(...);</p>
-<p>not this:</p>
-<p>f(x) = sin(x) <a class="el" href="class_halide_1_1_buffer.html" title="The internal representation of an image, or other dense array data.">Buffer</a> im = f.realize(...)</p>
-<p>If your <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> has multiple values, because you defined it using a <a class="el" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a>, then casting the result of a realize call to a buffer or image will produce a run-time errorInstead you should do the following:</p>
-<p>f(x) = <a class="el" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a>(x, sin(x)); <a class="el" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple buffers when you realize them.">Realization</a> r = f.realize(...); Image&lt;int&gt; im0 = r[0]; Image&lt;float&gt; im1 = r[1]; </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_01_8cpp-example.html#a4">tutorial/lesson_01.cpp</a>, <a class="el" href="tutorial_2lesson_03_8cpp-example.html#a3">tutorial/lesson_03.cpp</a>, and <a class="el" href="tutorial_2lesson_04_8cpp-example.html#a5">tutorial/lesson_04.cpp</a>.</dd>
+<p>Evaluate this function over some rectangular domain and return the resulting buffer or buffers. </p>
+<p>Performs compilation if the <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> has not previously been realized and jit_compile has not been called. The returned <a class="el" href="class_halide_1_1_buffer.html" title="The internal representation of an image, or other dense array data.">Buffer</a> should probably be instantly wrapped in an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> class of the appropriate type. That is, do this:</p>
+<div class="fragment"><pre class="fragment">     f(x) = <a class="code" href="namespace_halide.html#a5e1fca22f79625765096133e39caee5e" title="Return the sine of a floating-point expression.">sin</a>(x);
+     Image&lt;float&gt; im = f.realize(...);
+</pre></div><p>not this:</p>
+<div class="fragment"><pre class="fragment">     f(x) = <a class="code" href="namespace_halide.html#a5e1fca22f79625765096133e39caee5e" title="Return the sine of a floating-point expression.">sin</a>(x)
+     Buffer im = f.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(...)
+</pre></div><p>If your <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> has multiple values, because you defined it using a <a class="el" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a>, then casting the result of a realize call to a buffer or image will produce a run-time error. Instead you should do the following:</p>
+<div class="fragment"><pre class="fragment">     f(x) = Tuple(x, <a class="code" href="namespace_halide.html#a5e1fca22f79625765096133e39caee5e" title="Return the sine of a floating-point expression.">sin</a>(x));
+     Realization r = f.realize(...);
+     Image&lt;int&gt; im0 = r[0];
+     Image&lt;float&gt; im1 = r[1];
+</pre></div> <dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_01_8cpp-example.html#a4">tutorial/lesson_01.cpp</a>, <a class="el" href="tutorial_2lesson_03_8cpp-example.html#a3">tutorial/lesson_03.cpp</a>, and <a class="el" href="tutorial_2lesson_04_8cpp-example.html#a5">tutorial/lesson_04.cpp</a>.</dd>
 </dl>
-<p>Referenced by <a class="el" href="_func_8h_source.html#l01104">Halide::evaluate()</a>.</p>
+<p>Referenced by <a class="el" href="_func_8h_source.html#l01103">Halide::evaluate()</a>.</p>
 
 </div>
 </div>
@@ -673,7 +678,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Statically compile this function to an object file, with the given filename (which should probably end in .o or .obj), type signature, and C function name (which defaults to the same name as this halide function. </p>
-<p>You probably don't want to use this directly - instead call compile_to_file. </p>
+<p>You probably don't want to use this directly; call compile_to_file instead. </p>
 
 </div>
 </div>
@@ -709,10 +714,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Emit a header file with the given filename for this function. </p>
-<p>The header will define a function with the type signature given by the second argument, and a name given by the third. The name defaults to the same name as this halide function. You don't actually have to have defined this function yet to call this. You probably don't want to use this directly</p>
-<ul>
-<li>instead call compile_to_file. </li>
-</ul>
+<p>The header will define a function with the type signature given by the second argument, and a name given by the third. The name defaults to the same name as this halide function. You don't actually have to have defined this function yet to call this. You probably don't want to use this directly; call compile_to_file instead. </p>
 
 </div>
 </div>
@@ -1105,7 +1107,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Set the error handler function that be called in the case of runtime errors during halide pipelines. </p>
 <p>If you are compiling statically, you can also just define your own function with signature </p>
-<div class="fragment"><pre class="fragment">     <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <a class="code" href="_halide_runtime_8h.html#a2545608b743e7f56ba2f52b3615738d9" title="Define halide_error to catch errors messages at runtime, for example bounds checking failures...">halide_error</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *)
+<div class="fragment"><pre class="fragment">     <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a2545608b743e7f56ba2f52b3615738d9" title="Define halide_error to catch errors messages at runtime, for example bounds checking failures...">halide_error</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *);
 </pre></div><p> This will clobber <a class="el" href="namespace_halide.html">Halide</a>'s version. </p>
 
 </div>
@@ -1229,7 +1231,6 @@ Static Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>When this function is compiled, include code that dumps its values to a file after it is realized, for the purpose of debugging. </p>
-<p>The file covers the realized extent at the point in the schedule that debug_to_file appears.</p>
 <p>If filename ends in ".tif" or ".tiff" (case insensitive) the file is in TIFF format and can be read by standard tools. Oherwise, the file format is as follows:</p>
 <p>All data is in the byte-order of the target platform. First, a 20 byte-header containing four 32-bit ints, giving the extents of the first four dimensions. Dimensions beyond four are folded into the fourth. Then, a fifth 32-bit int giving the data type of the function. The typecodes are given by: float = 0, double = 1, uint8_t = 2, int8_t = 3, uint16_t = 4, int16_t = 5, uint32_t = 6, int32_t = 7, uint64_t = 8, int64_t = 9. The data follows the header, as a densely packed array of the given size and the given type. If given the extension .tmp, this file format can be natively read by the program ImageStack. </p>
 
@@ -1435,7 +1436,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Is this function external? </p>
+<p>Is this function an external stage? That is, was it defined using define_extern? </p>
 
 </div>
 </div>
@@ -1477,8 +1478,9 @@ Static Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Add an extern definition for this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a>. </p>
+<p>This lets you define a <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> that represents an external pipeline stage. You can, for example, use it to wrap a call to an extern library such as fftw. </p>
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00672">672</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00671">671</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 </div>
 </div>
@@ -1520,6 +1522,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Add an extern definition for this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a>. </p>
+<p>This lets you define a <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> that represents an external pipeline stage. You can, for example, use it to wrap a call to an extern library such as fftw. </p>
 
 </div>
 </div>
@@ -1556,6 +1559,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Get the number of outputs of this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a>. </p>
+<p>Corresponds to the size of the <a class="el" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a> this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> was defined to return. </p>
 
 </div>
 </div>
@@ -3912,7 +3916,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Trace all loads from this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> by emitting calls to halide_trace_load. </p>
+<p>Trace all loads from this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> by emitting calls to halide_trace. </p>
 <p>If the <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> is inlined, this has no effect. </p>
 
 </div>
@@ -3931,7 +3935,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Trace all stores to the buffer backing this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> by emitting calls to halide_trace_store. </p>
+<p>Trace all stores to the buffer backing this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> by emitting calls to halide_trace. </p>
 <p>If the <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> is inlined, this call has no effect. </p>
 
 </div>
@@ -3950,7 +3954,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Trace all realizations of this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> by emitting calls to halide_trace_produce, halide_trace_update, halide_trace_consume, and halide_trace_dispose. </p>
+<p>Trace all realizations of this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> by emitting calls to halide_trace. </p>
 
 </div>
 </div>
@@ -3971,7 +3975,7 @@ Static Public Member Functions</h2></td></tr>
 <p>Get a handle on the internal halide function that this <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> represents. </p>
 <p>Useful if you want to do introspection on <a class="el" href="namespace_halide.html">Halide</a> functions </p>
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l01063">1063</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l01062">1062</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 </div>
 </div>
@@ -4035,7 +4039,7 @@ Static Public Member Functions</h2></td></tr>
      g(x) = ...
      f(<a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>) = g * 2;
 </pre></div> 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l01089">1089</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l01088">1088</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02">Halide::_</a>.</p>
 
@@ -4057,7 +4061,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Use a <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> as an argument to an external stage. </p>
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l01094">1094</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l01093">1093</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 </div>
 </div>
@@ -4085,7 +4089,7 @@ Static Public Member Functions</h2></td></tr>
       <li class="navelem"><a class="el" href="namespace_halide.html">Halide</a>      </li>
       <li class="navelem"><a class="el" href="class_halide_1_1_func.html">Func</a>      </li>
 
-    <li class="footer">Generated on Mon Nov 4 2013 15:36:33 for Halide by
+    <li class="footer">Generated on Tue Nov 5 2013 08:59:10 for Halide by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>
