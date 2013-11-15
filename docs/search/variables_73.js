@@ -1,7 +1,7 @@
 var searchData=
 [
   ['saved_5fstack',['saved_stack',['../struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html#a908bcaf871e8720d3d0b4565a4b9569c',1,'Halide::Internal::CodeGen_Posix::Allocation']]],
-  ['schedule',['schedule',['../struct_halide_1_1_internal_1_1_function_contents.html#a97c217ebe37739ded07818edb12a781c',1,'Halide::Internal::FunctionContents']]],
+  ['schedule',['schedule',['../struct_halide_1_1_internal_1_1_reduction_definition.html#ab4835adfeef213357966ae0c4fb9af2f',1,'Halide::Internal::ReductionDefinition::schedule()'],['../struct_halide_1_1_internal_1_1_function_contents.html#a97c217ebe37739ded07818edb12a781c',1,'Halide::Internal::FunctionContents::schedule()']]],
   ['set_5fcustom_5fallocator',['set_custom_allocator',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a676cad5275632267e4edbc707d16d7a6',1,'Halide::Internal::JITCompiledModule']]],
   ['set_5fcustom_5fdo_5fpar_5ffor',['set_custom_do_par_for',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ac87c1e0b4b18568960ac2e0a29cb2f28',1,'Halide::Internal::JITCompiledModule']]],
   ['set_5fcustom_5fdo_5ftask',['set_custom_do_task',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#af4443bba285d091fe8d6b753fa5e8ae1',1,'Halide::Internal::JITCompiledModule']]],

@@ -82,6 +82,7 @@ var annotated =
     [ "Halide::Internal::Ramp", "struct_halide_1_1_internal_1_1_ramp.html", "struct_halide_1_1_internal_1_1_ramp" ],
     [ "Halide::Internal::Range", "struct_halide_1_1_internal_1_1_range.html", "struct_halide_1_1_internal_1_1_range" ],
     [ "Halide::Internal::Realize", "struct_halide_1_1_internal_1_1_realize.html", "struct_halide_1_1_internal_1_1_realize" ],
+    [ "Halide::Internal::ReductionDefinition", "struct_halide_1_1_internal_1_1_reduction_definition.html", "struct_halide_1_1_internal_1_1_reduction_definition" ],
     [ "Halide::Internal::ReductionDomain", "class_halide_1_1_internal_1_1_reduction_domain.html", "class_halide_1_1_internal_1_1_reduction_domain" ],
     [ "Halide::Internal::ReductionDomainContents", "struct_halide_1_1_internal_1_1_reduction_domain_contents.html", "struct_halide_1_1_internal_1_1_reduction_domain_contents" ],
     [ "Halide::Internal::ReductionVariable", "struct_halide_1_1_internal_1_1_reduction_variable.html", "struct_halide_1_1_internal_1_1_reduction_variable" ],

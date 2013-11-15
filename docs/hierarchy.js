@@ -174,6 +174,7 @@ var hierarchy =
     [ "Halide::Internal::Parameter", "class_halide_1_1_internal_1_1_parameter.html", null ],
     [ "Halide::Internal::ParameterContents", "struct_halide_1_1_internal_1_1_parameter_contents.html", null ],
     [ "Halide::Internal::Range", "struct_halide_1_1_internal_1_1_range.html", null ],
+    [ "Halide::Internal::ReductionDefinition", "struct_halide_1_1_internal_1_1_reduction_definition.html", null ],
     [ "Halide::Internal::ReductionDomain", "class_halide_1_1_internal_1_1_reduction_domain.html", null ],
     [ "Halide::Internal::ReductionDomainContents", "struct_halide_1_1_internal_1_1_reduction_domain_contents.html", null ],
     [ "Halide::Internal::ReductionVariable", "struct_halide_1_1_internal_1_1_reduction_variable.html", null ],

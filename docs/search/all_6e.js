@@ -9,5 +9,6 @@ var searchData=
   ['not',['Not',['../struct_halide_1_1_internal_1_1_not.html',1,'Halide::Internal']]],
   ['null',['NULL',['../mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4',1,'mini_stdint.h']]],
   ['num_5fmip_5flevels',['num_mip_levels',['../struct__cl__image__desc.html#a97f4cab1d305d0fbf97b1e94880b0681',1,'_cl_image_desc']]],
+  ['num_5freduction_5fdefinitions',['num_reduction_definitions',['../class_halide_1_1_func.html#a45107807c692741d300bd98e8666473f',1,'Halide::Func']]],
   ['num_5fsamples',['num_samples',['../struct__cl__image__desc.html#a6732865527d69bd112224a378a4f0297',1,'_cl_image_desc']]]
 ];

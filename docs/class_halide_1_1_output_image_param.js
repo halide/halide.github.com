@@ -2,7 +2,7 @@ var class_halide_1_1_output_image_param =
 [
     [ "OutputImageParam", "class_halide_1_1_output_image_param.html#a205baf6f32d6f856decd4fa802236abb", null ],
     [ "OutputImageParam", "class_halide_1_1_output_image_param.html#a58f1e7080b63c4572b259a2934649a71", null ],
-    [ "add_implicit_args_if_placeholder", "class_halide_1_1_output_image_param.html#af121ac426ce992d7bf0b1e59c9cf8dc9", null ],
+    [ "add_implicit_args_if_placeholder", "class_halide_1_1_output_image_param.html#adcdb9139f84833f0caed676cb04962ae", null ],
     [ "name", "class_halide_1_1_output_image_param.html#a749e6baf8ea9df5f3656346f50393e52", null ],
     [ "type", "class_halide_1_1_output_image_param.html#a602dffbdfb4ae18002bd65725aa37128", null ],
     [ "defined", "class_halide_1_1_output_image_param.html#afbd1dc9f9f47fff523cd6d49b541a6f6", null ],

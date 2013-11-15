@@ -136,6 +136,8 @@ var searchData=
   ['copy_5fto_5fhost',['copy_to_host',['../class_halide_1_1_buffer.html#ab0f3c9bd08929c18baca4ccfb19d8280',1,'Halide::Buffer::copy_to_host()'],['../class_halide_1_1_image.html#af30a48c8b29e6d7c1bddad107fafccdc',1,'Halide::Image::copy_to_host()']]],
   ['cos',['cos',['../namespace_halide.html#a7e1ef33189b99c7b8bc73b5e10121834',1,'Halide']]],
   ['cosh',['cosh',['../namespace_halide.html#a68aff5fc199ecbabe209ce32ec507292',1,'Halide']]],
+  ['count_5fleading_5fzeros',['count_leading_zeros',['../namespace_halide.html#a0e39642cc99af99045ec5f424cde8709',1,'Halide']]],
+  ['count_5ftrailing_5fzeros',['count_trailing_zeros',['../namespace_halide.html#aa0042ff9c2283a15cda1a1e72de460ad',1,'Halide']]],
   ['create_5fallocation',['create_allocation',['../class_halide_1_1_internal_1_1_code_gen___posix.html#ad8d8be73d73ec6f66de4d2defe3aca4e',1,'Halide::Internal::CodeGen_Posix']]],
   ['create_5fassertion',['create_assertion',['../class_halide_1_1_internal_1_1_code_gen.html#ab5e0d75cfd9d2718b70dcc2b3405b9a3',1,'Halide::Internal::CodeGen']]],
   ['create_5fbroadcast',['create_broadcast',['../class_halide_1_1_internal_1_1_code_gen.html#ab6f45d9675782eb0af730d632aded33e',1,'Halide::Internal::CodeGen']]],

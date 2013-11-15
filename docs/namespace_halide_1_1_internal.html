@@ -134,6 +134,7 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A code generator that emits x86 code from a given <a class="el" href="namespace_halide.html">Halide</a> stmt.  <a href="class_halide_1_1_internal_1_1_code_gen___x86.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1debug.html">debug</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_halide_1_1_internal_1_1_for.html" title="A for loop.">For</a> optional debugging during codegen, use the debug class as follows:  <a href="struct_halide_1_1_internal_1_1debug.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_reduction_definition.html">ReductionDefinition</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_function_contents.html">FunctionContents</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A reference-counted handle to <a class="el" href="namespace_halide.html">Halide</a>'s internal representation of a function.  <a href="class_halide_1_1_internal_1_1_function.html#details">More...</a><br/></td></tr>
@@ -392,6 +393,8 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a789149daec96e933f8758f71f8474dd6">modulus_remainder_test</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a50891465f948d4f9b30b9253ce1640b1">gcd</a> (int, int)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The greatest common divisor of two integers.  <a href="#a50891465f948d4f9b30b9253ce1640b1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ab56d2d1c54f988f23aa03ae70cdfd857">lcm</a> (int, int)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The least common multiple of two integers.  <a href="#ab56d2d1c54f988f23aa03ae70cdfd857"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a8adb5f4e1a135f0570023d7d086918e7">move_broadcasts_inside_casts</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Move broadcast nodes inside of cast nodes in preparation for peephole optimizations.  <a href="#a8adb5f4e1a135f0570023d7d086918e7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a36620e2156363b215b17fae00eec44ea">is_one_to_one</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> expr)</td></tr>
@@ -415,6 +418,8 @@ Functions</h2></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a0442f9a0450f45683938a69ce0273974">div_imp</a> (T a, T b)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a7feea16442755d0a73ec2de1b8889106">simplify_test</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a8489422fe4da6e486b5fd7831aab8bfb">skip_stages</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, const std::vector&lt; std::string &gt; &amp;order)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Avoid computing certain stages if we can infer a runtime condition to check that tells us they won't be used.  <a href="#a8489422fe4da6e486b5fd7831aab8bfb"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a07bde9012b280aad21a569ea008ed296">sliding_window</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, const std::map&lt; std::string, <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> &gt; &amp;env)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform sliding window optimizations on a halide statement.  <a href="#a07bde9012b280aad21a569ea008ed296"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a36bbe2f07f16d251525ee4beaa68c102">storage_flattening</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, const std::map&lt; std::string, <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> &gt; &amp;env)</td></tr>
@@ -480,10 +485,10 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a5688772a963296ea52d2bd9ac5913e79">halide_exp</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> a)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_halide.html">Halide</a>'s vectorizable transcendentals.  <a href="#a5688772a963296ea52d2bd9ac5913e79"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a3db029a2e2b7723c118049072ff56da2">simplify</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a a wide range of simplifications to expressions and statements, including constant folding, substituting in trivial values, arithmetic rearranging, etc.  <a href="#a3db029a2e2b7723c118049072ff56da2"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a2f98a29cd4c461b996e81a77307c4ec9">simplify</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a a wide range of simplifications to expressions and statements, including constant folding, substituting in trivial values, arithmetic rearranging, etc.  <a href="#a2f98a29cd4c461b996e81a77307c4ec9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ad7b681bba7782bb83ff3bfd6341fd5a9">simplify</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>, bool remove_dead_lets=true)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a a wide range of simplifications to expressions and statements, including constant folding, substituting in trivial values, arithmetic rearranging, etc.  <a href="#ad7b681bba7782bb83ff3bfd6341fd5a9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a71eca1a06e6305effb6bc10941d397f0">simplify</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a>, bool remove_dead_lets=true)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a a wide range of simplifications to expressions and statements, including constant folding, substituting in trivial values, arithmetic rearranging, etc.  <a href="#a71eca1a06e6305effb6bc10941d397f0"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ac546c55fe301504146a0ea9e19a4ac00">substitute</a> (const std::map&lt; std::string, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;replacements, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> expr)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Substitute variables with names in the map.  <a href="#ac546c55fe301504146a0ea9e19a4ac00"></a><br/></td></tr>
@@ -1518,7 +1523,7 @@ template&lt;&gt; </div>
 <p>If an expression is an <a class="el" href="struct_halide_1_1_internal_1_1_int_imm.html" title="Integer constants.">IntImm</a>, return a pointer to its value. </p>
 <p>Otherwise returns NULL. </p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00645">Halide::fast_pow()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00860">Halide::lerp()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00613">Halide::pow()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00376">Halide::select()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00642">Halide::fast_pow()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00857">Halide::lerp()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00610">Halide::pow()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00373">Halide::select()</a>.</p>
 
 </div>
 </div>
@@ -1540,7 +1545,7 @@ template&lt;&gt; </div>
 <p>If an expression is a <a class="el" href="struct_halide_1_1_internal_1_1_float_imm.html" title="Floating point constants.">FloatImm</a>, return a pointer to its value. </p>
 <p>Otherwise returns NULL. </p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00860">Halide::lerp()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00857">Halide::lerp()</a>.</p>
 
 </div>
 </div>
@@ -1892,7 +1897,7 @@ template&lt;&gt; </div>
 <p>Then, if both types are signed ints, the one with fewer bits is cast to match the one with more bits and we're done.</p>
 <p>Finally, if one type is an unsigned int and the other type is a signed int, both are cast to a signed int with the greater of the two bit-widths. <a class="el" href="struct_halide_1_1_internal_1_1_for.html" title="A for loop.">For</a> example, matching an Int(8) with a UInt(16) results in an Int(16). </p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00326">Halide::max()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00336">Halide::min()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00301">Halide::operator!=()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00245">Halide::operator%()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00209">Halide::operator*()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00165">Halide::operator+()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00182">Halide::operator-()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00226">Halide::operator/()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00264">Halide::operator&lt;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00770">Halide::operator&lt;&lt;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00273">Halide::operator&lt;=()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00292">Halide::operator==()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00255">Halide::operator&gt;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00283">Halide::operator&gt;=()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00786">Halide::operator&gt;&gt;()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00326">Halide::max()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00336">Halide::min()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00301">Halide::operator!=()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00245">Halide::operator%()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00209">Halide::operator*()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00165">Halide::operator+()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00182">Halide::operator-()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00226">Halide::operator/()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00264">Halide::operator&lt;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00767">Halide::operator&lt;&lt;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00273">Halide::operator&lt;=()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00292">Halide::operator==()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00255">Halide::operator&gt;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00283">Halide::operator&gt;=()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00783">Halide::operator&gt;&gt;()</a>.</p>
 
 </div>
 </div>
@@ -1913,7 +1918,7 @@ template&lt;&gt; </div>
 
 <p><a class="el" href="namespace_halide.html">Halide</a>'s vectorizable transcendentals. </p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00597">Halide::log()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00613">Halide::pow()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00594">Halide::log()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00610">Halide::pow()</a>.</p>
 
 </div>
 </div>
@@ -1934,7 +1939,7 @@ template&lt;&gt; </div>
 
 <p><a class="el" href="namespace_halide.html">Halide</a>'s vectorizable transcendentals. </p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00580">Halide::exp()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00613">Halide::pow()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00577">Halide::exp()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00610">Halide::pow()</a>.</p>
 
 </div>
 </div>
@@ -1965,7 +1970,7 @@ template&lt;&gt; </div>
 
 <p>Raise an expression to an integer power by repeatedly multiplying it by itself. </p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00645">Halide::fast_pow()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00613">Halide::pow()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00642">Halide::fast_pow()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00610">Halide::pow()</a>.</p>
 
 </div>
 </div>
@@ -2230,6 +2235,35 @@ template&lt;&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="ab56d2d1c54f988f23aa03ae70cdfd857"></a><!-- doxytag: member="Halide::Internal::lcm" ref="ab56d2d1c54f988f23aa03ae70cdfd857" args="(int, int)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="namespace_halide_1_1_internal.html#ab56d2d1c54f988f23aa03ae70cdfd857">Halide::Internal::lcm</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The least common multiple of two integers. </p>
+
+</div>
+</div>
 <a class="anchor" id="a8adb5f4e1a135f0570023d7d086918e7"></a><!-- doxytag: member="Halide::Internal::move_broadcasts_inside_casts" ref="a8adb5f4e1a135f0570023d7d086918e7" args="(Stmt)" -->
 <div class="memitem">
 <div class="memproto">
@@ -2388,16 +2422,26 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a3db029a2e2b7723c118049072ff56da2"></a><!-- doxytag: member="Halide::Internal::simplify" ref="a3db029a2e2b7723c118049072ff56da2" args="(Stmt)" -->
+<a class="anchor" id="ad7b681bba7782bb83ff3bfd6341fd5a9"></a><!-- doxytag: member="Halide::Internal::simplify" ref="ad7b681bba7782bb83ff3bfd6341fd5a9" args="(Stmt, bool remove_dead_lets=true)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> <a class="el" href="namespace_halide_1_1_internal.html#a3db029a2e2b7723c118049072ff56da2">Halide::Internal::simplify</a> </td>
+          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> <a class="el" href="namespace_halide_1_1_internal.html#ad7b681bba7782bb83ff3bfd6341fd5a9">Halide::Internal::simplify</a> </td>
           <td>(</td>
           <td class="paramtype">Stmt&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>remove_dead_lets</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
@@ -2407,16 +2451,26 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a2f98a29cd4c461b996e81a77307c4ec9"></a><!-- doxytag: member="Halide::Internal::simplify" ref="a2f98a29cd4c461b996e81a77307c4ec9" args="(Expr)" -->
+<a class="anchor" id="a71eca1a06e6305effb6bc10941d397f0"></a><!-- doxytag: member="Halide::Internal::simplify" ref="a71eca1a06e6305effb6bc10941d397f0" args="(Expr, bool remove_dead_lets=true)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="namespace_halide_1_1_internal.html#a3db029a2e2b7723c118049072ff56da2">Halide::Internal::simplify</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="namespace_halide_1_1_internal.html#ad7b681bba7782bb83ff3bfd6341fd5a9">Halide::Internal::simplify</a> </td>
           <td>(</td>
           <td class="paramtype">Expr&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>remove_dead_lets</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
@@ -2522,7 +2576,7 @@ template&lt;&gt; </div>
 
 <p>Definition at line <a class="el" href="_simplify_8h_source.html#l00041">41</a> of file <a class="el" href="_simplify_8h_source.html">Simplify.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00659">Halide::floor()</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00656">Halide::floor()</a>.</p>
 
 </div>
 </div>
@@ -2572,6 +2626,36 @@ template&lt;typename T &gt; </div>
       </table>
 </div>
 <div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8489422fe4da6e486b5fd7831aab8bfb"></a><!-- doxytag: member="Halide::Internal::skip_stages" ref="a8489422fe4da6e486b5fd7831aab8bfb" args="(Stmt s, const std::vector&lt; std::string &gt; &amp;order)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> <a class="el" href="namespace_halide_1_1_internal.html#a8489422fe4da6e486b5fd7831aab8bfb">Halide::Internal::skip_stages</a> </td>
+          <td>(</td>
+          <td class="paramtype">Stmt&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>order</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Avoid computing certain stages if we can infer a runtime condition to check that tells us they won't be used. </p>
+<p>Does this by aanalyzing all reads of each buffer allocated, and inferring some condition that tells us if the reads occur. If the condition is non-trivial, inject ifs that guard the production. </p>
 
 </div>
 </div>
@@ -2933,7 +3017,7 @@ template&lt;typename T &gt; </div>
 
 <p>Definition at line <a class="el" href="_util_8h_source.html#l00039">39</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00354">Halide::abs()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00433">Halide::acos()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00521">Halide::acosh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00409">Halide::asin()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00497">Halide::asinh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00457">Halide::atan()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00469">Halide::atan2()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00545">Halide::atanh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00672">Halide::ceil()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00421">Halide::cos()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00509">Halide::cosh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00580">Halide::exp()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00659">Halide::floor()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00860">Halide::lerp()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00597">Halide::log()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00709">Halide::operator&amp;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00770">Halide::operator&lt;&lt;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00786">Halide::operator&gt;&gt;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00743">Halide::operator^()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00726">Halide::operator|()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00758">Halide::operator~()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00613">Halide::pow()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00695">Halide::reinterpret()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00685">Halide::round()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00397">Halide::sin()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00485">Halide::sinh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00557">Halide::sqrt()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00445">Halide::tan()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00533">Halide::tanh()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00356">Halide::abs()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00430">Halide::acos()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00518">Halide::acosh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00406">Halide::asin()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00494">Halide::asinh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00454">Halide::atan()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00466">Halide::atan2()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00542">Halide::atanh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00669">Halide::ceil()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00418">Halide::cos()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00506">Halide::cosh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00904">Halide::count_leading_zeros()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00912">Halide::count_trailing_zeros()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00577">Halide::exp()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00656">Halide::floor()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00857">Halide::lerp()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00594">Halide::log()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00706">Halide::operator&amp;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00767">Halide::operator&lt;&lt;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00783">Halide::operator&gt;&gt;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00740">Halide::operator^()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00723">Halide::operator|()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00755">Halide::operator~()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00896">Halide::popcount()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00610">Halide::pow()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00692">Halide::reinterpret()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00682">Halide::round()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00394">Halide::sin()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00482">Halide::sinh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00554">Halide::sqrt()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00442">Halide::tan()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00530">Halide::tanh()</a>.</p>
 
 </div>
 </div>
@@ -3374,7 +3458,7 @@ template&lt;typename DstType , typename SrcType &gt; </div>
       <li class="navelem"><a class="el" href="namespace_halide.html">Halide</a>      </li>
       <li class="navelem"><a class="el" href="namespace_halide_1_1_internal.html">Internal</a>      </li>
 
-    <li class="footer">Generated on Tue Nov 5 2013 08:59:10 for Halide by
+    <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

@@ -92,6 +92,7 @@ var class_halide_1_1_internal_1_1_code_gen =
     [ "llvm_initialized", "class_halide_1_1_internal_1_1_code_gen.html#abc6b69e97d2cf0b43d361ccd75d27109", null ],
     [ "llvm_X86_enabled", "class_halide_1_1_internal_1_1_code_gen.html#ac31cdbfb92b682f99db7d4c70484930f", null ],
     [ "llvm_ARM_enabled", "class_halide_1_1_internal_1_1_code_gen.html#a34c080250775a42a48d78c5e899c74cb", null ],
+    [ "llvm_AArch64_enabled", "class_halide_1_1_internal_1_1_code_gen.html#aafd3be68334ae2994372e9415e1eb44d", null ],
     [ "llvm_NVPTX_enabled", "class_halide_1_1_internal_1_1_code_gen.html#a8fa56eb620a6f5d0147c40358143724b", null ],
     [ "module", "class_halide_1_1_internal_1_1_code_gen.html#a3d858044cd52dc3dac7ff168b038adfe", null ],
     [ "owns_module", "class_halide_1_1_internal_1_1_code_gen.html#a257f1811993a8c6d4a06a34c42233724", null ],

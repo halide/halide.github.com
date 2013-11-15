@@ -57,6 +57,7 @@ var files =
     [ "Schedule.h", "_schedule_8h.html", null ],
     [ "Scope.h", "_scope_8h.html", "_scope_8h" ],
     [ "Simplify.h", "_simplify_8h.html", "_simplify_8h" ],
+    [ "SkipStages.h", "_skip_stages_8h.html", "_skip_stages_8h" ],
     [ "SlidingWindow.h", "_sliding_window_8h.html", "_sliding_window_8h" ],
     [ "SmallArray.h", "_small_array_8h.html", null ],
     [ "StmtCompiler.h", "_stmt_compiler_8h.html", null ],

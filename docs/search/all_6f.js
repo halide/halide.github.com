@@ -40,7 +40,7 @@ var searchData=
   ['optimize_5fmodule',['optimize_module',['../class_halide_1_1_internal_1_1_code_gen.html#a753b5e10d96241a46a79b6445d7e9269',1,'Halide::Internal::CodeGen']]],
   ['or',['Or',['../struct_halide_1_1_internal_1_1_or.html',1,'Halide::Internal']]],
   ['origin',['origin',['../struct__cl__buffer__region.html#ad3b41b7ad499abfc0d0621791af8a50c',1,'_cl_buffer_region']]],
-  ['os',['OS',['../struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20',1,'Halide::Target::OS()'],['../struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec',1,'Halide::Target::os()']]],
+  ['os',['os',['../struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec',1,'Halide::Target::os()'],['../struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20',1,'Halide::Target::OS()']]],
   ['osunknown',['OSUnknown',['../struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a22c6a2fea606af61fa20b1ad6548ff29',1,'Halide::Target']]],
   ['osx',['OSX',['../struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20acef0ce22d32cc53d0f72df159f62b691',1,'Halide::Target']]],
   ['outer',['outer',['../struct_halide_1_1_internal_1_1_schedule_1_1_split.html#a36e28b0e15a6ed70cd2ec1c6aeff9026',1,'Halide::Internal::Schedule::Split']]],

@@ -80,5 +80,8 @@ var _i_r_operator_8h =
     [ "operator~", "namespace_halide.html#afc9c07e39289b14103ccd45ee31630a3", null ],
     [ "operator<<", "namespace_halide.html#a39865d2369d130f6c8e435c860cafb14", null ],
     [ "operator>>", "namespace_halide.html#a0615561baf45c3d84e7d36c77204ee3d", null ],
-    [ "lerp", "namespace_halide.html#a55158f5f229510194c425dfae256d530", null ]
+    [ "lerp", "namespace_halide.html#a55158f5f229510194c425dfae256d530", null ],
+    [ "popcount", "namespace_halide.html#a41dd5e65a4c167c112de447c628c099a", null ],
+    [ "count_leading_zeros", "namespace_halide.html#a0e39642cc99af99045ec5f424cde8709", null ],
+    [ "count_trailing_zeros", "namespace_halide.html#aa0042ff9c2283a15cda1a1e72de460ad", null ]
 ];

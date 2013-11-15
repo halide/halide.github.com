@@ -13,6 +13,8 @@ var searchData=
   ['copy_5fto_5fdev_5ffn',['copy_to_dev_fn',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a512e8b8c1d97d864b4416160a8021629',1,'Halide::Internal::CodeGen_GPU_Host']]],
   ['copy_5fto_5fhost',['copy_to_host',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4b85f2dde7de8eedd67d830bc7d1da9a',1,'Halide::Internal::JITCompiledModule']]],
   ['copy_5fto_5fhost_5ffn',['copy_to_host_fn',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a07e84e57b1751a2859fc7dec58d85d12',1,'Halide::Internal::CodeGen_GPU_Host']]],
+  ['count_5fleading_5fzeros',['count_leading_zeros',['../struct_halide_1_1_internal_1_1_call.html#a3c4d7915fde231d836bd59782b6c0fe9',1,'Halide::Internal::Call']]],
+  ['count_5ftrailing_5fzeros',['count_trailing_zeros',['../struct_halide_1_1_internal_1_1_call.html#af0c5c997cbb167c75722433a4a7ca58e',1,'Halide::Internal::Call']]],
   ['create_5fbuffer_5ft',['create_buffer_t',['../struct_halide_1_1_internal_1_1_call.html#acbaa4ff8c3c80d19a4e8e2b548da4252',1,'Halide::Internal::Call']]],
   ['cur_5fkernel_5fname',['cur_kernel_name',['../class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a75f424594f0f6eb6d19ca85e3fc7287c',1,'Halide::Internal::CodeGen_OpenCL_Dev']]]
 ];

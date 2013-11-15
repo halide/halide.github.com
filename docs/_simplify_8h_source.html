@@ -103,13 +103,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define HALIDE_SIMPLIFY_H</span>
 <a name="l00003"></a>00003 <span class="preprocessor"></span><span class="comment"></span>
 <a name="l00004"></a>00004 <span class="comment">/** \file</span>
-<a name="l00005"></a>00005 <span class="comment"> * Methods for simplifying halide statements and expressions </span>
+<a name="l00005"></a>00005 <span class="comment"> * Methods for simplifying halide statements and expressions</span>
 <a name="l00006"></a>00006 <span class="comment"> */</span>
 <a name="l00007"></a>00007 
 <a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="_i_r_8h.html" title="Halide expressions (Halide::Expr) and statements (Halide::Internal::Stmt)">IR.h</a>&quot;</span>
 <a name="l00009"></a>00009 <span class="preprocessor">#include &lt;cmath&gt;</span>
 <a name="l00010"></a>00010 
-<a name="l00011"></a>00011 <span class="keyword">namespace </span>Halide { 
+<a name="l00011"></a>00011 <span class="keyword">namespace </span>Halide {
 <a name="l00012"></a>00012 <span class="keyword">namespace </span>Internal {
 <a name="l00013"></a>00013 <span class="comment"></span>
 <a name="l00014"></a>00014 <span class="comment">/** Perform a a wide range of simplifications to expressions and</span>
@@ -117,10 +117,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00016"></a>00016 <span class="comment"> * values, arithmetic rearranging, etc.</span>
 <a name="l00017"></a>00017 <span class="comment"> */</span>
 <a name="l00018"></a>00018 <span class="comment">// @{</span>
-<a name="l00019"></a>00019 Stmt <a class="code" href="namespace_halide_1_1_internal.html#a3db029a2e2b7723c118049072ff56da2" title="Perform a a wide range of simplifications to expressions and statements, including constant folding...">simplify</a>(Stmt);
-<a name="l00020"></a>00020 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Expr <a class="code" href="namespace_halide_1_1_internal.html#a3db029a2e2b7723c118049072ff56da2" title="Perform a a wide range of simplifications to expressions and statements, including constant folding...">simplify</a>(Expr);
-<a name="l00021"></a>00021 <span class="comment">// @}     </span>
-<a name="l00022"></a>00022    <span class="comment"></span>
+<a name="l00019"></a>00019 Stmt <a class="code" href="namespace_halide_1_1_internal.html#ad7b681bba7782bb83ff3bfd6341fd5a9" title="Perform a a wide range of simplifications to expressions and statements, including constant folding...">simplify</a>(Stmt, <span class="keywordtype">bool</span> remove_dead_lets = <span class="keyword">true</span>);
+<a name="l00020"></a>00020 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Expr <a class="code" href="namespace_halide_1_1_internal.html#ad7b681bba7782bb83ff3bfd6341fd5a9" title="Perform a a wide range of simplifications to expressions and statements, including constant folding...">simplify</a>(Expr, <span class="keywordtype">bool</span> remove_dead_lets = <span class="keyword">true</span>);
+<a name="l00021"></a>00021 <span class="comment">// @}</span>
+<a name="l00022"></a>00022 <span class="comment"></span>
 <a name="l00023"></a>00023 <span class="comment">/** Implementations of division and mod that are specific to Halide.</span>
 <a name="l00024"></a>00024 <span class="comment"> * Use these implementations; do not use native C division or mod to simplify</span>
 <a name="l00025"></a>00025 <span class="comment"> * Halide expressions. */</span>
@@ -134,14 +134,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00033"></a>00033     <span class="keywordflow">return</span> rem;
 <a name="l00034"></a>00034 }
 <a name="l00035"></a>00035 <span class="comment">// Special cases for float, double.</span>
-<a name="l00036"></a><a class="code" href="namespace_halide_1_1_internal.html#adff5495089b812474881ee939c4701c4">00036</a> <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code" href="namespace_halide_1_1_internal.html#adff5495089b812474881ee939c4701c4">mod_imp&lt;float&gt;</a>(<span class="keywordtype">float</span> a, <span class="keywordtype">float</span> b) { 
+<a name="l00036"></a><a class="code" href="namespace_halide_1_1_internal.html#adff5495089b812474881ee939c4701c4">00036</a> <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code" href="namespace_halide_1_1_internal.html#adff5495089b812474881ee939c4701c4">mod_imp&lt;float&gt;</a>(<span class="keywordtype">float</span> a, <span class="keywordtype">float</span> b) {
 <a name="l00037"></a>00037     <span class="keywordtype">float</span> f = a - b * (floorf(a / b));
 <a name="l00038"></a>00038     <span class="comment">// The remainder has the same sign as b.</span>
-<a name="l00039"></a>00039     <span class="keywordflow">return</span> f; 
+<a name="l00039"></a>00039     <span class="keywordflow">return</span> f;
 <a name="l00040"></a>00040 }
 <a name="l00041"></a><a class="code" href="namespace_halide_1_1_internal.html#ac9a60708c880da445554b8eeb778c034">00041</a> <span class="keyword">template</span>&lt;&gt; <span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code" href="namespace_halide_1_1_internal.html#ac9a60708c880da445554b8eeb778c034">mod_imp&lt;double&gt;</a>(<span class="keywordtype">double</span> a, <span class="keywordtype">double</span> b) {
 <a name="l00042"></a>00042     <span class="keywordtype">double</span> f = a - b * (<a class="code" href="namespace_halide.html#aed670387016322f8db2b7abdecdc0e4c" title="Return the greatest whole number less than or equal to a floating-point expression.">std::floor</a>(a / b));
-<a name="l00043"></a>00043     <span class="keywordflow">return</span> f; 
+<a name="l00043"></a>00043     <span class="keywordflow">return</span> f;
 <a name="l00044"></a>00044 }
 <a name="l00045"></a>00045 
 <a name="l00046"></a>00046 <span class="comment">// Division that rounds the quotient down for integers.</span>
@@ -159,7 +159,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00058"></a>00058     } <span class="keywordflow">else</span> {
 <a name="l00059"></a>00059         quotient = a / b;
 <a name="l00060"></a>00060     }
-<a name="l00061"></a>00061     <span class="keywordflow">return</span> quotient; 
+<a name="l00061"></a>00061     <span class="keywordflow">return</span> quotient;
 <a name="l00062"></a>00062 }
 <a name="l00063"></a>00063 
 <a name="l00064"></a>00064 <span class="keywordtype">void</span> <a class="code" href="namespace_halide_1_1_internal.html#a7feea16442755d0a73ec2de1b8889106">simplify_test</a>();
@@ -188,7 +188,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="_simplify_8h.html">Simplify.h</a>      </li>
 
-    <li class="footer">Generated on Tue Nov 5 2013 08:59:09 for Halide by
+    <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

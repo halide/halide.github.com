@@ -148,234 +148,221 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00047"></a>00047 
 <a name="l00048"></a>00048 <span class="keyword">namespace </span>Internal {
 <a name="l00049"></a>00049 
-<a name="l00050"></a>00050 
-<a name="l00051"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html">00051</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html">FunctionContents</a> {
-<a name="l00052"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a50c20dabffd009ccb34e0eff2450c33e">00052</a>     <span class="keyword">mutable</span> <a class="code" href="class_halide_1_1_internal_1_1_ref_count.html" title="A class representing a reference count to be used with IntrusivePtr.">RefCount</a> <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a50c20dabffd009ccb34e0eff2450c33e">ref_count</a>;
-<a name="l00053"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a63f5f48b7243afca9c969d1f5de1f1c9">00053</a>     std::string <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a63f5f48b7243afca9c969d1f5de1f1c9">name</a>;
-<a name="l00054"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#af18f6e7a0bfb7a16d6645e2a5053fdb1">00054</a>     std::vector&lt;std::string&gt; <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#af18f6e7a0bfb7a16d6645e2a5053fdb1">args</a>;
-<a name="l00055"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab18b8c2572758ef64dd8d46c8253ccc0">00055</a>     std::vector&lt;Expr&gt; <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab18b8c2572758ef64dd8d46c8253ccc0">values</a>;
-<a name="l00056"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a955e37d6d6f6135bc67732cbc49ce355">00056</a>     std::vector&lt;Type&gt; <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a955e37d6d6f6135bc67732cbc49ce355">output_types</a>;
-<a name="l00057"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a97c217ebe37739ded07818edb12a781c">00057</a>     <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html" title="A schedule for a halide function, which defines where, when, and how it should be evaluated...">Schedule</a> <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a97c217ebe37739ded07818edb12a781c">schedule</a>;
-<a name="l00058"></a>00058 
-<a name="l00059"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a5ec3c8751fbf4b8801a8a1e577de04b7">00059</a>     std::vector&lt;Expr&gt; <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a5ec3c8751fbf4b8801a8a1e577de04b7">reduction_values</a>;
-<a name="l00060"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ae44894952dff358ca9e1aec64ea53e46">00060</a>     std::vector&lt;Expr&gt; <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ae44894952dff358ca9e1aec64ea53e46">reduction_args</a>;
-<a name="l00061"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a21a366e2f1ca938252707dd06ed18919">00061</a>     <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html" title="A schedule for a halide function, which defines where, when, and how it should be evaluated...">Schedule</a> <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a21a366e2f1ca938252707dd06ed18919">reduction_schedule</a>;
-<a name="l00062"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a452614534a5fc140ccb6146e2bce1fdc">00062</a>     <a class="code" href="class_halide_1_1_internal_1_1_reduction_domain.html" title="A reference-counted handle on a reduction domain, which is just a vector of ReductionVariable.">ReductionDomain</a> <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a452614534a5fc140ccb6146e2bce1fdc">reduction_domain</a>;
+<a name="l00050"></a><a class="code" href="struct_halide_1_1_internal_1_1_reduction_definition.html">00050</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_reduction_definition.html">ReductionDefinition</a> {
+<a name="l00051"></a><a class="code" href="struct_halide_1_1_internal_1_1_reduction_definition.html#a2edb24fee1d19056c12860d4b8505c67">00051</a>     std::vector&lt;Expr&gt; <a class="code" href="struct_halide_1_1_internal_1_1_reduction_definition.html#a2edb24fee1d19056c12860d4b8505c67">values</a>, <a class="code" href="struct_halide_1_1_internal_1_1_reduction_definition.html#a5364814a435c9ee86cde2c5617741226">args</a>;
+<a name="l00052"></a><a class="code" href="struct_halide_1_1_internal_1_1_reduction_definition.html#ab4835adfeef213357966ae0c4fb9af2f">00052</a>     <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html" title="A schedule for a halide function, which defines where, when, and how it should be evaluated...">Schedule</a> <a class="code" href="struct_halide_1_1_internal_1_1_reduction_definition.html#ab4835adfeef213357966ae0c4fb9af2f">schedule</a>;
+<a name="l00053"></a><a class="code" href="struct_halide_1_1_internal_1_1_reduction_definition.html#ac2e2a880b76a575dc0d77375b74f4b2d">00053</a>     <a class="code" href="class_halide_1_1_internal_1_1_reduction_domain.html" title="A reference-counted handle on a reduction domain, which is just a vector of ReductionVariable.">ReductionDomain</a> <a class="code" href="struct_halide_1_1_internal_1_1_reduction_definition.html#ac2e2a880b76a575dc0d77375b74f4b2d">domain</a>;
+<a name="l00054"></a>00054 };
+<a name="l00055"></a>00055 
+<a name="l00056"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html">00056</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html">FunctionContents</a> {
+<a name="l00057"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a50c20dabffd009ccb34e0eff2450c33e">00057</a>     <span class="keyword">mutable</span> <a class="code" href="class_halide_1_1_internal_1_1_ref_count.html" title="A class representing a reference count to be used with IntrusivePtr.">RefCount</a> <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a50c20dabffd009ccb34e0eff2450c33e">ref_count</a>;
+<a name="l00058"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a63f5f48b7243afca9c969d1f5de1f1c9">00058</a>     std::string <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a63f5f48b7243afca9c969d1f5de1f1c9">name</a>;
+<a name="l00059"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#af18f6e7a0bfb7a16d6645e2a5053fdb1">00059</a>     std::vector&lt;std::string&gt; <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#af18f6e7a0bfb7a16d6645e2a5053fdb1">args</a>;
+<a name="l00060"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab18b8c2572758ef64dd8d46c8253ccc0">00060</a>     std::vector&lt;Expr&gt; <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab18b8c2572758ef64dd8d46c8253ccc0">values</a>;
+<a name="l00061"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a955e37d6d6f6135bc67732cbc49ce355">00061</a>     std::vector&lt;Type&gt; <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a955e37d6d6f6135bc67732cbc49ce355">output_types</a>;
+<a name="l00062"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a97c217ebe37739ded07818edb12a781c">00062</a>     <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html" title="A schedule for a halide function, which defines where, when, and how it should be evaluated...">Schedule</a> <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a97c217ebe37739ded07818edb12a781c">schedule</a>;
 <a name="l00063"></a>00063 
-<a name="l00064"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab5bf1c4cdf42edae2406e2cada02ddac">00064</a>     std::string <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab5bf1c4cdf42edae2406e2cada02ddac">debug_file</a>;
+<a name="l00064"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a17ba322fac7d750493eafaaa32dad72a">00064</a>     std::vector&lt;ReductionDefinition&gt; <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a17ba322fac7d750493eafaaa32dad72a">reductions</a>;
 <a name="l00065"></a>00065 
-<a name="l00066"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a3d040593736140617feb522c7db88d00">00066</a>     std::vector&lt;Parameter&gt; <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a3d040593736140617feb522c7db88d00">output_buffers</a>;
+<a name="l00066"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab5bf1c4cdf42edae2406e2cada02ddac">00066</a>     std::string <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab5bf1c4cdf42edae2406e2cada02ddac">debug_file</a>;
 <a name="l00067"></a>00067 
-<a name="l00068"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a60300b7ea419e535f777e2fda3d8ebd6">00068</a>     std::vector&lt;ExternFuncArgument&gt; <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a60300b7ea419e535f777e2fda3d8ebd6">extern_arguments</a>;
-<a name="l00069"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a973ef22587e7308608cda008d2378468">00069</a>     std::string <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a973ef22587e7308608cda008d2378468">extern_function_name</a>;
-<a name="l00070"></a>00070 
-<a name="l00071"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a73f482717597004838907fd2c6c4979b">00071</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ad3ecdd78c0b1eaac898d3bd8281d8b9a">trace_loads</a>, <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a73f482717597004838907fd2c6c4979b">trace_stores</a>, <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a692525d7f8d5ef8d7db4f26c274bbd0f">trace_realizations</a>;
+<a name="l00068"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a3d040593736140617feb522c7db88d00">00068</a>     std::vector&lt;Parameter&gt; <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a3d040593736140617feb522c7db88d00">output_buffers</a>;
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a60300b7ea419e535f777e2fda3d8ebd6">00070</a>     std::vector&lt;ExternFuncArgument&gt; <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a60300b7ea419e535f777e2fda3d8ebd6">extern_arguments</a>;
+<a name="l00071"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a973ef22587e7308608cda008d2378468">00071</a>     std::string <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a973ef22587e7308608cda008d2378468">extern_function_name</a>;
 <a name="l00072"></a>00072 
-<a name="l00073"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a4f819cc2408b4ea6a8cc8d468343e8e0">00073</a>     <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a4f819cc2408b4ea6a8cc8d468343e8e0">FunctionContents</a>() : <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ad3ecdd78c0b1eaac898d3bd8281d8b9a">trace_loads</a>(false), <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a73f482717597004838907fd2c6c4979b">trace_stores</a>(false), <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a692525d7f8d5ef8d7db4f26c274bbd0f">trace_realizations</a>(false) {}
-<a name="l00074"></a>00074 };
-<a name="l00075"></a>00075 <span class="comment"></span>
-<a name="l00076"></a>00076 <span class="comment">/** A reference-counted handle to Halide&#39;s internal representation of</span>
-<a name="l00077"></a>00077 <span class="comment"> * a function. Similar to a front-end Func object, but with no</span>
-<a name="l00078"></a>00078 <span class="comment"> * syntactic sugar to help with definitions. */</span>
-<a name="l00079"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html">00079</a> <span class="keyword">class </span><a class="code" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> {
-<a name="l00080"></a>00080 <span class="keyword">private</span>:
-<a name="l00081"></a>00081     <a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html">IntrusivePtr&lt;FunctionContents&gt;</a> contents;
-<a name="l00082"></a>00082 <span class="keyword">public</span>:<span class="comment"></span>
-<a name="l00083"></a>00083 <span class="comment">    /** Construct a new function with no definitions and no name. This</span>
-<a name="l00084"></a>00084 <span class="comment">     * constructor only exists so that you can make vectors of</span>
-<a name="l00085"></a>00085 <span class="comment">     * functions, etc.</span>
-<a name="l00086"></a>00086 <span class="comment">     */</span>
-<a name="l00087"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#ace834f982cc07e50a7a4ad4cdd9e4625">00087</a>     <a class="code" href="class_halide_1_1_internal_1_1_function.html#ace834f982cc07e50a7a4ad4cdd9e4625" title="Construct a new function with no definitions and no name.">Function</a>() : contents(new <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html">FunctionContents</a>) {}
-<a name="l00088"></a>00088 <span class="comment"></span>
-<a name="l00089"></a>00089 <span class="comment">    /** Reconstruct a Function from a FunctionContents pointer. */</span>
-<a name="l00090"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a4ecf618c52dacb19090c17a00d3fbd3d">00090</a>     <a class="code" href="class_halide_1_1_internal_1_1_function.html#a4ecf618c52dacb19090c17a00d3fbd3d" title="Reconstruct a Function from a FunctionContents pointer.">Function</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html">IntrusivePtr&lt;FunctionContents&gt;</a> &amp;c) : contents(c) {}
-<a name="l00091"></a>00091 <span class="comment"></span>
-<a name="l00092"></a>00092 <span class="comment">    /** Add a pure definition to this function. It may not already</span>
-<a name="l00093"></a>00093 <span class="comment">     * have a definition. All the free variables in &#39;value&#39; must</span>
-<a name="l00094"></a>00094 <span class="comment">     * appear in the args list. &#39;value&#39; must not depend on any</span>
-<a name="l00095"></a>00095 <span class="comment">     * reduction domain */</span>
-<a name="l00096"></a>00096     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a03e0aade5c77940b25d883eeaab82393" title="Add a pure definition to this function.">define</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5" title="Get the pure arguments.">args</a>, std::vector&lt;Expr&gt; <a class="code" href="class_halide_1_1_internal_1_1_function.html#a1e38187e7d2c921fad94106de8d89ac4" title="Get the right-hand-side of the pure definition.">values</a>);
-<a name="l00097"></a>00097 <span class="comment"></span>
-<a name="l00098"></a>00098 <span class="comment">    /** Add a reduction definition to this function. It must already</span>
-<a name="l00099"></a>00099 <span class="comment">     * have a pure definition but not a reduction definition, and the</span>
-<a name="l00100"></a>00100 <span class="comment">     * length of args must match the length of args used in the pure</span>
-<a name="l00101"></a>00101 <span class="comment">     * definition. &#39;value&#39; must depend on some reduction domain, and</span>
-<a name="l00102"></a>00102 <span class="comment">     * may contain variables from that domain as well as pure</span>
-<a name="l00103"></a>00103 <span class="comment">     * variables. Any pure variables must also appear as Variables in</span>
-<a name="l00104"></a>00104 <span class="comment">     * the args array, and they must have the same name as the pure</span>
-<a name="l00105"></a>00105 <span class="comment">     * definition&#39;s argument in the same index. */</span>
-<a name="l00106"></a>00106     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#af7d46f006c81aed81e1226af236f6eaf" title="Add a reduction definition to this function.">define_reduction</a>(<span class="keyword">const</span> std::vector&lt;Expr&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5" title="Get the pure arguments.">args</a>, std::vector&lt;Expr&gt; <a class="code" href="class_halide_1_1_internal_1_1_function.html#a1e38187e7d2c921fad94106de8d89ac4" title="Get the right-hand-side of the pure definition.">values</a>);
-<a name="l00107"></a>00107 <span class="comment"></span>
-<a name="l00108"></a>00108 <span class="comment">    /** Construct a new function with the given name */</span>
-<a name="l00109"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a0f8109a2b3f78087f68cadb33765af88">00109</a>     <a class="code" href="class_halide_1_1_internal_1_1_function.html#a0f8109a2b3f78087f68cadb33765af88" title="Construct a new function with the given name.">Function</a>(<span class="keyword">const</span> std::string &amp;n) : contents(new <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html">FunctionContents</a>) {
-<a name="l00110"></a>00110         <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n.size(); i++) {
-<a name="l00111"></a>00111             assert(n[i] != <span class="charliteral">&#39;.&#39;</span> &amp;&amp; <span class="stringliteral">&quot;Func names may not contain the character &#39;.&#39;, as it is used internally by Halide as a separator&quot;</span>);
-<a name="l00112"></a>00112         }
-<a name="l00113"></a>00113         contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a63f5f48b7243afca9c969d1f5de1f1c9">name</a> = n;
-<a name="l00114"></a>00114     }
-<a name="l00115"></a>00115 <span class="comment"></span>
-<a name="l00116"></a>00116 <span class="comment">    /** Get the name of the function */</span>
-<a name="l00117"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a7f074d987fc1725dba927a83737533ae">00117</a>     <span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a7f074d987fc1725dba927a83737533ae" title="Get the name of the function.">name</a>()<span class="keyword"> const </span>{
-<a name="l00118"></a>00118         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a63f5f48b7243afca9c969d1f5de1f1c9">name</a>;
-<a name="l00119"></a>00119     }
-<a name="l00120"></a>00120 <span class="comment"></span>
-<a name="l00121"></a>00121 <span class="comment">    /** Get the pure arguments */</span>
-<a name="l00122"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5">00122</a>     <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5" title="Get the pure arguments.">args</a>()<span class="keyword"> const </span>{
-<a name="l00123"></a>00123         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#af18f6e7a0bfb7a16d6645e2a5053fdb1">args</a>;
-<a name="l00124"></a>00124     }
-<a name="l00125"></a>00125 <span class="comment"></span>
-<a name="l00126"></a>00126 <span class="comment">    /** Get the dimensionality */</span>
-<a name="l00127"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#accb9932cf0a9fb25fabb801dcfe61658">00127</a>     <span class="keywordtype">int</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#accb9932cf0a9fb25fabb801dcfe61658" title="Get the dimensionality.">dimensions</a>()<span class="keyword"> const </span>{
-<a name="l00128"></a>00128         <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)<a class="code" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5" title="Get the pure arguments.">args</a>().size();
-<a name="l00129"></a>00129     }
-<a name="l00130"></a>00130 <span class="comment"></span>
-<a name="l00131"></a>00131 <span class="comment">    /** Get the number of outputs */</span>
-<a name="l00132"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#ae71042dbf6f93970971ed5c8d187dc93">00132</a>     <span class="keywordtype">int</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#ae71042dbf6f93970971ed5c8d187dc93" title="Get the number of outputs.">outputs</a>()<span class="keyword"> const </span>{
-<a name="l00133"></a>00133         <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)<a class="code" href="class_halide_1_1_internal_1_1_function.html#a880c4f4377560a0ae168e48b16aafe28" title="Get the types of the outputs.">output_types</a>().size();
-<a name="l00134"></a>00134     }
-<a name="l00135"></a>00135 <span class="comment"></span>
-<a name="l00136"></a>00136 <span class="comment">    /** Get the types of the outputs */</span>
-<a name="l00137"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a880c4f4377560a0ae168e48b16aafe28">00137</a>     <span class="keyword">const</span> std::vector&lt;Type&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a880c4f4377560a0ae168e48b16aafe28" title="Get the types of the outputs.">output_types</a>()<span class="keyword"> const </span>{
-<a name="l00138"></a>00138         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a955e37d6d6f6135bc67732cbc49ce355">output_types</a>;
-<a name="l00139"></a>00139     }
-<a name="l00140"></a>00140 <span class="comment"></span>
-<a name="l00141"></a>00141 <span class="comment">    /** Get the right-hand-side of the pure definition */</span>
-<a name="l00142"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a1e38187e7d2c921fad94106de8d89ac4">00142</a>     <span class="keyword">const</span> std::vector&lt;Expr&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a1e38187e7d2c921fad94106de8d89ac4" title="Get the right-hand-side of the pure definition.">values</a>()<span class="keyword"> const </span>{
-<a name="l00143"></a>00143         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab18b8c2572758ef64dd8d46c8253ccc0">values</a>;
-<a name="l00144"></a>00144     }
-<a name="l00145"></a>00145 <span class="comment"></span>
-<a name="l00146"></a>00146 <span class="comment">    /** Does this function have a pure definition */</span>
-<a name="l00147"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#ac69dbfa133f30c0c2946fa3a06f4e57b">00147</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#ac69dbfa133f30c0c2946fa3a06f4e57b" title="Does this function have a pure definition.">has_pure_definition</a>()<span class="keyword"> const </span>{
-<a name="l00148"></a>00148         <span class="keywordflow">return</span> !contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab18b8c2572758ef64dd8d46c8253ccc0">values</a>.empty();
-<a name="l00149"></a>00149     }
-<a name="l00150"></a>00150 <span class="comment"></span>
-<a name="l00151"></a>00151 <span class="comment">    /** Get a handle to the schedule for the purpose of modifying</span>
-<a name="l00152"></a>00152 <span class="comment">     * it */</span>
-<a name="l00153"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#acdf493c9146996a400940f5923a5f353">00153</a>     <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html" title="A schedule for a halide function, which defines where, when, and how it should be evaluated...">Schedule</a> &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#acdf493c9146996a400940f5923a5f353" title="Get a handle to the schedule for the purpose of modifying it.">schedule</a>() {
-<a name="l00154"></a>00154         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a97c217ebe37739ded07818edb12a781c">schedule</a>;
-<a name="l00155"></a>00155     }
-<a name="l00156"></a>00156 <span class="comment"></span>
-<a name="l00157"></a>00157 <span class="comment">    /** Get a const handle to the schedule for inspecting it */</span>
-<a name="l00158"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a6602af36e6815fda0e64e7728b3dd11f">00158</a>     <span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html" title="A schedule for a halide function, which defines where, when, and how it should be evaluated...">Schedule</a> &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a6602af36e6815fda0e64e7728b3dd11f" title="Get a const handle to the schedule for inspecting it.">schedule</a>()<span class="keyword"> const </span>{
-<a name="l00159"></a>00159         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a97c217ebe37739ded07818edb12a781c">schedule</a>;
-<a name="l00160"></a>00160     }
-<a name="l00161"></a>00161 <span class="comment"></span>
-<a name="l00162"></a>00162 <span class="comment">    /** Get a handle on the output buffer used for setting constraints</span>
-<a name="l00163"></a>00163 <span class="comment">     * on it. */</span>
-<a name="l00164"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a5a87530e6b06d391ff83a108ac4394bc">00164</a>     <span class="keyword">const</span> std::vector&lt;Parameter&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a5a87530e6b06d391ff83a108ac4394bc" title="Get a handle on the output buffer used for setting constraints on it.">output_buffers</a>()<span class="keyword"> const </span>{
-<a name="l00165"></a>00165         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a3d040593736140617feb522c7db88d00">output_buffers</a>;
-<a name="l00166"></a>00166     }
-<a name="l00167"></a>00167 <span class="comment"></span>
-<a name="l00168"></a>00168 <span class="comment">    /** Get a mutable handle to the schedule for the reduction</span>
-<a name="l00169"></a>00169 <span class="comment">     * stage */</span>
-<a name="l00170"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#ae83fb60e091beaf9645c30227e855146">00170</a>     <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html" title="A schedule for a halide function, which defines where, when, and how it should be evaluated...">Schedule</a> &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#ae83fb60e091beaf9645c30227e855146" title="Get a mutable handle to the schedule for the reduction stage.">reduction_schedule</a>() {
-<a name="l00171"></a>00171         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a21a366e2f1ca938252707dd06ed18919">reduction_schedule</a>;
-<a name="l00172"></a>00172     }
-<a name="l00173"></a>00173 <span class="comment"></span>
-<a name="l00174"></a>00174 <span class="comment">    /** Get a const handle to the schedule for the reduction stage */</span>
-<a name="l00175"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a957b100f2e8919b609b5dbd10b6da10e">00175</a>     <span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html" title="A schedule for a halide function, which defines where, when, and how it should be evaluated...">Schedule</a> &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a957b100f2e8919b609b5dbd10b6da10e" title="Get a const handle to the schedule for the reduction stage.">reduction_schedule</a>()<span class="keyword"> const </span>{
-<a name="l00176"></a>00176         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a21a366e2f1ca938252707dd06ed18919">reduction_schedule</a>;
-<a name="l00177"></a>00177     }
-<a name="l00178"></a>00178 <span class="comment"></span>
-<a name="l00179"></a>00179 <span class="comment">    /** Get the right-hand-side of the reduction definition */</span>
-<a name="l00180"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#af80993c446404b9eed843d36903c754a">00180</a>     <span class="keyword">const</span> std::vector&lt;Expr&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#af80993c446404b9eed843d36903c754a" title="Get the right-hand-side of the reduction definition.">reduction_values</a>()<span class="keyword"> const </span>{
-<a name="l00181"></a>00181         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a5ec3c8751fbf4b8801a8a1e577de04b7">reduction_values</a>;
-<a name="l00182"></a>00182     }
-<a name="l00183"></a>00183 <span class="comment"></span>
-<a name="l00184"></a>00184 <span class="comment">    /** Does this function have a reduction definition */</span>
-<a name="l00185"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a4663c14a0c52f194865431cf14f1453f">00185</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a4663c14a0c52f194865431cf14f1453f" title="Does this function have a reduction definition.">has_reduction_definition</a>()<span class="keyword"> const </span>{
-<a name="l00186"></a>00186         <span class="keywordflow">return</span> !contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a5ec3c8751fbf4b8801a8a1e577de04b7">reduction_values</a>.empty();
-<a name="l00187"></a>00187     }
-<a name="l00188"></a>00188 <span class="comment"></span>
-<a name="l00189"></a>00189 <span class="comment">    /** Get the left-hand-side of the reduction definition */</span>
-<a name="l00190"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a00570a99ce3e816294eeaa1b182ab72f">00190</a>     <span class="keyword">const</span> std::vector&lt;Expr&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a00570a99ce3e816294eeaa1b182ab72f" title="Get the left-hand-side of the reduction definition.">reduction_args</a>()<span class="keyword"> const </span>{
-<a name="l00191"></a>00191         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ae44894952dff358ca9e1aec64ea53e46">reduction_args</a>;
-<a name="l00192"></a>00192     }
-<a name="l00193"></a>00193 <span class="comment"></span>
-<a name="l00194"></a>00194 <span class="comment">    /** Get the reduction domain for the reduction definition */</span>
-<a name="l00195"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a4c8e74b8e0ff0f411d9c2a26322a6576">00195</a>     <a class="code" href="class_halide_1_1_internal_1_1_reduction_domain.html" title="A reference-counted handle on a reduction domain, which is just a vector of ReductionVariable.">ReductionDomain</a> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a4c8e74b8e0ff0f411d9c2a26322a6576" title="Get the reduction domain for the reduction definition.">reduction_domain</a>()<span class="keyword"> const </span>{
-<a name="l00196"></a>00196         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a452614534a5fc140ccb6146e2bce1fdc">reduction_domain</a>;
-<a name="l00197"></a>00197     }
-<a name="l00198"></a>00198 <span class="comment"></span>
-<a name="l00199"></a>00199 <span class="comment">    /** Check if the function has an extern definition */</span>
-<a name="l00200"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a4edc7b2c7a455026d6d33495e74f97c4">00200</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a4edc7b2c7a455026d6d33495e74f97c4" title="Check if the function has an extern definition.">has_extern_definition</a>()<span class="keyword"> const </span>{
-<a name="l00201"></a>00201         <span class="keywordflow">return</span> !contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a973ef22587e7308608cda008d2378468">extern_function_name</a>.empty();
-<a name="l00202"></a>00202     }
-<a name="l00203"></a>00203 <span class="comment"></span>
-<a name="l00204"></a>00204 <span class="comment">    /** Add an external definition of this Func */</span>
-<a name="l00205"></a>00205     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a55c1751727d589ac83c735c6c961ca8a" title="Add an external definition of this Func.">define_extern</a>(<span class="keyword">const</span> std::string &amp;function_name,
-<a name="l00206"></a>00206                        <span class="keyword">const</span> std::vector&lt;ExternFuncArgument&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5" title="Get the pure arguments.">args</a>,
-<a name="l00207"></a>00207                        <span class="keyword">const</span> std::vector&lt;Type&gt; &amp;types,
-<a name="l00208"></a>00208                        <span class="keywordtype">int</span> dimensionality);
-<a name="l00209"></a>00209 <span class="comment"></span>
-<a name="l00210"></a>00210 <span class="comment">    /** Retrive the arguments of the extern definition */</span>
-<a name="l00211"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#afc724f111b500d359138688e02804924">00211</a>     <span class="keyword">const</span> std::vector&lt;ExternFuncArgument&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#afc724f111b500d359138688e02804924" title="Retrive the arguments of the extern definition.">extern_arguments</a>()<span class="keyword"> const </span>{
-<a name="l00212"></a>00212         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a60300b7ea419e535f777e2fda3d8ebd6">extern_arguments</a>;
-<a name="l00213"></a>00213     }
-<a name="l00214"></a>00214 <span class="comment"></span>
-<a name="l00215"></a>00215 <span class="comment">    /** Get the name of the extern function called for an extern</span>
-<a name="l00216"></a>00216 <span class="comment">     * definition. */</span>
-<a name="l00217"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a9b6486e9d858980139dd55f351c69d94">00217</a>     <span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a9b6486e9d858980139dd55f351c69d94" title="Get the name of the extern function called for an extern definition.">extern_function_name</a>()<span class="keyword"> const </span>{
-<a name="l00218"></a>00218         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a973ef22587e7308608cda008d2378468">extern_function_name</a>;
-<a name="l00219"></a>00219     }
-<a name="l00220"></a>00220 <span class="comment"></span>
-<a name="l00221"></a>00221 <span class="comment">    /** Equality of identity */</span>
-<a name="l00222"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#acae930bd24f9bd8db57b2a0cbfcafe68">00222</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#acae930bd24f9bd8db57b2a0cbfcafe68" title="Equality of identity.">same_as</a>(<span class="keyword">const</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> &amp;other)<span class="keyword"> const </span>{
-<a name="l00223"></a>00223         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a28f359d50f802aea35c2cc7075219ecd">same_as</a>(other.contents);
-<a name="l00224"></a>00224     }
-<a name="l00225"></a>00225 <span class="comment"></span>
-<a name="l00226"></a>00226 <span class="comment">    /** Get a const handle to the debug filename */</span>
-<a name="l00227"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a08a7691866274f90d948745c5cb7197d">00227</a>     <span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a08a7691866274f90d948745c5cb7197d" title="Get a const handle to the debug filename.">debug_file</a>()<span class="keyword"> const </span>{
-<a name="l00228"></a>00228         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab5bf1c4cdf42edae2406e2cada02ddac">debug_file</a>;
-<a name="l00229"></a>00229     }
-<a name="l00230"></a>00230 <span class="comment"></span>
-<a name="l00231"></a>00231 <span class="comment">    /** Get a handle to the debug filename */</span>
-<a name="l00232"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a02e0cb554763f1ca866e320c8d66c185">00232</a>     std::string &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a02e0cb554763f1ca866e320c8d66c185" title="Get a handle to the debug filename.">debug_file</a>() {
-<a name="l00233"></a>00233         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab5bf1c4cdf42edae2406e2cada02ddac">debug_file</a>;
-<a name="l00234"></a>00234     }
-<a name="l00235"></a>00235 <span class="comment"></span>
-<a name="l00236"></a>00236 <span class="comment">    /** Use an an extern argument to another function. */</span>
-<a name="l00237"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#adac833825126c30c18772658684c3f3d">00237</a>     <a class="code" href="class_halide_1_1_internal_1_1_function.html#adac833825126c30c18772658684c3f3d" title="Use an an extern argument to another function.">operator ExternFuncArgument</a>()<span class="keyword"> const </span>{
-<a name="l00238"></a>00238         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_extern_func_argument.html" title="An argument to an extern-defined Func.">ExternFuncArgument</a>(contents);
+<a name="l00073"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a73f482717597004838907fd2c6c4979b">00073</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ad3ecdd78c0b1eaac898d3bd8281d8b9a">trace_loads</a>, <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a73f482717597004838907fd2c6c4979b">trace_stores</a>, <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a692525d7f8d5ef8d7db4f26c274bbd0f">trace_realizations</a>;
+<a name="l00074"></a>00074 
+<a name="l00075"></a><a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a4f819cc2408b4ea6a8cc8d468343e8e0">00075</a>     <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a4f819cc2408b4ea6a8cc8d468343e8e0">FunctionContents</a>() : <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ad3ecdd78c0b1eaac898d3bd8281d8b9a">trace_loads</a>(false), <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a73f482717597004838907fd2c6c4979b">trace_stores</a>(false), <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a692525d7f8d5ef8d7db4f26c274bbd0f">trace_realizations</a>(false) {}
+<a name="l00076"></a>00076 };
+<a name="l00077"></a>00077 <span class="comment"></span>
+<a name="l00078"></a>00078 <span class="comment">/** A reference-counted handle to Halide&#39;s internal representation of</span>
+<a name="l00079"></a>00079 <span class="comment"> * a function. Similar to a front-end Func object, but with no</span>
+<a name="l00080"></a>00080 <span class="comment"> * syntactic sugar to help with definitions. */</span>
+<a name="l00081"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html">00081</a> <span class="keyword">class </span><a class="code" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> {
+<a name="l00082"></a>00082 <span class="keyword">private</span>:
+<a name="l00083"></a>00083     <a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html">IntrusivePtr&lt;FunctionContents&gt;</a> contents;
+<a name="l00084"></a>00084 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00085"></a>00085 <span class="comment">    /** Construct a new function with no definitions and no name. This</span>
+<a name="l00086"></a>00086 <span class="comment">     * constructor only exists so that you can make vectors of</span>
+<a name="l00087"></a>00087 <span class="comment">     * functions, etc.</span>
+<a name="l00088"></a>00088 <span class="comment">     */</span>
+<a name="l00089"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#ace834f982cc07e50a7a4ad4cdd9e4625">00089</a>     <a class="code" href="class_halide_1_1_internal_1_1_function.html#ace834f982cc07e50a7a4ad4cdd9e4625" title="Construct a new function with no definitions and no name.">Function</a>() : contents(new <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html">FunctionContents</a>) {}
+<a name="l00090"></a>00090 <span class="comment"></span>
+<a name="l00091"></a>00091 <span class="comment">    /** Reconstruct a Function from a FunctionContents pointer. */</span>
+<a name="l00092"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a4ecf618c52dacb19090c17a00d3fbd3d">00092</a>     <a class="code" href="class_halide_1_1_internal_1_1_function.html#a4ecf618c52dacb19090c17a00d3fbd3d" title="Reconstruct a Function from a FunctionContents pointer.">Function</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html">IntrusivePtr&lt;FunctionContents&gt;</a> &amp;c) : contents(c) {}
+<a name="l00093"></a>00093 <span class="comment"></span>
+<a name="l00094"></a>00094 <span class="comment">    /** Add a pure definition to this function. It may not already</span>
+<a name="l00095"></a>00095 <span class="comment">     * have a definition. All the free variables in &#39;value&#39; must</span>
+<a name="l00096"></a>00096 <span class="comment">     * appear in the args list. &#39;value&#39; must not depend on any</span>
+<a name="l00097"></a>00097 <span class="comment">     * reduction domain */</span>
+<a name="l00098"></a>00098     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a03e0aade5c77940b25d883eeaab82393" title="Add a pure definition to this function.">define</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5" title="Get the pure arguments.">args</a>, std::vector&lt;Expr&gt; <a class="code" href="class_halide_1_1_internal_1_1_function.html#a1e38187e7d2c921fad94106de8d89ac4" title="Get the right-hand-side of the pure definition.">values</a>);
+<a name="l00099"></a>00099 <span class="comment"></span>
+<a name="l00100"></a>00100 <span class="comment">    /** Add a reduction definition to this function. It must already</span>
+<a name="l00101"></a>00101 <span class="comment">     * have a pure definition but not a reduction definition, and the</span>
+<a name="l00102"></a>00102 <span class="comment">     * length of args must match the length of args used in the pure</span>
+<a name="l00103"></a>00103 <span class="comment">     * definition. &#39;value&#39; must depend on some reduction domain, and</span>
+<a name="l00104"></a>00104 <span class="comment">     * may contain variables from that domain as well as pure</span>
+<a name="l00105"></a>00105 <span class="comment">     * variables. Any pure variables must also appear as Variables in</span>
+<a name="l00106"></a>00106 <span class="comment">     * the args array, and they must have the same name as the pure</span>
+<a name="l00107"></a>00107 <span class="comment">     * definition&#39;s argument in the same index. */</span>
+<a name="l00108"></a>00108     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#af7d46f006c81aed81e1226af236f6eaf" title="Add a reduction definition to this function.">define_reduction</a>(<span class="keyword">const</span> std::vector&lt;Expr&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5" title="Get the pure arguments.">args</a>, std::vector&lt;Expr&gt; <a class="code" href="class_halide_1_1_internal_1_1_function.html#a1e38187e7d2c921fad94106de8d89ac4" title="Get the right-hand-side of the pure definition.">values</a>);
+<a name="l00109"></a>00109 <span class="comment"></span>
+<a name="l00110"></a>00110 <span class="comment">    /** Construct a new function with the given name */</span>
+<a name="l00111"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a0f8109a2b3f78087f68cadb33765af88">00111</a>     <a class="code" href="class_halide_1_1_internal_1_1_function.html#a0f8109a2b3f78087f68cadb33765af88" title="Construct a new function with the given name.">Function</a>(<span class="keyword">const</span> std::string &amp;n) : contents(new <a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html">FunctionContents</a>) {
+<a name="l00112"></a>00112         <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n.size(); i++) {
+<a name="l00113"></a>00113             assert(n[i] != <span class="charliteral">&#39;.&#39;</span> &amp;&amp; <span class="stringliteral">&quot;Func names may not contain the character &#39;.&#39;, as it is used internally by Halide as a separator&quot;</span>);
+<a name="l00114"></a>00114         }
+<a name="l00115"></a>00115         contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a63f5f48b7243afca9c969d1f5de1f1c9">name</a> = n;
+<a name="l00116"></a>00116     }
+<a name="l00117"></a>00117 <span class="comment"></span>
+<a name="l00118"></a>00118 <span class="comment">    /** Get the name of the function */</span>
+<a name="l00119"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a7f074d987fc1725dba927a83737533ae">00119</a>     <span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a7f074d987fc1725dba927a83737533ae" title="Get the name of the function.">name</a>()<span class="keyword"> const </span>{
+<a name="l00120"></a>00120         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a63f5f48b7243afca9c969d1f5de1f1c9">name</a>;
+<a name="l00121"></a>00121     }
+<a name="l00122"></a>00122 <span class="comment"></span>
+<a name="l00123"></a>00123 <span class="comment">    /** Get the pure arguments */</span>
+<a name="l00124"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5">00124</a>     <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5" title="Get the pure arguments.">args</a>()<span class="keyword"> const </span>{
+<a name="l00125"></a>00125         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#af18f6e7a0bfb7a16d6645e2a5053fdb1">args</a>;
+<a name="l00126"></a>00126     }
+<a name="l00127"></a>00127 <span class="comment"></span>
+<a name="l00128"></a>00128 <span class="comment">    /** Get the dimensionality */</span>
+<a name="l00129"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#accb9932cf0a9fb25fabb801dcfe61658">00129</a>     <span class="keywordtype">int</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#accb9932cf0a9fb25fabb801dcfe61658" title="Get the dimensionality.">dimensions</a>()<span class="keyword"> const </span>{
+<a name="l00130"></a>00130         <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)<a class="code" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5" title="Get the pure arguments.">args</a>().size();
+<a name="l00131"></a>00131     }
+<a name="l00132"></a>00132 <span class="comment"></span>
+<a name="l00133"></a>00133 <span class="comment">    /** Get the number of outputs */</span>
+<a name="l00134"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#ae71042dbf6f93970971ed5c8d187dc93">00134</a>     <span class="keywordtype">int</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#ae71042dbf6f93970971ed5c8d187dc93" title="Get the number of outputs.">outputs</a>()<span class="keyword"> const </span>{
+<a name="l00135"></a>00135         <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)<a class="code" href="class_halide_1_1_internal_1_1_function.html#a880c4f4377560a0ae168e48b16aafe28" title="Get the types of the outputs.">output_types</a>().size();
+<a name="l00136"></a>00136     }
+<a name="l00137"></a>00137 <span class="comment"></span>
+<a name="l00138"></a>00138 <span class="comment">    /** Get the types of the outputs */</span>
+<a name="l00139"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a880c4f4377560a0ae168e48b16aafe28">00139</a>     <span class="keyword">const</span> std::vector&lt;Type&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a880c4f4377560a0ae168e48b16aafe28" title="Get the types of the outputs.">output_types</a>()<span class="keyword"> const </span>{
+<a name="l00140"></a>00140         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a955e37d6d6f6135bc67732cbc49ce355">output_types</a>;
+<a name="l00141"></a>00141     }
+<a name="l00142"></a>00142 <span class="comment"></span>
+<a name="l00143"></a>00143 <span class="comment">    /** Get the right-hand-side of the pure definition */</span>
+<a name="l00144"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a1e38187e7d2c921fad94106de8d89ac4">00144</a>     <span class="keyword">const</span> std::vector&lt;Expr&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a1e38187e7d2c921fad94106de8d89ac4" title="Get the right-hand-side of the pure definition.">values</a>()<span class="keyword"> const </span>{
+<a name="l00145"></a>00145         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab18b8c2572758ef64dd8d46c8253ccc0">values</a>;
+<a name="l00146"></a>00146     }
+<a name="l00147"></a>00147 <span class="comment"></span>
+<a name="l00148"></a>00148 <span class="comment">    /** Does this function have a pure definition */</span>
+<a name="l00149"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#ac69dbfa133f30c0c2946fa3a06f4e57b">00149</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#ac69dbfa133f30c0c2946fa3a06f4e57b" title="Does this function have a pure definition.">has_pure_definition</a>()<span class="keyword"> const </span>{
+<a name="l00150"></a>00150         <span class="keywordflow">return</span> !contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab18b8c2572758ef64dd8d46c8253ccc0">values</a>.empty();
+<a name="l00151"></a>00151     }
+<a name="l00152"></a>00152 <span class="comment"></span>
+<a name="l00153"></a>00153 <span class="comment">    /** Get a handle to the schedule for the purpose of modifying</span>
+<a name="l00154"></a>00154 <span class="comment">     * it */</span>
+<a name="l00155"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#acdf493c9146996a400940f5923a5f353">00155</a>     <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html" title="A schedule for a halide function, which defines where, when, and how it should be evaluated...">Schedule</a> &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#acdf493c9146996a400940f5923a5f353" title="Get a handle to the schedule for the purpose of modifying it.">schedule</a>() {
+<a name="l00156"></a>00156         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a97c217ebe37739ded07818edb12a781c">schedule</a>;
+<a name="l00157"></a>00157     }
+<a name="l00158"></a>00158 <span class="comment"></span>
+<a name="l00159"></a>00159 <span class="comment">    /** Get a const handle to the schedule for inspecting it */</span>
+<a name="l00160"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a6602af36e6815fda0e64e7728b3dd11f">00160</a>     <span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html" title="A schedule for a halide function, which defines where, when, and how it should be evaluated...">Schedule</a> &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a6602af36e6815fda0e64e7728b3dd11f" title="Get a const handle to the schedule for inspecting it.">schedule</a>()<span class="keyword"> const </span>{
+<a name="l00161"></a>00161         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a97c217ebe37739ded07818edb12a781c">schedule</a>;
+<a name="l00162"></a>00162     }
+<a name="l00163"></a>00163 <span class="comment"></span>
+<a name="l00164"></a>00164 <span class="comment">    /** Get a handle on the output buffer used for setting constraints</span>
+<a name="l00165"></a>00165 <span class="comment">     * on it. */</span>
+<a name="l00166"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a5a87530e6b06d391ff83a108ac4394bc">00166</a>     <span class="keyword">const</span> std::vector&lt;Parameter&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a5a87530e6b06d391ff83a108ac4394bc" title="Get a handle on the output buffer used for setting constraints on it.">output_buffers</a>()<span class="keyword"> const </span>{
+<a name="l00167"></a>00167         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a3d040593736140617feb522c7db88d00">output_buffers</a>;
+<a name="l00168"></a>00168     }
+<a name="l00169"></a>00169 <span class="comment"></span>
+<a name="l00170"></a>00170 <span class="comment">    /** Get a mutable handle to the schedule for the reduction</span>
+<a name="l00171"></a>00171 <span class="comment">     * stage */</span>
+<a name="l00172"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a3880694ee72f1e8376d76f67c7078e0a">00172</a>     <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html" title="A schedule for a halide function, which defines where, when, and how it should be evaluated...">Schedule</a> &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a3880694ee72f1e8376d76f67c7078e0a" title="Get a mutable handle to the schedule for the reduction stage.">reduction_schedule</a>(<span class="keywordtype">int</span> idx = 0) {
+<a name="l00173"></a>00173         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a17ba322fac7d750493eafaaa32dad72a">reductions</a>[idx].schedule;
+<a name="l00174"></a>00174     }
+<a name="l00175"></a>00175 <span class="comment"></span>
+<a name="l00176"></a>00176 <span class="comment">    /** Get a const reference to this function&#39;s reduction definitions. */</span>
+<a name="l00177"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a2b14b13dbaa1c6196412e09d9648f15d">00177</a>     <span class="keyword">const</span> std::vector&lt;ReductionDefinition&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a2b14b13dbaa1c6196412e09d9648f15d" title="Get a const reference to this function&#39;s reduction definitions.">reductions</a>()<span class="keyword"> const </span>{
+<a name="l00178"></a>00178         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a17ba322fac7d750493eafaaa32dad72a">reductions</a>;
+<a name="l00179"></a>00179     }
+<a name="l00180"></a>00180 <span class="comment"></span>
+<a name="l00181"></a>00181 <span class="comment">    /** Does this function have a reduction definition */</span>
+<a name="l00182"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a4663c14a0c52f194865431cf14f1453f">00182</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a4663c14a0c52f194865431cf14f1453f" title="Does this function have a reduction definition.">has_reduction_definition</a>()<span class="keyword"> const </span>{
+<a name="l00183"></a>00183         <span class="keywordflow">return</span> !contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a17ba322fac7d750493eafaaa32dad72a">reductions</a>.empty();
+<a name="l00184"></a>00184     }
+<a name="l00185"></a>00185 <span class="comment"></span>
+<a name="l00186"></a>00186 <span class="comment">    /** Check if the function has an extern definition */</span>
+<a name="l00187"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a4edc7b2c7a455026d6d33495e74f97c4">00187</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a4edc7b2c7a455026d6d33495e74f97c4" title="Check if the function has an extern definition.">has_extern_definition</a>()<span class="keyword"> const </span>{
+<a name="l00188"></a>00188         <span class="keywordflow">return</span> !contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a973ef22587e7308608cda008d2378468">extern_function_name</a>.empty();
+<a name="l00189"></a>00189     }
+<a name="l00190"></a>00190 <span class="comment"></span>
+<a name="l00191"></a>00191 <span class="comment">    /** Add an external definition of this Func */</span>
+<a name="l00192"></a>00192     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a55c1751727d589ac83c735c6c961ca8a" title="Add an external definition of this Func.">define_extern</a>(<span class="keyword">const</span> std::string &amp;function_name,
+<a name="l00193"></a>00193                        <span class="keyword">const</span> std::vector&lt;ExternFuncArgument&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5" title="Get the pure arguments.">args</a>,
+<a name="l00194"></a>00194                        <span class="keyword">const</span> std::vector&lt;Type&gt; &amp;types,
+<a name="l00195"></a>00195                        <span class="keywordtype">int</span> dimensionality);
+<a name="l00196"></a>00196 <span class="comment"></span>
+<a name="l00197"></a>00197 <span class="comment">    /** Retrive the arguments of the extern definition */</span>
+<a name="l00198"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#afc724f111b500d359138688e02804924">00198</a>     <span class="keyword">const</span> std::vector&lt;ExternFuncArgument&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#afc724f111b500d359138688e02804924" title="Retrive the arguments of the extern definition.">extern_arguments</a>()<span class="keyword"> const </span>{
+<a name="l00199"></a>00199         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a60300b7ea419e535f777e2fda3d8ebd6">extern_arguments</a>;
+<a name="l00200"></a>00200     }
+<a name="l00201"></a>00201 <span class="comment"></span>
+<a name="l00202"></a>00202 <span class="comment">    /** Get the name of the extern function called for an extern</span>
+<a name="l00203"></a>00203 <span class="comment">     * definition. */</span>
+<a name="l00204"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a9b6486e9d858980139dd55f351c69d94">00204</a>     <span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a9b6486e9d858980139dd55f351c69d94" title="Get the name of the extern function called for an extern definition.">extern_function_name</a>()<span class="keyword"> const </span>{
+<a name="l00205"></a>00205         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a973ef22587e7308608cda008d2378468">extern_function_name</a>;
+<a name="l00206"></a>00206     }
+<a name="l00207"></a>00207 <span class="comment"></span>
+<a name="l00208"></a>00208 <span class="comment">    /** Equality of identity */</span>
+<a name="l00209"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#acae930bd24f9bd8db57b2a0cbfcafe68">00209</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#acae930bd24f9bd8db57b2a0cbfcafe68" title="Equality of identity.">same_as</a>(<span class="keyword">const</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> &amp;other)<span class="keyword"> const </span>{
+<a name="l00210"></a>00210         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a28f359d50f802aea35c2cc7075219ecd">same_as</a>(other.contents);
+<a name="l00211"></a>00211     }
+<a name="l00212"></a>00212 <span class="comment"></span>
+<a name="l00213"></a>00213 <span class="comment">    /** Get a const handle to the debug filename */</span>
+<a name="l00214"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a08a7691866274f90d948745c5cb7197d">00214</a>     <span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a08a7691866274f90d948745c5cb7197d" title="Get a const handle to the debug filename.">debug_file</a>()<span class="keyword"> const </span>{
+<a name="l00215"></a>00215         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab5bf1c4cdf42edae2406e2cada02ddac">debug_file</a>;
+<a name="l00216"></a>00216     }
+<a name="l00217"></a>00217 <span class="comment"></span>
+<a name="l00218"></a>00218 <span class="comment">    /** Get a handle to the debug filename */</span>
+<a name="l00219"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a02e0cb554763f1ca866e320c8d66c185">00219</a>     std::string &amp;<a class="code" href="class_halide_1_1_internal_1_1_function.html#a02e0cb554763f1ca866e320c8d66c185" title="Get a handle to the debug filename.">debug_file</a>() {
+<a name="l00220"></a>00220         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ab5bf1c4cdf42edae2406e2cada02ddac">debug_file</a>;
+<a name="l00221"></a>00221     }
+<a name="l00222"></a>00222 <span class="comment"></span>
+<a name="l00223"></a>00223 <span class="comment">    /** Use an an extern argument to another function. */</span>
+<a name="l00224"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#adac833825126c30c18772658684c3f3d">00224</a>     <a class="code" href="class_halide_1_1_internal_1_1_function.html#adac833825126c30c18772658684c3f3d" title="Use an an extern argument to another function.">operator ExternFuncArgument</a>()<span class="keyword"> const </span>{
+<a name="l00225"></a>00225         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_extern_func_argument.html" title="An argument to an extern-defined Func.">ExternFuncArgument</a>(contents);
+<a name="l00226"></a>00226     }
+<a name="l00227"></a>00227 <span class="comment"></span>
+<a name="l00228"></a>00228 <span class="comment">    /** Tracing calls and accessors, passed down from the Func</span>
+<a name="l00229"></a>00229 <span class="comment">     * equivalents. */</span>
+<a name="l00230"></a>00230     <span class="comment">// @{</span>
+<a name="l00231"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a5eaf4fbf5b97d7542b3d1c68c1e27dd2">00231</a>     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a5eaf4fbf5b97d7542b3d1c68c1e27dd2" title="Tracing calls and accessors, passed down from the Func equivalents.">trace_loads</a>() {
+<a name="l00232"></a>00232         contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ad3ecdd78c0b1eaac898d3bd8281d8b9a">trace_loads</a> = <span class="keyword">true</span>;
+<a name="l00233"></a>00233     }
+<a name="l00234"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#ac1fe90d4e0035742b999c5f6031f7dc3">00234</a>     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#ac1fe90d4e0035742b999c5f6031f7dc3" title="Tracing calls and accessors, passed down from the Func equivalents.">trace_stores</a>() {
+<a name="l00235"></a>00235         contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a73f482717597004838907fd2c6c4979b">trace_stores</a> = <span class="keyword">true</span>;
+<a name="l00236"></a>00236     }
+<a name="l00237"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a95082a21d62cc296e6877b43e3ea3aec">00237</a>     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a95082a21d62cc296e6877b43e3ea3aec" title="Tracing calls and accessors, passed down from the Func equivalents.">trace_realizations</a>() {
+<a name="l00238"></a>00238         contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a692525d7f8d5ef8d7db4f26c274bbd0f">trace_realizations</a> = <span class="keyword">true</span>;
 <a name="l00239"></a>00239     }
-<a name="l00240"></a>00240 <span class="comment"></span>
-<a name="l00241"></a>00241 <span class="comment">    /** Tracing calls and accessors, passed down from the Func</span>
-<a name="l00242"></a>00242 <span class="comment">     * equivalents. */</span>
-<a name="l00243"></a>00243     <span class="comment">// @{</span>
-<a name="l00244"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a5eaf4fbf5b97d7542b3d1c68c1e27dd2">00244</a>     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a5eaf4fbf5b97d7542b3d1c68c1e27dd2" title="Tracing calls and accessors, passed down from the Func equivalents.">trace_loads</a>() {
-<a name="l00245"></a>00245         contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ad3ecdd78c0b1eaac898d3bd8281d8b9a">trace_loads</a> = <span class="keyword">true</span>;
-<a name="l00246"></a>00246     }
-<a name="l00247"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#ac1fe90d4e0035742b999c5f6031f7dc3">00247</a>     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#ac1fe90d4e0035742b999c5f6031f7dc3" title="Tracing calls and accessors, passed down from the Func equivalents.">trace_stores</a>() {
-<a name="l00248"></a>00248         contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a73f482717597004838907fd2c6c4979b">trace_stores</a> = <span class="keyword">true</span>;
-<a name="l00249"></a>00249     }
-<a name="l00250"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a95082a21d62cc296e6877b43e3ea3aec">00250</a>     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a95082a21d62cc296e6877b43e3ea3aec" title="Tracing calls and accessors, passed down from the Func equivalents.">trace_realizations</a>() {
-<a name="l00251"></a>00251         contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a692525d7f8d5ef8d7db4f26c274bbd0f">trace_realizations</a> = <span class="keyword">true</span>;
-<a name="l00252"></a>00252     }
-<a name="l00253"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a5d170837aba1560b676071293c7b30db">00253</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a5d170837aba1560b676071293c7b30db" title="Tracing calls and accessors, passed down from the Func equivalents.">is_tracing_loads</a>() {
-<a name="l00254"></a>00254         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ad3ecdd78c0b1eaac898d3bd8281d8b9a">trace_loads</a>;
-<a name="l00255"></a>00255     }
-<a name="l00256"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#aa6150be575f4a773e92fe2c8a4738046">00256</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#aa6150be575f4a773e92fe2c8a4738046" title="Tracing calls and accessors, passed down from the Func equivalents.">is_tracing_stores</a>() {
-<a name="l00257"></a>00257         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a73f482717597004838907fd2c6c4979b">trace_stores</a>;
-<a name="l00258"></a>00258     }
-<a name="l00259"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a416d93caef3cbb8802dbe6d12590a81c">00259</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a416d93caef3cbb8802dbe6d12590a81c" title="Tracing calls and accessors, passed down from the Func equivalents.">is_tracing_realizations</a>() {
-<a name="l00260"></a>00260         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a692525d7f8d5ef8d7db4f26c274bbd0f">trace_realizations</a>;
-<a name="l00261"></a>00261     }
-<a name="l00262"></a>00262     <span class="comment">// @}</span>
-<a name="l00263"></a>00263 <span class="comment"></span>
-<a name="l00264"></a>00264 <span class="comment">    /** What&#39;s the smallest amount of this Function that can be</span>
-<a name="l00265"></a>00265 <span class="comment">     * produced? This is a function of the splits being done. Ignores</span>
-<a name="l00266"></a>00266 <span class="comment">     * writes due to scattering done by reductions. */</span>
-<a name="l00267"></a>00267     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a74cc65d8d675bfad32b3b025dbecdfec" title="What&#39;s the smallest amount of this Function that can be produced? This is a function of the splits be...">min_extent_produced</a>(<span class="keyword">const</span> std::string &amp;dim) <span class="keyword">const</span>;
-<a name="l00268"></a>00268 <span class="comment"></span>
-<a name="l00269"></a>00269 <span class="comment">    /** Reductions also have a minimum granularity with which they can</span>
-<a name="l00270"></a>00270 <span class="comment">     * be computed in the pure vars (because they can&#39;t hit the same</span>
-<a name="l00271"></a>00271 <span class="comment">     * pure variable twice). This function retrieves that. */</span>
-<a name="l00272"></a>00272     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a030968954b73f195f04c72d3460f05ce" title="Reductions also have a minimum granularity with which they can be computed in the pure vars (because ...">min_extent_updated</a>(<span class="keyword">const</span> std::string &amp;dim) <span class="keyword">const</span>;
-<a name="l00273"></a>00273 };
-<a name="l00274"></a>00274 
-<a name="l00275"></a>00275 }}
-<a name="l00276"></a>00276 
-<a name="l00277"></a>00277 <span class="preprocessor">#endif</span>
+<a name="l00240"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a5d170837aba1560b676071293c7b30db">00240</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a5d170837aba1560b676071293c7b30db" title="Tracing calls and accessors, passed down from the Func equivalents.">is_tracing_loads</a>() {
+<a name="l00241"></a>00241         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#ad3ecdd78c0b1eaac898d3bd8281d8b9a">trace_loads</a>;
+<a name="l00242"></a>00242     }
+<a name="l00243"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#aa6150be575f4a773e92fe2c8a4738046">00243</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#aa6150be575f4a773e92fe2c8a4738046" title="Tracing calls and accessors, passed down from the Func equivalents.">is_tracing_stores</a>() {
+<a name="l00244"></a>00244         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a73f482717597004838907fd2c6c4979b">trace_stores</a>;
+<a name="l00245"></a>00245     }
+<a name="l00246"></a><a class="code" href="class_halide_1_1_internal_1_1_function.html#a416d93caef3cbb8802dbe6d12590a81c">00246</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a416d93caef3cbb8802dbe6d12590a81c" title="Tracing calls and accessors, passed down from the Func equivalents.">is_tracing_realizations</a>() {
+<a name="l00247"></a>00247         <span class="keywordflow">return</span> contents.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe">ptr</a>-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_function_contents.html#a692525d7f8d5ef8d7db4f26c274bbd0f">trace_realizations</a>;
+<a name="l00248"></a>00248     }
+<a name="l00249"></a>00249     <span class="comment">// @}</span>
+<a name="l00250"></a>00250 <span class="comment"></span>
+<a name="l00251"></a>00251 <span class="comment">    /** What&#39;s the smallest amount of this Function that can be</span>
+<a name="l00252"></a>00252 <span class="comment">     * produced? This is a function of the splits being done. Ignores</span>
+<a name="l00253"></a>00253 <span class="comment">     * writes due to scattering done by reductions. */</span>
+<a name="l00254"></a>00254     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a74cc65d8d675bfad32b3b025dbecdfec" title="What&#39;s the smallest amount of this Function that can be produced? This is a function of the splits be...">min_extent_produced</a>(<span class="keyword">const</span> std::string &amp;dim) <span class="keyword">const</span>;
+<a name="l00255"></a>00255 <span class="comment"></span>
+<a name="l00256"></a>00256 <span class="comment">    /** Reductions also have a minimum granularity with which they can</span>
+<a name="l00257"></a>00257 <span class="comment">     * be computed in the pure vars (because they can&#39;t hit the same</span>
+<a name="l00258"></a>00258 <span class="comment">     * pure variable twice). This function retrieves that. */</span>
+<a name="l00259"></a>00259     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_internal_1_1_function.html#a030968954b73f195f04c72d3460f05ce" title="Reductions also have a minimum granularity with which they can be computed in the pure vars (because ...">min_extent_updated</a>(<span class="keyword">const</span> std::string &amp;dim) <span class="keyword">const</span>;
+<a name="l00260"></a>00260 };
+<a name="l00261"></a>00261 
+<a name="l00262"></a>00262 }}
+<a name="l00263"></a>00263 
+<a name="l00264"></a>00264 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
@@ -396,7 +383,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul>
       <li class="navelem"><a class="el" href="_function_8h.html">Function.h</a>      </li>
 
-    <li class="footer">Generated on Tue Nov 5 2013 08:59:09 for Halide by
+    <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

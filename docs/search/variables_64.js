@@ -9,5 +9,5 @@ var searchData=
   ['dev_5frun_5ffn',['dev_run_fn',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#adc68b3c14716b525a5544ba0e28d6136',1,'Halide::Internal::CodeGen_GPU_Host']]],
   ['dev_5fsync_5ffn',['dev_sync_fn',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a6b8da553cbc490765506d7bad0b54fff',1,'Halide::Internal::CodeGen_GPU_Host']]],
   ['dims',['dims',['../class_halide_1_1_output_image_param.html#a657c02de363c2cd1cb7a1868da7a1ce6',1,'Halide::OutputImageParam::dims()'],['../struct_halide_1_1_internal_1_1_schedule.html#af8c148548ef6889ef42d8a8ae743bd59',1,'Halide::Internal::Schedule::dims()']]],
-  ['domain',['domain',['../struct_halide_1_1_internal_1_1_reduction_domain_contents.html#a1a6aeb4c0170704c20b71431bb2358a7',1,'Halide::Internal::ReductionDomainContents']]]
+  ['domain',['domain',['../struct_halide_1_1_internal_1_1_reduction_definition.html#ac2e2a880b76a575dc0d77375b74f4b2d',1,'Halide::Internal::ReductionDefinition::domain()'],['../struct_halide_1_1_internal_1_1_reduction_domain_contents.html#a1a6aeb4c0170704c20b71431bb2358a7',1,'Halide::Internal::ReductionDomainContents::domain()']]]
 ];
