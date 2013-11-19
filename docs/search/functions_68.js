@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['halide_5fdebug_5fto_5ffile',['halide_debug_to_file',['../_halide_runtime_8h.html#a42bf3febd2fafd0aad831f3c1add2a80',1,'HalideRuntime.h']]],
+  ['halide_5fdo_5fpar_5ffor',['halide_do_par_for',['../_halide_runtime_8h.html#a7d66d7cc1c5373f1784984f6fb14f4df',1,'HalideRuntime.h']]],
+  ['halide_5ferror',['halide_error',['../_halide_runtime_8h.html#a2545608b743e7f56ba2f52b3615738d9',1,'HalideRuntime.h']]],
+  ['halide_5fexp',['halide_exp',['../namespace_halide_1_1_internal.html#a5688772a963296ea52d2bd9ac5913e79',1,'Halide::Internal']]],
+  ['halide_5ffree',['halide_free',['../_halide_runtime_8h.html#acd6d7417ad79523f22e11d88e9b61bac',1,'HalideRuntime.h']]],
+  ['halide_5flog',['halide_log',['../namespace_halide_1_1_internal.html#af36627bf7242718b1c73214296dc9090',1,'Halide::Internal']]],
+  ['halide_5fmalloc',['halide_malloc',['../_halide_runtime_8h.html#a86052f0ba78872e38d3afe45146cece3',1,'HalideRuntime.h']]],
+  ['halide_5fprintf',['halide_printf',['../_halide_runtime_8h.html#ad3657cd91f2034c75a9bc0acdbf44ede',1,'HalideRuntime.h']]],
+  ['halide_5fshutdown_5fthread_5fpool',['halide_shutdown_thread_pool',['../_halide_runtime_8h.html#a5e9d22d2b79a3dc66a32159423b17910',1,'HalideRuntime.h']]],
+  ['halide_5fshutdown_5ftrace',['halide_shutdown_trace',['../_halide_runtime_8h.html#a33c370f442954d7a0b1a235ce5cc6325',1,'HalideRuntime.h']]],
+  ['halide_5ftrace',['halide_trace',['../_halide_runtime_8h.html#af09b3e2c5f94a5b73525a741ea5a45ff',1,'HalideRuntime.h']]],
+  ['handle',['Handle',['../namespace_halide.html#ae838ee5f6db542dad3500ba3a4b3c495',1,'Halide']]],
+  ['has_5fextern_5fdefinition',['has_extern_definition',['../class_halide_1_1_internal_1_1_function.html#a4edc7b2c7a455026d6d33495e74f97c4',1,'Halide::Internal::Function']]],
+  ['has_5fpure_5fdefinition',['has_pure_definition',['../class_halide_1_1_internal_1_1_function.html#ac69dbfa133f30c0c2946fa3a06f4e57b',1,'Halide::Internal::Function']]],
+  ['has_5freduction_5fdefinition',['has_reduction_definition',['../class_halide_1_1_internal_1_1_function.html#a4663c14a0c52f194865431cf14f1453f',1,'Halide::Internal::Function']]],
+  ['height',['height',['../class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b',1,'Halide::Image::height()'],['../class_halide_1_1_output_image_param.html#aee47a4cd423a7409d9620f9195daac55',1,'Halide::OutputImageParam::height()']]],
+  ['host_5fdirty',['host_dirty',['../class_halide_1_1_buffer.html#a9167892ab30060588f1b3ec466cb69b5',1,'Halide::Buffer']]],
+  ['host_5fptr',['host_ptr',['../class_halide_1_1_buffer.html#acb49751026ca83866a00caed8eb4c4e4',1,'Halide::Buffer']]],
+  ['hypot',['hypot',['../namespace_halide.html#a4fb75ff010919c00492e4f654a4d8f85',1,'Halide']]]
+];
