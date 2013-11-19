@@ -1,0 +1,890 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>halide 0.2.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="None" href="index.html#document-index" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html#document-index">halide 0.2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="overview-of-halide-python-bindings">
+<h1>Overview of Halide Python bindings<a class="headerlink" href="#overview-of-halide-python-bindings" title="Permalink to this headline">¶</a></h1>
+<p>This is documentation for the <a class="reference external" href="https://github.com/halide/Halide/blob/master/python_bindings/">Python bindings</a> of the <a class="reference external" href="http://halide-lang.org/">Halide</a> language.</p>
+<p>For install and license information see the <a class="reference external" href="https://github.com/halide/Halide/blob/master/python_bindings/README.md">README</a>.</p>
+<p>The <a class="reference external" href="https://github.com/halide/Halide/blob/master/python_bindings/apps/">example</a> applications demonstrate how to use the bindings.</p>
+<p>Classes:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Class</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="#halide.Expr" title="halide.Expr"><tt class="xref py py-class docutils literal"><span class="pre">halide.Expr</span></tt></a></td>
+<td>Expression or fragment of Halide code</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#halide.Func" title="halide.Func"><tt class="xref py py-class docutils literal"><span class="pre">halide.Func</span></tt></a></td>
+<td>Function or stage in imaging pipeline</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#halide.Image" title="halide.Image"><tt class="xref py py-class docutils literal"><span class="pre">halide.Image</span></tt></a></td>
+<td>Image stored in-memory and/or on GPU device</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#halide.ImageParam" title="halide.ImageParam"><tt class="xref py py-class docutils literal"><span class="pre">halide.ImageParam</span></tt></a></td>
+<td>Image parameter to an imaging pipeline</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#halide.Param" title="halide.Param"><tt class="xref py py-class docutils literal"><span class="pre">halide.Param</span></tt></a></td>
+<td>Scalar parameter to an imaging pipeline</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#halide.RDom" title="halide.RDom"><tt class="xref py py-class docutils literal"><span class="pre">halide.RDom</span></tt></a></td>
+<td>Reduction domain, used for sum, product, min, max</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#halide.RVar" title="halide.RVar"><tt class="xref py py-class docutils literal"><span class="pre">halide.RVar</span></tt></a></td>
+<td>Reduction variable</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#halide.Type" title="halide.Type"><tt class="xref py py-class docutils literal"><span class="pre">halide.Type</span></tt></a></td>
+<td>Image data type, e.g. Int(8), Float(32)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#halide.Var" title="halide.Var"><tt class="xref py py-class docutils literal"><span class="pre">halide.Var</span></tt></a></td>
+<td>Variable, defined on a regular grid domain</td>
+</tr>
+</tbody>
+</table>
+<p>Functions:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Function</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="#halide.builtin_image" title="halide.builtin_image"><tt class="xref py py-func docutils literal"><span class="pre">halide.builtin_image()</span></tt></a></td>
+<td>One of the built-in images</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#halide.filter_image" title="halide.filter_image"><tt class="xref py py-func docutils literal"><span class="pre">halide.filter_image()</span></tt></a></td>
+<td>Helper function for filtering an image</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#halide.flip_xy" title="halide.flip_xy"><tt class="xref py py-func docutils literal"><span class="pre">halide.flip_xy()</span></tt></a></td>
+<td>Convert between Halide and Numpy notation</td>
+</tr>
+<tr class="row-odd"><td>Reduction functions</td>
+<td>See <a class="reference internal" href="#halide.RDom" title="halide.RDom"><tt class="xref py py-class docutils literal"><span class="pre">halide.RDom</span></tt></a></td>
+</tr>
+<tr class="row-even"><td>Math functions</td>
+<td>See <a class="reference internal" href="#halide.Expr" title="halide.Expr"><tt class="xref py py-class docutils literal"><span class="pre">halide.Expr</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="module-halide">
+<span id="module-documentation-for-halide"></span><h1>Module Documentation for &#8216;halide&#8217;<a class="headerlink" href="#module-halide" title="Permalink to this headline">¶</a></h1>
+<p>Python bindings for Halide</p>
+<dl class="class">
+<dt id="halide.Expr">
+<em class="property">class </em><tt class="descclassname">halide.</tt><tt class="descname">Expr</tt><a class="headerlink" href="#halide.Expr" title="Permalink to this definition">¶</a></dt>
+<dd><p>An expression or fragment of Halide code.</p>
+<p>One can explicitly coerce most types to Expr via the Expr(x) constructor.
+The following operators are implemented over Expr, and also other types
+such as Image, Func, Var, RVar generally coerce to Expr when used in arithmetic:</p>
+<div class="highlight-python"><pre>+ - * / % ** &amp; |
+-(unary) ~(unary)
+&lt; &lt;= == != &gt; &gt;=
++= -= *= /=</pre>
+</div>
+<p>The following math global functions are also available:</p>
+<div class="highlight-python"><pre>Unary:
+  abs acos acosh asin asinh atan atanh ceil cos cosh exp
+  fast_exp fast_log floor log round sin sinh sqrt tan tanh
+
+Binary:
+  hypot fast_pow max min pow
+ 
+Ternary:
+  clamp(x, lo, hi)                  -- Clamp expression to [lo, hi]
+  select(cond, if_true, if_false)   -- Return if_true if cond else if_false</pre>
+</div>
+<dl class="method">
+<dt id="halide.Expr.type">
+<tt class="descname">type</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Expr.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type of expression.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="halide.Func">
+<em class="property">class </em><tt class="descclassname">halide.</tt><tt class="descname">Func</tt><a class="headerlink" href="#halide.Func" title="Permalink to this definition">¶</a></dt>
+<dd><p>A halide function. This class represents one stage in a Halide
+pipeline, and is the unit by which we schedule things. By default
+they are aggressively inlined, so you are encouraged to make lots
+of little functions, rather than storing things in Exprs.</p>
+<p>Constructors:</p>
+<div class="highlight-python"><pre>Func()      -- Declare a new undefined function with an automatically-generated unique name
+Func(expr)  -- Declare a new function with an automatically-generated unique
+               name, and define it to return the given expression (which may
+               not contain free variables).
+Func(name)  -- Declare a new undefined function with the given name</pre>
+</div>
+<dl class="method">
+<dt id="halide.Func.bound">
+<tt class="descname">bound</tt><big>(</big><em>min_expr</em>, <em>extent_expr</em><big>)</big><a class="headerlink" href="#halide.Func.bound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Statically declare that the range over which a function should
+be evaluated is given by the second and third arguments. This
+can let Halide perform some optimizations. E.g. if you know
+there are going to be 4 color channels, you can completely
+vectorize the color channel dimension without the overhead of
+splitting it up. If bounds inference decides that it requires
+more of this function than the bounds you have stated, a
+runtime error will occur when you try to run your pipeline.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.compile_jit">
+<tt class="descname">compile_jit</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Func.compile_jit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Eagerly jit compile the function to machine code. This
+normally happens on the first call to realize. If you&#8217;re
+running your halide pipeline inside time-sensitive code and
+wish to avoid including the time taken to compile a pipeline,
+then you can call this ahead of time. Returns the raw function
+pointer to the compiled pipeline.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.compile_to_bitcode">
+<tt class="descname">compile_to_bitcode</tt><big>(</big><em>filename</em>, <em>list_of_Argument</em>, <em>fn_name=''</em><big>)</big><a class="headerlink" href="#halide.Func.compile_to_bitcode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Statically compile this function to llvm bitcode, with the
+given filename (which should probably end in .bc), type
+signature, and C function name (which defaults to the same name
+as this halide function.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.compile_to_c">
+<tt class="descname">compile_to_c</tt><big>(</big><em>filename</em>, <em>list_of_Argument</em>, <em>fn_name=''</em><big>)</big><a class="headerlink" href="#halide.Func.compile_to_c" title="Permalink to this definition">¶</a></dt>
+<dd><p>Statically compile this function to C source code. This is
+useful for providing fallback code paths that will compile on
+many platforms. Vectorization will fail, and parallelization
+will produce serial code.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.compile_to_file">
+<tt class="descname">compile_to_file</tt><big>(</big><em>filename_prefix</em>, <em>list_of_Argument</em><big>)</big><a class="headerlink" href="#halide.Func.compile_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Various signatures:</p>
+<div class="highlight-python"><pre>compile_to_file(filename_prefix, list_of_Argument)
+compile_to_file(filename_prefix)
+compile_to_file(filename_prefix, Argument a)
+compile_to_file(filename_prefix, Argument a, Argument b)</pre>
+</div>
+<p>Compile to object file and header pair, with the given
+arguments. Also names the C function to match the first
+argument.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.compute_at">
+<tt class="descname">compute_at</tt><big>(</big><em>f</em>, <em>var</em><big>)</big><a class="headerlink" href="#halide.Func.compute_at" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute this function as needed for each unique value of the
+given var (can be a Var or an RVar) for the given calling function f.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.compute_inline">
+<tt class="descname">compute_inline</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Func.compute_inline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aggressively inline all uses of this function. This is the
+default schedule, so you&#8217;re unlikely to need to call this. For
+a reduction, that means it gets computed as close to the
+innermost loop as possible.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.compute_root">
+<tt class="descname">compute_root</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Func.compute_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute all of this function once ahead of time.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.cuda">
+<tt class="descname">cuda</tt><big>(</big><em>block_x</em>, <em>thread_x</em><big>)</big><a class="headerlink" href="#halide.Func.cuda" title="Permalink to this definition">¶</a></dt>
+<dd><p>Three signatures:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cuda</span><span class="p">(</span><span class="n">block_x</span><span class="p">,</span> <span class="n">thread_x</span><span class="p">)</span>
+<span class="n">cuda</span><span class="p">(</span><span class="n">block_x</span><span class="p">,</span> <span class="n">block_y</span><span class="p">,</span> <span class="n">thread_x</span><span class="p">,</span> <span class="n">thread_y</span><span class="p">)</span>
+<span class="n">cuda</span><span class="p">(</span><span class="n">block_x</span><span class="p">,</span> <span class="n">block_y</span><span class="p">,</span> <span class="n">block_z</span><span class="p">,</span> <span class="n">thread_x</span><span class="p">,</span> <span class="n">thread_y</span><span class="p">,</span> <span class="n">thread_z</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Tell Halide that the following dimensions correspond to cuda
+block indices and thread indices. If the selected target is not
+ptx, these just mark the given dimensions as parallel. The
+dimensions are consumed by this call, so do all other
+unrolling, reordering, etc first.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.cuda_blocks">
+<tt class="descname">cuda_blocks</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#halide.Func.cuda_blocks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell Halide that the following dimensions correspond to cuda
+block indices. This is useful for scheduling stages that will
+run serially within each cuda block. If the selected target is
+not ptx, this just marks those dimensions as parallel.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.cuda_threads">
+<tt class="descname">cuda_threads</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#halide.Func.cuda_threads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tell Halide that the following dimensions correspond to cuda
+thread indices. This is useful if you compute a producer
+function within the block indices of a consumer function, and
+want to control how that function&#8217;s dimensions map to cuda
+threads. If the selected target is not ptx, this just marks
+those dimensions as parallel.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.cuda_tile">
+<tt class="descname">cuda_tile</tt><big>(</big><em>x</em>, <em>x_size</em><big>)</big><a class="headerlink" href="#halide.Func.cuda_tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Three signatures:</p>
+<blockquote>
+<div>cuda_tile(x, x_size)
+cuda_tile(x, y, x_size, y_size)
+cuda_tile(x, y, z, x_size, y_size, z_size)</div></blockquote>
+<p>Short-hand for tiling a domain and mapping the tile indices
+to cuda block indices and the coordinates within each tile to
+cuda thread indices. Consumes the variables given, so do all
+other scheduling first.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.debug_to_file">
+<tt class="descname">debug_to_file</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#halide.Func.debug_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>When this function is compiled, include code that dumps its values
+to a file after it is realized, for the purpose of debugging.
+The file covers the realized extent at the point in the schedule that
+debug_to_file appears.</p>
+<p>If filename ends in &#8221;.tif&#8221; or &#8221;.tiff&#8221; (case insensitive) the file
+is in TIFF format and can be read by standard tools.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.dimensions">
+<tt class="descname">dimensions</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Func.dimensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>The dimensionality (number of arguments) of this
+function. Zero if the function is not yet defined.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.function">
+<tt class="descname">function</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Func.function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a handle on the internal halide function that this Func
+represents. Useful if you want to do introspection on Halide
+functions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.name">
+<tt class="descname">name</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Func.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of this function, either given during construction, or automatically generated.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.parallel">
+<tt class="descname">parallel</tt><big>(</big><em>var</em><big>)</big><a class="headerlink" href="#halide.Func.parallel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark a dimension (Var instance) to be traversed in parallel.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.realize">
+<tt class="descname">realize</tt><big>(</big><em>x_size=0</em>, <em>y_size=0</em>, <em>z_size=0</em>, <em>w_size=0</em><big>)</big><a class="headerlink" href="#halide.Func.realize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate this function over some rectangular domain and return
+the resulting buffer. The buffer should probably be instantly
+wrapped in an Image class.</p>
+<p>One can use f.realize(Buffer) to realize into an existing buffer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.rename">
+<tt class="descname">rename</tt><big>(</big><em>old_name</em>, <em>new_name</em><big>)</big><a class="headerlink" href="#halide.Func.rename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rename a dimension. Equivalent to split with a inner size of one.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.reorder">
+<tt class="descname">reorder</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#halide.Func.reorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reorder the dimensions (Var arguments) to have the given nesting
+order, from innermost loop order to outermost.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.reorder_storage">
+<tt class="descname">reorder_storage</tt><big>(</big><em>*args</em><big>)</big><a class="headerlink" href="#halide.Func.reorder_storage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scheduling calls that control how the storage for the function
+is laid out. Right now you can only reorder the dimensions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.set">
+<tt class="descname">set</tt><big>(</big><em>y</em><big>)</big><a class="headerlink" href="#halide.Func.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Typically one uses f[x, y] = expr to assign to a function. However f.set(expr) can be used also.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.split">
+<tt class="descname">split</tt><big>(</big><em>old</em>, <em>outer</em>, <em>inner</em>, <em>factor</em><big>)</big><a class="headerlink" href="#halide.Func.split" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split a dimension into inner and outer subdimensions with the
+given names, where the inner dimension iterates from 0 to
+factor-1. The inner and outer subdimensions can then be dealt
+with using the other scheduling calls. It&#8217;s ok to reuse the old
+variable name as either the inner or outer variable.</p>
+<p>The arguments are all Var instances.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.store_at">
+<tt class="descname">store_at</tt><big>(</big><em>f</em>, <em>var</em><big>)</big><a class="headerlink" href="#halide.Func.store_at" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allocate storage for this function within f&#8217;s loop over
+var (can be a Var or an RVar). Scheduling storage is optional, and can be used to
+separate the loop level at which storage occurs from the loop
+level at which computation occurs to trade off between locality
+and redundant work.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.store_root">
+<tt class="descname">store_root</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Func.store_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Equivalent to Func.store_at, but schedules storage outside the outermost loop.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.tile">
+<tt class="descname">tile</tt><big>(</big><em>x</em>, <em>y</em>, <em>xo</em>, <em>yo</em>, <em>xi</em>, <em>yi</em>, <em>xfactor</em>, <em>yfactor</em><big>)</big><a class="headerlink" href="#halide.Func.tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Traverse in tiled order. Two signatures:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">xfactor</span><span class="p">,</span> <span class="n">yfactor</span><span class="p">)</span>          
+<span class="n">tile</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">xo</span><span class="p">,</span> <span class="n">yo</span><span class="p">,</span> <span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">xfactor</span><span class="p">,</span> <span class="n">yfactor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Split two dimensions at once by the given factors, and then
+reorder the resulting dimensions to be xi, yi, xo, yo from
+innermost outwards. This gives a tiled traversal.</p>
+<p>The shorter form of tile reuses the old variable names as
+the new outer dimensions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.unroll">
+<tt class="descname">unroll</tt><big>(</big><em>var</em>, <em>factor=None</em><big>)</big><a class="headerlink" href="#halide.Func.unroll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split a dimension (Var instance) by the given int factor, then unroll the inner
+dimension. This is how you unroll a loop of unknown size by
+some constant factor. After this call, var refers to the outer
+dimension of the split.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.update">
+<tt class="descname">update</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Func.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a handle on the update step of a reduction for the
+purposes of scheduling it. Only the pure dimensions of the
+update step can be meaningfully manipulated (see RDom).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.value">
+<tt class="descname">value</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Func.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>The right-hand-side value of the pure definition of this
+function. May be undefined if the function has no pure
+definition yet.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Func.vectorize">
+<tt class="descname">vectorize</tt><big>(</big><em>var</em>, <em>factor</em><big>)</big><a class="headerlink" href="#halide.Func.vectorize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Split a dimension (Var instance) by the given int factor, then vectorize the
+inner dimension. This is how you vectorize a loop of unknown
+size. The variable to be vectorized should be the innermost
+one. After this call, var refers to the outer dimension of the
+split.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="halide.Image">
+<em class="property">class </em><tt class="descclassname">halide.</tt><tt class="descname">Image</tt><a class="headerlink" href="#halide.Image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct an Image:</p>
+<div class="highlight-python"><pre>Image(contents, [scale=None])
+Image([typeval=Int(n), UInt(n), Float(n), Bool()], contents, [scale=None])</pre>
+</div>
+<p>The contents can be:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Numpy array</li>
+<li>Filename of existing file (typeval defaults to UInt(8))</li>
+<li>halide.Buffer</li>
+<li>An int or tuple &#8211; constructs an n-D image (typeval argument is required).</li>
+</ul>
+</div></blockquote>
+<p>The image can be indexed via I[x], I[y,x], etc, which gives a Halide Expr.</p>
+<p>If not provided (or None) then the typeval is inferred from the input argument.</p>
+<p>For PIL, numpy, and filename constructors, if scale is provided then the input is scaled by the floating point scale factor
+(for example, Image(filename, UInt(16), 1.0/256) reads a UInt(16) image rescaled to have maximum value 255). If omitted,
+scale is set to convert between source and target data type ranges, where int types range from 0 to maxval, and float types
+range from 0 to 1.</p>
+<dl class="method">
+<dt id="halide.Image.channels">
+<tt class="descname">channels</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Image.channels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of channels.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Image.copy_to_host">
+<tt class="descname">copy_to_host</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Image.copy_to_host" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manually copy-back data to the host, if it&#8217;s on a device. This
+is done for you if you construct an image from a buffer, but
+you might need to call this if you realize a gpu kernel into an
+existing image.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Image.defined">
+<tt class="descname">defined</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Image.defined" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether buffer points to actual data (non-NULL Image).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Image.dimensions">
+<tt class="descname">dimensions</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Image.dimensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the dimensionality of the data. Typically two for grayscale images, and three for color images.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Image.extent">
+<tt class="descname">extent</tt><big>(</big><em>i</em><big>)</big><a class="headerlink" href="#halide.Image.extent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extent of dimension i.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Image.height">
+<tt class="descname">height</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Image.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the extent of dimension 0, which by convention we use as
+the height of the image.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Image.save">
+<tt class="descname">save</tt><big>(</big><em>filename</em>, <em>maxval=None</em><big>)</big><a class="headerlink" href="#halide.Image.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save an Image to PNG.</p>
+<p>If maxval is not None then rescales so that bright white is equal to maxval.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Image.set">
+<tt class="descname">set</tt><big>(</big><em>contents</em><big>)</big><a class="headerlink" href="#halide.Image.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets contents of Image or ImageParam:</p>
+<p>set(Image, Buffer)
+set(ImageParam, Buffer|Image)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Image.set_host_dirty">
+<tt class="descname">set_host_dirty</tt><big>(</big><em>dirty=True</em><big>)</big><a class="headerlink" href="#halide.Image.set_host_dirty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark the buffer as dirty-on-host.  is done for you if you
+construct an image from a buffer, but you might need to call
+this if you realize a gpu kernel into an existing image, or
+modify the data via some other back-door.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Image.stride">
+<tt class="descname">stride</tt><big>(</big><em>dim</em><big>)</big><a class="headerlink" href="#halide.Image.stride" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of elements in the buffer between two adjacent
+elements in the given dimension. For example, the stride in
+dimension 0 is usually 1, and the stride in dimension 1 is
+usually the extent of dimension 0. This is not necessarily true
+though.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Image.tostring">
+<tt class="descname">tostring</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Image.tostring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert to str.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Image.type">
+<tt class="descname">type</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Image.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return Type instance for the data type of the image.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Image.width">
+<tt class="descname">width</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Image.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the extent of dimension 0, which by convention we use as
+the width of the image.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="halide.ImageParam">
+<em class="property">class </em><tt class="descclassname">halide.</tt><tt class="descname">ImageParam</tt><a class="headerlink" href="#halide.ImageParam" title="Permalink to this definition">¶</a></dt>
+<dd><p>An Image parameter to a halide pipeline. E.g., the input image.</p>
+<p>Constructor:</p>
+<div class="highlight-python"><pre>ImageParam(Type t, int dims, name="")</pre>
+</div>
+<p>The image can be indexed via I[x], I[y,x], etc, which gives a Halide Expr. Supports most of
+the methods of Image.</p>
+<dl class="method">
+<dt id="halide.ImageParam.get">
+<tt class="descname">get</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.ImageParam.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the Buffer that is bound. Only relevant for jitting.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.ImageParam.name">
+<tt class="descname">name</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.ImageParam.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get name of ImageParam.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.ImageParam.set">
+<tt class="descname">set</tt><big>(</big><em>I</em><big>)</big><a class="headerlink" href="#halide.ImageParam.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bind a Buffer, Image, or numpy array. Only relevant for jitting.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="halide.Param">
+<em class="property">class </em><tt class="descclassname">halide.</tt><tt class="descname">Param</tt><a class="headerlink" href="#halide.Param" title="Permalink to this definition">¶</a></dt>
+<dd><p>A scalar parameter to a halide pipeline. If you&#8217;re jitting, this
+should be bound to an actual value of type T using the set method
+before you realize the function uses this. If you&#8217;re statically
+compiling, this param should appear in the argument list.</p>
+<p>Constructors:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Param</span><span class="p">(</span><span class="n">typeval</span><span class="p">,</span> <span class="p">[</span><span class="n">value</span><span class="p">])</span>
+<span class="n">Param</span><span class="p">(</span><span class="n">typeval</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="p">[</span><span class="n">value</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>See Type for how to construct typeval.</p>
+<dl class="method">
+<dt id="halide.Param.get">
+<tt class="descname">get</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Param.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current value of this parameter. Only meaningful when jitting.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Param.name">
+<tt class="descname">name</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Param.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>String name of parameter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Param.set">
+<tt class="descname">set</tt><big>(</big><em>val</em><big>)</big><a class="headerlink" href="#halide.Param.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the current value of this parameter. Only meaningful when jitting.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Param.type">
+<tt class="descname">type</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Param.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the Halide type.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="halide.RDom">
+<em class="property">class </em><tt class="descclassname">halide.</tt><tt class="descname">RDom</tt><a class="headerlink" href="#halide.RDom" title="Permalink to this definition">¶</a></dt>
+<dd><p>A multi-dimensional domain over which to iterate. Used when
+defining functions as reductions. See apps/bilateral_grid.py for an
+example of a reduction.</p>
+<p>Constructors:</p>
+<div class="highlight-python"><pre>RDom(Expr min, Expr extent, name="")                             -- 1D reduction
+RDom(Expr min0, Expr extent0, Expr min1, Expr extent1, name="")  -- 2D reduction
+(Similar for 3D and 4D reductions)
+RDom(Buffer|ImageParam)                    -- Iterate over all points in the domain</pre>
+</div>
+<p>The following global functions can be used for inline reductions:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">minimum</span><span class="p">,</span> <span class="n">maximum</span><span class="p">,</span> <span class="n">product</span><span class="p">,</span> <span class="nb">sum</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="halide.RDom.defined">
+<tt class="descname">defined</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.RDom.defined" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if reduction domain is non-NULL.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.RDom.dimensions">
+<tt class="descname">dimensions</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.RDom.dimensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of dimensions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.RDom.same_as">
+<tt class="descname">same_as</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#halide.RDom.same_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if two reduction domains are the same.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="halide.RDom.w">
+<tt class="descname">w</tt><a class="headerlink" href="#halide.RDom.w" title="Permalink to this definition">¶</a></dt>
+<dd><p>Access dimension 4 of reduction domain.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="halide.RDom.x">
+<tt class="descname">x</tt><a class="headerlink" href="#halide.RDom.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Access dimension 1 of reduction domain.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="halide.RDom.y">
+<tt class="descname">y</tt><a class="headerlink" href="#halide.RDom.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Access dimension 2 of reduction domain.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="halide.RDom.z">
+<tt class="descname">z</tt><a class="headerlink" href="#halide.RDom.z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Access dimension 3 of reduction domain.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="halide.RVar">
+<em class="property">class </em><tt class="descclassname">halide.</tt><tt class="descname">RVar</tt><a class="headerlink" href="#halide.RVar" title="Permalink to this definition">¶</a></dt>
+<dd><p>A reduction variable represents a single dimension of a reduction
+domain (RDom). Don&#8217;t construct them directly, instead construct an
+RDom, and use fields .x, .y, .z, .w to get at the variables. For
+single-dimensional reduction domains, you can just cast a
+single-dimensional RDom to an RVar.</p>
+<dl class="method">
+<dt id="halide.RVar.extent">
+<tt class="descname">extent</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.RVar.extent" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number that this variable will take on. The maximum value
+of this variable will be min() + extent() - 1.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.RVar.min">
+<tt class="descname">min</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.RVar.min" title="Permalink to this definition">¶</a></dt>
+<dd><p>The minimum value that this variable will take on.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.RVar.name">
+<tt class="descname">name</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.RVar.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of this reduction variable.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="halide.Type">
+<em class="property">class </em><tt class="descclassname">halide.</tt><tt class="descname">Type</tt><a class="headerlink" href="#halide.Type" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Halide type. Constructors are the following global functions:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">Float</span><span class="p">(</span><span class="n">nbits</span><span class="p">)</span>
+<span class="n">UInt</span><span class="p">(</span><span class="n">nbits</span><span class="p">)</span>
+<span class="n">Int</span><span class="p">(</span><span class="n">nbits</span><span class="p">)</span>
+<span class="n">Bool</span><span class="p">([</span><span class="n">width</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="halide.Type.bits">
+<tt class="descname">bits</tt><a class="headerlink" href="#halide.Type.bits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bits of type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Type.imax">
+<tt class="descname">imax</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Type.imax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum value for integer (assert if not integer).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Type.imin">
+<tt class="descname">imin</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Type.imin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimum value for integer (assert if not integer).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Type.is_bool">
+<tt class="descname">is_bool</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Type.is_bool" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if Bool() type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Type.is_float">
+<tt class="descname">is_float</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Type.is_float" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if Float() type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Type.is_int">
+<tt class="descname">is_int</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Type.is_int" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if Int() type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Type.is_uint">
+<tt class="descname">is_uint</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Type.is_uint" title="Permalink to this definition">¶</a></dt>
+<dd><p>True if UInt() type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Type.to_numpy">
+<tt class="descname">to_numpy</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Type.to_numpy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert to a numpy dtype instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Type.typical_max">
+<tt class="descname">typical_max</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Type.typical_max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get typical maximum value of the type (1.0 for float, otherwise max int value).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="halide.Var">
+<em class="property">class </em><tt class="descclassname">halide.</tt><tt class="descname">Var</tt><a class="headerlink" href="#halide.Var" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Halide variable, to be used when defining functions. It is just
+a name, and can be reused in places where no name conflict will
+occur. It can be used in the left-hand-side of a function
+definition, or as an Expr. As an Expr, it always has type Int(32).</p>
+<p>Constructors:</p>
+<div class="highlight-python"><pre>Var()      -- Construct Var with an automatically-generated unique name
+Var(name)  -- Construct Var with the given string name.</pre>
+</div>
+<dl class="method">
+<dt id="halide.Var.implicit">
+<tt class="descname">implicit</tt><big>(</big><em>n</em><big>)</big><a class="headerlink" href="#halide.Var.implicit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct implicit Var from int n.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Var.name">
+<tt class="descname">name</tt><big>(</big><big>)</big><a class="headerlink" href="#halide.Var.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of a Var.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="halide.Var.same_as">
+<tt class="descname">same_as</tt><big>(</big><em>other</em><big>)</big><a class="headerlink" href="#halide.Var.same_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test if two Vars are the same.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="halide.builtin_image">
+<tt class="descclassname">halide.</tt><tt class="descname">builtin_image</tt><big>(</big><em>filename=None</em>, <em>raw_string=False</em><big>)</big><a class="headerlink" href="#halide.builtin_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>PIL Image instance for one of the built-in input images (in halide/data/ or installed with the package).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="halide.filter_image">
+<tt class="descclassname">halide.</tt><tt class="descname">filter_image</tt><big>(</big><em>input</em>, <em>out_func</em>, <em>in_image</em>, <em>disp_time=False</em>, <em>compile=True</em>, <em>eval_func=None</em>, <em>out_dims=None</em>, <em>times=1</em><big>)</big><a class="headerlink" href="#halide.filter_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function to filter an image filename or numpy array with a Halide Func, returning output Image of the same size.</p>
+<p>Given input and output Funcs, and filename/numpy/PIL array (in_image), returns evaluate. Calling evaluate() returns the output Image.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="halide.flip_xy">
+<tt class="descclassname">halide.</tt><tt class="descname">flip_xy</tt><big>(</big><em>flip=True</em><big>)</big><a class="headerlink" href="#halide.flip_xy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether to flip array dimensions when converting to Numpy/PIL.</p>
+<p>Halide examples use f[x,y] convention. If flip_xy(True) is called (the default) then the variables
+are flipped to I[y,x] convention when converting to Numpy/PIL.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html#document-index">Table Of Contents</a></h3>
+  <ul class="simple">
+</ul>
+
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html#document-index">halide 0.2.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Connelly Barnes et al.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
