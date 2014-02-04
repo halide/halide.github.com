@@ -343,169 +343,201 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00242"></a>00242         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_image.html#aeb623f1be4147da6a6124f5ef453425f" title="Get the size of a dimension.">extent</a>(2);
 <a name="l00243"></a>00243     }
 <a name="l00244"></a>00244 <span class="comment"></span>
-<a name="l00245"></a>00245 <span class="comment">    /** Get a pointer to the element at the min location. */</span>
-<a name="l00246"></a><a class="code" href="class_halide_1_1_image.html#a44efb4fd640ac2d5b5619cf87696137f">00246</a>     T *<a class="code" href="class_halide_1_1_image.html#a44efb4fd640ac2d5b5619cf87696137f" title="Get a pointer to the element at the min location.">data</a>()<span class="keyword"> const </span>{
-<a name="l00247"></a>00247         assert(<a class="code" href="class_halide_1_1_image.html#a76a33d0c8dcc7f7cd7fe39ab20568449" title="Check if this image handle points to actual data.">defined</a>());
-<a name="l00248"></a>00248         T *ptr = origin;
-<a name="l00249"></a>00249         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; dims; i++) {
-<a name="l00250"></a>00250             ptr += <a class="code" href="class_halide_1_1_image.html#a34d618f1121a150d17a4fde4c3a7afe6" title="Get the min coordinate of a dimension.">min</a>(i) * <a class="code" href="class_halide_1_1_image.html#ae5cfa35c848f116d554d764280fe6961" title="Get the number of elements in the buffer between two adjacent elements in the given dimension...">stride</a>(i);
-<a name="l00251"></a>00251         }
-<a name="l00252"></a>00252         <span class="keywordflow">return</span> ptr;
-<a name="l00253"></a>00253     }
-<a name="l00254"></a>00254 <span class="comment"></span>
-<a name="l00255"></a>00255 <span class="comment">    /** Assuming this image is one-dimensional, get the value of the</span>
-<a name="l00256"></a>00256 <span class="comment">     * element at position x */</span>
-<a name="l00257"></a><a class="code" href="class_halide_1_1_image.html#ae4c3fbc5a38fd3141e5f3d5b7543b60d">00257</a>     T <a class="code" href="class_halide_1_1_image.html#ae4c3fbc5a38fd3141e5f3d5b7543b60d" title="Assuming this image is one-dimensional, get the value of the element at position x.">operator()</a>(<span class="keywordtype">int</span> x)<span class="keyword"> const </span>{
-<a name="l00258"></a>00258         <span class="keywordflow">return</span> origin[x];
+<a name="l00245"></a>00245 <span class="comment">    /** Get the minimum coordinate in dimension 0, which by convention</span>
+<a name="l00246"></a>00246 <span class="comment">     * is the coordinate of the left edge of the image. Returns zero</span>
+<a name="l00247"></a>00247 <span class="comment">     * for zero-dimensional images. */</span>
+<a name="l00248"></a><a class="code" href="class_halide_1_1_image.html#abd71a465f9a108bf797d81428c5d35fa">00248</a>     <span class="keywordtype">int</span> <a class="code" href="class_halide_1_1_image.html#abd71a465f9a108bf797d81428c5d35fa" title="Get the minimum coordinate in dimension 0, which by convention is the coordinate of the left edge of ...">left</a>()<span class="keyword"> const </span>{
+<a name="l00249"></a>00249         <span class="keywordflow">if</span> (<a class="code" href="class_halide_1_1_image.html#a569e6ef025cc73b5896ab39a33bfae10" title="Get the dimensionality of the data.">dimensions</a>() &lt; 1) <span class="keywordflow">return</span> 0;
+<a name="l00250"></a>00250         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_image.html#a34d618f1121a150d17a4fde4c3a7afe6" title="Get the min coordinate of a dimension.">min</a>(0);
+<a name="l00251"></a>00251     }
+<a name="l00252"></a>00252 <span class="comment"></span>
+<a name="l00253"></a>00253 <span class="comment">    /** Get the maximum coordinate in dimension 0, which by convention</span>
+<a name="l00254"></a>00254 <span class="comment">     * is the coordinate of the right edge of the image. Returns zero</span>
+<a name="l00255"></a>00255 <span class="comment">     * for zero-dimensional images. */</span>
+<a name="l00256"></a><a class="code" href="class_halide_1_1_image.html#aab55e87601d9d2dc9797061f38e76b13">00256</a>     <span class="keywordtype">int</span> <a class="code" href="class_halide_1_1_image.html#aab55e87601d9d2dc9797061f38e76b13" title="Get the maximum coordinate in dimension 0, which by convention is the coordinate of the right edge of...">right</a>()<span class="keyword"> const </span>{
+<a name="l00257"></a>00257         <span class="keywordflow">if</span> (<a class="code" href="class_halide_1_1_image.html#a569e6ef025cc73b5896ab39a33bfae10" title="Get the dimensionality of the data.">dimensions</a>() &lt; 1) <span class="keywordflow">return</span> 0;
+<a name="l00258"></a>00258         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_image.html#a34d618f1121a150d17a4fde4c3a7afe6" title="Get the min coordinate of a dimension.">min</a>(0) + <a class="code" href="class_halide_1_1_image.html#aeb623f1be4147da6a6124f5ef453425f" title="Get the size of a dimension.">extent</a>(0) - 1;
 <a name="l00259"></a>00259     }
 <a name="l00260"></a>00260 <span class="comment"></span>
-<a name="l00261"></a>00261 <span class="comment">    /** Assuming this image is two-dimensional, get the value of the</span>
-<a name="l00262"></a>00262 <span class="comment">     * element at position (x, y) */</span>
-<a name="l00263"></a><a class="code" href="class_halide_1_1_image.html#a3ea8dbef5d77a85b94b873903be35a8c">00263</a>     T <a class="code" href="class_halide_1_1_image.html#a3ea8dbef5d77a85b94b873903be35a8c" title="Assuming this image is two-dimensional, get the value of the element at position (x, y)">operator()</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y)<span class="keyword"> const </span>{
-<a name="l00264"></a>00264         <span class="keywordflow">return</span> origin[x*stride_0 + y*stride_1];
-<a name="l00265"></a>00265     }
-<a name="l00266"></a>00266 <span class="comment"></span>
-<a name="l00267"></a>00267 <span class="comment">    /** Assuming this image is three-dimensional, get the value of the</span>
-<a name="l00268"></a>00268 <span class="comment">     * element at position (x, y, z) */</span>
-<a name="l00269"></a><a class="code" href="class_halide_1_1_image.html#a3306f06b0f5d4eca9712b6f8d6e8112d">00269</a>     T <a class="code" href="class_halide_1_1_image.html#a3306f06b0f5d4eca9712b6f8d6e8112d" title="Assuming this image is three-dimensional, get the value of the element at position (x...">operator()</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z)<span class="keyword"> const </span>{
-<a name="l00270"></a>00270         <span class="keywordflow">return</span> origin[x*stride_0 + y*stride_1 + z*stride_2];
-<a name="l00271"></a>00271     }
-<a name="l00272"></a>00272 <span class="comment"></span>
-<a name="l00273"></a>00273 <span class="comment">    /** Assuming this image is four-dimensional, get the value of the</span>
-<a name="l00274"></a>00274 <span class="comment">     * element at position (x, y, z, w) */</span>
-<a name="l00275"></a><a class="code" href="class_halide_1_1_image.html#aa9eb7acd79f1509ff0d7964945c071e2">00275</a>     T <a class="code" href="class_halide_1_1_image.html#aa9eb7acd79f1509ff0d7964945c071e2" title="Assuming this image is four-dimensional, get the value of the element at position (x...">operator()</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z, <span class="keywordtype">int</span> w)<span class="keyword"> const </span>{
-<a name="l00276"></a>00276         <span class="keywordflow">return</span> origin[x*stride_0 + y*stride_1 + z*stride_2 + w*stride_3];
-<a name="l00277"></a>00277     }
-<a name="l00278"></a>00278 <span class="comment"></span>
-<a name="l00279"></a>00279 <span class="comment">    /** Assuming this image is one-dimensional, get a reference to the</span>
-<a name="l00280"></a>00280 <span class="comment">     * element at position x */</span>
-<a name="l00281"></a><a class="code" href="class_halide_1_1_image.html#a09427c018127a10cb13238ad0bf238ff">00281</a>     T &amp;<a class="code" href="class_halide_1_1_image.html#a09427c018127a10cb13238ad0bf238ff" title="Assuming this image is one-dimensional, get a reference to the element at position x...">operator()</a>(<span class="keywordtype">int</span> x) {
-<a name="l00282"></a>00282         <span class="keywordflow">return</span> origin[x*stride_0];
-<a name="l00283"></a>00283     }
-<a name="l00284"></a>00284 <span class="comment"></span>
-<a name="l00285"></a>00285 <span class="comment">    /** Assuming this image is two-dimensional, get a reference to the</span>
-<a name="l00286"></a>00286 <span class="comment">     * element at position (x, y) */</span>
-<a name="l00287"></a><a class="code" href="class_halide_1_1_image.html#ad1f215300e2c620e5f831e4ac9e20460">00287</a>     T &amp;<a class="code" href="class_halide_1_1_image.html#ad1f215300e2c620e5f831e4ac9e20460" title="Assuming this image is two-dimensional, get a reference to the element at position (x...">operator()</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y) {
-<a name="l00288"></a>00288         <span class="keywordflow">return</span> origin[x*stride_0 + y*stride_1];
-<a name="l00289"></a>00289     }
-<a name="l00290"></a>00290 <span class="comment"></span>
-<a name="l00291"></a>00291 <span class="comment">    /** Assuming this image is three-dimensional, get a reference to the</span>
-<a name="l00292"></a>00292 <span class="comment">     * element at position (x, y, z) */</span>
-<a name="l00293"></a><a class="code" href="class_halide_1_1_image.html#a6638679b18859fa1724be399be3eb49e">00293</a>     T &amp;<a class="code" href="class_halide_1_1_image.html#a6638679b18859fa1724be399be3eb49e" title="Assuming this image is three-dimensional, get a reference to the element at position (x...">operator()</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) {
-<a name="l00294"></a>00294         <span class="keywordflow">return</span> origin[x*stride_0 + y*stride_1 + z*stride_2];
-<a name="l00295"></a>00295     }
-<a name="l00296"></a>00296 <span class="comment"></span>
-<a name="l00297"></a>00297 <span class="comment">    /** Assuming this image is four-dimensional, get a reference to the</span>
-<a name="l00298"></a>00298 <span class="comment">     * element at position (x, y, z, w) */</span>
-<a name="l00299"></a><a class="code" href="class_halide_1_1_image.html#a6c4744f295dbc08267fedc446e3cf3d2">00299</a>     T &amp;<a class="code" href="class_halide_1_1_image.html#a6c4744f295dbc08267fedc446e3cf3d2" title="Assuming this image is four-dimensional, get a reference to the element at position (x...">operator()</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z, <span class="keywordtype">int</span> w) {
-<a name="l00300"></a>00300         <span class="keywordflow">return</span> origin[x*stride_0 + y*stride_1 + z*stride_2 + w*stride_3];
-<a name="l00301"></a>00301     }
-<a name="l00302"></a>00302 <span class="comment"></span>
-<a name="l00303"></a>00303 <span class="comment">    /** Construct an expression which loads from this image. The</span>
-<a name="l00304"></a>00304 <span class="comment">     * location is composed of enough implicit variables to match the</span>
-<a name="l00305"></a>00305 <span class="comment">     * dimensionality of the image (see \ref Var::implicit) */</span>
-<a name="l00306"></a><a class="code" href="class_halide_1_1_image.html#ad07e970e0a11d730869f97d7c860cb8d">00306</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_image.html#ad07e970e0a11d730869f97d7c860cb8d" title="Construct an expression which loads from this image.">operator()</a>()<span class="keyword"> const </span>{
-<a name="l00307"></a>00307         assert(dims == 0);
-<a name="l00308"></a>00308         std::vector&lt;Expr&gt; args;
-<a name="l00309"></a>00309         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_call.html#a8c80b2eb0a09c870272899bd6b153009">Internal::Call::make</a>(buffer, args);
-<a name="l00310"></a>00310     }
-<a name="l00311"></a>00311 <span class="comment"></span>
-<a name="l00312"></a>00312 <span class="comment">    /** Construct an expression which loads from this image. The</span>
-<a name="l00313"></a>00313 <span class="comment">     * location is extended with enough implicit variables to match</span>
-<a name="l00314"></a>00314 <span class="comment">     * the dimensionality of the image (see \ref Var::implicit) */</span>
-<a name="l00315"></a>00315     <span class="comment">// @{</span>
-<a name="l00316"></a><a class="code" href="class_halide_1_1_image.html#a46002614cf371da1cc886c779253d73f">00316</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_image.html#a46002614cf371da1cc886c779253d73f" title="Construct an expression which loads from this image.">operator()</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> x)<span class="keyword"> const </span>{
-<a name="l00317"></a>00317         std::vector&lt;Expr&gt; args;
-<a name="l00318"></a>00318         <span class="keywordtype">bool</span> placeholder_seen = <span class="keyword">false</span>;
-<a name="l00319"></a>00319         placeholder_seen |= add_implicit_args_if_placeholder(args, x, 1, placeholder_seen);
-<a name="l00320"></a>00320 
-<a name="l00321"></a>00321         assert(args.size() == (size_t)dims);
-<a name="l00322"></a>00322 
-<a name="l00323"></a>00323         <a class="code" href="class_halide_1_1_image_param.html#a2ad06cbed44292f7abe136489d02402b" title="Force the args to a call to an image to be int32.">ImageParam::check_arg_types</a>(buffer.<a class="code" href="class_halide_1_1_buffer.html#a71bd7cfcd2178331016d6833a85c9b69" title="Get the runtime name of this buffer used for debugging.">name</a>(), &amp;args);
-<a name="l00324"></a>00324 
-<a name="l00325"></a>00325         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_call.html#a8c80b2eb0a09c870272899bd6b153009">Internal::Call::make</a>(buffer, args);
-<a name="l00326"></a>00326     }
-<a name="l00327"></a>00327 
-<a name="l00328"></a><a class="code" href="class_halide_1_1_image.html#a963161b32b560155044489236f5a7353">00328</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_image.html#a963161b32b560155044489236f5a7353" title="Construct an expression which loads from this image.">operator()</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> x, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> y)<span class="keyword"> const </span>{
-<a name="l00329"></a>00329         std::vector&lt;Expr&gt; args;
-<a name="l00330"></a>00330         <span class="keywordtype">bool</span> placeholder_seen = <span class="keyword">false</span>;
-<a name="l00331"></a>00331         placeholder_seen |= add_implicit_args_if_placeholder(args, x, 2, placeholder_seen);
-<a name="l00332"></a>00332         placeholder_seen |= add_implicit_args_if_placeholder(args, y, 2, placeholder_seen);
-<a name="l00333"></a>00333 
-<a name="l00334"></a>00334         assert(args.size() == (size_t)dims);
-<a name="l00335"></a>00335 
-<a name="l00336"></a>00336         <a class="code" href="class_halide_1_1_image_param.html#a2ad06cbed44292f7abe136489d02402b" title="Force the args to a call to an image to be int32.">ImageParam::check_arg_types</a>(buffer.<a class="code" href="class_halide_1_1_buffer.html#a71bd7cfcd2178331016d6833a85c9b69" title="Get the runtime name of this buffer used for debugging.">name</a>(), &amp;args);
-<a name="l00337"></a>00337 
-<a name="l00338"></a>00338         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_call.html#a8c80b2eb0a09c870272899bd6b153009">Internal::Call::make</a>(buffer, args);
-<a name="l00339"></a>00339     }
-<a name="l00340"></a>00340 
-<a name="l00341"></a><a class="code" href="class_halide_1_1_image.html#ad0e131cf88222c2d93b4fc039d624168">00341</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_image.html#ad0e131cf88222c2d93b4fc039d624168" title="Construct an expression which loads from this image.">operator()</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> x, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> y, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> z)<span class="keyword"> const </span>{
-<a name="l00342"></a>00342         std::vector&lt;Expr&gt; args;
-<a name="l00343"></a>00343         <span class="keywordtype">bool</span> placeholder_seen = <span class="keyword">false</span>;
-<a name="l00344"></a>00344         placeholder_seen |= add_implicit_args_if_placeholder(args, x, 3, placeholder_seen);
-<a name="l00345"></a>00345         placeholder_seen |= add_implicit_args_if_placeholder(args, y, 3, placeholder_seen);
-<a name="l00346"></a>00346         placeholder_seen |= add_implicit_args_if_placeholder(args, z, 3, placeholder_seen);
-<a name="l00347"></a>00347 
-<a name="l00348"></a>00348         assert(args.size() == (size_t)dims);
-<a name="l00349"></a>00349 
-<a name="l00350"></a>00350         <a class="code" href="class_halide_1_1_image_param.html#a2ad06cbed44292f7abe136489d02402b" title="Force the args to a call to an image to be int32.">ImageParam::check_arg_types</a>(buffer.<a class="code" href="class_halide_1_1_buffer.html#a71bd7cfcd2178331016d6833a85c9b69" title="Get the runtime name of this buffer used for debugging.">name</a>(), &amp;args);
-<a name="l00351"></a>00351 
-<a name="l00352"></a>00352         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_call.html#a8c80b2eb0a09c870272899bd6b153009">Internal::Call::make</a>(buffer, args);
-<a name="l00353"></a>00353     }
+<a name="l00261"></a>00261 <span class="comment">    /** Get the minimum coordinate in dimension 1, which by convention</span>
+<a name="l00262"></a>00262 <span class="comment">     * is the top of the image. Returns zero for zero- or</span>
+<a name="l00263"></a>00263 <span class="comment">     * one-dimensional images. */</span>
+<a name="l00264"></a><a class="code" href="class_halide_1_1_image.html#a637be5f04534aae8e90b853ed0fe6ac3">00264</a>     <span class="keywordtype">int</span> <a class="code" href="class_halide_1_1_image.html#a637be5f04534aae8e90b853ed0fe6ac3" title="Get the minimum coordinate in dimension 1, which by convention is the top of the image.">top</a>()<span class="keyword"> const </span>{
+<a name="l00265"></a>00265         <span class="keywordflow">if</span> (<a class="code" href="class_halide_1_1_image.html#a569e6ef025cc73b5896ab39a33bfae10" title="Get the dimensionality of the data.">dimensions</a>() &lt; 2) <span class="keywordflow">return</span> 0;
+<a name="l00266"></a>00266         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_image.html#a34d618f1121a150d17a4fde4c3a7afe6" title="Get the min coordinate of a dimension.">min</a>(1);
+<a name="l00267"></a>00267     }
+<a name="l00268"></a>00268 <span class="comment"></span>
+<a name="l00269"></a>00269 <span class="comment">    /** Get the maximum coordinate in dimension 1, which by convention</span>
+<a name="l00270"></a>00270 <span class="comment">     * is the bottom of the image. Returns zero for zero- or</span>
+<a name="l00271"></a>00271 <span class="comment">     * one-dimensional images. */</span>
+<a name="l00272"></a><a class="code" href="class_halide_1_1_image.html#ab6aae015fc58f122a1a4dc1b60b27fde">00272</a>     <span class="keywordtype">int</span> <a class="code" href="class_halide_1_1_image.html#ab6aae015fc58f122a1a4dc1b60b27fde" title="Get the maximum coordinate in dimension 1, which by convention is the bottom of the image...">bottom</a>()<span class="keyword"> const </span>{
+<a name="l00273"></a>00273         <span class="keywordflow">if</span> (<a class="code" href="class_halide_1_1_image.html#a569e6ef025cc73b5896ab39a33bfae10" title="Get the dimensionality of the data.">dimensions</a>() &lt; 2) <span class="keywordflow">return</span> 0;
+<a name="l00274"></a>00274         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_image.html#a34d618f1121a150d17a4fde4c3a7afe6" title="Get the min coordinate of a dimension.">min</a>(1) + <a class="code" href="class_halide_1_1_image.html#aeb623f1be4147da6a6124f5ef453425f" title="Get the size of a dimension.">extent</a>(1) - 1;
+<a name="l00275"></a>00275     }
+<a name="l00276"></a>00276 <span class="comment"></span>
+<a name="l00277"></a>00277 <span class="comment">    /** Get a pointer to the element at the min location. */</span>
+<a name="l00278"></a><a class="code" href="class_halide_1_1_image.html#a44efb4fd640ac2d5b5619cf87696137f">00278</a>     T *<a class="code" href="class_halide_1_1_image.html#a44efb4fd640ac2d5b5619cf87696137f" title="Get a pointer to the element at the min location.">data</a>()<span class="keyword"> const </span>{
+<a name="l00279"></a>00279         assert(<a class="code" href="class_halide_1_1_image.html#a76a33d0c8dcc7f7cd7fe39ab20568449" title="Check if this image handle points to actual data.">defined</a>());
+<a name="l00280"></a>00280         T *ptr = origin;
+<a name="l00281"></a>00281         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; dims; i++) {
+<a name="l00282"></a>00282             ptr += <a class="code" href="class_halide_1_1_image.html#a34d618f1121a150d17a4fde4c3a7afe6" title="Get the min coordinate of a dimension.">min</a>(i) * <a class="code" href="class_halide_1_1_image.html#ae5cfa35c848f116d554d764280fe6961" title="Get the number of elements in the buffer between two adjacent elements in the given dimension...">stride</a>(i);
+<a name="l00283"></a>00283         }
+<a name="l00284"></a>00284         <span class="keywordflow">return</span> ptr;
+<a name="l00285"></a>00285     }
+<a name="l00286"></a>00286 <span class="comment"></span>
+<a name="l00287"></a>00287 <span class="comment">    /** Assuming this image is one-dimensional, get the value of the</span>
+<a name="l00288"></a>00288 <span class="comment">     * element at position x */</span>
+<a name="l00289"></a><a class="code" href="class_halide_1_1_image.html#ae4c3fbc5a38fd3141e5f3d5b7543b60d">00289</a>     T <a class="code" href="class_halide_1_1_image.html#ae4c3fbc5a38fd3141e5f3d5b7543b60d" title="Assuming this image is one-dimensional, get the value of the element at position x.">operator()</a>(<span class="keywordtype">int</span> x)<span class="keyword"> const </span>{
+<a name="l00290"></a>00290         <span class="keywordflow">return</span> origin[x];
+<a name="l00291"></a>00291     }
+<a name="l00292"></a>00292 <span class="comment"></span>
+<a name="l00293"></a>00293 <span class="comment">    /** Assuming this image is two-dimensional, get the value of the</span>
+<a name="l00294"></a>00294 <span class="comment">     * element at position (x, y) */</span>
+<a name="l00295"></a><a class="code" href="class_halide_1_1_image.html#a3ea8dbef5d77a85b94b873903be35a8c">00295</a>     T <a class="code" href="class_halide_1_1_image.html#a3ea8dbef5d77a85b94b873903be35a8c" title="Assuming this image is two-dimensional, get the value of the element at position (x, y)">operator()</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y)<span class="keyword"> const </span>{
+<a name="l00296"></a>00296         <span class="keywordflow">return</span> origin[x*stride_0 + y*stride_1];
+<a name="l00297"></a>00297     }
+<a name="l00298"></a>00298 <span class="comment"></span>
+<a name="l00299"></a>00299 <span class="comment">    /** Assuming this image is three-dimensional, get the value of the</span>
+<a name="l00300"></a>00300 <span class="comment">     * element at position (x, y, z) */</span>
+<a name="l00301"></a><a class="code" href="class_halide_1_1_image.html#a3306f06b0f5d4eca9712b6f8d6e8112d">00301</a>     T <a class="code" href="class_halide_1_1_image.html#a3306f06b0f5d4eca9712b6f8d6e8112d" title="Assuming this image is three-dimensional, get the value of the element at position (x...">operator()</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z)<span class="keyword"> const </span>{
+<a name="l00302"></a>00302         <span class="keywordflow">return</span> origin[x*stride_0 + y*stride_1 + z*stride_2];
+<a name="l00303"></a>00303     }
+<a name="l00304"></a>00304 <span class="comment"></span>
+<a name="l00305"></a>00305 <span class="comment">    /** Assuming this image is four-dimensional, get the value of the</span>
+<a name="l00306"></a>00306 <span class="comment">     * element at position (x, y, z, w) */</span>
+<a name="l00307"></a><a class="code" href="class_halide_1_1_image.html#aa9eb7acd79f1509ff0d7964945c071e2">00307</a>     T <a class="code" href="class_halide_1_1_image.html#aa9eb7acd79f1509ff0d7964945c071e2" title="Assuming this image is four-dimensional, get the value of the element at position (x...">operator()</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z, <span class="keywordtype">int</span> w)<span class="keyword"> const </span>{
+<a name="l00308"></a>00308         <span class="keywordflow">return</span> origin[x*stride_0 + y*stride_1 + z*stride_2 + w*stride_3];
+<a name="l00309"></a>00309     }
+<a name="l00310"></a>00310 <span class="comment"></span>
+<a name="l00311"></a>00311 <span class="comment">    /** Assuming this image is one-dimensional, get a reference to the</span>
+<a name="l00312"></a>00312 <span class="comment">     * element at position x */</span>
+<a name="l00313"></a><a class="code" href="class_halide_1_1_image.html#a09427c018127a10cb13238ad0bf238ff">00313</a>     T &amp;<a class="code" href="class_halide_1_1_image.html#a09427c018127a10cb13238ad0bf238ff" title="Assuming this image is one-dimensional, get a reference to the element at position x...">operator()</a>(<span class="keywordtype">int</span> x) {
+<a name="l00314"></a>00314         <span class="keywordflow">return</span> origin[x*stride_0];
+<a name="l00315"></a>00315     }
+<a name="l00316"></a>00316 <span class="comment"></span>
+<a name="l00317"></a>00317 <span class="comment">    /** Assuming this image is two-dimensional, get a reference to the</span>
+<a name="l00318"></a>00318 <span class="comment">     * element at position (x, y) */</span>
+<a name="l00319"></a><a class="code" href="class_halide_1_1_image.html#ad1f215300e2c620e5f831e4ac9e20460">00319</a>     T &amp;<a class="code" href="class_halide_1_1_image.html#ad1f215300e2c620e5f831e4ac9e20460" title="Assuming this image is two-dimensional, get a reference to the element at position (x...">operator()</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y) {
+<a name="l00320"></a>00320         <span class="keywordflow">return</span> origin[x*stride_0 + y*stride_1];
+<a name="l00321"></a>00321     }
+<a name="l00322"></a>00322 <span class="comment"></span>
+<a name="l00323"></a>00323 <span class="comment">    /** Assuming this image is three-dimensional, get a reference to the</span>
+<a name="l00324"></a>00324 <span class="comment">     * element at position (x, y, z) */</span>
+<a name="l00325"></a><a class="code" href="class_halide_1_1_image.html#a6638679b18859fa1724be399be3eb49e">00325</a>     T &amp;<a class="code" href="class_halide_1_1_image.html#a6638679b18859fa1724be399be3eb49e" title="Assuming this image is three-dimensional, get a reference to the element at position (x...">operator()</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z) {
+<a name="l00326"></a>00326         <span class="keywordflow">return</span> origin[x*stride_0 + y*stride_1 + z*stride_2];
+<a name="l00327"></a>00327     }
+<a name="l00328"></a>00328 <span class="comment"></span>
+<a name="l00329"></a>00329 <span class="comment">    /** Assuming this image is four-dimensional, get a reference to the</span>
+<a name="l00330"></a>00330 <span class="comment">     * element at position (x, y, z, w) */</span>
+<a name="l00331"></a><a class="code" href="class_halide_1_1_image.html#a6c4744f295dbc08267fedc446e3cf3d2">00331</a>     T &amp;<a class="code" href="class_halide_1_1_image.html#a6c4744f295dbc08267fedc446e3cf3d2" title="Assuming this image is four-dimensional, get a reference to the element at position (x...">operator()</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> z, <span class="keywordtype">int</span> w) {
+<a name="l00332"></a>00332         <span class="keywordflow">return</span> origin[x*stride_0 + y*stride_1 + z*stride_2 + w*stride_3];
+<a name="l00333"></a>00333     }
+<a name="l00334"></a>00334 <span class="comment"></span>
+<a name="l00335"></a>00335 <span class="comment">    /** Construct an expression which loads from this image. The</span>
+<a name="l00336"></a>00336 <span class="comment">     * location is composed of enough implicit variables to match the</span>
+<a name="l00337"></a>00337 <span class="comment">     * dimensionality of the image (see \ref Var::implicit) */</span>
+<a name="l00338"></a><a class="code" href="class_halide_1_1_image.html#ad07e970e0a11d730869f97d7c860cb8d">00338</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_image.html#ad07e970e0a11d730869f97d7c860cb8d" title="Construct an expression which loads from this image.">operator()</a>()<span class="keyword"> const </span>{
+<a name="l00339"></a>00339         assert(dims == 0);
+<a name="l00340"></a>00340         std::vector&lt;Expr&gt; args;
+<a name="l00341"></a>00341         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_call.html#a8c80b2eb0a09c870272899bd6b153009">Internal::Call::make</a>(buffer, args);
+<a name="l00342"></a>00342     }
+<a name="l00343"></a>00343 <span class="comment"></span>
+<a name="l00344"></a>00344 <span class="comment">    /** Construct an expression which loads from this image. The</span>
+<a name="l00345"></a>00345 <span class="comment">     * location is extended with enough implicit variables to match</span>
+<a name="l00346"></a>00346 <span class="comment">     * the dimensionality of the image (see \ref Var::implicit) */</span>
+<a name="l00347"></a>00347     <span class="comment">// @{</span>
+<a name="l00348"></a><a class="code" href="class_halide_1_1_image.html#a46002614cf371da1cc886c779253d73f">00348</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_image.html#a46002614cf371da1cc886c779253d73f" title="Construct an expression which loads from this image.">operator()</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> x)<span class="keyword"> const </span>{
+<a name="l00349"></a>00349         std::vector&lt;Expr&gt; args;
+<a name="l00350"></a>00350         <span class="keywordtype">bool</span> placeholder_seen = <span class="keyword">false</span>;
+<a name="l00351"></a>00351         placeholder_seen |= add_implicit_args_if_placeholder(args, x, 1, placeholder_seen);
+<a name="l00352"></a>00352 
+<a name="l00353"></a>00353         assert(args.size() == (size_t)dims);
 <a name="l00354"></a>00354 
-<a name="l00355"></a><a class="code" href="class_halide_1_1_image.html#abd8f896e21cecd112795b53ccdf5b922">00355</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_image.html#abd8f896e21cecd112795b53ccdf5b922" title="Construct an expression which loads from this image.">operator()</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> x, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> y, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> z, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> w)<span class="keyword"> const </span>{
-<a name="l00356"></a>00356         std::vector&lt;Expr&gt; args;
-<a name="l00357"></a>00357         <span class="keywordtype">bool</span> placeholder_seen = <span class="keyword">false</span>;
-<a name="l00358"></a>00358         placeholder_seen |= add_implicit_args_if_placeholder(args, x, 4, placeholder_seen);
-<a name="l00359"></a>00359         placeholder_seen |= add_implicit_args_if_placeholder(args, y, 4, placeholder_seen);
-<a name="l00360"></a>00360         placeholder_seen |= add_implicit_args_if_placeholder(args, z, 4, placeholder_seen);
-<a name="l00361"></a>00361         placeholder_seen |= add_implicit_args_if_placeholder(args, w, 4, placeholder_seen);
-<a name="l00362"></a>00362 
-<a name="l00363"></a>00363         assert(args.size() == (size_t)dims);
-<a name="l00364"></a>00364 
-<a name="l00365"></a>00365         <a class="code" href="class_halide_1_1_image_param.html#a2ad06cbed44292f7abe136489d02402b" title="Force the args to a call to an image to be int32.">ImageParam::check_arg_types</a>(buffer.<a class="code" href="class_halide_1_1_buffer.html#a71bd7cfcd2178331016d6833a85c9b69" title="Get the runtime name of this buffer used for debugging.">name</a>(), &amp;args);
-<a name="l00366"></a>00366 
-<a name="l00367"></a>00367         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_call.html#a8c80b2eb0a09c870272899bd6b153009">Internal::Call::make</a>(buffer, args);
-<a name="l00368"></a>00368     }
-<a name="l00369"></a>00369     <span class="comment">// @}</span>
-<a name="l00370"></a>00370 <span class="comment"></span>
-<a name="l00371"></a>00371 <span class="comment">    /** Get a pointer to the raw buffer_t that this image holds */</span>
-<a name="l00372"></a><a class="code" href="class_halide_1_1_image.html#ac3f1590c818a8d2470545f7ae8f4c851">00372</a>     buffer_t *<a class="code" href="class_halide_1_1_image.html#ac3f1590c818a8d2470545f7ae8f4c851" title="Get a pointer to the raw buffer_t that this image holds.">raw_buffer</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> buffer.<a class="code" href="class_halide_1_1_buffer.html#a7ef77f7e2f5eca29ca30283fc27745a5" title="Get a pointer to the raw buffer_t struct that this class wraps.">raw_buffer</a>();}
-<a name="l00373"></a>00373 <span class="comment"></span>
-<a name="l00374"></a>00374 <span class="comment">    /** Get a handle on the Buffer that this image holds */</span>
-<a name="l00375"></a><a class="code" href="class_halide_1_1_image.html#a9862a213c54b88376ea28433a82d2e39">00375</a>     <a class="code" href="class_halide_1_1_image.html#a9862a213c54b88376ea28433a82d2e39" title="Get a handle on the Buffer that this image holds.">operator Buffer</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> buffer;}
-<a name="l00376"></a>00376 <span class="comment"></span>
-<a name="l00377"></a>00377 <span class="comment">    /** Convert this image to an argument to a halide pipeline. */</span>
-<a name="l00378"></a><a class="code" href="class_halide_1_1_image.html#aab9ae19edd62b379da921e004bd0b0ec">00378</a>     <a class="code" href="class_halide_1_1_image.html#aab9ae19edd62b379da921e004bd0b0ec" title="Convert this image to an argument to a halide pipeline.">operator Argument</a>()<span class="keyword"> const </span>{
-<a name="l00379"></a>00379         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a>(buffer);
-<a name="l00380"></a>00380     }
-<a name="l00381"></a>00381 <span class="comment"></span>
-<a name="l00382"></a>00382 <span class="comment">    /** Convert this image to an argument to an extern stage. */</span>
-<a name="l00383"></a><a class="code" href="class_halide_1_1_image.html#a29d2bfe8c1f5f291e04ffb2b5e39abd7">00383</a>     <a class="code" href="class_halide_1_1_image.html#a29d2bfe8c1f5f291e04ffb2b5e39abd7" title="Convert this image to an argument to an extern stage.">operator ExternFuncArgument</a>()<span class="keyword"> const </span>{
-<a name="l00384"></a>00384         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_extern_func_argument.html" title="An argument to an extern-defined Func.">ExternFuncArgument</a>(buffer);
+<a name="l00355"></a>00355         <a class="code" href="class_halide_1_1_image_param.html#a2ad06cbed44292f7abe136489d02402b" title="Force the args to a call to an image to be int32.">ImageParam::check_arg_types</a>(buffer.<a class="code" href="class_halide_1_1_buffer.html#a71bd7cfcd2178331016d6833a85c9b69" title="Get the runtime name of this buffer used for debugging.">name</a>(), &amp;args);
+<a name="l00356"></a>00356 
+<a name="l00357"></a>00357         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_call.html#a8c80b2eb0a09c870272899bd6b153009">Internal::Call::make</a>(buffer, args);
+<a name="l00358"></a>00358     }
+<a name="l00359"></a>00359 
+<a name="l00360"></a><a class="code" href="class_halide_1_1_image.html#a963161b32b560155044489236f5a7353">00360</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_image.html#a963161b32b560155044489236f5a7353" title="Construct an expression which loads from this image.">operator()</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> x, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> y)<span class="keyword"> const </span>{
+<a name="l00361"></a>00361         std::vector&lt;Expr&gt; args;
+<a name="l00362"></a>00362         <span class="keywordtype">bool</span> placeholder_seen = <span class="keyword">false</span>;
+<a name="l00363"></a>00363         placeholder_seen |= add_implicit_args_if_placeholder(args, x, 2, placeholder_seen);
+<a name="l00364"></a>00364         placeholder_seen |= add_implicit_args_if_placeholder(args, y, 2, placeholder_seen);
+<a name="l00365"></a>00365 
+<a name="l00366"></a>00366         assert(args.size() == (size_t)dims);
+<a name="l00367"></a>00367 
+<a name="l00368"></a>00368         <a class="code" href="class_halide_1_1_image_param.html#a2ad06cbed44292f7abe136489d02402b" title="Force the args to a call to an image to be int32.">ImageParam::check_arg_types</a>(buffer.<a class="code" href="class_halide_1_1_buffer.html#a71bd7cfcd2178331016d6833a85c9b69" title="Get the runtime name of this buffer used for debugging.">name</a>(), &amp;args);
+<a name="l00369"></a>00369 
+<a name="l00370"></a>00370         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_call.html#a8c80b2eb0a09c870272899bd6b153009">Internal::Call::make</a>(buffer, args);
+<a name="l00371"></a>00371     }
+<a name="l00372"></a>00372 
+<a name="l00373"></a><a class="code" href="class_halide_1_1_image.html#ad0e131cf88222c2d93b4fc039d624168">00373</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_image.html#ad0e131cf88222c2d93b4fc039d624168" title="Construct an expression which loads from this image.">operator()</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> x, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> y, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> z)<span class="keyword"> const </span>{
+<a name="l00374"></a>00374         std::vector&lt;Expr&gt; args;
+<a name="l00375"></a>00375         <span class="keywordtype">bool</span> placeholder_seen = <span class="keyword">false</span>;
+<a name="l00376"></a>00376         placeholder_seen |= add_implicit_args_if_placeholder(args, x, 3, placeholder_seen);
+<a name="l00377"></a>00377         placeholder_seen |= add_implicit_args_if_placeholder(args, y, 3, placeholder_seen);
+<a name="l00378"></a>00378         placeholder_seen |= add_implicit_args_if_placeholder(args, z, 3, placeholder_seen);
+<a name="l00379"></a>00379 
+<a name="l00380"></a>00380         assert(args.size() == (size_t)dims);
+<a name="l00381"></a>00381 
+<a name="l00382"></a>00382         <a class="code" href="class_halide_1_1_image_param.html#a2ad06cbed44292f7abe136489d02402b" title="Force the args to a call to an image to be int32.">ImageParam::check_arg_types</a>(buffer.<a class="code" href="class_halide_1_1_buffer.html#a71bd7cfcd2178331016d6833a85c9b69" title="Get the runtime name of this buffer used for debugging.">name</a>(), &amp;args);
+<a name="l00383"></a>00383 
+<a name="l00384"></a>00384         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_call.html#a8c80b2eb0a09c870272899bd6b153009">Internal::Call::make</a>(buffer, args);
 <a name="l00385"></a>00385     }
-<a name="l00386"></a>00386 <span class="comment"></span>
-<a name="l00387"></a>00387 <span class="comment">    /** Treating the image as an Expr is equivalent to call it with no</span>
-<a name="l00388"></a>00388 <span class="comment">     * arguments. For example, you can say:</span>
-<a name="l00389"></a>00389 <span class="comment">     *</span>
-<a name="l00390"></a>00390 <span class="comment">     \code</span>
-<a name="l00391"></a>00391 <span class="comment">     Image im(10, 10);</span>
-<a name="l00392"></a>00392 <span class="comment">     Func f;</span>
-<a name="l00393"></a>00393 <span class="comment">     f = im*2;</span>
-<a name="l00394"></a>00394 <span class="comment">     \endcode</span>
-<a name="l00395"></a>00395 <span class="comment">     *</span>
-<a name="l00396"></a>00396 <span class="comment">     * This will define f as a two-dimensional function with value at</span>
-<a name="l00397"></a>00397 <span class="comment">     * position (x, y) equal to twice the value of the image at the</span>
-<a name="l00398"></a>00398 <span class="comment">     * same location.</span>
-<a name="l00399"></a>00399 <span class="comment">     */</span>
-<a name="l00400"></a><a class="code" href="class_halide_1_1_image.html#aab938cc14debc8813364099a7c611a85">00400</a>     <a class="code" href="class_halide_1_1_image.html#aab938cc14debc8813364099a7c611a85" title="Treating the image as an Expr is equivalent to call it with no arguments.">operator Expr</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> (*<span class="keyword">this</span>)(<a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>);}
-<a name="l00401"></a>00401 
-<a name="l00402"></a>00402 
-<a name="l00403"></a>00403 };
-<a name="l00404"></a>00404 
-<a name="l00405"></a>00405 }
-<a name="l00406"></a>00406 
-<a name="l00407"></a>00407 <span class="preprocessor">#endif</span>
+<a name="l00386"></a>00386 
+<a name="l00387"></a><a class="code" href="class_halide_1_1_image.html#abd8f896e21cecd112795b53ccdf5b922">00387</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="class_halide_1_1_image.html#abd8f896e21cecd112795b53ccdf5b922" title="Construct an expression which loads from this image.">operator()</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> x, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> y, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> z, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> w)<span class="keyword"> const </span>{
+<a name="l00388"></a>00388         std::vector&lt;Expr&gt; args;
+<a name="l00389"></a>00389         <span class="keywordtype">bool</span> placeholder_seen = <span class="keyword">false</span>;
+<a name="l00390"></a>00390         placeholder_seen |= add_implicit_args_if_placeholder(args, x, 4, placeholder_seen);
+<a name="l00391"></a>00391         placeholder_seen |= add_implicit_args_if_placeholder(args, y, 4, placeholder_seen);
+<a name="l00392"></a>00392         placeholder_seen |= add_implicit_args_if_placeholder(args, z, 4, placeholder_seen);
+<a name="l00393"></a>00393         placeholder_seen |= add_implicit_args_if_placeholder(args, w, 4, placeholder_seen);
+<a name="l00394"></a>00394 
+<a name="l00395"></a>00395         assert(args.size() == (size_t)dims);
+<a name="l00396"></a>00396 
+<a name="l00397"></a>00397         <a class="code" href="class_halide_1_1_image_param.html#a2ad06cbed44292f7abe136489d02402b" title="Force the args to a call to an image to be int32.">ImageParam::check_arg_types</a>(buffer.<a class="code" href="class_halide_1_1_buffer.html#a71bd7cfcd2178331016d6833a85c9b69" title="Get the runtime name of this buffer used for debugging.">name</a>(), &amp;args);
+<a name="l00398"></a>00398 
+<a name="l00399"></a>00399         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_call.html#a8c80b2eb0a09c870272899bd6b153009">Internal::Call::make</a>(buffer, args);
+<a name="l00400"></a>00400     }
+<a name="l00401"></a>00401     <span class="comment">// @}</span>
+<a name="l00402"></a>00402 <span class="comment"></span>
+<a name="l00403"></a>00403 <span class="comment">    /** Get a pointer to the raw buffer_t that this image holds */</span>
+<a name="l00404"></a><a class="code" href="class_halide_1_1_image.html#ac3f1590c818a8d2470545f7ae8f4c851">00404</a>     buffer_t *<a class="code" href="class_halide_1_1_image.html#ac3f1590c818a8d2470545f7ae8f4c851" title="Get a pointer to the raw buffer_t that this image holds.">raw_buffer</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> buffer.<a class="code" href="class_halide_1_1_buffer.html#a7ef77f7e2f5eca29ca30283fc27745a5" title="Get a pointer to the raw buffer_t struct that this class wraps.">raw_buffer</a>();}
+<a name="l00405"></a>00405 <span class="comment"></span>
+<a name="l00406"></a>00406 <span class="comment">    /** Get a handle on the Buffer that this image holds */</span>
+<a name="l00407"></a><a class="code" href="class_halide_1_1_image.html#a9862a213c54b88376ea28433a82d2e39">00407</a>     <a class="code" href="class_halide_1_1_image.html#a9862a213c54b88376ea28433a82d2e39" title="Get a handle on the Buffer that this image holds.">operator Buffer</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> buffer;}
+<a name="l00408"></a>00408 <span class="comment"></span>
+<a name="l00409"></a>00409 <span class="comment">    /** Convert this image to an argument to a halide pipeline. */</span>
+<a name="l00410"></a><a class="code" href="class_halide_1_1_image.html#aab9ae19edd62b379da921e004bd0b0ec">00410</a>     <a class="code" href="class_halide_1_1_image.html#aab9ae19edd62b379da921e004bd0b0ec" title="Convert this image to an argument to a halide pipeline.">operator Argument</a>()<span class="keyword"> const </span>{
+<a name="l00411"></a>00411         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a>(buffer);
+<a name="l00412"></a>00412     }
+<a name="l00413"></a>00413 <span class="comment"></span>
+<a name="l00414"></a>00414 <span class="comment">    /** Convert this image to an argument to an extern stage. */</span>
+<a name="l00415"></a><a class="code" href="class_halide_1_1_image.html#a29d2bfe8c1f5f291e04ffb2b5e39abd7">00415</a>     <a class="code" href="class_halide_1_1_image.html#a29d2bfe8c1f5f291e04ffb2b5e39abd7" title="Convert this image to an argument to an extern stage.">operator ExternFuncArgument</a>()<span class="keyword"> const </span>{
+<a name="l00416"></a>00416         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_extern_func_argument.html" title="An argument to an extern-defined Func.">ExternFuncArgument</a>(buffer);
+<a name="l00417"></a>00417     }
+<a name="l00418"></a>00418 <span class="comment"></span>
+<a name="l00419"></a>00419 <span class="comment">    /** Treating the image as an Expr is equivalent to call it with no</span>
+<a name="l00420"></a>00420 <span class="comment">     * arguments. For example, you can say:</span>
+<a name="l00421"></a>00421 <span class="comment">     *</span>
+<a name="l00422"></a>00422 <span class="comment">     \code</span>
+<a name="l00423"></a>00423 <span class="comment">     Image im(10, 10);</span>
+<a name="l00424"></a>00424 <span class="comment">     Func f;</span>
+<a name="l00425"></a>00425 <span class="comment">     f = im*2;</span>
+<a name="l00426"></a>00426 <span class="comment">     \endcode</span>
+<a name="l00427"></a>00427 <span class="comment">     *</span>
+<a name="l00428"></a>00428 <span class="comment">     * This will define f as a two-dimensional function with value at</span>
+<a name="l00429"></a>00429 <span class="comment">     * position (x, y) equal to twice the value of the image at the</span>
+<a name="l00430"></a>00430 <span class="comment">     * same location.</span>
+<a name="l00431"></a>00431 <span class="comment">     */</span>
+<a name="l00432"></a><a class="code" href="class_halide_1_1_image.html#aab938cc14debc8813364099a7c611a85">00432</a>     <a class="code" href="class_halide_1_1_image.html#aab938cc14debc8813364099a7c611a85" title="Treating the image as an Expr is equivalent to call it with no arguments.">operator Expr</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> (*<span class="keyword">this</span>)(<a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>);}
+<a name="l00433"></a>00433 
+<a name="l00434"></a>00434 
+<a name="l00435"></a>00435 };
+<a name="l00436"></a>00436 
+<a name="l00437"></a>00437 }
+<a name="l00438"></a>00438 
+<a name="l00439"></a>00439 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

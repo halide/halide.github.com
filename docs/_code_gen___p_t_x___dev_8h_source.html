@@ -113,7 +113,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="keyword">class </span>BasicBlock;
 <a name="l00013"></a>00013 }
 <a name="l00014"></a>00014 
-<a name="l00015"></a>00015 <span class="keyword">namespace </span>Halide { 
+<a name="l00015"></a>00015 <span class="keyword">namespace </span>Halide {
 <a name="l00016"></a>00016 <span class="keyword">namespace </span>Internal {
 <a name="l00017"></a>00017 <span class="comment"></span>
 <a name="l00018"></a>00018 <span class="comment">/** A code generator that emits GPU code from a given Halide stmt. */</span>
@@ -123,17 +123,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00022"></a>00022 <span class="comment"></span>
 <a name="l00023"></a>00023 <span class="comment">    /** Create a PTX device code generator. */</span>
 <a name="l00024"></a>00024     <a class="code" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ad9bea7737be5af36c0c54ecd27ae0128" title="Create a PTX device code generator.">CodeGen_PTX_Dev</a>();
-<a name="l00025"></a>00025         
-<a name="l00026"></a>00026     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a04873b4ed4720bbf8373ed3d69e53498" title="Take a halide statement and compiles it to an llvm module held internally.">compile</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> stmt, std::string name, <span class="keyword">const</span> std::vector&lt;Argument&gt; &amp;args);
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a3c25d2cd60559d8e2e77fae6d38022da" title="Compile a GPU kernel into the module.">add_kernel</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> stmt, std::string name, <span class="keyword">const</span> std::vector&lt;Argument&gt; &amp;args);
 <a name="l00027"></a>00027 <span class="comment"></span>
-<a name="l00028"></a>00028 <span class="comment">    /** (Re)initialize the PTX module. This is separate from compile, since </span>
+<a name="l00028"></a>00028 <span class="comment">    /** (Re)initialize the PTX module. This is separate from compile, since</span>
 <a name="l00029"></a>00029 <span class="comment">     * a PTX device module will often have many kernels compiled into it for</span>
 <a name="l00030"></a>00030 <span class="comment">     * a single pipeline. */</span>
 <a name="l00031"></a>00031     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a644643413c80d0731d08cb96bb12c023" title="(Re)initialize the PTX module.">init_module</a>();
 <a name="l00032"></a>00032 
 <a name="l00033"></a>00033     <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a6e1b76342ee7d40ed5b1b4438010a135">test</a>();
 <a name="l00034"></a>00034 
-<a name="l00035"></a>00035     std::string <a class="code" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a119c46ef3f359efc12890d6f2a305c69">compile_to_src</a>();
+<a name="l00035"></a>00035     std::vector&lt;char&gt; <a class="code" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ab74e5d97fcfc317f3bc56c0c633b067d">compile_to_src</a>();
 <a name="l00036"></a>00036     std::string <a class="code" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#acbd27f8b3a3ca7141e0f3fd79249bede">get_current_kernel_name</a>();
 <a name="l00037"></a>00037 
 <a name="l00038"></a>00038     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a458c6b5a2b808b50e49c4d4e7074e349">dump</a>();

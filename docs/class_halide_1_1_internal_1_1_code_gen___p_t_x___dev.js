@@ -1,10 +1,10 @@
 var class_halide_1_1_internal_1_1_code_gen___p_t_x___dev =
 [
     [ "CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ad9bea7737be5af36c0c54ecd27ae0128", null ],
-    [ "compile", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a04873b4ed4720bbf8373ed3d69e53498", null ],
+    [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a3c25d2cd60559d8e2e77fae6d38022da", null ],
     [ "init_module", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a644643413c80d0731d08cb96bb12c023", null ],
     [ "test", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a6e1b76342ee7d40ed5b1b4438010a135", null ],
-    [ "compile_to_src", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a119c46ef3f359efc12890d6f2a305c69", null ],
+    [ "compile_to_src", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ab74e5d97fcfc317f3bc56c0c633b067d", null ],
     [ "get_current_kernel_name", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#acbd27f8b3a3ca7141e0f3fd79249bede", null ],
     [ "dump", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a458c6b5a2b808b50e49c4d4e7074e349", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a9458eeb41a3d3d19c9814ab9b4c54a83", null ],

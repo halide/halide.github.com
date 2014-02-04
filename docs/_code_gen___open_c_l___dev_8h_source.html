@@ -109,24 +109,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="_code_gen___c_8h.html" title="Defines an IRPrinter that emits C++ code equivalent to a halide stmt.">CodeGen_C.h</a>&quot;</span>
 <a name="l00009"></a>00009 <span class="preprocessor">#include &quot;<a class="code" href="_code_gen___g_p_u___dev_8h.html" title="Defines the code-generator interface for producing GPU device code.">CodeGen_GPU_Dev.h</a>&quot;</span>
 <a name="l00010"></a>00010 
-<a name="l00011"></a>00011 <span class="keyword">namespace </span>Halide { 
+<a name="l00011"></a>00011 <span class="keyword">namespace </span>Halide {
 <a name="l00012"></a>00012 <span class="keyword">namespace </span>Internal {
 <a name="l00013"></a>00013 
 <a name="l00014"></a><a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html">00014</a> <span class="keyword">class </span><a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html">CodeGen_OpenCL_Dev</a> : <span class="keyword">public</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html" title="A code generator that emits GPU code from a given Halide stmt.">CodeGen_GPU_Dev</a> {
 <a name="l00015"></a>00015 <span class="keyword">public</span>:
 <a name="l00016"></a>00016     <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a34df7e3548691e6b7ce3fb0b220cd13c">CodeGen_OpenCL_Dev</a>();
 <a name="l00017"></a>00017 <span class="comment"></span>
-<a name="l00018"></a>00018 <span class="comment">    /** Compile a GPU kernel into the module. This may be called many times </span>
-<a name="l00019"></a>00019 <span class="comment">     * with different kernels, which will all be accumulated into a single </span>
+<a name="l00018"></a>00018 <span class="comment">    /** Compile a GPU kernel into the module. This may be called many times</span>
+<a name="l00019"></a>00019 <span class="comment">     * with different kernels, which will all be accumulated into a single</span>
 <a name="l00020"></a>00020 <span class="comment">     * source module shared by a given Halide pipeline. */</span>
-<a name="l00021"></a>00021     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a976140bc51645b7bc2fe0053c97c4b67" title="Compile a GPU kernel into the module.">compile</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> stmt, std::string name, <span class="keyword">const</span> std::vector&lt;Argument&gt; &amp;args);
+<a name="l00021"></a>00021     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#ae785eaf282a10f132f964ad97d654841" title="Compile a GPU kernel into the module.">add_kernel</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> stmt, std::string name, <span class="keyword">const</span> std::vector&lt;Argument&gt; &amp;args);
 <a name="l00022"></a>00022 <span class="comment"></span>
 <a name="l00023"></a>00023 <span class="comment">    /** (Re)initialize the GPU kernel module. This is separate from compile,</span>
 <a name="l00024"></a>00024 <span class="comment">     * since a GPU device module will often have many kernels compiled into it</span>
 <a name="l00025"></a>00025 <span class="comment">     * for a single pipeline. */</span>
 <a name="l00026"></a>00026     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#ac7a8fc6f6aceeca4efbc8f4ce12524b5" title="(Re)initialize the GPU kernel module.">init_module</a>();
 <a name="l00027"></a>00027 
-<a name="l00028"></a>00028     std::string <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a49fe77f942e7925aa80cb41a1c52450c">compile_to_src</a>();
+<a name="l00028"></a>00028     std::vector&lt;char&gt; <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a98f2a97578f49ea304c2648174528cd1">compile_to_src</a>();
 <a name="l00029"></a>00029 
 <a name="l00030"></a>00030     std::string <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a9de754c4d148ef81c49c320fc3ab777b">get_current_kernel_name</a>();
 <a name="l00031"></a>00031 
@@ -137,19 +137,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00036"></a><a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html">00036</a>     <span class="keyword">class </span><a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html">CodeGen_OpenCL_C</a> : <span class="keyword">public</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___c.html" title="This class emits C++ code equivalent to a halide Stmt.">CodeGen_C</a> {
 <a name="l00037"></a>00037     <span class="keyword">public</span>:
 <a name="l00038"></a><a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a6a21123fb72f367d2c3c45cdbe72622b">00038</a>         <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a6a21123fb72f367d2c3c45cdbe72622b">CodeGen_OpenCL_C</a>(std::ostream &amp;s) : <a class="code" href="class_halide_1_1_internal_1_1_code_gen___c.html" title="This class emits C++ code equivalent to a halide Stmt.">CodeGen_C</a>(s) {}
-<a name="l00039"></a>00039         <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#adb82de23fc4c1e62039cb11a049a1e3d" title="Emit source code equivalent to the given statement, wrapped in a function with the given type signatu...">compile</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> stmt, std::string name, <span class="keyword">const</span> std::vector&lt;Argument&gt; &amp;args);
-<a name="l00040"></a>00040         
+<a name="l00039"></a>00039         <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a665820c12e40bb40834ca7f0f33bd520">add_kernel</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> stmt, std::string name, <span class="keyword">const</span> std::vector&lt;Argument&gt; &amp;args);
+<a name="l00040"></a>00040 
 <a name="l00041"></a>00041     <span class="keyword">protected</span>:
 <a name="l00042"></a>00042         <span class="keyword">using</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a4f96203e82088cc8bef750b909fe86a8">CodeGen_C::visit</a>;
 <a name="l00043"></a>00043         std::string <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#ab2e7ee2ba7339e300558d1a7921578af" title="Emit the C name for a halide type.">print_type</a>(<a class="code" href="struct_halide_1_1_type.html" title="Types in the halide type system.">Type</a> type);
-<a name="l00044"></a>00044         
+<a name="l00044"></a>00044 
 <a name="l00045"></a>00045         <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a4f96203e82088cc8bef750b909fe86a8">visit</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_for.html" title="A for loop.">For</a> *);
 <a name="l00046"></a>00046     };
-<a name="l00047"></a>00047     
+<a name="l00047"></a>00047 
 <a name="l00048"></a><a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#aae721e9d33a9ed7fdec507d42282ebc7">00048</a>     <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html">CodeGen_OpenCL_C</a> *<a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#aae721e9d33a9ed7fdec507d42282ebc7">clc</a>;
-<a name="l00049"></a>00049     
+<a name="l00049"></a>00049 
 <a name="l00050"></a><a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a7960fa0f05f06760163c8f6adf17c6c3">00050</a>     std::ostringstream <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a7960fa0f05f06760163c8f6adf17c6c3">src_stream</a>;
-<a name="l00051"></a>00051     
+<a name="l00051"></a>00051 
 <a name="l00052"></a><a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a75f424594f0f6eb6d19ca85e3fc7287c">00052</a>     std::string <a class="code" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a75f424594f0f6eb6d19ca85e3fc7287c">cur_kernel_name</a>;
 <a name="l00053"></a>00053 };
 <a name="l00054"></a>00054 

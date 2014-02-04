@@ -98,12 +98,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <span class="comment">// This lesson demonstrates how to pass in input images.</span>
 
 <span class="comment">// On linux, you can compile and run it like so:</span>
-<span class="comment">// g++ lesson_02.cpp -I ../include -L ../bin -lHalide -lpthread -ldl -lpng -o lesson_02</span>
-<span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_02 </span>
+<span class="comment">// g++ lesson_02*.cpp -I ../include -L ../bin -lHalide -lpthread -ldl -lpng -o lesson_02</span>
+<span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_02</span>
 
 <span class="comment">// On os x:</span>
-<span class="comment">// g++ lesson_02.cpp -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_02</span>
-<span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_02 </span>
+<span class="comment">// g++ lesson_02*.cpp -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_02</span>
+<span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_02</span>
 
 <span class="comment">// The only Halide header file you need is Halide.h. It includes all of Halide.</span>
 <span class="preprocessor">#include &lt;Halide.h&gt;</span>
@@ -133,10 +133,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <span class="comment">// Normally we&#39;d probably write the whole function definition on</span>
     <span class="comment">// one line. Here we&#39;ll break it apart so we can explain what</span>
     <span class="comment">// we&#39;re doing at every step.</span>
-    
+
     <span class="comment">// For each pixel of the input image.</span>
     <a name="_a3"></a><a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Halide::Expr</a> value = input(x, y, c);
-    
+
     <span class="comment">// Cast it to a floating point value.</span>
     value = Halide::cast&lt;float&gt;(value);
 
@@ -156,10 +156,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     brighter(x, y, c) = value;
 
     <span class="comment">// The equivalent one-liner to all of the above is:</span>
-    <span class="comment">// </span>
+    <span class="comment">//</span>
     <span class="comment">// brighter(x, y, c) = Halide::cast&lt;uint8_t&gt;(min(input(x, y, c) * 1.5f, 255));</span>
-    <span class="comment">// </span>
-    <span class="comment">// In the shorter version: </span>
+    <span class="comment">//</span>
+    <span class="comment">// In the shorter version:</span>
     <span class="comment">// - I skipped the cast to float, because multiplying by 1.5f does</span>
     <span class="comment">//   that automatically.</span>
     <span class="comment">// - I also used integer constants in clamp, because they get cast</span>
@@ -170,7 +170,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <span class="comment">// Remember. All we&#39;ve done so far is build a representation of a</span>
     <span class="comment">// Halide program in memory. We haven&#39;t actually processed any</span>
     <span class="comment">// pixels yet. We haven&#39;t even compiled that Halide program yet.</span>
-    
+
     <span class="comment">// So now we&#39;ll realize the Func. The size of the output image</span>
     <span class="comment">// should match the size of the input image. If we just wanted to</span>
     <span class="comment">// brighten a portion of the input image we could request a</span>
@@ -181,7 +181,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
     <span class="comment">// Save the output for inspection. It should look like a bright parrot.</span>
     save(output, <span class="stringliteral">&quot;brighter.png&quot;</span>);
-    
+
     printf(<span class="stringliteral">&quot;Success!\n&quot;</span>);
     <span class="keywordflow">return</span> 0;
 }

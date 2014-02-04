@@ -1,7 +1,7 @@
 var class_halide_1_1_internal_1_1_code_gen___c =
 [
     [ "CodeGen_C", "class_halide_1_1_internal_1_1_code_gen___c.html#aedca697d15b5bb898cd6a63a8d3020c3", null ],
-    [ "compile", "class_halide_1_1_internal_1_1_code_gen___c.html#abfba81fba6cb4bba6f085783d5bc45c5", null ],
+    [ "compile", "class_halide_1_1_internal_1_1_code_gen___c.html#a190d6a489a980f98db50eb97a3d6fc6c", null ],
     [ "compile_header", "class_halide_1_1_internal_1_1_code_gen___c.html#a088c41418624e571a1f7c26d7eac15ec", null ],
     [ "test", "class_halide_1_1_internal_1_1_code_gen___c.html#a6780888477eca4fa0d4bcb159aec6b1d", null ],
     [ "print_expr", "class_halide_1_1_internal_1_1_code_gen___c.html#af49deb67c9064941d734fc0daa180ef1", null ],
@@ -11,6 +11,7 @@ var class_halide_1_1_internal_1_1_code_gen___c =
     [ "print_assignment", "class_halide_1_1_internal_1_1_code_gen___c.html#a07ea8336574e12e5f736851ca6a97049", null ],
     [ "open_scope", "class_halide_1_1_internal_1_1_code_gen___c.html#a3b9b291608bd137af4f788bae7b859b3", null ],
     [ "close_scope", "class_halide_1_1_internal_1_1_code_gen___c.html#a2c813cd941a2e028ace0daa9d3cd207b", null ],
+    [ "unpack_buffer", "class_halide_1_1_internal_1_1_code_gen___c.html#a7fd5d0676f34880a503f4b93dd118baf", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#a0c7d16220e07b92403dd948dfa042680", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#a2b1758e25983daaa650d70ba38e42a12", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#a841cb4e86cf823c1e964fff0338dd114", null ],
@@ -50,5 +51,6 @@ var class_halide_1_1_internal_1_1_code_gen___c =
     [ "id", "class_halide_1_1_internal_1_1_code_gen___c.html#aa2a0647e17ceb7a5483257016b2f7f93", null ],
     [ "cache", "class_halide_1_1_internal_1_1_code_gen___c.html#af6d9429f3ca6c236a8da179c538009d2", null ],
     [ "allocations", "class_halide_1_1_internal_1_1_code_gen___c.html#afe5d2cc7743f47c402317b561615a93a", null ],
-    [ "heap_allocations", "class_halide_1_1_internal_1_1_code_gen___c.html#a0d867f0e390182e00054eb629181516d", null ]
+    [ "heap_allocations", "class_halide_1_1_internal_1_1_code_gen___c.html#a0d867f0e390182e00054eb629181516d", null ],
+    [ "have_user_context", "class_halide_1_1_internal_1_1_code_gen___c.html#abd679d9da0e82113f78358e8d0a75eb1", null ]
 ];

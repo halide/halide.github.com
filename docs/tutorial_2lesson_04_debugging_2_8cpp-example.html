@@ -98,11 +98,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <span class="comment">// This lesson demonstrates how to follow what Halide is doing at runtime.</span>
 
 <span class="comment">// On linux, you can compile and run it like so:</span>
-<span class="comment">// g++ lesson_04.cpp -I ../include -L ../bin -rdynamic -lHalide -lpthread -ldl -o lesson_04</span>
+<span class="comment">// g++ lesson_04*.cpp -I ../include -L ../bin -rdynamic -lHalide -lpthread -ldl -o lesson_04</span>
 <span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_04</span>
 
 <span class="comment">// On os x:</span>
-<span class="comment">// g++ lesson_04.cpp -I ../include -L ../bin -lHalide -o lesson_04</span>
+<span class="comment">// g++ lesson_04*.cpp -I ../include -L ../bin -lHalide -o lesson_04</span>
 <span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_04</span>
 
 <span class="preprocessor">#include &lt;Halide.h&gt;</span>
@@ -123,7 +123,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
     <span class="comment">// Realize the function over an 8x8 region.</span>
     printf(<span class="stringliteral">&quot;Evaluating gradient\n&quot;</span>);
-    <a name="_a3"></a><a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a name="a4"></a><a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(8, 8);
+    <a name="_a3"></a><a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a name="a4"></a><a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(8, 8);
 
     <span class="comment">// This will print out all the times gradient(x, y) gets</span>
     <span class="comment">// evaluated.</span>
@@ -154,7 +154,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <span class="comment">// on linux you can control it manually using the environment</span>
     <span class="comment">// variable HL_NUMTHREADS.</span>
     printf(<span class="stringliteral">&quot;\nEvaluating parallel_gradient\n&quot;</span>);
-    parallel_gradient.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(8, 8);
+    parallel_gradient.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(8, 8);
 
     printf(<span class="stringliteral">&quot;Success!\n&quot;</span>);
     <span class="keywordflow">return</span> 0;

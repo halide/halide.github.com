@@ -121,15 +121,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a7650dd79313f22c735d31da731717fab">CodeGen_X86</a> (<a class="el" href="struct_halide_1_1_target.html">Target</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an x86 code generator.  <a href="#a7650dd79313f22c735d31da731717fab"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a13247cc2ab0e241071e87bf45790e38c">compile</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> stmt, std::string name, const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;args)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile to an internally-held llvm module.  <a href="#a13247cc2ab0e241071e87bf45790e38c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a20e3b2385fbdf14ce2ed32998fffe85a">compile</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> stmt, std::string name, const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;args, const std::vector&lt; <a class="el" href="class_halide_1_1_buffer.html">Buffer</a> &gt; &amp;images_to_embed)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile to an internally-held llvm module.  <a href="#a20e3b2385fbdf14ce2ed32998fffe85a"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a81a988df6d681a6a12ce65c54e06b771">test</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#ac47533c2136440359d01e9abf46d4e06">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_load.html">Load</a> *)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Functions for clamped vector load.  <a href="#ac47533c2136440359d01e9abf46d4e06"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a63d6d3f74f90936279977999aa216544">mcpu</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">What should be passed as -mcpu, -mattrs, and related for compilation.  <a href="#a63d6d3f74f90936279977999aa216544"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a84f21b8067ee4bf1315e6eeabeffd8f9">mattrs</a> () const </td></tr>
@@ -180,12 +178,12 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a13247cc2ab0e241071e87bf45790e38c"></a><!-- doxytag: member="Halide::Internal::CodeGen_X86::compile" ref="a13247cc2ab0e241071e87bf45790e38c" args="(Stmt stmt, std::string name, const std::vector&lt; Argument &gt; &amp;args)" -->
+<a class="anchor" id="a20e3b2385fbdf14ce2ed32998fffe85a"></a><!-- doxytag: member="Halide::Internal::CodeGen_X86::compile" ref="a20e3b2385fbdf14ce2ed32998fffe85a" args="(Stmt stmt, std::string name, const std::vector&lt; Argument &gt; &amp;args, const std::vector&lt; Buffer &gt; &amp;images_to_embed)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a13247cc2ab0e241071e87bf45790e38c">Halide::Internal::CodeGen_X86::compile</a> </td>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a20e3b2385fbdf14ce2ed32998fffe85a">Halide::Internal::CodeGen_X86::compile</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td>
           <td class="paramname"><em>stmt</em>, </td>
@@ -200,7 +198,13 @@ Protected Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
+          <td class="paramname"><em>args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="class_halide_1_1_buffer.html">Buffer</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>images_to_embed</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -214,9 +218,9 @@ Protected Attributes</h2></td></tr>
 <p>Compile to an internally-held llvm module. </p>
 <p>Takes a halide statement, the name of the function produced, and the arguments to the function produced. After calling this, call CodeGen::compile_to_file or CodeGen::compile_to_function_pointer to get at the x86 machine code. </p>
 
-<p>Reimplemented from <a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#aaf2dec7490ba0ea0cf45d6ea9b7654ab">Halide::Internal::CodeGen</a>.</p>
+<p>Reimplemented from <a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#a38b749e4dcfaf727a0967e058af7956c">Halide::Internal::CodeGen</a>.</p>
 
-<p>Reimplemented in <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a61c1fe7dae7ad67402d90ccef72b459d">Halide::Internal::CodeGen_GPU_Host</a>.</p>
+<p>Reimplemented in <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a674403d68724fc73e2d7a5a38d5c57ff">Halide::Internal::CodeGen_GPU_Host</a>.</p>
 
 </div>
 </div>
@@ -390,27 +394,6 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac47533c2136440359d01e9abf46d4e06"></a><!-- doxytag: member="Halide::Internal::CodeGen_X86::visit" ref="ac47533c2136440359d01e9abf46d4e06" args="(const Load *)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a">Halide::Internal::CodeGen_X86::visit</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_halide_1_1_internal_1_1_load.html">Load</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td><code> [protected, virtual]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Functions for clamped vector load. </p>
-
-<p>Reimplemented from <a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#acd59f75c734209aaaec08b2ed0446b40">Halide::Internal::CodeGen</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a63d6d3f74f90936279977999aa216544"></a><!-- doxytag: member="Halide::Internal::CodeGen_X86::mcpu" ref="a63d6d3f74f90936279977999aa216544" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -486,7 +469,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_code_gen___x86_8h_source.html#l00032">32</a> of file <a class="el" href="_code_gen___x86_8h_source.html">CodeGen_X86.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___x86_8h_source.html#l00034">34</a> of file <a class="el" href="_code_gen___x86_8h_source.html">CodeGen_X86.h</a>.</p>
 
 </div>
 </div>

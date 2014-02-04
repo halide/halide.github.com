@@ -83,5 +83,7 @@ var _i_r_operator_8h =
     [ "lerp", "namespace_halide.html#a55158f5f229510194c425dfae256d530", null ],
     [ "popcount", "namespace_halide.html#a41dd5e65a4c167c112de447c628c099a", null ],
     [ "count_leading_zeros", "namespace_halide.html#a0e39642cc99af99045ec5f424cde8709", null ],
-    [ "count_trailing_zeros", "namespace_halide.html#aa0042ff9c2283a15cda1a1e72de460ad", null ]
+    [ "count_trailing_zeros", "namespace_halide.html#aa0042ff9c2283a15cda1a1e72de460ad", null ],
+    [ "undef", "namespace_halide.html#a9389bcacbed602df70eae94826312e03", null ],
+    [ "undef", "namespace_halide.html#a4f29c5417077b940483e88cc9c1c74b2", null ]
 ];

@@ -2,7 +2,7 @@ var class_halide_1_1_internal_1_1_code_gen___g_p_u___host =
 [
     [ "CodeGen_GPU_Host", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac4be433831b0ed0b6b1a9cd2a31e86dd", null ],
     [ "~CodeGen_GPU_Host", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a95f9951ba7094fa687d93cfbf390c4c8", null ],
-    [ "compile", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a61c1fe7dae7ad67402d90ccef72b459d", null ],
+    [ "compile", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a674403d68724fc73e2d7a5a38d5c57ff", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a00cce86be84e0efdbd9d5a08f4c01c8d", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#aa658c98ec21a7befbc79071fb66aa88e", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ab03b5c0d1c97ee9f35f7fa8d28af790e", null ],

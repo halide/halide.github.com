@@ -117,11 +117,11 @@ Classes</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a34df7e3548691e6b7ce3fb0b220cd13c">CodeGen_OpenCL_Dev</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a976140bc51645b7bc2fe0053c97c4b67">compile</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> stmt, std::string name, const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;args)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile a GPU kernel into the module.  <a href="#a976140bc51645b7bc2fe0053c97c4b67"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#ae785eaf282a10f132f964ad97d654841">add_kernel</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> stmt, std::string name, const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;args)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile a GPU kernel into the module.  <a href="#ae785eaf282a10f132f964ad97d654841"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#ac7a8fc6f6aceeca4efbc8f4ce12524b5">init_module</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">(Re)initialize the GPU kernel module.  <a href="#ac7a8fc6f6aceeca4efbc8f4ce12524b5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a49fe77f942e7925aa80cb41a1c52450c">compile_to_src</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; char &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a98f2a97578f49ea304c2648174528cd1">compile_to_src</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a9de754c4d148ef81c49c320fc3ab777b">get_current_kernel_name</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a9351f6e8a5140416c2fc732e4ea89f7c">dump</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
@@ -151,12 +151,12 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a976140bc51645b7bc2fe0053c97c4b67"></a><!-- doxytag: member="Halide::Internal::CodeGen_OpenCL_Dev::compile" ref="a976140bc51645b7bc2fe0053c97c4b67" args="(Stmt stmt, std::string name, const std::vector&lt; Argument &gt; &amp;args)" -->
+<a class="anchor" id="ae785eaf282a10f132f964ad97d654841"></a><!-- doxytag: member="Halide::Internal::CodeGen_OpenCL_Dev::add_kernel" ref="ae785eaf282a10f132f964ad97d654841" args="(Stmt stmt, std::string name, const std::vector&lt; Argument &gt; &amp;args)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a976140bc51645b7bc2fe0053c97c4b67">Halide::Internal::CodeGen_OpenCL_Dev::compile</a> </td>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#ae785eaf282a10f132f964ad97d654841">Halide::Internal::CodeGen_OpenCL_Dev::add_kernel</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td>
           <td class="paramname"><em>stmt</em>, </td>
@@ -185,7 +185,7 @@ Protected Attributes</h2></td></tr>
 <p>Compile a GPU kernel into the module. </p>
 <p>This may be called many times with different kernels, which will all be accumulated into a single source module shared by a given <a class="el" href="namespace_halide.html">Halide</a> pipeline. </p>
 
-<p>Implements <a class="el" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a12a2f6c92fb17c0d4da3113dd7330f82">Halide::Internal::CodeGen_GPU_Dev</a>.</p>
+<p>Implements <a class="el" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a68ce3e6da0ede52095fd82515be4181b">Halide::Internal::CodeGen_GPU_Dev</a>.</p>
 
 </div>
 </div>
@@ -210,12 +210,12 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a49fe77f942e7925aa80cb41a1c52450c"></a><!-- doxytag: member="Halide::Internal::CodeGen_OpenCL_Dev::compile_to_src" ref="a49fe77f942e7925aa80cb41a1c52450c" args="()" -->
+<a class="anchor" id="a98f2a97578f49ea304c2648174528cd1"></a><!-- doxytag: member="Halide::Internal::CodeGen_OpenCL_Dev::compile_to_src" ref="a98f2a97578f49ea304c2648174528cd1" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a49fe77f942e7925aa80cb41a1c52450c">Halide::Internal::CodeGen_OpenCL_Dev::compile_to_src</a> </td>
+          <td class="memname">std::vector&lt;char&gt; <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a98f2a97578f49ea304c2648174528cd1">Halide::Internal::CodeGen_OpenCL_Dev::compile_to_src</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td><code> [virtual]</code></td>
@@ -224,7 +224,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Implements <a class="el" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#abc4d743e70b39bdf33069a385f61b044">Halide::Internal::CodeGen_GPU_Dev</a>.</p>
+<p>Implements <a class="el" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a614e2f87474143ebd10b0bfd0a5883a0">Halide::Internal::CodeGen_GPU_Dev</a>.</p>
 
 </div>
 </div>

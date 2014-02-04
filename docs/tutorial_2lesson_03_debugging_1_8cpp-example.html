@@ -98,11 +98,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <span class="comment">// This lesson demonstrates how to inspect what the Halide compiler is producing.</span>
 
 <span class="comment">// On linux, you can compile and run it like so:</span>
-<span class="comment">// g++ lesson_03.cpp -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_03</span>
+<span class="comment">// g++ lesson_03*.cpp -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_03</span>
 <span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_03</span>
 
 <span class="comment">// On os x:</span>
-<span class="comment">// g++ lesson_03.cpp -I ../include -L ../bin -lHalide -o lesson_03</span>
+<span class="comment">// g++ lesson_03*.cpp -I ../include -L ../bin -lHalide -o lesson_03</span>
 <span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_03</span>
 
 <span class="preprocessor">#include &lt;Halide.h&gt;</span>
@@ -123,16 +123,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <span class="comment">// name for debugging purposes.</span>
     <a name="_a0"></a><a class="code" href="class_halide_1_1_func.html" title="A halide function.">Func</a> gradient(<span class="stringliteral">&quot;gradient&quot;</span>);
     <a name="_a1"></a><a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> x(<span class="stringliteral">&quot;x&quot;</span>), y(<span class="stringliteral">&quot;y&quot;</span>);
-    gradient(x, y) = x + y;    
+    gradient(x, y) = x + y;
 
     <span class="comment">// Realize the function to produce an output image. We&#39;ll keep it</span>
     <span class="comment">// very small for this lesson.</span>
-    <a name="_a2"></a><a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a name="a3"></a><a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(8, 8);
+    <a name="_a2"></a><a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a name="a3"></a><a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(8, 8);
 
     <span class="comment">// That line compiled and ran the pipeline. Try running this</span>
     <span class="comment">// lesson with the environment variable HL_DEBUG_CODEGEN set to</span>
     <span class="comment">// 1. It will print out the various stages of compilation, and a</span>
-    <span class="comment">// pseudocode representation of the final pipeline. </span>
+    <span class="comment">// pseudocode representation of the final pipeline.</span>
 
     <span class="comment">// If you set HL_DEBUG_CODEGEN to a higher number, you can see</span>
     <span class="comment">// more and more details of how Halide compiles your pipeline.</span>

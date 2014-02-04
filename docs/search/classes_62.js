@@ -6,5 +6,6 @@ var searchData=
   ['bound',['Bound',['../struct_halide_1_1_internal_1_1_schedule_1_1_bound.html',1,'Halide::Internal::Schedule']]],
   ['broadcast',['Broadcast',['../struct_halide_1_1_internal_1_1_broadcast.html',1,'Halide::Internal']]],
   ['buffer',['Buffer',['../class_halide_1_1_buffer.html',1,'Halide']]],
-  ['buffercontents',['BufferContents',['../struct_halide_1_1_internal_1_1_buffer_contents.html',1,'Halide::Internal']]]
+  ['buffercontents',['BufferContents',['../struct_halide_1_1_internal_1_1_buffer_contents.html',1,'Halide::Internal']]],
+  ['bufferref',['BufferRef',['../struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html',1,'Halide::Internal::Closure']]]
 ];

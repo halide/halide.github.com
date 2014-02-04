@@ -10,8 +10,8 @@ var _util_8h =
     [ "int_to_string", "namespace_halide_1_1_internal.html#a0aeffeff26578021bc780e1506bfa448", null ],
     [ "reinterpret_bits", "namespace_halide_1_1_internal.html#a94816d6979fdadb6e206a5d0a668e008", null ],
     [ "unique_name", "namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9", null ],
-    [ "unique_name", "namespace_halide_1_1_internal.html#a22aa5e173f0154dbdbc9efc4c6cfb8c4", null ],
+    [ "unique_name", "namespace_halide_1_1_internal.html#aafd40e47c06b4ccb5d2173528ae0523f", null ],
     [ "starts_with", "namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed", null ],
     [ "ends_with", "namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28", null ],
-    [ "base_name", "namespace_halide_1_1_internal.html#a771a564a2b084a26b0ebd88bbe1261c4", null ]
+    [ "base_name", "namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516", null ]
 ];

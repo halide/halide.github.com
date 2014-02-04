@@ -125,40 +125,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00024"></a>00024 <span class="comment">     * CodeGen::compile_to_file or</span>
 <a name="l00025"></a>00025 <span class="comment">     * CodeGen::compile_to_function_pointer to get at the x86 machine</span>
 <a name="l00026"></a>00026 <span class="comment">     * code. */</span>
-<a name="l00027"></a>00027     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a13247cc2ab0e241071e87bf45790e38c" title="Compile to an internally-held llvm module.">compile</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> stmt, std::string name, <span class="keyword">const</span> std::vector&lt;Argument&gt; &amp;args);
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029     <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a81a988df6d681a6a12ce65c54e06b771">test</a>();
+<a name="l00027"></a>00027     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a20e3b2385fbdf14ce2ed32998fffe85a" title="Compile to an internally-held llvm module.">compile</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> stmt, std::string name,
+<a name="l00028"></a>00028                  <span class="keyword">const</span> std::vector&lt;Argument&gt; &amp;args,
+<a name="l00029"></a>00029                  <span class="keyword">const</span> std::vector&lt;Buffer&gt; &amp;images_to_embed);
 <a name="l00030"></a>00030 
-<a name="l00031"></a>00031 <span class="keyword">protected</span>:
-<a name="l00032"></a><a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#abca76d9d2de60c64a17d3a496ba69177">00032</a>     <a class="code" href="struct_halide_1_1_target.html">Target</a> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#abca76d9d2de60c64a17d3a496ba69177">target</a>;
-<a name="l00033"></a>00033 <span class="comment"></span>
-<a name="l00034"></a>00034 <span class="comment">    /** Generate a call to an sse or avx intrinsic */</span>
-<a name="l00035"></a>00035     <span class="comment">// @{</span>
-<a name="l00036"></a>00036     llvm::Value *<a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#afa6d4ee1fd06c400702821ffff234241" title="Generate a call to an sse or avx intrinsic.">call_intrin</a>(<a class="code" href="struct_halide_1_1_type.html" title="Types in the halide type system.">Type</a> t, <span class="keyword">const</span> std::string &amp;name, std::vector&lt;Expr&gt;);
-<a name="l00037"></a>00037     llvm::Value *<a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#afa6d4ee1fd06c400702821ffff234241" title="Generate a call to an sse or avx intrinsic.">call_intrin</a>(llvm::Type *t, <span class="keyword">const</span> std::string &amp;name, std::vector&lt;llvm::Value *&gt;);
-<a name="l00038"></a>00038     <span class="comment">// @}</span>
-<a name="l00039"></a>00039 
-<a name="l00040"></a>00040     <span class="keyword">using</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a" title="Nodes for which we want to emit specific sse/avx intrinsics.">CodeGen_Posix::visit</a>;
-<a name="l00041"></a>00041 <span class="comment"></span>
-<a name="l00042"></a>00042 <span class="comment">    /** Nodes for which we want to emit specific sse/avx intrinsics */</span>
-<a name="l00043"></a>00043     <span class="comment">// @{</span>
-<a name="l00044"></a>00044     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a" title="Nodes for which we want to emit specific sse/avx intrinsics.">visit</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_cast.html" title="Cast a node from one type to another.">Cast</a> *);
-<a name="l00045"></a>00045     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a" title="Nodes for which we want to emit specific sse/avx intrinsics.">visit</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_div.html" title="The ratio of two expressions.">Div</a> *);
-<a name="l00046"></a>00046     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a" title="Nodes for which we want to emit specific sse/avx intrinsics.">visit</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_min.html" title="The lesser of two values.">Min</a> *);
-<a name="l00047"></a>00047     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a" title="Nodes for which we want to emit specific sse/avx intrinsics.">visit</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_max.html" title="The greater of two values.">Max</a> *);
-<a name="l00048"></a>00048     <span class="comment">// @}</span>
-<a name="l00049"></a>00049 <span class="comment"></span>
-<a name="l00050"></a>00050 <span class="comment">    /** Functions for clamped vector load */</span>
-<a name="l00051"></a>00051     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a" title="Nodes for which we want to emit specific sse/avx intrinsics.">visit</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_load.html" title="Load a value from a named buffer.">Load</a> *);
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053     std::string <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a63d6d3f74f90936279977999aa216544" title="What should be passed as -mcpu, -mattrs, and related for compilation.">mcpu</a>() <span class="keyword">const</span>;
-<a name="l00054"></a>00054     std::string <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a84f21b8067ee4bf1315e6eeabeffd8f9" title="What should be passed as -mcpu, -mattrs, and related for compilation.">mattrs</a>() <span class="keyword">const</span>;
-<a name="l00055"></a>00055     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#ad2875ba4fae79ed07d9fea0062368e84" title="What should be passed as -mcpu, -mattrs, and related for compilation.">use_soft_float_abi</a>() <span class="keyword">const</span>;
-<a name="l00056"></a>00056 };
-<a name="l00057"></a>00057 
-<a name="l00058"></a>00058 }}
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060 <span class="preprocessor">#endif</span>
+<a name="l00031"></a>00031     <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a81a988df6d681a6a12ce65c54e06b771">test</a>();
+<a name="l00032"></a>00032 
+<a name="l00033"></a>00033 <span class="keyword">protected</span>:
+<a name="l00034"></a><a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#abca76d9d2de60c64a17d3a496ba69177">00034</a>     <a class="code" href="struct_halide_1_1_target.html">Target</a> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#abca76d9d2de60c64a17d3a496ba69177">target</a>;
+<a name="l00035"></a>00035 <span class="comment"></span>
+<a name="l00036"></a>00036 <span class="comment">    /** Generate a call to an sse or avx intrinsic */</span>
+<a name="l00037"></a>00037     <span class="comment">// @{</span>
+<a name="l00038"></a>00038     llvm::Value *<a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#afa6d4ee1fd06c400702821ffff234241" title="Generate a call to an sse or avx intrinsic.">call_intrin</a>(<a class="code" href="struct_halide_1_1_type.html" title="Types in the halide type system.">Type</a> t, <span class="keyword">const</span> std::string &amp;name, std::vector&lt;Expr&gt;);
+<a name="l00039"></a>00039     llvm::Value *<a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#afa6d4ee1fd06c400702821ffff234241" title="Generate a call to an sse or avx intrinsic.">call_intrin</a>(llvm::Type *t, <span class="keyword">const</span> std::string &amp;name, std::vector&lt;llvm::Value *&gt;);
+<a name="l00040"></a>00040     <span class="comment">// @}</span>
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042     <span class="keyword">using</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a" title="Nodes for which we want to emit specific sse/avx intrinsics.">CodeGen_Posix::visit</a>;
+<a name="l00043"></a>00043 <span class="comment"></span>
+<a name="l00044"></a>00044 <span class="comment">    /** Nodes for which we want to emit specific sse/avx intrinsics */</span>
+<a name="l00045"></a>00045     <span class="comment">// @{</span>
+<a name="l00046"></a>00046     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a" title="Nodes for which we want to emit specific sse/avx intrinsics.">visit</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_cast.html" title="Cast a node from one type to another.">Cast</a> *);
+<a name="l00047"></a>00047     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a" title="Nodes for which we want to emit specific sse/avx intrinsics.">visit</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_div.html" title="The ratio of two expressions.">Div</a> *);
+<a name="l00048"></a>00048     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a" title="Nodes for which we want to emit specific sse/avx intrinsics.">visit</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_min.html" title="The lesser of two values.">Min</a> *);
+<a name="l00049"></a>00049     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a" title="Nodes for which we want to emit specific sse/avx intrinsics.">visit</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_max.html" title="The greater of two values.">Max</a> *);
+<a name="l00050"></a>00050     <span class="comment">// @}</span>
+<a name="l00051"></a>00051 
+<a name="l00052"></a>00052     std::string <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a63d6d3f74f90936279977999aa216544" title="What should be passed as -mcpu, -mattrs, and related for compilation.">mcpu</a>() <span class="keyword">const</span>;
+<a name="l00053"></a>00053     std::string <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a84f21b8067ee4bf1315e6eeabeffd8f9" title="What should be passed as -mcpu, -mattrs, and related for compilation.">mattrs</a>() <span class="keyword">const</span>;
+<a name="l00054"></a>00054     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___x86.html#ad2875ba4fae79ed07d9fea0062368e84" title="What should be passed as -mcpu, -mattrs, and related for compilation.">use_soft_float_abi</a>() <span class="keyword">const</span>;
+<a name="l00055"></a>00055 };
+<a name="l00056"></a>00056 
+<a name="l00057"></a>00057 }}
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

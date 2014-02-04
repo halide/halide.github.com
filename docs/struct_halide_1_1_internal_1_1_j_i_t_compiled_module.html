@@ -114,12 +114,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#af939734fd6001fb8d0c7db7d19d8769c">ErrorHandler</a> )(const char *)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of a halide runtime error handler function.  <a href="#af939734fd6001fb8d0c7db7d19d8769c"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a36aab88853072f2c1e2d6a6887617e12">HalideTask</a> )(int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a custom parallel for loop launcher.  <a href="#a36aab88853072f2c1e2d6a6887617e12"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a9d678f8fb81f834e3cfa6284a4e3adbf">TraceFn</a> )(const char *, int, int, int, int, int, const void *, int, const int *)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a custom trace function.  <a href="#a9d678f8fb81f834e3cfa6284a4e3adbf"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#accabc8aeb0680e565022fcf07e0a908f">ErrorHandler</a> )(void *user_context, const char *)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of a halide runtime error handler function.  <a href="#accabc8aeb0680e565022fcf07e0a908f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d">HalideTask</a> )(void *user_context, int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a custom parallel for loop launcher.  <a href="#a58653dab48a781aea9a0ea9e12d1057d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a9bab1c63490999f1e02e62bce0a82af7">TraceFn</a> )(void *, const char *, int, int, int, int, int, int, const void *, int, const int *)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a custom trace function.  <a href="#a9bab1c63490999f1e02e62bce0a82af7"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a5b9aca7165f01484c9637c966be9c95e">JITCompiledModule</a> ()</td></tr>
@@ -131,26 +131,24 @@ Public Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A pointer to the raw halide function.  <a href="#abb50869357939bc3d2d064148c3d26e7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a944aab2343d1255b8c17216b00985b6e">wrapped_function</a> )(const void **)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A slightly more type-safe wrapper around the raw halide module.  <a href="#a944aab2343d1255b8c17216b00985b6e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a7ce969a1e9e18d9038cb93bb14f218fc">set_error_handler</a> )(<a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#af939734fd6001fb8d0c7db7d19d8769c">ErrorHandler</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a7ce969a1e9e18d9038cb93bb14f218fc">set_error_handler</a> )(<a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#accabc8aeb0680e565022fcf07e0a908f">ErrorHandler</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the runtime error handler for this module.  <a href="#a7ce969a1e9e18d9038cb93bb14f218fc"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a676cad5275632267e4edbc707d16d7a6">set_custom_allocator</a> )(void *(*malloc)(size_t), void(*free)(void *))</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a custom malloc and free for this module to use.  <a href="#a676cad5275632267e4edbc707d16d7a6"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ac87c1e0b4b18568960ac2e0a29cb2f28">set_custom_do_par_for</a> )(int(*custom_do_par_for)(<a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a36aab88853072f2c1e2d6a6887617e12">HalideTask</a>, int, int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *))</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#af4443bba285d091fe8d6b753fa5e8ae1">set_custom_do_task</a> )(int(*custom_do_task)(<a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a36aab88853072f2c1e2d6a6887617e12">HalideTask</a>, int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *))</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a custom do parallel task.  <a href="#af4443bba285d091fe8d6b753fa5e8ae1"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4ba9506581bb85f307d1d9945561ac2b">set_custom_trace</a> )(<a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a9d678f8fb81f834e3cfa6284a4e3adbf">TraceFn</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a18efcb74c1624c65e85ab10bea1b41a2">set_custom_allocator</a> )(void *(*malloc)(void *user_context, size_t), void(*free)(void *user_context, void *ptr))</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a custom malloc and free for this module to use.  <a href="#a18efcb74c1624c65e85ab10bea1b41a2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a66f9644df7cc48885ff678afd4a86e70">set_custom_do_par_for</a> )(int(*custom_do_par_for)(void *user_context, <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d">HalideTask</a>, int, int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a2d8aaa9a0e12703fc8b54daea6ff2e02">set_custom_do_task</a> )(int(*custom_do_task)(void *user_context, <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d">HalideTask</a>, int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *))</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a custom do parallel task.  <a href="#a2d8aaa9a0e12703fc8b54daea6ff2e02"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4ba9506581bb85f307d1d9945561ac2b">set_custom_trace</a> )(<a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a9bab1c63490999f1e02e62bce0a82af7">TraceFn</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a6510aea2ffc1449b8d4a2f09f7db3b33">shutdown_thread_pool</a> )()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Shutdown the thread pool maintained by this JIT module.  <a href="#a6510aea2ffc1449b8d4a2f09f7db3b33"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a81dda3a5339a2a6787feb81493ce4812">shutdown_trace</a> )()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the tracing file this module may be writing to.  <a href="#a81dda3a5339a2a6787feb81493ce4812"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html">IntrusivePtr</a>&lt; JITModuleHolder &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#aa1315c775b95b2f957f8d15dc68338e5">module</a></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4b85f2dde7de8eedd67d830bc7d1da9a">copy_to_host</a> )(struct buffer_t *)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">JITed helpers to interact with device-mapped buffer_t objects.  <a href="#a4b85f2dde7de8eedd67d830bc7d1da9a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ac183842f98b7051d9d1ab90978f5a774">copy_to_dev</a> )(struct buffer_t *)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">JITed helpers to interact with device-mapped buffer_t objects.  <a href="#ac183842f98b7051d9d1ab90978f5a774"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a427c5b1afd39fbe3c37ef9b161b43aea">free_dev_buffer</a> )(struct buffer_t *)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">JITed helpers to interact with device-mapped buffer_t objects.  <a href="#a427c5b1afd39fbe3c37ef9b161b43aea"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4b819ccf00df54d49ce1476cf996034b">copy_to_host</a> )(void *user_context, struct buffer_t *)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">JITed helpers to interact with device-mapped buffer_t objects.  <a href="#a4b819ccf00df54d49ce1476cf996034b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab0978451c9cea3eaebccfec7c07ae796">copy_to_dev</a> )(void *user_context, struct buffer_t *)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">JITed helpers to interact with device-mapped buffer_t objects.  <a href="#ab0978451c9cea3eaebccfec7c07ae796"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab418302e7c2f972cca33e1be3afe3216">free_dev_buffer</a> )(void *user_context, struct buffer_t *)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">JITed helpers to interact with device-mapped buffer_t objects.  <a href="#ab418302e7c2f972cca33e1be3afe3216"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> pointers into a compiled halide module. </p>
@@ -158,12 +156,12 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00023">23</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 </div><hr/><h2>Member Typedef Documentation</h2>
-<a class="anchor" id="af939734fd6001fb8d0c7db7d19d8769c"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::ErrorHandler" ref="af939734fd6001fb8d0c7db7d19d8769c" args=")(const char *)" -->
+<a class="anchor" id="accabc8aeb0680e565022fcf07e0a908f"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::ErrorHandler" ref="accabc8aeb0680e565022fcf07e0a908f" args=")(void *user_context, const char *)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#af939734fd6001fb8d0c7db7d19d8769c">Halide::Internal::JITCompiledModule::ErrorHandler</a>)(const char *)</td>
+          <td class="memname">typedef void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#accabc8aeb0680e565022fcf07e0a908f">Halide::Internal::JITCompiledModule::ErrorHandler</a>)(void *user_context, const char *)</td>
         </tr>
       </table>
 </div>
@@ -175,30 +173,30 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a36aab88853072f2c1e2d6a6887617e12"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::HalideTask" ref="a36aab88853072f2c1e2d6a6887617e12" args=")(int, uint8_t *)" -->
+<a class="anchor" id="a58653dab48a781aea9a0ea9e12d1057d"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::HalideTask" ref="a58653dab48a781aea9a0ea9e12d1057d" args=")(void *user_context, int, uint8_t *)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a36aab88853072f2c1e2d6a6887617e12">Halide::Internal::JITCompiledModule::HalideTask</a>)(int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *)</td>
+          <td class="memname">typedef int(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d">Halide::Internal::JITCompiledModule::HalideTask</a>)(void *user_context, int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *)</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>Set a custom parallel for loop launcher. </p>
-<p>See <a class="el" href="class_halide_1_1_func.html#a89a384323e192ac6f67df41f5612d5b5">Func::set_custom_do_par_for</a> </p>
+<p>See <a class="el" href="class_halide_1_1_func.html#afd38942fde8f87b6851d47bf99513ba1">Func::set_custom_do_par_for</a> </p>
 
-<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00057">57</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
+<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00058">58</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a9d678f8fb81f834e3cfa6284a4e3adbf"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::TraceFn" ref="a9d678f8fb81f834e3cfa6284a4e3adbf" args=")(const char *, int, int, int, int, int, const void *, int, const int *)" -->
+<a class="anchor" id="a9bab1c63490999f1e02e62bce0a82af7"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::TraceFn" ref="a9bab1c63490999f1e02e62bce0a82af7" args=")(void *, const char *, int, int, int, int, int, int, const void *, int, const int *)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a9d678f8fb81f834e3cfa6284a4e3adbf">Halide::Internal::JITCompiledModule::TraceFn</a>)(const char *, int, int, int, int, int, const void *, int, const int *)</td>
+          <td class="memname">typedef int(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a9bab1c63490999f1e02e62bce0a82af7">Halide::Internal::JITCompiledModule::TraceFn</a>)(void *, const char *, int, int, int, int, int, int, const void *, int, const int *)</td>
         </tr>
       </table>
 </div>
@@ -207,7 +205,7 @@ Public Attributes</h2></td></tr>
 <p>Set a custom trace function. </p>
 <p>See <a class="el" href="class_halide_1_1_func.html#aad5f2b878005cd24c3b49c4856652971">Func::set_custom_trace</a>. </p>
 
-<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00065">65</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
+<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00068">68</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
 </div>
 </div>
@@ -226,7 +224,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00081">81</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
+<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00079">79</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
 </div>
 </div>
@@ -280,7 +278,7 @@ Public Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>A pointer to the raw halide function. </p>
-<p>It's true type depends on the <a class="el" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> vector passed to <a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#aaf2dec7490ba0ea0cf45d6ea9b7654ab" title="Take a halide statement and compiles it to an llvm module held internally.">CodeGen::compile</a>. <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> parameters become (buffer_t *), and scalar parameters become pointers to the appropriate values. The final argument is a pointer to the buffer_t defining the output. </p>
+<p>It's true type depends on the <a class="el" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> vector passed to <a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#a38b749e4dcfaf727a0967e058af7956c" title="Take a halide statement and compiles it to an llvm module held internally.">CodeGen::compile</a>. <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> parameters become (buffer_t *), and scalar parameters become pointers to the appropriate values. The final argument is a pointer to the buffer_t defining the output. </p>
 
 <p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00029">29</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
@@ -304,12 +302,12 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4b85f2dde7de8eedd67d830bc7d1da9a"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::copy_to_host" ref="a4b85f2dde7de8eedd67d830bc7d1da9a" args=")(struct buffer_t *)" -->
+<a class="anchor" id="a4b819ccf00df54d49ce1476cf996034b"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::copy_to_host" ref="a4b819ccf00df54d49ce1476cf996034b" args=")(void *user_context, struct buffer_t *)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4b85f2dde7de8eedd67d830bc7d1da9a">Halide::Internal::JITCompiledModule::copy_to_host</a>)(struct buffer_t *)</td>
+          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4b819ccf00df54d49ce1476cf996034b">Halide::Internal::JITCompiledModule::copy_to_host</a>)(void *user_context, struct buffer_t *)</td>
         </tr>
       </table>
 </div>
@@ -320,16 +318,16 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00040">40</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_buffer_8h_source.html#l00252">Halide::Buffer::copy_to_host()</a>.</p>
+<p>Referenced by <a class="el" href="_buffer_8h_source.html#l00263">Halide::Buffer::copy_to_host()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ac183842f98b7051d9d1ab90978f5a774"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::copy_to_dev" ref="ac183842f98b7051d9d1ab90978f5a774" args=")(struct buffer_t *)" -->
+<a class="anchor" id="ab0978451c9cea3eaebccfec7c07ae796"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::copy_to_dev" ref="ab0978451c9cea3eaebccfec7c07ae796" args=")(void *user_context, struct buffer_t *)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ac183842f98b7051d9d1ab90978f5a774">Halide::Internal::JITCompiledModule::copy_to_dev</a>)(struct buffer_t *)</td>
+          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab0978451c9cea3eaebccfec7c07ae796">Halide::Internal::JITCompiledModule::copy_to_dev</a>)(void *user_context, struct buffer_t *)</td>
         </tr>
       </table>
 </div>
@@ -340,16 +338,16 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00041">41</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_buffer_8h_source.html#l00270">Halide::Buffer::copy_to_dev()</a>.</p>
+<p>Referenced by <a class="el" href="_buffer_8h_source.html#l00283">Halide::Buffer::copy_to_dev()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a427c5b1afd39fbe3c37ef9b161b43aea"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::free_dev_buffer" ref="a427c5b1afd39fbe3c37ef9b161b43aea" args=")(struct buffer_t *)" -->
+<a class="anchor" id="ab418302e7c2f972cca33e1be3afe3216"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::free_dev_buffer" ref="ab418302e7c2f972cca33e1be3afe3216" args=")(void *user_context, struct buffer_t *)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a427c5b1afd39fbe3c37ef9b161b43aea">Halide::Internal::JITCompiledModule::free_dev_buffer</a>)(struct buffer_t *)</td>
+          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab418302e7c2f972cca33e1be3afe3216">Halide::Internal::JITCompiledModule::free_dev_buffer</a>)(void *user_context, struct buffer_t *)</td>
         </tr>
       </table>
 </div>
@@ -360,7 +358,7 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00042">42</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_buffer_8h_source.html#l00282">Halide::Buffer::free_dev_buffer()</a>.</p>
+<p>Referenced by <a class="el" href="_buffer_8h_source.html#l00295">Halide::Buffer::free_dev_buffer()</a>.</p>
 
 </div>
 </div>
@@ -369,7 +367,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a7ce969a1e9e18d9038cb93bb14f218fc">Halide::Internal::JITCompiledModule::set_error_handler</a>)(<a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#af939734fd6001fb8d0c7db7d19d8769c">ErrorHandler</a>)</td>
+          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a7ce969a1e9e18d9038cb93bb14f218fc">Halide::Internal::JITCompiledModule::set_error_handler</a>)(<a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#accabc8aeb0680e565022fcf07e0a908f">ErrorHandler</a>)</td>
         </tr>
       </table>
 </div>
@@ -381,54 +379,54 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a676cad5275632267e4edbc707d16d7a6"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::set_custom_allocator" ref="a676cad5275632267e4edbc707d16d7a6" args=")(void *(*malloc)(size_t), void(*free)(void *))" -->
+<a class="anchor" id="a18efcb74c1624c65e85ab10bea1b41a2"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::set_custom_allocator" ref="a18efcb74c1624c65e85ab10bea1b41a2" args=")(void *(*malloc)(void *user_context, size_t), void(*free)(void *user_context, void *ptr))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a676cad5275632267e4edbc707d16d7a6">Halide::Internal::JITCompiledModule::set_custom_allocator</a>)(void *(*malloc)(size_t), void(*free)(void *))</td>
+          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a18efcb74c1624c65e85ab10bea1b41a2">Halide::Internal::JITCompiledModule::set_custom_allocator</a>)(void *(*malloc)(void *user_context, size_t), void(*free)(void *user_context, void *ptr))</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>Set a custom malloc and free for this module to use. </p>
-<p>See <a class="el" href="class_halide_1_1_func.html#ab08dcceb9c5fb0205815c52100327f47">Func::set_custom_allocator</a> </p>
+<p>See <a class="el" href="class_halide_1_1_func.html#accac17bd1d0e40c50d50b515e082d922">Func::set_custom_allocator</a> </p>
 
 <p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00053">53</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ac87c1e0b4b18568960ac2e0a29cb2f28"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::set_custom_do_par_for" ref="ac87c1e0b4b18568960ac2e0a29cb2f28" args=")(int(*custom_do_par_for)(HalideTask, int, int, uint8_t *))" -->
+<a class="anchor" id="a66f9644df7cc48885ff678afd4a86e70"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::set_custom_do_par_for" ref="a66f9644df7cc48885ff678afd4a86e70" args=")(int(*custom_do_par_for)(void *user_context, HalideTask, int, int, uint8_t *))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ac87c1e0b4b18568960ac2e0a29cb2f28">Halide::Internal::JITCompiledModule::set_custom_do_par_for</a>)(int(*custom_do_par_for)(<a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a36aab88853072f2c1e2d6a6887617e12">HalideTask</a>, int, int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *))</td>
+          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a66f9644df7cc48885ff678afd4a86e70">Halide::Internal::JITCompiledModule::set_custom_do_par_for</a>)(int(*custom_do_par_for)(void *user_context, <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d">HalideTask</a>,int, int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *))</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00058">58</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
+<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00059">59</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="af4443bba285d091fe8d6b753fa5e8ae1"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::set_custom_do_task" ref="af4443bba285d091fe8d6b753fa5e8ae1" args=")(int(*custom_do_task)(HalideTask, int, uint8_t *))" -->
+<a class="anchor" id="a2d8aaa9a0e12703fc8b54daea6ff2e02"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::set_custom_do_task" ref="a2d8aaa9a0e12703fc8b54daea6ff2e02" args=")(int(*custom_do_task)(void *user_context, HalideTask, int, uint8_t *))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#af4443bba285d091fe8d6b753fa5e8ae1">Halide::Internal::JITCompiledModule::set_custom_do_task</a>)(int(*custom_do_task)(<a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a36aab88853072f2c1e2d6a6887617e12">HalideTask</a>, int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *))</td>
+          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a2d8aaa9a0e12703fc8b54daea6ff2e02">Halide::Internal::JITCompiledModule::set_custom_do_task</a>)(int(*custom_do_task)(void *user_context, <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d">HalideTask</a>,int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *))</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>Set a custom do parallel task. </p>
-<p>See <a class="el" href="class_halide_1_1_func.html#a7627cc3aaea7d1f70f5214ba4608b517">Func::set_custom_do_task</a> </p>
+<p>See <a class="el" href="class_halide_1_1_func.html#a18eb1fc8785fa98c27b44f0f3926c7fa">Func::set_custom_do_task</a> </p>
 
-<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00062">62</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
+<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00064">64</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
 </div>
 </div>
@@ -437,13 +435,13 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4ba9506581bb85f307d1d9945561ac2b">Halide::Internal::JITCompiledModule::set_custom_trace</a>)(<a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a9d678f8fb81f834e3cfa6284a4e3adbf">TraceFn</a>)</td>
+          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4ba9506581bb85f307d1d9945561ac2b">Halide::Internal::JITCompiledModule::set_custom_trace</a>)(<a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a9bab1c63490999f1e02e62bce0a82af7">TraceFn</a>)</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00066">66</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
+<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00069">69</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
 </div>
 </div>
@@ -461,25 +459,7 @@ Public Attributes</h2></td></tr>
 <p>Shutdown the thread pool maintained by this JIT module. </p>
 <p>This is also done automatically when the last reference to this module is destroyed. </p>
 
-<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00071">71</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a81dda3a5339a2a6787feb81493ce4812"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::shutdown_trace" ref="a81dda3a5339a2a6787feb81493ce4812" args=")()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a81dda3a5339a2a6787feb81493ce4812">Halide::Internal::JITCompiledModule::shutdown_trace</a>)()</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Close the tracing file this module may be writing to. </p>
-<p>Also done automatically when the last reference to this module is destroyed. </p>
-
-<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00076">76</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
+<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00074">74</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
 </div>
 </div>
@@ -494,7 +474,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00079">79</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
+<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00077">77</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
 </div>
 </div>

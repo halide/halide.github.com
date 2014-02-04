@@ -17,6 +17,5 @@ var class_halide_1_1_internal_1_1_closure =
     [ "track_buffers", "class_halide_1_1_internal_1_1_closure.html#acffc618e3e939b3d2e8d3346dec13107", null ],
     [ "buffer_t", "class_halide_1_1_internal_1_1_closure.html#a2dacd4fafb63386b54a6632d334a905f", null ],
     [ "vars", "class_halide_1_1_internal_1_1_closure.html#a1e1df57b78fed89780df286f67068cb6", null ],
-    [ "reads", "class_halide_1_1_internal_1_1_closure.html#af6c7633e6f8164da1047aa2637fa3021", null ],
-    [ "writes", "class_halide_1_1_internal_1_1_closure.html#af1831367c41a4e13baa246cdc9230c48", null ]
+    [ "buffers", "class_halide_1_1_internal_1_1_closure.html#a5f52aae2c00c9b8e77884ec3c0869707", null ]
 ];

@@ -12,10 +12,12 @@ var hierarchy =
     [ "Halide::FuncRefVar", "class_halide_1_1_func_ref_var.html", null ],
     [ "Halide::Image< T >", "class_halide_1_1_image.html", null ],
     [ "Halide::Internal::BufferContents", "struct_halide_1_1_internal_1_1_buffer_contents.html", null ],
+    [ "Halide::Internal::Closure::BufferRef", "struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html", null ],
     [ "Halide::Internal::CodeGen_ARM::Pattern", "struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html", null ],
     [ "Halide::Internal::CodeGen_GPU_Dev", "struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html", [
       [ "Halide::Internal::CodeGen_OpenCL_Dev", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html", null ],
-      [ "Halide::Internal::CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html", null ]
+      [ "Halide::Internal::CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html", null ],
+      [ "Halide::Internal::CodeGen_SPIR_Dev", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html", null ]
     ] ],
     [ "Halide::Internal::CodeGen_Posix::Allocation", "struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html", null ],
     [ "Halide::Internal::debug", "struct_halide_1_1_internal_1_1debug.html", null ],
@@ -159,7 +161,8 @@ var hierarchy =
             [ "Halide::Internal::CodeGen_GPU_Host", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html", null ]
           ] ]
         ] ],
-        [ "Halide::Internal::CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html", null ]
+        [ "Halide::Internal::CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html", null ],
+        [ "Halide::Internal::CodeGen_SPIR_Dev", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html", null ]
       ] ],
       [ "Halide::Internal::IRGraphVisitor", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html", null ],
       [ "Halide::Internal::IRMutator", "class_halide_1_1_internal_1_1_i_r_mutator.html", null ],
@@ -187,7 +190,6 @@ var hierarchy =
     [ "Halide::Internal::Scope< T >", "class_halide_1_1_internal_1_1_scope.html", null ],
     [ "Halide::Internal::Scope< T >::const_iterator", "class_halide_1_1_internal_1_1_scope_1_1const__iterator.html", null ],
     [ "Halide::Internal::Scope< T >::iterator", "class_halide_1_1_internal_1_1_scope_1_1iterator.html", null ],
-    [ "Halide::Internal::SmallArray< T, elements_on_stack >", "class_halide_1_1_internal_1_1_small_array.html", null ],
     [ "Halide::Internal::SmallStack< T >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
     [ "Halide::Internal::Stmt::Compare", "struct_halide_1_1_internal_1_1_stmt_1_1_compare.html", null ],
     [ "Halide::Internal::StmtCompiler", "class_halide_1_1_internal_1_1_stmt_compiler.html", null ],
@@ -204,11 +206,11 @@ var hierarchy =
     [ "Halide::Tuple", "class_halide_1_1_tuple.html", null ],
     [ "Halide::Type", "struct_halide_1_1_type.html", null ],
     [ "Halide::Var", "class_halide_1_1_var.html", null ],
+    [ "Halide::VarOrRVar", "struct_halide_1_1_var_or_r_var.html", null ],
     [ "Halide::Internal::IntrusivePtr< const IRNode >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", [
       [ "Halide::Internal::IRHandle", "struct_halide_1_1_internal_1_1_i_r_handle.html", [
         [ "Halide::Expr", "struct_halide_1_1_expr.html", null ],
         [ "Halide::Internal::Stmt", "struct_halide_1_1_internal_1_1_stmt.html", null ]
       ] ]
-    ] ],
-    [ "LeastSquaresSolver< N, M >", "class_least_squares_solver.html", null ]
+    ] ]
 ];

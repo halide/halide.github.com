@@ -35,5 +35,6 @@ var searchData=
   ['inner',['inner',['../struct_halide_1_1_internal_1_1_schedule_1_1_split.html#abbcd22d6fd21afc40ec9a7f0b7a5ccbb',1,'Halide::Internal::Schedule::Split']]],
   ['interleave_5fvectors',['interleave_vectors',['../struct_halide_1_1_internal_1_1_call.html#a4e22b03d6bd9735cb6a6fcb9bfa5f5e2',1,'Halide::Internal::Call']]],
   ['intrin',['intrin',['../struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html#a884faae52a74489eb46e6287d7654a19',1,'Halide::Internal::CodeGen_ARM::Pattern']]],
-  ['is_5fbuffer',['is_buffer',['../struct_halide_1_1_argument.html#aba405d8c881a59ab66023e4c607a2134',1,'Halide::Argument::is_buffer()'],['../struct_halide_1_1_internal_1_1_parameter_contents.html#abe9639e16edb5fab16d4bfeea6ab2a67',1,'Halide::Internal::ParameterContents::is_buffer()']]]
+  ['is_5fbuffer',['is_buffer',['../struct_halide_1_1_argument.html#aba405d8c881a59ab66023e4c607a2134',1,'Halide::Argument::is_buffer()'],['../struct_halide_1_1_internal_1_1_parameter_contents.html#abe9639e16edb5fab16d4bfeea6ab2a67',1,'Halide::Internal::ParameterContents::is_buffer()']]],
+  ['is_5frvar',['is_rvar',['../struct_halide_1_1_var_or_r_var.html#a55f1535c001e2c84c8a29e1237803014',1,'Halide::VarOrRVar']]]
 ];

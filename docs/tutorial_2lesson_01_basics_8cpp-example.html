@@ -98,11 +98,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <span class="comment">// This lesson demonstrates basic usage of Halide as a JIT compiler for imaging.</span>
 
 <span class="comment">// On linux, you can compile and run it like so:</span>
-<span class="comment">// g++ lesson_01.cpp -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_01</span>
-<span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_01 </span>
+<span class="comment">// g++ lesson_01*.cpp -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_01</span>
+<span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_01</span>
 
 <span class="comment">// On os x:</span>
-<span class="comment">// g++ lesson_01.cpp -I ../include -L ../bin -lHalide -o lesson_01</span>
+<span class="comment">// g++ lesson_01*.cpp -I ../include -L ../bin -lHalide -o lesson_01</span>
 <span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_01</span>
 
 <span class="comment">// The only Halide header file you need is Halide.h. It includes all of Halide.</span>
@@ -124,7 +124,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <span class="comment">// Var objects are names to use as variables in the definition of</span>
     <span class="comment">// a Func. They have no meaning by themselves.</span>
     <a name="_a1"></a><a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Halide::Var</a> x, y;
-    
+
     <span class="comment">// Funcs are defined at any integer coordinate of its variables as</span>
     <span class="comment">// an Expr in terms of those variables and other functions.</span>
     <span class="comment">// Here, we&#39;ll define an Expr which has the value x + y. Vars have</span>
@@ -133,16 +133,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <a name="_a2"></a><a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Halide::Expr</a> e = x + y;
 
     <span class="comment">// Now we&#39;ll add a definition for the Func object. At pixel x, y,</span>
-    <span class="comment">// the image will have the value of the Expr e. On the left hand </span>
+    <span class="comment">// the image will have the value of the Expr e. On the left hand</span>
     <span class="comment">// side we have the Func we&#39;re defining and some Vars. On the right</span>
     <span class="comment">// hand side we have some Expr object that uses those same Vars.</span>
     gradient(x, y) = e;
 
     <span class="comment">// This is the same as writing:</span>
-    <span class="comment">// </span>
+    <span class="comment">//</span>
     <span class="comment">//   gradient(x, y) = x + y;</span>
-    <span class="comment">// </span>
-    <span class="comment">// which is the more common form, but we are showing the </span>
+    <span class="comment">//</span>
+    <span class="comment">// which is the more common form, but we are showing the</span>
     <span class="comment">// intermediate Expr here for completeness.</span>
 
     <span class="comment">// That line of code defined the Func, but it didn&#39;t actually</span>
@@ -151,7 +151,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <span class="comment">// imaging pipeline. We&#39;re meta-programming. This C++ program is</span>
     <span class="comment">// constructing a Halide program in memory. Actually computing</span>
     <span class="comment">// pixel data comes next.</span>
-    
+
     <span class="comment">// Now we &#39;realize&#39; the Func, which JIT compiles some code that</span>
     <span class="comment">// implements the pipeline we&#39;ve defined, and then runs it.  We</span>
     <span class="comment">// also need to tell Halide the domain over which to evaluate the</span>
@@ -159,8 +159,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <span class="comment">// resolution of the output image. Halide.h also provides a basic</span>
     <span class="comment">// templatized Image type we can use. We&#39;ll make an 800 x 600</span>
     <span class="comment">// image.</span>
-    <a name="_a3"></a><a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Halide::Image&lt;int32_t&gt;</a> output = gradient.<a name="a4"></a><a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(800, 600);
-    
+    <a name="_a3"></a><a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Halide::Image&lt;int32_t&gt;</a> output = gradient.<a name="a4"></a><a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(800, 600);
+
     <span class="comment">// Halide does type inference for you. Var objects represent</span>
     <span class="comment">// 32-bit integers, so the Expr object &#39;x + y&#39; also represents a</span>
     <span class="comment">// 32-bit integer, and so &#39;gradient&#39; defines a 32-bit image, and</span>
@@ -173,10 +173,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; output.<a name="a5"></a><a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>(); j++) {
         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; output.<a name="a6"></a><a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(); i++) {
             <span class="comment">// We can access a pixel of an Image object using similar</span>
-            <span class="comment">// syntax to defining and using functions. </span>
+            <span class="comment">// syntax to defining and using functions.</span>
             <span class="keywordflow">if</span> (output(i, j) != i + j) {
                 printf(<span class="stringliteral">&quot;Something went wrong!\n&quot;</span>
-                       <span class="stringliteral">&quot;Pixel %d, %d was supposed to be %d, but instead it&#39;s %d\n&quot;</span>, 
+                       <span class="stringliteral">&quot;Pixel %d, %d was supposed to be %d, but instead it&#39;s %d\n&quot;</span>,
                        i, j, i+j, output(i, j));
                 <span class="keywordflow">return</span> -1;
             }

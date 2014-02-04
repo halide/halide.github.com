@@ -2,6 +2,7 @@ var class_halide_1_1_buffer =
 [
     [ "Buffer", "class_halide_1_1_buffer.html#afeca5c056a1aea25608f9c1f935db7d2", null ],
     [ "Buffer", "class_halide_1_1_buffer.html#a9011114cbf92555c66c38b640febff79", null ],
+    [ "Buffer", "class_halide_1_1_buffer.html#ab8b23b91390805c5f14c02565c30513d", null ],
     [ "Buffer", "class_halide_1_1_buffer.html#ad8472673425daa0649eb8736eb9221cf", null ],
     [ "host_ptr", "class_halide_1_1_buffer.html#acb49751026ca83866a00caed8eb4c4e4", null ],
     [ "raw_buffer", "class_halide_1_1_buffer.html#a7ef77f7e2f5eca29ca30283fc27745a5", null ],

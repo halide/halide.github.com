@@ -12,6 +12,7 @@ var class_halide_1_1_internal_1_1_function =
     [ "output_types", "class_halide_1_1_internal_1_1_function.html#a880c4f4377560a0ae168e48b16aafe28", null ],
     [ "values", "class_halide_1_1_internal_1_1_function.html#a1e38187e7d2c921fad94106de8d89ac4", null ],
     [ "has_pure_definition", "class_halide_1_1_internal_1_1_function.html#ac69dbfa133f30c0c2946fa3a06f4e57b", null ],
+    [ "is_pure", "class_halide_1_1_internal_1_1_function.html#a11d12dfabb8d6316acfd1df71f465117", null ],
     [ "schedule", "class_halide_1_1_internal_1_1_function.html#acdf493c9146996a400940f5923a5f353", null ],
     [ "schedule", "class_halide_1_1_internal_1_1_function.html#a6602af36e6815fda0e64e7728b3dd11f", null ],
     [ "output_buffers", "class_halide_1_1_internal_1_1_function.html#a5a87530e6b06d391ff83a108ac4394bc", null ],
@@ -31,7 +32,5 @@ var class_halide_1_1_internal_1_1_function =
     [ "trace_realizations", "class_halide_1_1_internal_1_1_function.html#a95082a21d62cc296e6877b43e3ea3aec", null ],
     [ "is_tracing_loads", "class_halide_1_1_internal_1_1_function.html#a5d170837aba1560b676071293c7b30db", null ],
     [ "is_tracing_stores", "class_halide_1_1_internal_1_1_function.html#aa6150be575f4a773e92fe2c8a4738046", null ],
-    [ "is_tracing_realizations", "class_halide_1_1_internal_1_1_function.html#a416d93caef3cbb8802dbe6d12590a81c", null ],
-    [ "min_extent_produced", "class_halide_1_1_internal_1_1_function.html#a74cc65d8d675bfad32b3b025dbecdfec", null ],
-    [ "min_extent_updated", "class_halide_1_1_internal_1_1_function.html#a030968954b73f195f04c72d3460f05ce", null ]
+    [ "is_tracing_realizations", "class_halide_1_1_internal_1_1_function.html#a416d93caef3cbb8802dbe6d12590a81c", null ]
 ];

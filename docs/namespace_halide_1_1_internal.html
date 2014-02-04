@@ -130,6 +130,8 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A code generator that emits posix code from a given <a class="el" href="namespace_halide.html">Halide</a> stmt.  <a href="class_halide_1_1_internal_1_1_code_gen___posix.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html">CodeGen_PTX_Dev</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A code generator that emits GPU code from a given <a class="el" href="namespace_halide.html">Halide</a> stmt.  <a href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html">CodeGen_SPIR_Dev</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A code generator that emits GPU code from a given <a class="el" href="namespace_halide.html">Halide</a> stmt.  <a href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html">CodeGen_X86</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A code generator that emits x86 code from a given <a class="el" href="namespace_halide.html">Halide</a> stmt.  <a href="class_halide_1_1_internal_1_1_code_gen___x86.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1debug.html">debug</a></td></tr>
@@ -267,10 +269,10 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A stack which can store one item very efficiently.  <a href="class_halide_1_1_internal_1_1_small_stack.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A common pattern when traversing <a class="el" href="namespace_halide.html">Halide</a> IR is that you need to keep track of stuff when you find a <a class="el" href="struct_halide_1_1_internal_1_1_let.html" title="A let expression, like you might find in a functional language.">Let</a> or a <a class="el" href="struct_halide_1_1_internal_1_1_let_stmt.html" title="The statement form of a let node.">LetStmt</a>, and that it should hide previous values with the same name until you leave the <a class="el" href="struct_halide_1_1_internal_1_1_let.html" title="A let expression, like you might find in a functional language.">Let</a> or <a class="el" href="struct_halide_1_1_internal_1_1_let_stmt.html" title="The statement form of a let node.">LetStmt</a> nodes This class helps with that.  <a href="class_halide_1_1_internal_1_1_scope.html#details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_small_array.html">SmallArray</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_stmt_compiler.html">StmtCompiler</a></td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="struct_halide_1_1_internal_1_1_range.html">Range</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A multi-dimensional box.  <a href="#abd1b9521b6f1f513178f281d8f395335"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="enum-members"></a>
@@ -283,22 +285,10 @@ Enumerations</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect whether an expression is monotonic increasing in a variable, decreasing, or unknown.  <a href="namespace_halide_1_1_internal.html#a6d77bcd7bf9bfb0b3f5e66010d9ff3ea">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ae6fc595d8e4376de045b7e3f0acd186a">allocation_bounds_inference</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, const std::map&lt; std::string, <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> &gt; &amp;env)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a973e652b8c042a8a92e4bc97a280d22a">bounds_of_expr_in_scope</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> expr, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; <a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &gt; &amp;scope)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Given an expression in some variables, and a map from those variables to their bounds (in the form of (minimum possible value, maximum possible value)), compute two expressions that give the minimum possible value and the maximum possible value of this expression.  <a href="#a973e652b8c042a8a92e4bc97a280d22a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a40b55308c8b42bac49b691c9276a10f0">regions_called</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s to each function that occurs within a given statement.  <a href="#a40b55308c8b42bac49b691c9276a10f0"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a498694c483a2f521859553cfcfea4b1e">regions_provided</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_provide.html" title="This defines the value of a function at a multi-dimensional location.">Provide</a>'s to each function that occur within a given statement.  <a href="#a498694c483a2f521859553cfcfea4b1e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#abcb5c51d9e0d95c7e6f1ff9f2c82c39b">regions_touched</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all Calls and Provides to each function that occurs within a given statement.  <a href="#abcb5c51d9e0d95c7e6f1ff9f2c82c39b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a614969a57432098981fa3a1f49e9c4fb">region_touched</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, const std::string &amp;func)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute a rectangular domain large enough to cover all Calls and Provides to a given function.  <a href="#a614969a57432098981fa3a1f49e9c4fb"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a0f219ebf3c591ed06938016d6d4a1488">region_provided</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, const std::string &amp;func)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute a rectangular domain large enough to cover all Provides to a given function.  <a href="#a0f219ebf3c591ed06938016d6d4a1488"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a53385b9156a5a1dd0990fc181fef8edd">region_called</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, const std::string &amp;func)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute a rectangular domain large enough to cover all Calls to a given function.  <a href="#a53385b9156a5a1dd0990fc181fef8edd"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ae99f8f7aa2b3734a88dd0e0ebb24459d">region_union</a> (const <a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a> &amp;, const <a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a> &amp;)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the smallest bounding box that contains two regions.  <a href="#ae99f8f7aa2b3734a88dd0e0ebb24459d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ac2f62c0ee3ace8de2be57a9db369a3e4">merge_boxes</a> (<a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> &amp;a, const <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> &amp;b)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a439ef9127bf30f5e2a67963eb8db0323">bounds_test</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a4a2800ce2145f769127b19a5d03d5d05">bounds_inference</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>, const std::vector&lt; std::string &gt; &amp;realization_order, const std::map&lt; std::string, <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> &gt; &amp;environment)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a partially lowered statement that includes symbolic representations of the bounds over which things should be realized, and inject expressions defining those bounds.  <a href="#a4a2800ce2145f769127b19a5d03d5d05"></a><br/></td></tr>
@@ -395,8 +385,6 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The greatest common divisor of two integers.  <a href="#a50891465f948d4f9b30b9253ce1640b1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ab56d2d1c54f988f23aa03ae70cdfd857">lcm</a> (int, int)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The least common multiple of two integers.  <a href="#ab56d2d1c54f988f23aa03ae70cdfd857"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a8adb5f4e1a135f0570023d7d086918e7">move_broadcasts_inside_casts</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Move broadcast nodes inside of cast nodes in preparation for peephole optimizations.  <a href="#a8adb5f4e1a135f0570023d7d086918e7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a36620e2156363b215b17fae00eec44ea">is_one_to_one</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> expr)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Conservatively determine whether an integer expression is one-to-one in its variables.  <a href="#a36620e2156363b215b17fae00eec44ea"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#acd3b8d6aeed9a003fe228ad1aba7322f">is_one_to_one_test</a> ()</td></tr>
@@ -404,10 +392,14 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a statement representing a halide pipeline, and (depending on the environment variable HL_PROFILE), insert high-resolution timing into the generated code; summaries of execution times and counts will be logged at the end.  <a href="#a568a0554db6866ee8560c3f599bceadd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ae828a911751c5115cb503d05afb1dcbe">profiling_level</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current profiling level (by reading HL_PROFILE)  <a href="#ae828a911751c5115cb503d05afb1dcbe"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#add0c1d3ac79fd83cb609d37831253957">qualify</a> (const std::string &amp;prefix, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prefix all variable names in the given expression with the prefix string.  <a href="#add0c1d3ac79fd83cb609d37831253957"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a445fa778b28abf135eb1b1d0c8389efc">remove_trivial_for_loops</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert for loops of size 1 into <a class="el" href="struct_halide_1_1_internal_1_1_let_stmt.html" title="The statement form of a let node.">LetStmt</a> nodes, which allows for further simplification.  <a href="#a445fa778b28abf135eb1b1d0c8389efc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a078fe646230de310959c4506c76de02e">remove_undef</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes stores that depend on undef values, and statements that only contain such stores.  <a href="#a078fe646230de310959c4506c76de02e"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a2cde29d4c9c4bc41d8474be2d94d6687">operator&lt;&lt;</a> (std::ostream &amp;stream, <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; T &gt; &amp;s)</td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a4242a0b28a7409d2a2489a74795914ef">operator&lt;&lt;</a> (std::ostream &amp;stream, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; T &gt; &amp;s)</td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a6cd3908859c82249a2c7f10158883a97">mod_imp</a> (T a, T b)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementations of division and mod that are specific to <a class="el" href="namespace_halide.html">Halide</a>.  <a href="#a6cd3908859c82249a2c7f10158883a97"></a><br/></td></tr>
@@ -422,6 +414,8 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Avoid computing certain stages if we can infer a runtime condition to check that tells us they won't be used.  <a href="#a8489422fe4da6e486b5fd7831aab8bfb"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a07bde9012b280aad21a569ea008ed296">sliding_window</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, const std::map&lt; std::string, <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> &gt; &amp;env)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform sliding window optimizations on a halide statement.  <a href="#a07bde9012b280aad21a569ea008ed296"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ab3d6d20f5581d4711c83a2b1755c2716">specialize_clamped_ramps</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a statement with multi-dimensional <a class="el" href="struct_halide_1_1_internal_1_1_realize.html" title="Allocate a multi-dimensional buffer of the given type and size.">Realize</a>, <a class="el" href="struct_halide_1_1_internal_1_1_provide.html" title="This defines the value of a function at a multi-dimensional location.">Provide</a>, and <a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a> nodes, and turn it into a statement with single-dimensional <a class="el" href="struct_halide_1_1_internal_1_1_allocate.html" title="Allocate a scratch area called with the given name, type, and size.">Allocate</a>, <a class="el" href="struct_halide_1_1_internal_1_1_store.html" title="Store a &#39;value&#39; to the buffer called &#39;name&#39; at a given &#39;index&#39;.">Store</a>, and <a class="el" href="struct_halide_1_1_internal_1_1_load.html" title="Load a value from a named buffer.">Load</a> nodes respectively.  <a href="#ab3d6d20f5581d4711c83a2b1755c2716"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a36bbe2f07f16d251525ee4beaa68c102">storage_flattening</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, const std::map&lt; std::string, <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> &gt; &amp;env)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a statement with multi-dimensional <a class="el" href="struct_halide_1_1_internal_1_1_realize.html" title="Allocate a multi-dimensional buffer of the given type and size.">Realize</a>, <a class="el" href="struct_halide_1_1_internal_1_1_provide.html" title="This defines the value of a function at a multi-dimensional location.">Provide</a>, and <a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a> nodes, and turn it into a statement with single-dimensional <a class="el" href="struct_halide_1_1_internal_1_1_allocate.html" title="Allocate a scratch area called with the given name, type, and size.">Allocate</a>, <a class="el" href="struct_halide_1_1_internal_1_1_store.html" title="Store a &#39;value&#39; to the buffer called &#39;name&#39; at a given &#39;index&#39;.">Store</a>, and <a class="el" href="struct_halide_1_1_internal_1_1_load.html" title="Load a value from a named buffer.">Load</a> nodes respectively.  <a href="#a36bbe2f07f16d251525ee4beaa68c102"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a9eefd272612c586d9c3e4dba31d1c215">storage_folding</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s)</td></tr>
@@ -434,8 +428,12 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an llvm module containing the support code for a given target.  <a href="#a320fa7575718308bc5b1e7a1b6d42d31"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">llvm::Module *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa9f98b98cbded4d63028df71771ca835">get_initial_module_for_ptx_device</a> (llvm::LLVMContext *c)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an llvm module containing the support code for ptx device.  <a href="#aa9f98b98cbded4d63028df71771ca835"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">llvm::Module *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a177d2e22743da305462364aeb9714958">get_initial_module_for_spir_device</a> (llvm::LLVMContext *c, int bits)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an llvm module containing the support code for SPIR device code.  <a href="#a177d2e22743da305462364aeb9714958"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a3cd3f1d683bcca49a2df7179d42245d0">inject_tracing</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>, const std::map&lt; std::string, <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> &gt; &amp;env, <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> output)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a statement representing a halide pipeline, inject calls to tracing functions at interesting points, such as allocations.  <a href="#a3cd3f1d683bcca49a2df7179d42245d0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a0b6c445013b15af0a32bd54f5bb6bdc3">unify_duplicate_lets</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Find let statements that all define the same value, and make later ones just reuse the symbol names of the earlier ones.  <a href="#a0b6c445013b15af0a32bd54f5bb6bdc3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#abf197e316b7d0a6adb96c25976612c1b">uniquify_variable_names</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Modify a statement so that every internally-defined variable name is unique.  <a href="#abf197e316b7d0a6adb96c25976612c1b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#adc1c49e552297672b3751ac988bf70c3">unroll_loops</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>)</td></tr>
@@ -447,21 +445,78 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">An aggressive form of reinterpret cast used for correct type-punning.  <a href="#a94816d6979fdadb6e206a5d0a668e008"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9">unique_name</a> (char prefix)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a unique name starting with the given character.  <a href="#acd575ab182df12cc793dba4aa241c1a9"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a22aa5e173f0154dbdbc9efc4c6cfb8c4">unique_name</a> (const std::string &amp;name)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a unique name starting with the given string.  <a href="#a22aa5e173f0154dbdbc9efc4c6cfb8c4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aafd40e47c06b4ccb5d2173528ae0523f">unique_name</a> (const std::string &amp;name, bool user=true)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a unique name starting with the given string.  <a href="#aafd40e47c06b4ccb5d2173528ae0523f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed">starts_with</a> (const std::string &amp;str, const std::string &amp;prefix)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if the first string starts with the second string.  <a href="#aa7703083cfe592de68f37796533724ed"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28">ends_with</a> (const std::string &amp;str, const std::string &amp;suffix)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if the first string ends with the second string.  <a href="#a230079281175545b9b90b2285106ab28"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a771a564a2b084a26b0ebd88bbe1261c4">base_name</a> (const std::string &amp;name)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the final token of the name string, assuming a fully qualified name delimited by '.  <a href="#a771a564a2b084a26b0ebd88bbe1261c4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516">base_name</a> (const std::string &amp;name, char delim= '.')</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the final token of the name string using the given delimiter.  <a href="#ac91d88c24b89bb17c7b69c671c723516"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#abe70c3a9d0ecd59908b1837a11d01de0">vectorize_loops</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a statement with for loops marked for vectorization, and turn them into single statements that operate on vectors.  <a href="#abe70c3a9d0ecd59908b1837a11d01de0"></a><br/></td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ae2295c97e6b050cda44b4912598a71dc">boxes_required</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; <a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &gt; &amp;scope)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s to each function that occurs within a given statement or expression.  <a href="#ae2295c97e6b050cda44b4912598a71dc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a2591b755b9e5e66eb9957a6a4e74d427">boxes_required</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; <a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &gt; &amp;scope)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s to each function that occurs within a given statement or expression.  <a href="#a2591b755b9e5e66eb9957a6a4e74d427"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aff85334e7a6f0bf5c4c923d2164a9a02">boxes_required</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s to each function that occurs within a given statement or expression.  <a href="#aff85334e7a6f0bf5c4c923d2164a9a02"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a906e2cc3ae50dad6302257da0c15b4ed">boxes_required</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s to each function that occurs within a given statement or expression.  <a href="#a906e2cc3ae50dad6302257da0c15b4ed"></a><br/></td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#afe2104e23e3bda75b9d8855349444876">boxes_provided</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; <a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &gt; &amp;scope)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the 'Provides's to each function that occurs within a given statement or expression.  <a href="#afe2104e23e3bda75b9d8855349444876"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a19cb545bddf9336b0647424b76f24add">boxes_provided</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; <a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &gt; &amp;scope)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the 'Provides's to each function that occurs within a given statement or expression.  <a href="#a19cb545bddf9336b0647424b76f24add"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a3976c185d1a4d9a3c0781fa12f9e110e">boxes_provided</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the 'Provides's to each function that occurs within a given statement or expression.  <a href="#a3976c185d1a4d9a3c0781fa12f9e110e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a13cea1251c506617332fd24dd96225f0">boxes_provided</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the 'Provides's to each function that occurs within a given statement or expression.  <a href="#a13cea1251c506617332fd24dd96225f0"></a><br/></td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a43ef8053b472a02cc1d68412efeffc97">boxes_touched</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; <a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &gt; &amp;scope)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s and 'Provides's to each function that occurs within a given statement or expression.  <a href="#a43ef8053b472a02cc1d68412efeffc97"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ae7e4b52c5a8ed5c673190e82d78ada64">boxes_touched</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; <a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &gt; &amp;scope)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s and 'Provides's to each function that occurs within a given statement or expression.  <a href="#ae7e4b52c5a8ed5c673190e82d78ada64"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a6340510950a0c8d805059e4fe63a422f">boxes_touched</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s and 'Provides's to each function that occurs within a given statement or expression.  <a href="#a6340510950a0c8d805059e4fe63a422f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ae46f3ef4d01f0736f420d16388aadcdf">boxes_touched</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s and 'Provides's to each function that occurs within a given statement or expression.  <a href="#ae46f3ef4d01f0736f420d16388aadcdf"></a><br/></td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a962f2f48fdfe11611327a269e03bea2c">box_required</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e, std::string fn, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; <a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &gt; &amp;scope)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Variants of the above that are only concerned with a single function.  <a href="#a962f2f48fdfe11611327a269e03bea2c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#abde0525c32afe208f5660dd93cea66aa">box_required</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, std::string fn, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; <a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &gt; &amp;scope)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Variants of the above that are only concerned with a single function.  <a href="#abde0525c32afe208f5660dd93cea66aa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a1741340dd9c60614fcb11c1326072fff">box_required</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e, std::string fn)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Variants of the above that are only concerned with a single function.  <a href="#a1741340dd9c60614fcb11c1326072fff"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a5af0e39f6fb4d5e42d891d2824219918">box_required</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, std::string fn)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Variants of the above that are only concerned with a single function.  <a href="#a5af0e39f6fb4d5e42d891d2824219918"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ac7331d29a9fb4ef53f78acb2b739786f">box_provided</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e, std::string fn, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; <a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &gt; &amp;scope)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Variants of the above that are only concerned with a single function.  <a href="#ac7331d29a9fb4ef53f78acb2b739786f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ad82f2e999bd6d17a4ddb107a7029f1ae">box_provided</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, std::string fn, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; <a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &gt; &amp;scope)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Variants of the above that are only concerned with a single function.  <a href="#ad82f2e999bd6d17a4ddb107a7029f1ae"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a30a1ef6416ae91cab3e406158c10d0d9">box_provided</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e, std::string fn)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Variants of the above that are only concerned with a single function.  <a href="#a30a1ef6416ae91cab3e406158c10d0d9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa692f412ebd257b6ada9a55dec8bbfd6">box_provided</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, std::string fn)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Variants of the above that are only concerned with a single function.  <a href="#aa692f412ebd257b6ada9a55dec8bbfd6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a821ec862c33539f3bc5a96cc39128c8c">box_touched</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e, std::string fn, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; <a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &gt; &amp;scope)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Variants of the above that are only concerned with a single function.  <a href="#a821ec862c33539f3bc5a96cc39128c8c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa61d956c312159bd3c5765ba795a4dae">box_touched</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, std::string fn, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; <a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &gt; &amp;scope)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Variants of the above that are only concerned with a single function.  <a href="#aa61d956c312159bd3c5765ba795a4dae"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa316e9a7744e6016d48a46c43215bd03">box_touched</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e, std::string fn)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Variants of the above that are only concerned with a single function.  <a href="#aa316e9a7744e6016d48a46c43215bd03"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a674a25baef67dd767d1fd4115c0266b2">box_touched</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, std::string fn)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Variants of the above that are only concerned with a single function.  <a href="#a674a25baef67dd767d1fd4115c0266b2"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#add5bcb9d6d286355a3cb9b8f289e0985">remove_lets</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all lets from a statement or expression by substituting them in.  <a href="#add5bcb9d6d286355a3cb9b8f289e0985"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a7f56ee3ea320c3c0b452722edab42470">remove_lets</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all lets from a statement or expression by substituting them in.  <a href="#a7f56ee3ea320c3c0b452722edab42470"></a><br/></td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a38c4753b75f784e928d24b5f085ed383">inline_function</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>, <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Inline a single named function, which must be pure.  <a href="#a38c4753b75f784e928d24b5f085ed383"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a839846970613235cae5c8904a5fda794">inline_function</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a>, <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Inline a single named function, which must be pure.  <a href="#a839846970613235cae5c8904a5fda794"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_internal_1_1_ref_count.html">RefCount</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a9ff5beef3c5a4ec908d9c2bbe99a71f9">ref_count</a> (const T *)</td></tr>
@@ -515,6 +570,21 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Build small vectors of up to 6 elements.  <a href="#ac29a0bceb82c876dc7b2d9d15ea0f5b7"></a><br/></td></tr>
 </table>
 <hr/><h2>Typedef Documentation</h2>
+<a class="anchor" id="a1387c25233df34b4557bb445703cbc5f"></a><!-- doxytag: member="Halide::Internal::Box" ref="a1387c25233df34b4557bb445703cbc5f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Halide::Internal::Box</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_bounds_8h_source.html#l00036">36</a> of file <a class="el" href="_bounds_8h_source.html">Bounds.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="abd1b9521b6f1f513178f281d8f395335"></a><!-- doxytag: member="Halide::Internal::Region" ref="abd1b9521b6f1f513178f281d8f395335" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -529,7 +599,7 @@ Functions</h2></td></tr>
 <p>A multi-dimensional box. </p>
 <p>The outer product of the elements </p>
 
-<p>Definition at line <a class="el" href="_i_r_8h_source.html#l00831">831</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_8h_source.html#l00833">833</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
 
 </div>
 </div>
@@ -565,6 +635,33 @@ Functions</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Function Documentation</h2>
+<a class="anchor" id="ae6fc595d8e4376de045b7e3f0acd186a"></a><!-- doxytag: member="Halide::Internal::allocation_bounds_inference" ref="ae6fc595d8e4376de045b7e3f0acd186a" args="(Stmt s, const std::map&lt; std::string, Function &gt; &amp;env)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> <a class="el" href="namespace_halide_1_1_internal.html#ae6fc595d8e4376de045b7e3f0acd186a">Halide::Internal::allocation_bounds_inference</a> </td>
+          <td>(</td>
+          <td class="paramtype">Stmt&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::map&lt; std::string, Function &gt; &amp;&#160;</td>
+          <td class="paramname"><em>env</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a973e652b8c042a8a92e4bc97a280d22a"></a><!-- doxytag: member="Halide::Internal::bounds_of_expr_in_scope" ref="a973e652b8c042a8a92e4bc97a280d22a" args="(Expr expr, const Scope&lt; Interval &gt; &amp;scope)" -->
 <div class="memitem">
 <div class="memproto">
@@ -596,32 +693,119 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a40b55308c8b42bac49b691c9276a10f0"></a><!-- doxytag: member="Halide::Internal::regions_called" ref="a40b55308c8b42bac49b691c9276a10f0" args="(Stmt s)" -->
+<a class="anchor" id="ac2f62c0ee3ace8de2be57a9db369a3e4"></a><!-- doxytag: member="Halide::Internal::merge_boxes" ref="ac2f62c0ee3ace8de2be57a9db369a3e4" args="(Box &amp;a, const Box &amp;b)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#a40b55308c8b42bac49b691c9276a10f0">Halide::Internal::regions_called</a> </td>
+          <td class="memname">void <a class="el" href="namespace_halide_1_1_internal.html#ac2f62c0ee3ace8de2be57a9db369a3e4">Halide::Internal::merge_boxes</a> </td>
           <td>(</td>
-          <td class="paramtype">Stmt&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
+          <td class="paramtype">Box &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const Box &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s to each function that occurs within a given statement. </p>
+</div>
+</div>
+<a class="anchor" id="ae2295c97e6b050cda44b4912598a71dc"></a><!-- doxytag: member="Halide::Internal::boxes_required" ref="ae2295c97e6b050cda44b4912598a71dc" args="(Expr e, const Scope&lt; Interval &gt; &amp;scope)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#ae2295c97e6b050cda44b4912598a71dc">Halide::Internal::boxes_required</a> </td>
+          <td>(</td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Scope&lt; Interval &gt; &amp;&#160;</td>
+          <td class="paramname"><em>scope</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s to each function that occurs within a given statement or expression. </p>
 <p>This is useful for figuring out what regions of things to evaluate. </p>
 
 </div>
 </div>
-<a class="anchor" id="a498694c483a2f521859553cfcfea4b1e"></a><!-- doxytag: member="Halide::Internal::regions_provided" ref="a498694c483a2f521859553cfcfea4b1e" args="(Stmt s)" -->
+<a class="anchor" id="a2591b755b9e5e66eb9957a6a4e74d427"></a><!-- doxytag: member="Halide::Internal::boxes_required" ref="a2591b755b9e5e66eb9957a6a4e74d427" args="(Stmt s, const Scope&lt; Interval &gt; &amp;scope)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#a498694c483a2f521859553cfcfea4b1e">Halide::Internal::regions_provided</a> </td>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#ae2295c97e6b050cda44b4912598a71dc">Halide::Internal::boxes_required</a> </td>
+          <td>(</td>
+          <td class="paramtype">Stmt&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Scope&lt; Interval &gt; &amp;&#160;</td>
+          <td class="paramname"><em>scope</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s to each function that occurs within a given statement or expression. </p>
+<p>This is useful for figuring out what regions of things to evaluate. </p>
+
+</div>
+</div>
+<a class="anchor" id="aff85334e7a6f0bf5c4c923d2164a9a02"></a><!-- doxytag: member="Halide::Internal::boxes_required" ref="aff85334e7a6f0bf5c4c923d2164a9a02" args="(Expr e)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#ae2295c97e6b050cda44b4912598a71dc">Halide::Internal::boxes_required</a> </td>
+          <td>(</td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s to each function that occurs within a given statement or expression. </p>
+<p>This is useful for figuring out what regions of things to evaluate. </p>
+
+</div>
+</div>
+<a class="anchor" id="a906e2cc3ae50dad6302257da0c15b4ed"></a><!-- doxytag: member="Halide::Internal::boxes_required" ref="a906e2cc3ae50dad6302257da0c15b4ed" args="(Stmt s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#ae2295c97e6b050cda44b4912598a71dc">Halide::Internal::boxes_required</a> </td>
           <td>(</td>
           <td class="paramtype">Stmt&#160;</td>
           <td class="paramname"><em>s</em></td><td>)</td>
@@ -631,17 +815,94 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_provide.html" title="This defines the value of a function at a multi-dimensional location.">Provide</a>'s to each function that occur within a given statement. </p>
-<p>This is useful for figuring out what region of a function a scattering reduction (e.g. a histogram) might touch. </p>
+<p>Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s to each function that occurs within a given statement or expression. </p>
+<p>This is useful for figuring out what regions of things to evaluate. </p>
 
 </div>
 </div>
-<a class="anchor" id="abcb5c51d9e0d95c7e6f1ff9f2c82c39b"></a><!-- doxytag: member="Halide::Internal::regions_touched" ref="abcb5c51d9e0d95c7e6f1ff9f2c82c39b" args="(Stmt s)" -->
+<a class="anchor" id="afe2104e23e3bda75b9d8855349444876"></a><!-- doxytag: member="Halide::Internal::boxes_provided" ref="afe2104e23e3bda75b9d8855349444876" args="(Expr e, const Scope&lt; Interval &gt; &amp;scope)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#abcb5c51d9e0d95c7e6f1ff9f2c82c39b">Halide::Internal::regions_touched</a> </td>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#afe2104e23e3bda75b9d8855349444876">Halide::Internal::boxes_provided</a> </td>
+          <td>(</td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Scope&lt; Interval &gt; &amp;&#160;</td>
+          <td class="paramname"><em>scope</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute rectangular domains large enough to cover all the 'Provides's to each function that occurs within a given statement or expression. </p>
+
+</div>
+</div>
+<a class="anchor" id="a19cb545bddf9336b0647424b76f24add"></a><!-- doxytag: member="Halide::Internal::boxes_provided" ref="a19cb545bddf9336b0647424b76f24add" args="(Stmt s, const Scope&lt; Interval &gt; &amp;scope)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#afe2104e23e3bda75b9d8855349444876">Halide::Internal::boxes_provided</a> </td>
+          <td>(</td>
+          <td class="paramtype">Stmt&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Scope&lt; Interval &gt; &amp;&#160;</td>
+          <td class="paramname"><em>scope</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute rectangular domains large enough to cover all the 'Provides's to each function that occurs within a given statement or expression. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3976c185d1a4d9a3c0781fa12f9e110e"></a><!-- doxytag: member="Halide::Internal::boxes_provided" ref="a3976c185d1a4d9a3c0781fa12f9e110e" args="(Expr e)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#afe2104e23e3bda75b9d8855349444876">Halide::Internal::boxes_provided</a> </td>
+          <td>(</td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute rectangular domains large enough to cover all the 'Provides's to each function that occurs within a given statement or expression. </p>
+
+</div>
+</div>
+<a class="anchor" id="a13cea1251c506617332fd24dd96225f0"></a><!-- doxytag: member="Halide::Internal::boxes_provided" ref="a13cea1251c506617332fd24dd96225f0" args="(Stmt s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#afe2104e23e3bda75b9d8855349444876">Halide::Internal::boxes_provided</a> </td>
           <td>(</td>
           <td class="paramtype">Stmt&#160;</td>
           <td class="paramname"><em>s</em></td><td>)</td>
@@ -651,16 +912,45 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Compute rectangular domains large enough to cover all Calls and Provides to each function that occurs within a given statement. </p>
+<p>Compute rectangular domains large enough to cover all the 'Provides's to each function that occurs within a given statement or expression. </p>
 
 </div>
 </div>
-<a class="anchor" id="a614969a57432098981fa3a1f49e9c4fb"></a><!-- doxytag: member="Halide::Internal::region_touched" ref="a614969a57432098981fa3a1f49e9c4fb" args="(Stmt s, const std::string &amp;func)" -->
+<a class="anchor" id="a43ef8053b472a02cc1d68412efeffc97"></a><!-- doxytag: member="Halide::Internal::boxes_touched" ref="a43ef8053b472a02cc1d68412efeffc97" args="(Expr e, const Scope&lt; Interval &gt; &amp;scope)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a> <a class="el" href="namespace_halide_1_1_internal.html#a614969a57432098981fa3a1f49e9c4fb">Halide::Internal::region_touched</a> </td>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#a43ef8053b472a02cc1d68412efeffc97">Halide::Internal::boxes_touched</a> </td>
+          <td>(</td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Scope&lt; Interval &gt; &amp;&#160;</td>
+          <td class="paramname"><em>scope</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s and 'Provides's to each function that occurs within a given statement or expression. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae7e4b52c5a8ed5c673190e82d78ada64"></a><!-- doxytag: member="Halide::Internal::boxes_touched" ref="ae7e4b52c5a8ed5c673190e82d78ada64" args="(Stmt s, const Scope&lt; Interval &gt; &amp;scope)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#a43ef8053b472a02cc1d68412efeffc97">Halide::Internal::boxes_touched</a> </td>
           <td>(</td>
           <td class="paramtype">Stmt&#160;</td>
           <td class="paramname"><em>s</em>, </td>
@@ -668,8 +958,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>func</em>&#160;</td>
+          <td class="paramtype">const Scope&lt; Interval &gt; &amp;&#160;</td>
+          <td class="paramname"><em>scope</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -680,16 +970,89 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Compute a rectangular domain large enough to cover all Calls and Provides to a given function. </p>
+<p>Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s and 'Provides's to each function that occurs within a given statement or expression. </p>
 
 </div>
 </div>
-<a class="anchor" id="a0f219ebf3c591ed06938016d6d4a1488"></a><!-- doxytag: member="Halide::Internal::region_provided" ref="a0f219ebf3c591ed06938016d6d4a1488" args="(Stmt s, const std::string &amp;func)" -->
+<a class="anchor" id="a6340510950a0c8d805059e4fe63a422f"></a><!-- doxytag: member="Halide::Internal::boxes_touched" ref="a6340510950a0c8d805059e4fe63a422f" args="(Expr e)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a> <a class="el" href="namespace_halide_1_1_internal.html#a0f219ebf3c591ed06938016d6d4a1488">Halide::Internal::region_provided</a> </td>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#a43ef8053b472a02cc1d68412efeffc97">Halide::Internal::boxes_touched</a> </td>
+          <td>(</td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s and 'Provides's to each function that occurs within a given statement or expression. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae46f3ef4d01f0736f420d16388aadcdf"></a><!-- doxytag: member="Halide::Internal::boxes_touched" ref="ae46f3ef4d01f0736f420d16388aadcdf" args="(Stmt s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#a43ef8053b472a02cc1d68412efeffc97">Halide::Internal::boxes_touched</a> </td>
+          <td>(</td>
+          <td class="paramtype">Stmt&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a>'s and 'Provides's to each function that occurs within a given statement or expression. </p>
+
+</div>
+</div>
+<a class="anchor" id="a962f2f48fdfe11611327a269e03bea2c"></a><!-- doxytag: member="Halide::Internal::box_required" ref="a962f2f48fdfe11611327a269e03bea2c" args="(Expr e, std::string fn, const Scope&lt; Interval &gt; &amp;scope)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> <a class="el" href="namespace_halide_1_1_internal.html#a962f2f48fdfe11611327a269e03bea2c">Halide::Internal::box_required</a> </td>
+          <td>(</td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Scope&lt; Interval &gt; &amp;&#160;</td>
+          <td class="paramname"><em>scope</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Variants of the above that are only concerned with a single function. </p>
+
+</div>
+</div>
+<a class="anchor" id="abde0525c32afe208f5660dd93cea66aa"></a><!-- doxytag: member="Halide::Internal::box_required" ref="abde0525c32afe208f5660dd93cea66aa" args="(Stmt s, std::string fn, const Scope&lt; Interval &gt; &amp;scope)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> <a class="el" href="namespace_halide_1_1_internal.html#a962f2f48fdfe11611327a269e03bea2c">Halide::Internal::box_required</a> </td>
           <td>(</td>
           <td class="paramtype">Stmt&#160;</td>
           <td class="paramname"><em>s</em>, </td>
@@ -697,8 +1060,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>func</em>&#160;</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Scope&lt; Interval &gt; &amp;&#160;</td>
+          <td class="paramname"><em>scope</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -709,16 +1078,45 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Compute a rectangular domain large enough to cover all Provides to a given function. </p>
+<p>Variants of the above that are only concerned with a single function. </p>
 
 </div>
 </div>
-<a class="anchor" id="a53385b9156a5a1dd0990fc181fef8edd"></a><!-- doxytag: member="Halide::Internal::region_called" ref="a53385b9156a5a1dd0990fc181fef8edd" args="(Stmt s, const std::string &amp;func)" -->
+<a class="anchor" id="a1741340dd9c60614fcb11c1326072fff"></a><!-- doxytag: member="Halide::Internal::box_required" ref="a1741340dd9c60614fcb11c1326072fff" args="(Expr e, std::string fn)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a> <a class="el" href="namespace_halide_1_1_internal.html#a53385b9156a5a1dd0990fc181fef8edd">Halide::Internal::region_called</a> </td>
+          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> <a class="el" href="namespace_halide_1_1_internal.html#a962f2f48fdfe11611327a269e03bea2c">Halide::Internal::box_required</a> </td>
+          <td>(</td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Variants of the above that are only concerned with a single function. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5af0e39f6fb4d5e42d891d2824219918"></a><!-- doxytag: member="Halide::Internal::box_required" ref="a5af0e39f6fb4d5e42d891d2824219918" args="(Stmt s, std::string fn)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> <a class="el" href="namespace_halide_1_1_internal.html#a962f2f48fdfe11611327a269e03bea2c">Halide::Internal::box_required</a> </td>
           <td>(</td>
           <td class="paramtype">Stmt&#160;</td>
           <td class="paramname"><em>s</em>, </td>
@@ -726,8 +1124,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>func</em>&#160;</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fn</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -738,25 +1136,31 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Compute a rectangular domain large enough to cover all Calls to a given function. </p>
+<p>Variants of the above that are only concerned with a single function. </p>
 
 </div>
 </div>
-<a class="anchor" id="ae99f8f7aa2b3734a88dd0e0ebb24459d"></a><!-- doxytag: member="Halide::Internal::region_union" ref="ae99f8f7aa2b3734a88dd0e0ebb24459d" args="(const Region &amp;, const Region &amp;)" -->
+<a class="anchor" id="ac7331d29a9fb4ef53f78acb2b739786f"></a><!-- doxytag: member="Halide::Internal::box_provided" ref="ac7331d29a9fb4ef53f78acb2b739786f" args="(Expr e, std::string fn, const Scope&lt; Interval &gt; &amp;scope)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#abd1b9521b6f1f513178f281d8f395335">Region</a> <a class="el" href="namespace_halide_1_1_internal.html#ae99f8f7aa2b3734a88dd0e0ebb24459d">Halide::Internal::region_union</a> </td>
+          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> <a class="el" href="namespace_halide_1_1_internal.html#ac7331d29a9fb4ef53f78acb2b739786f">Halide::Internal::box_provided</a> </td>
           <td>(</td>
-          <td class="paramtype">const Region &amp;&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Region &amp;&#160;</td>
-          <td class="paramname">&#160;</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Scope&lt; Interval &gt; &amp;&#160;</td>
+          <td class="paramname"><em>scope</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -767,7 +1171,228 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Compute the smallest bounding box that contains two regions. </p>
+<p>Variants of the above that are only concerned with a single function. </p>
+
+</div>
+</div>
+<a class="anchor" id="ad82f2e999bd6d17a4ddb107a7029f1ae"></a><!-- doxytag: member="Halide::Internal::box_provided" ref="ad82f2e999bd6d17a4ddb107a7029f1ae" args="(Stmt s, std::string fn, const Scope&lt; Interval &gt; &amp;scope)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> <a class="el" href="namespace_halide_1_1_internal.html#ac7331d29a9fb4ef53f78acb2b739786f">Halide::Internal::box_provided</a> </td>
+          <td>(</td>
+          <td class="paramtype">Stmt&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Scope&lt; Interval &gt; &amp;&#160;</td>
+          <td class="paramname"><em>scope</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Variants of the above that are only concerned with a single function. </p>
+
+</div>
+</div>
+<a class="anchor" id="a30a1ef6416ae91cab3e406158c10d0d9"></a><!-- doxytag: member="Halide::Internal::box_provided" ref="a30a1ef6416ae91cab3e406158c10d0d9" args="(Expr e, std::string fn)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> <a class="el" href="namespace_halide_1_1_internal.html#ac7331d29a9fb4ef53f78acb2b739786f">Halide::Internal::box_provided</a> </td>
+          <td>(</td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Variants of the above that are only concerned with a single function. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa692f412ebd257b6ada9a55dec8bbfd6"></a><!-- doxytag: member="Halide::Internal::box_provided" ref="aa692f412ebd257b6ada9a55dec8bbfd6" args="(Stmt s, std::string fn)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> <a class="el" href="namespace_halide_1_1_internal.html#ac7331d29a9fb4ef53f78acb2b739786f">Halide::Internal::box_provided</a> </td>
+          <td>(</td>
+          <td class="paramtype">Stmt&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Variants of the above that are only concerned with a single function. </p>
+
+</div>
+</div>
+<a class="anchor" id="a821ec862c33539f3bc5a96cc39128c8c"></a><!-- doxytag: member="Halide::Internal::box_touched" ref="a821ec862c33539f3bc5a96cc39128c8c" args="(Expr e, std::string fn, const Scope&lt; Interval &gt; &amp;scope)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> <a class="el" href="namespace_halide_1_1_internal.html#a821ec862c33539f3bc5a96cc39128c8c">Halide::Internal::box_touched</a> </td>
+          <td>(</td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Scope&lt; Interval &gt; &amp;&#160;</td>
+          <td class="paramname"><em>scope</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Variants of the above that are only concerned with a single function. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa61d956c312159bd3c5765ba795a4dae"></a><!-- doxytag: member="Halide::Internal::box_touched" ref="aa61d956c312159bd3c5765ba795a4dae" args="(Stmt s, std::string fn, const Scope&lt; Interval &gt; &amp;scope)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> <a class="el" href="namespace_halide_1_1_internal.html#a821ec862c33539f3bc5a96cc39128c8c">Halide::Internal::box_touched</a> </td>
+          <td>(</td>
+          <td class="paramtype">Stmt&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Scope&lt; Interval &gt; &amp;&#160;</td>
+          <td class="paramname"><em>scope</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Variants of the above that are only concerned with a single function. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa316e9a7744e6016d48a46c43215bd03"></a><!-- doxytag: member="Halide::Internal::box_touched" ref="aa316e9a7744e6016d48a46c43215bd03" args="(Expr e, std::string fn)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> <a class="el" href="namespace_halide_1_1_internal.html#a821ec862c33539f3bc5a96cc39128c8c">Halide::Internal::box_touched</a> </td>
+          <td>(</td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Variants of the above that are only concerned with a single function. </p>
+
+</div>
+</div>
+<a class="anchor" id="a674a25baef67dd767d1fd4115c0266b2"></a><!-- doxytag: member="Halide::Internal::box_touched" ref="a674a25baef67dd767d1fd4115c0266b2" args="(Stmt s, std::string fn)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f">Box</a> <a class="el" href="namespace_halide_1_1_internal.html#a821ec862c33539f3bc5a96cc39128c8c">Halide::Internal::box_touched</a> </td>
+          <td>(</td>
+          <td class="paramtype">Stmt&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>fn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Variants of the above that are only concerned with a single function. </p>
 
 </div>
 </div>
@@ -839,7 +1464,7 @@ template&lt;&gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00294">294</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
+<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00307">307</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
 
 </div>
 </div>
@@ -860,7 +1485,9 @@ template&lt;&gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00299">299</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
+<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00312">312</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
+
+<p>References <a class="el" href="mini__stdint_8h_source.html#l00032">NULL</a>.</p>
 
 </div>
 </div>
@@ -1186,6 +1813,64 @@ template&lt;&gt; </div>
 
 <p>Take a statement with allocations and inject markers (of the form of calls to "mark buffer dead") after the last use of each allocation. </p>
 <p>Targets may use this to free buffers earlier than the close of their <a class="el" href="struct_halide_1_1_internal_1_1_allocate.html" title="Allocate a scratch area called with the given name, type, and size.">Allocate</a> node. </p>
+
+</div>
+</div>
+<a class="anchor" id="a38c4753b75f784e928d24b5f085ed383"></a><!-- doxytag: member="Halide::Internal::inline_function" ref="a38c4753b75f784e928d24b5f085ed383" args="(Stmt, Function)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> <a class="el" href="namespace_halide_1_1_internal.html#a38c4753b75f784e928d24b5f085ed383">Halide::Internal::inline_function</a> </td>
+          <td>(</td>
+          <td class="paramtype">Stmt&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Function&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Inline a single named function, which must be pure. </p>
+
+</div>
+</div>
+<a class="anchor" id="a839846970613235cae5c8904a5fda794"></a><!-- doxytag: member="Halide::Internal::inline_function" ref="a839846970613235cae5c8904a5fda794" args="(Expr, Function)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="namespace_halide_1_1_internal.html#a38c4753b75f784e928d24b5f085ed383">Halide::Internal::inline_function</a> </td>
+          <td>(</td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Function&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Inline a single named function, which must be pure. </p>
 
 </div>
 </div>
@@ -2264,25 +2949,6 @@ template&lt;&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a8adb5f4e1a135f0570023d7d086918e7"></a><!-- doxytag: member="Halide::Internal::move_broadcasts_inside_casts" ref="a8adb5f4e1a135f0570023d7d086918e7" args="(Stmt)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> <a class="el" href="namespace_halide_1_1_internal.html#a8adb5f4e1a135f0570023d7d086918e7">Halide::Internal::move_broadcasts_inside_casts</a> </td>
-          <td>(</td>
-          <td class="paramtype">Stmt&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Move broadcast nodes inside of cast nodes in preparation for peephole optimizations. </p>
-
-</div>
-</div>
 <a class="anchor" id="a36620e2156363b215b17fae00eec44ea"></a><!-- doxytag: member="Halide::Internal::is_one_to_one" ref="a36620e2156363b215b17fae00eec44ea" args="(Expr expr)" -->
 <div class="memitem">
 <div class="memproto">
@@ -2369,6 +3035,35 @@ template&lt;&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="add0c1d3ac79fd83cb609d37831253957"></a><!-- doxytag: member="Halide::Internal::qualify" ref="add0c1d3ac79fd83cb609d37831253957" args="(const std::string &amp;prefix, Expr value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="namespace_halide_1_1_internal.html#add0c1d3ac79fd83cb609d37831253957">Halide::Internal::qualify</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>prefix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Prefix all variable names in the given expression with the prefix string. </p>
+
+</div>
+</div>
 <a class="anchor" id="a445fa778b28abf135eb1b1d0c8389efc"></a><!-- doxytag: member="Halide::Internal::remove_trivial_for_loops" ref="a445fa778b28abf135eb1b1d0c8389efc" args="(Stmt s)" -->
 <div class="memitem">
 <div class="memproto">
@@ -2389,7 +3084,26 @@ template&lt;&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a2cde29d4c9c4bc41d8474be2d94d6687"></a><!-- doxytag: member="Halide::Internal::operator&lt;&lt;" ref="a2cde29d4c9c4bc41d8474be2d94d6687" args="(std::ostream &amp;stream, Scope&lt; T &gt; &amp;s)" -->
+<a class="anchor" id="a078fe646230de310959c4506c76de02e"></a><!-- doxytag: member="Halide::Internal::remove_undef" ref="a078fe646230de310959c4506c76de02e" args="(Stmt s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> <a class="el" href="namespace_halide_1_1_internal.html#a078fe646230de310959c4506c76de02e">Halide::Internal::remove_undef</a> </td>
+          <td>(</td>
+          <td class="paramtype">Stmt&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Removes stores that depend on undef values, and statements that only contain such stores. </p>
+
+</div>
+</div>
+<a class="anchor" id="a4242a0b28a7409d2a2489a74795914ef"></a><!-- doxytag: member="Halide::Internal::operator&lt;&lt;" ref="a4242a0b28a7409d2a2489a74795914ef" args="(std::ostream &amp;stream, const Scope&lt; T &gt; &amp;s)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -2404,7 +3118,7 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Scope&lt; T &gt; &amp;&#160;</td>
+          <td class="paramtype">const Scope&lt; T &gt; &amp;&#160;</td>
           <td class="paramname"><em>s</em>&#160;</td>
         </tr>
         <tr>
@@ -2689,6 +3403,25 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="ab3d6d20f5581d4711c83a2b1755c2716"></a><!-- doxytag: member="Halide::Internal::specialize_clamped_ramps" ref="ab3d6d20f5581d4711c83a2b1755c2716" args="(Stmt s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> <a class="el" href="namespace_halide_1_1_internal.html#ab3d6d20f5581d4711c83a2b1755c2716">Halide::Internal::specialize_clamped_ramps</a> </td>
+          <td>(</td>
+          <td class="paramtype">Stmt&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Take a statement with multi-dimensional <a class="el" href="struct_halide_1_1_internal_1_1_realize.html" title="Allocate a multi-dimensional buffer of the given type and size.">Realize</a>, <a class="el" href="struct_halide_1_1_internal_1_1_provide.html" title="This defines the value of a function at a multi-dimensional location.">Provide</a>, and <a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a> nodes, and turn it into a statement with single-dimensional <a class="el" href="struct_halide_1_1_internal_1_1_allocate.html" title="Allocate a scratch area called with the given name, type, and size.">Allocate</a>, <a class="el" href="struct_halide_1_1_internal_1_1_store.html" title="Store a &#39;value&#39; to the buffer called &#39;name&#39; at a given &#39;index&#39;.">Store</a>, and <a class="el" href="struct_halide_1_1_internal_1_1_load.html" title="Load a value from a named buffer.">Load</a> nodes respectively. </p>
+
+</div>
+</div>
 <a class="anchor" id="a36bbe2f07f16d251525ee4beaa68c102"></a><!-- doxytag: member="Halide::Internal::storage_flattening" ref="a36bbe2f07f16d251525ee4beaa68c102" args="(Stmt s, const std::map&lt; std::string, Function &gt; &amp;env)" -->
 <div class="memitem">
 <div class="memproto">
@@ -2919,6 +3652,35 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a177d2e22743da305462364aeb9714958"></a><!-- doxytag: member="Halide::Internal::get_initial_module_for_spir_device" ref="a177d2e22743da305462364aeb9714958" args="(llvm::LLVMContext *c, int bits)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">llvm::Module* <a class="el" href="namespace_halide_1_1_internal.html#a177d2e22743da305462364aeb9714958">Halide::Internal::get_initial_module_for_spir_device</a> </td>
+          <td>(</td>
+          <td class="paramtype">llvm::LLVMContext *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Create an llvm module containing the support code for SPIR device code. </p>
+
+</div>
+</div>
 <a class="anchor" id="a3cd3f1d683bcca49a2df7179d42245d0"></a><!-- doxytag: member="Halide::Internal::inject_tracing" ref="a3cd3f1d683bcca49a2df7179d42245d0" args="(Stmt, const std::map&lt; std::string, Function &gt; &amp;env, Function output)" -->
 <div class="memitem">
 <div class="memproto">
@@ -2952,6 +3714,25 @@ template&lt;typename T &gt; </div>
 
 <p>Take a statement representing a halide pipeline, inject calls to tracing functions at interesting points, such as allocations. </p>
 <p>Should be done before storage flattening, but after all bounds inference. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0b6c445013b15af0a32bd54f5bb6bdc3"></a><!-- doxytag: member="Halide::Internal::unify_duplicate_lets" ref="a0b6c445013b15af0a32bd54f5bb6bdc3" args="(Stmt s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> <a class="el" href="namespace_halide_1_1_internal.html#a0b6c445013b15af0a32bd54f5bb6bdc3">Halide::Internal::unify_duplicate_lets</a> </td>
+          <td>(</td>
+          <td class="paramtype">Stmt&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Find let statements that all define the same value, and make later ones just reuse the symbol names of the earlier ones. </p>
 
 </div>
 </div>
@@ -3311,11 +4092,11 @@ template&lt;typename DstType , typename SrcType &gt; </div>
 <p>Generate a unique name starting with the given character. </p>
 <p>It's unique relative to all other calls to unique_name done by this process. <a class="el" href="struct_halide_1_1_internal_1_1_not.html" title="Logical not - true if the expression false.">Not</a> thread-safe. </p>
 
-<p>Referenced by <a class="el" href="_lambda_8h_source.html#l00017">Halide::lambda()</a>.</p>
+<p>Referenced by <a class="el" href="_param_8h_source.html#l00344">Halide::ImageParam::ImageParam()</a>, and <a class="el" href="_lambda_8h_source.html#l00017">Halide::lambda()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a22aa5e173f0154dbdbc9efc4c6cfb8c4"></a><!-- doxytag: member="Halide::Internal::unique_name" ref="a22aa5e173f0154dbdbc9efc4c6cfb8c4" args="(const std::string &amp;name)" -->
+<a class="anchor" id="aafd40e47c06b4ccb5d2173528ae0523f"></a><!-- doxytag: member="Halide::Internal::unique_name" ref="aafd40e47c06b4ccb5d2173528ae0523f" args="(const std::string &amp;name, bool user=true)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -3323,8 +4104,18 @@ template&lt;typename DstType , typename SrcType &gt; </div>
           <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="el" href="namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9">Halide::Internal::unique_name</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>user</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
@@ -3397,23 +4188,32 @@ template&lt;typename DstType , typename SrcType &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a771a564a2b084a26b0ebd88bbe1261c4"></a><!-- doxytag: member="Halide::Internal::base_name" ref="a771a564a2b084a26b0ebd88bbe1261c4" args="(const std::string &amp;name)" -->
+<a class="anchor" id="ac91d88c24b89bb17c7b69c671c723516"></a><!-- doxytag: member="Halide::Internal::base_name" ref="ac91d88c24b89bb17c7b69c671c723516" args="(const std::string &amp;name, char delim= '.')" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="el" href="namespace_halide_1_1_internal.html#a771a564a2b084a26b0ebd88bbe1261c4">Halide::Internal::base_name</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="el" href="namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516">Halide::Internal::base_name</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>delim</em> = <code>'.'</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Return the final token of the name string, assuming a fully qualified name delimited by '. </p>
-<p>' </p>
+<p>Return the final token of the name string using the given delimiter. </p>
 
 </div>
 </div>

@@ -108,24 +108,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00007"></a>00007 
 <a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="_func_8h.html" title="Defines Func - the front-end handle on a halide function, and related classes.">Func.h</a>&quot;</span>
 <a name="l00009"></a>00009 
-<a name="l00010"></a>00010 <span class="keyword">namespace </span>Halide { 
+<a name="l00010"></a>00010 <span class="keyword">namespace </span>Halide {
 <a name="l00011"></a>00011 <span class="keyword">namespace </span>Internal {
 <a name="l00012"></a>00012 <span class="comment"></span>
 <a name="l00013"></a>00013 <span class="comment">/** A code generator that emits GPU code from a given Halide stmt. */</span>
 <a name="l00014"></a><a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html">00014</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html" title="A code generator that emits GPU code from a given Halide stmt.">CodeGen_GPU_Dev</a> {
 <a name="l00015"></a>00015     <span class="keyword">virtual</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a7597c4d74a373eff2dbad021487d4bcd">~CodeGen_GPU_Dev</a>();
 <a name="l00016"></a>00016 <span class="comment"></span>
-<a name="l00017"></a>00017 <span class="comment">    /** Compile a GPU kernel into the module. This may be called many times </span>
-<a name="l00018"></a>00018 <span class="comment">     * with different kernels, which will all be accumulated into a single </span>
+<a name="l00017"></a>00017 <span class="comment">    /** Compile a GPU kernel into the module. This may be called many times</span>
+<a name="l00018"></a>00018 <span class="comment">     * with different kernels, which will all be accumulated into a single</span>
 <a name="l00019"></a>00019 <span class="comment">     * source module shared by a given Halide pipeline. */</span>
-<a name="l00020"></a>00020     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a12a2f6c92fb17c0d4da3113dd7330f82" title="Compile a GPU kernel into the module.">compile</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> stmt, std::string name, <span class="keyword">const</span> std::vector&lt;Argument&gt; &amp;args) = 0;
+<a name="l00020"></a>00020     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a68ce3e6da0ede52095fd82515be4181b" title="Compile a GPU kernel into the module.">add_kernel</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> stmt, std::string name, <span class="keyword">const</span> std::vector&lt;Argument&gt; &amp;args) = 0;
 <a name="l00021"></a>00021 <span class="comment"></span>
 <a name="l00022"></a>00022 <span class="comment">    /** (Re)initialize the GPU kernel module. This is separate from compile,</span>
 <a name="l00023"></a>00023 <span class="comment">     * since a GPU device module will often have many kernels compiled into it</span>
 <a name="l00024"></a>00024 <span class="comment">     * for a single pipeline. */</span>
 <a name="l00025"></a>00025     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a194290bd11dc2d88048dfd67c5534bbc" title="(Re)initialize the GPU kernel module.">init_module</a>() = 0;
 <a name="l00026"></a>00026 
-<a name="l00027"></a>00027     <span class="keyword">virtual</span> std::string <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#abc4d743e70b39bdf33069a385f61b044">compile_to_src</a>() = 0;
+<a name="l00027"></a>00027     <span class="keyword">virtual</span> std::vector&lt;char&gt; <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a614e2f87474143ebd10b0bfd0a5883a0">compile_to_src</a>() = 0;
 <a name="l00028"></a>00028 
 <a name="l00029"></a>00029     <span class="keyword">virtual</span> std::string <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a939a91a4f734a9c3281ace6c2342acfc">get_current_kernel_name</a>() = 0;
 <a name="l00030"></a>00030 

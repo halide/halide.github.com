@@ -8,6 +8,7 @@ var class_halide_1_1_r_dom =
     [ "RDom", "class_halide_1_1_r_dom.html#a63881709137ff1664db2b370a9fe4d34", null ],
     [ "RDom", "class_halide_1_1_r_dom.html#a0629b79311675b202f7dbfae2ec1d561", null ],
     [ "RDom", "class_halide_1_1_r_dom.html#abfeb0de9abf687268b9205de9c803792", null ],
+    [ "set_bounds", "class_halide_1_1_r_dom.html#a6f898ecd5a0acd82a26bb7fd913c66d4", null ],
     [ "defined", "class_halide_1_1_r_dom.html#a2ce6dc237222ffded6f5b55535ef71f3", null ],
     [ "same_as", "class_halide_1_1_r_dom.html#a0450797fc4d56ed7421b9f6a46c0ce20", null ],
     [ "dimensions", "class_halide_1_1_r_dom.html#aaf7025b0442b73edc63d2a866dd79feb", null ],

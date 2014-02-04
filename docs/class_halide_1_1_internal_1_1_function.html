@@ -136,6 +136,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the right-hand-side of the pure definition.  <a href="#a1e38187e7d2c921fad94106de8d89ac4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#ac69dbfa133f30c0c2946fa3a06f4e57b">has_pure_definition</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Does this function have a pure definition.  <a href="#ac69dbfa133f30c0c2946fa3a06f4e57b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a11d12dfabb8d6316acfd1df71f465117">is_pure</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Does this function *only* have a pure definition.  <a href="#a11d12dfabb8d6316acfd1df71f465117"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_schedule.html">Schedule</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#acdf493c9146996a400940f5923a5f353">schedule</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a handle to the schedule for the purpose of modifying it.  <a href="#acdf493c9146996a400940f5923a5f353"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_halide_1_1_internal_1_1_schedule.html">Schedule</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a6602af36e6815fda0e64e7728b3dd11f">schedule</a> () const </td></tr>
@@ -166,10 +168,6 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a handle to the debug filename.  <a href="#a02e0cb554763f1ca866e320c8d66c185"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#adac833825126c30c18772658684c3f3d">operator ExternFuncArgument</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Use an an extern argument to another function.  <a href="#adac833825126c30c18772658684c3f3d"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a74cc65d8d675bfad32b3b025dbecdfec">min_extent_produced</a> (const std::string &amp;dim) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">What's the smallest amount of this <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> that can be produced? This is a function of the splits being done.  <a href="#a74cc65d8d675bfad32b3b025dbecdfec"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a030968954b73f195f04c72d3460f05ce">min_extent_updated</a> (const std::string &amp;dim) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reductions also have a minimum granularity with which they can be computed in the pure vars (because they can't hit the same pure variable twice).  <a href="#a030968954b73f195f04c72d3460f05ce"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a5eaf4fbf5b97d7542b3d1c68c1e27dd2">trace_loads</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Tracing calls and accessors, passed down from the <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> equivalents.  <a href="#a5eaf4fbf5b97d7542b3d1c68c1e27dd2"></a><br/></td></tr>
@@ -336,7 +334,7 @@ Public Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="_function_8h_source.html#l00058">Halide::Internal::FunctionContents::name</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l01006">Halide::Internal::Call::make()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_8h_source.html#l01011">Halide::Internal::Call::make()</a>.</p>
 
 </div>
 </div>
@@ -384,7 +382,7 @@ Public Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="_function_8h_source.html#l00124">args()</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00971">Halide::Internal::Call::make()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00976">Halide::Internal::Call::make()</a>.</p>
 
 </div>
 </div>
@@ -408,7 +406,7 @@ Public Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="_function_8h_source.html#l00139">output_types()</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00971">Halide::Internal::Call::make()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00976">Halide::Internal::Call::make()</a>.</p>
 
 </div>
 </div>
@@ -432,7 +430,7 @@ Public Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="_function_8h_source.html#l00061">Halide::Internal::FunctionContents::output_types</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l01006">Halide::Internal::Call::make()</a>, and <a class="el" href="_function_8h_source.html#l00134">outputs()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_8h_source.html#l01011">Halide::Internal::Call::make()</a>, and <a class="el" href="_function_8h_source.html#l00134">outputs()</a>.</p>
 
 </div>
 </div>
@@ -478,7 +476,29 @@ Public Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00060">Halide::Internal::FunctionContents::values</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00971">Halide::Internal::Call::make()</a>.</p>
+<p>Referenced by <a class="el" href="_function_8h_source.html#l00154">is_pure()</a>, and <a class="el" href="_i_r_8h_source.html#l00976">Halide::Internal::Call::make()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a11d12dfabb8d6316acfd1df71f465117"></a><!-- doxytag: member="Halide::Internal::Function::is_pure" ref="a11d12dfabb8d6316acfd1df71f465117" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_halide_1_1_internal_1_1_function.html#a11d12dfabb8d6316acfd1df71f465117">Halide::Internal::Function::is_pure</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Does this function *only* have a pure definition. </p>
+
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00154">154</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+
+<p>References <a class="el" href="_function_8h_source.html#l00194">has_extern_definition()</a>, <a class="el" href="_function_8h_source.html#l00149">has_pure_definition()</a>, and <a class="el" href="_function_8h_source.html#l00189">has_reduction_definition()</a>.</p>
 
 </div>
 </div>
@@ -498,7 +518,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get a handle to the schedule for the purpose of modifying it. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00155">155</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00162">162</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00062">Halide::Internal::FunctionContents::schedule</a>.</p>
 
@@ -520,7 +540,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get a const handle to the schedule for inspecting it. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00160">160</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00167">167</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00062">Halide::Internal::FunctionContents::schedule</a>.</p>
 
@@ -542,7 +562,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get a handle on the output buffer used for setting constraints on it. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00166">166</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00173">173</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_function_8h_source.html#l00068">Halide::Internal::FunctionContents::output_buffers</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
 
@@ -565,7 +585,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get a mutable handle to the schedule for the reduction stage. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00172">172</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00179">179</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00064">Halide::Internal::FunctionContents::reductions</a>.</p>
 
@@ -587,7 +607,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get a const reference to this function's reduction definitions. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00177">177</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00184">184</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00064">Halide::Internal::FunctionContents::reductions</a>.</p>
 
@@ -609,9 +629,11 @@ Public Member Functions</h2></td></tr>
 
 <p>Does this function have a reduction definition. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00182">182</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00189">189</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00064">Halide::Internal::FunctionContents::reductions</a>.</p>
+
+<p>Referenced by <a class="el" href="_function_8h_source.html#l00154">is_pure()</a>.</p>
 
 </div>
 </div>
@@ -631,11 +653,11 @@ Public Member Functions</h2></td></tr>
 
 <p>Check if the function has an extern definition. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00187">187</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00194">194</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_function_8h_source.html#l00071">Halide::Internal::FunctionContents::extern_function_name</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00971">Halide::Internal::Call::make()</a>.</p>
+<p>Referenced by <a class="el" href="_function_8h_source.html#l00154">is_pure()</a>, and <a class="el" href="_i_r_8h_source.html#l00976">Halide::Internal::Call::make()</a>.</p>
 
 </div>
 </div>
@@ -696,7 +718,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Retrive the arguments of the extern definition. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00198">198</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00205">205</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_function_8h_source.html#l00070">Halide::Internal::FunctionContents::extern_arguments</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
 
@@ -718,7 +740,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the name of the extern function called for an extern definition. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00204">204</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00211">211</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_function_8h_source.html#l00071">Halide::Internal::FunctionContents::extern_function_name</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
 
@@ -741,7 +763,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Equality of identity. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00209">209</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00216">216</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00111">Halide::Internal::IntrusivePtr&lt; T &gt;::same_as()</a>.</p>
 
@@ -763,7 +785,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get a const handle to the debug filename. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00214">214</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00221">221</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_function_8h_source.html#l00066">Halide::Internal::FunctionContents::debug_file</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
 
@@ -785,7 +807,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get a handle to the debug filename. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00219">219</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00226">226</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_function_8h_source.html#l00066">Halide::Internal::FunctionContents::debug_file</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
 
@@ -807,7 +829,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Use an an extern argument to another function. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00224">224</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00231">231</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 </div>
 </div>
@@ -827,7 +849,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Tracing calls and accessors, passed down from the <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> equivalents. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00231">231</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00238">238</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00073">Halide::Internal::FunctionContents::trace_loads</a>.</p>
 
@@ -849,7 +871,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Tracing calls and accessors, passed down from the <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> equivalents. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00234">234</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00241">241</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00073">Halide::Internal::FunctionContents::trace_stores</a>.</p>
 
@@ -871,7 +893,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Tracing calls and accessors, passed down from the <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> equivalents. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00237">237</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00244">244</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00073">Halide::Internal::FunctionContents::trace_realizations</a>.</p>
 
@@ -893,7 +915,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Tracing calls and accessors, passed down from the <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> equivalents. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00240">240</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00247">247</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00073">Halide::Internal::FunctionContents::trace_loads</a>.</p>
 
@@ -915,7 +937,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Tracing calls and accessors, passed down from the <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> equivalents. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00243">243</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00250">250</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00073">Halide::Internal::FunctionContents::trace_stores</a>.</p>
 
@@ -937,49 +959,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Tracing calls and accessors, passed down from the <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> equivalents. </p>
 
-<p>Definition at line <a class="el" href="_function_8h_source.html#l00246">246</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
+<p>Definition at line <a class="el" href="_function_8h_source.html#l00253">253</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00073">Halide::Internal::FunctionContents::trace_realizations</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a74cc65d8d675bfad32b3b025dbecdfec"></a><!-- doxytag: member="Halide::Internal::Function::min_extent_produced" ref="a74cc65d8d675bfad32b3b025dbecdfec" args="(const std::string &amp;dim) const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="class_halide_1_1_internal_1_1_function.html#a74cc65d8d675bfad32b3b025dbecdfec">Halide::Internal::Function::min_extent_produced</a> </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>dim</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>What's the smallest amount of this <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> that can be produced? This is a function of the splits being done. </p>
-<p>Ignores writes due to scattering done by reductions. </p>
-
-</div>
-</div>
-<a class="anchor" id="a030968954b73f195f04c72d3460f05ce"></a><!-- doxytag: member="Halide::Internal::Function::min_extent_updated" ref="a030968954b73f195f04c72d3460f05ce" args="(const std::string &amp;dim) const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="class_halide_1_1_internal_1_1_function.html#a030968954b73f195f04c72d3460f05ce">Halide::Internal::Function::min_extent_updated</a> </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>dim</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Reductions also have a minimum granularity with which they can be computed in the pure vars (because they can't hit the same pure variable twice). </p>
-<p>This function retrieves that. </p>
 
 </div>
 </div>

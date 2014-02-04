@@ -119,11 +119,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ad9bea7737be5af36c0c54ecd27ae0128">CodeGen_PTX_Dev</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a PTX device code generator.  <a href="#ad9bea7737be5af36c0c54ecd27ae0128"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a04873b4ed4720bbf8373ed3d69e53498">compile</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> stmt, std::string name, const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;args)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a halide statement and compiles it to an llvm module held internally.  <a href="#a04873b4ed4720bbf8373ed3d69e53498"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a3c25d2cd60559d8e2e77fae6d38022da">add_kernel</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> stmt, std::string name, const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;args)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile a GPU kernel into the module.  <a href="#a3c25d2cd60559d8e2e77fae6d38022da"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a644643413c80d0731d08cb96bb12c023">init_module</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">(Re)initialize the PTX module.  <a href="#a644643413c80d0731d08cb96bb12c023"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a119c46ef3f359efc12890d6f2a305c69">compile_to_src</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; char &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ab74e5d97fcfc317f3bc56c0c633b067d">compile_to_src</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#acbd27f8b3a3ca7141e0f3fd79249bede">get_current_kernel_name</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a458c6b5a2b808b50e49c4d4e7074e349">dump</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
@@ -178,12 +178,12 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a04873b4ed4720bbf8373ed3d69e53498"></a><!-- doxytag: member="Halide::Internal::CodeGen_PTX_Dev::compile" ref="a04873b4ed4720bbf8373ed3d69e53498" args="(Stmt stmt, std::string name, const std::vector&lt; Argument &gt; &amp;args)" -->
+<a class="anchor" id="a3c25d2cd60559d8e2e77fae6d38022da"></a><!-- doxytag: member="Halide::Internal::CodeGen_PTX_Dev::add_kernel" ref="a3c25d2cd60559d8e2e77fae6d38022da" args="(Stmt stmt, std::string name, const std::vector&lt; Argument &gt; &amp;args)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a04873b4ed4720bbf8373ed3d69e53498">Halide::Internal::CodeGen_PTX_Dev::compile</a> </td>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a3c25d2cd60559d8e2e77fae6d38022da">Halide::Internal::CodeGen_PTX_Dev::add_kernel</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td>
           <td class="paramname"><em>stmt</em>, </td>
@@ -209,10 +209,10 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Take a halide statement and compiles it to an llvm module held internally. </p>
-<p><a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a> this before calling compile_to_bitcode or compile_to_native. </p>
+<p>Compile a GPU kernel into the module. </p>
+<p>This may be called many times with different kernels, which will all be accumulated into a single source module shared by a given <a class="el" href="namespace_halide.html">Halide</a> pipeline. </p>
 
-<p>Reimplemented from <a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#aaf2dec7490ba0ea0cf45d6ea9b7654ab">Halide::Internal::CodeGen</a>.</p>
+<p>Implements <a class="el" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a68ce3e6da0ede52095fd82515be4181b">Halide::Internal::CodeGen_GPU_Dev</a>.</p>
 
 </div>
 </div>
@@ -253,12 +253,12 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a119c46ef3f359efc12890d6f2a305c69"></a><!-- doxytag: member="Halide::Internal::CodeGen_PTX_Dev::compile_to_src" ref="a119c46ef3f359efc12890d6f2a305c69" args="()" -->
+<a class="anchor" id="ab74e5d97fcfc317f3bc56c0c633b067d"></a><!-- doxytag: member="Halide::Internal::CodeGen_PTX_Dev::compile_to_src" ref="ab74e5d97fcfc317f3bc56c0c633b067d" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string <a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a119c46ef3f359efc12890d6f2a305c69">Halide::Internal::CodeGen_PTX_Dev::compile_to_src</a> </td>
+          <td class="memname">std::vector&lt;char&gt; <a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ab74e5d97fcfc317f3bc56c0c633b067d">Halide::Internal::CodeGen_PTX_Dev::compile_to_src</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td><code> [virtual]</code></td>
@@ -267,7 +267,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Implements <a class="el" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#abc4d743e70b39bdf33069a385f61b044">Halide::Internal::CodeGen_GPU_Dev</a>.</p>
+<p>Implements <a class="el" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a614e2f87474143ebd10b0bfd0a5883a0">Halide::Internal::CodeGen_GPU_Dev</a>.</p>
 
 </div>
 </div>

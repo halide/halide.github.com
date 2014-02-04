@@ -1,14 +1,14 @@
 var _halide_runtime_8h =
 [
-    [ "halide_assert", "_halide_runtime_8h.html#ab974af81de37fc04c0d3f13c0d931c90", null ],
+    [ "halide_assert", "_halide_runtime_8h.html#ac87d020eed3438306b57d1eec5de0364", null ],
     [ "halide_trace_event_t", "_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6", null ],
-    [ "halide_printf", "_halide_runtime_8h.html#ad3657cd91f2034c75a9bc0acdbf44ede", null ],
-    [ "halide_error", "_halide_runtime_8h.html#a2545608b743e7f56ba2f52b3615738d9", null ],
-    [ "halide_do_par_for", "_halide_runtime_8h.html#a7d66d7cc1c5373f1784984f6fb14f4df", null ],
+    [ "halide_printf", "_halide_runtime_8h.html#aea37ca2e04077132c617c02780e352e7", null ],
+    [ "halide_error", "_halide_runtime_8h.html#af4d430e42f27846e3776920200ba3aef", null ],
+    [ "halide_do_par_for", "_halide_runtime_8h.html#a05193f80c8fc7df76ceadd82c4ce7b56", null ],
     [ "halide_shutdown_thread_pool", "_halide_runtime_8h.html#a5e9d22d2b79a3dc66a32159423b17910", null ],
-    [ "halide_malloc", "_halide_runtime_8h.html#a86052f0ba78872e38d3afe45146cece3", null ],
-    [ "halide_free", "_halide_runtime_8h.html#acd6d7417ad79523f22e11d88e9b61bac", null ],
-    [ "halide_debug_to_file", "_halide_runtime_8h.html#a42bf3febd2fafd0aad831f3c1add2a80", null ],
-    [ "halide_trace", "_halide_runtime_8h.html#af09b3e2c5f94a5b73525a741ea5a45ff", null ],
-    [ "halide_shutdown_trace", "_halide_runtime_8h.html#a33c370f442954d7a0b1a235ce5cc6325", null ]
+    [ "halide_malloc", "_halide_runtime_8h.html#aa5bb359ed77ef4c1f89251bcd7eb2613", null ],
+    [ "halide_free", "_halide_runtime_8h.html#a2fa49d775b9a20fab152a0650c4c936b", null ],
+    [ "halide_debug_to_file", "_halide_runtime_8h.html#a173a9669d4c2a9fb6fa0225a5fdabcd4", null ],
+    [ "halide_trace", "_halide_runtime_8h.html#a4b249f69efd572fdda7ee938f213b4ec", null ],
+    [ "halide_shutdown_trace", "_halide_runtime_8h.html#a618bb97f5d713e1097835a24670948f4", null ]
 ];

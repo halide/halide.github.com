@@ -12,6 +12,7 @@ var searchData=
   ['codegen_5fopencl_5fdev',['CodeGen_OpenCL_Dev',['../class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html',1,'Halide::Internal']]],
   ['codegen_5fposix',['CodeGen_Posix',['../class_halide_1_1_internal_1_1_code_gen___posix.html',1,'Halide::Internal']]],
   ['codegen_5fptx_5fdev',['CodeGen_PTX_Dev',['../class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html',1,'Halide::Internal']]],
+  ['codegen_5fspir_5fdev',['CodeGen_SPIR_Dev',['../class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html',1,'Halide::Internal']]],
   ['codegen_5fx86',['CodeGen_X86',['../class_halide_1_1_internal_1_1_code_gen___x86.html',1,'Halide::Internal']]],
   ['compare',['Compare',['../struct_halide_1_1_internal_1_1_stmt_1_1_compare.html',1,'Halide::Internal::Stmt']]],
   ['const_5fiterator',['const_iterator',['../class_halide_1_1_internal_1_1_scope_1_1const__iterator.html',1,'Halide::Internal::Scope']]]

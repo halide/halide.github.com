@@ -100,11 +100,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <span class="comment">// parallelization, unrolling, and tiling.</span>
 
 <span class="comment">// On linux, you can compile and run it like so:</span>
-<span class="comment">// g++ lesson_05.cpp -I ../include -L ../bin -rdynamic -lHalide -lpthread -ldl -o lesson_05</span>
+<span class="comment">// g++ lesson_05*.cpp -I ../include -L ../bin -rdynamic -lHalide -lpthread -ldl -o lesson_05</span>
 <span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_05</span>
 
 <span class="comment">// On os x:</span>
-<span class="comment">// g++ lesson_05.cpp -I ../include -L ../bin -lHalide -o lesson_05</span>
+<span class="comment">// g++ lesson_05*.cpp -I ../include -L ../bin -lHalide -o lesson_05</span>
 <span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_05</span>
 
 <span class="preprocessor">#include &lt;Halide.h&gt;</span>
@@ -127,7 +127,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
         <span class="comment">// By default we walk along the rows and then down the columns.</span>
         printf(<span class="stringliteral">&quot;Evaluating gradient row-major\n&quot;</span>);
-        <a name="_a3"></a><a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a name="a4"></a><a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
+        <a name="_a3"></a><a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a name="a4"></a><a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
 
         <span class="comment">// The equivalent C is:</span>
         printf(<span class="stringliteral">&quot;Equivalent C:\n&quot;</span>);
@@ -150,10 +150,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// and sets a new nesting order for the for loops that are</span>
         <span class="comment">// generated. The arguments are specified from the innermost</span>
         <span class="comment">// loop out, so the following call puts y in the inner loop:</span>
-        gradient.<a name="a5"></a><a class="code" href="class_halide_1_1_func.html#a06212b52ef5bcc170cf47d9484507c12" title="Reorder variables to have the given nesting order, from innermost out.">reorder</a>(y, x);
+        gradient.<a name="a5"></a><a class="code" href="class_halide_1_1_func.html#a2ad991bc3ebd940906187a0552ef7754" title="Reorder variables to have the given nesting order, from innermost out.">reorder</a>(y, x);
 
         printf(<span class="stringliteral">&quot;Evaluating gradient column-major\n&quot;</span>);
-        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
+        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
 
         printf(<span class="stringliteral">&quot;Equivalent C:\n&quot;</span>);
         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 4; x++) {
@@ -186,7 +186,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// also added within the loops.</span>
 
         printf(<span class="stringliteral">&quot;Evaluating gradient with x split into x_outer and x_inner \n&quot;</span>);
-        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
+        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
 
         printf(<span class="stringliteral">&quot;Equivalent C:\n&quot;</span>);
         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; 4; y++) {
@@ -220,7 +220,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         gradient.<a name="a7"></a><a class="code" href="class_halide_1_1_func.html#a5ceb7639659b4e305b4ead3784ed1e6b" title="Join two dimensions into a single fused dimenion.">fuse</a>(x, y, fused);
 
         printf(<span class="stringliteral">&quot;Evaluating gradient with x and y fused\n&quot;</span>);
-        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
+        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
 
         printf(<span class="stringliteral">&quot;Equivalent C:\n&quot;</span>);
         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> fused = 0; fused &lt; 4*4; fused++) {
@@ -249,13 +249,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> x_outer, x_inner, y_outer, y_inner;
         gradient.<a class="code" href="class_halide_1_1_func.html#abefe6262e23d34d161c7cc0b85e07187" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(x, x_outer, x_inner, 2);
         gradient.<a class="code" href="class_halide_1_1_func.html#abefe6262e23d34d161c7cc0b85e07187" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(y, y_outer, y_inner, 2);
-        gradient.<a class="code" href="class_halide_1_1_func.html#a06212b52ef5bcc170cf47d9484507c12" title="Reorder variables to have the given nesting order, from innermost out.">reorder</a>(x_inner, y_inner, x_outer, y_outer);
+        gradient.<a class="code" href="class_halide_1_1_func.html#a2ad991bc3ebd940906187a0552ef7754" title="Reorder variables to have the given nesting order, from innermost out.">reorder</a>(x_inner, y_inner, x_outer, y_outer);
 
         <span class="comment">// This pattern is common enough that there&#39;s a shorthand for it:</span>
         <span class="comment">// gradient.tile(x, y, x_outer, y_outer, x_inner, y_inner, 2, 2);</span>
 
         printf(<span class="stringliteral">&quot;Evaluating gradient in 2x2 tiles\n&quot;</span>);
-        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
+        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
 
         printf(<span class="stringliteral">&quot;Equivalent C:\n&quot;</span>);
         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y_outer = 0; y_outer &lt; 2; y_outer++) {
@@ -310,7 +310,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// This time we&#39;ll evaluate over an 8x4 box, so that we have</span>
         <span class="comment">// more than one vector of work per scanline.</span>
         printf(<span class="stringliteral">&quot;Evaluating gradient with x_inner vectorized \n&quot;</span>);
-        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(8, 4);
+        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(8, 4);
 
         printf(<span class="stringliteral">&quot;Equivalent C:\n&quot;</span>);
         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; 4; y++) {
@@ -356,7 +356,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// gradient.unroll(x, 2);</span>
 
         printf(<span class="stringliteral">&quot;Evaluating gradient unrolled by a factor of two\n&quot;</span>);
-        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> result = gradient.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
+        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> result = gradient.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
 
         printf(<span class="stringliteral">&quot;Equivalent C:\n&quot;</span>);
         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; 4; y++) {
@@ -396,7 +396,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         gradient.<a class="code" href="class_halide_1_1_func.html#abefe6262e23d34d161c7cc0b85e07187" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(x, x_outer, x_inner, 2);
 
         printf(<span class="stringliteral">&quot;Evaluating gradient over a 5x4 box with x split by two \n&quot;</span>);
-        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(5, 4);
+        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(5, 4);
 
         printf(<span class="stringliteral">&quot;Equivalent C:\n&quot;</span>);
         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; 4; y++) {
@@ -469,7 +469,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
         printf(<span class="stringliteral">&quot;Evaluating gradient tiles in parallel\n&quot;</span>);
-        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
+        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
 
         <span class="comment">// The tiles should occur in arbitrary order, but within each</span>
         <span class="comment">// tile the pixels will be traversed in row-major order.</span>
@@ -525,7 +525,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// If you like you can turn on tracing, but it&#39;s going to</span>
         <span class="comment">// produce a lot of printfs. Instead we&#39;ll compute the answer</span>
         <span class="comment">// both in C and Halide and see if the answers match.</span>
-        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> result = gradient_fast.<a class="code" href="class_halide_1_1_func.html#ada38c15d53cdbab124bb602eab26b7ce" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(800, 600);
+        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> result = gradient_fast.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(800, 600);
 
         printf(<span class="stringliteral">&quot;Checking Halide result against equivalent C...\n&quot;</span>);
         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> tile_index = 0; tile_index &lt; 4 * 3; tile_index++) {

@@ -120,8 +120,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac4be433831b0ed0b6b1a9cd2a31e86dd">CodeGen_GPU_Host</a> (<a class="el" href="struct_halide_1_1_target.html">Target</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a GPU code generator.  <a href="#ac4be433831b0ed0b6b1a9cd2a31e86dd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a95f9951ba7094fa687d93cfbf390c4c8">~CodeGen_GPU_Host</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a61c1fe7dae7ad67402d90ccef72b459d">compile</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> stmt, std::string name, const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;args)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile to an internally-held llvm module.  <a href="#a61c1fe7dae7ad67402d90ccef72b459d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a674403d68724fc73e2d7a5a38d5c57ff">compile</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> stmt, std::string name, const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;args, const std::vector&lt; <a class="el" href="class_halide_1_1_buffer.html">Buffer</a> &gt; &amp;images_to_embed)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile to an internally-held llvm module.  <a href="#a674403d68724fc73e2d7a5a38d5c57ff"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a4cf9a5c9122afcc738b78e2901060517">track_buffers</a> ()</td></tr>
@@ -199,12 +199,12 @@ Static Protected Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a61c1fe7dae7ad67402d90ccef72b459d"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::compile" ref="a61c1fe7dae7ad67402d90ccef72b459d" args="(Stmt stmt, std::string name, const std::vector&lt; Argument &gt; &amp;args)" -->
+<a class="anchor" id="a674403d68724fc73e2d7a5a38d5c57ff"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::compile" ref="a674403d68724fc73e2d7a5a38d5c57ff" args="(Stmt stmt, std::string name, const std::vector&lt; Argument &gt; &amp;args, const std::vector&lt; Buffer &gt; &amp;images_to_embed)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a61c1fe7dae7ad67402d90ccef72b459d">Halide::Internal::CodeGen_GPU_Host::compile</a> </td>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a674403d68724fc73e2d7a5a38d5c57ff">Halide::Internal::CodeGen_GPU_Host::compile</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td>
           <td class="paramname"><em>stmt</em>, </td>
@@ -219,7 +219,13 @@ Static Protected Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
+          <td class="paramname"><em>args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="class_halide_1_1_buffer.html">Buffer</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>images_to_embed</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -233,7 +239,7 @@ Static Protected Attributes</h2></td></tr>
 <p>Compile to an internally-held llvm module. </p>
 <p>Takes a halide statement, the name of the function produced, and the arguments to the function produced. After calling this, call CodeGen::compile_to_file or CodeGen::compile_to_function_pointer to get at the x86 machine code. </p>
 
-<p>Reimplemented from <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a13247cc2ab0e241071e87bf45790e38c">Halide::Internal::CodeGen_X86</a>.</p>
+<p>Reimplemented from <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a20e3b2385fbdf14ce2ed32998fffe85a">Halide::Internal::CodeGen_X86</a>.</p>
 
 </div>
 </div>
@@ -361,7 +367,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#a46ee9d2cb3873ffd6b780970f1e87369">Halide::Internal::CodeGen</a>.</p>
 
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00048">48</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00050">50</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
 
 </div>
 </div>
@@ -462,7 +468,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00052">52</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00054">54</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
 
 </div>
 </div>
@@ -477,7 +483,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00053">53</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00055">55</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
 
 </div>
 </div>
@@ -492,7 +498,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00054">54</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00056">56</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
 
 </div>
 </div>
@@ -507,7 +513,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00055">55</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00057">57</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
 
 </div>
 </div>
@@ -522,7 +528,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00056">56</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00058">58</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
 
 </div>
 </div>
@@ -537,7 +543,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00057">57</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00059">59</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
 
 </div>
 </div>
@@ -552,7 +558,7 @@ Static Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00067">67</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00069">69</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
 
 </div>
 </div>

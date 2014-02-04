@@ -32,5 +32,5 @@ var searchData=
   ['wild_5fu8x8',['wild_u8x8',['../class_halide_1_1_internal_1_1_code_gen___posix.html#a8518fa94087a46c6d340448941a948c9',1,'Halide::Internal::CodeGen_Posix']]],
   ['windows',['Windows',['../struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a33d246944800a2b478899132d76a95b2',1,'Halide::Target']]],
   ['wrapped_5ffunction',['wrapped_function',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a944aab2343d1255b8c17216b00985b6e',1,'Halide::Internal::JITCompiledModule']]],
-  ['writes',['writes',['../class_halide_1_1_internal_1_1_closure.html#af1831367c41a4e13baa246cdc9230c48',1,'Halide::Internal::Closure']]]
+  ['write',['write',['../struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#ab728f01010546a21410a93d4b747cfe4',1,'Halide::Internal::Closure::BufferRef']]]
 ];

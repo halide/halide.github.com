@@ -121,8 +121,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#aedca697d15b5bb898cd6a63a8d3020c3">CodeGen_C</a> (std::ostream &amp;)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a C code generator pointing at a particular output stream (e.g.  <a href="#aedca697d15b5bb898cd6a63a8d3020c3"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#abfba81fba6cb4bba6f085783d5bc45c5">compile</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> stmt, std::string name, const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;args)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit source code equivalent to the given statement, wrapped in a function with the given type signature.  <a href="#abfba81fba6cb4bba6f085783d5bc45c5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a190d6a489a980f98db50eb97a3d6fc6c">compile</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> stmt, std::string name, const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;args, const std::vector&lt; <a class="el" href="class_halide_1_1_buffer.html">Buffer</a> &gt; &amp;images_to_embed)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit source code equivalent to the given statement, wrapped in a function with the given type signature.  <a href="#a190d6a489a980f98db50eb97a3d6fc6c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a088c41418624e571a1f7c26d7eac15ec">compile_header</a> (const std::string &amp;name, const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;args)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit a header file defining a halide pipeline with the given type signature.  <a href="#a088c41418624e571a1f7c26d7eac15ec"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
@@ -144,6 +144,8 @@ Protected Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a new C scope (i.e.  <a href="#a3b9b291608bd137af4f788bae7b859b3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a2c813cd941a2e028ace0daa9d3cd207b">close_scope</a> (const std::string &amp;comment)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Close a C scope (i.e.  <a href="#a2c813cd941a2e028ace0daa9d3cd207b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a7fd5d0676f34880a503f4b93dd118baf">unpack_buffer</a> (<a class="el" href="struct_halide_1_1_type.html">Type</a> t, const std::string &amp;buffer_name)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack a buffer into its constituent parts.  <a href="#a7fd5d0676f34880a503f4b93dd118baf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a0c7d16220e07b92403dd948dfa042680">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_variable.html">Variable</a> *)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a2b1758e25983daaa650d70ba38e42a12">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_int_imm.html">IntImm</a> *)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a841cb4e86cf823c1e964fff0338dd114">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_float_imm.html">FloatImm</a> *)</td></tr>
@@ -183,7 +185,7 @@ Protected Member Functions</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#aa2a0647e17ceb7a5483257016b2f7f93">id</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">An for the most recently generated ssa variable.  <a href="#aa2a0647e17ceb7a5483257016b2f7f93"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">An ID for the most recently generated ssa variable.  <a href="#aa2a0647e17ceb7a5483257016b2f7f93"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <br class="typebreak"/>
 std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#af6d9429f3ca6c236a8da179c538009d2">cache</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A cache of generated values in scope.  <a href="#af6d9429f3ca6c236a8da179c538009d2"></a><br/></td></tr>
@@ -191,6 +193,8 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Track the types of allocations to avoid unnecessary casts.  <a href="#afe5d2cc7743f47c402317b561615a93a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a0d867f0e390182e00054eb629181516d">heap_allocations</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Track which allocations actually went on the heap.  <a href="#a0d867f0e390182e00054eb629181516d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#abd679d9da0e82113f78358e8d0a75eb1">have_user_context</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">True if there is a void * __user_context parameter in the arguments.  <a href="#abd679d9da0e82113f78358e8d0a75eb1"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>This class emits C++ code equivalent to a halide <a class="el" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a>. </p>
@@ -219,12 +223,12 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="abfba81fba6cb4bba6f085783d5bc45c5"></a><!-- doxytag: member="Halide::Internal::CodeGen_C::compile" ref="abfba81fba6cb4bba6f085783d5bc45c5" args="(Stmt stmt, std::string name, const std::vector&lt; Argument &gt; &amp;args)" -->
+<a class="anchor" id="a190d6a489a980f98db50eb97a3d6fc6c"></a><!-- doxytag: member="Halide::Internal::CodeGen_C::compile" ref="a190d6a489a980f98db50eb97a3d6fc6c" args="(Stmt stmt, std::string name, const std::vector&lt; Argument &gt; &amp;args, const std::vector&lt; Buffer &gt; &amp;images_to_embed)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#abfba81fba6cb4bba6f085783d5bc45c5">Halide::Internal::CodeGen_C::compile</a> </td>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a190d6a489a980f98db50eb97a3d6fc6c">Halide::Internal::CodeGen_C::compile</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td>
           <td class="paramname"><em>stmt</em>, </td>
@@ -239,7 +243,13 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
+          <td class="paramname"><em>args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="class_halide_1_1_buffer.html">Buffer</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>images_to_embed</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -251,8 +261,6 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 <div class="memdoc">
 
 <p>Emit source code equivalent to the given statement, wrapped in a function with the given type signature. </p>
-
-<p>Reimplemented in <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#adb82de23fc4c1e62039cb11a049a1e3d">Halide::Internal::CodeGen_OpenCL_Dev::CodeGen_OpenCL_C</a>.</p>
 
 </div>
 </div>
@@ -447,6 +455,35 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Close a C scope (i.e. </p>
 <p>throw in an end brace, decrease the indent) </p>
+
+</div>
+</div>
+<a class="anchor" id="a7fd5d0676f34880a503f4b93dd118baf"></a><!-- doxytag: member="Halide::Internal::CodeGen_C::unpack_buffer" ref="a7fd5d0676f34880a503f4b93dd118baf" args="(Type t, const std::string &amp;buffer_name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a7fd5d0676f34880a503f4b93dd118baf">Halide::Internal::CodeGen_C::unpack_buffer</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_halide_1_1_type.html">Type</a>&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>buffer_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Unpack a buffer into its constituent parts. </p>
 
 </div>
 </div>
@@ -1168,9 +1205,9 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 </div>
 <div class="memdoc">
 
-<p>An for the most recently generated ssa variable. </p>
+<p>An ID for the most recently generated ssa variable. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00043">43</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00045">45</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
 
 </div>
 </div>
@@ -1187,7 +1224,7 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>A cache of generated values in scope. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00046">46</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00048">48</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
 
 </div>
 </div>
@@ -1204,7 +1241,7 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Track the types of allocations to avoid unnecessary casts. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00071">71</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00076">76</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
 
 </div>
 </div>
@@ -1221,7 +1258,24 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Track which allocations actually went on the heap. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00074">74</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00079">79</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abd679d9da0e82113f78358e8d0a75eb1"></a><!-- doxytag: member="Halide::Internal::CodeGen_C::have_user_context" ref="abd679d9da0e82113f78358e8d0a75eb1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#abd679d9da0e82113f78358e8d0a75eb1">Halide::Internal::CodeGen_C::have_user_context</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>True if there is a void * __user_context parameter in the arguments. </p>
+
+<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00082">82</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
 
 </div>
 </div>

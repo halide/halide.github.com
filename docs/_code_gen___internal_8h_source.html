@@ -140,58 +140,70 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00039"></a><a class="code" href="class_halide_1_1_internal_1_1_closure.html#acffc618e3e939b3d2e8d3346dec13107">00039</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_closure.html#acffc618e3e939b3d2e8d3346dec13107">track_buffers</a>;
 <a name="l00040"></a><a class="code" href="class_halide_1_1_internal_1_1_closure.html#a2dacd4fafb63386b54a6632d334a905f">00040</a>     llvm::StructType *<a class="code" href="class_halide_1_1_internal_1_1_closure.html#a2dacd4fafb63386b54a6632d334a905f">buffer_t</a>;
 <a name="l00041"></a>00041 
-<a name="l00042"></a>00042 <span class="keyword">public</span>:
-<a name="l00043"></a>00043 <span class="comment"></span>
-<a name="l00044"></a>00044 <span class="comment">    /** Traverse a statement and find all references to external</span>
-<a name="l00045"></a>00045 <span class="comment">     * symbols. </span>
-<a name="l00046"></a>00046 <span class="comment">     * </span>
-<a name="l00047"></a>00047 <span class="comment">     * Simple backends just create a pointer for internal</span>
-<a name="l00048"></a>00048 <span class="comment">     * allocations. If the backend creates a whole buffer_t (e.g. in</span>
-<a name="l00049"></a>00049 <span class="comment">     * order to track dirty bits), then the third argument should be</span>
-<a name="l00050"></a>00050 <span class="comment">     * set to true. When the closure encounters a read or write to</span>
-<a name="l00051"></a>00051 <span class="comment">     * &#39;foo&#39;, it assumes that the host pointer is found in the symbol</span>
-<a name="l00052"></a>00052 <span class="comment">     * table as &#39;foo.host&#39;, and any buffer_t pointer is found under</span>
-<a name="l00053"></a>00053 <span class="comment">     * &#39;foo.buffer&#39;. */</span>
-<a name="l00054"></a>00054     <span class="keyword">static</span> <a class="code" href="class_halide_1_1_internal_1_1_closure.html" title="A helper class to manage closures.">Closure</a> <a class="code" href="class_halide_1_1_internal_1_1_closure.html#a2ed732a7549327b97d10aab8061cfb74" title="Traverse a statement and find all references to external symbols.">make</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> s, <span class="keyword">const</span> std::string &amp;loop_variable, <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_closure.html#acffc618e3e939b3d2e8d3346dec13107">track_buffers</a>, llvm::StructType *<a class="code" href="class_halide_1_1_internal_1_1_closure.html#a2dacd4fafb63386b54a6632d334a905f">buffer_t</a>);
-<a name="l00055"></a>00055 <span class="comment"></span>
-<a name="l00056"></a>00056 <span class="comment">    /** External variables referenced. */</span>
-<a name="l00057"></a><a class="code" href="class_halide_1_1_internal_1_1_closure.html#a1e1df57b78fed89780df286f67068cb6">00057</a>     std::map&lt;std::string, Type&gt; <a class="code" href="class_halide_1_1_internal_1_1_closure.html#a1e1df57b78fed89780df286f67068cb6" title="External variables referenced.">vars</a>;
-<a name="l00058"></a>00058     <span class="comment"></span>
-<a name="l00059"></a>00059 <span class="comment">    /** External allocations read from. */</span>
-<a name="l00060"></a><a class="code" href="class_halide_1_1_internal_1_1_closure.html#af6c7633e6f8164da1047aa2637fa3021">00060</a>     std::map&lt;std::string, Type&gt; <a class="code" href="class_halide_1_1_internal_1_1_closure.html#af6c7633e6f8164da1047aa2637fa3021" title="External allocations read from.">reads</a>;
-<a name="l00061"></a>00061 <span class="comment"></span>
-<a name="l00062"></a>00062 <span class="comment">    /** External allocations written to. */</span>
-<a name="l00063"></a><a class="code" href="class_halide_1_1_internal_1_1_closure.html#af1831367c41a4e13baa246cdc9230c48">00063</a>     std::map&lt;std::string, Type&gt; <a class="code" href="class_halide_1_1_internal_1_1_closure.html#af1831367c41a4e13baa246cdc9230c48" title="External allocations written to.">writes</a>;
-<a name="l00064"></a>00064 <span class="comment"></span>
-<a name="l00065"></a>00065 <span class="comment">    /** The llvm types of the external symbols. */</span>
-<a name="l00066"></a>00066     std::vector&lt;llvm::Type *&gt; <a class="code" href="class_halide_1_1_internal_1_1_closure.html#a4b946c55e2049f483deb5657b912cbc9" title="The llvm types of the external symbols.">llvm_types</a>(llvm::LLVMContext *context);
-<a name="l00067"></a>00067 <span class="comment"></span>
-<a name="l00068"></a>00068 <span class="comment">    /** The Halide names of the external symbols (in the same order as llvm_types). */</span>
-<a name="l00069"></a>00069     std::vector&lt;std::string&gt; <a class="code" href="class_halide_1_1_internal_1_1_closure.html#a54203d0540587be31ccdb0e9c5db6f00" title="The Halide names of the external symbols (in the same order as llvm_types).">names</a>();
+<a name="l00042"></a>00042 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00043"></a>00043 <span class="comment">    /** Information about a buffer reference from a closure. */</span>
+<a name="l00044"></a><a class="code" href="struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html">00044</a>     <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html" title="Information about a buffer reference from a closure.">BufferRef</a>
+<a name="l00045"></a>00045     {<span class="comment"></span>
+<a name="l00046"></a>00046 <span class="comment">        /** The type of the buffer referenced. */</span>
+<a name="l00047"></a><a class="code" href="struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#a0aec0fb1df9c8aeb90546d48253f37b8">00047</a>         <a class="code" href="struct_halide_1_1_type.html" title="Types in the halide type system.">Type</a> <a class="code" href="struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#a0aec0fb1df9c8aeb90546d48253f37b8" title="The type of the buffer referenced.">type</a>;
+<a name="l00048"></a>00048 <span class="comment"></span>
+<a name="l00049"></a>00049 <span class="comment">        /** The buffer is read from. */</span>
+<a name="l00050"></a><a class="code" href="struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#ad2b9f8a95df3deeefcabf6d0ed7b1431">00050</a>         <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#ad2b9f8a95df3deeefcabf6d0ed7b1431" title="The buffer is read from.">read</a>;
+<a name="l00051"></a>00051 <span class="comment"></span>
+<a name="l00052"></a>00052 <span class="comment">        /** The buffer is written to. */</span>
+<a name="l00053"></a><a class="code" href="struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#ab728f01010546a21410a93d4b747cfe4">00053</a>         <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#ab728f01010546a21410a93d4b747cfe4" title="The buffer is written to.">write</a>;
+<a name="l00054"></a>00054 
+<a name="l00055"></a><a class="code" href="struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#a996f69680f5f9138053c9a2020142728">00055</a>         <a class="code" href="struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#a996f69680f5f9138053c9a2020142728">BufferRef</a>() : <a class="code" href="struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#ad2b9f8a95df3deeefcabf6d0ed7b1431" title="The buffer is read from.">read</a>(false), <a class="code" href="struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#ab728f01010546a21410a93d4b747cfe4" title="The buffer is written to.">write</a>(false) { }
+<a name="l00056"></a>00056     };
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058 <span class="keyword">public</span>:<span class="comment"></span>
+<a name="l00059"></a>00059 <span class="comment">    /** Traverse a statement and find all references to external</span>
+<a name="l00060"></a>00060 <span class="comment">     * symbols. </span>
+<a name="l00061"></a>00061 <span class="comment">     * </span>
+<a name="l00062"></a>00062 <span class="comment">     * Simple backends just create a pointer for internal</span>
+<a name="l00063"></a>00063 <span class="comment">     * allocations. If the backend creates a whole buffer_t (e.g. in</span>
+<a name="l00064"></a>00064 <span class="comment">     * order to track dirty bits), then the third argument should be</span>
+<a name="l00065"></a>00065 <span class="comment">     * set to true. When the closure encounters a read or write to</span>
+<a name="l00066"></a>00066 <span class="comment">     * &#39;foo&#39;, it assumes that the host pointer is found in the symbol</span>
+<a name="l00067"></a>00067 <span class="comment">     * table as &#39;foo.host&#39;, and any buffer_t pointer is found under</span>
+<a name="l00068"></a>00068 <span class="comment">     * &#39;foo.buffer&#39;. */</span>
+<a name="l00069"></a>00069     <span class="keyword">static</span> <a class="code" href="class_halide_1_1_internal_1_1_closure.html" title="A helper class to manage closures.">Closure</a> <a class="code" href="class_halide_1_1_internal_1_1_closure.html#a2ed732a7549327b97d10aab8061cfb74" title="Traverse a statement and find all references to external symbols.">make</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> s, <span class="keyword">const</span> std::string &amp;loop_variable, <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_closure.html#acffc618e3e939b3d2e8d3346dec13107">track_buffers</a>, llvm::StructType *<a class="code" href="class_halide_1_1_internal_1_1_closure.html#a2dacd4fafb63386b54a6632d334a905f">buffer_t</a>);
 <a name="l00070"></a>00070 <span class="comment"></span>
-<a name="l00071"></a>00071 <span class="comment">    /** The llvm type of a struct containing all of the externally referenced state. */</span>
-<a name="l00072"></a>00072     llvm::StructType *<a class="code" href="class_halide_1_1_internal_1_1_closure.html#ae61a219724f237e57cebc835003f070c" title="The llvm type of a struct containing all of the externally referenced state.">build_type</a>(llvm::LLVMContext *context);
-<a name="l00073"></a>00073 <span class="comment"></span>
-<a name="l00074"></a>00074 <span class="comment">    /** Emit code that builds a struct containing all the externally</span>
-<a name="l00075"></a>00075 <span class="comment">     * referenced state. Requires you to pass it a struct to fill in,</span>
-<a name="l00076"></a>00076 <span class="comment">     * a scope to retrieve the llvm values from and a builder to place</span>
-<a name="l00077"></a>00077 <span class="comment">     * the packing code. */</span>
-<a name="l00078"></a>00078     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_closure.html#a5b01c0f9cfe173ce98403d38584ce092" title="Emit code that builds a struct containing all the externally referenced state.">pack_struct</a>(llvm::Value *dst, <span class="keyword">const</span> <a class="code" href="class_halide_1_1_internal_1_1_scope.html">Scope&lt;llvm::Value *&gt;</a> &amp;src, llvm::IRBuilder&lt;&gt; *builder);
+<a name="l00071"></a>00071 <span class="comment">    /** External variables referenced. */</span>
+<a name="l00072"></a><a class="code" href="class_halide_1_1_internal_1_1_closure.html#a1e1df57b78fed89780df286f67068cb6">00072</a>     std::map&lt;std::string, Type&gt; <a class="code" href="class_halide_1_1_internal_1_1_closure.html#a1e1df57b78fed89780df286f67068cb6" title="External variables referenced.">vars</a>;
+<a name="l00073"></a>00073     <span class="comment"></span>
+<a name="l00074"></a>00074 <span class="comment">    /** External allocations referenced. */</span>
+<a name="l00075"></a><a class="code" href="class_halide_1_1_internal_1_1_closure.html#a5f52aae2c00c9b8e77884ec3c0869707">00075</a>     std::map&lt;std::string, BufferRef&gt; <a class="code" href="class_halide_1_1_internal_1_1_closure.html#a5f52aae2c00c9b8e77884ec3c0869707" title="External allocations referenced.">buffers</a>;
+<a name="l00076"></a>00076 <span class="comment"></span>
+<a name="l00077"></a>00077 <span class="comment">    /** The llvm types of the external symbols. */</span>
+<a name="l00078"></a>00078     std::vector&lt;llvm::Type *&gt; <a class="code" href="class_halide_1_1_internal_1_1_closure.html#a4b946c55e2049f483deb5657b912cbc9" title="The llvm types of the external symbols.">llvm_types</a>(llvm::LLVMContext *context);
 <a name="l00079"></a>00079 <span class="comment"></span>
-<a name="l00080"></a>00080 <span class="comment">    /** Emit code that unpacks a struct containing all the externally</span>
-<a name="l00081"></a>00081 <span class="comment">     * referenced state into a symbol table. Requires you to pass it a</span>
-<a name="l00082"></a>00082 <span class="comment">     * state struct value, a scope to fill, and a builder to place the</span>
-<a name="l00083"></a>00083 <span class="comment">     * unpacking code. */</span>
-<a name="l00084"></a>00084     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_closure.html#aaac3ac9f0549734d81f3a78f02ef08db" title="Emit code that unpacks a struct containing all the externally referenced state into a symbol table...">unpack_struct</a>(<a class="code" href="class_halide_1_1_internal_1_1_scope.html">Scope&lt;llvm::Value *&gt;</a> &amp;dst, llvm::Value *src, llvm::IRBuilder&lt;&gt; *builder);
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086 };
-<a name="l00087"></a>00087 <span class="comment"></span>
-<a name="l00088"></a>00088 <span class="comment">/** Get the llvm type equivalent to a given halide type */</span>
-<a name="l00089"></a>00089 llvm::Type *<a class="code" href="namespace_halide_1_1_internal.html#a71f10140e29131153c3be98d2899b090" title="Get the llvm type equivalent to a given halide type.">llvm_type_of</a>(llvm::LLVMContext *context, <a class="code" href="struct_halide_1_1_type.html" title="Types in the halide type system.">Halide::Type</a> t);
-<a name="l00090"></a>00090 
-<a name="l00091"></a>00091 }}
-<a name="l00092"></a>00092 
-<a name="l00093"></a>00093 <span class="preprocessor">#endif</span>
+<a name="l00080"></a>00080 <span class="comment">    /** The Halide names of the external symbols (in the same order as llvm_types). */</span>
+<a name="l00081"></a>00081     std::vector&lt;std::string&gt; <a class="code" href="class_halide_1_1_internal_1_1_closure.html#a54203d0540587be31ccdb0e9c5db6f00" title="The Halide names of the external symbols (in the same order as llvm_types).">names</a>();
+<a name="l00082"></a>00082 <span class="comment"></span>
+<a name="l00083"></a>00083 <span class="comment">    /** The llvm type of a struct containing all of the externally referenced state. */</span>
+<a name="l00084"></a>00084     llvm::StructType *<a class="code" href="class_halide_1_1_internal_1_1_closure.html#ae61a219724f237e57cebc835003f070c" title="The llvm type of a struct containing all of the externally referenced state.">build_type</a>(llvm::LLVMContext *context);
+<a name="l00085"></a>00085 <span class="comment"></span>
+<a name="l00086"></a>00086 <span class="comment">    /** Emit code that builds a struct containing all the externally</span>
+<a name="l00087"></a>00087 <span class="comment">     * referenced state. Requires you to pass it a struct to fill in,</span>
+<a name="l00088"></a>00088 <span class="comment">     * a scope to retrieve the llvm values from and a builder to place</span>
+<a name="l00089"></a>00089 <span class="comment">     * the packing code. */</span>
+<a name="l00090"></a>00090     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_closure.html#a5b01c0f9cfe173ce98403d38584ce092" title="Emit code that builds a struct containing all the externally referenced state.">pack_struct</a>(llvm::Value *dst, <span class="keyword">const</span> <a class="code" href="class_halide_1_1_internal_1_1_scope.html">Scope&lt;llvm::Value *&gt;</a> &amp;src, llvm::IRBuilder&lt;&gt; *builder);
+<a name="l00091"></a>00091 <span class="comment"></span>
+<a name="l00092"></a>00092 <span class="comment">    /** Emit code that unpacks a struct containing all the externally</span>
+<a name="l00093"></a>00093 <span class="comment">     * referenced state into a symbol table. Requires you to pass it a</span>
+<a name="l00094"></a>00094 <span class="comment">     * state struct value, a scope to fill, and a builder to place the</span>
+<a name="l00095"></a>00095 <span class="comment">     * unpacking code. */</span>
+<a name="l00096"></a>00096     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_closure.html#aaac3ac9f0549734d81f3a78f02ef08db" title="Emit code that unpacks a struct containing all the externally referenced state into a symbol table...">unpack_struct</a>(<a class="code" href="class_halide_1_1_internal_1_1_scope.html">Scope&lt;llvm::Value *&gt;</a> &amp;dst, llvm::Value *src, llvm::IRBuilder&lt;&gt; *builder);
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098 };
+<a name="l00099"></a>00099 <span class="comment"></span>
+<a name="l00100"></a>00100 <span class="comment">/** Get the llvm type equivalent to a given halide type */</span>
+<a name="l00101"></a>00101 llvm::Type *<a class="code" href="namespace_halide_1_1_internal.html#a71f10140e29131153c3be98d2899b090" title="Get the llvm type equivalent to a given halide type.">llvm_type_of</a>(llvm::LLVMContext *context, <a class="code" href="struct_halide_1_1_type.html" title="Types in the halide type system.">Halide::Type</a> t);
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103 }}
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

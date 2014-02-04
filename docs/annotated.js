@@ -25,6 +25,7 @@ var annotated =
     [ "Halide::Internal::Call", "struct_halide_1_1_internal_1_1_call.html", "struct_halide_1_1_internal_1_1_call" ],
     [ "Halide::Internal::Cast", "struct_halide_1_1_internal_1_1_cast.html", "struct_halide_1_1_internal_1_1_cast" ],
     [ "Halide::Internal::Closure", "class_halide_1_1_internal_1_1_closure.html", "class_halide_1_1_internal_1_1_closure" ],
+    [ "Halide::Internal::Closure::BufferRef", "struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html", "struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref" ],
     [ "Halide::Internal::CodeGen", "class_halide_1_1_internal_1_1_code_gen.html", "class_halide_1_1_internal_1_1_code_gen" ],
     [ "Halide::Internal::CodeGen_ARM", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html", "class_halide_1_1_internal_1_1_code_gen___a_r_m" ],
     [ "Halide::Internal::CodeGen_ARM::Pattern", "struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html", "struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern" ],
@@ -36,6 +37,7 @@ var annotated =
     [ "Halide::Internal::CodeGen_Posix", "class_halide_1_1_internal_1_1_code_gen___posix.html", "class_halide_1_1_internal_1_1_code_gen___posix" ],
     [ "Halide::Internal::CodeGen_Posix::Allocation", "struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html", "struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation" ],
     [ "Halide::Internal::CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev" ],
+    [ "Halide::Internal::CodeGen_SPIR_Dev", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev" ],
     [ "Halide::Internal::CodeGen_X86", "class_halide_1_1_internal_1_1_code_gen___x86.html", "class_halide_1_1_internal_1_1_code_gen___x86" ],
     [ "Halide::Internal::debug", "struct_halide_1_1_internal_1_1debug.html", "struct_halide_1_1_internal_1_1debug" ],
     [ "Halide::Internal::Div", "struct_halide_1_1_internal_1_1_div.html", "struct_halide_1_1_internal_1_1_div" ],
@@ -96,7 +98,6 @@ var annotated =
     [ "Halide::Internal::Scope< T >::const_iterator", "class_halide_1_1_internal_1_1_scope_1_1const__iterator.html", "class_halide_1_1_internal_1_1_scope_1_1const__iterator" ],
     [ "Halide::Internal::Scope< T >::iterator", "class_halide_1_1_internal_1_1_scope_1_1iterator.html", "class_halide_1_1_internal_1_1_scope_1_1iterator" ],
     [ "Halide::Internal::Select", "struct_halide_1_1_internal_1_1_select.html", "struct_halide_1_1_internal_1_1_select" ],
-    [ "Halide::Internal::SmallArray< T, elements_on_stack >", "class_halide_1_1_internal_1_1_small_array.html", "class_halide_1_1_internal_1_1_small_array" ],
     [ "Halide::Internal::SmallStack< T >", "class_halide_1_1_internal_1_1_small_stack.html", "class_halide_1_1_internal_1_1_small_stack" ],
     [ "Halide::Internal::Stmt", "struct_halide_1_1_internal_1_1_stmt.html", "struct_halide_1_1_internal_1_1_stmt" ],
     [ "Halide::Internal::Stmt::Compare", "struct_halide_1_1_internal_1_1_stmt_1_1_compare.html", "struct_halide_1_1_internal_1_1_stmt_1_1_compare" ],
@@ -117,5 +118,5 @@ var annotated =
     [ "Halide::Tuple", "class_halide_1_1_tuple.html", "class_halide_1_1_tuple" ],
     [ "Halide::Type", "struct_halide_1_1_type.html", "struct_halide_1_1_type" ],
     [ "Halide::Var", "class_halide_1_1_var.html", "class_halide_1_1_var" ],
-    [ "LeastSquaresSolver< N, M >", "class_least_squares_solver.html", "class_least_squares_solver" ]
+    [ "Halide::VarOrRVar", "struct_halide_1_1_var_or_r_var.html", "struct_halide_1_1_var_or_r_var" ]
 ];

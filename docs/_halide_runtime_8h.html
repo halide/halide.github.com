@@ -113,8 +113,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Defines</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#ab974af81de37fc04c0d3f13c0d931c90">halide_assert</a>(cond)&#160;&#160;&#160;if (!(cond)) <a class="el" href="_halide_runtime_8h.html#a2545608b743e7f56ba2f52b3615738d9">halide_error</a>( #cond );</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A macro that calls halide_error if the supplied condition is false.  <a href="#ab974af81de37fc04c0d3f13c0d931c90"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#ac87d020eed3438306b57d1eec5de0364">halide_assert</a>(user_context, cond)&#160;&#160;&#160;if (!(cond)) <a class="el" href="_halide_runtime_8h.html#af4d430e42f27846e3776920200ba3aef">halide_error</a>(user_context, #cond);</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A macro that calls halide_error if the supplied condition is false.  <a href="#ac87d020eed3438306b57d1eec5de0364"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6">halide_trace_event_t</a> { <br/>
@@ -131,50 +131,62 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#ad3657cd91f2034c75a9bc0acdbf44ede">halide_printf</a> (const char *,...)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Define halide_printf to catch debugging output, informational messages, etc.  <a href="#ad3657cd91f2034c75a9bc0acdbf44ede"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a2545608b743e7f56ba2f52b3615738d9">halide_error</a> (const char *msg)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Define halide_error to catch errors messages at runtime, for example bounds checking failures.  <a href="#a2545608b743e7f56ba2f52b3615738d9"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a42bf3febd2fafd0aad831f3c1add2a80">halide_debug_to_file</a> (const char *filename, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *data, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> s0, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> s1, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> s2, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> s3, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> type_code, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> bytes_per_element)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when debug_to_file is used inside Halide code.  <a href="#a42bf3febd2fafd0aad831f3c1add2a80"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#af09b3e2c5f94a5b73525a741ea5a45ff">halide_trace</a> (const char *func, <a class="el" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6">halide_trace_event_t</a> event, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> type_code, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> bits, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> vector_width, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> value_idx, void *value, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> dimensions, const <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> *coordinates)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when Funcs are marked as trace_load, trace_store, or trace_realization.  <a href="#af09b3e2c5f94a5b73525a741ea5a45ff"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a33c370f442954d7a0b1a235ce5cc6325">halide_shutdown_trace</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If tracing is writing to a file.  <a href="#a33c370f442954d7a0b1a235ce5cc6325"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#aea37ca2e04077132c617c02780e352e7">halide_printf</a> (void *user_context, const char *,...)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Define halide_printf to catch debugging output, informational messages, etc.  <a href="#aea37ca2e04077132c617c02780e352e7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#af4d430e42f27846e3776920200ba3aef">halide_error</a> (void *user_context, const char *msg)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Define halide_error to catch errors messages at runtime, for example bounds checking failures.  <a href="#af4d430e42f27846e3776920200ba3aef"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a173a9669d4c2a9fb6fa0225a5fdabcd4">halide_debug_to_file</a> (void *user_context, const char *filename, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *data, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> s0, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> s1, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> s2, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> s3, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> type_code, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> bytes_per_element)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when debug_to_file is used inside Halide code.  <a href="#a173a9669d4c2a9fb6fa0225a5fdabcd4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a4b249f69efd572fdda7ee938f213b4ec">halide_trace</a> (void *user_context, const char *func, <a class="el" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6">halide_trace_event_t</a> event, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> parent_id, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> type_code, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> bits, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> vector_width, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> value_idx, void *value, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> dimensions, const <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> *coordinates)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when Funcs are marked as trace_load, trace_store, or trace_realization.  <a href="#a4b249f69efd572fdda7ee938f213b4ec"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a618bb97f5d713e1097835a24670948f4">halide_shutdown_trace</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If tracing is writing to a file.  <a href="#a618bb97f5d713e1097835a24670948f4"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a7d66d7cc1c5373f1784984f6fb14f4df">halide_do_par_for</a> (int(*f)(int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *), int min, int size, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *closure)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Define halide_do_par_for to replace the default thread pool implementation.  <a href="#a7d66d7cc1c5373f1784984f6fb14f4df"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a05193f80c8fc7df76ceadd82c4ce7b56">halide_do_par_for</a> (void *user_context, int(*f)(void *ctx, int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *), int min, int size, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *closure)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Define halide_do_par_for to replace the default thread pool implementation.  <a href="#a05193f80c8fc7df76ceadd82c4ce7b56"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a5e9d22d2b79a3dc66a32159423b17910">halide_shutdown_thread_pool</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Define halide_do_par_for to replace the default thread pool implementation.  <a href="#a5e9d22d2b79a3dc66a32159423b17910"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a86052f0ba78872e38d3afe45146cece3">halide_malloc</a> (size_t x)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Define halide_malloc and halide_free to replace the default memory allocator.  <a href="#a86052f0ba78872e38d3afe45146cece3"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#acd6d7417ad79523f22e11d88e9b61bac">halide_free</a> (void *ptr)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Define halide_malloc and halide_free to replace the default memory allocator.  <a href="#acd6d7417ad79523f22e11d88e9b61bac"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#aa5bb359ed77ef4c1f89251bcd7eb2613">halide_malloc</a> (void *user_context, size_t x)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Define halide_malloc and halide_free to replace the default memory allocator.  <a href="#aa5bb359ed77ef4c1f89251bcd7eb2613"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a2fa49d775b9a20fab152a0650c4c936b">halide_free</a> (void *user_context, void *ptr)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Define halide_malloc and halide_free to replace the default memory allocator.  <a href="#a2fa49d775b9a20fab152a0650c4c936b"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Set a custom malloc and free for halide to use. </p>
 <p>This file exports all routines which can be replaced by an application hosting code generated by Halide.</p>
-<p>Malloc should return 32-byte aligned chunks of memory. If compiling statically, routines with appropriate signatures can be provided directly </p>
-<div class="fragment"><pre class="fragment">     <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <span class="keywordtype">void</span> *<a class="code" href="_halide_runtime_8h.html#a86052f0ba78872e38d3afe45146cece3" title="Define halide_malloc and halide_free to replace the default memory allocator.">halide_malloc</a>(<span class="keywordtype">size_t</span>)
-     extern &quot;C&quot; <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#acd6d7417ad79523f22e11d88e9b61bac" title="Define halide_malloc and halide_free to replace the default memory allocator.">halide_free</a>(<span class="keywordtype">void</span> *)
+<p>Malloc should return 32-byte aligned chunks of memory, and it should be safe for <a class="el" href="namespace_halide.html">Halide</a> to read slightly out of bounds (up to 8 bytes before the start or beyond the end). If compiling statically, routines with appropriate signatures can be provided directly </p>
+<div class="fragment"><pre class="fragment">     <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <span class="keywordtype">void</span> *<a class="code" href="_halide_runtime_8h.html#aa5bb359ed77ef4c1f89251bcd7eb2613" title="Define halide_malloc and halide_free to replace the default memory allocator.">halide_malloc</a>(<span class="keywordtype">void</span> *, <span class="keywordtype">size_t</span>)
+     extern &quot;C&quot; <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a2fa49d775b9a20fab152a0650c4c936b" title="Define halide_malloc and halide_free to replace the default memory allocator.">halide_free</a>(<span class="keywordtype">void</span> *, <span class="keywordtype">void</span> *)
 </pre></div><p> These will clobber <a class="el" href="namespace_halide.html">Halide</a>'s versions. See for declarations.</p>
-<p>These are used when doing Ahead OF Time (AOT) compilation and must be supplied to the linker to override a routine. I.e., just define your own version of any of these functions with extern "C" linkage, and it should replace the default one.</p>
+<p>These are used when doing Ahead Of Time (AOT) compilation and must be supplied to the linker to override a routine. I.e., just define your own version of any of these functions with extern "C" linkage, and it should replace the default one.</p>
 <p>When doing Just In Time (JIT) compilation methods on the Func being compiled must be called instead. The corresponding methods are documented below.</p>
-<p>Some of these are also useful to call when using the default implementation. E.g. halide_shutdown_thread_pool. </p>
+<p>All of these functions take a "void *user_context" parameter as their first argument; if the <a class="el" href="namespace_halide.html">Halide</a> kernel that calls back to any of these funcions has been defined with a "__user_context" parameter XXXXXXXX, then the value of that pointer passed from the code that calls the <a class="el" href="namespace_halide.html">Halide</a> kernel is piped through to the function.</p>
+<p>Some of these are also useful to call when using the default implementation. E.g. halide_shutdown_thread_pool.</p>
+<p>Note that some linker setups may not respect the override you provide. E.g. if the override is in a shared library and the halide object files are linked directly into the output, the builtin versions of the runtime functions will be called. See your linker documentation for more details. On Linux, LD_DYNAMIC_WEAK=1 may help. </p>
 
 <p>Definition in file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 </div><hr/><h2>Define Documentation</h2>
-<a class="anchor" id="ab974af81de37fc04c0d3f13c0d931c90"></a><!-- doxytag: member="HalideRuntime.h::halide_assert" ref="ab974af81de37fc04c0d3f13c0d931c90" args="(cond)" -->
+<a class="anchor" id="ac87d020eed3438306b57d1eec5de0364"></a><!-- doxytag: member="HalideRuntime.h::halide_assert" ref="ac87d020eed3438306b57d1eec5de0364" args="(user_context, cond)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define <a class="el" href="_halide_runtime_8h.html#ab974af81de37fc04c0d3f13c0d931c90">halide_assert</a></td>
+          <td class="memname">#define <a class="el" href="_halide_runtime_8h.html#ac87d020eed3438306b57d1eec5de0364">halide_assert</a></td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">cond</td><td>)</td>
-          <td>&#160;&#160;&#160;if (!(cond)) <a class="el" href="_halide_runtime_8h.html#a2545608b743e7f56ba2f52b3615738d9">halide_error</a>( #cond );</td>
+          <td class="paramname">user_context, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">cond&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;if (!(cond)) <a class="el" href="_halide_runtime_8h.html#af4d430e42f27846e3776920200ba3aef">halide_error</a>(user_context, #cond);</td>
         </tr>
       </table>
 </div>
@@ -182,7 +194,7 @@ Functions</h2></td></tr>
 
 <p>A macro that calls halide_error if the supplied condition is false. </p>
 
-<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00050">50</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00064">64</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -218,18 +230,24 @@ Functions</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00086">86</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00105">105</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="ad3657cd91f2034c75a9bc0acdbf44ede"></a><!-- doxytag: member="HalideRuntime.h::halide_printf" ref="ad3657cd91f2034c75a9bc0acdbf44ede" args="(const char *,...)" -->
+<a class="anchor" id="aea37ca2e04077132c617c02780e352e7"></a><!-- doxytag: member="HalideRuntime.h::halide_printf" ref="aea37ca2e04077132c617c02780e352e7" args="(void *user_context, const char *,...)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="_halide_runtime_8h.html#ad3657cd91f2034c75a9bc0acdbf44ede">halide_printf</a> </td>
+          <td class="memname">int <a class="el" href="_halide_runtime_8h.html#aea37ca2e04077132c617c02780e352e7">halide_printf</a> </td>
           <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname">, </td>
         </tr>
@@ -254,16 +272,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2545608b743e7f56ba2f52b3615738d9"></a><!-- doxytag: member="HalideRuntime.h::halide_error" ref="a2545608b743e7f56ba2f52b3615738d9" args="(const char *msg)" -->
+<a class="anchor" id="af4d430e42f27846e3776920200ba3aef"></a><!-- doxytag: member="HalideRuntime.h::halide_error" ref="af4d430e42f27846e3776920200ba3aef" args="(void *user_context, const char *msg)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="_halide_runtime_8h.html#a2545608b743e7f56ba2f52b3615738d9">halide_error</a> </td>
+          <td class="memname">void <a class="el" href="_halide_runtime_8h.html#af4d430e42f27846e3776920200ba3aef">halide_error</a> </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>msg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
@@ -274,14 +302,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7d66d7cc1c5373f1784984f6fb14f4df"></a><!-- doxytag: member="HalideRuntime.h::halide_do_par_for" ref="a7d66d7cc1c5373f1784984f6fb14f4df" args="(int(*f)(int, uint8_t *), int min, int size, uint8_t *closure)" -->
+<a class="anchor" id="a05193f80c8fc7df76ceadd82c4ce7b56"></a><!-- doxytag: member="HalideRuntime.h::halide_do_par_for" ref="a05193f80c8fc7df76ceadd82c4ce7b56" args="(void *user_context, int(*f)(void *ctx, int, uint8_t *), int min, int size, uint8_t *closure)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="_halide_runtime_8h.html#a7d66d7cc1c5373f1784984f6fb14f4df">halide_do_par_for</a> </td>
+          <td class="memname">int <a class="el" href="_halide_runtime_8h.html#a05193f80c8fc7df76ceadd82c4ce7b56">halide_do_par_for</a> </td>
           <td>(</td>
-          <td class="paramtype">int(*)(int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *)&#160;</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int(*)(void *ctx, int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *)&#160;</td>
           <td class="paramname"><em>f</em>, </td>
         </tr>
         <tr>
@@ -335,53 +369,79 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a86052f0ba78872e38d3afe45146cece3"></a><!-- doxytag: member="HalideRuntime.h::halide_malloc" ref="a86052f0ba78872e38d3afe45146cece3" args="(size_t x)" -->
+<a class="anchor" id="aa5bb359ed77ef4c1f89251bcd7eb2613"></a><!-- doxytag: member="HalideRuntime.h::halide_malloc" ref="aa5bb359ed77ef4c1f89251bcd7eb2613" args="(void *user_context, size_t x)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* <a class="el" href="_halide_runtime_8h.html#a86052f0ba78872e38d3afe45146cece3">halide_malloc</a> </td>
-          <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>x</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Define halide_malloc and halide_free to replace the default memory allocator. </p>
-<p>See Func::set_custom_allocator. (Specifically note that halide_malloc must return a 32-byte aligned pointer.) </p>
-
-</div>
-</div>
-<a class="anchor" id="acd6d7417ad79523f22e11d88e9b61bac"></a><!-- doxytag: member="HalideRuntime.h::halide_free" ref="acd6d7417ad79523f22e11d88e9b61bac" args="(void *ptr)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="_halide_runtime_8h.html#acd6d7417ad79523f22e11d88e9b61bac">halide_free</a> </td>
+          <td class="memname">void* <a class="el" href="_halide_runtime_8h.html#aa5bb359ed77ef4c1f89251bcd7eb2613">halide_malloc</a> </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td class="paramname"><em>user_context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>Define halide_malloc and halide_free to replace the default memory allocator. </p>
-<p>See Func::set_custom_allocator. (Specifically note that halide_malloc must return a 32-byte aligned pointer.) </p>
+<p>See Func::set_custom_allocator. (Specifically note that halide_malloc must return a 32-byte aligned pointer, and it must be safe to read at least 8 bytes before the start and beyond the end.) </p>
 
 </div>
 </div>
-<a class="anchor" id="a42bf3febd2fafd0aad831f3c1add2a80"></a><!-- doxytag: member="HalideRuntime.h::halide_debug_to_file" ref="a42bf3febd2fafd0aad831f3c1add2a80" args="(const char *filename, uint8_t *data, int32_t s0, int32_t s1, int32_t s2, int32_t s3, int32_t type_code, int32_t bytes_per_element)" -->
+<a class="anchor" id="a2fa49d775b9a20fab152a0650c4c936b"></a><!-- doxytag: member="HalideRuntime.h::halide_free" ref="a2fa49d775b9a20fab152a0650c4c936b" args="(void *user_context, void *ptr)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="el" href="_halide_runtime_8h.html#a42bf3febd2fafd0aad831f3c1add2a80">halide_debug_to_file</a> </td>
+          <td class="memname">void <a class="el" href="_halide_runtime_8h.html#a2fa49d775b9a20fab152a0650c4c936b">halide_free</a> </td>
           <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Define halide_malloc and halide_free to replace the default memory allocator. </p>
+<p>See Func::set_custom_allocator. (Specifically note that halide_malloc must return a 32-byte aligned pointer, and it must be safe to read at least 8 bytes before the start and beyond the end.) </p>
+
+</div>
+</div>
+<a class="anchor" id="a173a9669d4c2a9fb6fa0225a5fdabcd4"></a><!-- doxytag: member="HalideRuntime.h::halide_debug_to_file" ref="a173a9669d4c2a9fb6fa0225a5fdabcd4" args="(void *user_context, const char *filename, uint8_t *data, int32_t s0, int32_t s1, int32_t s2, int32_t s3, int32_t type_code, int32_t bytes_per_element)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="el" href="_halide_runtime_8h.html#a173a9669d4c2a9fb6fa0225a5fdabcd4">halide_debug_to_file</a> </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>filename</em>, </td>
         </tr>
@@ -442,13 +502,19 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af09b3e2c5f94a5b73525a741ea5a45ff"></a><!-- doxytag: member="HalideRuntime.h::halide_trace" ref="af09b3e2c5f94a5b73525a741ea5a45ff" args="(const char *func, halide_trace_event_t event, int32_t type_code, int32_t bits, int32_t vector_width, int32_t value_idx, void *value, int32_t dimensions, const int32_t *coordinates)" -->
+<a class="anchor" id="a4b249f69efd572fdda7ee938f213b4ec"></a><!-- doxytag: member="HalideRuntime.h::halide_trace" ref="a4b249f69efd572fdda7ee938f213b4ec" args="(void *user_context, const char *func, halide_trace_event_t event, int32_t parent_id, int32_t type_code, int32_t bits, int32_t vector_width, int32_t value_idx, void *value, int32_t dimensions, const int32_t *coordinates)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="_halide_runtime_8h.html#af09b3e2c5f94a5b73525a741ea5a45ff">halide_trace</a> </td>
+          <td class="memname"><a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="el" href="_halide_runtime_8h.html#a4b249f69efd572fdda7ee938f213b4ec">halide_trace</a> </td>
           <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>func</em>, </td>
         </tr>
@@ -457,6 +523,12 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype"><a class="el" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6">halide_trace_event_t</a>&#160;</td>
           <td class="paramname"><em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a>&#160;</td>
+          <td class="paramname"><em>parent_id</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -510,16 +582,19 @@ Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>Called when Funcs are marked as trace_load, trace_store, or trace_realization. </p>
-<p>See Func::set_custom_trace. The default implementation either prints events via halide_printf, or if HL_TRACE_FILE is defined, dumps the trace to that file in a yet-to-be-documented binary format (see src/runtime/tracing.cpp to reverse engineer the format). If the trace is going to be large, you may want to make the file a named pipe, and then read from that pipe into gzip. </p>
+<p>See Func::set_custom_trace. The default implementation either prints events via halide_printf, or if HL_TRACE_FILE is defined, dumps the trace to that file in a yet-to-be-documented binary format (see src/runtime/tracing.cpp to reverse engineer the format). If the trace is going to be large, you may want to make the file a named pipe, and then read from that pipe into gzip.</p>
+<p>halide_trace returns a unique ID which will be passed to future events that "belong" to the earlier event as the parent id. The ownership hierarchy looks like:</p>
+<p>begin_realization produce store update load/store consume load end_consume end_realization</p>
+<p>Threading means that ownership cannot be inferred from the ordering of events. There can be many active realizations of a given function, or many active productions for a single realization. Within a single production, the ordering of events is meaningful. </p>
 
 </div>
 </div>
-<a class="anchor" id="a33c370f442954d7a0b1a235ce5cc6325"></a><!-- doxytag: member="HalideRuntime.h::halide_shutdown_trace" ref="a33c370f442954d7a0b1a235ce5cc6325" args="()" -->
+<a class="anchor" id="a618bb97f5d713e1097835a24670948f4"></a><!-- doxytag: member="HalideRuntime.h::halide_shutdown_trace" ref="a618bb97f5d713e1097835a24670948f4" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="_halide_runtime_8h.html#a33c370f442954d7a0b1a235ce5cc6325">halide_shutdown_trace</a> </td>
+          <td class="memname">int <a class="el" href="_halide_runtime_8h.html#a618bb97f5d713e1097835a24670948f4">halide_shutdown_trace</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -529,7 +604,7 @@ Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>If tracing is writing to a file. </p>
-<p>This call closes that file (flushing the trace). </p>
+<p>This call closes that file (flushing the trace). Returns zero on success. </p>
 
 </div>
 </div>

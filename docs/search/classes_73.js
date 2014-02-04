@@ -9,7 +9,6 @@ var searchData=
   ['scope_3c_20modulusremainder_20_3e',['Scope< ModulusRemainder >',['../class_halide_1_1_internal_1_1_scope.html',1,'Halide::Internal']]],
   ['scope_3c_20type_20_3e',['Scope< Type >',['../class_halide_1_1_internal_1_1_scope.html',1,'Halide::Internal']]],
   ['select',['Select',['../struct_halide_1_1_internal_1_1_select.html',1,'Halide::Internal']]],
-  ['smallarray',['SmallArray',['../class_halide_1_1_internal_1_1_small_array.html',1,'Halide::Internal']]],
   ['smallstack',['SmallStack',['../class_halide_1_1_internal_1_1_small_stack.html',1,'Halide::Internal']]],
   ['smallstack_3c_20allocation_20_3e',['SmallStack< Allocation >',['../class_halide_1_1_internal_1_1_small_stack.html',1,'Halide::Internal']]],
   ['smallstack_3c_20int_20_3e',['SmallStack< int >',['../class_halide_1_1_internal_1_1_small_stack.html',1,'Halide::Internal']]],
