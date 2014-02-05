@@ -182,88 +182,98 @@ halide_host_cpu_count:                  # @halide_host_cpu_count
 halide_shutdown_thread_pool:            # @halide_shutdown_thread_pool
 	.cfi_startproc
 # BB#0:                                 # %entry
-	pushl	%ebp
-.Ltmp38:
-	.cfi_def_cfa_offset 8
 	pushl	%ebx
-.Ltmp39:
-	.cfi_def_cfa_offset 12
+.Ltmp37:
+	.cfi_def_cfa_offset 8
 	pushl	%edi
-.Ltmp40:
-	.cfi_def_cfa_offset 16
+.Ltmp38:
+	.cfi_def_cfa_offset 12
 	pushl	%esi
+.Ltmp39:
+	.cfi_def_cfa_offset 16
+	subl	$64, %esp
+.Ltmp40:
+	.cfi_def_cfa_offset 80
 .Ltmp41:
-	.cfi_def_cfa_offset 20
-	subl	$28, %esp
+	.cfi_offset %esi, -16
 .Ltmp42:
-	.cfi_def_cfa_offset 48
+	.cfi_offset %edi, -12
 .Ltmp43:
-	.cfi_offset %esi, -20
-.Ltmp44:
-	.cfi_offset %edi, -16
-.Ltmp45:
-	.cfi_offset %ebx, -12
-.Ltmp46:
-	.cfi_offset %ebp, -8
+	.cfi_offset %ebx, -8
 	naclcall	.L3$pb
 .L3$pb:
 	popl	%ebx
-.Ltmp47:
-	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp47-.L3$pb), %ebx
+.Ltmp44:
+	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp44-.L3$pb), %ebx
 	movl	halide_thread_pool_initialized@GOT(%ebx), %eax
-	movl	%eax, 20(%esp)          # 4-byte Spill
 	cmpb	$0, (%eax)
 	je	.LBB3_5
 # BB#1:                                 # %if.end
-	movl	halide_work_queue@GOT(%ebx), %edi
-	movl	%edi, (%esp)
+	movl	halide_work_queue@GOT(%ebx), %esi
+	movl	%esi, (%esp)
 	naclcall	pthread_mutex_lock@PLT
-	movb	$1, 348(%edi)
-	leal	44(%edi), %eax
-	movl	%eax, 16(%esp)          # 4-byte Spill
+	movb	$1, 348(%esi)
+	leal	44(%esi), %eax
 	movl	%eax, (%esp)
 	naclcall	pthread_cond_broadcast@PLT
-	movl	%edi, (%esp)
+	movl	%esi, (%esp)
 	naclcall	pthread_mutex_unlock@PLT
-	movl	halide_threads@GOT(%ebx), %esi
-	movl	(%esi), %eax
+	movl	halide_threads@GOT(%ebx), %eax
+	movl	(%eax), %eax
 	decl	%eax
 	testl	%eax, %eax
 	jle	.LBB3_4
 # BB#2:
-	xorl	%ebp, %ebp
+	xorl	%esi, %esi
+	leal	60(%esp), %edi
 	.align	16, 0x90
 .LBB3_3:                                # %for.body
                                         # =>This Inner Loop Header: Depth=1
-	movl	92(%edi,%ebp,4), %eax
-	leal	24(%esp), %ecx
-	movl	%ecx, 4(%esp)
+	movl	halide_work_queue@GOT(%ebx), %eax
+	movl	92(%eax,%esi,4), %eax
+	movl	%edi, 4(%esp)
 	movl	%eax, (%esp)
 	naclcall	pthread_join@PLT
-	incl	%ebp
-	movl	(%esi), %eax
+	incl	%esi
+	movl	halide_threads@GOT(%ebx), %eax
+	movl	(%eax), %eax
 	decl	%eax
-	cmpl	%eax, %ebp
+	cmpl	%eax, %esi
 	jl	.LBB3_3
 .LBB3_4:                                # %for.end
-	movl	%edi, (%esp)
+	movl	halide_work_queue@GOT(%ebx), %esi
+	movl	%esi, (%esp)
 	naclcall	pthread_mutex_destroy@PLT
-	movl	16(%esp), %eax          # 4-byte Reload
-	movl	%eax, (%esp)
+	xorps	%xmm0, %xmm0
+	movaps	%xmm0, 32(%esp)
+	movaps	%xmm0, 16(%esp)
+	movl	$0, 52(%esp)
+	movl	$0, 48(%esp)
+	movsd	48(%esp), %xmm0
+	movsd	%xmm0, 32(%esi)
+	movsd	40(%esp), %xmm0
+	movsd	%xmm0, 24(%esi)
+	movsd	32(%esp), %xmm0
+	movsd	%xmm0, 16(%esi)
+	movsd	16(%esp), %xmm0
+	movsd	24(%esp), %xmm1
+	movsd	%xmm1, 8(%esi)
+	movsd	%xmm0, (%esi)
+	addl	$44, %esi
+	movl	%esi, (%esp)
 	naclcall	pthread_cond_destroy@PLT
-	movl	20(%esp), %eax          # 4-byte Reload
+	movl	halide_thread_pool_initialized@GOT(%ebx), %eax
 	movb	$0, (%eax)
 .LBB3_5:                                # %return
-	addl	$28, %esp
+	addl	$64, %esp
 	popl	%esi
 	popl	%edi
 	popl	%ebx
-	popl	%ebp
 	popl	%ecx
 	nacljmp	%ecx
 	.align	32, 0x90
-.Ltmp48:
-	.size	halide_shutdown_thread_pool, .Ltmp48-halide_shutdown_thread_pool
+.Ltmp45:
+	.size	halide_shutdown_thread_pool, .Ltmp45-halide_shutdown_thread_pool
 	.cfi_endproc
 
 	.section	.text.halide_set_custom_do_task,"axG",@progbits,halide_set_custom_do_task,comdat
@@ -276,16 +286,16 @@ halide_set_custom_do_task:              # @halide_set_custom_do_task
 	naclcall	.L4$pb
 .L4$pb:
 	popl	%eax
-.Ltmp49:
-	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp49-.L4$pb), %eax
+.Ltmp46:
+	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp46-.L4$pb), %eax
 	movl	4(%esp), %ecx
 	movl	halide_custom_do_task@GOT(%eax), %eax
 	movl	%ecx, (%eax)
 	popl	%ecx
 	nacljmp	%ecx
 	.align	32, 0x90
-.Ltmp50:
-	.size	halide_set_custom_do_task, .Ltmp50-halide_set_custom_do_task
+.Ltmp47:
+	.size	halide_set_custom_do_task, .Ltmp47-halide_set_custom_do_task
 	.cfi_endproc
 
 	.section	.text.halide_set_custom_do_par_for,"axG",@progbits,halide_set_custom_do_par_for,comdat
@@ -298,16 +308,16 @@ halide_set_custom_do_par_for:           # @halide_set_custom_do_par_for
 	naclcall	.L5$pb
 .L5$pb:
 	popl	%eax
-.Ltmp51:
-	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp51-.L5$pb), %eax
+.Ltmp48:
+	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp48-.L5$pb), %eax
 	movl	4(%esp), %ecx
 	movl	halide_custom_do_par_for@GOT(%eax), %eax
 	movl	%ecx, (%eax)
 	popl	%ecx
 	nacljmp	%ecx
 	.align	32, 0x90
-.Ltmp52:
-	.size	halide_set_custom_do_par_for, .Ltmp52-halide_set_custom_do_par_for
+.Ltmp49:
+	.size	halide_set_custom_do_par_for, .Ltmp49-halide_set_custom_do_par_for
 	.cfi_endproc
 
 	.section	.text.halide_do_task,"axG",@progbits,halide_do_task,comdat
@@ -318,23 +328,23 @@ halide_do_task:                         # @halide_do_task
 	.cfi_startproc
 # BB#0:                                 # %entry
 	pushl	%ebx
-.Ltmp56:
+.Ltmp53:
 	.cfi_def_cfa_offset 8
 	pushl	%esi
-.Ltmp57:
+.Ltmp54:
 	.cfi_def_cfa_offset 12
 	subl	$20, %esp
-.Ltmp58:
+.Ltmp55:
 	.cfi_def_cfa_offset 32
-.Ltmp59:
+.Ltmp56:
 	.cfi_offset %esi, -12
-.Ltmp60:
+.Ltmp57:
 	.cfi_offset %ebx, -8
 	naclcall	.L6$pb
 .L6$pb:
 	popl	%ebx
-.Ltmp61:
-	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp61-.L6$pb), %ebx
+.Ltmp58:
+	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp58-.L6$pb), %ebx
 	movl	halide_custom_do_task@GOT(%ebx), %eax
 	movl	(%eax), %eax
 	testl	%eax, %eax
@@ -359,8 +369,8 @@ halide_do_task:                         # @halide_do_task
 	popl	%ecx
 	nacljmp	%ecx
 	.align	32, 0x90
-.Ltmp62:
-	.size	halide_do_task, .Ltmp62-halide_do_task
+.Ltmp59:
+	.size	halide_do_task, .Ltmp59-halide_do_task
 	.cfi_endproc
 
 	.section	.text.halide_worker_thread,"axG",@progbits,halide_worker_thread,comdat
@@ -371,33 +381,33 @@ halide_worker_thread:                   # @halide_worker_thread
 	.cfi_startproc
 # BB#0:                                 # %entry
 	pushl	%ebp
-.Ltmp68:
+.Ltmp65:
 	.cfi_def_cfa_offset 8
 	pushl	%ebx
-.Ltmp69:
+.Ltmp66:
 	.cfi_def_cfa_offset 12
 	pushl	%edi
-.Ltmp70:
+.Ltmp67:
 	.cfi_def_cfa_offset 16
 	pushl	%esi
-.Ltmp71:
+.Ltmp68:
 	.cfi_def_cfa_offset 20
 	subl	$44, %esp
-.Ltmp72:
+.Ltmp69:
 	.cfi_def_cfa_offset 64
-.Ltmp73:
+.Ltmp70:
 	.cfi_offset %esi, -20
-.Ltmp74:
+.Ltmp71:
 	.cfi_offset %edi, -16
-.Ltmp75:
+.Ltmp72:
 	.cfi_offset %ebx, -12
-.Ltmp76:
+.Ltmp73:
 	.cfi_offset %ebp, -8
 	naclcall	.L7$pb
 .L7$pb:
 	popl	%ebx
-.Ltmp77:
-	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp77-.L7$pb), %ebx
+.Ltmp74:
+	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp74-.L7$pb), %ebx
 	movl	halide_work_queue@GOT(%ebx), %edi
 	movl	%edi, (%esp)
 	naclcall	pthread_mutex_lock@PLT
@@ -583,8 +593,8 @@ halide_worker_thread:                   # @halide_worker_thread
 	popl	%ecx
 	nacljmp	%ecx
 	.align	32, 0x90
-.Ltmp78:
-	.size	halide_worker_thread, .Ltmp78-halide_worker_thread
+.Ltmp75:
+	.size	halide_worker_thread, .Ltmp75-halide_worker_thread
 	.cfi_endproc
 
 	.section	.text.halide_do_par_for,"axG",@progbits,halide_do_par_for,comdat
@@ -595,40 +605,40 @@ halide_do_par_for:                      # @halide_do_par_for
 	.cfi_startproc
 # BB#0:                                 # %entry
 	pushl	%ebp
-.Ltmp84:
+.Ltmp81:
 	.cfi_def_cfa_offset 8
 	pushl	%ebx
-.Ltmp85:
+.Ltmp82:
 	.cfi_def_cfa_offset 12
 	pushl	%edi
-.Ltmp86:
+.Ltmp83:
 	.cfi_def_cfa_offset 16
 	pushl	%esi
-.Ltmp87:
+.Ltmp84:
 	.cfi_def_cfa_offset 20
-	subl	$60, %esp
-.Ltmp88:
-	.cfi_def_cfa_offset 80
-.Ltmp89:
+	subl	$76, %esp
+.Ltmp85:
+	.cfi_def_cfa_offset 96
+.Ltmp86:
 	.cfi_offset %esi, -20
-.Ltmp90:
+.Ltmp87:
 	.cfi_offset %edi, -16
-.Ltmp91:
+.Ltmp88:
 	.cfi_offset %ebx, -12
-.Ltmp92:
+.Ltmp89:
 	.cfi_offset %ebp, -8
 	naclcall	.L8$pb
 .L8$pb:
 	popl	%ebx
-.Ltmp93:
-	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp93-.L8$pb), %ebx
+.Ltmp90:
+	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp90-.L8$pb), %ebx
 	movl	halide_custom_do_par_for@GOT(%ebx), %eax
 	movl	(%eax), %eax
-	movl	96(%esp), %ecx
-	movl	92(%esp), %edx
-	movl	88(%esp), %esi
-	movl	84(%esp), %ebp
-	movl	80(%esp), %edi
+	movl	112(%esp), %ecx
+	movl	108(%esp), %edx
+	movl	104(%esp), %esi
+	movl	100(%esp), %ebp
+	movl	96(%esp), %edi
 	testl	%eax, %eax
 	je	.LBB8_2
 # BB#1:                                 # %if.then
@@ -640,16 +650,15 @@ halide_do_par_for:                      # @halide_do_par_for
 	naclcall	%eax
 	jmp	.LBB8_15
 .LBB8_2:                                # %if.end
+	movl	halide_work_queue@GOT(%ebx), %ebp
+	movl	%ebp, (%esp)
+	naclcall	pthread_mutex_lock@PLT
 	movl	halide_thread_pool_initialized@GOT(%ebx), %eax
-	movl	%eax, 20(%esp)          # 4-byte Spill
+	movl	%eax, 32(%esp)          # 4-byte Spill
 	cmpb	$0, (%eax)
 	jne	.LBB8_14
-# BB#3:                                 # %if.then2
-	movl	halide_work_queue@GOT(%ebx), %ebp
+# BB#3:                                 # %if.then3
 	movb	$0, 348(%ebp)
-	movl	%ebp, (%esp)
-	movl	$0, 4(%esp)
-	naclcall	pthread_mutex_init@PLT
 	leal	44(%ebp), %eax
 	movl	%eax, (%esp)
 	movl	$0, 4(%esp)
@@ -667,16 +676,18 @@ halide_do_par_for:                      # @halide_do_par_for
 .LBB8_5:                                # %if.else
 	naclcall	halide_host_cpu_count@PLT
 .LBB8_6:                                # %if.end10
-	movl	halide_threads@GOT(%ebx), %esi
-	movl	%eax, (%esi)
+	movl	halide_threads@GOT(%ebx), %edi
+	movl	%eax, (%edi)
 	cmpl	$65, %eax
 	jl	.LBB8_8
 # BB#7:                                 # %for.cond.preheader.thread
-	movl	$64, (%esi)
-	addl	$92, %ebp
-	xorl	%edi, %edi
+	movl	$64, (%edi)
+	movl	%ebp, 36(%esp)          # 4-byte Spill
+	leal	92(%ebp), %ebp
+	xorl	%esi, %esi
 	jmp	.LBB8_12
 .LBB8_8:                                # %if.else12
+	movl	%ebp, 36(%esp)          # 4-byte Spill
 	testl	%eax, %eax
 	jle	.LBB8_9
 # BB#10:                                # %for.cond.preheader
@@ -684,8 +695,9 @@ halide_do_par_for:                      # @halide_do_par_for
 	testl	%eax, %eax
 	jle	.LBB8_13
 # BB#11:
-	xorl	%edi, %edi
-	addl	$92, %ebp
+	xorl	%esi, %esi
+	movl	36(%esp), %eax          # 4-byte Reload
+	leal	92(%eax), %ebp
 	.align	16, 0x90
 .LBB8_12:                               # %for.body
                                         # =>This Inner Loop Header: Depth=1
@@ -696,48 +708,46 @@ halide_do_par_for:                      # @halide_do_par_for
 	movl	$0, 4(%esp)
 	naclcall	pthread_create@PLT
 	addl	$4, %ebp
-	incl	%edi
-	movl	(%esi), %eax
+	incl	%esi
+	movl	(%edi), %eax
 	decl	%eax
-	cmpl	%eax, %edi
+	cmpl	%eax, %esi
 	jl	.LBB8_12
 	jmp	.LBB8_13
-.LBB8_9:                                # %for.cond.preheader.thread42
-	movl	$1, (%esi)
+.LBB8_9:                                # %for.cond.preheader.thread41
+	movl	$1, (%edi)
 .LBB8_13:                               # %for.end
-	movl	20(%esp), %eax          # 4-byte Reload
+	movl	32(%esp), %eax          # 4-byte Reload
 	movb	$1, (%eax)
-	movl	96(%esp), %ecx
-	movl	92(%esp), %edx
-	movl	88(%esp), %esi
-	movl	80(%esp), %edi
-	movl	84(%esp), %ebp
+	movl	36(%esp), %ebp          # 4-byte Reload
+	movl	104(%esp), %esi
 .LBB8_14:                               # %if.end19
-	movl	%ebp, 28(%esp)
-	movl	%edi, 32(%esp)
-	movl	%esi, 36(%esp)
-	addl	%esi, %edx
-	movl	%edx, 40(%esp)
-	movl	%ecx, 44(%esp)
-	movl	$0, 52(%esp)
-	movl	$0, 48(%esp)
-	movl	halide_work_queue@GOT(%ebx), %esi
-	movl	%esi, (%esp)
-	naclcall	pthread_mutex_lock@PLT
-	movl	40(%esi), %eax
-	movl	%eax, 24(%esp)
-	leal	24(%esp), %edi
-	movl	%edi, 40(%esi)
-	movl	%esi, (%esp)
+	movl	100(%esp), %eax
+	movl	%eax, 44(%esp)
+	movl	96(%esp), %eax
+	movl	%eax, 48(%esp)
+	movl	%esi, 52(%esp)
+	movl	108(%esp), %eax
+	addl	%esi, %eax
+	movl	%eax, 56(%esp)
+	movl	112(%esp), %eax
+	movl	%eax, 60(%esp)
+	movl	$0, 68(%esp)
+	movl	$0, 64(%esp)
+	movl	40(%ebp), %eax
+	movl	%eax, 40(%esp)
+	leal	40(%esp), %esi
+	movl	%esi, 40(%ebp)
+	movl	%ebp, (%esp)
 	naclcall	pthread_mutex_unlock@PLT
-	addl	$44, %esi
-	movl	%esi, (%esp)
+	addl	$44, %ebp
+	movl	%ebp, (%esp)
 	naclcall	pthread_cond_broadcast@PLT
-	movl	%edi, (%esp)
+	movl	%esi, (%esp)
 	naclcall	halide_worker_thread@PLT
-	movl	52(%esp), %eax
+	movl	68(%esp), %eax
 .LBB8_15:                               # %return
-	addl	$60, %esp
+	addl	$76, %esp
 	popl	%esi
 	popl	%edi
 	popl	%ebx
@@ -745,8 +755,8 @@ halide_do_par_for:                      # @halide_do_par_for
 	popl	%ecx
 	nacljmp	%ecx
 	.align	32, 0x90
-.Ltmp94:
-	.size	halide_do_par_for, .Ltmp94-halide_do_par_for
+.Ltmp91:
+	.size	halide_do_par_for, .Ltmp91-halide_do_par_for
 	.cfi_endproc
 
 	.section	.text.halide_set_custom_trace,"axG",@progbits,halide_set_custom_trace,comdat
@@ -759,16 +769,16 @@ halide_set_custom_trace:                # @halide_set_custom_trace
 	naclcall	.L9$pb
 .L9$pb:
 	popl	%eax
-.Ltmp95:
-	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp95-.L9$pb), %eax
+.Ltmp92:
+	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp92-.L9$pb), %eax
 	movl	4(%esp), %ecx
 	movl	halide_custom_trace@GOT(%eax), %eax
 	movl	%ecx, (%eax)
 	popl	%ecx
 	nacljmp	%ecx
 	.align	32, 0x90
-.Ltmp96:
-	.size	halide_set_custom_trace, .Ltmp96-halide_set_custom_trace
+.Ltmp93:
+	.size	halide_set_custom_trace, .Ltmp93-halide_set_custom_trace
 	.cfi_endproc
 
 	.section	.text.halide_shutdown_trace,"axG",@progbits,halide_shutdown_trace,comdat
@@ -779,23 +789,23 @@ halide_shutdown_trace:                  # @halide_shutdown_trace
 	.cfi_startproc
 # BB#0:                                 # %entry
 	pushl	%ebx
-.Ltmp100:
+.Ltmp97:
 	.cfi_def_cfa_offset 8
 	pushl	%esi
-.Ltmp101:
+.Ltmp98:
 	.cfi_def_cfa_offset 12
 	pushl	%eax
-.Ltmp102:
+.Ltmp99:
 	.cfi_def_cfa_offset 16
-.Ltmp103:
+.Ltmp100:
 	.cfi_offset %esi, -12
-.Ltmp104:
+.Ltmp101:
 	.cfi_offset %ebx, -8
 	naclcall	.L10$pb
 .L10$pb:
 	popl	%ebx
-.Ltmp105:
-	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp105-.L10$pb), %ebx
+.Ltmp102:
+	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp102-.L10$pb), %ebx
 	movl	halide_trace_file@GOT(%ebx), %esi
 	movl	(%esi), %eax
 	testl	%eax, %eax
@@ -816,8 +826,8 @@ halide_shutdown_trace:                  # @halide_shutdown_trace
 	popl	%ecx
 	nacljmp	%ecx
 	.align	32, 0x90
-.Ltmp106:
-	.size	halide_shutdown_trace, .Ltmp106-halide_shutdown_trace
+.Ltmp103:
+	.size	halide_shutdown_trace, .Ltmp103-halide_shutdown_trace
 	.cfi_endproc
 
 	.section	.text.halide_set_custom_allocator,"axG",@progbits,halide_set_custom_allocator,comdat
@@ -830,8 +840,8 @@ halide_set_custom_allocator:            # @halide_set_custom_allocator
 	naclcall	.L11$pb
 .L11$pb:
 	popl	%eax
-.Ltmp107:
-	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp107-.L11$pb), %eax
+.Ltmp104:
+	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp104-.L11$pb), %eax
 	movl	4(%esp), %ecx
 	movl	halide_custom_malloc@GOT(%eax), %edx
 	movl	%ecx, (%edx)
@@ -841,8 +851,8 @@ halide_set_custom_allocator:            # @halide_set_custom_allocator
 	popl	%ecx
 	nacljmp	%ecx
 	.align	32, 0x90
-.Ltmp108:
-	.size	halide_set_custom_allocator, .Ltmp108-halide_set_custom_allocator
+.Ltmp105:
+	.size	halide_set_custom_allocator, .Ltmp105-halide_set_custom_allocator
 	.cfi_endproc
 
 	.section	.text.halide_error,"axG",@progbits,halide_error,comdat
@@ -853,11 +863,16 @@ halide_error:                           # @halide_error
 	.cfi_startproc
 # BB#0:                                 # %entry
 	pushl	%ebx
-.Ltmp111:
+.Ltmp109:
 	.cfi_def_cfa_offset 8
-	subl	$24, %esp
+	pushl	%esi
+.Ltmp110:
+	.cfi_def_cfa_offset 12
+	subl	$4116, %esp             # imm = 0x1014
+.Ltmp111:
+	.cfi_def_cfa_offset 4128
 .Ltmp112:
-	.cfi_def_cfa_offset 32
+	.cfi_offset %esi, -12
 .Ltmp113:
 	.cfi_offset %ebx, -8
 	naclcall	.L12$pb
@@ -865,25 +880,36 @@ halide_error:                           # @halide_error
 	popl	%ebx
 .Ltmp114:
 	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp114-.L12$pb), %ebx
+	leal	4136(%esp), %eax
+	movl	%eax, 16(%esp)
+	movl	%eax, 12(%esp)
+	movl	4132(%esp), %eax
+	movl	%eax, 8(%esp)
+	leal	20(%esp), %esi
+	movl	%esi, (%esp)
+	movl	$4096, 4(%esp)          # imm = 0x1000
+	naclcall	vsnprintf@PLT
 	movl	halide_error_handler@GOT(%ebx), %eax
-	movl	(%eax), %eax
-	testl	%eax, %eax
-	je	.LBB12_1
-# BB#2:                                 # %if.then
-	addl	$24, %esp
-	popl	%ebx
-	nacljmp	%eax
-.LBB12_1:                               # %if.else
-	movl	36(%esp), %ecx
-	movl	32(%esp), %eax
-	movl	%ecx, 8(%esp)
+	movl	(%eax), %ecx
+	movl	4128(%esp), %eax
+	testl	%ecx, %ecx
+	je	.LBB12_2
+# BB#1:                                 # %if.then
+	movl	%esi, 4(%esp)
+	movl	%eax, (%esp)
+	naclcall	%ecx
+	jmp	.LBB12_3
+.LBB12_2:                               # %if.else
+	movl	%esi, 8(%esp)
 	leal	.L.str30@GOTOFF(%ebx), %ecx
 	movl	%ecx, 4(%esp)
 	movl	%eax, (%esp)
 	naclcall	halide_printf@PLT
 	movl	$1, (%esp)
 	naclcall	exit@PLT
-	addl	$24, %esp
+.LBB12_3:                               # %if.end
+	addl	$4116, %esp             # imm = 0x1014
+	popl	%esi
 	popl	%ebx
 	popl	%ecx
 	nacljmp	%ecx
@@ -947,9 +973,9 @@ halide_game_of_life:                    # @halide_game_of_life
 	pushl	%esi
 .Ltmp127:
 	.cfi_def_cfa_offset 20
-	subl	$156, %esp
+	subl	$172, %esp
 .Ltmp128:
-	.cfi_def_cfa_offset 176
+	.cfi_def_cfa_offset 192
 .Ltmp129:
 	.cfi_offset %esi, -20
 .Ltmp130:
@@ -963,248 +989,273 @@ halide_game_of_life:                    # @halide_game_of_life
 	popl	%ebx
 .Ltmp133:
 	addl	$_GLOBAL_OFFSET_TABLE_+(.Ltmp133-.L15$pb), %ebx
-	movl	176(%esp), %esi
+	movl	192(%esp), %esi
 	testl	%esi, %esi
 	je	.LBB15_1
 # BB#3:                                 # %assert succeeded: buffer argument p0 is NULL
+	movl	%ebx, 100(%esp)         # 4-byte Spill
 	movl	8(%esi), %edx
-	movl	%edx, 84(%esp)          # 4-byte Spill
-	movl	180(%esp), %ecx
-	movl	(%esi), %eax
-	orl	4(%esi), %eax
-	orl	%edx, %eax
-	sete	47(%esp)                # 1-byte Folded Spill
-	testl	%ecx, %ecx
+	movl	%edx, 92(%esp)          # 4-byte Spill
+	movl	196(%esp), %eax
+	movl	(%esi), %ecx
+	orl	4(%esi), %ecx
+	orl	%edx, %ecx
+	sete	59(%esp)                # 1-byte Folded Spill
+	testl	%eax, %eax
 	je	.LBB15_4
 # BB#5:                                 # %assert succeeded: buffer argument f3 is NULL
-	movl	12(%esi), %eax
-	movl	%eax, 56(%esp)          # 4-byte Spill
-	movl	8(%ecx), %eax
-	movl	%eax, 108(%esp)         # 4-byte Spill
+	movl	12(%esi), %ecx
+	movl	%ecx, 68(%esp)          # 4-byte Spill
+	movl	8(%eax), %eax
+	movl	%eax, 120(%esp)         # 4-byte Spill
 	movl	60(%esi), %eax
-	movl	%eax, 48(%esp)          # 4-byte Spill
-	movl	48(%esi), %eax
-	movl	%eax, 80(%esp)          # 4-byte Spill
-	movl	44(%esi), %eax
-	movl	%eax, 72(%esp)          # 4-byte Spill
-	movl	32(%esi), %eax
-	movl	%eax, 76(%esp)          # 4-byte Spill
-	movl	28(%esi), %eax
-	movl	%eax, 64(%esp)          # 4-byte Spill
-	movl	16(%esi), %eax
 	movl	%eax, 60(%esp)          # 4-byte Spill
-	movl	(%ecx), %eax
-	movl	%eax, 40(%esp)          # 4-byte Spill
-	movl	12(%ecx), %esi
-	movl	%esi, 104(%esp)         # 4-byte Spill
-	movl	44(%ecx), %ebp
-	movl	%ebp, 68(%esp)          # 4-byte Spill
-	leal	(%ebp,%esi), %edi
-	leal	-1(%esi), %eax
-	andl	$-4, %eax
-	leal	4(%ebp,%eax), %edx
+	movl	48(%esi), %ecx
+	movl	%ecx, 88(%esp)          # 4-byte Spill
+	movl	44(%esi), %ecx
+	movl	%ecx, 84(%esp)          # 4-byte Spill
+	movl	32(%esi), %ecx
+	movl	%ecx, 80(%esp)          # 4-byte Spill
+	movl	28(%esi), %ecx
+	movl	%ecx, 76(%esp)          # 4-byte Spill
+	movl	16(%esi), %ecx
+	movl	%ecx, 72(%esp)          # 4-byte Spill
+	movl	196(%esp), %eax
+	movl	(%eax), %eax
+	movl	%eax, 48(%esp)          # 4-byte Spill
+	movl	196(%esp), %eax
+	movl	12(%eax), %ecx
+	movl	%ecx, 112(%esp)         # 4-byte Spill
+	movl	196(%esp), %eax
+	movl	44(%eax), %ebp
+	movl	%ebp, 116(%esp)         # 4-byte Spill
+	leal	(%ebp,%ecx), %eax
+	movl	%eax, 64(%esp)          # 4-byte Spill
+	leal	-1(%ecx), %edx
+	andl	$-4, %edx
+	leal	4(%ebp,%edx), %ebx
+	cmpl	%eax, %ebx
+	cmovgl	%eax, %ebx
+	movl	%ebx, 96(%esp)          # 4-byte Spill
+	leal	-4(%ebp,%ecx), %edi
+	addl	%ebp, %edx
 	cmpl	%edi, %edx
-	cmovlel	%edx, %edi
-	movl	%edi, 88(%esp)          # 4-byte Spill
-	leal	-4(%ebp,%esi), %ecx
-	movl	%ecx, 36(%esp)          # 4-byte Spill
-	addl	%ebp, %eax
-	cmpl	%ecx, %eax
-	cmovgl	%ecx, %eax
-	leal	3(%eax), %esi
-	cmpl	%edi, %esi
-	movl	%esi, %ecx
-	cmovll	%edi, %ecx
-	addl	$2, %eax
-	cmpl	%eax, %ecx
-	cmovll	%esi, %ecx
-	movl	%ecx, 96(%esp)          # 4-byte Spill
-	movl	180(%esp), %eax
-	movl	16(%eax), %edi
-	movl	%edi, 100(%esp)         # 4-byte Spill
-	movl	180(%esp), %eax
-	movl	48(%eax), %ecx
-	movl	%ecx, 52(%esp)          # 4-byte Spill
-	leal	(%ecx,%edi), %eax
-	leal	-1(%edi), %esi
+	cmovgl	%edi, %edx
+	leal	3(%edx), %ecx
+	cmpl	%ebx, %ecx
+	movl	%ecx, %esi
+	cmovll	%ebx, %esi
+	addl	$2, %edx
+	cmpl	%edx, %esi
+	cmovll	%ecx, %esi
+	movl	%esi, 124(%esp)         # 4-byte Spill
+	movl	196(%esp), %eax
+	movl	16(%eax), %ecx
+	movl	%ecx, 108(%esp)         # 4-byte Spill
+	movl	196(%esp), %eax
+	movl	48(%eax), %eax
+	movl	%eax, 104(%esp)         # 4-byte Spill
+	leal	(%eax,%ecx), %edx
+	movl	%edx, 52(%esp)          # 4-byte Spill
+	leal	-1(%ecx), %esi
 	andl	$-16, %esi
-	leal	16(%ecx,%esi), %edx
-	cmpl	%eax, %edx
-	cmovlel	%edx, %eax
-	movl	%eax, 92(%esp)          # 4-byte Spill
-	leal	-16(%ecx,%edi), %edx
-	addl	%ecx, %esi
+	leal	16(%eax,%esi), %ebx
+	cmpl	%edx, %ebx
+	cmovgl	%edx, %ebx
+	leal	-16(%eax,%ecx), %edx
+	addl	%eax, %esi
 	cmpl	%edx, %esi
 	cmovgl	%edx, %esi
 	addl	$15, %esi
-	cmpl	%eax, %esi
-	cmovll	%eax, %esi
-	movl	%edx, %eax
-	movl	36(%esp), %edx          # 4-byte Reload
-	cmpl	%edx, %ebp
-	cmovlel	%ebp, %edx
-	cmpl	%eax, %ecx
-	cmovlel	%ecx, %eax
-	movl	180(%esp), %ecx
-	movl	40(%esp), %edi          # 4-byte Reload
-	orl	4(%ecx), %edi
-	orl	108(%esp), %edi         # 4-byte Folded Reload
-	sete	31(%esp)                # 1-byte Folded Spill
-	movl	60(%ecx), %edi
-	movl	%edi, 32(%esp)          # 4-byte Spill
-	movl	32(%ecx), %edi
-	movl	%edi, 40(%esp)          # 4-byte Spill
-	movl	28(%ecx), %edi
-	movl	%edi, 36(%esp)          # 4-byte Spill
+	cmpl	%ebx, %esi
+	cmovll	%ebx, %esi
+	cmpl	%edi, %ebp
+	cmovlel	%ebp, %edi
+	cmpl	%edx, %eax
+	cmovlel	%eax, %edx
+	movl	196(%esp), %eax
+	movl	48(%esp), %ecx          # 4-byte Reload
+	orl	4(%eax), %ecx
+	orl	120(%esp), %ecx         # 4-byte Folded Reload
+	sete	35(%esp)                # 1-byte Folded Spill
+	movl	60(%eax), %ecx
+	movl	%ecx, 36(%esp)          # 4-byte Spill
+	movl	32(%eax), %ecx
+	movl	%ecx, 44(%esp)          # 4-byte Spill
+	movl	28(%eax), %ecx
+	movl	%ecx, 40(%esp)          # 4-byte Spill
 	jne	.LBB15_7
 # BB#6:                                 # %true_bb
-	movl	88(%esp), %ebp          # 4-byte Reload
+	movl	96(%esp), %ecx          # 4-byte Reload
+	subl	%edi, %ecx
+	movl	$4, 60(%eax)
+	movl	%edi, 44(%eax)
+	movl	%ecx, 12(%eax)
+	movl	$1, 28(%eax)
+	movl	%edx, 48(%eax)
+	movl	%ebx, %ebp
 	subl	%edx, %ebp
+	movl	%ebp, 16(%eax)
+	movl	%ecx, 32(%eax)
+	movl	$0, 52(%eax)
+	movl	$0, 20(%eax)
+	movl	$0, 36(%eax)
+	movl	$0, 56(%eax)
+	movl	$0, 24(%eax)
+	movl	$0, 40(%eax)
+.LBB15_7:                               # %after_bb
+	movl	%ebx, 48(%esp)          # 4-byte Spill
+	cmpb	$0, 59(%esp)            # 1-byte Folded Reload
+	je	.LBB15_11
+# BB#8:                                 # %after_bb42.thread
+	movl	192(%esp), %ecx
 	movl	$4, 60(%ecx)
-	movl	%edx, 44(%ecx)
-	movl	%ebp, 12(%ecx)
+	leal	-1(%edi), %eax
+	movl	%eax, 44(%ecx)
+	movl	124(%esp), %ebx         # 4-byte Reload
+	subl	%edi, %ebx
+	addl	$2, %ebx
+	movl	%ebx, 12(%ecx)
 	movl	$1, 28(%ecx)
+	leal	-1(%edx), %eax
 	movl	%eax, 48(%ecx)
-	movl	92(%esp), %edi          # 4-byte Reload
-	subl	%eax, %edi
-	movl	%edi, 16(%ecx)
-	movl	%ebp, 32(%ecx)
+	movl	$2, %eax
+	subl	%edx, %eax
+	addl	%esi, %eax
+	movl	%eax, 16(%ecx)
+	movl	%ebx, 32(%ecx)
 	movl	$0, 52(%ecx)
 	movl	$0, 20(%ecx)
 	movl	$0, 36(%ecx)
 	movl	$0, 56(%ecx)
 	movl	$0, 24(%ecx)
 	movl	$0, 40(%ecx)
-.LBB15_7:                               # %after_bb
-	movl	88(%esp), %edi          # 4-byte Reload
-	cmpb	$0, 47(%esp)            # 1-byte Folded Reload
-	je	.LBB15_11
-# BB#8:                                 # %after_bb42.thread
-	movl	176(%esp), %edi
-	movl	$4, 60(%edi)
-	leal	-1(%edx), %ecx
-	movl	%ecx, 44(%edi)
-	movl	96(%esp), %ebx          # 4-byte Reload
-	subl	%edx, %ebx
-	addl	$2, %ebx
-	movl	%ebx, 12(%edi)
-	movl	$1, 28(%edi)
-	leal	-1(%eax), %ecx
-	movl	%ecx, 48(%edi)
-	movl	$2, %ecx
-	subl	%eax, %ecx
-	addl	%esi, %ecx
-	movl	%ecx, 16(%edi)
-	movl	%ebx, 32(%edi)
-	movl	$0, 52(%edi)
-	movl	$0, 20(%edi)
-	movl	$0, 36(%edi)
-	movl	$0, 56(%edi)
-	movl	$0, 24(%edi)
-	movl	$0, 40(%edi)
 	jmp	.LBB15_9
 .LBB15_1:                               # %assert failed: buffer argument p0 is NULL
 	leal	.Lstr@GOTOFF(%ebx), %eax
 	jmp	.LBB15_2
 .LBB15_4:                               # %assert failed: buffer argument f3 is NULL
+	movl	100(%esp), %ebx         # 4-byte Reload
 	leal	.Lstr33@GOTOFF(%ebx), %eax
 	jmp	.LBB15_2
 .LBB15_11:                              # %after_bb42
-	cmpb	$0, 31(%esp)            # 1-byte Folded Reload
+	cmpb	$0, 35(%esp)            # 1-byte Folded Reload
+	movl	100(%esp), %ebx         # 4-byte Reload
+	movl	60(%esp), %ebp          # 4-byte Reload
+	movl	36(%esp), %eax          # 4-byte Reload
 	jne	.LBB15_9
 # BB#12:                                # %true_bb56
-	cmpl	$4, 32(%esp)            # 4-byte Folded Reload
-	movl	68(%esp), %ecx          # 4-byte Reload
-	movl	104(%esp), %ebp         # 4-byte Reload
+	cmpl	$4, %eax
+	movl	116(%esp), %ecx         # 4-byte Reload
 	jne	.LBB15_13
-# BB#14:                                # %assert succeeded: Output buffer f3 has type int32, but elem_size of the buffer_t passed in is not 4
-	cmpl	$4, 48(%esp)            # 4-byte Folded Reload
+# BB#14:                                # %assert succeeded: Output buffer f3 has type int32, but elem_size of the buffer_t passed in is %d instead of 4
+	cmpl	$4, %ebp
+	movl	%ebp, %eax
+	movl	96(%esp), %ebp          # 4-byte Reload
 	jne	.LBB15_15
-# BB#16:                                # %assert succeeded: Input buffer p0 has type uint32, but elem_size of the buffer_t passed in is not 4
-	cmpl	%edx, %ecx
+# BB#16:                                # %assert succeeded: Input buffer p0 has type uint32, but elem_size of the buffer_t passed in is %d instead of 4
+	cmpl	%edi, %ecx
 	jle	.LBB15_18
-# BB#17:                                # %assert failed: Output buffer f3 is accessed before the min in dimension 0
+# BB#17:                                # %assert failed: Output buffer f3 is accessed at %d, which before the min (%d) in dimension 0
+	movl	%ecx, 12(%esp)
+	movl	%edi, 8(%esp)
 	leal	.Lstr36@GOTOFF(%ebx), %eax
 	jmp	.LBB15_2
-.LBB15_13:                              # %assert failed: Output buffer f3 has type int32, but elem_size of the buffer_t passed in is not 4
+.LBB15_13:                              # %assert failed: Output buffer f3 has type int32, but elem_size of the buffer_t passed in is %d instead of 4
+	movl	%eax, 8(%esp)
 	leal	.Lstr34@GOTOFF(%ebx), %eax
 	jmp	.LBB15_2
-.LBB15_15:                              # %assert failed: Input buffer p0 has type uint32, but elem_size of the buffer_t passed in is not 4
+.LBB15_15:                              # %assert failed: Input buffer p0 has type uint32, but elem_size of the buffer_t passed in is %d instead of 4
+	movl	%eax, 8(%esp)
 	leal	.Lstr35@GOTOFF(%ebx), %eax
 	jmp	.LBB15_2
-.LBB15_18:                              # %assert succeeded: Output buffer f3 is accessed before the min in dimension 0
-	subl	%ebp, %edi
-	cmpl	%ecx, %edi
+.LBB15_18:                              # %assert succeeded: Output buffer f3 is accessed at %d, which before the min (%d) in dimension 0
+	movl	%ebp, %eax
+	subl	112(%esp), %eax         # 4-byte Folded Reload
+	cmpl	%ecx, %eax
 	jle	.LBB15_20
-# BB#19:                                # %assert failed: Output buffer f3 is accessed beyond the extent in dimension 0
+# BB#19:                                # %assert failed: Output buffer f3 is accessed at %d, which is beyond the max (%d) in dimension 0
+	movl	64(%esp), %eax          # 4-byte Reload
+	decl	%eax
+	movl	%eax, 12(%esp)
+	decl	%ebp
+	movl	%ebp, 8(%esp)
 	leal	.Lstr37@GOTOFF(%ebx), %eax
 	jmp	.LBB15_2
-.LBB15_20:                              # %assert succeeded: Output buffer f3 is accessed beyond the extent in dimension 0
-	movl	52(%esp), %ebp          # 4-byte Reload
-	cmpl	%eax, %ebp
-	movl	%eax, 88(%esp)          # 4-byte Spill
-	movl	72(%esp), %eax          # 4-byte Reload
+.LBB15_20:                              # %assert succeeded: Output buffer f3 is accessed at %d, which is beyond the max (%d) in dimension 0
+	movl	104(%esp), %ecx         # 4-byte Reload
+	cmpl	%edx, %ecx
+	movl	48(%esp), %ebp          # 4-byte Reload
 	jle	.LBB15_22
-# BB#21:                                # %assert failed: Output buffer f3 is accessed before the min in dimension 1
+# BB#21:                                # %assert failed: Output buffer f3 is accessed at %d, which before the min (%d) in dimension 1
+	movl	%ecx, 12(%esp)
+	movl	%edx, 8(%esp)
 	leal	.Lstr38@GOTOFF(%ebx), %eax
 	jmp	.LBB15_2
-.LBB15_22:                              # %assert succeeded: Output buffer f3 is accessed before the min in dimension 1
-	movl	92(%esp), %edi          # 4-byte Reload
-	subl	100(%esp), %edi         # 4-byte Folded Reload
-	cmpl	%ebp, %edi
+.LBB15_22:                              # %assert succeeded: Output buffer f3 is accessed at %d, which before the min (%d) in dimension 1
+	movl	%ebp, %eax
+	subl	108(%esp), %eax         # 4-byte Folded Reload
+	cmpl	%ecx, %eax
 	jle	.LBB15_24
-# BB#23:                                # %assert failed: Output buffer f3 is accessed beyond the extent in dimension 1
+# BB#23:                                # %assert failed: Output buffer f3 is accessed at %d, which is beyond the max (%d) in dimension 1
+	movl	52(%esp), %eax          # 4-byte Reload
+	decl	%eax
+	movl	%eax, 12(%esp)
+	decl	%ebp
+	movl	%ebp, 8(%esp)
 	leal	.Lstr39@GOTOFF(%ebx), %eax
 	jmp	.LBB15_2
-.LBB15_24:                              # %assert succeeded: Output buffer f3 is accessed beyond the extent in dimension 1
-	movl	%eax, %edi
-	cmpl	%edx, %edi
+.LBB15_24:                              # %assert succeeded: Output buffer f3 is accessed at %d, which is beyond the max (%d) in dimension 1
+	movl	84(%esp), %ebp          # 4-byte Reload
+	cmpl	%edi, %ebp
+	movl	88(%esp), %ecx          # 4-byte Reload
+	movl	124(%esp), %eax         # 4-byte Reload
 	jge	.LBB15_25
-# BB#26:                                # %assert succeeded: Input buffer p0 is accessed before the min in dimension 0
-	movl	96(%esp), %edx          # 4-byte Reload
-	subl	56(%esp), %edx          # 4-byte Folded Reload
-	cmpl	%edi, %edx
-	movl	88(%esp), %eax          # 4-byte Reload
+# BB#26:                                # %assert succeeded: Input buffer p0 is accessed at %d, which before the min (%d) in dimension 0
+	movl	68(%esp), %edi          # 4-byte Reload
+	subl	%edi, %eax
+	cmpl	%ebp, %eax
 	jge	.LBB15_27
-# BB#28:                                # %assert succeeded: Input buffer p0 is accessed beyond the extent in dimension 0
-	movl	%ecx, %edx
-	movl	80(%esp), %ecx          # 4-byte Reload
-	cmpl	%eax, %ecx
-	movl	%ecx, %eax
+# BB#28:                                # %assert succeeded: Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 0
+	movl	%ebp, %edi
+	cmpl	%edx, %ecx
 	jge	.LBB15_29
-# BB#30:                                # %assert succeeded: Input buffer p0 is accessed before the min in dimension 1
-	subl	60(%esp), %esi          # 4-byte Folded Reload
-	cmpl	%eax, %esi
+# BB#30:                                # %assert succeeded: Input buffer p0 is accessed at %d, which before the min (%d) in dimension 1
+	movl	%esi, %eax
+	movl	72(%esp), %edx          # 4-byte Reload
+	subl	%edx, %eax
+	cmpl	%ecx, %eax
 	jge	.LBB15_31
-# BB#32:                                # %assert succeeded: Input buffer p0 is accessed beyond the extent in dimension 1
-	cmpl	$1, 36(%esp)            # 4-byte Folded Reload
-	movl	%edi, %esi
+# BB#32:                                # %assert succeeded: Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 1
+	cmpl	$1, 40(%esp)            # 4-byte Folded Reload
 	jne	.LBB15_33
 # BB#34:                                # %assert succeeded: Static constraint violated: f3.stride.0 == 1
-	cmpl	$1, 64(%esp)            # 4-byte Folded Reload
+	cmpl	$1, 76(%esp)            # 4-byte Folded Reload
 	jne	.LBB15_35
 # BB#36:                                # %produce f3
-	movl	104(%esp), %ecx         # 4-byte Reload
-	movl	%ecx, 112(%esp)
-	movl	100(%esp), %ecx         # 4-byte Reload
-	movl	%ecx, 116(%esp)
-	movl	%edx, 120(%esp)
-	movl	%ebp, 124(%esp)
-	movl	40(%esp), %edx          # 4-byte Reload
-	movl	%edx, 128(%esp)
-	movl	%esi, 132(%esp)
+	movl	112(%esp), %eax         # 4-byte Reload
+	movl	%eax, 128(%esp)
+	movl	108(%esp), %edx         # 4-byte Reload
+	movl	%edx, 132(%esp)
+	movl	116(%esp), %eax         # 4-byte Reload
 	movl	%eax, 136(%esp)
-	movl	76(%esp), %eax          # 4-byte Reload
+	movl	104(%esp), %eax         # 4-byte Reload
 	movl	%eax, 140(%esp)
-	movl	108(%esp), %eax         # 4-byte Reload
+	movl	44(%esp), %eax          # 4-byte Reload
 	movl	%eax, 144(%esp)
-	movl	84(%esp), %eax          # 4-byte Reload
-	movl	%eax, 148(%esp)
-	leal	112(%esp), %eax
+	movl	%edi, 148(%esp)
+	movl	%ecx, 152(%esp)
+	movl	80(%esp), %eax          # 4-byte Reload
+	movl	%eax, 156(%esp)
+	movl	120(%esp), %eax         # 4-byte Reload
+	movl	%eax, 160(%esp)
+	movl	92(%esp), %eax          # 4-byte Reload
+	movl	%eax, 164(%esp)
+	leal	128(%esp), %eax
 	movl	%eax, 16(%esp)
-	addl	$15, %ecx
-	sarl	$4, %ecx
-	movl	%ecx, 12(%esp)
+	addl	$15, %edx
+	sarl	$4, %edx
+	movl	%edx, 12(%esp)
 	leal	par_20_for_20_f3.s0.v1.v1@GOTOFF(%ebx), %eax
 	movl	%eax, 4(%esp)
 	movl	$0, 8(%esp)
@@ -1218,16 +1269,29 @@ halide_game_of_life:                    # @halide_game_of_life
 .LBB15_9:                               # %after_bb58
 	xorl	%eax, %eax
 	jmp	.LBB15_10
-.LBB15_25:                              # %assert failed: Input buffer p0 is accessed before the min in dimension 0
+.LBB15_25:                              # %assert failed: Input buffer p0 is accessed at %d, which before the min (%d) in dimension 0
+	movl	%ebp, 12(%esp)
+	decl	%edi
+	movl	%edi, 8(%esp)
 	leal	.Lstr40@GOTOFF(%ebx), %eax
 	jmp	.LBB15_2
-.LBB15_27:                              # %assert failed: Input buffer p0 is accessed beyond the extent in dimension 0
+.LBB15_27:                              # %assert failed: Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 0
+	leal	-1(%edi,%ebp), %eax
+	movl	%eax, 12(%esp)
+	movl	124(%esp), %eax         # 4-byte Reload
+	movl	%eax, 8(%esp)
 	leal	.Lstr41@GOTOFF(%ebx), %eax
 	jmp	.LBB15_2
-.LBB15_29:                              # %assert failed: Input buffer p0 is accessed before the min in dimension 1
+.LBB15_29:                              # %assert failed: Input buffer p0 is accessed at %d, which before the min (%d) in dimension 1
+	movl	%ecx, 12(%esp)
+	decl	%edx
+	movl	%edx, 8(%esp)
 	leal	.Lstr42@GOTOFF(%ebx), %eax
 	jmp	.LBB15_2
-.LBB15_31:                              # %assert failed: Input buffer p0 is accessed beyond the extent in dimension 1
+.LBB15_31:                              # %assert failed: Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 1
+	leal	-1(%edx,%ecx), %eax
+	movl	%eax, 12(%esp)
+	movl	%esi, 8(%esp)
 	leal	.Lstr43@GOTOFF(%ebx), %eax
 	jmp	.LBB15_2
 .LBB15_33:                              # %assert failed: Static constraint violated: f3.stride.0 == 1
@@ -1241,7 +1305,7 @@ halide_game_of_life:                    # @halide_game_of_life
 	naclcall	halide_error@PLT
 	movl	$-1, %eax
 .LBB15_10:                              # %after_bb58
-	addl	$156, %esp
+	addl	$172, %esp
 	popl	%esi
 	popl	%edi
 	popl	%ebx
@@ -1729,62 +1793,62 @@ halide_error_handler:
 	.type	.Lstr34,@object         # @str34
 	.align	32
 .Lstr34:
-	.asciz	 "Output buffer f3 has type int32, but elem_size of the buffer_t passed in is not 4"
-	.size	.Lstr34, 82
+	.asciz	 "Output buffer f3 has type int32, but elem_size of the buffer_t passed in is %d instead of 4"
+	.size	.Lstr34, 92
 
 	.type	.Lstr35,@object         # @str35
 	.align	32
 .Lstr35:
-	.asciz	 "Input buffer p0 has type uint32, but elem_size of the buffer_t passed in is not 4"
-	.size	.Lstr35, 82
+	.asciz	 "Input buffer p0 has type uint32, but elem_size of the buffer_t passed in is %d instead of 4"
+	.size	.Lstr35, 92
 
 	.type	.Lstr36,@object         # @str36
 	.align	32
 .Lstr36:
-	.asciz	 "Output buffer f3 is accessed before the min in dimension 0"
-	.size	.Lstr36, 59
+	.asciz	 "Output buffer f3 is accessed at %d, which before the min (%d) in dimension 0"
+	.size	.Lstr36, 77
 
 	.type	.Lstr37,@object         # @str37
 	.align	32
 .Lstr37:
-	.asciz	 "Output buffer f3 is accessed beyond the extent in dimension 0"
-	.size	.Lstr37, 62
+	.asciz	 "Output buffer f3 is accessed at %d, which is beyond the max (%d) in dimension 0"
+	.size	.Lstr37, 80
 
 	.type	.Lstr38,@object         # @str38
 	.align	32
 .Lstr38:
-	.asciz	 "Output buffer f3 is accessed before the min in dimension 1"
-	.size	.Lstr38, 59
+	.asciz	 "Output buffer f3 is accessed at %d, which before the min (%d) in dimension 1"
+	.size	.Lstr38, 77
 
 	.type	.Lstr39,@object         # @str39
 	.align	32
 .Lstr39:
-	.asciz	 "Output buffer f3 is accessed beyond the extent in dimension 1"
-	.size	.Lstr39, 62
+	.asciz	 "Output buffer f3 is accessed at %d, which is beyond the max (%d) in dimension 1"
+	.size	.Lstr39, 80
 
 	.type	.Lstr40,@object         # @str40
 	.align	32
 .Lstr40:
-	.asciz	 "Input buffer p0 is accessed before the min in dimension 0"
-	.size	.Lstr40, 58
+	.asciz	 "Input buffer p0 is accessed at %d, which before the min (%d) in dimension 0"
+	.size	.Lstr40, 76
 
 	.type	.Lstr41,@object         # @str41
 	.align	32
 .Lstr41:
-	.asciz	 "Input buffer p0 is accessed beyond the extent in dimension 0"
-	.size	.Lstr41, 61
+	.asciz	 "Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 0"
+	.size	.Lstr41, 79
 
 	.type	.Lstr42,@object         # @str42
 	.align	32
 .Lstr42:
-	.asciz	 "Input buffer p0 is accessed before the min in dimension 1"
-	.size	.Lstr42, 58
+	.asciz	 "Input buffer p0 is accessed at %d, which before the min (%d) in dimension 1"
+	.size	.Lstr42, 76
 
 	.type	.Lstr43,@object         # @str43
 	.align	32
 .Lstr43:
-	.asciz	 "Input buffer p0 is accessed beyond the extent in dimension 1"
-	.size	.Lstr43, 61
+	.asciz	 "Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 1"
+	.size	.Lstr43, 79
 
 	.type	.Lstr44,@object         # @str44
 	.align	32

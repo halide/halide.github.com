@@ -365,39 +365,39 @@ halide_shutdown_thread_pool:
 	.cfi_offset r4, -28
 	sfi_nop_if_at_bundle_end
 
-	sub	sp, sp, #4
+	sub	sp, sp, #52
 	sfi_data_mask sp, 
 
 .Ltmp34:
-	.cfi_def_cfa_offset 32
-	movw	r0, :lower16:(.LCPI3_0-(.LPC3_4+8))
+	.cfi_def_cfa_offset 80
+	movw	r8, :lower16:(.LCPI3_0-(.LPC3_4+8))
 	movw	r6, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC3_5+8))
-	movt	r0, :upper16:(.LCPI3_0-(.LPC3_4+8))
-	movt	r6, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC3_5+8))
+	movt	r8, :upper16:(.LCPI3_0-(.LPC3_4+8))
 .LPC3_4:
-	add	r0, pc, r0
+	add	r8, pc, r8
+	sfi_load_store_preamble r8, 
+
+	ldr	r0, [r8]
+	movt	r6, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC3_5+8))
 .LPC3_5:
 	add	r6, pc, r6
-	sfi_load_store_preamble r0, 
-
-	ldr	r0, [r0]
 	add	r0, r0, r6
 	sfi_load_store_preamble r0, 
 
-	ldr	r8, [r0]
-	sfi_load_store_preamble r8, 
+	ldr	r0, [r0]
+	sfi_load_store_preamble r0, 
 
-	ldrb	r0, [r8]
+	ldrb	r0, [r0]
 	cmp	r0, #0
 	beq	.LBB3_5
 @ BB#1:                                 @ %if.end
-	movw	r0, :lower16:(.LCPI3_1-(.LPC3_6+8))
-	movt	r0, :upper16:(.LCPI3_1-(.LPC3_6+8))
+	movw	r10, :lower16:(.LCPI3_1-(.LPC3_6+8))
+	movt	r10, :upper16:(.LCPI3_1-(.LPC3_6+8))
 .LPC3_6:
-	add	r0, pc, r0
-	sfi_load_store_preamble r0, 
+	add	r10, pc, r10
+	sfi_load_store_preamble r10, 
 
-	ldr	r0, [r0]
+	ldr	r0, [r10]
 	add	r0, r0, r6
 	sfi_load_store_preamble r0, 
 
@@ -407,11 +407,10 @@ halide_shutdown_thread_pool:
 
 	bl	pthread_mutex_lock(PLT)
 	mov	r0, #1
-	add	r10, r4, #44
 	sfi_load_store_preamble r4, 
 
 	strb	r0, [r4, #348]
-	mov	r0, r10
+	add	r0, r4, #44
 	sfi_call_preamble 
 
 	bl	pthread_cond_broadcast(PLT)
@@ -419,60 +418,116 @@ halide_shutdown_thread_pool:
 	sfi_call_preamble 
 
 	bl	pthread_mutex_unlock(PLT)
-	movw	r0, :lower16:(.LCPI3_2-(.LPC3_7+8))
-	movt	r0, :upper16:(.LCPI3_2-(.LPC3_7+8))
+	movw	r5, :lower16:(.LCPI3_2-(.LPC3_7+8))
+	movt	r5, :upper16:(.LCPI3_2-(.LPC3_7+8))
 .LPC3_7:
-	add	r0, pc, r0
-	sfi_load_store_preamble r0, 
+	add	r5, pc, r5
+	sfi_load_store_preamble r5, 
 
-	ldr	r0, [r0]
+	ldr	r0, [r5]
 	add	r0, r0, r6
 	sfi_load_store_preamble r0, 
 
-	ldr	r7, [r0]
-	sfi_load_store_preamble r7, 
+	ldr	r0, [r0]
+	sfi_load_store_preamble r0, 
 
-	ldr	r0, [r7]
+	ldr	r0, [r0]
 	sub	r0, r0, #1
 	cmp	r0, #1
 	blt	.LBB3_4
 @ BB#2:
-	mov	r5, #0
-	mov	r6, sp
+	mov	r7, #0
+	add	r4, sp, #48
 .LBB3_3:                                @ %for.body
                                         @ =>This Inner Loop Header: Depth=1
-	add	r0, r4, r5, lsl #2
-	mov	r1, r6
+	sfi_load_store_preamble r10, 
+
+	ldr	r0, [r10]
+	mov	r1, r4
+	add	r0, r0, r6
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	add	r0, r0, r7, lsl #2
 	sfi_load_store_preamble r0, 
 
 	ldr	r0, [r0, #92]
 	sfi_call_preamble 
 
 	bl	pthread_join(PLT)
-	sfi_load_store_preamble r7, 
+	sfi_load_store_preamble r5, 
 
-	ldr	r0, [r7]
-	add	r5, r5, #1
+	ldr	r0, [r5]
+	add	r7, r7, #1
+	add	r0, r0, r6
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
 	sub	r0, r0, #1
-	cmp	r5, r0
+	cmp	r7, r0
 	blt	.LBB3_3
 .LBB3_4:                                @ %for.end
+	sfi_load_store_preamble r10, 
+
+	ldr	r0, [r10]
+	add	r0, r0, r6
+	sfi_load_store_preamble r0, 
+
+	ldr	r4, [r0]
 	mov	r0, r4
 	sfi_call_preamble 
 
 	bl	pthread_mutex_destroy(PLT)
-	mov	r0, r10
+	vmov.i32	q8, #0x0
+	add	r0, sp, #8
+	add	r1, r0, #16
+	mov	r5, #0
+	sfi_load_store_preamble r1, 
+
+	vst1.64	{d16, d17}, [r1]
+	sfi_load_store_preamble r0, 
+
+	vst1.64	{d16, d17}, [r0]
+	str	r5, [sp, #44]
+	str	r5, [sp, #40]
+	sfi_load_store_preamble r0, 
+
+	vld1.64	{d18, d19}, [r0]
+	add	r0, r4, #16
+	sfi_load_store_preamble r1, 
+
+	vld1.64	{d16, d17}, [r1]
+	vldr	d20, [sp, #40]
+	sfi_load_store_preamble r0, 
+
+	vst1.32	{d16, d17}, [r0]
+	add	r0, r4, #44
+	sfi_load_store_preamble r4, 
+
+	vst1.32	{d18, d19}, [r4]
+	sfi_load_store_preamble r4, 
+
+	vstr	d20, [r4, #32]
 	sfi_call_preamble 
 
 	bl	pthread_cond_destroy(PLT)
-	mov	r0, #0
 	sfi_load_store_preamble r8, 
 
-	strb	r0, [r8]
+	ldr	r0, [r8]
+	add	r0, r0, r6
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	sfi_load_store_preamble r0, 
+
+	strb	r5, [r0]
 .LBB3_5:                                @ %return
 	sfi_nop_if_at_bundle_end
 
-	add	sp, sp, #4
+	add	sp, sp, #52
 	sfi_data_mask sp, 
 
 	pop	{r4, r5, r6, r7, r8, r10, lr}
@@ -927,9 +982,9 @@ halide_worker_thread:
 .LCPI8_0:
 	.long	halide_custom_do_par_for(GOT)
 .LCPI8_1:
-	.long	halide_thread_pool_initialized(GOT)
-.LCPI8_2:
 	.long	halide_work_queue(GOT)
+.LCPI8_2:
+	.long	halide_thread_pool_initialized(GOT)
 .LCPI8_3:
 	.long	.L.str(GOTOFF)
 .LCPI8_4:
@@ -974,17 +1029,17 @@ halide_do_par_for:
 	mov	r5, r2
 	movw	r2, :lower16:(.LCPI8_0-(.LPC8_10+8))
 	movt	r2, :upper16:(.LCPI8_0-(.LPC8_10+8))
-	movw	r6, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC8_11+8))
+	movw	r11, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC8_11+8))
 .LPC8_10:
 	add	r2, pc, r2
-	movt	r6, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC8_11+8))
+	movt	r11, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC8_11+8))
 	sfi_load_store_preamble r2, 
 
 	ldr	r2, [r2]
 .LPC8_11:
-	add	r6, pc, r6
-	ldr	r4, [sp, #80]
-	add	r2, r2, r6
+	add	r11, pc, r11
+	ldr	r6, [sp, #80]
+	add	r2, r2, r11
 	sfi_load_store_preamble r2, 
 
 	ldr	r2, [r2]
@@ -995,52 +1050,51 @@ halide_do_par_for:
 	beq	.LBB8_2
 @ BB#1:                                 @ %if.then
 	mov	r2, r5
-	str	r4, [sp]
+	str	r6, [sp]
 	sfi_indirect_call_preamble r7, 
 
 	blx	r7
 	b	.LBB8_15
 .LBB8_2:                                @ %if.end
-	movw	r2, :lower16:(.LCPI8_1-(.LPC8_12+8))
-	movt	r2, :upper16:(.LCPI8_1-(.LPC8_12+8))
-.LPC8_12:
-	add	r2, pc, r2
-	sfi_load_store_preamble r2, 
-
-	ldr	r2, [r2]
-	add	r2, r2, r6
-	sfi_load_store_preamble r2, 
-
-	ldr	r11, [r2]
-	sfi_load_store_preamble r11, 
-
-	ldrb	r2, [r11]
-	cmp	r2, #0
-	bne	.LBB8_14
-@ BB#3:                                 @ %if.then2
 	stmib	sp, {r0, r1, r3}
-	movw	r0, :lower16:(.LCPI8_2-(.LPC8_13+8))
-	movt	r0, :upper16:(.LCPI8_2-(.LPC8_13+8))
-	mov	r7, #0
-.LPC8_13:
+	movw	r0, :lower16:(.LCPI8_1-(.LPC8_12+8))
+	movt	r0, :upper16:(.LCPI8_1-(.LPC8_12+8))
+.LPC8_12:
 	add	r0, pc, r0
-	mov	r1, #0
 	sfi_load_store_preamble r0, 
 
 	ldr	r0, [r0]
-	add	r0, r0, r6
+	add	r0, r0, r11
 	sfi_load_store_preamble r0, 
 
 	ldr	r4, [r0]
 	mov	r0, r4
-	sfi_load_store_preamble r4, 
-
-	strb	r7, [r4, #348]
 	sfi_call_preamble 
 
-	bl	pthread_mutex_init(PLT)
+	bl	pthread_mutex_lock(PLT)
+	movw	r0, :lower16:(.LCPI8_2-(.LPC8_13+8))
+	movt	r0, :upper16:(.LCPI8_2-(.LPC8_13+8))
+.LPC8_13:
+	add	r0, pc, r0
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	add	r0, r0, r11
+	sfi_load_store_preamble r0, 
+
+	ldr	r8, [r0]
+	sfi_load_store_preamble r8, 
+
+	ldrb	r0, [r8]
+	cmp	r0, #0
+	bne	.LBB8_14
+@ BB#3:                                 @ %if.then3
+	mov	r6, #0
 	add	r0, r4, #44
 	mov	r1, #0
+	sfi_load_store_preamble r4, 
+
+	strb	r6, [r4, #348]
 	sfi_call_preamble 
 
 	bl	pthread_cond_init(PLT)
@@ -1048,13 +1102,13 @@ halide_do_par_for:
 	movt	r0, :upper16:(.LCPI8_3-(.LPC8_14+8))
 	sfi_load_store_preamble r4, 
 
-	str	r7, [r4, #40]
+	str	r6, [r4, #40]
 .LPC8_14:
 	add	r0, pc, r0
 	sfi_load_store_preamble r0, 
 
 	ldr	r0, [r0]
-	add	r0, r0, r6
+	add	r0, r0, r11
 	sfi_call_preamble 
 
 	bl	getenv(PLT)
@@ -1078,21 +1132,21 @@ halide_do_par_for:
 	sfi_load_store_preamble r1, 
 
 	ldr	r1, [r1]
-	add	r1, r1, r6
+	add	r1, r1, r11
 	sfi_load_store_preamble r1, 
 
-	ldr	r8, [r1]
-	sfi_load_store_preamble r8, 
+	ldr	r10, [r1]
+	sfi_load_store_preamble r10, 
 
-	str	r0, [r8]
+	str	r0, [r10]
 	blt	.LBB8_8
 @ BB#7:                                 @ %for.cond.preheader.thread
 	mov	r0, #64
-	add	r4, r4, #92
-	sfi_load_store_preamble r8, 
+	add	r6, r4, #92
+	sfi_load_store_preamble r10, 
 
-	str	r0, [r8]
-	mov	r10, #0
+	str	r0, [r10]
+	mov	r7, #0
 	b	.LBB8_12
 .LBB8_8:                                @ %if.else12
 	cmp	r0, #0
@@ -1102,8 +1156,8 @@ halide_do_par_for:
 	cmp	r0, #1
 	blt	.LBB8_13
 @ BB#11:
-	mov	r10, #0
-	add	r4, r4, #92
+	mov	r7, #0
+	add	r6, r4, #92
 .LBB8_12:                               @ %for.body
                                         @ =>This Inner Loop Header: Depth=1
 	movw	r0, :lower16:(.LCPI8_5-(.LPC8_16+8))
@@ -1115,64 +1169,51 @@ halide_do_par_for:
 	sfi_load_store_preamble r0, 
 
 	ldr	r0, [r0]
-	add	r0, r0, r6
+	add	r0, r0, r11
 	sfi_load_store_preamble r0, 
 
 	ldr	r2, [r0]
-	mov	r0, r4
+	mov	r0, r6
 	sfi_call_preamble 
 
 	bl	pthread_create(PLT)
-	sfi_load_store_preamble r8, 
+	sfi_load_store_preamble r10, 
 
-	ldr	r0, [r8]
-	add	r4, r4, #4
-	add	r10, r10, #1
+	ldr	r0, [r10]
+	add	r6, r6, #4
+	add	r7, r7, #1
 	sub	r0, r0, #1
-	cmp	r10, r0
+	cmp	r7, r0
 	blt	.LBB8_12
 	b	.LBB8_13
-.LBB8_9:                                @ %for.cond.preheader.thread42
+.LBB8_9:                                @ %for.cond.preheader.thread41
+	mov	r0, #1
+	sfi_load_store_preamble r10, 
+
+	str	r0, [r10]
+.LBB8_13:                               @ %for.end
 	mov	r0, #1
 	sfi_load_store_preamble r8, 
 
-	str	r0, [r8]
-.LBB8_13:                               @ %for.end
-	mov	r0, #1
-	ldr	r4, [sp, #80]
-	sfi_load_store_preamble r11, 
-
-	strb	r0, [r11]
-	ldmib	sp, {r0, r1, r3}
+	strb	r0, [r8]
 .LBB8_14:                               @ %if.end19
-	str	r1, [sp, #20]
-	add	r1, r3, r5
+	ldr	r0, [sp, #8]            @ 4-byte Reload
+	str	r0, [sp, #20]
+	ldr	r0, [sp, #4]            @ 4-byte Reload
 	str	r0, [sp, #24]
-	movw	r0, :lower16:(.LCPI8_2-(.LPC8_17+8))
-	movt	r0, :upper16:(.LCPI8_2-(.LPC8_17+8))
+	ldr	r0, [sp, #12]           @ 4-byte Reload
 	str	r5, [sp, #28]
-.LPC8_17:
-	add	r0, pc, r0
-	str	r1, [sp, #32]
-	sfi_load_store_preamble r0, 
-
-	ldr	r0, [r0]
-	str	r4, [sp, #36]
-	add	r0, r0, r6
-	sfi_load_store_preamble r0, 
-
-	ldr	r4, [r0]
+	add	r0, r0, r5
+	add	r5, sp, #16
+	str	r0, [sp, #32]
+	ldr	r0, [sp, #80]
+	str	r0, [sp, #36]
 	mov	r0, #0
 	str	r0, [sp, #44]
 	str	r0, [sp, #40]
-	mov	r0, r4
-	sfi_call_preamble 
-
-	bl	pthread_mutex_lock(PLT)
 	sfi_load_store_preamble r4, 
 
 	ldr	r0, [r4, #40]
-	add	r5, sp, #16
 	sfi_load_store_preamble r4, 
 
 	str	r5, [r4, #40]
@@ -1400,54 +1441,97 @@ halide_set_custom_allocator:
 halide_error:
 	.cfi_startproc
 @ BB#0:                                 @ %entry
-	push	{lr}
-.Ltmp80:
-	.cfi_def_cfa_offset 4
-.Ltmp81:
-	.cfi_offset lr, -4
 	sfi_nop_if_at_bundle_end
 
-	sub	sp, sp, #12
+	sub	sp, sp, #16
 	sfi_data_mask sp, 
 
+	push	{r4, r5, r6, r7, r8, r10, lr}
+.Ltmp80:
+	.cfi_def_cfa_offset 28
+.Ltmp81:
+	.cfi_offset lr, -4
 .Ltmp82:
-	.cfi_def_cfa_offset 16
-	mov	r2, r1
-	movw	r1, :lower16:(.LCPI12_0-(.LPC12_2+8))
-	movt	r1, :upper16:(.LCPI12_0-(.LPC12_2+8))
+	.cfi_offset r10, -8
+.Ltmp83:
+	.cfi_offset r8, -12
+.Ltmp84:
+	.cfi_offset r7, -16
+.Ltmp85:
+	.cfi_offset r6, -20
+.Ltmp86:
+	.cfi_offset r5, -24
+.Ltmp87:
+	.cfi_offset r4, -28
+	sfi_nop_if_at_bundle_end
+
+	sub	sp, sp, #4
+	sfi_data_mask sp, 
+
+	sfi_nop_if_at_bundle_end
+
+	sub	sp, sp, #4096
+	sfi_data_mask sp, 
+
+.Ltmp88:
+	.cfi_def_cfa_offset 4128
+	add	r6, sp, #4096
+	mov	r4, r1
+	sfi_load_store_preamble r6, 
+
+	str	r3, [r6, #44]
+	add	r6, sp, #4096
+	sfi_load_store_preamble r6, 
+
+	str	r2, [r6, #40]
+	add	r6, sp, #4096
+	mov	r5, r0
+	add	r3, r6, #40
+	add	r0, sp, #4
+	mov	r1, #4096
+	mov	r2, r4
+	str	r3, [sp]
+	sfi_call_preamble 
+
+	bl	vsnprintf(PLT)
+	movw	r0, :lower16:(.LCPI12_0-(.LPC12_2+8))
+	movt	r0, :upper16:(.LCPI12_0-(.LPC12_2+8))
 .LPC12_2:
+	add	r0, pc, r0
+	sfi_load_store_preamble r0, 
+
+	ldr	r1, [r0]
+	movw	r0, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC12_3+8))
+	movt	r0, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC12_3+8))
+.LPC12_3:
+	add	r0, pc, r0
+	add	r1, r1, r0
+	sfi_load_store_preamble r1, 
+
+	ldr	r1, [r1]
+	sfi_load_store_preamble r1, 
+
+	ldr	r2, [r1]
+	cmp	r2, #0
+	beq	.LBB12_2
+@ BB#1:                                 @ %if.then
+	add	r1, sp, #4
+	mov	r0, r5
+	sfi_indirect_call_preamble r2, 
+
+	blx	r2
+	b	.LBB12_3
+.LBB12_2:                               @ %if.else
+	movw	r1, :lower16:(.LCPI12_1-(.LPC12_4+8))
+	add	r2, sp, #4
+	movt	r1, :upper16:(.LCPI12_1-(.LPC12_4+8))
+.LPC12_4:
 	add	r1, pc, r1
 	sfi_load_store_preamble r1, 
 
-	ldr	r3, [r1]
-	movw	r1, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC12_3+8))
-	movt	r1, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC12_3+8))
-.LPC12_3:
-	add	r1, pc, r1
-	add	r3, r3, r1
-	sfi_load_store_preamble r3, 
-
-	ldr	r3, [r3]
-	sfi_load_store_preamble r3, 
-
-	ldr	r3, [r3]
-	cmp	r3, #0
-	beq	.LBB12_2
-@ BB#1:                                 @ %if.then
-	mov	r1, r2
-	sfi_indirect_call_preamble r3, 
-
-	blx	r3
-	b	.LBB12_3
-.LBB12_2:                               @ %if.else
-	movw	r3, :lower16:(.LCPI12_1-(.LPC12_4+8))
-	movt	r3, :upper16:(.LCPI12_1-(.LPC12_4+8))
-.LPC12_4:
-	add	r3, pc, r3
-	sfi_load_store_preamble r3, 
-
-	ldr	r3, [r3]
-	add	r1, r3, r1
+	ldr	r1, [r1]
+	add	r1, r1, r0
+	mov	r0, r5
 	sfi_call_preamble 
 
 	bl	halide_printf(PLT)
@@ -1458,15 +1542,25 @@ halide_error:
 .LBB12_3:                               @ %if.end
 	sfi_nop_if_at_bundle_end
 
-	add	sp, sp, #12
+	add	sp, sp, #4
 	sfi_data_mask sp, 
 
-	pop	{lr}
+	sfi_nop_if_at_bundle_end
+
+	add	sp, sp, #4096
+	sfi_data_mask sp, 
+
+	pop	{r4, r5, r6, r7, r8, r10, lr}
+	sfi_nop_if_at_bundle_end
+
+	add	sp, sp, #16
+	sfi_data_mask sp, 
+
 	sfi_return_preamble lr, 
 
 	bx	lr
-.Ltmp83:
-	.size	halide_error, .Ltmp83-halide_error
+.Ltmp89:
+	.size	halide_error, .Ltmp89-halide_error
 	.cfi_endproc
 
 	.section	.data.rel.ro,"aw",%progbits
@@ -1503,8 +1597,8 @@ halide_set_error_handler:
 	sfi_return_preamble lr, 
 
 	bx	lr
-.Ltmp84:
-	.size	halide_set_error_handler, .Ltmp84-halide_set_error_handler
+.Ltmp90:
+	.size	halide_set_error_handler, .Ltmp90-halide_set_error_handler
 	.cfi_endproc
 
 	.section	.text.halide_copy_to_host,"axG",%progbits,halide_copy_to_host,comdat
@@ -1519,8 +1613,8 @@ halide_copy_to_host:
 	sfi_return_preamble lr, 
 
 	bx	lr
-.Ltmp85:
-	.size	halide_copy_to_host, .Ltmp85-halide_copy_to_host
+.Ltmp91:
+	.size	halide_copy_to_host, .Ltmp91-halide_copy_to_host
 	.cfi_endproc
 
 	.section	.data.rel.ro,"aw",%progbits
@@ -1567,31 +1661,31 @@ halide_game_of_life:
 	.cfi_startproc
 @ BB#0:                                 @ %entry
 	push	{r4, r5, r6, r7, r8, r10, r11, lr}
-.Ltmp88:
-	.cfi_def_cfa_offset 32
-.Ltmp89:
-	.cfi_offset lr, -4
-.Ltmp90:
-	.cfi_offset r11, -8
-.Ltmp91:
-	.cfi_offset r10, -12
-.Ltmp92:
-	.cfi_offset r8, -16
-.Ltmp93:
-	.cfi_offset r7, -20
 .Ltmp94:
-	.cfi_offset r6, -24
+	.cfi_def_cfa_offset 32
 .Ltmp95:
-	.cfi_offset r5, -28
+	.cfi_offset lr, -4
 .Ltmp96:
+	.cfi_offset r11, -8
+.Ltmp97:
+	.cfi_offset r10, -12
+.Ltmp98:
+	.cfi_offset r8, -16
+.Ltmp99:
+	.cfi_offset r7, -20
+.Ltmp100:
+	.cfi_offset r6, -24
+.Ltmp101:
+	.cfi_offset r5, -28
+.Ltmp102:
 	.cfi_offset r4, -32
 	sfi_nop_if_at_bundle_end
 
-	sub	sp, sp, #112
+	sub	sp, sp, #128
 	sfi_data_mask sp, 
 
-.Ltmp97:
-	.cfi_def_cfa_offset 144
+.Ltmp103:
+	.cfi_def_cfa_offset 160
 	cmp	r0, #0
 	beq	.LBB15_1
 @ BB#4:                                 @ %assert succeeded: buffer argument p0 is NULL
@@ -1599,12 +1693,12 @@ halide_game_of_life:
 
 	ldm	r0, {r2, r3, r7}
 	orr	r2, r2, r3
-	str	r7, [sp, #68]           @ 4-byte Spill
+	str	r7, [sp, #76]           @ 4-byte Spill
 	orrs	r2, r7, r2
 	mov	r2, #0
 	moveq	r2, #1
 	cmp	r1, #0
-	str	r2, [sp, #24]           @ 4-byte Spill
+	str	r2, [sp, #44]           @ 4-byte Spill
 	beq	.LBB15_5
 @ BB#6:                                 @ %assert succeeded: buffer argument f3 is NULL
 	sfi_load_store_preamble r0, 
@@ -1612,136 +1706,140 @@ halide_game_of_life:
 	ldr	r2, [r0, #16]
 	sfi_load_store_preamble r1, 
 
-	ldr	r6, [r1, #44]
+	ldr	r10, [r1, #44]
 	sfi_load_store_preamble r1, 
 
-	ldr	r7, [r1, #16]
-	str	r2, [sp, #36]           @ 4-byte Spill
+	ldr	r5, [r1, #16]
+	str	r2, [sp, #56]           @ 4-byte Spill
 	sfi_load_store_preamble r0, 
 
 	ldr	r2, [r0, #12]
 	sfi_load_store_preamble r1, 
 
-	ldr	r8, [r1, #48]
-	str	r7, [sp, #64]           @ 4-byte Spill
-	str	r2, [sp, #32]           @ 4-byte Spill
+	ldr	r6, [r1, #48]
+	str	r5, [sp, #64]           @ 4-byte Spill
+	str	r2, [sp, #48]           @ 4-byte Spill
 	sfi_load_store_preamble r0, 
 
 	ldr	r2, [r0, #60]
-	sfi_load_store_preamble r1, 
-
-	ldr	r5, [r1, #8]
-	str	r2, [sp, #28]           @ 4-byte Spill
+	str	r6, [sp, #16]           @ 4-byte Spill
+	str	r2, [sp, #40]           @ 4-byte Spill
 	sfi_load_store_preamble r0, 
 
 	ldr	r2, [r0, #44]
-	str	r5, [sp, #48]           @ 4-byte Spill
-	str	r2, [sp, #60]           @ 4-byte Spill
+	str	r2, [sp, #72]           @ 4-byte Spill
 	sfi_load_store_preamble r0, 
 
 	ldr	r2, [r0, #48]
-	str	r2, [sp, #56]           @ 4-byte Spill
+	str	r2, [sp, #68]           @ 4-byte Spill
 	sfi_load_store_preamble r0, 
 
 	ldr	r2, [r0, #28]
-	str	r2, [sp, #44]           @ 4-byte Spill
+	str	r2, [sp, #52]           @ 4-byte Spill
 	sfi_load_store_preamble r0, 
 
 	ldr	r2, [r0, #32]
-	str	r2, [sp, #52]           @ 4-byte Spill
+	str	r2, [sp, #60]           @ 4-byte Spill
+	sfi_load_store_preamble r1, 
+
+	ldr	r2, [r1, #8]
+	str	r2, [sp, #84]           @ 4-byte Spill
 	sfi_load_store_preamble r1, 
 
 	ldr	r2, [r1]
-	str	r2, [sp, #20]           @ 4-byte Spill
+	str	r2, [sp, #32]           @ 4-byte Spill
 	sfi_load_store_preamble r1, 
 
 	ldr	r2, [r1, #4]
-	str	r2, [sp, #16]           @ 4-byte Spill
+	str	r2, [sp, #24]           @ 4-byte Spill
 	sfi_load_store_preamble r1, 
 
 	ldr	r2, [r1, #12]
-	add	r3, r6, r2
-	str	r2, [sp, #40]           @ 4-byte Spill
+	ldr	r11, [sp, #24]          @ 4-byte Reload
+	add	r7, r10, r2
+	str	r2, [sp, #80]           @ 4-byte Spill
 	sub	r2, r2, #1
 	bfc	r2, #0, #2
-	sub	r10, r3, #4
-	add	r2, r6, r2
-	add	lr, r2, #4
-	cmp	lr, r3
-	movge	lr, r3
-	cmp	r2, r10
-	movge	r2, r10
-	add	r3, r2, #2
-	add	r2, r2, #3
-	cmp	r2, lr
-	mov	r11, r2
-	movlt	r11, lr
-	cmp	r11, r3
-	add	r3, r8, r7
-	movlt	r11, r2
-	sub	r2, r7, #1
-	bfc	r2, #0, #4
-	sub	r12, r3, #16
-	add	r2, r8, r2
-	add	r4, r2, #16
-	cmp	r4, r3
-	movge	r4, r3
-	cmp	r2, r12
-	movge	r2, r12
-	ldr	r3, [sp, #16]           @ 4-byte Reload
-	add	r7, r2, #15
-	ldr	r2, [sp, #20]           @ 4-byte Reload
-	cmp	r7, r4
-	movlt	r7, r4
-	cmp	r8, r12
-	orr	r2, r2, r3
-	movlt	r12, r8
-	orrs	r2, r5, r2
+	str	r7, [sp, #36]           @ 4-byte Spill
+	add	r3, r10, r2
+	sub	r2, r7, #4
+	add	r12, r3, #4
+	cmp	r12, r7
+	movge	r12, r7
+	cmp	r3, r2
+	movge	r3, r2
+	add	r4, r3, #2
+	add	r3, r3, #3
+	cmp	r3, r12
+	mov	lr, r3
+	movlt	lr, r12
+	cmp	lr, r4
+	movlt	lr, r3
+	sub	r3, r5, #1
+	bfc	r3, #0, #4
+	add	r7, r6, r3
+	add	r3, r6, r5
+	add	r8, r7, #16
+	sub	r5, r3, #16
+	cmp	r8, r3
+	str	r3, [sp, #28]           @ 4-byte Spill
+	movge	r8, r3
+	cmp	r7, r5
+	movge	r7, r5
+	ldr	r3, [sp, #32]           @ 4-byte Reload
+	add	r4, r7, #15
+	mov	r7, #0
+	cmp	r4, r8
+	movlt	r4, r8
+	cmp	r6, r5
+	movlt	r5, r6
+	ldr	r6, [sp, #84]           @ 4-byte Reload
+	orr	r3, r3, r11
+	orrs	r3, r6, r3
 	sfi_load_store_preamble r1, 
 
-	ldr	r2, [r1, #60]
-	mov	r5, #0
+	ldr	r3, [r1, #60]
+	moveq	r7, #1
+	cmp	r10, r2
+	movlt	r2, r10
+	cmp	r7, #0
+	str	r3, [sp, #20]           @ 4-byte Spill
+	sfi_load_store_preamble r1, 
+
+	ldr	r3, [r1, #32]
+	str	r3, [sp, #32]           @ 4-byte Spill
 	sfi_load_store_preamble r1, 
 
 	ldr	r3, [r1, #28]
-	moveq	r5, #1
-	cmp	r6, r10
-	str	r2, [sp, #12]           @ 4-byte Spill
-	movlt	r10, r6
-	sfi_load_store_preamble r1, 
-
-	ldr	r2, [r1, #32]
-	cmp	r5, #0
-	str	r3, [sp, #16]           @ 4-byte Spill
-	str	r2, [sp, #20]           @ 4-byte Spill
+	str	r3, [sp, #24]           @ 4-byte Spill
 	beq	.LBB15_8
 @ BB#7:                                 @ %true_bb
 	mov	r3, #4
-	sub	r2, lr, r10
+	sub	r11, r12, r2
 	sfi_load_store_preamble r1, 
 
 	str	r3, [r1, #60]
 	mov	r3, #1
 	sfi_load_store_preamble r1, 
 
-	str	r10, [r1, #44]
+	str	r2, [r1, #44]
 	sfi_load_store_preamble r1, 
 
-	str	r2, [r1, #12]
+	str	r11, [r1, #12]
 	sfi_load_store_preamble r1, 
 
 	str	r3, [r1, #28]
-	sub	r3, r4, r12
+	sub	r3, r8, r5
 	sfi_load_store_preamble r1, 
 
-	str	r12, [r1, #48]
+	str	r5, [r1, #48]
 	sfi_load_store_preamble r1, 
 
 	str	r3, [r1, #16]
 	mov	r3, #0
 	sfi_load_store_preamble r1, 
 
-	str	r2, [r1, #32]
+	str	r11, [r1, #32]
 	sfi_load_store_preamble r1, 
 
 	str	r3, [r1, #52]
@@ -1761,33 +1859,33 @@ halide_game_of_life:
 
 	str	r3, [r1, #40]
 .LBB15_8:                               @ %after_bb
-	ldr	r1, [sp, #24]           @ 4-byte Reload
+	ldr	r1, [sp, #44]           @ 4-byte Reload
 	cmp	r1, #1
 	bne	.LBB15_12
 @ BB#9:                                 @ %after_bb42.thread
 	mov	r1, #4
-	mov	r2, #1
 	sfi_load_store_preamble r0, 
 
 	str	r1, [r0, #60]
-	sub	r1, r10, #1
+	sub	r1, r2, #1
 	sfi_load_store_preamble r0, 
 
 	str	r1, [r0, #44]
-	sub	r1, r11, r10
+	sub	r1, lr, r2
 	add	r1, r1, #2
+	mov	r2, #1
 	sfi_load_store_preamble r0, 
 
 	str	r1, [r0, #12]
 	sfi_load_store_preamble r0, 
 
 	str	r2, [r0, #28]
-	sub	r2, r12, #1
+	sub	r2, r5, #1
 	sfi_load_store_preamble r0, 
 
 	str	r2, [r0, #48]
-	rsb	r2, r12, #2
-	add	r2, r2, r7
+	rsb	r2, r5, #2
+	add	r2, r2, r4
 	sfi_load_store_preamble r0, 
 
 	str	r2, [r0, #16]
@@ -1825,183 +1923,6 @@ halide_game_of_life:
 	movt	r0, :upper16:(.LCPI15_14-(.LPC15_18+8))
 .LPC15_18:
 	add	r0, pc, r0
-	b	.LBB15_2
-.LBB15_12:                              @ %after_bb42
-	cmp	r5, #0
-	bne	.LBB15_10
-@ BB#13:                                @ %true_bb56
-	ldr	r1, [sp, #40]           @ 4-byte Reload
-	ldr	r0, [sp, #12]           @ 4-byte Reload
-	cmp	r0, #4
-	bne	.LBB15_14
-@ BB#15:                                @ %assert succeeded: Output buffer f3 has type int32, but elem_size of the buffer_t passed in is not 4
-	ldr	r0, [sp, #28]           @ 4-byte Reload
-	cmp	r0, #4
-	bne	.LBB15_16
-@ BB#17:                                @ %assert succeeded: Input buffer p0 has type uint32, but elem_size of the buffer_t passed in is not 4
-	ldr	r3, [sp, #64]           @ 4-byte Reload
-	cmp	r6, r10
-	ble	.LBB15_19
-@ BB#18:                                @ %assert failed: Output buffer f3 is accessed before the min in dimension 0
-	movw	r0, :lower16:(.LCPI15_13-(.LPC15_21+8))
-	movt	r0, :upper16:(.LCPI15_13-(.LPC15_21+8))
-.LPC15_21:
-	add	r0, pc, r0
-	b	.LBB15_2
-.LBB15_14:                              @ %assert failed: Output buffer f3 has type int32, but elem_size of the buffer_t passed in is not 4
-	movw	r0, :lower16:(.LCPI15_0-(.LPC15_19+8))
-	movt	r0, :upper16:(.LCPI15_0-(.LPC15_19+8))
-.LPC15_19:
-	add	r0, pc, r0
-	b	.LBB15_2
-.LBB15_16:                              @ %assert failed: Input buffer p0 has type uint32, but elem_size of the buffer_t passed in is not 4
-	movw	r0, :lower16:(.LCPI15_1-(.LPC15_20+8))
-	movt	r0, :upper16:(.LCPI15_1-(.LPC15_20+8))
-.LPC15_20:
-	add	r0, pc, r0
-	b	.LBB15_2
-.LBB15_19:                              @ %assert succeeded: Output buffer f3 is accessed before the min in dimension 0
-	sub	r0, lr, r1
-	cmp	r0, r6
-	ble	.LBB15_21
-@ BB#20:                                @ %assert failed: Output buffer f3 is accessed beyond the extent in dimension 0
-	movw	r0, :lower16:(.LCPI15_12-(.LPC15_22+8))
-	movt	r0, :upper16:(.LCPI15_12-(.LPC15_22+8))
-.LPC15_22:
-	add	r0, pc, r0
-	b	.LBB15_2
-.LBB15_21:                              @ %assert succeeded: Output buffer f3 is accessed beyond the extent in dimension 0
-	ldr	r2, [sp, #60]           @ 4-byte Reload
-	cmp	r8, r12
-	ble	.LBB15_23
-@ BB#22:                                @ %assert failed: Output buffer f3 is accessed before the min in dimension 1
-	movw	r0, :lower16:(.LCPI15_11-(.LPC15_23+8))
-	movt	r0, :upper16:(.LCPI15_11-(.LPC15_23+8))
-.LPC15_23:
-	add	r0, pc, r0
-	b	.LBB15_2
-.LBB15_23:                              @ %assert succeeded: Output buffer f3 is accessed before the min in dimension 1
-	sub	r0, r4, r3
-	cmp	r0, r8
-	ble	.LBB15_25
-@ BB#24:                                @ %assert failed: Output buffer f3 is accessed beyond the extent in dimension 1
-	movw	r0, :lower16:(.LCPI15_10-(.LPC15_24+8))
-	movt	r0, :upper16:(.LCPI15_10-(.LPC15_24+8))
-.LPC15_24:
-	add	r0, pc, r0
-	b	.LBB15_2
-.LBB15_25:                              @ %assert succeeded: Output buffer f3 is accessed beyond the extent in dimension 1
-	cmp	r2, r10
-	bge	.LBB15_26
-@ BB#27:                                @ %assert succeeded: Input buffer p0 is accessed before the min in dimension 0
-	ldr	r0, [sp, #32]           @ 4-byte Reload
-	sub	r0, r11, r0
-	cmp	r0, r2
-	bge	.LBB15_28
-@ BB#29:                                @ %assert succeeded: Input buffer p0 is accessed beyond the extent in dimension 0
-	ldr	r0, [sp, #56]           @ 4-byte Reload
-	cmp	r0, r12
-	mov	r5, r0
-	bge	.LBB15_30
-@ BB#31:                                @ %assert succeeded: Input buffer p0 is accessed before the min in dimension 1
-	ldr	r0, [sp, #36]           @ 4-byte Reload
-	sub	r0, r7, r0
-	cmp	r0, r5
-	bge	.LBB15_32
-@ BB#33:                                @ %assert succeeded: Input buffer p0 is accessed beyond the extent in dimension 1
-	ldr	r0, [sp, #16]           @ 4-byte Reload
-	cmp	r0, #1
-	bne	.LBB15_34
-@ BB#35:                                @ %assert succeeded: Static constraint violated: f3.stride.0 == 1
-	ldr	r0, [sp, #44]           @ 4-byte Reload
-	cmp	r0, #1
-	bne	.LBB15_36
-@ BB#37:                                @ %produce f3
-	str	r1, [sp, #72]
-	movw	r1, :lower16:(.LCPI15_8-(.LPC15_31+8))
-	str	r3, [sp, #76]
-	movt	r1, :upper16:(.LCPI15_8-(.LPC15_31+8))
-	ldr	r7, [sp, #20]           @ 4-byte Reload
-.LPC15_31:
-	add	r1, pc, r1
-	str	r6, [sp, #80]
-	add	r0, sp, #72
-	str	r8, [sp, #84]
-	movw	r4, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_32+8))
-	str	r7, [sp, #88]
-	str	r2, [sp, #92]
-	ldr	r2, [sp, #52]           @ 4-byte Reload
-	str	r5, [sp, #96]
-	str	r0, [sp]
-	add	r0, r3, #15
-	str	r2, [sp, #100]
-	asr	r3, r0, #4
-	ldr	r2, [sp, #48]           @ 4-byte Reload
-	mov	r0, #0
-	sfi_load_store_preamble r1, 
-
-	ldr	r1, [r1]
-	str	r2, [sp, #104]
-	ldr	r2, [sp, #68]           @ 4-byte Reload
-	str	r2, [sp, #108]
-	movt	r4, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_32+8))
-.LPC15_32:
-	add	r4, pc, r4
-	mov	r2, #0
-	add	r1, r1, r4
-	sfi_call_preamble 
-
-	bl	halide_do_par_for(PLT)
-	cmp	r0, #0
-	beq	.LBB15_10
-@ BB#38:                                @ %assert failed: Failure inside parallel for loop
-	movw	r0, :lower16:(.LCPI15_9-(.LPC15_33+8))
-	movt	r0, :upper16:(.LCPI15_9-(.LPC15_33+8))
-.LPC15_33:
-	add	r0, pc, r0
-	sfi_load_store_preamble r0, 
-
-	ldr	r0, [r0]
-	add	r1, r0, r4
-	b	.LBB15_3
-.LBB15_10:                              @ %after_bb58
-	mov	r0, #0
-	b	.LBB15_11
-.LBB15_26:                              @ %assert failed: Input buffer p0 is accessed before the min in dimension 0
-	movw	r0, :lower16:(.LCPI15_2-(.LPC15_25+8))
-	movt	r0, :upper16:(.LCPI15_2-(.LPC15_25+8))
-.LPC15_25:
-	add	r0, pc, r0
-	b	.LBB15_2
-.LBB15_28:                              @ %assert failed: Input buffer p0 is accessed beyond the extent in dimension 0
-	movw	r0, :lower16:(.LCPI15_3-(.LPC15_26+8))
-	movt	r0, :upper16:(.LCPI15_3-(.LPC15_26+8))
-.LPC15_26:
-	add	r0, pc, r0
-	b	.LBB15_2
-.LBB15_30:                              @ %assert failed: Input buffer p0 is accessed before the min in dimension 1
-	movw	r0, :lower16:(.LCPI15_4-(.LPC15_27+8))
-	movt	r0, :upper16:(.LCPI15_4-(.LPC15_27+8))
-.LPC15_27:
-	add	r0, pc, r0
-	b	.LBB15_2
-.LBB15_32:                              @ %assert failed: Input buffer p0 is accessed beyond the extent in dimension 1
-	movw	r0, :lower16:(.LCPI15_5-(.LPC15_28+8))
-	movt	r0, :upper16:(.LCPI15_5-(.LPC15_28+8))
-.LPC15_28:
-	add	r0, pc, r0
-	b	.LBB15_2
-.LBB15_34:                              @ %assert failed: Static constraint violated: f3.stride.0 == 1
-	movw	r0, :lower16:(.LCPI15_6-(.LPC15_29+8))
-	movt	r0, :upper16:(.LCPI15_6-(.LPC15_29+8))
-.LPC15_29:
-	add	r0, pc, r0
-	b	.LBB15_2
-.LBB15_36:                              @ %assert failed: Static constraint violated: p0.stride.0 == 1
-	movw	r0, :lower16:(.LCPI15_7-(.LPC15_30+8))
-	movt	r0, :upper16:(.LCPI15_7-(.LPC15_30+8))
-.LPC15_30:
-	add	r0, pc, r0
 .LBB15_2:                               @ %assert failed: buffer argument p0 is NULL
 	movw	r1, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_17+8))
 	sfi_load_store_preamble r0, 
@@ -2017,18 +1938,318 @@ halide_game_of_life:
 
 	bl	halide_error(PLT)
 	mvn	r0, #0
+	b	.LBB15_11
+.LBB15_12:                              @ %after_bb42
+	ldr	r3, [sp, #40]           @ 4-byte Reload
+	cmp	r7, #0
+	bne	.LBB15_10
+@ BB#13:                                @ %true_bb56
+	ldr	r7, [sp, #20]           @ 4-byte Reload
+	ldr	r0, [sp, #80]           @ 4-byte Reload
+	cmp	r7, #4
+	bne	.LBB15_14
+@ BB#16:                                @ %assert succeeded: Output buffer f3 has type int32, but elem_size of the buffer_t passed in is %d instead of 4
+	str	r4, [sp, #44]           @ 4-byte Spill
+	cmp	r3, #4
+	bne	.LBB15_17
+@ BB#18:                                @ %assert succeeded: Input buffer p0 has type uint32, but elem_size of the buffer_t passed in is %d instead of 4
+	ldr	r11, [sp, #64]          @ 4-byte Reload
+	cmp	r10, r2
+	ble	.LBB15_20
+@ BB#19:                                @ %assert failed: Output buffer f3 is accessed at %d, which before the min (%d) in dimension 0
+	movw	r0, :lower16:(.LCPI15_13-(.LPC15_23+8))
+	movw	r1, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_24+8))
+	movt	r0, :upper16:(.LCPI15_13-(.LPC15_23+8))
+	movt	r1, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_24+8))
+.LPC15_23:
+	add	r0, pc, r0
+.LPC15_24:
+	add	r1, pc, r1
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	mov	r3, r10
+	add	r1, r0, r1
+	mov	r0, #0
+	b	.LBB15_36
+.LBB15_14:                              @ %assert failed: Output buffer f3 has type int32, but elem_size of the buffer_t passed in is %d instead of 4
+	movw	r0, :lower16:(.LCPI15_0-(.LPC15_19+8))
+	movw	r1, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_20+8))
+	movt	r0, :upper16:(.LCPI15_0-(.LPC15_19+8))
+	movt	r1, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_20+8))
+.LPC15_19:
+	add	r0, pc, r0
+.LPC15_20:
+	add	r1, pc, r1
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	mov	r2, r7
+	add	r1, r0, r1
+	mov	r0, #0
+	b	.LBB15_15
+.LBB15_17:                              @ %assert failed: Input buffer p0 has type uint32, but elem_size of the buffer_t passed in is %d instead of 4
+	movw	r0, :lower16:(.LCPI15_1-(.LPC15_21+8))
+	movw	r1, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_22+8))
+	movt	r0, :upper16:(.LCPI15_1-(.LPC15_21+8))
+	movt	r1, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_22+8))
+.LPC15_21:
+	add	r0, pc, r0
+.LPC15_22:
+	add	r1, pc, r1
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	mov	r2, r3
+	add	r1, r0, r1
+	mov	r0, #0
+.LBB15_15:                              @ %assert failed: Output buffer f3 has type int32, but elem_size of the buffer_t passed in is %d instead of 4
+	sfi_call_preamble 
+
+	bl	halide_error(PLT)
+	mvn	r0, #0
+	b	.LBB15_11
+.LBB15_20:                              @ %assert succeeded: Output buffer f3 is accessed at %d, which before the min (%d) in dimension 0
+	sub	r0, r12, r0
+	cmp	r0, r10
+	ble	.LBB15_22
+@ BB#21:                                @ %assert failed: Output buffer f3 is accessed at %d, which is beyond the max (%d) in dimension 0
+	movw	r0, :lower16:(.LCPI15_12-(.LPC15_25+8))
+	movw	r1, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_26+8))
+	movt	r0, :upper16:(.LCPI15_12-(.LPC15_25+8))
+	movt	r1, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_26+8))
+.LPC15_25:
+	add	r0, pc, r0
+.LPC15_26:
+	add	r1, pc, r1
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	sub	r2, r12, #1
+	add	r1, r0, r1
+	ldr	r0, [sp, #36]           @ 4-byte Reload
+	b	.LBB15_34
+.LBB15_22:                              @ %assert succeeded: Output buffer f3 is accessed at %d, which is beyond the max (%d) in dimension 0
+	ldr	r4, [sp, #16]           @ 4-byte Reload
+	ldr	r3, [sp, #72]           @ 4-byte Reload
+	cmp	r4, r5
+	ble	.LBB15_24
+@ BB#23:                                @ %assert failed: Output buffer f3 is accessed at %d, which before the min (%d) in dimension 1
+	movw	r0, :lower16:(.LCPI15_11-(.LPC15_27+8))
+	movw	r1, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_28+8))
+	movt	r0, :upper16:(.LCPI15_11-(.LPC15_27+8))
+	movt	r1, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_28+8))
+.LPC15_27:
+	add	r0, pc, r0
+.LPC15_28:
+	add	r1, pc, r1
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	mov	r2, r5
+	mov	r3, r4
+	add	r1, r0, r1
+	mov	r0, #0
+	b	.LBB15_36
+.LBB15_24:                              @ %assert succeeded: Output buffer f3 is accessed at %d, which before the min (%d) in dimension 1
+	ldr	r12, [sp, #48]          @ 4-byte Reload
+	sub	r0, r8, r11
+	cmp	r0, r4
+	ble	.LBB15_26
+@ BB#25:                                @ %assert failed: Output buffer f3 is accessed at %d, which is beyond the max (%d) in dimension 1
+	movw	r0, :lower16:(.LCPI15_10-(.LPC15_29+8))
+	movw	r1, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_30+8))
+	movt	r0, :upper16:(.LCPI15_10-(.LPC15_29+8))
+	movt	r1, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_30+8))
+.LPC15_29:
+	add	r0, pc, r0
+.LPC15_30:
+	add	r1, pc, r1
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	sub	r2, r8, #1
+	add	r1, r0, r1
+	ldr	r0, [sp, #28]           @ 4-byte Reload
+	b	.LBB15_34
+.LBB15_26:                              @ %assert succeeded: Output buffer f3 is accessed at %d, which is beyond the max (%d) in dimension 1
+	ldr	r7, [sp, #68]           @ 4-byte Reload
+	mov	r1, r10
+	cmp	r3, r2
+	bge	.LBB15_27
+@ BB#28:                                @ %assert succeeded: Input buffer p0 is accessed at %d, which before the min (%d) in dimension 0
+	ldr	r6, [sp, #56]           @ 4-byte Reload
+	sub	r0, lr, r12
+	cmp	r0, r3
+	bge	.LBB15_29
+@ BB#30:                                @ %assert succeeded: Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 0
+	cmp	r7, r5
+	bge	.LBB15_31
+@ BB#32:                                @ %assert succeeded: Input buffer p0 is accessed at %d, which before the min (%d) in dimension 1
+	ldr	r2, [sp, #44]           @ 4-byte Reload
+	mov	r5, r4
+	sub	r0, r2, r6
+	cmp	r0, r7
+	bge	.LBB15_33
+@ BB#37:                                @ %assert succeeded: Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 1
+	ldr	r0, [sp, #24]           @ 4-byte Reload
+	cmp	r0, #1
+	bne	.LBB15_38
+@ BB#39:                                @ %assert succeeded: Static constraint violated: f3.stride.0 == 1
+	ldr	r0, [sp, #52]           @ 4-byte Reload
+	mov	r2, r1
+	cmp	r0, #1
+	bne	.LBB15_40
+@ BB#41:                                @ %produce f3
+	ldr	r0, [sp, #80]           @ 4-byte Reload
+	movw	r1, :lower16:(.LCPI15_8-(.LPC15_41+8))
+	add	r4, sp, #104
+	str	r0, [sp, #88]
+	add	r0, sp, #88
+	str	r11, [sp, #92]
+	movt	r1, :upper16:(.LCPI15_8-(.LPC15_41+8))
+	str	r2, [sp, #96]
+.LPC15_41:
+	add	r1, pc, r1
+	ldr	r2, [sp, #32]           @ 4-byte Reload
+	str	r5, [sp, #100]
+	sfi_load_store_preamble r4, 
+
+	stm	r4, {r2, r3, r7}
+	movw	r4, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_42+8))
+	ldr	r2, [sp, #60]           @ 4-byte Reload
+	str	r0, [sp]
+	add	r0, r11, #15
+	sfi_load_store_preamble r1, 
+
+	ldr	r1, [r1]
+	asr	r3, r0, #4
+	str	r2, [sp, #116]
+	mov	r0, #0
+	ldr	r2, [sp, #84]           @ 4-byte Reload
+	str	r2, [sp, #120]
+	ldr	r2, [sp, #76]           @ 4-byte Reload
+	str	r2, [sp, #124]
+	movt	r4, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_42+8))
+.LPC15_42:
+	add	r4, pc, r4
+	mov	r2, #0
+	add	r1, r1, r4
+	sfi_call_preamble 
+
+	bl	halide_do_par_for(PLT)
+	cmp	r0, #0
+	beq	.LBB15_10
+@ BB#42:                                @ %assert failed: Failure inside parallel for loop
+	movw	r0, :lower16:(.LCPI15_9-(.LPC15_43+8))
+	movt	r0, :upper16:(.LCPI15_9-(.LPC15_43+8))
+.LPC15_43:
+	add	r0, pc, r0
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	add	r1, r0, r4
+	b	.LBB15_3
+.LBB15_10:                              @ %after_bb58
+	mov	r0, #0
 .LBB15_11:                              @ %after_bb58
 	sfi_nop_if_at_bundle_end
 
-	add	sp, sp, #112
+	add	sp, sp, #128
 	sfi_data_mask sp, 
 
 	pop	{r4, r5, r6, r7, r8, r10, r11, lr}
 	sfi_return_preamble lr, 
 
 	bx	lr
-.Ltmp98:
-	.size	halide_game_of_life, .Ltmp98-halide_game_of_life
+.LBB15_27:                              @ %assert failed: Input buffer p0 is accessed at %d, which before the min (%d) in dimension 0
+	movw	r0, :lower16:(.LCPI15_2-(.LPC15_31+8))
+	movw	r1, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_32+8))
+	movt	r0, :upper16:(.LCPI15_2-(.LPC15_31+8))
+	movt	r1, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_32+8))
+.LPC15_31:
+	add	r0, pc, r0
+.LPC15_32:
+	add	r1, pc, r1
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	sub	r2, r2, #1
+	add	r1, r0, r1
+	b	.LBB15_35
+.LBB15_29:                              @ %assert failed: Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 0
+	movw	r0, :lower16:(.LCPI15_3-(.LPC15_33+8))
+	movw	r1, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_34+8))
+	movt	r0, :upper16:(.LCPI15_3-(.LPC15_33+8))
+	movt	r1, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_34+8))
+.LPC15_33:
+	add	r0, pc, r0
+.LPC15_34:
+	add	r1, pc, r1
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	mov	r2, lr
+	add	r1, r0, r1
+	add	r0, r12, r3
+	sub	r3, r0, #1
+	mov	r0, #0
+	b	.LBB15_36
+.LBB15_31:                              @ %assert failed: Input buffer p0 is accessed at %d, which before the min (%d) in dimension 1
+	movw	r0, :lower16:(.LCPI15_4-(.LPC15_35+8))
+	movw	r1, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_36+8))
+	movt	r0, :upper16:(.LCPI15_4-(.LPC15_35+8))
+	movt	r1, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_36+8))
+.LPC15_35:
+	add	r0, pc, r0
+.LPC15_36:
+	add	r1, pc, r1
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	sub	r2, r5, #1
+	mov	r3, r7
+	add	r1, r0, r1
+	mov	r0, #0
+	b	.LBB15_36
+.LBB15_33:                              @ %assert failed: Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 1
+	movw	r0, :lower16:(.LCPI15_5-(.LPC15_37+8))
+	movw	r1, :lower16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_38+8))
+	movt	r0, :upper16:(.LCPI15_5-(.LPC15_37+8))
+	movt	r1, :upper16:(_GLOBAL_OFFSET_TABLE_-(.LPC15_38+8))
+.LPC15_37:
+	add	r0, pc, r0
+.LPC15_38:
+	add	r1, pc, r1
+	sfi_load_store_preamble r0, 
+
+	ldr	r0, [r0]
+	add	r1, r0, r1
+	add	r0, r6, r7
+.LBB15_34:                              @ %assert failed: Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 1
+	sub	r3, r0, #1
+.LBB15_35:                              @ %assert failed: Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 1
+	mov	r0, #0
+.LBB15_36:                              @ %assert failed: Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 1
+	sfi_call_preamble 
+
+	bl	halide_error(PLT)
+	mvn	r0, #0
+	b	.LBB15_11
+.LBB15_38:                              @ %assert failed: Static constraint violated: f3.stride.0 == 1
+	movw	r0, :lower16:(.LCPI15_6-(.LPC15_39+8))
+	movt	r0, :upper16:(.LCPI15_6-(.LPC15_39+8))
+.LPC15_39:
+	add	r0, pc, r0
+	b	.LBB15_2
+.LBB15_40:                              @ %assert failed: Static constraint violated: p0.stride.0 == 1
+	movw	r0, :lower16:(.LCPI15_7-(.LPC15_40+8))
+	movt	r0, :upper16:(.LCPI15_7-(.LPC15_40+8))
+.LPC15_40:
+	add	r0, pc, r0
+	b	.LBB15_2
+.Ltmp104:
+	.size	halide_game_of_life, .Ltmp104-halide_game_of_life
 	.cfi_endproc
 
 	.align	2
@@ -2304,8 +2525,8 @@ par_20_for_20_f3.s0.v1.v1:
 	sfi_return_preamble lr, 
 
 	bx	lr
-.Ltmp99:
-	.size	par_20_for_20_f3.s0.v1.v1, .Ltmp99-par_20_for_20_f3.s0.v1.v1
+.Ltmp105:
+	.size	par_20_for_20_f3.s0.v1.v1, .Ltmp105-par_20_for_20_f3.s0.v1.v1
 
 	.globl	halide_game_of_life_jit_wrapper
 	.align	2
@@ -2316,16 +2537,16 @@ halide_game_of_life_jit_wrapper:
 	.cfi_startproc
 @ BB#0:                                 @ %entry
 	push	{lr}
-.Ltmp102:
+.Ltmp108:
 	.cfi_def_cfa_offset 4
-.Ltmp103:
+.Ltmp109:
 	.cfi_offset lr, -4
 	sfi_nop_if_at_bundle_end
 
 	sub	sp, sp, #12
 	sfi_data_mask sp, 
 
-.Ltmp104:
+.Ltmp110:
 	.cfi_def_cfa_offset 16
 	mov	r1, r0
 	sfi_load_store_preamble r1, 
@@ -2343,8 +2564,8 @@ halide_game_of_life_jit_wrapper:
 	sfi_return_preamble lr, 
 
 	bx	lr
-.Ltmp105:
-	.size	halide_game_of_life_jit_wrapper, .Ltmp105-halide_game_of_life_jit_wrapper
+.Ltmp111:
+	.size	halide_game_of_life_jit_wrapper, .Ltmp111-halide_game_of_life_jit_wrapper
 	.cfi_endproc
 
 	.type	halide_reference_clock_inited,%object @ @halide_reference_clock_inited
@@ -2484,62 +2705,62 @@ halide_error_handler:
 	.type	.Lstr34,%object         @ @str34
 	.align	5
 .Lstr34:
-	.asciz	 "Output buffer f3 has type int32, but elem_size of the buffer_t passed in is not 4"
-	.size	.Lstr34, 82
+	.asciz	 "Output buffer f3 has type int32, but elem_size of the buffer_t passed in is %d instead of 4"
+	.size	.Lstr34, 92
 
 	.type	.Lstr35,%object         @ @str35
 	.align	5
 .Lstr35:
-	.asciz	 "Input buffer p0 has type uint32, but elem_size of the buffer_t passed in is not 4"
-	.size	.Lstr35, 82
+	.asciz	 "Input buffer p0 has type uint32, but elem_size of the buffer_t passed in is %d instead of 4"
+	.size	.Lstr35, 92
 
 	.type	.Lstr36,%object         @ @str36
 	.align	5
 .Lstr36:
-	.asciz	 "Output buffer f3 is accessed before the min in dimension 0"
-	.size	.Lstr36, 59
+	.asciz	 "Output buffer f3 is accessed at %d, which before the min (%d) in dimension 0"
+	.size	.Lstr36, 77
 
 	.type	.Lstr37,%object         @ @str37
 	.align	5
 .Lstr37:
-	.asciz	 "Output buffer f3 is accessed beyond the extent in dimension 0"
-	.size	.Lstr37, 62
+	.asciz	 "Output buffer f3 is accessed at %d, which is beyond the max (%d) in dimension 0"
+	.size	.Lstr37, 80
 
 	.type	.Lstr38,%object         @ @str38
 	.align	5
 .Lstr38:
-	.asciz	 "Output buffer f3 is accessed before the min in dimension 1"
-	.size	.Lstr38, 59
+	.asciz	 "Output buffer f3 is accessed at %d, which before the min (%d) in dimension 1"
+	.size	.Lstr38, 77
 
 	.type	.Lstr39,%object         @ @str39
 	.align	5
 .Lstr39:
-	.asciz	 "Output buffer f3 is accessed beyond the extent in dimension 1"
-	.size	.Lstr39, 62
+	.asciz	 "Output buffer f3 is accessed at %d, which is beyond the max (%d) in dimension 1"
+	.size	.Lstr39, 80
 
 	.type	.Lstr40,%object         @ @str40
 	.align	5
 .Lstr40:
-	.asciz	 "Input buffer p0 is accessed before the min in dimension 0"
-	.size	.Lstr40, 58
+	.asciz	 "Input buffer p0 is accessed at %d, which before the min (%d) in dimension 0"
+	.size	.Lstr40, 76
 
 	.type	.Lstr41,%object         @ @str41
 	.align	5
 .Lstr41:
-	.asciz	 "Input buffer p0 is accessed beyond the extent in dimension 0"
-	.size	.Lstr41, 61
+	.asciz	 "Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 0"
+	.size	.Lstr41, 79
 
 	.type	.Lstr42,%object         @ @str42
 	.align	5
 .Lstr42:
-	.asciz	 "Input buffer p0 is accessed before the min in dimension 1"
-	.size	.Lstr42, 58
+	.asciz	 "Input buffer p0 is accessed at %d, which before the min (%d) in dimension 1"
+	.size	.Lstr42, 76
 
 	.type	.Lstr43,%object         @ @str43
 	.align	5
 .Lstr43:
-	.asciz	 "Input buffer p0 is accessed beyond the extent in dimension 1"
-	.size	.Lstr43, 61
+	.asciz	 "Input buffer p0 is accessed at %d, which is beyond the max (%d) in dimension 1"
+	.size	.Lstr43, 79
 
 	.type	.Lstr44,%object         @ @str44
 	.align	5
