@@ -131,7 +131,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00030"></a><a class="code" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf">00030</a>     <span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf" title="Get the name of a Var.">name</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> _name;}
 <a name="l00031"></a>00031 <span class="comment"></span>
 <a name="l00032"></a>00032 <span class="comment">    /** Test if two Vars are the same. This simply compares the names. */</span>
-<a name="l00033"></a><a class="code" href="class_halide_1_1_var.html#a45b28bffc6a45be3abda4f4b149a47eb">00033</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_var.html#a45b28bffc6a45be3abda4f4b149a47eb" title="Test if two Vars are the same.">same_as</a>(<span class="keyword">const</span> <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> &amp;other) {<span class="keywordflow">return</span> _name == other._name;}
+<a name="l00033"></a><a class="code" href="class_halide_1_1_var.html#a3c099bd3728c50b5f3cf5e3d617ef253">00033</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_var.html#a3c099bd3728c50b5f3cf5e3d617ef253" title="Test if two Vars are the same.">same_as</a>(<span class="keyword">const</span> <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> &amp;other)<span class="keyword"> const </span>{<span class="keywordflow">return</span> _name == other._name;}
 <a name="l00034"></a>00034 <span class="comment"></span>
 <a name="l00035"></a>00035 <span class="comment">    /** Implicit var constructor. Implicit variables are injected</span>
 <a name="l00036"></a>00036 <span class="comment">     * automatically into a function call if the number of arguments</span>
@@ -246,26 +246,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00145"></a>00145     }
 <a name="l00146"></a>00146 };
 <a name="l00147"></a>00147 <span class="comment"></span>
-<a name="l00148"></a>00148 <span class="comment">/** This is used to provide a grace period during which old style</span>
-<a name="l00149"></a>00149 <span class="comment"> * implicits code will continue to compile with a warning. This makes</span>
-<a name="l00150"></a>00150 <span class="comment"> * it easier to convert to the new required placeholder (&#39;_&#39;) style.</span>
-<a name="l00151"></a>00151 <span class="comment"> * Both variants will work during the transition period. The code under</span>
-<a name="l00152"></a>00152 <span class="comment"> * these ifdef blocks can be completely removed after we finalize the</span>
-<a name="l00153"></a>00153 <span class="comment"> * language change.</span>
-<a name="l00154"></a>00154 <span class="comment"> */</span>
-<a name="l00155"></a><a class="code" href="_var_8h.html#ac4ea7d6a59d9049457ba654e599e42b6">00155</a> <span class="preprocessor">#define HALIDE_WARNINGS_FOR_OLD_IMPLICITS 1</span>
-<a name="l00156"></a>00156 <span class="preprocessor"></span><span class="comment"></span>
-<a name="l00157"></a>00157 <span class="comment">/** A placeholder variable for infered arguments. See \ref Var::implicit */</span>
-<a name="l00158"></a>00158 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">extern</span> Var <a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>;
-<a name="l00159"></a>00159 <span class="comment"></span>
-<a name="l00160"></a>00160 <span class="comment">/** The first ten implicit Vars for use in scheduling. See \ref Var::implicit */</span>
-<a name="l00161"></a>00161 <span class="comment">// @{</span>
-<a name="l00162"></a>00162 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">extern</span> Var <a class="code" href="namespace_halide.html#a57841c7113c6794d0178568f74b1de75" title="The first ten implicit Vars for use in scheduling.">_0</a>, <a class="code" href="namespace_halide.html#af6eac61e701ea87443086c3597f13752" title="The first ten implicit Vars for use in scheduling.">_1</a>, <a class="code" href="namespace_halide.html#a645530ef64903e9cd3aacc00436d860e" title="The first ten implicit Vars for use in scheduling.">_2</a>, <a class="code" href="namespace_halide.html#a34aa6b48f5d654ce7efef0065be96d0e" title="The first ten implicit Vars for use in scheduling.">_3</a>, <a class="code" href="namespace_halide.html#a2bf0b1d78a0f5f446ebc76dbc636a912" title="The first ten implicit Vars for use in scheduling.">_4</a>, <a class="code" href="namespace_halide.html#a16fae07413aae9b6c672adf92150d1ac" title="The first ten implicit Vars for use in scheduling.">_5</a>, <a class="code" href="namespace_halide.html#a4a1fb09d56f46575b0f5f50bb379805f" title="The first ten implicit Vars for use in scheduling.">_6</a>, <a class="code" href="namespace_halide.html#a7108f092c0886f9eb9dca85276bba0f5" title="The first ten implicit Vars for use in scheduling.">_7</a>, <a class="code" href="namespace_halide.html#ab64608cba6f828b3b157f893c07dee47" title="The first ten implicit Vars for use in scheduling.">_8</a>, <a class="code" href="namespace_halide.html#a700c8bfac61eb32454726b4f791302d6" title="The first ten implicit Vars for use in scheduling.">_9</a>;
-<a name="l00163"></a>00163 <span class="comment">// @}</span>
-<a name="l00164"></a>00164 
-<a name="l00165"></a>00165 }
-<a name="l00166"></a>00166 
-<a name="l00167"></a>00167 <span class="preprocessor">#endif</span>
+<a name="l00148"></a>00148 <span class="comment">/** A placeholder variable for infered arguments. See \ref Var::implicit */</span>
+<a name="l00149"></a>00149 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">extern</span> Var <a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>;
+<a name="l00150"></a>00150 <span class="comment"></span>
+<a name="l00151"></a>00151 <span class="comment">/** The first ten implicit Vars for use in scheduling. See \ref Var::implicit */</span>
+<a name="l00152"></a>00152 <span class="comment">// @{</span>
+<a name="l00153"></a>00153 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">extern</span> Var <a class="code" href="namespace_halide.html#a57841c7113c6794d0178568f74b1de75" title="The first ten implicit Vars for use in scheduling.">_0</a>, <a class="code" href="namespace_halide.html#af6eac61e701ea87443086c3597f13752" title="The first ten implicit Vars for use in scheduling.">_1</a>, <a class="code" href="namespace_halide.html#a645530ef64903e9cd3aacc00436d860e" title="The first ten implicit Vars for use in scheduling.">_2</a>, <a class="code" href="namespace_halide.html#a34aa6b48f5d654ce7efef0065be96d0e" title="The first ten implicit Vars for use in scheduling.">_3</a>, <a class="code" href="namespace_halide.html#a2bf0b1d78a0f5f446ebc76dbc636a912" title="The first ten implicit Vars for use in scheduling.">_4</a>, <a class="code" href="namespace_halide.html#a16fae07413aae9b6c672adf92150d1ac" title="The first ten implicit Vars for use in scheduling.">_5</a>, <a class="code" href="namespace_halide.html#a4a1fb09d56f46575b0f5f50bb379805f" title="The first ten implicit Vars for use in scheduling.">_6</a>, <a class="code" href="namespace_halide.html#a7108f092c0886f9eb9dca85276bba0f5" title="The first ten implicit Vars for use in scheduling.">_7</a>, <a class="code" href="namespace_halide.html#ab64608cba6f828b3b157f893c07dee47" title="The first ten implicit Vars for use in scheduling.">_8</a>, <a class="code" href="namespace_halide.html#a700c8bfac61eb32454726b4f791302d6" title="The first ten implicit Vars for use in scheduling.">_9</a>;
+<a name="l00154"></a>00154 <span class="comment">// @}</span>
+<a name="l00155"></a>00155 
+<a name="l00156"></a>00156 }
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

@@ -139,6 +139,8 @@ Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a2d8aaa9a0e12703fc8b54daea6ff2e02">set_custom_do_task</a> )(int(*custom_do_task)(void *user_context, <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d">HalideTask</a>, int, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *))</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a custom do parallel task.  <a href="#a2d8aaa9a0e12703fc8b54daea6ff2e02"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4ba9506581bb85f307d1d9945561ac2b">set_custom_trace</a> )(<a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a9bab1c63490999f1e02e62bce0a82af7">TraceFn</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a054ffd44e65e225b23ebb9e3ada9c2d8">set_random_seed</a> )(<a class="el" href="mini__stdint_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a random seed and clear the random state.  <a href="#a054ffd44e65e225b23ebb9e3ada9c2d8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a6510aea2ffc1449b8d4a2f09f7db3b33">shutdown_thread_pool</a> )()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Shutdown the thread pool maintained by this JIT module.  <a href="#a6510aea2ffc1449b8d4a2f09f7db3b33"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html">IntrusivePtr</a>&lt; JITModuleHolder &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#aa1315c775b95b2f957f8d15dc68338e5">module</a></td></tr>
@@ -224,7 +226,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00079">79</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
+<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00082">82</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
 </div>
 </div>
@@ -318,7 +320,7 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00040">40</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_buffer_8h_source.html#l00263">Halide::Buffer::copy_to_host()</a>.</p>
+<p>Referenced by <a class="el" href="_buffer_8h_source.html#l00267">Halide::Buffer::copy_to_host()</a>.</p>
 
 </div>
 </div>
@@ -338,7 +340,7 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00041">41</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_buffer_8h_source.html#l00283">Halide::Buffer::copy_to_dev()</a>.</p>
+<p>Referenced by <a class="el" href="_buffer_8h_source.html#l00287">Halide::Buffer::copy_to_dev()</a>.</p>
 
 </div>
 </div>
@@ -358,7 +360,7 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00042">42</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_buffer_8h_source.html#l00295">Halide::Buffer::free_dev_buffer()</a>.</p>
+<p>Referenced by <a class="el" href="_buffer_8h_source.html#l00299">Halide::Buffer::free_dev_buffer()</a>.</p>
 
 </div>
 </div>
@@ -445,6 +447,24 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a054ffd44e65e225b23ebb9e3ada9c2d8"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::set_random_seed" ref="a054ffd44e65e225b23ebb9e3ada9c2d8" args=")(uint32_t)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void(* <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a054ffd44e65e225b23ebb9e3ada9c2d8">Halide::Internal::JITCompiledModule::set_random_seed</a>)(<a class="el" href="mini__stdint_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set a random seed and clear the random state. </p>
+<p>See <a class="el" href="class_halide_1_1_func.html#a67196281b1b7b8fd4700d3f8b2c5fcae">Func::set_random_seed</a>. </p>
+
+<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00072">72</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a6510aea2ffc1449b8d4a2f09f7db3b33"></a><!-- doxytag: member="Halide::Internal::JITCompiledModule::shutdown_thread_pool" ref="a6510aea2ffc1449b8d4a2f09f7db3b33" args=")()" -->
 <div class="memitem">
 <div class="memproto">
@@ -459,7 +479,7 @@ Public Attributes</h2></td></tr>
 <p>Shutdown the thread pool maintained by this JIT module. </p>
 <p>This is also done automatically when the last reference to this module is destroyed. </p>
 
-<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00074">74</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
+<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00077">77</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
 </div>
 </div>
@@ -474,7 +494,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00077">77</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
+<p>Definition at line <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00080">80</a> of file <a class="el" href="_j_i_t_compiled_module_8h_source.html">JITCompiledModule.h</a>.</p>
 
 </div>
 </div>

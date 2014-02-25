@@ -6,6 +6,7 @@ var searchData=
   ['set_5fcustom_5fdo_5ftask',['set_custom_do_task',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a2d8aaa9a0e12703fc8b54daea6ff2e02',1,'Halide::Internal::JITCompiledModule']]],
   ['set_5fcustom_5ftrace',['set_custom_trace',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4ba9506581bb85f307d1d9945561ac2b',1,'Halide::Internal::JITCompiledModule']]],
   ['set_5ferror_5fhandler',['set_error_handler',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a7ce969a1e9e18d9038cb93bb14f218fc',1,'Halide::Internal::JITCompiledModule']]],
+  ['set_5frandom_5fseed',['set_random_seed',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a054ffd44e65e225b23ebb9e3ada9c2d8',1,'Halide::Internal::JITCompiledModule']]],
   ['shift_5fleft',['shift_left',['../struct_halide_1_1_internal_1_1_call.html#ab759e56bd2caae752d33fddae6939948',1,'Halide::Internal::Call']]],
   ['shift_5fright',['shift_right',['../struct_halide_1_1_internal_1_1_call.html#a7af9ee32b84cdbb9eda2ed6441146b18',1,'Halide::Internal::Call']]],
   ['shuffle_5fvector',['shuffle_vector',['../struct_halide_1_1_internal_1_1_call.html#a52d9cee058c460209df019debb3855e0',1,'Halide::Internal::Call']]],

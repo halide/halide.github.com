@@ -7,6 +7,7 @@ var searchData=
   ['reinterpret',['reinterpret',['../struct_halide_1_1_internal_1_1_call.html#aa8f88ed77a6405fe8b87cd93dda0cd44',1,'Halide::Internal::Call']]],
   ['remainder',['remainder',['../struct_halide_1_1_internal_1_1_modulus_remainder.html#abc7042f8dbe17dbd44e186e11002aa2c',1,'Halide::Internal::ModulusRemainder']]],
   ['rest',['rest',['../struct_halide_1_1_internal_1_1_block.html#a8f779340f8ec64554a0dc82ae8bbc4e0',1,'Halide::Internal::Block']]],
+  ['return_5fsecond',['return_second',['../struct_halide_1_1_internal_1_1_call.html#a0da61cfb2b0de6795258029dfe512053',1,'Halide::Internal::Call']]],
   ['rewrite_5fbuffer',['rewrite_buffer',['../struct_halide_1_1_internal_1_1_call.html#ae875475399998be0863d749c804a175a',1,'Halide::Internal::Call']]],
   ['rvar',['rvar',['../struct_halide_1_1_var_or_r_var.html#ad7d3d0199cd499f168f9cfa2ea298d1b',1,'Halide::VarOrRVar']]]
 ];

@@ -11,8 +11,10 @@ var searchData=
   ['get_5fjit_5ftarget_5ffrom_5fenvironment',['get_jit_target_from_environment',['../namespace_halide.html#afdb2fdc9b09935c4f2825d425359da37',1,'Halide']]],
   ['get_5fmax_5fvalue',['get_max_value',['../class_halide_1_1_param.html#ad12da97cde4ffe1b0eba9cf43cff08c5',1,'Halide::Param::get_max_value()'],['../class_halide_1_1_internal_1_1_parameter.html#a88159e0204e0dce222854454aea459e4',1,'Halide::Internal::Parameter::get_max_value()']]],
   ['get_5fmin_5fvalue',['get_min_value',['../class_halide_1_1_param.html#ae066732cb079261114a00e05a94acb12',1,'Halide::Param::get_min_value()'],['../class_halide_1_1_internal_1_1_parameter.html#a3046393e3eb8b33920e985e407a85799',1,'Halide::Internal::Parameter::get_min_value()']]],
+  ['get_5fmodule_5fstate',['get_module_state',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a0ea2c41bd09caf31218d6740b48af892',1,'Halide::Internal::CodeGen_GPU_Host']]],
   ['get_5fscalar',['get_scalar',['../class_halide_1_1_internal_1_1_parameter.html#a39cfca26694ee71aa71a301dcca5a803',1,'Halide::Internal::Parameter']]],
   ['get_5fscalar_5faddress',['get_scalar_address',['../class_halide_1_1_internal_1_1_parameter.html#a44f4d61d576c6896c3da12e3428b66be',1,'Halide::Internal::Parameter']]],
   ['get_5ftarget_5ffrom_5fenvironment',['get_target_from_environment',['../namespace_halide.html#a2d655bb0051fc525e3e5d73997f93cdd',1,'Halide']]],
+  ['get_5ftarget_5ftriple',['get_target_triple',['../class_halide_1_1_internal_1_1_code_gen___a_r_m.html#aad9a83427cb650eeaf948790079a237f',1,'Halide::Internal::CodeGen_ARM::get_target_triple()'],['../class_halide_1_1_internal_1_1_code_gen___x86.html#a04b4c88e6ec1bc8ce1eab879f1118009',1,'Halide::Internal::CodeGen_X86::get_target_triple()']]],
   ['get_5fuser_5fcontext',['get_user_context',['../class_halide_1_1_internal_1_1_code_gen.html#aaf9f64a2fea154c461801523271c6215',1,'Halide::Internal::CodeGen']]]
 ];

@@ -22,10 +22,10 @@ var searchData=
   ['destroy_3c_20buffercontents_20_3e',['destroy< BufferContents >',['../namespace_halide_1_1_internal.html#ab5f5f155c9dd7f1464c5ef665d100029',1,'Halide::Internal']]],
   ['destroy_3c_20irnode_20_3e',['destroy< IRNode >',['../namespace_halide_1_1_internal.html#a7e3867f02d52edd32b4cfe38e5ee55a1',1,'Halide::Internal']]],
   ['destroy_5fallocation',['destroy_allocation',['../class_halide_1_1_internal_1_1_code_gen___posix.html#a5bdb7dae1a6cdfbc12e136b509dfc084',1,'Halide::Internal::CodeGen_Posix']]],
-  ['dev_5ffree_5ffn',['dev_free_fn',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#afedabb8c4e0dc103a25f4fbb4126a52c',1,'Halide::Internal::CodeGen_GPU_Host']]],
-  ['dev_5fmalloc_5ffn',['dev_malloc_fn',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#aeb93da26eb186b527148bd1952d4d801',1,'Halide::Internal::CodeGen_GPU_Host']]],
-  ['dev_5frun_5ffn',['dev_run_fn',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#adc68b3c14716b525a5544ba0e28d6136',1,'Halide::Internal::CodeGen_GPU_Host']]],
-  ['dev_5fsync_5ffn',['dev_sync_fn',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a6b8da553cbc490765506d7bad0b54fff',1,'Halide::Internal::CodeGen_GPU_Host']]],
+  ['dev_5ffree_5ffn',['dev_free_fn',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#aff2507a26901143f7001b29a7dac9282',1,'Halide::Internal::CodeGen_GPU_Host']]],
+  ['dev_5fmalloc_5ffn',['dev_malloc_fn',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#acbe787653facf5bd3fd6fadd9557f5bf',1,'Halide::Internal::CodeGen_GPU_Host']]],
+  ['dev_5frun_5ffn',['dev_run_fn',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a1e90e07359dcf53f7aea8deb6f65056d',1,'Halide::Internal::CodeGen_GPU_Host']]],
+  ['dev_5fsync_5ffn',['dev_sync_fn',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a4c6edd10902e21dd24d088c0aa21dce3',1,'Halide::Internal::CodeGen_GPU_Host']]],
   ['device_5fdirty',['device_dirty',['../class_halide_1_1_buffer.html#aad8c5390edca58c52aa3976917cc99fc',1,'Halide::Buffer']]],
   ['device_5fhandle',['device_handle',['../class_halide_1_1_buffer.html#adbfdcce86be09961c8ae574844bbf73f',1,'Halide::Buffer']]],
   ['dim',['Dim',['../struct_halide_1_1_internal_1_1_schedule_1_1_dim.html',1,'Halide::Internal::Schedule']]],
@@ -34,6 +34,6 @@ var searchData=
   ['div',['Div',['../struct_halide_1_1_internal_1_1_div.html',1,'Halide::Internal']]],
   ['div_5fimp',['div_imp',['../namespace_halide_1_1_internal.html#a0442f9a0450f45683938a69ce0273974',1,'Halide::Internal']]],
   ['do_5findent',['do_indent',['../class_halide_1_1_internal_1_1_i_r_printer.html#a5c484a06d637d761760e22f2c995c44e',1,'Halide::Internal::IRPrinter']]],
-  ['domain',['domain',['../struct_halide_1_1_internal_1_1_reduction_definition.html#ac2e2a880b76a575dc0d77375b74f4b2d',1,'Halide::Internal::ReductionDefinition::domain()'],['../struct_halide_1_1_internal_1_1_reduction_domain_contents.html#a1a6aeb4c0170704c20b71431bb2358a7',1,'Halide::Internal::ReductionDomainContents::domain()'],['../class_halide_1_1_internal_1_1_reduction_domain.html#a81fa5cb2c8ddb52ebfc9221baddeb454',1,'Halide::Internal::ReductionDomain::domain()']]],
+  ['domain',['domain',['../struct_halide_1_1_internal_1_1_reduction_definition.html#ac2e2a880b76a575dc0d77375b74f4b2d',1,'Halide::Internal::ReductionDefinition::domain()'],['../struct_halide_1_1_internal_1_1_reduction_domain_contents.html#a1a6aeb4c0170704c20b71431bb2358a7',1,'Halide::Internal::ReductionDomainContents::domain()'],['../class_halide_1_1_r_dom.html#a67aa31b29f1f781714a677f851dcca20',1,'Halide::RDom::domain()'],['../class_halide_1_1_internal_1_1_reduction_domain.html#a81fa5cb2c8ddb52ebfc9221baddeb454',1,'Halide::Internal::ReductionDomain::domain()']]],
   ['dump',['dump',['../struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a803b952d35a4fea02cc8fb0461ea85bb',1,'Halide::Internal::CodeGen_GPU_Dev::dump()'],['../class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a9351f6e8a5140416c2fc732e4ea89f7c',1,'Halide::Internal::CodeGen_OpenCL_Dev::dump()'],['../class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a458c6b5a2b808b50e49c4d4e7074e349',1,'Halide::Internal::CodeGen_PTX_Dev::dump()'],['../class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#a57f2d461076be818b71edc6240eeab3a',1,'Halide::Internal::CodeGen_SPIR_Dev::dump()']]]
 ];

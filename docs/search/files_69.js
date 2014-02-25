@@ -3,7 +3,7 @@ var searchData=
   ['image_2eh',['Image.h',['../_image_8h.html',1,'']]],
   ['inline_2eh',['Inline.h',['../_inline_8h.html',1,'']]],
   ['inlinereductions_2eh',['InlineReductions.h',['../_inline_reductions_8h.html',1,'']]],
-  ['integer_5fdivision_5ftable_2eh',['integer_division_table.h',['../integer__division__table_8h.html',1,'']]],
+  ['integerdivisiontable_2eh',['IntegerDivisionTable.h',['../_integer_division_table_8h.html',1,'']]],
   ['intrusiveptr_2eh',['IntrusivePtr.h',['../_intrusive_ptr_8h.html',1,'']]],
   ['ir_2eh',['IR.h',['../_i_r_8h.html',1,'']]],
   ['irequality_2eh',['IREquality.h',['../_i_r_equality_8h.html',1,'']]],

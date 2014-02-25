@@ -16,7 +16,8 @@ var class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev =
     [ "mattrs", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#ad843391a12ef18c4a8884863239d0613", null ],
     [ "use_soft_float_abi", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#a2a9845f77120fd33ca8b36511b4f8ff9", null ],
     [ "simt_intrinsic", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#af5df52750093295f6f726f5a44f2e5e7", null ],
-    [ "CodeGen_GPU_Host", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#acfd9891c1425d1ce2f8c89470c9c8954", null ],
+    [ "CodeGen_GPU_Host< CodeGen_X86 >", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#a391f8c9d42190f817741aeb59956675e", null ],
+    [ "CodeGen_GPU_Host< CodeGen_ARM >", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#a5934a30a1931369ddc58082e4286ef0b", null ],
     [ "entry_block", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#a038cd39505024b6ff0630796a36f21bc", null ],
     [ "bits", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aab102b2b1850c6b693702618af410212", null ]
 ];

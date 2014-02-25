@@ -102,8 +102,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">AllocationBoundsInference.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="_i_r_8h_source.html">IR.h</a>&quot;</code><br/>
-<code>#include &lt;map&gt;</code><br/>
+
+<p>Defines the lowering pass that determines how large internal allocations should be.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;map&gt;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
+<code>#include &quot;<a class="el" href="_i_r_8h_source.html">IR.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_bounds_8h_source.html">Bounds.h</a>&quot;</code><br/>
 </div>
 <p><a href="_allocation_bounds_inference_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -113,9 +118,14 @@ Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html">Halide::Internal</a></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">Stmt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ae6fc595d8e4376de045b7e3f0acd186a">Halide::Internal::allocation_bounds_inference</a> (Stmt s, const std::map&lt; std::string, Function &gt; &amp;env)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">Stmt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a410eac3ad68dfb697c5ee97100f2053f">Halide::Internal::allocation_bounds_inference</a> (Stmt s, const std::map&lt; std::string, Function &gt; &amp;env, const std::map&lt; std::pair&lt; std::string, int &gt;, Interval &gt; &amp;func_bounds)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a partially statement with <a class="el" href="struct_halide_1_1_internal_1_1_realize.html" title="Allocate a multi-dimensional buffer of the given type and size.">Realize</a> nodes in terms of variables, and define values for those variables.  <a href="#a410eac3ad68dfb697c5ee97100f2053f"></a><br/></td></tr>
 </table>
-</div><!-- contents -->
+<hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
+<div class="textblock"><p>Defines the lowering pass that determines how large internal allocations should be. </p>
+
+<p>Definition in file <a class="el" href="_allocation_bounds_inference_8h_source.html">AllocationBoundsInference.h</a>.</p>
+</div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"

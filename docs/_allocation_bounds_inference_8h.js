@@ -1,4 +1,4 @@
 var _allocation_bounds_inference_8h =
 [
-    [ "allocation_bounds_inference", "namespace_halide_1_1_internal.html#ae6fc595d8e4376de045b7e3f0acd186a", null ]
+    [ "allocation_bounds_inference", "namespace_halide_1_1_internal.html#a410eac3ad68dfb697c5ee97100f2053f", null ]
 ];

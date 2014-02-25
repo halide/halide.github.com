@@ -136,6 +136,8 @@ Protected Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit a statement.  <a href="#ae8751ee70e7cca44cb27ee6f125e1aa4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a2cb2800c6929351fbb1e92ba7036c59f">print_type</a> (<a class="el" href="struct_halide_1_1_type.html">Type</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit the C name for a halide type.  <a href="#a2cb2800c6929351fbb1e92ba7036c59f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a5e31948bd95ab664b3608e6059f27cd7">print_reinterpret</a> (<a class="el" href="struct_halide_1_1_type.html">Type</a>, <a class="el" href="struct_halide_1_1_expr.html">Expr</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit a statement to reinterpret an expression as another type.  <a href="#a5e31948bd95ab664b3608e6059f27cd7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a2b6eb447254ea98c5b79c3fb31afd10f">print_name</a> (const std::string &amp;)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit a version of a string that is a valid identifier in C (.  <a href="#a2b6eb447254ea98c5b79c3fb31afd10f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a07ea8336574e12e5f736851ca6a97049">print_assignment</a> (<a class="el" href="struct_halide_1_1_type.html">Type</a> t, const std::string &amp;rhs)</td></tr>
@@ -148,6 +150,7 @@ Protected Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpack a buffer into its constituent parts.  <a href="#a7fd5d0676f34880a503f4b93dd118baf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a0c7d16220e07b92403dd948dfa042680">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_variable.html">Variable</a> *)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a2b1758e25983daaa650d70ba38e42a12">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_int_imm.html">IntImm</a> *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a677af8c5879f423150901f076d80f1bc">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_string_imm.html">StringImm</a> *)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a841cb4e86cf823c1e964fff0338dd114">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_float_imm.html">FloatImm</a> *)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#af9a46ef7f7695169235c89c5a1ade0f1">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_cast.html">Cast</a> *)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a6ae2f3b6e25e7d69d1e7ba0e2cf679f0">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_add.html">Add</a> *)</td></tr>
@@ -200,7 +203,7 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 <div class="textblock"><p>This class emits C++ code equivalent to a halide <a class="el" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a>. </p>
 <p>It's mostly the same as an <a class="el" href="class_halide_1_1_internal_1_1_i_r_printer.html" title="An IRVisitor that emits IR to the given output stream in a human readable form.">IRPrinter</a>, but it's wrapped in a function definition, and some things are handled differently to be valid C++. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00025">25</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00028">28</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aedca697d15b5bb898cd6a63a8d3020c3"></a><!-- doxytag: member="Halide::Internal::CodeGen_C::CodeGen_C" ref="aedca697d15b5bb898cd6a63a8d3020c3" args="(std::ostream &amp;)" -->
 <div class="memitem">
@@ -370,6 +373,37 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 </div>
 </div>
+<a class="anchor" id="a5e31948bd95ab664b3608e6059f27cd7"></a><!-- doxytag: member="Halide::Internal::CodeGen_C::print_reinterpret" ref="a5e31948bd95ab664b3608e6059f27cd7" args="(Type, Expr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string <a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a5e31948bd95ab664b3608e6059f27cd7">Halide::Internal::CodeGen_C::print_reinterpret</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_halide_1_1_type.html">Type</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [protected, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Emit a statement to reinterpret an expression as another type. </p>
+
+<p>Reimplemented in <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a49f06db489fa71fe22fadc324d7337eb">Halide::Internal::CodeGen_OpenCL_Dev::CodeGen_OpenCL_C</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a2b6eb447254ea98c5b79c3fb31afd10f"></a><!-- doxytag: member="Halide::Internal::CodeGen_C::print_name" ref="a2b6eb447254ea98c5b79c3fb31afd10f" args="(const std::string &amp;)" -->
 <div class="memitem">
 <div class="memproto">
@@ -522,6 +556,25 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 <div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="class_halide_1_1_internal_1_1_i_r_printer.html#a952156a0e421283b8407bac3d1930f07">Halide::Internal::IRPrinter</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a677af8c5879f423150901f076d80f1bc"></a><!-- doxytag: member="Halide::Internal::CodeGen_C::visit" ref="a677af8c5879f423150901f076d80f1bc" args="(const StringImm *)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___c.html#a0c7d16220e07b92403dd948dfa042680">Halide::Internal::CodeGen_C::visit</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_halide_1_1_internal_1_1_string_imm.html">StringImm</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [protected, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="class_halide_1_1_internal_1_1_i_r_printer.html#ae363d82eda1c06cc3b85d22a910a26d0">Halide::Internal::IRPrinter</a>.</p>
 
 </div>
 </div>
@@ -1207,7 +1260,7 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>An ID for the most recently generated ssa variable. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00045">45</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00048">48</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
 
 </div>
 </div>
@@ -1224,7 +1277,7 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>A cache of generated values in scope. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00048">48</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00051">51</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
 
 </div>
 </div>
@@ -1241,7 +1294,7 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Track the types of allocations to avoid unnecessary casts. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00076">76</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00082">82</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
 
 </div>
 </div>
@@ -1258,7 +1311,7 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>Track which allocations actually went on the heap. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00079">79</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00085">85</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
 
 </div>
 </div>
@@ -1275,7 +1328,7 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 <p>True if there is a void * __user_context parameter in the arguments. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00082">82</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___c_8h_source.html#l00088">88</a> of file <a class="el" href="_code_gen___c_8h_source.html">CodeGen_C.h</a>.</p>
 
 </div>
 </div>

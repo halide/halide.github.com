@@ -17,6 +17,7 @@ var searchData=
   ['i8x32',['i8x32',['../class_halide_1_1_internal_1_1_code_gen___posix.html#a3b8c2c2b3ded1130692232997c78fc03',1,'Halide::Internal::CodeGen_Posix']]],
   ['i8x8',['i8x8',['../class_halide_1_1_internal_1_1_code_gen___posix.html#a6a233d1bed83527c80fc283f0ec13386',1,'Halide::Internal::CodeGen_Posix']]],
   ['id',['id',['../class_halide_1_1_internal_1_1_code_gen___c.html#aa2a0647e17ceb7a5483257016b2f7f93',1,'Halide::Internal::CodeGen_C']]],
+  ['if_5fthen_5felse',['if_then_else',['../struct_halide_1_1_internal_1_1_call.html#acf8cc995bfa94376454f6f87921b18e4',1,'Halide::Internal::Call']]],
   ['ignore',['ignore',['../class_halide_1_1_internal_1_1_closure.html#ab7f87fdc56211ec7ad37df774b70c2b1',1,'Halide::Internal::Closure']]],
   ['image',['image',['../struct_halide_1_1_internal_1_1_load.html#a9c5bef8bc19b9c74867fcf451ab4908c',1,'Halide::Internal::Load::image()'],['../struct_halide_1_1_internal_1_1_call.html#a85db8b4977d7378850e3e2394f5dfb1d',1,'Halide::Internal::Call::image()']]],
   ['image_5farray_5fsize',['image_array_size',['../struct__cl__image__desc.html#a8c5a9f11016b833f7a24f0af587ecd67',1,'_cl_image_desc']]],

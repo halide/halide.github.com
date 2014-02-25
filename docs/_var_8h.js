@@ -1,6 +1,5 @@
 var _var_8h =
 [
-    [ "HALIDE_WARNINGS_FOR_OLD_IMPLICITS", "_var_8h.html#ac4ea7d6a59d9049457ba654e599e42b6", null ],
     [ "_", "namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02", null ],
     [ "_0", "namespace_halide.html#a57841c7113c6794d0178568f74b1de75", null ],
     [ "_1", "namespace_halide.html#af6eac61e701ea87443086c3597f13752", null ],

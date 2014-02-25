@@ -12,7 +12,7 @@ var searchData=
   ['table_5fu16',['table_u16',['../namespace_halide_1_1_internal_1_1_integer_division.html#a6540d7aca556468809968b78f45ebd0c',1,'Halide::Internal::IntegerDivision']]],
   ['table_5fu32',['table_u32',['../namespace_halide_1_1_internal_1_1_integer_division.html#a6c8b50a1e2e7796e611c69979f211029',1,'Halide::Internal::IntegerDivision']]],
   ['table_5fu8',['table_u8',['../namespace_halide_1_1_internal_1_1_integer_division.html#a6d3b2f001f3e884a46cd1677149bd3c1',1,'Halide::Internal::IntegerDivision']]],
-  ['target',['target',['../class_halide_1_1_internal_1_1_code_gen___a_r_m.html#aeb59e709e943e6d5e8bf652b214bac35',1,'Halide::Internal::CodeGen_ARM::target()'],['../class_halide_1_1_internal_1_1_code_gen___x86.html#abca76d9d2de60c64a17d3a496ba69177',1,'Halide::Internal::CodeGen_X86::target()']]],
+  ['target',['target',['../class_halide_1_1_internal_1_1_code_gen___a_r_m.html#aeb59e709e943e6d5e8bf652b214bac35',1,'Halide::Internal::CodeGen_ARM::target()'],['../class_halide_1_1_internal_1_1_code_gen___p_na_cl.html#a6fef4208f1db86e2012482296fc30cf9',1,'Halide::Internal::CodeGen_PNaCl::target()'],['../class_halide_1_1_internal_1_1_code_gen___x86.html#abca76d9d2de60c64a17d3a496ba69177',1,'Halide::Internal::CodeGen_X86::target()']]],
   ['then_5fcase',['then_case',['../struct_halide_1_1_internal_1_1_if_then_else.html#afd7147872ed18ea25fbe121ce98a2230',1,'Halide::Internal::IfThenElse']]],
   ['trace',['trace',['../struct_halide_1_1_internal_1_1_call.html#a8f411296099667c9e73881bc434c0988',1,'Halide::Internal::Call']]],
   ['trace_5fexpr',['trace_expr',['../struct_halide_1_1_internal_1_1_call.html#a93117cbad3079bb82f598b77c3156551',1,'Halide::Internal::Call']]],

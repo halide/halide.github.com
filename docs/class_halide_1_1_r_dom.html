@@ -124,8 +124,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a four-dimensional reduction domain with the given name.  <a href="#a37410099dfd35e6bfc23615cb8988d38"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_r_dom.html#abfeb0de9abf687268b9205de9c803792">RDom</a> (<a class="el" href="class_halide_1_1_internal_1_1_reduction_domain.html">Internal::ReductionDomain</a> d)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a reduction domain that wraps an <a class="el" href="namespace_halide_1_1_internal.html">Internal</a> ReductionDomain object.  <a href="#abfeb0de9abf687268b9205de9c803792"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_halide_1_1_r_dom.html">RDom</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_r_dom.html#a6f898ecd5a0acd82a26bb7fd913c66d4">set_bounds</a> (<a class="el" href="class_halide_1_1_r_var.html">RVar</a>, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940">min</a>, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> extent)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set or modify the bounds on a dimension of the same <a class="el" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a>.  <a href="#a6f898ecd5a0acd82a26bb7fd913c66d4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_halide_1_1_internal_1_1_reduction_domain.html">Internal::ReductionDomain</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_r_dom.html#a67aa31b29f1f781714a677f851dcca20">domain</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get at the internal reduction domain object that this wraps.  <a href="#a67aa31b29f1f781714a677f851dcca20"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_r_dom.html#a2ce6dc237222ffded6f5b55535ef71f3">defined</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this reduction domain is non-NULL.  <a href="#a2ce6dc237222ffded6f5b55535ef71f3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_r_dom.html#a0450797fc4d56ed7421b9f6a46c0ce20">same_as</a> (const <a class="el" href="class_halide_1_1_r_dom.html">RDom</a> &amp;other) const </td></tr>
@@ -504,39 +504,23 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a6f898ecd5a0acd82a26bb7fd913c66d4"></a><!-- doxytag: member="Halide::RDom::set_bounds" ref="a6f898ecd5a0acd82a26bb7fd913c66d4" args="(RVar, Expr min, Expr extent)" -->
+<a class="anchor" id="a67aa31b29f1f781714a677f851dcca20"></a><!-- doxytag: member="Halide::RDom::domain" ref="a67aa31b29f1f781714a677f851dcca20" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_r_dom.html">RDom</a>&amp; <a class="el" href="class_halide_1_1_r_dom.html#a6f898ecd5a0acd82a26bb7fd913c66d4">Halide::RDom::set_bounds</a> </td>
+          <td class="memname"><a class="el" href="class_halide_1_1_internal_1_1_reduction_domain.html">Internal::ReductionDomain</a> <a class="el" href="class_halide_1_1_r_dom.html#a67aa31b29f1f781714a677f851dcca20">Halide::RDom::domain</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_halide_1_1_r_var.html">RVar</a>&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>min</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>extent</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [inline]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Set or modify the bounds on a dimension of the same <a class="el" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a>. </p>
-<p>Does not affect prior uses of this <a class="el" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a>. </p>
+<p>Get at the internal reduction domain object that this wraps. </p>
+
+<p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00201">201</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 </div>
 </div>
@@ -556,7 +540,7 @@ Public Attributes</h2></td></tr>
 
 <p>Check if this reduction domain is non-NULL. </p>
 
-<p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00205">205</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00204">204</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 <p>References <a class="el" href="_reduction_8h_source.html#l00044">Halide::Internal::ReductionDomain::defined()</a>.</p>
 
@@ -579,7 +563,7 @@ Public Attributes</h2></td></tr>
 
 <p>Compare two reduction domains for equality of reference. </p>
 
-<p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00208">208</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00207">207</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 <p>References <a class="el" href="_reduction_8h_source.html#l00051">Halide::Internal::ReductionDomain::same_as()</a>.</p>
 
@@ -673,7 +657,7 @@ Public Attributes</h2></td></tr>
 <p>Direct access to the four dimensions of the reduction domain. </p>
 <p>Some of these dimensions may be undefined if the reduction domain has fewer than four dimensions. </p>
 
-<p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00226">226</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00225">225</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 </div>
 </div>
@@ -691,7 +675,7 @@ Public Attributes</h2></td></tr>
 <p>Direct access to the four dimensions of the reduction domain. </p>
 <p>Some of these dimensions may be undefined if the reduction domain has fewer than four dimensions. </p>
 
-<p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00226">226</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00225">225</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 </div>
 </div>
@@ -709,7 +693,7 @@ Public Attributes</h2></td></tr>
 <p>Direct access to the four dimensions of the reduction domain. </p>
 <p>Some of these dimensions may be undefined if the reduction domain has fewer than four dimensions. </p>
 
-<p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00226">226</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00225">225</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 </div>
 </div>
@@ -727,7 +711,7 @@ Public Attributes</h2></td></tr>
 <p>Direct access to the four dimensions of the reduction domain. </p>
 <p>Some of these dimensions may be undefined if the reduction domain has fewer than four dimensions. </p>
 
-<p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00226">226</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00225">225</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 </div>
 </div>

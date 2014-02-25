@@ -19,6 +19,7 @@ var hierarchy =
       [ "Halide::Internal::CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html", null ],
       [ "Halide::Internal::CodeGen_SPIR_Dev", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html", null ]
     ] ],
+    [ "Halide::Internal::CodeGen_GPU_Host< CodeGen_CPU >", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html", null ],
     [ "Halide::Internal::CodeGen_Posix::Allocation", "struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html", null ],
     [ "Halide::Internal::debug", "struct_halide_1_1_internal_1_1debug.html", null ],
     [ "Halide::Internal::ExprDeepCompare", "struct_halide_1_1_internal_1_1_expr_deep_compare.html", null ],
@@ -157,13 +158,13 @@ var hierarchy =
       [ "Halide::Internal::CodeGen", "class_halide_1_1_internal_1_1_code_gen.html", [
         [ "Halide::Internal::CodeGen_Posix", "class_halide_1_1_internal_1_1_code_gen___posix.html", [
           [ "Halide::Internal::CodeGen_ARM", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html", null ],
-          [ "Halide::Internal::CodeGen_X86", "class_halide_1_1_internal_1_1_code_gen___x86.html", [
-            [ "Halide::Internal::CodeGen_GPU_Host", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html", null ]
-          ] ]
+          [ "Halide::Internal::CodeGen_PNaCl", "class_halide_1_1_internal_1_1_code_gen___p_na_cl.html", null ],
+          [ "Halide::Internal::CodeGen_X86", "class_halide_1_1_internal_1_1_code_gen___x86.html", null ]
         ] ],
         [ "Halide::Internal::CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html", null ],
         [ "Halide::Internal::CodeGen_SPIR_Dev", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html", null ]
       ] ],
+      [ "Halide::Internal::IRDeepVisitor", "class_halide_1_1_internal_1_1_i_r_deep_visitor.html", null ],
       [ "Halide::Internal::IRGraphVisitor", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html", null ],
       [ "Halide::Internal::IRMutator", "class_halide_1_1_internal_1_1_i_r_mutator.html", null ],
       [ "Halide::Internal::IRPrinter", "class_halide_1_1_internal_1_1_i_r_printer.html", [
@@ -198,6 +199,7 @@ var hierarchy =
       [ "Halide::ImageParam", "class_halide_1_1_image_param.html", null ]
     ] ],
     [ "Halide::Param< T >", "class_halide_1_1_param.html", null ],
+    [ "Halide::PrintArg", "struct_halide_1_1_print_arg.html", null ],
     [ "Halide::RDom", "class_halide_1_1_r_dom.html", null ],
     [ "Halide::Realization", "class_halide_1_1_realization.html", null ],
     [ "Halide::RVar", "class_halide_1_1_r_var.html", null ],

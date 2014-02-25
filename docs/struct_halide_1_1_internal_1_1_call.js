@@ -31,6 +31,8 @@ var struct_halide_1_1_internal_1_1_call =
     [ "undef", "struct_halide_1_1_internal_1_1_call.html#ac4a98b9e0f5566bb8697bece3ea4750a", null ],
     [ "null_handle", "struct_halide_1_1_internal_1_1_call.html#a6ba57a23e0c059b2b60db2d059c2dc09", null ],
     [ "address_of", "struct_halide_1_1_internal_1_1_call.html#ae5dda11abd2517eca8b89e05a1324cb3", null ],
+    [ "return_second", "struct_halide_1_1_internal_1_1_call.html#a0da61cfb2b0de6795258029dfe512053", null ],
+    [ "if_then_else", "struct_halide_1_1_internal_1_1_call.html#acf8cc995bfa94376454f6f87921b18e4", null ],
     [ "trace", "struct_halide_1_1_internal_1_1_call.html#a8f411296099667c9e73881bc434c0988", null ],
     [ "trace_expr", "struct_halide_1_1_internal_1_1_call.html#a93117cbad3079bb82f598b77c3156551", null ],
     [ "func", "struct_halide_1_1_internal_1_1_call.html#aa44d34741d78782f55b7c2949fd3c831", null ],

@@ -97,7 +97,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">IRVisitor.h File Reference</div>  </div>
 </div><!--header-->
@@ -106,6 +107,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>Defines the base class for things that recursively walk over the IR.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;set&gt;</code><br/>
+<code>#include &lt;map&gt;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
 </div>
 <p><a href="_i_r_visitor_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -115,10 +118,16 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A base class for algorithms that need to recursively walk over the IR.  <a href="class_halide_1_1_internal_1_1_i_r_visitor.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_i_r_graph_visitor.html">Halide::Internal::IRGraphVisitor</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A base class for algorithms that walk recursively over the IR without visiting the same node twice.  <a href="class_halide_1_1_internal_1_1_i_r_graph_visitor.html#details">More...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_i_r_deep_visitor.html">Halide::Internal::IRDeepVisitor</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A base class for algorithms that recursively visit IR through <a class="el" href="namespace_halide.html">Halide</a> function calls.  <a href="class_halide_1_1_internal_1_1_i_r_deep_visitor.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html">Halide</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html">Halide::Internal</a></td></tr>
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a2842c9b7d88bbdea387c2c3d8015d1d1">Halide::Internal::visit_function</a> (IRVisitor *v, const Function &amp;f)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply an <a class="el" href="class_halide_1_1_internal_1_1_i_r_visitor.html" title="A base class for algorithms that need to recursively walk over the IR.">IRVisitor</a> to all Exprs in the definition of the <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> f.  <a href="#a2842c9b7d88bbdea387c2c3d8015d1d1"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Defines the base class for things that recursively walk over the IR. </p>
