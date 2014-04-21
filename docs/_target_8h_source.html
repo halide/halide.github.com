@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -140,51 +141,116 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00039"></a><a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a84c6211e4fb941603f6104e98427d7e5">00039</a> <span class="comment"></span>                   <a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a84c6211e4fb941603f6104e98427d7e5" title="Enable the CUDA runtime.">OpenCL</a> = 32,   <span class="comment">/// Enable the OpenCL runtime.</span>
 <a name="l00040"></a><a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80afbfe61fd55eacf5a1c8b50ebbc80bf2d">00040</a> <span class="comment"></span>                   <a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80afbfe61fd55eacf5a1c8b50ebbc80bf2d" title="Enable the OpenCL runtime.">GPUDebug</a> = 64, <span class="comment">/// Increase the level of checking and the verbosity of the gpu runtimes.</span>
 <a name="l00041"></a><a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80acf1858c0df276980f989fde57a915f27">00041</a> <span class="comment"></span>                   <a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80acf1858c0df276980f989fde57a915f27" title="Increase the level of checking and the verbosity of the gpu runtimes.">SPIR</a> = 128,    <span class="comment">/// Enable the OpenCL SPIR runtime in 32-bit mode</span>
-<a name="l00042"></a><a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6fd798f03837d708c02cf028af2a4eb3">00042</a> <span class="comment"></span>                   <a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6fd798f03837d708c02cf028af2a4eb3" title="Enable the OpenCL SPIR runtime in 32-bit mode.">SPIR64</a> = 256   <span class="comment">/// Enable the OpenCL SPIR runtime in 64-bit mode</span>
-<a name="l00043"></a>00043 <span class="comment"></span>    };
-<a name="l00044"></a>00044 <span class="comment"></span>
-<a name="l00045"></a>00045 <span class="comment">    /** A bitmask that stores the active features. */</span>
-<a name="l00046"></a><a class="code" href="struct_halide_1_1_target.html#a28da2df5c0ea743b93e1032fe78caec3">00046</a>     uint64_t <a class="code" href="struct_halide_1_1_target.html#a28da2df5c0ea743b93e1032fe78caec3" title="A bitmask that stores the active features.">features</a>;
-<a name="l00047"></a>00047 
-<a name="l00048"></a><a class="code" href="struct_halide_1_1_target.html#aeb11109583253fe6e358bba73d3e4a86">00048</a>     <a class="code" href="struct_halide_1_1_target.html#aeb11109583253fe6e358bba73d3e4a86">Target</a>() : <a class="code" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a>(<a class="code" href="struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a22c6a2fea606af61fa20b1ad6548ff29">OSUnknown</a>), <a class="code" href="struct_halide_1_1_target.html#a53d1006f89ed385a62cf9e2e5a4fe5a9">arch</a>(<a class="code" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1ae6d33003db3020c4c578c645239f2973">ArchUnknown</a>), <a class="code" href="struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32" title="The bit-width of the target machine.">bits</a>(0), <a class="code" href="struct_halide_1_1_target.html#a28da2df5c0ea743b93e1032fe78caec3" title="A bitmask that stores the active features.">features</a>(0) {}
-<a name="l00049"></a><a class="code" href="struct_halide_1_1_target.html#a0583b7b0198655b69b124a48c37598ac">00049</a>     <a class="code" href="struct_halide_1_1_target.html#a0583b7b0198655b69b124a48c37598ac">Target</a>(<a class="code" href="struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20" title="The operating system used by the target.">OS</a> o, <a class="code" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1" title="The architecture used by the target.">Arch</a> a, <span class="keywordtype">int</span> b, uint64_t f) : <a class="code" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a>(o), <a class="code" href="struct_halide_1_1_target.html#a53d1006f89ed385a62cf9e2e5a4fe5a9">arch</a>(a), <a class="code" href="struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32" title="The bit-width of the target machine.">bits</a>(b), <a class="code" href="struct_halide_1_1_target.html#a28da2df5c0ea743b93e1032fe78caec3" title="A bitmask that stores the active features.">features</a>(f) {}
-<a name="l00050"></a>00050 };
-<a name="l00051"></a>00051 <span class="comment"></span>
-<a name="l00052"></a>00052 <span class="comment">/** Return the target corresponding to the host machine. */</span>
-<a name="l00053"></a>00053 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Target <a class="code" href="namespace_halide.html#a4fb1734eaadb362e875519e6ab68158e" title="Return the target corresponding to the host machine.">get_host_target</a>();
-<a name="l00054"></a>00054 <span class="comment"></span>
-<a name="l00055"></a>00055 <span class="comment">/** Return the target that Halide will use. If HL_TARGET is set it</span>
-<a name="l00056"></a>00056 <span class="comment"> * uses that. Otherwise calls \ref get_host_target */</span>
-<a name="l00057"></a>00057 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Target <a class="code" href="namespace_halide.html#a2d655bb0051fc525e3e5d73997f93cdd" title="Return the target that Halide will use.">get_target_from_environment</a>();
-<a name="l00058"></a>00058 <span class="comment"></span>
-<a name="l00059"></a>00059 <span class="comment">/** Return the target that Halide will use for jit-compilation. If</span>
-<a name="l00060"></a>00060 <span class="comment"> * HL_JIT_TARGET is set it uses that. Otherwise calls \ref</span>
-<a name="l00061"></a>00061 <span class="comment"> * get_host_target. Throws an error if the architecture, bit width,</span>
-<a name="l00062"></a>00062 <span class="comment"> * and OS of the target do not match the host target, so this is only</span>
-<a name="l00063"></a>00063 <span class="comment"> * useful for controlling the feature set. */</span>
-<a name="l00064"></a>00064 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Target <a class="code" href="namespace_halide.html#afdb2fdc9b09935c4f2825d425359da37" title="Return the target that Halide will use for jit-compilation.">get_jit_target_from_environment</a>();
-<a name="l00065"></a>00065 <span class="comment"></span>
-<a name="l00066"></a>00066 <span class="comment">/** Given a string of the form used in HL_TARGET (e.g. &quot;x86-64-avx&quot;),</span>
-<a name="l00067"></a>00067 <span class="comment"> * return the Target it specifies. */</span>
-<a name="l00068"></a>00068 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Target <a class="code" href="namespace_halide.html#a41200d3966083bac5cfc95a0b4f06c26" title="Given a string of the form used in HL_TARGET (e.g.">parse_target_string</a>(<span class="keyword">const</span> std::string &amp;target);
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070 <span class="keyword">namespace </span>Internal {
-<a name="l00071"></a>00071 <span class="comment"></span>
-<a name="l00072"></a>00072 <span class="comment">/** Create an llvm module containing the support code for a given target. */</span>
-<a name="l00073"></a>00073 llvm::Module *<a class="code" href="namespace_halide_1_1_internal.html#a320fa7575718308bc5b1e7a1b6d42d31" title="Create an llvm module containing the support code for a given target.">get_initial_module_for_target</a>(Target, llvm::LLVMContext *);
-<a name="l00074"></a>00074 <span class="comment"></span>
-<a name="l00075"></a>00075 <span class="comment">/** Create an llvm module containing the support code for ptx device. */</span>
-<a name="l00076"></a>00076 llvm::Module *<a class="code" href="namespace_halide_1_1_internal.html#aa9f98b98cbded4d63028df71771ca835" title="Create an llvm module containing the support code for ptx device.">get_initial_module_for_ptx_device</a>(llvm::LLVMContext *c);
-<a name="l00077"></a>00077 <span class="comment"></span>
-<a name="l00078"></a>00078 <span class="comment">/** Create an llvm module containing the support code for SPIR device code. */</span>
-<a name="l00079"></a>00079 llvm::Module *<a class="code" href="namespace_halide_1_1_internal.html#a177d2e22743da305462364aeb9714958" title="Create an llvm module containing the support code for SPIR device code.">get_initial_module_for_spir_device</a>(llvm::LLVMContext *c, <span class="keywordtype">int</span> bits);
-<a name="l00080"></a>00080 
-<a name="l00081"></a>00081 }
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083 }
-<a name="l00084"></a>00084 
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086 <span class="preprocessor">#endif</span>
+<a name="l00042"></a><a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6fd798f03837d708c02cf028af2a4eb3">00042</a> <span class="comment"></span>                   <a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6fd798f03837d708c02cf028af2a4eb3" title="Enable the OpenCL SPIR runtime in 32-bit mode.">SPIR64</a> = 256,  <span class="comment">/// Enable the OpenCL SPIR runtime in 64-bit mode</span>
+<a name="l00043"></a><a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a1fc53f322ecd95ae65274a9f16c71ac2">00043</a> <span class="comment"></span>                   <a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a1fc53f322ecd95ae65274a9f16c71ac2" title="Enable the OpenCL SPIR runtime in 64-bit mode.">NoAsserts</a> = 512, <span class="comment">/// Disable all runtime checks, for slightly tighter code.</span>
+<a name="l00044"></a><a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6f7593c40bf078bf7906ea1c391bcd80">00044</a> <span class="comment"></span>                   <a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6f7593c40bf078bf7906ea1c391bcd80" title="Disable all runtime checks, for slightly tighter code.">NoBoundsQuery</a> = 1024 <span class="comment">/// Disable the bounds querying functionality.</span>
+<a name="l00045"></a>00045 <span class="comment"></span>    };
+<a name="l00046"></a>00046 <span class="comment"></span>
+<a name="l00047"></a>00047 <span class="comment">    /** A bitmask that stores the active features. */</span>
+<a name="l00048"></a><a class="code" href="struct_halide_1_1_target.html#a28da2df5c0ea743b93e1032fe78caec3">00048</a>     uint64_t <a class="code" href="struct_halide_1_1_target.html#a28da2df5c0ea743b93e1032fe78caec3" title="A bitmask that stores the active features.">features</a>;
+<a name="l00049"></a>00049 
+<a name="l00050"></a><a class="code" href="struct_halide_1_1_target.html#aeb11109583253fe6e358bba73d3e4a86">00050</a>     <a class="code" href="struct_halide_1_1_target.html#aeb11109583253fe6e358bba73d3e4a86">Target</a>() : <a class="code" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a>(<a class="code" href="struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a22c6a2fea606af61fa20b1ad6548ff29">OSUnknown</a>), <a class="code" href="struct_halide_1_1_target.html#a53d1006f89ed385a62cf9e2e5a4fe5a9">arch</a>(<a class="code" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1ae6d33003db3020c4c578c645239f2973">ArchUnknown</a>), <a class="code" href="struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32" title="The bit-width of the target machine.">bits</a>(0), <a class="code" href="struct_halide_1_1_target.html#a28da2df5c0ea743b93e1032fe78caec3" title="A bitmask that stores the active features.">features</a>(0) {}
+<a name="l00051"></a><a class="code" href="struct_halide_1_1_target.html#a0583b7b0198655b69b124a48c37598ac">00051</a>     <a class="code" href="struct_halide_1_1_target.html#a0583b7b0198655b69b124a48c37598ac">Target</a>(<a class="code" href="struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20" title="The operating system used by the target.">OS</a> o, <a class="code" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1" title="The architecture used by the target.">Arch</a> a, <span class="keywordtype">int</span> b, uint64_t f) : <a class="code" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a>(o), <a class="code" href="struct_halide_1_1_target.html#a53d1006f89ed385a62cf9e2e5a4fe5a9">arch</a>(a), <a class="code" href="struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32" title="The bit-width of the target machine.">bits</a>(b), <a class="code" href="struct_halide_1_1_target.html#a28da2df5c0ea743b93e1032fe78caec3" title="A bitmask that stores the active features.">features</a>(f) {}
+<a name="l00052"></a>00052 
+<a name="l00053"></a><a class="code" href="struct_halide_1_1_target.html#ae89c744ee593668ede7638246b59b5c8">00053</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_target.html#ae89c744ee593668ede7638246b59b5c8">has_gpu_feature</a>() {
+<a name="l00054"></a>00054         <span class="keywordflow">return</span> (<a class="code" href="struct_halide_1_1_target.html#a28da2df5c0ea743b93e1032fe78caec3" title="A bitmask that stores the active features.">features</a> &amp; (<a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80abfd3f02d7bd5f8e2d251a62f465ebcfb" title="Use AVX 2 instructions. Only relevant on x86.">CUDA</a>|<a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a84c6211e4fb941603f6104e98427d7e5" title="Enable the CUDA runtime.">OpenCL</a>|<a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80acf1858c0df276980f989fde57a915f27" title="Increase the level of checking and the verbosity of the gpu runtimes.">SPIR</a>|<a class="code" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6fd798f03837d708c02cf028af2a4eb3" title="Enable the OpenCL SPIR runtime in 32-bit mode.">SPIR64</a>));
+<a name="l00055"></a>00055     }
+<a name="l00056"></a>00056 
+<a name="l00057"></a><a class="code" href="struct_halide_1_1_target.html#a052486b9b96e649b9311bcc00e0a9405">00057</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_target.html#a052486b9b96e649b9311bcc00e0a9405">operator==</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for.">Target</a> &amp;other)<span class="keyword"> const </span>{
+<a name="l00058"></a>00058       <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a> == other.<a class="code" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a> &amp;&amp;
+<a name="l00059"></a>00059           <a class="code" href="struct_halide_1_1_target.html#a53d1006f89ed385a62cf9e2e5a4fe5a9">arch</a> == other.<a class="code" href="struct_halide_1_1_target.html#a53d1006f89ed385a62cf9e2e5a4fe5a9">arch</a> &amp;&amp;
+<a name="l00060"></a>00060           <a class="code" href="struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32" title="The bit-width of the target machine.">bits</a> == other.<a class="code" href="struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32" title="The bit-width of the target machine.">bits</a> &amp;&amp;
+<a name="l00061"></a>00061           <a class="code" href="struct_halide_1_1_target.html#a28da2df5c0ea743b93e1032fe78caec3" title="A bitmask that stores the active features.">features</a> == other.<a class="code" href="struct_halide_1_1_target.html#a28da2df5c0ea743b93e1032fe78caec3" title="A bitmask that stores the active features.">features</a>;
+<a name="l00062"></a>00062     }
+<a name="l00063"></a>00063 
+<a name="l00064"></a><a class="code" href="struct_halide_1_1_target.html#a2d02d1fc5b8b3a38ba48316519b389c0">00064</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_target.html#a2d02d1fc5b8b3a38ba48316519b389c0">operator!=</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for.">Target</a> &amp;other)<span class="keyword"> const </span>{
+<a name="l00065"></a>00065       <span class="keywordflow">return</span> !(*<span class="keyword">this</span> == other);
+<a name="l00066"></a>00066     }
+<a name="l00067"></a>00067 <span class="comment"></span>
+<a name="l00068"></a>00068 <span class="comment">    /** Convert the Target into a string form that can be reconstituted</span>
+<a name="l00069"></a>00069 <span class="comment">     * by merge_string(), which will always be of the form</span>
+<a name="l00070"></a>00070 <span class="comment">     *</span>
+<a name="l00071"></a>00071 <span class="comment">     *   arch-bits-os-feature1-feature2...featureN.</span>
+<a name="l00072"></a>00072 <span class="comment">     *</span>
+<a name="l00073"></a>00073 <span class="comment">     * Note that is guaranteed that t2.from_string(t1.to_string()) == t1</span>
+<a name="l00074"></a>00074 <span class="comment">     * ,but not that from_string(s).to_string() == s (since there can be</span>
+<a name="l00075"></a>00075 <span class="comment">     * multiple strings that parse to the same Target)...</span>
+<a name="l00076"></a>00076 <span class="comment">     * *unless* t1 contains &#39;unknown&#39; fields (in which case you&#39;ll get a string</span>
+<a name="l00077"></a>00077 <span class="comment">     * that can&#39;t be parsed, which is intentional).</span>
+<a name="l00078"></a>00078 <span class="comment">     */</span>
+<a name="l00079"></a>00079     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="struct_halide_1_1_target.html#a902e58d463f8babb79f6263709d06f01" title="Convert the Target into a string form that can be reconstituted by merge_string(), which will always be of the form.">to_string</a>() <span class="keyword">const</span>;
+<a name="l00080"></a>00080 <span class="comment"></span>
+<a name="l00081"></a>00081 <span class="comment">    /**</span>
+<a name="l00082"></a>00082 <span class="comment">     * Parse the contents of &#39;target&#39; and merge into &#39;this&#39;,</span>
+<a name="l00083"></a>00083 <span class="comment">     * replacing only the parts that are specified. (e.g., if &#39;target&#39; specifies</span>
+<a name="l00084"></a>00084 <span class="comment">     * only an arch, only the arch field of &#39;this&#39; will be changed, leaving</span>
+<a name="l00085"></a>00085 <span class="comment">     * the other fields untouched). Any features specified in &#39;target&#39;</span>
+<a name="l00086"></a>00086 <span class="comment">     * are added to &#39;this&#39;, whether or not originally present.</span>
+<a name="l00087"></a>00087 <span class="comment">     *</span>
+<a name="l00088"></a>00088 <span class="comment">     * If the string contains unknown tokens, or multiple tokens of the</span>
+<a name="l00089"></a>00089 <span class="comment">     * same category (e.g. multiple arch values), return false</span>
+<a name="l00090"></a>00090 <span class="comment">     * (possibly leaving &#39;this&#39; munged). (Multiple feature specifications</span>
+<a name="l00091"></a>00091 <span class="comment">     * will not cause a failure.)</span>
+<a name="l00092"></a>00092 <span class="comment">     *</span>
+<a name="l00093"></a>00093 <span class="comment">     * If &#39;target&#39; contains &quot;host&quot; as the first token, it replaces the entire</span>
+<a name="l00094"></a>00094 <span class="comment">     * contents of &#39;this&#39; with get_host_target(), then proceeds to parse the</span>
+<a name="l00095"></a>00095 <span class="comment">     * remaining tokens (allowing for things like &quot;host-opencl&quot; to mean</span>
+<a name="l00096"></a>00096 <span class="comment">     * &quot;host configuration, but with opencl added&quot;).</span>
+<a name="l00097"></a>00097 <span class="comment">     *</span>
+<a name="l00098"></a>00098 <span class="comment">     * Note that unlike parse_from_string(), this will never print to cerr or</span>
+<a name="l00099"></a>00099 <span class="comment">     * assert in the event of a parse failure. Note also that an empty target</span>
+<a name="l00100"></a>00100 <span class="comment">     * string is essentially a no-op, leaving &#39;this&#39; unaffected.</span>
+<a name="l00101"></a>00101 <span class="comment">     */</span>
+<a name="l00102"></a>00102     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b" title="Parse the contents of &#39;target&#39; and merge into &#39;this&#39;, replacing only the parts that are specified...">merge_string</a>(<span class="keyword">const</span> std::string &amp;target);
+<a name="l00103"></a>00103 <span class="comment"></span>
+<a name="l00104"></a>00104 <span class="comment">    /**</span>
+<a name="l00105"></a>00105 <span class="comment">     * Like merge_string(), but reset the contents of &#39;this&#39; first.</span>
+<a name="l00106"></a>00106 <span class="comment">     */</span>
+<a name="l00107"></a><a class="code" href="struct_halide_1_1_target.html#a407597a3202793e72c6a9907fe8fb2c7">00107</a>     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_target.html#a407597a3202793e72c6a9907fe8fb2c7" title="Like merge_string(), but reset the contents of &#39;this&#39; first.">from_string</a>(<span class="keyword">const</span> std::string &amp;target) {
+<a name="l00108"></a>00108     *<span class="keyword">this</span> = <a class="code" href="struct_halide_1_1_target.html#aeb11109583253fe6e358bba73d3e4a86">Target</a>();
+<a name="l00109"></a>00109     <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b" title="Parse the contents of &#39;target&#39; and merge into &#39;this&#39;, replacing only the parts that are specified...">merge_string</a>(target);
+<a name="l00110"></a>00110     }
+<a name="l00111"></a>00111 };
+<a name="l00112"></a>00112 <span class="comment"></span>
+<a name="l00113"></a>00113 <span class="comment">/** Return the target corresponding to the host machine. */</span>
+<a name="l00114"></a>00114 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Target <a class="code" href="namespace_halide.html#a4fb1734eaadb362e875519e6ab68158e" title="Return the target corresponding to the host machine.">get_host_target</a>();
+<a name="l00115"></a>00115 <span class="comment"></span>
+<a name="l00116"></a>00116 <span class="comment">/** Return the target that Halide will use. If HL_TARGET is set it</span>
+<a name="l00117"></a>00117 <span class="comment"> * uses that. Otherwise calls \ref get_host_target */</span>
+<a name="l00118"></a>00118 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Target <a class="code" href="namespace_halide.html#a2d655bb0051fc525e3e5d73997f93cdd" title="Return the target that Halide will use.">get_target_from_environment</a>();
+<a name="l00119"></a>00119 <span class="comment"></span>
+<a name="l00120"></a>00120 <span class="comment">/** Return the target that Halide will use for jit-compilation. If</span>
+<a name="l00121"></a>00121 <span class="comment"> * HL_JIT_TARGET is set it uses that. Otherwise calls \ref</span>
+<a name="l00122"></a>00122 <span class="comment"> * get_host_target. Throws an error if the architecture, bit width,</span>
+<a name="l00123"></a>00123 <span class="comment"> * and OS of the target do not match the host target, so this is only</span>
+<a name="l00124"></a>00124 <span class="comment"> * useful for controlling the feature set. */</span>
+<a name="l00125"></a>00125 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Target <a class="code" href="namespace_halide.html#afdb2fdc9b09935c4f2825d425359da37" title="Return the target that Halide will use for jit-compilation.">get_jit_target_from_environment</a>();
+<a name="l00126"></a>00126 <span class="comment"></span>
+<a name="l00127"></a>00127 <span class="comment">/** Given a string of the form used in HL_TARGET (e.g. &quot;x86-64-avx&quot;),</span>
+<a name="l00128"></a>00128 <span class="comment"> * return the Target it specifies. Note that this always starts with</span>
+<a name="l00129"></a>00129 <span class="comment"> * the result of get_host_target(), replacing only the parts found in the</span>
+<a name="l00130"></a>00130 <span class="comment"> * target string, so if you omit (say) an OS specification, the host OS</span>
+<a name="l00131"></a>00131 <span class="comment"> * will be used instead. An empty string is exactly equivalent to get_host_target().</span>
+<a name="l00132"></a>00132 <span class="comment"> */</span>
+<a name="l00133"></a>00133 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Target <a class="code" href="namespace_halide.html#a41200d3966083bac5cfc95a0b4f06c26" title="Given a string of the form used in HL_TARGET (e.g.">parse_target_string</a>(<span class="keyword">const</span> std::string &amp;target);
+<a name="l00134"></a>00134 
+<a name="l00135"></a>00135 <span class="keyword">namespace </span>Internal {
+<a name="l00136"></a>00136 <span class="comment"></span>
+<a name="l00137"></a>00137 <span class="comment">/** Create an llvm module containing the support code for a given target. */</span>
+<a name="l00138"></a>00138 llvm::Module *<a class="code" href="namespace_halide_1_1_internal.html#a320fa7575718308bc5b1e7a1b6d42d31" title="Create an llvm module containing the support code for a given target.">get_initial_module_for_target</a>(Target, llvm::LLVMContext *);
+<a name="l00139"></a>00139 <span class="comment"></span>
+<a name="l00140"></a>00140 <span class="comment">/** Create an llvm module containing the support code for ptx device. */</span>
+<a name="l00141"></a>00141 llvm::Module *<a class="code" href="namespace_halide_1_1_internal.html#aa9f98b98cbded4d63028df71771ca835" title="Create an llvm module containing the support code for ptx device.">get_initial_module_for_ptx_device</a>(llvm::LLVMContext *c);
+<a name="l00142"></a>00142 <span class="comment"></span>
+<a name="l00143"></a>00143 <span class="comment">/** Create an llvm module containing the support code for SPIR device code. */</span>
+<a name="l00144"></a>00144 llvm::Module *<a class="code" href="namespace_halide_1_1_internal.html#a177d2e22743da305462364aeb9714958" title="Create an llvm module containing the support code for SPIR device code.">get_initial_module_for_spir_device</a>(llvm::LLVMContext *c, <span class="keywordtype">int</span> bits);
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146 }
+<a name="l00147"></a>00147 
+<a name="l00148"></a>00148 }
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150 
+<a name="l00151"></a>00151 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

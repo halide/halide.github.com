@@ -2,6 +2,7 @@ var NAVTREE =
 [
   [ "Halide", "index.html", [
     [ "Halide", "index.html", null ],
+    [ "Related Pages", "pages.html", "pages" ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [

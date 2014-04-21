@@ -1,6 +1,6 @@
 var class_halide_1_1_internal_1_1_code_gen___p_t_x___dev =
 [
-    [ "CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ad9bea7737be5af36c0c54ecd27ae0128", null ],
+    [ "CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a7d9c64556b8a8a0691549a50d4e384c9", null ],
     [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a3c25d2cd60559d8e2e77fae6d38022da", null ],
     [ "init_module", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a644643413c80d0731d08cb96bb12c023", null ],
     [ "test", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a6e1b76342ee7d40ed5b1b4438010a135", null ],

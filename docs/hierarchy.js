@@ -164,7 +164,6 @@ var hierarchy =
         [ "Halide::Internal::CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html", null ],
         [ "Halide::Internal::CodeGen_SPIR_Dev", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html", null ]
       ] ],
-      [ "Halide::Internal::IRDeepVisitor", "class_halide_1_1_internal_1_1_i_r_deep_visitor.html", null ],
       [ "Halide::Internal::IRGraphVisitor", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html", null ],
       [ "Halide::Internal::IRMutator", "class_halide_1_1_internal_1_1_i_r_mutator.html", null ],
       [ "Halide::Internal::IRPrinter", "class_halide_1_1_internal_1_1_i_r_printer.html", [
@@ -209,6 +208,7 @@ var hierarchy =
     [ "Halide::Type", "struct_halide_1_1_type.html", null ],
     [ "Halide::Var", "class_halide_1_1_var.html", null ],
     [ "Halide::VarOrRVar", "struct_halide_1_1_var_or_r_var.html", null ],
+    [ "halide_trace_event", "structhalide__trace__event.html", null ],
     [ "Halide::Internal::IntrusivePtr< const IRNode >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", [
       [ "Halide::Internal::IRHandle", "struct_halide_1_1_internal_1_1_i_r_handle.html", [
         [ "Halide::Expr", "struct_halide_1_1_expr.html", null ],

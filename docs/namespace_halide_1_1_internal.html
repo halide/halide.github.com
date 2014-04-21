@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -253,8 +254,6 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A base class for algorithms that need to recursively walk over the IR.  <a href="class_halide_1_1_internal_1_1_i_r_visitor.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_i_r_graph_visitor.html">IRGraphVisitor</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A base class for algorithms that walk recursively over the IR without visiting the same node twice.  <a href="class_halide_1_1_internal_1_1_i_r_graph_visitor.html#details">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_i_r_deep_visitor.html">IRDeepVisitor</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A base class for algorithms that recursively visit IR through <a class="el" href="namespace_halide.html">Halide</a> function calls.  <a href="class_halide_1_1_internal_1_1_i_r_deep_visitor.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html">JITCompiledModule</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> pointers into a compiled halide module.  <a href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_modulus_remainder.html">ModulusRemainder</a></td></tr>
@@ -307,6 +306,8 @@ Functions</h2></td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ab5f5f155c9dd7f1464c5ef665d100029">destroy&lt; BufferContents &gt;</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_buffer_contents.html">BufferContents</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">llvm::Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a71f10140e29131153c3be98d2899b090">llvm_type_of</a> (llvm::LLVMContext *context, <a class="el" href="struct_halide_1_1_type.html">Halide::Type</a> t)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the llvm type equivalent to a given halide type.  <a href="#a71f10140e29131153c3be98d2899b090"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a8dec1d917db83734b33d5a208e9ca973">constant_allocation_size</a> (const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;extents, const std::string &amp;name, <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> &amp;size)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A routine to check if a list of extents are all constants, and if so verify the total size is less than 2^31 - 1.  <a href="#a8dec1d917db83734b33d5a208e9ca973"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a8e29c6b91cae0cfa7734ff1e13e82ca4">common_subexpression_elimination</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace each common sub-expression in the argument with a variable, and wrap the resulting expr in a let statement giving a value to that variable.  <a href="#a8e29c6b91cae0cfa7734ff1e13e82ca4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a86003b87f257d83c080b54bcc6dce216">common_subexpression_elimination</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>)</td></tr>
@@ -331,6 +332,10 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if an expression references the given variable.  <a href="#af239670eead776a941de1cb3f1a93202"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a732aa2f0cfa0092233323263965cc3b9">expr_uses_vars</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e, const <a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; int &gt; &amp;s)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if an expression references any of the variables in a scope.  <a href="#a732aa2f0cfa0092233323263965cc3b9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a16b42e90ad180f1254cdd3be0ae7be89">find_direct_calls</a> (<a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> f)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a map from name to <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> definition object for all <a class="el" href="namespace_halide.html">Halide</a> functions called directly in the definition of the <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> f, including in update definitions, update index expressions, and <a class="el" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a> extents.  <a href="#a16b42e90ad180f1254cdd3be0ae7be89"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a770da2a7374eb2a8ac60f5c9d90b88ad">find_transitive_calls</a> (<a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> f)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a map from name to <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> definition object for all <a class="el" href="namespace_halide.html">Halide</a> functions called directly in the definition of the <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> f, or indirectly in those functions' definitions, recursively.  <a href="#a770da2a7374eb2a8ac60f5c9d90b88ad"></a><br/></td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
 <tr><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_internal_1_1_ref_count.html">RefCount</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#acc591095a8e56d4d6f6587c66239fdb3">ref_count&lt; IRNode &gt;</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_i_r_node.html">IRNode</a> *n)</td></tr>
 <tr><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
@@ -382,12 +387,12 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit a halide statement on an output stream (such as std::cout) in a human-readable form.  <a href="#abe0706bb3eb3383817dc1ae7ce204ad0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa67dad74ce8739ca7773f6032e51d5c6">operator&lt;&lt;</a> (std::ostream &amp;stream, const <a class="el" href="struct_halide_1_1_internal_1_1_for.html#a58f191c4b166630d13829e4f1840d5c6">For::ForType</a> &amp;)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit a halide for loop type (vectorized, serial, etc) in a human readable form.  <a href="#aa67dad74ce8739ca7773f6032e51d5c6"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a2842c9b7d88bbdea387c2c3d8015d1d1">visit_function</a> (<a class="el" href="class_halide_1_1_internal_1_1_i_r_visitor.html">IRVisitor</a> *v, const <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> &amp;f)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply an <a class="el" href="class_halide_1_1_internal_1_1_i_r_visitor.html" title="A base class for algorithms that need to recursively walk over the IR.">IRVisitor</a> to all Exprs in the definition of the <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> f.  <a href="#a2842c9b7d88bbdea387c2c3d8015d1d1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a2c00a579c3d86ae40920d5fc4ffe64cf">lower_lerp</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> zero_val, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> one_val, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> weight)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Build <a class="el" href="namespace_halide.html">Halide</a> IR that computes a lerp.  <a href="#a2c00a579c3d86ae40920d5fc4ffe64cf"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a0cf146bb38588a04ea0c9491c56c4e11">lower</a> (<a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> f)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a halide function with a schedule, create a statement that evaluates it.  <a href="#a0cf146bb38588a04ea0c9491c56c4e11"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a95f0cfbb7653be4145fe4cedd9a15dfa">lift_loop_invariants</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Pull all let statements as far out as possible.  <a href="#a95f0cfbb7653be4145fe4cedd9a15dfa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a3d53906d81dae46b049456d5430abedd">lower</a> (<a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a> f, const <a class="el" href="struct_halide_1_1_target.html">Target</a> &amp;t)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a halide function with a schedule, create a statement that evaluates it.  <a href="#a3d53906d81dae46b049456d5430abedd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a4d3bfe43201bab68cf4820993fe1469b">lower_test</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_modulus_remainder.html">ModulusRemainder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a552b2c330fdb1275badc27cc1e92cd6a">modulus_remainder</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_halide_1_1_internal_1_1_for.html" title="A for loop.">For</a> things like alignment analysis, often it's helpful to know if an integer expression is some multiple of a constant plus some other constant.  <a href="#a552b2c330fdb1275badc27cc1e92cd6a"></a><br/></td></tr>
@@ -409,6 +414,12 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current profiling level (by reading HL_PROFILE)  <a href="#ae828a911751c5115cb503d05afb1dcbe"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#add0c1d3ac79fd83cb609d37831253957">qualify</a> (const std::string &amp;prefix, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> value)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Prefix all variable names in the given expression with the prefix string.  <a href="#add0c1d3ac79fd83cb609d37831253957"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a795f343747d7f716a33198907c3e7d25">random_float</a> (const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a random floating-point number between zero and one that varies deterministically based on the input expressions.  <a href="#a795f343747d7f716a33198907c3e7d25"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ae4e64539c6d89123f6200b919ec28fbb">random_int</a> (const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a random unsigned integer between zero and 2^32-1 that varies deterministically based on the input expressions (which must be integers).  <a href="#ae4e64539c6d89123f6200b919ec28fbb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a0f875bf4d528885d68581fbd198bf356">lower_random</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> e, const std::vector&lt; std::string &gt; &amp;free_vars, int tag)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert calls to random() to IR generated by random_float and random_int.  <a href="#a0f875bf4d528885d68581fbd198bf356"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a445fa778b28abf135eb1b1d0c8389efc">remove_trivial_for_loops</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert for loops of size 1 into <a class="el" href="struct_halide_1_1_internal_1_1_let_stmt.html" title="The statement form of a let node.">LetStmt</a> nodes, which allows for further simplification.  <a href="#a445fa778b28abf135eb1b1d0c8389efc"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a078fe646230de310959c4506c76de02e">remove_undef</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s)</td></tr>
@@ -468,6 +479,10 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if the first string ends with the second string.  <a href="#a230079281175545b9b90b2285106ab28"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516">base_name</a> (const std::string &amp;name, char delim= '.')</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the final token of the name string using the given delimiter.  <a href="#ac91d88c24b89bb17c7b69c671c723516"></a><br/></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename UnsignedType &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#abbc083947a28b1017d3303db8204dbac">checked_multiply</a> (const UnsignedType &amp;a, const UnsignedType &amp;c, UnsignedType &amp;result)</td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename UnsignedType &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ae86a2e6e4ae72e4ccbab62fd05a6a937">checked_multiply_assert</a> (const UnsignedType &amp;a, const UnsignedType &amp;b, UnsignedType &amp;result)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#abe70c3a9d0ecd59908b1837a11d01de0">vectorize_loops</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a statement with for loops marked for vectorization, and turn them into single statements that operate on vectors.  <a href="#abe70c3a9d0ecd59908b1837a11d01de0"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
@@ -611,7 +626,7 @@ Functions</h2></td></tr>
 <p>A multi-dimensional box. </p>
 <p>The outer product of the elements </p>
 
-<p>Definition at line <a class="el" href="_i_r_8h_source.html#l00833">833</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_8h_source.html#l00840">840</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
 
 </div>
 </div>
@@ -1307,7 +1322,7 @@ template&lt;&gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00311">311</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
+<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00317">317</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
 
 </div>
 </div>
@@ -1328,7 +1343,7 @@ template&lt;&gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00316">316</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
+<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00322">322</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
 
 <p>References <a class="el" href="mini__stdint_8h_source.html#l00032">NULL</a>.</p>
 
@@ -1360,6 +1375,42 @@ template&lt;&gt; </div>
 <div class="memdoc">
 
 <p>Get the llvm type equivalent to a given halide type. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8dec1d917db83734b33d5a208e9ca973"></a><!-- doxytag: member="Halide::Internal::constant_allocation_size" ref="a8dec1d917db83734b33d5a208e9ca973" args="(const std::vector&lt; Expr &gt; &amp;extents, const std::string &amp;name, int32_t &amp;size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="namespace_halide_1_1_internal.html#a8dec1d917db83734b33d5a208e9ca973">Halide::Internal::constant_allocation_size</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; Expr &gt; &amp;&#160;</td>
+          <td class="paramname"><em>extents</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>A routine to check if a list of extents are all constants, and if so verify the total size is less than 2^31 - 1. </p>
+<p>If the result is constant, but overflows, this routine asserts. The name parameter is used in the assertion message. </p>
 
 </div>
 </div>
@@ -1714,6 +1765,46 @@ template&lt;&gt; </div>
 <div class="memdoc">
 
 <p>Test if an expression references any of the variables in a scope. </p>
+
+</div>
+</div>
+<a class="anchor" id="a16b42e90ad180f1254cdd3be0ae7be89"></a><!-- doxytag: member="Halide::Internal::find_direct_calls" ref="a16b42e90ad180f1254cdd3be0ae7be89" args="(Function f)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#a16b42e90ad180f1254cdd3be0ae7be89">Halide::Internal::find_direct_calls</a> </td>
+          <td>(</td>
+          <td class="paramtype">Function&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Construct a map from name to <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> definition object for all <a class="el" href="namespace_halide.html">Halide</a> functions called directly in the definition of the <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> f, including in update definitions, update index expressions, and <a class="el" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a> extents. </p>
+<p>This map _does not_ include the <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> f, unless it is called recursively by itself. </p>
+
+</div>
+</div>
+<a class="anchor" id="a770da2a7374eb2a8ac60f5c9d90b88ad"></a><!-- doxytag: member="Halide::Internal::find_transitive_calls" ref="a770da2a7374eb2a8ac60f5c9d90b88ad" args="(Function f)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="class_halide_1_1_internal_1_1_function.html">Function</a>&gt; <a class="el" href="namespace_halide_1_1_internal.html#a770da2a7374eb2a8ac60f5c9d90b88ad">Halide::Internal::find_transitive_calls</a> </td>
+          <td>(</td>
+          <td class="paramtype">Function&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Construct a map from name to <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> definition object for all <a class="el" href="namespace_halide.html">Halide</a> functions called directly in the definition of the <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> f, or indirectly in those functions' definitions, recursively. </p>
+<p>This map always _includes_ the <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> f. </p>
 
 </div>
 </div>
@@ -2618,36 +2709,6 @@ template&lt;&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a2842c9b7d88bbdea387c2c3d8015d1d1"></a><!-- doxytag: member="Halide::Internal::visit_function" ref="a2842c9b7d88bbdea387c2c3d8015d1d1" args="(IRVisitor *v, const Function &amp;f)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="namespace_halide_1_1_internal.html#a2842c9b7d88bbdea387c2c3d8015d1d1">Halide::Internal::visit_function</a> </td>
-          <td>(</td>
-          <td class="paramtype">IRVisitor *&#160;</td>
-          <td class="paramname"><em>v</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const Function &amp;&#160;</td>
-          <td class="paramname"><em>f</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Apply an <a class="el" href="class_halide_1_1_internal_1_1_i_r_visitor.html" title="A base class for algorithms that need to recursively walk over the IR.">IRVisitor</a> to all Exprs in the definition of the <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> f. </p>
-<p>This includes pure definitions, update definitions, update indices, and referenced <a class="el" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a> min/extent expressions. </p>
-
-</div>
-</div>
 <a class="anchor" id="a2c00a579c3d86ae40920d5fc4ffe64cf"></a><!-- doxytag: member="Halide::Internal::lower_lerp" ref="a2c00a579c3d86ae40920d5fc4ffe64cf" args="(Expr zero_val, Expr one_val, Expr weight)" -->
 <div class="memitem">
 <div class="memproto">
@@ -2684,23 +2745,53 @@ template&lt;&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a0cf146bb38588a04ea0c9491c56c4e11"></a><!-- doxytag: member="Halide::Internal::lower" ref="a0cf146bb38588a04ea0c9491c56c4e11" args="(Function f)" -->
+<a class="anchor" id="a95f0cfbb7653be4145fe4cedd9a15dfa"></a><!-- doxytag: member="Halide::Internal::lift_loop_invariants" ref="a95f0cfbb7653be4145fe4cedd9a15dfa" args="(Stmt)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> <a class="el" href="namespace_halide_1_1_internal.html#a0cf146bb38588a04ea0c9491c56c4e11">Halide::Internal::lower</a> </td>
+          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> <a class="el" href="namespace_halide_1_1_internal.html#a95f0cfbb7653be4145fe4cedd9a15dfa">Halide::Internal::lift_loop_invariants</a> </td>
           <td>(</td>
-          <td class="paramtype">Function&#160;</td>
-          <td class="paramname"><em>f</em></td><td>)</td>
+          <td class="paramtype">Stmt&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
+<p>Pull all let statements as far out as possible. </p>
+<p>In particular, pull them outside of loops if they don't depend on the loop variable. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3d53906d81dae46b049456d5430abedd"></a><!-- doxytag: member="Halide::Internal::lower" ref="a3d53906d81dae46b049456d5430abedd" args="(Function f, const Target &amp;t)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> <a class="el" href="namespace_halide_1_1_internal.html#a3d53906d81dae46b049456d5430abedd">Halide::Internal::lower</a> </td>
+          <td>(</td>
+          <td class="paramtype">Function&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Target &amp;&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
 <p>Given a halide function with a schedule, create a statement that evaluates it. </p>
-<p>Automatically pulls in all the functions f depends on </p>
+<p>Automatically pulls in all the functions f depends on. Some stages of lowering may be target-specific. </p>
 
 </div>
 </div>
@@ -2992,6 +3083,80 @@ template&lt;&gt; </div>
 <div class="memdoc">
 
 <p>Prefix all variable names in the given expression with the prefix string. </p>
+
+</div>
+</div>
+<a class="anchor" id="a795f343747d7f716a33198907c3e7d25"></a><!-- doxytag: member="Halide::Internal::random_float" ref="a795f343747d7f716a33198907c3e7d25" args="(const std::vector&lt; Expr &gt; &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="namespace_halide_1_1_internal.html#a795f343747d7f716a33198907c3e7d25">Halide::Internal::random_float</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; Expr &gt; &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return a random floating-point number between zero and one that varies deterministically based on the input expressions. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae4e64539c6d89123f6200b919ec28fbb"></a><!-- doxytag: member="Halide::Internal::random_int" ref="ae4e64539c6d89123f6200b919ec28fbb" args="(const std::vector&lt; Expr &gt; &amp;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="namespace_halide_1_1_internal.html#ae4e64539c6d89123f6200b919ec28fbb">Halide::Internal::random_int</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; Expr &gt; &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return a random unsigned integer between zero and 2^32-1 that varies deterministically based on the input expressions (which must be integers). </p>
+
+</div>
+</div>
+<a class="anchor" id="a0f875bf4d528885d68581fbd198bf356"></a><!-- doxytag: member="Halide::Internal::lower_random" ref="a0f875bf4d528885d68581fbd198bf356" args="(Expr e, const std::vector&lt; std::string &gt; &amp;free_vars, int tag)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="namespace_halide_1_1_internal.html#a0f875bf4d528885d68581fbd198bf356">Halide::Internal::lower_random</a> </td>
+          <td>(</td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>free_vars</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tag</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Convert calls to random() to IR generated by random_float and random_int. </p>
+<p>Tags all calls with the variables in free_vars, and the integer given as the last argument. </p>
 
 </div>
 </div>
@@ -3726,7 +3891,8 @@ template&lt;typename T &gt; </div>
 
 <p>Build small vectors of up to 6 elements. </p>
 <p>If we used C++11 and had vector initializers, this would not be necessary, but we don't want to rely on C++11 support. </p>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_08_scheduling_2_8cpp-example.html#a14">tutorial/lesson_08_scheduling_2.cpp</a>.</dd>
+</dl>
 <p>Definition at line <a class="el" href="_util_8h_source.html#l00039">39</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
 
 <p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00356">Halide::abs()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00503">Halide::acos()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00591">Halide::acosh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00479">Halide::asin()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00567">Halide::asinh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00527">Halide::atan()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00539">Halide::atan2()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00615">Halide::atanh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00742">Halide::ceil()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00491">Halide::cos()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00579">Halide::cosh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00977">Halide::count_leading_zeros()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00985">Halide::count_trailing_zeros()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00650">Halide::exp()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00729">Halide::floor()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00930">Halide::lerp()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00667">Halide::log()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00779">Halide::operator&amp;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00840">Halide::operator&lt;&lt;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00856">Halide::operator&gt;&gt;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00813">Halide::operator^()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00796">Halide::operator|()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00828">Halide::operator~()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00969">Halide::popcount()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00683">Halide::pow()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00765">Halide::reinterpret()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00755">Halide::round()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00467">Halide::sin()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00555">Halide::sinh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00627">Halide::sqrt()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00515">Halide::tan()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00603">Halide::tanh()</a>.</p>
@@ -4279,6 +4445,84 @@ template&lt;typename DstType , typename SrcType &gt; </div>
 <div class="memdoc">
 
 <p>Return the final token of the name string using the given delimiter. </p>
+
+</div>
+</div>
+<a class="anchor" id="abbc083947a28b1017d3303db8204dbac"></a><!-- doxytag: member="Halide::Internal::checked_multiply" ref="abbc083947a28b1017d3303db8204dbac" args="(const UnsignedType &amp;a, const UnsignedType &amp;c, UnsignedType &amp;result)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename UnsignedType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="namespace_halide_1_1_internal.html#abbc083947a28b1017d3303db8204dbac">Halide::Internal::checked_multiply</a> </td>
+          <td>(</td>
+          <td class="paramtype">const UnsignedType &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const UnsignedType &amp;&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UnsignedType &amp;&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_util_8h_source.html#l00154">154</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_util_8h_source.html#l00167">checked_multiply_assert()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae86a2e6e4ae72e4ccbab62fd05a6a937"></a><!-- doxytag: member="Halide::Internal::checked_multiply_assert" ref="ae86a2e6e4ae72e4ccbab62fd05a6a937" args="(const UnsignedType &amp;a, const UnsignedType &amp;b, UnsignedType &amp;result)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename UnsignedType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="namespace_halide_1_1_internal.html#ae86a2e6e4ae72e4ccbab62fd05a6a937">Halide::Internal::checked_multiply_assert</a> </td>
+          <td>(</td>
+          <td class="paramtype">const UnsignedType &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const UnsignedType &amp;&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">UnsignedType &amp;&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_util_8h_source.html#l00167">167</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
+
+<p>References <a class="el" href="_util_8h_source.html#l00154">checked_multiply()</a>.</p>
 
 </div>
 </div>

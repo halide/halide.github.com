@@ -24,7 +24,6 @@ var class_halide_1_1_internal_1_1_code_gen___a_r_m =
     [ "mcpu", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#afee54d94ecb545086ea4517bb9e168c2", null ],
     [ "mattrs", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#aaf4637510ee85222873e4b038ed94fa7", null ],
     [ "use_soft_float_abi", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#ae1ceb0a2aa9ae80eeae416f4e5c0f845", null ],
-    [ "target", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#aeb59e709e943e6d5e8bf652b214bac35", null ],
     [ "casts", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a4cd8857b3cc36447d334a3cab7a0d601", null ],
     [ "left_shifts", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#af6514013e5a49ff8483b0d29194b17f6", null ],
     [ "averagings", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#ab59a094b35b6cd65f644fc36c88ba78b", null ],

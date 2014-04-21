@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -143,7 +144,9 @@ Public Types</h2></td></tr>
 <a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80afbfe61fd55eacf5a1c8b50ebbc80bf2d">GPUDebug</a> =  64, 
 <a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80acf1858c0df276980f989fde57a915f27">SPIR</a> =  128, 
 <br/>
-&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6fd798f03837d708c02cf028af2a4eb3">SPIR64</a> =  256
+&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6fd798f03837d708c02cf028af2a4eb3">SPIR64</a> =  256, 
+<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a1fc53f322ecd95ae65274a9f16c71ac2">NoAsserts</a> =  512, 
+<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6f7593c40bf078bf7906ea1c391bcd80">NoBoundsQuery</a> =  1024
 <br/>
  }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional features a target can have.  <a href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80">More...</a><br/></td></tr>
@@ -151,6 +154,15 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#aeb11109583253fe6e358bba73d3e4a86">Target</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a0583b7b0198655b69b124a48c37598ac">Target</a> (<a class="el" href="struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20">OS</a> o, <a class="el" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1">Arch</a> a, int b, uint64_t f)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#ae89c744ee593668ede7638246b59b5c8">has_gpu_feature</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a052486b9b96e649b9311bcc00e0a9405">operator==</a> (const <a class="el" href="struct_halide_1_1_target.html">Target</a> &amp;other) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a2d02d1fc5b8b3a38ba48316519b389c0">operator!=</a> (const <a class="el" href="struct_halide_1_1_target.html">Target</a> &amp;other) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a902e58d463f8babb79f6263709d06f01">to_string</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert the <a class="el" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for.">Target</a> into a string form that can be reconstituted by <a class="el" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b" title="Parse the contents of &#39;target&#39; and merge into &#39;this&#39;, replacing only the parts that are specified...">merge_string()</a>, which will always be of the form.  <a href="#a902e58d463f8babb79f6263709d06f01"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b">merge_string</a> (const std::string &amp;target)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse the contents of 'target' and merge into 'this', replacing only the parts that are specified.  <a href="#a02c6fd99be575af8792a66777631c85b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a407597a3202793e72c6a9907fe8fb2c7">from_string</a> (const std::string &amp;target)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Like <a class="el" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b" title="Parse the contents of &#39;target&#39; and merge into &#39;this&#39;, replacing only the parts that are specified...">merge_string()</a>, but reset the contents of 'this' first.  <a href="#a407597a3202793e72c6a9907fe8fb2c7"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20">Halide::Target::OS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a></td></tr>
@@ -271,6 +283,12 @@ Public Attributes</h2></td></tr>
 <tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80a6fd798f03837d708c02cf028af2a4eb3"></a><!-- doxytag: member="SPIR64" ref="a04065d5cc8ac34f163e69eb65493db80a6fd798f03837d708c02cf028af2a4eb3" args="" -->SPIR64</em>&nbsp;</td><td>
 <p>Enable the OpenCL SPIR runtime in 32-bit mode. </p>
 </td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80a1fc53f322ecd95ae65274a9f16c71ac2"></a><!-- doxytag: member="NoAsserts" ref="a04065d5cc8ac34f163e69eb65493db80a1fc53f322ecd95ae65274a9f16c71ac2" args="" -->NoAsserts</em>&nbsp;</td><td>
+<p>Enable the OpenCL SPIR runtime in 64-bit mode. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80a6f7593c40bf078bf7906ea1c391bcd80"></a><!-- doxytag: member="NoBoundsQuery" ref="a04065d5cc8ac34f163e69eb65493db80a6f7593c40bf078bf7906ea1c391bcd80" args="" -->NoBoundsQuery</em>&nbsp;</td><td>
+<p>Disable all runtime checks, for slightly tighter code. </p>
+</td></tr>
 </table>
 </dd>
 </dl>
@@ -294,7 +312,9 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00048">48</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00050">50</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00107">from_string()</a>.</p>
 
 </div>
 </div>
@@ -335,7 +355,138 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00049">49</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00051">51</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ae89c744ee593668ede7638246b59b5c8"></a><!-- doxytag: member="Halide::Target::has_gpu_feature" ref="ae89c744ee593668ede7638246b59b5c8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="struct_halide_1_1_target.html#ae89c744ee593668ede7638246b59b5c8">Halide::Target::has_gpu_feature</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00053">53</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+<p>References <a class="el" href="_target_8h_source.html#l00038">CUDA</a>, <a class="el" href="_target_8h_source.html#l00048">features</a>, <a class="el" href="_target_8h_source.html#l00039">OpenCL</a>, <a class="el" href="_target_8h_source.html#l00041">SPIR</a>, and <a class="el" href="_target_8h_source.html#l00042">SPIR64</a>.</p>
+
+<p>Referenced by <a class="el" href="_func_8h_source.html#l01408">Halide::evaluate_may_gpu()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a052486b9b96e649b9311bcc00e0a9405"></a><!-- doxytag: member="Halide::Target::operator==" ref="a052486b9b96e649b9311bcc00e0a9405" args="(const Target &amp;other) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Halide::Target::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_halide_1_1_target.html">Target</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00057">57</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+<p>References <a class="el" href="struct_halide_1_1_target.html#a53d1006f89ed385a62cf9e2e5a4fe5a9">arch</a>, <a class="el" href="_target_8h_source.html#l00031">bits</a>, <a class="el" href="_target_8h_source.html#l00048">features</a>, and <a class="el" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2d02d1fc5b8b3a38ba48316519b389c0"></a><!-- doxytag: member="Halide::Target::operator!=" ref="a2d02d1fc5b8b3a38ba48316519b389c0" args="(const Target &amp;other) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Halide::Target::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_halide_1_1_target.html">Target</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00064">64</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a902e58d463f8babb79f6263709d06f01"></a><!-- doxytag: member="Halide::Target::to_string" ref="a902e58d463f8babb79f6263709d06f01" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="el" href="struct_halide_1_1_target.html#a902e58d463f8babb79f6263709d06f01">Halide::Target::to_string</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Convert the <a class="el" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for.">Target</a> into a string form that can be reconstituted by <a class="el" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b" title="Parse the contents of &#39;target&#39; and merge into &#39;this&#39;, replacing only the parts that are specified...">merge_string()</a>, which will always be of the form. </p>
+<p>arch-bits-os-feature1-feature2...featureN.</p>
+<p>Note that is guaranteed that t2.from_string(t1.to_string()) == t1 ,but not that from_string(s).<a class="el" href="struct_halide_1_1_target.html#a902e58d463f8babb79f6263709d06f01" title="Convert the Target into a string form that can be reconstituted by merge_string(), which will always be of the form.">to_string()</a> == s (since there can be multiple strings that parse to the same <a class="el" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for.">Target</a>)... *unless* t1 contains 'unknown' fields (in which case you'll get a string that can't be parsed, which is intentional). </p>
+
+</div>
+</div>
+<a class="anchor" id="a02c6fd99be575af8792a66777631c85b"></a><!-- doxytag: member="Halide::Target::merge_string" ref="a02c6fd99be575af8792a66777631c85b" args="(const std::string &amp;target)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool <a class="el" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b">Halide::Target::merge_string</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>target</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Parse the contents of 'target' and merge into 'this', replacing only the parts that are specified. </p>
+<p>(e.g., if 'target' specifies only an arch, only the arch field of 'this' will be changed, leaving the other fields untouched). Any features specified in 'target' are added to 'this', whether or not originally present.</p>
+<p>If the string contains unknown tokens, or multiple tokens of the same category (e.g. multiple arch values), return false (possibly leaving 'this' munged). (Multiple feature specifications will not cause a failure.)</p>
+<p>If 'target' contains "host" as the first token, it replaces the entire contents of 'this' with <a class="el" href="namespace_halide.html#a4fb1734eaadb362e875519e6ab68158e" title="Return the target corresponding to the host machine.">get_host_target()</a>, then proceeds to parse the remaining tokens (allowing for things like "host-opencl" to mean "host configuration, but with opencl added").</p>
+<p>Note that unlike parse_from_string(), this will never print to cerr or assert in the event of a parse failure. Note also that an empty target string is essentially a no-op, leaving 'this' unaffected. </p>
+
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00107">from_string()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a407597a3202793e72c6a9907fe8fb2c7"></a><!-- doxytag: member="Halide::Target::from_string" ref="a407597a3202793e72c6a9907fe8fb2c7" args="(const std::string &amp;target)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool <a class="el" href="struct_halide_1_1_target.html#a407597a3202793e72c6a9907fe8fb2c7">Halide::Target::from_string</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>target</em></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Like <a class="el" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b" title="Parse the contents of &#39;target&#39; and merge into &#39;this&#39;, replacing only the parts that are specified...">merge_string()</a>, but reset the contents of 'this' first. </p>
+
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00107">107</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+<p>References <a class="el" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b">merge_string()</a>, and <a class="el" href="_target_8h_source.html#l00050">Target()</a>.</p>
 
 </div>
 </div>
@@ -351,6 +502,8 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00057">operator==()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a53d1006f89ed385a62cf9e2e5a4fe5a9"></a><!-- doxytag: member="Halide::Target::arch" ref="a53d1006f89ed385a62cf9e2e5a4fe5a9" args="" -->
@@ -363,6 +516,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00057">operator==()</a>.</p>
 
 </div>
 </div>
@@ -382,6 +537,8 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_target_8h_source.html#l00031">31</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00057">operator==()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a28da2df5c0ea743b93e1032fe78caec3"></a><!-- doxytag: member="Halide::Target::features" ref="a28da2df5c0ea743b93e1032fe78caec3" args="" -->
@@ -397,7 +554,9 @@ Public Attributes</h2></td></tr>
 
 <p>A bitmask that stores the active features. </p>
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00046">46</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00048">48</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00053">has_gpu_feature()</a>, and <a class="el" href="_target_8h_source.html#l00057">operator==()</a>.</p>
 
 </div>
 </div>

@@ -15,5 +15,7 @@ var _util_8h =
     [ "unique_name", "namespace_halide_1_1_internal.html#aafd40e47c06b4ccb5d2173528ae0523f", null ],
     [ "starts_with", "namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed", null ],
     [ "ends_with", "namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28", null ],
-    [ "base_name", "namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516", null ]
+    [ "base_name", "namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516", null ],
+    [ "checked_multiply", "namespace_halide_1_1_internal.html#abbc083947a28b1017d3303db8204dbac", null ],
+    [ "checked_multiply_assert", "namespace_halide_1_1_internal.html#ae86a2e6e4ae72e4ccbab62fd05a6a937", null ]
 ];

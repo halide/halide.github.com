@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -120,7 +121,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#ad4eaa5769722b52ba4b55bc9fdecb97a">CodeGen</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#ae0379d66f542b6d788ab886cafd3d480">CodeGen</a> (<a class="el" href="struct_halide_1_1_target.html">Target</a> t)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#a88fb2a7d95ecd8c93296ce2e745d9cea">~CodeGen</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#a38b749e4dcfaf727a0967e058af7956c">compile</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> stmt, std::string name, const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;args, const std::vector&lt; <a class="el" href="class_halide_1_1_buffer.html">Buffer</a> &gt; &amp;images_to_embed)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a halide statement and compiles it to an llvm module held internally.  <a href="#a38b749e4dcfaf727a0967e058af7956c"></a><br/></td></tr>
@@ -313,6 +314,8 @@ Protected Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">These IR nodes should have been removed during lowering.  <a href="#a50b9f5f91ab153d03a09ea46ae251010"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_target.html">Halide::Target</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#a3d4c8b79e5049a84825fa501ef5b0033">target</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The target we're generating code for.  <a href="#a3d4c8b79e5049a84825fa501ef5b0033"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#af697a1758373632a3fb80d1a49580fed">function_name</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the function being generated.  <a href="#af697a1758373632a3fb80d1a49580fed"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::set&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#aecc8d3e1ad350e3535dd72ebe8f04132">might_be_misaligned</a></td></tr>
@@ -368,16 +371,17 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 <div class="textblock"><p>A code generator abstract base class. </p>
 <p>Actual code generators (e.g. <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html" title="A code generator that emits x86 code from a given Halide stmt.">CodeGen_X86</a>) inherit from this. This class is responsible for taking a <a class="el" href="namespace_halide.html">Halide</a> <a class="el" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> and producing llvm bitcode, machine code in an object file, or machine code accessible through a function pointer. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00049">49</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00050">50</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ad4eaa5769722b52ba4b55bc9fdecb97a"></a><!-- doxytag: member="Halide::Internal::CodeGen::CodeGen" ref="ad4eaa5769722b52ba4b55bc9fdecb97a" args="()" -->
+<a class="anchor" id="ae0379d66f542b6d788ab886cafd3d480"></a><!-- doxytag: member="Halide::Internal::CodeGen::CodeGen" ref="ae0379d66f542b6d788ab886cafd3d480" args="(Target t)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#ad4eaa5769722b52ba4b55bc9fdecb97a">Halide::Internal::CodeGen::CodeGen</a> </td>
+          <td class="memname"><a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#ae0379d66f542b6d788ab886cafd3d480">Halide::Internal::CodeGen::CodeGen</a> </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="struct_halide_1_1_target.html">Target</a>&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -610,7 +614,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 <p>Do any required target-specific things to the execution engine and the module prior to jitting. </p>
 <p>Called by <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html" title="Function pointers into a compiled halide module.">JITCompiledModule</a> just before it jits. Does nothing by default. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00088">88</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00089">89</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -648,7 +652,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 <p>Do any required target-specific things to the execution engine and the module after jitting. </p>
 <p>Called by <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html" title="Function pointers into a compiled halide module.">JITCompiledModule</a> just after it jits. Does nothing by default. The third argument gives the target a chance to inject calls to target-specific module cleanup routines. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00095">95</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00096">96</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2400,7 +2404,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 <p>Some backends may wish to track entire buffer_t's for each allocation instead of just a host pointer. </p>
 <p>Those backends should override this method to return true, and when allocating should also place a pointer to the buffer_t in the symbol table under 'allocation_name.buffer'. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00282">282</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00286">286</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2466,7 +2470,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>Reimplemented in <a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#ab0ea164e06077ece2b8bbb1d05d29242">Halide::Internal::CodeGen_Posix</a>.</p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00293">293</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00297">297</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2553,7 +2557,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00051">51</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00052">52</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2570,7 +2574,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>State needed by llvm for code generation, including the current module, function, context, builder, and most recently generated llvm value. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00109">109</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00110">110</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2587,7 +2591,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>State needed by llvm for code generation, including the current module, function, context, builder, and most recently generated llvm value. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00110">110</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00111">111</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2604,7 +2608,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>State needed by llvm for code generation, including the current module, function, context, builder, and most recently generated llvm value. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00111">111</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00112">112</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2621,7 +2625,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>State needed by llvm for code generation, including the current module, function, context, builder, and most recently generated llvm value. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00112">112</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00113">113</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2638,7 +2642,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>State needed by llvm for code generation, including the current module, function, context, builder, and most recently generated llvm value. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00113">113</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00114">114</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2655,7 +2659,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>State needed by llvm for code generation, including the current module, function, context, builder, and most recently generated llvm value. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00115">115</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00116">116</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2672,7 +2676,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>State needed by llvm for code generation, including the current module, function, context, builder, and most recently generated llvm value. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00116">116</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00117">117</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2689,7 +2693,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>State needed by llvm for code generation, including the current module, function, context, builder, and most recently generated llvm value. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00117">117</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00118">118</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2706,7 +2710,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>State needed by llvm for code generation, including the current module, function, context, builder, and most recently generated llvm value. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00118">118</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00119">119</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2723,7 +2727,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>State needed by llvm for code generation, including the current module, function, context, builder, and most recently generated llvm value. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00119">119</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00120">120</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2740,7 +2744,24 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>State needed by llvm for code generation, including the current module, function, context, builder, and most recently generated llvm value. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00120">120</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00121">121</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3d4c8b79e5049a84825fa501ef5b0033"></a><!-- doxytag: member="Halide::Internal::CodeGen::target" ref="a3d4c8b79e5049a84825fa501ef5b0033" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_target.html">Halide::Target</a> <a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#a3d4c8b79e5049a84825fa501ef5b0033">Halide::Internal::CodeGen::target</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>The target we're generating code for. </p>
+
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00125">125</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2757,7 +2778,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>Some useful llvm types. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00151">151</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00155">155</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2774,7 +2795,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>Some useful llvm types. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00151">151</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00155">155</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2791,7 +2812,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>Some useful llvm types. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00151">151</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00155">155</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2808,7 +2829,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>Some useful llvm types. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00151">151</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00155">155</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2825,7 +2846,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>Some useful llvm types. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00151">151</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00155">155</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2842,7 +2863,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>Some useful llvm types. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00151">151</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00155">155</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2859,7 +2880,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>Some useful llvm types. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00151">151</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00155">155</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2876,7 +2897,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>Some useful llvm types. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00151">151</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00155">155</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2893,7 +2914,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>Some useful llvm types. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00151">151</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00155">155</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2910,7 +2931,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>Some useful llvm types. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00152">152</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00156">156</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2927,7 +2948,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>The name of the function being generated. </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00156">156</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00160">160</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>
@@ -2944,7 +2965,7 @@ llvm::IRBuilderDefaultInserter<br class="typebreak"/>
 
 <p>Which buffers came in from the outside world (and so we can't guarantee their alignment) </p>
 
-<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00305">305</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen_8h_source.html#l00309">309</a> of file <a class="el" href="_code_gen_8h_source.html">CodeGen.h</a>.</p>
 
 </div>
 </div>

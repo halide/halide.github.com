@@ -1,6 +1,6 @@
 var class_halide_1_1_internal_1_1_code_gen =
 [
-    [ "CodeGen", "class_halide_1_1_internal_1_1_code_gen.html#ad4eaa5769722b52ba4b55bc9fdecb97a", null ],
+    [ "CodeGen", "class_halide_1_1_internal_1_1_code_gen.html#ae0379d66f542b6d788ab886cafd3d480", null ],
     [ "~CodeGen", "class_halide_1_1_internal_1_1_code_gen.html#a88fb2a7d95ecd8c93296ce2e745d9cea", null ],
     [ "compile", "class_halide_1_1_internal_1_1_code_gen.html#a38b749e4dcfaf727a0967e058af7956c", null ],
     [ "compile_to_bitcode", "class_halide_1_1_internal_1_1_code_gen.html#ac1fa246028bd05462d224eb251d8d112", null ],
@@ -103,6 +103,7 @@ var class_halide_1_1_internal_1_1_code_gen =
     [ "context", "class_halide_1_1_internal_1_1_code_gen.html#ac6eaa1c4fd154bf91eb88e485196b18e", null ],
     [ "builder", "class_halide_1_1_internal_1_1_code_gen.html#a159d11a86a4ce32d01de7539b67bf78c", null ],
     [ "value", "class_halide_1_1_internal_1_1_code_gen.html#a11905651c71e1608c2859dba2ae84849", null ],
+    [ "target", "class_halide_1_1_internal_1_1_code_gen.html#a3d4c8b79e5049a84825fa501ef5b0033", null ],
     [ "void_t", "class_halide_1_1_internal_1_1_code_gen.html#aeb896717098c3f6f08b65287099caba7", null ],
     [ "i1", "class_halide_1_1_internal_1_1_code_gen.html#ae05f607a7ab20ab4a849c67bb201d5b2", null ],
     [ "i8", "class_halide_1_1_internal_1_1_code_gen.html#a537dd8c6949c132f016fdfbcc1b2afd4", null ],

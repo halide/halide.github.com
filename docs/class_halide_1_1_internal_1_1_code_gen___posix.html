@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -123,12 +124,14 @@ Classes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct describing heap or stack allocations.  <a href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a047b672fcdd697cbcfcb168a8d851f24">CodeGen_Posix</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an posix code generator.  <a href="#a047b672fcdd697cbcfcb168a8d851f24"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a1f25ad535f29b1ea889f64d28dbd2f65">CodeGen_Posix</a> (<a class="el" href="struct_halide_1_1_target.html">Target</a> t)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an posix code generator.  <a href="#a1f25ad535f29b1ea889f64d28dbd2f65"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html">Allocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#ad8d8be73d73ec6f66de4d2defe3aca4e">create_allocation</a> (const std::string &amp;name, <a class="el" href="struct_halide_1_1_type.html">Type</a> type, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> size)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates some memory on either the stack or the heap, and returns an <a class="el" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html" title="A struct describing heap or stack allocations.">Allocation</a> object describing it.  <a href="#ad8d8be73d73ec6f66de4d2defe3aca4e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">llvm::Value *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a61b8cef48ed4b961316e858d1f4fb270">codegen_allocation_size</a> (const std::string &amp;name, <a class="el" href="struct_halide_1_1_type.html">Type</a> type, const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;extents)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates code for computing the size of an allocation from a list of its extents and its size.  <a href="#a61b8cef48ed4b961316e858d1f4fb270"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html">Allocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#ab0fdacea90e665af1ea1bf70e6f0b7ab">create_allocation</a> (const std::string &amp;name, <a class="el" href="struct_halide_1_1_type.html">Type</a> type, const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;extents)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates some memory on either the stack or the heap, and returns an <a class="el" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html" title="A struct describing heap or stack allocations.">Allocation</a> object describing it.  <a href="#ab0fdacea90e665af1ea1bf70e6f0b7ab"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a92e3e22d95a53fc5f4da3d10e147931e">free_allocation</a> (const std::string &amp;name)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_halide_1_1_internal_1_1_free.html" title="Free the resources associated with the given buffer.">Free</a> the memory backing an allocation and pop it from the symbol table and the allocations map.  <a href="#a92e3e22d95a53fc5f4da3d10e147931e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a5bdb7dae1a6cdfbc12e136b509dfc084">destroy_allocation</a> (<a class="el" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html">Allocation</a> alloc)</td></tr>
@@ -272,14 +275,15 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_code_gen___posix_8h_source.html#l00014">14</a> of file <a class="el" href="_code_gen___posix_8h_source.html">CodeGen_Posix.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a047b672fcdd697cbcfcb168a8d851f24"></a><!-- doxytag: member="Halide::Internal::CodeGen_Posix::CodeGen_Posix" ref="a047b672fcdd697cbcfcb168a8d851f24" args="()" -->
+<a class="anchor" id="a1f25ad535f29b1ea889f64d28dbd2f65"></a><!-- doxytag: member="Halide::Internal::CodeGen_Posix::CodeGen_Posix" ref="a1f25ad535f29b1ea889f64d28dbd2f65" args="(Target t)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a047b672fcdd697cbcfcb168a8d851f24">Halide::Internal::CodeGen_Posix::CodeGen_Posix</a> </td>
+          <td class="memname"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a1f25ad535f29b1ea889f64d28dbd2f65">Halide::Internal::CodeGen_Posix::CodeGen_Posix</a> </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="struct_halide_1_1_target.html">Target</a>&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -336,12 +340,12 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad8d8be73d73ec6f66de4d2defe3aca4e"></a><!-- doxytag: member="Halide::Internal::CodeGen_Posix::create_allocation" ref="ad8d8be73d73ec6f66de4d2defe3aca4e" args="(const std::string &amp;name, Type type, Expr size)" -->
+<a class="anchor" id="a61b8cef48ed4b961316e858d1f4fb270"></a><!-- doxytag: member="Halide::Internal::CodeGen_Posix::codegen_allocation_size" ref="a61b8cef48ed4b961316e858d1f4fb270" args="(const std::string &amp;name, Type type, const std::vector&lt; Expr &gt; &amp;extents)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html">Allocation</a> <a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#ad8d8be73d73ec6f66de4d2defe3aca4e">Halide::Internal::CodeGen_Posix::create_allocation</a> </td>
+          <td class="memname">llvm::Value* <a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a61b8cef48ed4b961316e858d1f4fb270">Halide::Internal::CodeGen_Posix::codegen_allocation_size</a> </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>name</em>, </td>
@@ -355,8 +359,44 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>size</em>&#160;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>extents</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Generates code for computing the size of an allocation from a list of its extents and its size. </p>
+<p>Fires a runtime assert (halide_error) if the size overflows 2^31 -1, the maximum positive number an int32_t can hold. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab0fdacea90e665af1ea1bf70e6f0b7ab"></a><!-- doxytag: member="Halide::Internal::CodeGen_Posix::create_allocation" ref="ab0fdacea90e665af1ea1bf70e6f0b7ab" args="(const std::string &amp;name, Type type, const std::vector&lt; Expr &gt; &amp;extents)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html">Allocation</a> <a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#ab0fdacea90e665af1ea1bf70e6f0b7ab">Halide::Internal::CodeGen_Posix::create_allocation</a> </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_halide_1_1_type.html">Type</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>extents</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

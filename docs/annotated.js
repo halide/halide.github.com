@@ -57,7 +57,6 @@ var annotated =
     [ "Halide::Internal::Interval", "struct_halide_1_1_internal_1_1_interval.html", "struct_halide_1_1_internal_1_1_interval" ],
     [ "Halide::Internal::IntImm", "struct_halide_1_1_internal_1_1_int_imm.html", "struct_halide_1_1_internal_1_1_int_imm" ],
     [ "Halide::Internal::IntrusivePtr< T >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", "struct_halide_1_1_internal_1_1_intrusive_ptr" ],
-    [ "Halide::Internal::IRDeepVisitor", "class_halide_1_1_internal_1_1_i_r_deep_visitor.html", "class_halide_1_1_internal_1_1_i_r_deep_visitor" ],
     [ "Halide::Internal::IRGraphVisitor", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html", "class_halide_1_1_internal_1_1_i_r_graph_visitor" ],
     [ "Halide::Internal::IRHandle", "struct_halide_1_1_internal_1_1_i_r_handle.html", "struct_halide_1_1_internal_1_1_i_r_handle" ],
     [ "Halide::Internal::IRMutator", "class_halide_1_1_internal_1_1_i_r_mutator.html", "class_halide_1_1_internal_1_1_i_r_mutator" ],
@@ -121,5 +120,6 @@ var annotated =
     [ "Halide::Tuple", "class_halide_1_1_tuple.html", "class_halide_1_1_tuple" ],
     [ "Halide::Type", "struct_halide_1_1_type.html", "struct_halide_1_1_type" ],
     [ "Halide::Var", "class_halide_1_1_var.html", "class_halide_1_1_var" ],
-    [ "Halide::VarOrRVar", "struct_halide_1_1_var_or_r_var.html", "struct_halide_1_1_var_or_r_var" ]
+    [ "Halide::VarOrRVar", "struct_halide_1_1_var_or_r_var.html", "struct_halide_1_1_var_or_r_var" ],
+    [ "halide_trace_event", "structhalide__trace__event.html", "structhalide__trace__event" ]
 ];

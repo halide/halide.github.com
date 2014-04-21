@@ -1,6 +1,6 @@
 var class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev =
 [
-    [ "CodeGen_SPIR_Dev", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#acaf9f73666c63c74561eb9c03c49693c", null ],
+    [ "CodeGen_SPIR_Dev", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aa766e1c90b4532ae2efd9333ff924b5c", null ],
     [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#ab24a7cc14722cf7d58bb01f42d01f969", null ],
     [ "init_module", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aa9316e0fd69c9a8a418668d249469041", null ],
     [ "test", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aab874558825f5f129bb1ed96b60a4bc2", null ],
@@ -19,5 +19,6 @@ var class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev =
     [ "CodeGen_GPU_Host< CodeGen_X86 >", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#a391f8c9d42190f817741aeb59956675e", null ],
     [ "CodeGen_GPU_Host< CodeGen_ARM >", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#a5934a30a1931369ddc58082e4286ef0b", null ],
     [ "entry_block", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#a038cd39505024b6ff0630796a36f21bc", null ],
-    [ "bits", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aab102b2b1850c6b693702618af410212", null ]
+    [ "bits", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aab102b2b1850c6b693702618af410212", null ],
+    [ "shared_mem", "class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#a332e51d9e409b00a76d13d934dcddb11", null ]
 ];

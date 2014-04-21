@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -203,65 +204,74 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00102"></a>00102                                     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> bytes_per_element);
 <a name="l00103"></a>00103 
 <a name="l00104"></a>00104 
-<a name="l00105"></a><a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6a2cbd3048c959f6d8def944097d8e21c9">00105</a> <span class="keyword">enum</span> <a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6">halide_trace_event_t</a> {<a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6a2cbd3048c959f6d8def944097d8e21c9">halide_trace_load</a> = 0,
-<a name="l00106"></a><a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6a57b32d087e0862bd6ba748ce7743a851">00106</a>                            <a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6a57b32d087e0862bd6ba748ce7743a851">halide_trace_store</a> = 1,
-<a name="l00107"></a><a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6ad8657c19f6b2b9cc79fa3a438f39687b">00107</a>                            <a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6ad8657c19f6b2b9cc79fa3a438f39687b">halide_trace_begin_realization</a> = 2,
-<a name="l00108"></a><a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6acb0bdc3e4044609ab7fae05b921595ab">00108</a>                            <a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6acb0bdc3e4044609ab7fae05b921595ab">halide_trace_end_realization</a> = 3,
-<a name="l00109"></a><a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6ac4047c93cd032261e8373e38944bf7a1">00109</a>                            <a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6ac4047c93cd032261e8373e38944bf7a1">halide_trace_produce</a> = 4,
-<a name="l00110"></a><a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6a19c97ad2b3f68b3393eba6e48f8f828d">00110</a>                            <a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6a19c97ad2b3f68b3393eba6e48f8f828d">halide_trace_update</a> = 5,
-<a name="l00111"></a><a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6a0dac17982d8ef6c404f94e5b7dd4de54">00111</a>                            <a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6a0dac17982d8ef6c404f94e5b7dd4de54">halide_trace_consume</a> = 6,
-<a name="l00112"></a><a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6ac98849a734841652345dc3d37660c136">00112</a>                            <a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6ac98849a734841652345dc3d37660c136">halide_trace_end_consume</a> = 7};
-<a name="l00113"></a>00113 <span class="comment"></span>
-<a name="l00114"></a>00114 <span class="comment">/** Called when Funcs are marked as trace_load, trace_store, or</span>
-<a name="l00115"></a>00115 <span class="comment"> * trace_realization. See Func::set_custom_trace. The default</span>
-<a name="l00116"></a>00116 <span class="comment"> * implementation either prints events via halide_printf, or if</span>
-<a name="l00117"></a>00117 <span class="comment"> * HL_TRACE_FILE is defined, dumps the trace to that file in a</span>
-<a name="l00118"></a>00118 <span class="comment"> * yet-to-be-documented binary format (see src/runtime/tracing.cpp to</span>
-<a name="l00119"></a>00119 <span class="comment"> * reverse engineer the format). If the trace is going to be large,</span>
-<a name="l00120"></a>00120 <span class="comment"> * you may want to make the file a named pipe, and then read from that</span>
-<a name="l00121"></a>00121 <span class="comment"> * pipe into gzip.</span>
-<a name="l00122"></a>00122 <span class="comment"> *</span>
-<a name="l00123"></a>00123 <span class="comment"> * halide_trace returns a unique ID which will be passed to future</span>
-<a name="l00124"></a>00124 <span class="comment"> * events that &quot;belong&quot; to the earlier event as the parent id. The</span>
-<a name="l00125"></a>00125 <span class="comment"> * ownership hierarchy looks like:</span>
-<a name="l00126"></a>00126 <span class="comment"> *</span>
-<a name="l00127"></a>00127 <span class="comment"> * begin_realization</span>
-<a name="l00128"></a>00128 <span class="comment"> *    produce</span>
-<a name="l00129"></a>00129 <span class="comment"> *      store</span>
-<a name="l00130"></a>00130 <span class="comment"> *      update</span>
-<a name="l00131"></a>00131 <span class="comment"> *      load/store</span>
-<a name="l00132"></a>00132 <span class="comment"> *      consume</span>
-<a name="l00133"></a>00133 <span class="comment"> *      load</span>
-<a name="l00134"></a>00134 <span class="comment"> *      end_consume</span>
-<a name="l00135"></a>00135 <span class="comment"> *    end_realization</span>
-<a name="l00136"></a>00136 <span class="comment"> *</span>
-<a name="l00137"></a>00137 <span class="comment"> * Threading means that ownership cannot be inferred from the ordering</span>
-<a name="l00138"></a>00138 <span class="comment"> * of events. There can be many active realizations of a given</span>
-<a name="l00139"></a>00139 <span class="comment"> * function, or many active productions for a single</span>
-<a name="l00140"></a>00140 <span class="comment"> * realization. Within a single production, the ordering of events is</span>
-<a name="l00141"></a>00141 <span class="comment"> * meaningful.</span>
-<a name="l00142"></a>00142 <span class="comment"> */</span>
-<a name="l00143"></a>00143 <span class="keyword">extern</span> <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="_halide_runtime_8h.html#a4b249f69efd572fdda7ee938f213b4ec" title="Called when Funcs are marked as trace_load, trace_store, or trace_realization.">halide_trace</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">const</span> <span class="keywordtype">char</span> *func,
-<a name="l00144"></a>00144                             <a class="code" href="_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6">halide_trace_event_t</a> event, <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> parent_id,
-<a name="l00145"></a>00145                             <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> type_code, <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> bits, <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> vector_width,
-<a name="l00146"></a>00146                             <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> value_idx, <span class="keywordtype">void</span> *value,
-<a name="l00147"></a>00147                             <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> dimensions, <span class="keyword">const</span> <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> *coordinates);
-<a name="l00148"></a>00148 <span class="comment"></span>
-<a name="l00149"></a>00149 <span class="comment">/** If tracing is writing to a file. This call closes that file</span>
-<a name="l00150"></a>00150 <span class="comment"> * (flushing the trace). Returns zero on success. */</span>
-<a name="l00151"></a>00151 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a618bb97f5d713e1097835a24670948f4" title="If tracing is writing to a file.">halide_shutdown_trace</a>();
-<a name="l00152"></a>00152 <span class="comment"></span>
-<a name="l00153"></a>00153 <span class="comment">/** Set the seed for the random number generator used by</span>
-<a name="l00154"></a>00154 <span class="comment"> * random_float. Also clears all other internal state for the random</span>
-<a name="l00155"></a>00155 <span class="comment"> * number generator. */</span>
-<a name="l00156"></a>00156 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a4efa0faee01db98eea960729470e76f8" title="Set the seed for the random number generator used by random_float.">halide_set_random_seed</a>(<a class="code" href="mini__stdint_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> seed);
-<a name="l00157"></a>00157 
-<a name="l00158"></a>00158 <span class="preprocessor">#ifdef __cplusplus</span>
-<a name="l00159"></a>00159 <span class="preprocessor"></span>} <span class="comment">// End extern &quot;C&quot;</span>
-<a name="l00160"></a>00160 <span class="preprocessor">#endif</span>
-<a name="l00161"></a>00161 <span class="preprocessor"></span>
-<a name="l00162"></a>00162 <span class="preprocessor">#endif // HALIDE_HALIDERUNTIME_H</span>
-<a name="l00163"></a>00163 <span class="preprocessor"></span>
+<a name="l00105"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca2cbd3048c959f6d8def944097d8e21c9">00105</a> <span class="keyword">enum</span> <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7c">halide_trace_event_code</a> {<a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca2cbd3048c959f6d8def944097d8e21c9">halide_trace_load</a> = 0,
+<a name="l00106"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca57b32d087e0862bd6ba748ce7743a851">00106</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca57b32d087e0862bd6ba748ce7743a851">halide_trace_store</a> = 1,
+<a name="l00107"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cad8657c19f6b2b9cc79fa3a438f39687b">00107</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cad8657c19f6b2b9cc79fa3a438f39687b">halide_trace_begin_realization</a> = 2,
+<a name="l00108"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cacb0bdc3e4044609ab7fae05b921595ab">00108</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cacb0bdc3e4044609ab7fae05b921595ab">halide_trace_end_realization</a> = 3,
+<a name="l00109"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cac4047c93cd032261e8373e38944bf7a1">00109</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cac4047c93cd032261e8373e38944bf7a1">halide_trace_produce</a> = 4,
+<a name="l00110"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca19c97ad2b3f68b3393eba6e48f8f828d">00110</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca19c97ad2b3f68b3393eba6e48f8f828d">halide_trace_update</a> = 5,
+<a name="l00111"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca0dac17982d8ef6c404f94e5b7dd4de54">00111</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca0dac17982d8ef6c404f94e5b7dd4de54">halide_trace_consume</a> = 6,
+<a name="l00112"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cac98849a734841652345dc3d37660c136">00112</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cac98849a734841652345dc3d37660c136">halide_trace_end_consume</a> = 7};
+<a name="l00113"></a>00113 
+<a name="l00114"></a><a class="code" href="structhalide__trace__event.html">00114</a> <span class="keyword">struct </span><a class="code" href="structhalide__trace__event.html">halide_trace_event</a> {
+<a name="l00115"></a><a class="code" href="structhalide__trace__event.html#a2de75a001c98389e4aaaba6925c74a67">00115</a>     <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structhalide__trace__event.html#a2de75a001c98389e4aaaba6925c74a67">func</a>;
+<a name="l00116"></a><a class="code" href="structhalide__trace__event.html#ac6501488fa8ef8f6a7fab582f07bee41">00116</a>     <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7c">halide_trace_event_code</a> <a class="code" href="structhalide__trace__event.html#ac6501488fa8ef8f6a7fab582f07bee41">event</a>;
+<a name="l00117"></a><a class="code" href="structhalide__trace__event.html#a34e290a904566e28bf97cb99a557c0ff">00117</a>     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="structhalide__trace__event.html#a34e290a904566e28bf97cb99a557c0ff">parent_id</a>;
+<a name="l00118"></a><a class="code" href="structhalide__trace__event.html#ad50f9e35d3cbdf066deb79ec20a17654">00118</a>     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="structhalide__trace__event.html#ad50f9e35d3cbdf066deb79ec20a17654">type_code</a>;
+<a name="l00119"></a><a class="code" href="structhalide__trace__event.html#ae85b0edbd9810d1f955a4b2aece6dd29">00119</a>     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="structhalide__trace__event.html#ae85b0edbd9810d1f955a4b2aece6dd29">bits</a>;
+<a name="l00120"></a><a class="code" href="structhalide__trace__event.html#a6bc98b83bbc46606a213213e1a8800c3">00120</a>     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="structhalide__trace__event.html#a6bc98b83bbc46606a213213e1a8800c3">vector_width</a>;
+<a name="l00121"></a><a class="code" href="structhalide__trace__event.html#aaff717b019e6647cee094b0eb58e6f07">00121</a>     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="structhalide__trace__event.html#aaff717b019e6647cee094b0eb58e6f07">value_index</a>;
+<a name="l00122"></a><a class="code" href="structhalide__trace__event.html#a3a9495fa94defa0fae78863793302813">00122</a>     <span class="keywordtype">void</span> *<a class="code" href="structhalide__trace__event.html#a3a9495fa94defa0fae78863793302813">value</a>;
+<a name="l00123"></a><a class="code" href="structhalide__trace__event.html#ac49e0636ffa608490180934375611f36">00123</a>     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="structhalide__trace__event.html#ac49e0636ffa608490180934375611f36">dimensions</a>;
+<a name="l00124"></a><a class="code" href="structhalide__trace__event.html#af241adbbb843e6345ac4247b77efaa66">00124</a>     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> *<a class="code" href="structhalide__trace__event.html#af241adbbb843e6345ac4247b77efaa66">coordinates</a>;
+<a name="l00125"></a>00125 };
+<a name="l00126"></a>00126 <span class="comment"></span>
+<a name="l00127"></a>00127 <span class="comment">/** Called when Funcs are marked as trace_load, trace_store, or</span>
+<a name="l00128"></a>00128 <span class="comment"> * trace_realization. See Func::set_custom_trace. The default</span>
+<a name="l00129"></a>00129 <span class="comment"> * implementation either prints events via halide_printf, or if</span>
+<a name="l00130"></a>00130 <span class="comment"> * HL_TRACE_FILE is defined, dumps the trace to that file in a</span>
+<a name="l00131"></a>00131 <span class="comment"> * yet-to-be-documented binary format (see src/runtime/tracing.cpp to</span>
+<a name="l00132"></a>00132 <span class="comment"> * reverse engineer the format). If the trace is going to be large,</span>
+<a name="l00133"></a>00133 <span class="comment"> * you may want to make the file a named pipe, and then read from that</span>
+<a name="l00134"></a>00134 <span class="comment"> * pipe into gzip.</span>
+<a name="l00135"></a>00135 <span class="comment"> *</span>
+<a name="l00136"></a>00136 <span class="comment"> * halide_trace returns a unique ID which will be passed to future</span>
+<a name="l00137"></a>00137 <span class="comment"> * events that &quot;belong&quot; to the earlier event as the parent id. The</span>
+<a name="l00138"></a>00138 <span class="comment"> * ownership hierarchy looks like:</span>
+<a name="l00139"></a>00139 <span class="comment"> *</span>
+<a name="l00140"></a>00140 <span class="comment"> * begin_realization</span>
+<a name="l00141"></a>00141 <span class="comment"> *    produce</span>
+<a name="l00142"></a>00142 <span class="comment"> *      store</span>
+<a name="l00143"></a>00143 <span class="comment"> *      update</span>
+<a name="l00144"></a>00144 <span class="comment"> *      load/store</span>
+<a name="l00145"></a>00145 <span class="comment"> *      consume</span>
+<a name="l00146"></a>00146 <span class="comment"> *      load</span>
+<a name="l00147"></a>00147 <span class="comment"> *      end_consume</span>
+<a name="l00148"></a>00148 <span class="comment"> *    end_realization</span>
+<a name="l00149"></a>00149 <span class="comment"> *</span>
+<a name="l00150"></a>00150 <span class="comment"> * Threading means that ownership cannot be inferred from the ordering</span>
+<a name="l00151"></a>00151 <span class="comment"> * of events. There can be many active realizations of a given</span>
+<a name="l00152"></a>00152 <span class="comment"> * function, or many active productions for a single</span>
+<a name="l00153"></a>00153 <span class="comment"> * realization. Within a single production, the ordering of events is</span>
+<a name="l00154"></a>00154 <span class="comment"> * meaningful.</span>
+<a name="l00155"></a>00155 <span class="comment"> */</span>
+<a name="l00156"></a>00156 <span class="keyword">extern</span> <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="_halide_runtime_8h.html#a15078a46b8fe517dcfdd26acadd2293a" title="Called when Funcs are marked as trace_load, trace_store, or trace_realization.">halide_trace</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">const</span> <a class="code" href="structhalide__trace__event.html">halide_trace_event</a> *event);
+<a name="l00157"></a>00157 <span class="comment"></span>
+<a name="l00158"></a>00158 <span class="comment">/** If tracing is writing to a file. This call closes that file</span>
+<a name="l00159"></a>00159 <span class="comment"> * (flushing the trace). Returns zero on success. */</span>
+<a name="l00160"></a>00160 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a618bb97f5d713e1097835a24670948f4" title="If tracing is writing to a file.">halide_shutdown_trace</a>();
+<a name="l00161"></a>00161 <span class="comment"></span>
+<a name="l00162"></a>00162 <span class="comment">/** Set the seed for the random number generator used by</span>
+<a name="l00163"></a>00163 <span class="comment"> * random_float. Also clears all other internal state for the random</span>
+<a name="l00164"></a>00164 <span class="comment"> * number generator. */</span>
+<a name="l00165"></a>00165 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a4efa0faee01db98eea960729470e76f8" title="Set the seed for the random number generator used by random_float.">halide_set_random_seed</a>(<a class="code" href="mini__stdint_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> seed);
+<a name="l00166"></a>00166 
+<a name="l00167"></a>00167 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00168"></a>00168 <span class="preprocessor"></span>} <span class="comment">// End extern &quot;C&quot;</span>
+<a name="l00169"></a>00169 <span class="preprocessor">#endif</span>
+<a name="l00170"></a>00170 <span class="preprocessor"></span>
+<a name="l00171"></a>00171 <span class="preprocessor">#endif // HALIDE_HALIDERUNTIME_H</span>
+<a name="l00172"></a>00172 <span class="preprocessor"></span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

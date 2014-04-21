@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -117,7 +118,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00016"></a>00016 <span class="comment"></span>
 <a name="l00017"></a>00017 <span class="comment">    /** Create an posix code generator. Processor features can be</span>
 <a name="l00018"></a>00018 <span class="comment">     * enabled using the appropriate arguments */</span>
-<a name="l00019"></a>00019     <a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a047b672fcdd697cbcfcb168a8d851f24" title="Create an posix code generator.">CodeGen_Posix</a>();
+<a name="l00019"></a>00019     <a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a1f25ad535f29b1ea889f64d28dbd2f65" title="Create an posix code generator.">CodeGen_Posix</a>(<a class="code" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for.">Target</a> t);
 <a name="l00020"></a>00020 
 <a name="l00021"></a>00021 <span class="keyword">protected</span>:
 <a name="l00022"></a>00022 <span class="comment"></span>
@@ -173,43 +174,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00072"></a>00072 <span class="comment">     * we enter a new function. */</span>
 <a name="l00073"></a><a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#ad4225e6bea8519d4455fdcb2125fb6a4">00073</a>     <a class="code" href="class_halide_1_1_internal_1_1_scope.html">Scope&lt;Allocation&gt;</a> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#ad4225e6bea8519d4455fdcb2125fb6a4" title="The allocations currently in scope.">allocations</a>;
 <a name="l00074"></a>00074 <span class="comment"></span>
-<a name="l00075"></a>00075 <span class="comment">    /** Allocates some memory on either the stack or the heap, and</span>
-<a name="l00076"></a>00076 <span class="comment">     * returns an Allocation object describing it. For heap</span>
-<a name="l00077"></a>00077 <span class="comment">     * allocations this calls halide_malloc in the runtime, and for</span>
-<a name="l00078"></a>00078 <span class="comment">     * stack allocations it either reuses an existing block from the</span>
-<a name="l00079"></a>00079 <span class="comment">     * free_stack_blocks list, or it saves the stack pointer and calls</span>
-<a name="l00080"></a>00080 <span class="comment">     * alloca.</span>
-<a name="l00081"></a>00081 <span class="comment">     *</span>
-<a name="l00082"></a>00082 <span class="comment">     * This call returns the allocation, pushes it onto the</span>
-<a name="l00083"></a>00083 <span class="comment">     * &#39;allocations&#39; map, and adds an entry to the symbol table called</span>
-<a name="l00084"></a>00084 <span class="comment">     * name.host that provides the base pointer.</span>
-<a name="l00085"></a>00085 <span class="comment">     *</span>
-<a name="l00086"></a>00086 <span class="comment">     * When the allocation can be freed call &#39;free_allocation&#39;, and</span>
-<a name="l00087"></a>00087 <span class="comment">     * when it goes out of scope call &#39;destroy_allocation&#39;. */</span>
-<a name="l00088"></a>00088     <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html" title="A struct describing heap or stack allocations.">Allocation</a> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#ad8d8be73d73ec6f66de4d2defe3aca4e" title="Allocates some memory on either the stack or the heap, and returns an Allocation object describing it...">create_allocation</a>(<span class="keyword">const</span> std::string &amp;name, <a class="code" href="struct_halide_1_1_type.html" title="Types in the halide type system.">Type</a> type, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> size);
-<a name="l00089"></a>00089 <span class="comment"></span>
-<a name="l00090"></a>00090 <span class="comment">    /** Free the memory backing an allocation and pop it from the</span>
-<a name="l00091"></a>00091 <span class="comment">     * symbol table and the allocations map. For heap allocations it</span>
-<a name="l00092"></a>00092 <span class="comment">     * calls halide_free in the runtime, for stack allocations it</span>
-<a name="l00093"></a>00093 <span class="comment">     * marks the block as free so it can be reused. */</span>
-<a name="l00094"></a>00094     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a92e3e22d95a53fc5f4da3d10e147931e" title="Free the memory backing an allocation and pop it from the symbol table and the allocations map...">free_allocation</a>(<span class="keyword">const</span> std::string &amp;name);
+<a name="l00075"></a>00075 <span class="comment">    /** Generates code for computing the size of an allocation from a</span>
+<a name="l00076"></a>00076 <span class="comment">     * list of its extents and its size. Fires a runtime assert</span>
+<a name="l00077"></a>00077 <span class="comment">     * (halide_error) if the size overflows 2^31 -1, the maximum</span>
+<a name="l00078"></a>00078 <span class="comment">     * positive number an int32_t can hold. */</span>
+<a name="l00079"></a>00079     llvm::Value *<a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a61b8cef48ed4b961316e858d1f4fb270" title="Generates code for computing the size of an allocation from a list of its extents and its size...">codegen_allocation_size</a>(<span class="keyword">const</span> std::string &amp;name, <a class="code" href="struct_halide_1_1_type.html" title="Types in the halide type system.">Type</a> type, <span class="keyword">const</span> std::vector&lt;Expr&gt; &amp;extents);
+<a name="l00080"></a>00080 <span class="comment"></span>
+<a name="l00081"></a>00081 <span class="comment">    /** Allocates some memory on either the stack or the heap, and</span>
+<a name="l00082"></a>00082 <span class="comment">     * returns an Allocation object describing it. For heap</span>
+<a name="l00083"></a>00083 <span class="comment">     * allocations this calls halide_malloc in the runtime, and for</span>
+<a name="l00084"></a>00084 <span class="comment">     * stack allocations it either reuses an existing block from the</span>
+<a name="l00085"></a>00085 <span class="comment">     * free_stack_blocks list, or it saves the stack pointer and calls</span>
+<a name="l00086"></a>00086 <span class="comment">     * alloca.</span>
+<a name="l00087"></a>00087 <span class="comment">     *</span>
+<a name="l00088"></a>00088 <span class="comment">     * This call returns the allocation, pushes it onto the</span>
+<a name="l00089"></a>00089 <span class="comment">     * &#39;allocations&#39; map, and adds an entry to the symbol table called</span>
+<a name="l00090"></a>00090 <span class="comment">     * name.host that provides the base pointer.</span>
+<a name="l00091"></a>00091 <span class="comment">     *</span>
+<a name="l00092"></a>00092 <span class="comment">     * When the allocation can be freed call &#39;free_allocation&#39;, and</span>
+<a name="l00093"></a>00093 <span class="comment">     * when it goes out of scope call &#39;destroy_allocation&#39;. */</span>
+<a name="l00094"></a>00094     <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html" title="A struct describing heap or stack allocations.">Allocation</a> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#ab0fdacea90e665af1ea1bf70e6f0b7ab" title="Allocates some memory on either the stack or the heap, and returns an Allocation object describing it...">create_allocation</a>(<span class="keyword">const</span> std::string &amp;name, <a class="code" href="struct_halide_1_1_type.html" title="Types in the halide type system.">Type</a> type, <span class="keyword">const</span> std::vector&lt;Expr&gt; &amp;extents);
 <a name="l00095"></a>00095 <span class="comment"></span>
-<a name="l00096"></a>00096 <span class="comment">    /** Call this when an allocation goes out of scope. Does nothing</span>
-<a name="l00097"></a>00097 <span class="comment">     * for heap allocations. For stack allocations, it restores the</span>
-<a name="l00098"></a>00098 <span class="comment">     * stack removes the entry from the free_stack_blocks list. */</span>
-<a name="l00099"></a>00099     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a5bdb7dae1a6cdfbc12e136b509dfc084" title="Call this when an allocation goes out of scope.">destroy_allocation</a>(<a class="code" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html" title="A struct describing heap or stack allocations.">Allocation</a> alloc);
-<a name="l00100"></a>00100 <span class="comment"></span>
-<a name="l00101"></a>00101 <span class="comment">    /** Free all heap allocations in scope. */</span>
-<a name="l00102"></a>00102     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#ab0ea164e06077ece2b8bbb1d05d29242" title="Free all heap allocations in scope.">prepare_for_early_exit</a>();
-<a name="l00103"></a>00103 <span class="comment"></span>
-<a name="l00104"></a>00104 <span class="comment">    /** Initialize the CodeGen internal state to compile a fresh module */</span>
-<a name="l00105"></a>00105     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#abaec3486bac1b472832dafb86c3589f4" title="Initialize the CodeGen internal state to compile a fresh module.">init_module</a>();
-<a name="l00106"></a>00106 
-<a name="l00107"></a>00107 };
-<a name="l00108"></a>00108 
-<a name="l00109"></a>00109 }}
-<a name="l00110"></a>00110 
-<a name="l00111"></a>00111 <span class="preprocessor">#endif</span>
+<a name="l00096"></a>00096 <span class="comment">    /** Free the memory backing an allocation and pop it from the</span>
+<a name="l00097"></a>00097 <span class="comment">     * symbol table and the allocations map. For heap allocations it</span>
+<a name="l00098"></a>00098 <span class="comment">     * calls halide_free in the runtime, for stack allocations it</span>
+<a name="l00099"></a>00099 <span class="comment">     * marks the block as free so it can be reused. */</span>
+<a name="l00100"></a>00100     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a92e3e22d95a53fc5f4da3d10e147931e" title="Free the memory backing an allocation and pop it from the symbol table and the allocations map...">free_allocation</a>(<span class="keyword">const</span> std::string &amp;name);
+<a name="l00101"></a>00101 <span class="comment"></span>
+<a name="l00102"></a>00102 <span class="comment">    /** Call this when an allocation goes out of scope. Does nothing</span>
+<a name="l00103"></a>00103 <span class="comment">     * for heap allocations. For stack allocations, it restores the</span>
+<a name="l00104"></a>00104 <span class="comment">     * stack removes the entry from the free_stack_blocks list. */</span>
+<a name="l00105"></a>00105     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a5bdb7dae1a6cdfbc12e136b509dfc084" title="Call this when an allocation goes out of scope.">destroy_allocation</a>(<a class="code" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html" title="A struct describing heap or stack allocations.">Allocation</a> alloc);
+<a name="l00106"></a>00106 <span class="comment"></span>
+<a name="l00107"></a>00107 <span class="comment">    /** Free all heap allocations in scope. */</span>
+<a name="l00108"></a>00108     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#ab0ea164e06077ece2b8bbb1d05d29242" title="Free all heap allocations in scope.">prepare_for_early_exit</a>();
+<a name="l00109"></a>00109 <span class="comment"></span>
+<a name="l00110"></a>00110 <span class="comment">    /** Initialize the CodeGen internal state to compile a fresh module */</span>
+<a name="l00111"></a>00111     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___posix.html#abaec3486bac1b472832dafb86c3589f4" title="Initialize the CodeGen internal state to compile a fresh module.">init_module</a>();
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113 };
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115 }}
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

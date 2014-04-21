@@ -12,8 +12,9 @@ var searchData=
   ['table_5fu16',['table_u16',['../namespace_halide_1_1_internal_1_1_integer_division.html#a6540d7aca556468809968b78f45ebd0c',1,'Halide::Internal::IntegerDivision']]],
   ['table_5fu32',['table_u32',['../namespace_halide_1_1_internal_1_1_integer_division.html#a6c8b50a1e2e7796e611c69979f211029',1,'Halide::Internal::IntegerDivision']]],
   ['table_5fu8',['table_u8',['../namespace_halide_1_1_internal_1_1_integer_division.html#a6d3b2f001f3e884a46cd1677149bd3c1',1,'Halide::Internal::IntegerDivision']]],
-  ['target',['target',['../class_halide_1_1_internal_1_1_code_gen___a_r_m.html#aeb59e709e943e6d5e8bf652b214bac35',1,'Halide::Internal::CodeGen_ARM::target()'],['../class_halide_1_1_internal_1_1_code_gen___p_na_cl.html#a6fef4208f1db86e2012482296fc30cf9',1,'Halide::Internal::CodeGen_PNaCl::target()'],['../class_halide_1_1_internal_1_1_code_gen___x86.html#abca76d9d2de60c64a17d3a496ba69177',1,'Halide::Internal::CodeGen_X86::target()']]],
+  ['target',['target',['../class_halide_1_1_internal_1_1_code_gen.html#a3d4c8b79e5049a84825fa501ef5b0033',1,'Halide::Internal::CodeGen']]],
   ['then_5fcase',['then_case',['../struct_halide_1_1_internal_1_1_if_then_else.html#afd7147872ed18ea25fbe121ce98a2230',1,'Halide::Internal::IfThenElse']]],
+  ['touched',['touched',['../struct_halide_1_1_internal_1_1_schedule.html#a1f4d76d2f9e7ff8cdad019fe2ba5d705',1,'Halide::Internal::Schedule']]],
   ['trace',['trace',['../struct_halide_1_1_internal_1_1_call.html#a8f411296099667c9e73881bc434c0988',1,'Halide::Internal::Call']]],
   ['trace_5fexpr',['trace_expr',['../struct_halide_1_1_internal_1_1_call.html#a93117cbad3079bb82f598b77c3156551',1,'Halide::Internal::Call']]],
   ['trace_5floads',['trace_loads',['../struct_halide_1_1_internal_1_1_function_contents.html#ad3ecdd78c0b1eaac898d3bd8281d8b9a',1,'Halide::Internal::FunctionContents']]],
@@ -22,5 +23,6 @@ var searchData=
   ['track_5fbuffers',['track_buffers',['../class_halide_1_1_internal_1_1_closure.html#acffc618e3e939b3d2e8d3346dec13107',1,'Halide::Internal::Closure']]],
   ['true_5fvalue',['true_value',['../struct_halide_1_1_internal_1_1_select.html#a966ea8086aa9156c1c33824bf4256663',1,'Halide::Internal::Select']]],
   ['type',['type',['../struct_halide_1_1_argument.html#a9925e7e005656e871852cdc3ba38dfaa',1,'Halide::Argument::type()'],['../struct_halide_1_1_internal_1_1_buffer_contents.html#aea6107232f14e3fc85e651a7d844b469',1,'Halide::Internal::BufferContents::type()'],['../struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html#ab3751ce7ada89b059b38c8bc9186a2b6',1,'Halide::Internal::CodeGen_ARM::Pattern::type()'],['../struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#a0aec0fb1df9c8aeb90546d48253f37b8',1,'Halide::Internal::Closure::BufferRef::type()'],['../struct_halide_1_1_internal_1_1_base_expr_node.html#a212955abd6ec17b988f6a5e2f4887441',1,'Halide::Internal::BaseExprNode::type()'],['../struct_halide_1_1_internal_1_1_allocate.html#a016f5daa1cd3d6eb957214989e9ece22',1,'Halide::Internal::Allocate::type()'],['../struct_halide_1_1_internal_1_1_parameter_contents.html#aaf20d271022fc5a0e76288826d99d6f5',1,'Halide::Internal::ParameterContents::type()']]],
+  ['type_5fcode',['type_code',['../structhalide__trace__event.html#ad50f9e35d3cbdf066deb79ec20a17654',1,'halide_trace_event']]],
   ['types',['types',['../struct_halide_1_1_internal_1_1_realize.html#a672142fa600fe7d5027b4a6f32cbb727',1,'Halide::Internal::Realize']]]
 ];

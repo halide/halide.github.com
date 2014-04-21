@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -124,7 +125,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00023"></a><a class="code" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#a5934a30a1931369ddc58082e4286ef0b">00023</a>     <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html" title="A code generator that emits GPU code from a given Halide stmt.">CodeGen_GPU_Host</a>&lt;<a class="code" href="class_halide_1_1_internal_1_1_code_gen___a_r_m.html" title="A code generator that emits ARM code from a given Halide stmt.">CodeGen_ARM</a>&gt;;
 <a name="l00024"></a>00024 <span class="comment"></span>
 <a name="l00025"></a>00025 <span class="comment">    /** Create a SPIR device code generator. */</span>
-<a name="l00026"></a>00026     <a class="code" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#acaf9f73666c63c74561eb9c03c49693c" title="Create a SPIR device code generator.">CodeGen_SPIR_Dev</a>(<span class="keywordtype">int</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aab102b2b1850c6b693702618af410212" title="Remmeber the requested bitness for the generated code.">bits</a>);
+<a name="l00026"></a>00026     <a class="code" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aa766e1c90b4532ae2efd9333ff924b5c" title="Create a SPIR device code generator.">CodeGen_SPIR_Dev</a>(<a class="code" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for.">Target</a> host, <span class="keywordtype">int</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aab102b2b1850c6b693702618af410212" title="Remmeber the requested bitness for the generated code.">bits</a>);
 <a name="l00027"></a>00027 
 <a name="l00028"></a>00028     <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#ab24a7cc14722cf7d58bb01f42d01f969" title="Compile a GPU kernel into the module.">add_kernel</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> stmt, std::string name, <span class="keyword">const</span> std::vector&lt;Argument&gt; &amp;args);
 <a name="l00029"></a>00029 <span class="comment"></span>
@@ -166,11 +167,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00065"></a>00065 <span class="comment">    /** Map from simt variable names (e.g. foo.blockidx) to the llvm</span>
 <a name="l00066"></a>00066 <span class="comment">     * SPIR intrinsic functions to call to get them. */</span>
 <a name="l00067"></a>00067     std::string <a class="code" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#af5df52750093295f6f726f5a44f2e5e7" title="Map from simt variable names (e.g.">simt_intrinsic</a>(<span class="keyword">const</span> std::string &amp;name);
-<a name="l00068"></a>00068 };
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070 }}
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072 <span class="preprocessor">#endif</span>
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069     <span class="comment">/* The pointer to the beginning of shared memory */</span>
+<a name="l00070"></a><a class="code" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#a332e51d9e409b00a76d13d934dcddb11">00070</a>     llvm::Value *<a class="code" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#a332e51d9e409b00a76d13d934dcddb11">shared_mem</a>;
+<a name="l00071"></a>00071 };
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 }}
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -205,7 +206,8 @@ Public Attributes</h2></td></tr>
 </pre></div><p>When you mix reduction variables and pure dimensions, the reduction domain is traversed outermost. That is, for each point in the reduction domain, the inferred pure domain is traversed in its entirety. For the above example, this means that sum_x walks down the columns, and sum_y walks along the rows. This may not be cache-coherent, but you may not reorder these dimensions using the schedule, as it risks changing the meaning of your function (even though it doesn't in this case). The solution lies in clever scheduling. If we say:</p>
 <div class="fragment"><pre class="fragment"> sum_x.compute_at(sum_y, r.y);
 </pre></div><p>Then the sum in x is computed only as necessary for each scanline of the sum in y. This not only results in sum_x walking along the rows, it also improves the locality of the entire pipeline. </p>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#_a6">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
+</dl>
 <p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00164">164</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a3342100b45875bf3014a119d9a1c36c6"></a><!-- doxytag: member="Halide::RDom::RDom" ref="a3342100b45875bf3014a119d9a1c36c6" args="()" -->
@@ -656,7 +658,8 @@ Public Attributes</h2></td></tr>
 
 <p>Direct access to the four dimensions of the reduction domain. </p>
 <p>Some of these dimensions may be undefined if the reduction domain has fewer than four dimensions. </p>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a18">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
+</dl>
 <p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00225">225</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 </div>
@@ -674,7 +677,8 @@ Public Attributes</h2></td></tr>
 
 <p>Direct access to the four dimensions of the reduction domain. </p>
 <p>Some of these dimensions may be undefined if the reduction domain has fewer than four dimensions. </p>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a19">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
+</dl>
 <p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00225">225</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 </div>

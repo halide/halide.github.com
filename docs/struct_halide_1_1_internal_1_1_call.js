@@ -21,6 +21,7 @@ var struct_halide_1_1_internal_1_1_call =
     [ "abs", "struct_halide_1_1_internal_1_1_call.html#a83dd4c267de657d72ffc7be117edf3c9", null ],
     [ "rewrite_buffer", "struct_halide_1_1_internal_1_1_call.html#ae875475399998be0863d749c804a175a", null ],
     [ "profiling_timer", "struct_halide_1_1_internal_1_1_call.html#a9fcc134284529a164250ed52003bcc39", null ],
+    [ "random", "struct_halide_1_1_internal_1_1_call.html#ab7e212aa048072aa2ea03a35f985bba1", null ],
     [ "lerp", "struct_halide_1_1_internal_1_1_call.html#ae0016b554304a6fdbd81c92ed1f0b2c3", null ],
     [ "create_buffer_t", "struct_halide_1_1_internal_1_1_call.html#acbaa4ff8c3c80d19a4e8e2b548da4252", null ],
     [ "extract_buffer_min", "struct_halide_1_1_internal_1_1_call.html#a6df22fe105bfba3bf36b2e40b39dc39b", null ],

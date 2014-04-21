@@ -12,6 +12,5 @@ var class_halide_1_1_internal_1_1_code_gen___x86 =
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#ab10e1f577093a90d618010963fc37b27", null ],
     [ "mcpu", "class_halide_1_1_internal_1_1_code_gen___x86.html#a63d6d3f74f90936279977999aa216544", null ],
     [ "mattrs", "class_halide_1_1_internal_1_1_code_gen___x86.html#a84f21b8067ee4bf1315e6eeabeffd8f9", null ],
-    [ "use_soft_float_abi", "class_halide_1_1_internal_1_1_code_gen___x86.html#ad2875ba4fae79ed07d9fea0062368e84", null ],
-    [ "target", "class_halide_1_1_internal_1_1_code_gen___x86.html#abca76d9d2de60c64a17d3a496ba69177", null ]
+    [ "use_soft_float_abi", "class_halide_1_1_internal_1_1_code_gen___x86.html#ad2875ba4fae79ed07d9fea0062368e84", null ]
 ];

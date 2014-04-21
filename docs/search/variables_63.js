@@ -9,6 +9,7 @@ var searchData=
   ['condition',['condition',['../struct_halide_1_1_internal_1_1_select.html#ab010de141393f75c807cacd0206c6d84',1,'Halide::Internal::Select::condition()'],['../struct_halide_1_1_internal_1_1_assert_stmt.html#abe8dbe9b5b7e3366081c6612009d52cd',1,'Halide::Internal::AssertStmt::condition()'],['../struct_halide_1_1_internal_1_1_if_then_else.html#abe2b238d44d1eac499239197f00d6e5c',1,'Halide::Internal::IfThenElse::condition()']]],
   ['consume',['consume',['../struct_halide_1_1_internal_1_1_pipeline.html#a7f0c758b30e39cd77794b5c91af27633',1,'Halide::Internal::Pipeline']]],
   ['context',['context',['../class_halide_1_1_internal_1_1_code_gen.html#ac6eaa1c4fd154bf91eb88e485196b18e',1,'Halide::Internal::CodeGen']]],
+  ['coordinates',['coordinates',['../structhalide__trace__event.html#af241adbbb843e6345ac4247b77efaa66',1,'halide_trace_event']]],
   ['copy_5fto_5fdev',['copy_to_dev',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab0978451c9cea3eaebccfec7c07ae796',1,'Halide::Internal::JITCompiledModule']]],
   ['copy_5fto_5fdev_5ffn',['copy_to_dev_fn',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#affc35d33859ced6b06bf36af99e5035c',1,'Halide::Internal::CodeGen_GPU_Host']]],
   ['copy_5fto_5fhost',['copy_to_host',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4b819ccf00df54d49ce1476cf996034b',1,'Halide::Internal::JITCompiledModule']]],

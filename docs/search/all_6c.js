@@ -12,6 +12,8 @@ var searchData=
   ['let',['Let',['../struct_halide_1_1_internal_1_1_let.html',1,'Halide::Internal']]],
   ['letstmt',['LetStmt',['../struct_halide_1_1_internal_1_1_let_stmt.html',1,'Halide::Internal']]],
   ['lib_5fcuda_5flinked',['lib_cuda_linked',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ab2a5b5da78a8474c86f9ed38fbdc10ad',1,'Halide::Internal::CodeGen_GPU_Host']]],
+  ['lift_5floop_5finvariants',['lift_loop_invariants',['../namespace_halide_1_1_internal.html#a95f0cfbb7653be4145fe4cedd9a15dfa',1,'Halide::Internal']]],
+  ['liftloopinvariants_2eh',['LiftLoopInvariants.h',['../_lift_loop_invariants_8h.html',1,'']]],
   ['linux',['Linux',['../struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20af58b4735f0d8e76502ef70fe11d548d4',1,'Halide::Target']]],
   ['llvm',['llvm',['../namespacellvm.html',1,'']]],
   ['llvm_5faarch64_5fenabled',['llvm_AArch64_enabled',['../class_halide_1_1_internal_1_1_code_gen.html#aafd3be68334ae2994372e9415e1eb44d',1,'Halide::Internal::CodeGen']]],
@@ -26,9 +28,10 @@ var searchData=
   ['log',['log',['../namespace_halide.html#a02f1c38239e6e977fea90b94217499ae',1,'Halide']]],
   ['looplevel',['LoopLevel',['../struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html',1,'Halide::Internal::Schedule']]],
   ['looplevel',['LoopLevel',['../struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a4f2c141335ef755219d72f5171933596',1,'Halide::Internal::Schedule::LoopLevel::LoopLevel(std::string f, std::string v)'],['../struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a060c46a389ceaeb0f092d4cd36839a18',1,'Halide::Internal::Schedule::LoopLevel::LoopLevel()']]],
-  ['lower',['lower',['../namespace_halide_1_1_internal.html#a0cf146bb38588a04ea0c9491c56c4e11',1,'Halide::Internal']]],
+  ['lower',['lower',['../namespace_halide_1_1_internal.html#a3d53906d81dae46b049456d5430abedd',1,'Halide::Internal']]],
   ['lower_2eh',['Lower.h',['../_lower_8h.html',1,'']]],
   ['lower_5flerp',['lower_lerp',['../namespace_halide_1_1_internal.html#a2c00a579c3d86ae40920d5fc4ffe64cf',1,'Halide::Internal']]],
+  ['lower_5frandom',['lower_random',['../namespace_halide_1_1_internal.html#a0f875bf4d528885d68581fbd198bf356',1,'Halide::Internal']]],
   ['lower_5ftest',['lower_test',['../namespace_halide_1_1_internal.html#a4d3bfe43201bab68cf4820993fe1469b',1,'Halide::Internal']]],
   ['lt',['LT',['../struct_halide_1_1_internal_1_1_l_t.html',1,'Halide::Internal']]]
 ];

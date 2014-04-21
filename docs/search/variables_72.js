@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['random',['random',['../struct_halide_1_1_internal_1_1_call.html#ab7e212aa048072aa2ea03a35f985bba1',1,'Halide::Internal::Call']]],
   ['read',['read',['../struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#ad2b9f8a95df3deeefcabf6d0ed7b1431',1,'Halide::Internal::Closure::BufferRef']]],
   ['reduction_5fdomain',['reduction_domain',['../struct_halide_1_1_internal_1_1_variable.html#a917aa8c1001bfa514588a14ef8fee2b2',1,'Halide::Internal::Variable']]],
   ['reductions',['reductions',['../struct_halide_1_1_internal_1_1_function_contents.html#a17ba322fac7d750493eafaaa32dad72a',1,'Halide::Internal::FunctionContents']]],

@@ -6,7 +6,7 @@ var searchData=
   ['baseexprnode',['BaseExprNode',['../struct_halide_1_1_internal_1_1_base_expr_node.html',1,'Halide::Internal']]],
   ['basestmtnode',['BaseStmtNode',['../struct_halide_1_1_internal_1_1_base_stmt_node.html',1,'Halide::Internal']]],
   ['begin',['begin',['../class_halide_1_1_internal_1_1_scope.html#a463665e9350811b15521004677f0a375',1,'Halide::Internal::Scope']]],
-  ['bits',['bits',['../class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aab102b2b1850c6b693702618af410212',1,'Halide::Internal::CodeGen_SPIR_Dev::bits()'],['../struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32',1,'Halide::Target::bits()'],['../struct_halide_1_1_type.html#a09dbefa9ae420c1a89d6e9d20b014185',1,'Halide::Type::bits()']]],
+  ['bits',['bits',['../class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aab102b2b1850c6b693702618af410212',1,'Halide::Internal::CodeGen_SPIR_Dev::bits()'],['../structhalide__trace__event.html#ae85b0edbd9810d1f955a4b2aece6dd29',1,'halide_trace_event::bits()'],['../struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32',1,'Halide::Target::bits()'],['../struct_halide_1_1_type.html#a09dbefa9ae420c1a89d6e9d20b014185',1,'Halide::Type::bits()']]],
   ['bitwise_5fand',['bitwise_and',['../struct_halide_1_1_internal_1_1_call.html#a9d6e53f401086ad0947c31fa94da3036',1,'Halide::Internal::Call']]],
   ['bitwise_5fnot',['bitwise_not',['../struct_halide_1_1_internal_1_1_call.html#a6bba4d1e9f476fb9d5c5a3e2a17c2d1b',1,'Halide::Internal::Call']]],
   ['bitwise_5for',['bitwise_or',['../struct_halide_1_1_internal_1_1_call.html#a4228ec6ff3537973634756e1f3df5d37',1,'Halide::Internal::Call']]],

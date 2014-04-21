@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['halide_5ftrace_5fevent_5ft',['halide_trace_event_t',['../_halide_runtime_8h.html#a686fa2e7562584ee9272d263f6ca4af6',1,'HalideRuntime.h']]]
+  ['halide_5ftrace_5fevent_5fcode',['halide_trace_event_code',['../_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7c',1,'HalideRuntime.h']]]
 ];

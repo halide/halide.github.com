@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -109,21 +110,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00008"></a>00008 <span class="comment"> */</span>
 <a name="l00009"></a>00009 
 <a name="l00010"></a>00010 <span class="preprocessor">#include &quot;<a class="code" href="_i_r_8h.html" title="Halide expressions (Halide::Expr) and statements (Halide::Internal::Stmt)">IR.h</a>&quot;</span>
-<a name="l00011"></a>00011 
-<a name="l00012"></a>00012 <span class="keyword">namespace </span>Halide {
-<a name="l00013"></a>00013 <span class="keyword">namespace </span>Internal {
-<a name="l00014"></a>00014 <span class="comment"></span>
-<a name="l00015"></a>00015 <span class="comment">/** Given a halide function with a schedule, create a statement that</span>
-<a name="l00016"></a>00016 <span class="comment"> * evaluates it. Automatically pulls in all the functions f depends</span>
-<a name="l00017"></a>00017 <span class="comment"> * on */</span>
-<a name="l00018"></a>00018 Stmt <a class="code" href="namespace_halide_1_1_internal.html#a0cf146bb38588a04ea0c9491c56c4e11" title="Given a halide function with a schedule, create a statement that evaluates it.">lower</a>(Function f);
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020 <span class="keywordtype">void</span> <a class="code" href="namespace_halide_1_1_internal.html#a4d3bfe43201bab68cf4820993fe1469b">lower_test</a>();
-<a name="l00021"></a>00021 
-<a name="l00022"></a>00022 }
+<a name="l00011"></a>00011 <span class="preprocessor">#include &quot;<a class="code" href="_target_8h.html" title="Defines the structure that describes a Halide target.">Target.h</a>&quot;</span>
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 <span class="keyword">namespace </span>Halide {
+<a name="l00014"></a>00014 <span class="keyword">namespace </span>Internal {
+<a name="l00015"></a>00015 <span class="comment"></span>
+<a name="l00016"></a>00016 <span class="comment">/** Given a halide function with a schedule, create a statement that</span>
+<a name="l00017"></a>00017 <span class="comment"> * evaluates it. Automatically pulls in all the functions f depends</span>
+<a name="l00018"></a>00018 <span class="comment"> * on. Some stages of lowering may be target-specific. */</span>
+<a name="l00019"></a>00019 Stmt <a class="code" href="namespace_halide_1_1_internal.html#a3d53906d81dae46b049456d5430abedd" title="Given a halide function with a schedule, create a statement that evaluates it.">lower</a>(Function f, <span class="keyword">const</span> Target &amp;t);
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="keywordtype">void</span> <a class="code" href="namespace_halide_1_1_internal.html#a4d3bfe43201bab68cf4820993fe1469b">lower_test</a>();
+<a name="l00022"></a>00022 
 <a name="l00023"></a>00023 }
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025 <span class="preprocessor">#endif</span>
+<a name="l00024"></a>00024 }
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

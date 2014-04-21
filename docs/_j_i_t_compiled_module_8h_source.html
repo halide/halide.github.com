@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -108,103 +109,109 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00007"></a>00007 
 <a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="_intrusive_ptr_8h.html" title="Support classes for reference-counting via intrusive shared pointers.">IntrusivePtr.h</a>&quot;</span>
 <a name="l00009"></a>00009 
-<a name="l00010"></a>00010 <span class="keyword">namespace </span>llvm {
-<a name="l00011"></a>00011 <span class="keyword">class </span>Module;
-<a name="l00012"></a>00012 }
-<a name="l00013"></a>00013 
-<a name="l00014"></a>00014 <span class="keyword">namespace </span>Halide {
-<a name="l00015"></a>00015 <span class="keyword">namespace </span>Internal {
-<a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="keyword">class </span>JITModuleHolder;
-<a name="l00018"></a>00018 <span class="keyword">class </span>CodeGen;
-<a name="l00019"></a>00019 <span class="comment"></span>
-<a name="l00020"></a>00020 <span class="comment">/** Function pointers into a compiled halide module. These function</span>
-<a name="l00021"></a>00021 <span class="comment"> * pointers are meaningless once the last copy of a JITCompiledModule</span>
-<a name="l00022"></a>00022 <span class="comment"> * is deleted, so don&#39;t cache them. */</span>
-<a name="l00023"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html">00023</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html" title="Function pointers into a compiled halide module.">JITCompiledModule</a> {<span class="comment"></span>
-<a name="l00024"></a>00024 <span class="comment">    /** A pointer to the raw halide function. It&#39;s true type depends</span>
-<a name="l00025"></a>00025 <span class="comment">     * on the Argument vector passed to CodeGen::compile. Image</span>
-<a name="l00026"></a>00026 <span class="comment">     * parameters become (buffer_t *), and scalar parameters become</span>
-<a name="l00027"></a>00027 <span class="comment">     * pointers to the appropriate values. The final argument is a</span>
-<a name="l00028"></a>00028 <span class="comment">     * pointer to the buffer_t defining the output. */</span>
-<a name="l00029"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#abb50869357939bc3d2d064148c3d26e7">00029</a>     <span class="keywordtype">void</span> *<span class="keyword">function</span>;
-<a name="l00030"></a>00030 <span class="comment"></span>
-<a name="l00031"></a>00031 <span class="comment">    /** A slightly more type-safe wrapper around the raw halide</span>
-<a name="l00032"></a>00032 <span class="comment">     * module. Takes it arguments as an array of pointers that</span>
-<a name="l00033"></a>00033 <span class="comment">     * correspond to the arguments to \ref function */</span>
-<a name="l00034"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a944aab2343d1255b8c17216b00985b6e">00034</a>     int (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a944aab2343d1255b8c17216b00985b6e" title="A slightly more type-safe wrapper around the raw halide module.">wrapped_function</a>)(<span class="keyword">const</span> <span class="keywordtype">void</span> **);
-<a name="l00035"></a>00035 <span class="comment"></span>
-<a name="l00036"></a>00036 <span class="comment">    /** JITed helpers to interact with device-mapped buffer_t</span>
-<a name="l00037"></a>00037 <span class="comment">     * objects. These pointers may be NULL if not compiling for a</span>
-<a name="l00038"></a>00038 <span class="comment">     * gpu-like target. */</span>
-<a name="l00039"></a>00039     <span class="comment">// @{</span>
-<a name="l00040"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4b819ccf00df54d49ce1476cf996034b">00040</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4b819ccf00df54d49ce1476cf996034b" title="JITed helpers to interact with device-mapped buffer_t objects.">copy_to_host</a>)(<span class="keywordtype">void</span> *user_context, <span class="keyword">struct </span>buffer_t*);
-<a name="l00041"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab0978451c9cea3eaebccfec7c07ae796">00041</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab0978451c9cea3eaebccfec7c07ae796" title="JITed helpers to interact with device-mapped buffer_t objects.">copy_to_dev</a>)(<span class="keywordtype">void</span> *user_context, <span class="keyword">struct </span>buffer_t*);
-<a name="l00042"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab418302e7c2f972cca33e1be3afe3216">00042</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab418302e7c2f972cca33e1be3afe3216" title="JITed helpers to interact with device-mapped buffer_t objects.">free_dev_buffer</a>)(<span class="keywordtype">void</span> *user_context, <span class="keyword">struct </span>buffer_t*);
-<a name="l00043"></a>00043     <span class="comment">// @}</span>
-<a name="l00044"></a>00044 <span class="comment"></span>
-<a name="l00045"></a>00045 <span class="comment">    /** The type of a halide runtime error handler function */</span>
-<a name="l00046"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#accabc8aeb0680e565022fcf07e0a908f">00046</a>     <span class="keyword">typedef</span> void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#accabc8aeb0680e565022fcf07e0a908f" title="The type of a halide runtime error handler function.">ErrorHandler</a>)(<span class="keywordtype">void</span> *user_context, <span class="keyword">const</span> <span class="keywordtype">char</span> *);
-<a name="l00047"></a>00047 <span class="comment"></span>
-<a name="l00048"></a>00048 <span class="comment">    /** Set the runtime error handler for this module */</span>
-<a name="l00049"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a7ce969a1e9e18d9038cb93bb14f218fc">00049</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a7ce969a1e9e18d9038cb93bb14f218fc" title="Set the runtime error handler for this module.">set_error_handler</a>)(<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#accabc8aeb0680e565022fcf07e0a908f" title="The type of a halide runtime error handler function.">ErrorHandler</a>);
-<a name="l00050"></a>00050 <span class="comment"></span>
-<a name="l00051"></a>00051 <span class="comment">    /** Set a custom malloc and free for this module to use. See</span>
-<a name="l00052"></a>00052 <span class="comment">     * \ref Func::set_custom_allocator */</span>
-<a name="l00053"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a18efcb74c1624c65e85ab10bea1b41a2">00053</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a18efcb74c1624c65e85ab10bea1b41a2" title="Set a custom malloc and free for this module to use.">set_custom_allocator</a>)(<span class="keywordtype">void</span> *(*malloc)(<span class="keywordtype">void</span> *user_context, size_t),
-<a name="l00054"></a>00054                                  <span class="keywordtype">void</span> (*free)(<span class="keywordtype">void</span> *user_context, <span class="keywordtype">void</span> *ptr));
-<a name="l00055"></a>00055 <span class="comment"></span>
-<a name="l00056"></a>00056 <span class="comment">    /** Set a custom parallel for loop launcher. See</span>
-<a name="l00057"></a>00057 <span class="comment">     * \ref Func::set_custom_do_par_for */</span>
-<a name="l00058"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d">00058</a>     <span class="keyword">typedef</span> int (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d" title="Set a custom parallel for loop launcher.">HalideTask</a>)(<span class="keywordtype">void</span> *user_context, int, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *);
-<a name="l00059"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a66f9644df7cc48885ff678afd4a86e70">00059</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a66f9644df7cc48885ff678afd4a86e70">set_custom_do_par_for</a>)(int (*custom_do_par_for)(<span class="keywordtype">void</span> *user_context, <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d" title="Set a custom parallel for loop launcher.">HalideTask</a>,
-<a name="l00060"></a>00060                                                            int, int, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *));
-<a name="l00061"></a>00061 <span class="comment"></span>
-<a name="l00062"></a>00062 <span class="comment">    /** Set a custom do parallel task. See</span>
-<a name="l00063"></a>00063 <span class="comment">     * \ref Func::set_custom_do_task */</span>
-<a name="l00064"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a2d8aaa9a0e12703fc8b54daea6ff2e02">00064</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a2d8aaa9a0e12703fc8b54daea6ff2e02" title="Set a custom do parallel task.">set_custom_do_task</a>)(int (*custom_do_task)(<span class="keywordtype">void</span> *user_context, <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d" title="Set a custom parallel for loop launcher.">HalideTask</a>,
-<a name="l00065"></a>00065                                                      int, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *));
-<a name="l00066"></a>00066 <span class="comment"></span>
-<a name="l00067"></a>00067 <span class="comment">    /** Set a custom trace function. See \ref Func::set_custom_trace. */</span>
-<a name="l00068"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a9bab1c63490999f1e02e62bce0a82af7">00068</a>     <span class="keyword">typedef</span> int (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a9bab1c63490999f1e02e62bce0a82af7" title="Set a custom trace function.">TraceFn</a>)(<span class="keywordtype">void</span> *, <span class="keyword">const</span> <span class="keywordtype">char</span> *, int, int, int, int, int, int, <span class="keyword">const</span> <span class="keywordtype">void</span> *, int, <span class="keyword">const</span> <span class="keywordtype">int</span> *);
-<a name="l00069"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4ba9506581bb85f307d1d9945561ac2b">00069</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4ba9506581bb85f307d1d9945561ac2b">set_custom_trace</a>)(<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a9bab1c63490999f1e02e62bce0a82af7" title="Set a custom trace function.">TraceFn</a>);
-<a name="l00070"></a>00070 <span class="comment"></span>
-<a name="l00071"></a>00071 <span class="comment">    /** Set a random seed and clear the random state. See \ref Func::set_random_seed. */</span>
-<a name="l00072"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a054ffd44e65e225b23ebb9e3ada9c2d8">00072</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a054ffd44e65e225b23ebb9e3ada9c2d8" title="Set a random seed and clear the random state.">set_random_seed</a>)(<a class="code" href="mini__stdint_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a>);
-<a name="l00073"></a>00073 <span class="comment"></span>
-<a name="l00074"></a>00074 <span class="comment">    /** Shutdown the thread pool maintained by this JIT module. This</span>
-<a name="l00075"></a>00075 <span class="comment">     * is also done automatically when the last reference to this</span>
-<a name="l00076"></a>00076 <span class="comment">     * module is destroyed. */</span>
-<a name="l00077"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a6510aea2ffc1449b8d4a2f09f7db3b33">00077</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a6510aea2ffc1449b8d4a2f09f7db3b33" title="Shutdown the thread pool maintained by this JIT module.">shutdown_thread_pool</a>)();
-<a name="l00078"></a>00078 
-<a name="l00079"></a>00079     <span class="comment">// The JIT Module Allocator holds onto the memory storing the functions above.</span>
-<a name="l00080"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#aa1315c775b95b2f957f8d15dc68338e5">00080</a>     <a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html">IntrusivePtr&lt;JITModuleHolder&gt;</a> <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#aa1315c775b95b2f957f8d15dc68338e5">module</a>;
-<a name="l00081"></a>00081 
-<a name="l00082"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a5b9aca7165f01484c9637c966be9c95e">00082</a>     <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a5b9aca7165f01484c9637c966be9c95e">JITCompiledModule</a>() :
-<a name="l00083"></a>00083         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#abb50869357939bc3d2d064148c3d26e7" title="A pointer to the raw halide function.">function</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
-<a name="l00084"></a>00084         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a944aab2343d1255b8c17216b00985b6e" title="A slightly more type-safe wrapper around the raw halide module.">wrapped_function</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
-<a name="l00085"></a>00085         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4b819ccf00df54d49ce1476cf996034b" title="JITed helpers to interact with device-mapped buffer_t objects.">copy_to_host</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
-<a name="l00086"></a>00086         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab0978451c9cea3eaebccfec7c07ae796" title="JITed helpers to interact with device-mapped buffer_t objects.">copy_to_dev</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
-<a name="l00087"></a>00087         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab418302e7c2f972cca33e1be3afe3216" title="JITed helpers to interact with device-mapped buffer_t objects.">free_dev_buffer</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
-<a name="l00088"></a>00088         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a7ce969a1e9e18d9038cb93bb14f218fc" title="Set the runtime error handler for this module.">set_error_handler</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
-<a name="l00089"></a>00089         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a18efcb74c1624c65e85ab10bea1b41a2" title="Set a custom malloc and free for this module to use.">set_custom_allocator</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
-<a name="l00090"></a>00090         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a66f9644df7cc48885ff678afd4a86e70">set_custom_do_par_for</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
-<a name="l00091"></a>00091         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a2d8aaa9a0e12703fc8b54daea6ff2e02" title="Set a custom do parallel task.">set_custom_do_task</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
-<a name="l00092"></a>00092         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4ba9506581bb85f307d1d9945561ac2b">set_custom_trace</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
-<a name="l00093"></a>00093         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a054ffd44e65e225b23ebb9e3ada9c2d8" title="Set a random seed and clear the random state.">set_random_seed</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
-<a name="l00094"></a>00094         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a6510aea2ffc1449b8d4a2f09f7db3b33" title="Shutdown the thread pool maintained by this JIT module.">shutdown_thread_pool</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {}
-<a name="l00095"></a>00095 <span class="comment"></span>
-<a name="l00096"></a>00096 <span class="comment">    /** Take an llvm module and compile it. Populates the function</span>
-<a name="l00097"></a>00097 <span class="comment">     * pointer members above with the result. */</span>
-<a name="l00098"></a>00098     <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#aeb1fa088c9b7b80644d3210c6d5581ae" title="Take an llvm module and compile it.">compile_module</a>(<a class="code" href="class_halide_1_1_internal_1_1_code_gen.html" title="A code generator abstract base class.">CodeGen</a> *cg, llvm::Module *mod, <span class="keyword">const</span> std::string &amp;function_name);
-<a name="l00099"></a>00099 
-<a name="l00100"></a>00100 };
-<a name="l00101"></a>00101 
-<a name="l00102"></a>00102 }
-<a name="l00103"></a>00103 }
-<a name="l00104"></a>00104 
+<a name="l00010"></a>00010 <span class="preprocessor">#ifdef COMPILING_HALIDE</span>
+<a name="l00011"></a>00011 <span class="preprocessor"></span><span class="preprocessor">#define _COMPILING_HALIDE</span>
+<a name="l00012"></a>00012 <span class="preprocessor"></span><span class="preprocessor">#undef COMPILING_HALIDE</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00014"></a>00014 <span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="_halide_runtime_8h.html" title="Set a custom malloc and free for halide to use.">runtime/HalideRuntime.h</a>&quot;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#ifdef _COMPILING_HALIDE</span>
+<a name="l00016"></a>00016 <span class="preprocessor"></span><span class="preprocessor">#define COMPILING_HALIDE</span>
+<a name="l00017"></a>00017 <span class="preprocessor"></span><span class="preprocessor">#undef _COMPILING_HALIDE</span>
+<a name="l00018"></a>00018 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00019"></a>00019 <span class="preprocessor"></span>
+<a name="l00020"></a>00020 <span class="keyword">namespace </span>llvm {
+<a name="l00021"></a>00021 <span class="keyword">class </span>Module;
+<a name="l00022"></a>00022 }
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="keyword">namespace </span>Halide {
+<a name="l00025"></a>00025 <span class="keyword">namespace </span>Internal {
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027 <span class="keyword">class </span>JITModuleHolder;
+<a name="l00028"></a>00028 <span class="keyword">class </span>CodeGen;
+<a name="l00029"></a>00029 <span class="comment"></span>
+<a name="l00030"></a>00030 <span class="comment">/** Function pointers into a compiled halide module. These function</span>
+<a name="l00031"></a>00031 <span class="comment"> * pointers are meaningless once the last copy of a JITCompiledModule</span>
+<a name="l00032"></a>00032 <span class="comment"> * is deleted, so don&#39;t cache them. */</span>
+<a name="l00033"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html">00033</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html" title="Function pointers into a compiled halide module.">JITCompiledModule</a> {<span class="comment"></span>
+<a name="l00034"></a>00034 <span class="comment">    /** A pointer to the raw halide function. It&#39;s true type depends</span>
+<a name="l00035"></a>00035 <span class="comment">     * on the Argument vector passed to CodeGen::compile. Image</span>
+<a name="l00036"></a>00036 <span class="comment">     * parameters become (buffer_t *), and scalar parameters become</span>
+<a name="l00037"></a>00037 <span class="comment">     * pointers to the appropriate values. The final argument is a</span>
+<a name="l00038"></a>00038 <span class="comment">     * pointer to the buffer_t defining the output. */</span>
+<a name="l00039"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#abb50869357939bc3d2d064148c3d26e7">00039</a>     <span class="keywordtype">void</span> *<span class="keyword">function</span>;
+<a name="l00040"></a>00040 <span class="comment"></span>
+<a name="l00041"></a>00041 <span class="comment">    /** A slightly more type-safe wrapper around the raw halide</span>
+<a name="l00042"></a>00042 <span class="comment">     * module. Takes it arguments as an array of pointers that</span>
+<a name="l00043"></a>00043 <span class="comment">     * correspond to the arguments to \ref function */</span>
+<a name="l00044"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a944aab2343d1255b8c17216b00985b6e">00044</a>     int (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a944aab2343d1255b8c17216b00985b6e" title="A slightly more type-safe wrapper around the raw halide module.">wrapped_function</a>)(<span class="keyword">const</span> <span class="keywordtype">void</span> **);
+<a name="l00045"></a>00045 <span class="comment"></span>
+<a name="l00046"></a>00046 <span class="comment">    /** JITed helpers to interact with device-mapped buffer_t</span>
+<a name="l00047"></a>00047 <span class="comment">     * objects. These pointers may be NULL if not compiling for a</span>
+<a name="l00048"></a>00048 <span class="comment">     * gpu-like target. */</span>
+<a name="l00049"></a>00049     <span class="comment">// @{</span>
+<a name="l00050"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4b819ccf00df54d49ce1476cf996034b">00050</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4b819ccf00df54d49ce1476cf996034b" title="JITed helpers to interact with device-mapped buffer_t objects.">copy_to_host</a>)(<span class="keywordtype">void</span> *user_context, <span class="keyword">struct </span>buffer_t*);
+<a name="l00051"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab0978451c9cea3eaebccfec7c07ae796">00051</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab0978451c9cea3eaebccfec7c07ae796" title="JITed helpers to interact with device-mapped buffer_t objects.">copy_to_dev</a>)(<span class="keywordtype">void</span> *user_context, <span class="keyword">struct </span>buffer_t*);
+<a name="l00052"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab418302e7c2f972cca33e1be3afe3216">00052</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab418302e7c2f972cca33e1be3afe3216" title="JITed helpers to interact with device-mapped buffer_t objects.">free_dev_buffer</a>)(<span class="keywordtype">void</span> *user_context, <span class="keyword">struct </span>buffer_t*);
+<a name="l00053"></a>00053     <span class="comment">// @}</span>
+<a name="l00054"></a>00054 <span class="comment"></span>
+<a name="l00055"></a>00055 <span class="comment">    /** The type of a halide runtime error handler function */</span>
+<a name="l00056"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#accabc8aeb0680e565022fcf07e0a908f">00056</a>     <span class="keyword">typedef</span> void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#accabc8aeb0680e565022fcf07e0a908f" title="The type of a halide runtime error handler function.">ErrorHandler</a>)(<span class="keywordtype">void</span> *user_context, <span class="keyword">const</span> <span class="keywordtype">char</span> *);
+<a name="l00057"></a>00057 <span class="comment"></span>
+<a name="l00058"></a>00058 <span class="comment">    /** Set the runtime error handler for this module */</span>
+<a name="l00059"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a7ce969a1e9e18d9038cb93bb14f218fc">00059</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a7ce969a1e9e18d9038cb93bb14f218fc" title="Set the runtime error handler for this module.">set_error_handler</a>)(<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#accabc8aeb0680e565022fcf07e0a908f" title="The type of a halide runtime error handler function.">ErrorHandler</a>);
+<a name="l00060"></a>00060 <span class="comment"></span>
+<a name="l00061"></a>00061 <span class="comment">    /** Set a custom malloc and free for this module to use. See</span>
+<a name="l00062"></a>00062 <span class="comment">     * \ref Func::set_custom_allocator */</span>
+<a name="l00063"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a18efcb74c1624c65e85ab10bea1b41a2">00063</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a18efcb74c1624c65e85ab10bea1b41a2" title="Set a custom malloc and free for this module to use.">set_custom_allocator</a>)(<span class="keywordtype">void</span> *(*malloc)(<span class="keywordtype">void</span> *user_context, size_t),
+<a name="l00064"></a>00064                                  <span class="keywordtype">void</span> (*free)(<span class="keywordtype">void</span> *user_context, <span class="keywordtype">void</span> *ptr));
+<a name="l00065"></a>00065 <span class="comment"></span>
+<a name="l00066"></a>00066 <span class="comment">    /** Set a custom parallel for loop launcher. See</span>
+<a name="l00067"></a>00067 <span class="comment">     * \ref Func::set_custom_do_par_for */</span>
+<a name="l00068"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d">00068</a>     <span class="keyword">typedef</span> int (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d" title="Set a custom parallel for loop launcher.">HalideTask</a>)(<span class="keywordtype">void</span> *user_context, int, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *);
+<a name="l00069"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a66f9644df7cc48885ff678afd4a86e70">00069</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a66f9644df7cc48885ff678afd4a86e70">set_custom_do_par_for</a>)(int (*custom_do_par_for)(<span class="keywordtype">void</span> *user_context, <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d" title="Set a custom parallel for loop launcher.">HalideTask</a>,
+<a name="l00070"></a>00070                                                            int, int, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *));
+<a name="l00071"></a>00071 <span class="comment"></span>
+<a name="l00072"></a>00072 <span class="comment">    /** Set a custom do parallel task. See</span>
+<a name="l00073"></a>00073 <span class="comment">     * \ref Func::set_custom_do_task */</span>
+<a name="l00074"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a2d8aaa9a0e12703fc8b54daea6ff2e02">00074</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a2d8aaa9a0e12703fc8b54daea6ff2e02" title="Set a custom do parallel task.">set_custom_do_task</a>)(int (*custom_do_task)(<span class="keywordtype">void</span> *user_context, <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d" title="Set a custom parallel for loop launcher.">HalideTask</a>,
+<a name="l00075"></a>00075                                                      int, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *));
+<a name="l00076"></a>00076 <span class="comment"></span>
+<a name="l00077"></a>00077 <span class="comment">    /** Set a custom trace function. See \ref Func::set_custom_trace. */</span>
+<a name="l00078"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ac96e1d288eaaa85933cda36bad19c5ef">00078</a>     <span class="keyword">typedef</span> int (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ac96e1d288eaaa85933cda36bad19c5ef" title="Set a custom trace function.">TraceFn</a>)(<span class="keywordtype">void</span> *, <span class="keyword">const</span> <a class="code" href="structhalide__trace__event.html">halide_trace_event</a> *);
+<a name="l00079"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4ba9506581bb85f307d1d9945561ac2b">00079</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4ba9506581bb85f307d1d9945561ac2b">set_custom_trace</a>)(<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ac96e1d288eaaa85933cda36bad19c5ef" title="Set a custom trace function.">TraceFn</a>);
+<a name="l00080"></a>00080 <span class="comment"></span>
+<a name="l00081"></a>00081 <span class="comment">    /** Shutdown the thread pool maintained by this JIT module. This</span>
+<a name="l00082"></a>00082 <span class="comment">     * is also done automatically when the last reference to this</span>
+<a name="l00083"></a>00083 <span class="comment">     * module is destroyed. */</span>
+<a name="l00084"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a6510aea2ffc1449b8d4a2f09f7db3b33">00084</a>     void (*<a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a6510aea2ffc1449b8d4a2f09f7db3b33" title="Shutdown the thread pool maintained by this JIT module.">shutdown_thread_pool</a>)();
+<a name="l00085"></a>00085 
+<a name="l00086"></a>00086     <span class="comment">// The JIT Module Allocator holds onto the memory storing the functions above.</span>
+<a name="l00087"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#aa1315c775b95b2f957f8d15dc68338e5">00087</a>     <a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html">IntrusivePtr&lt;JITModuleHolder&gt;</a> <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#aa1315c775b95b2f957f8d15dc68338e5">module</a>;
+<a name="l00088"></a>00088 
+<a name="l00089"></a><a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a5b9aca7165f01484c9637c966be9c95e">00089</a>     <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a5b9aca7165f01484c9637c966be9c95e">JITCompiledModule</a>() :
+<a name="l00090"></a>00090         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#abb50869357939bc3d2d064148c3d26e7" title="A pointer to the raw halide function.">function</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
+<a name="l00091"></a>00091         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a944aab2343d1255b8c17216b00985b6e" title="A slightly more type-safe wrapper around the raw halide module.">wrapped_function</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
+<a name="l00092"></a>00092         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4b819ccf00df54d49ce1476cf996034b" title="JITed helpers to interact with device-mapped buffer_t objects.">copy_to_host</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
+<a name="l00093"></a>00093         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab0978451c9cea3eaebccfec7c07ae796" title="JITed helpers to interact with device-mapped buffer_t objects.">copy_to_dev</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
+<a name="l00094"></a>00094         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ab418302e7c2f972cca33e1be3afe3216" title="JITed helpers to interact with device-mapped buffer_t objects.">free_dev_buffer</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
+<a name="l00095"></a>00095         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a7ce969a1e9e18d9038cb93bb14f218fc" title="Set the runtime error handler for this module.">set_error_handler</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
+<a name="l00096"></a>00096         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a18efcb74c1624c65e85ab10bea1b41a2" title="Set a custom malloc and free for this module to use.">set_custom_allocator</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
+<a name="l00097"></a>00097         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a66f9644df7cc48885ff678afd4a86e70">set_custom_do_par_for</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
+<a name="l00098"></a>00098         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a2d8aaa9a0e12703fc8b54daea6ff2e02" title="Set a custom do parallel task.">set_custom_do_task</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
+<a name="l00099"></a>00099         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4ba9506581bb85f307d1d9945561ac2b">set_custom_trace</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>),
+<a name="l00100"></a>00100         <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a6510aea2ffc1449b8d4a2f09f7db3b33" title="Shutdown the thread pool maintained by this JIT module.">shutdown_thread_pool</a>(<a class="code" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>) {}
+<a name="l00101"></a>00101 <span class="comment"></span>
+<a name="l00102"></a>00102 <span class="comment">    /** Take an llvm module and compile it. Populates the function</span>
+<a name="l00103"></a>00103 <span class="comment">     * pointer members above with the result. */</span>
+<a name="l00104"></a>00104     <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#aeb1fa088c9b7b80644d3210c6d5581ae" title="Take an llvm module and compile it.">compile_module</a>(<a class="code" href="class_halide_1_1_internal_1_1_code_gen.html" title="A code generator abstract base class.">CodeGen</a> *cg, llvm::Module *mod, <span class="keyword">const</span> std::string &amp;function_name);
 <a name="l00105"></a>00105 
-<a name="l00106"></a>00106 <span class="preprocessor">#endif</span>
+<a name="l00106"></a>00106 };
+<a name="l00107"></a>00107 
+<a name="l00108"></a>00108 }
+<a name="l00109"></a>00109 }
+<a name="l00110"></a>00110 
+<a name="l00111"></a>00111 
+<a name="l00112"></a>00112 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

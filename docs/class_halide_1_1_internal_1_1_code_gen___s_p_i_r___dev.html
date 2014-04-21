@@ -52,6 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -117,8 +118,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#acaf9f73666c63c74561eb9c03c49693c">CodeGen_SPIR_Dev</a> (int <a class="el" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aab102b2b1850c6b693702618af410212">bits</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a SPIR device code generator.  <a href="#acaf9f73666c63c74561eb9c03c49693c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aa766e1c90b4532ae2efd9333ff924b5c">CodeGen_SPIR_Dev</a> (<a class="el" href="struct_halide_1_1_target.html">Target</a> host, int <a class="el" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aab102b2b1850c6b693702618af410212">bits</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a SPIR device code generator.  <a href="#aa766e1c90b4532ae2efd9333ff924b5c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#ab24a7cc14722cf7d58bb01f42d01f969">add_kernel</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> stmt, std::string name, const std::vector&lt; <a class="el" href="struct_halide_1_1_argument.html">Argument</a> &gt; &amp;args)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile a GPU kernel into the module.  <a href="#ab24a7cc14722cf7d58bb01f42d01f969"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aa9316e0fd69c9a8a418668d249469041">init_module</a> ()</td></tr>
@@ -155,22 +156,33 @@ Protected Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">We hold onto the basic block at the start of the device function in order to inject allocas.  <a href="#a038cd39505024b6ff0630796a36f21bc"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aab102b2b1850c6b693702618af410212">bits</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Remmeber the requested bitness for the generated code.  <a href="#aab102b2b1850c6b693702618af410212"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">llvm::Value *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#a332e51d9e409b00a76d13d934dcddb11">shared_mem</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A code generator that emits GPU code from a given <a class="el" href="namespace_halide.html">Halide</a> stmt. </p>
 
 <p>Definition at line <a class="el" href="_code_gen___s_p_i_r___dev_8h_source.html#l00020">20</a> of file <a class="el" href="_code_gen___s_p_i_r___dev_8h_source.html">CodeGen_SPIR_Dev.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="acaf9f73666c63c74561eb9c03c49693c"></a><!-- doxytag: member="Halide::Internal::CodeGen_SPIR_Dev::CodeGen_SPIR_Dev" ref="acaf9f73666c63c74561eb9c03c49693c" args="(int bits)" -->
+<a class="anchor" id="aa766e1c90b4532ae2efd9333ff924b5c"></a><!-- doxytag: member="Halide::Internal::CodeGen_SPIR_Dev::CodeGen_SPIR_Dev" ref="aa766e1c90b4532ae2efd9333ff924b5c" args="(Target host, int bits)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#acaf9f73666c63c74561eb9c03c49693c">Halide::Internal::CodeGen_SPIR_Dev::CodeGen_SPIR_Dev</a> </td>
+          <td class="memname"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#aa766e1c90b4532ae2efd9333ff924b5c">Halide::Internal::CodeGen_SPIR_Dev::CodeGen_SPIR_Dev</a> </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>bits</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="struct_halide_1_1_target.html">Target</a>&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
@@ -525,6 +537,21 @@ Protected Attributes</h2></td></tr>
 <p>Remmeber the requested bitness for the generated code. </p>
 
 <p>Definition at line <a class="el" href="_code_gen___s_p_i_r___dev_8h_source.html#l00058">58</a> of file <a class="el" href="_code_gen___s_p_i_r___dev_8h_source.html">CodeGen_SPIR_Dev.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a332e51d9e409b00a76d13d934dcddb11"></a><!-- doxytag: member="Halide::Internal::CodeGen_SPIR_Dev::shared_mem" ref="a332e51d9e409b00a76d13d934dcddb11" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">llvm::Value* <a class="el" href="class_halide_1_1_internal_1_1_code_gen___s_p_i_r___dev.html#a332e51d9e409b00a76d13d934dcddb11">Halide::Internal::CodeGen_SPIR_Dev::shared_mem</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_code_gen___s_p_i_r___dev_8h_source.html#l00070">70</a> of file <a class="el" href="_code_gen___s_p_i_r___dev_8h_source.html">CodeGen_SPIR_Dev.h</a>.</p>
 
 </div>
 </div>

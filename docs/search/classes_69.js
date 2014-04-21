@@ -14,7 +14,6 @@ var searchData=
   ['intrusiveptr_3c_20jitmoduleholder_20_3e',['IntrusivePtr< JITModuleHolder >',['../struct_halide_1_1_internal_1_1_intrusive_ptr.html',1,'Halide::Internal']]],
   ['intrusiveptr_3c_20parametercontents_20_3e',['IntrusivePtr< ParameterContents >',['../struct_halide_1_1_internal_1_1_intrusive_ptr.html',1,'Halide::Internal']]],
   ['intrusiveptr_3c_20reductiondomaincontents_20_3e',['IntrusivePtr< ReductionDomainContents >',['../struct_halide_1_1_internal_1_1_intrusive_ptr.html',1,'Halide::Internal']]],
-  ['irdeepvisitor',['IRDeepVisitor',['../class_halide_1_1_internal_1_1_i_r_deep_visitor.html',1,'Halide::Internal']]],
   ['irgraphvisitor',['IRGraphVisitor',['../class_halide_1_1_internal_1_1_i_r_graph_visitor.html',1,'Halide::Internal']]],
   ['irhandle',['IRHandle',['../struct_halide_1_1_internal_1_1_i_r_handle.html',1,'Halide::Internal']]],
   ['irmutator',['IRMutator',['../class_halide_1_1_internal_1_1_i_r_mutator.html',1,'Halide::Internal']]],
