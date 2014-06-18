@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['schedule',['Schedule',['../struct_halide_1_1_internal_1_1_schedule.html',1,'Halide::Internal']]],
+  ['schedule',['Schedule',['../class_halide_1_1_internal_1_1_schedule.html',1,'Halide::Internal']]],
   ['schedulehandle',['ScheduleHandle',['../class_halide_1_1_schedule_handle.html',1,'Halide']]],
   ['scope',['Scope',['../class_halide_1_1_internal_1_1_scope.html',1,'Halide::Internal']]],
   ['scope_3c_20allocation_20_3e',['Scope< Allocation >',['../class_halide_1_1_internal_1_1_scope.html',1,'Halide::Internal']]],
@@ -8,6 +8,7 @@ var searchData=
   ['scope_3c_20llvm_3a_3avalue_20_2a_20_3e',['Scope< llvm::Value * >',['../class_halide_1_1_internal_1_1_scope.html',1,'Halide::Internal']]],
   ['scope_3c_20modulusremainder_20_3e',['Scope< ModulusRemainder >',['../class_halide_1_1_internal_1_1_scope.html',1,'Halide::Internal']]],
   ['scope_3c_20type_20_3e',['Scope< Type >',['../class_halide_1_1_internal_1_1_scope.html',1,'Halide::Internal']]],
+  ['scopedspinlock',['ScopedSpinLock',['../struct_scoped_spin_lock.html',1,'']]],
   ['select',['Select',['../struct_halide_1_1_internal_1_1_select.html',1,'Halide::Internal']]],
   ['smallstack',['SmallStack',['../class_halide_1_1_internal_1_1_small_stack.html',1,'Halide::Internal']]],
   ['smallstack_3c_20allocation_20_3e',['SmallStack< Allocation >',['../class_halide_1_1_internal_1_1_small_stack.html',1,'Halide::Internal']]],
@@ -15,7 +16,8 @@ var searchData=
   ['smallstack_3c_20llvm_3a_3avalue_20_2a_20_3e',['SmallStack< llvm::Value * >',['../class_halide_1_1_internal_1_1_small_stack.html',1,'Halide::Internal']]],
   ['smallstack_3c_20modulusremainder_20_3e',['SmallStack< ModulusRemainder >',['../class_halide_1_1_internal_1_1_small_stack.html',1,'Halide::Internal']]],
   ['smallstack_3c_20type_20_3e',['SmallStack< Type >',['../class_halide_1_1_internal_1_1_small_stack.html',1,'Halide::Internal']]],
-  ['split',['Split',['../struct_halide_1_1_internal_1_1_schedule_1_1_split.html',1,'Halide::Internal::Schedule']]],
+  ['specialization',['Specialization',['../struct_halide_1_1_internal_1_1_specialization.html',1,'Halide::Internal']]],
+  ['split',['Split',['../struct_halide_1_1_internal_1_1_split.html',1,'Halide::Internal']]],
   ['stmt',['Stmt',['../struct_halide_1_1_internal_1_1_stmt.html',1,'Halide::Internal']]],
   ['stmtcompiler',['StmtCompiler',['../class_halide_1_1_internal_1_1_stmt_compiler.html',1,'Halide::Internal']]],
   ['stmtdeepcompare',['StmtDeepCompare',['../struct_halide_1_1_internal_1_1_stmt_deep_compare.html',1,'Halide::Internal']]],

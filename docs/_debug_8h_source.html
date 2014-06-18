@@ -108,63 +108,75 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00006"></a>00006 <span class="comment"> */</span>
 <a name="l00007"></a>00007 
 <a name="l00008"></a>00008 <span class="preprocessor">#include &lt;iostream&gt;</span>
-<a name="l00009"></a>00009 <span class="preprocessor">#include &quot;<a class="code" href="_i_r_8h.html" title="Halide expressions (Halide::Expr) and statements (Halide::Internal::Stmt)">IR.h</a>&quot;</span>
-<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00010"></a>00010 <span class="preprocessor">#include &lt;stdlib.h&gt;</span>
 <a name="l00011"></a>00011 
-<a name="l00012"></a>00012 <span class="keyword">namespace </span>Halide {
-<a name="l00013"></a>00013 <span class="keyword">namespace </span>Internal {
-<a name="l00014"></a>00014 <span class="comment"></span>
-<a name="l00015"></a>00015 <span class="comment">/** For optional debugging during codegen, use the debug class as</span>
-<a name="l00016"></a>00016 <span class="comment"> * follows: </span>
-<a name="l00017"></a>00017 <span class="comment"> * </span>
-<a name="l00018"></a>00018 <span class="comment"> \code</span>
-<a name="l00019"></a>00019 <span class="comment"> debug(verbosity) &lt;&lt; &quot;The expression is &quot; &lt;&lt; expr &lt;&lt; std::endl; </span>
-<a name="l00020"></a>00020 <span class="comment"> \endcode</span>
-<a name="l00021"></a>00021 <span class="comment"> *</span>
-<a name="l00022"></a>00022 <span class="comment"> * verbosity of 0 always prints, 1 should print after every major</span>
-<a name="l00023"></a>00023 <span class="comment"> * stage, 2 should be used for more detail, and 3 should be used for</span>
-<a name="l00024"></a>00024 <span class="comment"> * tracing everything that occurs. The verbosity with which to print</span>
-<a name="l00025"></a>00025 <span class="comment"> * is determined by the value of the environment variable</span>
-<a name="l00026"></a>00026 <span class="comment"> * HL_DEBUG_CODEGEN</span>
-<a name="l00027"></a>00027 <span class="comment"> */</span>
-<a name="l00028"></a>00028 
-<a name="l00029"></a><a class="code" href="struct_halide_1_1_internal_1_1debug.html">00029</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1debug.html" title="For optional debugging during codegen, use the debug class as follows:">debug</a> {
-<a name="l00030"></a><a class="code" href="struct_halide_1_1_internal_1_1debug.html#ab238f1ec61acb1e73bec17d4f0ab4607">00030</a>     <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="struct_halide_1_1_internal_1_1debug.html#ab238f1ec61acb1e73bec17d4f0ab4607">debug_level</a>;
-<a name="l00031"></a><a class="code" href="struct_halide_1_1_internal_1_1debug.html#af8650df660d8ebd4ddc7168e98c095f8">00031</a>     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1debug.html#af8650df660d8ebd4ddc7168e98c095f8">initialized</a>;
-<a name="l00032"></a><a class="code" href="struct_halide_1_1_internal_1_1debug.html#a4b2528336374b87b4421f1e9357639f5">00032</a>     <span class="keywordtype">int</span> <a class="code" href="struct_halide_1_1_internal_1_1debug.html#a4b2528336374b87b4421f1e9357639f5">verbosity</a>;
-<a name="l00033"></a>00033 
-<a name="l00034"></a><a class="code" href="struct_halide_1_1_internal_1_1debug.html#af5a42250005bafa3829bf10442692e86">00034</a>     <a class="code" href="struct_halide_1_1_internal_1_1debug.html#af5a42250005bafa3829bf10442692e86">debug</a>(<span class="keywordtype">int</span> v) : <a class="code" href="struct_halide_1_1_internal_1_1debug.html#a4b2528336374b87b4421f1e9357639f5">verbosity</a>(v) {
-<a name="l00035"></a>00035         <span class="keywordflow">if</span> (!<a class="code" href="struct_halide_1_1_internal_1_1debug.html#af8650df660d8ebd4ddc7168e98c095f8">initialized</a>) {
-<a name="l00036"></a>00036             <span class="comment">// Read the debug level from the environment</span>
-<a name="l00037"></a>00037 <span class="preprocessor">            #ifdef _WIN32</span>
-<a name="l00038"></a>00038 <span class="preprocessor"></span>            <span class="keywordtype">char</span> lvl[32];
-<a name="l00039"></a>00039             <span class="keywordtype">size_t</span> read = 0;
-<a name="l00040"></a>00040             getenv_s(&amp;read, lvl, <span class="stringliteral">&quot;HL_DEBUG_CODEGEN&quot;</span>);
-<a name="l00041"></a>00041             <span class="keywordflow">if</span> (read) {
-<a name="l00042"></a>00042 <span class="preprocessor">            #else   </span>
-<a name="l00043"></a>00043 <span class="preprocessor"></span>            <span class="keywordflow">if</span> (<span class="keywordtype">char</span> *lvl = getenv(<span class="stringliteral">&quot;HL_DEBUG_CODEGEN&quot;</span>)) {
-<a name="l00044"></a>00044 <span class="preprocessor">            #endif</span>
-<a name="l00045"></a>00045 <span class="preprocessor"></span>                <a class="code" href="struct_halide_1_1_internal_1_1debug.html#ab238f1ec61acb1e73bec17d4f0ab4607">debug_level</a> = atoi(lvl);
-<a name="l00046"></a>00046             } <span class="keywordflow">else</span> {
-<a name="l00047"></a>00047                 <a class="code" href="struct_halide_1_1_internal_1_1debug.html#ab238f1ec61acb1e73bec17d4f0ab4607">debug_level</a> = 0;
-<a name="l00048"></a>00048             }
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050             <a class="code" href="struct_halide_1_1_internal_1_1debug.html#af8650df660d8ebd4ddc7168e98c095f8">initialized</a> = <span class="keyword">true</span>;
-<a name="l00051"></a>00051         }
-<a name="l00052"></a>00052     }
-<a name="l00053"></a>00053 
-<a name="l00054"></a>00054     <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00055"></a><a class="code" href="struct_halide_1_1_internal_1_1debug.html#ab5a9c38833f2d517428069b935d3c8a9">00055</a>     <a class="code" href="struct_halide_1_1_internal_1_1debug.html" title="For optional debugging during codegen, use the debug class as follows:">debug</a> &amp;<a class="code" href="struct_halide_1_1_internal_1_1debug.html#ab5a9c38833f2d517428069b935d3c8a9">operator&lt;&lt;</a>(T x) {
-<a name="l00056"></a>00056         <span class="keywordflow">if</span> (<a class="code" href="struct_halide_1_1_internal_1_1debug.html#a4b2528336374b87b4421f1e9357639f5">verbosity</a> &gt; <a class="code" href="struct_halide_1_1_internal_1_1debug.html#ab238f1ec61acb1e73bec17d4f0ab4607">debug_level</a>) <span class="keywordflow">return</span> *<span class="keyword">this</span>;
-<a name="l00057"></a>00057         std::cerr &lt;&lt; x;
-<a name="l00058"></a>00058         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
-<a name="l00059"></a>00059     }
-<a name="l00060"></a>00060 };
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;<a class="code" href="_introspection_8h.html" title="Defines methods for introspecting in C++.">Introspection.h</a>&quot;</span>
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 <span class="keyword">namespace </span>Halide {
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016 <span class="keyword">struct </span>Expr;
+<a name="l00017"></a>00017 <span class="keyword">struct </span>Type;
+<a name="l00018"></a>00018 <span class="comment">// Forward declare some things from IRPrinter, which we can&#39;t include yet.</span>
+<a name="l00019"></a>00019 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::ostream &amp;<a class="code" href="namespace_halide.html#a7b3021087fa785031812f050398edfec" title="Emit an expression on an output stream (such as std::cout) in a human-readable form.">operator&lt;&lt;</a>(std::ostream &amp;stream, <span class="keyword">const</span> Expr &amp;);
+<a name="l00020"></a>00020 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::ostream &amp;<a class="code" href="namespace_halide.html#a7b3021087fa785031812f050398edfec" title="Emit an expression on an output stream (such as std::cout) in a human-readable form.">operator&lt;&lt;</a>(std::ostream &amp;stream, <span class="keyword">const</span> Type &amp;);
+<a name="l00021"></a>00021 
+<a name="l00022"></a>00022 <span class="keyword">namespace </span>Internal {
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="keyword">struct </span>Stmt;
+<a name="l00025"></a>00025 std::ostream &amp;<a class="code" href="namespace_halide_1_1_internal.html#ab98f0a702bd775e67baed5bcd986ae27" title="Emit a halide statement on an output stream (such as std::cout) in a human-readable form...">operator&lt;&lt;</a>(std::ostream &amp;stream, <span class="keyword">const</span> Stmt &amp;);
+<a name="l00026"></a>00026 <span class="comment"></span>
+<a name="l00027"></a>00027 <span class="comment">/** For optional debugging during codegen, use the debug class as</span>
+<a name="l00028"></a>00028 <span class="comment"> * follows:</span>
+<a name="l00029"></a>00029 <span class="comment"> *</span>
+<a name="l00030"></a>00030 <span class="comment"> \code</span>
+<a name="l00031"></a>00031 <span class="comment"> debug(verbosity) &lt;&lt; &quot;The expression is &quot; &lt;&lt; expr &lt;&lt; std::endl;</span>
+<a name="l00032"></a>00032 <span class="comment"> \endcode</span>
+<a name="l00033"></a>00033 <span class="comment"> *</span>
+<a name="l00034"></a>00034 <span class="comment"> * verbosity of 0 always prints, 1 should print after every major</span>
+<a name="l00035"></a>00035 <span class="comment"> * stage, 2 should be used for more detail, and 3 should be used for</span>
+<a name="l00036"></a>00036 <span class="comment"> * tracing everything that occurs. The verbosity with which to print</span>
+<a name="l00037"></a>00037 <span class="comment"> * is determined by the value of the environment variable</span>
+<a name="l00038"></a>00038 <span class="comment"> * HL_DEBUG_CODEGEN</span>
+<a name="l00039"></a>00039 <span class="comment"> */</span>
+<a name="l00040"></a>00040 
+<a name="l00041"></a><a class="code" href="struct_halide_1_1_internal_1_1debug.html">00041</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1debug.html" title="For optional debugging during codegen, use the debug class as follows:">debug</a> {
+<a name="l00042"></a><a class="code" href="struct_halide_1_1_internal_1_1debug.html#a2899a7493ab6b277f90d81be34c8935c">00042</a>     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="struct_halide_1_1_internal_1_1debug.html#a2899a7493ab6b277f90d81be34c8935c">debug_level</a>;
+<a name="l00043"></a><a class="code" href="struct_halide_1_1_internal_1_1debug.html#a6f61a3ee32ccea5d363bbb8ba5df3031">00043</a>     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1debug.html#a6f61a3ee32ccea5d363bbb8ba5df3031">initialized</a>;
+<a name="l00044"></a><a class="code" href="struct_halide_1_1_internal_1_1debug.html#a4b2528336374b87b4421f1e9357639f5">00044</a>     <span class="keywordtype">int</span> <a class="code" href="struct_halide_1_1_internal_1_1debug.html#a4b2528336374b87b4421f1e9357639f5">verbosity</a>;
+<a name="l00045"></a>00045 
+<a name="l00046"></a><a class="code" href="struct_halide_1_1_internal_1_1debug.html#af5a42250005bafa3829bf10442692e86">00046</a>     <a class="code" href="struct_halide_1_1_internal_1_1debug.html#af5a42250005bafa3829bf10442692e86">debug</a>(<span class="keywordtype">int</span> v) : <a class="code" href="struct_halide_1_1_internal_1_1debug.html#a4b2528336374b87b4421f1e9357639f5">verbosity</a>(v) {
+<a name="l00047"></a>00047         <span class="keywordflow">if</span> (!<a class="code" href="struct_halide_1_1_internal_1_1debug.html#a6f61a3ee32ccea5d363bbb8ba5df3031">initialized</a>) {
+<a name="l00048"></a>00048             <span class="comment">// Read the debug level from the environment</span>
+<a name="l00049"></a>00049 <span class="preprocessor">            #ifdef _WIN32</span>
+<a name="l00050"></a>00050 <span class="preprocessor"></span>            <span class="keywordtype">char</span> lvl[32];
+<a name="l00051"></a>00051             <span class="keywordtype">size_t</span> read = 0;
+<a name="l00052"></a>00052             getenv_s(&amp;read, lvl, <span class="stringliteral">&quot;HL_DEBUG_CODEGEN&quot;</span>);
+<a name="l00053"></a>00053             <span class="keywordflow">if</span> (read) {
+<a name="l00054"></a>00054 <span class="preprocessor">            #else</span>
+<a name="l00055"></a>00055 <span class="preprocessor"></span>            <span class="keywordflow">if</span> (<span class="keywordtype">char</span> *lvl = getenv(<span class="stringliteral">&quot;HL_DEBUG_CODEGEN&quot;</span>)) {
+<a name="l00056"></a>00056 <span class="preprocessor">            #endif</span>
+<a name="l00057"></a>00057 <span class="preprocessor"></span>                <a class="code" href="struct_halide_1_1_internal_1_1debug.html#a2899a7493ab6b277f90d81be34c8935c">debug_level</a> = atoi(lvl);
+<a name="l00058"></a>00058             } <span class="keywordflow">else</span> {
+<a name="l00059"></a>00059                 <a class="code" href="struct_halide_1_1_internal_1_1debug.html#a2899a7493ab6b277f90d81be34c8935c">debug_level</a> = 0;
+<a name="l00060"></a>00060             }
 <a name="l00061"></a>00061 
-<a name="l00062"></a>00062 }
-<a name="l00063"></a>00063 }
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065 <span class="preprocessor">#endif</span>
+<a name="l00062"></a>00062             <a class="code" href="struct_halide_1_1_internal_1_1debug.html#a6f61a3ee32ccea5d363bbb8ba5df3031">initialized</a> = <span class="keyword">true</span>;
+<a name="l00063"></a>00063         }
+<a name="l00064"></a>00064     }
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066     <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l00067"></a><a class="code" href="struct_halide_1_1_internal_1_1debug.html#ab5a9c38833f2d517428069b935d3c8a9">00067</a>     <a class="code" href="struct_halide_1_1_internal_1_1debug.html" title="For optional debugging during codegen, use the debug class as follows:">debug</a> &amp;<a class="code" href="struct_halide_1_1_internal_1_1debug.html#ab5a9c38833f2d517428069b935d3c8a9">operator&lt;&lt;</a>(T x) {
+<a name="l00068"></a>00068         <span class="keywordflow">if</span> (<a class="code" href="struct_halide_1_1_internal_1_1debug.html#a4b2528336374b87b4421f1e9357639f5">verbosity</a> &gt; <a class="code" href="struct_halide_1_1_internal_1_1debug.html#a2899a7493ab6b277f90d81be34c8935c">debug_level</a>) <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00069"></a>00069         std::cerr &lt;&lt; x;
+<a name="l00070"></a>00070         <span class="keywordflow">return</span> *<span class="keyword">this</span>;
+<a name="l00071"></a>00071     }
+<a name="l00072"></a>00072 };
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074 }
+<a name="l00075"></a>00075 }
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

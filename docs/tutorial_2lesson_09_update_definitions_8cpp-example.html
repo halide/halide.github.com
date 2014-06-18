@@ -99,11 +99,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <span class="comment">// This lesson demonstrates how to define a Func in multiple passes, including scattering.</span>
 
 <span class="comment">// On linux, you can compile and run it like so:</span>
-<span class="comment">// g++ lesson_09*.cpp -I ../include -L ../bin -lHalide -lpthread -ldl -lpng -fopenmp -o lesson_09</span>
+<span class="comment">// g++ lesson_09*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -fopenmp -o lesson_09</span>
 <span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_09</span>
 
-<span class="comment">// On os x:</span>
-<span class="comment">// g++ lesson_09*.cpp -I ../include -L ../bin -lHalide -lpng -fopenmp -o lesson_09</span>
+<span class="comment">// On os x (will only work if you actually have g++, not Apple&#39;s pretend g++ which is actually clang):</span>
+<span class="comment">// g++ lesson_09*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -fopenmp -o lesson_09</span>
 <span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_09</span>
 
 <span class="preprocessor">#include &lt;Halide.h&gt;</span>
@@ -114,21 +114,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <span class="preprocessor"></span><span class="preprocessor">#include &lt;emmintrin.h&gt;</span>
 <span class="preprocessor">#endif</span>
 <span class="preprocessor"></span>
-<span class="comment">// We&#39;ll also need a clock to do performance testing at the end. We&#39;ll</span>
-<span class="comment">// steal the one used in the performance tests.</span>
-<span class="preprocessor">#include &quot;../test/performance/clock.h&quot;</span>
+<span class="comment">// We&#39;ll also need a clock to do performance testing at the end.</span>
+<span class="preprocessor">#include &quot;clock.h&quot;</span>
 
 <span class="keyword">using namespace </span>Halide;
 
 <span class="comment">// Support code for loading pngs.</span>
-<span class="preprocessor">#include &quot;../apps/support/image_io.h&quot;</span>
+<span class="preprocessor">#include &quot;image_io.h&quot;</span>
 
 <span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {
     <span class="comment">// Declare some Vars to use below.</span>
     <a name="_a0"></a><a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> x(<span class="stringliteral">&quot;x&quot;</span>), y(<span class="stringliteral">&quot;y&quot;</span>);
 
     <span class="comment">// Load a grayscale image to use as an input.</span>
-    <a name="_a1"></a><a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;uint8_t&gt;</a> input = load&lt;uint8_t&gt;(<span class="stringliteral">&quot;../apps/images/gray.png&quot;</span>);
+    <a name="_a1"></a><a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;uint8_t&gt;</a> input = load&lt;uint8_t&gt;(<span class="stringliteral">&quot;images/gray.png&quot;</span>);
 
     <span class="comment">// You can define a Func in multiple passes. Let&#39;s see a toy</span>
     <span class="comment">// example first.</span>
@@ -277,7 +276,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         histogram(x) = 0;
 
         <span class="comment">// Define a multi-dimensional reduction domain over the input image:</span>
-        <a class="code" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a> r(0, input.<a name="a7"></a><a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(), 0, input.<a name="a8"></a><a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>());
+        <a class="code" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a> r(0, input.<a name="a7"></a><a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(), 0, input.<a name="a8"></a><a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>());
 
         <span class="comment">// For every point in the reduction domain, increment the</span>
         <span class="comment">// histogram bucket corresponding to the intensity of the</span>
@@ -291,8 +290,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 256; x++) {
             c_result[x] = 0;
         }
-        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r_y = 0; r_y &lt; input.<a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>(); r_y++) {
-            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r_x = 0; r_x &lt; input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(); r_x++) {
+        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r_y = 0; r_y &lt; input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>(); r_y++) {
+            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r_x = 0; r_x &lt; input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(); r_x++) {
                 c_result[input(r_x, r_y)] += 1;
             }
         }
@@ -335,12 +334,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// vectorizes the first update step across x. We can&#39;t do</span>
         <span class="comment">// anything with y for this update step, because it doesn&#39;t</span>
         <span class="comment">// use y.</span>
-        f.<a name="a11"></a><a class="code" href="class_halide_1_1_func.html#a5fd179a3631bfc16fc2e0cb3bb29ae0b" title="Get a handle on an update step of a reduction for the purposes of scheduling it.">update</a>(0).<a name="a12"></a><a class="code" href="class_halide_1_1_schedule_handle.html#a965ef3a905df60c3f59ca3743cbf668d" title="Scheduling calls that control how the domain of this update is traversed.">vectorize</a>(x, 4);
+        f.<a name="a11"></a><a class="code" href="class_halide_1_1_func.html#a5fd179a3631bfc16fc2e0cb3bb29ae0b" title="Get a handle on an update step of a reduction for the purposes of scheduling it.">update</a>(0).<a name="a12"></a><a class="code" href="class_halide_1_1_schedule_handle.html#a965ef3a905df60c3f59ca3743cbf668d" title="Scheduling calls that control how the domain of this stage is traversed.">vectorize</a>(x, 4);
 
         <span class="comment">// No we parallelize the second update step in chunks of size</span>
         <span class="comment">// 4.</span>
         <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> yo, yi;
-        f.<a class="code" href="class_halide_1_1_func.html#a5fd179a3631bfc16fc2e0cb3bb29ae0b" title="Get a handle on an update step of a reduction for the purposes of scheduling it.">update</a>(1).<a name="a13"></a><a class="code" href="class_halide_1_1_schedule_handle.html#a82dcba5e287a284bfdb2eba997659daa" title="Scheduling calls that control how the domain of this update is traversed.">split</a>(y, yo, yi, 4).<a name="a14"></a><a class="code" href="class_halide_1_1_schedule_handle.html#a341ae03504ed0261b1ffba9935844c2d" title="Scheduling calls that control how the domain of this update is traversed.">parallel</a>(yo);
+        f.<a class="code" href="class_halide_1_1_func.html#a5fd179a3631bfc16fc2e0cb3bb29ae0b" title="Get a handle on an update step of a reduction for the purposes of scheduling it.">update</a>(1).<a name="a13"></a><a class="code" href="class_halide_1_1_schedule_handle.html#a82dcba5e287a284bfdb2eba997659daa" title="Scheduling calls that control how the domain of this stage is traversed.">split</a>(y, yo, yi, 4).<a name="a14"></a><a class="code" href="class_halide_1_1_schedule_handle.html#a341ae03504ed0261b1ffba9935844c2d" title="Scheduling calls that control how the domain of this stage is traversed.">parallel</a>(yo);
 
         <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> halide_result = f.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(16, 16);
 
@@ -714,8 +713,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
         <span class="comment">// First add the boundary condition.</span>
         <a class="code" href="class_halide_1_1_func.html" title="A halide function.">Func</a> clamped;
-        <a name="_a16"></a><a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> x_clamped = <a name="a17"></a><a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa" title="Clamps an expression to lie within the given bounds.">clamp</a>(x, 0, input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>()-1);
-        <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> y_clamped = <a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa" title="Clamps an expression to lie within the given bounds.">clamp</a>(y, 0, input.<a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>()-1);
+        <a name="_a16"></a><a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> x_clamped = <a name="a17"></a><a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa" title="Clamps an expression to lie within the given bounds.">clamp</a>(x, 0, input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>()-1);
+        <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> y_clamped = <a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa" title="Clamps an expression to lie within the given bounds.">clamp</a>(y, 0, input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>()-1);
         clamped(x, y) = input(x_clamped, y_clamped);
 
         <span class="comment">// Define a 5x5 box that starts at (-2, -2)</span>
@@ -730,7 +729,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <a class="code" href="class_halide_1_1_func.html" title="A halide function.">Func</a> blurry;
         blurry(x, y) = cast&lt;uint8_t&gt;(local_sum(x, y) / 25);
 
-        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;uint8_t&gt;</a> halide_result = blurry.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(), input.<a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>());
+        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;uint8_t&gt;</a> halide_result = blurry.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>());
 
         <span class="comment">// The default schedule will inline &#39;clamped&#39; into the update</span>
         <span class="comment">// step of &#39;local_sum&#39;, because clamped only has a pure</span>
@@ -739,9 +738,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// because the default schedule for reductions is</span>
         <span class="comment">// compute-innermost. Here&#39;s the equivalent C:</span>
 
-        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;uint8_t&gt;</a> c_result(input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(), input.<a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>());
-        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; input.<a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>(); y++) {
-            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(); x++) {
+        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;uint8_t&gt;</a> c_result(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>());
+        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>(); y++) {
+            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(); x++) {
                 <span class="keywordtype">int</span> local_sum[1];
                 <span class="comment">// Pure step of local_sum</span>
                 local_sum[0] = 0;
@@ -749,8 +748,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
                 <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r_y = -2; r_y &lt;= 2; r_y++) {
                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r_x = -2; r_x &lt;= 2; r_x++) {
                         <span class="comment">// The clamping has been inlined into the update step.</span>
-                        <span class="keywordtype">int</span> clamped_x = <a name="a20"></a><a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">std::min</a>(<a name="a21"></a><a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec" title="Returns an expression representing the greater of the two arguments, after doing any necessary type c...">std::max</a>(x + r_x, 0), input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>()-1);
-                        <span class="keywordtype">int</span> clamped_y = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">std::min</a>(<a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec" title="Returns an expression representing the greater of the two arguments, after doing any necessary type c...">std::max</a>(y + r_y, 0), input.<a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>()-1);
+                        <span class="keywordtype">int</span> clamped_x = <a name="a20"></a><a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">std::min</a>(<a name="a21"></a><a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec" title="Returns an expression representing the greater of the two arguments, after doing any necessary type c...">std::max</a>(x + r_x, 0), input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>()-1);
+                        <span class="keywordtype">int</span> clamped_y = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">std::min</a>(<a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec" title="Returns an expression representing the greater of the two arguments, after doing any necessary type c...">std::max</a>(y + r_y, 0), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>()-1);
                         local_sum[0] += input(clamped_x, clamped_y);
                     }
                 }
@@ -760,8 +759,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         }
 
         <span class="comment">// Check the results match</span>
-        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; input.<a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>(); y++) {
-            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(); x++) {
+        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>(); y++) {
+            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(); x++) {
                 <span class="keywordflow">if</span> (halide_result(x, y) != c_result(x, y)) {
                     printf(<span class="stringliteral">&quot;halide_result(%d, %d) = %d instead of %d\n&quot;</span>,
                            x, y, halide_result(x, y), c_result(x, y));
@@ -832,8 +831,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
         <span class="comment">// First, add a boundary condition to the input.</span>
         <a class="code" href="class_halide_1_1_func.html" title="A halide function.">Func</a> clamped;
-        <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> x_clamped = <a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa" title="Clamps an expression to lie within the given bounds.">clamp</a>(x, 0, input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>()-1);
-        <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> y_clamped = <a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa" title="Clamps an expression to lie within the given bounds.">clamp</a>(y, 0, input.<a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>()-1);
+        <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> x_clamped = <a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa" title="Clamps an expression to lie within the given bounds.">clamp</a>(x, 0, input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>()-1);
+        <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> y_clamped = <a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa" title="Clamps an expression to lie within the given bounds.">clamp</a>(y, 0, input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>()-1);
         clamped(x, y) = input(x_clamped, y_clamped);
 
         <a class="code" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a> box(-2, 5, -2, 5);
@@ -856,7 +855,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// as we need it in a circular buffer (see lesson 08).</span>
         clamped.<a name="a27"></a><a class="code" href="class_halide_1_1_func.html#a33cb0d00bc9585bf3027011ecb1412b7" title="Allocate storage for this function within f&#39;s loop over var.">store_at</a>(spread, yo).<a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273" title="Compute this function as needed for each unique value of the given var for the given calling function...">compute_at</a>(spread, yi);
 
-        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;uint8_t&gt;</a> halide_result = spread.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(), input.<a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>());
+        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;uint8_t&gt;</a> halide_result = spread.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>());
 
         <span class="comment">// The C equivalent is almost too horrible to contemplate (and</span>
         <span class="comment">// took me a long time to debug). This time I want to time</span>
@@ -867,22 +866,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <span class="preprocessor">        #ifdef __SSE2__</span>
 <span class="preprocessor"></span>
         <span class="comment">// Don&#39;t include the time required to allocate the output buffer.</span>
-        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;uint8_t&gt;</a> c_result(input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(), input.<a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>());
+        <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;uint8_t&gt;</a> c_result(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>());
 
-        <span class="keywordtype">double</span> t1 = currentTime();
+        <span class="keywordtype">double</span> t1 = current_time();
 
         <span class="comment">// Run this one hundred times so we can average the timing results.</span>
         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> iters = 0; iters &lt; 100; iters++) {
 
 <span class="preprocessor">            #pragma omp parallel for</span>
-<span class="preprocessor"></span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> yo = 0; yo &lt; (input.<a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>() + 31)/32; yo++) {
-                <span class="keywordtype">int</span> y_base = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">std::min</a>(yo * 32, input.<a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>() - 32);
+<span class="preprocessor"></span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> yo = 0; yo &lt; (input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>() + 31)/32; yo++) {
+                <span class="keywordtype">int</span> y_base = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">std::min</a>(yo * 32, input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>() - 32);
 
                 <span class="comment">// Compute clamped in a circular buffer of size 8</span>
                 <span class="comment">// (smallest power of two greater than 5). Each thread</span>
                 <span class="comment">// needs its own allocation, so it must occur here.</span>
 
-                <span class="keywordtype">int</span> clamped_width = input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>() + 4;
+                <span class="keywordtype">int</span> clamped_width = input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>() + 4;
                 <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *clamped_storage = (<a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *)malloc(clamped_width * 8);
 
                 <span class="keywordflow">for</span> (<span class="keywordtype">int</span> yi = 0; yi &lt; 32; yi++) {
@@ -901,19 +900,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
                         <span class="comment">// Figure out which row of the input we&#39;re reading</span>
                         <span class="comment">// from by clamping the y coordinate:</span>
-                        <span class="keywordtype">int</span> clamped_y = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">std::min</a>(<a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec" title="Returns an expression representing the greater of the two arguments, after doing any necessary type c...">std::max</a>(cy, 0), input.<a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>()-1);
+                        <span class="keywordtype">int</span> clamped_y = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">std::min</a>(<a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec" title="Returns an expression representing the greater of the two arguments, after doing any necessary type c...">std::max</a>(cy, 0), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>()-1);
                         <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *input_row = &amp;input(0, clamped_y);
 
                         <span class="comment">// Fill it in with the padding.</span>
-                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = -2; x &lt; input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>() + 2; x++) {
-                            <span class="keywordtype">int</span> clamped_x = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">std::min</a>(<a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec" title="Returns an expression representing the greater of the two arguments, after doing any necessary type c...">std::max</a>(x, 0), input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>()-1);
+                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = -2; x &lt; input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>() + 2; x++) {
+                            <span class="keywordtype">int</span> clamped_x = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">std::min</a>(<a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec" title="Returns an expression representing the greater of the two arguments, after doing any necessary type c...">std::max</a>(x, 0), input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>()-1);
                             *clamped_row++ = input_row[clamped_x];
                         }
                     }
 
                     <span class="comment">// Now iterate over vectors of x for the pure step of the output.</span>
-                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x_vec = 0; x_vec &lt; (input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>() + 15)/16; x_vec++) {
-                        <span class="keywordtype">int</span> x_base = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">std::min</a>(x_vec * 16, input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>() - 16);
+                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x_vec = 0; x_vec &lt; (input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>() + 15)/16; x_vec++) {
+                        <span class="keywordtype">int</span> x_base = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">std::min</a>(x_vec * 16, input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>() - 16);
 
                         <span class="comment">// Allocate storage for the minimum and maximum</span>
                         <span class="comment">// helpers. One vector is enough.</span>
@@ -959,7 +958,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
             }
         }
 
-        <span class="keywordtype">double</span> t2 = currentTime();
+        <span class="keywordtype">double</span> t2 = current_time();
 
         <span class="comment">// Skip the timing comparison if we don&#39;t have openmp</span>
         <span class="comment">// enabled. Otherwise it&#39;s unfair to C.</span>
@@ -971,7 +970,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
             spread.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(halide_result);
         }
 
-        <span class="keywordtype">double</span> t3 = currentTime();
+        <span class="keywordtype">double</span> t3 = current_time();
 
         <span class="comment">// Report the timings. On my machine they both take about 3ms</span>
         <span class="comment">// for the 4-megapixel input (fast!), which makes sense,</span>
@@ -984,8 +983,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <span class="preprocessor">        #endif // _OPENMP</span>
 <span class="preprocessor"></span>
         <span class="comment">// Check the results match:</span>
-        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; input.<a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>(); y++) {
-            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input.<a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(); x++) {
+        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>(); y++) {
+            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(); x++) {
                 <span class="keywordflow">if</span> (halide_result(x, y) != c_result(x, y)) {
                     printf(<span class="stringliteral">&quot;halide_result(%d, %d) = %d instead of %d\n&quot;</span>,
                            x, y, halide_result(x, y), c_result(x, y));

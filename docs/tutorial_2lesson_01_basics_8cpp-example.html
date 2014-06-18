@@ -99,11 +99,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <span class="comment">// This lesson demonstrates basic usage of Halide as a JIT compiler for imaging.</span>
 
 <span class="comment">// On linux, you can compile and run it like so:</span>
-<span class="comment">// g++ lesson_01*.cpp -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_01</span>
+<span class="comment">// g++ lesson_01*.cpp -g -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_01</span>
 <span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_01</span>
 
 <span class="comment">// On os x:</span>
-<span class="comment">// g++ lesson_01*.cpp -I ../include -L ../bin -lHalide -o lesson_01</span>
+<span class="comment">// g++ lesson_01*.cpp -g -I ../include -L ../bin -lHalide -o lesson_01</span>
 <span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_01</span>
 
 <span class="comment">// The only Halide header file you need is Halide.h. It includes all of Halide.</span>
@@ -171,8 +171,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
     <span class="comment">// Let&#39;s check everything worked, and we got the output we were</span>
     <span class="comment">// expecting:</span>
-    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; output.<a name="a5"></a><a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>(); j++) {
-        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; output.<a name="a6"></a><a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(); i++) {
+    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; output.<a name="a5"></a><a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>(); j++) {
+        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; output.<a name="a6"></a><a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(); i++) {
             <span class="comment">// We can access a pixel of an Image object using similar</span>
             <span class="comment">// syntax to defining and using functions.</span>
             <span class="keywordflow">if</span> (output(i, j) != i + j) {

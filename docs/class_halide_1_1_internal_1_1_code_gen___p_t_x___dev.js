@@ -1,7 +1,7 @@
 var class_halide_1_1_internal_1_1_code_gen___p_t_x___dev =
 [
     [ "CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a7d9c64556b8a8a0691549a50d4e384c9", null ],
-    [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a3c25d2cd60559d8e2e77fae6d38022da", null ],
+    [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a0128cd43acf6f6421a6945c3f2d46f9f", null ],
     [ "init_module", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a644643413c80d0731d08cb96bb12c023", null ],
     [ "test", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a6e1b76342ee7d40ed5b1b4438010a135", null ],
     [ "compile_to_src", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ab74e5d97fcfc317f3bc56c0c633b067d", null ],
@@ -10,7 +10,6 @@ var class_halide_1_1_internal_1_1_code_gen___p_t_x___dev =
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a9458eeb41a3d3d19c9814ab9b4c54a83", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#acdf09bdf43e551c810062598392689fa", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a107885488d5f0b028b2a46cc95aac715", null ],
-    [ "visit", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a461656c3edf8f084c03985a1d8714aba", null ],
     [ "march", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a7297e6a55a0b99645120c6a93e927689", null ],
     [ "mcpu", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ab08dd010add2b9e4f5283e30ccc1df07", null ],
     [ "mattrs", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a363ae35e96acd61a52cdbc71f315b296", null ],

@@ -1,6 +1,8 @@
 var searchData=
 [
   ['eq',['EQ',['../struct_halide_1_1_internal_1_1_e_q.html',1,'Halide::Internal']]],
+  ['error',['Error',['../struct_halide_1_1_error.html',1,'Halide']]],
+  ['errorreport',['ErrorReport',['../struct_halide_1_1_internal_1_1_error_report.html',1,'Halide::Internal']]],
   ['evaluate',['Evaluate',['../struct_halide_1_1_internal_1_1_evaluate.html',1,'Halide::Internal']]],
   ['expr',['Expr',['../struct_halide_1_1_expr.html',1,'Halide']]],
   ['exprcompare',['ExprCompare',['../struct_halide_1_1_expr_compare.html',1,'Halide']]],
@@ -33,5 +35,6 @@ var searchData=
   ['exprnode_3c_20stringimm_20_3e',['ExprNode< StringImm >',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprnode_3c_20sub_20_3e',['ExprNode< Sub >',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprnode_3c_20variable_20_3e',['ExprNode< Variable >',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
+  ['exprusesvars',['ExprUsesVars',['../class_halide_1_1_internal_1_1_expr_uses_vars.html',1,'Halide::Internal']]],
   ['externfuncargument',['ExternFuncArgument',['../struct_halide_1_1_extern_func_argument.html',1,'Halide']]]
 ];

@@ -112,32 +112,57 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00010"></a>00010 <span class="keyword">namespace </span>Halide {
 <a name="l00011"></a>00011 <span class="keyword">namespace </span>Internal {
 <a name="l00012"></a>00012 <span class="comment"></span>
-<a name="l00013"></a>00013 <span class="comment">/** A code generator that emits GPU code from a given Halide stmt. */</span>
-<a name="l00014"></a><a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html">00014</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html" title="A code generator that emits GPU code from a given Halide stmt.">CodeGen_GPU_Dev</a> {
-<a name="l00015"></a>00015     <span class="keyword">virtual</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a7597c4d74a373eff2dbad021487d4bcd">~CodeGen_GPU_Dev</a>();
-<a name="l00016"></a>00016 <span class="comment"></span>
-<a name="l00017"></a>00017 <span class="comment">    /** Compile a GPU kernel into the module. This may be called many times</span>
-<a name="l00018"></a>00018 <span class="comment">     * with different kernels, which will all be accumulated into a single</span>
-<a name="l00019"></a>00019 <span class="comment">     * source module shared by a given Halide pipeline. */</span>
-<a name="l00020"></a>00020     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a68ce3e6da0ede52095fd82515be4181b" title="Compile a GPU kernel into the module.">add_kernel</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> stmt, std::string name, <span class="keyword">const</span> std::vector&lt;Argument&gt; &amp;args) = 0;
-<a name="l00021"></a>00021 <span class="comment"></span>
-<a name="l00022"></a>00022 <span class="comment">    /** (Re)initialize the GPU kernel module. This is separate from compile,</span>
-<a name="l00023"></a>00023 <span class="comment">     * since a GPU device module will often have many kernels compiled into it</span>
-<a name="l00024"></a>00024 <span class="comment">     * for a single pipeline. */</span>
-<a name="l00025"></a>00025     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a194290bd11dc2d88048dfd67c5534bbc" title="(Re)initialize the GPU kernel module.">init_module</a>() = 0;
-<a name="l00026"></a>00026 
-<a name="l00027"></a>00027     <span class="keyword">virtual</span> std::vector&lt;char&gt; <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a614e2f87474143ebd10b0bfd0a5883a0">compile_to_src</a>() = 0;
-<a name="l00028"></a>00028 
-<a name="l00029"></a>00029     <span class="keyword">virtual</span> std::string <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a939a91a4f734a9c3281ace6c2342acfc">get_current_kernel_name</a>() = 0;
-<a name="l00030"></a>00030 
-<a name="l00031"></a>00031     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a803b952d35a4fea02cc8fb0461ea85bb">dump</a>() = 0;
-<a name="l00032"></a>00032 
-<a name="l00033"></a>00033     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a11c3e79e6fd076aaf4d3e9b32fa9d131">is_gpu_var</a>(<span class="keyword">const</span> std::string &amp;name);
-<a name="l00034"></a>00034 };
-<a name="l00035"></a>00035 
-<a name="l00036"></a>00036 }}
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038 <span class="preprocessor">#endif</span>
+<a name="l00013"></a>00013 <span class="comment">/** A bit more information attached to an argument useful for GPU backends. */</span>
+<a name="l00014"></a><a class="code" href="struct_halide_1_1_internal_1_1_g_p_u___argument.html">00014</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_g_p_u___argument.html" title="A bit more information attached to an argument useful for GPU backends.">GPU_Argument</a> : <span class="keyword">public</span> <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a> {<span class="comment"></span>
+<a name="l00015"></a>00015 <span class="comment">    /** The static size of the argument if known, or zero otherwise. */</span>
+<a name="l00016"></a><a class="code" href="struct_halide_1_1_internal_1_1_g_p_u___argument.html#af19e166b9a861fdabac82ee0944978ca">00016</a>     <span class="keywordtype">size_t</span> <a class="code" href="struct_halide_1_1_internal_1_1_g_p_u___argument.html#af19e166b9a861fdabac82ee0944978ca" title="The static size of the argument if known, or zero otherwise.">size</a>;
+<a name="l00017"></a>00017 
+<a name="l00018"></a><a class="code" href="struct_halide_1_1_internal_1_1_g_p_u___argument.html#ab5335c7fd07e41d6b326856361e6b255">00018</a>     <a class="code" href="struct_halide_1_1_internal_1_1_g_p_u___argument.html#ab5335c7fd07e41d6b326856361e6b255">GPU_Argument</a>() : <a class="code" href="struct_halide_1_1_internal_1_1_g_p_u___argument.html#af19e166b9a861fdabac82ee0944978ca" title="The static size of the argument if known, or zero otherwise.">size</a>(0) {}
+<a name="l00019"></a><a class="code" href="struct_halide_1_1_internal_1_1_g_p_u___argument.html#a5b347ebe32802b368f2ec1de476bd042">00019</a>     <a class="code" href="struct_halide_1_1_internal_1_1_g_p_u___argument.html#ab5335c7fd07e41d6b326856361e6b255">GPU_Argument</a>(<span class="keyword">const</span> std::string &amp;_name, <span class="keywordtype">bool</span> _is_buffer, <a class="code" href="struct_halide_1_1_type.html" title="Types in the halide type system.">Type</a> _type) :
+<a name="l00020"></a>00020         <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a>(_name, _is_buffer, _type), <a class="code" href="struct_halide_1_1_internal_1_1_g_p_u___argument.html#af19e166b9a861fdabac82ee0944978ca" title="The static size of the argument if known, or zero otherwise.">size</a>(0) {}
+<a name="l00021"></a><a class="code" href="struct_halide_1_1_internal_1_1_g_p_u___argument.html#ac3fe3f9d3bc6202471344dd02e2ec575">00021</a>     <a class="code" href="struct_halide_1_1_internal_1_1_g_p_u___argument.html#ab5335c7fd07e41d6b326856361e6b255">GPU_Argument</a>(<span class="keyword">const</span> std::string &amp;_name, <span class="keywordtype">bool</span> _is_buffer, <a class="code" href="struct_halide_1_1_type.html" title="Types in the halide type system.">Type</a> _type,
+<a name="l00022"></a>00022                  <span class="keywordtype">size_t</span> _size) :
+<a name="l00023"></a>00023         <a class="code" href="struct_halide_1_1_argument.html" title="A struct representing an argument to a halide-generated function.">Argument</a>(_name, _is_buffer, _type), <a class="code" href="struct_halide_1_1_internal_1_1_g_p_u___argument.html#af19e166b9a861fdabac82ee0944978ca" title="The static size of the argument if known, or zero otherwise.">size</a>(_size) {}
+<a name="l00024"></a>00024 };
+<a name="l00025"></a>00025 <span class="comment"></span>
+<a name="l00026"></a>00026 <span class="comment">/** A code generator that emits GPU code from a given Halide stmt. */</span>
+<a name="l00027"></a><a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html">00027</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html" title="A code generator that emits GPU code from a given Halide stmt.">CodeGen_GPU_Dev</a> {
+<a name="l00028"></a>00028     <span class="keyword">virtual</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a7597c4d74a373eff2dbad021487d4bcd">~CodeGen_GPU_Dev</a>();
+<a name="l00029"></a>00029 <span class="comment"></span>
+<a name="l00030"></a>00030 <span class="comment">    /** Compile a GPU kernel into the module. This may be called many times</span>
+<a name="l00031"></a>00031 <span class="comment">     * with different kernels, which will all be accumulated into a single</span>
+<a name="l00032"></a>00032 <span class="comment">     * source module shared by a given Halide pipeline. */</span>
+<a name="l00033"></a>00033     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a9b52291ebbfd6c6fb8039e4dcca73f62" title="Compile a GPU kernel into the module.">add_kernel</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> stmt,
+<a name="l00034"></a>00034                             std::string name,
+<a name="l00035"></a>00035                             <span class="keyword">const</span> std::vector&lt;GPU_Argument&gt; &amp;args) = 0;
+<a name="l00036"></a>00036 <span class="comment"></span>
+<a name="l00037"></a>00037 <span class="comment">    /** (Re)initialize the GPU kernel module. This is separate from compile,</span>
+<a name="l00038"></a>00038 <span class="comment">     * since a GPU device module will often have many kernels compiled into it</span>
+<a name="l00039"></a>00039 <span class="comment">     * for a single pipeline. */</span>
+<a name="l00040"></a>00040     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a194290bd11dc2d88048dfd67c5534bbc" title="(Re)initialize the GPU kernel module.">init_module</a>() = 0;
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042     <span class="keyword">virtual</span> std::vector&lt;char&gt; <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a614e2f87474143ebd10b0bfd0a5883a0">compile_to_src</a>() = 0;
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044     <span class="keyword">virtual</span> std::string <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a939a91a4f734a9c3281ace6c2342acfc">get_current_kernel_name</a>() = 0;
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a803b952d35a4fea02cc8fb0461ea85bb">dump</a>() = 0;
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a11c3e79e6fd076aaf4d3e9b32fa9d131">is_gpu_var</a>(<span class="keyword">const</span> std::string &amp;name);
+<a name="l00049"></a>00049     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a1ef4e2d5c105ec6b57a4b70cefee8c39">is_gpu_block_var</a>(<span class="keyword">const</span> std::string &amp;name);
+<a name="l00050"></a>00050     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a101eb8c79718feb5467c4f89871558ce">is_gpu_thread_var</a>(<span class="keyword">const</span> std::string &amp;name);
+<a name="l00051"></a>00051 <span class="comment"></span>
+<a name="l00052"></a>00052 <span class="comment">    /** Checks if expr is block uniform, i.e. does not depend on a thread</span>
+<a name="l00053"></a>00053 <span class="comment">     * var. */</span>
+<a name="l00054"></a>00054     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a3fd3dfd6079ed62d6ff443ecdb0b2f9b" title="Checks if expr is block uniform, i.e.">is_block_uniform</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> expr);<span class="comment"></span>
+<a name="l00055"></a>00055 <span class="comment">    /** Checks if the buffer is a candidate for constant storage. Most</span>
+<a name="l00056"></a>00056 <span class="comment">     * GPUs (APIs) support a constant memory storage class that cannot be</span>
+<a name="l00057"></a>00057 <span class="comment">     * written to and performs well for block uniform accesses. */</span>
+<a name="l00058"></a>00058     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#ac1562c4eda09f8bc66f5e94e2e4f4ac4" title="Checks if the buffer is a candidate for constant storage.">is_buffer_constant</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html" title="A reference-counted handle to a statement node.">Stmt</a> kernel, <span class="keyword">const</span> std::string &amp;buffer);
+<a name="l00059"></a>00059 };
+<a name="l00060"></a>00060 
+<a name="l00061"></a>00061 }}
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

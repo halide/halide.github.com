@@ -2,6 +2,7 @@ var searchData=
 [
   ['schedule_2eh',['Schedule.h',['../_schedule_8h.html',1,'']]],
   ['scope_2eh',['Scope.h',['../_scope_8h.html',1,'']]],
+  ['scoped_5fspin_5flock_2eh',['scoped_spin_lock.h',['../scoped__spin__lock_8h.html',1,'']]],
   ['simplify_2eh',['Simplify.h',['../_simplify_8h.html',1,'']]],
   ['skipstages_2eh',['SkipStages.h',['../_skip_stages_8h.html',1,'']]],
   ['slidingwindow_2eh',['SlidingWindow.h',['../_sliding_window_8h.html',1,'']]],

@@ -5,7 +5,7 @@ var struct_halide_1_1_target =
     [ "Features", "struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80", null ],
     [ "Target", "struct_halide_1_1_target.html#aeb11109583253fe6e358bba73d3e4a86", null ],
     [ "Target", "struct_halide_1_1_target.html#a0583b7b0198655b69b124a48c37598ac", null ],
-    [ "has_gpu_feature", "struct_halide_1_1_target.html#ae89c744ee593668ede7638246b59b5c8", null ],
+    [ "has_gpu_feature", "struct_halide_1_1_target.html#a653f58c7d0efbd7dac22cf239576a660", null ],
     [ "operator==", "struct_halide_1_1_target.html#a052486b9b96e649b9311bcc00e0a9405", null ],
     [ "operator!=", "struct_halide_1_1_target.html#a2d02d1fc5b8b3a38ba48316519b389c0", null ],
     [ "to_string", "struct_halide_1_1_target.html#a902e58d463f8babb79f6263709d06f01", null ],

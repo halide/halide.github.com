@@ -134,6 +134,11 @@ Static Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the argument index for a placeholder argument given its name.  <a href="#a2fa2b57f58e68761675fe07aa19fc7bf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_var.html#a52e7795c7ec7f9ee2f488089e950847b">is_placeholder</a> (const std::string &amp;<a class="el" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf">name</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if a var is the placeholder variable <a class="el" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02">_</a>.  <a href="#a52e7795c7ec7f9ee2f488089e950847b"></a><br/></td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_halide_1_1_var.html">Var</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_var.html#aadce05f2366998e6ede48081d24caaae">gpu_blocks</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Vars to use for scheduling producer/consumer pairs on the gpu.  <a href="#aadce05f2366998e6ede48081d24caaae"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_halide_1_1_var.html">Var</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_var.html#aa9a89db38e3a71524a2462b22f739a33">gpu_threads</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Vars to use for scheduling producer/consumer pairs on the gpu.  <a href="#aa9a89db38e3a71524a2462b22f739a33"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A <a class="el" href="namespace_halide.html">Halide</a> variable, to be used when defining functions. </p>
@@ -161,6 +166,8 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_var_8h_source.html#l00024">24</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
 
+<p>References <a class="el" href="namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9">Halide::Internal::unique_name()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="ac238aaac88dd594255c0d161f8530319"></a><!-- doxytag: member="Halide::Var::Var" ref="ac238aaac88dd594255c0d161f8530319" args="()" -->
@@ -179,9 +186,9 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Construct a <a class="el" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> with an automatically-generated unique name. </p>
 
-<p>Definition at line <a class="el" href="_var_8h_source.html#l00027">27</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
+<p>Definition at line <a class="el" href="_var_8h_source.html#l00031">31</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_var_8h_source.html#l00113">implicit()</a>.</p>
+<p>Referenced by <a class="el" href="_var_8h_source.html#l00153">gpu_blocks()</a>, <a class="el" href="_var_8h_source.html#l00156">gpu_threads()</a>, and <a class="el" href="_var_8h_source.html#l00117">implicit()</a>.</p>
 
 </div>
 </div>
@@ -202,9 +209,9 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Get the name of a <a class="el" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a>. </p>
 
-<p>Definition at line <a class="el" href="_var_8h_source.html#l00030">30</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
+<p>Definition at line <a class="el" href="_var_8h_source.html#l00034">34</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_func_8h_source.html#l00037">Halide::VarOrRVar::name()</a>, and <a class="el" href="_var_8h_source.html#l00143">operator Expr()</a>.</p>
+<p>Referenced by <a class="el" href="_func_8h_source.html#l00037">Halide::VarOrRVar::name()</a>, and <a class="el" href="_var_8h_source.html#l00147">operator Expr()</a>.</p>
 
 </div>
 </div>
@@ -226,7 +233,7 @@ Static Public Member Functions</h2></td></tr>
 <p>Test if two Vars are the same. </p>
 <p>This simply compares the names. </p>
 
-<p>Definition at line <a class="el" href="_var_8h_source.html#l00033">33</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
+<p>Definition at line <a class="el" href="_var_8h_source.html#l00037">37</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
 
 </div>
 </div>
@@ -276,11 +283,9 @@ Static Public Member Functions</h2></td></tr>
 </pre></div><p>The first ten implicits, _0 through _9, are predeclared in this header and can be used for scheduling. They should never be used as arguments in a declaration or used in a call.</p>
 <p>While it is possible to use <a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117" title="Implicit var constructor.">Var::implicit</a> or the predeclared implicits to create expressions that can be treated as small anonymous functions (e.g. <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a>(_0 + _1)) this is considered poor style. Instead use <a class="el" href="namespace_halide.html#a57190a14ea6851c5ce46eaedaa77d21a">lambda</a>. </p>
 
-<p>Definition at line <a class="el" href="_var_8h_source.html#l00113">113</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
+<p>Definition at line <a class="el" href="_var_8h_source.html#l00117">117</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
 
-<p>References <a class="el" href="_var_8h_source.html#l00027">Var()</a>.</p>
-
-<p>Referenced by <a class="el" href="_param_8h_source.html#l00124">Halide::OutputImageParam::add_implicit_args_if_placeholder()</a>.</p>
+<p>References <a class="el" href="_var_8h_source.html#l00031">Var()</a>.</p>
 
 </div>
 </div>
@@ -302,11 +307,11 @@ Static Public Member Functions</h2></td></tr>
 <p>Return whether a variable name is of the form for an implicit argument. </p>
 <p>TODO: This is almost guaranteed to incorrectly fire on user declared variables at some point. We should likely prevent user <a class="el" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> declarations from making names of this form. </p>
 
-<p>Definition at line <a class="el" href="_var_8h_source.html#l00124">124</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
+<p>Definition at line <a class="el" href="_var_8h_source.html#l00128">128</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed">Halide::Internal::starts_with()</a>.</p>
 
-<p>Referenced by <a class="el" href="_var_8h_source.html#l00133">implicit_index()</a>.</p>
+<p>Referenced by <a class="el" href="_var_8h_source.html#l00137">implicit_index()</a>.</p>
 
 </div>
 </div>
@@ -328,9 +333,9 @@ Static Public Member Functions</h2></td></tr>
 <p>Return the argument index for a placeholder argument given its name. </p>
 <p>Returns 0 for <a class="el" href="namespace_halide.html#a57841c7113c6794d0178568f74b1de75">_0</a>, 1 for <a class="el" href="namespace_halide.html#af6eac61e701ea87443086c3597f13752">_1</a>, etc. Returns -1 if the variable is not of implicit form. </p>
 
-<p>Definition at line <a class="el" href="_var_8h_source.html#l00133">133</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
+<p>Definition at line <a class="el" href="_var_8h_source.html#l00137">137</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
 
-<p>References <a class="el" href="_var_8h_source.html#l00124">is_implicit()</a>.</p>
+<p>References <a class="el" href="_var_8h_source.html#l00128">is_implicit()</a>.</p>
 
 </div>
 </div>
@@ -351,9 +356,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Test if a var is the placeholder variable <a class="el" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02">_</a>. </p>
 
-<p>Definition at line <a class="el" href="_var_8h_source.html#l00138">138</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
-
-<p>Referenced by <a class="el" href="_param_8h_source.html#l00124">Halide::OutputImageParam::add_implicit_args_if_placeholder()</a>.</p>
+<p>Definition at line <a class="el" href="_var_8h_source.html#l00142">142</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
 
 </div>
 </div>
@@ -373,9 +376,53 @@ Static Public Member Functions</h2></td></tr>
 
 <p>A <a class="el" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> can be treated as an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> of type Int(32) </p>
 
-<p>Definition at line <a class="el" href="_var_8h_source.html#l00143">143</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
+<p>Definition at line <a class="el" href="_var_8h_source.html#l00147">147</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
 
-<p>References <a class="el" href="_type_8h_source.html#l00096">Halide::Int()</a>, <a class="el" href="_i_r_8h_source.html#l01056">Halide::Internal::Variable::make()</a>, and <a class="el" href="_var_8h_source.html#l00030">name()</a>.</p>
+<p>References <a class="el" href="_type_8h_source.html#l00096">Halide::Int()</a>, <a class="el" href="_i_r_8h_source.html#l01076">Halide::Internal::Variable::make()</a>, and <a class="el" href="_var_8h_source.html#l00034">name()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aadce05f2366998e6ede48081d24caaae"></a><!-- doxytag: member="Halide::Var::gpu_blocks" ref="aadce05f2366998e6ede48081d24caaae" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_halide_1_1_var.html">Var</a> <a class="el" href="class_halide_1_1_var.html#aadce05f2366998e6ede48081d24caaae">Halide::Var::gpu_blocks</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Vars to use for scheduling producer/consumer pairs on the gpu. </p>
+
+<p>Definition at line <a class="el" href="_var_8h_source.html#l00153">153</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
+
+<p>References <a class="el" href="_var_8h_source.html#l00031">Var()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa9a89db38e3a71524a2462b22f739a33"></a><!-- doxytag: member="Halide::Var::gpu_threads" ref="aa9a89db38e3a71524a2462b22f739a33" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_halide_1_1_var.html">Var</a> <a class="el" href="class_halide_1_1_var.html#aa9a89db38e3a71524a2462b22f739a33">Halide::Var::gpu_threads</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Vars to use for scheduling producer/consumer pairs on the gpu. </p>
+
+<p>Definition at line <a class="el" href="_var_8h_source.html#l00156">156</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
+
+<p>References <a class="el" href="_var_8h_source.html#l00031">Var()</a>.</p>
 
 </div>
 </div>

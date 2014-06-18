@@ -19,7 +19,7 @@ var searchData=
   ['id',['id',['../class_halide_1_1_internal_1_1_code_gen___c.html#aa2a0647e17ceb7a5483257016b2f7f93',1,'Halide::Internal::CodeGen_C']]],
   ['if_5fthen_5felse',['if_then_else',['../struct_halide_1_1_internal_1_1_call.html#acf8cc995bfa94376454f6f87921b18e4',1,'Halide::Internal::Call']]],
   ['ignore',['ignore',['../class_halide_1_1_internal_1_1_closure.html#ab7f87fdc56211ec7ad37df774b70c2b1',1,'Halide::Internal::Closure']]],
-  ['image',['image',['../struct_halide_1_1_internal_1_1_load.html#a9c5bef8bc19b9c74867fcf451ab4908c',1,'Halide::Internal::Load::image()'],['../struct_halide_1_1_internal_1_1_call.html#a85db8b4977d7378850e3e2394f5dfb1d',1,'Halide::Internal::Call::image()']]],
+  ['image',['image',['../struct_halide_1_1_internal_1_1_load.html#a9c5bef8bc19b9c74867fcf451ab4908c',1,'Halide::Internal::Load::image()'],['../struct_halide_1_1_internal_1_1_call.html#a85db8b4977d7378850e3e2394f5dfb1d',1,'Halide::Internal::Call::image()'],['../struct_halide_1_1_internal_1_1_variable.html#a848f79622d055c4c13f37d55e0b1b743',1,'Halide::Internal::Variable::image()']]],
   ['image_5farray_5fsize',['image_array_size',['../struct__cl__image__desc.html#a8c5a9f11016b833f7a24f0af587ecd67',1,'_cl_image_desc']]],
   ['image_5fchannel_5fdata_5ftype',['image_channel_data_type',['../struct__cl__image__format.html#ae965ba5f74cd52eabffc4e0904adea34',1,'_cl_image_format']]],
   ['image_5fchannel_5forder',['image_channel_order',['../struct__cl__image__format.html#aaedf0bf00bd2b217e865cad706bfad02',1,'_cl_image_format']]],
@@ -32,10 +32,10 @@ var searchData=
   ['image_5fwidth',['image_width',['../struct__cl__image__desc.html#a0eb67a2cecf5e7ee550e287ef74b65ea',1,'_cl_image_desc']]],
   ['indent',['indent',['../class_halide_1_1_internal_1_1_i_r_printer.html#a2023abc07c7c54f7b9fdf8d4a8139255',1,'Halide::Internal::IRPrinter']]],
   ['index',['index',['../struct_halide_1_1_internal_1_1_load.html#ac287039b983a917345b7be04d8200fde',1,'Halide::Internal::Load::index()'],['../struct_halide_1_1_internal_1_1_store.html#a0607ec7232499b7e2909fc521497e8e3',1,'Halide::Internal::Store::index()']]],
-  ['initialized',['initialized',['../struct_halide_1_1_internal_1_1debug.html#af8650df660d8ebd4ddc7168e98c095f8',1,'Halide::Internal::debug']]],
-  ['inner',['inner',['../struct_halide_1_1_internal_1_1_schedule_1_1_split.html#abbcd22d6fd21afc40ec9a7f0b7a5ccbb',1,'Halide::Internal::Schedule::Split']]],
+  ['initialized',['initialized',['../struct_halide_1_1_internal_1_1debug.html#a6f61a3ee32ccea5d363bbb8ba5df3031',1,'Halide::Internal::debug']]],
+  ['inner',['inner',['../struct_halide_1_1_internal_1_1_split.html#addcc9ba56f72ca2c790f948c27f46207',1,'Halide::Internal::Split']]],
   ['interleave_5fvectors',['interleave_vectors',['../struct_halide_1_1_internal_1_1_call.html#a4e22b03d6bd9735cb6a6fcb9bfa5f5e2',1,'Halide::Internal::Call']]],
   ['intrin',['intrin',['../struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html#a884faae52a74489eb46e6287d7654a19',1,'Halide::Internal::CodeGen_ARM::Pattern']]],
-  ['is_5fbuffer',['is_buffer',['../struct_halide_1_1_argument.html#aba405d8c881a59ab66023e4c607a2134',1,'Halide::Argument::is_buffer()'],['../struct_halide_1_1_internal_1_1_parameter_contents.html#abe9639e16edb5fab16d4bfeea6ab2a67',1,'Halide::Internal::ParameterContents::is_buffer()']]],
+  ['is_5fbuffer',['is_buffer',['../struct_halide_1_1_argument.html#aba405d8c881a59ab66023e4c607a2134',1,'Halide::Argument']]],
   ['is_5frvar',['is_rvar',['../struct_halide_1_1_var_or_r_var.html#a55f1535c001e2c84c8a29e1237803014',1,'Halide::VarOrRVar']]]
 ];

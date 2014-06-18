@@ -104,7 +104,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="Halide::ScheduleHandle" -->
-<p>A wrapper around a schedule used for common schedule manipulations.  
+<p>A temporary wrapper around a schedule used for common schedule manipulations.  
  <a href="class_halide_1_1_schedule_handle.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_func_8h_source.html">Func.h</a>&gt;</code></p>
@@ -113,7 +113,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a5ad2d8b9dd4f722890654fa6c911e1aa">ScheduleHandle</a> (<a class="el" href="struct_halide_1_1_internal_1_1_schedule.html">Internal::Schedule</a> &amp;s)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a823d91c21421e6ee46cc5470336b2ee8">ScheduleHandle</a> (<a class="el" href="class_halide_1_1_internal_1_1_schedule.html">Internal::Schedule</a> s)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#aac3fd49ab9a92485f2a24ed997b2c46e">cuda_threads</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> thread_x)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#aa964092fe660a59129d3ac20feb1867b">cuda_threads</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> thread_x, <a class="el" href="class_halide_1_1_var.html">Var</a> thread_y)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a43f6c5ca23e42a04a654a0e6daaf81f7">cuda_threads</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> thread_x, <a class="el" href="class_halide_1_1_var.html">Var</a> thread_y, <a class="el" href="class_halide_1_1_var.html">Var</a> thread_z)</td></tr>
@@ -128,85 +128,89 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#ab9893c5369e40d5df86673e34894bf68">cuda_tile</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> x, <a class="el" href="class_halide_1_1_var.html">Var</a> y, <a class="el" href="class_halide_1_1_var.html">Var</a> z, int x_size, int y_size, int z_size)</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a82dcba5e287a284bfdb2eba997659daa">split</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> old, <a class="el" href="class_halide_1_1_var.html">Var</a> outer, <a class="el" href="class_halide_1_1_var.html">Var</a> inner, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> factor)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a82dcba5e287a284bfdb2eba997659daa"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a82dcba5e287a284bfdb2eba997659daa"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a07b98d9cec11b5e3a17930b0b20d01be">fuse</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> inner, <a class="el" href="class_halide_1_1_var.html">Var</a> outer, <a class="el" href="class_halide_1_1_var.html">Var</a> fused)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a07b98d9cec11b5e3a17930b0b20d01be"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a07b98d9cec11b5e3a17930b0b20d01be"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a69a1edcc147813c2417fd7aaeccb841c">serial</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> var)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a69a1edcc147813c2417fd7aaeccb841c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a341ae03504ed0261b1ffba9935844c2d">parallel</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> var)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a341ae03504ed0261b1ffba9935844c2d"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a341ae03504ed0261b1ffba9935844c2d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a965ef3a905df60c3f59ca3743cbf668d">vectorize</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> var)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a965ef3a905df60c3f59ca3743cbf668d"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a965ef3a905df60c3f59ca3743cbf668d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a0cf1e85d5dcb74d761d15546b5c6de90">unroll</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> var)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a0cf1e85d5dcb74d761d15546b5c6de90"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a0cf1e85d5dcb74d761d15546b5c6de90"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a05481e7e7ec22eb2ae6c49857d0b5b90">parallel</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> var, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> task_size)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a05481e7e7ec22eb2ae6c49857d0b5b90"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a05481e7e7ec22eb2ae6c49857d0b5b90"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a30332ea58e8ff19e426565ddb8814ae2">vectorize</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> var, int factor)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a30332ea58e8ff19e426565ddb8814ae2"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a30332ea58e8ff19e426565ddb8814ae2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#aab78461c04452c17b3b1534dcdd84505">unroll</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> var, int factor)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#aab78461c04452c17b3b1534dcdd84505"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#aab78461c04452c17b3b1534dcdd84505"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a5034fe9fbd89a2e6262bbdf3ac02a9fd">tile</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> x, <a class="el" href="class_halide_1_1_var.html">Var</a> y, <a class="el" href="class_halide_1_1_var.html">Var</a> xo, <a class="el" href="class_halide_1_1_var.html">Var</a> yo, <a class="el" href="class_halide_1_1_var.html">Var</a> xi, <a class="el" href="class_halide_1_1_var.html">Var</a> yi, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> xfactor, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> yfactor)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a5034fe9fbd89a2e6262bbdf3ac02a9fd"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a5034fe9fbd89a2e6262bbdf3ac02a9fd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a8ac11ba997fa44891f995d9affb9591e">tile</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> x, <a class="el" href="class_halide_1_1_var.html">Var</a> y, <a class="el" href="class_halide_1_1_var.html">Var</a> xi, <a class="el" href="class_halide_1_1_var.html">Var</a> yi, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> xfactor, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> yfactor)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a8ac11ba997fa44891f995d9affb9591e"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a8ac11ba997fa44891f995d9affb9591e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a773a847970afdca60927044e827a412b">reorder</a> (const std::vector&lt; <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> &gt; &amp;vars)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a773a847970afdca60927044e827a412b"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a773a847970afdca60927044e827a412b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a43f72770bb84b7936eb3fc2116166d78">reorder</a> (<a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> x, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> y)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a43f72770bb84b7936eb3fc2116166d78"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a43f72770bb84b7936eb3fc2116166d78"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#af241bff3c408029e125571996089f2b1">reorder</a> (<a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> x, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> y, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> z)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#af241bff3c408029e125571996089f2b1"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#af241bff3c408029e125571996089f2b1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a2d3f0fbb7b8fdcf433be5a51b413f130">reorder</a> (<a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> x, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> y, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> z, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> w)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a2d3f0fbb7b8fdcf433be5a51b413f130"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a2d3f0fbb7b8fdcf433be5a51b413f130"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a05d694346cfe51fbe7958266dbc97472">reorder</a> (<a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> x, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> y, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> z, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> w, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a05d694346cfe51fbe7958266dbc97472"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a05d694346cfe51fbe7958266dbc97472"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#ab9227e0746a5076da4e28c7b51484e22">reorder</a> (<a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> x, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> y, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> z, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> w, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t1, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t2)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#ab9227e0746a5076da4e28c7b51484e22"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#ab9227e0746a5076da4e28c7b51484e22"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a2de56391fd62266d549c8f1bbfff94b2">reorder</a> (<a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> x, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> y, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> z, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> w, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t1, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t2, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t3)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a2de56391fd62266d549c8f1bbfff94b2"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a2de56391fd62266d549c8f1bbfff94b2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#ab5800677e84df2e2a40590fae10e8594">reorder</a> (<a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> x, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> y, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> z, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> w, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t1, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t2, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t3, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t4)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#ab5800677e84df2e2a40590fae10e8594"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#ab5800677e84df2e2a40590fae10e8594"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a7c32ec3bb0e890dcf3f72995b8aa645c">reorder</a> (<a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> x, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> y, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> z, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> w, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t1, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t2, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t3, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t4, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t5)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a7c32ec3bb0e890dcf3f72995b8aa645c"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a7c32ec3bb0e890dcf3f72995b8aa645c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a15e86eb5d7c5879a1050cb07d98efa7f">reorder</a> (<a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> x, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> y, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> z, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> w, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t1, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t2, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t3, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t4, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t5, <a class="el" href="struct_halide_1_1_var_or_r_var.html">VarOrRVar</a> t6)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a15e86eb5d7c5879a1050cb07d98efa7f"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a15e86eb5d7c5879a1050cb07d98efa7f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#ae3cc45869ffbe51fa95f3fe7bc0f8463">rename</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> old_name, <a class="el" href="class_halide_1_1_var.html">Var</a> new_name)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#ae3cc45869ffbe51fa95f3fe7bc0f8463"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#ae3cc45869ffbe51fa95f3fe7bc0f8463"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a1d7b20cd828fef404277eab4a51d3ce0">specialize</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> condition)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a1d7b20cd828fef404277eab4a51d3ce0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#ad055cd17fd6c2e7f29b2959c787d9605">gpu_threads</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> thread_x, <a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5c">GPUAPI</a> gpu_api=<a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5ca607ce75df2e5133ac12da39b2bfd04cb">GPU_Default</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#ad055cd17fd6c2e7f29b2959c787d9605"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#ad055cd17fd6c2e7f29b2959c787d9605"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a60601bacc8d4d65d414a801247feb304">gpu_threads</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> thread_x, <a class="el" href="class_halide_1_1_var.html">Var</a> thread_y, <a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5c">GPUAPI</a> gpu_api=<a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5ca607ce75df2e5133ac12da39b2bfd04cb">GPU_Default</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a60601bacc8d4d65d414a801247feb304"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a60601bacc8d4d65d414a801247feb304"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a5281842fe9da8e791171595fc7ca5a98">gpu_threads</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> thread_x, <a class="el" href="class_halide_1_1_var.html">Var</a> thread_y, <a class="el" href="class_halide_1_1_var.html">Var</a> thread_z, <a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5c">GPUAPI</a> gpu_api=<a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5ca607ce75df2e5133ac12da39b2bfd04cb">GPU_Default</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a5281842fe9da8e791171595fc7ca5a98"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a5281842fe9da8e791171595fc7ca5a98"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a0040a5306746609dd8aec0bec03a003c">gpu_blocks</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> block_x, <a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5c">GPUAPI</a> gpu_api=<a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5ca607ce75df2e5133ac12da39b2bfd04cb">GPU_Default</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a0040a5306746609dd8aec0bec03a003c"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a0040a5306746609dd8aec0bec03a003c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a8a1b0c01a83bb4f0839db5720d43ec2d">gpu_blocks</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> block_x, <a class="el" href="class_halide_1_1_var.html">Var</a> block_y, <a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5c">GPUAPI</a> gpu_api=<a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5ca607ce75df2e5133ac12da39b2bfd04cb">GPU_Default</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a8a1b0c01a83bb4f0839db5720d43ec2d"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a8a1b0c01a83bb4f0839db5720d43ec2d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a10a8c5d505dfa76f10c95282743dee98">gpu_blocks</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> block_x, <a class="el" href="class_halide_1_1_var.html">Var</a> block_y, <a class="el" href="class_halide_1_1_var.html">Var</a> block_z, <a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5c">GPUAPI</a> gpu_api=<a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5ca607ce75df2e5133ac12da39b2bfd04cb">GPU_Default</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a10a8c5d505dfa76f10c95282743dee98"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a10a8c5d505dfa76f10c95282743dee98"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a480016a59e0dcddb03f94258dd6febed">gpu</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> block_x, <a class="el" href="class_halide_1_1_var.html">Var</a> thread_x, <a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5c">GPUAPI</a> gpu_api=<a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5ca607ce75df2e5133ac12da39b2bfd04cb">GPU_Default</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a480016a59e0dcddb03f94258dd6febed"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a480016a59e0dcddb03f94258dd6febed"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#ab3ab60895ce7b88629721cb785d8e6ed">gpu</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> block_x, <a class="el" href="class_halide_1_1_var.html">Var</a> block_y, <a class="el" href="class_halide_1_1_var.html">Var</a> thread_x, <a class="el" href="class_halide_1_1_var.html">Var</a> thread_y, <a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5c">GPUAPI</a> gpu_api=<a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5ca607ce75df2e5133ac12da39b2bfd04cb">GPU_Default</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#ab3ab60895ce7b88629721cb785d8e6ed"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#ab3ab60895ce7b88629721cb785d8e6ed"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a69da351bfc3dc6e9f60c8de3ca5194c2">gpu</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> block_x, <a class="el" href="class_halide_1_1_var.html">Var</a> block_y, <a class="el" href="class_halide_1_1_var.html">Var</a> block_z, <a class="el" href="class_halide_1_1_var.html">Var</a> thread_x, <a class="el" href="class_halide_1_1_var.html">Var</a> thread_y, <a class="el" href="class_halide_1_1_var.html">Var</a> thread_z, <a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5c">GPUAPI</a> gpu_api=<a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5ca607ce75df2e5133ac12da39b2bfd04cb">GPU_Default</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a69da351bfc3dc6e9f60c8de3ca5194c2"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a69da351bfc3dc6e9f60c8de3ca5194c2"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#ae0207078c6c248fa15a9d1669fbf7d9c">gpu_tile</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> x, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> x_size, <a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5c">GPUAPI</a> gpu_api=<a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5ca607ce75df2e5133ac12da39b2bfd04cb">GPU_Default</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#ae0207078c6c248fa15a9d1669fbf7d9c"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#ae0207078c6c248fa15a9d1669fbf7d9c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a2e2726d30c43b2645204a7dbafa49c9e">gpu_tile</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> x, <a class="el" href="class_halide_1_1_var.html">Var</a> y, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> x_size, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> y_size, <a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5c">GPUAPI</a> gpu_api=<a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5ca607ce75df2e5133ac12da39b2bfd04cb">GPU_Default</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a2e2726d30c43b2645204a7dbafa49c9e"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a2e2726d30c43b2645204a7dbafa49c9e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_handle.html#a775de7855de3f28ad9344b2685b77adc">gpu_tile</a> (<a class="el" href="class_halide_1_1_var.html">Var</a> x, <a class="el" href="class_halide_1_1_var.html">Var</a> y, <a class="el" href="class_halide_1_1_var.html">Var</a> z, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> x_size, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> y_size, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> z_size, <a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5c">GPUAPI</a> gpu_api=<a class="el" href="namespace_halide.html#aa5e16c1fed60e0a8f60277fa7587ef5ca607ce75df2e5133ac12da39b2bfd04cb">GPU_Default</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this update is traversed.  <a href="#a775de7855de3f28ad9344b2685b77adc"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Scheduling calls that control how the domain of this stage is traversed.  <a href="#a775de7855de3f28ad9344b2685b77adc"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>A wrapper around a schedule used for common schedule manipulations. </p>
+<div class="textblock"><p>A temporary wrapper around a schedule used for common schedule manipulations. </p>
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00196">196</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00202">202</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a5ad2d8b9dd4f722890654fa6c911e1aa"></a><!-- doxytag: member="Halide::ScheduleHandle::ScheduleHandle" ref="a5ad2d8b9dd4f722890654fa6c911e1aa" args="(Internal::Schedule &amp;s)" -->
+<a class="anchor" id="a823d91c21421e6ee46cc5470336b2ee8"></a><!-- doxytag: member="Halide::ScheduleHandle::ScheduleHandle" ref="a823d91c21421e6ee46cc5470336b2ee8" args="(Internal::Schedule s)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_schedule_handle.html#a5ad2d8b9dd4f722890654fa6c911e1aa">Halide::ScheduleHandle::ScheduleHandle</a> </td>
+          <td class="memname"><a class="el" href="class_halide_1_1_schedule_handle.html#a823d91c21421e6ee46cc5470336b2ee8">Halide::ScheduleHandle::ScheduleHandle</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_internal_1_1_schedule.html">Internal::Schedule</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_halide_1_1_internal_1_1_schedule.html">Internal::Schedule</a>&#160;</td>
           <td class="paramname"><em>s</em></td><td>)</td>
           <td><code> [inline]</code></td>
         </tr>
@@ -214,9 +218,9 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00201">201</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00207">207</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
-<p>References <a class="el" href="_schedule_8h_source.html#l00120">Halide::Internal::Schedule::touched</a>.</p>
+<p>References <a class="el" href="class_halide_1_1_internal_1_1_schedule.html#a2b3a3133737656d1a4d1bf3ce03cd2d7">Halide::Internal::Schedule::touched()</a>.</p>
 
 </div>
 </div>
@@ -258,7 +262,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a13">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
 </dl>
@@ -295,7 +299,27 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
+<p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
+
+</div>
+</div>
+<a class="anchor" id="a69a1edcc147813c2417fd7aaeccb841c"></a><!-- doxytag: member="Halide::ScheduleHandle::serial" ref="a69a1edcc147813c2417fd7aaeccb841c" args="(Var var)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a>&amp; <a class="el" href="class_halide_1_1_schedule_handle.html#a69a1edcc147813c2417fd7aaeccb841c">Halide::ScheduleHandle::serial</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_halide_1_1_var.html">Var</a>&#160;</td>
+          <td class="paramname"><em>var</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -315,7 +339,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a14">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
 </dl>
@@ -336,7 +360,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a12">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
 </dl>
@@ -357,7 +381,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -387,7 +411,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -417,7 +441,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -447,7 +471,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -513,7 +537,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -567,7 +591,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -587,7 +611,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -617,7 +641,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -653,7 +677,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -695,7 +719,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -743,7 +767,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -797,7 +821,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -857,7 +881,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -923,7 +947,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -995,7 +1019,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -1073,7 +1097,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -1103,7 +1127,27 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
+<p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1d7b20cd828fef404277eab4a51d3ce0"></a><!-- doxytag: member="Halide::ScheduleHandle::specialize" ref="a1d7b20cd828fef404277eab4a51d3ce0" args="(Expr condition)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_schedule_handle.html">ScheduleHandle</a> <a class="el" href="class_halide_1_1_schedule_handle.html#a1d7b20cd828fef404277eab4a51d3ce0">Halide::ScheduleHandle::specialize</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
+          <td class="paramname"><em>condition</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -1133,10 +1177,10 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
-<p>Referenced by <a class="el" href="_func_8h_source.html#l00264">cuda_threads()</a>.</p>
+<p>Referenced by <a class="el" href="_func_8h_source.html#l00272">cuda_threads()</a>.</p>
 
 </div>
 </div>
@@ -1171,7 +1215,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -1213,7 +1257,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -1243,10 +1287,10 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
-<p>Referenced by <a class="el" href="_func_8h_source.html#l00274">cuda_blocks()</a>.</p>
+<p>Referenced by <a class="el" href="_func_8h_source.html#l00282">cuda_blocks()</a>.</p>
 
 </div>
 </div>
@@ -1281,7 +1325,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -1323,7 +1367,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -1359,10 +1403,10 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
-<p>Referenced by <a class="el" href="_func_8h_source.html#l00284">cuda()</a>.</p>
+<p>Referenced by <a class="el" href="_func_8h_source.html#l00292">cuda()</a>.</p>
 
 </div>
 </div>
@@ -1409,7 +1453,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -1469,7 +1513,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -1505,10 +1549,10 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
-<p>Referenced by <a class="el" href="_func_8h_source.html#l00295">cuda_tile()</a>.</p>
+<p>Referenced by <a class="el" href="_func_8h_source.html#l00303">cuda_tile()</a>.</p>
 
 </div>
 </div>
@@ -1555,7 +1599,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -1615,7 +1659,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Scheduling calls that control how the domain of this update is traversed. </p>
+<p>Scheduling calls that control how the domain of this stage is traversed. </p>
 <p>See the documentation for <a class="el" href="class_halide_1_1_func.html" title="A halide function.">Func</a> for the meanings. </p>
 
 </div>
@@ -1635,7 +1679,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00264">264</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00272">272</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 <p>References <a class="el" href="class_halide_1_1_schedule_handle.html#ad055cd17fd6c2e7f29b2959c787d9605">gpu_threads()</a>.</p>
 
@@ -1666,7 +1710,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00267">267</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00275">275</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 <p>References <a class="el" href="class_halide_1_1_schedule_handle.html#ad055cd17fd6c2e7f29b2959c787d9605">gpu_threads()</a>.</p>
 
@@ -1703,7 +1747,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00270">270</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00278">278</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 <p>References <a class="el" href="class_halide_1_1_schedule_handle.html#ad055cd17fd6c2e7f29b2959c787d9605">gpu_threads()</a>.</p>
 
@@ -1724,7 +1768,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00274">274</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00282">282</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 <p>References <a class="el" href="class_halide_1_1_schedule_handle.html#a0040a5306746609dd8aec0bec03a003c">gpu_blocks()</a>.</p>
 
@@ -1755,7 +1799,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00277">277</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00285">285</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 <p>References <a class="el" href="class_halide_1_1_schedule_handle.html#a0040a5306746609dd8aec0bec03a003c">gpu_blocks()</a>.</p>
 
@@ -1792,7 +1836,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00280">280</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00288">288</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 <p>References <a class="el" href="class_halide_1_1_schedule_handle.html#a0040a5306746609dd8aec0bec03a003c">gpu_blocks()</a>.</p>
 
@@ -1823,7 +1867,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00284">284</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00292">292</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 <p>References <a class="el" href="class_halide_1_1_schedule_handle.html#a480016a59e0dcddb03f94258dd6febed">gpu()</a>.</p>
 
@@ -1866,7 +1910,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00287">287</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00295">295</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 <p>References <a class="el" href="class_halide_1_1_schedule_handle.html#a480016a59e0dcddb03f94258dd6febed">gpu()</a>.</p>
 
@@ -1921,7 +1965,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00291">291</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00299">299</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 <p>References <a class="el" href="class_halide_1_1_schedule_handle.html#a480016a59e0dcddb03f94258dd6febed">gpu()</a>.</p>
 
@@ -1952,7 +1996,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00295">295</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00303">303</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 <p>References <a class="el" href="class_halide_1_1_schedule_handle.html#ae0207078c6c248fa15a9d1669fbf7d9c">gpu_tile()</a>.</p>
 
@@ -1995,7 +2039,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00298">298</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00306">306</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 <p>References <a class="el" href="class_halide_1_1_schedule_handle.html#ae0207078c6c248fa15a9d1669fbf7d9c">gpu_tile()</a>.</p>
 
@@ -2050,7 +2094,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00301">301</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00309">309</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 <p>References <a class="el" href="class_halide_1_1_schedule_handle.html#ae0207078c6c248fa15a9d1669fbf7d9c">gpu_tile()</a>.</p>
 

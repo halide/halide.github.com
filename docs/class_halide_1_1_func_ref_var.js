@@ -11,5 +11,6 @@ var class_halide_1_1_func_ref_var =
     [ "operator=", "class_halide_1_1_func_ref_var.html#a58ac783965d492dc2d20005f9aee7f6e", null ],
     [ "operator Expr", "class_halide_1_1_func_ref_var.html#a79b9cd725bef87d1fa7cc86a4570d441", null ],
     [ "operator[]", "class_halide_1_1_func_ref_var.html#a3ef603dc005a416cd50edab04ce2d32e", null ],
-    [ "size", "class_halide_1_1_func_ref_var.html#adeb67d84dc692b4a1e9565f4d26376d5", null ]
+    [ "size", "class_halide_1_1_func_ref_var.html#adeb67d84dc692b4a1e9565f4d26376d5", null ],
+    [ "function", "class_halide_1_1_func_ref_var.html#ad1389431d7c2ce3f0a306acc9ce46080", null ]
 ];

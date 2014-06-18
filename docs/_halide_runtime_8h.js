@@ -3,7 +3,9 @@ var _halide_runtime_8h =
     [ "halide_assert", "_halide_runtime_8h.html#ac87d020eed3438306b57d1eec5de0364", null ],
     [ "halide_trace_event_code", "_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7c", null ],
     [ "halide_printf", "_halide_runtime_8h.html#aea37ca2e04077132c617c02780e352e7", null ],
+    [ "halide_print", "_halide_runtime_8h.html#a96fe1dd85166a7f0da1b8f82f734296a", null ],
     [ "halide_error", "_halide_runtime_8h.html#aea28d04de54b94f0dd6ada140b7734d8", null ],
+    [ "halide_error_varargs", "_halide_runtime_8h.html#ac41e5e7a06aaa39fc69369755a1cb4f7", null ],
     [ "halide_do_par_for", "_halide_runtime_8h.html#a05193f80c8fc7df76ceadd82c4ce7b56", null ],
     [ "halide_shutdown_thread_pool", "_halide_runtime_8h.html#a5e9d22d2b79a3dc66a32159423b17910", null ],
     [ "halide_malloc", "_halide_runtime_8h.html#aa5bb359ed77ef4c1f89251bcd7eb2613", null ],
@@ -11,5 +13,13 @@ var _halide_runtime_8h =
     [ "halide_debug_to_file", "_halide_runtime_8h.html#a173a9669d4c2a9fb6fa0225a5fdabcd4", null ],
     [ "halide_trace", "_halide_runtime_8h.html#a15078a46b8fe517dcfdd26acadd2293a", null ],
     [ "halide_shutdown_trace", "_halide_runtime_8h.html#a618bb97f5d713e1097835a24670948f4", null ],
-    [ "halide_set_random_seed", "_halide_runtime_8h.html#a4efa0faee01db98eea960729470e76f8", null ]
+    [ "halide_set_random_seed", "_halide_runtime_8h.html#a4efa0faee01db98eea960729470e76f8", null ],
+    [ "halide_release", "_halide_runtime_8h.html#aa3336507011f272702be76b8668a4223", null ],
+    [ "halide_copy_to_host", "_halide_runtime_8h.html#a5980f17918155363078056e6a32de301", null ],
+    [ "halide_copy_to_dev", "_halide_runtime_8h.html#a51c066523af8ea5c476babebc051061a", null ],
+    [ "halide_dev_sync", "_halide_runtime_8h.html#a5d0d5c66821f18b322fbef049632badc", null ],
+    [ "halide_dev_malloc", "_halide_runtime_8h.html#a1205c5228e24e6a947c43a4b9e10ffff", null ],
+    [ "halide_dev_free", "_halide_runtime_8h.html#a3b79a2db1cf800928cdf19e9de6e188c", null ],
+    [ "halide_init_kernels", "_halide_runtime_8h.html#a1ba1ec4f81099a9999030b5829f55918", null ],
+    [ "halide_dev_run", "_halide_runtime_8h.html#a87dd2729ec5aafc370a8b64d5e438544", null ]
 ];

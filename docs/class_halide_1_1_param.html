@@ -119,10 +119,12 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a scalar parameter of type T with the given name.  <a href="#aee0fc66aed3d24c3571ed8a82aae40ea"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_param.html#a32d6366da61a68ece00facc24d7a44d4">name</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name of this parameter.  <a href="#a32d6366da61a68ece00facc24d7a44d4"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_param.html#a5f1dc8cc1322a6f941d8f7a279eaa574">get</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current value of this parameter.  <a href="#a5f1dc8cc1322a6f941d8f7a279eaa574"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_param.html#a4cd33e4b7fbf97d298f2595cbbf70234">set</a> (T val)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current value of this parameter.  <a href="#a4cd33e4b7fbf97d298f2595cbbf70234"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_param.html#aa0e915f7f1427832e54e37357dc78c07">get</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current value of this parameter.  <a href="#aa0e915f7f1427832e54e37357dc78c07"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_param.html#a6e9fafc4575acbe96e554881e7670f0f">set</a> (T val)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current value of this parameter.  <a href="#a6e9fafc4575acbe96e554881e7670f0f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_param.html#a9836c40d35ae63c3e8c572d83caad6dd">get_address</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the location that stores the current value of this parameter.  <a href="#a9836c40d35ae63c3e8c572d83caad6dd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_type.html">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_param.html#aba3a815d0c04528d5168bc563403822a">type</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the halide type of T.  <a href="#aba3a815d0c04528d5168bc563403822a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_param.html#a2cd6ba2b7d6f35212de6089061d18efd">operator Expr</a> () const </td></tr>
@@ -150,13 +152,13 @@ class Halide::Param&lt; T &gt;</h3>
 <p>A scalar parameter to a halide pipeline. </p>
 <p>If you're jitting, this should be bound to an actual value of type T using the set method before you realize the function uses this. If you're statically compiling, this param should appear in the argument list. </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00022">22</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00023">23</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ae32b1d95ee6bf9ab2c744cc17ba67d4f"></a><!-- doxytag: member="Halide::Param::Param" ref="ae32b1d95ee6bf9ab2c744cc17ba67d4f" args="()" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_param.html">Param</a> </td>
@@ -170,7 +172,7 @@ template&lt;typename T &gt; </div>
 
 <p>Construct a scalar parameter of type T with a unique auto-generated name. </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00029">29</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00030">30</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
 </div>
 </div>
@@ -178,7 +180,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_param.html">Param</a> </td>
@@ -193,7 +195,7 @@ template&lt;typename T &gt; </div>
 
 <p>Construct a scalar parameter of type T with the given name. </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00032">32</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00033">33</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
 </div>
 </div>
@@ -202,7 +204,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">const std::string&amp; <a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_param.html#a32d6366da61a68ece00facc24d7a44d4">name</a> </td>
@@ -216,22 +218,20 @@ template&lt;typename T &gt; </div>
 
 <p>Get the name of this parameter. </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00035">35</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00036">36</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
-<p>References <a class="el" href="_parameter_8h_source.html#l00069">Halide::Internal::Parameter::name()</a>.</p>
-
-<p>Referenced by <a class="el" href="_param_8h_source.html#l00100">Halide::Param&lt; T &gt;::operator Argument()</a>, and <a class="el" href="_param_8h_source.html#l00087">Halide::Param&lt; T &gt;::operator Expr()</a>.</p>
+<p>Referenced by <a class="el" href="_param_8h_source.html#l00107">Halide::Param&lt; void * &gt;::operator Argument()</a>, and <a class="el" href="_param_8h_source.html#l00094">Halide::Param&lt; void * &gt;::operator Expr()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a5f1dc8cc1322a6f941d8f7a279eaa574"></a><!-- doxytag: member="Halide::Param::get" ref="a5f1dc8cc1322a6f941d8f7a279eaa574" args="() const " -->
+<a class="anchor" id="aa0e915f7f1427832e54e37357dc78c07"></a><!-- doxytag: member="Halide::Param::get" ref="aa0e915f7f1427832e54e37357dc78c07" args="() const " -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T <a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_param.html#a5f1dc8cc1322a6f941d8f7a279eaa574">get</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> T <a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_param.html#aa0e915f7f1427832e54e37357dc78c07">get</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const<code> [inline]</code></td>
@@ -243,20 +243,18 @@ template&lt;typename T &gt; </div>
 <p>Get the current value of this parameter. </p>
 <p>Only meaningful when jitting. </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00040">40</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
-
-<p>References <a class="el" href="_parameter_8h_source.html#l00083">Halide::Internal::Parameter::get_scalar()</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00041">41</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a4cd33e4b7fbf97d298f2595cbbf70234"></a><!-- doxytag: member="Halide::Param::set" ref="a4cd33e4b7fbf97d298f2595cbbf70234" args="(T val)" -->
+<a class="anchor" id="a6e9fafc4575acbe96e554881e7670f0f"></a><!-- doxytag: member="Halide::Param::set" ref="a6e9fafc4575acbe96e554881e7670f0f" args="(T val)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_param.html#a4cd33e4b7fbf97d298f2595cbbf70234">set</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> void <a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_param.html#a6e9fafc4575acbe96e554881e7670f0f">set</a> </td>
           <td>(</td>
           <td class="paramtype">T&#160;</td>
           <td class="paramname"><em>val</em></td><td>)</td>
@@ -269,9 +267,30 @@ template&lt;typename T &gt; </div>
 <p>Set the current value of this parameter. </p>
 <p>Only meaningful when jitting </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00045">45</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00046">46</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
-<p>References <a class="el" href="_parameter_8h_source.html#l00098">Halide::Internal::Parameter::set_scalar()</a>.</p>
+</div>
+</div>
+<a class="anchor" id="a9836c40d35ae63c3e8c572d83caad6dd"></a><!-- doxytag: member="Halide::Param::get_address" ref="a9836c40d35ae63c3e8c572d83caad6dd" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> T* <a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_param.html#a9836c40d35ae63c3e8c572d83caad6dd">get_address</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get a pointer to the location that stores the current value of this parameter. </p>
+<p>Only meaningful for jitting. </p>
+
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00052">52</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
 </div>
 </div>
@@ -279,7 +298,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="struct_halide_1_1_type.html">Type</a> <a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_param.html#aba3a815d0c04528d5168bc563403822a">type</a> </td>
@@ -293,9 +312,9 @@ template&lt;typename T &gt; </div>
 
 <p>Get the halide type of T. </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00050">50</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00057">57</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_param_8h_source.html#l00100">Halide::Param&lt; T &gt;::operator Argument()</a>.</p>
+<p>Referenced by <a class="el" href="_param_8h_source.html#l00107">Halide::Param&lt; void * &gt;::operator Argument()</a>.</p>
 
 </div>
 </div>
@@ -303,7 +322,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_param.html#adfbe0c1abe794ddaa3930701e92abcd0">set_range</a> </td>
@@ -329,9 +348,7 @@ template&lt;typename T &gt; </div>
 <p>Get or set the possible range of this parameter. </p>
 <p>Use undefined Exprs to mean unbounded. </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00057">57</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
-
-<p>References <a class="el" href="_param_8h_source.html#l00069">Halide::Param&lt; T &gt;::set_max_value()</a>, and <a class="el" href="_param_8h_source.html#l00062">Halide::Param&lt; T &gt;::set_min_value()</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00064">64</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
 </div>
 </div>
@@ -339,7 +356,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_param.html#a85253d6a415b3852fb4e91710cfb0a2a">set_min_value</a> </td>
@@ -355,11 +372,9 @@ template&lt;typename T &gt; </div>
 <p>Get or set the possible range of this parameter. </p>
 <p>Use undefined Exprs to mean unbounded. </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00062">62</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00069">69</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_8h_source.html#l00244">Halide::Internal::Cast::make()</a>, <a class="el" href="_parameter_8h_source.html#l00160">Halide::Internal::Parameter::set_min_value()</a>, and <a class="el" href="_i_r_8h_source.html#l00198">Halide::Expr::type()</a>.</p>
-
-<p>Referenced by <a class="el" href="_param_8h_source.html#l00057">Halide::Param&lt; T &gt;::set_range()</a>.</p>
+<p>Referenced by <a class="el" href="_param_8h_source.html#l00064">Halide::Param&lt; void * &gt;::set_range()</a>.</p>
 
 </div>
 </div>
@@ -367,7 +382,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">void <a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_param.html#ab119d5bdcd48ad105ba6774b8061b131">set_max_value</a> </td>
@@ -383,11 +398,9 @@ template&lt;typename T &gt; </div>
 <p>Get or set the possible range of this parameter. </p>
 <p>Use undefined Exprs to mean unbounded. </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00069">69</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00076">76</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_8h_source.html#l00244">Halide::Internal::Cast::make()</a>, <a class="el" href="_parameter_8h_source.html#l00170">Halide::Internal::Parameter::set_max_value()</a>, and <a class="el" href="_i_r_8h_source.html#l00198">Halide::Expr::type()</a>.</p>
-
-<p>Referenced by <a class="el" href="_param_8h_source.html#l00057">Halide::Param&lt; T &gt;::set_range()</a>.</p>
+<p>Referenced by <a class="el" href="_param_8h_source.html#l00064">Halide::Param&lt; void * &gt;::set_range()</a>.</p>
 
 </div>
 </div>
@@ -395,7 +408,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_param.html#ae066732cb079261114a00e05a94acb12">get_min_value</a> </td>
@@ -410,9 +423,7 @@ template&lt;typename T &gt; </div>
 <p>Get or set the possible range of this parameter. </p>
 <p>Use undefined Exprs to mean unbounded. </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00076">76</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
-
-<p>References <a class="el" href="_parameter_8h_source.html#l00165">Halide::Internal::Parameter::get_min_value()</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00083">83</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
 </div>
 </div>
@@ -420,7 +431,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_param.html#ad12da97cde4ffe1b0eba9cf43cff08c5">get_max_value</a> </td>
@@ -435,9 +446,7 @@ template&lt;typename T &gt; </div>
 <p>Get or set the possible range of this parameter. </p>
 <p>Use undefined Exprs to mean unbounded. </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00080">80</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
-
-<p>References <a class="el" href="_parameter_8h_source.html#l00175">Halide::Internal::Parameter::get_max_value()</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00087">87</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
 </div>
 </div>
@@ -445,7 +454,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::operator <a class="el" href="struct_halide_1_1_expr.html">Expr</a> </td>
@@ -459,9 +468,7 @@ template&lt;typename T &gt; </div>
 
 <p>You can use this parameter as an expression in a halide function definition. </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00087">87</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
-
-<p>References <a class="el" href="_i_r_8h_source.html#l01056">Halide::Internal::Variable::make()</a>, and <a class="el" href="_param_8h_source.html#l00035">Halide::Param&lt; T &gt;::name()</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00094">94</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
 </div>
 </div>
@@ -469,7 +476,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::operator <a class="el" href="struct_halide_1_1_extern_func_argument.html">ExternFuncArgument</a> </td>
@@ -483,7 +490,7 @@ template&lt;typename T &gt; </div>
 
 <p>Using a param as the argument to an external stage treats it as an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a>. </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00093">93</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00100">100</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
 </div>
 </div>
@@ -491,7 +498,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;::operator <a class="el" href="struct_halide_1_1_argument.html">Argument</a> </td>
@@ -505,9 +512,7 @@ template&lt;typename T &gt; </div>
 
 <p>Construct the appropriate argument matching this parameter, for the purpose of generating the right type signature when statically compiling halide pipelines. </p>
 
-<p>Definition at line <a class="el" href="_param_8h_source.html#l00100">100</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
-
-<p>References <a class="el" href="_param_8h_source.html#l00035">Halide::Param&lt; T &gt;::name()</a>, and <a class="el" href="_param_8h_source.html#l00050">Halide::Param&lt; T &gt;::type()</a>.</p>
+<p>Definition at line <a class="el" href="_param_8h_source.html#l00107">107</a> of file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
 
 </div>
 </div>

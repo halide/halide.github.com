@@ -99,11 +99,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <span class="comment">// This lesson demonstrates how to pass in input images.</span>
 
 <span class="comment">// On linux, you can compile and run it like so:</span>
-<span class="comment">// g++ lesson_02*.cpp -I ../include -L ../bin -lHalide -lpthread -ldl -lpng -o lesson_02</span>
+<span class="comment">// g++ lesson_02*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -o lesson_02</span>
 <span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_02</span>
 
 <span class="comment">// On os x:</span>
-<span class="comment">// g++ lesson_02*.cpp -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_02</span>
+<span class="comment">// g++ lesson_02*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_02</span>
 <span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_02</span>
 
 <span class="comment">// The only Halide header file you need is Halide.h. It includes all of Halide.</span>
@@ -112,7 +112,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <span class="comment">// Include some support code for loading pngs. It assumes there&#39;s an</span>
 <span class="comment">// Image type, so we&#39;ll pull the one from Halide namespace;</span>
 <span class="keyword">using</span> <a name="_a0"></a><a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Halide::Image</a>;
-<span class="preprocessor">#include &quot;../apps/support/image_io.h&quot;</span>
+<span class="preprocessor">#include &quot;image_io.h&quot;</span>
 
 <span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {
 
@@ -120,7 +120,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <span class="comment">// brightens an image.</span>
 
     <span class="comment">// First we&#39;ll load the input image we wish to brighten.</span>
-    <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Halide::Image&lt;uint8_t&gt;</a> input = load&lt;uint8_t&gt;(<span class="stringliteral">&quot;../apps/images/rgb.png&quot;</span>);
+    <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Halide::Image&lt;uint8_t&gt;</a> input = load&lt;uint8_t&gt;(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);
 
     <span class="comment">// Next we define our Func object that represents our one pipeline</span>
     <span class="comment">// stage.</span>
@@ -178,7 +178,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <span class="comment">// smaller size. If we request a larger size Halide will throw an</span>
     <span class="comment">// error at runtime telling us we&#39;re trying to read out of bounds</span>
     <span class="comment">// on the input image.</span>
-    <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Halide::Image&lt;uint8_t&gt;</a> output = brighter.realize(input.<a name="a5"></a><a class="code" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(), input.<a name="a6"></a><a class="code" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>(), input.<a name="a7"></a><a class="code" href="class_halide_1_1_image.html#aa60444f049477f0f9044b35b5957aba1" title="Get the extent of dimension 2, which by convention we use as the number of color channels (often 3)...">channels</a>());
+    <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Halide::Image&lt;uint8_t&gt;</a> output = brighter.realize(input.<a name="a5"></a><a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>(), input.<a name="a6"></a><a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>(), input.<a name="a7"></a><a class="code" href="class_halide_1_1_image_base.html#a841b4202f4ec79856529d83b8c048f3e" title="Get the extent of dimension 2, which by convention we use as the number of color channels (often 3)...">channels</a>());
 
     <span class="comment">// Save the output for inspection. It should look like a bright parrot.</span>
     save(output, <span class="stringliteral">&quot;brighter.png&quot;</span>);

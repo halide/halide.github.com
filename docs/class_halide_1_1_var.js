@@ -8,5 +8,7 @@ var class_halide_1_1_var =
     [ "is_implicit", "class_halide_1_1_var.html#a7bca5ed9d9f0e9fe08838ee5dcbf7d72", null ],
     [ "implicit_index", "class_halide_1_1_var.html#a2fa2b57f58e68761675fe07aa19fc7bf", null ],
     [ "is_placeholder", "class_halide_1_1_var.html#a52e7795c7ec7f9ee2f488089e950847b", null ],
-    [ "operator Expr", "class_halide_1_1_var.html#a2b1d4c7094a247ecba6fdb684c0aec3f", null ]
+    [ "operator Expr", "class_halide_1_1_var.html#a2b1d4c7094a247ecba6fdb684c0aec3f", null ],
+    [ "gpu_blocks", "class_halide_1_1_var.html#aadce05f2366998e6ede48081d24caaae", null ],
+    [ "gpu_threads", "class_halide_1_1_var.html#aa9a89db38e3a71524a2462b22f739a33", null ]
 ];

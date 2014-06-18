@@ -123,35 +123,17 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile to an internally-held llvm module.  <a href="#a7210dda6c45eb750369f2f653d2d56f9"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a2cea55d1633fc53d05927186e66b8b87">track_buffers</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ae7862cef8fae5a39e9c8ea52d10e1fc2">jit_init</a> (llvm::ExecutionEngine *ee, llvm::Module *mod)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds and links in the CUDA runtime symbols prior to jitting.  <a href="#ae7862cef8fae5a39e9c8ea52d10e1fc2"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a7a23ecbf78fbd1f9495c3e3e0c60753e">jit_finalize</a> (llvm::ExecutionEngine *ee, llvm::Module *mod, std::vector&lt; void(*)()&gt; *cleanup_routines)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reaches inside the module at sets it to use a single shared cuda context.  <a href="#a7a23ecbf78fbd1f9495c3e3e0c60753e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ae026d64ddc8ff3071cedbbc89870b8eb">jit_finalize</a> (llvm::ExecutionEngine *ee, llvm::Module *mod, std::vector&lt; <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module_1_1_cleanup_routine.html">JITCompiledModule::CleanupRoutine</a> &gt; *cleanup_routines)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reaches inside the module at sets it to use a single shared cuda context.  <a href="#ae026d64ddc8ff3071cedbbc89870b8eb"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">llvm::Value *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a0ea2c41bd09caf31218d6740b48af892">get_module_state</a> ()</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac09b90f6599d4672779ed20d427074f8">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_for.html">For</a> *)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Nodes for which we need to override default behavior for the GPU runtime.  <a href="#ac09b90f6599d4672779ed20d427074f8"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#abaa563720395e29e209186dfc60113a1">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_allocate.html">Allocate</a> *)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Nodes for which we need to override default behavior for the GPU runtime.  <a href="#abaa563720395e29e209186dfc60113a1"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a0bd1f30a5c3f2fab6041e18d22ba0322">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_free.html">Free</a> *)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Nodes for which we need to override default behavior for the GPU runtime.  <a href="#a0bd1f30a5c3f2fab6041e18d22ba0322"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a41e22c536d33314b19a72788f6d21941">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_pipeline.html">Pipeline</a> *)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Nodes for which we need to override default behavior for the GPU runtime.  <a href="#a41e22c536d33314b19a72788f6d21941"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ae28e640c98943c33ae9b1b6e4a195ffe">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_call.html">Call</a> *)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Nodes for which we need to override default behavior for the GPU runtime.  <a href="#ae28e640c98943c33ae9b1b6e4a195ffe"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html">CodeGen_GPU_Dev</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a2512999689605c4a2ee3ef36878c7ae8">make_dev</a> (<a class="el" href="struct_halide_1_1_target.html">Target</a>)</td></tr>
-<tr><td colspan="2"><h2><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">llvm::Function *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#acbe787653facf5bd3fd6fadd9557f5bf">dev_malloc_fn</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">llvm::Function *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#aff2507a26901143f7001b29a7dac9282">dev_free_fn</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">llvm::Function *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#affc35d33859ced6b06bf36af99e5035c">copy_to_dev_fn</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">llvm::Function *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#aca7a7e815ba46270562ddb073a9861ec">copy_to_host_fn</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">llvm::Function *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a1e90e07359dcf53f7aea8deb6f65056d">dev_run_fn</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">llvm::Function *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a4c6edd10902e21dd24d088c0aa21dce3">dev_sync_fn</a></td></tr>
 <tr><td colspan="2"><h2><a name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ab2a5b5da78a8474c86f9ed38fbdc10ad">lib_cuda_linked</a></td></tr>
@@ -162,7 +144,7 @@ class Halide::Internal::CodeGen_GPU_Host&lt; CodeGen_CPU &gt;</h3>
 
 <p>A code generator that emits GPU code from a given <a class="el" href="namespace_halide.html">Halide</a> stmt. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00018">18</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00019">19</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a94513a98317e9647cfa4b99b9f419079"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::CodeGen_GPU_Host" ref="a94513a98317e9647cfa4b99b9f419079" args="(Target)" -->
 <div class="memitem">
@@ -270,110 +252,6 @@ template&lt;typename CodeGen_CPU &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="abaa563720395e29e209186dfc60113a1"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::visit" ref="abaa563720395e29e209186dfc60113a1" args="(const Allocate *)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CodeGen_CPU &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a>&lt; CodeGen_CPU &gt;::<a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac09b90f6599d4672779ed20d427074f8">visit</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_halide_1_1_internal_1_1_allocate.html">Allocate</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Nodes for which we need to override default behavior for the GPU runtime. </p>
-
-</div>
-</div>
-<a class="anchor" id="a0bd1f30a5c3f2fab6041e18d22ba0322"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::visit" ref="a0bd1f30a5c3f2fab6041e18d22ba0322" args="(const Free *)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CodeGen_CPU &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a>&lt; CodeGen_CPU &gt;::<a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac09b90f6599d4672779ed20d427074f8">visit</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_halide_1_1_internal_1_1_free.html">Free</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Nodes for which we need to override default behavior for the GPU runtime. </p>
-
-</div>
-</div>
-<a class="anchor" id="a41e22c536d33314b19a72788f6d21941"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::visit" ref="a41e22c536d33314b19a72788f6d21941" args="(const Pipeline *)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CodeGen_CPU &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a>&lt; CodeGen_CPU &gt;::<a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac09b90f6599d4672779ed20d427074f8">visit</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_halide_1_1_internal_1_1_pipeline.html">Pipeline</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Nodes for which we need to override default behavior for the GPU runtime. </p>
-
-</div>
-</div>
-<a class="anchor" id="ae28e640c98943c33ae9b1b6e4a195ffe"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::visit" ref="ae28e640c98943c33ae9b1b6e4a195ffe" args="(const Call *)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CodeGen_CPU &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a>&lt; CodeGen_CPU &gt;::<a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac09b90f6599d4672779ed20d427074f8">visit</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="struct_halide_1_1_internal_1_1_call.html">Call</a> *&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Nodes for which we need to override default behavior for the GPU runtime. </p>
-
-</div>
-</div>
-<a class="anchor" id="a2cea55d1633fc53d05927186e66b8b87"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::track_buffers" ref="a2cea55d1633fc53d05927186e66b8b87" args="()" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CodeGen_CPU &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a>&lt; CodeGen_CPU &gt;::<a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a2cea55d1633fc53d05927186e66b8b87">track_buffers</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td><code> [inline, protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00085">85</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="ae7862cef8fae5a39e9c8ea52d10e1fc2"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::jit_init" ref="ae7862cef8fae5a39e9c8ea52d10e1fc2" args="(llvm::ExecutionEngine *ee, llvm::Module *mod)" -->
 <div class="memitem">
 <div class="memproto">
@@ -405,14 +283,14 @@ template&lt;typename CodeGen_CPU &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a7a23ecbf78fbd1f9495c3e3e0c60753e"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::jit_finalize" ref="a7a23ecbf78fbd1f9495c3e3e0c60753e" args="(llvm::ExecutionEngine *ee, llvm::Module *mod, std::vector&lt; void(*)()&gt; *cleanup_routines)" -->
+<a class="anchor" id="ae026d64ddc8ff3071cedbbc89870b8eb"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::jit_finalize" ref="ae026d64ddc8ff3071cedbbc89870b8eb" args="(llvm::ExecutionEngine *ee, llvm::Module *mod, std::vector&lt; JITCompiledModule::CleanupRoutine &gt; *cleanup_routines)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename CodeGen_CPU &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a>&lt; CodeGen_CPU &gt;::<a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a7a23ecbf78fbd1f9495c3e3e0c60753e">jit_finalize</a> </td>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a>&lt; CodeGen_CPU &gt;::<a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ae026d64ddc8ff3071cedbbc89870b8eb">jit_finalize</a> </td>
           <td>(</td>
           <td class="paramtype">llvm::ExecutionEngine *&#160;</td>
           <td class="paramname"><em>ee</em>, </td>
@@ -426,7 +304,7 @@ template&lt;typename CodeGen_CPU &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; void(*)()&gt; *&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module_1_1_cleanup_routine.html">JITCompiledModule::CleanupRoutine</a> &gt; *&#160;</td>
           <td class="paramname"><em>cleanup_routines</em>&#160;</td>
         </tr>
         <tr>
@@ -480,108 +358,6 @@ template&lt;typename CodeGen_CPU &gt; </div>
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="acbe787653facf5bd3fd6fadd9557f5bf"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::dev_malloc_fn" ref="acbe787653facf5bd3fd6fadd9557f5bf" args="" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CodeGen_CPU &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">llvm::Function* <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a>&lt; CodeGen_CPU &gt;::<a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#acbe787653facf5bd3fd6fadd9557f5bf">dev_malloc_fn</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00089">89</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aff2507a26901143f7001b29a7dac9282"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::dev_free_fn" ref="aff2507a26901143f7001b29a7dac9282" args="" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CodeGen_CPU &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">llvm::Function* <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a>&lt; CodeGen_CPU &gt;::<a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#aff2507a26901143f7001b29a7dac9282">dev_free_fn</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00090">90</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="affc35d33859ced6b06bf36af99e5035c"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::copy_to_dev_fn" ref="affc35d33859ced6b06bf36af99e5035c" args="" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CodeGen_CPU &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">llvm::Function* <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a>&lt; CodeGen_CPU &gt;::<a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#affc35d33859ced6b06bf36af99e5035c">copy_to_dev_fn</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00091">91</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aca7a7e815ba46270562ddb073a9861ec"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::copy_to_host_fn" ref="aca7a7e815ba46270562ddb073a9861ec" args="" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CodeGen_CPU &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">llvm::Function* <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a>&lt; CodeGen_CPU &gt;::<a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#aca7a7e815ba46270562ddb073a9861ec">copy_to_host_fn</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00092">92</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a1e90e07359dcf53f7aea8deb6f65056d"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::dev_run_fn" ref="a1e90e07359dcf53f7aea8deb6f65056d" args="" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CodeGen_CPU &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">llvm::Function* <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a>&lt; CodeGen_CPU &gt;::<a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a1e90e07359dcf53f7aea8deb6f65056d">dev_run_fn</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00093">93</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a4c6edd10902e21dd24d088c0aa21dce3"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::dev_sync_fn" ref="a4c6edd10902e21dd24d088c0aa21dce3" args="" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename CodeGen_CPU &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">llvm::Function* <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a>&lt; CodeGen_CPU &gt;::<a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a4c6edd10902e21dd24d088c0aa21dce3">dev_sync_fn</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00094">94</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="ab2a5b5da78a8474c86f9ed38fbdc10ad"></a><!-- doxytag: member="Halide::Internal::CodeGen_GPU_Host::lib_cuda_linked" ref="ab2a5b5da78a8474c86f9ed38fbdc10ad" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -595,7 +371,7 @@ template&lt;typename CodeGen_CPU &gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00104">104</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___g_p_u___host_8h_source.html#l00090">90</a> of file <a class="el" href="_code_gen___g_p_u___host_8h_source.html">CodeGen_GPU_Host.h</a>.</p>
 
 </div>
 </div>

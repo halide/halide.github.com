@@ -1,8 +1,9 @@
 var class_halide_1_1_schedule_handle =
 [
-    [ "ScheduleHandle", "class_halide_1_1_schedule_handle.html#a5ad2d8b9dd4f722890654fa6c911e1aa", null ],
+    [ "ScheduleHandle", "class_halide_1_1_schedule_handle.html#a823d91c21421e6ee46cc5470336b2ee8", null ],
     [ "split", "class_halide_1_1_schedule_handle.html#a82dcba5e287a284bfdb2eba997659daa", null ],
     [ "fuse", "class_halide_1_1_schedule_handle.html#a07b98d9cec11b5e3a17930b0b20d01be", null ],
+    [ "serial", "class_halide_1_1_schedule_handle.html#a69a1edcc147813c2417fd7aaeccb841c", null ],
     [ "parallel", "class_halide_1_1_schedule_handle.html#a341ae03504ed0261b1ffba9935844c2d", null ],
     [ "vectorize", "class_halide_1_1_schedule_handle.html#a965ef3a905df60c3f59ca3743cbf668d", null ],
     [ "unroll", "class_halide_1_1_schedule_handle.html#a0cf1e85d5dcb74d761d15546b5c6de90", null ],
@@ -22,6 +23,7 @@ var class_halide_1_1_schedule_handle =
     [ "reorder", "class_halide_1_1_schedule_handle.html#a7c32ec3bb0e890dcf3f72995b8aa645c", null ],
     [ "reorder", "class_halide_1_1_schedule_handle.html#a15e86eb5d7c5879a1050cb07d98efa7f", null ],
     [ "rename", "class_halide_1_1_schedule_handle.html#ae3cc45869ffbe51fa95f3fe7bc0f8463", null ],
+    [ "specialize", "class_halide_1_1_schedule_handle.html#a1d7b20cd828fef404277eab4a51d3ce0", null ],
     [ "gpu_threads", "class_halide_1_1_schedule_handle.html#ad055cd17fd6c2e7f29b2959c787d9605", null ],
     [ "gpu_threads", "class_halide_1_1_schedule_handle.html#a60601bacc8d4d65d414a801247feb304", null ],
     [ "gpu_threads", "class_halide_1_1_schedule_handle.html#a5281842fe9da8e791171595fc7ca5a98", null ],

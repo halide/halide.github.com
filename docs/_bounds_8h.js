@@ -1,7 +1,6 @@
 var _bounds_8h =
 [
     [ "FuncValueBounds", "namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e", null ],
-    [ "Box", "namespace_halide_1_1_internal.html#a1387c25233df34b4557bb445703cbc5f", null ],
     [ "bounds_of_expr_in_scope", "namespace_halide_1_1_internal.html#ab7f7e59492cfa4804a6dece2d867a5db", null ],
     [ "merge_boxes", "namespace_halide_1_1_internal.html#ac2f62c0ee3ace8de2be57a9db369a3e4", null ],
     [ "boxes_required", "namespace_halide_1_1_internal.html#a33cd6d9b32f181c1211dbe9e1e424b73", null ],

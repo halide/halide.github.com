@@ -1,6 +1,7 @@
 var _util_8h =
 [
     [ "EXPORT", "_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49", null ],
+    [ "NO_INLINE", "_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b", null ],
     [ "vec", "namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829", null ],
     [ "vec", "namespace_halide_1_1_internal.html#a60049819a1e4ee7971c624c18a26210a", null ],
     [ "vec", "namespace_halide_1_1_internal.html#a57308fdf8df2d93ff56d7dc8d2f621b1", null ],
@@ -11,11 +12,10 @@ var _util_8h =
     [ "vec", "namespace_halide_1_1_internal.html#ab96724ccfd5edca25ce01a24fce53a66", null ],
     [ "int_to_string", "namespace_halide_1_1_internal.html#a0aeffeff26578021bc780e1506bfa448", null ],
     [ "reinterpret_bits", "namespace_halide_1_1_internal.html#a94816d6979fdadb6e206a5d0a668e008", null ],
+    [ "make_entity_name", "namespace_halide_1_1_internal.html#a2eb97978547d98141752de6b614195f4", null ],
     [ "unique_name", "namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9", null ],
     [ "unique_name", "namespace_halide_1_1_internal.html#aafd40e47c06b4ccb5d2173528ae0523f", null ],
     [ "starts_with", "namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed", null ],
     [ "ends_with", "namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28", null ],
-    [ "base_name", "namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516", null ],
-    [ "checked_multiply", "namespace_halide_1_1_internal.html#abbc083947a28b1017d3303db8204dbac", null ],
-    [ "checked_multiply_assert", "namespace_halide_1_1_internal.html#ae86a2e6e4ae72e4ccbab62fd05a6a937", null ]
+    [ "base_name", "namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516", null ]
 ];

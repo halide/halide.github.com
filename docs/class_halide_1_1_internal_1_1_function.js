@@ -32,5 +32,7 @@ var class_halide_1_1_internal_1_1_function =
     [ "trace_realizations", "class_halide_1_1_internal_1_1_function.html#a95082a21d62cc296e6877b43e3ea3aec", null ],
     [ "is_tracing_loads", "class_halide_1_1_internal_1_1_function.html#a5d170837aba1560b676071293c7b30db", null ],
     [ "is_tracing_stores", "class_halide_1_1_internal_1_1_function.html#aa6150be575f4a773e92fe2c8a4738046", null ],
-    [ "is_tracing_realizations", "class_halide_1_1_internal_1_1_function.html#a416d93caef3cbb8802dbe6d12590a81c", null ]
+    [ "is_tracing_realizations", "class_halide_1_1_internal_1_1_function.html#a416d93caef3cbb8802dbe6d12590a81c", null ],
+    [ "freeze", "class_halide_1_1_internal_1_1_function.html#ac88ed26e82c3c53cc1a937a78510b605", null ],
+    [ "frozen", "class_halide_1_1_internal_1_1_function.html#a7615fbbcee1a2159dfd0eef12094e2a8", null ]
 ];

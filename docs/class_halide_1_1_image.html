@@ -103,11 +103,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Halide::Image&lt; T &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<!-- doxytag: class="Halide::Image" -->
+<!-- doxytag: class="Halide::Image" --><!-- doxytag: inherits="Halide::ImageBase" -->
 <p>A reference-counted handle on a dense multidimensional array containing scalar values of type T.  
  <a href="class_halide_1_1_image.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_image_8h_source.html">Image.h</a>&gt;</code></p>
+
+<p>Inherits <a class="el" href="class_halide_1_1_image_base.html">Halide::ImageBase</a>.</p>
 
 <p><a href="class_halide_1_1_image-members.html">List of all members.</a></p>
 <table class="memberdecls">
@@ -115,44 +117,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a93767feb729f00c63cde76f4c03433bc">Image</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an undefined image handle.  <a href="#a93767feb729f00c63cde76f4c03433bc"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a242c1aff5d135a317ca1b5c5505ca37b">Image</a> (const <a class="el" href="class_halide_1_1_buffer.html">Buffer</a> &amp;buf)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap a buffer in an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> object, so that we can directly access its pixels in a type-safe way.  <a href="#a242c1aff5d135a317ca1b5c5505ca37b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#ac2d48c4b249249e860250e5acfa2205a">Image</a> (const <a class="el" href="class_halide_1_1_realization.html">Realization</a> &amp;r)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap a single-element realization in an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> object.  <a href="#ac2d48c4b249249e860250e5acfa2205a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#adc7fb9ccaeb4bb00a8033bbb6878c833">Image</a> (const buffer_t *b, const std::string &amp;name=&quot;&quot;)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap a buffer_t in an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> object, so that we can access its pixels.  <a href="#adc7fb9ccaeb4bb00a8033bbb6878c833"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#af30a48c8b29e6d7c1bddad107fafccdc">copy_to_host</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually copy-back data to the host, if it's on a device.  <a href="#af30a48c8b29e6d7c1bddad107fafccdc"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a17fa22d605fefe7e0c9917bd5cd8d3f2">set_host_dirty</a> (bool dirty=true)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Mark the buffer as dirty-on-host.  <a href="#a17fa22d605fefe7e0c9917bd5cd8d3f2"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a76a33d0c8dcc7f7cd7fe39ab20568449">defined</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this image handle points to actual data.  <a href="#a76a33d0c8dcc7f7cd7fe39ab20568449"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a569e6ef025cc73b5896ab39a33bfae10">dimensions</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the dimensionality of the data.  <a href="#a569e6ef025cc73b5896ab39a33bfae10"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#aeb623f1be4147da6a6124f5ef453425f">extent</a> (int dim) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of a dimension.  <a href="#aeb623f1be4147da6a6124f5ef453425f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a34d618f1121a150d17a4fde4c3a7afe6">min</a> (int dim) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the min coordinate of a dimension.  <a href="#a34d618f1121a150d17a4fde4c3a7afe6"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a2df4a08e0c14cfe39b9bcec58ab5b5b4">set_min</a> (int m0, int m1=0, int m2=0, int m3=0)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the min coordinates of a dimension.  <a href="#a2df4a08e0c14cfe39b9bcec58ab5b5b4"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#ae5cfa35c848f116d554d764280fe6961">stride</a> (int dim) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of elements in the buffer between two adjacent elements in the given dimension.  <a href="#ae5cfa35c848f116d554d764280fe6961"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49">width</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the extent of dimension 0, which by convention we use as the width of the image.  <a href="#a182c020608c997186eba7c01ea717a49"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b">height</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the extent of dimension 1, which by convention we use as the height of the image.  <a href="#a04704be92bef97bce8ae46562ab7193b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#aa60444f049477f0f9044b35b5957aba1">channels</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the extent of dimension 2, which by convention we use as the number of color channels (often 3).  <a href="#aa60444f049477f0f9044b35b5957aba1"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#abd71a465f9a108bf797d81428c5d35fa">left</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the minimum coordinate in dimension 0, which by convention is the coordinate of the left edge of the image.  <a href="#abd71a465f9a108bf797d81428c5d35fa"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#aab55e87601d9d2dc9797061f38e76b13">right</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum coordinate in dimension 0, which by convention is the coordinate of the right edge of the image.  <a href="#aab55e87601d9d2dc9797061f38e76b13"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a637be5f04534aae8e90b853ed0fe6ac3">top</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the minimum coordinate in dimension 1, which by convention is the top of the image.  <a href="#a637be5f04534aae8e90b853ed0fe6ac3"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#ab6aae015fc58f122a1a4dc1b60b27fde">bottom</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum coordinate in dimension 1, which by convention is the bottom of the image.  <a href="#ab6aae015fc58f122a1a4dc1b60b27fde"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a44efb4fd640ac2d5b5619cf87696137f">data</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the element at the min location.  <a href="#a44efb4fd640ac2d5b5619cf87696137f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a70b43b87660597e2a13677383d271ca2">Image</a> (const <a class="el" href="class_halide_1_1_buffer.html">Buffer</a> &amp;buf)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap a buffer in an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> object, so that we can directly access its pixels in a type-safe way.  <a href="#a70b43b87660597e2a13677383d271ca2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a116419567a2db59d9aefd9f8feabe612">Image</a> (const <a class="el" href="class_halide_1_1_realization.html">Realization</a> &amp;r)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap a single-element realization in an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> object.  <a href="#a116419567a2db59d9aefd9f8feabe612"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#aa5cbd165e2151fd40a7988f14a1cb0a5">Image</a> (const buffer_t *b, const std::string &amp;<a class="el" href="class_halide_1_1_image_base.html#a1f79ddfb24cf09fb0f0a6ede94fa3784">name</a>=&quot;&quot;)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrap a buffer_t in an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> object, so that we can access its pixels.  <a href="#aa5cbd165e2151fd40a7988f14a1cb0a5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#aa5ec66bc552f02c26f7df2eeec6fbe3c">data</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the element at the min location.  <a href="#aa5ec66bc552f02c26f7df2eeec6fbe3c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#ae4c3fbc5a38fd3141e5f3d5b7543b60d">operator()</a> (int x) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Assuming this image is one-dimensional, get the value of the element at position x.  <a href="#ae4c3fbc5a38fd3141e5f3d5b7543b60d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a3ea8dbef5d77a85b94b873903be35a8c">operator()</a> (int x, int y) const </td></tr>
@@ -169,10 +141,6 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Assuming this image is three-dimensional, get a reference to the element at position (x, y, z)  <a href="#a6638679b18859fa1724be399be3eb49e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a6c4744f295dbc08267fedc446e3cf3d2">operator()</a> (int x, int y, int z, int w)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Assuming this image is four-dimensional, get a reference to the element at position (x, y, z, w)  <a href="#a6c4744f295dbc08267fedc446e3cf3d2"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#ad07e970e0a11d730869f97d7c860cb8d">operator()</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an expression which loads from this image.  <a href="#ad07e970e0a11d730869f97d7c860cb8d"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">buffer_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#ac3f1590c818a8d2470545f7ae8f4c851">raw_buffer</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the raw buffer_t that this image holds.  <a href="#ac3f1590c818a8d2470545f7ae8f4c851"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a9862a213c54b88376ea28433a82d2e39">operator Buffer</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a handle on the <a class="el" href="class_halide_1_1_buffer.html" title="The internal representation of an image, or other dense array data.">Buffer</a> that this image holds.  <a href="#a9862a213c54b88376ea28433a82d2e39"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#aab9ae19edd62b379da921e004bd0b0ec">operator Argument</a> () const </td></tr>
@@ -182,23 +150,14 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#aab938cc14debc8813364099a7c611a85">operator Expr</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Treating the image as an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> is equivalent to call it with no arguments.  <a href="#aab938cc14debc8813364099a7c611a85"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a8d1496c0389e762fd113030c12205d2d">Image</a> (int x, int y=0, int z=0, int w=0, const std::string &amp;name=&quot;&quot;)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate an image with the given dimensions.  <a href="#a8d1496c0389e762fd113030c12205d2d"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a35ceebc7259993b7633ee0cddae81dea">Image</a> (int x, int y, int z, const std::string &amp;name)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate an image with the given dimensions.  <a href="#a35ceebc7259993b7633ee0cddae81dea"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#af1e5320ba9842d03205c14968c02fdc6">Image</a> (int x, int y, const std::string &amp;name)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate an image with the given dimensions.  <a href="#af1e5320ba9842d03205c14968c02fdc6"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#ac958f9225b69123d56a1ab6945f30c36">Image</a> (int x, const std::string &amp;name)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate an image with the given dimensions.  <a href="#ac958f9225b69123d56a1ab6945f30c36"></a><br/></td></tr>
-<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a46002614cf371da1cc886c779253d73f">operator()</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> x) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an expression which loads from this image.  <a href="#a46002614cf371da1cc886c779253d73f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a963161b32b560155044489236f5a7353">operator()</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> x, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> y) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an expression which loads from this image.  <a href="#a963161b32b560155044489236f5a7353"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#ad0e131cf88222c2d93b4fc039d624168">operator()</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> x, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> y, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> z) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an expression which loads from this image.  <a href="#ad0e131cf88222c2d93b4fc039d624168"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#abd8f896e21cecd112795b53ccdf5b922">operator()</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> x, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> y, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> z, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> w) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an expression which loads from this image.  <a href="#abd8f896e21cecd112795b53ccdf5b922"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#ae0c0bcd330ffc40ab466bbbc68308403">Image</a> (int x, int y=0, int z=0, int w=0, const std::string &amp;<a class="el" href="class_halide_1_1_image_base.html#a1f79ddfb24cf09fb0f0a6ede94fa3784">name</a>=&quot;&quot;)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate an image with the given dimensions.  <a href="#ae0c0bcd330ffc40ab466bbbc68308403"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a9529a134b3f40b98d750a9886b87610b">Image</a> (int x, int y, int z, const std::string &amp;<a class="el" href="class_halide_1_1_image_base.html#a1f79ddfb24cf09fb0f0a6ede94fa3784">name</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate an image with the given dimensions.  <a href="#a9529a134b3f40b98d750a9886b87610b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#a51fb5bcdc8e3670fb5c294d129e56cfe">Image</a> (int x, int y, const std::string &amp;<a class="el" href="class_halide_1_1_image_base.html#a1f79ddfb24cf09fb0f0a6ede94fa3784">name</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate an image with the given dimensions.  <a href="#a51fb5bcdc8e3670fb5c294d129e56cfe"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image.html#adac9cbd5ad6d3a9b4302c5b0e34acd44">Image</a> (int x, const std::string &amp;<a class="el" href="class_halide_1_1_image_base.html#a1f79ddfb24cf09fb0f0a6ede94fa3784">name</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate an image with the given dimensions.  <a href="#adac9cbd5ad6d3a9b4302c5b0e34acd44"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br/>
@@ -208,7 +167,7 @@ class Halide::Image&lt; T &gt;</h3>
 <p>Can be directly accessed and modified. May have up to four dimensions. Color images are represented as three-dimensional, with the third dimension being the color channel. In general we store color images in color-planes, as opposed to packed RGB, because this tends to vectorize more cleanly. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_01_basics_8cpp-example.html#_a3">tutorial/lesson_01_basics.cpp</a>, <a class="el" href="tutorial_2lesson_02_input_image_8cpp-example.html#_a0">tutorial/lesson_02_input_image.cpp</a>, <a class="el" href="tutorial_2lesson_03_debugging_1_8cpp-example.html#_a2">tutorial/lesson_03_debugging_1.cpp</a>, <a class="el" href="tutorial_2lesson_04_debugging_2_8cpp-example.html#_a3">tutorial/lesson_04_debugging_2.cpp</a>, <a class="el" href="tutorial_2lesson_05_scheduling_1_8cpp-example.html#_a3">tutorial/lesson_05_scheduling_1.cpp</a>, <a class="el" href="tutorial_2lesson_06_realizing_over_shifted_domains_8cpp-example.html#_a3">tutorial/lesson_06_realizing_over_shifted_domains.cpp</a>, <a class="el" href="tutorial_2lesson_07_multi_stage_pipelines_8cpp-example.html#_a1">tutorial/lesson_07_multi_stage_pipelines.cpp</a>, <a class="el" href="tutorial_2lesson_08_scheduling_2_8cpp-example.html#_a13">tutorial/lesson_08_scheduling_2.cpp</a>, and <a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#_a1">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00021">21</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00157">157</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a93767feb729f00c63cde76f4c03433bc"></a><!-- doxytag: member="Halide::Image::Image" ref="a93767feb729f00c63cde76f4c03433bc" args="()" -->
 <div class="memitem">
@@ -228,18 +187,18 @@ template&lt;typename T&gt; </div>
 
 <p>Construct an undefined image handle. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00103">103</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00160">160</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a8d1496c0389e762fd113030c12205d2d"></a><!-- doxytag: member="Halide::Image::Image" ref="a8d1496c0389e762fd113030c12205d2d" args="(int x, int y=0, int z=0, int w=0, const std::string &amp;name=&quot;&quot;)" -->
+<a class="anchor" id="ae0c0bcd330ffc40ab466bbbc68308403"></a><!-- doxytag: member="Halide::Image::Image" ref="ae0c0bcd330ffc40ab466bbbc68308403" args="(int x, int y=0, int z=0, int w=0, const std::string &amp;name=&quot;&quot;)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html">Image</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html">Image</a> </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>x</em>, </td>
@@ -279,18 +238,18 @@ template&lt;typename T&gt; </div>
 
 <p>Allocate an image with the given dimensions. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00107">107</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00164">164</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a35ceebc7259993b7633ee0cddae81dea"></a><!-- doxytag: member="Halide::Image::Image" ref="a35ceebc7259993b7633ee0cddae81dea" args="(int x, int y, int z, const std::string &amp;name)" -->
+<a class="anchor" id="a9529a134b3f40b98d750a9886b87610b"></a><!-- doxytag: member="Halide::Image::Image" ref="a9529a134b3f40b98d750a9886b87610b" args="(int x, int y, int z, const std::string &amp;name)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html">Image</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html">Image</a> </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>x</em>, </td>
@@ -324,18 +283,18 @@ template&lt;typename T&gt; </div>
 
 <p>Allocate an image with the given dimensions. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00112">112</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00167">167</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="af1e5320ba9842d03205c14968c02fdc6"></a><!-- doxytag: member="Halide::Image::Image" ref="af1e5320ba9842d03205c14968c02fdc6" args="(int x, int y, const std::string &amp;name)" -->
+<a class="anchor" id="a51fb5bcdc8e3670fb5c294d129e56cfe"></a><!-- doxytag: member="Halide::Image::Image" ref="a51fb5bcdc8e3670fb5c294d129e56cfe" args="(int x, int y, const std::string &amp;name)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html">Image</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html">Image</a> </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>x</em>, </td>
@@ -363,18 +322,18 @@ template&lt;typename T&gt; </div>
 
 <p>Allocate an image with the given dimensions. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00117">117</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00170">170</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ac958f9225b69123d56a1ab6945f30c36"></a><!-- doxytag: member="Halide::Image::Image" ref="ac958f9225b69123d56a1ab6945f30c36" args="(int x, const std::string &amp;name)" -->
+<a class="anchor" id="adac9cbd5ad6d3a9b4302c5b0e34acd44"></a><!-- doxytag: member="Halide::Image::Image" ref="adac9cbd5ad6d3a9b4302c5b0e34acd44" args="(int x, const std::string &amp;name)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html">Image</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html">Image</a> </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>x</em>, </td>
@@ -396,18 +355,18 @@ template&lt;typename T&gt; </div>
 
 <p>Allocate an image with the given dimensions. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00122">122</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00173">173</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a242c1aff5d135a317ca1b5c5505ca37b"></a><!-- doxytag: member="Halide::Image::Image" ref="a242c1aff5d135a317ca1b5c5505ca37b" args="(const Buffer &amp;buf)" -->
+<a class="anchor" id="a70b43b87660597e2a13677383d271ca2"></a><!-- doxytag: member="Halide::Image::Image" ref="a70b43b87660597e2a13677383d271ca2" args="(const Buffer &amp;buf)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html">Image</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html">Image</a> </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_halide_1_1_buffer.html">Buffer</a> &amp;&#160;</td>
           <td class="paramname"><em>buf</em></td><td>)</td>
@@ -419,20 +378,18 @@ template&lt;typename T&gt; </div>
 
 <p>Wrap a buffer in an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> object, so that we can directly access its pixels in a type-safe way. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00130">130</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00230">Halide::Buffer::type()</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00179">179</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ac2d48c4b249249e860250e5acfa2205a"></a><!-- doxytag: member="Halide::Image::Image" ref="ac2d48c4b249249e860250e5acfa2205a" args="(const Realization &amp;r)" -->
+<a class="anchor" id="a116419567a2db59d9aefd9f8feabe612"></a><!-- doxytag: member="Halide::Image::Image" ref="a116419567a2db59d9aefd9f8feabe612" args="(const Realization &amp;r)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html">Image</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html">Image</a> </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_halide_1_1_realization.html">Realization</a> &amp;&#160;</td>
           <td class="paramname"><em>r</em></td><td>)</td>
@@ -444,20 +401,18 @@ template&lt;typename T&gt; </div>
 
 <p>Wrap a single-element realization in an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> object. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00140">140</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00230">Halide::Buffer::type()</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00182">182</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="adc7fb9ccaeb4bb00a8033bbb6878c833"></a><!-- doxytag: member="Halide::Image::Image" ref="adc7fb9ccaeb4bb00a8033bbb6878c833" args="(const buffer_t *b, const std::string &amp;name=&quot;&quot;)" -->
+<a class="anchor" id="aa5cbd165e2151fd40a7988f14a1cb0a5"></a><!-- doxytag: member="Halide::Image::Image" ref="aa5cbd165e2151fd40a7988f14a1cb0a5" args="(const buffer_t *b, const std::string &amp;name=&quot;&quot;)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html">Image</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html">Image</a> </td>
           <td>(</td>
           <td class="paramtype">const buffer_t *&#160;</td>
           <td class="paramname"><em>b</em>, </td>
@@ -479,429 +434,19 @@ template&lt;typename T&gt; </div>
 
 <p>Wrap a buffer_t in an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> object, so that we can access its pixels. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00151">151</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00186">186</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="af30a48c8b29e6d7c1bddad107fafccdc"></a><!-- doxytag: member="Halide::Image::copy_to_host" ref="af30a48c8b29e6d7c1bddad107fafccdc" args="()" -->
+<a class="anchor" id="aa5ec66bc552f02c26f7df2eeec6fbe3c"></a><!-- doxytag: member="Halide::Image::data" ref="aa5ec66bc552f02c26f7df2eeec6fbe3c" args="() const " -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#af30a48c8b29e6d7c1bddad107fafccdc">copy_to_host</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Manually copy-back data to the host, if it's on a device. </p>
-<p>This is done for you if you construct an image from a buffer, but you might need to call this if you realize a gpu kernel into an existing image </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00159">159</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00273">Halide::Buffer::copy_to_host()</a>.</p>
-
-<p>Referenced by <a class="el" href="_func_8h_source.html#l01385">Halide::evaluate_may_gpu()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a17fa22d605fefe7e0c9917bd5cd8d3f2"></a><!-- doxytag: member="Halide::Image::set_host_dirty" ref="a17fa22d605fefe7e0c9917bd5cd8d3f2" args="(bool dirty=true)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#a17fa22d605fefe7e0c9917bd5cd8d3f2">set_host_dirty</a> </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>dirty</em> = <code>true</code></td><td>)</td>
-          <td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Mark the buffer as dirty-on-host. </p>
-<p>is done for you if you construct an image from a buffer, but you might need to call this if you realize a gpu kernel into an existing image, or modify the data via some other back-door. </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00167">167</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00165">Halide::Buffer::set_host_dirty()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a76a33d0c8dcc7f7cd7fe39ab20568449"></a><!-- doxytag: member="Halide::Image::defined" ref="a76a33d0c8dcc7f7cd7fe39ab20568449" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#a76a33d0c8dcc7f7cd7fe39ab20568449">defined</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Check if this image handle points to actual data. </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00172">172</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00241">Halide::Buffer::defined()</a>.</p>
-
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00273">Halide::Image&lt; T &gt;::data()</a>, <a class="el" href="_image_8h_source.html#l00182">Halide::Image&lt; T &gt;::extent()</a>, <a class="el" href="_image_8h_source.html#l00191">Halide::Image&lt; T &gt;::min()</a>, <a class="el" href="_image_8h_source.html#l00198">Halide::Image&lt; T &gt;::set_min()</a>, and <a class="el" href="_image_8h_source.html#l00210">Halide::Image&lt; T &gt;::stride()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a569e6ef025cc73b5896ab39a33bfae10"></a><!-- doxytag: member="Halide::Image::dimensions" ref="a569e6ef025cc73b5896ab39a33bfae10" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#a569e6ef025cc73b5896ab39a33bfae10">dimensions</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the dimensionality of the data. </p>
-<p>Typically two for grayscale images, and three for color images. </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00177">177</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00267">Halide::Image&lt; T &gt;::bottom()</a>, <a class="el" href="_image_8h_source.html#l00235">Halide::Image&lt; T &gt;::channels()</a>, <a class="el" href="_image_8h_source.html#l00227">Halide::Image&lt; T &gt;::height()</a>, <a class="el" href="_image_8h_source.html#l00243">Halide::Image&lt; T &gt;::left()</a>, <a class="el" href="_image_8h_source.html#l00251">Halide::Image&lt; T &gt;::right()</a>, <a class="el" href="_image_8h_source.html#l00259">Halide::Image&lt; T &gt;::top()</a>, and <a class="el" href="_image_8h_source.html#l00219">Halide::Image&lt; T &gt;::width()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aeb623f1be4147da6a6124f5ef453425f"></a><!-- doxytag: member="Halide::Image::extent" ref="aeb623f1be4147da6a6124f5ef453425f" args="(int dim) const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#aeb623f1be4147da6a6124f5ef453425f">extent</a> </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>dim</em></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the size of a dimension. </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00182">182</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_image_8h_source.html#l00172">Halide::Image&lt; T &gt;::defined()</a>, and <a class="el" href="_buffer_8h_source.html#l00198">Halide::Buffer::extent()</a>.</p>
-
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00267">Halide::Image&lt; T &gt;::bottom()</a>, <a class="el" href="_image_8h_source.html#l00235">Halide::Image&lt; T &gt;::channels()</a>, <a class="el" href="_image_8h_source.html#l00227">Halide::Image&lt; T &gt;::height()</a>, <a class="el" href="_image_8h_source.html#l00251">Halide::Image&lt; T &gt;::right()</a>, and <a class="el" href="_image_8h_source.html#l00219">Halide::Image&lt; T &gt;::width()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a34d618f1121a150d17a4fde4c3a7afe6"></a><!-- doxytag: member="Halide::Image::min" ref="a34d618f1121a150d17a4fde4c3a7afe6" args="(int dim) const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#a34d618f1121a150d17a4fde4c3a7afe6">min</a> </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>dim</em></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the min coordinate of a dimension. </p>
-<p>The top left of the image represents this point in a function that was realized into this image. </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00191">191</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_image_8h_source.html#l00172">Halide::Image&lt; T &gt;::defined()</a>, and <a class="el" href="_buffer_8h_source.html#l00213">Halide::Buffer::min()</a>.</p>
-
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00267">Halide::Image&lt; T &gt;::bottom()</a>, <a class="el" href="_image_8h_source.html#l00273">Halide::Image&lt; T &gt;::data()</a>, <a class="el" href="_image_8h_source.html#l00243">Halide::Image&lt; T &gt;::left()</a>, <a class="el" href="_image_8h_source.html#l00251">Halide::Image&lt; T &gt;::right()</a>, and <a class="el" href="_image_8h_source.html#l00259">Halide::Image&lt; T &gt;::top()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a2df4a08e0c14cfe39b9bcec58ab5b5b4"></a><!-- doxytag: member="Halide::Image::set_min" ref="a2df4a08e0c14cfe39b9bcec58ab5b5b4" args="(int m0, int m1=0, int m2=0, int m3=0)" -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#a2df4a08e0c14cfe39b9bcec58ab5b5b4">set_min</a> </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>m0</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>m1</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>m2</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>m3</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Set the min coordinates of a dimension. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_07_multi_stage_pipelines_8cpp-example.html#a5">tutorial/lesson_07_multi_stage_pipelines.cpp</a>.</dd>
-</dl>
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00198">198</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_image_8h_source.html#l00172">Halide::Image&lt; T &gt;::defined()</a>, and <a class="el" href="_buffer_8h_source.html#l00221">Halide::Buffer::set_min()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ae5cfa35c848f116d554d764280fe6961"></a><!-- doxytag: member="Halide::Image::stride" ref="ae5cfa35c848f116d554d764280fe6961" args="(int dim) const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#ae5cfa35c848f116d554d764280fe6961">stride</a> </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>dim</em></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the number of elements in the buffer between two adjacent elements in the given dimension. </p>
-<p>For example, the stride in dimension 0 is usually 1, and the stride in dimension 1 is usually the extent of dimension 0. This is not necessarily true though. </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00210">210</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_image_8h_source.html#l00172">Halide::Image&lt; T &gt;::defined()</a>, and <a class="el" href="_buffer_8h_source.html#l00205">Halide::Buffer::stride()</a>.</p>
-
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00273">Halide::Image&lt; T &gt;::data()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a182c020608c997186eba7c01ea717a49"></a><!-- doxytag: member="Halide::Image::width" ref="a182c020608c997186eba7c01ea717a49" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#a182c020608c997186eba7c01ea717a49">width</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the extent of dimension 0, which by convention we use as the width of the image. </p>
-<p>Unlike extent(0), returns one if the buffer is zero-dimensional. </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00219">219</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_image_8h_source.html#l00177">Halide::Image&lt; T &gt;::dimensions()</a>, and <a class="el" href="_image_8h_source.html#l00182">Halide::Image&lt; T &gt;::extent()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a04704be92bef97bce8ae46562ab7193b"></a><!-- doxytag: member="Halide::Image::height" ref="a04704be92bef97bce8ae46562ab7193b" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#a04704be92bef97bce8ae46562ab7193b">height</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the extent of dimension 1, which by convention we use as the height of the image. </p>
-<p>Unlike extent(1), returns one if the buffer has fewer than two dimensions. </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00227">227</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_image_8h_source.html#l00177">Halide::Image&lt; T &gt;::dimensions()</a>, and <a class="el" href="_image_8h_source.html#l00182">Halide::Image&lt; T &gt;::extent()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aa60444f049477f0f9044b35b5957aba1"></a><!-- doxytag: member="Halide::Image::channels" ref="aa60444f049477f0f9044b35b5957aba1" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#aa60444f049477f0f9044b35b5957aba1">channels</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the extent of dimension 2, which by convention we use as the number of color channels (often 3). </p>
-<p>Unlike extent(2), returns one if the buffer has fewer than three dimensions. </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00235">235</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_image_8h_source.html#l00177">Halide::Image&lt; T &gt;::dimensions()</a>, and <a class="el" href="_image_8h_source.html#l00182">Halide::Image&lt; T &gt;::extent()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="abd71a465f9a108bf797d81428c5d35fa"></a><!-- doxytag: member="Halide::Image::left" ref="abd71a465f9a108bf797d81428c5d35fa" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#abd71a465f9a108bf797d81428c5d35fa">left</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the minimum coordinate in dimension 0, which by convention is the coordinate of the left edge of the image. </p>
-<p>Returns zero for zero-dimensional images. </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00243">243</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_image_8h_source.html#l00177">Halide::Image&lt; T &gt;::dimensions()</a>, and <a class="el" href="_image_8h_source.html#l00191">Halide::Image&lt; T &gt;::min()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aab55e87601d9d2dc9797061f38e76b13"></a><!-- doxytag: member="Halide::Image::right" ref="aab55e87601d9d2dc9797061f38e76b13" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#aab55e87601d9d2dc9797061f38e76b13">right</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the maximum coordinate in dimension 0, which by convention is the coordinate of the right edge of the image. </p>
-<p>Returns zero for zero-dimensional images. </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00251">251</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_image_8h_source.html#l00177">Halide::Image&lt; T &gt;::dimensions()</a>, <a class="el" href="_image_8h_source.html#l00182">Halide::Image&lt; T &gt;::extent()</a>, and <a class="el" href="_image_8h_source.html#l00191">Halide::Image&lt; T &gt;::min()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a637be5f04534aae8e90b853ed0fe6ac3"></a><!-- doxytag: member="Halide::Image::top" ref="a637be5f04534aae8e90b853ed0fe6ac3" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#a637be5f04534aae8e90b853ed0fe6ac3">top</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the minimum coordinate in dimension 1, which by convention is the top of the image. </p>
-<p>Returns zero for zero- or one-dimensional images. </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00259">259</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_image_8h_source.html#l00177">Halide::Image&lt; T &gt;::dimensions()</a>, and <a class="el" href="_image_8h_source.html#l00191">Halide::Image&lt; T &gt;::min()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ab6aae015fc58f122a1a4dc1b60b27fde"></a><!-- doxytag: member="Halide::Image::bottom" ref="ab6aae015fc58f122a1a4dc1b60b27fde" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#ab6aae015fc58f122a1a4dc1b60b27fde">bottom</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the maximum coordinate in dimension 1, which by convention is the bottom of the image. </p>
-<p>Returns zero for zero- or one-dimensional images. </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00267">267</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_image_8h_source.html#l00177">Halide::Image&lt; T &gt;::dimensions()</a>, <a class="el" href="_image_8h_source.html#l00182">Halide::Image&lt; T &gt;::extent()</a>, and <a class="el" href="_image_8h_source.html#l00191">Halide::Image&lt; T &gt;::min()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a44efb4fd640ac2d5b5619cf87696137f"></a><!-- doxytag: member="Halide::Image::data" ref="a44efb4fd640ac2d5b5619cf87696137f" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">T* <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#a44efb4fd640ac2d5b5619cf87696137f">data</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> T* <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#aa5ec66bc552f02c26f7df2eeec6fbe3c">data</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const<code> [inline]</code></td>
@@ -912,9 +457,9 @@ template&lt;typename T&gt; </div>
 
 <p>Get a pointer to the element at the min location. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00273">273</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00190">190</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
-<p>References <a class="el" href="_image_8h_source.html#l00172">Halide::Image&lt; T &gt;::defined()</a>, <a class="el" href="_image_8h_source.html#l00191">Halide::Image&lt; T &gt;::min()</a>, and <a class="el" href="_image_8h_source.html#l00210">Halide::Image&lt; T &gt;::stride()</a>.</p>
+<p>References <a class="el" href="_image_8h_source.html#l00022">Halide::ImageBase::buffer</a>, <a class="el" href="class_halide_1_1_image_base.html#a6b6f1e5462778607835eb4982ebe5e7f">Halide::ImageBase::defined()</a>, <a class="el" href="class_halide_1_1_buffer.html#a3b83b564af2b1c841dd2a9270cae6933">Halide::Buffer::host_ptr()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -937,7 +482,9 @@ template&lt;typename T&gt; </div>
 
 <p>Assuming this image is one-dimensional, get the value of the element at position x. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00284">284</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00199">199</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+
+<p>References <a class="el" href="_image_8h_source.html#l00029">Halide::ImageBase::origin</a>, and <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_0</a>.</p>
 
 </div>
 </div>
@@ -970,7 +517,9 @@ template&lt;typename T&gt; </div>
 
 <p>Assuming this image is two-dimensional, get the value of the element at position (x, y) </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00290">290</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00205">205</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+
+<p>References <a class="el" href="_image_8h_source.html#l00029">Halide::ImageBase::origin</a>, <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_0</a>, and <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_1</a>.</p>
 
 </div>
 </div>
@@ -1009,7 +558,9 @@ template&lt;typename T&gt; </div>
 
 <p>Assuming this image is three-dimensional, get the value of the element at position (x, y, z) </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00296">296</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00211">211</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+
+<p>References <a class="el" href="_image_8h_source.html#l00029">Halide::ImageBase::origin</a>, <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_0</a>, <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_1</a>, and <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_2</a>.</p>
 
 </div>
 </div>
@@ -1054,7 +605,9 @@ template&lt;typename T&gt; </div>
 
 <p>Assuming this image is four-dimensional, get the value of the element at position (x, y, z, w) </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00302">302</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00217">217</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+
+<p>References <a class="el" href="_image_8h_source.html#l00029">Halide::ImageBase::origin</a>, <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_0</a>, <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_1</a>, <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_2</a>, and <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_3</a>.</p>
 
 </div>
 </div>
@@ -1077,7 +630,9 @@ template&lt;typename T&gt; </div>
 
 <p>Assuming this image is one-dimensional, get a reference to the element at position x. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00308">308</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00223">223</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+
+<p>References <a class="el" href="_image_8h_source.html#l00029">Halide::ImageBase::origin</a>, and <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_0</a>.</p>
 
 </div>
 </div>
@@ -1110,7 +665,9 @@ template&lt;typename T&gt; </div>
 
 <p>Assuming this image is two-dimensional, get a reference to the element at position (x, y) </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00314">314</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00229">229</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+
+<p>References <a class="el" href="_image_8h_source.html#l00029">Halide::ImageBase::origin</a>, <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_0</a>, and <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_1</a>.</p>
 
 </div>
 </div>
@@ -1149,7 +706,9 @@ template&lt;typename T&gt; </div>
 
 <p>Assuming this image is three-dimensional, get a reference to the element at position (x, y, z) </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00320">320</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00235">235</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+
+<p>References <a class="el" href="_image_8h_source.html#l00029">Halide::ImageBase::origin</a>, <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_0</a>, <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_1</a>, and <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_2</a>.</p>
 
 </div>
 </div>
@@ -1194,208 +753,9 @@ template&lt;typename T&gt; </div>
 
 <p>Assuming this image is four-dimensional, get a reference to the element at position (x, y, z, w) </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00326">326</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00241">241</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
-</div>
-</div>
-<a class="anchor" id="ad07e970e0a11d730869f97d7c860cb8d"></a><!-- doxytag: member="Halide::Image::operator()" ref="ad07e970e0a11d730869f97d7c860cb8d" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::operator() </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Construct an expression which loads from this image. </p>
-<p>The location is composed of enough implicit variables to match the dimensionality of the image (see <a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117">Var::implicit</a>) </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00333">333</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_i_r_8h_source.html#l00987">Halide::Internal::Call::make()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a46002614cf371da1cc886c779253d73f"></a><!-- doxytag: member="Halide::Image::operator()" ref="a46002614cf371da1cc886c779253d73f" args="(Expr x) const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::operator() </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>x</em></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Construct an expression which loads from this image. </p>
-<p>The location is extended with enough implicit variables to match the dimensionality of the image (see <a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117">Var::implicit</a>) </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00343">343</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_param_8h_source.html#l00360">Halide::ImageParam::check_arg_types()</a>, <a class="el" href="_i_r_8h_source.html#l00987">Halide::Internal::Call::make()</a>, and <a class="el" href="_buffer_8h_source.html#l00246">Halide::Buffer::name()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a963161b32b560155044489236f5a7353"></a><!-- doxytag: member="Halide::Image::operator()" ref="a963161b32b560155044489236f5a7353" args="(Expr x, Expr y) const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::operator() </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>y</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Construct an expression which loads from this image. </p>
-<p>The location is extended with enough implicit variables to match the dimensionality of the image (see <a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117">Var::implicit</a>) </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00355">355</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_param_8h_source.html#l00360">Halide::ImageParam::check_arg_types()</a>, <a class="el" href="_i_r_8h_source.html#l00987">Halide::Internal::Call::make()</a>, and <a class="el" href="_buffer_8h_source.html#l00246">Halide::Buffer::name()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ad0e131cf88222c2d93b4fc039d624168"></a><!-- doxytag: member="Halide::Image::operator()" ref="ad0e131cf88222c2d93b4fc039d624168" args="(Expr x, Expr y, Expr z) const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::operator() </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>z</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Construct an expression which loads from this image. </p>
-<p>The location is extended with enough implicit variables to match the dimensionality of the image (see <a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117">Var::implicit</a>) </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00368">368</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_param_8h_source.html#l00360">Halide::ImageParam::check_arg_types()</a>, <a class="el" href="_i_r_8h_source.html#l00987">Halide::Internal::Call::make()</a>, and <a class="el" href="_buffer_8h_source.html#l00246">Halide::Buffer::name()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="abd8f896e21cecd112795b53ccdf5b922"></a><!-- doxytag: member="Halide::Image::operator()" ref="abd8f896e21cecd112795b53ccdf5b922" args="(Expr x, Expr y, Expr z, Expr w) const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::operator() </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>z</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>w</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Construct an expression which loads from this image. </p>
-<p>The location is extended with enough implicit variables to match the dimensionality of the image (see <a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117">Var::implicit</a>) </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00382">382</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_param_8h_source.html#l00360">Halide::ImageParam::check_arg_types()</a>, <a class="el" href="_i_r_8h_source.html#l00987">Halide::Internal::Call::make()</a>, and <a class="el" href="_buffer_8h_source.html#l00246">Halide::Buffer::name()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac3f1590c818a8d2470545f7ae8f4c851"></a><!-- doxytag: member="Halide::Image::raw_buffer" ref="ac3f1590c818a8d2470545f7ae8f4c851" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">buffer_t* <a class="el" href="class_halide_1_1_image.html">Halide::Image</a>&lt; T &gt;::<a class="el" href="class_halide_1_1_image.html#ac3f1590c818a8d2470545f7ae8f4c851">raw_buffer</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get a pointer to the raw buffer_t that this image holds. </p>
-
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00399">399</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00141">Halide::Buffer::raw_buffer()</a>.</p>
+<p>References <a class="el" href="_image_8h_source.html#l00029">Halide::ImageBase::origin</a>, <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_0</a>, <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_1</a>, <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_2</a>, and <a class="el" href="_image_8h_source.html#l00030">Halide::ImageBase::stride_3</a>.</p>
 
 </div>
 </div>
@@ -1417,7 +777,9 @@ template&lt;typename T&gt; </div>
 
 <p>Get a handle on the <a class="el" href="class_halide_1_1_buffer.html" title="The internal representation of an image, or other dense array data.">Buffer</a> that this image holds. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00402">402</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00246">246</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+
+<p>References <a class="el" href="_image_8h_source.html#l00022">Halide::ImageBase::buffer</a>.</p>
 
 </div>
 </div>
@@ -1439,7 +801,9 @@ template&lt;typename T&gt; </div>
 
 <p>Convert this image to an argument to a halide pipeline. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00405">405</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00251">251</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+
+<p>References <a class="el" href="_image_8h_source.html#l00022">Halide::ImageBase::buffer</a>.</p>
 
 </div>
 </div>
@@ -1461,7 +825,9 @@ template&lt;typename T&gt; </div>
 
 <p>Convert this image to an argument to an extern stage. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00410">410</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00256">256</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+
+<p>References <a class="el" href="_image_8h_source.html#l00022">Halide::ImageBase::buffer</a>.</p>
 
 </div>
 </div>
@@ -1488,7 +854,7 @@ template&lt;typename T&gt; </div>
      f = im*2;
 </pre></div><p>This will define f as a two-dimensional function with value at position (x, y) equal to twice the value of the image at the same location. </p>
 
-<p>Definition at line <a class="el" href="_image_8h_source.html#l00427">427</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
+<p>Definition at line <a class="el" href="_image_8h_source.html#l00273">273</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02">Halide::_</a>.</p>
 

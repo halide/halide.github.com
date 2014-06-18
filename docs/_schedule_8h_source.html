@@ -114,135 +114,178 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00012"></a>00012 <span class="keyword">namespace </span>Halide {
 <a name="l00013"></a>00013 <span class="keyword">namespace </span>Internal {
 <a name="l00014"></a>00014 <span class="comment"></span>
-<a name="l00015"></a>00015 <span class="comment">/** A schedule for a halide function, which defines where, when, and</span>
-<a name="l00016"></a>00016 <span class="comment"> * how it should be evaluated. */</span>
-<a name="l00017"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule.html">00017</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_schedule.html" title="A schedule for a halide function, which defines where, when, and how it should be evaluated...">Schedule</a> {<span class="comment"></span>
-<a name="l00018"></a>00018 <span class="comment">    /** A reference to a site in a Halide statement at the top of the</span>
-<a name="l00019"></a>00019 <span class="comment">     * body of a particular for loop. Evaluating a region of a halide</span>
-<a name="l00020"></a>00020 <span class="comment">     * function is done by generating a loop nest that spans its</span>
-<a name="l00021"></a>00021 <span class="comment">     * dimensions. We schedule the inputs to that function by</span>
-<a name="l00022"></a>00022 <span class="comment">     * recursively injecting realizations for them at particular sites</span>
-<a name="l00023"></a>00023 <span class="comment">     * in this loop nest. A LoopLevel identifies such a site. */</span>
-<a name="l00024"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html">00024</a>     <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html" title="A reference to a site in a Halide statement at the top of the body of a particular for loop...">LoopLevel</a> {
-<a name="l00025"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aec96b910ab29e7d06b96766d1d6f3d5e">00025</a>         std::string <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a5086f981e4477e8342dee6eaea7c3a68">func</a>, <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aec96b910ab29e7d06b96766d1d6f3d5e">var</a>;
+<a name="l00015"></a>00015 <span class="comment">/** A reference to a site in a Halide statement at the top of the</span>
+<a name="l00016"></a>00016 <span class="comment"> * body of a particular for loop. Evaluating a region of a halide</span>
+<a name="l00017"></a>00017 <span class="comment"> * function is done by generating a loop nest that spans its</span>
+<a name="l00018"></a>00018 <span class="comment"> * dimensions. We schedule the inputs to that function by</span>
+<a name="l00019"></a>00019 <span class="comment"> * recursively injecting realizations for them at particular sites</span>
+<a name="l00020"></a>00020 <span class="comment"> * in this loop nest. A LoopLevel identifies such a site. */</span>
+<a name="l00021"></a><a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html">00021</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html" title="A reference to a site in a Halide statement at the top of the body of a particular for loop...">LoopLevel</a> {
+<a name="l00022"></a><a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aab718ceb99f60fe5e585f0ca70f5db5a">00022</a>     std::string <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#ae3b11dd8f249427a1e74638f20b9d0f7">func</a>, <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aab718ceb99f60fe5e585f0ca70f5db5a">var</a>;
+<a name="l00023"></a>00023 <span class="comment"></span>
+<a name="l00024"></a>00024 <span class="comment">    /** Identify the loop nest corresponding to some dimension of some function */</span>
+<a name="l00025"></a><a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#af1c778df611d4e8fb556222889ae58a2">00025</a>     <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#af1c778df611d4e8fb556222889ae58a2" title="Identify the loop nest corresponding to some dimension of some function.">LoopLevel</a>(std::string f, std::string v) : <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#ae3b11dd8f249427a1e74638f20b9d0f7">func</a>(f), <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aab718ceb99f60fe5e585f0ca70f5db5a">var</a>(v) {}
 <a name="l00026"></a>00026 <span class="comment"></span>
-<a name="l00027"></a>00027 <span class="comment">        /** Identify the loop nest corresponding to some dimension of some function */</span>
-<a name="l00028"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a4f2c141335ef755219d72f5171933596">00028</a>         <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a4f2c141335ef755219d72f5171933596" title="Identify the loop nest corresponding to some dimension of some function.">LoopLevel</a>(std::string f, std::string v) : <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a5086f981e4477e8342dee6eaea7c3a68">func</a>(f), <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aec96b910ab29e7d06b96766d1d6f3d5e">var</a>(v) {}
-<a name="l00029"></a>00029 <span class="comment"></span>
-<a name="l00030"></a>00030 <span class="comment">        /** Construct an empty LoopLevel, which is interpreted as</span>
-<a name="l00031"></a>00031 <span class="comment">         * &#39;inline&#39;. This is a special LoopLevel value that implies</span>
-<a name="l00032"></a>00032 <span class="comment">         * that a function should be inlined away */</span>
-<a name="l00033"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a060c46a389ceaeb0f092d4cd36839a18">00033</a>         <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a060c46a389ceaeb0f092d4cd36839a18" title="Construct an empty LoopLevel, which is interpreted as &#39;inline&#39;.">LoopLevel</a>() {}
+<a name="l00027"></a>00027 <span class="comment">    /** Construct an empty LoopLevel, which is interpreted as</span>
+<a name="l00028"></a>00028 <span class="comment">     * &#39;inline&#39;. This is a special LoopLevel value that implies</span>
+<a name="l00029"></a>00029 <span class="comment">     * that a function should be inlined away */</span>
+<a name="l00030"></a><a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#a843fd2d7069102a688e31680b9c63ff4">00030</a>     <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#a843fd2d7069102a688e31680b9c63ff4" title="Construct an empty LoopLevel, which is interpreted as &#39;inline&#39;.">LoopLevel</a>() {}
+<a name="l00031"></a>00031 <span class="comment"></span>
+<a name="l00032"></a>00032 <span class="comment">    /** Test if a loop level corresponds to inlining the function */</span>
+<a name="l00033"></a><a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#a52a9d0a239e31a33a72b0002ddcb76e4">00033</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#a52a9d0a239e31a33a72b0002ddcb76e4" title="Test if a loop level corresponds to inlining the function.">is_inline</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aab718ceb99f60fe5e585f0ca70f5db5a">var</a>.empty();}
 <a name="l00034"></a>00034 <span class="comment"></span>
-<a name="l00035"></a>00035 <span class="comment">        /** Test if a loop level corresponds to inlining the function */</span>
-<a name="l00036"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aa9cef257e097d274a4bcde4a44de7358">00036</a>         <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aa9cef257e097d274a4bcde4a44de7358" title="Test if a loop level corresponds to inlining the function.">is_inline</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aec96b910ab29e7d06b96766d1d6f3d5e">var</a>.empty();}
-<a name="l00037"></a>00037 <span class="comment"></span>
-<a name="l00038"></a>00038 <span class="comment">        /** root is a special LoopLevel value which represents the</span>
-<a name="l00039"></a>00039 <span class="comment">         * location outside of all for loops */</span>
-<a name="l00040"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#ae1a91b90516dcd45612ed6eaf55d1ee6">00040</a>         <span class="keyword">static</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html" title="A reference to a site in a Halide statement at the top of the body of a particular for loop...">LoopLevel</a> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#ae1a91b90516dcd45612ed6eaf55d1ee6" title="root is a special LoopLevel value which represents the location outside of all for loops...">root</a>() {
-<a name="l00041"></a>00041             <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a060c46a389ceaeb0f092d4cd36839a18" title="Construct an empty LoopLevel, which is interpreted as &#39;inline&#39;.">LoopLevel</a>(<span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&lt;root&gt;&quot;</span>);
-<a name="l00042"></a>00042         }<span class="comment"></span>
-<a name="l00043"></a>00043 <span class="comment">        /** Test if a loop level is &#39;root&#39;, which describes the site</span>
-<a name="l00044"></a>00044 <span class="comment">         * outside of all for loops */</span>
-<a name="l00045"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a56920375ab03d9c63b5cf13bb9bf7a30">00045</a>         <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a56920375ab03d9c63b5cf13bb9bf7a30" title="Test if a loop level is &#39;root&#39;, which describes the site outside of all for loops.">is_root</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aec96b910ab29e7d06b96766d1d6f3d5e">var</a> == <span class="stringliteral">&quot;&lt;root&gt;&quot;</span>;}
-<a name="l00046"></a>00046 <span class="comment"></span>
-<a name="l00047"></a>00047 <span class="comment">        /** Compare this loop level against the variable name of a for</span>
-<a name="l00048"></a>00048 <span class="comment">         * loop, to see if this loop level refers to the site</span>
-<a name="l00049"></a>00049 <span class="comment">         * immediately inside this loop. */</span>
-<a name="l00050"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a1bdb359282a1322e74ff9a47a9ea8f25">00050</a>         <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a1bdb359282a1322e74ff9a47a9ea8f25" title="Compare this loop level against the variable name of a for loop, to see if this loop level refers to ...">match</a>(<span class="keyword">const</span> std::string &amp;loop)<span class="keyword"> const </span>{
-<a name="l00051"></a>00051             <span class="keywordflow">return</span> <a class="code" href="namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed" title="Test if the first string starts with the second string.">starts_with</a>(loop, <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a5086f981e4477e8342dee6eaea7c3a68">func</a> + <span class="stringliteral">&quot;.&quot;</span>) &amp;&amp; <a class="code" href="namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28" title="Test if the first string ends with the second string.">ends_with</a>(loop, <span class="stringliteral">&quot;.&quot;</span> + <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aec96b910ab29e7d06b96766d1d6f3d5e">var</a>);
-<a name="l00052"></a>00052         }
-<a name="l00053"></a>00053 
-<a name="l00054"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aa26976488a5dac220437d87c49d1c612">00054</a>         <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aa26976488a5dac220437d87c49d1c612">match</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html" title="A reference to a site in a Halide statement at the top of the body of a particular for loop...">LoopLevel</a> &amp;other)<span class="keyword"> const </span>{
-<a name="l00055"></a>00055             <span class="keywordflow">return</span> (<a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a5086f981e4477e8342dee6eaea7c3a68">func</a> == other.<a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a5086f981e4477e8342dee6eaea7c3a68">func</a> &amp;&amp;
-<a name="l00056"></a>00056                     (<a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aec96b910ab29e7d06b96766d1d6f3d5e">var</a> == other.<a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aec96b910ab29e7d06b96766d1d6f3d5e">var</a> ||
-<a name="l00057"></a>00057                      <a class="code" href="namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28" title="Test if the first string ends with the second string.">ends_with</a>(<a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aec96b910ab29e7d06b96766d1d6f3d5e">var</a>, <span class="stringliteral">&quot;.&quot;</span> + other.<a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aec96b910ab29e7d06b96766d1d6f3d5e">var</a>) ||
-<a name="l00058"></a>00058                      <a class="code" href="namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28" title="Test if the first string ends with the second string.">ends_with</a>(other.<a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aec96b910ab29e7d06b96766d1d6f3d5e">var</a>, <span class="stringliteral">&quot;.&quot;</span> + <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aec96b910ab29e7d06b96766d1d6f3d5e">var</a>)));
-<a name="l00059"></a>00059         }
-<a name="l00060"></a>00060 <span class="comment"></span>
-<a name="l00061"></a>00061 <span class="comment">        /** Check if two loop levels are exactly the same. */</span>
-<a name="l00062"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#ac6cc90c0449f28250eb1a7a61186fb87">00062</a>         <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#ac6cc90c0449f28250eb1a7a61186fb87" title="Check if two loop levels are exactly the same.">operator==</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html" title="A reference to a site in a Halide statement at the top of the body of a particular for loop...">LoopLevel</a> &amp;other)<span class="keyword"> const </span>{
-<a name="l00063"></a>00063             <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a5086f981e4477e8342dee6eaea7c3a68">func</a> == other.<a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#a5086f981e4477e8342dee6eaea7c3a68">func</a> &amp;&amp; <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aec96b910ab29e7d06b96766d1d6f3d5e">var</a> == other.<a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html#aec96b910ab29e7d06b96766d1d6f3d5e">var</a>;
-<a name="l00064"></a>00064         }
-<a name="l00065"></a>00065 
-<a name="l00066"></a>00066     };
-<a name="l00067"></a>00067 <span class="comment"></span>
-<a name="l00068"></a>00068 <span class="comment">    /** At what sites should we inject the allocation and the</span>
-<a name="l00069"></a>00069 <span class="comment">     * computation of this function? The store_level must be outside</span>
-<a name="l00070"></a>00070 <span class="comment">     * of or equal to the compute_level. If the compute_level is</span>
-<a name="l00071"></a>00071 <span class="comment">     * inline, the store_level is meaningless. See \ref Func::store_at</span>
-<a name="l00072"></a>00072 <span class="comment">     * and \ref Func::compute_at */</span>
-<a name="l00073"></a>00073     <span class="comment">// @{</span>
-<a name="l00074"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#a502cafa9b6e1b9d78536ee5719428394">00074</a>     <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_loop_level.html" title="A reference to a site in a Halide statement at the top of the body of a particular for loop...">LoopLevel</a> <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#a502cafa9b6e1b9d78536ee5719428394" title="At what sites should we inject the allocation and the computation of this function? The store_level must be outside of or equal to the compute_level.">store_level</a>, <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#a0c55212272da98b9362126fdd5b8b277" title="At what sites should we inject the allocation and the computation of this function? The store_level must be outside of or equal to the compute_level.">compute_level</a>;
-<a name="l00075"></a>00075     <span class="comment">// @}</span>
+<a name="l00035"></a>00035 <span class="comment">    /** root is a special LoopLevel value which represents the</span>
+<a name="l00036"></a>00036 <span class="comment">     * location outside of all for loops */</span>
+<a name="l00037"></a><a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#a90bb961db3bf901d80aa4bfaa7d6b25a">00037</a>     <span class="keyword">static</span> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html" title="A reference to a site in a Halide statement at the top of the body of a particular for loop...">LoopLevel</a> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#a90bb961db3bf901d80aa4bfaa7d6b25a" title="root is a special LoopLevel value which represents the location outside of all for loops...">root</a>() {
+<a name="l00038"></a>00038         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#a843fd2d7069102a688e31680b9c63ff4" title="Construct an empty LoopLevel, which is interpreted as &#39;inline&#39;.">LoopLevel</a>(<span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;&lt;root&gt;&quot;</span>);
+<a name="l00039"></a>00039     }<span class="comment"></span>
+<a name="l00040"></a>00040 <span class="comment">    /** Test if a loop level is &#39;root&#39;, which describes the site</span>
+<a name="l00041"></a>00041 <span class="comment">     * outside of all for loops */</span>
+<a name="l00042"></a><a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#a0ffc0ef1807fe10a93529571b9a9cc7d">00042</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#a0ffc0ef1807fe10a93529571b9a9cc7d" title="Test if a loop level is &#39;root&#39;, which describes the site outside of all for loops.">is_root</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aab718ceb99f60fe5e585f0ca70f5db5a">var</a> == <span class="stringliteral">&quot;&lt;root&gt;&quot;</span>;}
+<a name="l00043"></a>00043 <span class="comment"></span>
+<a name="l00044"></a>00044 <span class="comment">    /** Compare this loop level against the variable name of a for</span>
+<a name="l00045"></a>00045 <span class="comment">     * loop, to see if this loop level refers to the site</span>
+<a name="l00046"></a>00046 <span class="comment">     * immediately inside this loop. */</span>
+<a name="l00047"></a><a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#a3400d147d1fdd9b46239c50cf80e7bdb">00047</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#a3400d147d1fdd9b46239c50cf80e7bdb" title="Compare this loop level against the variable name of a for loop, to see if this loop level refers to ...">match</a>(<span class="keyword">const</span> std::string &amp;loop)<span class="keyword"> const </span>{
+<a name="l00048"></a>00048         <span class="keywordflow">return</span> <a class="code" href="namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed" title="Test if the first string starts with the second string.">starts_with</a>(loop, <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#ae3b11dd8f249427a1e74638f20b9d0f7">func</a> + <span class="stringliteral">&quot;.&quot;</span>) &amp;&amp; <a class="code" href="namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28" title="Test if the first string ends with the second string.">ends_with</a>(loop, <span class="stringliteral">&quot;.&quot;</span> + <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aab718ceb99f60fe5e585f0ca70f5db5a">var</a>);
+<a name="l00049"></a>00049     }
+<a name="l00050"></a>00050 
+<a name="l00051"></a><a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#a0ff352a28f7816951398033a1fcb6c14">00051</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#a0ff352a28f7816951398033a1fcb6c14">match</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html" title="A reference to a site in a Halide statement at the top of the body of a particular for loop...">LoopLevel</a> &amp;other)<span class="keyword"> const </span>{
+<a name="l00052"></a>00052         <span class="keywordflow">return</span> (<a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#ae3b11dd8f249427a1e74638f20b9d0f7">func</a> == other.<a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#ae3b11dd8f249427a1e74638f20b9d0f7">func</a> &amp;&amp;
+<a name="l00053"></a>00053                 (<a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aab718ceb99f60fe5e585f0ca70f5db5a">var</a> == other.<a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aab718ceb99f60fe5e585f0ca70f5db5a">var</a> ||
+<a name="l00054"></a>00054                  <a class="code" href="namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28" title="Test if the first string ends with the second string.">ends_with</a>(<a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aab718ceb99f60fe5e585f0ca70f5db5a">var</a>, <span class="stringliteral">&quot;.&quot;</span> + other.<a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aab718ceb99f60fe5e585f0ca70f5db5a">var</a>) ||
+<a name="l00055"></a>00055                  <a class="code" href="namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28" title="Test if the first string ends with the second string.">ends_with</a>(other.<a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aab718ceb99f60fe5e585f0ca70f5db5a">var</a>, <span class="stringliteral">&quot;.&quot;</span> + <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aab718ceb99f60fe5e585f0ca70f5db5a">var</a>)));
+<a name="l00056"></a>00056     }
+<a name="l00057"></a>00057 <span class="comment"></span>
+<a name="l00058"></a>00058 <span class="comment">    /** Check if two loop levels are exactly the same. */</span>
+<a name="l00059"></a><a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aa5027ef4610c6bcb309a71e5ad25bdb9">00059</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aa5027ef4610c6bcb309a71e5ad25bdb9" title="Check if two loop levels are exactly the same.">operator==</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html" title="A reference to a site in a Halide statement at the top of the body of a particular for loop...">LoopLevel</a> &amp;other)<span class="keyword"> const </span>{
+<a name="l00060"></a>00060         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#ae3b11dd8f249427a1e74638f20b9d0f7">func</a> == other.<a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#ae3b11dd8f249427a1e74638f20b9d0f7">func</a> &amp;&amp; <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aab718ceb99f60fe5e585f0ca70f5db5a">var</a> == other.<a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html#aab718ceb99f60fe5e585f0ca70f5db5a">var</a>;
+<a name="l00061"></a>00061     }
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 };
+<a name="l00064"></a>00064 
+<a name="l00065"></a><a class="code" href="struct_halide_1_1_internal_1_1_split.html">00065</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_split.html">Split</a> {
+<a name="l00066"></a><a class="code" href="struct_halide_1_1_internal_1_1_split.html#aecf934bbd86bd7fcc31667545d9ff610">00066</a>     std::string <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a689e63030a4370dfb6d74aa4778ceb94">old_var</a>, <a class="code" href="struct_halide_1_1_internal_1_1_split.html#aecf934bbd86bd7fcc31667545d9ff610">outer</a>, <a class="code" href="struct_halide_1_1_internal_1_1_split.html#addcc9ba56f72ca2c790f948c27f46207">inner</a>;
+<a name="l00067"></a><a class="code" href="struct_halide_1_1_internal_1_1_split.html#ac35031df188ca08f073e2bd24bee3924">00067</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="struct_halide_1_1_internal_1_1_split.html#ac35031df188ca08f073e2bd24bee3924">factor</a>;
+<a name="l00068"></a>00068 
+<a name="l00069"></a><a class="code" href="struct_halide_1_1_internal_1_1_split.html#a068a93a3cd662ac53acdfa1dab4f20faac79f79fc70cd8de014341d12aa911a74">00069</a>     <span class="keyword">enum</span> <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a068a93a3cd662ac53acdfa1dab4f20fa">SplitType</a> {<a class="code" href="struct_halide_1_1_internal_1_1_split.html#a068a93a3cd662ac53acdfa1dab4f20faac79f79fc70cd8de014341d12aa911a74">SplitVar</a> = 0, <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a068a93a3cd662ac53acdfa1dab4f20faa5d7ac2e941e9a6c1729efca148741206">RenameVar</a>, <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a068a93a3cd662ac53acdfa1dab4f20faa050431b3ad071416263d26156c31c94a">FuseVars</a>};
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071     <span class="comment">// If split_type is Rename, then this is just a renaming of the</span>
+<a name="l00072"></a>00072     <span class="comment">// old_var to the outer and not a split. The inner var should</span>
+<a name="l00073"></a>00073     <span class="comment">// be ignored, and factor should be one. Renames are kept in</span>
+<a name="l00074"></a>00074     <span class="comment">// the same list as splits so that ordering between them is</span>
+<a name="l00075"></a>00075     <span class="comment">// respected.</span>
 <a name="l00076"></a>00076 
-<a name="l00077"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html">00077</a>     <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html">Split</a> {
-<a name="l00078"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#a36e28b0e15a6ed70cd2ec1c6aeff9026">00078</a>         std::string <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#ad7631796c033ed5ed280d9ed8cdd6929">old_var</a>, <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#a36e28b0e15a6ed70cd2ec1c6aeff9026">outer</a>, <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#abbcd22d6fd21afc40ec9a7f0b7a5ccbb">inner</a>;
-<a name="l00079"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#a6fc4de096e152ca2c55d7917f920a75a">00079</a>         <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#a6fc4de096e152ca2c55d7917f920a75a">factor</a>;
+<a name="l00077"></a>00077     <span class="comment">// If split_type is Fuse, then this does the opposite of a</span>
+<a name="l00078"></a>00078     <span class="comment">// split, it joins the outer and inner into the old_var.</span>
+<a name="l00079"></a><a class="code" href="struct_halide_1_1_internal_1_1_split.html#a6a36f5d612bfaf8d0c3fc09c70d5984a">00079</a>     <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a068a93a3cd662ac53acdfa1dab4f20fa">SplitType</a> <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a6a36f5d612bfaf8d0c3fc09c70d5984a">split_type</a>;
 <a name="l00080"></a>00080 
-<a name="l00081"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#aa330aa0edddcf568f04335602ee4a0a4a4e726ade1390c0f199b2f87aaf8b6377">00081</a>         <span class="keyword">enum</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#aa330aa0edddcf568f04335602ee4a0a4">SplitType</a> {<a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#aa330aa0edddcf568f04335602ee4a0a4a4e726ade1390c0f199b2f87aaf8b6377">SplitVar</a> = 0, <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#aa330aa0edddcf568f04335602ee4a0a4aef0f515872187fde942265a552776f5a">RenameVar</a>, <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#aa330aa0edddcf568f04335602ee4a0a4a67515c33addcccef30563f4cde4c3523">FuseVars</a>};
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083         <span class="comment">// If split_type is Rename, then this is just a renaming of the</span>
-<a name="l00084"></a>00084         <span class="comment">// old_var to the outer and not a split. The inner var should</span>
-<a name="l00085"></a>00085         <span class="comment">// be ignored, and factor should be one. Renames are kept in</span>
-<a name="l00086"></a>00086         <span class="comment">// the same list as splits so that ordering between them is</span>
-<a name="l00087"></a>00087         <span class="comment">// respected.</span>
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089         <span class="comment">// If split_type is Fuse, then this does the opposite of a</span>
-<a name="l00090"></a>00090         <span class="comment">// split, it joins the outer and inner into the old_var.</span>
-<a name="l00091"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#a7ec440bf34649029ee1183c38c057cef">00091</a>         <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#aa330aa0edddcf568f04335602ee4a0a4">SplitType</a> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#a7ec440bf34649029ee1183c38c057cef">split_type</a>;
-<a name="l00092"></a>00092 
-<a name="l00093"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#a3450f2299a4989d33abd77dec7cf36fe">00093</a>         <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#a3450f2299a4989d33abd77dec7cf36fe">is_rename</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#a7ec440bf34649029ee1183c38c057cef">split_type</a> == <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#aa330aa0edddcf568f04335602ee4a0a4aef0f515872187fde942265a552776f5a">RenameVar</a>;}
-<a name="l00094"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#aad4cc165870d86faeba675edb723bcbd">00094</a>         <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#aad4cc165870d86faeba675edb723bcbd">is_split</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#a7ec440bf34649029ee1183c38c057cef">split_type</a> == <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#aa330aa0edddcf568f04335602ee4a0a4a4e726ade1390c0f199b2f87aaf8b6377">SplitVar</a>;}
-<a name="l00095"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#a81897bb734ce390e4800329b1eca6166">00095</a>         <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#a81897bb734ce390e4800329b1eca6166">is_fuse</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#a7ec440bf34649029ee1183c38c057cef">split_type</a> == <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_split.html#aa330aa0edddcf568f04335602ee4a0a4a67515c33addcccef30563f4cde4c3523">FuseVars</a>;}
-<a name="l00096"></a>00096     };<span class="comment"></span>
-<a name="l00097"></a>00097 <span class="comment">    /** The traversal of the domain of a function can have some of its</span>
-<a name="l00098"></a>00098 <span class="comment">     * dimensions split into sub-dimensions. See</span>
-<a name="l00099"></a>00099 <span class="comment">     * \ref ScheduleHandle::split */</span>
-<a name="l00100"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#ad00101bd51436181d5b6ce42c2767903">00100</a>     std::vector&lt;Split&gt; <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#ad00101bd51436181d5b6ce42c2767903" title="The traversal of the domain of a function can have some of its dimensions split into sub-dimensions...">splits</a>;
-<a name="l00101"></a>00101 
-<a name="l00102"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_dim.html">00102</a>     <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_dim.html">Dim</a> {
-<a name="l00103"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_dim.html#a89e419f562c3679dccd29e460145dce6">00103</a>         std::string <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_dim.html#a89e419f562c3679dccd29e460145dce6">var</a>;
-<a name="l00104"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_dim.html#abdca84125dd02e4288a3d1406349ed7f">00104</a>         <a class="code" href="struct_halide_1_1_internal_1_1_for.html#a58f191c4b166630d13829e4f1840d5c6">For::ForType</a> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_dim.html#abdca84125dd02e4288a3d1406349ed7f">for_type</a>;
-<a name="l00105"></a>00105     };<span class="comment"></span>
-<a name="l00106"></a>00106 <span class="comment">    /** The list and ordering of dimensions used to evaluate this</span>
-<a name="l00107"></a>00107 <span class="comment">     * function, after all splits have taken place. The first</span>
-<a name="l00108"></a>00108 <span class="comment">     * dimension in the vector corresponds to the innermost for loop,</span>
-<a name="l00109"></a>00109 <span class="comment">     * and the last is the outermost. Also specifies what type of for</span>
-<a name="l00110"></a>00110 <span class="comment">     * loop to use for each dimension. Does not specify the bounds on</span>
-<a name="l00111"></a>00111 <span class="comment">     * each dimension. These get inferred from how the function is</span>
-<a name="l00112"></a>00112 <span class="comment">     * used, what the splits are, and any optional bounds in the list below. */</span>
-<a name="l00113"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#af8c148548ef6889ef42d8a8ae743bd59">00113</a>     std::vector&lt;Dim&gt; <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#af8c148548ef6889ef42d8a8ae743bd59" title="The list and ordering of dimensions used to evaluate this function, after all splits have taken place...">dims</a>;
-<a name="l00114"></a>00114 <span class="comment"></span>
-<a name="l00115"></a>00115 <span class="comment">    /** This flag is set to true if the dims list has been manipulated</span>
-<a name="l00116"></a>00116 <span class="comment">     * by the user (or if a ScheduleHandle was created that could have</span>
-<a name="l00117"></a>00117 <span class="comment">     * been used to manipulate it). It controls the warning that</span>
-<a name="l00118"></a>00118 <span class="comment">     * occurs if you schedule the vars of the pure step but not the</span>
-<a name="l00119"></a>00119 <span class="comment">     * update steps. */</span>
-<a name="l00120"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#a1f4d76d2f9e7ff8cdad019fe2ba5d705">00120</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#a1f4d76d2f9e7ff8cdad019fe2ba5d705" title="This flag is set to true if the dims list has been manipulated by the user (or if a ScheduleHandle wa...">touched</a>;
-<a name="l00121"></a>00121 <span class="comment"></span>
-<a name="l00122"></a>00122 <span class="comment">    /** The list and order of dimensions used to store this</span>
-<a name="l00123"></a>00123 <span class="comment">     * function. The first dimension in the vector corresponds to the</span>
-<a name="l00124"></a>00124 <span class="comment">     * innermost dimension for storage (i.e. which dimension is</span>
-<a name="l00125"></a>00125 <span class="comment">     * tightly packed in memory) */</span>
-<a name="l00126"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#a08f0a7518f4ea43556b03a7bad172f49">00126</a>     std::vector&lt;std::string&gt; <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#a08f0a7518f4ea43556b03a7bad172f49" title="The list and order of dimensions used to store this function.">storage_dims</a>;
-<a name="l00127"></a>00127 
-<a name="l00128"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_bound.html">00128</a>     <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_bound.html">Bound</a> {
-<a name="l00129"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_bound.html#aff38795b08a4a236b818ea61d13e0415">00129</a>         std::string <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_bound.html#aff38795b08a4a236b818ea61d13e0415">var</a>;
-<a name="l00130"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_bound.html#a8784715f93b52553eacb39454b8df5f2">00130</a>         <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_bound.html#a8784715f93b52553eacb39454b8df5f2">min</a>, <a class="code" href="struct_halide_1_1_internal_1_1_schedule_1_1_bound.html#a22a4a603e105a9b2a64cbdfac7240e4f">extent</a>;
-<a name="l00131"></a>00131     };<span class="comment"></span>
-<a name="l00132"></a>00132 <span class="comment">    /** You may explicitly bound some of the dimensions of a</span>
-<a name="l00133"></a>00133 <span class="comment">     * function. See \ref Func::bound */</span>
-<a name="l00134"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#ab16528eb29665d451004626374a5ed0c">00134</a>     std::vector&lt;Bound&gt; <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#ab16528eb29665d451004626374a5ed0c" title="You may explicitly bound some of the dimensions of a function.">bounds</a>;
-<a name="l00135"></a>00135 
-<a name="l00136"></a>00136 
-<a name="l00137"></a><a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#afcef3f10bb418bdc867276ec0d0a588c">00137</a>     <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#afcef3f10bb418bdc867276ec0d0a588c">Schedule</a>() : <a class="code" href="struct_halide_1_1_internal_1_1_schedule.html#a1f4d76d2f9e7ff8cdad019fe2ba5d705" title="This flag is set to true if the dims list has been manipulated by the user (or if a ScheduleHandle wa...">touched</a>(false) {};
-<a name="l00138"></a>00138 };
-<a name="l00139"></a>00139 
-<a name="l00140"></a>00140 }
-<a name="l00141"></a>00141 }
-<a name="l00142"></a>00142 
-<a name="l00143"></a>00143 <span class="preprocessor">#endif</span>
+<a name="l00081"></a><a class="code" href="struct_halide_1_1_internal_1_1_split.html#a2d487c2f571f6845f3af545e0af4d148">00081</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a2d487c2f571f6845f3af545e0af4d148">is_rename</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a6a36f5d612bfaf8d0c3fc09c70d5984a">split_type</a> == <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a068a93a3cd662ac53acdfa1dab4f20faa5d7ac2e941e9a6c1729efca148741206">RenameVar</a>;}
+<a name="l00082"></a><a class="code" href="struct_halide_1_1_internal_1_1_split.html#a41005b51187670465cba97898c68c3cf">00082</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a41005b51187670465cba97898c68c3cf">is_split</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a6a36f5d612bfaf8d0c3fc09c70d5984a">split_type</a> == <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a068a93a3cd662ac53acdfa1dab4f20faac79f79fc70cd8de014341d12aa911a74">SplitVar</a>;}
+<a name="l00083"></a><a class="code" href="struct_halide_1_1_internal_1_1_split.html#a1dc0622cdff16f2007c6d5dbeee4ceee">00083</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a1dc0622cdff16f2007c6d5dbeee4ceee">is_fuse</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a6a36f5d612bfaf8d0c3fc09c70d5984a">split_type</a> == <a class="code" href="struct_halide_1_1_internal_1_1_split.html#a068a93a3cd662ac53acdfa1dab4f20faa050431b3ad071416263d26156c31c94a">FuseVars</a>;}
+<a name="l00084"></a>00084 };
+<a name="l00085"></a>00085 
+<a name="l00086"></a><a class="code" href="struct_halide_1_1_internal_1_1_dim.html">00086</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_dim.html">Dim</a> {
+<a name="l00087"></a><a class="code" href="struct_halide_1_1_internal_1_1_dim.html#a104942bf53587cc57f93b1ec1d29450c">00087</a>     std::string <a class="code" href="struct_halide_1_1_internal_1_1_dim.html#a104942bf53587cc57f93b1ec1d29450c">var</a>;
+<a name="l00088"></a><a class="code" href="struct_halide_1_1_internal_1_1_dim.html#acd054331a49cf94a671412c4bad14cc7">00088</a>     <a class="code" href="struct_halide_1_1_internal_1_1_for.html#a58f191c4b166630d13829e4f1840d5c6">For::ForType</a> <a class="code" href="struct_halide_1_1_internal_1_1_dim.html#acd054331a49cf94a671412c4bad14cc7">for_type</a>;
+<a name="l00089"></a>00089 };
+<a name="l00090"></a>00090 
+<a name="l00091"></a><a class="code" href="struct_halide_1_1_internal_1_1_bound.html">00091</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_bound.html">Bound</a> {
+<a name="l00092"></a><a class="code" href="struct_halide_1_1_internal_1_1_bound.html#a3d2e14fe469ea8bfdb0c95e4746f9e8a">00092</a>     std::string <a class="code" href="struct_halide_1_1_internal_1_1_bound.html#a3d2e14fe469ea8bfdb0c95e4746f9e8a">var</a>;
+<a name="l00093"></a><a class="code" href="struct_halide_1_1_internal_1_1_bound.html#a16a52e9c3e40194f4112a690f24be4a4">00093</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="struct_halide_1_1_internal_1_1_bound.html#a16a52e9c3e40194f4112a690f24be4a4">min</a>, <a class="code" href="struct_halide_1_1_internal_1_1_bound.html#ae9acebd1bcb5f35e4a29729631eda932">extent</a>;
+<a name="l00094"></a>00094 };
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 <span class="keyword">struct </span>ScheduleContents;
+<a name="l00097"></a>00097 
+<a name="l00098"></a><a class="code" href="struct_halide_1_1_internal_1_1_specialization.html">00098</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_specialization.html">Specialization</a> {
+<a name="l00099"></a><a class="code" href="struct_halide_1_1_internal_1_1_specialization.html#a0adaf8b20faaaae4225acf74ee5e9521">00099</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="struct_halide_1_1_internal_1_1_specialization.html#a0adaf8b20faaaae4225acf74ee5e9521">condition</a>;
+<a name="l00100"></a><a class="code" href="struct_halide_1_1_internal_1_1_specialization.html#a07e9a7bb554b1cd3d76f479dea4490f3">00100</a>     <a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html">IntrusivePtr&lt;ScheduleContents&gt;</a> <a class="code" href="struct_halide_1_1_internal_1_1_specialization.html#a07e9a7bb554b1cd3d76f479dea4490f3">schedule</a>;
+<a name="l00101"></a>00101 };
+<a name="l00102"></a>00102 <span class="comment"></span>
+<a name="l00103"></a>00103 <span class="comment">/** A schedule for a single stage of a Halide pipeline. Right now this</span>
+<a name="l00104"></a>00104 <span class="comment"> * interface is basically a struct, offering mutable access to its</span>
+<a name="l00105"></a>00105 <span class="comment"> * innards. In the future it may become more encapsulated. */</span>
+<a name="l00106"></a><a class="code" href="class_halide_1_1_internal_1_1_schedule.html">00106</a> <span class="keyword">class </span><a class="code" href="class_halide_1_1_internal_1_1_schedule.html" title="A schedule for a single stage of a Halide pipeline.">Schedule</a> {
+<a name="l00107"></a>00107     <a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html">IntrusivePtr&lt;ScheduleContents&gt;</a> contents;
+<a name="l00108"></a>00108 <span class="keyword">public</span>:
+<a name="l00109"></a>00109 
+<a name="l00110"></a><a class="code" href="class_halide_1_1_internal_1_1_schedule.html#a0d7017829acbec0b875aeaf12a208cdd">00110</a>     <a class="code" href="class_halide_1_1_internal_1_1_schedule.html#a0d7017829acbec0b875aeaf12a208cdd">Schedule</a>(<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html">IntrusivePtr&lt;ScheduleContents&gt;</a> c) : contents(c) {}
+<a name="l00111"></a><a class="code" href="class_halide_1_1_internal_1_1_schedule.html#ac5db7386e8157f16f95e98355cc731c4">00111</a>     <a class="code" href="class_halide_1_1_internal_1_1_schedule.html#ac5db7386e8157f16f95e98355cc731c4">Schedule</a>(<span class="keyword">const</span> <a class="code" href="class_halide_1_1_internal_1_1_schedule.html" title="A schedule for a single stage of a Halide pipeline.">Schedule</a> &amp;other) : contents(other.contents) {}
+<a name="l00112"></a>00112     <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="code" href="class_halide_1_1_internal_1_1_schedule.html#acdca0c13a705c187d4882f673e3f1a23">Schedule</a>();
+<a name="l00113"></a>00113 <span class="comment"></span>
+<a name="l00114"></a>00114 <span class="comment">    /** This flag is set to true if the dims list has been manipulated</span>
+<a name="l00115"></a>00115 <span class="comment">     * by the user (or if a ScheduleHandle was created that could have</span>
+<a name="l00116"></a>00116 <span class="comment">     * been used to manipulate it). It controls the warning that</span>
+<a name="l00117"></a>00117 <span class="comment">     * occurs if you schedule the vars of the pure step but not the</span>
+<a name="l00118"></a>00118 <span class="comment">     * update steps. */</span>
+<a name="l00119"></a>00119     <span class="comment">// @{</span>
+<a name="l00120"></a>00120     <span class="keywordtype">bool</span> &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#a2b3a3133737656d1a4d1bf3ce03cd2d7" title="This flag is set to true if the dims list has been manipulated by the user (or if a ScheduleHandle wa...">touched</a>();
+<a name="l00121"></a>00121     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_schedule.html#a2b3a3133737656d1a4d1bf3ce03cd2d7" title="This flag is set to true if the dims list has been manipulated by the user (or if a ScheduleHandle wa...">touched</a>() <span class="keyword">const</span>;
+<a name="l00122"></a>00122     <span class="comment">// @}</span>
+<a name="l00123"></a>00123 <span class="comment"></span>
+<a name="l00124"></a>00124 <span class="comment">    /** The traversal of the domain of a function can have some of its</span>
+<a name="l00125"></a>00125 <span class="comment">     * dimensions split into sub-dimensions. See</span>
+<a name="l00126"></a>00126 <span class="comment">     * \ref ScheduleHandle::split */</span>
+<a name="l00127"></a>00127     <span class="comment">// @{</span>
+<a name="l00128"></a>00128     <span class="keyword">const</span> std::vector&lt;Split&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#ac5e495088bd392e4e7d6cc643d5b2d62" title="The traversal of the domain of a function can have some of its dimensions split into sub-dimensions...">splits</a>() <span class="keyword">const</span>;
+<a name="l00129"></a>00129     std::vector&lt;Split&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#ac5e495088bd392e4e7d6cc643d5b2d62" title="The traversal of the domain of a function can have some of its dimensions split into sub-dimensions...">splits</a>();
+<a name="l00130"></a>00130     <span class="comment">// @}</span>
+<a name="l00131"></a>00131 <span class="comment"></span>
+<a name="l00132"></a>00132 <span class="comment">    /** The list and ordering of dimensions used to evaluate this</span>
+<a name="l00133"></a>00133 <span class="comment">     * function, after all splits have taken place. The first</span>
+<a name="l00134"></a>00134 <span class="comment">     * dimension in the vector corresponds to the innermost for loop,</span>
+<a name="l00135"></a>00135 <span class="comment">     * and the last is the outermost. Also specifies what type of for</span>
+<a name="l00136"></a>00136 <span class="comment">     * loop to use for each dimension. Does not specify the bounds on</span>
+<a name="l00137"></a>00137 <span class="comment">     * each dimension. These get inferred from how the function is</span>
+<a name="l00138"></a>00138 <span class="comment">     * used, what the splits are, and any optional bounds in the list below. */</span>
+<a name="l00139"></a>00139     <span class="comment">// @{</span>
+<a name="l00140"></a>00140     <span class="keyword">const</span> std::vector&lt;Dim&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#a3093a67208c6a13c57645b374133d6fb" title="The list and ordering of dimensions used to evaluate this function, after all splits have taken place...">dims</a>() <span class="keyword">const</span>;
+<a name="l00141"></a>00141     std::vector&lt;Dim&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#a3093a67208c6a13c57645b374133d6fb" title="The list and ordering of dimensions used to evaluate this function, after all splits have taken place...">dims</a>();
+<a name="l00142"></a>00142     <span class="comment">// @}</span>
+<a name="l00143"></a>00143 <span class="comment"></span>
+<a name="l00144"></a>00144 <span class="comment">    /** The list and order of dimensions used to store this</span>
+<a name="l00145"></a>00145 <span class="comment">     * function. The first dimension in the vector corresponds to the</span>
+<a name="l00146"></a>00146 <span class="comment">     * innermost dimension for storage (i.e. which dimension is</span>
+<a name="l00147"></a>00147 <span class="comment">     * tightly packed in memory) */</span>
+<a name="l00148"></a>00148     <span class="comment">// @{</span>
+<a name="l00149"></a>00149     <span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#a8facf8ebad66e2c780d3384f6653eb24" title="The list and order of dimensions used to store this function.">storage_dims</a>() <span class="keyword">const</span>;
+<a name="l00150"></a>00150     std::vector&lt;std::string&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#a8facf8ebad66e2c780d3384f6653eb24" title="The list and order of dimensions used to store this function.">storage_dims</a>();
+<a name="l00151"></a>00151     <span class="comment">// @}</span>
+<a name="l00152"></a>00152 <span class="comment"></span>
+<a name="l00153"></a>00153 <span class="comment">    /** You may explicitly bound some of the dimensions of a</span>
+<a name="l00154"></a>00154 <span class="comment">     * function. See \ref Func::bound */</span>
+<a name="l00155"></a>00155     <span class="comment">// @{</span>
+<a name="l00156"></a>00156     <span class="keyword">const</span> std::vector&lt;Bound&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#a49ba3b938c80888c5815282d84860d90" title="You may explicitly bound some of the dimensions of a function.">bounds</a>() <span class="keyword">const</span>;
+<a name="l00157"></a>00157     std::vector&lt;Bound&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#a49ba3b938c80888c5815282d84860d90" title="You may explicitly bound some of the dimensions of a function.">bounds</a>();
+<a name="l00158"></a>00158     <span class="comment">// @}</span>
+<a name="l00159"></a>00159 <span class="comment"></span>
+<a name="l00160"></a>00160 <span class="comment">    /** You may create several specialized versions of a func with</span>
+<a name="l00161"></a>00161 <span class="comment">     * different schedules. They trigger when the condition is</span>
+<a name="l00162"></a>00162 <span class="comment">     * true. See \ref Func::specialize */</span>
+<a name="l00163"></a>00163     <span class="comment">// @{</span>
+<a name="l00164"></a>00164     <span class="keyword">const</span> std::vector&lt;Specialization&gt; &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#abb5c9008fcb64562ab3a10c11a5b1942" title="You may create several specialized versions of a func with different schedules.">specializations</a>() <span class="keyword">const</span>;
+<a name="l00165"></a>00165     <span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_specialization.html">Specialization</a> &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#a2cb0a63cba36ab8cffffd381692319d4" title="You may create several specialized versions of a func with different schedules.">add_specialization</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> condition);
+<a name="l00166"></a>00166     <span class="comment">//std::vector&lt;Specialization&gt; &amp;specializations();</span>
+<a name="l00167"></a>00167     <span class="comment">// @}</span>
+<a name="l00168"></a>00168 <span class="comment"></span>
+<a name="l00169"></a>00169 <span class="comment">    /** At what sites should we inject the allocation and the</span>
+<a name="l00170"></a>00170 <span class="comment">     * computation of this function? The store_level must be outside</span>
+<a name="l00171"></a>00171 <span class="comment">     * of or equal to the compute_level. If the compute_level is</span>
+<a name="l00172"></a>00172 <span class="comment">     * inline, the store_level is meaningless. See \ref Func::store_at</span>
+<a name="l00173"></a>00173 <span class="comment">     * and \ref Func::compute_at */</span>
+<a name="l00174"></a>00174     <span class="comment">// @{</span>
+<a name="l00175"></a>00175     <span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html" title="A reference to a site in a Halide statement at the top of the body of a particular for loop...">LoopLevel</a> &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#aadd5bb6bd5ccf9dfed703ad828f6696f" title="At what sites should we inject the allocation and the computation of this function? The store_level must be outside of or equal to the compute_level.">store_level</a>() <span class="keyword">const</span>;
+<a name="l00176"></a>00176     <span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html" title="A reference to a site in a Halide statement at the top of the body of a particular for loop...">LoopLevel</a> &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#ae2f445a4279cd217a3af881d7ccfd5a2" title="At what sites should we inject the allocation and the computation of this function? The store_level must be outside of or equal to the compute_level.">compute_level</a>() <span class="keyword">const</span>;
+<a name="l00177"></a>00177     <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html" title="A reference to a site in a Halide statement at the top of the body of a particular for loop...">LoopLevel</a> &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#aadd5bb6bd5ccf9dfed703ad828f6696f" title="At what sites should we inject the allocation and the computation of this function? The store_level must be outside of or equal to the compute_level.">store_level</a>();
+<a name="l00178"></a>00178     <a class="code" href="struct_halide_1_1_internal_1_1_loop_level.html" title="A reference to a site in a Halide statement at the top of the body of a particular for loop...">LoopLevel</a> &amp;<a class="code" href="class_halide_1_1_internal_1_1_schedule.html#ae2f445a4279cd217a3af881d7ccfd5a2" title="At what sites should we inject the allocation and the computation of this function? The store_level must be outside of or equal to the compute_level.">compute_level</a>();
+<a name="l00179"></a>00179     <span class="comment">// @}</span>
+<a name="l00180"></a>00180 
+<a name="l00181"></a>00181 };
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183 }
+<a name="l00184"></a>00184 }
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

@@ -136,8 +136,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit code that unpacks a struct containing all the externally referenced state into a symbol table.  <a href="#aaac3ac9f0549734d81f3a78f02ef08db"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_halide_1_1_internal_1_1_closure.html">Closure</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_closure.html#a2ed732a7549327b97d10aab8061cfb74">make</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, const std::string &amp;loop_variable, bool <a class="el" href="class_halide_1_1_internal_1_1_closure.html#acffc618e3e939b3d2e8d3346dec13107">track_buffers</a>, llvm::StructType *<a class="el" href="class_halide_1_1_internal_1_1_closure.html#a2dacd4fafb63386b54a6632d334a905f">buffer_t</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Traverse a statement and find all references to external symbols.  <a href="#a2ed732a7549327b97d10aab8061cfb74"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_halide_1_1_internal_1_1_closure.html">Closure</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_closure.html#aed17b4030c8feef675c2b1ab4efd1ed1">make</a> (<a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> s, const std::string &amp;loop_variable, llvm::StructType *<a class="el" href="class_halide_1_1_internal_1_1_closure.html#a2dacd4fafb63386b54a6632d334a905f">buffer_t</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Traverse a statement and find all references to external symbols.  <a href="#aed17b4030c8feef675c2b1ab4efd1ed1"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="struct_halide_1_1_type.html">Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_closure.html#a1e1df57b78fed89780df286f67068cb6">vars</a></td></tr>
@@ -156,7 +156,6 @@ Protected Member Functions</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_halide_1_1_internal_1_1_scope.html">Scope</a>&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_closure.html#ab7f87fdc56211ec7ad37df774b70c2b1">ignore</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_closure.html#acffc618e3e939b3d2e8d3346dec13107">track_buffers</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">llvm::StructType *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_closure.html#a2dacd4fafb63386b54a6632d334a905f">buffer_t</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
@@ -298,12 +297,12 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2ed732a7549327b97d10aab8061cfb74"></a><!-- doxytag: member="Halide::Internal::Closure::make" ref="a2ed732a7549327b97d10aab8061cfb74" args="(Stmt s, const std::string &amp;loop_variable, bool track_buffers, llvm::StructType *buffer_t)" -->
+<a class="anchor" id="aed17b4030c8feef675c2b1ab4efd1ed1"></a><!-- doxytag: member="Halide::Internal::Closure::make" ref="aed17b4030c8feef675c2b1ab4efd1ed1" args="(Stmt s, const std::string &amp;loop_variable, llvm::StructType *buffer_t)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="class_halide_1_1_internal_1_1_closure.html">Closure</a> <a class="el" href="class_halide_1_1_internal_1_1_closure.html#a2ed732a7549327b97d10aab8061cfb74">Halide::Internal::Closure::make</a> </td>
+          <td class="memname">static <a class="el" href="class_halide_1_1_internal_1_1_closure.html">Closure</a> <a class="el" href="class_halide_1_1_internal_1_1_closure.html#aed17b4030c8feef675c2b1ab4efd1ed1">Halide::Internal::Closure::make</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td>
           <td class="paramname"><em>s</em>, </td>
@@ -313,12 +312,6 @@ Protected Attributes</h2></td></tr>
           <td></td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>loop_variable</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>track_buffers</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -336,7 +329,7 @@ Protected Attributes</h2></td></tr>
 <div class="memdoc">
 
 <p>Traverse a statement and find all references to external symbols. </p>
-<p>Simple backends just create a pointer for internal allocations. If the backend creates a whole buffer_t (e.g. in order to track dirty bits), then the third argument should be set to true. When the closure encounters a read or write to 'foo', it assumes that the host pointer is found in the symbol table as 'foo.host', and any buffer_t pointer is found under 'foo.buffer'. </p>
+<p>When the closure encounters a read or write to 'foo', it assumes that the host pointer is found in the symbol table as 'foo.host', and any buffer_t pointer is found under 'foo.buffer'. </p>
 
 </div>
 </div>
@@ -484,21 +477,6 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="acffc618e3e939b3d2e8d3346dec13107"></a><!-- doxytag: member="Halide::Internal::Closure::track_buffers" ref="acffc618e3e939b3d2e8d3346dec13107" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="class_halide_1_1_internal_1_1_closure.html#acffc618e3e939b3d2e8d3346dec13107">Halide::Internal::Closure::track_buffers</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_code_gen___internal_8h_source.html#l00039">39</a> of file <a class="el" href="_code_gen___internal_8h_source.html">CodeGen_Internal.h</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a2dacd4fafb63386b54a6632d334a905f"></a><!-- doxytag: member="Halide::Internal::Closure::buffer_t" ref="a2dacd4fafb63386b54a6632d334a905f" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -510,7 +488,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_code_gen___internal_8h_source.html#l00040">40</a> of file <a class="el" href="_code_gen___internal_8h_source.html">CodeGen_Internal.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___internal_8h_source.html#l00039">39</a> of file <a class="el" href="_code_gen___internal_8h_source.html">CodeGen_Internal.h</a>.</p>
 
 </div>
 </div>
@@ -527,7 +505,7 @@ Protected Attributes</h2></td></tr>
 
 <p>External variables referenced. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___internal_8h_source.html#l00072">72</a> of file <a class="el" href="_code_gen___internal_8h_source.html">CodeGen_Internal.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___internal_8h_source.html#l00071">71</a> of file <a class="el" href="_code_gen___internal_8h_source.html">CodeGen_Internal.h</a>.</p>
 
 </div>
 </div>
@@ -544,7 +522,7 @@ Protected Attributes</h2></td></tr>
 
 <p>External allocations referenced. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___internal_8h_source.html#l00075">75</a> of file <a class="el" href="_code_gen___internal_8h_source.html">CodeGen_Internal.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___internal_8h_source.html#l00074">74</a> of file <a class="el" href="_code_gen___internal_8h_source.html">CodeGen_Internal.h</a>.</p>
 
 </div>
 </div>

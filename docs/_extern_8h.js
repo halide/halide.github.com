@@ -1,5 +1,6 @@
 var _extern_8h =
 [
+    [ "_halide_check_arg_type", "_extern_8h.html#adc22469ee831826d9431b2f7288ec709", null ],
     [ "HalideExtern_1", "_extern_8h.html#a4cf6217bf07180a3eebc8572c9554aff", null ],
     [ "HalideExtern_2", "_extern_8h.html#a03d5c157da193eabb0c81843de3495b0", null ],
     [ "HalideExtern_3", "_extern_8h.html#a033d8ea47a401d561d7b72bf9896760e", null ],

@@ -14,5 +14,6 @@ var struct_halide_1_1_internal_1_1_function_contents =
     [ "extern_function_name", "struct_halide_1_1_internal_1_1_function_contents.html#a973ef22587e7308608cda008d2378468", null ],
     [ "trace_loads", "struct_halide_1_1_internal_1_1_function_contents.html#ad3ecdd78c0b1eaac898d3bd8281d8b9a", null ],
     [ "trace_stores", "struct_halide_1_1_internal_1_1_function_contents.html#a73f482717597004838907fd2c6c4979b", null ],
-    [ "trace_realizations", "struct_halide_1_1_internal_1_1_function_contents.html#a692525d7f8d5ef8d7db4f26c274bbd0f", null ]
+    [ "trace_realizations", "struct_halide_1_1_internal_1_1_function_contents.html#a692525d7f8d5ef8d7db4f26c274bbd0f", null ],
+    [ "frozen", "struct_halide_1_1_internal_1_1_function_contents.html#a6e7a10d34855d220a4f01c41c3fe2244", null ]
 ];

@@ -130,152 +130,148 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00028"></a><a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">00028</a> <span class="preprocessor"></span><span class="preprocessor">#define EXPORT</span>
 <a name="l00029"></a>00029 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
 <a name="l00030"></a>00030 <span class="preprocessor"></span>
-<a name="l00031"></a>00031 <span class="keyword">namespace </span>Halide {
-<a name="l00032"></a>00032 <span class="keyword">namespace </span>Internal {
-<a name="l00033"></a>00033 <span class="comment"></span>
-<a name="l00034"></a>00034 <span class="comment">/** Build small vectors of up to 6 elements. If we used C++11 and</span>
-<a name="l00035"></a>00035 <span class="comment"> * had vector initializers, this would not be necessary, but we</span>
-<a name="l00036"></a>00036 <span class="comment"> * don&#39;t want to rely on C++11 support. */</span><span class="comment"></span>
-<a name="l00037"></a>00037 <span class="comment">//@{</span>
-<a name="l00038"></a>00038 <span class="comment"></span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00039"></a><a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">00039</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a) {
-<a name="l00040"></a>00040     std::vector&lt;T&gt; v(1);
-<a name="l00041"></a>00041     v[0] = a;
-<a name="l00042"></a>00042     <span class="keywordflow">return</span> v;
-<a name="l00043"></a>00043 }
-<a name="l00044"></a>00044 
-<a name="l00045"></a>00045 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00046"></a><a class="code" href="namespace_halide_1_1_internal.html#a60049819a1e4ee7971c624c18a26210a">00046</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a, T b) {
-<a name="l00047"></a>00047     std::vector&lt;T&gt; v(2);
-<a name="l00048"></a>00048     v[0] = a;
-<a name="l00049"></a>00049     v[1] = b;
-<a name="l00050"></a>00050     <span class="keywordflow">return</span> v;
-<a name="l00051"></a>00051 }
-<a name="l00052"></a>00052 
-<a name="l00053"></a>00053 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00054"></a><a class="code" href="namespace_halide_1_1_internal.html#a57308fdf8df2d93ff56d7dc8d2f621b1">00054</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a, T b, T c) {
-<a name="l00055"></a>00055     std::vector&lt;T&gt; v(3);
-<a name="l00056"></a>00056     v[0] = a;
-<a name="l00057"></a>00057     v[1] = b;
-<a name="l00058"></a>00058     v[2] = c;
-<a name="l00059"></a>00059     <span class="keywordflow">return</span> v;
-<a name="l00060"></a>00060 }
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00063"></a><a class="code" href="namespace_halide_1_1_internal.html#a643930ad0d00b2138183abfb01ba7083">00063</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a, T b, T c, T d) {
-<a name="l00064"></a>00064     std::vector&lt;T&gt; v(4);
-<a name="l00065"></a>00065     v[0] = a;
-<a name="l00066"></a>00066     v[1] = b;
-<a name="l00067"></a>00067     v[2] = c;
-<a name="l00068"></a>00068     v[3] = d;
-<a name="l00069"></a>00069     <span class="keywordflow">return</span> v;
-<a name="l00070"></a>00070 }
-<a name="l00071"></a>00071 
-<a name="l00072"></a>00072 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00073"></a><a class="code" href="namespace_halide_1_1_internal.html#a33cbb76cabe65d3b5fc27f6d4866ce0b">00073</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a, T b, T c, T d, T e) {
-<a name="l00074"></a>00074     std::vector&lt;T&gt; v(5);
-<a name="l00075"></a>00075     v[0] = a;
-<a name="l00076"></a>00076     v[1] = b;
-<a name="l00077"></a>00077     v[2] = c;
-<a name="l00078"></a>00078     v[3] = d;
-<a name="l00079"></a>00079     v[4] = e;
+<a name="l00031"></a>00031 <span class="comment">// If we&#39;re in user code, we don&#39;t want certain functions to be inlined.</span>
+<a name="l00032"></a>00032 <span class="preprocessor">#if defined(COMPILING_HALIDE) || defined(BUILDING_PYTHON)</span>
+<a name="l00033"></a>00033 <span class="preprocessor"></span><span class="preprocessor">#define NO_INLINE</span>
+<a name="l00034"></a>00034 <span class="preprocessor"></span><span class="preprocessor">#else</span>
+<a name="l00035"></a>00035 <span class="preprocessor"></span><span class="preprocessor">#ifdef _WIN32</span>
+<a name="l00036"></a>00036 <span class="preprocessor"></span><span class="preprocessor">#define NO_INLINE __declspec(noinline)</span>
+<a name="l00037"></a>00037 <span class="preprocessor"></span><span class="preprocessor">#else</span>
+<a name="l00038"></a><a class="code" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">00038</a> <span class="preprocessor"></span><span class="preprocessor">#define NO_INLINE __attribute__((noinline))</span>
+<a name="l00039"></a>00039 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00040"></a>00040 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00041"></a>00041 <span class="preprocessor"></span>
+<a name="l00042"></a>00042 <span class="keyword">namespace </span>Halide {
+<a name="l00043"></a>00043 <span class="keyword">namespace </span>Internal {
+<a name="l00044"></a>00044 <span class="comment"></span>
+<a name="l00045"></a>00045 <span class="comment">/** Build small vectors of up to 6 elements. If we used C++11 and</span>
+<a name="l00046"></a>00046 <span class="comment"> * had vector initializers, this would not be necessary, but we</span>
+<a name="l00047"></a>00047 <span class="comment"> * don&#39;t want to rely on C++11 support. */</span><span class="comment"></span>
+<a name="l00048"></a>00048 <span class="comment">//@{</span>
+<a name="l00049"></a>00049 <span class="comment"></span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l00050"></a><a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">00050</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a) {
+<a name="l00051"></a>00051     std::vector&lt;T&gt; v(1);
+<a name="l00052"></a>00052     v[0] = a;
+<a name="l00053"></a>00053     <span class="keywordflow">return</span> v;
+<a name="l00054"></a>00054 }
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l00057"></a><a class="code" href="namespace_halide_1_1_internal.html#a60049819a1e4ee7971c624c18a26210a">00057</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a, T b) {
+<a name="l00058"></a>00058     std::vector&lt;T&gt; v(2);
+<a name="l00059"></a>00059     v[0] = a;
+<a name="l00060"></a>00060     v[1] = b;
+<a name="l00061"></a>00061     <span class="keywordflow">return</span> v;
+<a name="l00062"></a>00062 }
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l00065"></a><a class="code" href="namespace_halide_1_1_internal.html#a57308fdf8df2d93ff56d7dc8d2f621b1">00065</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a, T b, T c) {
+<a name="l00066"></a>00066     std::vector&lt;T&gt; v(3);
+<a name="l00067"></a>00067     v[0] = a;
+<a name="l00068"></a>00068     v[1] = b;
+<a name="l00069"></a>00069     v[2] = c;
+<a name="l00070"></a>00070     <span class="keywordflow">return</span> v;
+<a name="l00071"></a>00071 }
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l00074"></a><a class="code" href="namespace_halide_1_1_internal.html#a643930ad0d00b2138183abfb01ba7083">00074</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a, T b, T c, T d) {
+<a name="l00075"></a>00075     std::vector&lt;T&gt; v(4);
+<a name="l00076"></a>00076     v[0] = a;
+<a name="l00077"></a>00077     v[1] = b;
+<a name="l00078"></a>00078     v[2] = c;
+<a name="l00079"></a>00079     v[3] = d;
 <a name="l00080"></a>00080     <span class="keywordflow">return</span> v;
 <a name="l00081"></a>00081 }
 <a name="l00082"></a>00082 
 <a name="l00083"></a>00083 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00084"></a><a class="code" href="namespace_halide_1_1_internal.html#ac29a0bceb82c876dc7b2d9d15ea0f5b7">00084</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a, T b, T c, T d, T e, T f) {
-<a name="l00085"></a>00085     std::vector&lt;T&gt; v(6);
+<a name="l00084"></a><a class="code" href="namespace_halide_1_1_internal.html#a33cbb76cabe65d3b5fc27f6d4866ce0b">00084</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a, T b, T c, T d, T e) {
+<a name="l00085"></a>00085     std::vector&lt;T&gt; v(5);
 <a name="l00086"></a>00086     v[0] = a;
 <a name="l00087"></a>00087     v[1] = b;
 <a name="l00088"></a>00088     v[2] = c;
 <a name="l00089"></a>00089     v[3] = d;
 <a name="l00090"></a>00090     v[4] = e;
-<a name="l00091"></a>00091     v[5] = f;
-<a name="l00092"></a>00092     <span class="keywordflow">return</span> v;
-<a name="l00093"></a>00093 }
-<a name="l00094"></a>00094 
-<a name="l00095"></a>00095 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00096"></a><a class="code" href="namespace_halide_1_1_internal.html#a6e0218a6965fff6add01901838ccef67">00096</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a, T b, T c, T d, T e, T f, T g) {
-<a name="l00097"></a>00097     std::vector&lt;T&gt; v(7);
-<a name="l00098"></a>00098     v[0] = a;
-<a name="l00099"></a>00099     v[1] = b;
-<a name="l00100"></a>00100     v[2] = c;
-<a name="l00101"></a>00101     v[3] = d;
-<a name="l00102"></a>00102     v[4] = e;
-<a name="l00103"></a>00103     v[5] = f;
-<a name="l00104"></a>00104     v[6] = g;
-<a name="l00105"></a>00105     <span class="keywordflow">return</span> v;
-<a name="l00106"></a>00106 }
-<a name="l00107"></a>00107 
-<a name="l00108"></a>00108 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
-<a name="l00109"></a><a class="code" href="namespace_halide_1_1_internal.html#ab96724ccfd5edca25ce01a24fce53a66">00109</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a, T b, T c, T d, T e, T f, T g, T h) {
-<a name="l00110"></a>00110     std::vector&lt;T&gt; v(8);
-<a name="l00111"></a>00111     v[0] = a;
-<a name="l00112"></a>00112     v[1] = b;
-<a name="l00113"></a>00113     v[2] = c;
-<a name="l00114"></a>00114     v[3] = d;
-<a name="l00115"></a>00115     v[4] = e;
-<a name="l00116"></a>00116     v[5] = f;
-<a name="l00117"></a>00117     v[6] = g;
-<a name="l00118"></a>00118     v[7] = h;
-<a name="l00119"></a>00119     <span class="keywordflow">return</span> v;
-<a name="l00120"></a>00120 }
-<a name="l00121"></a>00121 <span class="comment">// @}</span>
-<a name="l00122"></a>00122 <span class="comment"></span>
-<a name="l00123"></a>00123 <span class="comment">/** Convert an integer to a string. */</span>
-<a name="l00124"></a>00124 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#a0aeffeff26578021bc780e1506bfa448" title="Convert an integer to a string.">int_to_string</a>(<span class="keywordtype">int</span> x);
-<a name="l00125"></a>00125 <span class="comment"></span>
-<a name="l00126"></a>00126 <span class="comment">/** An aggressive form of reinterpret cast used for correct type-punning. */</span>
-<a name="l00127"></a>00127 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DstType, <span class="keyword">typename</span> SrcType&gt;
-<a name="l00128"></a><a class="code" href="namespace_halide_1_1_internal.html#a94816d6979fdadb6e206a5d0a668e008">00128</a> DstType <a class="code" href="namespace_halide_1_1_internal.html#a94816d6979fdadb6e206a5d0a668e008" title="An aggressive form of reinterpret cast used for correct type-punning.">reinterpret_bits</a>(<span class="keyword">const</span> SrcType &amp;src) {
-<a name="l00129"></a>00129     assert(<span class="keyword">sizeof</span>(SrcType) == <span class="keyword">sizeof</span>(DstType));
-<a name="l00130"></a>00130     DstType dst;
-<a name="l00131"></a>00131     memcpy(&amp;dst, &amp;src, <span class="keyword">sizeof</span>(SrcType));
-<a name="l00132"></a>00132     <span class="keywordflow">return</span> dst;
-<a name="l00133"></a>00133 }
-<a name="l00134"></a>00134 <span class="comment"></span>
-<a name="l00135"></a>00135 <span class="comment">/** Generate a unique name starting with the given character. It&#39;s</span>
-<a name="l00136"></a>00136 <span class="comment"> * unique relative to all other calls to unique_name done by this</span>
-<a name="l00137"></a>00137 <span class="comment"> * process. Not thread-safe. */</span>
-<a name="l00138"></a>00138 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9" title="Generate a unique name starting with the given character.">unique_name</a>(<span class="keywordtype">char</span> prefix);
-<a name="l00139"></a>00139 <span class="comment"></span>
-<a name="l00140"></a>00140 <span class="comment">/** Generate a unique name starting with the given string.  Not</span>
-<a name="l00141"></a>00141 <span class="comment"> * thread-safe. */</span>
-<a name="l00142"></a>00142 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9" title="Generate a unique name starting with the given character.">unique_name</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">bool</span> user = <span class="keyword">true</span>);
-<a name="l00143"></a>00143 <span class="comment"></span>
-<a name="l00144"></a>00144 <span class="comment">/** Test if the first string starts with the second string */</span>
-<a name="l00145"></a>00145 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed" title="Test if the first string starts with the second string.">starts_with</a>(<span class="keyword">const</span> std::string &amp;str, <span class="keyword">const</span> std::string &amp;prefix);
-<a name="l00146"></a>00146 <span class="comment"></span>
-<a name="l00147"></a>00147 <span class="comment">/** Test if the first string ends with the second string */</span>
-<a name="l00148"></a>00148 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28" title="Test if the first string ends with the second string.">ends_with</a>(<span class="keyword">const</span> std::string &amp;str, <span class="keyword">const</span> std::string &amp;suffix);
-<a name="l00149"></a>00149 <span class="comment"></span>
-<a name="l00150"></a>00150 <span class="comment">/** Return the final token of the name string using the given delimiter. */</span>
-<a name="l00151"></a>00151 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516" title="Return the final token of the name string using the given delimiter.">base_name</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">char</span> delim = <span class="charliteral">&#39;.&#39;</span>);
-<a name="l00152"></a>00152 
-<a name="l00153"></a>00153 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Un<span class="keywordtype">signed</span>Type&gt;
-<a name="l00154"></a><a class="code" href="namespace_halide_1_1_internal.html#abbc083947a28b1017d3303db8204dbac">00154</a> <span class="keywordtype">bool</span> <a class="code" href="namespace_halide_1_1_internal.html#abbc083947a28b1017d3303db8204dbac">checked_multiply</a>(<span class="keyword">const</span> UnsignedType &amp;a, <span class="keyword">const</span> UnsignedType &amp;c, UnsignedType &amp;result) {
-<a name="l00155"></a>00155   <span class="keywordflow">if</span> (a == 0) {
-<a name="l00156"></a>00156     result = 0;
-<a name="l00157"></a>00157   } <span class="keywordflow">else</span> {
-<a name="l00158"></a>00158     UnsignedType t = a * c;
-<a name="l00159"></a>00159     <span class="keywordflow">if</span> (t / a != c)
-<a name="l00160"></a>00160       <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00161"></a>00161     result = t;
-<a name="l00162"></a>00162   }
-<a name="l00163"></a>00163   <span class="keywordflow">return</span> <span class="keyword">true</span>;  
-<a name="l00164"></a>00164 }
-<a name="l00165"></a>00165 
-<a name="l00166"></a>00166 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Un<span class="keywordtype">signed</span>Type&gt;
-<a name="l00167"></a><a class="code" href="namespace_halide_1_1_internal.html#ae86a2e6e4ae72e4ccbab62fd05a6a937">00167</a> <span class="keywordtype">bool</span> <a class="code" href="namespace_halide_1_1_internal.html#ae86a2e6e4ae72e4ccbab62fd05a6a937">checked_multiply_assert</a>(<span class="keyword">const</span> UnsignedType &amp;a, <span class="keyword">const</span> UnsignedType &amp;b, UnsignedType &amp;result) {
-<a name="l00168"></a>00168   <span class="keywordtype">bool</span> no_overflow = <a class="code" href="namespace_halide_1_1_internal.html#abbc083947a28b1017d3303db8204dbac">checked_multiply</a>(a, b, result);
-<a name="l00169"></a>00169   assert(no_overflow);
-<a name="l00170"></a>00170   <span class="keywordflow">return</span> no_overflow;
-<a name="l00171"></a>00171 }
-<a name="l00172"></a>00172 
-<a name="l00173"></a>00173 }
-<a name="l00174"></a>00174 }
-<a name="l00175"></a>00175 
-<a name="l00176"></a>00176 <span class="preprocessor">#endif</span>
+<a name="l00091"></a>00091     <span class="keywordflow">return</span> v;
+<a name="l00092"></a>00092 }
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l00095"></a><a class="code" href="namespace_halide_1_1_internal.html#ac29a0bceb82c876dc7b2d9d15ea0f5b7">00095</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a, T b, T c, T d, T e, T f) {
+<a name="l00096"></a>00096     std::vector&lt;T&gt; v(6);
+<a name="l00097"></a>00097     v[0] = a;
+<a name="l00098"></a>00098     v[1] = b;
+<a name="l00099"></a>00099     v[2] = c;
+<a name="l00100"></a>00100     v[3] = d;
+<a name="l00101"></a>00101     v[4] = e;
+<a name="l00102"></a>00102     v[5] = f;
+<a name="l00103"></a>00103     <span class="keywordflow">return</span> v;
+<a name="l00104"></a>00104 }
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l00107"></a><a class="code" href="namespace_halide_1_1_internal.html#a6e0218a6965fff6add01901838ccef67">00107</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a, T b, T c, T d, T e, T f, T g) {
+<a name="l00108"></a>00108     std::vector&lt;T&gt; v(7);
+<a name="l00109"></a>00109     v[0] = a;
+<a name="l00110"></a>00110     v[1] = b;
+<a name="l00111"></a>00111     v[2] = c;
+<a name="l00112"></a>00112     v[3] = d;
+<a name="l00113"></a>00113     v[4] = e;
+<a name="l00114"></a>00114     v[5] = f;
+<a name="l00115"></a>00115     v[6] = g;
+<a name="l00116"></a>00116     <span class="keywordflow">return</span> v;
+<a name="l00117"></a>00117 }
+<a name="l00118"></a>00118 
+<a name="l00119"></a>00119 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l00120"></a><a class="code" href="namespace_halide_1_1_internal.html#ab96724ccfd5edca25ce01a24fce53a66">00120</a> std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829" title="Build small vectors of up to 6 elements.">vec</a>(T a, T b, T c, T d, T e, T f, T g, T h) {
+<a name="l00121"></a>00121     std::vector&lt;T&gt; v(8);
+<a name="l00122"></a>00122     v[0] = a;
+<a name="l00123"></a>00123     v[1] = b;
+<a name="l00124"></a>00124     v[2] = c;
+<a name="l00125"></a>00125     v[3] = d;
+<a name="l00126"></a>00126     v[4] = e;
+<a name="l00127"></a>00127     v[5] = f;
+<a name="l00128"></a>00128     v[6] = g;
+<a name="l00129"></a>00129     v[7] = h;
+<a name="l00130"></a>00130     <span class="keywordflow">return</span> v;
+<a name="l00131"></a>00131 }
+<a name="l00132"></a>00132 <span class="comment">// @}</span>
+<a name="l00133"></a>00133 <span class="comment"></span>
+<a name="l00134"></a>00134 <span class="comment">/** Convert an integer to a string. */</span>
+<a name="l00135"></a>00135 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#a0aeffeff26578021bc780e1506bfa448" title="Convert an integer to a string.">int_to_string</a>(<span class="keywordtype">int</span> x);
+<a name="l00136"></a>00136 <span class="comment"></span>
+<a name="l00137"></a>00137 <span class="comment">/** An aggressive form of reinterpret cast used for correct type-punning. */</span>
+<a name="l00138"></a>00138 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> DstType, <span class="keyword">typename</span> SrcType&gt;
+<a name="l00139"></a><a class="code" href="namespace_halide_1_1_internal.html#a94816d6979fdadb6e206a5d0a668e008">00139</a> DstType <a class="code" href="namespace_halide_1_1_internal.html#a94816d6979fdadb6e206a5d0a668e008" title="An aggressive form of reinterpret cast used for correct type-punning.">reinterpret_bits</a>(<span class="keyword">const</span> SrcType &amp;src) {
+<a name="l00140"></a>00140     assert(<span class="keyword">sizeof</span>(SrcType) == <span class="keyword">sizeof</span>(DstType));
+<a name="l00141"></a>00141     DstType dst;
+<a name="l00142"></a>00142     <a class="code" href="mini__string_8h.html#add55236e1a6168d059f1409762081d1a">memcpy</a>(&amp;dst, &amp;src, <span class="keyword">sizeof</span>(SrcType));
+<a name="l00143"></a>00143     <span class="keywordflow">return</span> dst;
+<a name="l00144"></a>00144 }
+<a name="l00145"></a>00145 <span class="comment"></span>
+<a name="l00146"></a>00146 <span class="comment">/** Make a unique name for an object based on the name of the stack</span>
+<a name="l00147"></a>00147 <span class="comment"> * variable passed in. If introspection isn&#39;t working or there are no</span>
+<a name="l00148"></a>00148 <span class="comment"> * debug symbols, just uses unique_name with the given prefix. */</span>
+<a name="l00149"></a>00149 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#a2eb97978547d98141752de6b614195f4" title="Make a unique name for an object based on the name of the stack variable passed in.">make_entity_name</a>(<span class="keywordtype">void</span> *stack_ptr, <span class="keyword">const</span> std::string &amp;type, <span class="keywordtype">char</span> prefix);
+<a name="l00150"></a>00150 <span class="comment"></span>
+<a name="l00151"></a>00151 <span class="comment">/** Generate a unique name starting with the given character. It&#39;s</span>
+<a name="l00152"></a>00152 <span class="comment"> * unique relative to all other calls to unique_name done by this</span>
+<a name="l00153"></a>00153 <span class="comment"> * process. Not thread-safe. */</span>
+<a name="l00154"></a>00154 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9" title="Generate a unique name starting with the given character.">unique_name</a>(<span class="keywordtype">char</span> prefix);
+<a name="l00155"></a>00155 <span class="comment"></span>
+<a name="l00156"></a>00156 <span class="comment">/** Generate a unique name starting with the given string.  Not</span>
+<a name="l00157"></a>00157 <span class="comment"> * thread-safe. */</span>
+<a name="l00158"></a>00158 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9" title="Generate a unique name starting with the given character.">unique_name</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">bool</span> user = <span class="keyword">true</span>);
+<a name="l00159"></a>00159 <span class="comment"></span>
+<a name="l00160"></a>00160 <span class="comment">/** Test if the first string starts with the second string */</span>
+<a name="l00161"></a>00161 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed" title="Test if the first string starts with the second string.">starts_with</a>(<span class="keyword">const</span> std::string &amp;str, <span class="keyword">const</span> std::string &amp;prefix);
+<a name="l00162"></a>00162 <span class="comment"></span>
+<a name="l00163"></a>00163 <span class="comment">/** Test if the first string ends with the second string */</span>
+<a name="l00164"></a>00164 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28" title="Test if the first string ends with the second string.">ends_with</a>(<span class="keyword">const</span> std::string &amp;str, <span class="keyword">const</span> std::string &amp;suffix);
+<a name="l00165"></a>00165 <span class="comment"></span>
+<a name="l00166"></a>00166 <span class="comment">/** Return the final token of the name string using the given delimiter. */</span>
+<a name="l00167"></a>00167 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516" title="Return the final token of the name string using the given delimiter.">base_name</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">char</span> delim = <span class="charliteral">&#39;.&#39;</span>);
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169 }
+<a name="l00170"></a>00170 }
+<a name="l00171"></a>00171 
+<a name="l00172"></a>00172 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

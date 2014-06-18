@@ -114,59 +114,60 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#afeca5c056a1aea25608f9c1f935db7d2">Buffer</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a9011114cbf92555c66c38b640febff79">Buffer</a> (<a class="el" href="struct_halide_1_1_type.html">Type</a> t, int x_size=0, int y_size=0, int z_size=0, int w_size=0, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *data=<a class="el" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, const std::string &amp;<a class="el" href="class_halide_1_1_buffer.html#a71bd7cfcd2178331016d6833a85c9b69">name</a>=&quot;&quot;)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#ab8b23b91390805c5f14c02565c30513d">Buffer</a> (<a class="el" href="struct_halide_1_1_type.html">Type</a> t, const std::vector&lt; <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> &gt; &amp;sizes, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *data=<a class="el" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, const std::string &amp;<a class="el" href="class_halide_1_1_buffer.html#a71bd7cfcd2178331016d6833a85c9b69">name</a>=&quot;&quot;)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#ad8472673425daa0649eb8736eb9221cf">Buffer</a> (<a class="el" href="struct_halide_1_1_type.html">Type</a> t, const buffer_t *buf, const std::string &amp;<a class="el" href="class_halide_1_1_buffer.html#a71bd7cfcd2178331016d6833a85c9b69">name</a>=&quot;&quot;)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#acb49751026ca83866a00caed8eb4c4e4">host_ptr</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the host-side memory.  <a href="#acb49751026ca83866a00caed8eb4c4e4"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">buffer_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a7ef77f7e2f5eca29ca30283fc27745a5">raw_buffer</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the raw buffer_t struct that this class wraps.  <a href="#a7ef77f7e2f5eca29ca30283fc27745a5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#adbfdcce86be09961c8ae574844bbf73f">device_handle</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the device-side pointer/handle for this buffer.  <a href="#adbfdcce86be09961c8ae574844bbf73f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a9167892ab30060588f1b3ec466cb69b5">host_dirty</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Has this buffer been modified on the cpu since last copied to a device.  <a href="#a9167892ab30060588f1b3ec466cb69b5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a80a79600fc7fcecca9bc6ff05b431f06">set_host_dirty</a> (bool dirty=true)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Let <a class="el" href="namespace_halide.html">Halide</a> know that the host-side memory backing this buffer has been externally modified.  <a href="#a80a79600fc7fcecca9bc6ff05b431f06"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#aad8c5390edca58c52aa3976917cc99fc">device_dirty</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Has this buffer been modified on device since last copied to the cpu.  <a href="#aad8c5390edca58c52aa3976917cc99fc"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#aadb0e03075acde2411c0f8cb02a5f835">set_device_dirty</a> (bool dirty=true)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Let <a class="el" href="namespace_halide.html">Halide</a> know that the device-side memory backing this buffer has been externally modified, and so the cpu-side memory is invalid.  <a href="#aadb0e03075acde2411c0f8cb02a5f835"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#ab974a9b3c0276ac5d2d01850acc19581">dimensions</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the dimensionality of this buffer.  <a href="#ab974a9b3c0276ac5d2d01850acc19581"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a99a75c560615340d42cd0bc2c8db3068">extent</a> (int dim) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the extent of this buffer in the given dimension.  <a href="#a99a75c560615340d42cd0bc2c8db3068"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#ac7e569a7199285a1f5b0d4330bd87403">stride</a> (int dim) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of bytes between adjacent elements of this buffer along the given dimension.  <a href="#ac7e569a7199285a1f5b0d4330bd87403"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a7d1aa55c9a18c38e04484db13bf76ebb">min</a> (int dim) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the coordinate in the function that this buffer represents that corresponds to the base address of the buffer.  <a href="#a7d1aa55c9a18c38e04484db13bf76ebb"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a403eeab2ffcc5adb67d353e9105e436c">set_min</a> (int m0, int m1=0, int m2=0, int m3=0)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the coordinate in the function that this buffer represents that corresponds to the base address of the buffer.  <a href="#a403eeab2ffcc5adb67d353e9105e436c"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_type.html">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a0c0f6ac621b1557c996b1fc5e424949b">type</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="namespace_halide.html">Halide</a> type of the contents of this buffer.  <a href="#a0c0f6ac621b1557c996b1fc5e424949b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a387c39bd39fafa8b0706cd40763952da">same_as</a> (const <a class="el" href="class_halide_1_1_buffer.html">Buffer</a> &amp;other) const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare two buffers for identity (not equality of data).  <a href="#a387c39bd39fafa8b0706cd40763952da"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#aa01e21303dc4b3181e23457cff6f2a4b">defined</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this buffer handle actually points to data.  <a href="#aa01e21303dc4b3181e23457cff6f2a4b"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a71bd7cfcd2178331016d6833a85c9b69">name</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the runtime name of this buffer used for debugging.  <a href="#a71bd7cfcd2178331016d6833a85c9b69"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#afbf6f88aa7b6f1ccf4404a53ab320802">operator Argument</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert this buffer to an argument to a halide pipeline.  <a href="#afbf6f88aa7b6f1ccf4404a53ab320802"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a4a3f171c5f7ba2c49737270276045a75">set_source_module</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html">Internal::JITCompiledModule</a> &amp;module)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Declare that this buffer was created by the given jit-compiled module.  <a href="#a4a3f171c5f7ba2c49737270276045a75"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html">Internal::JITCompiledModule</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a4094a1008fbfaaaa273104d0c0766f4c">source_module</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If this buffer was the output of a jit-compiled realization, retrieve the module it came from.  <a href="#a4094a1008fbfaaaa273104d0c0766f4c"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#ab0f3c9bd08929c18baca4ccfb19d8280">copy_to_host</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If this buffer was created *on-device* by a jit-compiled realization, then copy it back to the cpu-side memory.  <a href="#ab0f3c9bd08929c18baca4ccfb19d8280"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a159d5586ab151d3b3b292bb2f8d653fe">copy_to_dev</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If this buffer was created by a jit-compiled realization on a device-aware target (e.g.  <a href="#a159d5586ab151d3b3b292bb2f8d653fe"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#acc1c7e0cd6896cc807db2bee4c8229ae">free_dev_buffer</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If this buffer was created by a jit-compiled realization on a device-aware target (e.g.  <a href="#acc1c7e0cd6896cc807db2bee4c8229ae"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a0a167677e0c44862bec75bbf0c7fa768">Buffer</a> (<a class="el" href="struct_halide_1_1_type.html">Type</a> t, int x_size=0, int y_size=0, int z_size=0, int w_size=0, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *data=<a class="el" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, const std::string &amp;<a class="el" href="class_halide_1_1_buffer.html#a55989c22a6205a96ac749f6daa1ac8af">name</a>=&quot;&quot;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#af8fa406c2e58dcbfc34d9ab07b79575c">Buffer</a> (<a class="el" href="struct_halide_1_1_type.html">Type</a> t, const std::vector&lt; <a class="el" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> &gt; &amp;sizes, <a class="el" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *data=<a class="el" href="mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, const std::string &amp;<a class="el" href="class_halide_1_1_buffer.html#a55989c22a6205a96ac749f6daa1ac8af">name</a>=&quot;&quot;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#af0d854ae8fa10df62b1de8fc5bff144c">Buffer</a> (<a class="el" href="struct_halide_1_1_type.html">Type</a> t, const buffer_t *buf, const std::string &amp;<a class="el" href="class_halide_1_1_buffer.html#a55989c22a6205a96ac749f6daa1ac8af">name</a>=&quot;&quot;)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a3b83b564af2b1c841dd2a9270cae6933">host_ptr</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the host-side memory.  <a href="#a3b83b564af2b1c841dd2a9270cae6933"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> buffer_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a72b8d1df132db7b58999cd9999c181ef">raw_buffer</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the raw buffer_t struct that this class wraps.  <a href="#a72b8d1df132db7b58999cd9999c181ef"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#adcafbdf518eb469b9eda17615cdf02b8">device_handle</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the device-side pointer/handle for this buffer.  <a href="#adcafbdf518eb469b9eda17615cdf02b8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a5f8fd991c1b9912281d05b0388f6a29b">host_dirty</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Has this buffer been modified on the cpu since last copied to a device.  <a href="#a5f8fd991c1b9912281d05b0388f6a29b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a880c937a855451789cd77a4ce64cefd4">set_host_dirty</a> (bool dirty=true)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Let <a class="el" href="namespace_halide.html">Halide</a> know that the host-side memory backing this buffer has been externally modified.  <a href="#a880c937a855451789cd77a4ce64cefd4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#ac2be98ae9d831db0cd957b6bbf1d950a">device_dirty</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Has this buffer been modified on device since last copied to the cpu.  <a href="#ac2be98ae9d831db0cd957b6bbf1d950a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a5c70347927c620db01c0762c86723d38">set_device_dirty</a> (bool dirty=true)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Let <a class="el" href="namespace_halide.html">Halide</a> know that the device-side memory backing this buffer has been externally modified, and so the cpu-side memory is invalid.  <a href="#a5c70347927c620db01c0762c86723d38"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a15b6b005dd04e24b283189375845d9be">dimensions</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the dimensionality of this buffer.  <a href="#a15b6b005dd04e24b283189375845d9be"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a0a775bbb13486ace1592442101e9091c">extent</a> (int dim) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the extent of this buffer in the given dimension.  <a href="#a0a775bbb13486ace1592442101e9091c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#ada7e4789b258a94e77470c844619ee30">stride</a> (int dim) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of bytes between adjacent elements of this buffer along the given dimension.  <a href="#ada7e4789b258a94e77470c844619ee30"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a26dc5d0d683d0acac5826c18936e39d5">min</a> (int dim) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the coordinate in the function that this buffer represents that corresponds to the base address of the buffer.  <a href="#a26dc5d0d683d0acac5826c18936e39d5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a1c0c2d787d34340c398d200dfe0dbeb5">set_min</a> (int m0, int m1=0, int m2=0, int m3=0)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the coordinate in the function that this buffer represents that corresponds to the base address of the buffer.  <a href="#a1c0c2d787d34340c398d200dfe0dbeb5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_type.html">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a626cc16251c6955f78581231085f0b1b">type</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="namespace_halide.html">Halide</a> type of the contents of this buffer.  <a href="#a626cc16251c6955f78581231085f0b1b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#ad560be036aa865430f1e1d5e1314e74b">same_as</a> (const <a class="el" href="class_halide_1_1_buffer.html">Buffer</a> &amp;other) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare two buffers for identity (not equality of data).  <a href="#ad560be036aa865430f1e1d5e1314e74b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a2c39dfbf593697aa4a5bea422de3b7a2">defined</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this buffer handle actually points to data.  <a href="#a2c39dfbf593697aa4a5bea422de3b7a2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a55989c22a6205a96ac749f6daa1ac8af">name</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the runtime name of this buffer used for debugging.  <a href="#a55989c22a6205a96ac749f6daa1ac8af"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a12d4d7a1a23ab2ff51c2dbea52f05de3">operator Argument</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert this buffer to an argument to a halide pipeline.  <a href="#a12d4d7a1a23ab2ff51c2dbea52f05de3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a116957181fe126d7c2b2f68fbd084a27">set_source_module</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html">Internal::JITCompiledModule</a> &amp;module)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Declare that this buffer was created by the given jit-compiled module.  <a href="#a116957181fe126d7c2b2f68fbd084a27"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> const <br class="typebreak"/>
+<a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html">Internal::JITCompiledModule</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a87cd6d500b2358d577d0b9dc56743ff9">source_module</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If this buffer was the output of a jit-compiled realization, retrieve the module it came from.  <a href="#a87cd6d500b2358d577d0b9dc56743ff9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#afc79dc98d70a8245b24c54d25d60ca46">copy_to_host</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If this buffer was created *on-device* by a jit-compiled realization, then copy it back to the cpu-side memory.  <a href="#afc79dc98d70a8245b24c54d25d60ca46"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a9ebfdbc705afe62af3838d23c643e882">copy_to_dev</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If this buffer was created by a jit-compiled realization on a device-aware target (e.g.  <a href="#a9ebfdbc705afe62af3838d23c643e882"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html#a8ca6dbcd6a77154d51ef1bd6cf3348eb">free_dev_buffer</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If this buffer was created by a jit-compiled realization on a device-aware target (e.g.  <a href="#a8ca6dbcd6a77154d51ef1bd6cf3348eb"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>The internal representation of an image, or other dense array data. </p>
 <p>The <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> type provides a typed view onto a buffer for the purposes of direct manipulation. A buffer may be stored in main memory, or some other memory space (e.g. a gpu). If you want to use this as an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a>, see the <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> class. Casting a <a class="el" href="class_halide_1_1_buffer.html" title="The internal representation of an image, or other dense array data.">Buffer</a> to an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> will do any appropriate copy-back. This class is a fairly thin wrapper on a buffer_t, which is the C-style type <a class="el" href="namespace_halide.html">Halide</a> uses for passing buffers around. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00108">108</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
+<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00029">29</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="afeca5c056a1aea25608f9c1f935db7d2"></a><!-- doxytag: member="Halide::Buffer::Buffer" ref="afeca5c056a1aea25608f9c1f935db7d2" args="()" -->
 <div class="memitem">
@@ -182,16 +183,16 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00115">115</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
+<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00034">34</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a9011114cbf92555c66c38b640febff79"></a><!-- doxytag: member="Halide::Buffer::Buffer" ref="a9011114cbf92555c66c38b640febff79" args="(Type t, int x_size=0, int y_size=0, int z_size=0, int w_size=0, uint8_t *data=NULL, const std::string &amp;name=&quot;&quot;)" -->
+<a class="anchor" id="a0a167677e0c44862bec75bbf0c7fa768"></a><!-- doxytag: member="Halide::Buffer::Buffer" ref="a0a167677e0c44862bec75bbf0c7fa768" args="(Type t, int x_size=0, int y_size=0, int z_size=0, int w_size=0, uint8_t *data=NULL, const std::string &amp;name=&quot;&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_buffer.html#afeca5c056a1aea25608f9c1f935db7d2">Halide::Buffer::Buffer</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_buffer.html#afeca5c056a1aea25608f9c1f935db7d2">Halide::Buffer::Buffer</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_halide_1_1_type.html">Type</a>&#160;</td>
           <td class="paramname"><em>t</em>, </td>
@@ -235,22 +236,20 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00117">117</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="ab8b23b91390805c5f14c02565c30513d"></a><!-- doxytag: member="Halide::Buffer::Buffer" ref="ab8b23b91390805c5f14c02565c30513d" args="(Type t, const std::vector&lt; int32_t &gt; &amp;sizes, uint8_t *data=NULL, const std::string &amp;name=&quot;&quot;)" -->
+<a class="anchor" id="af8fa406c2e58dcbfc34d9ab07b79575c"></a><!-- doxytag: member="Halide::Buffer::Buffer" ref="af8fa406c2e58dcbfc34d9ab07b79575c" args="(Type t, const std::vector&lt; int32_t &gt; &amp;sizes, uint8_t *data=NULL, const std::string &amp;name=&quot;&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_buffer.html#afeca5c056a1aea25608f9c1f935db7d2">Halide::Buffer::Buffer</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_buffer.html#afeca5c056a1aea25608f9c1f935db7d2">Halide::Buffer::Buffer</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_halide_1_1_type.html">Type</a>&#160;</td>
           <td class="paramname"><em>t</em>, </td>
@@ -276,22 +275,20 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00122">122</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="ad8472673425daa0649eb8736eb9221cf"></a><!-- doxytag: member="Halide::Buffer::Buffer" ref="ad8472673425daa0649eb8736eb9221cf" args="(Type t, const buffer_t *buf, const std::string &amp;name=&quot;&quot;)" -->
+<a class="anchor" id="af0d854ae8fa10df62b1de8fc5bff144c"></a><!-- doxytag: member="Halide::Buffer::Buffer" ref="af0d854ae8fa10df62b1de8fc5bff144c" args="(Type t, const buffer_t *buf, const std::string &amp;name=&quot;&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_buffer.html#afeca5c056a1aea25608f9c1f935db7d2">Halide::Buffer::Buffer</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_buffer.html#afeca5c056a1aea25608f9c1f935db7d2">Halide::Buffer::Buffer</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_halide_1_1_type.html">Type</a>&#160;</td>
           <td class="paramname"><em>t</em>, </td>
@@ -311,26 +308,24 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00130">130</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="acb49751026ca83866a00caed8eb4c4e4"></a><!-- doxytag: member="Halide::Buffer::host_ptr" ref="acb49751026ca83866a00caed8eb4c4e4" args="() const " -->
+<a class="anchor" id="a3b83b564af2b1c841dd2a9270cae6933"></a><!-- doxytag: member="Halide::Buffer::host_ptr" ref="a3b83b564af2b1c841dd2a9270cae6933" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* <a class="el" href="class_halide_1_1_buffer.html#acb49751026ca83866a00caed8eb4c4e4">Halide::Buffer::host_ptr</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void* <a class="el" href="class_halide_1_1_buffer.html#a3b83b564af2b1c841dd2a9270cae6933">Halide::Buffer::host_ptr</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -338,21 +333,19 @@ Public Member Functions</h2></td></tr>
 
 <p>Get a pointer to the host-side memory. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00135">135</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00021">Halide::Internal::BufferContents::buf</a>, <a class="el" href="_buffer_8h_source.html#l00241">defined()</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
+<p>Referenced by <a class="el" href="_image_8h_source.html#l00190">Halide::Image&lt; T &gt;::data()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a7ef77f7e2f5eca29ca30283fc27745a5"></a><!-- doxytag: member="Halide::Buffer::raw_buffer" ref="a7ef77f7e2f5eca29ca30283fc27745a5" args="() const " -->
+<a class="anchor" id="a72b8d1df132db7b58999cd9999c181ef"></a><!-- doxytag: member="Halide::Buffer::raw_buffer" ref="a72b8d1df132db7b58999cd9999c181ef" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">buffer_t* <a class="el" href="class_halide_1_1_buffer.html#a7ef77f7e2f5eca29ca30283fc27745a5">Halide::Buffer::raw_buffer</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> buffer_t* <a class="el" href="class_halide_1_1_buffer.html#a72b8d1df132db7b58999cd9999c181ef">Halide::Buffer::raw_buffer</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -360,23 +353,17 @@ Public Member Functions</h2></td></tr>
 
 <p>Get a pointer to the raw buffer_t struct that this class wraps. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00141">141</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00021">Halide::Internal::BufferContents::buf</a>, <a class="el" href="_buffer_8h_source.html#l00241">defined()</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
-
-<p>Referenced by <a class="el" href="_buffer_8h_source.html#l00293">copy_to_dev()</a>, <a class="el" href="_buffer_8h_source.html#l00273">copy_to_host()</a>, <a class="el" href="_buffer_8h_source.html#l00305">free_dev_buffer()</a>, and <a class="el" href="_image_8h_source.html#l00399">Halide::Image&lt; T &gt;::raw_buffer()</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="adbfdcce86be09961c8ae574844bbf73f"></a><!-- doxytag: member="Halide::Buffer::device_handle" ref="adbfdcce86be09961c8ae574844bbf73f" args="() const " -->
+<a class="anchor" id="adcafbdf518eb469b9eda17615cdf02b8"></a><!-- doxytag: member="Halide::Buffer::device_handle" ref="adcafbdf518eb469b9eda17615cdf02b8" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t <a class="el" href="class_halide_1_1_buffer.html#adbfdcce86be09961c8ae574844bbf73f">Halide::Buffer::device_handle</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> uint64_t <a class="el" href="class_halide_1_1_buffer.html#adcafbdf518eb469b9eda17615cdf02b8">Halide::Buffer::device_handle</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -385,21 +372,17 @@ Public Member Functions</h2></td></tr>
 <p>Get the device-side pointer/handle for this buffer. </p>
 <p>Will be zero if no device was involved in the creation of this buffer. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00149">149</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00021">Halide::Internal::BufferContents::buf</a>, <a class="el" href="_buffer_8h_source.html#l00241">defined()</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="a9167892ab30060588f1b3ec466cb69b5"></a><!-- doxytag: member="Halide::Buffer::host_dirty" ref="a9167892ab30060588f1b3ec466cb69b5" args="() const " -->
+<a class="anchor" id="a5f8fd991c1b9912281d05b0388f6a29b"></a><!-- doxytag: member="Halide::Buffer::host_dirty" ref="a5f8fd991c1b9912281d05b0388f6a29b" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_halide_1_1_buffer.html#a9167892ab30060588f1b3ec466cb69b5">Halide::Buffer::host_dirty</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool <a class="el" href="class_halide_1_1_buffer.html#a5f8fd991c1b9912281d05b0388f6a29b">Halide::Buffer::host_dirty</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -408,22 +391,18 @@ Public Member Functions</h2></td></tr>
 <p>Has this buffer been modified on the cpu since last copied to a device. </p>
 <p>Not meaningful unless there's a device involved. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00156">156</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00021">Halide::Internal::BufferContents::buf</a>, <a class="el" href="_buffer_8h_source.html#l00241">defined()</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="a80a79600fc7fcecca9bc6ff05b431f06"></a><!-- doxytag: member="Halide::Buffer::set_host_dirty" ref="a80a79600fc7fcecca9bc6ff05b431f06" args="(bool dirty=true)" -->
+<a class="anchor" id="a880c937a855451789cd77a4ce64cefd4"></a><!-- doxytag: member="Halide::Buffer::set_host_dirty" ref="a880c937a855451789cd77a4ce64cefd4" args="(bool dirty=true)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_buffer.html#a80a79600fc7fcecca9bc6ff05b431f06">Halide::Buffer::set_host_dirty</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void <a class="el" href="class_halide_1_1_buffer.html#a880c937a855451789cd77a4ce64cefd4">Halide::Buffer::set_host_dirty</a> </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>dirty</em> = <code>true</code></td><td>)</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
@@ -432,23 +411,17 @@ Public Member Functions</h2></td></tr>
 <p>Let <a class="el" href="namespace_halide.html">Halide</a> know that the host-side memory backing this buffer has been externally modified. </p>
 <p>You shouldn't normally need to call this, because it is done for you when you cast a <a class="el" href="class_halide_1_1_buffer.html" title="The internal representation of an image, or other dense array data.">Buffer</a> to an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> in order to modify it. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00165">165</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00021">Halide::Internal::BufferContents::buf</a>, <a class="el" href="_buffer_8h_source.html#l00241">defined()</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
-
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00167">Halide::Image&lt; T &gt;::set_host_dirty()</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="aad8c5390edca58c52aa3976917cc99fc"></a><!-- doxytag: member="Halide::Buffer::device_dirty" ref="aad8c5390edca58c52aa3976917cc99fc" args="() const " -->
+<a class="anchor" id="ac2be98ae9d831db0cd957b6bbf1d950a"></a><!-- doxytag: member="Halide::Buffer::device_dirty" ref="ac2be98ae9d831db0cd957b6bbf1d950a" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_halide_1_1_buffer.html#aad8c5390edca58c52aa3976917cc99fc">Halide::Buffer::device_dirty</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool <a class="el" href="class_halide_1_1_buffer.html#ac2be98ae9d831db0cd957b6bbf1d950a">Halide::Buffer::device_dirty</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -457,22 +430,18 @@ Public Member Functions</h2></td></tr>
 <p>Has this buffer been modified on device since last copied to the cpu. </p>
 <p>Not meaninful unless there's a device involved. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00172">172</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00021">Halide::Internal::BufferContents::buf</a>, <a class="el" href="_buffer_8h_source.html#l00241">defined()</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="aadb0e03075acde2411c0f8cb02a5f835"></a><!-- doxytag: member="Halide::Buffer::set_device_dirty" ref="aadb0e03075acde2411c0f8cb02a5f835" args="(bool dirty=true)" -->
+<a class="anchor" id="a5c70347927c620db01c0762c86723d38"></a><!-- doxytag: member="Halide::Buffer::set_device_dirty" ref="a5c70347927c620db01c0762c86723d38" args="(bool dirty=true)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_buffer.html#aadb0e03075acde2411c0f8cb02a5f835">Halide::Buffer::set_device_dirty</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void <a class="el" href="class_halide_1_1_buffer.html#a5c70347927c620db01c0762c86723d38">Halide::Buffer::set_device_dirty</a> </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>dirty</em> = <code>true</code></td><td>)</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
@@ -481,21 +450,17 @@ Public Member Functions</h2></td></tr>
 <p>Let <a class="el" href="namespace_halide.html">Halide</a> know that the device-side memory backing this buffer has been externally modified, and so the cpu-side memory is invalid. </p>
 <p>A copy-back will occur the next time you cast this <a class="el" href="class_halide_1_1_buffer.html" title="The internal representation of an image, or other dense array data.">Buffer</a> to an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a>, or the next time this buffer is accessed on the host in a halide pipeline. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00182">182</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00021">Halide::Internal::BufferContents::buf</a>, <a class="el" href="_buffer_8h_source.html#l00241">defined()</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="ab974a9b3c0276ac5d2d01850acc19581"></a><!-- doxytag: member="Halide::Buffer::dimensions" ref="ab974a9b3c0276ac5d2d01850acc19581" args="() const " -->
+<a class="anchor" id="a15b6b005dd04e24b283189375845d9be"></a><!-- doxytag: member="Halide::Buffer::dimensions" ref="a15b6b005dd04e24b283189375845d9be" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_buffer.html#ab974a9b3c0276ac5d2d01850acc19581">Halide::Buffer::dimensions</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int <a class="el" href="class_halide_1_1_buffer.html#a15b6b005dd04e24b283189375845d9be">Halide::Buffer::dimensions</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -504,22 +469,18 @@ Public Member Functions</h2></td></tr>
 <p>Get the dimensionality of this buffer. </p>
 <p>Uses the convention that the extent field of a buffer_t should contain zero when the dimensions end. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00190">190</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00198">extent()</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="a99a75c560615340d42cd0bc2c8db3068"></a><!-- doxytag: member="Halide::Buffer::extent" ref="a99a75c560615340d42cd0bc2c8db3068" args="(int dim) const " -->
+<a class="anchor" id="a0a775bbb13486ace1592442101e9091c"></a><!-- doxytag: member="Halide::Buffer::extent" ref="a0a775bbb13486ace1592442101e9091c" args="(int dim) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_buffer.html#a99a75c560615340d42cd0bc2c8db3068">Halide::Buffer::extent</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int <a class="el" href="class_halide_1_1_buffer.html#a0a775bbb13486ace1592442101e9091c">Halide::Buffer::extent</a> </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>dim</em></td><td>)</td>
-          <td> const<code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -527,24 +488,18 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the extent of this buffer in the given dimension. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00198">198</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00021">Halide::Internal::BufferContents::buf</a>, <a class="el" href="_buffer_8h_source.html#l00241">defined()</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
-
-<p>Referenced by <a class="el" href="_buffer_8h_source.html#l00190">dimensions()</a>, and <a class="el" href="_image_8h_source.html#l00182">Halide::Image&lt; T &gt;::extent()</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="ac7e569a7199285a1f5b0d4330bd87403"></a><!-- doxytag: member="Halide::Buffer::stride" ref="ac7e569a7199285a1f5b0d4330bd87403" args="(int dim) const " -->
+<a class="anchor" id="ada7e4789b258a94e77470c844619ee30"></a><!-- doxytag: member="Halide::Buffer::stride" ref="ada7e4789b258a94e77470c844619ee30" args="(int dim) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_buffer.html#ac7e569a7199285a1f5b0d4330bd87403">Halide::Buffer::stride</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int <a class="el" href="class_halide_1_1_buffer.html#ada7e4789b258a94e77470c844619ee30">Halide::Buffer::stride</a> </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>dim</em></td><td>)</td>
-          <td> const<code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -552,24 +507,18 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the number of bytes between adjacent elements of this buffer along the given dimension. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00205">205</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00021">Halide::Internal::BufferContents::buf</a>, <a class="el" href="_buffer_8h_source.html#l00241">defined()</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
-
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00210">Halide::Image&lt; T &gt;::stride()</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="a7d1aa55c9a18c38e04484db13bf76ebb"></a><!-- doxytag: member="Halide::Buffer::min" ref="a7d1aa55c9a18c38e04484db13bf76ebb" args="(int dim) const " -->
+<a class="anchor" id="a26dc5d0d683d0acac5826c18936e39d5"></a><!-- doxytag: member="Halide::Buffer::min" ref="a26dc5d0d683d0acac5826c18936e39d5" args="(int dim) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int <a class="el" href="class_halide_1_1_buffer.html#a7d1aa55c9a18c38e04484db13bf76ebb">Halide::Buffer::min</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int <a class="el" href="class_halide_1_1_buffer.html#a26dc5d0d683d0acac5826c18936e39d5">Halide::Buffer::min</a> </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>dim</em></td><td>)</td>
-          <td> const<code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -577,20 +526,14 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the coordinate in the function that this buffer represents that corresponds to the base address of the buffer. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00213">213</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00021">Halide::Internal::BufferContents::buf</a>, <a class="el" href="_buffer_8h_source.html#l00241">defined()</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
-
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00191">Halide::Image&lt; T &gt;::min()</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="a403eeab2ffcc5adb67d353e9105e436c"></a><!-- doxytag: member="Halide::Buffer::set_min" ref="a403eeab2ffcc5adb67d353e9105e436c" args="(int m0, int m1=0, int m2=0, int m3=0)" -->
+<a class="anchor" id="a1c0c2d787d34340c398d200dfe0dbeb5"></a><!-- doxytag: member="Halide::Buffer::set_min" ref="a1c0c2d787d34340c398d200dfe0dbeb5" args="(int m0, int m1=0, int m2=0, int m3=0)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_buffer.html#a403eeab2ffcc5adb67d353e9105e436c">Halide::Buffer::set_min</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void <a class="el" href="class_halide_1_1_buffer.html#a1c0c2d787d34340c398d200dfe0dbeb5">Halide::Buffer::set_min</a> </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>m0</em>, </td>
@@ -616,7 +559,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
@@ -624,23 +567,17 @@ Public Member Functions</h2></td></tr>
 
 <p>Set the coordinate in the function that this buffer represents that corresponds to the base address of the buffer. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00221">221</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00021">Halide::Internal::BufferContents::buf</a>, <a class="el" href="_buffer_8h_source.html#l00241">defined()</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
-
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00198">Halide::Image&lt; T &gt;::set_min()</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="a0c0f6ac621b1557c996b1fc5e424949b"></a><!-- doxytag: member="Halide::Buffer::type" ref="a0c0f6ac621b1557c996b1fc5e424949b" args="() const " -->
+<a class="anchor" id="a626cc16251c6955f78581231085f0b1b"></a><!-- doxytag: member="Halide::Buffer::type" ref="a626cc16251c6955f78581231085f0b1b" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_halide_1_1_type.html">Type</a> <a class="el" href="class_halide_1_1_buffer.html#a0c0f6ac621b1557c996b1fc5e424949b">Halide::Buffer::type</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_type.html">Type</a> <a class="el" href="class_halide_1_1_buffer.html#a626cc16251c6955f78581231085f0b1b">Halide::Buffer::type</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -648,24 +585,20 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the <a class="el" href="namespace_halide.html">Halide</a> type of the contents of this buffer. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00230">230</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00241">defined()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_buffer_8h_source.html#l00024">Halide::Internal::BufferContents::type</a>.</p>
-
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00130">Halide::Image&lt; T &gt;::Image()</a>, <a class="el" href="_i_r_8h_source.html#l01032">Halide::Internal::Call::make()</a>, <a class="el" href="_buffer_8h_source.html#l00251">operator Argument()</a>, and <a class="el" href="_parameter_8h_source.html#l00105">Halide::Internal::Parameter::set_buffer()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_8h_source.html#l01049">Halide::Internal::Call::make()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a387c39bd39fafa8b0706cd40763952da"></a><!-- doxytag: member="Halide::Buffer::same_as" ref="a387c39bd39fafa8b0706cd40763952da" args="(const Buffer &amp;other) const " -->
+<a class="anchor" id="ad560be036aa865430f1e1d5e1314e74b"></a><!-- doxytag: member="Halide::Buffer::same_as" ref="ad560be036aa865430f1e1d5e1314e74b" args="(const Buffer &amp;other) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_halide_1_1_buffer.html#a387c39bd39fafa8b0706cd40763952da">Halide::Buffer::same_as</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool <a class="el" href="class_halide_1_1_buffer.html#ad560be036aa865430f1e1d5e1314e74b">Halide::Buffer::same_as</a> </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="class_halide_1_1_buffer.html">Buffer</a> &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
-          <td> const<code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -673,21 +606,17 @@ Public Member Functions</h2></td></tr>
 
 <p>Compare two buffers for identity (not equality of data). </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00236">236</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00111">Halide::Internal::IntrusivePtr&lt; T &gt;::same_as()</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="aa01e21303dc4b3181e23457cff6f2a4b"></a><!-- doxytag: member="Halide::Buffer::defined" ref="aa01e21303dc4b3181e23457cff6f2a4b" args="() const " -->
+<a class="anchor" id="a2c39dfbf593697aa4a5bea422de3b7a2"></a><!-- doxytag: member="Halide::Buffer::defined" ref="a2c39dfbf593697aa4a5bea422de3b7a2" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_halide_1_1_buffer.html#aa01e21303dc4b3181e23457cff6f2a4b">Halide::Buffer::defined</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool <a class="el" href="class_halide_1_1_buffer.html#a2c39dfbf593697aa4a5bea422de3b7a2">Halide::Buffer::defined</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -695,23 +624,19 @@ Public Member Functions</h2></td></tr>
 
 <p>Check if this buffer handle actually points to data. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00241">241</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00105">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>.</p>
-
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00172">Halide::Image&lt; T &gt;::defined()</a>, <a class="el" href="_buffer_8h_source.html#l00172">device_dirty()</a>, <a class="el" href="_buffer_8h_source.html#l00149">device_handle()</a>, <a class="el" href="_buffer_8h_source.html#l00198">extent()</a>, <a class="el" href="_buffer_8h_source.html#l00156">host_dirty()</a>, <a class="el" href="_buffer_8h_source.html#l00135">host_ptr()</a>, <a class="el" href="_i_r_8h_source.html#l00987">Halide::Internal::Call::make()</a>, <a class="el" href="_buffer_8h_source.html#l00213">min()</a>, <a class="el" href="_buffer_8h_source.html#l00141">raw_buffer()</a>, <a class="el" href="_parameter_8h_source.html#l00105">Halide::Internal::Parameter::set_buffer()</a>, <a class="el" href="_buffer_8h_source.html#l00182">set_device_dirty()</a>, <a class="el" href="_buffer_8h_source.html#l00165">set_host_dirty()</a>, <a class="el" href="_buffer_8h_source.html#l00221">set_min()</a>, <a class="el" href="_buffer_8h_source.html#l00257">set_source_module()</a>, <a class="el" href="_buffer_8h_source.html#l00265">source_module()</a>, <a class="el" href="_buffer_8h_source.html#l00205">stride()</a>, and <a class="el" href="_buffer_8h_source.html#l00230">type()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a71bd7cfcd2178331016d6833a85c9b69"></a><!-- doxytag: member="Halide::Buffer::name" ref="a71bd7cfcd2178331016d6833a85c9b69" args="() const " -->
+<a class="anchor" id="a55989c22a6205a96ac749f6daa1ac8af"></a><!-- doxytag: member="Halide::Buffer::name" ref="a55989c22a6205a96ac749f6daa1ac8af" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::string&amp; <a class="el" href="class_halide_1_1_buffer.html#a71bd7cfcd2178331016d6833a85c9b69">Halide::Buffer::name</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> const std::string&amp; <a class="el" href="class_halide_1_1_buffer.html#a55989c22a6205a96ac749f6daa1ac8af">Halide::Buffer::name</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -719,23 +644,19 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the runtime name of this buffer used for debugging. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00246">246</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00036">Halide::Internal::BufferContents::name</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
-
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l01032">Halide::Internal::Call::make()</a>, <a class="el" href="_buffer_8h_source.html#l00251">operator Argument()</a>, and <a class="el" href="_image_8h_source.html#l00343">Halide::Image&lt; T &gt;::operator()()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_8h_source.html#l01049">Halide::Internal::Call::make()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="afbf6f88aa7b6f1ccf4404a53ab320802"></a><!-- doxytag: member="Halide::Buffer::operator Argument" ref="afbf6f88aa7b6f1ccf4404a53ab320802" args="() const " -->
+<a class="anchor" id="a12d4d7a1a23ab2ff51c2dbea52f05de3"></a><!-- doxytag: member="Halide::Buffer::operator Argument" ref="a12d4d7a1a23ab2ff51c2dbea52f05de3" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Halide::Buffer::operator <a class="el" href="struct_halide_1_1_argument.html">Argument</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Halide::Buffer::operator <a class="el" href="struct_halide_1_1_argument.html">Argument</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const<code> [inline]</code></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -743,22 +664,18 @@ Public Member Functions</h2></td></tr>
 
 <p>Convert this buffer to an argument to a halide pipeline. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00251">251</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00246">name()</a>, and <a class="el" href="_buffer_8h_source.html#l00230">type()</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="a4a3f171c5f7ba2c49737270276045a75"></a><!-- doxytag: member="Halide::Buffer::set_source_module" ref="a4a3f171c5f7ba2c49737270276045a75" args="(const Internal::JITCompiledModule &amp;module)" -->
+<a class="anchor" id="a116957181fe126d7c2b2f68fbd084a27"></a><!-- doxytag: member="Halide::Buffer::set_source_module" ref="a116957181fe126d7c2b2f68fbd084a27" args="(const Internal::JITCompiledModule &amp;module)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_buffer.html#a4a3f171c5f7ba2c49737270276045a75">Halide::Buffer::set_source_module</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void <a class="el" href="class_halide_1_1_buffer.html#a116957181fe126d7c2b2f68fbd084a27">Halide::Buffer::set_source_module</a> </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html">Internal::JITCompiledModule</a> &amp;&#160;</td>
           <td class="paramname"><em>module</em></td><td>)</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
@@ -767,21 +684,17 @@ Public Member Functions</h2></td></tr>
 <p>Declare that this buffer was created by the given jit-compiled module. </p>
 <p>Used internally for reference counting the module. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00257">257</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00241">defined()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_buffer_8h_source.html#l00044">Halide::Internal::BufferContents::source_module</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="a4094a1008fbfaaaa273104d0c0766f4c"></a><!-- doxytag: member="Halide::Buffer::source_module" ref="a4094a1008fbfaaaa273104d0c0766f4c" args="()" -->
+<a class="anchor" id="a87cd6d500b2358d577d0b9dc56743ff9"></a><!-- doxytag: member="Halide::Buffer::source_module" ref="a87cd6d500b2358d577d0b9dc56743ff9" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html">Internal::JITCompiledModule</a>&amp; <a class="el" href="class_halide_1_1_buffer.html#a4094a1008fbfaaaa273104d0c0766f4c">Halide::Buffer::source_module</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> const <a class="el" href="struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html">Internal::JITCompiledModule</a>&amp; <a class="el" href="class_halide_1_1_buffer.html#a87cd6d500b2358d577d0b9dc56743ff9">Halide::Buffer::source_module</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
@@ -790,21 +703,17 @@ Public Member Functions</h2></td></tr>
 <p>If this buffer was the output of a jit-compiled realization, retrieve the module it came from. </p>
 <p>Otherwise returns a module struct full of null pointers. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00265">265</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_buffer_8h_source.html#l00241">defined()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_buffer_8h_source.html#l00044">Halide::Internal::BufferContents::source_module</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="ab0f3c9bd08929c18baca4ccfb19d8280"></a><!-- doxytag: member="Halide::Buffer::copy_to_host" ref="ab0f3c9bd08929c18baca4ccfb19d8280" args="()" -->
+<a class="anchor" id="afc79dc98d70a8245b24c54d25d60ca46"></a><!-- doxytag: member="Halide::Buffer::copy_to_host" ref="afc79dc98d70a8245b24c54d25d60ca46" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_buffer.html#ab0f3c9bd08929c18baca4ccfb19d8280">Halide::Buffer::copy_to_host</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int <a class="el" href="class_halide_1_1_buffer.html#afc79dc98d70a8245b24c54d25d60ca46">Halide::Buffer::copy_to_host</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
@@ -813,23 +722,17 @@ Public Member Functions</h2></td></tr>
 <p>If this buffer was created *on-device* by a jit-compiled realization, then copy it back to the cpu-side memory. </p>
 <p>This is usually achieved by casting the <a class="el" href="class_halide_1_1_buffer.html" title="The internal representation of an image, or other dense array data.">Buffer</a> to an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a>. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00273">273</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00050">Halide::Internal::JITCompiledModule::copy_to_host</a>, <a class="el" href="mini__stdint_8h_source.html#l00032">NULL</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, <a class="el" href="_buffer_8h_source.html#l00141">raw_buffer()</a>, and <a class="el" href="_buffer_8h_source.html#l00044">Halide::Internal::BufferContents::source_module</a>.</p>
-
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00159">Halide::Image&lt; T &gt;::copy_to_host()</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="a159d5586ab151d3b3b292bb2f8d653fe"></a><!-- doxytag: member="Halide::Buffer::copy_to_dev" ref="a159d5586ab151d3b3b292bb2f8d653fe" args="()" -->
+<a class="anchor" id="a9ebfdbc705afe62af3838d23c643e882"></a><!-- doxytag: member="Halide::Buffer::copy_to_dev" ref="a9ebfdbc705afe62af3838d23c643e882" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_buffer.html#a159d5586ab151d3b3b292bb2f8d653fe">Halide::Buffer::copy_to_dev</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int <a class="el" href="class_halide_1_1_buffer.html#a9ebfdbc705afe62af3838d23c643e882">Halide::Buffer::copy_to_dev</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
@@ -838,21 +741,17 @@ Public Member Functions</h2></td></tr>
 <p>If this buffer was created by a jit-compiled realization on a device-aware target (e.g. </p>
 <p>PTX), then copy the cpu-side data to the device-side allocation. TODO: I believe this currently aborts messily if no device-side allocation exists. You might think you want to do this because you've modified the data manually on the host before calling another <a class="el" href="namespace_halide.html">Halide</a> pipeline, but what you actually want to do in that situation is set the host_dirty bit so that <a class="el" href="namespace_halide.html">Halide</a> can manage the copy lazily for you. Casting the <a class="el" href="class_halide_1_1_buffer.html" title="The internal representation of an image, or other dense array data.">Buffer</a> to an <a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image</a> sets the dirty bit for you. </p>
 
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00293">293</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00051">Halide::Internal::JITCompiledModule::copy_to_dev</a>, <a class="el" href="mini__stdint_8h_source.html#l00032">NULL</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, <a class="el" href="_buffer_8h_source.html#l00141">raw_buffer()</a>, and <a class="el" href="_buffer_8h_source.html#l00044">Halide::Internal::BufferContents::source_module</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="acc1c7e0cd6896cc807db2bee4c8229ae"></a><!-- doxytag: member="Halide::Buffer::free_dev_buffer" ref="acc1c7e0cd6896cc807db2bee4c8229ae" args="()" -->
+<a class="anchor" id="a8ca6dbcd6a77154d51ef1bd6cf3348eb"></a><!-- doxytag: member="Halide::Buffer::free_dev_buffer" ref="a8ca6dbcd6a77154d51ef1bd6cf3348eb" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_buffer.html#acc1c7e0cd6896cc807db2bee4c8229ae">Halide::Buffer::free_dev_buffer</a> </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int <a class="el" href="class_halide_1_1_buffer.html#a8ca6dbcd6a77154d51ef1bd6cf3348eb">Halide::Buffer::free_dev_buffer</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td><code> [inline]</code></td>
+          <td></td>
         </tr>
       </table>
 </div>
@@ -860,10 +759,6 @@ Public Member Functions</h2></td></tr>
 
 <p>If this buffer was created by a jit-compiled realization on a device-aware target (e.g. </p>
 <p>PTX), then free the device-side allocation, if there is one. Done automatically when the last reference to this buffer dies. </p>
-
-<p>Definition at line <a class="el" href="_buffer_8h_source.html#l00305">305</a> of file <a class="el" href="_buffer_8h_source.html">Buffer.h</a>.</p>
-
-<p>References <a class="el" href="_j_i_t_compiled_module_8h_source.html#l00052">Halide::Internal::JITCompiledModule::free_dev_buffer</a>, <a class="el" href="mini__stdint_8h_source.html#l00032">NULL</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00076">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, <a class="el" href="_buffer_8h_source.html#l00141">raw_buffer()</a>, and <a class="el" href="_buffer_8h_source.html#l00044">Halide::Internal::BufferContents::source_module</a>.</p>
 
 </div>
 </div>

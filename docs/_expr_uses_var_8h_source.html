@@ -115,14 +115,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00013"></a>00013 <span class="comment"></span>
 <a name="l00014"></a>00014 <span class="comment">/** Test if an expression references the given variable. */</span>
 <a name="l00015"></a>00015 <span class="keywordtype">bool</span> <a class="code" href="namespace_halide_1_1_internal.html#af239670eead776a941de1cb3f1a93202" title="Test if an expression references the given variable.">expr_uses_var</a>(Expr e, <span class="keyword">const</span> std::string &amp;v);
-<a name="l00016"></a>00016 <span class="comment"></span>
-<a name="l00017"></a>00017 <span class="comment">/** Test if an expression references any of the variables in a scope. */</span>
-<a name="l00018"></a>00018 <span class="keywordtype">bool</span> <a class="code" href="namespace_halide_1_1_internal.html#a732aa2f0cfa0092233323263965cc3b9" title="Test if an expression references any of the variables in a scope.">expr_uses_vars</a>(Expr e, <span class="keyword">const</span> Scope&lt;int&gt; &amp;s);
-<a name="l00019"></a>00019 
-<a name="l00020"></a>00020 }
-<a name="l00021"></a>00021 }
+<a name="l00016"></a>00016 
+<a name="l00017"></a>00017 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l00018"></a><a class="code" href="class_halide_1_1_internal_1_1_expr_uses_vars.html">00018</a> <span class="keyword">class </span><a class="code" href="class_halide_1_1_internal_1_1_expr_uses_vars.html">ExprUsesVars</a> : <span class="keyword">public</span> <a class="code" href="class_halide_1_1_internal_1_1_i_r_visitor.html" title="A base class for algorithms that need to recursively walk over the IR.">IRVisitor</a> {
+<a name="l00019"></a>00019     <span class="keyword">using</span> <a class="code" href="class_halide_1_1_internal_1_1_i_r_visitor.html#a93f91cea5a783c0319c73fb7e6246167">IRVisitor::visit</a>;
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021     <span class="keyword">const</span> <a class="code" href="class_halide_1_1_internal_1_1_scope.html" title="A common pattern when traversing Halide IR is that you need to keep track of stuff when you find a Le...">Scope&lt;T&gt;</a> &amp;scope;
 <a name="l00022"></a>00022 
-<a name="l00023"></a>00023 <span class="preprocessor">#endif</span>
+<a name="l00023"></a>00023     <span class="keywordtype">void</span> visit(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_variable.html" title="A named variable.">Variable</a> *v) {
+<a name="l00024"></a>00024         <span class="keywordflow">if</span> (scope.contains(v-&gt;<a class="code" href="struct_halide_1_1_internal_1_1_variable.html#ad93b449fd7abc3a48ac06cb8583b829d">name</a>)) {
+<a name="l00025"></a>00025             <a class="code" href="class_halide_1_1_internal_1_1_expr_uses_vars.html#a482fe1415e245e98b465b801b8e2584d">result</a> = <span class="keyword">true</span>;
+<a name="l00026"></a>00026         }
+<a name="l00027"></a>00027     }
+<a name="l00028"></a>00028 <span class="keyword">public</span>:
+<a name="l00029"></a><a class="code" href="class_halide_1_1_internal_1_1_expr_uses_vars.html#a9b4bf814217a95703d88edbc6bd50d06">00029</a>     <a class="code" href="class_halide_1_1_internal_1_1_expr_uses_vars.html#a9b4bf814217a95703d88edbc6bd50d06">ExprUsesVars</a>(<span class="keyword">const</span> <a class="code" href="class_halide_1_1_internal_1_1_scope.html" title="A common pattern when traversing Halide IR is that you need to keep track of stuff when you find a Le...">Scope&lt;T&gt;</a> &amp;s) : scope(s), <a class="code" href="class_halide_1_1_internal_1_1_expr_uses_vars.html#a482fe1415e245e98b465b801b8e2584d">result</a>(false) {}
+<a name="l00030"></a><a class="code" href="class_halide_1_1_internal_1_1_expr_uses_vars.html#a482fe1415e245e98b465b801b8e2584d">00030</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_expr_uses_vars.html#a482fe1415e245e98b465b801b8e2584d">result</a>;
+<a name="l00031"></a>00031 };
+<a name="l00032"></a>00032 <span class="comment"></span>
+<a name="l00033"></a>00033 <span class="comment">/** Test if an expression references any of the variables in a scope. */</span>
+<a name="l00034"></a>00034 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;
+<a name="l00035"></a><a class="code" href="namespace_halide_1_1_internal.html#aaada81b273cd0d0f1b9f722fbd758e4a">00035</a> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="namespace_halide_1_1_internal.html#aaada81b273cd0d0f1b9f722fbd758e4a" title="Test if an expression references any of the variables in a scope.">expr_uses_vars</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e, <span class="keyword">const</span> <a class="code" href="class_halide_1_1_internal_1_1_scope.html" title="A common pattern when traversing Halide IR is that you need to keep track of stuff when you find a Le...">Scope&lt;T&gt;</a> &amp;s) {
+<a name="l00036"></a>00036     <a class="code" href="class_halide_1_1_internal_1_1_expr_uses_vars.html">ExprUsesVars&lt;T&gt;</a> uses(s);
+<a name="l00037"></a>00037     e.<a class="code" href="struct_halide_1_1_internal_1_1_i_r_handle.html#a9b5e6a27e69d058b7eaaa36d8d181aac" title="Dispatch to the correct visitor method for this node.">accept</a>(&amp;uses);
+<a name="l00038"></a>00038     <span class="keywordflow">return</span> uses.<a class="code" href="class_halide_1_1_internal_1_1_expr_uses_vars.html#a482fe1415e245e98b465b801b8e2584d">result</a>;
+<a name="l00039"></a>00039 }
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 }
+<a name="l00042"></a>00042 }
+<a name="l00043"></a>00043 
+<a name="l00044"></a>00044 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

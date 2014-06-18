@@ -110,6 +110,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><code>#include &lt;<a class="el" href="_argument_8h_source.html">Argument.h</a>&gt;</code></p>
 
+<p>Inherited by <a class="el" href="struct_halide_1_1_internal_1_1_g_p_u___argument.html">Halide::Internal::GPU_Argument</a>.</p>
+
 <p><a href="struct_halide_1_1_argument-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
@@ -122,6 +124,9 @@ Public Attributes</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The name of the argument.  <a href="#a840ef15d58884bca5f09693c80c153a6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_argument.html#aba405d8c881a59ab66023e4c607a2134">is_buffer</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">An argument is either a primitive type (for parameters), or a buffer pointer.  <a href="#aba405d8c881a59ab66023e4c607a2134"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_argument.html#a5ab0e2cafa277167e900620e7749464d">read</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">For buffers, these two variables can be used to specify whether the buffer is read or written.  <a href="#a5ab0e2cafa277167e900620e7749464d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_argument.html#a1fe70a0aea1d707a361a49178f6d2c1a">write</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_type.html">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_argument.html#a9925e7e005656e871852cdc3ba38dfaa">type</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">If this is a scalar parameter, then this is its type.  <a href="#a9925e7e005656e871852cdc3ba38dfaa"></a><br/></td></tr>
 </table>
@@ -145,7 +150,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_argument_8h_source.html#l00032">32</a> of file <a class="el" href="_argument_8h_source.html">Argument.h</a>.</p>
+<p>Definition at line <a class="el" href="_argument_8h_source.html#l00038">38</a> of file <a class="el" href="_argument_8h_source.html">Argument.h</a>.</p>
 
 </div>
 </div>
@@ -180,7 +185,9 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_argument_8h_source.html#l00033">33</a> of file <a class="el" href="_argument_8h_source.html">Argument.h</a>.</p>
+<p>Definition at line <a class="el" href="_argument_8h_source.html#l00039">39</a> of file <a class="el" href="_argument_8h_source.html">Argument.h</a>.</p>
+
+<p>References <a class="el" href="_argument_8h_source.html#l00027">is_buffer</a>, <a class="el" href="_argument_8h_source.html#l00032">read</a>, and <a class="el" href="_argument_8h_source.html#l00033">write</a>.</p>
 
 </div>
 </div>
@@ -218,6 +225,45 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_argument_8h_source.html#l00027">27</a> of file <a class="el" href="_argument_8h_source.html">Argument.h</a>.</p>
 
+<p>Referenced by <a class="el" href="_argument_8h_source.html#l00039">Argument()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5ab0e2cafa277167e900620e7749464d"></a><!-- doxytag: member="Halide::Argument::read" ref="a5ab0e2cafa277167e900620e7749464d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="struct_halide_1_1_argument.html#a5ab0e2cafa277167e900620e7749464d">Halide::Argument::read</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>For buffers, these two variables can be used to specify whether the buffer is read or written. </p>
+<p>By default, we assume that the argument buffer is read-write and set both flags. </p>
+
+<p>Definition at line <a class="el" href="_argument_8h_source.html#l00032">32</a> of file <a class="el" href="_argument_8h_source.html">Argument.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_argument_8h_source.html#l00039">Argument()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1fe70a0aea1d707a361a49178f6d2c1a"></a><!-- doxytag: member="Halide::Argument::write" ref="a1fe70a0aea1d707a361a49178f6d2c1a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="struct_halide_1_1_argument.html#a1fe70a0aea1d707a361a49178f6d2c1a">Halide::Argument::write</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_argument_8h_source.html#l00033">33</a> of file <a class="el" href="_argument_8h_source.html">Argument.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_argument_8h_source.html#l00039">Argument()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a9925e7e005656e871852cdc3ba38dfaa"></a><!-- doxytag: member="Halide::Argument::type" ref="a9925e7e005656e871852cdc3ba38dfaa" args="" -->
@@ -233,7 +279,7 @@ Public Attributes</h2></td></tr>
 
 <p>If this is a scalar parameter, then this is its type. </p>
 
-<p>Definition at line <a class="el" href="_argument_8h_source.html#l00030">30</a> of file <a class="el" href="_argument_8h_source.html">Argument.h</a>.</p>
+<p>Definition at line <a class="el" href="_argument_8h_source.html#l00036">36</a> of file <a class="el" href="_argument_8h_source.html">Argument.h</a>.</p>
 
 </div>
 </div>
