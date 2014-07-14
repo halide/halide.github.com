@@ -4,7 +4,6 @@ var searchData=
   ['lcm',['lcm',['../namespace_halide_1_1_internal.html#ab56d2d1c54f988f23aa03ae70cdfd857',1,'Halide::Internal']]],
   ['left',['left',['../class_halide_1_1_image_base.html#ad9473359be3ca9bf44cadd75ffe84ab8',1,'Halide::ImageBase::left()'],['../class_halide_1_1_output_image_param.html#a94722641700eb033359cd11ab16e5243',1,'Halide::OutputImageParam::left()']]],
   ['lerp',['lerp',['../namespace_halide.html#a55158f5f229510194c425dfae256d530',1,'Halide']]],
-  ['lift_5floop_5finvariants',['lift_loop_invariants',['../namespace_halide_1_1_internal.html#a95f0cfbb7653be4145fe4cedd9a15dfa',1,'Halide::Internal']]],
   ['llvm_5ftype_5fof',['llvm_type_of',['../class_halide_1_1_internal_1_1_code_gen.html#ad97a72c04bead860a4f665b49ebed0b9',1,'Halide::Internal::CodeGen::llvm_type_of()'],['../namespace_halide_1_1_internal.html#a71f10140e29131153c3be98d2899b090',1,'Halide::Internal::llvm_type_of()']]],
   ['llvm_5ftypes',['llvm_types',['../class_halide_1_1_internal_1_1_closure.html#a4b946c55e2049f483deb5657b912cbc9',1,'Halide::Internal::Closure']]],
   ['log',['log',['../namespace_halide.html#a02f1c38239e6e977fea90b94217499ae',1,'Halide']]],

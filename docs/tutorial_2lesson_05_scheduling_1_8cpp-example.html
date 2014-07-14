@@ -174,7 +174,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// The most powerful primitive scheduling operation you can do</span>
         <span class="comment">// to a var is to split it into inner and outer sub-variables:</span>
         <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> x_outer, x_inner;
-        gradient.<a name="a6"></a><a class="code" href="class_halide_1_1_func.html#abefe6262e23d34d161c7cc0b85e07187" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(x, x_outer, x_inner, 2);
+        gradient.<a name="a6"></a><a class="code" href="class_halide_1_1_func.html#a52a4cace19fc024959cda3a7e82dd9f6" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(x, x_outer, x_inner, 2);
 
         <span class="comment">// This breaks the loop over x into two nested loops: an outer</span>
         <span class="comment">// one over x_outer, and an inner one over x_inner. The last</span>
@@ -218,7 +218,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// lesson). Like splitting, fusing by itself doesn&#39;t change</span>
         <span class="comment">// the order of evaluation.</span>
         <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> fused;
-        gradient.<a name="a7"></a><a class="code" href="class_halide_1_1_func.html#a5ceb7639659b4e305b4ead3784ed1e6b" title="Join two dimensions into a single fused dimenion.">fuse</a>(x, y, fused);
+        gradient.<a name="a7"></a><a class="code" href="class_halide_1_1_func.html#a07ae6163527e6319a9352f7648afd875" title="Join two dimensions into a single fused dimenion.">fuse</a>(x, y, fused);
 
         printf(<span class="stringliteral">&quot;Evaluating gradient with x and y fused\n&quot;</span>);
         <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(4, 4);
@@ -248,8 +248,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// input data, for example in a blur. We can express a tiled</span>
         <span class="comment">// traversal like so:</span>
         <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> x_outer, x_inner, y_outer, y_inner;
-        gradient.<a class="code" href="class_halide_1_1_func.html#abefe6262e23d34d161c7cc0b85e07187" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(x, x_outer, x_inner, 2);
-        gradient.<a class="code" href="class_halide_1_1_func.html#abefe6262e23d34d161c7cc0b85e07187" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(y, y_outer, y_inner, 2);
+        gradient.<a class="code" href="class_halide_1_1_func.html#a52a4cace19fc024959cda3a7e82dd9f6" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(x, x_outer, x_inner, 2);
+        gradient.<a class="code" href="class_halide_1_1_func.html#a52a4cace19fc024959cda3a7e82dd9f6" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(y, y_outer, y_inner, 2);
         gradient.<a class="code" href="class_halide_1_1_func.html#a2ad991bc3ebd940906187a0552ef7754" title="Reorder variables to have the given nesting order, from innermost out.">reorder</a>(x_inner, y_inner, x_outer, y_outer);
 
         <span class="comment">// This pattern is common enough that there&#39;s a shorthand for it:</span>
@@ -287,8 +287,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// factor of four, because on X86 we can use SSE to compute in</span>
         <span class="comment">// 4-wide vectors.</span>
         <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> x_outer, x_inner;
-        gradient.<a class="code" href="class_halide_1_1_func.html#abefe6262e23d34d161c7cc0b85e07187" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(x, x_outer, x_inner, 4);
-        gradient.<a name="a8"></a><a class="code" href="class_halide_1_1_func.html#a1cbde565654302d9c0ab9383a0e42708" title="Mark a dimension to be computed all-at-once as a single vector.">vectorize</a>(x_inner);
+        gradient.<a class="code" href="class_halide_1_1_func.html#a52a4cace19fc024959cda3a7e82dd9f6" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(x, x_outer, x_inner, 4);
+        gradient.<a name="a8"></a><a class="code" href="class_halide_1_1_func.html#a7b1857a62deca8bc9a477c1b26720950" title="Mark a dimension to be computed all-at-once as a single vector.">vectorize</a>(x_inner);
 
         <span class="comment">// Splitting and then vectorizing the inner variable is common</span>
         <span class="comment">// enough that there&#39;s a short-hand for it. We could have also</span>
@@ -350,8 +350,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// fully unroll the loop of the inner variable. Unrolling</span>
         <span class="comment">// doesn&#39;t change the order in which things are evaluated.</span>
         <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> x_outer, x_inner;
-        gradient.<a class="code" href="class_halide_1_1_func.html#abefe6262e23d34d161c7cc0b85e07187" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(x, x_outer, x_inner, 2);
-        gradient.<a name="a9"></a><a class="code" href="class_halide_1_1_func.html#ab0055492c3b10965e1656f26431a01d8" title="Mark a dimension to be completely unrolled.">unroll</a>(x_inner);
+        gradient.<a class="code" href="class_halide_1_1_func.html#a52a4cace19fc024959cda3a7e82dd9f6" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(x, x_outer, x_inner, 2);
+        gradient.<a name="a9"></a><a class="code" href="class_halide_1_1_func.html#a75c97910f964410df65f04f7a85e3518" title="Mark a dimension to be completely unrolled.">unroll</a>(x_inner);
 
         <span class="comment">// The shorthand for this is:</span>
         <span class="comment">// gradient.unroll(x, 2);</span>
@@ -394,7 +394,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// gradient over a 5x4 box instead of the 4x4 box we&#39;ve been</span>
         <span class="comment">// using.</span>
         <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> x_outer, x_inner;
-        gradient.<a class="code" href="class_halide_1_1_func.html#abefe6262e23d34d161c7cc0b85e07187" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(x, x_outer, x_inner, 2);
+        gradient.<a class="code" href="class_halide_1_1_func.html#a52a4cace19fc024959cda3a7e82dd9f6" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(x, x_outer, x_inner, 2);
 
         printf(<span class="stringliteral">&quot;Evaluating gradient over a 5x4 box with x split by two \n&quot;</span>);
         <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> output = gradient.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(5, 4);
@@ -455,9 +455,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// First we&#39;ll tile, then we&#39;ll fuse the tile indices and</span>
         <span class="comment">// parallelize across the combination.</span>
         <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> x_outer, y_outer, x_inner, y_inner, tile_index;
-        gradient.<a name="a10"></a><a class="code" href="class_halide_1_1_func.html#a070bb51c52383bd6402d6002458a3788" title="Split two dimensions at once by the given factors, and then reorder the resulting dimensions to be xi...">tile</a>(x, y, x_outer, y_outer, x_inner, y_inner, 2, 2);
-        gradient.<a class="code" href="class_halide_1_1_func.html#a5ceb7639659b4e305b4ead3784ed1e6b" title="Join two dimensions into a single fused dimenion.">fuse</a>(x_outer, y_outer, tile_index);
-        gradient.<a name="a11"></a><a class="code" href="class_halide_1_1_func.html#a93ee31a00e40c4531af6f58187ee19b9" title="Mark a dimension to be traversed in parallel.">parallel</a>(tile_index);
+        gradient.<a name="a10"></a><a class="code" href="class_halide_1_1_func.html#ab15001cd4af9e8c2808f45ff53b81582" title="Split two dimensions at once by the given factors, and then reorder the resulting dimensions to be xi...">tile</a>(x, y, x_outer, y_outer, x_inner, y_inner, 2, 2);
+        gradient.<a class="code" href="class_halide_1_1_func.html#a07ae6163527e6319a9352f7648afd875" title="Join two dimensions into a single fused dimenion.">fuse</a>(x_outer, y_outer, tile_index);
+        gradient.<a name="a11"></a><a class="code" href="class_halide_1_1_func.html#aa0050c604179b43a8deb42b62dedd29d" title="Mark a dimension to be traversed in parallel.">parallel</a>(tile_index);
 
         <span class="comment">// The scheduling calls all return a reference to the Func, so</span>
         <span class="comment">// you can also chain them together into a single statement to</span>
@@ -500,9 +500,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// We&#39;ll process 256x256 tiles in parallel.</span>
         <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> x_outer, y_outer, x_inner, y_inner, tile_index;
         gradient_fast
-            .<a class="code" href="class_halide_1_1_func.html#a070bb51c52383bd6402d6002458a3788" title="Split two dimensions at once by the given factors, and then reorder the resulting dimensions to be xi...">tile</a>(x, y, x_outer, y_outer, x_inner, y_inner, 256, 256)
-            .<a class="code" href="class_halide_1_1_func.html#a5ceb7639659b4e305b4ead3784ed1e6b" title="Join two dimensions into a single fused dimenion.">fuse</a>(x_outer, y_outer, tile_index)
-            .<a class="code" href="class_halide_1_1_func.html#a93ee31a00e40c4531af6f58187ee19b9" title="Mark a dimension to be traversed in parallel.">parallel</a>(tile_index);
+            .<a class="code" href="class_halide_1_1_func.html#ab15001cd4af9e8c2808f45ff53b81582" title="Split two dimensions at once by the given factors, and then reorder the resulting dimensions to be xi...">tile</a>(x, y, x_outer, y_outer, x_inner, y_inner, 256, 256)
+            .<a class="code" href="class_halide_1_1_func.html#a07ae6163527e6319a9352f7648afd875" title="Join two dimensions into a single fused dimenion.">fuse</a>(x_outer, y_outer, tile_index)
+            .<a class="code" href="class_halide_1_1_func.html#aa0050c604179b43a8deb42b62dedd29d" title="Mark a dimension to be traversed in parallel.">parallel</a>(tile_index);
 
         <span class="comment">// We&#39;ll compute two scanlines at once while we walk across</span>
         <span class="comment">// each tile. We&#39;ll also vectorize in x. The easiest way to</span>
@@ -511,9 +511,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// unroll them across y:</span>
         <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> x_inner_outer, y_inner_outer, x_vectors, y_pairs;
         gradient_fast
-            .<a class="code" href="class_halide_1_1_func.html#a070bb51c52383bd6402d6002458a3788" title="Split two dimensions at once by the given factors, and then reorder the resulting dimensions to be xi...">tile</a>(x_inner, y_inner, x_inner_outer, y_inner_outer, x_vectors, y_pairs, 4, 2)
-            .<a class="code" href="class_halide_1_1_func.html#a1cbde565654302d9c0ab9383a0e42708" title="Mark a dimension to be computed all-at-once as a single vector.">vectorize</a>(x_vectors)
-            .<a class="code" href="class_halide_1_1_func.html#ab0055492c3b10965e1656f26431a01d8" title="Mark a dimension to be completely unrolled.">unroll</a>(y_pairs);
+            .<a class="code" href="class_halide_1_1_func.html#ab15001cd4af9e8c2808f45ff53b81582" title="Split two dimensions at once by the given factors, and then reorder the resulting dimensions to be xi...">tile</a>(x_inner, y_inner, x_inner_outer, y_inner_outer, x_vectors, y_pairs, 4, 2)
+            .<a class="code" href="class_halide_1_1_func.html#a7b1857a62deca8bc9a477c1b26720950" title="Mark a dimension to be computed all-at-once as a single vector.">vectorize</a>(x_vectors)
+            .<a class="code" href="class_halide_1_1_func.html#a75c97910f964410df65f04f7a85e3518" title="Mark a dimension to be completely unrolled.">unroll</a>(y_pairs);
 
         <span class="comment">// Note that we didn&#39;t do any explicit splitting or</span>
         <span class="comment">// reordering. Those are the most important primitive</span>

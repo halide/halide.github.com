@@ -3,7 +3,19 @@ var searchData=
   ['debug_5ffile',['debug_file',['../struct_halide_1_1_internal_1_1_function_contents.html#ab5bf1c4cdf42edae2406e2cada02ddac',1,'Halide::Internal::FunctionContents']]],
   ['debug_5flevel',['debug_level',['../struct_halide_1_1_internal_1_1debug.html#a2899a7493ab6b277f90d81be34c8935c',1,'Halide::Internal::debug']]],
   ['debug_5fto_5ffile',['debug_to_file',['../struct_halide_1_1_internal_1_1_call.html#a9eb18ff3aedf3fa1bfef06a2c6750909',1,'Halide::Internal::Call']]],
+  ['depth',['Depth',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#a2adc0e58f9dd5f26f8e12b570ff41fe2',1,'CUDA_MEMCPY3D_st']]],
   ['dimensions',['dimensions',['../structhalide__trace__event.html#ac49e0636ffa608490180934375611f36',1,'halide_trace_event']]],
   ['dims',['dims',['../class_halide_1_1_image_base.html#ae13899225583103e9116027dcb5f2b8f',1,'Halide::ImageBase::dims()'],['../class_halide_1_1_output_image_param.html#a657c02de363c2cd1cb7a1868da7a1ce6',1,'Halide::OutputImageParam::dims()']]],
-  ['domain',['domain',['../struct_halide_1_1_internal_1_1_reduction_definition.html#ac2e2a880b76a575dc0d77375b74f4b2d',1,'Halide::Internal::ReductionDefinition::domain()'],['../struct_halide_1_1_internal_1_1_reduction_domain_contents.html#a1a6aeb4c0170704c20b71431bb2358a7',1,'Halide::Internal::ReductionDomainContents::domain()']]]
+  ['domain',['domain',['../struct_halide_1_1_internal_1_1_reduction_definition.html#ac2e2a880b76a575dc0d77375b74f4b2d',1,'Halide::Internal::ReductionDefinition::domain()'],['../struct_halide_1_1_internal_1_1_reduction_domain_contents.html#a1a6aeb4c0170704c20b71431bb2358a7',1,'Halide::Internal::ReductionDomainContents::domain()']]],
+  ['dst',['dst',['../struct__dev__copy.html#a26221b64e6b345397ac8696ea96f2e3a',1,'_dev_copy']]],
+  ['dstarray',['dstArray',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#ae95f7d57bfc7251b01de2fe32d3ea116',1,'CUDA_MEMCPY3D_st']]],
+  ['dstdevice',['dstDevice',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#a050a11edaa919df89903d5b0c6cb17e6',1,'CUDA_MEMCPY3D_st']]],
+  ['dstheight',['dstHeight',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#ab3257d87b2a20782cc2c6ea323d4688d',1,'CUDA_MEMCPY3D_st']]],
+  ['dsthost',['dstHost',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#adc0df50aeaaf2acf52b0f9228d89641c',1,'CUDA_MEMCPY3D_st']]],
+  ['dstlod',['dstLOD',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#a8821268af27da134c04f578fb32336b9',1,'CUDA_MEMCPY3D_st']]],
+  ['dstmemorytype',['dstMemoryType',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#a67228a161680f3ab38046076e06209e3',1,'CUDA_MEMCPY3D_st']]],
+  ['dstpitch',['dstPitch',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#afdaa5cbe498302734f9fd44b80a04fba',1,'CUDA_MEMCPY3D_st']]],
+  ['dstxinbytes',['dstXInBytes',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#a4d872d37baa4439d0859e5cf679338a2',1,'CUDA_MEMCPY3D_st']]],
+  ['dsty',['dstY',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#a4815e247afac858b4e8a1b851555e9eb',1,'CUDA_MEMCPY3D_st']]],
+  ['dstz',['dstZ',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#aad932e4f80d3db31fe24a998794b250a',1,'CUDA_MEMCPY3D_st']]]
 ];

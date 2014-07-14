@@ -132,6 +132,11 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="struct_halide_1_1_internal_1_1_dim.html">Dim</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_schedule.html#a645dc1df4ce10d902379fdec9f99c6a9">dims</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The list and ordering of dimensions used to evaluate this function, after all splits have taken place.  <a href="#a645dc1df4ce10d902379fdec9f99c6a9"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="class_halide_1_1_internal_1_1_reduction_domain.html">ReductionDomain</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_schedule.html#a0b4ac2f02d9faa1da15838c27dd4d661">reduction_domain</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Any reduction domain associated with this schedule.  <a href="#a0b4ac2f02d9faa1da15838c27dd4d661"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_schedule.html#a66db6918115f82c453491ae184ce0583">set_reduction_domain</a> (const <a class="el" href="class_halide_1_1_internal_1_1_reduction_domain.html">ReductionDomain</a> &amp;d)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Any reduction domain associated with this schedule.  <a href="#a66db6918115f82c453491ae184ce0583"></a><br/></td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_schedule.html#a8facf8ebad66e2c780d3384f6653eb24">storage_dims</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The list and order of dimensions used to store this function.  <a href="#a8facf8ebad66e2c780d3384f6653eb24"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_schedule.html#a68be437ad55332009eeffa96dcde4c3a">storage_dims</a> ()</td></tr>
@@ -156,12 +161,17 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">At what sites should we inject the allocation and the computation of this function? The store_level must be outside of or equal to the compute_level.  <a href="#a8752c8c5bf323888daef8ddae55b9e6e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_loop_level.html">LoopLevel</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_schedule.html#a8aeb300e48bf96594024dc7c6592871e">compute_level</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">At what sites should we inject the allocation and the computation of this function? The store_level must be outside of or equal to the compute_level.  <a href="#a8aeb300e48bf96594024dc7c6592871e"></a><br/></td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_schedule.html#a549c00d4a1cd393462c058392f63fbe2">allow_race_conditions</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Are race conditions permitted?  <a href="#a549c00d4a1cd393462c058392f63fbe2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_schedule.html#a84fe220118306f20cab80aa1d3328865">allow_race_conditions</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Are race conditions permitted?  <a href="#a84fe220118306f20cab80aa1d3328865"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A schedule for a single stage of a <a class="el" href="namespace_halide.html">Halide</a> pipeline. </p>
 <p>Right now this interface is basically a struct, offering mutable access to its innards. In the future it may become more encapsulated. </p>
 
-<p>Definition at line <a class="el" href="_schedule_8h_source.html#l00106">106</a> of file <a class="el" href="_schedule_8h_source.html">Schedule.h</a>.</p>
+<p>Definition at line <a class="el" href="_schedule_8h_source.html#l00110">110</a> of file <a class="el" href="_schedule_8h_source.html">Schedule.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a0d7017829acbec0b875aeaf12a208cdd"></a><!-- doxytag: member="Halide::Internal::Schedule::Schedule" ref="a0d7017829acbec0b875aeaf12a208cdd" args="(IntrusivePtr&lt; ScheduleContents &gt; c)" -->
 <div class="memitem">
@@ -178,7 +188,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_schedule_8h_source.html#l00110">110</a> of file <a class="el" href="_schedule_8h_source.html">Schedule.h</a>.</p>
+<p>Definition at line <a class="el" href="_schedule_8h_source.html#l00114">114</a> of file <a class="el" href="_schedule_8h_source.html">Schedule.h</a>.</p>
 
 </div>
 </div>
@@ -197,7 +207,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_schedule_8h_source.html#l00111">111</a> of file <a class="el" href="_schedule_8h_source.html">Schedule.h</a>.</p>
+<p>Definition at line <a class="el" href="_schedule_8h_source.html#l00115">115</a> of file <a class="el" href="_schedule_8h_source.html">Schedule.h</a>.</p>
 
 </div>
 </div>
@@ -235,7 +245,7 @@ Public Member Functions</h2></td></tr>
 <p>This flag is set to true if the dims list has been manipulated by the user (or if a <a class="el" href="class_halide_1_1_schedule_handle.html" title="A temporary wrapper around a schedule used for common schedule manipulations.">ScheduleHandle</a> was created that could have been used to manipulate it). </p>
 <p>It controls the warning that occurs if you schedule the vars of the pure step but not the update steps. </p>
 
-<p>Referenced by <a class="el" href="_func_8h_source.html#l00207">Halide::ScheduleHandle::ScheduleHandle()</a>.</p>
+<p>Referenced by <a class="el" href="_func_8h_source.html#l00209">Halide::ScheduleHandle::ScheduleHandle()</a>.</p>
 
 </div>
 </div>
@@ -273,7 +283,7 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>The traversal of the domain of a function can have some of its dimensions split into sub-dimensions. </p>
-<p>See <a class="el" href="class_halide_1_1_schedule_handle.html#a82dcba5e287a284bfdb2eba997659daa">ScheduleHandle::split</a> </p>
+<p>See ScheduleHandle::split </p>
 
 </div>
 </div>
@@ -292,7 +302,7 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>The traversal of the domain of a function can have some of its dimensions split into sub-dimensions. </p>
-<p>See <a class="el" href="class_halide_1_1_schedule_handle.html#a82dcba5e287a284bfdb2eba997659daa">ScheduleHandle::split</a> </p>
+<p>See ScheduleHandle::split </p>
 
 </div>
 </div>
@@ -331,6 +341,43 @@ Public Member Functions</h2></td></tr>
 
 <p>The list and ordering of dimensions used to evaluate this function, after all splits have taken place. </p>
 <p>The first dimension in the vector corresponds to the innermost for loop, and the last is the outermost. Also specifies what type of for loop to use for each dimension. Does not specify the bounds on each dimension. These get inferred from how the function is used, what the splits are, and any optional bounds in the list below. </p>
+
+</div>
+</div>
+<a class="anchor" id="a0b4ac2f02d9faa1da15838c27dd4d661"></a><!-- doxytag: member="Halide::Internal::Schedule::reduction_domain" ref="a0b4ac2f02d9faa1da15838c27dd4d661" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="class_halide_1_1_internal_1_1_reduction_domain.html">ReductionDomain</a>&amp; <a class="el" href="class_halide_1_1_internal_1_1_schedule.html#a0b4ac2f02d9faa1da15838c27dd4d661">Halide::Internal::Schedule::reduction_domain</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Any reduction domain associated with this schedule. </p>
+
+</div>
+</div>
+<a class="anchor" id="a66db6918115f82c453491ae184ce0583"></a><!-- doxytag: member="Halide::Internal::Schedule::set_reduction_domain" ref="a66db6918115f82c453491ae184ce0583" args="(const ReductionDomain &amp;d)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_schedule.html#a66db6918115f82c453491ae184ce0583">Halide::Internal::Schedule::set_reduction_domain</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_halide_1_1_internal_1_1_reduction_domain.html">ReductionDomain</a> &amp;&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Any reduction domain associated with this schedule. </p>
 
 </div>
 </div>
@@ -522,6 +569,42 @@ Public Member Functions</h2></td></tr>
 
 <p>At what sites should we inject the allocation and the computation of this function? The store_level must be outside of or equal to the compute_level. </p>
 <p>If the compute_level is inline, the store_level is meaningless. See <a class="el" href="class_halide_1_1_func.html#a33cb0d00bc9585bf3027011ecb1412b7">Func::store_at</a> and <a class="el" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273">Func::compute_at</a> </p>
+
+</div>
+</div>
+<a class="anchor" id="a549c00d4a1cd393462c058392f63fbe2"></a><!-- doxytag: member="Halide::Internal::Schedule::allow_race_conditions" ref="a549c00d4a1cd393462c058392f63fbe2" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_halide_1_1_internal_1_1_schedule.html#a549c00d4a1cd393462c058392f63fbe2">Halide::Internal::Schedule::allow_race_conditions</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Are race conditions permitted? </p>
+
+</div>
+</div>
+<a class="anchor" id="a84fe220118306f20cab80aa1d3328865"></a><!-- doxytag: member="Halide::Internal::Schedule::allow_race_conditions" ref="a84fe220118306f20cab80aa1d3328865" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool&amp; <a class="el" href="class_halide_1_1_internal_1_1_schedule.html#a549c00d4a1cd393462c058392f63fbe2">Halide::Internal::Schedule::allow_race_conditions</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Are race conditions permitted? </p>
 
 </div>
 </div>

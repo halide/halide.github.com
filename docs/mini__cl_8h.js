@@ -1,8 +1,8 @@
 var mini__cl_8h =
 [
-    [ "CL_API_ENTRY", "mini__cl_8h.html#a87504841928718b3da4a71b1cd0aeca6", null ],
     [ "CL_API_CALL", "mini__cl_8h.html#adfd597c1e86063383518f8a3f64930bb", null ],
     [ "CL_CALLBACK", "mini__cl_8h.html#a193b43da2ce23c54788f9b4d4f0f4740", null ],
+    [ "CL_API_ENTRY", "mini__cl_8h.html#a87504841928718b3da4a71b1cd0aeca6", null ],
     [ "CL_API_SUFFIX__VERSION_1_0", "mini__cl_8h.html#a7ed4175fbeb6d45c3260f4c3b3e84a6c", null ],
     [ "CL_API_SUFFIX__VERSION_1_1", "mini__cl_8h.html#ad60b50e74d4eaab2762d79c054f2e490", null ],
     [ "CL_API_SUFFIX__VERSION_1_2", "mini__cl_8h.html#a2c05ea9efb9572ac4446be6aa75272ef", null ],

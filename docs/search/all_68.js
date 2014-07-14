@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['boundaryconditions',['BoundaryConditions',['../namespace_halide_1_1_boundary_conditions.html',1,'Halide']]],
   ['halide',['Halide',['../namespace_halide.html',1,'Halide'],['../struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393a76dd9197940f4e8a762fcd1d8c71e02d',1,'Halide::Internal::Call::Halide()']]],
   ['halide_5fassert',['halide_assert',['../_halide_runtime_8h.html#ac87d020eed3438306b57d1eec5de0364',1,'HalideRuntime.h']]],
   ['halide_5fcopy_5fto_5fdev',['halide_copy_to_dev',['../_halide_runtime_8h.html#a51c066523af8ea5c476babebc051061a',1,'HalideRuntime.h']]],
@@ -10,6 +11,7 @@ var searchData=
   ['halide_5fdev_5frun',['halide_dev_run',['../_halide_runtime_8h.html#a87dd2729ec5aafc370a8b64d5e438544',1,'HalideRuntime.h']]],
   ['halide_5fdev_5fsync',['halide_dev_sync',['../_halide_runtime_8h.html#a5d0d5c66821f18b322fbef049632badc',1,'HalideRuntime.h']]],
   ['halide_5fdo_5fpar_5ffor',['halide_do_par_for',['../_halide_runtime_8h.html#a05193f80c8fc7df76ceadd82c4ce7b56',1,'HalideRuntime.h']]],
+  ['halide_5ferf',['halide_erf',['../namespace_halide_1_1_internal.html#a3d36eef829f9c1e2d6aaf9218b2e0e66',1,'Halide::Internal']]],
   ['halide_5ferror',['halide_error',['../_halide_runtime_8h.html#aea28d04de54b94f0dd6ada140b7734d8',1,'HalideRuntime.h']]],
   ['halide_5ferror_5fvarargs',['halide_error_varargs',['../_halide_runtime_8h.html#ac41e5e7a06aaa39fc69369755a1cb4f7',1,'HalideRuntime.h']]],
   ['halide_5fexp',['halide_exp',['../namespace_halide_1_1_internal.html#a5688772a963296ea52d2bd9ac5913e79',1,'Halide::Internal']]],
@@ -51,11 +53,12 @@ var searchData=
   ['has_5freduction_5fdefinition',['has_reduction_definition',['../class_halide_1_1_internal_1_1_function.html#a4663c14a0c52f194865431cf14f1453f',1,'Halide::Internal::Function']]],
   ['have_5fuser_5fcontext',['have_user_context',['../class_halide_1_1_internal_1_1_code_gen___c.html#abd679d9da0e82113f78358e8d0a75eb1',1,'Halide::Internal::CodeGen_C']]],
   ['heap_5fallocations',['heap_allocations',['../class_halide_1_1_internal_1_1_code_gen___c.html#a0d867f0e390182e00054eb629181516d',1,'Halide::Internal::CodeGen_C']]],
-  ['height',['height',['../class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc',1,'Halide::ImageBase::height()'],['../class_halide_1_1_output_image_param.html#a31b7c69af015ba3617a281e8b2bff8af',1,'Halide::OutputImageParam::height()']]],
+  ['height',['height',['../class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc',1,'Halide::ImageBase::height()'],['../class_halide_1_1_output_image_param.html#a31b7c69af015ba3617a281e8b2bff8af',1,'Halide::OutputImageParam::height()'],['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#a5c4eff50c50d4e457ff51f137c1a7c69',1,'CUDA_MEMCPY3D_st::Height()']]],
   ['host_5fdirty',['host_dirty',['../class_halide_1_1_buffer.html#a5f8fd991c1b9912281d05b0388f6a29b',1,'Halide::Buffer']]],
   ['host_5fptr',['host_ptr',['../class_halide_1_1_buffer.html#a3b83b564af2b1c841dd2a9270cae6933',1,'Halide::Buffer']]],
   ['hypot',['hypot',['../namespace_halide.html#a4fb75ff010919c00492e4f654a4d8f85',1,'Halide']]],
   ['integerdividetable',['IntegerDivideTable',['../namespace_halide_1_1_integer_divide_table.html',1,'Halide']]],
   ['integerdivision',['IntegerDivision',['../namespace_halide_1_1_internal_1_1_integer_division.html',1,'Halide::Internal']]],
-  ['internal',['Internal',['../namespace_halide_1_1_internal.html',1,'Halide']]]
+  ['internal',['Internal',['../namespace_halide_1_1_internal.html',1,'Halide']]],
+  ['internal',['Internal',['../namespace_halide_1_1_boundary_conditions_1_1_internal.html',1,'Halide::BoundaryConditions']]]
 ];

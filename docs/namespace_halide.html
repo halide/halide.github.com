@@ -110,6 +110,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html">Internal</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_boundary_conditions.html">BoundaryConditions</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><p>namespace to hold functions for imposing boundary conditions on <a class="el" href="namespace_halide.html">Halide</a> Funcs. </p>
+<br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_integer_divide_table.html">IntegerDivideTable</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><p>Built-in images used for fast_integer_divide below. </p>
 <br/></td></tr>
@@ -279,6 +282,8 @@ Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the logarithm of a floating-point expression.  <a href="#a02f1c38239e6e977fea90b94217499ae"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a4dd83996070aa3e4bc3a102a654176fa">pow</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> x, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> y)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return one floating point expression raised to the power of another.  <a href="#a4dd83996070aa3e4bc3a102a654176fa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a9a80df08887f9457c9bffc349f834ce1">erf</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> x)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Evaluate the error function erf.  <a href="#a9a80df08887f9457c9bffc349f834ce1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a7df3f02c28d9710c836194f5b2e9e8c7">fast_log</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> x)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Fast approximate cleanly vectorizable log for Float(32).  <a href="#a7df3f02c28d9710c836194f5b2e9e8c7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a5df130f96d92c066478cd28148d8af53">fast_exp</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> x)</td></tr>
@@ -515,7 +520,7 @@ Variables</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l00194">194</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l00195">195</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
 </div>
 </div>
@@ -649,9 +654,9 @@ template&lt;typename T &gt; </div>
 <p>JIT-Compile and run enough code to evaluate a <a class="el" href="namespace_halide.html">Halide</a> expression. </p>
 <p>This can be thought of as a scalar version of <a class="el" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">Func::realize</a> </p>
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l01546">1546</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l01575">1575</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
-<p>References <a class="el" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02">_</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -690,9 +695,9 @@ template&lt;typename A , typename B &gt; </div>
 
 <p>JIT-compile and run enough code to evaluate a <a class="el" href="namespace_halide.html">Halide</a> <a class="el" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a>. </p>
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l01560">1560</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l01589">1589</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
-<p>References <a class="el" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02">_</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -737,9 +742,9 @@ template&lt;typename A , typename B , typename C &gt; </div>
 
 <p>JIT-compile and run enough code to evaluate a <a class="el" href="namespace_halide.html">Halide</a> <a class="el" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a>. </p>
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l01578">1578</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l01607">1607</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
-<p>References <a class="el" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02">_</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -790,9 +795,9 @@ template&lt;typename A , typename B , typename C , typename D &gt; </div>
 
 <p>JIT-compile and run enough code to evaluate a <a class="el" href="namespace_halide.html">Halide</a> <a class="el" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a>. </p>
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l01601">1601</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l01630">1630</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
-<p>References <a class="el" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02">_</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -816,9 +821,9 @@ template&lt;typename T &gt; </div>
 <p>JIT-Compile and run enough code to evaluate a <a class="el" href="namespace_halide.html">Halide</a> expression. </p>
 <p>This can be thought of as a scalar version of <a class="el" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">Func::realize</a>. Can use GPU if jit target from environment specifies one. </p>
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l01636">1636</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l01665">1665</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
-<p>References <a class="el" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02">_</a>, <a class="el" href="namespace_halide.html#afdb2fdc9b09935c4f2825d425359da37">get_jit_target_from_environment()</a>, <a class="el" href="class_halide_1_1_func.html#a9553df2b88fb02b13897960e356030c7">Halide::Func::gpu_tile()</a>, <a class="el" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">Halide::Func::realize()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="namespace_halide.html#afdb2fdc9b09935c4f2825d425359da37">get_jit_target_from_environment()</a>, <a class="el" href="class_halide_1_1_func.html#aeff457fc695a5ff574c2a2f935c1e77f">Halide::Func::gpu_single_thread()</a>, <a class="el" href="_target_8h_source.html#l00057">Halide::Target::has_gpu_feature()</a>, <a class="el" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">Halide::Func::realize()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -858,9 +863,9 @@ template&lt;typename A , typename B &gt; </div>
 <p>JIT-compile and run enough code to evaluate a <a class="el" href="namespace_halide.html">Halide</a> <a class="el" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a>. </p>
 <p>Can use GPU if jit target from environment specifies one. </p>
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l01662">1662</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l01684">1684</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
-<p>References <a class="el" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02">_</a>, <a class="el" href="class_halide_1_1_image_base.html#a5bbd5216ab692601e742e258ea93a6a0">Halide::ImageBase::copy_to_host()</a>, <a class="el" href="namespace_halide.html#afdb2fdc9b09935c4f2825d425359da37">get_jit_target_from_environment()</a>, <a class="el" href="class_halide_1_1_func.html#a9553df2b88fb02b13897960e356030c7">Halide::Func::gpu_tile()</a>, <a class="el" href="_target_8h_source.html#l00056">Halide::Target::has_gpu_feature()</a>, <a class="el" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">Halide::Func::realize()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="namespace_halide.html#afdb2fdc9b09935c4f2825d425359da37">get_jit_target_from_environment()</a>, <a class="el" href="class_halide_1_1_func.html#aeff457fc695a5ff574c2a2f935c1e77f">Halide::Func::gpu_single_thread()</a>, <a class="el" href="_target_8h_source.html#l00057">Halide::Target::has_gpu_feature()</a>, <a class="el" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">Halide::Func::realize()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -906,9 +911,9 @@ template&lt;typename A , typename B , typename C &gt; </div>
 <p>JIT-compile and run enough code to evaluate a <a class="el" href="namespace_halide.html">Halide</a> <a class="el" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs.">Tuple</a>. </p>
 <p>Can use GPU if jit target from environment specifies one. </p>
 
-<p>Definition at line <a class="el" href="_func_8h_source.html#l01694">1694</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
+<p>Definition at line <a class="el" href="_func_8h_source.html#l01706">1706</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
-<p>References <a class="el" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02">_</a>, <a class="el" href="class_halide_1_1_image_base.html#a5bbd5216ab692601e742e258ea93a6a0">Halide::ImageBase::copy_to_host()</a>, <a class="el" href="namespace_halide.html#afdb2fdc9b09935c4f2825d425359da37">get_jit_target_from_environment()</a>, <a class="el" href="class_halide_1_1_func.html#a9553df2b88fb02b13897960e356030c7">Halide::Func::gpu_tile()</a>, <a class="el" href="_target_8h_source.html#l00056">Halide::Target::has_gpu_feature()</a>, <a class="el" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">Halide::Func::realize()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="namespace_halide.html#afdb2fdc9b09935c4f2825d425359da37">get_jit_target_from_environment()</a>, <a class="el" href="class_halide_1_1_func.html#aeff457fc695a5ff574c2a2f935c1e77f">Halide::Func::gpu_single_thread()</a>, <a class="el" href="_target_8h_source.html#l00057">Halide::Target::has_gpu_feature()</a>, <a class="el" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">Halide::Func::realize()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -962,7 +967,7 @@ template&lt;typename A , typename B , typename C , typename D &gt; </div>
 
 <p>Definition at line <a class="el" href="_func_8h_source.html#l01732">1732</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
-<p>References <a class="el" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02">_</a>, <a class="el" href="class_halide_1_1_image_base.html#a5bbd5216ab692601e742e258ea93a6a0">Halide::ImageBase::copy_to_host()</a>, <a class="el" href="namespace_halide.html#afdb2fdc9b09935c4f2825d425359da37">get_jit_target_from_environment()</a>, <a class="el" href="class_halide_1_1_func.html#a9553df2b88fb02b13897960e356030c7">Halide::Func::gpu_tile()</a>, <a class="el" href="_target_8h_source.html#l00056">Halide::Target::has_gpu_feature()</a>, <a class="el" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">Halide::Func::realize()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="namespace_halide.html#afdb2fdc9b09935c4f2825d425359da37">get_jit_target_from_environment()</a>, <a class="el" href="class_halide_1_1_func.html#aeff457fc695a5ff574c2a2f935c1e77f">Halide::Func::gpu_single_thread()</a>, <a class="el" href="_target_8h_source.html#l00057">Halide::Target::has_gpu_feature()</a>, <a class="el" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">Halide::Func::realize()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -1000,7 +1005,7 @@ template&lt;typename A , typename B , typename C , typename D &gt; </div>
  f(x) = x*x;
  g(x) = <a class="code" href="namespace_halide.html#a1cdc5fefb67660314f83e00869bb2d07" title="An inline reduction.">sum</a>(f(x + r));
 </pre></div><p>Here g computes some blur of x, but g is still a pure function. The sum is being computed by an anonymous reduction function that is scheduled innermost within g. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a23">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a22">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -1075,7 +1080,7 @@ template&lt;typename A , typename B , typename C , typename D &gt; </div>
  f(x) = x*x;
  g(x) = <a class="code" href="namespace_halide.html#a1cdc5fefb67660314f83e00869bb2d07" title="An inline reduction.">sum</a>(f(x + r));
 </pre></div><p>Here g computes some blur of x, but g is still a pure function. The sum is being computed by an anonymous reduction function that is scheduled innermost within g. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a24">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a23">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -1113,7 +1118,7 @@ template&lt;typename A , typename B , typename C , typename D &gt; </div>
  f(x) = x*x;
  g(x) = <a class="code" href="namespace_halide.html#a1cdc5fefb67660314f83e00869bb2d07" title="An inline reduction.">sum</a>(f(x + r));
 </pre></div><p>Here g computes some blur of x, but g is still a pure function. The sum is being computed by an anonymous reduction function that is scheduled innermost within g. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a25">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a24">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -1420,9 +1425,9 @@ template&lt;typename T &gt; </div>
 
 <p>Cast an expression to the halide type corresponding to the C++ type T. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00144">144</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00145">145</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00149">cast()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00357">clamp()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00950">lerp()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00799">operator&amp;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00229">operator*=()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00185">operator+=()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00212">operator-=()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00247">operator/=()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00833">operator^()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00816">operator|()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00387">select()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00150">cast()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00358">clamp()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00960">lerp()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00809">operator&amp;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00230">operator*=()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00186">operator+=()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00213">operator-=()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00248">operator/=()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00843">operator^()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00826">operator|()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00388">select()</a>.</p>
 
 </div>
 </div>
@@ -1453,9 +1458,9 @@ template&lt;typename T &gt; </div>
 
 <p>Cast an expression to a new type. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00149">149</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00150">150</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_8h_source.html#l00122">Halide::Internal::IRHandle::as()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00144">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_type_8h_source.html#l00074">Halide::Type::element_of()</a>, <a class="el" href="_error_8h_source.html#l00126">internal_assert</a>, <a class="el" href="_type_8h_source.html#l00055">Halide::Type::is_handle()</a>, <a class="el" href="_type_8h_source.html#l00043">Halide::Type::is_scalar()</a>, <a class="el" href="_type_8h_source.html#l00040">Halide::Type::is_vector()</a>, <a class="el" href="_i_r_8h_source.html#l00256">Halide::Internal::Cast::make()</a>, <a class="el" href="_i_r_8h_source.html#l00627">Halide::Internal::Broadcast::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, <a class="el" href="_error_8h_source.html#l00127">user_error</a>, and <a class="el" href="_type_8h_source.html#l00034">Halide::Type::width</a>.</p>
+<p>References <a class="el" href="_i_r_8h_source.html#l00122">Halide::Internal::IRHandle::as()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00145">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_type_8h_source.html#l00074">Halide::Type::element_of()</a>, <a class="el" href="_error_8h_source.html#l00126">internal_assert</a>, <a class="el" href="_type_8h_source.html#l00055">Halide::Type::is_handle()</a>, <a class="el" href="_type_8h_source.html#l00043">Halide::Type::is_scalar()</a>, <a class="el" href="_type_8h_source.html#l00040">Halide::Type::is_vector()</a>, <a class="el" href="_i_r_8h_source.html#l00256">Halide::Internal::Cast::make()</a>, <a class="el" href="_i_r_8h_source.html#l00627">Halide::Internal::Broadcast::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, <a class="el" href="_error_8h_source.html#l00127">user_error</a>, and <a class="el" href="_type_8h_source.html#l00034">Halide::Type::width</a>.</p>
 
 </div>
 </div>
@@ -1486,7 +1491,7 @@ template&lt;typename T &gt; </div>
 
 <p>Return the sum of two expressions, doing any necessary type coercion using <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Internal::match_types</a>. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00176">176</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00177">177</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00270">Halide::Internal::Add::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
@@ -1520,9 +1525,9 @@ template&lt;typename T &gt; </div>
 <p>Modify the first expression to be the sum of two expressions, without changing its type. </p>
 <p>This casts the second argument to match the type of the first. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00185">185</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00186">186</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00144">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00270">Halide::Internal::Add::make()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00145">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00270">Halide::Internal::Add::make()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -1553,7 +1558,7 @@ template&lt;typename T &gt; </div>
 
 <p>Return the difference of two expressions, doing any necessary type coercion using <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Internal::match_types</a>. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00193">193</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00194">194</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00287">Halide::Internal::Sub::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
@@ -1577,7 +1582,7 @@ template&lt;typename T &gt; </div>
 <p>Return the negative of the argument. </p>
 <p>Does no type casting, so more formally: return that number which when added to the original, yields zero of the same type. For unsigned integers the negative is still an unsigned integer. E.g. in UInt(8), the negative of 56 is 200, because 56 + 200 == 0 </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00204">204</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00205">205</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00287">Halide::Internal::Sub::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#a57fedf535d58f8900f8b7c00aa15ece8">Halide::Internal::make_zero()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
@@ -1611,9 +1616,9 @@ template&lt;typename T &gt; </div>
 <p>Modify the first expression to be the difference of two expressions, without changing its type. </p>
 <p>This casts the second argument to match the type of the first. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00212">212</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00213">213</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00144">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00287">Halide::Internal::Sub::make()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00145">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00287">Halide::Internal::Sub::make()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -1644,7 +1649,7 @@ template&lt;typename T &gt; </div>
 
 <p>Return the product of two expressions, doing any necessary type coercion using <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Internal::match_types</a>. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00220">220</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00221">221</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00304">Halide::Internal::Mul::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
@@ -1678,9 +1683,9 @@ template&lt;typename T &gt; </div>
 <p>Modify the first expression to be the product of two expressions, without changing its type. </p>
 <p>This casts the second argument to match the type of the first. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00229">229</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00230">230</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00144">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00304">Halide::Internal::Mul::make()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00145">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00304">Halide::Internal::Mul::make()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -1711,7 +1716,7 @@ template&lt;typename T &gt; </div>
 
 <p>Return the ratio of two expressions, doing any necessary type coercion using <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Internal::match_types</a>. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00237">237</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00238">238</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab370d99a882a8163ae91d43b94d79d02">Halide::Internal::is_const()</a>, <a class="el" href="_i_r_8h_source.html#l00321">Halide::Internal::Div::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
@@ -1745,9 +1750,9 @@ template&lt;typename T &gt; </div>
 <p>Modify the first expression to be the ratio of two expressions, without changing its type. </p>
 <p>This casts the second argument to match the type of the first. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00247">247</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00248">248</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00144">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab370d99a882a8163ae91d43b94d79d02">Halide::Internal::is_const()</a>, <a class="el" href="_i_r_8h_source.html#l00321">Halide::Internal::Div::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00145">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab370d99a882a8163ae91d43b94d79d02">Halide::Internal::is_const()</a>, <a class="el" href="_i_r_8h_source.html#l00321">Halide::Internal::Div::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -1778,7 +1783,7 @@ template&lt;typename T &gt; </div>
 
 <p>Return the first argument reduced modulo the second, doing any necessary type coercion using <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Internal::match_types</a>. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00256">256</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00257">257</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab370d99a882a8163ae91d43b94d79d02">Halide::Internal::is_const()</a>, <a class="el" href="_i_r_8h_source.html#l00340">Halide::Internal::Mod::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
@@ -1811,7 +1816,7 @@ template&lt;typename T &gt; </div>
 
 <p>Return a boolean expression that tests whether the first argument is greater than the second, after doing any necessary type coercion using <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Internal::match_types</a>. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00266">266</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00267">267</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00459">Halide::Internal::GT::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
@@ -1844,7 +1849,7 @@ template&lt;typename T &gt; </div>
 
 <p>Return a boolean expression that tests whether the first argument is less than the second, after doing any necessary type coercion using <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Internal::match_types</a>. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00275">275</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00276">276</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00425">Halide::Internal::LT::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
@@ -1877,7 +1882,7 @@ template&lt;typename T &gt; </div>
 
 <p>Return a boolean expression that tests whether the first argument is less than or equal to the second, after doing any necessary type coercion using <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Internal::match_types</a>. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00284">284</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00285">285</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00442">Halide::Internal::LE::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
@@ -1910,7 +1915,7 @@ template&lt;typename T &gt; </div>
 
 <p>Return a boolean expression that tests whether the first argument is greater than or equal to the second, after doing any necessary type coercion using <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Internal::match_types</a>. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00294">294</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00295">295</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00476">Halide::Internal::GE::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
@@ -1943,7 +1948,7 @@ template&lt;typename T &gt; </div>
 
 <p>Return a boolean expression that tests whether the first argument is equal to the second, after doing any necessary type coercion using <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Internal::match_types</a>. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00303">303</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00304">304</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00391">Halide::Internal::EQ::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
@@ -1976,7 +1981,7 @@ template&lt;typename T &gt; </div>
 
 <p>Return a boolean expression that tests whether the first argument is not equal to the second, after doing any necessary type coercion using <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Internal::match_types</a>. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00312">312</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00313">313</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00408">Halide::Internal::NE::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
@@ -2009,7 +2014,7 @@ template&lt;typename T &gt; </div>
 
 <p>Returns the logical and of the two arguments. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00319">319</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00320">320</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_i_r_8h_source.html#l00493">Halide::Internal::And::make()</a>.</p>
 
@@ -2042,7 +2047,7 @@ template&lt;typename T &gt; </div>
 
 <p>Returns the logical or of the two arguments. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00324">324</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00325">325</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_i_r_8h_source.html#l00511">Halide::Internal::Or::make()</a>.</p>
 
@@ -2065,7 +2070,7 @@ template&lt;typename T &gt; </div>
 
 <p>Returns the logical not the argument. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00329">329</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00330">330</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_i_r_8h_source.html#l00529">Halide::Internal::Not::make()</a>.</p>
 
@@ -2098,9 +2103,9 @@ template&lt;typename T &gt; </div>
 
 <p>Returns an expression representing the greater of the two arguments, after doing any necessary type coercion using <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Internal::match_types</a>. </p>
 <p>Vectorizes cleanly on most platforms (with the exception of integer types on x86 without SSE4). </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a21">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a20">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00337">337</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00338">338</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00374">Halide::Internal::Max::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
@@ -2133,13 +2138,13 @@ template&lt;typename T &gt; </div>
 
 <p>Returns an expression representing the lesser of the two arguments, after doing any necessary type coercion using <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Internal::match_types</a>. </p>
 <p>Vectorizes cleanly on most platforms (with the exception of integer types on x86 without SSE4). </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_02_input_image_8cpp-example.html#a4">tutorial/lesson_02_input_image.cpp</a>, <a class="el" href="tutorial_2lesson_05_scheduling_1_8cpp-example.html#a12">tutorial/lesson_05_scheduling_1.cpp</a>, and <a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a20">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_02_input_image_8cpp-example.html#a4">tutorial/lesson_02_input_image.cpp</a>, <a class="el" href="tutorial_2lesson_05_scheduling_1_8cpp-example.html#a12">tutorial/lesson_05_scheduling_1.cpp</a>, and <a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a19">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00348">348</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00349">349</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00357">Halide::Internal::Min::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00865">Halide::Internal::Realize::make()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00869">Halide::Internal::Realize::make()</a>.</p>
 
 </div>
 </div>
@@ -2176,11 +2181,11 @@ template&lt;typename T &gt; </div>
 
 <p>Clamps an expression to lie within the given bounds. </p>
 <p>The bounds are type-cast to match the expression. Vectorizes as well as min/max. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_07_multi_stage_pipelines_8cpp-example.html#a8">tutorial/lesson_07_multi_stage_pipelines.cpp</a>, and <a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a17">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_07_multi_stage_pipelines_8cpp-example.html#a8">tutorial/lesson_07_multi_stage_pipelines.cpp</a>, and <a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a16">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00357">357</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00358">358</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00144">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00357">Halide::Internal::Min::make()</a>, <a class="el" href="_i_r_8h_source.html#l00374">Halide::Internal::Max::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00145">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00357">Halide::Internal::Min::make()</a>, <a class="el" href="_i_r_8h_source.html#l00374">Halide::Internal::Max::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -2202,9 +2207,9 @@ template&lt;typename T &gt; </div>
 <p>Returns the absolute value of a signed integer or floating-point expression. </p>
 <p>Vectorizes cleanly. Unlike in C, abs of a signed integer returns an unsigned integer of the same bit width. This means that abs of the most negative integer doesn't overflow. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00369">369</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00370">370</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::abs</a>, <a class="el" href="struct_halide_1_1_type.html#af25ac1aea32eaf269446b4658f6d786f">Halide::Type::code</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_type_8h_source.html#l00022">Halide::Type::UInt</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, <a class="el" href="_error_8h_source.html#l00129">user_warning</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::abs</a>, <a class="el" href="struct_halide_1_1_type.html#af25ac1aea32eaf269446b4658f6d786f">Halide::Type::code</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_type_8h_source.html#l00022">Halide::Type::UInt</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, <a class="el" href="_error_8h_source.html#l00129">user_warning</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -2242,11 +2247,11 @@ template&lt;typename T &gt; </div>
 <p>Returns an expression similar to the ternary operator in C, except that it always evaluates all arguments. </p>
 <p>If the first argument is true, then return the second, else return the third. Typically vectorizes cleanly, but benefits from SSE41 or newer on x86. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00387">387</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00388">388</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="namespace_halide_1_1_internal.html#a68b76ccfb1d4e7cc35ff65f15f9b0077">Halide::Internal::as_const_int()</a>, <a class="el" href="_type_8h_source.html#l00123">Bool()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00144">cast()</a>, <a class="el" href="_i_r_8h_source.html#l00546">Halide::Internal::Select::make()</a>, and <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>.</p>
+<p>References <a class="el" href="namespace_halide_1_1_internal.html#a68b76ccfb1d4e7cc35ff65f15f9b0077">Halide::Internal::as_const_int()</a>, <a class="el" href="_type_8h_source.html#l00123">Bool()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00145">cast()</a>, <a class="el" href="_i_r_8h_source.html#l00546">Halide::Internal::Select::make()</a>, and <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00729">fast_pow()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00410">select()</a>, and <a class="el" href="_tuple_8h_source.html#l00138">tuple_select()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00739">fast_pow()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00411">select()</a>, and <a class="el" href="_tuple_8h_source.html#l00138">tuple_select()</a>.</p>
 
 </div>
 </div>
@@ -2296,9 +2301,9 @@ template&lt;typename T &gt; </div>
 <p>A multi-way variant of select similar to a switch statement in C, which can accept multiple conditions and values in pairs. </p>
 <p>Evaluates to the first value for which the condition is true. Returns the final value if all conditions are false. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00410">410</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00411">411</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00387">select()</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00388">select()</a>.</p>
 
 </div>
 </div>
@@ -2360,9 +2365,9 @@ template&lt;typename T &gt; </div>
 <p>A multi-way variant of select similar to a switch statement in C, which can accept multiple conditions and values in pairs. </p>
 <p>Evaluates to the first value for which the condition is true. Returns the final value if all conditions are false. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00416">416</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00417">417</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00387">select()</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00388">select()</a>.</p>
 
 </div>
 </div>
@@ -2436,9 +2441,9 @@ template&lt;typename T &gt; </div>
 <p>A multi-way variant of select similar to a switch statement in C, which can accept multiple conditions and values in pairs. </p>
 <p>Evaluates to the first value for which the condition is true. Returns the final value if all conditions are false. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00424">424</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00425">425</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00387">select()</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00388">select()</a>.</p>
 
 </div>
 </div>
@@ -2524,9 +2529,9 @@ template&lt;typename T &gt; </div>
 <p>A multi-way variant of select similar to a switch statement in C, which can accept multiple conditions and values in pairs. </p>
 <p>Evaluates to the first value for which the condition is true. Returns the final value if all conditions are false. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00434">434</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00435">435</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00387">select()</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00388">select()</a>.</p>
 
 </div>
 </div>
@@ -2624,9 +2629,9 @@ template&lt;typename T &gt; </div>
 <p>A multi-way variant of select similar to a switch statement in C, which can accept multiple conditions and values in pairs. </p>
 <p>Evaluates to the first value for which the condition is true. Returns the final value if all conditions are false. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00446">446</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00447">447</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00387">select()</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00388">select()</a>.</p>
 
 </div>
 </div>
@@ -2736,9 +2741,9 @@ template&lt;typename T &gt; </div>
 <p>A multi-way variant of select similar to a switch statement in C, which can accept multiple conditions and values in pairs. </p>
 <p>Evaluates to the first value for which the condition is true. Returns the final value if all conditions are false. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00460">460</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00461">461</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00387">select()</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00388">select()</a>.</p>
 
 </div>
 </div>
@@ -2760,9 +2765,9 @@ template&lt;typename T &gt; </div>
 <p>Return the sine of a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). Does not vectorize well. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00481">481</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00482">482</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -2784,9 +2789,9 @@ template&lt;typename T &gt; </div>
 <p>Return the arcsine of a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). Does not vectorize well. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00493">493</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00494">494</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -2808,9 +2813,9 @@ template&lt;typename T &gt; </div>
 <p>Return the cosine of a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). Does not vectorize well. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00505">505</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00506">506</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -2832,9 +2837,9 @@ template&lt;typename T &gt; </div>
 <p>Return the arccosine of a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). Does not vectorize well. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00517">517</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00518">518</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -2856,9 +2861,9 @@ template&lt;typename T &gt; </div>
 <p>Return the tangent of a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). Does not vectorize well. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00529">529</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00530">530</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -2880,9 +2885,9 @@ template&lt;typename T &gt; </div>
 <p>Return the arctangent of a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). Does not vectorize well. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00541">541</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00542">542</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -2914,9 +2919,9 @@ template&lt;typename T &gt; </div>
 <p>Return the angle of a floating-point gradient. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). Does not vectorize well. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00553">553</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00554">554</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -2938,9 +2943,9 @@ template&lt;typename T &gt; </div>
 <p>Return the hyperbolic sine of a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). Does not vectorize well. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00569">569</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00570">570</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -2962,9 +2967,9 @@ template&lt;typename T &gt; </div>
 <p>Return the hyperbolic arcsinhe of a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). Does not vectorize well. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00581">581</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00582">582</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -2986,9 +2991,9 @@ template&lt;typename T &gt; </div>
 <p>Return the hyperbolic cosine of a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). Does not vectorize well. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00593">593</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00594">594</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3010,9 +3015,9 @@ template&lt;typename T &gt; </div>
 <p>Return the hyperbolic arccosine of a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). Does not vectorize well. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00605">605</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00606">606</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3034,9 +3039,9 @@ template&lt;typename T &gt; </div>
 <p>Return the hyperbolic tangent of a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). Does not vectorize well. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00617">617</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00618">618</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3058,9 +3063,9 @@ template&lt;typename T &gt; </div>
 <p>Return the hyperbolic arctangent of a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). Does not vectorize well. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00629">629</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00630">630</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3083,11 +3088,11 @@ template&lt;typename T &gt; </div>
 <p>If the argument is not floating-point, it is cast to Float(32). Typically vectorizes cleanly. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_08_scheduling_2_8cpp-example.html#a2">tutorial/lesson_08_scheduling_2.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00641">641</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00642">642</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00653">hypot()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00654">hypot()</a>.</p>
 
 </div>
 </div>
@@ -3119,9 +3124,9 @@ template&lt;typename T &gt; </div>
 <p>Return the square root of the sum of the squares of two floating-point expressions. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). Vectorizes cleanly. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00653">653</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00654">654</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00641">sqrt()</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00642">sqrt()</a>.</p>
 
 </div>
 </div>
@@ -3143,9 +3148,9 @@ template&lt;typename T &gt; </div>
 <p>Return the exponential of a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). For Float(64) arguments, this calls the system exp function, and does not vectorize well. For Float(32) arguments, this function is vectorizable, does the right thing for extremely small or extremely large inputs, and is accurate up to the last bit of the mantissa. Vectorizes cleanly. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00664">664</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00665">665</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="namespace_halide_1_1_internal.html#a5688772a963296ea52d2bd9ac5913e79">Halide::Internal::halide_exp()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="namespace_halide_1_1_internal.html#a5688772a963296ea52d2bd9ac5913e79">Halide::Internal::halide_exp()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3167,9 +3172,9 @@ template&lt;typename T &gt; </div>
 <p>Return the logarithm of a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). For Float(64) arguments, this calls the system log function, and does not vectorize well. For Float(32) arguments, this function is vectorizable, does the right thing for inputs &lt;= 0 (returns -inf or nan), and is accurate up to the last bit of the mantissa. Vectorizes cleanly. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00681">681</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00682">682</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="namespace_halide_1_1_internal.html#af36627bf7242718b1c73214296dc9090">Halide::Internal::halide_log()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="namespace_halide_1_1_internal.html#af36627bf7242718b1c73214296dc9090">Halide::Internal::halide_log()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3201,9 +3206,33 @@ template&lt;typename T &gt; </div>
 <p>Return one floating point expression raised to the power of another. </p>
 <p>The type of the result is given by the type of the first argument. If the first argument is not a floating-point type, it is cast to Float(32). For Float(32), cleanly vectorizable, and accurate up to the last few bits of the mantissa. Gets worse when approaching overflow. Vectorizes cleanly. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00697">697</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00698">698</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="namespace_halide_1_1_internal.html#a68b76ccfb1d4e7cc35ff65f15f9b0077">Halide::Internal::as_const_int()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="namespace_halide_1_1_internal.html#a5688772a963296ea52d2bd9ac5913e79">Halide::Internal::halide_exp()</a>, <a class="el" href="namespace_halide_1_1_internal.html#af36627bf7242718b1c73214296dc9090">Halide::Internal::halide_log()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ac5890bd4a8aae2f1f6a2c43496d8ddae">Halide::Internal::raise_to_integer_power()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="namespace_halide_1_1_internal.html#a68b76ccfb1d4e7cc35ff65f15f9b0077">Halide::Internal::as_const_int()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="namespace_halide_1_1_internal.html#a5688772a963296ea52d2bd9ac5913e79">Halide::Internal::halide_exp()</a>, <a class="el" href="namespace_halide_1_1_internal.html#af36627bf7242718b1c73214296dc9090">Halide::Internal::halide_log()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ac5890bd4a8aae2f1f6a2c43496d8ddae">Halide::Internal::raise_to_integer_power()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9a80df08887f9457c9bffc349f834ce1"></a><!-- doxytag: member="Halide::erf" ref="a9a80df08887f9457c9bffc349f834ce1" args="(Expr x)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="namespace_halide.html#a9a80df08887f9457c9bffc349f834ce1">Halide::erf</a> </td>
+          <td>(</td>
+          <td class="paramtype">Expr&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Evaluate the error function erf. </p>
+<p>Only available for Float(32). Accurate up to the last three bits of the mantissa. Vectorizes cleanly. </p>
+
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00718">718</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="namespace_halide_1_1_internal.html#a3d36eef829f9c1e2d6aaf9218b2e0e66">Halide::Internal::halide_erf()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -3225,7 +3254,7 @@ template&lt;typename T &gt; </div>
 <p>Fast approximate cleanly vectorizable log for Float(32). </p>
 <p>Returns nonsense for x &lt;= 0.0f. Accurate up to the last 5 bits of the mantissa. Vectorizes cleanly. </p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00729">fast_pow()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00739">fast_pow()</a>.</p>
 
 </div>
 </div>
@@ -3247,7 +3276,7 @@ template&lt;typename T &gt; </div>
 <p>Fast approximate cleanly vectorizable exp for Float(32). </p>
 <p>Returns nonsense for inputs that would overflow or underflow. Typically accurate up to the last 5 bits of the mantissa. Gets worse when approaching overflow. Vectorizes cleanly. </p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00729">fast_pow()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00739">fast_pow()</a>.</p>
 
 </div>
 </div>
@@ -3279,9 +3308,9 @@ template&lt;typename T &gt; </div>
 <p>Fast approximate cleanly vectorizable pow for Float(32). </p>
 <p>Returns nonsense for x &lt; 0.0f. Accurate up to the last 5 bits of the mantissa for typical exponents. Gets worse when approaching overflow. Vectorizes cleanly. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00729">729</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00739">739</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="namespace_halide_1_1_internal.html#a68b76ccfb1d4e7cc35ff65f15f9b0077">Halide::Internal::as_const_int()</a>, <a class="el" href="namespace_halide.html#a5df130f96d92c066478cd28148d8af53">fast_exp()</a>, <a class="el" href="namespace_halide.html#a7df3f02c28d9710c836194f5b2e9e8c7">fast_log()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ac5890bd4a8aae2f1f6a2c43496d8ddae">Halide::Internal::raise_to_integer_power()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00387">select()</a>.</p>
+<p>References <a class="el" href="namespace_halide_1_1_internal.html#a68b76ccfb1d4e7cc35ff65f15f9b0077">Halide::Internal::as_const_int()</a>, <a class="el" href="namespace_halide.html#a5df130f96d92c066478cd28148d8af53">fast_exp()</a>, <a class="el" href="namespace_halide.html#a7df3f02c28d9710c836194f5b2e9e8c7">fast_log()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ac5890bd4a8aae2f1f6a2c43496d8ddae">Halide::Internal::raise_to_integer_power()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00388">select()</a>.</p>
 
 </div>
 </div>
@@ -3303,11 +3332,11 @@ template&lt;typename T &gt; </div>
 <p>Return the greatest whole number less than or equal to a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). The return value is still in floating point, despite being a whole number. Vectorizes cleanly. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00743">743</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00753">753</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
-<p>Referenced by <a class="el" href="_simplify_8h_source.html#l00048">Halide::Internal::mod_imp&lt; double &gt;()</a>.</p>
+<p>Referenced by <a class="el" href="_simplify_8h_source.html#l00054">Halide::Internal::mod_imp&lt; double &gt;()</a>.</p>
 
 </div>
 </div>
@@ -3329,9 +3358,9 @@ template&lt;typename T &gt; </div>
 <p>Return the least whole number greater than or equal to a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). The return value is still in floating point, despite being a whole number. Vectorizes cleanly. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00756">756</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00766">766</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3353,9 +3382,9 @@ template&lt;typename T &gt; </div>
 <p>Return the whole number closest to a floating-point expression. </p>
 <p>If the argument is not floating-point, it is cast to Float(32). The return value is still in floating point, despite being a whole number. On ties, we round up. Vectorizes cleanly. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00769">769</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00779">779</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Extern</a>, <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3386,11 +3415,11 @@ template&lt;typename T &gt; </div>
 
 <p>Reinterpret the bits of one value as another type. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00779">779</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00789">789</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_type_8h_source.html#l00028">Halide::Type::bits</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::reinterpret</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>, and <a class="el" href="_type_8h_source.html#l00034">Halide::Type::width</a>.</p>
+<p>References <a class="el" href="_type_8h_source.html#l00028">Halide::Type::bits</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::reinterpret</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>, and <a class="el" href="_type_8h_source.html#l00034">Halide::Type::width</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00799">operator&amp;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00833">operator^()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00816">operator|()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00792">reinterpret()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00809">operator&amp;()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00843">operator^()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00826">operator|()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00802">reinterpret()</a>.</p>
 
 </div>
 </div>
@@ -3411,9 +3440,9 @@ template&lt;typename T &gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00792">792</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00802">802</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00779">reinterpret()</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00789">reinterpret()</a>.</p>
 
 </div>
 </div>
@@ -3445,9 +3474,9 @@ template&lt;typename T &gt; </div>
 <p>Return the bitwise and of two expressions (which need not have the same type). </p>
 <p>The type of the result is the type of the first argument. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00799">799</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00809">809</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_type_8h_source.html#l00028">Halide::Type::bits</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::bitwise_and</a>, <a class="el" href="_i_r_operator_8h_source.html#l00144">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00779">reinterpret()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_type_8h_source.html#l00028">Halide::Type::bits</a>, <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::bitwise_and</a>, <a class="el" href="_i_r_operator_8h_source.html#l00145">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00789">reinterpret()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3479,9 +3508,9 @@ template&lt;typename T &gt; </div>
 <p>Return the bitwise or of two expressions (which need not have the same type). </p>
 <p>The type of the result is the type of the first argument. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00816">816</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00826">826</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_type_8h_source.html#l00028">Halide::Type::bits</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::bitwise_or</a>, <a class="el" href="_i_r_operator_8h_source.html#l00144">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00779">reinterpret()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_type_8h_source.html#l00028">Halide::Type::bits</a>, <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::bitwise_or</a>, <a class="el" href="_i_r_operator_8h_source.html#l00145">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00789">reinterpret()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3513,9 +3542,9 @@ template&lt;typename T &gt; </div>
 <p>Return the bitwise exclusive or of two expressions (which need not have the same type). </p>
 <p>The type of the result is the type of the first argument. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00833">833</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00843">843</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_type_8h_source.html#l00028">Halide::Type::bits</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::bitwise_xor</a>, <a class="el" href="_i_r_operator_8h_source.html#l00144">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00779">reinterpret()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_type_8h_source.html#l00028">Halide::Type::bits</a>, <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::bitwise_xor</a>, <a class="el" href="_i_r_operator_8h_source.html#l00145">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00789">reinterpret()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3536,9 +3565,9 @@ template&lt;typename T &gt; </div>
 
 <p>Return the bitwise not of an expression. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00848">848</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00858">858</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::bitwise_not</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::bitwise_not</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3570,9 +3599,9 @@ template&lt;typename T &gt; </div>
 <p>Shift the bits of an integer value left. </p>
 <p>This is actually less efficient than multiplying by 2^n, because <a class="el" href="namespace_halide.html">Halide</a>'s optimization passes understand multiplication, and will compile it to shifting. This operator is only for if you really really need bit shifting (e.g. because the exponent is a run-time parameter). The type of the result is equal to the type of the first argument. Both arguments must have integer type. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00860">860</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00870">870</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_type_8h_source.html#l00046">Halide::Type::is_float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::shift_left</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_type_8h_source.html#l00046">Halide::Type::is_float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::shift_left</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3604,9 +3633,9 @@ template&lt;typename T &gt; </div>
 <p>Shift the bits of an integer value right. </p>
 <p>Does sign extension for signed integers. This is less efficient than dividing by a power of two. <a class="el" href="namespace_halide.html">Halide</a>'s definition of division (always round to negative infinity) means that all divisions by powers of two get compiled to bit-shifting, and <a class="el" href="namespace_halide.html">Halide</a>'s optimization routines understand division and can work with it. The type of the result is equal to the type of the first argument. Both arguments must have integer type. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00876">876</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00886">886</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_type_8h_source.html#l00046">Halide::Type::is_float()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::shift_right</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_type_8h_source.html#l00046">Halide::Type::is_float()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="namespace_halide_1_1_internal.html#ab40a26aac941b763435e9915851cd073">Halide::Internal::match_types()</a>, <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::shift_right</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3680,9 +3709,9 @@ template&lt;typename T &gt; </div>
        cast&lt;int8_t&gt;(cast&lt;int8_t&gt;(x) * (1.0f - cast&lt;float&gt;(w)) +
                     cast&lt;int8_t&gt;(y) * cast&lt;uint8_t&gt;(w))
 </pre></div> 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00950">950</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00960">960</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="namespace_halide_1_1_internal.html#af2a9edb743eaf6d8074867314247a970">Halide::Internal::as_const_float()</a>, <a class="el" href="namespace_halide_1_1_internal.html#a68b76ccfb1d4e7cc35ff65f15f9b0077">Halide::Internal::as_const_int()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00144">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_type_8h_source.html#l00046">Halide::Type::is_float()</a>, <a class="el" href="_type_8h_source.html#l00052">Halide::Type::is_uint()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::lerp</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>, and <a class="el" href="_type_8h_source.html#l00034">Halide::Type::width</a>.</p>
+<p>References <a class="el" href="namespace_halide_1_1_internal.html#af2a9edb743eaf6d8074867314247a970">Halide::Internal::as_const_float()</a>, <a class="el" href="namespace_halide_1_1_internal.html#a68b76ccfb1d4e7cc35ff65f15f9b0077">Halide::Internal::as_const_int()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00145">cast()</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_type_8h_source.html#l00046">Halide::Type::is_float()</a>, <a class="el" href="_type_8h_source.html#l00052">Halide::Type::is_uint()</a>, <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::lerp</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>, and <a class="el" href="_type_8h_source.html#l00034">Halide::Type::width</a>.</p>
 
 </div>
 </div>
@@ -3703,9 +3732,9 @@ template&lt;typename T &gt; </div>
 
 <p>Count the number of set bits in an expression. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l00992">992</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01002">1002</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::popcount</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::popcount</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3727,9 +3756,9 @@ template&lt;typename T &gt; </div>
 <p>Count the number of leading zero bits in an expression. </p>
 <p>The result is undefined if the value of the expression is zero. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01000">1000</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01010">1010</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::count_leading_zeros</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::count_leading_zeros</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3751,9 +3780,9 @@ template&lt;typename T &gt; </div>
 <p>Count the number of trailing zero bits in an expression. </p>
 <p>The result is undefined if the value of the expression is zero. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01008">1008</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01018">1018</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::count_trailing_zeros</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
+<p>References <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::count_trailing_zeros</a>, <a class="el" href="_intrusive_ptr_8h_source.html#l00110">Halide::Internal::IntrusivePtr&lt; T &gt;::defined()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00210">Halide::Expr::type()</a>, <a class="el" href="_error_8h_source.html#l00128">user_assert</a>, and <a class="el" href="_util_8h_source.html#l00050">Halide::Internal::vec()</a>.</p>
 
 </div>
 </div>
@@ -3784,9 +3813,9 @@ template&lt;typename T &gt; </div>
 <p>A given random variable takes on a unique value that depends deterministically on the pure variables of the function they belong to, the identity of the function itself, and which definition of the function it is used in. They are, however, shared across tuple elements.</p>
 <p>This function vectorizes cleanly. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01043">1043</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01053">1053</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_type_8h_source.html#l00096">Int()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::random</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="_type_8h_source.html#l00114">Float()</a>, <a class="el" href="_type_8h_source.html#l00096">Int()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::random</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -3808,9 +3837,9 @@ template&lt;typename T &gt; </div>
 <p>Return a random variable representing a uniformly distributed 32-bit integer. </p>
 <p>See <a class="el" href="namespace_halide.html#a59bd57263c72c6712b643ab6486ed026">random_float</a>. Vectorizes cleanly. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01063">1063</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01073">1073</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_type_8h_source.html#l00096">Int()</a>, <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::random</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+<p>References <a class="el" href="_type_8h_source.html#l00096">Int()</a>, <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::random</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
 
 </div>
 </div>
@@ -3832,7 +3861,7 @@ template&lt;typename T &gt; </div>
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints out its value whenever it is evaluated. </p>
 <p>It also prints out everything else in the arguments list, separated by spaces. This can include string literals. </p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l01095">print()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l01105">print()</a>.</p>
 
 </div>
 </div>
@@ -3854,7 +3883,7 @@ template&lt;typename T &gt; </div>
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints out its value whenever it is evaluated. </p>
 <p>It also prints out everything else in the arguments list, separated by spaces. This can include string literals. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01095">1095</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01105">1105</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#ab9255b9f7b5c046d86588a9a157a6e8d">print()</a>.</p>
 
@@ -3888,7 +3917,7 @@ template&lt;typename T &gt; </div>
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints out its value whenever it is evaluated. </p>
 <p>It also prints out everything else in the arguments list, separated by spaces. This can include string literals. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01098">1098</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01108">1108</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#ab9255b9f7b5c046d86588a9a157a6e8d">print()</a>.</p>
 
@@ -3928,7 +3957,7 @@ template&lt;typename T &gt; </div>
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints out its value whenever it is evaluated. </p>
 <p>It also prints out everything else in the arguments list, separated by spaces. This can include string literals. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01101">1101</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01111">1111</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#ab9255b9f7b5c046d86588a9a157a6e8d">print()</a>.</p>
 
@@ -3974,7 +4003,7 @@ template&lt;typename T &gt; </div>
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints out its value whenever it is evaluated. </p>
 <p>It also prints out everything else in the arguments list, separated by spaces. This can include string literals. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01104">1104</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01114">1114</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#ab9255b9f7b5c046d86588a9a157a6e8d">print()</a>.</p>
 
@@ -4026,7 +4055,7 @@ template&lt;typename T &gt; </div>
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints out its value whenever it is evaluated. </p>
 <p>It also prints out everything else in the arguments list, separated by spaces. This can include string literals. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01107">1107</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01117">1117</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#ab9255b9f7b5c046d86588a9a157a6e8d">print()</a>.</p>
 
@@ -4084,7 +4113,7 @@ template&lt;typename T &gt; </div>
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints out its value whenever it is evaluated. </p>
 <p>It also prints out everything else in the arguments list, separated by spaces. This can include string literals. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01110">1110</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01120">1120</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#ab9255b9f7b5c046d86588a9a157a6e8d">print()</a>.</p>
 
@@ -4148,7 +4177,7 @@ template&lt;typename T &gt; </div>
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints out its value whenever it is evaluated. </p>
 <p>It also prints out everything else in the arguments list, separated by spaces. This can include string literals. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01113">1113</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01123">1123</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#ab9255b9f7b5c046d86588a9a157a6e8d">print()</a>.</p>
 
@@ -4218,7 +4247,7 @@ template&lt;typename T &gt; </div>
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints out its value whenever it is evaluated. </p>
 <p>It also prints out everything else in the arguments list, separated by spaces. This can include string literals. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01116">1116</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01126">1126</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#ab9255b9f7b5c046d86588a9a157a6e8d">print()</a>.</p>
 
@@ -4251,7 +4280,7 @@ template&lt;typename T &gt; </div>
 
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints whenever it is evaluated, provided that the condition is true. </p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l01125">print_when()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l01135">print_when()</a>.</p>
 
 </div>
 </div>
@@ -4282,7 +4311,7 @@ template&lt;typename T &gt; </div>
 
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints whenever it is evaluated, provided that the condition is true. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01125">1125</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01135">1135</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#a5196456d46ad1c58095aea036b2a740c">print_when()</a>.</p>
 
@@ -4321,7 +4350,7 @@ template&lt;typename T &gt; </div>
 
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints whenever it is evaluated, provided that the condition is true. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01128">1128</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01138">1138</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#a5196456d46ad1c58095aea036b2a740c">print_when()</a>.</p>
 
@@ -4366,7 +4395,7 @@ template&lt;typename T &gt; </div>
 
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints whenever it is evaluated, provided that the condition is true. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01131">1131</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01141">1141</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#a5196456d46ad1c58095aea036b2a740c">print_when()</a>.</p>
 
@@ -4417,7 +4446,7 @@ template&lt;typename T &gt; </div>
 
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints whenever it is evaluated, provided that the condition is true. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01134">1134</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01144">1144</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#a5196456d46ad1c58095aea036b2a740c">print_when()</a>.</p>
 
@@ -4474,7 +4503,7 @@ template&lt;typename T &gt; </div>
 
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints whenever it is evaluated, provided that the condition is true. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01137">1137</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01147">1147</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#a5196456d46ad1c58095aea036b2a740c">print_when()</a>.</p>
 
@@ -4537,7 +4566,7 @@ template&lt;typename T &gt; </div>
 
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints whenever it is evaluated, provided that the condition is true. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01140">1140</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01150">1150</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#a5196456d46ad1c58095aea036b2a740c">print_when()</a>.</p>
 
@@ -4606,7 +4635,7 @@ template&lt;typename T &gt; </div>
 
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints whenever it is evaluated, provided that the condition is true. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01143">1143</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01153">1153</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#a5196456d46ad1c58095aea036b2a740c">print_when()</a>.</p>
 
@@ -4681,7 +4710,7 @@ template&lt;typename T &gt; </div>
 
 <p>Create an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> that prints whenever it is evaluated, provided that the condition is true. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01146">1146</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01156">1156</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
 <p>References <a class="el" href="namespace_halide.html#a5196456d46ad1c58095aea036b2a740c">print_when()</a>.</p>
 
@@ -4710,11 +4739,11 @@ template&lt;typename T &gt; </div>
 <p>You can define single-stage pipeline that only has update steps, and depends on the values already in the output buffer.</p>
 <p>Use this feature with great caution, as you can use it to load from uninitialized memory. </p>
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01170">1170</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01180">1180</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_8h_source.html#l00950">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, and <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::undef</a>.</p>
+<p>References <a class="el" href="_i_r_8h_source.html#l00955">Halide::Internal::Call::Intrinsic</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, and <a class="el" href="_i_r_8h_source.html#l00960">Halide::Internal::Call::undef</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l01177">undef()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l01187">undef()</a>.</p>
 
 </div>
 </div>
@@ -4734,9 +4763,9 @@ template&lt;typename T &gt; </div>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01177">1177</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_operator_8h_source.html#l01187">1187</a> of file <a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l01170">undef()</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l01180">undef()</a>.</p>
 
 </div>
 </div>
@@ -5127,7 +5156,7 @@ template&lt;typename T &gt; </div>
 <p>Return the target that <a class="el" href="namespace_halide.html">Halide</a> will use for jit-compilation. </p>
 <p>If HL_JIT_TARGET is set it uses that. Otherwise calls <a class="el" href="namespace_halide.html#a4fb1734eaadb362e875519e6ab68158e">get_host_target</a>. Throws an error if the architecture, bit width, and OS of the target do not match the host target, so this is only useful for controlling the feature set. </p>
 
-<p>Referenced by <a class="el" href="_func_8h_source.html#l01636">evaluate_may_gpu()</a>.</p>
+<p>Referenced by <a class="el" href="_func_8h_source.html#l01665">evaluate_may_gpu()</a>.</p>
 
 </div>
 </div>
@@ -5186,7 +5215,7 @@ template&lt;typename T &gt; </div>
 
 <p>Definition at line <a class="el" href="_tuple_8h_source.html#l00138">138</a> of file <a class="el" href="_tuple_8h_source.html">Tuple.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00387">select()</a>, and <a class="el" href="_tuple_8h_source.html#l00026">Halide::Tuple::size()</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00388">select()</a>, and <a class="el" href="_tuple_8h_source.html#l00026">Halide::Tuple::size()</a>.</p>
 
 </div>
 </div>
@@ -5225,7 +5254,7 @@ template&lt;typename T &gt; </div>
 
 <p>Definition at line <a class="el" href="_tuple_8h_source.html#l00146">146</a> of file <a class="el" href="_tuple_8h_source.html">Tuple.h</a>.</p>
 
-<p>References <a class="el" href="_i_r_operator_8h_source.html#l00387">select()</a>, and <a class="el" href="_tuple_8h_source.html#l00026">Halide::Tuple::size()</a>.</p>
+<p>References <a class="el" href="_i_r_operator_8h_source.html#l00388">select()</a>, and <a class="el" href="_tuple_8h_source.html#l00026">Halide::Tuple::size()</a>.</p>
 
 </div>
 </div>
@@ -5260,7 +5289,7 @@ template&lt;typename T &gt; </div>
 
 <p>References <a class="el" href="_type_8h_source.html#l00028">Halide::Type::bits</a>, <a class="el" href="struct_halide_1_1_type.html#af25ac1aea32eaf269446b4658f6d786f">Halide::Type::code</a>, <a class="el" href="_type_8h_source.html#l00021">Halide::Type::Int</a>, and <a class="el" href="_type_8h_source.html#l00034">Halide::Type::width</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00134">Halide::Internal::IntImm::make()</a>, <a class="el" href="_i_r_8h_source.html#l01004">Halide::Internal::Call::make()</a>, <a class="el" href="_var_8h_source.html#l00147">Halide::Var::operator Expr()</a>, <a class="el" href="_i_r_operator_8h_source.html#l01043">random_float()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l01063">random_int()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00134">Halide::Internal::IntImm::make()</a>, <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>, <a class="el" href="_var_8h_source.html#l00147">Halide::Var::operator Expr()</a>, <a class="el" href="_i_r_operator_8h_source.html#l01053">random_float()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l01073">random_int()</a>.</p>
 
 </div>
 </div>
@@ -5330,7 +5359,7 @@ template&lt;typename T &gt; </div>
 
 <p>References <a class="el" href="_type_8h_source.html#l00028">Halide::Type::bits</a>, <a class="el" href="struct_halide_1_1_type.html#af25ac1aea32eaf269446b4658f6d786f">Halide::Type::code</a>, <a class="el" href="_type_8h_source.html#l00023">Halide::Type::Float</a>, and <a class="el" href="_type_8h_source.html#l00034">Halide::Type::width</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00517">acos()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00605">acosh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00493">asin()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00581">asinh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00541">atan()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00553">atan2()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00629">atanh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00756">ceil()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00505">cos()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00593">cosh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00664">exp()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00743">floor()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00681">log()</a>, <a class="el" href="_i_r_8h_source.html#l00154">Halide::Internal::FloatImm::make()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00697">pow()</a>, <a class="el" href="_i_r_operator_8h_source.html#l01043">random_float()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00769">round()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00481">sin()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00569">sinh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00641">sqrt()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00529">tan()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00617">tanh()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_operator_8h_source.html#l00518">acos()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00606">acosh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00494">asin()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00582">asinh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00542">atan()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00554">atan2()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00630">atanh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00766">ceil()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00506">cos()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00594">cosh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00718">erf()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00665">exp()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00753">floor()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00682">log()</a>, <a class="el" href="_i_r_8h_source.html#l00154">Halide::Internal::FloatImm::make()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00698">pow()</a>, <a class="el" href="_i_r_operator_8h_source.html#l01053">random_float()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00779">round()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00482">sin()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00570">sinh()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00642">sqrt()</a>, <a class="el" href="_i_r_operator_8h_source.html#l00530">tan()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00618">tanh()</a>.</p>
 
 </div>
 </div>
@@ -5355,7 +5384,7 @@ template&lt;typename T &gt; </div>
 
 <p>References <a class="el" href="_type_8h_source.html#l00105">UInt()</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00391">Halide::Internal::EQ::make()</a>, <a class="el" href="_i_r_8h_source.html#l00408">Halide::Internal::NE::make()</a>, <a class="el" href="_i_r_8h_source.html#l00425">Halide::Internal::LT::make()</a>, <a class="el" href="_i_r_8h_source.html#l00442">Halide::Internal::LE::make()</a>, <a class="el" href="_i_r_8h_source.html#l00459">Halide::Internal::GT::make()</a>, <a class="el" href="_i_r_8h_source.html#l00476">Halide::Internal::GE::make()</a>, <a class="el" href="_i_r_8h_source.html#l00493">Halide::Internal::And::make()</a>, <a class="el" href="_i_r_8h_source.html#l00511">Halide::Internal::Or::make()</a>, <a class="el" href="_i_r_8h_source.html#l00529">Halide::Internal::Not::make()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00387">select()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00391">Halide::Internal::EQ::make()</a>, <a class="el" href="_i_r_8h_source.html#l00408">Halide::Internal::NE::make()</a>, <a class="el" href="_i_r_8h_source.html#l00425">Halide::Internal::LT::make()</a>, <a class="el" href="_i_r_8h_source.html#l00442">Halide::Internal::LE::make()</a>, <a class="el" href="_i_r_8h_source.html#l00459">Halide::Internal::GT::make()</a>, <a class="el" href="_i_r_8h_source.html#l00476">Halide::Internal::GE::make()</a>, <a class="el" href="_i_r_8h_source.html#l00493">Halide::Internal::And::make()</a>, <a class="el" href="_i_r_8h_source.html#l00511">Halide::Internal::Or::make()</a>, <a class="el" href="_i_r_8h_source.html#l00529">Halide::Internal::Not::make()</a>, and <a class="el" href="_i_r_operator_8h_source.html#l00388">select()</a>.</p>
 
 </div>
 </div>
@@ -5421,7 +5450,7 @@ template&lt;typename T &gt; </div>
 <p>A placeholder variable for infered arguments. </p>
 <p>See <a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117">Var::implicit</a> </p>
 
-<p>Referenced by <a class="el" href="_func_8h_source.html#l01546">evaluate()</a>, <a class="el" href="_func_8h_source.html#l01636">evaluate_may_gpu()</a>, <a class="el" href="_lambda_8h_source.html#l00017">lambda()</a>, <a class="el" href="_image_8h_source.html#l00273">Halide::Image&lt; T &gt;::operator Expr()</a>, <a class="el" href="_param_8h_source.html#l00293">Halide::ImageParam::operator Expr()</a>, and <a class="el" href="_func_8h_source.html#l01531">Halide::Func::operator Expr()</a>.</p>
+<p>Referenced by <a class="el" href="_lambda_8h_source.html#l00017">lambda()</a>, <a class="el" href="_image_8h_source.html#l00275">Halide::Image&lt; T &gt;::operator Expr()</a>, <a class="el" href="_param_8h_source.html#l00295">Halide::ImageParam::operator Expr()</a>, and <a class="el" href="_func_8h_source.html#l01560">Halide::Func::operator Expr()</a>.</p>
 
 </div>
 </div>

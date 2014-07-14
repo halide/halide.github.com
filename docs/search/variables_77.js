@@ -3,6 +3,7 @@ var searchData=
   ['w',['w',['../class_halide_1_1_r_dom.html#a6111104a192cc83a1fa7d58d9202b8fc',1,'Halide::RDom']]],
   ['warning',['warning',['../struct_halide_1_1_internal_1_1_error_report.html#acc69b2238d5488fcc7e1c058149cf3a8',1,'Halide::Internal::ErrorReport']]],
   ['width',['width',['../struct_halide_1_1_internal_1_1_ramp.html#a2f447c8afa283e56b5265e954073c053',1,'Halide::Internal::Ramp::width()'],['../struct_halide_1_1_internal_1_1_broadcast.html#a6d47d23833624ee50d201126499e6d7c',1,'Halide::Internal::Broadcast::width()'],['../struct_halide_1_1_type.html#ae3447d16160da9982d6f093c6bf24c5a',1,'Halide::Type::width()']]],
+  ['widthinbytes',['WidthInBytes',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#a3f3b53b0597c5afc13c9a3147271ca30',1,'CUDA_MEMCPY3D_st']]],
   ['wild_5ff32x2',['wild_f32x2',['../class_halide_1_1_internal_1_1_code_gen___posix.html#a7883652398b75a098e3180e6bc8f47c0',1,'Halide::Internal::CodeGen_Posix']]],
   ['wild_5ff32x4',['wild_f32x4',['../class_halide_1_1_internal_1_1_code_gen___posix.html#a2c77cbf377dffcecc4123c4e309e9cd9',1,'Halide::Internal::CodeGen_Posix']]],
   ['wild_5ff32x8',['wild_f32x8',['../class_halide_1_1_internal_1_1_code_gen___posix.html#ae0a978c9c5b8be6098bbe7f628774617',1,'Halide::Internal::CodeGen_Posix']]],

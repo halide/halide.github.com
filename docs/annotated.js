@@ -3,6 +3,8 @@ var annotated =
     [ "_cl_buffer_region", "struct__cl__buffer__region.html", "struct__cl__buffer__region" ],
     [ "_cl_image_desc", "struct__cl__image__desc.html", "struct__cl__image__desc" ],
     [ "_cl_image_format", "struct__cl__image__format.html", "struct__cl__image__format" ],
+    [ "_dev_copy", "struct__dev__copy.html", "struct__dev__copy" ],
+    [ "CUDA_MEMCPY3D_st", "struct_c_u_d_a___m_e_m_c_p_y3_d__st.html", "struct_c_u_d_a___m_e_m_c_p_y3_d__st" ],
     [ "Halide::Argument", "struct_halide_1_1_argument.html", "struct_halide_1_1_argument" ],
     [ "Halide::Buffer", "class_halide_1_1_buffer.html", "class_halide_1_1_buffer" ],
     [ "Halide::CompileError", "struct_halide_1_1_compile_error.html", "struct_halide_1_1_compile_error" ],

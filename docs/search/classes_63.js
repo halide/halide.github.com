@@ -19,5 +19,6 @@ var searchData=
   ['codegen_5fx86',['CodeGen_X86',['../class_halide_1_1_internal_1_1_code_gen___x86.html',1,'Halide::Internal']]],
   ['compare',['Compare',['../struct_halide_1_1_internal_1_1_stmt_1_1_compare.html',1,'Halide::Internal::Stmt']]],
   ['compileerror',['CompileError',['../struct_halide_1_1_compile_error.html',1,'Halide']]],
-  ['const_5fiterator',['const_iterator',['../class_halide_1_1_internal_1_1_scope_1_1const__iterator.html',1,'Halide::Internal::Scope']]]
+  ['const_5fiterator',['const_iterator',['../class_halide_1_1_internal_1_1_scope_1_1const__iterator.html',1,'Halide::Internal::Scope']]],
+  ['cuda_5fmemcpy3d_5fst',['CUDA_MEMCPY3D_st',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html',1,'']]]
 ];

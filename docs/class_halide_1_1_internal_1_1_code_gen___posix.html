@@ -128,14 +128,6 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an posix code generator.  <a href="#a1f25ad535f29b1ea889f64d28dbd2f65"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">llvm::Value *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a61b8cef48ed4b961316e858d1f4fb270">codegen_allocation_size</a> (const std::string &amp;name, <a class="el" href="struct_halide_1_1_type.html">Type</a> type, const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;extents)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates code for computing the size of an allocation from a list of its extents and its size.  <a href="#a61b8cef48ed4b961316e858d1f4fb270"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html">Allocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#ab0fdacea90e665af1ea1bf70e6f0b7ab">create_allocation</a> (const std::string &amp;name, <a class="el" href="struct_halide_1_1_type.html">Type</a> type, const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;extents)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates some memory on either the stack or the heap, and returns an <a class="el" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html" title="A struct describing heap or stack allocations.">Allocation</a> object describing it.  <a href="#ab0fdacea90e665af1ea1bf70e6f0b7ab"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a92e3e22d95a53fc5f4da3d10e147931e">free_allocation</a> (const std::string &amp;name)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_halide_1_1_internal_1_1_free.html" title="Free the resources associated with the given buffer.">Free</a> the memory backing an allocation and pop it from the symbol table and the allocations map.  <a href="#a92e3e22d95a53fc5f4da3d10e147931e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a5bdb7dae1a6cdfbc12e136b509dfc084">destroy_allocation</a> (<a class="el" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html">Allocation</a> alloc)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a> this when an allocation goes out of scope.  <a href="#a5bdb7dae1a6cdfbc12e136b509dfc084"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#ab0ea164e06077ece2b8bbb1d05d29242">prepare_for_early_exit</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_halide_1_1_internal_1_1_free.html" title="Free the resources associated with the given buffer.">Free</a> all heap allocations in scope.  <a href="#ab0ea164e06077ece2b8bbb1d05d29242"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#abaec3486bac1b472832dafb86c3589f4">init_module</a> ()</td></tr>
@@ -337,120 +329,6 @@ Protected Attributes</h2></td></tr>
 <p>Small constant-sized allocations go on the stack. The rest go on the heap by calling "halide_malloc" and "halide_free" in the standard library. </p>
 
 <p>Implements <a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#ae5bed5836de32d27eeb9df157269ce24">Halide::Internal::CodeGen</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a61b8cef48ed4b961316e858d1f4fb270"></a><!-- doxytag: member="Halide::Internal::CodeGen_Posix::codegen_allocation_size" ref="a61b8cef48ed4b961316e858d1f4fb270" args="(const std::string &amp;name, Type type, const std::vector&lt; Expr &gt; &amp;extents)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">llvm::Value* <a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a61b8cef48ed4b961316e858d1f4fb270">Halide::Internal::CodeGen_Posix::codegen_allocation_size</a> </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_type.html">Type</a>&#160;</td>
-          <td class="paramname"><em>type</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>extents</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Generates code for computing the size of an allocation from a list of its extents and its size. </p>
-<p>Fires a runtime assert (halide_error) if the size overflows 2^31 -1, the maximum positive number an int32_t can hold. </p>
-
-</div>
-</div>
-<a class="anchor" id="ab0fdacea90e665af1ea1bf70e6f0b7ab"></a><!-- doxytag: member="Halide::Internal::CodeGen_Posix::create_allocation" ref="ab0fdacea90e665af1ea1bf70e6f0b7ab" args="(const std::string &amp;name, Type type, const std::vector&lt; Expr &gt; &amp;extents)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html">Allocation</a> <a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#ab0fdacea90e665af1ea1bf70e6f0b7ab">Halide::Internal::CodeGen_Posix::create_allocation</a> </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_type.html">Type</a>&#160;</td>
-          <td class="paramname"><em>type</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>extents</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Allocates some memory on either the stack or the heap, and returns an <a class="el" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html" title="A struct describing heap or stack allocations.">Allocation</a> object describing it. </p>
-<p><a class="el" href="struct_halide_1_1_internal_1_1_for.html" title="A for loop.">For</a> heap allocations this calls halide_malloc in the runtime, and for stack allocations it either reuses an existing block from the free_stack_blocks list, or it saves the stack pointer and calls alloca.</p>
-<p>This call returns the allocation, pushes it onto the 'allocations' map, and adds an entry to the symbol table called name.host that provides the base pointer.</p>
-<p>When the allocation can be freed call 'free_allocation', and when it goes out of scope call 'destroy_allocation'. </p>
-
-</div>
-</div>
-<a class="anchor" id="a92e3e22d95a53fc5f4da3d10e147931e"></a><!-- doxytag: member="Halide::Internal::CodeGen_Posix::free_allocation" ref="a92e3e22d95a53fc5f4da3d10e147931e" args="(const std::string &amp;name)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a92e3e22d95a53fc5f4da3d10e147931e">Halide::Internal::CodeGen_Posix::free_allocation</a> </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p><a class="el" href="struct_halide_1_1_internal_1_1_free.html" title="Free the resources associated with the given buffer.">Free</a> the memory backing an allocation and pop it from the symbol table and the allocations map. </p>
-<p><a class="el" href="struct_halide_1_1_internal_1_1_for.html" title="A for loop.">For</a> heap allocations it calls halide_free in the runtime, for stack allocations it marks the block as free so it can be reused. </p>
-
-</div>
-</div>
-<a class="anchor" id="a5bdb7dae1a6cdfbc12e136b509dfc084"></a><!-- doxytag: member="Halide::Internal::CodeGen_Posix::destroy_allocation" ref="a5bdb7dae1a6cdfbc12e136b509dfc084" args="(Allocation alloc)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___posix.html#a5bdb7dae1a6cdfbc12e136b509dfc084">Halide::Internal::CodeGen_Posix::destroy_allocation</a> </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html">Allocation</a>&#160;</td>
-          <td class="paramname"><em>alloc</em></td><td>)</td>
-          <td><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p><a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a> this when an allocation goes out of scope. </p>
-<p>Does nothing for heap allocations. <a class="el" href="struct_halide_1_1_internal_1_1_for.html" title="A for loop.">For</a> stack allocations, it restores the stack removes the entry from the free_stack_blocks list. </p>
 
 </div>
 </div>
@@ -1512,7 +1390,7 @@ Protected Attributes</h2></td></tr>
 <p>The allocations currently in scope. </p>
 <p>The stack gets pushed when we enter a new function. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___posix_8h_source.html#l00073">73</a> of file <a class="el" href="_code_gen___posix_8h_source.html">CodeGen_Posix.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___posix_8h_source.html#l00077">77</a> of file <a class="el" href="_code_gen___posix_8h_source.html">CodeGen_Posix.h</a>.</p>
 
 </div>
 </div>

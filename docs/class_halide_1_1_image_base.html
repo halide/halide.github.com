@@ -172,6 +172,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an expression which loads from this image.  <a href="#afdd28c7cb0d988f5fa2a3adfa2b7dbe4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image_base.html#a260aff06c839ee350d4410aebb2638d2">operator()</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> x, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> y, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> z, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> w) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an expression which loads from this image.  <a href="#a260aff06c839ee350d4410aebb2638d2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image_base.html#adfdc3ef160d5acd4c47cce2e4a683321">operator()</a> (std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt;) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an expression which loads from this image.  <a href="#adfdc3ef160d5acd4c47cce2e4a683321"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image_base.html#a6d11e22f2eade8eb8cd8fc4740832796">operator()</a> (std::vector&lt; <a class="el" href="class_halide_1_1_var.html">Var</a> &gt;) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an expression which loads from this image.  <a href="#a6d11e22f2eade8eb8cd8fc4740832796"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_image_base.html#a1a95090625ca59e581f6cbf3bdf6b865">prepare_for_direct_pixel_access</a> ()</td></tr>
@@ -461,7 +465,7 @@ Protected Attributes</h2></td></tr>
 <p>Manually copy-back data to the host, if it's on a device. </p>
 <p>This is done for you if you construct an image from a buffer, but you might need to call this if you realize a gpu kernel into an existing image </p>
 
-<p>Referenced by <a class="el" href="_func_8h_source.html#l01662">Halide::evaluate_may_gpu()</a>, and <a class="el" href="_func_8h_source.html#l00476">Halide::Func::realize()</a>.</p>
+<p>Referenced by <a class="el" href="_func_8h_source.html#l00486">Halide::Func::realize()</a>.</p>
 
 </div>
 </div>
@@ -501,7 +505,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Check if this image handle points to actual data. </p>
 
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00190">Halide::Image&lt; T &gt;::data()</a>.</p>
+<p>Referenced by <a class="el" href="_image_8h_source.html#l00192">Halide::Image&lt; T &gt;::data()</a>.</p>
 
 </div>
 </div>
@@ -905,6 +909,46 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="adfdc3ef160d5acd4c47cce2e4a683321"></a><!-- doxytag: member="Halide::ImageBase::operator()" ref="adfdc3ef160d5acd4c47cce2e4a683321" args="(std::vector&lt; Expr &gt;) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_expr.html">Expr</a> Halide::ImageBase::operator() </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Construct an expression which loads from this image. </p>
+<p>The location is extended with enough implicit variables to match the dimensionality of the image (see <a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117">Var::implicit</a>) </p>
+
+</div>
+</div>
+<a class="anchor" id="a6d11e22f2eade8eb8cd8fc4740832796"></a><!-- doxytag: member="Halide::ImageBase::operator()" ref="a6d11e22f2eade8eb8cd8fc4740832796" args="(std::vector&lt; Var &gt;) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_expr.html">Expr</a> Halide::ImageBase::operator() </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_halide_1_1_var.html">Var</a> &gt;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Construct an expression which loads from this image. </p>
+<p>The location is extended with enough implicit variables to match the dimensionality of the image (see <a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117">Var::implicit</a>) </p>
+
+</div>
+</div>
 <a class="anchor" id="a5646e0d4b0777d35d6e2f7299465c5fa"></a><!-- doxytag: member="Halide::ImageBase::raw_buffer" ref="a5646e0d4b0777d35d6e2f7299465c5fa" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -939,7 +983,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_image_8h_source.html#l00022">22</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00190">Halide::Image&lt; T &gt;::data()</a>, <a class="el" href="_image_8h_source.html#l00251">Halide::Image&lt; T &gt;::operator Argument()</a>, <a class="el" href="_image_8h_source.html#l00246">Halide::Image&lt; T &gt;::operator Buffer()</a>, and <a class="el" href="_image_8h_source.html#l00256">Halide::Image&lt; T &gt;::operator ExternFuncArgument()</a>.</p>
+<p>Referenced by <a class="el" href="_image_8h_source.html#l00192">Halide::Image&lt; T &gt;::data()</a>, <a class="el" href="_image_8h_source.html#l00253">Halide::Image&lt; T &gt;::operator Argument()</a>, <a class="el" href="_image_8h_source.html#l00248">Halide::Image&lt; T &gt;::operator Buffer()</a>, and <a class="el" href="_image_8h_source.html#l00258">Halide::Image&lt; T &gt;::operator ExternFuncArgument()</a>.</p>
 
 </div>
 </div>
@@ -959,7 +1003,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_image_8h_source.html#l00029">29</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00199">Halide::Image&lt; T &gt;::operator()()</a>.</p>
+<p>Referenced by <a class="el" href="_image_8h_source.html#l00201">Halide::Image&lt; T &gt;::operator()()</a>.</p>
 
 </div>
 </div>
@@ -979,7 +1023,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_image_8h_source.html#l00030">30</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00199">Halide::Image&lt; T &gt;::operator()()</a>.</p>
+<p>Referenced by <a class="el" href="_image_8h_source.html#l00201">Halide::Image&lt; T &gt;::operator()()</a>.</p>
 
 </div>
 </div>
@@ -999,7 +1043,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_image_8h_source.html#l00030">30</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00205">Halide::Image&lt; T &gt;::operator()()</a>.</p>
+<p>Referenced by <a class="el" href="_image_8h_source.html#l00207">Halide::Image&lt; T &gt;::operator()()</a>.</p>
 
 </div>
 </div>
@@ -1019,7 +1063,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_image_8h_source.html#l00030">30</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00211">Halide::Image&lt; T &gt;::operator()()</a>.</p>
+<p>Referenced by <a class="el" href="_image_8h_source.html#l00213">Halide::Image&lt; T &gt;::operator()()</a>.</p>
 
 </div>
 </div>
@@ -1039,7 +1083,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_image_8h_source.html#l00030">30</a> of file <a class="el" href="_image_8h_source.html">Image.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_image_8h_source.html#l00217">Halide::Image&lt; T &gt;::operator()()</a>.</p>
+<p>Referenced by <a class="el" href="_image_8h_source.html#l00219">Halide::Image&lt; T &gt;::operator()()</a>.</p>
 
 </div>
 </div>

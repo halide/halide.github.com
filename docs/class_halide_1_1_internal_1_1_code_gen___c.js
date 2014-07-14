@@ -8,7 +8,7 @@ var class_halide_1_1_internal_1_1_code_gen___c =
     [ "print_stmt", "class_halide_1_1_internal_1_1_code_gen___c.html#ae8751ee70e7cca44cb27ee6f125e1aa4", null ],
     [ "print_type", "class_halide_1_1_internal_1_1_code_gen___c.html#a2cb2800c6929351fbb1e92ba7036c59f", null ],
     [ "print_reinterpret", "class_halide_1_1_internal_1_1_code_gen___c.html#a5e31948bd95ab664b3608e6059f27cd7", null ],
-    [ "print_name", "class_halide_1_1_internal_1_1_code_gen___c.html#a2b6eb447254ea98c5b79c3fb31afd10f", null ],
+    [ "print_name", "class_halide_1_1_internal_1_1_code_gen___c.html#a772bf939e7211b2abaf9b072c09c0abf", null ],
     [ "print_assignment", "class_halide_1_1_internal_1_1_code_gen___c.html#a771ef91ff341ea0ed96fa88876dbd12d", null ],
     [ "open_scope", "class_halide_1_1_internal_1_1_code_gen___c.html#a3b9b291608bd137af4f788bae7b859b3", null ],
     [ "close_scope", "class_halide_1_1_internal_1_1_code_gen___c.html#a2c813cd941a2e028ace0daa9d3cd207b", null ],

@@ -3,6 +3,8 @@ var hierarchy =
     [ "_cl_buffer_region", "struct__cl__buffer__region.html", null ],
     [ "_cl_image_desc", "struct__cl__image__desc.html", null ],
     [ "_cl_image_format", "struct__cl__image__format.html", null ],
+    [ "_dev_copy", "struct__dev__copy.html", null ],
+    [ "CUDA_MEMCPY3D_st", "struct_c_u_d_a___m_e_m_c_p_y3_d__st.html", null ],
     [ "Halide::Argument", "struct_halide_1_1_argument.html", [
       [ "Halide::Internal::GPU_Argument", "struct_halide_1_1_internal_1_1_g_p_u___argument.html", null ]
     ] ],

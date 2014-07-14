@@ -246,7 +246,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00144"></a>00144     }
 <a name="l00145"></a>00145 <span class="comment"></span>
 <a name="l00146"></a>00146 <span class="comment">    /** A Var can be treated as an Expr of type Int(32) */</span>
-<a name="l00147"></a><a class="code" href="class_halide_1_1_var.html#a2b1d4c7094a247ecba6fdb684c0aec3f">00147</a>     <a class="code" href="class_halide_1_1_var.html#a2b1d4c7094a247ecba6fdb684c0aec3f" title="A Var can be treated as an Expr of type Int(32)">operator Expr</a>() {
+<a name="l00147"></a><a class="code" href="class_halide_1_1_var.html#a136bbd6b82b3da401e0825abf6ff996b">00147</a>     <a class="code" href="class_halide_1_1_var.html#a136bbd6b82b3da401e0825abf6ff996b" title="A Var can be treated as an Expr of type Int(32)">operator Expr</a>()<span class="keyword"> const </span>{
 <a name="l00148"></a>00148         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_variable.html#aff3204ace57795ef312d3029c1f09aef">Internal::Variable::make</a>(<a class="code" href="namespace_halide.html#acf59f500385c448b26d0d245f55b23f4" title="Constructing a signed integer type.">Int</a>(32), <a class="code" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf" title="Get the name of a Var.">name</a>());
 <a name="l00149"></a>00149     }
 <a name="l00150"></a>00150 <span class="comment"></span>
@@ -259,19 +259,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00157"></a>00157         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_var.html#ac238aaac88dd594255c0d161f8530319" title="Construct a Var with an automatically-generated unique name.">Var</a>(<span class="stringliteral">&quot;__thread_id_x&quot;</span>);
 <a name="l00158"></a>00158     }
 <a name="l00159"></a>00159     <span class="comment">// @}</span>
-<a name="l00160"></a>00160 };
-<a name="l00161"></a>00161 <span class="comment"></span>
-<a name="l00162"></a>00162 <span class="comment">/** A placeholder variable for infered arguments. See \ref Var::implicit */</span>
-<a name="l00163"></a>00163 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">extern</span> Var <a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>;
-<a name="l00164"></a>00164 <span class="comment"></span>
-<a name="l00165"></a>00165 <span class="comment">/** The first ten implicit Vars for use in scheduling. See \ref Var::implicit */</span>
-<a name="l00166"></a>00166 <span class="comment">// @{</span>
-<a name="l00167"></a>00167 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">extern</span> Var <a class="code" href="namespace_halide.html#a57841c7113c6794d0178568f74b1de75" title="The first ten implicit Vars for use in scheduling.">_0</a>, <a class="code" href="namespace_halide.html#af6eac61e701ea87443086c3597f13752" title="The first ten implicit Vars for use in scheduling.">_1</a>, <a class="code" href="namespace_halide.html#a645530ef64903e9cd3aacc00436d860e" title="The first ten implicit Vars for use in scheduling.">_2</a>, <a class="code" href="namespace_halide.html#a34aa6b48f5d654ce7efef0065be96d0e" title="The first ten implicit Vars for use in scheduling.">_3</a>, <a class="code" href="namespace_halide.html#a2bf0b1d78a0f5f446ebc76dbc636a912" title="The first ten implicit Vars for use in scheduling.">_4</a>, <a class="code" href="namespace_halide.html#a16fae07413aae9b6c672adf92150d1ac" title="The first ten implicit Vars for use in scheduling.">_5</a>, <a class="code" href="namespace_halide.html#a4a1fb09d56f46575b0f5f50bb379805f" title="The first ten implicit Vars for use in scheduling.">_6</a>, <a class="code" href="namespace_halide.html#a7108f092c0886f9eb9dca85276bba0f5" title="The first ten implicit Vars for use in scheduling.">_7</a>, <a class="code" href="namespace_halide.html#ab64608cba6f828b3b157f893c07dee47" title="The first ten implicit Vars for use in scheduling.">_8</a>, <a class="code" href="namespace_halide.html#a700c8bfac61eb32454726b4f791302d6" title="The first ten implicit Vars for use in scheduling.">_9</a>;
-<a name="l00168"></a>00168 <span class="comment">// @}</span>
-<a name="l00169"></a>00169 
-<a name="l00170"></a>00170 }
-<a name="l00171"></a>00171 
-<a name="l00172"></a>00172 <span class="preprocessor">#endif</span>
+<a name="l00160"></a>00160 <span class="comment"></span>
+<a name="l00161"></a>00161 <span class="comment">    /** A Var that represents the location outside the outermost loop. */</span>
+<a name="l00162"></a><a class="code" href="class_halide_1_1_var.html#aae5374d79ed234db176e6a59057bdb1b">00162</a>     <span class="keyword">static</span> <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> <a class="code" href="class_halide_1_1_var.html#aae5374d79ed234db176e6a59057bdb1b" title="A Var that represents the location outside the outermost loop.">outermost</a>() {
+<a name="l00163"></a>00163         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_var.html#ac238aaac88dd594255c0d161f8530319" title="Construct a Var with an automatically-generated unique name.">Var</a>(<span class="stringliteral">&quot;__outermost&quot;</span>);
+<a name="l00164"></a>00164     }
+<a name="l00165"></a>00165 
+<a name="l00166"></a>00166 };
+<a name="l00167"></a>00167 <span class="comment"></span>
+<a name="l00168"></a>00168 <span class="comment">/** A placeholder variable for infered arguments. See \ref Var::implicit */</span>
+<a name="l00169"></a>00169 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">extern</span> Var <a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>;
+<a name="l00170"></a>00170 <span class="comment"></span>
+<a name="l00171"></a>00171 <span class="comment">/** The first ten implicit Vars for use in scheduling. See \ref Var::implicit */</span>
+<a name="l00172"></a>00172 <span class="comment">// @{</span>
+<a name="l00173"></a>00173 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">extern</span> Var <a class="code" href="namespace_halide.html#a57841c7113c6794d0178568f74b1de75" title="The first ten implicit Vars for use in scheduling.">_0</a>, <a class="code" href="namespace_halide.html#af6eac61e701ea87443086c3597f13752" title="The first ten implicit Vars for use in scheduling.">_1</a>, <a class="code" href="namespace_halide.html#a645530ef64903e9cd3aacc00436d860e" title="The first ten implicit Vars for use in scheduling.">_2</a>, <a class="code" href="namespace_halide.html#a34aa6b48f5d654ce7efef0065be96d0e" title="The first ten implicit Vars for use in scheduling.">_3</a>, <a class="code" href="namespace_halide.html#a2bf0b1d78a0f5f446ebc76dbc636a912" title="The first ten implicit Vars for use in scheduling.">_4</a>, <a class="code" href="namespace_halide.html#a16fae07413aae9b6c672adf92150d1ac" title="The first ten implicit Vars for use in scheduling.">_5</a>, <a class="code" href="namespace_halide.html#a4a1fb09d56f46575b0f5f50bb379805f" title="The first ten implicit Vars for use in scheduling.">_6</a>, <a class="code" href="namespace_halide.html#a7108f092c0886f9eb9dca85276bba0f5" title="The first ten implicit Vars for use in scheduling.">_7</a>, <a class="code" href="namespace_halide.html#ab64608cba6f828b3b157f893c07dee47" title="The first ten implicit Vars for use in scheduling.">_8</a>, <a class="code" href="namespace_halide.html#a700c8bfac61eb32454726b4f791302d6" title="The first ten implicit Vars for use in scheduling.">_9</a>;
+<a name="l00174"></a>00174 <span class="comment">// @}</span>
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176 }
+<a name="l00177"></a>00177 
+<a name="l00178"></a>00178 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

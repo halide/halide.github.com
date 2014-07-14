@@ -8,6 +8,7 @@ var searchData=
   ['halide_5fdev_5frun',['halide_dev_run',['../_halide_runtime_8h.html#a87dd2729ec5aafc370a8b64d5e438544',1,'HalideRuntime.h']]],
   ['halide_5fdev_5fsync',['halide_dev_sync',['../_halide_runtime_8h.html#a5d0d5c66821f18b322fbef049632badc',1,'HalideRuntime.h']]],
   ['halide_5fdo_5fpar_5ffor',['halide_do_par_for',['../_halide_runtime_8h.html#a05193f80c8fc7df76ceadd82c4ce7b56',1,'HalideRuntime.h']]],
+  ['halide_5ferf',['halide_erf',['../namespace_halide_1_1_internal.html#a3d36eef829f9c1e2d6aaf9218b2e0e66',1,'Halide::Internal']]],
   ['halide_5ferror',['halide_error',['../_halide_runtime_8h.html#aea28d04de54b94f0dd6ada140b7734d8',1,'HalideRuntime.h']]],
   ['halide_5ferror_5fvarargs',['halide_error_varargs',['../_halide_runtime_8h.html#ac41e5e7a06aaa39fc69369755a1cb4f7',1,'HalideRuntime.h']]],
   ['halide_5fexp',['halide_exp',['../namespace_halide_1_1_internal.html#a5688772a963296ea52d2bd9ac5913e79',1,'Halide::Internal']]],

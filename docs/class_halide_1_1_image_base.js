@@ -28,6 +28,8 @@ var class_halide_1_1_image_base =
     [ "operator()", "class_halide_1_1_image_base.html#a72fa02900a389e696289f29198254eed", null ],
     [ "operator()", "class_halide_1_1_image_base.html#afdd28c7cb0d988f5fa2a3adfa2b7dbe4", null ],
     [ "operator()", "class_halide_1_1_image_base.html#a260aff06c839ee350d4410aebb2638d2", null ],
+    [ "operator()", "class_halide_1_1_image_base.html#adfdc3ef160d5acd4c47cce2e4a683321", null ],
+    [ "operator()", "class_halide_1_1_image_base.html#a6d11e22f2eade8eb8cd8fc4740832796", null ],
     [ "raw_buffer", "class_halide_1_1_image_base.html#a5646e0d4b0777d35d6e2f7299465c5fa", null ],
     [ "buffer", "class_halide_1_1_image_base.html#a6be238f9e44fef2a9b778a46beaf53f0", null ],
     [ "origin", "class_halide_1_1_image_base.html#af5cf1d502b22f0cc658d9155e623cda9", null ],

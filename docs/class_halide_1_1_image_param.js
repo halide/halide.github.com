@@ -10,5 +10,7 @@ var class_halide_1_1_image_param =
     [ "operator()", "class_halide_1_1_image_param.html#a8db0de0cf308bf3d5f35b856104930e0", null ],
     [ "operator()", "class_halide_1_1_image_param.html#aa04b8925f6c9ce0c4e9796b20bdceacb", null ],
     [ "operator()", "class_halide_1_1_image_param.html#a02cde56449aa3be3eff3a3bd6347d146", null ],
+    [ "operator()", "class_halide_1_1_image_param.html#ab8c56da2bff9cd7026abba110efa22a9", null ],
+    [ "operator()", "class_halide_1_1_image_param.html#a1b9eaff64bf4cddd46349ccfbda988aa", null ],
     [ "operator Expr", "class_halide_1_1_image_param.html#a594525ce5f51a6207843810613eb5610", null ]
 ];

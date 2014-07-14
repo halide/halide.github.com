@@ -7,6 +7,8 @@ var searchData=
   ['ref_5fcount',['ref_count',['../class_halide_1_1_internal_1_1_code_gen.html#a118bf70ffa1af29a44002e3c28ec8884',1,'Halide::Internal::CodeGen::ref_count()'],['../struct_halide_1_1_internal_1_1_function_contents.html#a50c20dabffd009ccb34e0eff2450c33e',1,'Halide::Internal::FunctionContents::ref_count()'],['../struct_halide_1_1_internal_1_1_i_r_node.html#acad22eae0a8ac16b9aa24d07bf54994d',1,'Halide::Internal::IRNode::ref_count()'],['../struct_halide_1_1_internal_1_1_reduction_domain_contents.html#a5acf422dc1899a9e52934361b9d8caf4',1,'Halide::Internal::ReductionDomainContents::ref_count()']]],
   ['reinterpret',['reinterpret',['../struct_halide_1_1_internal_1_1_call.html#aa8f88ed77a6405fe8b87cd93dda0cd44',1,'Halide::Internal::Call']]],
   ['remainder',['remainder',['../struct_halide_1_1_internal_1_1_modulus_remainder.html#abc7042f8dbe17dbd44e186e11002aa2c',1,'Halide::Internal::ModulusRemainder']]],
+  ['reserved0',['reserved0',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#a852240ad2b91cfdf2bb73b26e7fb2dd9',1,'CUDA_MEMCPY3D_st']]],
+  ['reserved1',['reserved1',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#a9927846e2e05548f366343a1491d3858',1,'CUDA_MEMCPY3D_st']]],
   ['rest',['rest',['../struct_halide_1_1_internal_1_1_block.html#a8f779340f8ec64554a0dc82ae8bbc4e0',1,'Halide::Internal::Block']]],
   ['result',['result',['../class_halide_1_1_internal_1_1_expr_uses_vars.html#a482fe1415e245e98b465b801b8e2584d',1,'Halide::Internal::ExprUsesVars']]],
   ['return_5fsecond',['return_second',['../struct_halide_1_1_internal_1_1_call.html#a0da61cfb2b0de6795258029dfe512053',1,'Halide::Internal::Call']]],

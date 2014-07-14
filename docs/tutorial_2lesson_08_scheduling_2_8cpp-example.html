@@ -275,6 +275,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// of the consumer:</span>
         producer.<a name="a6"></a><a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273" title="Compute this function as needed for each unique value of the given var for the given calling function...">compute_at</a>(consumer, y);
 
+        <span class="comment">// This places the code that computes the producer just</span>
+        <span class="comment">// *inside* the consumer&#39;s for loop over y, as in the</span>
+        <span class="comment">// equivalent C below.</span>
+
         <span class="comment">// Turn on tracing.</span>
         producer.<a class="code" href="class_halide_1_1_func.html#ad88d11ad4164bce72320f2c064fc87d2" title="Trace all stores to the buffer backing this Func by emitting calls to halide_trace.">trace_stores</a>();
         consumer.<a class="code" href="class_halide_1_1_func.html#ad88d11ad4164bce72320f2c064fc87d2" title="Trace all stores to the buffer backing this Func by emitting calls to halide_trace.">trace_stores</a>();
@@ -529,7 +533,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
         <span class="comment">// Tile the consumer using 2x2 tiles.</span>
         <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> x_outer, y_outer, x_inner, y_inner;
-        consumer.<a name="a8"></a><a class="code" href="class_halide_1_1_func.html#a070bb51c52383bd6402d6002458a3788" title="Split two dimensions at once by the given factors, and then reorder the resulting dimensions to be xi...">tile</a>(x, y, x_outer, y_outer, x_inner, y_inner, 2, 2);
+        consumer.<a name="a8"></a><a class="code" href="class_halide_1_1_func.html#ab15001cd4af9e8c2808f45ff53b81582" title="Split two dimensions at once by the given factors, and then reorder the resulting dimensions to be xi...">tile</a>(x, y, x_outer, y_outer, x_inner, y_inner, 2, 2);
 
         <span class="comment">// Compute the producer per tile of the consumer</span>
         producer.<a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273" title="Compute this function as needed for each unique value of the given var for the given calling function...">compute_at</a>(consumer, x_outer);
@@ -607,11 +611,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
         <span class="comment">// Split the y coordinate of the consumer into strips of 16 scanlines:</span>
         <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> yo, yi;
-        consumer.<a name="a9"></a><a class="code" href="class_halide_1_1_func.html#abefe6262e23d34d161c7cc0b85e07187" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(y, yo, yi, 16);
+        consumer.<a name="a9"></a><a class="code" href="class_halide_1_1_func.html#a52a4cace19fc024959cda3a7e82dd9f6" title="Split a dimension into inner and outer subdimensions with the given names, where the inner dimension ...">split</a>(y, yo, yi, 16);
         <span class="comment">// Compute the strips using a thread pool and a task queue.</span>
-        consumer.<a name="a10"></a><a class="code" href="class_halide_1_1_func.html#a93ee31a00e40c4531af6f58187ee19b9" title="Mark a dimension to be traversed in parallel.">parallel</a>(yo);
+        consumer.<a name="a10"></a><a class="code" href="class_halide_1_1_func.html#aa0050c604179b43a8deb42b62dedd29d" title="Mark a dimension to be traversed in parallel.">parallel</a>(yo);
         <span class="comment">// Vectorize across x by a factor of four.</span>
-        consumer.<a name="a11"></a><a class="code" href="class_halide_1_1_func.html#a1cbde565654302d9c0ab9383a0e42708" title="Mark a dimension to be computed all-at-once as a single vector.">vectorize</a>(x, 4);
+        consumer.<a name="a11"></a><a class="code" href="class_halide_1_1_func.html#a7b1857a62deca8bc9a477c1b26720950" title="Mark a dimension to be computed all-at-once as a single vector.">vectorize</a>(x, 4);
 
         <span class="comment">// Now store the producer per-strip. This will be 17 scanlines</span>
         <span class="comment">// of the producer (16+1), but hopefully it will fold down</span>
@@ -621,7 +625,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// consumer, skipping work done on previous scanlines.</span>
         producer.<a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273" title="Compute this function as needed for each unique value of the given var for the given calling function...">compute_at</a>(consumer, yi);
         <span class="comment">// Also vectorize the producer (because sqrt is vectorizable on x86 using SSE).</span>
-        producer.<a class="code" href="class_halide_1_1_func.html#a1cbde565654302d9c0ab9383a0e42708" title="Mark a dimension to be computed all-at-once as a single vector.">vectorize</a>(x, 4);
+        producer.<a class="code" href="class_halide_1_1_func.html#a7b1857a62deca8bc9a477c1b26720950" title="Mark a dimension to be computed all-at-once as a single vector.">vectorize</a>(x, 4);
 
         <span class="comment">// Let&#39;s leave tracing off this time, because we&#39;re going to</span>
         <span class="comment">// evaluate over a larger image.</span>

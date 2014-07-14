@@ -122,8 +122,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name of a <a class="el" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a>.  <a href="#ae6e9f2ae00bf60198fae6629c7964ecf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_var.html#a3c099bd3728c50b5f3cf5e3d617ef253">same_as</a> (const <a class="el" href="class_halide_1_1_var.html">Var</a> &amp;other) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if two Vars are the same.  <a href="#a3c099bd3728c50b5f3cf5e3d617ef253"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_var.html#a2b1d4c7094a247ecba6fdb684c0aec3f">operator Expr</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> can be treated as an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> of type Int(32)  <a href="#a2b1d4c7094a247ecba6fdb684c0aec3f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_var.html#a136bbd6b82b3da401e0825abf6ff996b">operator Expr</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> can be treated as an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> of type Int(32)  <a href="#a136bbd6b82b3da401e0825abf6ff996b"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_halide_1_1_var.html">Var</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117">implicit</a> (int n)</td></tr>
@@ -134,6 +134,8 @@ Static Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the argument index for a placeholder argument given its name.  <a href="#a2fa2b57f58e68761675fe07aa19fc7bf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_var.html#a52e7795c7ec7f9ee2f488089e950847b">is_placeholder</a> (const std::string &amp;<a class="el" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf">name</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if a var is the placeholder variable <a class="el" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02">_</a>.  <a href="#a52e7795c7ec7f9ee2f488089e950847b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_halide_1_1_var.html">Var</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_var.html#aae5374d79ed234db176e6a59057bdb1b">outermost</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> that represents the location outside the outermost loop.  <a href="#aae5374d79ed234db176e6a59057bdb1b"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_halide_1_1_var.html">Var</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_var.html#aadce05f2366998e6ede48081d24caaae">gpu_blocks</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Vars to use for scheduling producer/consumer pairs on the gpu.  <a href="#aadce05f2366998e6ede48081d24caaae"></a><br/></td></tr>
@@ -188,7 +190,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_var_8h_source.html#l00031">31</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_var_8h_source.html#l00153">gpu_blocks()</a>, <a class="el" href="_var_8h_source.html#l00156">gpu_threads()</a>, and <a class="el" href="_var_8h_source.html#l00117">implicit()</a>.</p>
+<p>Referenced by <a class="el" href="_var_8h_source.html#l00153">gpu_blocks()</a>, <a class="el" href="_var_8h_source.html#l00156">gpu_threads()</a>, <a class="el" href="_var_8h_source.html#l00117">implicit()</a>, and <a class="el" href="_var_8h_source.html#l00162">outermost()</a>.</p>
 
 </div>
 </div>
@@ -211,7 +213,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_var_8h_source.html#l00034">34</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_func_8h_source.html#l00037">Halide::VarOrRVar::name()</a>, and <a class="el" href="_var_8h_source.html#l00147">operator Expr()</a>.</p>
+<p>Referenced by <a class="el" href="_func_8h_source.html#l00038">Halide::VarOrRVar::name()</a>, and <a class="el" href="_var_8h_source.html#l00147">operator Expr()</a>.</p>
 
 </div>
 </div>
@@ -287,6 +289,8 @@ Static Public Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="_var_8h_source.html#l00031">Var()</a>.</p>
 
+<p>Referenced by <a class="el" href="_boundary_conditions_8h_source.html#l00069">Halide::BoundaryConditions::Internal::func_like_to_func()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a7bca5ed9d9f0e9fe08838ee5dcbf7d72"></a><!-- doxytag: member="Halide::Var::is_implicit" ref="a7bca5ed9d9f0e9fe08838ee5dcbf7d72" args="(const std::string &amp;name)" -->
@@ -360,7 +364,7 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2b1d4c7094a247ecba6fdb684c0aec3f"></a><!-- doxytag: member="Halide::Var::operator Expr" ref="a2b1d4c7094a247ecba6fdb684c0aec3f" args="()" -->
+<a class="anchor" id="a136bbd6b82b3da401e0825abf6ff996b"></a><!-- doxytag: member="Halide::Var::operator Expr" ref="a136bbd6b82b3da401e0825abf6ff996b" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -368,7 +372,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="memname">Halide::Var::operator <a class="el" href="struct_halide_1_1_expr.html">Expr</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td><code> [inline]</code></td>
+          <td> const<code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -378,7 +382,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_var_8h_source.html#l00147">147</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
 
-<p>References <a class="el" href="_type_8h_source.html#l00096">Halide::Int()</a>, <a class="el" href="_i_r_8h_source.html#l01076">Halide::Internal::Variable::make()</a>, and <a class="el" href="_var_8h_source.html#l00034">name()</a>.</p>
+<p>References <a class="el" href="_type_8h_source.html#l00096">Halide::Int()</a>, <a class="el" href="_i_r_8h_source.html#l01081">Halide::Internal::Variable::make()</a>, and <a class="el" href="_var_8h_source.html#l00034">name()</a>.</p>
 
 </div>
 </div>
@@ -421,6 +425,28 @@ Static Public Member Functions</h2></td></tr>
 <p>Vars to use for scheduling producer/consumer pairs on the gpu. </p>
 
 <p>Definition at line <a class="el" href="_var_8h_source.html#l00156">156</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
+
+<p>References <a class="el" href="_var_8h_source.html#l00031">Var()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aae5374d79ed234db176e6a59057bdb1b"></a><!-- doxytag: member="Halide::Var::outermost" ref="aae5374d79ed234db176e6a59057bdb1b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_halide_1_1_var.html">Var</a> <a class="el" href="class_halide_1_1_var.html#aae5374d79ed234db176e6a59057bdb1b">Halide::Var::outermost</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>A <a class="el" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> that represents the location outside the outermost loop. </p>
+
+<p>Definition at line <a class="el" href="_var_8h_source.html#l00162">162</a> of file <a class="el" href="_var_8h_source.html">Var.h</a>.</p>
 
 <p>References <a class="el" href="_var_8h_source.html#l00031">Var()</a>.</p>
 

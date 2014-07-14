@@ -5,6 +5,7 @@ var searchData=
   ['end',['end',['../class_halide_1_1_internal_1_1_scope.html#a5002f73415f061c4bd927dd20e0d0525',1,'Halide::Internal::Scope']]],
   ['ends_5fwith',['ends_with',['../namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28',1,'Halide::Internal']]],
   ['equal',['equal',['../namespace_halide_1_1_internal.html#a31dc49947eec58e14aab236c7b0182ee',1,'Halide::Internal::equal(Expr a, Expr b)'],['../namespace_halide_1_1_internal.html#a4d404e95dced22ae673144c0351f186f',1,'Halide::Internal::equal(Stmt a, Stmt b)']]],
+  ['erf',['erf',['../namespace_halide.html#a9a80df08887f9457c9bffc349f834ce1',1,'Halide']]],
   ['error',['Error',['../struct_halide_1_1_error.html#afd091d7360696892aaa76e7d5e5db6a8',1,'Halide::Error']]],
   ['errorreport',['ErrorReport',['../struct_halide_1_1_internal_1_1_error_report.html#acef1951b6b18af27f98939b618db032a',1,'Halide::Internal::ErrorReport']]],
   ['evaluate',['evaluate',['../namespace_halide.html#a10bc862e5fcc7aeb2b41bc049e86754d',1,'Halide::evaluate(Expr e)'],['../namespace_halide.html#acb1194370b946274598cf0ee1a18997d',1,'Halide::evaluate(Tuple t, A *a, B *b)'],['../namespace_halide.html#a1fa9be2c78e0e4b0abc44f4733242e5a',1,'Halide::evaluate(Tuple t, A *a, B *b, C *c)'],['../namespace_halide.html#a91f02c03e717890f1180421d3a63cfb4',1,'Halide::evaluate(Tuple t, A *a, B *b, C *c, D *d)']]],

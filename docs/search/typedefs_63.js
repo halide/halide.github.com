@@ -55,5 +55,15 @@ var searchData=
   ['cl_5fsampler',['cl_sampler',['../mini__cl_8h.html#a0abe9600e6af78ca5d40d3c47164cc0a',1,'mini_cl.h']]],
   ['cl_5fsampler_5finfo',['cl_sampler_info',['../mini__cl_8h.html#a1e7a708f426cc4d081cbee824e896004',1,'mini_cl.h']]],
   ['cl_5fuint',['cl_uint',['../mini__cl_8h.html#a427cf720a5a2d671d308d999efe7f4da',1,'mini_cl.h']]],
-  ['cl_5fulong',['cl_ulong',['../mini__cl_8h.html#afa6c39e2bb9558276538908e6af47d29',1,'mini_cl.h']]]
+  ['cl_5fulong',['cl_ulong',['../mini__cl_8h.html#afa6c39e2bb9558276538908e6af47d29',1,'mini_cl.h']]],
+  ['cuarray',['CUarray',['../mini__cuda_8h.html#ad550651524a56766b60f10f0e7628042',1,'mini_cuda.h']]],
+  ['cucontext',['CUcontext',['../mini__cuda_8h.html#af9f5bd81658f866613785b3a0bb7d7d9',1,'mini_cuda.h']]],
+  ['cuda_5fmemcpy3d',['CUDA_MEMCPY3D',['../mini__cuda_8h.html#ade7782de4c8148acabdc70c6f078efbc',1,'mini_cuda.h']]],
+  ['cudevice',['CUdevice',['../mini__cuda_8h.html#acd81b70eb9968392bb5cdf582af8eab4',1,'mini_cuda.h']]],
+  ['cudeviceptr',['CUdeviceptr',['../mini__cuda_8h.html#a5e264ce2ad6a38761e7e04921ef771de',1,'mini_cuda.h']]],
+  ['cuevent',['CUevent',['../mini__cuda_8h.html#a6d740185cf0953636d4ae37f68d7559b',1,'mini_cuda.h']]],
+  ['cufunction',['CUfunction',['../mini__cuda_8h.html#aba6128b948022f495706d93bc2cea9c8',1,'mini_cuda.h']]],
+  ['cumemorytype',['CUmemorytype',['../mini__cuda_8h.html#a9e45c622a47315753c4725c101148a81',1,'mini_cuda.h']]],
+  ['cumodule',['CUmodule',['../mini__cuda_8h.html#a9e4ef4dcfba4662b2299acb8d049a1ef',1,'mini_cuda.h']]],
+  ['custream',['CUstream',['../mini__cuda_8h.html#ab946c7f02e09efd788a204718015d88a',1,'mini_cuda.h']]]
 ];

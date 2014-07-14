@@ -8,5 +8,6 @@ var struct_halide_1_1_internal_1_1_split =
     [ "outer", "struct_halide_1_1_internal_1_1_split.html#aecf934bbd86bd7fcc31667545d9ff610", null ],
     [ "inner", "struct_halide_1_1_internal_1_1_split.html#addcc9ba56f72ca2c790f948c27f46207", null ],
     [ "factor", "struct_halide_1_1_internal_1_1_split.html#ac35031df188ca08f073e2bd24bee3924", null ],
+    [ "exact", "struct_halide_1_1_internal_1_1_split.html#aa688d1412986c09b645a70f016d43003", null ],
     [ "split_type", "struct_halide_1_1_internal_1_1_split.html#a6a36f5d612bfaf8d0c3fc09c70d5984a", null ]
 ];

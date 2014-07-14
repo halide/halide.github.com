@@ -147,9 +147,11 @@ Public Types</h2></td></tr>
 &#160;&#160;<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a1fc53f322ecd95ae65274a9f16c71ac2">NoAsserts</a> =  1 &lt;&lt; 8, 
 <a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6f7593c40bf078bf7906ea1c391bcd80">NoBoundsQuery</a> =  1 &lt;&lt; 9, 
 <a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80af37c16007f6547612713259e648cc41e">ARMv7s</a> =  1 &lt;&lt; 10, 
-<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80af3447eae9bb5941da7e4b934859ccf61">AArch64Backend</a> =  1 &lt;&lt; 11, 
+<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80aa371c9fa5610dc3a9efbb3fde547a719">CLDoubles</a> =  1 &lt;&lt; 11, 
 <br/>
-&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80aa371c9fa5610dc3a9efbb3fde547a719">CLDoubles</a> =  1 &lt;&lt; 12
+&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a9764990d6a6294a8a23f8fb6598c2c88">FMA</a> =  1 &lt;&lt; 12, 
+<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6ba1375f5f5982d91779173b71542e5f">FMA4</a> =  1 &lt;&lt; 13, 
+<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80afc9c513f157e362fa6851a66e5d2aa90">F16C</a> =  1 &lt;&lt; 14
 <br/>
  }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional features a target can have.  <a href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80">More...</a><br/></td></tr>
@@ -293,11 +295,16 @@ Public Attributes</h2></td></tr>
 <tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80af37c16007f6547612713259e648cc41e"></a><!-- doxytag: member="ARMv7s" ref="a04065d5cc8ac34f163e69eb65493db80af37c16007f6547612713259e648cc41e" args="" -->ARMv7s</em>&nbsp;</td><td>
 <p>Generate code for ARMv7s. Only relevant for 32-bit ARM. </p>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80af3447eae9bb5941da7e4b934859ccf61"></a><!-- doxytag: member="AArch64Backend" ref="a04065d5cc8ac34f163e69eb65493db80af3447eae9bb5941da7e4b934859ccf61" args="" -->AArch64Backend</em>&nbsp;</td><td>
-<p>Use AArch64 LLVM target rather than ARM64. Only relevant for 64-bit ARM. </p>
-</td></tr>
 <tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80aa371c9fa5610dc3a9efbb3fde547a719"></a><!-- doxytag: member="CLDoubles" ref="a04065d5cc8ac34f163e69eb65493db80aa371c9fa5610dc3a9efbb3fde547a719" args="" -->CLDoubles</em>&nbsp;</td><td>
 <p>Enable double support on OpenCL targets. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80a9764990d6a6294a8a23f8fb6598c2c88"></a><!-- doxytag: member="FMA" ref="a04065d5cc8ac34f163e69eb65493db80a9764990d6a6294a8a23f8fb6598c2c88" args="" -->FMA</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80a6ba1375f5f5982d91779173b71542e5f"></a><!-- doxytag: member="FMA4" ref="a04065d5cc8ac34f163e69eb65493db80a6ba1375f5f5982d91779173b71542e5f" args="" -->FMA4</em>&nbsp;</td><td>
+<p>Enable x86 FMA instruction. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80afc9c513f157e362fa6851a66e5d2aa90"></a><!-- doxytag: member="F16C" ref="a04065d5cc8ac34f163e69eb65493db80afc9c513f157e362fa6851a66e5d2aa90" args="" -->F16C</em>&nbsp;</td><td>
+<p>Enable x86 (AMD) FMA4 instruction set. </p>
 </td></tr>
 </table>
 </dd>
@@ -322,9 +329,9 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00053">53</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00054">54</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_target_8h_source.html#l00110">from_string()</a>.</p>
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00111">from_string()</a>.</p>
 
 </div>
 </div>
@@ -365,7 +372,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00054">54</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00055">55</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
 </div>
 </div>
@@ -384,11 +391,11 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00056">56</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00057">57</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
-<p>References <a class="el" href="_target_8h_source.html#l00038">CUDA</a>, <a class="el" href="_target_8h_source.html#l00051">features</a>, and <a class="el" href="_target_8h_source.html#l00039">OpenCL</a>.</p>
+<p>References <a class="el" href="_target_8h_source.html#l00038">CUDA</a>, <a class="el" href="_target_8h_source.html#l00052">features</a>, and <a class="el" href="_target_8h_source.html#l00039">OpenCL</a>.</p>
 
-<p>Referenced by <a class="el" href="_func_8h_source.html#l01662">Halide::evaluate_may_gpu()</a>.</p>
+<p>Referenced by <a class="el" href="_func_8h_source.html#l01665">Halide::evaluate_may_gpu()</a>.</p>
 
 </div>
 </div>
@@ -407,9 +414,9 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00060">60</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00061">61</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
-<p>References <a class="el" href="struct_halide_1_1_target.html#a53d1006f89ed385a62cf9e2e5a4fe5a9">arch</a>, <a class="el" href="_target_8h_source.html#l00031">bits</a>, <a class="el" href="_target_8h_source.html#l00051">features</a>, and <a class="el" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a>.</p>
+<p>References <a class="el" href="struct_halide_1_1_target.html#a53d1006f89ed385a62cf9e2e5a4fe5a9">arch</a>, <a class="el" href="_target_8h_source.html#l00031">bits</a>, <a class="el" href="_target_8h_source.html#l00052">features</a>, and <a class="el" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a>.</p>
 
 </div>
 </div>
@@ -428,7 +435,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00067">67</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00068">68</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
 </div>
 </div>
@@ -473,7 +480,7 @@ Public Attributes</h2></td></tr>
 <p>If 'target' contains "host" as the first token, it replaces the entire contents of 'this' with <a class="el" href="namespace_halide.html#a4fb1734eaadb362e875519e6ab68158e" title="Return the target corresponding to the host machine.">get_host_target()</a>, then proceeds to parse the remaining tokens (allowing for things like "host-opencl" to mean "host configuration, but with opencl added").</p>
 <p>Note that unlike parse_from_string(), this will never print to cerr or assert in the event of a parse failure. Note also that an empty target string is essentially a no-op, leaving 'this' unaffected. </p>
 
-<p>Referenced by <a class="el" href="_target_8h_source.html#l00110">from_string()</a>.</p>
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00111">from_string()</a>.</p>
 
 </div>
 </div>
@@ -494,9 +501,9 @@ Public Attributes</h2></td></tr>
 
 <p>Like <a class="el" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b" title="Parse the contents of &#39;target&#39; and merge into &#39;this&#39;, replacing only the parts that are specified...">merge_string()</a>, but reset the contents of 'this' first. </p>
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00110">110</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00111">111</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
-<p>References <a class="el" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b">merge_string()</a>, and <a class="el" href="_target_8h_source.html#l00053">Target()</a>.</p>
+<p>References <a class="el" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b">merge_string()</a>, and <a class="el" href="_target_8h_source.html#l00054">Target()</a>.</p>
 
 </div>
 </div>
@@ -512,7 +519,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Referenced by <a class="el" href="_target_8h_source.html#l00060">operator==()</a>.</p>
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00061">operator==()</a>.</p>
 
 </div>
 </div>
@@ -527,7 +534,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Referenced by <a class="el" href="_target_8h_source.html#l00060">operator==()</a>.</p>
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00061">operator==()</a>.</p>
 
 </div>
 </div>
@@ -547,7 +554,7 @@ Public Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_target_8h_source.html#l00031">31</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_target_8h_source.html#l00060">operator==()</a>.</p>
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00061">operator==()</a>.</p>
 
 </div>
 </div>
@@ -564,9 +571,9 @@ Public Attributes</h2></td></tr>
 
 <p>A bitmask that stores the active features. </p>
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00051">51</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00052">52</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_target_8h_source.html#l00056">has_gpu_feature()</a>, and <a class="el" href="_target_8h_source.html#l00060">operator==()</a>.</p>
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00057">has_gpu_feature()</a>, and <a class="el" href="_target_8h_source.html#l00061">operator==()</a>.</p>
 
 </div>
 </div>

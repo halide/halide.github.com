@@ -371,5 +371,18 @@ var searchData=
   ['cl_5funsigned_5fint8',['CL_UNSIGNED_INT8',['../mini__cl_8h.html#ac519ab26c257eac9852136e50530b85c',1,'mini_cl.h']]],
   ['cl_5fversion_5f1_5f0',['CL_VERSION_1_0',['../mini__cl_8h.html#aee1d78288804c002c1f91ec867d7f1e2',1,'mini_cl.h']]],
   ['cl_5fversion_5f1_5f1',['CL_VERSION_1_1',['../mini__cl_8h.html#a8dd9950f23319f8274ebb1da9ec652ab',1,'mini_cl.h']]],
-  ['cl_5fversion_5f1_5f2',['CL_VERSION_1_2',['../mini__cl_8h.html#a27df0b9853c075d7c2dd3e05f37e1d5a',1,'mini_cl.h']]]
+  ['cl_5fversion_5f1_5f2',['CL_VERSION_1_2',['../mini__cl_8h.html#a27df0b9853c075d7c2dd3e05f37e1d5a',1,'mini_cl.h']]],
+  ['cu_5fpointer_5fattribute_5fcontext',['CU_POINTER_ATTRIBUTE_CONTEXT',['../mini__cuda_8h.html#abe8cdd317f9352b14726bb7ff9f19f33',1,'mini_cuda.h']]],
+  ['cuctxcreate',['cuCtxCreate',['../mini__cuda_8h.html#a1fdf788e658ebaaed1ad118cfd912b4c',1,'mini_cuda.h']]],
+  ['cuctxdestroy',['cuCtxDestroy',['../mini__cuda_8h.html#a1be85a7e07025e6bbe348e8d2d9b732e',1,'mini_cuda.h']]],
+  ['cuctxpopcurrent',['cuCtxPopCurrent',['../mini__cuda_8h.html#ae7020f8f1df97da1705d1a9be44ebdac',1,'mini_cuda.h']]],
+  ['cuctxpushcurrent',['cuCtxPushCurrent',['../mini__cuda_8h.html#a34d4ad0eadff3a9c6024a1379cc8ef76',1,'mini_cuda.h']]],
+  ['cudaapi',['CUDAAPI',['../mini__cuda_8h.html#ab85967b2c9c337aa3174818a4e51d8ce',1,'mini_cuda.h']]],
+  ['cueventdestroy',['cuEventDestroy',['../mini__cuda_8h.html#acda59d4dc8d907ed0f8b0884725fd0b4',1,'mini_cuda.h']]],
+  ['cumemalloc',['cuMemAlloc',['../mini__cuda_8h.html#a43048c54ec5b8d08051c20457752da51',1,'mini_cuda.h']]],
+  ['cumemcpy3d',['cuMemcpy3D',['../mini__cuda_8h.html#a91d4e819e6de8d977de960a4587dc6c0',1,'mini_cuda.h']]],
+  ['cumemcpydtoh',['cuMemcpyDtoH',['../mini__cuda_8h.html#ad523c53d6be622e5cf7da13ebe40ca60',1,'mini_cuda.h']]],
+  ['cumemcpyhtod',['cuMemcpyHtoD',['../mini__cuda_8h.html#a711281905026e651a7fdd92ad1842f04',1,'mini_cuda.h']]],
+  ['cumemfree',['cuMemFree',['../mini__cuda_8h.html#a898ea139be976e3fdca8a71e02e25d16',1,'mini_cuda.h']]],
+  ['custreamdestroy',['cuStreamDestroy',['../mini__cuda_8h.html#a078e575a567baeb8a1a6b3ab9db7e412',1,'mini_cuda.h']]]
 ];

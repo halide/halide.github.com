@@ -7,5 +7,6 @@ var searchData=
   ['popcount',['popcount',['../struct_halide_1_1_internal_1_1_call.html#aa474f9227b1765a5f0183e2c72b7c83c',1,'Halide::Internal::Call']]],
   ['produce',['produce',['../struct_halide_1_1_internal_1_1_pipeline.html#a6578b89b786d10d0ad5f64889dd55749',1,'Halide::Internal::Pipeline']]],
   ['profiling_5ftimer',['profiling_timer',['../struct_halide_1_1_internal_1_1_call.html#a9fcc134284529a164250ed52003bcc39',1,'Halide::Internal::Call']]],
-  ['ptr',['ptr',['../struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html#a3c0ac4b813c3feb42a25bc060bd3196c',1,'Halide::Internal::CodeGen_Posix::Allocation::ptr()'],['../struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe',1,'Halide::Internal::IntrusivePtr::ptr()']]]
+  ['ptr',['ptr',['../struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html#a3c0ac4b813c3feb42a25bc060bd3196c',1,'Halide::Internal::CodeGen_Posix::Allocation::ptr()'],['../struct_halide_1_1_internal_1_1_intrusive_ptr.html#a92a7d9b9248ef6ea3f04cc56119dabbe',1,'Halide::Internal::IntrusivePtr::ptr()']]],
+  ['pure',['pure',['../struct_halide_1_1_internal_1_1_dim.html#a4cc0418585c09d665f8440ff8fb00e4e',1,'Halide::Internal::Dim']]]
 ];
