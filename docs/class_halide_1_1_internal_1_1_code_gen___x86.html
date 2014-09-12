@@ -139,6 +139,10 @@ Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">llvm::Value *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#af4000c370675ff4e0489e2a2d8d85e6e">call_intrin</a> (llvm::Type *t, const std::string &amp;name, std::vector&lt; llvm::Value * &gt;)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a call to an sse or avx intrinsic.  <a href="#af4000c370675ff4e0489e2a2d8d85e6e"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#aabd56c1457119580494739129887cb47">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_add.html">Add</a> *)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Nodes for which we want to emit specific sse/avx intrinsics.  <a href="#aabd56c1457119580494739129887cb47"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a87f636d0ea941d3939f3f1c7e4144b3e">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_sub.html">Sub</a> *)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Nodes for which we want to emit specific sse/avx intrinsics.  <a href="#a87f636d0ea941d3939f3f1c7e4144b3e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_cast.html">Cast</a> *)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Nodes for which we want to emit specific sse/avx intrinsics.  <a href="#a145b33d3d37cf18505f3b861c0a88a5a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a3f8435a01dcfb92dfdcf9ae4a513d75e">visit</a> (const <a class="el" href="struct_halide_1_1_internal_1_1_div.html">Div</a> *)</td></tr>
@@ -320,12 +324,54 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aabd56c1457119580494739129887cb47"></a><!-- doxytag: member="Halide::Internal::CodeGen_X86::visit" ref="aabd56c1457119580494739129887cb47" args="(const Add *)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#aabd56c1457119580494739129887cb47">Halide::Internal::CodeGen_X86::visit</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_halide_1_1_internal_1_1_add.html">Add</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [protected, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Nodes for which we want to emit specific sse/avx intrinsics. </p>
+
+<p>Reimplemented from <a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#acaba44823e08b2cb8343aec69c74cec4">Halide::Internal::CodeGen</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a87f636d0ea941d3939f3f1c7e4144b3e"></a><!-- doxytag: member="Halide::Internal::CodeGen_X86::visit" ref="a87f636d0ea941d3939f3f1c7e4144b3e" args="(const Sub *)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#aabd56c1457119580494739129887cb47">Halide::Internal::CodeGen_X86::visit</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_halide_1_1_internal_1_1_sub.html">Sub</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [protected, virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Nodes for which we want to emit specific sse/avx intrinsics. </p>
+
+<p>Reimplemented from <a class="el" href="class_halide_1_1_internal_1_1_code_gen.html#a4c4c9bd2bbeb449e77ab5c5b83c292d9">Halide::Internal::CodeGen</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a145b33d3d37cf18505f3b861c0a88a5a"></a><!-- doxytag: member="Halide::Internal::CodeGen_X86::visit" ref="a145b33d3d37cf18505f3b861c0a88a5a" args="(const Cast *)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a">Halide::Internal::CodeGen_X86::visit</a> </td>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#aabd56c1457119580494739129887cb47">Halide::Internal::CodeGen_X86::visit</a> </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="struct_halide_1_1_internal_1_1_cast.html">Cast</a> *&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -346,7 +392,7 @@ Protected Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a">Halide::Internal::CodeGen_X86::visit</a> </td>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#aabd56c1457119580494739129887cb47">Halide::Internal::CodeGen_X86::visit</a> </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="struct_halide_1_1_internal_1_1_div.html">Div</a> *&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -367,7 +413,7 @@ Protected Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a">Halide::Internal::CodeGen_X86::visit</a> </td>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#aabd56c1457119580494739129887cb47">Halide::Internal::CodeGen_X86::visit</a> </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="struct_halide_1_1_internal_1_1_min.html">Min</a> *&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -388,7 +434,7 @@ Protected Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a">Halide::Internal::CodeGen_X86::visit</a> </td>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_code_gen___x86.html#aabd56c1457119580494739129887cb47">Halide::Internal::CodeGen_X86::visit</a> </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="struct_halide_1_1_internal_1_1_max.html">Max</a> *&#160;</td>
           <td class="paramname"></td><td>)</td>

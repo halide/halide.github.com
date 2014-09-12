@@ -119,8 +119,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Reconstruct a <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function.">Function</a> from a <a class="el" href="struct_halide_1_1_internal_1_1_function_contents.html">FunctionContents</a> pointer.  <a href="#a4ecf618c52dacb19090c17a00d3fbd3d"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a03e0aade5c77940b25d883eeaab82393">define</a> (const std::vector&lt; std::string &gt; &amp;<a class="el" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5">args</a>, std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; <a class="el" href="class_halide_1_1_internal_1_1_function.html#a1e38187e7d2c921fad94106de8d89ac4">values</a>)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_halide_1_1_internal_1_1_add.html" title="The sum of two expressions.">Add</a> a pure definition to this function.  <a href="#a03e0aade5c77940b25d883eeaab82393"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#af7d46f006c81aed81e1226af236f6eaf">define_reduction</a> (const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;<a class="el" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5">args</a>, std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; <a class="el" href="class_halide_1_1_internal_1_1_function.html#a1e38187e7d2c921fad94106de8d89ac4">values</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_halide_1_1_internal_1_1_add.html" title="The sum of two expressions.">Add</a> a reduction definition to this function.  <a href="#af7d46f006c81aed81e1226af236f6eaf"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#aa9ec4114945020dffc766ffe103c5364">define_update</a> (const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;<a class="el" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5">args</a>, std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; <a class="el" href="class_halide_1_1_internal_1_1_function.html#a1e38187e7d2c921fad94106de8d89ac4">values</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_halide_1_1_internal_1_1_add.html" title="The sum of two expressions.">Add</a> an update definition to this function.  <a href="#aa9ec4114945020dffc766ffe103c5364"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a0f8109a2b3f78087f68cadb33765af88">Function</a> (const std::string &amp;n)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new function with the given name.  <a href="#a0f8109a2b3f78087f68cadb33765af88"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a7f074d987fc1725dba927a83737533ae">name</a> () const </td></tr>
@@ -145,13 +145,13 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a const handle to the schedule for inspecting it.  <a href="#a6602af36e6815fda0e64e7728b3dd11f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="class_halide_1_1_internal_1_1_parameter.html">Parameter</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a5a87530e6b06d391ff83a108ac4394bc">output_buffers</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a handle on the output buffer used for setting constraints on it.  <a href="#a5a87530e6b06d391ff83a108ac4394bc"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_halide_1_1_internal_1_1_schedule.html">Schedule</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a3880694ee72f1e8376d76f67c7078e0a">reduction_schedule</a> (int idx=0)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a mutable handle to the schedule for the reduction stage.  <a href="#a3880694ee72f1e8376d76f67c7078e0a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_halide_1_1_internal_1_1_schedule.html">Schedule</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a95ea966989c2f5d919e07b36709c7799">update_schedule</a> (int idx=0)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a mutable handle to the schedule for the update stage.  <a href="#a95ea966989c2f5d919e07b36709c7799"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const std::vector<br class="typebreak"/>
-&lt; <a class="el" href="struct_halide_1_1_internal_1_1_reduction_definition.html">ReductionDefinition</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a2b14b13dbaa1c6196412e09d9648f15d">reductions</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a const reference to this function's reduction definitions.  <a href="#a2b14b13dbaa1c6196412e09d9648f15d"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a4663c14a0c52f194865431cf14f1453f">has_reduction_definition</a> () const </td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Does this function have a reduction definition.  <a href="#a4663c14a0c52f194865431cf14f1453f"></a><br/></td></tr>
+&lt; <a class="el" href="struct_halide_1_1_internal_1_1_update_definition.html">UpdateDefinition</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a42af7a53258c82e2068a05741ba71ad2">updates</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a const reference to this function's update definitions.  <a href="#a42af7a53258c82e2068a05741ba71ad2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a1dd3e92edf4c1a8a113bd6f111ace897">has_update_definition</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Does this function have an update definition.  <a href="#a1dd3e92edf4c1a8a113bd6f111ace897"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a4edc7b2c7a455026d6d33495e74f97c4">has_extern_definition</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the function has an extern definition.  <a href="#a4edc7b2c7a455026d6d33495e74f97c4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_function.html#a55c1751727d589ac83c735c6c961ca8a">define_extern</a> (const std::string &amp;function_name, const std::vector&lt; <a class="el" href="struct_halide_1_1_extern_func_argument.html">ExternFuncArgument</a> &gt; &amp;<a class="el" href="class_halide_1_1_internal_1_1_function.html#ae945edea6dd4c1f14a3670f6da3187d5">args</a>, const std::vector&lt; <a class="el" href="struct_halide_1_1_type.html">Type</a> &gt; &amp;types, int dimensionality)</td></tr>
@@ -289,12 +289,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af7d46f006c81aed81e1226af236f6eaf"></a><!-- doxytag: member="Halide::Internal::Function::define_reduction" ref="af7d46f006c81aed81e1226af236f6eaf" args="(const std::vector&lt; Expr &gt; &amp;args, std::vector&lt; Expr &gt; values)" -->
+<a class="anchor" id="aa9ec4114945020dffc766ffe103c5364"></a><!-- doxytag: member="Halide::Internal::Function::define_update" ref="aa9ec4114945020dffc766ffe103c5364" args="(const std::vector&lt; Expr &gt; &amp;args, std::vector&lt; Expr &gt; values)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_function.html#af7d46f006c81aed81e1226af236f6eaf">Halide::Internal::Function::define_reduction</a> </td>
+          <td class="memname">void <a class="el" href="class_halide_1_1_internal_1_1_function.html#aa9ec4114945020dffc766ffe103c5364">Halide::Internal::Function::define_update</a> </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>args</em>, </td>
@@ -314,8 +314,8 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p><a class="el" href="struct_halide_1_1_internal_1_1_add.html" title="The sum of two expressions.">Add</a> a reduction definition to this function. </p>
-<p>It must already have a pure definition but not a reduction definition, and the length of args must match the length of args used in the pure definition. 'value' must depend on some reduction domain, and may contain variables from that domain as well as pure variables. Any pure variables must also appear as Variables in the args array, and they must have the same name as the pure definition's argument in the same index. </p>
+<p><a class="el" href="struct_halide_1_1_internal_1_1_add.html" title="The sum of two expressions.">Add</a> an update definition to this function. </p>
+<p>It must already have a pure definition but not an update definition, and the length of args must match the length of args used in the pure definition. 'value' must depend on some reduction domain, and may contain variables from that domain as well as pure variables. Any pure variables must also appear as Variables in the args array, and they must have the same name as the pure definition's argument in the same index. </p>
 
 </div>
 </div>
@@ -339,7 +339,7 @@ Public Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="_function_8h_source.html#l00061">Halide::Internal::FunctionContents::name</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00081">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l01044">Halide::Internal::Call::make()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00664">Halide::Internal::Call::make()</a>.</p>
 
 </div>
 </div>
@@ -387,8 +387,6 @@ Public Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="_function_8h_source.html#l00132">args()</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>.</p>
-
 </div>
 </div>
 <a class="anchor" id="ae71042dbf6f93970971ed5c8d187dc93"></a><!-- doxytag: member="Halide::Internal::Function::outputs" ref="ae71042dbf6f93970971ed5c8d187dc93" args="() const " -->
@@ -411,7 +409,7 @@ Public Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="_function_8h_source.html#l00147">output_types()</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00664">Halide::Internal::Call::make()</a>.</p>
 
 </div>
 </div>
@@ -435,7 +433,7 @@ Public Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="_function_8h_source.html#l00064">Halide::Internal::FunctionContents::output_types</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00081">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
 
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l01044">Halide::Internal::Call::make()</a>, and <a class="el" href="_function_8h_source.html#l00142">outputs()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00664">Halide::Internal::Call::make()</a>, and <a class="el" href="_function_8h_source.html#l00142">outputs()</a>.</p>
 
 </div>
 </div>
@@ -481,7 +479,7 @@ Public Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00081">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00063">Halide::Internal::FunctionContents::values</a>.</p>
 
-<p>Referenced by <a class="el" href="_function_8h_source.html#l00162">is_pure()</a>, and <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>.</p>
+<p>Referenced by <a class="el" href="_function_8h_source.html#l00162">is_pure()</a>, and <a class="el" href="_i_r_8h_source.html#l00664">Halide::Internal::Call::make()</a>.</p>
 
 </div>
 </div>
@@ -503,7 +501,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="_function_8h_source.html#l00162">162</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
-<p>References <a class="el" href="_function_8h_source.html#l00202">has_extern_definition()</a>, <a class="el" href="_function_8h_source.html#l00157">has_pure_definition()</a>, and <a class="el" href="_function_8h_source.html#l00197">has_reduction_definition()</a>.</p>
+<p>References <a class="el" href="_function_8h_source.html#l00202">has_extern_definition()</a>, <a class="el" href="_function_8h_source.html#l00157">has_pure_definition()</a>, and <a class="el" href="_function_8h_source.html#l00197">has_update_definition()</a>.</p>
 
 </div>
 </div>
@@ -573,12 +571,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3880694ee72f1e8376d76f67c7078e0a"></a><!-- doxytag: member="Halide::Internal::Function::reduction_schedule" ref="a3880694ee72f1e8376d76f67c7078e0a" args="(int idx=0)" -->
+<a class="anchor" id="a95ea966989c2f5d919e07b36709c7799"></a><!-- doxytag: member="Halide::Internal::Function::update_schedule" ref="a95ea966989c2f5d919e07b36709c7799" args="(int idx=0)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_halide_1_1_internal_1_1_schedule.html">Schedule</a>&amp; <a class="el" href="class_halide_1_1_internal_1_1_function.html#a3880694ee72f1e8376d76f67c7078e0a">Halide::Internal::Function::reduction_schedule</a> </td>
+          <td class="memname"><a class="el" href="class_halide_1_1_internal_1_1_schedule.html">Schedule</a>&amp; <a class="el" href="class_halide_1_1_internal_1_1_function.html#a95ea966989c2f5d919e07b36709c7799">Halide::Internal::Function::update_schedule</a> </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>idx</em> = <code>0</code></td><td>)</td>
@@ -588,20 +586,20 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Get a mutable handle to the schedule for the reduction stage. </p>
+<p>Get a mutable handle to the schedule for the update stage. </p>
 
 <p>Definition at line <a class="el" href="_function_8h_source.html#l00187">187</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00081">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00067">Halide::Internal::FunctionContents::reductions</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00081">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00067">Halide::Internal::FunctionContents::updates</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a2b14b13dbaa1c6196412e09d9648f15d"></a><!-- doxytag: member="Halide::Internal::Function::reductions" ref="a2b14b13dbaa1c6196412e09d9648f15d" args="() const " -->
+<a class="anchor" id="a42af7a53258c82e2068a05741ba71ad2"></a><!-- doxytag: member="Halide::Internal::Function::updates" ref="a42af7a53258c82e2068a05741ba71ad2" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::vector&lt;<a class="el" href="struct_halide_1_1_internal_1_1_reduction_definition.html">ReductionDefinition</a>&gt;&amp; <a class="el" href="class_halide_1_1_internal_1_1_function.html#a2b14b13dbaa1c6196412e09d9648f15d">Halide::Internal::Function::reductions</a> </td>
+          <td class="memname">const std::vector&lt;<a class="el" href="struct_halide_1_1_internal_1_1_update_definition.html">UpdateDefinition</a>&gt;&amp; <a class="el" href="class_halide_1_1_internal_1_1_function.html#a42af7a53258c82e2068a05741ba71ad2">Halide::Internal::Function::updates</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const<code> [inline]</code></td>
@@ -610,20 +608,20 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Get a const reference to this function's reduction definitions. </p>
+<p>Get a const reference to this function's update definitions. </p>
 
 <p>Definition at line <a class="el" href="_function_8h_source.html#l00192">192</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00081">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00067">Halide::Internal::FunctionContents::reductions</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00081">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00067">Halide::Internal::FunctionContents::updates</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a4663c14a0c52f194865431cf14f1453f"></a><!-- doxytag: member="Halide::Internal::Function::has_reduction_definition" ref="a4663c14a0c52f194865431cf14f1453f" args="() const " -->
+<a class="anchor" id="a1dd3e92edf4c1a8a113bd6f111ace897"></a><!-- doxytag: member="Halide::Internal::Function::has_update_definition" ref="a1dd3e92edf4c1a8a113bd6f111ace897" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="class_halide_1_1_internal_1_1_function.html#a4663c14a0c52f194865431cf14f1453f">Halide::Internal::Function::has_reduction_definition</a> </td>
+          <td class="memname">bool <a class="el" href="class_halide_1_1_internal_1_1_function.html#a1dd3e92edf4c1a8a113bd6f111ace897">Halide::Internal::Function::has_update_definition</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const<code> [inline]</code></td>
@@ -632,11 +630,11 @@ Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Does this function have a reduction definition. </p>
+<p>Does this function have an update definition. </p>
 
 <p>Definition at line <a class="el" href="_function_8h_source.html#l00197">197</a> of file <a class="el" href="_function_8h_source.html">Function.h</a>.</p>
 
-<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00081">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00067">Halide::Internal::FunctionContents::reductions</a>.</p>
+<p>References <a class="el" href="_intrusive_ptr_8h_source.html#l00081">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>, and <a class="el" href="_function_8h_source.html#l00067">Halide::Internal::FunctionContents::updates</a>.</p>
 
 <p>Referenced by <a class="el" href="_function_8h_source.html#l00162">is_pure()</a>.</p>
 
@@ -662,7 +660,7 @@ Public Member Functions</h2></td></tr>
 
 <p>References <a class="el" href="_function_8h_source.html#l00074">Halide::Internal::FunctionContents::extern_function_name</a>, and <a class="el" href="_intrusive_ptr_8h_source.html#l00081">Halide::Internal::IntrusivePtr&lt; T &gt;::ptr</a>.</p>
 
-<p>Referenced by <a class="el" href="_function_8h_source.html#l00162">is_pure()</a>, and <a class="el" href="_i_r_8h_source.html#l01009">Halide::Internal::Call::make()</a>.</p>
+<p>Referenced by <a class="el" href="_function_8h_source.html#l00162">is_pure()</a>, and <a class="el" href="_i_r_8h_source.html#l00664">Halide::Internal::Call::make()</a>.</p>
 
 </div>
 </div>

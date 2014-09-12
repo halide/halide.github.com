@@ -11,6 +11,8 @@ var searchData=
   ['max_5fu32',['max_u32',['../class_halide_1_1_internal_1_1_code_gen___posix.html#a46dd8a2d8c6758777f61c06351d34e08',1,'Halide::Internal::CodeGen_Posix']]],
   ['max_5fu64',['max_u64',['../class_halide_1_1_internal_1_1_code_gen___posix.html#af451e8665f4ee05f6f96f08e90417588',1,'Halide::Internal::CodeGen_Posix']]],
   ['max_5fu8',['max_u8',['../class_halide_1_1_internal_1_1_code_gen___posix.html#ad024c207b5a2de5c7ea384aa879daa37',1,'Halide::Internal::CodeGen_Posix']]],
+  ['memoization_5fcache_5fset_5fsize',['memoization_cache_set_size',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a88c9942210b95299706c123f3e58b9e1',1,'Halide::Internal::JITCompiledModule']]],
+  ['memoize_5fexpr',['memoize_expr',['../struct_halide_1_1_internal_1_1_call.html#ad1a498a85f91cfc1b7400521e59ff539',1,'Halide::Internal::Call']]],
   ['message',['message',['../struct_halide_1_1_internal_1_1_assert_stmt.html#a1f291cd88557bcdd79815b9bdc1ff772',1,'Halide::Internal::AssertStmt']]],
   ['might_5fbe_5fmisaligned',['might_be_misaligned',['../class_halide_1_1_internal_1_1_code_gen.html#aecc8d3e1ad350e3535dd72ebe8f04132',1,'Halide::Internal::CodeGen']]],
   ['min',['min',['../struct_halide_1_1_internal_1_1_interval.html#a1ecac35096b9d52ac261229410375f49',1,'Halide::Internal::Interval::min()'],['../struct_halide_1_1_internal_1_1_for.html#a692fd7aff28884e863b0f889ad30d212',1,'Halide::Internal::For::min()'],['../struct_halide_1_1_internal_1_1_range.html#aa40ef1ac58773173179bad1298fc7f1a',1,'Halide::Internal::Range::min()'],['../struct_halide_1_1_internal_1_1_reduction_variable.html#a4562bcb8f14e1939076a2806dc6c0915',1,'Halide::Internal::ReductionVariable::min()'],['../struct_halide_1_1_internal_1_1_bound.html#a16a52e9c3e40194f4112a690f24be4a4',1,'Halide::Internal::Bound::min()']]],
@@ -22,5 +24,6 @@ var searchData=
   ['min_5fi8',['min_i8',['../class_halide_1_1_internal_1_1_code_gen___posix.html#a1d9d69c9605b739ea603a179221348d6',1,'Halide::Internal::CodeGen_Posix']]],
   ['module',['module',['../class_halide_1_1_internal_1_1_code_gen.html#a3d858044cd52dc3dac7ff168b038adfe',1,'Halide::Internal::CodeGen::module()'],['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#aa1315c775b95b2f957f8d15dc68338e5',1,'Halide::Internal::JITCompiledModule::module()']]],
   ['modulus',['modulus',['../struct_halide_1_1_internal_1_1_modulus_remainder.html#afc2721eca0a17b3797e6e0cea531e451',1,'Halide::Internal::ModulusRemainder']]],
-  ['msg',['msg',['../struct_halide_1_1_internal_1_1_error_report.html#a8bd20e53030f77c7ed87623ac31743bf',1,'Halide::Internal::ErrorReport']]]
+  ['msg',['msg',['../struct_halide_1_1_internal_1_1_error_report.html#a8bd20e53030f77c7ed87623ac31743bf',1,'Halide::Internal::ErrorReport']]],
+  ['mutex',['mutex',['../struct_halide_1_1_runtime_1_1_internal_1_1_scoped_mutex_lock.html#a8be9ab7ceb9082821f2b4bc02a192702',1,'Halide::Runtime::Internal::ScopedMutexLock']]]
 ];

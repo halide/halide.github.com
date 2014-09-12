@@ -1,5 +1,7 @@
 var class_halide_1_1_internal_1_1_closure =
 [
+    [ "Closure", "class_halide_1_1_internal_1_1_closure.html#ada39ff310229eb44c1a7767cd7c4ab0e", null ],
+    [ "Closure", "class_halide_1_1_internal_1_1_closure.html#a6ccd1ffac5683ddbb9b01fe214817bfc", null ],
     [ "visit", "class_halide_1_1_internal_1_1_closure.html#ab420882ae538b2c29862d8b7dc11032a", null ],
     [ "visit", "class_halide_1_1_internal_1_1_closure.html#ae5d1c059ff5b3dd61f3f8be85c269b3c", null ],
     [ "visit", "class_halide_1_1_internal_1_1_closure.html#a9024930d5c344417eb8c5f50e9c6e63f", null ],
@@ -7,7 +9,6 @@ var class_halide_1_1_internal_1_1_closure =
     [ "visit", "class_halide_1_1_internal_1_1_closure.html#a933996f373fe2718be7273b7a4017956", null ],
     [ "visit", "class_halide_1_1_internal_1_1_closure.html#a166a3860240308297ed838805023b422", null ],
     [ "visit", "class_halide_1_1_internal_1_1_closure.html#a011c669268585b9f5ead6951b174e25c", null ],
-    [ "make", "class_halide_1_1_internal_1_1_closure.html#aed17b4030c8feef675c2b1ab4efd1ed1", null ],
     [ "llvm_types", "class_halide_1_1_internal_1_1_closure.html#a4b946c55e2049f483deb5657b912cbc9", null ],
     [ "names", "class_halide_1_1_internal_1_1_closure.html#a54203d0540587be31ccdb0e9c5db6f00", null ],
     [ "build_type", "class_halide_1_1_internal_1_1_closure.html#ae61a219724f237e57cebc835003f070c", null ],

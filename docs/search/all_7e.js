@@ -8,5 +8,6 @@ var searchData=
   ['_7eintrusiveptr',['~IntrusivePtr',['../struct_halide_1_1_internal_1_1_intrusive_ptr.html#a7d4bf01d1f5ce8716b52045b55baecd9',1,'Halide::Internal::IntrusivePtr']]],
   ['_7eirnode',['~IRNode',['../struct_halide_1_1_internal_1_1_i_r_node.html#ac1f05b9a8073197a7efdc202a3af6ef7',1,'Halide::Internal::IRNode']]],
   ['_7eirvisitor',['~IRVisitor',['../class_halide_1_1_internal_1_1_i_r_visitor.html#aafee77ab54634b7607250b908f300b90',1,'Halide::Internal::IRVisitor']]],
-  ['_7escopedspinlock',['~ScopedSpinLock',['../struct_scoped_spin_lock.html#a426bf1f0e9a69a7a04c71b7aa62c000f',1,'ScopedSpinLock']]]
+  ['_7escopedmutexlock',['~ScopedMutexLock',['../struct_halide_1_1_runtime_1_1_internal_1_1_scoped_mutex_lock.html#a80e2549224a67c7a4bde7f946a40b255',1,'Halide::Runtime::Internal::ScopedMutexLock']]],
+  ['_7escopedspinlock',['~ScopedSpinLock',['../struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html#acdcd5ce9d5cf6a2f51876e52abcd4a0f',1,'Halide::Runtime::Internal::ScopedSpinLock']]]
 ];

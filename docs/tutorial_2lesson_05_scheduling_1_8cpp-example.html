@@ -432,6 +432,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// x = min(x_outer * factor, x_extent - factor) + x_inner + x_min</span>
         <span class="comment">//</span>
         <span class="comment">// In our example, x_min was 0, x_extent was 5, and factor was 2.</span>
+
+        <span class="comment">// However, if you write a Halide function with an update</span>
+        <span class="comment">// definition (see lesson 9), then it is not safe to evaluate</span>
+        <span class="comment">// the same point multiple times, so we won&#39;t apply this</span>
+        <span class="comment">// trick. Instead the range of values computed will be rounded</span>
+        <span class="comment">// up to the next multiple of the split factor.</span>
     }
 
     <span class="comment">// Fusing, tiling, and parallelizing.</span>

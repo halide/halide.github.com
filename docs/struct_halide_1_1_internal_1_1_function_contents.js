@@ -7,7 +7,7 @@ var struct_halide_1_1_internal_1_1_function_contents =
     [ "values", "struct_halide_1_1_internal_1_1_function_contents.html#ab18b8c2572758ef64dd8d46c8253ccc0", null ],
     [ "output_types", "struct_halide_1_1_internal_1_1_function_contents.html#a955e37d6d6f6135bc67732cbc49ce355", null ],
     [ "schedule", "struct_halide_1_1_internal_1_1_function_contents.html#a97c217ebe37739ded07818edb12a781c", null ],
-    [ "reductions", "struct_halide_1_1_internal_1_1_function_contents.html#a17ba322fac7d750493eafaaa32dad72a", null ],
+    [ "updates", "struct_halide_1_1_internal_1_1_function_contents.html#a5c14d429311b37169d911ec494b18653", null ],
     [ "debug_file", "struct_halide_1_1_internal_1_1_function_contents.html#ab5bf1c4cdf42edae2406e2cada02ddac", null ],
     [ "output_buffers", "struct_halide_1_1_internal_1_1_function_contents.html#a3d040593736140617feb522c7db88d00", null ],
     [ "extern_arguments", "struct_halide_1_1_internal_1_1_function_contents.html#a60300b7ea419e535f777e2fda3d8ebd6", null ],

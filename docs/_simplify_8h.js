@@ -1,7 +1,7 @@
 var _simplify_8h =
 [
-    [ "simplify", "namespace_halide_1_1_internal.html#a1c933b9317994ea9534d21ffd4fce2eb", null ],
-    [ "simplify", "namespace_halide_1_1_internal.html#a96c137fa92a91d4d34d0c532f7005778", null ],
+    [ "simplify", "namespace_halide_1_1_internal.html#a4b077780a2dcb6ed633f6f5d111046c2", null ],
+    [ "simplify", "namespace_halide_1_1_internal.html#a2006cf9a5d8bad4e7861a3a10168b1d6", null ],
     [ "simplify_exprs", "namespace_halide_1_1_internal.html#a0faf83270a59e0cf2e3821be2a4666c2", null ],
     [ "mod_imp", "namespace_halide_1_1_internal.html#a6cd3908859c82249a2c7f10158883a97", null ],
     [ "mod_imp< float >", "namespace_halide_1_1_internal.html#adff5495089b812474881ee939c4701c4", null ],

@@ -24,10 +24,14 @@ var mini__cuda_8h =
     [ "CUmemorytype", "mini__cuda_8h.html#a9e45c622a47315753c4725c101148a81", null ],
     [ "CUDA_MEMCPY3D", "mini__cuda_8h.html#ade7782de4c8148acabdc70c6f078efbc", null ],
     [ "CUresult", "mini__cuda_8h.html#ac6c391505e117393cc2558fff6bfc2e9", null ],
+    [ "CUdevice_attribute", "mini__cuda_8h.html#ae12b8a782bebe21b1ac0091bf9f4e2a3", null ],
     [ "CUmemorytype_enum", "mini__cuda_8h.html#a401176319b8c53648d525e8859437790", null ],
     [ "cuInit", "mini__cuda_8h.html#ace710e6a33c59293b980947498098498", null ],
     [ "cuDeviceGetCount", "mini__cuda_8h.html#ad6581c65f1eeae926e8d177cdab1adf1", null ],
     [ "cuDeviceGet", "mini__cuda_8h.html#a9ec7b0dec16e35ffac5a4708dcb943d2", null ],
+    [ "cuDeviceGetAttribute", "mini__cuda_8h.html#a82d6cba6710006c91591b78188cea1d4", null ],
+    [ "cuDeviceGetName", "mini__cuda_8h.html#a64c522f61c6ab19ee5cb27494bfc55cd", null ],
+    [ "cuDeviceTotalMem", "mini__cuda_8h.html#ac1b9e212160d190fe87dd4282b644669", null ],
     [ "cuCtxCreate", "mini__cuda_8h.html#a37d9aab8410a94abcfa60a8f19a9d48f", null ],
     [ "cuCtxDestroy", "mini__cuda_8h.html#af591b7f051556acb95c12f5af9832e59", null ],
     [ "cuCtxGetApiVersion", "mini__cuda_8h.html#aba93fa1c4a4f3da76d87704716a3d3c0", null ],
@@ -48,5 +52,7 @@ var mini__cuda_8h =
     [ "cuEventDestroy", "mini__cuda_8h.html#ad2e99fb22264f9dfb427148c9275262b", null ],
     [ "cuEventSynchronize", "mini__cuda_8h.html#a7b793010359bac523d837b3f8c81f2c5", null ],
     [ "cuEventElapsedTime", "mini__cuda_8h.html#a40a73524adf6e94939c21f71b8886c41", null ],
-    [ "cuPointerGetAttribute", "mini__cuda_8h.html#a64cdf3ec19a3cb7deec96ad295a85053", null ]
+    [ "cuPointerGetAttribute", "mini__cuda_8h.html#a64cdf3ec19a3cb7deec96ad295a85053", null ],
+    [ "cuGetErrorName", "mini__cuda_8h.html#a7a2a6788b4bf7274aaf80152d1eb9ae6", null ],
+    [ "cuGetErrorString", "mini__cuda_8h.html#a2d777de93459219644f771c57ab471d8", null ]
 ];

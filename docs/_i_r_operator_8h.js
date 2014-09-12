@@ -7,6 +7,7 @@ var _i_r_operator_8h =
     [ "is_const_power_of_two", "namespace_halide_1_1_internal.html#a2399da4e027488064c4d14a2469f9fc3", null ],
     [ "is_positive_const", "namespace_halide_1_1_internal.html#ad050aaa17987fa4cbb8fd4d41c952e04", null ],
     [ "is_negative_const", "namespace_halide_1_1_internal.html#acc39652dfc1d64fb82d02dc4064185d7", null ],
+    [ "is_negative_negatable_const", "namespace_halide_1_1_internal.html#af3da8f6192d557a4bd47cf244b79a9db", null ],
     [ "is_zero", "namespace_halide_1_1_internal.html#a1a521ef987e7964954b997e6dcc5e65b", null ],
     [ "is_one", "namespace_halide_1_1_internal.html#a940b37091a8f16bf1e4a78db7764274e", null ],
     [ "is_two", "namespace_halide_1_1_internal.html#abeed2f66190d11ee6e56e4089a1f441b", null ],
@@ -113,5 +114,15 @@ var _i_r_operator_8h =
     [ "print_when", "namespace_halide.html#a2eff7466b3d82be871b4b6196980803c", null ],
     [ "print_when", "namespace_halide.html#a7c437d8c977dcdd0894a0f54322823a8", null ],
     [ "undef", "namespace_halide.html#a9389bcacbed602df70eae94826312e03", null ],
-    [ "undef", "namespace_halide.html#a4f29c5417077b940483e88cc9c1c74b2", null ]
+    [ "undef", "namespace_halide.html#a4f29c5417077b940483e88cc9c1c74b2", null ],
+    [ "memoize_tag", "namespace_halide.html#a565353875dc8c5c2ba41046679d6dacc", null ],
+    [ "memoize_tag", "namespace_halide.html#ab6ddc5fccb038dba5f797c4f8f652da7", null ],
+    [ "memoize_tag", "namespace_halide.html#a18b6bea94e616a2aa5101e2272c18043", null ],
+    [ "memoize_tag", "namespace_halide.html#a1ecb2db4c3bb3066ec34275e1291dcbd", null ],
+    [ "memoize_tag", "namespace_halide.html#a76e9fe634b4b3d25ddaed94e08b645cf", null ],
+    [ "memoize_tag", "namespace_halide.html#a8aeaf987e5a34fed06d7c317fab970c6", null ],
+    [ "memoize_tag", "namespace_halide.html#a664cf8066c9dcaaf7352cf590aa84053", null ],
+    [ "memoize_tag", "namespace_halide.html#a8fc5d97ea400dc5636985ce65e05cc00", null ],
+    [ "memoize_tag", "namespace_halide.html#a3bde7f9196bf7c4b310acca81431a955", null ],
+    [ "memoize_tag", "namespace_halide.html#a6e9ce0e811c900658123b41faa389e42", null ]
 ];

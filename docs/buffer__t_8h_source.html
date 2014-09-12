@@ -117,7 +117,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00015"></a>00015 <span class="preprocessor">#ifndef BUFFER_T_DEFINED</span>
 <a name="l00016"></a>00016 <span class="preprocessor"></span><span class="preprocessor">#define BUFFER_T_DEFINED</span>
 <a name="l00017"></a>00017 <span class="preprocessor"></span>
-<a name="l00018"></a>00018 <span class="preprocessor">#ifndef COMPILING_HALIDE</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#ifndef COMPILING_HALIDE_RUNTIME</span>
 <a name="l00019"></a>00019 <span class="preprocessor"></span><span class="preprocessor">#include &lt;stdint.h&gt;</span>
 <a name="l00020"></a>00020 <span class="preprocessor">#endif</span>
 <a name="l00021"></a>00021 <span class="preprocessor"></span><span class="comment"></span>
@@ -128,13 +128,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00026"></a>00026 <span class="comment"> * GPU). */</span>
 <a name="l00027"></a>00027 <span class="keyword">typedef</span> <span class="keyword">struct </span>buffer_t {<span class="comment"></span>
 <a name="l00028"></a>00028 <span class="comment">    /** A device-handle for e.g. GPU memory used to back this buffer. */</span>
-<a name="l00029"></a>00029     uint64_t dev;
+<a name="l00029"></a>00029     <a class="code" href="runtime__internal_8h.html#a015141fcb741f5cbee8e65a30b61e1ce">uint64_t</a> dev;
 <a name="l00030"></a>00030 <span class="comment"></span>
 <a name="l00031"></a>00031 <span class="comment">    /** A pointer to the start of the data in main memory. */</span>
-<a name="l00032"></a>00032     <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>* host;
+<a name="l00032"></a>00032     <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a>* host;
 <a name="l00033"></a>00033 <span class="comment"></span>
 <a name="l00034"></a>00034 <span class="comment">    /** The size of the buffer in each dimension. */</span>
-<a name="l00035"></a>00035     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> extent[4];
+<a name="l00035"></a>00035     <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> extent[4];
 <a name="l00036"></a>00036 <span class="comment"></span>
 <a name="l00037"></a>00037 <span class="comment">    /** Gives the spacing in memory between adjacent elements in the</span>
 <a name="l00038"></a>00038 <span class="comment">     * given dimension.  The correct memory address for a load from</span>
@@ -143,16 +143,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00041"></a>00041 <span class="comment">     * By manipulating the strides and extents you can lazily crop,</span>
 <a name="l00042"></a>00042 <span class="comment">     * transpose, and even flip buffers without modifying the data.</span>
 <a name="l00043"></a>00043 <span class="comment">    */</span>
-<a name="l00044"></a>00044     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> stride[4];
+<a name="l00044"></a>00044     <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> stride[4];
 <a name="l00045"></a>00045 <span class="comment"></span>
 <a name="l00046"></a>00046 <span class="comment">    /** Buffers often represent evaluation of a Func over some</span>
 <a name="l00047"></a>00047 <span class="comment">     * domain. The min field encodes the top left corner of the</span>
 <a name="l00048"></a>00048 <span class="comment">     * domain. */</span>
-<a name="l00049"></a>00049     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">min</a>[4];
+<a name="l00049"></a>00049     <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">min</a>[4];
 <a name="l00050"></a>00050 <span class="comment"></span>
 <a name="l00051"></a>00051 <span class="comment">    /** How many bytes does each buffer element take. This may be</span>
 <a name="l00052"></a>00052 <span class="comment">     * replaced with a more general type code in the future. */</span>
-<a name="l00053"></a>00053     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> elem_size;
+<a name="l00053"></a>00053     <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> elem_size;
 <a name="l00054"></a>00054 <span class="comment"></span>
 <a name="l00055"></a>00055 <span class="comment">    /** This should be true if there is an existing device allocation</span>
 <a name="l00056"></a>00056 <span class="comment">     * mirroring this buffer, and the data has been modified on the</span>

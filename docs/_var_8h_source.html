@@ -227,57 +227,72 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00125"></a>00125 <span class="comment">     * declared variables at some point. We should likely prevent</span>
 <a name="l00126"></a>00126 <span class="comment">     * user Var declarations from making names of this form.</span>
 <a name="l00127"></a>00127 <span class="comment">     */</span>
-<a name="l00128"></a><a class="code" href="class_halide_1_1_var.html#a7bca5ed9d9f0e9fe08838ee5dcbf7d72">00128</a>     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_var.html#a7bca5ed9d9f0e9fe08838ee5dcbf7d72" title="Return whether a variable name is of the form for an implicit argument.">is_implicit</a>(<span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf" title="Get the name of a Var.">name</a>) {
-<a name="l00129"></a>00129         <span class="keywordflow">return</span> <a class="code" href="namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed" title="Test if the first string starts with the second string.">Internal::starts_with</a>(name, <span class="stringliteral">&quot;_&quot;</span>) &amp;&amp;
-<a name="l00130"></a>00130             name.find_first_not_of(<span class="stringliteral">&quot;0123456789&quot;</span>, 1) == std::string::npos;
-<a name="l00131"></a>00131     }
-<a name="l00132"></a>00132 <span class="comment"></span>
-<a name="l00133"></a>00133 <span class="comment">    /** Return the argument index for a placeholder argument given its</span>
-<a name="l00134"></a>00134 <span class="comment">     *  name. Returns 0 for \ref _0, 1 for \ref _1, etc. Returns -1 if</span>
-<a name="l00135"></a>00135 <span class="comment">     *  the variable is not of implicit form.</span>
-<a name="l00136"></a>00136 <span class="comment">     */</span>
-<a name="l00137"></a><a class="code" href="class_halide_1_1_var.html#a2fa2b57f58e68761675fe07aa19fc7bf">00137</a>     <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_halide_1_1_var.html#a2fa2b57f58e68761675fe07aa19fc7bf" title="Return the argument index for a placeholder argument given its name.">implicit_index</a>(<span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf" title="Get the name of a Var.">name</a>) {
-<a name="l00138"></a>00138         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_var.html#a7bca5ed9d9f0e9fe08838ee5dcbf7d72" title="Return whether a variable name is of the form for an implicit argument.">is_implicit</a>(name) ? atoi(name.c_str() + 1) : -1;
-<a name="l00139"></a>00139     }
-<a name="l00140"></a>00140 <span class="comment"></span>
-<a name="l00141"></a>00141 <span class="comment">    /** Test if a var is the placeholder variable \ref _ */</span>
-<a name="l00142"></a><a class="code" href="class_halide_1_1_var.html#a52e7795c7ec7f9ee2f488089e950847b">00142</a>     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_var.html#a52e7795c7ec7f9ee2f488089e950847b" title="Test if a var is the placeholder variable _.">is_placeholder</a>(<span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf" title="Get the name of a Var.">name</a>) {
-<a name="l00143"></a>00143         <span class="keywordflow">return</span> name == <span class="stringliteral">&quot;_&quot;</span>;
-<a name="l00144"></a>00144     }
-<a name="l00145"></a>00145 <span class="comment"></span>
-<a name="l00146"></a>00146 <span class="comment">    /** A Var can be treated as an Expr of type Int(32) */</span>
-<a name="l00147"></a><a class="code" href="class_halide_1_1_var.html#a136bbd6b82b3da401e0825abf6ff996b">00147</a>     <a class="code" href="class_halide_1_1_var.html#a136bbd6b82b3da401e0825abf6ff996b" title="A Var can be treated as an Expr of type Int(32)">operator Expr</a>()<span class="keyword"> const </span>{
-<a name="l00148"></a>00148         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_variable.html#aff3204ace57795ef312d3029c1f09aef">Internal::Variable::make</a>(<a class="code" href="namespace_halide.html#acf59f500385c448b26d0d245f55b23f4" title="Constructing a signed integer type.">Int</a>(32), <a class="code" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf" title="Get the name of a Var.">name</a>());
-<a name="l00149"></a>00149     }
+<a name="l00128"></a>00128     <span class="comment">//{</span>
+<a name="l00129"></a><a class="code" href="class_halide_1_1_var.html#a7bca5ed9d9f0e9fe08838ee5dcbf7d72">00129</a>     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_var.html#a7bca5ed9d9f0e9fe08838ee5dcbf7d72" title="Return whether a variable name is of the form for an implicit argument.">is_implicit</a>(<span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf" title="Get the name of a Var.">name</a>) {
+<a name="l00130"></a>00130         <span class="keywordflow">return</span> <a class="code" href="namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed" title="Test if the first string starts with the second string.">Internal::starts_with</a>(name, <span class="stringliteral">&quot;_&quot;</span>) &amp;&amp;
+<a name="l00131"></a>00131             name.find_first_not_of(<span class="stringliteral">&quot;0123456789&quot;</span>, 1) == std::string::npos;
+<a name="l00132"></a>00132     }
+<a name="l00133"></a><a class="code" href="class_halide_1_1_var.html#a7d6a74604064eb13bcdacfc347af94f5">00133</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_var.html#a7d6a74604064eb13bcdacfc347af94f5">is_implicit</a>()<span class="keyword"> const </span>{
+<a name="l00134"></a>00134         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_var.html#a7d6a74604064eb13bcdacfc347af94f5">is_implicit</a>(<a class="code" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf" title="Get the name of a Var.">name</a>());
+<a name="l00135"></a>00135     }
+<a name="l00136"></a>00136     <span class="comment">//}</span>
+<a name="l00137"></a>00137 <span class="comment"></span>
+<a name="l00138"></a>00138 <span class="comment">    /** Return the argument index for a placeholder argument given its</span>
+<a name="l00139"></a>00139 <span class="comment">     *  name. Returns 0 for \ref _0, 1 for \ref _1, etc. Returns -1 if</span>
+<a name="l00140"></a>00140 <span class="comment">     *  the variable is not of implicit form.</span>
+<a name="l00141"></a>00141 <span class="comment">     */</span>
+<a name="l00142"></a>00142     <span class="comment">//{</span>
+<a name="l00143"></a><a class="code" href="class_halide_1_1_var.html#a2fa2b57f58e68761675fe07aa19fc7bf">00143</a>     <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_halide_1_1_var.html#a2fa2b57f58e68761675fe07aa19fc7bf" title="Return the argument index for a placeholder argument given its name.">implicit_index</a>(<span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf" title="Get the name of a Var.">name</a>) {
+<a name="l00144"></a>00144         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_var.html#a7d6a74604064eb13bcdacfc347af94f5">is_implicit</a>(name) ? <a class="code" href="runtime__internal_8h.html#a4e157d18591ba54c92e4da99a3d1ccae">atoi</a>(name.c_str() + 1) : -1;
+<a name="l00145"></a>00145     }
+<a name="l00146"></a><a class="code" href="class_halide_1_1_var.html#a63eb9d9a9aeb860185e1bfbe572ee93f">00146</a>     <span class="keywordtype">int</span> <a class="code" href="class_halide_1_1_var.html#a63eb9d9a9aeb860185e1bfbe572ee93f">implicit_index</a>()<span class="keyword"> const </span>{
+<a name="l00147"></a>00147         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_var.html#a63eb9d9a9aeb860185e1bfbe572ee93f">implicit_index</a>(<a class="code" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf" title="Get the name of a Var.">name</a>());
+<a name="l00148"></a>00148     }
+<a name="l00149"></a>00149     <span class="comment">//}</span>
 <a name="l00150"></a>00150 <span class="comment"></span>
-<a name="l00151"></a>00151 <span class="comment">    /** Vars to use for scheduling producer/consumer pairs on the gpu. */</span>
-<a name="l00152"></a>00152     <span class="comment">// @{</span>
-<a name="l00153"></a><a class="code" href="class_halide_1_1_var.html#aadce05f2366998e6ede48081d24caaae">00153</a>     <span class="keyword">static</span> <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> <a class="code" href="class_halide_1_1_var.html#aadce05f2366998e6ede48081d24caaae" title="Vars to use for scheduling producer/consumer pairs on the gpu.">gpu_blocks</a>() {
-<a name="l00154"></a>00154         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_var.html#ac238aaac88dd594255c0d161f8530319" title="Construct a Var with an automatically-generated unique name.">Var</a>(<span class="stringliteral">&quot;__block_id_x&quot;</span>);
+<a name="l00151"></a>00151 <span class="comment">    /** Test if a var is the placeholder variable \ref _ */</span>
+<a name="l00152"></a>00152     <span class="comment">//{</span>
+<a name="l00153"></a><a class="code" href="class_halide_1_1_var.html#a52e7795c7ec7f9ee2f488089e950847b">00153</a>     <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_var.html#a52e7795c7ec7f9ee2f488089e950847b" title="Test if a var is the placeholder variable _.">is_placeholder</a>(<span class="keyword">const</span> std::string &amp;<a class="code" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf" title="Get the name of a Var.">name</a>) {
+<a name="l00154"></a>00154         <span class="keywordflow">return</span> name == <span class="stringliteral">&quot;_&quot;</span>;
 <a name="l00155"></a>00155     }
-<a name="l00156"></a><a class="code" href="class_halide_1_1_var.html#aa9a89db38e3a71524a2462b22f739a33">00156</a>     <span class="keyword">static</span> <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> <a class="code" href="class_halide_1_1_var.html#aa9a89db38e3a71524a2462b22f739a33" title="Vars to use for scheduling producer/consumer pairs on the gpu.">gpu_threads</a>() {
-<a name="l00157"></a>00157         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_var.html#ac238aaac88dd594255c0d161f8530319" title="Construct a Var with an automatically-generated unique name.">Var</a>(<span class="stringliteral">&quot;__thread_id_x&quot;</span>);
+<a name="l00156"></a><a class="code" href="class_halide_1_1_var.html#af4481be9fd02f7a7b3e7c9848298bbdc">00156</a>     <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_var.html#af4481be9fd02f7a7b3e7c9848298bbdc">is_placeholder</a>()<span class="keyword"> const </span>{
+<a name="l00157"></a>00157         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_var.html#af4481be9fd02f7a7b3e7c9848298bbdc">is_placeholder</a>(<a class="code" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf" title="Get the name of a Var.">name</a>());
 <a name="l00158"></a>00158     }
-<a name="l00159"></a>00159     <span class="comment">// @}</span>
+<a name="l00159"></a>00159     <span class="comment">//}</span>
 <a name="l00160"></a>00160 <span class="comment"></span>
-<a name="l00161"></a>00161 <span class="comment">    /** A Var that represents the location outside the outermost loop. */</span>
-<a name="l00162"></a><a class="code" href="class_halide_1_1_var.html#aae5374d79ed234db176e6a59057bdb1b">00162</a>     <span class="keyword">static</span> <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> <a class="code" href="class_halide_1_1_var.html#aae5374d79ed234db176e6a59057bdb1b" title="A Var that represents the location outside the outermost loop.">outermost</a>() {
-<a name="l00163"></a>00163         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_var.html#ac238aaac88dd594255c0d161f8530319" title="Construct a Var with an automatically-generated unique name.">Var</a>(<span class="stringliteral">&quot;__outermost&quot;</span>);
+<a name="l00161"></a>00161 <span class="comment">    /** A Var can be treated as an Expr of type Int(32) */</span>
+<a name="l00162"></a><a class="code" href="class_halide_1_1_var.html#a136bbd6b82b3da401e0825abf6ff996b">00162</a>     <a class="code" href="class_halide_1_1_var.html#a136bbd6b82b3da401e0825abf6ff996b" title="A Var can be treated as an Expr of type Int(32)">operator Expr</a>()<span class="keyword"> const </span>{
+<a name="l00163"></a>00163         <span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_variable.html#aff3204ace57795ef312d3029c1f09aef">Internal::Variable::make</a>(<a class="code" href="namespace_halide.html#acf59f500385c448b26d0d245f55b23f4" title="Constructing a signed integer type.">Int</a>(32), <a class="code" href="class_halide_1_1_var.html#ae6e9f2ae00bf60198fae6629c7964ecf" title="Get the name of a Var.">name</a>());
 <a name="l00164"></a>00164     }
-<a name="l00165"></a>00165 
-<a name="l00166"></a>00166 };
-<a name="l00167"></a>00167 <span class="comment"></span>
-<a name="l00168"></a>00168 <span class="comment">/** A placeholder variable for infered arguments. See \ref Var::implicit */</span>
-<a name="l00169"></a>00169 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">extern</span> Var <a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>;
-<a name="l00170"></a>00170 <span class="comment"></span>
-<a name="l00171"></a>00171 <span class="comment">/** The first ten implicit Vars for use in scheduling. See \ref Var::implicit */</span>
-<a name="l00172"></a>00172 <span class="comment">// @{</span>
-<a name="l00173"></a>00173 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">extern</span> Var <a class="code" href="namespace_halide.html#a57841c7113c6794d0178568f74b1de75" title="The first ten implicit Vars for use in scheduling.">_0</a>, <a class="code" href="namespace_halide.html#af6eac61e701ea87443086c3597f13752" title="The first ten implicit Vars for use in scheduling.">_1</a>, <a class="code" href="namespace_halide.html#a645530ef64903e9cd3aacc00436d860e" title="The first ten implicit Vars for use in scheduling.">_2</a>, <a class="code" href="namespace_halide.html#a34aa6b48f5d654ce7efef0065be96d0e" title="The first ten implicit Vars for use in scheduling.">_3</a>, <a class="code" href="namespace_halide.html#a2bf0b1d78a0f5f446ebc76dbc636a912" title="The first ten implicit Vars for use in scheduling.">_4</a>, <a class="code" href="namespace_halide.html#a16fae07413aae9b6c672adf92150d1ac" title="The first ten implicit Vars for use in scheduling.">_5</a>, <a class="code" href="namespace_halide.html#a4a1fb09d56f46575b0f5f50bb379805f" title="The first ten implicit Vars for use in scheduling.">_6</a>, <a class="code" href="namespace_halide.html#a7108f092c0886f9eb9dca85276bba0f5" title="The first ten implicit Vars for use in scheduling.">_7</a>, <a class="code" href="namespace_halide.html#ab64608cba6f828b3b157f893c07dee47" title="The first ten implicit Vars for use in scheduling.">_8</a>, <a class="code" href="namespace_halide.html#a700c8bfac61eb32454726b4f791302d6" title="The first ten implicit Vars for use in scheduling.">_9</a>;
-<a name="l00174"></a>00174 <span class="comment">// @}</span>
-<a name="l00175"></a>00175 
-<a name="l00176"></a>00176 }
-<a name="l00177"></a>00177 
-<a name="l00178"></a>00178 <span class="preprocessor">#endif</span>
+<a name="l00165"></a>00165 <span class="comment"></span>
+<a name="l00166"></a>00166 <span class="comment">    /** Vars to use for scheduling producer/consumer pairs on the gpu. */</span>
+<a name="l00167"></a>00167     <span class="comment">// @{</span>
+<a name="l00168"></a><a class="code" href="class_halide_1_1_var.html#aadce05f2366998e6ede48081d24caaae">00168</a>     <span class="keyword">static</span> <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> <a class="code" href="class_halide_1_1_var.html#aadce05f2366998e6ede48081d24caaae" title="Vars to use for scheduling producer/consumer pairs on the gpu.">gpu_blocks</a>() {
+<a name="l00169"></a>00169         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_var.html#ac238aaac88dd594255c0d161f8530319" title="Construct a Var with an automatically-generated unique name.">Var</a>(<span class="stringliteral">&quot;__block_id_x&quot;</span>);
+<a name="l00170"></a>00170     }
+<a name="l00171"></a><a class="code" href="class_halide_1_1_var.html#aa9a89db38e3a71524a2462b22f739a33">00171</a>     <span class="keyword">static</span> <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> <a class="code" href="class_halide_1_1_var.html#aa9a89db38e3a71524a2462b22f739a33" title="Vars to use for scheduling producer/consumer pairs on the gpu.">gpu_threads</a>() {
+<a name="l00172"></a>00172         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_var.html#ac238aaac88dd594255c0d161f8530319" title="Construct a Var with an automatically-generated unique name.">Var</a>(<span class="stringliteral">&quot;__thread_id_x&quot;</span>);
+<a name="l00173"></a>00173     }
+<a name="l00174"></a>00174     <span class="comment">// @}</span>
+<a name="l00175"></a>00175 <span class="comment"></span>
+<a name="l00176"></a>00176 <span class="comment">    /** A Var that represents the location outside the outermost loop. */</span>
+<a name="l00177"></a><a class="code" href="class_halide_1_1_var.html#aae5374d79ed234db176e6a59057bdb1b">00177</a>     <span class="keyword">static</span> <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> <a class="code" href="class_halide_1_1_var.html#aae5374d79ed234db176e6a59057bdb1b" title="A Var that represents the location outside the outermost loop.">outermost</a>() {
+<a name="l00178"></a>00178         <span class="keywordflow">return</span> <a class="code" href="class_halide_1_1_var.html#ac238aaac88dd594255c0d161f8530319" title="Construct a Var with an automatically-generated unique name.">Var</a>(<span class="stringliteral">&quot;__outermost&quot;</span>);
+<a name="l00179"></a>00179     }
+<a name="l00180"></a>00180 
+<a name="l00181"></a>00181 };
+<a name="l00182"></a>00182 <span class="comment"></span>
+<a name="l00183"></a>00183 <span class="comment">/** A placeholder variable for infered arguments. See \ref Var::implicit */</span>
+<a name="l00184"></a>00184 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">extern</span> Var <a class="code" href="namespace_halide.html#a709cf1e833f387da9fbf94a075f38f02" title="A placeholder variable for infered arguments.">_</a>;
+<a name="l00185"></a>00185 <span class="comment"></span>
+<a name="l00186"></a>00186 <span class="comment">/** The first ten implicit Vars for use in scheduling. See \ref Var::implicit */</span>
+<a name="l00187"></a>00187 <span class="comment">// @{</span>
+<a name="l00188"></a>00188 <a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keyword">extern</span> Var <a class="code" href="namespace_halide.html#a57841c7113c6794d0178568f74b1de75" title="The first ten implicit Vars for use in scheduling.">_0</a>, <a class="code" href="namespace_halide.html#af6eac61e701ea87443086c3597f13752" title="The first ten implicit Vars for use in scheduling.">_1</a>, <a class="code" href="namespace_halide.html#a645530ef64903e9cd3aacc00436d860e" title="The first ten implicit Vars for use in scheduling.">_2</a>, <a class="code" href="namespace_halide.html#a34aa6b48f5d654ce7efef0065be96d0e" title="The first ten implicit Vars for use in scheduling.">_3</a>, <a class="code" href="namespace_halide.html#a2bf0b1d78a0f5f446ebc76dbc636a912" title="The first ten implicit Vars for use in scheduling.">_4</a>, <a class="code" href="namespace_halide.html#a16fae07413aae9b6c672adf92150d1ac" title="The first ten implicit Vars for use in scheduling.">_5</a>, <a class="code" href="namespace_halide.html#a4a1fb09d56f46575b0f5f50bb379805f" title="The first ten implicit Vars for use in scheduling.">_6</a>, <a class="code" href="namespace_halide.html#a7108f092c0886f9eb9dca85276bba0f5" title="The first ten implicit Vars for use in scheduling.">_7</a>, <a class="code" href="namespace_halide.html#ab64608cba6f828b3b157f893c07dee47" title="The first ten implicit Vars for use in scheduling.">_8</a>, <a class="code" href="namespace_halide.html#a700c8bfac61eb32454726b4f791302d6" title="The first ten implicit Vars for use in scheduling.">_9</a>;
+<a name="l00189"></a>00189 <span class="comment">// @}</span>
+<a name="l00190"></a>00190 
+<a name="l00191"></a>00191 }
+<a name="l00192"></a>00192 
+<a name="l00193"></a>00193 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

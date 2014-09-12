@@ -7,7 +7,8 @@ var searchData=
   ['llvm_5faarch64_5fenabled',['llvm_AArch64_enabled',['../class_halide_1_1_internal_1_1_code_gen.html#aafd3be68334ae2994372e9415e1eb44d',1,'Halide::Internal::CodeGen']]],
   ['llvm_5farm_5fenabled',['llvm_ARM_enabled',['../class_halide_1_1_internal_1_1_code_gen.html#a34c080250775a42a48d78c5e899c74cb',1,'Halide::Internal::CodeGen']]],
   ['llvm_5finitialized',['llvm_initialized',['../class_halide_1_1_internal_1_1_code_gen.html#abc6b69e97d2cf0b43d361ccd75d27109',1,'Halide::Internal::CodeGen']]],
+  ['llvm_5fmips_5fenabled',['llvm_Mips_enabled',['../class_halide_1_1_internal_1_1_code_gen.html#a9e3132c4c85c77b63dad17b232f0b428',1,'Halide::Internal::CodeGen']]],
   ['llvm_5fnvptx_5fenabled',['llvm_NVPTX_enabled',['../class_halide_1_1_internal_1_1_code_gen.html#a8fa56eb620a6f5d0147c40358143724b',1,'Halide::Internal::CodeGen']]],
   ['llvm_5fx86_5fenabled',['llvm_X86_enabled',['../class_halide_1_1_internal_1_1_code_gen.html#ac31cdbfb92b682f99db7d4c70484930f',1,'Halide::Internal::CodeGen']]],
-  ['lock',['lock',['../struct_scoped_spin_lock.html#a25920c43a8160268627b1adb627cf91c',1,'ScopedSpinLock']]]
+  ['lock',['lock',['../struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html#adc0ee9b48dcc82287d3a69548a061207',1,'Halide::Runtime::Internal::ScopedSpinLock']]]
 ];

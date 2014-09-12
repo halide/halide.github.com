@@ -156,14 +156,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00054"></a>00054 };
 <a name="l00055"></a>00055 <span class="comment"></span>
 <a name="l00056"></a>00056 <span class="comment">/** A multi-dimensional domain over which to iterate. Used when</span>
-<a name="l00057"></a>00057 <span class="comment"> * defining functions as reductions.</span>
+<a name="l00057"></a>00057 <span class="comment"> * defining functions with update definitions.</span>
 <a name="l00058"></a>00058 <span class="comment"> *</span>
-<a name="l00059"></a>00059 <span class="comment"> * A reduction is a function with a two-part definition. It has an</span>
+<a name="l00059"></a>00059 <span class="comment"> * An reduction is a function with a two-part definition. It has an</span>
 <a name="l00060"></a>00060 <span class="comment"> * initial value, which looks much like a pure function, and an update</span>
-<a name="l00061"></a>00061 <span class="comment"> * rule, which refers to some RDom. Evaluating such a function first</span>
-<a name="l00062"></a>00062 <span class="comment"> * initializes it over the required domain (which is inferred based on</span>
-<a name="l00063"></a>00063 <span class="comment"> * usage), and then runs update rule for all points in the RDom. For</span>
-<a name="l00064"></a>00064 <span class="comment"> * example:</span>
+<a name="l00061"></a>00061 <span class="comment"> * definition, which may refer to some RDom. Evaluating such a</span>
+<a name="l00062"></a>00062 <span class="comment"> * function first initializes it over the required domain (which is</span>
+<a name="l00063"></a>00063 <span class="comment"> * inferred based on usage), and then runs update rule for all points</span>
+<a name="l00064"></a>00064 <span class="comment"> * in the RDom. For example:</span>
 <a name="l00065"></a>00065 <span class="comment"> *</span>
 <a name="l00066"></a>00066 <span class="comment"> \code</span>
 <a name="l00067"></a>00067 <span class="comment"> Func f;</span>
@@ -177,7 +177,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00075"></a>00075 <span class="comment"> * This function creates a single-dimensional buffer of size 10, in</span>
 <a name="l00076"></a>00076 <span class="comment"> * which element x contains the value x*2. Internally, first the</span>
 <a name="l00077"></a>00077 <span class="comment"> * initialization rule fills in x at every site, and then the update</span>
-<a name="l00078"></a>00078 <span class="comment"> * rule doubles every site.</span>
+<a name="l00078"></a>00078 <span class="comment"> * definition doubles every site.</span>
 <a name="l00079"></a>00079 <span class="comment"> *</span>
 <a name="l00080"></a>00080 <span class="comment"> * One use of reductions is to build a function recursively (pure</span>
 <a name="l00081"></a>00081 <span class="comment"> * functions in halide cannot be recursive). For example, this</span>
@@ -192,8 +192,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00090"></a>00090 <span class="comment"> \endcode</span>
 <a name="l00091"></a>00091 <span class="comment"> *</span>
 <a name="l00092"></a>00092 <span class="comment"> * Another use of reductions is to perform scattering operations, as</span>
-<a name="l00093"></a>00093 <span class="comment"> * unlike a pure function declaration, the left-hand-side of a</span>
-<a name="l00094"></a>00094 <span class="comment"> * reduction definition may contain general expressions:</span>
+<a name="l00093"></a>00093 <span class="comment"> * unlike a pure function declaration, the left-hand-side of an update</span>
+<a name="l00094"></a>00094 <span class="comment"> * definition may contain general expressions:</span>
 <a name="l00095"></a>00095 <span class="comment"> *</span>
 <a name="l00096"></a>00096 <span class="comment"> \code</span>
 <a name="l00097"></a>00097 <span class="comment"> ImageParam input(UInt(8), 2);</span>
@@ -204,7 +204,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00102"></a>00102 <span class="comment"> histogram(input(r.x, r.y)) = histogram(input(r.x, r.y)) + 1;</span>
 <a name="l00103"></a>00103 <span class="comment"> \endcode</span>
 <a name="l00104"></a>00104 <span class="comment"> *</span>
-<a name="l00105"></a>00105 <span class="comment"> * A reduction definition may also be multi-dimensional. This example</span>
+<a name="l00105"></a>00105 <span class="comment"> * An update definition may also be multi-dimensional. This example</span>
 <a name="l00106"></a>00106 <span class="comment"> * computes a summed-area table by first summing horizontally and then</span>
 <a name="l00107"></a>00107 <span class="comment"> * vertically:</span>
 <a name="l00108"></a>00108 <span class="comment"> *</span>
@@ -259,10 +259,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00157"></a>00157 <span class="comment"> * reduction domain, the inferred pure domain is traversed in its</span>
 <a name="l00158"></a>00158 <span class="comment"> * entirety. For the above example, this means that sum_x walks down</span>
 <a name="l00159"></a>00159 <span class="comment"> * the columns, and sum_y walks along the rows. This may not be</span>
-<a name="l00160"></a>00160 <span class="comment"> * cache-coherent, but you may not reorder these dimensions using the</span>
-<a name="l00161"></a>00161 <span class="comment"> * schedule, as it risks changing the meaning of your function (even</span>
-<a name="l00162"></a>00162 <span class="comment"> * though it doesn&#39;t in this case). The solution lies in clever</span>
-<a name="l00163"></a>00163 <span class="comment"> * scheduling. If we say:</span>
+<a name="l00160"></a>00160 <span class="comment"> * cache-coherent. You may try reordering these dimensions using the</span>
+<a name="l00161"></a>00161 <span class="comment"> * schedule, but Halide will return an error if it decides that this</span>
+<a name="l00162"></a>00162 <span class="comment"> * risks changing the meaning of your function. The solution lies in</span>
+<a name="l00163"></a>00163 <span class="comment"> * clever scheduling. If we say:</span>
 <a name="l00164"></a>00164 <span class="comment"> *</span>
 <a name="l00165"></a>00165 <span class="comment"> \code</span>
 <a name="l00166"></a>00166 <span class="comment"> sum_x.compute_at(sum_y, r.y);</span>

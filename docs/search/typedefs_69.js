@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['int16_5ft',['int16_t',['../mini__stdint_8h.html#a66634143db08bebe9b46ab4cb1fc6fd3',1,'mini_stdint.h']]],
-  ['int32_5ft',['int32_t',['../mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5',1,'mini_stdint.h']]],
-  ['int8_5ft',['int8_t',['../mini__stdint_8h.html#aef44329758059c91c76d334e8fc09700',1,'mini_stdint.h']]]
+  ['int16_5ft',['int16_t',['../runtime__internal_8h.html#ac124c451b40871e78c16cb36581022ae',1,'runtime_internal.h']]],
+  ['int32_5ft',['int32_t',['../runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b',1,'runtime_internal.h']]],
+  ['int64_5ft',['int64_t',['../runtime__internal_8h.html#a11cbdb02b138f338b174a78c683f85fc',1,'runtime_internal.h']]],
+  ['int8_5ft',['int8_t',['../runtime__internal_8h.html#acfd957407fbe865fe77f6fdf86818f5e',1,'runtime_internal.h']]]
 ];

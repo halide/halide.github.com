@@ -6,6 +6,8 @@ var class_halide_1_1_internal_1_1_code_gen___x86 =
     [ "get_target_triple", "class_halide_1_1_internal_1_1_code_gen___x86.html#a04b4c88e6ec1bc8ce1eab879f1118009", null ],
     [ "call_intrin", "class_halide_1_1_internal_1_1_code_gen___x86.html#afa6d4ee1fd06c400702821ffff234241", null ],
     [ "call_intrin", "class_halide_1_1_internal_1_1_code_gen___x86.html#af4000c370675ff4e0489e2a2d8d85e6e", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#aabd56c1457119580494739129887cb47", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#a87f636d0ea941d3939f3f1c7e4144b3e", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#a3f8435a01dcfb92dfdcf9ae4a513d75e", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#a5bc22f9d7dabd6a93a4be2e93a95cbeb", null ],

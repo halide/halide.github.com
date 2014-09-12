@@ -127,39 +127,59 @@ Public Types</h2></td></tr>
 <br/>
  }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The operating system used by the target.  <a href="struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1">Arch</a> { <a class="el" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1ae6d33003db3020c4c578c645239f2973">ArchUnknown</a> =  0, 
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1">Arch</a> { <br/>
+&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1ae6d33003db3020c4c578c645239f2973">ArchUnknown</a> =  0, 
 <a class="el" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1aba7faedbdb35e2ef2927e248c687a391">X86</a>, 
 <a class="el" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1a1c5f188b9b8eb5ffd951917bbbdd85f2">ARM</a>, 
-<a class="el" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1a7a929ec3b88d34ff832d2446c6f96a15">PNaCl</a>
+<a class="el" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1a7a929ec3b88d34ff832d2446c6f96a15">PNaCl</a>, 
+<br/>
+&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1a93b7e567e560c4e8275e8f1bab214d85">MIPS</a>
+<br/>
  }</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The architecture used by the target.  <a href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1">More...</a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80">Features</a> { <br/>
-&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80ac04af3ed2dc70791a8ba8f793a746b30">JIT</a> =  1 &lt;&lt; 0, 
-<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80af6ada84d24838f818391b465b9a94165">SSE41</a> =  1 &lt;&lt; 1, 
-<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a620c10914ea92a26c16878ab73933b2b">AVX</a> =  1 &lt;&lt; 2, 
-<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80ad7b64a080d84e2145fd219e9f7a33547">AVX2</a> =  1 &lt;&lt; 3, 
+<tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a> { <br/>
+&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fac04af3ed2dc70791a8ba8f793a746b30">JIT</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf3cc1f2941a6b4df016ac08e68b9c660">Debug</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa1fc53f322ecd95ae65274a9f16c71ac2">NoAsserts</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa6f7593c40bf078bf7906ea1c391bcd80">NoBoundsQuery</a>, 
 <br/>
-&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80abfd3f02d7bd5f8e2d251a62f465ebcfb">CUDA</a> =  1 &lt;&lt; 4, 
-<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a84c6211e4fb941603f6104e98427d7e5">OpenCL</a> =  1 &lt;&lt; 5, 
-<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a491aa42775c6c9d6f35f784e86b09abc">OpenGL</a> =  1 &lt;&lt; 6, 
-<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80afbfe61fd55eacf5a1c8b50ebbc80bf2d">GPUDebug</a> =  1 &lt;&lt; 7, 
+&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf6ada84d24838f818391b465b9a94165">SSE41</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa620c10914ea92a26c16878ab73933b2b">AVX</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fad7b64a080d84e2145fd219e9f7a33547">AVX2</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa9764990d6a6294a8a23f8fb6598c2c88">FMA</a>, 
 <br/>
-&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a1fc53f322ecd95ae65274a9f16c71ac2">NoAsserts</a> =  1 &lt;&lt; 8, 
-<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6f7593c40bf078bf7906ea1c391bcd80">NoBoundsQuery</a> =  1 &lt;&lt; 9, 
-<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80af37c16007f6547612713259e648cc41e">ARMv7s</a> =  1 &lt;&lt; 10, 
-<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80aa371c9fa5610dc3a9efbb3fde547a719">CLDoubles</a> =  1 &lt;&lt; 11, 
+&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa6ba1375f5f5982d91779173b71542e5f">FMA4</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fafc9c513f157e362fa6851a66e5d2aa90">F16C</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf37c16007f6547612713259e648cc41e">ARMv7s</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fabfd3f02d7bd5f8e2d251a62f465ebcfb">CUDA</a>, 
 <br/>
-&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a9764990d6a6294a8a23f8fb6598c2c88">FMA</a> =  1 &lt;&lt; 12, 
-<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6ba1375f5f5982d91779173b71542e5f">FMA4</a> =  1 &lt;&lt; 13, 
-<a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80afc9c513f157e362fa6851a66e5d2aa90">F16C</a> =  1 &lt;&lt; 14
+&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faae6f2116a68aa9477888010a605ec0a5">CUDACapability30</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa770a75467c600c8ce9a5efa476776742">CUDACapability32</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa15c6f4c8ec0241c9f34f303670c18af3">CUDACapability35</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa027631ce082530506684842b44123b8a">CUDACapability50</a>, 
+<br/>
+&#160;&#160;<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa84c6211e4fb941603f6104e98427d7e5">OpenCL</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faa371c9fa5610dc3a9efbb3fde547a719">CLDoubles</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa491aa42775c6c9d6f35f784e86b09abc">OpenGL</a>, 
+<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa17b9cbfef8d1e84e32c8aaa7b2936dbc">FeatureEnd</a>
 <br/>
  }</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional features a target can have.  <a href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional features a target can have.  <a href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#aeb11109583253fe6e358bba73d3e4a86">Target</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a0583b7b0198655b69b124a48c37598ac">Target</a> (<a class="el" href="struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20">OS</a> o, <a class="el" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1">Arch</a> a, int b, uint64_t f)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a849870678f8ce67d10f84a0097b9eb09">Target</a> (<a class="el" href="struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20">OS</a> o, <a class="el" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1">Arch</a> a, int b, std::vector&lt; <a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a> &gt; initial_features=std::vector&lt; <a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a> &gt;())</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#ab667943ebf46b2da858370e44eae124d">set_feature</a> (<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a> f, bool value=true)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a6dddb1542193fca806cd9f0d9079ba32">set_features</a> (std::vector&lt; <a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a> &gt; features_to_set, bool value=true)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#acbbcbe93a4d5ee7f9f93c6b3d7914bf3">has_feature</a> (<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a> f) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a7a3d3b016c13819515090e9a3a9e673f">features_any_of</a> (std::vector&lt; <a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a> &gt; test_features) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a6b1f002f2b4899039558036e0a4276d9">features_all_of</a> (std::vector&lt; <a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a> &gt; test_features) const </td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_target.html">Target</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#aafc1372f492ae82156f56792eccc6a64">with_feature</a> (<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a> f) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a copy of the target with the given feature set.  <a href="#aafc1372f492ae82156f56792eccc6a64"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_target.html">Target</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#ab52878468db5e366d04748ed6fc64cf5">without_feature</a> (<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a> f) const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a copy of the target with the given feature cleared.  <a href="#ab52878468db5e366d04748ed6fc64cf5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a653f58c7d0efbd7dac22cf239576a660">has_gpu_feature</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Is OpenCL or CUDA enabled in this target? I.e.  <a href="#a653f58c7d0efbd7dac22cf239576a660"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a052486b9b96e649b9311bcc00e0a9405">operator==</a> (const <a class="el" href="struct_halide_1_1_target.html">Target</a> &amp;other) const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a2d02d1fc5b8b3a38ba48316519b389c0">operator!=</a> (const <a class="el" href="struct_halide_1_1_target.html">Target</a> &amp;other) const </td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a902e58d463f8babb79f6263709d06f01">to_string</a> () const </td></tr>
@@ -174,13 +194,11 @@ Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1">Halide::Target::Arch</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a53d1006f89ed385a62cf9e2e5a4fe5a9">arch</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32">bits</a></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">The bit-width of the target machine.  <a href="#a72366c6d01ef023ff3b2801017779e32"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_target.html#a28da2df5c0ea743b93e1032fe78caec3">features</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">A bitmask that stores the active features.  <a href="#a28da2df5c0ea743b93e1032fe78caec3"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A struct representing a target machine and os to generate code for. </p>
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00020">20</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00022">22</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 </div><hr/><h2>Member Enumeration Documentation</h2>
 <a class="anchor" id="af2b0caf9e5badd6a8ebe22493752df20"></a><!-- doxytag: member="Halide::Target::OS" ref="af2b0caf9e5badd6a8ebe22493752df20" args="" -->
 <div class="memitem">
@@ -214,7 +232,7 @@ Public Attributes</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00023">23</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00025">25</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
 </div>
 </div>
@@ -241,20 +259,22 @@ Public Attributes</h2></td></tr>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="af17585cfd5ec92952fd361117d89d4b1a7a929ec3b88d34ff832d2446c6f96a15"></a><!-- doxytag: member="PNaCl" ref="af17585cfd5ec92952fd361117d89d4b1a7a929ec3b88d34ff832d2446c6f96a15" args="" -->PNaCl</em>&nbsp;</td><td>
 </td></tr>
+<tr><td valign="top"><em><a class="anchor" id="af17585cfd5ec92952fd361117d89d4b1a93b7e567e560c4e8275e8f1bab214d85"></a><!-- doxytag: member="MIPS" ref="af17585cfd5ec92952fd361117d89d4b1a93b7e567e560c4e8275e8f1bab214d85" args="" -->MIPS</em>&nbsp;</td><td>
+</td></tr>
 </table>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00028">28</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00030">30</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80"></a><!-- doxytag: member="Halide::Target::Features" ref="a04065d5cc8ac34f163e69eb65493db80" args="" -->
+<a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43f"></a><!-- doxytag: member="Halide::Target::Feature" ref="a9398276edd5784185e1a08f8a4dfc43f" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80">Halide::Target::Features</a></td>
+          <td class="memname">enum <a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Halide::Target::Feature</a></td>
         </tr>
       </table>
 </div>
@@ -262,55 +282,70 @@ Public Attributes</h2></td></tr>
 
 <p>Optional features a target can have. </p>
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80ac04af3ed2dc70791a8ba8f793a746b30"></a><!-- doxytag: member="JIT" ref="a04065d5cc8ac34f163e69eb65493db80ac04af3ed2dc70791a8ba8f793a746b30" args="" -->JIT</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fac04af3ed2dc70791a8ba8f793a746b30"></a><!-- doxytag: member="JIT" ref="a9398276edd5784185e1a08f8a4dfc43fac04af3ed2dc70791a8ba8f793a746b30" args="" -->JIT</em>&nbsp;</td><td>
 <p>Generate code that will run immediately inside the calling process. </p>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80af6ada84d24838f818391b465b9a94165"></a><!-- doxytag: member="SSE41" ref="a04065d5cc8ac34f163e69eb65493db80af6ada84d24838f818391b465b9a94165" args="" -->SSE41</em>&nbsp;</td><td>
-<p>Use SSE 4.1 and earlier instructions. Only relevant on x86. </p>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43faf3cc1f2941a6b4df016ac08e68b9c660"></a><!-- doxytag: member="Debug" ref="a9398276edd5784185e1a08f8a4dfc43faf3cc1f2941a6b4df016ac08e68b9c660" args="" -->Debug</em>&nbsp;</td><td>
+<p>Turn on debug info and output for runtime code. </p>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80a620c10914ea92a26c16878ab73933b2b"></a><!-- doxytag: member="AVX" ref="a04065d5cc8ac34f163e69eb65493db80a620c10914ea92a26c16878ab73933b2b" args="" -->AVX</em>&nbsp;</td><td>
-<p>Use AVX 1 instructions. Only relevant on x86. </p>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80ad7b64a080d84e2145fd219e9f7a33547"></a><!-- doxytag: member="AVX2" ref="a04065d5cc8ac34f163e69eb65493db80ad7b64a080d84e2145fd219e9f7a33547" args="" -->AVX2</em>&nbsp;</td><td>
-<p>Use AVX 2 instructions. Only relevant on x86. </p>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80abfd3f02d7bd5f8e2d251a62f465ebcfb"></a><!-- doxytag: member="CUDA" ref="a04065d5cc8ac34f163e69eb65493db80abfd3f02d7bd5f8e2d251a62f465ebcfb" args="" -->CUDA</em>&nbsp;</td><td>
-<p>Enable the CUDA runtime. </p>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80a84c6211e4fb941603f6104e98427d7e5"></a><!-- doxytag: member="OpenCL" ref="a04065d5cc8ac34f163e69eb65493db80a84c6211e4fb941603f6104e98427d7e5" args="" -->OpenCL</em>&nbsp;</td><td>
-<p>Enable the OpenCL runtime. </p>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80a491aa42775c6c9d6f35f784e86b09abc"></a><!-- doxytag: member="OpenGL" ref="a04065d5cc8ac34f163e69eb65493db80a491aa42775c6c9d6f35f784e86b09abc" args="" -->OpenGL</em>&nbsp;</td><td>
-<p>Enable the OpenGL runtime. </p>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80afbfe61fd55eacf5a1c8b50ebbc80bf2d"></a><!-- doxytag: member="GPUDebug" ref="a04065d5cc8ac34f163e69eb65493db80afbfe61fd55eacf5a1c8b50ebbc80bf2d" args="" -->GPUDebug</em>&nbsp;</td><td>
-<p>Increase the level of checking and the verbosity of the gpu runtimes. </p>
-</td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80a1fc53f322ecd95ae65274a9f16c71ac2"></a><!-- doxytag: member="NoAsserts" ref="a04065d5cc8ac34f163e69eb65493db80a1fc53f322ecd95ae65274a9f16c71ac2" args="" -->NoAsserts</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fa1fc53f322ecd95ae65274a9f16c71ac2"></a><!-- doxytag: member="NoAsserts" ref="a9398276edd5784185e1a08f8a4dfc43fa1fc53f322ecd95ae65274a9f16c71ac2" args="" -->NoAsserts</em>&nbsp;</td><td>
 <p>Disable all runtime checks, for slightly tighter code. </p>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80a6f7593c40bf078bf7906ea1c391bcd80"></a><!-- doxytag: member="NoBoundsQuery" ref="a04065d5cc8ac34f163e69eb65493db80a6f7593c40bf078bf7906ea1c391bcd80" args="" -->NoBoundsQuery</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fa6f7593c40bf078bf7906ea1c391bcd80"></a><!-- doxytag: member="NoBoundsQuery" ref="a9398276edd5784185e1a08f8a4dfc43fa6f7593c40bf078bf7906ea1c391bcd80" args="" -->NoBoundsQuery</em>&nbsp;</td><td>
 <p>Disable the bounds querying functionality. </p>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80af37c16007f6547612713259e648cc41e"></a><!-- doxytag: member="ARMv7s" ref="a04065d5cc8ac34f163e69eb65493db80af37c16007f6547612713259e648cc41e" args="" -->ARMv7s</em>&nbsp;</td><td>
-<p>Generate code for ARMv7s. Only relevant for 32-bit ARM. </p>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43faf6ada84d24838f818391b465b9a94165"></a><!-- doxytag: member="SSE41" ref="a9398276edd5784185e1a08f8a4dfc43faf6ada84d24838f818391b465b9a94165" args="" -->SSE41</em>&nbsp;</td><td>
+<p>Use SSE 4.1 and earlier instructions. Only relevant on x86. </p>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80aa371c9fa5610dc3a9efbb3fde547a719"></a><!-- doxytag: member="CLDoubles" ref="a04065d5cc8ac34f163e69eb65493db80aa371c9fa5610dc3a9efbb3fde547a719" args="" -->CLDoubles</em>&nbsp;</td><td>
-<p>Enable double support on OpenCL targets. </p>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fa620c10914ea92a26c16878ab73933b2b"></a><!-- doxytag: member="AVX" ref="a9398276edd5784185e1a08f8a4dfc43fa620c10914ea92a26c16878ab73933b2b" args="" -->AVX</em>&nbsp;</td><td>
+<p>Use AVX 1 instructions. Only relevant on x86. </p>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80a9764990d6a6294a8a23f8fb6598c2c88"></a><!-- doxytag: member="FMA" ref="a04065d5cc8ac34f163e69eb65493db80a9764990d6a6294a8a23f8fb6598c2c88" args="" -->FMA</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fad7b64a080d84e2145fd219e9f7a33547"></a><!-- doxytag: member="AVX2" ref="a9398276edd5784185e1a08f8a4dfc43fad7b64a080d84e2145fd219e9f7a33547" args="" -->AVX2</em>&nbsp;</td><td>
+<p>Use AVX 2 instructions. Only relevant on x86. </p>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80a6ba1375f5f5982d91779173b71542e5f"></a><!-- doxytag: member="FMA4" ref="a04065d5cc8ac34f163e69eb65493db80a6ba1375f5f5982d91779173b71542e5f" args="" -->FMA4</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fa9764990d6a6294a8a23f8fb6598c2c88"></a><!-- doxytag: member="FMA" ref="a9398276edd5784185e1a08f8a4dfc43fa9764990d6a6294a8a23f8fb6598c2c88" args="" -->FMA</em>&nbsp;</td><td>
 <p>Enable x86 FMA instruction. </p>
 </td></tr>
-<tr><td valign="top"><em><a class="anchor" id="a04065d5cc8ac34f163e69eb65493db80afc9c513f157e362fa6851a66e5d2aa90"></a><!-- doxytag: member="F16C" ref="a04065d5cc8ac34f163e69eb65493db80afc9c513f157e362fa6851a66e5d2aa90" args="" -->F16C</em>&nbsp;</td><td>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fa6ba1375f5f5982d91779173b71542e5f"></a><!-- doxytag: member="FMA4" ref="a9398276edd5784185e1a08f8a4dfc43fa6ba1375f5f5982d91779173b71542e5f" args="" -->FMA4</em>&nbsp;</td><td>
 <p>Enable x86 (AMD) FMA4 instruction set. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fafc9c513f157e362fa6851a66e5d2aa90"></a><!-- doxytag: member="F16C" ref="a9398276edd5784185e1a08f8a4dfc43fafc9c513f157e362fa6851a66e5d2aa90" args="" -->F16C</em>&nbsp;</td><td>
+<p>Enable x86 16-bit float support. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43faf37c16007f6547612713259e648cc41e"></a><!-- doxytag: member="ARMv7s" ref="a9398276edd5784185e1a08f8a4dfc43faf37c16007f6547612713259e648cc41e" args="" -->ARMv7s</em>&nbsp;</td><td>
+<p>Generate code for ARMv7s. Only relevant for 32-bit ARM. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fabfd3f02d7bd5f8e2d251a62f465ebcfb"></a><!-- doxytag: member="CUDA" ref="a9398276edd5784185e1a08f8a4dfc43fabfd3f02d7bd5f8e2d251a62f465ebcfb" args="" -->CUDA</em>&nbsp;</td><td>
+<p>Enable the CUDA runtime. Defaults to compute capability 2.0 (Fermi) </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43faae6f2116a68aa9477888010a605ec0a5"></a><!-- doxytag: member="CUDACapability30" ref="a9398276edd5784185e1a08f8a4dfc43faae6f2116a68aa9477888010a605ec0a5" args="" -->CUDACapability30</em>&nbsp;</td><td>
+<p>Enable CUDA compute capability 3.0 (Kepler) </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fa770a75467c600c8ce9a5efa476776742"></a><!-- doxytag: member="CUDACapability32" ref="a9398276edd5784185e1a08f8a4dfc43fa770a75467c600c8ce9a5efa476776742" args="" -->CUDACapability32</em>&nbsp;</td><td>
+<p>Enable CUDA compute capability 3.2 (Tegra K1) </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fa15c6f4c8ec0241c9f34f303670c18af3"></a><!-- doxytag: member="CUDACapability35" ref="a9398276edd5784185e1a08f8a4dfc43fa15c6f4c8ec0241c9f34f303670c18af3" args="" -->CUDACapability35</em>&nbsp;</td><td>
+<p>Enable CUDA compute capability 3.5 (Kepler) </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fa027631ce082530506684842b44123b8a"></a><!-- doxytag: member="CUDACapability50" ref="a9398276edd5784185e1a08f8a4dfc43fa027631ce082530506684842b44123b8a" args="" -->CUDACapability50</em>&nbsp;</td><td>
+<p>Enable CUDA compute capability 5.0 (Maxwell) </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fa84c6211e4fb941603f6104e98427d7e5"></a><!-- doxytag: member="OpenCL" ref="a9398276edd5784185e1a08f8a4dfc43fa84c6211e4fb941603f6104e98427d7e5" args="" -->OpenCL</em>&nbsp;</td><td>
+<p>Enable the OpenCL runtime. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43faa371c9fa5610dc3a9efbb3fde547a719"></a><!-- doxytag: member="CLDoubles" ref="a9398276edd5784185e1a08f8a4dfc43faa371c9fa5610dc3a9efbb3fde547a719" args="" -->CLDoubles</em>&nbsp;</td><td>
+<p>Enable double support on OpenCL targets. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fa491aa42775c6c9d6f35f784e86b09abc"></a><!-- doxytag: member="OpenGL" ref="a9398276edd5784185e1a08f8a4dfc43fa491aa42775c6c9d6f35f784e86b09abc" args="" -->OpenGL</em>&nbsp;</td><td>
+<p>Enable the OpenGL runtime. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="a9398276edd5784185e1a08f8a4dfc43fa17b9cbfef8d1e84e32c8aaa7b2936dbc"></a><!-- doxytag: member="FeatureEnd" ref="a9398276edd5784185e1a08f8a4dfc43fa17b9cbfef8d1e84e32c8aaa7b2936dbc" args="" -->FeatureEnd</em>&nbsp;</td><td>
 </td></tr>
 </table>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00034">34</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00036">36</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
 </div>
 </div>
@@ -329,13 +364,13 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00054">54</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00067">67</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_target_8h_source.html#l00111">from_string()</a>.</p>
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00191">from_string()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a0583b7b0198655b69b124a48c37598ac"></a><!-- doxytag: member="Halide::Target::Target" ref="a0583b7b0198655b69b124a48c37598ac" args="(OS o, Arch a, int b, uint64_t f)" -->
+<a class="anchor" id="a849870678f8ce67d10f84a0097b9eb09"></a><!-- doxytag: member="Halide::Target::Target" ref="a849870678f8ce67d10f84a0097b9eb09" args="(OS o, Arch a, int b, std::vector&lt; Feature &gt; initial_features=std::vector&lt; Feature &gt;())" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -360,8 +395,8 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>f</em>&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a> &gt;&#160;</td>
+          <td class="paramname"><em>initial_features</em> = <code>std::vector&lt;<a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a>&gt;()</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -372,11 +407,190 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00055">55</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00068">68</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+<p>References <a class="el" href="_target_8h_source.html#l00075">set_feature()</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ab667943ebf46b2da858370e44eae124d"></a><!-- doxytag: member="Halide::Target::set_feature" ref="ab667943ebf46b2da858370e44eae124d" args="(Feature f, bool value=true)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_halide_1_1_target.html#ab667943ebf46b2da858370e44eae124d">Halide::Target::set_feature</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a>&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00075">75</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+<p>References <a class="el" href="_target_8h_source.html#l00062">FeatureEnd</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00080">set_features()</a>, <a class="el" href="_target_8h_source.html#l00068">Target()</a>, <a class="el" href="_target_8h_source.html#l00117">with_feature()</a>, and <a class="el" href="_target_8h_source.html#l00127">without_feature()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6dddb1542193fca806cd9f0d9079ba32"></a><!-- doxytag: member="Halide::Target::set_features" ref="a6dddb1542193fca806cd9f0d9079ba32" args="(std::vector&lt; Feature &gt; features_to_set, bool value=true)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="struct_halide_1_1_target.html#a6dddb1542193fca806cd9f0d9079ba32">Halide::Target::set_features</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a> &gt;&#160;</td>
+          <td class="paramname"><em>features_to_set</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00080">80</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+<p>References <a class="el" href="_target_8h_source.html#l00075">set_feature()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acbbcbe93a4d5ee7f9f93c6b3d7914bf3"></a><!-- doxytag: member="Halide::Target::has_feature" ref="acbbcbe93a4d5ee7f9f93c6b3d7914bf3" args="(Feature f) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="struct_halide_1_1_target.html#acbbcbe93a4d5ee7f9f93c6b3d7914bf3">Halide::Target::has_feature</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a>&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00086">86</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+<p>References <a class="el" href="_target_8h_source.html#l00062">FeatureEnd</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00137">has_gpu_feature()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7a3d3b016c13819515090e9a3a9e673f"></a><!-- doxytag: member="Halide::Target::features_any_of" ref="a7a3d3b016c13819515090e9a3a9e673f" args="(std::vector&lt; Feature &gt; test_features) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="struct_halide_1_1_target.html#a7a3d3b016c13819515090e9a3a9e673f">Halide::Target::features_any_of</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a> &gt;&#160;</td>
+          <td class="paramname"><em>test_features</em></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00091">91</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+<p>References <a class="el" href="_target_8h_source.html#l00062">FeatureEnd</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6b1f002f2b4899039558036e0a4276d9"></a><!-- doxytag: member="Halide::Target::features_all_of" ref="a6b1f002f2b4899039558036e0a4276d9" args="(std::vector&lt; Feature &gt; test_features) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="struct_halide_1_1_target.html#a6b1f002f2b4899039558036e0a4276d9">Halide::Target::features_all_of</a> </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a> &gt;&#160;</td>
+          <td class="paramname"><em>test_features</em></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00102">102</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+<p>References <a class="el" href="_target_8h_source.html#l00062">FeatureEnd</a>, and <a class="el" href="_error_8h_source.html#l00128">user_assert</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aafc1372f492ae82156f56792eccc6a64"></a><!-- doxytag: member="Halide::Target::with_feature" ref="aafc1372f492ae82156f56792eccc6a64" args="(Feature f) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_target.html">Target</a> <a class="el" href="struct_halide_1_1_target.html#aafc1372f492ae82156f56792eccc6a64">Halide::Target::with_feature</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a>&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return a copy of the target with the given feature set. </p>
+<p>This is convenient when enabling certain features (e.g. NoBoundsQuery) in an initialization list, where the target to be mutated may be a const reference. </p>
+
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00117">117</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+<p>References <a class="el" href="_target_8h_source.html#l00075">set_feature()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab52878468db5e366d04748ed6fc64cf5"></a><!-- doxytag: member="Halide::Target::without_feature" ref="ab52878468db5e366d04748ed6fc64cf5" args="(Feature f) const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_halide_1_1_target.html">Target</a> <a class="el" href="struct_halide_1_1_target.html#ab52878468db5e366d04748ed6fc64cf5">Halide::Target::without_feature</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f">Feature</a>&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return a copy of the target with the given feature cleared. </p>
+<p>This is convenient when disabling certain features (e.g. NoBoundsQuery) in an initialization list, where the target to be mutated may be a const reference. </p>
+
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00127">127</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+
+<p>References <a class="el" href="_target_8h_source.html#l00075">set_feature()</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a653f58c7d0efbd7dac22cf239576a660"></a><!-- doxytag: member="Halide::Target::has_gpu_feature" ref="a653f58c7d0efbd7dac22cf239576a660" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -391,11 +605,14 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00057">57</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Is OpenCL or CUDA enabled in this target? I.e. </p>
+<p>is <a class="el" href="class_halide_1_1_func.html#a5f5fc7359a2ca66e557a9f129088c223" title="Short-hand for tiling a domain and mapping the tile indices to GPU block indices and the coordinates ...">Func::gpu_tile</a> and similar going to work? We do not include OpenGL, because it is not capable of gpgpu, and is not scheduled via <a class="el" href="class_halide_1_1_func.html#a5f5fc7359a2ca66e557a9f129088c223" title="Short-hand for tiling a domain and mapping the tile indices to GPU block indices and the coordinates ...">Func::gpu_tile</a>. </p>
 
-<p>References <a class="el" href="_target_8h_source.html#l00038">CUDA</a>, <a class="el" href="_target_8h_source.html#l00052">features</a>, and <a class="el" href="_target_8h_source.html#l00039">OpenCL</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00137">137</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_func_8h_source.html#l01665">Halide::evaluate_may_gpu()</a>.</p>
+<p>References <a class="el" href="_target_8h_source.html#l00051">CUDA</a>, <a class="el" href="_target_8h_source.html#l00086">has_feature()</a>, and <a class="el" href="_target_8h_source.html#l00057">OpenCL</a>.</p>
+
+<p>Referenced by <a class="el" href="_func_8h_source.html#l01782">Halide::evaluate_may_gpu()</a>.</p>
 
 </div>
 </div>
@@ -414,9 +631,9 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00061">61</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00141">141</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
-<p>References <a class="el" href="struct_halide_1_1_target.html#a53d1006f89ed385a62cf9e2e5a4fe5a9">arch</a>, <a class="el" href="_target_8h_source.html#l00031">bits</a>, <a class="el" href="_target_8h_source.html#l00052">features</a>, and <a class="el" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a>.</p>
+<p>References <a class="el" href="struct_halide_1_1_target.html#a53d1006f89ed385a62cf9e2e5a4fe5a9">arch</a>, <a class="el" href="_target_8h_source.html#l00033">bits</a>, and <a class="el" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a>.</p>
 
 </div>
 </div>
@@ -435,7 +652,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00068">68</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00148">148</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
 </div>
 </div>
@@ -455,7 +672,7 @@ Public Attributes</h2></td></tr>
 
 <p>Convert the <a class="el" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for.">Target</a> into a string form that can be reconstituted by <a class="el" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b" title="Parse the contents of &#39;target&#39; and merge into &#39;this&#39;, replacing only the parts that are specified...">merge_string()</a>, which will always be of the form. </p>
 <p>arch-bits-os-feature1-feature2...featureN.</p>
-<p>Note that is guaranteed that t2.from_string(t1.to_string()) == t1 ,but not that from_string(s).<a class="el" href="struct_halide_1_1_target.html#a902e58d463f8babb79f6263709d06f01" title="Convert the Target into a string form that can be reconstituted by merge_string(), which will always be of the form.">to_string()</a> == s (since there can be multiple strings that parse to the same <a class="el" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for.">Target</a>)... *unless* t1 contains 'unknown' fields (in which case you'll get a string that can't be parsed, which is intentional). </p>
+<p>Note that is guaranteed that t2.from_string(t1.to_string()) == t1, but not that from_string(s).<a class="el" href="struct_halide_1_1_target.html#a902e58d463f8babb79f6263709d06f01" title="Convert the Target into a string form that can be reconstituted by merge_string(), which will always be of the form.">to_string()</a> == s (since there can be multiple strings that parse to the same <a class="el" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for.">Target</a>)... *unless* t1 contains 'unknown' fields (in which case you'll get a string that can't be parsed, which is intentional). </p>
 
 </div>
 </div>
@@ -480,7 +697,7 @@ Public Attributes</h2></td></tr>
 <p>If 'target' contains "host" as the first token, it replaces the entire contents of 'this' with <a class="el" href="namespace_halide.html#a4fb1734eaadb362e875519e6ab68158e" title="Return the target corresponding to the host machine.">get_host_target()</a>, then proceeds to parse the remaining tokens (allowing for things like "host-opencl" to mean "host configuration, but with opencl added").</p>
 <p>Note that unlike parse_from_string(), this will never print to cerr or assert in the event of a parse failure. Note also that an empty target string is essentially a no-op, leaving 'this' unaffected. </p>
 
-<p>Referenced by <a class="el" href="_target_8h_source.html#l00111">from_string()</a>.</p>
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00191">from_string()</a>.</p>
 
 </div>
 </div>
@@ -501,9 +718,9 @@ Public Attributes</h2></td></tr>
 
 <p>Like <a class="el" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b" title="Parse the contents of &#39;target&#39; and merge into &#39;this&#39;, replacing only the parts that are specified...">merge_string()</a>, but reset the contents of 'this' first. </p>
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00111">111</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00191">191</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
-<p>References <a class="el" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b">merge_string()</a>, and <a class="el" href="_target_8h_source.html#l00054">Target()</a>.</p>
+<p>References <a class="el" href="struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b">merge_string()</a>, and <a class="el" href="_target_8h_source.html#l00067">Target()</a>.</p>
 
 </div>
 </div>
@@ -519,7 +736,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Referenced by <a class="el" href="_target_8h_source.html#l00061">operator==()</a>.</p>
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00141">operator==()</a>.</p>
 
 </div>
 </div>
@@ -534,7 +751,7 @@ Public Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Referenced by <a class="el" href="_target_8h_source.html#l00061">operator==()</a>.</p>
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00141">operator==()</a>.</p>
 
 </div>
 </div>
@@ -552,28 +769,9 @@ Public Attributes</h2></td></tr>
 <p>The bit-width of the target machine. </p>
 <p>Must be 0 for unknown, or 32 or 64. </p>
 
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00031">31</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
+<p>Definition at line <a class="el" href="_target_8h_source.html#l00033">33</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_target_8h_source.html#l00061">operator==()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a28da2df5c0ea743b93e1032fe78caec3"></a><!-- doxytag: member="Halide::Target::features" ref="a28da2df5c0ea743b93e1032fe78caec3" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint64_t <a class="el" href="struct_halide_1_1_target.html#a28da2df5c0ea743b93e1032fe78caec3">Halide::Target::features</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>A bitmask that stores the active features. </p>
-
-<p>Definition at line <a class="el" href="_target_8h_source.html#l00052">52</a> of file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
-
-<p>Referenced by <a class="el" href="_target_8h_source.html#l00057">has_gpu_feature()</a>, and <a class="el" href="_target_8h_source.html#l00061">operator==()</a>.</p>
+<p>Referenced by <a class="el" href="_target_8h_source.html#l00141">operator==()</a>.</p>
 
 </div>
 </div>

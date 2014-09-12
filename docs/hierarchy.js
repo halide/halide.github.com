@@ -3,7 +3,6 @@ var hierarchy =
     [ "_cl_buffer_region", "struct__cl__buffer__region.html", null ],
     [ "_cl_image_desc", "struct__cl__image__desc.html", null ],
     [ "_cl_image_format", "struct__cl__image__format.html", null ],
-    [ "_dev_copy", "struct__dev__copy.html", null ],
     [ "CUDA_MEMCPY3D_st", "struct_c_u_d_a___m_e_m_c_p_y3_d__st.html", null ],
     [ "Halide::Argument", "struct_halide_1_1_argument.html", [
       [ "Halide::Internal::GPU_Argument", "struct_halide_1_1_internal_1_1_g_p_u___argument.html", null ]
@@ -172,6 +171,7 @@ var hierarchy =
       [ "Halide::Internal::CodeGen", "class_halide_1_1_internal_1_1_code_gen.html", [
         [ "Halide::Internal::CodeGen_Posix", "class_halide_1_1_internal_1_1_code_gen___posix.html", [
           [ "Halide::Internal::CodeGen_ARM", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html", null ],
+          [ "Halide::Internal::CodeGen_MIPS", "class_halide_1_1_internal_1_1_code_gen___m_i_p_s.html", null ],
           [ "Halide::Internal::CodeGen_PNaCl", "class_halide_1_1_internal_1_1_code_gen___p_na_cl.html", null ],
           [ "Halide::Internal::CodeGen_X86", "class_halide_1_1_internal_1_1_code_gen___x86.html", null ]
         ] ],
@@ -193,7 +193,6 @@ var hierarchy =
     [ "Halide::Internal::ModulusRemainder", "struct_halide_1_1_internal_1_1_modulus_remainder.html", null ],
     [ "Halide::Internal::Parameter", "class_halide_1_1_internal_1_1_parameter.html", null ],
     [ "Halide::Internal::Range", "struct_halide_1_1_internal_1_1_range.html", null ],
-    [ "Halide::Internal::ReductionDefinition", "struct_halide_1_1_internal_1_1_reduction_definition.html", null ],
     [ "Halide::Internal::ReductionDomain", "class_halide_1_1_internal_1_1_reduction_domain.html", null ],
     [ "Halide::Internal::ReductionDomainContents", "struct_halide_1_1_internal_1_1_reduction_domain_contents.html", null ],
     [ "Halide::Internal::ReductionVariable", "struct_halide_1_1_internal_1_1_reduction_variable.html", null ],
@@ -208,6 +207,7 @@ var hierarchy =
     [ "Halide::Internal::Stmt::Compare", "struct_halide_1_1_internal_1_1_stmt_1_1_compare.html", null ],
     [ "Halide::Internal::StmtCompiler", "class_halide_1_1_internal_1_1_stmt_compiler.html", null ],
     [ "Halide::Internal::StmtDeepCompare", "struct_halide_1_1_internal_1_1_stmt_deep_compare.html", null ],
+    [ "Halide::Internal::UpdateDefinition", "struct_halide_1_1_internal_1_1_update_definition.html", null ],
     [ "Halide::OutputImageParam", "class_halide_1_1_output_image_param.html", [
       [ "Halide::ImageParam", "class_halide_1_1_image_param.html", null ]
     ] ],
@@ -215,13 +215,17 @@ var hierarchy =
     [ "Halide::PrintArg", "struct_halide_1_1_print_arg.html", null ],
     [ "Halide::RDom", "class_halide_1_1_r_dom.html", null ],
     [ "Halide::Realization", "class_halide_1_1_realization.html", null ],
+    [ "Halide::Runtime::Internal::dev_copy", "struct_halide_1_1_runtime_1_1_internal_1_1dev__copy.html", null ],
+    [ "Halide::Runtime::Internal::ScopedMutexLock", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_mutex_lock.html", null ],
+    [ "Halide::Runtime::Internal::ScopedSpinLock", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html", null ],
     [ "Halide::RVar", "class_halide_1_1_r_var.html", null ],
-    [ "Halide::ScheduleHandle", "class_halide_1_1_schedule_handle.html", null ],
+    [ "Halide::Stage", "class_halide_1_1_stage.html", null ],
     [ "Halide::Target", "struct_halide_1_1_target.html", null ],
     [ "Halide::Tuple", "class_halide_1_1_tuple.html", null ],
     [ "Halide::Type", "struct_halide_1_1_type.html", null ],
     [ "Halide::Var", "class_halide_1_1_var.html", null ],
     [ "Halide::VarOrRVar", "struct_halide_1_1_var_or_r_var.html", null ],
+    [ "halide_mutex", "structhalide__mutex.html", null ],
     [ "halide_trace_event", "structhalide__trace__event.html", null ],
     [ "HalideIntrospectionCanary::A", "struct_halide_introspection_canary_1_1_a.html", null ],
     [ "HalideIntrospectionCanary::A::B", "class_halide_introspection_canary_1_1_a_1_1_b.html", null ],
@@ -230,6 +234,5 @@ var hierarchy =
         [ "Halide::Expr", "struct_halide_1_1_expr.html", null ],
         [ "Halide::Internal::Stmt", "struct_halide_1_1_internal_1_1_stmt.html", null ]
       ] ]
-    ] ],
-    [ "ScopedSpinLock", "struct_scoped_spin_lock.html", null ]
+    ] ]
 ];

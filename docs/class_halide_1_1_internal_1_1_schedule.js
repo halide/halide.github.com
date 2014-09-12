@@ -3,6 +3,8 @@ var class_halide_1_1_internal_1_1_schedule =
     [ "Schedule", "class_halide_1_1_internal_1_1_schedule.html#a0d7017829acbec0b875aeaf12a208cdd", null ],
     [ "Schedule", "class_halide_1_1_internal_1_1_schedule.html#ac5db7386e8157f16f95e98355cc731c4", null ],
     [ "Schedule", "class_halide_1_1_internal_1_1_schedule.html#acdca0c13a705c187d4882f673e3f1a23", null ],
+    [ "memoized", "class_halide_1_1_internal_1_1_schedule.html#ad368d3062a536132c8203c5b0353e45b", null ],
+    [ "memoized", "class_halide_1_1_internal_1_1_schedule.html#af7835fae51ae4ad901dbabbc8600c931", null ],
     [ "touched", "class_halide_1_1_internal_1_1_schedule.html#a2b3a3133737656d1a4d1bf3ce03cd2d7", null ],
     [ "touched", "class_halide_1_1_internal_1_1_schedule.html#a7b59fc5ece9c4b59b89daba2cde8f6c4", null ],
     [ "splits", "class_halide_1_1_internal_1_1_schedule.html#ac5e495088bd392e4e7d6cc643d5b2d62", null ],

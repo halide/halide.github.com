@@ -104,133 +104,141 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define HALIDE_BOUNDS_H</span>
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
 <a name="l00004"></a>00004 <span class="preprocessor">#include &quot;<a class="code" href="_i_r_8h.html" title="Halide expressions (Halide::Expr) and statements (Halide::Internal::Stmt)">IR.h</a>&quot;</span>
-<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="_scope_8h.html" title="Defines the Scope class, which is used for keeping track of names in a scope while traversing IR...">Scope.h</a>&quot;</span>
-<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;vector&gt;</span>
-<a name="l00007"></a>00007 <span class="comment"></span>
-<a name="l00008"></a>00008 <span class="comment">/** \file</span>
-<a name="l00009"></a>00009 <span class="comment"> * Methods for computing the upper and lower bounds of an expression,</span>
-<a name="l00010"></a>00010 <span class="comment"> * and the regions of a function read or written by a statement.</span>
-<a name="l00011"></a>00011 <span class="comment"> */</span>
-<a name="l00012"></a>00012 
-<a name="l00013"></a>00013 <span class="keyword">namespace </span>Halide {
-<a name="l00014"></a>00014 <span class="keyword">namespace </span>Internal {
-<a name="l00015"></a>00015 
-<a name="l00016"></a><a class="code" href="struct_halide_1_1_internal_1_1_interval.html">00016</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> {
-<a name="l00017"></a><a class="code" href="struct_halide_1_1_internal_1_1_interval.html#a1ecac35096b9d52ac261229410375f49">00017</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="struct_halide_1_1_internal_1_1_interval.html#a1ecac35096b9d52ac261229410375f49">min</a>, <a class="code" href="struct_halide_1_1_internal_1_1_interval.html#ae2f9f0e13f96b9e1397fcce1de560376">max</a>;
-<a name="l00018"></a><a class="code" href="struct_halide_1_1_internal_1_1_interval.html#afce5b15bcf94c995d2c049aa38eb99d8">00018</a>     <a class="code" href="struct_halide_1_1_internal_1_1_interval.html#afce5b15bcf94c995d2c049aa38eb99d8">Interval</a>() {}
-<a name="l00019"></a><a class="code" href="struct_halide_1_1_internal_1_1_interval.html#a7cd7e344d49a30a1dc84648ac6b62f60">00019</a>     <a class="code" href="struct_halide_1_1_internal_1_1_interval.html#a7cd7e344d49a30a1dc84648ac6b62f60">Interval</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="struct_halide_1_1_internal_1_1_interval.html#a1ecac35096b9d52ac261229410375f49">min</a>, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="struct_halide_1_1_internal_1_1_interval.html#ae2f9f0e13f96b9e1397fcce1de560376">max</a>) : min(min), max(max) {}
-<a name="l00020"></a>00020 };
-<a name="l00021"></a>00021 
-<a name="l00022"></a><a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">00022</a> <span class="keyword">typedef</span> std::map&lt;std::pair&lt;std::string, int&gt;, <a class="code" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a>&gt; <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>;
-<a name="l00023"></a>00023 <span class="comment"></span>
-<a name="l00024"></a>00024 <span class="comment">/** Given an expression in some variables, and a map from those</span>
-<a name="l00025"></a>00025 <span class="comment"> * variables to their bounds (in the form of (minimum possible value,</span>
-<a name="l00026"></a>00026 <span class="comment"> * maximum possible value)), compute two expressions that give the</span>
-<a name="l00027"></a>00027 <span class="comment"> * minimum possible value and the maximum possible value of this</span>
-<a name="l00028"></a>00028 <span class="comment"> * expression. Max or min may be undefined expressions if the value is</span>
-<a name="l00029"></a>00029 <span class="comment"> * not bounded above or below.</span>
-<a name="l00030"></a>00030 <span class="comment"> *</span>
-<a name="l00031"></a>00031 <span class="comment"> * This is for tasks such as deducing the region of a buffer</span>
-<a name="l00032"></a>00032 <span class="comment"> * loaded by a chunk of code.</span>
-<a name="l00033"></a>00033 <span class="comment"> */</span>
-<a name="l00034"></a>00034 <a class="code" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> <a class="code" href="namespace_halide_1_1_internal.html#ab7f7e59492cfa4804a6dece2d867a5db" title="Given an expression in some variables, and a map from those variables to their bounds (in the form of...">bounds_of_expr_in_scope</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> expr,
-<a name="l00035"></a>00035                                  <span class="keyword">const</span> <a class="code" href="class_halide_1_1_internal_1_1_scope.html" title="A common pattern when traversing Halide IR is that you need to keep track of stuff when you find a Le...">Scope&lt;Interval&gt;</a> &amp;scope,
-<a name="l00036"></a>00036                                  <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038 
-<a name="l00039"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html">00039</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_box.html">Box</a> {
-<a name="l00040"></a>00040     <span class="comment">// The conditions under which this region may be touched</span>
-<a name="l00041"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#a52623fd2e3c53451b55ef9cdfd0d4d64">00041</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#a52623fd2e3c53451b55ef9cdfd0d4d64">used</a>;
-<a name="l00042"></a>00042 
-<a name="l00043"></a>00043     <span class="comment">// The bounds if it is touched</span>
-<a name="l00044"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4">00044</a>     std::vector&lt;Interval&gt; <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4">bounds</a>;
-<a name="l00045"></a>00045 
-<a name="l00046"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#a8fd3706b1415ab27ba57816ece1820ee">00046</a>     <a class="code" href="struct_halide_1_1_internal_1_1_box.html#a8fd3706b1415ab27ba57816ece1820ee">Box</a>() {}
-<a name="l00047"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#a1fab4f1a64ec075c717bb0d067b76327">00047</a>     <a class="code" href="struct_halide_1_1_internal_1_1_box.html#a1fab4f1a64ec075c717bb0d067b76327">Box</a>(<span class="keywordtype">size_t</span> sz) : <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4">bounds</a>(sz) {}
-<a name="l00048"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#ac90ff94522f9b9b3722b6183edd09364">00048</a>     <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ac90ff94522f9b9b3722b6183edd09364">Box</a>(<span class="keyword">const</span> std::vector&lt;Interval&gt; &amp;b) : <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4">bounds</a>(b) {}
-<a name="l00049"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#ab33bc61630f5cb6eb41d71d0a6022359">00049</a>     <span class="keywordtype">size_t</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ab33bc61630f5cb6eb41d71d0a6022359">size</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4">bounds</a>.size();}
-<a name="l00050"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#acd29242a494480eeea11e859bbd2e4ce">00050</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#acd29242a494480eeea11e859bbd2e4ce">empty</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4">bounds</a>.empty();}
-<a name="l00051"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#a25f19494f8777045a4f4a7fa1d1d3a97">00051</a>     <a class="code" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &amp;<a class="code" href="struct_halide_1_1_internal_1_1_box.html#a25f19494f8777045a4f4a7fa1d1d3a97">operator[]</a>(<span class="keywordtype">int</span> i) {<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4">bounds</a>[i];}
-<a name="l00052"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#a4cfa684eb0f0b01c2ffe8a0b8822af1c">00052</a>     <span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &amp;<a class="code" href="struct_halide_1_1_internal_1_1_box.html#a4cfa684eb0f0b01c2ffe8a0b8822af1c">operator[]</a>(<span class="keywordtype">int</span> i)<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4">bounds</a>[i];}
-<a name="l00053"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#a8fac5038393142589c9ce5f9a368b2d2">00053</a>     <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#a8fac5038393142589c9ce5f9a368b2d2">resize</a>(<span class="keywordtype">size_t</span> sz) {<a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4">bounds</a>.resize(sz);}
-<a name="l00054"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#a6527fa5c2cf5cf89e8d6a61826977a02">00054</a>     <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#a6527fa5c2cf5cf89e8d6a61826977a02">push_back</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &amp;i) {<a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4">bounds</a>.push_back(i);}
-<a name="l00055"></a>00055 };
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057 <span class="comment">// Expand box a to encompass box b</span>
-<a name="l00058"></a>00058 <span class="keywordtype">void</span> <a class="code" href="namespace_halide_1_1_internal.html#ac2f62c0ee3ace8de2be57a9db369a3e4">merge_boxes</a>(Box &amp;a, <span class="keyword">const</span> Box &amp;b);
-<a name="l00059"></a>00059 <span class="comment"></span>
-<a name="l00060"></a>00060 <span class="comment">/** Compute rectangular domains large enough to cover all the &#39;Call&#39;s</span>
-<a name="l00061"></a>00061 <span class="comment"> * to each function that occurs within a given statement or</span>
-<a name="l00062"></a>00062 <span class="comment"> * expression. This is useful for figuring out what regions of things</span>
-<a name="l00063"></a>00063 <span class="comment"> * to evaluate. */</span>
-<a name="l00064"></a>00064 <span class="comment">// @{</span>
-<a name="l00065"></a>00065 std::map&lt;std::string, Box&gt; <a class="code" href="namespace_halide_1_1_internal.html#a33cd6d9b32f181c1211dbe9e1e424b73" title="Compute rectangular domains large enough to cover all the &#39;Call&#39;s to each function that occurs within...">boxes_required</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e,
-<a name="l00066"></a>00066                                           <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;(),
-<a name="l00067"></a>00067                                           <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
-<a name="l00068"></a>00068 std::map&lt;std::string, Box&gt; <a class="code" href="namespace_halide_1_1_internal.html#a33cd6d9b32f181c1211dbe9e1e424b73" title="Compute rectangular domains large enough to cover all the &#39;Call&#39;s to each function that occurs within...">boxes_required</a>(Stmt s,
-<a name="l00069"></a>00069                                           <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;(),
-<a name="l00070"></a>00070                                           <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
-<a name="l00071"></a>00071 <span class="comment">// @}</span>
-<a name="l00072"></a>00072 <span class="comment"></span>
-<a name="l00073"></a>00073 <span class="comment">/** Compute rectangular domains large enough to cover all the</span>
-<a name="l00074"></a>00074 <span class="comment"> * &#39;Provides&#39;s to each function that occurs within a given statement</span>
-<a name="l00075"></a>00075 <span class="comment"> * or expression. */</span>
-<a name="l00076"></a>00076 <span class="comment">// @{</span>
-<a name="l00077"></a>00077 std::map&lt;std::string, Box&gt; <a class="code" href="namespace_halide_1_1_internal.html#a5328f15f4cb29712a15fa55c816eb364" title="Compute rectangular domains large enough to cover all the &#39;Provides&#39;s to each function that occurs wi...">boxes_provided</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e,
-<a name="l00078"></a>00078                                           <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;(),
-<a name="l00079"></a>00079                                           <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
-<a name="l00080"></a>00080 std::map&lt;std::string, Box&gt; <a class="code" href="namespace_halide_1_1_internal.html#a5328f15f4cb29712a15fa55c816eb364" title="Compute rectangular domains large enough to cover all the &#39;Provides&#39;s to each function that occurs wi...">boxes_provided</a>(Stmt s,
-<a name="l00081"></a>00081                                           <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;(),
-<a name="l00082"></a>00082                                           <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
-<a name="l00083"></a>00083 <span class="comment">// @}</span>
-<a name="l00084"></a>00084 <span class="comment"></span>
-<a name="l00085"></a>00085 <span class="comment">/** Compute rectangular domains large enough to cover all the &#39;Call&#39;s</span>
-<a name="l00086"></a>00086 <span class="comment"> * and &#39;Provides&#39;s to each function that occurs within a given</span>
-<a name="l00087"></a>00087 <span class="comment"> * statement or expression. */</span>
-<a name="l00088"></a>00088 <span class="comment">// @{</span>
-<a name="l00089"></a>00089 std::map&lt;std::string, Box&gt; <a class="code" href="namespace_halide_1_1_internal.html#a2676f1d8c8216f928a36519b8f88ee16" title="Compute rectangular domains large enough to cover all the &#39;Call&#39;s and &#39;Provides&#39;s to each function th...">boxes_touched</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e,
-<a name="l00090"></a>00090                                          <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;(),
-<a name="l00091"></a>00091                                          <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
-<a name="l00092"></a>00092 std::map&lt;std::string, Box&gt; <a class="code" href="namespace_halide_1_1_internal.html#a2676f1d8c8216f928a36519b8f88ee16" title="Compute rectangular domains large enough to cover all the &#39;Call&#39;s and &#39;Provides&#39;s to each function th...">boxes_touched</a>(Stmt s,
-<a name="l00093"></a>00093                                          <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;(),
-<a name="l00094"></a>00094                                          <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
-<a name="l00095"></a>00095 <span class="comment">// @}</span>
-<a name="l00096"></a>00096 <span class="comment"></span>
-<a name="l00097"></a>00097 <span class="comment">/** Variants of the above that are only concerned with a single function. */</span>
-<a name="l00098"></a>00098 <span class="comment">// @{</span>
-<a name="l00099"></a>00099 Box <a class="code" href="namespace_halide_1_1_internal.html#a33bbf8251b1d8dac5dacafce1154efaf" title="Variants of the above that are only concerned with a single function.">box_required</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e, std::string fn,
-<a name="l00100"></a>00100                  <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;(),
-<a name="l00101"></a>00101                  <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
-<a name="l00102"></a>00102 Box <a class="code" href="namespace_halide_1_1_internal.html#a33bbf8251b1d8dac5dacafce1154efaf" title="Variants of the above that are only concerned with a single function.">box_required</a>(Stmt s, std::string fn,
-<a name="l00103"></a>00103                  <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;(),
-<a name="l00104"></a>00104                  <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
-<a name="l00105"></a>00105 
-<a name="l00106"></a>00106 Box <a class="code" href="namespace_halide_1_1_internal.html#a4a35dd99e377e0ca106576137d01cd43" title="Variants of the above that are only concerned with a single function.">box_provided</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e, std::string fn,
-<a name="l00107"></a>00107                  <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;(),
-<a name="l00108"></a>00108                  <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
-<a name="l00109"></a>00109 Box <a class="code" href="namespace_halide_1_1_internal.html#a4a35dd99e377e0ca106576137d01cd43" title="Variants of the above that are only concerned with a single function.">box_provided</a>(Stmt s, std::string fn,
-<a name="l00110"></a>00110                  <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;(),
-<a name="l00111"></a>00111                  <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
-<a name="l00112"></a>00112 
-<a name="l00113"></a>00113 Box <a class="code" href="namespace_halide_1_1_internal.html#a4cff75ebb135ac249fd4c3a7e1a1ab69" title="Variants of the above that are only concerned with a single function.">box_touched</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e, std::string fn,
-<a name="l00114"></a>00114                 <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;(),
-<a name="l00115"></a>00115                 <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
-<a name="l00116"></a>00116 Box <a class="code" href="namespace_halide_1_1_internal.html#a4cff75ebb135ac249fd4c3a7e1a1ab69" title="Variants of the above that are only concerned with a single function.">box_touched</a>(Stmt s, std::string fn,
-<a name="l00117"></a>00117                 <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;(),
-<a name="l00118"></a>00118                 <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
-<a name="l00119"></a>00119 <span class="comment">// @}</span>
-<a name="l00120"></a>00120 <span class="comment"></span>
-<a name="l00121"></a>00121 <span class="comment">/** Compute the maximum and minimum possible value for each function</span>
-<a name="l00122"></a>00122 <span class="comment"> * in an environment. */</span>
-<a name="l00123"></a>00123 <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> <a class="code" href="namespace_halide_1_1_internal.html#a0b807d0d1524fb2f20b1533d05032c02" title="Compute the maximum and minimum possible value for each function in an environment.">compute_function_value_bounds</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;order,
-<a name="l00124"></a>00124                                               <span class="keyword">const</span> std::map&lt;std::string, Function&gt; &amp;env);
-<a name="l00125"></a>00125 
-<a name="l00126"></a>00126 <span class="keywordtype">void</span> <a class="code" href="namespace_halide_1_1_internal.html#a439ef9127bf30f5e2a67963eb8db0323">bounds_test</a>();
-<a name="l00127"></a>00127 
-<a name="l00128"></a>00128 }
-<a name="l00129"></a>00129 }
-<a name="l00130"></a>00130 
-<a name="l00131"></a>00131 <span class="preprocessor">#endif</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &quot;<a class="code" href="_i_r_operator_8h.html" title="Defines various operator overloads and utility functions that make it more pleasant to work with Hali...">IROperator.h</a>&quot;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &quot;<a class="code" href="_scope_8h.html" title="Defines the Scope class, which is used for keeping track of names in a scope while traversing IR...">Scope.h</a>&quot;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00008"></a>00008 <span class="comment"></span>
+<a name="l00009"></a>00009 <span class="comment">/** \file</span>
+<a name="l00010"></a>00010 <span class="comment"> * Methods for computing the upper and lower bounds of an expression,</span>
+<a name="l00011"></a>00011 <span class="comment"> * and the regions of a function read or written by a statement.</span>
+<a name="l00012"></a>00012 <span class="comment"> */</span>
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 <span class="keyword">namespace </span>Halide {
+<a name="l00015"></a>00015 <span class="keyword">namespace </span>Internal {
+<a name="l00016"></a>00016 
+<a name="l00017"></a><a class="code" href="struct_halide_1_1_internal_1_1_interval.html">00017</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> {
+<a name="l00018"></a><a class="code" href="struct_halide_1_1_internal_1_1_interval.html#a1ecac35096b9d52ac261229410375f49">00018</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="struct_halide_1_1_internal_1_1_interval.html#a1ecac35096b9d52ac261229410375f49">min</a>, <a class="code" href="struct_halide_1_1_internal_1_1_interval.html#ae2f9f0e13f96b9e1397fcce1de560376">max</a>;
+<a name="l00019"></a><a class="code" href="struct_halide_1_1_internal_1_1_interval.html#afce5b15bcf94c995d2c049aa38eb99d8">00019</a>     <a class="code" href="struct_halide_1_1_internal_1_1_interval.html#afce5b15bcf94c995d2c049aa38eb99d8">Interval</a>() {}
+<a name="l00020"></a><a class="code" href="struct_halide_1_1_internal_1_1_interval.html#a7cd7e344d49a30a1dc84648ac6b62f60">00020</a>     <a class="code" href="struct_halide_1_1_internal_1_1_interval.html#a7cd7e344d49a30a1dc84648ac6b62f60">Interval</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="struct_halide_1_1_internal_1_1_interval.html#a1ecac35096b9d52ac261229410375f49">min</a>, <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="struct_halide_1_1_internal_1_1_interval.html#ae2f9f0e13f96b9e1397fcce1de560376">max</a>) : min(min), max(max) {}
+<a name="l00021"></a>00021 };
+<a name="l00022"></a>00022 
+<a name="l00023"></a><a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">00023</a> <span class="keyword">typedef</span> std::map&lt;std::pair&lt;std::string, int&gt;, <a class="code" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a>&gt; <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>;
+<a name="l00024"></a>00024 <span class="comment"></span>
+<a name="l00025"></a>00025 <span class="comment">/** Given an expression in some variables, and a map from those</span>
+<a name="l00026"></a>00026 <span class="comment"> * variables to their bounds (in the form of (minimum possible value,</span>
+<a name="l00027"></a>00027 <span class="comment"> * maximum possible value)), compute two expressions that give the</span>
+<a name="l00028"></a>00028 <span class="comment"> * minimum possible value and the maximum possible value of this</span>
+<a name="l00029"></a>00029 <span class="comment"> * expression. Max or min may be undefined expressions if the value is</span>
+<a name="l00030"></a>00030 <span class="comment"> * not bounded above or below.</span>
+<a name="l00031"></a>00031 <span class="comment"> *</span>
+<a name="l00032"></a>00032 <span class="comment"> * This is for tasks such as deducing the region of a buffer</span>
+<a name="l00033"></a>00033 <span class="comment"> * loaded by a chunk of code.</span>
+<a name="l00034"></a>00034 <span class="comment"> */</span>
+<a name="l00035"></a>00035 <a class="code" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> <a class="code" href="namespace_halide_1_1_internal.html#ab7f7e59492cfa4804a6dece2d867a5db" title="Given an expression in some variables, and a map from those variables to their bounds (in the form of...">bounds_of_expr_in_scope</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> expr,
+<a name="l00036"></a>00036                                  <span class="keyword">const</span> <a class="code" href="class_halide_1_1_internal_1_1_scope.html" title="A common pattern when traversing Halide IR is that you need to keep track of stuff when you find a Le...">Scope&lt;Interval&gt;</a> &amp;scope,
+<a name="l00037"></a>00037                                  <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
+<a name="l00038"></a>00038 <span class="comment"></span>
+<a name="l00039"></a>00039 <span class="comment">/** Represents the bounds of a region of arbitrary dimension. Zero</span>
+<a name="l00040"></a>00040 <span class="comment"> * dimensions corresponds to a scalar region. */</span>
+<a name="l00041"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html">00041</a> <span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1_box.html" title="Represents the bounds of a region of arbitrary dimension.">Box</a> {<span class="comment"></span>
+<a name="l00042"></a>00042 <span class="comment">    /** The conditions under which this region may be touched. */</span>
+<a name="l00043"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#a52623fd2e3c53451b55ef9cdfd0d4d64">00043</a>     <a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#a52623fd2e3c53451b55ef9cdfd0d4d64" title="The conditions under which this region may be touched.">used</a>;
+<a name="l00044"></a>00044 <span class="comment"></span>
+<a name="l00045"></a>00045 <span class="comment">    /** The bounds if it is touched. */</span>
+<a name="l00046"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4">00046</a>     std::vector&lt;Interval&gt; <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4" title="The bounds if it is touched.">bounds</a>;
+<a name="l00047"></a>00047 
+<a name="l00048"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#a8fd3706b1415ab27ba57816ece1820ee">00048</a>     <a class="code" href="struct_halide_1_1_internal_1_1_box.html#a8fd3706b1415ab27ba57816ece1820ee">Box</a>() {}
+<a name="l00049"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#a1fab4f1a64ec075c717bb0d067b76327">00049</a>     <a class="code" href="struct_halide_1_1_internal_1_1_box.html#a1fab4f1a64ec075c717bb0d067b76327">Box</a>(<span class="keywordtype">size_t</span> sz) : <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4" title="The bounds if it is touched.">bounds</a>(sz) {}
+<a name="l00050"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#ac90ff94522f9b9b3722b6183edd09364">00050</a>     <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ac90ff94522f9b9b3722b6183edd09364">Box</a>(<span class="keyword">const</span> std::vector&lt;Interval&gt; &amp;b) : <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4" title="The bounds if it is touched.">bounds</a>(b) {}
+<a name="l00051"></a>00051 
+<a name="l00052"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#ab33bc61630f5cb6eb41d71d0a6022359">00052</a>     <span class="keywordtype">size_t</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ab33bc61630f5cb6eb41d71d0a6022359">size</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4" title="The bounds if it is touched.">bounds</a>.size();}
+<a name="l00053"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#acd29242a494480eeea11e859bbd2e4ce">00053</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#acd29242a494480eeea11e859bbd2e4ce">empty</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4" title="The bounds if it is touched.">bounds</a>.empty();}
+<a name="l00054"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#a25f19494f8777045a4f4a7fa1d1d3a97">00054</a>     <a class="code" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &amp;<a class="code" href="struct_halide_1_1_internal_1_1_box.html#a25f19494f8777045a4f4a7fa1d1d3a97">operator[]</a>(<span class="keywordtype">int</span> i) {<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4" title="The bounds if it is touched.">bounds</a>[i];}
+<a name="l00055"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#a4cfa684eb0f0b01c2ffe8a0b8822af1c">00055</a>     <span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &amp;<a class="code" href="struct_halide_1_1_internal_1_1_box.html#a4cfa684eb0f0b01c2ffe8a0b8822af1c">operator[]</a>(<span class="keywordtype">int</span> i)<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4" title="The bounds if it is touched.">bounds</a>[i];}
+<a name="l00056"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#a8fac5038393142589c9ce5f9a368b2d2">00056</a>     <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#a8fac5038393142589c9ce5f9a368b2d2">resize</a>(<span class="keywordtype">size_t</span> sz) {<a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4" title="The bounds if it is touched.">bounds</a>.resize(sz);}
+<a name="l00057"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#a6527fa5c2cf5cf89e8d6a61826977a02">00057</a>     <span class="keywordtype">void</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#a6527fa5c2cf5cf89e8d6a61826977a02">push_back</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_interval.html">Interval</a> &amp;i) {<a class="code" href="struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4" title="The bounds if it is touched.">bounds</a>.push_back(i);}
+<a name="l00058"></a>00058 <span class="comment"></span>
+<a name="l00059"></a>00059 <span class="comment">    /** Check if the used condition is defined and not trivially true. */</span>
+<a name="l00060"></a><a class="code" href="struct_halide_1_1_internal_1_1_box.html#aa27a0c2f3a786c1806dfe51afb084c9c">00060</a>     <span class="keywordtype">bool</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#aa27a0c2f3a786c1806dfe51afb084c9c" title="Check if the used condition is defined and not trivially true.">maybe_unused</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="struct_halide_1_1_internal_1_1_box.html#a52623fd2e3c53451b55ef9cdfd0d4d64" title="The conditions under which this region may be touched.">used</a>.<a class="code" href="struct_halide_1_1_internal_1_1_intrusive_ptr.html#a3c8f4bef8f2c67a1cdb25c8f7d1acfcd">defined</a>() &amp;&amp; !<a class="code" href="namespace_halide_1_1_internal.html#a940b37091a8f16bf1e4a78db7764274e" title="Is the expression a const (as defined by is_const), and also equal to one (in all lanes...">is_one</a>(<a class="code" href="struct_halide_1_1_internal_1_1_box.html#a52623fd2e3c53451b55ef9cdfd0d4d64" title="The conditions under which this region may be touched.">used</a>);}
+<a name="l00061"></a>00061 };
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063 <span class="comment">// Expand box a to encompass box b</span>
+<a name="l00064"></a>00064 <span class="keywordtype">void</span> <a class="code" href="namespace_halide_1_1_internal.html#ac2f62c0ee3ace8de2be57a9db369a3e4">merge_boxes</a>(Box &amp;a, <span class="keyword">const</span> Box &amp;b);
+<a name="l00065"></a>00065 <span class="comment">// Test if box a could possibly overlap box b.</span>
+<a name="l00066"></a>00066 <span class="keywordtype">bool</span> <a class="code" href="namespace_halide_1_1_internal.html#ac9641dd947fdf6352ccd5e34548db35e">boxes_overlap</a>(<span class="keyword">const</span> Box &amp;a, <span class="keyword">const</span> Box &amp;b);
+<a name="l00067"></a>00067 <span class="comment"></span>
+<a name="l00068"></a>00068 <span class="comment">/** Compute rectangular domains large enough to cover all the &#39;Call&#39;s</span>
+<a name="l00069"></a>00069 <span class="comment"> * to each function that occurs within a given statement or</span>
+<a name="l00070"></a>00070 <span class="comment"> * expression. This is useful for figuring out what regions of things</span>
+<a name="l00071"></a>00071 <span class="comment"> * to evaluate. */</span>
+<a name="l00072"></a>00072 <span class="comment">// @{</span>
+<a name="l00073"></a>00073 std::map&lt;std::string, Box&gt; <a class="code" href="namespace_halide_1_1_internal.html#ab68083f9769cbbf033176ba50f3709c9" title="Compute rectangular domains large enough to cover all the &#39;Call&#39;s to each function that occurs within...">boxes_required</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e,
+<a name="l00074"></a>00074                                           <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;::empty_scope(),
+<a name="l00075"></a>00075                                           <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
+<a name="l00076"></a>00076 std::map&lt;std::string, Box&gt; <a class="code" href="namespace_halide_1_1_internal.html#ab68083f9769cbbf033176ba50f3709c9" title="Compute rectangular domains large enough to cover all the &#39;Call&#39;s to each function that occurs within...">boxes_required</a>(Stmt s,
+<a name="l00077"></a>00077                                           <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;::empty_scope(),
+<a name="l00078"></a>00078                                           <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
+<a name="l00079"></a>00079 <span class="comment">// @}</span>
+<a name="l00080"></a>00080 <span class="comment"></span>
+<a name="l00081"></a>00081 <span class="comment">/** Compute rectangular domains large enough to cover all the</span>
+<a name="l00082"></a>00082 <span class="comment"> * &#39;Provides&#39;s to each function that occurs within a given statement</span>
+<a name="l00083"></a>00083 <span class="comment"> * or expression. */</span>
+<a name="l00084"></a>00084 <span class="comment">// @{</span>
+<a name="l00085"></a>00085 std::map&lt;std::string, Box&gt; <a class="code" href="namespace_halide_1_1_internal.html#aeaf945673dc90b8bdd2e79900b147954" title="Compute rectangular domains large enough to cover all the &#39;Provides&#39;s to each function that occurs wi...">boxes_provided</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e,
+<a name="l00086"></a>00086                                           <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;::empty_scope(),
+<a name="l00087"></a>00087                                           <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
+<a name="l00088"></a>00088 std::map&lt;std::string, Box&gt; <a class="code" href="namespace_halide_1_1_internal.html#aeaf945673dc90b8bdd2e79900b147954" title="Compute rectangular domains large enough to cover all the &#39;Provides&#39;s to each function that occurs wi...">boxes_provided</a>(Stmt s,
+<a name="l00089"></a>00089                                           <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;::empty_scope(),
+<a name="l00090"></a>00090                                           <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
+<a name="l00091"></a>00091 <span class="comment">// @}</span>
+<a name="l00092"></a>00092 <span class="comment"></span>
+<a name="l00093"></a>00093 <span class="comment">/** Compute rectangular domains large enough to cover all the &#39;Call&#39;s</span>
+<a name="l00094"></a>00094 <span class="comment"> * and &#39;Provides&#39;s to each function that occurs within a given</span>
+<a name="l00095"></a>00095 <span class="comment"> * statement or expression. */</span>
+<a name="l00096"></a>00096 <span class="comment">// @{</span>
+<a name="l00097"></a>00097 std::map&lt;std::string, Box&gt; <a class="code" href="namespace_halide_1_1_internal.html#ae5c5855f4212c1cb3880a8534b6f41b6" title="Compute rectangular domains large enough to cover all the &#39;Call&#39;s and &#39;Provides&#39;s to each function th...">boxes_touched</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e,
+<a name="l00098"></a>00098                                          <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;::empty_scope(),
+<a name="l00099"></a>00099                                          <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
+<a name="l00100"></a>00100 std::map&lt;std::string, Box&gt; <a class="code" href="namespace_halide_1_1_internal.html#ae5c5855f4212c1cb3880a8534b6f41b6" title="Compute rectangular domains large enough to cover all the &#39;Call&#39;s and &#39;Provides&#39;s to each function th...">boxes_touched</a>(Stmt s,
+<a name="l00101"></a>00101                                          <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;::empty_scope(),
+<a name="l00102"></a>00102                                          <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
+<a name="l00103"></a>00103 <span class="comment">// @}</span>
+<a name="l00104"></a>00104 <span class="comment"></span>
+<a name="l00105"></a>00105 <span class="comment">/** Variants of the above that are only concerned with a single function. */</span>
+<a name="l00106"></a>00106 <span class="comment">// @{</span>
+<a name="l00107"></a>00107 Box <a class="code" href="namespace_halide_1_1_internal.html#a69980b5d1669ec54e78b7d393d8a7201" title="Variants of the above that are only concerned with a single function.">box_required</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e, std::string fn,
+<a name="l00108"></a>00108                  <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;::empty_scope(),
+<a name="l00109"></a>00109                  <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
+<a name="l00110"></a>00110 Box <a class="code" href="namespace_halide_1_1_internal.html#a69980b5d1669ec54e78b7d393d8a7201" title="Variants of the above that are only concerned with a single function.">box_required</a>(Stmt s, std::string fn,
+<a name="l00111"></a>00111                  <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;::empty_scope(),
+<a name="l00112"></a>00112                  <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114 Box <a class="code" href="namespace_halide_1_1_internal.html#a0586fc0706c9a4d39f0ae5f9c7073c86" title="Variants of the above that are only concerned with a single function.">box_provided</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e, std::string fn,
+<a name="l00115"></a>00115                  <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;::empty_scope(),
+<a name="l00116"></a>00116                  <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
+<a name="l00117"></a>00117 Box <a class="code" href="namespace_halide_1_1_internal.html#a0586fc0706c9a4d39f0ae5f9c7073c86" title="Variants of the above that are only concerned with a single function.">box_provided</a>(Stmt s, std::string fn,
+<a name="l00118"></a>00118                  <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;::empty_scope(),
+<a name="l00119"></a>00119                  <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
+<a name="l00120"></a>00120 
+<a name="l00121"></a>00121 Box <a class="code" href="namespace_halide_1_1_internal.html#aa211ee508998ef25191d04fa45eb16c7" title="Variants of the above that are only concerned with a single function.">box_touched</a>(<a class="code" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax.">Expr</a> e, std::string fn,
+<a name="l00122"></a>00122                 <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;::empty_scope(),
+<a name="l00123"></a>00123                 <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
+<a name="l00124"></a>00124 Box <a class="code" href="namespace_halide_1_1_internal.html#aa211ee508998ef25191d04fa45eb16c7" title="Variants of the above that are only concerned with a single function.">box_touched</a>(Stmt s, std::string fn,
+<a name="l00125"></a>00125                 <span class="keyword">const</span> Scope&lt;Interval&gt; &amp;scope = Scope&lt;Interval&gt;::empty_scope(),
+<a name="l00126"></a>00126                 <span class="keyword">const</span> <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> &amp;func_bounds = <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a>());
+<a name="l00127"></a>00127 <span class="comment">// @}</span>
+<a name="l00128"></a>00128 <span class="comment"></span>
+<a name="l00129"></a>00129 <span class="comment">/** Compute the maximum and minimum possible value for each function</span>
+<a name="l00130"></a>00130 <span class="comment"> * in an environment. */</span>
+<a name="l00131"></a>00131 <a class="code" href="namespace_halide_1_1_internal.html#aaa0611a86047e2c583dd061a620dcc6e">FuncValueBounds</a> <a class="code" href="namespace_halide_1_1_internal.html#a0b807d0d1524fb2f20b1533d05032c02" title="Compute the maximum and minimum possible value for each function in an environment.">compute_function_value_bounds</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;order,
+<a name="l00132"></a>00132                                               <span class="keyword">const</span> std::map&lt;std::string, Function&gt; &amp;env);
+<a name="l00133"></a>00133 
+<a name="l00134"></a>00134 <span class="keywordtype">void</span> <a class="code" href="namespace_halide_1_1_internal.html#a439ef9127bf30f5e2a67963eb8db0323">bounds_test</a>();
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136 }
+<a name="l00137"></a>00137 }
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

@@ -309,11 +309,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <span class="comment">// Scheduling update steps</span>
     {
         <span class="comment">// The pure variables in an update step and can be</span>
-        <span class="comment">// parallelized, vectorized, split, etc as usual. The</span>
-        <span class="comment">// variables that are part of the reduction domain (e.g. r.x</span>
-        <span class="comment">// in our histogram example) can&#39;t be modified, as this risks</span>
-        <span class="comment">// changing the meaning of the update step (because the</span>
-        <span class="comment">// function may recursively refer back to itself).</span>
+        <span class="comment">// parallelized, vectorized, split, etc as usual.</span>
+
+        <span class="comment">// Vectorizing, splitting, or parallelize the variables that</span>
+        <span class="comment">// are part of the reduction domain is trickier. We&#39;ll cover</span>
+        <span class="comment">// that in a later lesson.</span>
 
         <span class="comment">// Consider the definition:</span>
         <a class="code" href="class_halide_1_1_func.html" title="A halide function.">Func</a> f;
@@ -334,12 +334,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <span class="comment">// vectorizes the first update step across x. We can&#39;t do</span>
         <span class="comment">// anything with y for this update step, because it doesn&#39;t</span>
         <span class="comment">// use y.</span>
-        f.<a name="a11"></a><a class="code" href="class_halide_1_1_func.html#a5fd179a3631bfc16fc2e0cb3bb29ae0b" title="Get a handle on an update step of a reduction for the purposes of scheduling it.">update</a>(0).<a name="a12"></a><a class="code" href="class_halide_1_1_schedule_handle.html#a6bbe5ab64b08188620785cf03a7b4cef" title="Scheduling calls that control how the domain of this stage is traversed.">vectorize</a>(x, 4);
+        f.<a name="a11"></a><a class="code" href="class_halide_1_1_func.html#ae2013b9623e9c24a47930ef1874d2b4b" title="Get a handle on an update step for the purposes of scheduling it.">update</a>(0).<a name="a12"></a><a class="code" href="class_halide_1_1_stage.html#ab162d590da2da4a879dab44ba66f3e60" title="Scheduling calls that control how the domain of this stage is traversed.">vectorize</a>(x, 4);
 
-        <span class="comment">// No we parallelize the second update step in chunks of size</span>
+        <span class="comment">// Now we parallelize the second update step in chunks of size</span>
         <span class="comment">// 4.</span>
         <a class="code" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> yo, yi;
-        f.<a class="code" href="class_halide_1_1_func.html#a5fd179a3631bfc16fc2e0cb3bb29ae0b" title="Get a handle on an update step of a reduction for the purposes of scheduling it.">update</a>(1).<a name="a13"></a>split(y, yo, yi, 4).parallel(yo);
+        f.<a class="code" href="class_halide_1_1_func.html#ae2013b9623e9c24a47930ef1874d2b4b" title="Get a handle on an update step for the purposes of scheduling it.">update</a>(1).<a name="a13"></a>split(y, yo, yi, 4).parallel(yo);
 
         <a class="code" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Image&lt;int&gt;</a> halide_result = f.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b" title="Evaluate this function over some rectangular domain and return the resulting buffer or buffers...">realize</a>(16, 16);
 
@@ -754,7 +754,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
                     }
                 }
                 <span class="comment">// Pure step of blurry</span>
-                c_result(x, y) = (<a name="a21"></a><a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a>)(local_sum[0] / 25);
+                c_result(x, y) = (<a name="a21"></a><a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a>)(local_sum[0] / 25);
             }
         }
 
@@ -882,12 +882,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
                 <span class="comment">// needs its own allocation, so it must occur here.</span>
 
                 <span class="keywordtype">int</span> clamped_width = input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>() + 4;
-                <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *clamped_storage = (<a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *)malloc(clamped_width * 8);
+                <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *clamped_storage = (<a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *)<a name="a27"></a><a class="code" href="runtime__internal_8h.html#a1c8580582aae58105f16108d4ec89e9a">malloc</a>(clamped_width * 8);
 
                 <span class="keywordflow">for</span> (<span class="keywordtype">int</span> yi = 0; yi &lt; 32; yi++) {
                     <span class="keywordtype">int</span> y = y_base + yi;
 
-                    <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *output_row = &amp;c_result(0, y);
+                    <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *output_row = &amp;c_result(0, y);
 
                     <span class="comment">// Compute clamped for this scanline, skipping rows</span>
                     <span class="comment">// already computed within this slice.</span>
@@ -896,12 +896,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
                     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> cy = min_y_clamped; cy &lt;= max_y_clamped; cy++) {
                         <span class="comment">// Figure out which row of the circular buffer</span>
                         <span class="comment">// we&#39;re filling in using bitmasking:</span>
-                        <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *clamped_row = clamped_storage + (cy &amp; 7) * clamped_width;
+                        <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *clamped_row = clamped_storage + (cy &amp; 7) * clamped_width;
 
                         <span class="comment">// Figure out which row of the input we&#39;re reading</span>
                         <span class="comment">// from by clamping the y coordinate:</span>
                         <span class="keywordtype">int</span> clamped_y = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">std::min</a>(<a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec" title="Returns an expression representing the greater of the two arguments, after doing any necessary type c...">std::max</a>(cy, 0), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc" title="Get the extent of dimension 1, which by convention we use as the height of the image.">height</a>()-1);
-                        <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *input_row = &amp;input(0, clamped_y);
+                        <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *input_row = &amp;input(0, clamped_y);
 
                         <span class="comment">// Fill it in with the padding.</span>
                         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = -2; x &lt; input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916" title="Get the extent of dimension 0, which by convention we use as the width of the image.">width</a>() + 2; x++) {
@@ -923,7 +923,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
                         <span class="comment">// The update step for maximum</span>
                         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> max_y = y - 2; max_y &lt;= y + 2; max_y++) {
-                            <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *clamped_row = clamped_storage + (max_y &amp; 7) * clamped_width;
+                            <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *clamped_row = clamped_storage + (max_y &amp; 7) * clamped_width;
                             <span class="keywordflow">for</span> (<span class="keywordtype">int</span> max_x = x_base - 2; max_x &lt;= x_base + 2; max_x++) {
                                 __m128i v = _mm_loadu_si128((__m128i <span class="keyword">const</span> *)(clamped_row + max_x + 2));
                                 maximum_storage = _mm_max_epu8(maximum_storage, v);
@@ -938,7 +938,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
                         <span class="comment">// The update step for minimum.</span>
                         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> min_y = y - 2; min_y &lt;= y + 2; min_y++) {
-                            <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *clamped_row = clamped_storage + (min_y &amp; 7) * clamped_width;
+                            <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *clamped_row = clamped_storage + (min_y &amp; 7) * clamped_width;
                             <span class="keywordflow">for</span> (<span class="keywordtype">int</span> min_x = x_base - 2; min_x &lt;= x_base + 2; min_x++) {
                                 __m128i v = _mm_loadu_si128((__m128i <span class="keyword">const</span> *)(clamped_row + min_x + 2));
                                 minimum_storage = _mm_min_epu8(minimum_storage, v);
@@ -954,7 +954,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
                     }
                 }
 
-                free(clamped_storage);
+                <a name="a28"></a><a class="code" href="runtime__internal_8h.html#af07d89f5ceaea0c7c8252cc41fd75f37">free</a>(clamped_storage);
             }
         }
 

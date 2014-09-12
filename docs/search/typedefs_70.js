@@ -48,5 +48,6 @@ var searchData=
   ['pfngluniform2ivproc',['PFNGLUNIFORM2IVPROC',['../mini__opengl_8h.html#addacf394e4387d19b7dd406cfbf3fb98',1,'mini_opengl.h']]],
   ['pfngluseprogramproc',['PFNGLUSEPROGRAMPROC',['../mini__opengl_8h.html#abc83af5007f19085205f5d9d4948d719',1,'mini_opengl.h']]],
   ['pfnglvertexattribpointerproc',['PFNGLVERTEXATTRIBPOINTERPROC',['../mini__opengl_8h.html#a8e3ce0fceec4057152cc50d80ef9d123',1,'mini_opengl.h']]],
-  ['pfnglviewportproc',['PFNGLVIEWPORTPROC',['../mini__opengl_8h.html#a6be278b3892ed131951ab124965294df',1,'mini_opengl.h']]]
+  ['pfnglviewportproc',['PFNGLVIEWPORTPROC',['../mini__opengl_8h.html#a6be278b3892ed131951ab124965294df',1,'mini_opengl.h']]],
+  ['ptrdiff_5ft',['ptrdiff_t',['../runtime__internal_8h.html#a6d26a0475a6d6c897e655cdc5d8019d2',1,'runtime_internal.h']]]
 ];

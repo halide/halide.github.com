@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['schedule',['schedule',['../struct_halide_1_1_internal_1_1_reduction_definition.html#ab4835adfeef213357966ae0c4fb9af2f',1,'Halide::Internal::ReductionDefinition::schedule()'],['../struct_halide_1_1_internal_1_1_function_contents.html#a97c217ebe37739ded07818edb12a781c',1,'Halide::Internal::FunctionContents::schedule()'],['../struct_halide_1_1_internal_1_1_specialization.html#a07e9a7bb554b1cd3d76f479dea4490f3',1,'Halide::Internal::Specialization::schedule()']]],
+  ['schedule',['schedule',['../struct_halide_1_1_internal_1_1_update_definition.html#aaa678ac76782155f903f721bde40dd8a',1,'Halide::Internal::UpdateDefinition::schedule()'],['../struct_halide_1_1_internal_1_1_function_contents.html#a97c217ebe37739ded07818edb12a781c',1,'Halide::Internal::FunctionContents::schedule()'],['../struct_halide_1_1_internal_1_1_specialization.html#a07e9a7bb554b1cd3d76f479dea4490f3',1,'Halide::Internal::Specialization::schedule()']]],
   ['set_5fcustom_5fallocator',['set_custom_allocator',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a18efcb74c1624c65e85ab10bea1b41a2',1,'Halide::Internal::JITCompiledModule']]],
   ['set_5fcustom_5fdo_5fpar_5ffor',['set_custom_do_par_for',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a66f9644df7cc48885ff678afd4a86e70',1,'Halide::Internal::JITCompiledModule']]],
   ['set_5fcustom_5fdo_5ftask',['set_custom_do_task',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a2d8aaa9a0e12703fc8b54daea6ff2e02',1,'Halide::Internal::JITCompiledModule']]],
@@ -15,7 +15,7 @@ var searchData=
   ['shutdown_5fthread_5fpool',['shutdown_thread_pool',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a6510aea2ffc1449b8d4a2f09f7db3b33',1,'Halide::Internal::JITCompiledModule']]],
   ['size',['size',['../struct_halide_1_1_internal_1_1_g_p_u___argument.html#af19e166b9a861fdabac82ee0944978ca',1,'Halide::Internal::GPU_Argument::size()'],['../struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#a21439f068f3706b1f63ee86d911cf5b0',1,'Halide::Internal::Closure::BufferRef::size()'],['../struct__cl__buffer__region.html#a42a9ed9284cac1ed167664874ed2f0ee',1,'_cl_buffer_region::size()']]],
   ['split_5ftype',['split_type',['../struct_halide_1_1_internal_1_1_split.html#a6a36f5d612bfaf8d0c3fc09c70d5984a',1,'Halide::Internal::Split']]],
-  ['src',['src',['../struct__dev__copy.html#a624a17ce8c9a490ba310dc61c753af0f',1,'_dev_copy']]],
+  ['src',['src',['../struct_halide_1_1_runtime_1_1_internal_1_1dev__copy.html#acad5ff5c1e472ae11fa51a564ee4de4d',1,'Halide::Runtime::Internal::dev_copy']]],
   ['src_5fstream',['src_stream',['../class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a7960fa0f05f06760163c8f6adf17c6c3',1,'Halide::Internal::CodeGen_OpenCL_Dev']]],
   ['srcarray',['srcArray',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#a6d4c1dc48609ed769f4d5463f4cfd6da',1,'CUDA_MEMCPY3D_st']]],
   ['srcdevice',['srcDevice',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#a53d3d8cb6341e8f58fe89aa7ab54c795',1,'CUDA_MEMCPY3D_st']]],
@@ -35,5 +35,5 @@ var searchData=
   ['stride_5f1',['stride_1',['../class_halide_1_1_image_base.html#a7e1610a143e29fd066556aec22c619f2',1,'Halide::ImageBase']]],
   ['stride_5f2',['stride_2',['../class_halide_1_1_image_base.html#ad0b8de0f042392c82d852fa68f75b7f3',1,'Halide::ImageBase']]],
   ['stride_5f3',['stride_3',['../class_halide_1_1_image_base.html#a7487663036dc6af113e453739d41e3fb',1,'Halide::ImageBase']]],
-  ['stride_5fbytes',['stride_bytes',['../struct__dev__copy.html#ab9a811c97dc6ab1db0982fbf8d37831d',1,'_dev_copy']]]
+  ['stride_5fbytes',['stride_bytes',['../struct_halide_1_1_runtime_1_1_internal_1_1dev__copy.html#a157d6ee95fd054b29cf32df5f12e6cb3',1,'Halide::Runtime::Internal::dev_copy']]]
 ];

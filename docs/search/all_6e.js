@@ -7,12 +7,13 @@ var searchData=
   ['ne',['NE',['../struct_halide_1_1_internal_1_1_n_e.html',1,'Halide::Internal']]],
   ['negations',['negations',['../class_halide_1_1_internal_1_1_code_gen___a_r_m.html#abb2909a9428ed608ea190d5cafc5a895',1,'Halide::Internal::CodeGen_ARM']]],
   ['no_5finline',['NO_INLINE',['../_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b',1,'Util.h']]],
-  ['noasserts',['NoAsserts',['../struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a1fc53f322ecd95ae65274a9f16c71ac2',1,'Halide::Target']]],
-  ['noboundsquery',['NoBoundsQuery',['../struct_halide_1_1_target.html#a04065d5cc8ac34f163e69eb65493db80a6f7593c40bf078bf7906ea1c391bcd80',1,'Halide::Target']]],
+  ['noasserts',['NoAsserts',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa1fc53f322ecd95ae65274a9f16c71ac2',1,'Halide::Target']]],
+  ['noboundsquery',['NoBoundsQuery',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa6f7593c40bf078bf7906ea1c391bcd80',1,'Halide::Target']]],
+  ['noop_5fprintf',['noop_printf',['../namespace_halide_1_1_runtime_1_1_internal.html#a3e02e39ff4456b65f8753d8d769fc6f1',1,'Halide::Runtime::Internal']]],
   ['not',['Not',['../struct_halide_1_1_internal_1_1_not.html',1,'Halide::Internal']]],
-  ['null',['NULL',['../mini__stdint_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4',1,'mini_stdint.h']]],
+  ['null',['NULL',['../runtime__internal_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4',1,'runtime_internal.h']]],
   ['null_5fhandle',['null_handle',['../struct_halide_1_1_internal_1_1_call.html#a6ba57a23e0c059b2b60db2d059c2dc09',1,'Halide::Internal::Call']]],
   ['num_5fmip_5flevels',['num_mip_levels',['../struct__cl__image__desc.html#a97f4cab1d305d0fbf97b1e94880b0681',1,'_cl_image_desc']]],
-  ['num_5freduction_5fdefinitions',['num_reduction_definitions',['../class_halide_1_1_func.html#a45107807c692741d300bd98e8666473f',1,'Halide::Func']]],
-  ['num_5fsamples',['num_samples',['../struct__cl__image__desc.html#a6732865527d69bd112224a378a4f0297',1,'_cl_image_desc']]]
+  ['num_5fsamples',['num_samples',['../struct__cl__image__desc.html#a6732865527d69bd112224a378a4f0297',1,'_cl_image_desc']]],
+  ['num_5fupdate_5fdefinitions',['num_update_definitions',['../class_halide_1_1_func.html#a75792d22e6a8774a34785a2bc80a7d65',1,'Halide::Func']]]
 ];

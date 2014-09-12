@@ -4,11 +4,14 @@ var searchData=
   ['fast_5finteger_5fdivide',['fast_integer_divide',['../namespace_halide.html#aced4b4be21fc5bd6c85f354b59e301ff',1,'Halide']]],
   ['fast_5flog',['fast_log',['../namespace_halide.html#a7df3f02c28d9710c836194f5b2e9e8c7',1,'Halide']]],
   ['fast_5fpow',['fast_pow',['../namespace_halide.html#a958457cd688f84d583779e649c9e52e6',1,'Halide']]],
+  ['features_5fall_5fof',['features_all_of',['../struct_halide_1_1_target.html#a6b1f002f2b4899039558036e0a4276d9',1,'Halide::Target']]],
+  ['features_5fany_5fof',['features_any_of',['../struct_halide_1_1_target.html#a7a3d3b016c13819515090e9a3a9e673f',1,'Halide::Target']]],
   ['find_5fdirect_5fcalls',['find_direct_calls',['../namespace_halide_1_1_internal.html#a16b42e90ad180f1254cdd3be0ae7be89',1,'Halide::Internal']]],
   ['find_5ftransitive_5fcalls',['find_transitive_calls',['../namespace_halide_1_1_internal.html#a770da2a7374eb2a8ac60f5c9d90b88ad',1,'Halide::Internal']]],
   ['finite_5fdifference',['finite_difference',['../namespace_halide_1_1_internal.html#a534a3b8f52a0441dbb0fb7ab2aed3341',1,'Halide::Internal']]],
   ['float',['Float',['../namespace_halide.html#a63a7b9a74aa0b0598f6a37b5137bab68',1,'Halide']]],
   ['floor',['floor',['../namespace_halide.html#aed670387016322f8db2b7abdecdc0e4c',1,'Halide']]],
+  ['free',['free',['../runtime__internal_8h.html#af07d89f5ceaea0c7c8252cc41fd75f37',1,'runtime_internal.h']]],
   ['free_5fdev_5fbuffer',['free_dev_buffer',['../class_halide_1_1_buffer.html#a8ca6dbcd6a77154d51ef1bd6cf3348eb',1,'Halide::Buffer']]],
   ['freeze',['freeze',['../class_halide_1_1_internal_1_1_function.html#ac88ed26e82c3c53cc1a937a78510b605',1,'Halide::Internal::Function']]],
   ['from_5fstring',['from_string',['../struct_halide_1_1_target.html#a407597a3202793e72c6a9907fe8fb2c7',1,'Halide::Target']]],
@@ -20,6 +23,6 @@ var searchData=
   ['function',['function',['../class_halide_1_1_func_ref_var.html#ad1389431d7c2ce3f0a306acc9ce46080',1,'Halide::FuncRefVar::function()'],['../class_halide_1_1_func_ref_expr.html#afff3f727b96eb455e6d1025b28a8c335',1,'Halide::FuncRefExpr::function()'],['../class_halide_1_1_func.html#af53d44302c15c4335e55a2887e2f780e',1,'Halide::Func::function()'],['../class_halide_1_1_internal_1_1_function.html#ace834f982cc07e50a7a4ad4cdd9e4625',1,'Halide::Internal::Function::Function()'],['../class_halide_1_1_internal_1_1_function.html#a4ecf618c52dacb19090c17a00d3fbd3d',1,'Halide::Internal::Function::Function(const IntrusivePtr&lt; FunctionContents &gt; &amp;c)'],['../class_halide_1_1_internal_1_1_function.html#a0f8109a2b3f78087f68cadb33765af88',1,'Halide::Internal::Function::Function(const std::string &amp;n)']]],
   ['function_5ftakes_5fuser_5fcontext',['function_takes_user_context',['../class_halide_1_1_internal_1_1_code_gen.html#a1fa70dedaa72d18ef4d2585d4031375f',1,'Halide::Internal::CodeGen']]],
   ['functioncontents',['FunctionContents',['../struct_halide_1_1_internal_1_1_function_contents.html#a4f819cc2408b4ea6a8cc8d468343e8e0',1,'Halide::Internal::FunctionContents']]],
-  ['fuse',['fuse',['../class_halide_1_1_schedule_handle.html#adc87f20a23d4a1b1e292ceb7f2af142a',1,'Halide::ScheduleHandle::fuse()'],['../class_halide_1_1_func.html#a07ae6163527e6319a9352f7648afd875',1,'Halide::Func::fuse()']]],
+  ['fuse',['fuse',['../class_halide_1_1_stage.html#a88503c3004b3e0380b33abb802012c8d',1,'Halide::Stage::fuse()'],['../class_halide_1_1_func.html#a07ae6163527e6319a9352f7648afd875',1,'Halide::Func::fuse()']]],
   ['fuse_5fgpu_5fthread_5floops',['fuse_gpu_thread_loops',['../namespace_halide_1_1_internal.html#a0081752824625e87b5e95bfae979499f',1,'Halide::Internal']]]
 ];

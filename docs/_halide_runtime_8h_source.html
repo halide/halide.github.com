@@ -103,11 +103,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="_halide_runtime_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef HALIDE_HALIDERUNTIME_H</span>
 <a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define HALIDE_HALIDERUNTIME_H</span>
 <a name="l00003"></a>00003 <span class="preprocessor"></span>
-<a name="l00004"></a>00004 <span class="preprocessor">#ifdef COMPILING_HALIDE</span>
-<a name="l00005"></a>00005 <span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="mini__stdint_8h.html">mini_stdint.h</a>&quot;</span>
-<a name="l00006"></a>00006 <span class="preprocessor">#else</span>
-<a name="l00007"></a>00007 <span class="preprocessor"></span><span class="preprocessor">#include &lt;stddef.h&gt;</span>
-<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;stdint.h&gt;</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#ifndef COMPILING_HALIDE_RUNTIME</span>
+<a name="l00005"></a>00005 <span class="preprocessor"></span><span class="preprocessor">#include &lt;stddef.h&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;stdint.h&gt;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#else</span>
+<a name="l00008"></a>00008 <span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="runtime__internal_8h.html">runtime_internal.h</a>&quot;</span>
 <a name="l00009"></a>00009 <span class="preprocessor">#endif</span>
 <a name="l00010"></a>00010 <span class="preprocessor"></span>
 <a name="l00011"></a>00011 <span class="preprocessor">#ifdef __cplusplus</span>
@@ -175,144 +175,272 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00073"></a>00073 <span class="comment">/** A macro that calls halide_error if the supplied condition is false. */</span>
 <a name="l00074"></a><a class="code" href="_halide_runtime_8h.html#ac87d020eed3438306b57d1eec5de0364">00074</a> <span class="preprocessor">#define halide_assert(user_context, cond) if (!(cond)) halide_error(user_context, #cond);</span>
 <a name="l00075"></a>00075 <span class="preprocessor"></span><span class="comment"></span>
-<a name="l00076"></a>00076 <span class="comment">/** Define halide_do_par_for to replace the default thread pool</span>
-<a name="l00077"></a>00077 <span class="comment"> * implementation. halide_shutdown_thread_pool can also be called to</span>
-<a name="l00078"></a>00078 <span class="comment"> * release resources used by the default thread pool on platforms</span>
-<a name="l00079"></a>00079 <span class="comment"> * where it makes sense. (E.g. On Mac OS, Grand Central Dispatch is</span>
-<a name="l00080"></a>00080 <span class="comment"> * used so %Halide does not own the threads backing the pool and they</span>
-<a name="l00081"></a>00081 <span class="comment"> * cannot be released.)  See Func::set_custom_do_task and</span>
-<a name="l00082"></a>00082 <span class="comment"> * Func::set_custom_do_par_for. Should return zero if all the jobs</span>
-<a name="l00083"></a>00083 <span class="comment"> * return zero, or an arbitrarily chosen return value from one of the</span>
-<a name="l00084"></a>00084 <span class="comment"> * jobs otherwise.</span>
-<a name="l00085"></a>00085 <span class="comment"> */</span><span class="comment"></span>
-<a name="l00086"></a>00086 <span class="comment">//@{</span>
-<a name="l00087"></a>00087 <span class="comment"></span><span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a05193f80c8fc7df76ceadd82c4ce7b56" title="Define halide_do_par_for to replace the default thread pool implementation.">halide_do_par_for</a>(<span class="keywordtype">void</span> *user_context,
-<a name="l00088"></a>00088                              <span class="keywordtype">int</span> (*f)(<span class="keywordtype">void</span> *ctx, <span class="keywordtype">int</span>, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *),
-<a name="l00089"></a>00089                              <span class="keywordtype">int</span> <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">min</a>, <span class="keywordtype">int</span> size, <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *closure);
-<a name="l00090"></a>00090 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a5e9d22d2b79a3dc66a32159423b17910" title="Define halide_do_par_for to replace the default thread pool implementation.">halide_shutdown_thread_pool</a>();<span class="comment"></span>
-<a name="l00091"></a>00091 <span class="comment">//@}</span>
-<a name="l00092"></a>00092 <span class="comment"></span><span class="comment"></span>
-<a name="l00093"></a>00093 <span class="comment">/** Define halide_malloc and halide_free to replace the default memory</span>
-<a name="l00094"></a>00094 <span class="comment"> * allocator.  See Func::set_custom_allocator. (Specifically note that</span>
-<a name="l00095"></a>00095 <span class="comment"> * halide_malloc must return a 32-byte aligned pointer, and it must be</span>
-<a name="l00096"></a>00096 <span class="comment"> * safe to read at least 8 bytes before the start and beyond the</span>
-<a name="l00097"></a>00097 <span class="comment"> * end.)</span>
-<a name="l00098"></a>00098 <span class="comment"> */</span><span class="comment"></span>
-<a name="l00099"></a>00099 <span class="comment">//@{</span>
-<a name="l00100"></a>00100 <span class="comment"></span><span class="keyword">extern</span> <span class="keywordtype">void</span> *<a class="code" href="_halide_runtime_8h.html#aa5bb359ed77ef4c1f89251bcd7eb2613" title="Define halide_malloc and halide_free to replace the default memory allocator.">halide_malloc</a>(<span class="keywordtype">void</span> *user_context, <span class="keywordtype">size_t</span> x);
-<a name="l00101"></a>00101 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a2fa49d775b9a20fab152a0650c4c936b" title="Define halide_malloc and halide_free to replace the default memory allocator.">halide_free</a>(<span class="keywordtype">void</span> *user_context, <span class="keywordtype">void</span> *ptr);<span class="comment"></span>
-<a name="l00102"></a>00102 <span class="comment">//@}</span>
-<a name="l00103"></a>00103 <span class="comment"></span><span class="comment"></span>
-<a name="l00104"></a>00104 <span class="comment">/** Called when debug_to_file is used inside %Halide code.  See</span>
-<a name="l00105"></a>00105 <span class="comment"> * Func::debug_to_file for how this is called</span>
-<a name="l00106"></a>00106 <span class="comment"> *</span>
-<a name="l00107"></a>00107 <span class="comment"> * Cannot be replaced in JITted code at present.</span>
-<a name="l00108"></a>00108 <span class="comment"> */</span>
-<a name="l00109"></a>00109 <span class="keyword">extern</span> <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="_halide_runtime_8h.html#a173a9669d4c2a9fb6fa0225a5fdabcd4" title="Called when debug_to_file is used inside Halide code.">halide_debug_to_file</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">const</span> <span class="keywordtype">char</span> *filename,
-<a name="l00110"></a>00110                                     <a class="code" href="mini__stdint_8h.html#aba7bc1797add20fe3efdf37ced1182c5">uint8_t</a> *data, <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> s0, <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> s1, <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> s2,
-<a name="l00111"></a>00111                                     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> s3, <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> type_code,
-<a name="l00112"></a>00112                                     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> bytes_per_element);
-<a name="l00113"></a>00113 
-<a name="l00114"></a>00114 
-<a name="l00115"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca2cbd3048c959f6d8def944097d8e21c9">00115</a> <span class="keyword">enum</span> <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7c">halide_trace_event_code</a> {<a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca2cbd3048c959f6d8def944097d8e21c9">halide_trace_load</a> = 0,
-<a name="l00116"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca57b32d087e0862bd6ba748ce7743a851">00116</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca57b32d087e0862bd6ba748ce7743a851">halide_trace_store</a> = 1,
-<a name="l00117"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cad8657c19f6b2b9cc79fa3a438f39687b">00117</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cad8657c19f6b2b9cc79fa3a438f39687b">halide_trace_begin_realization</a> = 2,
-<a name="l00118"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cacb0bdc3e4044609ab7fae05b921595ab">00118</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cacb0bdc3e4044609ab7fae05b921595ab">halide_trace_end_realization</a> = 3,
-<a name="l00119"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cac4047c93cd032261e8373e38944bf7a1">00119</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cac4047c93cd032261e8373e38944bf7a1">halide_trace_produce</a> = 4,
-<a name="l00120"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca19c97ad2b3f68b3393eba6e48f8f828d">00120</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca19c97ad2b3f68b3393eba6e48f8f828d">halide_trace_update</a> = 5,
-<a name="l00121"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca0dac17982d8ef6c404f94e5b7dd4de54">00121</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca0dac17982d8ef6c404f94e5b7dd4de54">halide_trace_consume</a> = 6,
-<a name="l00122"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cac98849a734841652345dc3d37660c136">00122</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cac98849a734841652345dc3d37660c136">halide_trace_end_consume</a> = 7};
-<a name="l00123"></a>00123 
-<a name="l00124"></a><a class="code" href="structhalide__trace__event.html">00124</a> <span class="keyword">struct </span><a class="code" href="structhalide__trace__event.html">halide_trace_event</a> {
-<a name="l00125"></a><a class="code" href="structhalide__trace__event.html#a2de75a001c98389e4aaaba6925c74a67">00125</a>     <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structhalide__trace__event.html#a2de75a001c98389e4aaaba6925c74a67">func</a>;
-<a name="l00126"></a><a class="code" href="structhalide__trace__event.html#ac6501488fa8ef8f6a7fab582f07bee41">00126</a>     <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7c">halide_trace_event_code</a> <a class="code" href="structhalide__trace__event.html#ac6501488fa8ef8f6a7fab582f07bee41">event</a>;
-<a name="l00127"></a><a class="code" href="structhalide__trace__event.html#a34e290a904566e28bf97cb99a557c0ff">00127</a>     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="structhalide__trace__event.html#a34e290a904566e28bf97cb99a557c0ff">parent_id</a>;
-<a name="l00128"></a><a class="code" href="structhalide__trace__event.html#ad50f9e35d3cbdf066deb79ec20a17654">00128</a>     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="structhalide__trace__event.html#ad50f9e35d3cbdf066deb79ec20a17654">type_code</a>;
-<a name="l00129"></a><a class="code" href="structhalide__trace__event.html#ae85b0edbd9810d1f955a4b2aece6dd29">00129</a>     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="structhalide__trace__event.html#ae85b0edbd9810d1f955a4b2aece6dd29">bits</a>;
-<a name="l00130"></a><a class="code" href="structhalide__trace__event.html#a6bc98b83bbc46606a213213e1a8800c3">00130</a>     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="structhalide__trace__event.html#a6bc98b83bbc46606a213213e1a8800c3">vector_width</a>;
-<a name="l00131"></a><a class="code" href="structhalide__trace__event.html#aaff717b019e6647cee094b0eb58e6f07">00131</a>     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="structhalide__trace__event.html#aaff717b019e6647cee094b0eb58e6f07">value_index</a>;
-<a name="l00132"></a><a class="code" href="structhalide__trace__event.html#a3a9495fa94defa0fae78863793302813">00132</a>     <span class="keywordtype">void</span> *<a class="code" href="structhalide__trace__event.html#a3a9495fa94defa0fae78863793302813">value</a>;
-<a name="l00133"></a><a class="code" href="structhalide__trace__event.html#ac49e0636ffa608490180934375611f36">00133</a>     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="structhalide__trace__event.html#ac49e0636ffa608490180934375611f36">dimensions</a>;
-<a name="l00134"></a><a class="code" href="structhalide__trace__event.html#af241adbbb843e6345ac4247b77efaa66">00134</a>     <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> *<a class="code" href="structhalide__trace__event.html#af241adbbb843e6345ac4247b77efaa66">coordinates</a>;
-<a name="l00135"></a>00135 };
-<a name="l00136"></a>00136 <span class="comment"></span>
-<a name="l00137"></a>00137 <span class="comment">/** Called when Funcs are marked as trace_load, trace_store, or</span>
-<a name="l00138"></a>00138 <span class="comment"> * trace_realization. See Func::set_custom_trace. The default</span>
-<a name="l00139"></a>00139 <span class="comment"> * implementation either prints events via halide_printf, or if</span>
-<a name="l00140"></a>00140 <span class="comment"> * HL_TRACE_FILE is defined, dumps the trace to that file in a</span>
-<a name="l00141"></a>00141 <span class="comment"> * yet-to-be-documented binary format (see src/runtime/tracing.cpp to</span>
-<a name="l00142"></a>00142 <span class="comment"> * reverse engineer the format). If the trace is going to be large,</span>
-<a name="l00143"></a>00143 <span class="comment"> * you may want to make the file a named pipe, and then read from that</span>
-<a name="l00144"></a>00144 <span class="comment"> * pipe into gzip.</span>
-<a name="l00145"></a>00145 <span class="comment"> *</span>
-<a name="l00146"></a>00146 <span class="comment"> * halide_trace returns a unique ID which will be passed to future</span>
-<a name="l00147"></a>00147 <span class="comment"> * events that &quot;belong&quot; to the earlier event as the parent id. The</span>
-<a name="l00148"></a>00148 <span class="comment"> * ownership hierarchy looks like:</span>
-<a name="l00149"></a>00149 <span class="comment"> *</span>
-<a name="l00150"></a>00150 <span class="comment"> * begin_realization</span>
-<a name="l00151"></a>00151 <span class="comment"> *    produce</span>
-<a name="l00152"></a>00152 <span class="comment"> *      store</span>
-<a name="l00153"></a>00153 <span class="comment"> *      update</span>
-<a name="l00154"></a>00154 <span class="comment"> *      load/store</span>
-<a name="l00155"></a>00155 <span class="comment"> *      consume</span>
-<a name="l00156"></a>00156 <span class="comment"> *      load</span>
-<a name="l00157"></a>00157 <span class="comment"> *      end_consume</span>
-<a name="l00158"></a>00158 <span class="comment"> *    end_realization</span>
-<a name="l00159"></a>00159 <span class="comment"> *</span>
-<a name="l00160"></a>00160 <span class="comment"> * Threading means that ownership cannot be inferred from the ordering</span>
-<a name="l00161"></a>00161 <span class="comment"> * of events. There can be many active realizations of a given</span>
-<a name="l00162"></a>00162 <span class="comment"> * function, or many active productions for a single</span>
-<a name="l00163"></a>00163 <span class="comment"> * realization. Within a single production, the ordering of events is</span>
-<a name="l00164"></a>00164 <span class="comment"> * meaningful.</span>
-<a name="l00165"></a>00165 <span class="comment"> */</span>
-<a name="l00166"></a>00166 <span class="keyword">extern</span> <a class="code" href="mini__stdint_8h.html#a32f2e37ee053cf2ce8ca28d1f74630e5">int32_t</a> <a class="code" href="_halide_runtime_8h.html#a15078a46b8fe517dcfdd26acadd2293a" title="Called when Funcs are marked as trace_load, trace_store, or trace_realization.">halide_trace</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">const</span> <a class="code" href="structhalide__trace__event.html">halide_trace_event</a> *event);
-<a name="l00167"></a>00167 <span class="comment"></span>
-<a name="l00168"></a>00168 <span class="comment">/** If tracing is writing to a file. This call closes that file</span>
-<a name="l00169"></a>00169 <span class="comment"> * (flushing the trace). Returns zero on success. */</span>
-<a name="l00170"></a>00170 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a618bb97f5d713e1097835a24670948f4" title="If tracing is writing to a file.">halide_shutdown_trace</a>();
-<a name="l00171"></a>00171 <span class="comment"></span>
-<a name="l00172"></a>00172 <span class="comment">/** Set the seed for the random number generator used by</span>
-<a name="l00173"></a>00173 <span class="comment"> * random_float. Also clears all other internal state for the random</span>
-<a name="l00174"></a>00174 <span class="comment"> * number generator. */</span>
-<a name="l00175"></a>00175 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a4efa0faee01db98eea960729470e76f8" title="Set the seed for the random number generator used by random_float.">halide_set_random_seed</a>(<a class="code" href="mini__stdint_8h.html#a435d1572bf3f880d55459d9805097f62">uint32_t</a> seed);
-<a name="l00176"></a>00176 
-<a name="l00177"></a>00177 <span class="comment"></span>
-<a name="l00178"></a>00178 <span class="comment">/** Release all data associated with the current GPU backend, in particular</span>
-<a name="l00179"></a>00179 <span class="comment"> * all resources (memory, texture, context handles) allocated by Halide. Must</span>
-<a name="l00180"></a>00180 <span class="comment"> * be called explicitly when using AOT compilation. */</span>
-<a name="l00181"></a>00181 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#aa3336507011f272702be76b8668a4223" title="Release all data associated with the current GPU backend, in particular all resources (memory...">halide_release</a>(<span class="keywordtype">void</span> *user_context);
-<a name="l00182"></a>00182 <span class="comment"></span>
-<a name="l00183"></a>00183 <span class="comment">/** Copy image data from device memory to host memory. This must be called</span>
-<a name="l00184"></a>00184 <span class="comment"> * explicitly to copy back the results of a GPU-based filter. */</span>
-<a name="l00185"></a>00185 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a5980f17918155363078056e6a32de301" title="Copy image data from device memory to host memory.">halide_copy_to_host</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">struct</span> buffer_t *buf);
-<a name="l00186"></a>00186 <span class="comment"></span>
-<a name="l00187"></a>00187 <span class="comment">/** Copy image data from host memory to device memory. This should not be</span>
-<a name="l00188"></a>00188 <span class="comment"> * called directly; Halide handles copying to the device automatically. */</span>
-<a name="l00189"></a>00189 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a51c066523af8ea5c476babebc051061a" title="Copy image data from host memory to device memory.">halide_copy_to_dev</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">struct</span> buffer_t *buf);
-<a name="l00190"></a>00190 <span class="comment"></span>
-<a name="l00191"></a>00191 <span class="comment">/** Wait for current GPU operations to complete. Calling this explicitly</span>
-<a name="l00192"></a>00192 <span class="comment"> * should rarely be necessary, except maybe for profiling. */</span>
-<a name="l00193"></a>00193 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a5d0d5c66821f18b322fbef049632badc" title="Wait for current GPU operations to complete.">halide_dev_sync</a>(<span class="keywordtype">void</span> *user_context);
-<a name="l00194"></a>00194 
-<a name="l00195"></a>00195 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a1205c5228e24e6a947c43a4b9e10ffff">halide_dev_malloc</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">struct</span> buffer_t *buf);
-<a name="l00196"></a>00196 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a3b79a2db1cf800928cdf19e9de6e188c">halide_dev_free</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">struct</span> buffer_t *buf);
-<a name="l00197"></a>00197 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a1ba1ec4f81099a9999030b5829f55918">halide_init_kernels</a>(<span class="keywordtype">void</span> *user_context, <span class="keywordtype">void</span> **state_ptr,
-<a name="l00198"></a>00198                                <span class="keyword">const</span> <span class="keywordtype">char</span> *src, <span class="keywordtype">int</span> size);
-<a name="l00199"></a>00199 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a87dd2729ec5aafc370a8b64d5e438544">halide_dev_run</a>(<span class="keywordtype">void</span> *user_context,
-<a name="l00200"></a>00200                           <span class="keywordtype">void</span> *state_ptr,
-<a name="l00201"></a>00201                           <span class="keyword">const</span> <span class="keywordtype">char</span> *entry_name,
-<a name="l00202"></a>00202                           <span class="keywordtype">int</span> blocksX, <span class="keywordtype">int</span> blocksY, <span class="keywordtype">int</span> blocksZ,
-<a name="l00203"></a>00203                           <span class="keywordtype">int</span> threadsX, <span class="keywordtype">int</span> threadsY, <span class="keywordtype">int</span> threadsZ,
-<a name="l00204"></a>00204                           <span class="keywordtype">int</span> shared_mem_bytes,
-<a name="l00205"></a>00205                           <span class="keywordtype">size_t</span> arg_sizes[],
-<a name="l00206"></a>00206                           <span class="keywordtype">void</span> *args[]);
-<a name="l00207"></a>00207 
-<a name="l00208"></a>00208 <span class="preprocessor">#ifdef __cplusplus</span>
-<a name="l00209"></a>00209 <span class="preprocessor"></span>} <span class="comment">// End extern &quot;C&quot;</span>
-<a name="l00210"></a>00210 <span class="preprocessor">#endif</span>
-<a name="l00211"></a>00211 <span class="preprocessor"></span>
-<a name="l00212"></a>00212 <span class="preprocessor">#endif // HALIDE_HALIDERUNTIME_H</span>
-<a name="l00213"></a>00213 <span class="preprocessor"></span>
+<a name="l00076"></a>00076 <span class="comment">/** These are allocated statically inside the runtime, hence the fixed</span>
+<a name="l00077"></a>00077 <span class="comment"> * size. They must be initialized with zero. The first time</span>
+<a name="l00078"></a>00078 <span class="comment"> * halide_mutex_lock is called, the lock must be initialized in a</span>
+<a name="l00079"></a>00079 <span class="comment"> * thread safe manner. This incurs a small overhead for a once</span>
+<a name="l00080"></a>00080 <span class="comment"> * mechanism, but makes the lock reliably easy to setup and use</span>
+<a name="l00081"></a>00081 <span class="comment"> * without depending on e.g. C++ constructor logic.</span>
+<a name="l00082"></a>00082 <span class="comment"> */</span>
+<a name="l00083"></a><a class="code" href="structhalide__mutex.html">00083</a> <span class="keyword">struct </span><a class="code" href="structhalide__mutex.html" title="These are allocated statically inside the runtime, hence the fixed size.">halide_mutex</a> {
+<a name="l00084"></a><a class="code" href="structhalide__mutex.html#a9cd2226c5244e0bb7339d9662b9500a1">00084</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="structhalide__mutex.html#a9cd2226c5244e0bb7339d9662b9500a1">_private</a>[64];
+<a name="l00085"></a>00085 };
+<a name="l00086"></a>00086 <span class="comment"></span>
+<a name="l00087"></a>00087 <span class="comment">/** A basic set of mutex functions, which call platform specific code</span>
+<a name="l00088"></a>00088 <span class="comment"> * for mutual exclusion.</span>
+<a name="l00089"></a>00089 <span class="comment"> */</span><span class="comment"></span>
+<a name="l00090"></a>00090 <span class="comment">//@{</span>
+<a name="l00091"></a>00091 <span class="comment"></span><span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a479133225b3cdf7b931f3c44e878e4e8" title="A basic set of mutex functions, which call platform specific code for mutual exclusion.">halide_mutex_lock</a>(<span class="keyword">struct</span> <a class="code" href="structhalide__mutex.html" title="These are allocated statically inside the runtime, hence the fixed size.">halide_mutex</a> *mutex);
+<a name="l00092"></a>00092 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a5e9b62fd2c1d38e6f06100b827830377" title="A basic set of mutex functions, which call platform specific code for mutual exclusion.">halide_mutex_unlock</a>(<span class="keyword">struct</span> <a class="code" href="structhalide__mutex.html" title="These are allocated statically inside the runtime, hence the fixed size.">halide_mutex</a> *mutex);
+<a name="l00093"></a>00093 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#aa6af6c192bfc0ad72171b66df883e2d4" title="A basic set of mutex functions, which call platform specific code for mutual exclusion.">halide_mutex_cleanup</a>(<span class="keyword">struct</span> <a class="code" href="structhalide__mutex.html" title="These are allocated statically inside the runtime, hence the fixed size.">halide_mutex</a> *mutex_arg);<span class="comment"></span>
+<a name="l00094"></a>00094 <span class="comment">//@}</span>
+<a name="l00095"></a>00095 <span class="comment"></span><span class="comment"></span>
+<a name="l00096"></a>00096 <span class="comment">/** Define halide_do_par_for to replace the default thread pool</span>
+<a name="l00097"></a>00097 <span class="comment"> * implementation. halide_shutdown_thread_pool can also be called to</span>
+<a name="l00098"></a>00098 <span class="comment"> * release resources used by the default thread pool on platforms</span>
+<a name="l00099"></a>00099 <span class="comment"> * where it makes sense. (E.g. On Mac OS, Grand Central Dispatch is</span>
+<a name="l00100"></a>00100 <span class="comment"> * used so %Halide does not own the threads backing the pool and they</span>
+<a name="l00101"></a>00101 <span class="comment"> * cannot be released.)  See Func::set_custom_do_task and</span>
+<a name="l00102"></a>00102 <span class="comment"> * Func::set_custom_do_par_for. Should return zero if all the jobs</span>
+<a name="l00103"></a>00103 <span class="comment"> * return zero, or an arbitrarily chosen return value from one of the</span>
+<a name="l00104"></a>00104 <span class="comment"> * jobs otherwise.</span>
+<a name="l00105"></a>00105 <span class="comment"> */</span><span class="comment"></span>
+<a name="l00106"></a>00106 <span class="comment">//@{</span>
+<a name="l00107"></a>00107 <span class="comment"></span><span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a05193f80c8fc7df76ceadd82c4ce7b56" title="Define halide_do_par_for to replace the default thread pool implementation.">halide_do_par_for</a>(<span class="keywordtype">void</span> *user_context,
+<a name="l00108"></a>00108                              <span class="keywordtype">int</span> (*f)(<span class="keywordtype">void</span> *ctx, <span class="keywordtype">int</span>, <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *),
+<a name="l00109"></a>00109                              <span class="keywordtype">int</span> <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940" title="Returns an expression representing the lesser of the two arguments, after doing any necessary type co...">min</a>, <span class="keywordtype">int</span> size, <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *closure);
+<a name="l00110"></a>00110 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a5e9d22d2b79a3dc66a32159423b17910" title="Define halide_do_par_for to replace the default thread pool implementation.">halide_shutdown_thread_pool</a>();<span class="comment"></span>
+<a name="l00111"></a>00111 <span class="comment">//@}</span>
+<a name="l00112"></a>00112 <span class="comment"></span><span class="comment"></span>
+<a name="l00113"></a>00113 <span class="comment">/** Set the number of threads used by Halide&#39;s thread pool. No effect</span>
+<a name="l00114"></a>00114 <span class="comment"> * on OS X or iOS. If changed after the first use of a parallel Halide</span>
+<a name="l00115"></a>00115 <span class="comment"> * routine, shuts down and then reinitializes the thread pool. */</span>
+<a name="l00116"></a>00116 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a570aecb8f41519bc12356d1e63f68160" title="Set the number of threads used by Halide&#39;s thread pool.">halide_set_num_threads</a>(<span class="keywordtype">int</span> n);
+<a name="l00117"></a>00117 <span class="comment"></span>
+<a name="l00118"></a>00118 <span class="comment">/** Define halide_malloc and halide_free to replace the default memory</span>
+<a name="l00119"></a>00119 <span class="comment"> * allocator.  See Func::set_custom_allocator. (Specifically note that</span>
+<a name="l00120"></a>00120 <span class="comment"> * halide_malloc must return a 32-byte aligned pointer, and it must be</span>
+<a name="l00121"></a>00121 <span class="comment"> * safe to read at least 8 bytes before the start and beyond the</span>
+<a name="l00122"></a>00122 <span class="comment"> * end.)</span>
+<a name="l00123"></a>00123 <span class="comment"> */</span><span class="comment"></span>
+<a name="l00124"></a>00124 <span class="comment">//@{</span>
+<a name="l00125"></a>00125 <span class="comment"></span><span class="keyword">extern</span> <span class="keywordtype">void</span> *<a class="code" href="_halide_runtime_8h.html#aa5bb359ed77ef4c1f89251bcd7eb2613" title="Define halide_malloc and halide_free to replace the default memory allocator.">halide_malloc</a>(<span class="keywordtype">void</span> *user_context, <span class="keywordtype">size_t</span> x);
+<a name="l00126"></a>00126 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a2fa49d775b9a20fab152a0650c4c936b" title="Define halide_malloc and halide_free to replace the default memory allocator.">halide_free</a>(<span class="keywordtype">void</span> *user_context, <span class="keywordtype">void</span> *ptr);<span class="comment"></span>
+<a name="l00127"></a>00127 <span class="comment">//@}</span>
+<a name="l00128"></a>00128 <span class="comment"></span><span class="comment"></span>
+<a name="l00129"></a>00129 <span class="comment">/** Called when debug_to_file is used inside %Halide code.  See</span>
+<a name="l00130"></a>00130 <span class="comment"> * Func::debug_to_file for how this is called</span>
+<a name="l00131"></a>00131 <span class="comment"> *</span>
+<a name="l00132"></a>00132 <span class="comment"> * Cannot be replaced in JITted code at present.</span>
+<a name="l00133"></a>00133 <span class="comment"> */</span>
+<a name="l00134"></a>00134 <span class="keyword">extern</span> <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> <a class="code" href="_halide_runtime_8h.html#a173a9669d4c2a9fb6fa0225a5fdabcd4" title="Called when debug_to_file is used inside Halide code.">halide_debug_to_file</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">const</span> <span class="keywordtype">char</span> *filename,
+<a name="l00135"></a>00135                                     <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *data, <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> s0, <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> s1, <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> s2,
+<a name="l00136"></a>00136                                     <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> s3, <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> type_code,
+<a name="l00137"></a>00137                                     <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> bytes_per_element);
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 
+<a name="l00140"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca2cbd3048c959f6d8def944097d8e21c9">00140</a> <span class="keyword">enum</span> <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7c">halide_trace_event_code</a> {<a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca2cbd3048c959f6d8def944097d8e21c9">halide_trace_load</a> = 0,
+<a name="l00141"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca57b32d087e0862bd6ba748ce7743a851">00141</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca57b32d087e0862bd6ba748ce7743a851">halide_trace_store</a> = 1,
+<a name="l00142"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cad8657c19f6b2b9cc79fa3a438f39687b">00142</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cad8657c19f6b2b9cc79fa3a438f39687b">halide_trace_begin_realization</a> = 2,
+<a name="l00143"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cacb0bdc3e4044609ab7fae05b921595ab">00143</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cacb0bdc3e4044609ab7fae05b921595ab">halide_trace_end_realization</a> = 3,
+<a name="l00144"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cac4047c93cd032261e8373e38944bf7a1">00144</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cac4047c93cd032261e8373e38944bf7a1">halide_trace_produce</a> = 4,
+<a name="l00145"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca19c97ad2b3f68b3393eba6e48f8f828d">00145</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca19c97ad2b3f68b3393eba6e48f8f828d">halide_trace_update</a> = 5,
+<a name="l00146"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca0dac17982d8ef6c404f94e5b7dd4de54">00146</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca0dac17982d8ef6c404f94e5b7dd4de54">halide_trace_consume</a> = 6,
+<a name="l00147"></a><a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cac98849a734841652345dc3d37660c136">00147</a>                               <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cac98849a734841652345dc3d37660c136">halide_trace_end_consume</a> = 7};
+<a name="l00148"></a>00148 
+<a name="l00149"></a><a class="code" href="structhalide__trace__event.html">00149</a> <span class="keyword">struct </span><a class="code" href="structhalide__trace__event.html">halide_trace_event</a> {
+<a name="l00150"></a><a class="code" href="structhalide__trace__event.html#a2de75a001c98389e4aaaba6925c74a67">00150</a>     <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structhalide__trace__event.html#a2de75a001c98389e4aaaba6925c74a67">func</a>;
+<a name="l00151"></a><a class="code" href="structhalide__trace__event.html#ac6501488fa8ef8f6a7fab582f07bee41">00151</a>     <a class="code" href="_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7c">halide_trace_event_code</a> <a class="code" href="structhalide__trace__event.html#ac6501488fa8ef8f6a7fab582f07bee41">event</a>;
+<a name="l00152"></a><a class="code" href="structhalide__trace__event.html#a34e290a904566e28bf97cb99a557c0ff">00152</a>     <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> <a class="code" href="structhalide__trace__event.html#a34e290a904566e28bf97cb99a557c0ff">parent_id</a>;
+<a name="l00153"></a><a class="code" href="structhalide__trace__event.html#ad50f9e35d3cbdf066deb79ec20a17654">00153</a>     <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> <a class="code" href="structhalide__trace__event.html#ad50f9e35d3cbdf066deb79ec20a17654">type_code</a>;
+<a name="l00154"></a><a class="code" href="structhalide__trace__event.html#ae85b0edbd9810d1f955a4b2aece6dd29">00154</a>     <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> <a class="code" href="structhalide__trace__event.html#ae85b0edbd9810d1f955a4b2aece6dd29">bits</a>;
+<a name="l00155"></a><a class="code" href="structhalide__trace__event.html#a6bc98b83bbc46606a213213e1a8800c3">00155</a>     <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> <a class="code" href="structhalide__trace__event.html#a6bc98b83bbc46606a213213e1a8800c3">vector_width</a>;
+<a name="l00156"></a><a class="code" href="structhalide__trace__event.html#aaff717b019e6647cee094b0eb58e6f07">00156</a>     <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> <a class="code" href="structhalide__trace__event.html#aaff717b019e6647cee094b0eb58e6f07">value_index</a>;
+<a name="l00157"></a><a class="code" href="structhalide__trace__event.html#a3a9495fa94defa0fae78863793302813">00157</a>     <span class="keywordtype">void</span> *<a class="code" href="structhalide__trace__event.html#a3a9495fa94defa0fae78863793302813">value</a>;
+<a name="l00158"></a><a class="code" href="structhalide__trace__event.html#ac49e0636ffa608490180934375611f36">00158</a>     <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> <a class="code" href="structhalide__trace__event.html#ac49e0636ffa608490180934375611f36">dimensions</a>;
+<a name="l00159"></a><a class="code" href="structhalide__trace__event.html#af241adbbb843e6345ac4247b77efaa66">00159</a>     <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> *<a class="code" href="structhalide__trace__event.html#af241adbbb843e6345ac4247b77efaa66">coordinates</a>;
+<a name="l00160"></a>00160 };
+<a name="l00161"></a>00161 <span class="comment"></span>
+<a name="l00162"></a>00162 <span class="comment">/** Called when Funcs are marked as trace_load, trace_store, or</span>
+<a name="l00163"></a>00163 <span class="comment"> * trace_realization. See Func::set_custom_trace. The default</span>
+<a name="l00164"></a>00164 <span class="comment"> * implementation either prints events via halide_printf, or if</span>
+<a name="l00165"></a>00165 <span class="comment"> * HL_TRACE_FILE is defined, dumps the trace to that file in a</span>
+<a name="l00166"></a>00166 <span class="comment"> * yet-to-be-documented binary format (see src/runtime/tracing.cpp to</span>
+<a name="l00167"></a>00167 <span class="comment"> * reverse engineer the format). If the trace is going to be large,</span>
+<a name="l00168"></a>00168 <span class="comment"> * you may want to make the file a named pipe, and then read from that</span>
+<a name="l00169"></a>00169 <span class="comment"> * pipe into gzip.</span>
+<a name="l00170"></a>00170 <span class="comment"> *</span>
+<a name="l00171"></a>00171 <span class="comment"> * halide_trace returns a unique ID which will be passed to future</span>
+<a name="l00172"></a>00172 <span class="comment"> * events that &quot;belong&quot; to the earlier event as the parent id. The</span>
+<a name="l00173"></a>00173 <span class="comment"> * ownership hierarchy looks like:</span>
+<a name="l00174"></a>00174 <span class="comment"> *</span>
+<a name="l00175"></a>00175 <span class="comment"> * begin_realization</span>
+<a name="l00176"></a>00176 <span class="comment"> *    produce</span>
+<a name="l00177"></a>00177 <span class="comment"> *      store</span>
+<a name="l00178"></a>00178 <span class="comment"> *      update</span>
+<a name="l00179"></a>00179 <span class="comment"> *      load/store</span>
+<a name="l00180"></a>00180 <span class="comment"> *      consume</span>
+<a name="l00181"></a>00181 <span class="comment"> *      load</span>
+<a name="l00182"></a>00182 <span class="comment"> *      end_consume</span>
+<a name="l00183"></a>00183 <span class="comment"> *    end_realization</span>
+<a name="l00184"></a>00184 <span class="comment"> *</span>
+<a name="l00185"></a>00185 <span class="comment"> * Threading means that ownership cannot be inferred from the ordering</span>
+<a name="l00186"></a>00186 <span class="comment"> * of events. There can be many active realizations of a given</span>
+<a name="l00187"></a>00187 <span class="comment"> * function, or many active productions for a single</span>
+<a name="l00188"></a>00188 <span class="comment"> * realization. Within a single production, the ordering of events is</span>
+<a name="l00189"></a>00189 <span class="comment"> * meaningful.</span>
+<a name="l00190"></a>00190 <span class="comment"> */</span>
+<a name="l00191"></a>00191 <span class="keyword">extern</span> <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> <a class="code" href="_halide_runtime_8h.html#a15078a46b8fe517dcfdd26acadd2293a" title="Called when Funcs are marked as trace_load, trace_store, or trace_realization.">halide_trace</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">const</span> <a class="code" href="structhalide__trace__event.html">halide_trace_event</a> *event);
+<a name="l00192"></a>00192 <span class="comment"></span>
+<a name="l00193"></a>00193 <span class="comment">/** Set the file descriptor that Halide should write binary trace</span>
+<a name="l00194"></a>00194 <span class="comment"> * events to. If called with 0 as the argument, Halide outputs trace</span>
+<a name="l00195"></a>00195 <span class="comment"> * information to stdout in a human-readable format. If never called,</span>
+<a name="l00196"></a>00196 <span class="comment"> * Halide checks the for existence of an environment variable called</span>
+<a name="l00197"></a>00197 <span class="comment"> * HL_TRACE_FILE and opens that file. If HL_TRACE_FILE is not defined,</span>
+<a name="l00198"></a>00198 <span class="comment"> * it outputs trace information to stdout in a human-readable</span>
+<a name="l00199"></a>00199 <span class="comment"> * format. */</span>
+<a name="l00200"></a>00200 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a8761e708f878372e3201126e83d6f3b6" title="Set the file descriptor that Halide should write binary trace events to.">halide_set_trace_file</a>(<span class="keywordtype">int</span> fd);
+<a name="l00201"></a>00201 <span class="comment"></span>
+<a name="l00202"></a>00202 <span class="comment">/** Halide calls this to retrieve the file descriptor to write binary</span>
+<a name="l00203"></a>00203 <span class="comment"> * trace events to. The default implementation returns the value set</span>
+<a name="l00204"></a>00204 <span class="comment"> * by halide_set_trace_file. Implement it yourself if you wish to use</span>
+<a name="l00205"></a>00205 <span class="comment"> * a custom file descriptor per user_context. Return zero from your</span>
+<a name="l00206"></a>00206 <span class="comment"> * implementation to tell Halide to print human-readable trace</span>
+<a name="l00207"></a>00207 <span class="comment"> * information to stdout. */</span>
+<a name="l00208"></a>00208 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#aee99b65dcbc81d91a0f22507eb7f8017" title="Halide calls this to retrieve the file descriptor to write binary trace events to.">halide_get_trace_file</a>(<span class="keywordtype">void</span> *user_context);
+<a name="l00209"></a>00209 <span class="comment"></span>
+<a name="l00210"></a>00210 <span class="comment">/** If tracing is writing to a file. This call closes that file</span>
+<a name="l00211"></a>00211 <span class="comment"> * (flushing the trace). Returns zero on success. */</span>
+<a name="l00212"></a>00212 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a618bb97f5d713e1097835a24670948f4" title="If tracing is writing to a file.">halide_shutdown_trace</a>();
+<a name="l00213"></a>00213 <span class="comment"></span>
+<a name="l00214"></a>00214 <span class="comment">/** Release all data associated with the current GPU backend, in particular</span>
+<a name="l00215"></a>00215 <span class="comment"> * all resources (memory, texture, context handles) allocated by Halide. Must</span>
+<a name="l00216"></a>00216 <span class="comment"> * be called explicitly when using AOT compilation. */</span>
+<a name="l00217"></a>00217 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#aa3336507011f272702be76b8668a4223" title="Release all data associated with the current GPU backend, in particular all resources (memory...">halide_release</a>(<span class="keywordtype">void</span> *user_context);
+<a name="l00218"></a>00218 <span class="comment"></span>
+<a name="l00219"></a>00219 <span class="comment">/** Copy image data from device memory to host memory. This must be called</span>
+<a name="l00220"></a>00220 <span class="comment"> * explicitly to copy back the results of a GPU-based filter. */</span>
+<a name="l00221"></a>00221 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a5980f17918155363078056e6a32de301" title="Copy image data from device memory to host memory.">halide_copy_to_host</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">struct</span> buffer_t *buf);
+<a name="l00222"></a>00222 <span class="comment"></span>
+<a name="l00223"></a>00223 <span class="comment">/** Copy image data from host memory to device memory. This should not be</span>
+<a name="l00224"></a>00224 <span class="comment"> * called directly; Halide handles copying to the device automatically. */</span>
+<a name="l00225"></a>00225 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a51c066523af8ea5c476babebc051061a" title="Copy image data from host memory to device memory.">halide_copy_to_dev</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">struct</span> buffer_t *buf);
+<a name="l00226"></a>00226 <span class="comment"></span>
+<a name="l00227"></a>00227 <span class="comment">/** Wait for current GPU operations to complete. Calling this explicitly</span>
+<a name="l00228"></a>00228 <span class="comment"> * should rarely be necessary, except maybe for profiling. */</span>
+<a name="l00229"></a>00229 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a5d0d5c66821f18b322fbef049632badc" title="Wait for current GPU operations to complete.">halide_dev_sync</a>(<span class="keywordtype">void</span> *user_context);
+<a name="l00230"></a>00230 <span class="comment"></span>
+<a name="l00231"></a>00231 <span class="comment">/** Allocate device memory to back a buffer_t. */</span>
+<a name="l00232"></a>00232 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a1205c5228e24e6a947c43a4b9e10ffff" title="Allocate device memory to back a buffer_t.">halide_dev_malloc</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">struct</span> buffer_t *buf);
+<a name="l00233"></a>00233 <span class="comment"></span>
+<a name="l00234"></a>00234 <span class="comment">/** Free any device memory associated with a buffer_t. */</span>
+<a name="l00235"></a>00235 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a3b79a2db1cf800928cdf19e9de6e188c" title="Free any device memory associated with a buffer_t.">halide_dev_free</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">struct</span> buffer_t *buf);
+<a name="l00236"></a>00236 <span class="comment"></span>
+<a name="l00237"></a>00237 <span class="comment">/** These are forward declared here to ensure they have the same</span>
+<a name="l00238"></a>00238 <span class="comment"> * signature across different Halide gpu backends. Do not call</span>
+<a name="l00239"></a>00239 <span class="comment"> * them. */</span>
+<a name="l00240"></a>00240 <span class="comment">// @{</span>
+<a name="l00241"></a>00241 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a1ba1ec4f81099a9999030b5829f55918" title="These are forward declared here to ensure they have the same signature across different Halide gpu ba...">halide_init_kernels</a>(<span class="keywordtype">void</span> *user_context, <span class="keywordtype">void</span> **state_ptr,
+<a name="l00242"></a>00242                                <span class="keyword">const</span> <span class="keywordtype">char</span> *src, <span class="keywordtype">int</span> size);
+<a name="l00243"></a>00243 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#a87dd2729ec5aafc370a8b64d5e438544" title="These are forward declared here to ensure they have the same signature across different Halide gpu ba...">halide_dev_run</a>(<span class="keywordtype">void</span> *user_context,
+<a name="l00244"></a>00244                           <span class="keywordtype">void</span> *state_ptr,
+<a name="l00245"></a>00245                           <span class="keyword">const</span> <span class="keywordtype">char</span> *entry_name,
+<a name="l00246"></a>00246                           <span class="keywordtype">int</span> blocksX, <span class="keywordtype">int</span> blocksY, <span class="keywordtype">int</span> blocksZ,
+<a name="l00247"></a>00247                           <span class="keywordtype">int</span> threadsX, <span class="keywordtype">int</span> threadsY, <span class="keywordtype">int</span> threadsZ,
+<a name="l00248"></a>00248                           <span class="keywordtype">int</span> shared_mem_bytes,
+<a name="l00249"></a>00249                           <span class="keywordtype">size_t</span> arg_sizes[],
+<a name="l00250"></a>00250                           <span class="keywordtype">void</span> *args[]);
+<a name="l00251"></a>00251 <span class="comment">// @}</span>
+<a name="l00252"></a>00252 <span class="comment"></span>
+<a name="l00253"></a>00253 <span class="comment">/** Set the platform name for OpenCL to use (e.g. &quot;Intel&quot; or</span>
+<a name="l00254"></a>00254 <span class="comment"> * &quot;NVIDIA&quot;). The argument is copied internally. The opencl runtime</span>
+<a name="l00255"></a>00255 <span class="comment"> * will select a platform that includes this as a substring. If never</span>
+<a name="l00256"></a>00256 <span class="comment"> * called, Halide uses the environment variable HL_OCL_PLATFORM_NAME,</span>
+<a name="l00257"></a>00257 <span class="comment"> * or defaults to the first available platform. */</span>
+<a name="l00258"></a>00258 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#ad5f681f46f851d44c4d173d66e5e910a" title="Set the platform name for OpenCL to use (e.g.">halide_set_ocl_platform_name</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *n);
+<a name="l00259"></a>00259 <span class="comment"></span>
+<a name="l00260"></a>00260 <span class="comment">/** Halide calls this to get the desired OpenCL platform</span>
+<a name="l00261"></a>00261 <span class="comment"> * name. Implement this yourself to use a different platform per</span>
+<a name="l00262"></a>00262 <span class="comment"> * user_context. The default implementation returns the value set by</span>
+<a name="l00263"></a>00263 <span class="comment"> * halide_set_ocl_platform_name, or the value of the environment</span>
+<a name="l00264"></a>00264 <span class="comment"> * variable HL_OCL_PLATFORM_NAME. The output is valid until the next</span>
+<a name="l00265"></a>00265 <span class="comment"> * call to halide_set_ocl_platform_name. */</span>
+<a name="l00266"></a>00266 <span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="_halide_runtime_8h.html#a64c33370bdb3a8658fd3af9761202327" title="Halide calls this to get the desired OpenCL platform name.">halide_get_ocl_platform_name</a>(<span class="keywordtype">void</span> *user_context);
+<a name="l00267"></a>00267 <span class="comment"></span>
+<a name="l00268"></a>00268 <span class="comment">/** Set the device type for OpenCL to use. The argument is copied</span>
+<a name="l00269"></a>00269 <span class="comment"> * internally. It must be &quot;cpu&quot;, &quot;gpu&quot;, or &quot;acc&quot;. If never called,</span>
+<a name="l00270"></a>00270 <span class="comment"> * Halide uses the environment variable HL_OCL_DEVICE_TYPE. */</span>
+<a name="l00271"></a>00271 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a2f3b66919538ffee8d34b9ef75363efc" title="Set the device type for OpenCL to use.">halide_set_ocl_device_type</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *n);
+<a name="l00272"></a>00272 <span class="comment"></span>
+<a name="l00273"></a>00273 <span class="comment">/** Halide calls this to gets the desired OpenCL device</span>
+<a name="l00274"></a>00274 <span class="comment"> * type. Implement this yourself to use a different device type per</span>
+<a name="l00275"></a>00275 <span class="comment"> * user_context. The default implementation returns the value set by</span>
+<a name="l00276"></a>00276 <span class="comment"> * halide_set_ocl_device_type, or the environment variable</span>
+<a name="l00277"></a>00277 <span class="comment"> * HL_OCL_DEVICE_TYPE. The result is valid until the next call to</span>
+<a name="l00278"></a>00278 <span class="comment"> * halide_set_ocl_device_type. */</span>
+<a name="l00279"></a>00279 <span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="_halide_runtime_8h.html#a72541e5329699ce42f5831f58c49bc58" title="Halide calls this to gets the desired OpenCL device type.">halide_get_ocl_device_type</a>(<span class="keywordtype">void</span> *user_context);
+<a name="l00280"></a>00280 <span class="comment"></span>
+<a name="l00281"></a>00281 <span class="comment">/** Selects which gpu device to use. 0 is usually the display</span>
+<a name="l00282"></a>00282 <span class="comment"> * device. If never called, Halide uses the environment variable</span>
+<a name="l00283"></a>00283 <span class="comment"> * HL_GPU_DEVICE. If that variable is unset, Halide uses the last</span>
+<a name="l00284"></a>00284 <span class="comment"> * device. Set this to -1 to use the last device. */</span>
+<a name="l00285"></a>00285 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a9906fca5a688c26e0465a1b3da84ccfb" title="Selects which gpu device to use.">halide_set_gpu_device</a>(<span class="keywordtype">int</span> n);
+<a name="l00286"></a>00286 <span class="comment"></span>
+<a name="l00287"></a>00287 <span class="comment">/** Halide calls this to get the desired halide gpu device</span>
+<a name="l00288"></a>00288 <span class="comment"> * setting. Implement this yourself to use a different gpu device per</span>
+<a name="l00289"></a>00289 <span class="comment"> * user_context. The default implementation returns the value set by</span>
+<a name="l00290"></a>00290 <span class="comment"> * halide_set_gpu_device, or the environment variable</span>
+<a name="l00291"></a>00291 <span class="comment"> * HL_GPU_DEVICE. */</span>
+<a name="l00292"></a>00292 <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="_halide_runtime_8h.html#adc511579a9ad82da9c1c611f008dd454" title="Halide calls this to get the desired halide gpu device setting.">halide_get_gpu_device</a>(<span class="keywordtype">void</span> *user_context);
+<a name="l00293"></a>00293 <span class="comment"></span>
+<a name="l00294"></a>00294 <span class="comment">/** Set the soft maximum amount of memory, in bytes, that the LRU</span>
+<a name="l00295"></a>00295 <span class="comment"> *  cache will use to memoize Func results.  This is not a strict</span>
+<a name="l00296"></a>00296 <span class="comment"> *  maximum in that concurrency and simultaneous use of memoized</span>
+<a name="l00297"></a>00297 <span class="comment"> *  reults larger than the cache size can both cause it to</span>
+<a name="l00298"></a>00298 <span class="comment"> *  temporariliy be larger than the size specified here.</span>
+<a name="l00299"></a>00299 <span class="comment"> */</span>
+<a name="l00300"></a>00300 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#abf85692a77aec0b887f345d0d3ca6777" title="Set the soft maximum amount of memory, in bytes, that the LRU cache will use to memoize Func results...">halide_memoization_cache_set_size</a>(<a class="code" href="runtime__internal_8h.html#a11cbdb02b138f338b174a78c683f85fc">int64_t</a> size);
+<a name="l00301"></a>00301 <span class="comment"></span>
+<a name="l00302"></a>00302 <span class="comment">/** Given a cache key for a memoized result, currently constructed</span>
+<a name="l00303"></a>00303 <span class="comment"> *  from the Func name and top-level Func name plus the arguments of</span>
+<a name="l00304"></a>00304 <span class="comment"> *  the computation, determine if the result is in the cache and</span>
+<a name="l00305"></a>00305 <span class="comment"> *  return it if so. (The internals of the cache key should be</span>
+<a name="l00306"></a>00306 <span class="comment"> *  considered opaque by this function.) If this routine returns true,</span>
+<a name="l00307"></a>00307 <span class="comment"> *  it is a cache miss. Otherwise, it will return false and the</span>
+<a name="l00308"></a>00308 <span class="comment"> *  buffers passed in will be filled, via copying, with memoized</span>
+<a name="l00309"></a>00309 <span class="comment"> *  data. The last argument is a list if buffer_t pointers which</span>
+<a name="l00310"></a>00310 <span class="comment"> *  represents the outputs of the memoized Func. If the Func does not</span>
+<a name="l00311"></a>00311 <span class="comment"> *  return a Tuple, there will only be one buffer_t in the list. The</span>
+<a name="l00312"></a>00312 <span class="comment"> *  tuple_count parameters determines the length of the list.</span>
+<a name="l00313"></a>00313 <span class="comment"> */</span>
+<a name="l00314"></a>00314 <span class="keyword">extern</span> <span class="keywordtype">bool</span> <a class="code" href="_halide_runtime_8h.html#a614935dfe37c71329d306f096eadc7d3" title="Given a cache key for a memoized result, currently constructed from the Func name and top-level Func ...">halide_memoization_cache_lookup</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">const</span> <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *cache_key, <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> size,
+<a name="l00315"></a>00315                                             buffer_t *realized_bounds, <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> tuple_count, ... <span class="comment">/* list of buffer_t * */</span>);
+<a name="l00316"></a>00316 <span class="comment"></span>
+<a name="l00317"></a>00317 <span class="comment">/** Given a cache key for a memoized result, currently constructed</span>
+<a name="l00318"></a>00318 <span class="comment"> *  from the Func name and top-level Func name plus the arguments of</span>
+<a name="l00319"></a>00319 <span class="comment"> *  the computation, store the result in the cache for futre access by</span>
+<a name="l00320"></a>00320 <span class="comment"> *  halide_memoization_cache_lookup. (The internals of the cache key</span>
+<a name="l00321"></a>00321 <span class="comment"> *  should be considered opaque by this function.) Data is copied out</span>
+<a name="l00322"></a>00322 <span class="comment"> *  from the inputs and inputs are unmodified. The last argument is a</span>
+<a name="l00323"></a>00323 <span class="comment"> *  list if buffer_t pointers which represents the outputs of the</span>
+<a name="l00324"></a>00324 <span class="comment"> *  memoized Func. If the Func does not return a Tuple, there will</span>
+<a name="l00325"></a>00325 <span class="comment"> *  only be one buffer_t in the list. The tuple_count parameters</span>
+<a name="l00326"></a>00326 <span class="comment"> *  determines the length of the list.</span>
+<a name="l00327"></a>00327 <span class="comment"> */</span>
+<a name="l00328"></a>00328 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a8a984dad5fa50f432872335641e08479" title="Given a cache key for a memoized result, currently constructed from the Func name and top-level Func ...">halide_memoization_cache_store</a>(<span class="keywordtype">void</span> *user_context, <span class="keyword">const</span> <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *cache_key, <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> size,
+<a name="l00329"></a>00329                                            buffer_t *realized_bounds, <a class="code" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> tuple_count, ... <span class="comment">/* list of buffer_t * */</span>);
+<a name="l00330"></a>00330 
+<a name="l00331"></a>00331 <span class="comment"></span>
+<a name="l00332"></a>00332 <span class="comment">/** Free all memory and resources associated with the memoization cache.</span>
+<a name="l00333"></a>00333 <span class="comment"> * Must be called at a time when no other threads are accessing the cache.</span>
+<a name="l00334"></a>00334 <span class="comment"> */</span>
+<a name="l00335"></a>00335 <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="_halide_runtime_8h.html#a30f9bdd5b6ac08b3fa785f3332cca996" title="Free all memory and resources associated with the memoization cache.">halide_memoization_cache_cleanup</a>();
+<a name="l00336"></a>00336 
+<a name="l00337"></a>00337 <span class="preprocessor">#ifdef __cplusplus</span>
+<a name="l00338"></a>00338 <span class="preprocessor"></span>} <span class="comment">// End extern &quot;C&quot;</span>
+<a name="l00339"></a>00339 <span class="preprocessor">#endif</span>
+<a name="l00340"></a>00340 <span class="preprocessor"></span>
+<a name="l00341"></a>00341 <span class="preprocessor">#endif // HALIDE_HALIDERUNTIME_H</span>
 </pre></div></div><!-- contents -->
 </div>
 <!-- window showing the filter options -->

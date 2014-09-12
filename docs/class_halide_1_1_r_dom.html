@@ -158,29 +158,29 @@ Public Attributes</h2></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A multi-dimensional domain over which to iterate. </p>
-<p>Used when defining functions as reductions.</p>
-<p>A reduction is a function with a two-part definition. It has an initial value, which looks much like a pure function, and an update rule, which refers to some <a class="el" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a>. Evaluating such a function first initializes it over the required domain (which is inferred based on usage), and then runs update rule for all points in the <a class="el" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a>. For example:</p>
+<p>Used when defining functions with update definitions.</p>
+<p>An reduction is a function with a two-part definition. It has an initial value, which looks much like a pure function, and an update definition, which may refer to some <a class="el" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a>. Evaluating such a function first initializes it over the required domain (which is inferred based on usage), and then runs update rule for all points in the <a class="el" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate.">RDom</a>. For example:</p>
 <div class="fragment"><pre class="fragment"> Func f;
  Var <a class="code" href="class_halide_1_1_r_dom.html#a9c41992ecccbe2eea2430a65a1dc7614" title="Direct access to the four dimensions of the reduction domain.">x</a>;
  <a class="code" href="class_halide_1_1_r_dom.html#a3342100b45875bf3014a119d9a1c36c6" title="Construct an undefined reduction domain.">RDom</a> r(0, 10);
  f(x) = <a class="code" href="class_halide_1_1_r_dom.html#a9c41992ecccbe2eea2430a65a1dc7614" title="Direct access to the four dimensions of the reduction domain.">x</a>; <span class="comment">// the initial value</span>
  f(r) = f(r) * 2;
  Image&lt;int&gt; result = f.realize(10);
-</pre></div><p>This function creates a single-dimensional buffer of size 10, in which element x contains the value x*2. Internally, first the initialization rule fills in x at every site, and then the update rule doubles every site.</p>
+</pre></div><p>This function creates a single-dimensional buffer of size 10, in which element x contains the value x*2. Internally, first the initialization rule fills in x at every site, and then the update definition doubles every site.</p>
 <p>One use of reductions is to build a function recursively (pure functions in halide cannot be recursive). For example, this function fills in an array with the first 20 fibonacci numbers:</p>
 <div class="fragment"><pre class="fragment"> Func f;
  Var <a class="code" href="class_halide_1_1_r_dom.html#a9c41992ecccbe2eea2430a65a1dc7614" title="Direct access to the four dimensions of the reduction domain.">x</a>;
  <a class="code" href="class_halide_1_1_r_dom.html#a3342100b45875bf3014a119d9a1c36c6" title="Construct an undefined reduction domain.">RDom</a> r(2, 18);
  f(x) = 1;
  f(r) = f(r-1) + f(r-2);
-</pre></div><p>Another use of reductions is to perform scattering operations, as unlike a pure function declaration, the left-hand-side of a reduction definition may contain general expressions:</p>
+</pre></div><p>Another use of reductions is to perform scattering operations, as unlike a pure function declaration, the left-hand-side of an update definition may contain general expressions:</p>
 <div class="fragment"><pre class="fragment"> ImageParam input(<a class="code" href="namespace_halide.html#addc1a3eb6d907e515712a228e1d5cbc9" title="Constructing an unsigned integer type.">UInt</a>(8), 2);
  Func histogram;
  Var <a class="code" href="class_halide_1_1_r_dom.html#a9c41992ecccbe2eea2430a65a1dc7614" title="Direct access to the four dimensions of the reduction domain.">x</a>;
  <a class="code" href="class_halide_1_1_r_dom.html#a3342100b45875bf3014a119d9a1c36c6" title="Construct an undefined reduction domain.">RDom</a> r(input); <span class="comment">// Iterate over all pixels in the input</span>
  histogram(x) = 0;
  histogram(input(r.x, r.y)) = histogram(input(r.x, r.y)) + 1;
-</pre></div><p>A reduction definition may also be multi-dimensional. This example computes a summed-area table by first summing horizontally and then vertically:</p>
+</pre></div><p>An update definition may also be multi-dimensional. This example computes a summed-area table by first summing horizontally and then vertically:</p>
 <div class="fragment"><pre class="fragment"> ImageParam input(<a class="code" href="namespace_halide.html#a63a7b9a74aa0b0598f6a37b5137bab68" title="Construct a floating-point type.">Float</a>(32), 2);
  Func sum_x, sum_y;
  Var <a class="code" href="class_halide_1_1_r_dom.html#a9c41992ecccbe2eea2430a65a1dc7614" title="Direct access to the four dimensions of the reduction domain.">x</a>, <a class="code" href="class_halide_1_1_r_dom.html#ab9ec82ccc25c587c18ea174a9c7a46ff" title="Direct access to the four dimensions of the reduction domain.">y</a>;
@@ -200,10 +200,10 @@ Public Attributes</h2></td></tr>
  sum_y(x, r.y) = sum_y(x, r.y) + sum_y(x, r.y-1);
 </pre></div><p>This lets us schedule it more flexibly. You can now parallelize the update step of sum_x over y by calling: </p>
 <div class="fragment"><pre class="fragment"> sum_x.update().parallel(y).
-</pre></div><p>Note that calling sum_x.parallel(y) only parallelizes the initialization step, and not the update step! Scheduling the update step of a reduction must be done using the handle returned by <a class="el" href="class_halide_1_1_func.html#a5fd179a3631bfc16fc2e0cb3bb29ae0b">Func::update()</a>. This code parallelizes both the initialization step and the update step:</p>
+</pre></div><p>Note that calling sum_x.parallel(y) only parallelizes the initialization step, and not the update step! Scheduling the update step of a reduction must be done using the handle returned by <a class="el" href="class_halide_1_1_func.html#ae2013b9623e9c24a47930ef1874d2b4b">Func::update()</a>. This code parallelizes both the initialization step and the update step:</p>
 <div class="fragment"><pre class="fragment"> sum_x.parallel(y);
  sum_x.update().parallel(y);
-</pre></div><p>When you mix reduction variables and pure dimensions, the reduction domain is traversed outermost. That is, for each point in the reduction domain, the inferred pure domain is traversed in its entirety. For the above example, this means that sum_x walks down the columns, and sum_y walks along the rows. This may not be cache-coherent, but you may not reorder these dimensions using the schedule, as it risks changing the meaning of your function (even though it doesn't in this case). The solution lies in clever scheduling. If we say:</p>
+</pre></div><p>When you mix reduction variables and pure dimensions, the reduction domain is traversed outermost. That is, for each point in the reduction domain, the inferred pure domain is traversed in its entirety. For the above example, this means that sum_x walks down the columns, and sum_y walks along the rows. This may not be cache-coherent. You may try reordering these dimensions using the schedule, but <a class="el" href="namespace_halide.html">Halide</a> will return an error if it decides that this risks changing the meaning of your function. The solution lies in clever scheduling. If we say:</p>
 <div class="fragment"><pre class="fragment"> sum_x.compute_at(sum_y, r.y);
 </pre></div><p>Then the sum in x is computed only as necessary for each scanline of the sum in y. This not only results in sum_x walking along the rows, it also improves the locality of the entire pipeline. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#_a6">tutorial/lesson_09_update_definitions.cpp</a>.</dd>

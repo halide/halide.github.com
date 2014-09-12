@@ -10,6 +10,7 @@ var searchData=
   ['codegen_5fglsl',['CodeGen_GLSL',['../class_halide_1_1_internal_1_1_code_gen___g_l_s_l.html',1,'Halide::Internal']]],
   ['codegen_5fgpu_5fdev',['CodeGen_GPU_Dev',['../struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html',1,'Halide::Internal']]],
   ['codegen_5fgpu_5fhost',['CodeGen_GPU_Host',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html',1,'Halide::Internal']]],
+  ['codegen_5fmips',['CodeGen_MIPS',['../class_halide_1_1_internal_1_1_code_gen___m_i_p_s.html',1,'Halide::Internal']]],
   ['codegen_5fopencl_5fc',['CodeGen_OpenCL_C',['../class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html',1,'Halide::Internal::CodeGen_OpenCL_Dev']]],
   ['codegen_5fopencl_5fdev',['CodeGen_OpenCL_Dev',['../class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html',1,'Halide::Internal']]],
   ['codegen_5fopengl_5fdev',['CodeGen_OpenGL_Dev',['../class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html',1,'Halide::Internal']]],

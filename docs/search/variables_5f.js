@@ -11,5 +11,6 @@ var searchData=
   ['_5f7',['_7',['../namespace_halide.html#a7108f092c0886f9eb9dca85276bba0f5',1,'Halide']]],
   ['_5f8',['_8',['../namespace_halide.html#ab64608cba6f828b3b157f893c07dee47',1,'Halide']]],
   ['_5f9',['_9',['../namespace_halide.html#a700c8bfac61eb32454726b4f791302d6',1,'Halide']]],
+  ['_5fprivate',['_private',['../structhalide__mutex.html#a9cd2226c5244e0bb7339d9662b9500a1',1,'halide_mutex']]],
   ['_5ftype_5finfo',['_type_info',['../struct_halide_1_1_internal_1_1_expr_node.html#a66e9f18f9134af1038850e813eb26772',1,'Halide::Internal::ExprNode::_type_info()'],['../struct_halide_1_1_internal_1_1_stmt_node.html#ac58783d292819fc3c4362e28d165e950',1,'Halide::Internal::StmtNode::_type_info()']]]
 ];

@@ -14,8 +14,8 @@ var searchData=
   ['_5fcl_5fbuffer_5fregion',['_cl_buffer_region',['../struct__cl__buffer__region.html',1,'']]],
   ['_5fcl_5fimage_5fdesc',['_cl_image_desc',['../struct__cl__image__desc.html',1,'']]],
   ['_5fcl_5fimage_5fformat',['_cl_image_format',['../struct__cl__image__format.html',1,'']]],
-  ['_5fdev_5fcopy',['_dev_copy',['../struct__dev__copy.html',1,'']]],
   ['_5fhalide_5fcheck_5farg_5ftype',['_halide_check_arg_type',['../_extern_8h.html#adc22469ee831826d9431b2f7288ec709',1,'Extern.h']]],
   ['_5fhalide_5fuser_5fassert',['_halide_user_assert',['../_error_8h.html#ac33c8660a2d35cb8cc69c510bb9c0a98',1,'Error.h']]],
+  ['_5fprivate',['_private',['../structhalide__mutex.html#a9cd2226c5244e0bb7339d9662b9500a1',1,'halide_mutex']]],
   ['_5ftype_5finfo',['_type_info',['../struct_halide_1_1_internal_1_1_expr_node.html#a66e9f18f9134af1038850e813eb26772',1,'Halide::Internal::ExprNode::_type_info()'],['../struct_halide_1_1_internal_1_1_stmt_node.html#ac58783d292819fc3c4362e28d165e950',1,'Halide::Internal::StmtNode::_type_info()']]]
 ];

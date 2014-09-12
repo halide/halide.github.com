@@ -10,7 +10,6 @@ var searchData=
   ['f64x4',['f64x4',['../class_halide_1_1_internal_1_1_code_gen___posix.html#a549a2d91b65eecf4e4555ca0a19d33c5',1,'Halide::Internal::CodeGen_Posix']]],
   ['factor',['factor',['../struct_halide_1_1_internal_1_1_split.html#ac35031df188ca08f073e2bd24bee3924',1,'Halide::Internal::Split']]],
   ['false_5fvalue',['false_value',['../struct_halide_1_1_internal_1_1_select.html#a7626ee1900e78af32f3aa1a39e38780a',1,'Halide::Internal::Select']]],
-  ['features',['features',['../struct_halide_1_1_target.html#a28da2df5c0ea743b93e1032fe78caec3',1,'Halide::Target']]],
   ['file',['file',['../struct_halide_1_1_internal_1_1_error_report.html#ab058e8d2d24bb4f0bf097089e662303c',1,'Halide::Internal::ErrorReport']]],
   ['first',['first',['../struct_halide_1_1_internal_1_1_block.html#a96ccccb3c8d422cc8e296c20003706ba',1,'Halide::Internal::Block']]],
   ['fn',['fn',['../struct_halide_1_1_internal_1_1_j_i_t_compiled_module_1_1_cleanup_routine.html#a3d8896c094616e291cd5e04672e87e6c',1,'Halide::Internal::JITCompiledModule::CleanupRoutine']]],

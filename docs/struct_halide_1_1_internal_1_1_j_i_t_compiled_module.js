@@ -17,5 +17,6 @@ var struct_halide_1_1_internal_1_1_j_i_t_compiled_module =
     [ "set_custom_trace", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a4ba9506581bb85f307d1d9945561ac2b", null ],
     [ "set_custom_print", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a2fab110eeac8b43a78a8e46dac391e5e", null ],
     [ "shutdown_thread_pool", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a6510aea2ffc1449b8d4a2f09f7db3b33", null ],
+    [ "memoization_cache_set_size", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a88c9942210b95299706c123f3e58b9e1", null ],
     [ "module", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#aa1315c775b95b2f957f8d15dc68338e5", null ]
 ];

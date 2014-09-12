@@ -9,5 +9,6 @@ var searchData=
   ['halide_5ftrace_5fproduce',['halide_trace_produce',['../_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7cac4047c93cd032261e8373e38944bf7a1',1,'HalideRuntime.h']]],
   ['halide_5ftrace_5fstore',['halide_trace_store',['../_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca57b32d087e0862bd6ba748ce7743a851',1,'HalideRuntime.h']]],
   ['halide_5ftrace_5fupdate',['halide_trace_update',['../_halide_runtime_8h.html#ad66527fdd9cb140d1e424c4567ef9b7ca19c97ad2b3f68b3393eba6e48f8f828d',1,'HalideRuntime.h']]],
-  ['handle',['Handle',['../struct_halide_1_1_type.html#a4677d64664f9de9f19cbf9a90f85318daf4968c0293f03d836f66598dc6593f1a',1,'Halide::Type']]]
+  ['handle',['Handle',['../struct_halide_1_1_type.html#a4677d64664f9de9f19cbf9a90f85318daf4968c0293f03d836f66598dc6593f1a',1,'Halide::Type']]],
+  ['html',['HTML',['../namespace_halide.html#ad1953af304956bd6a5d0bd780b135f56a0e7445a36a4c4afba58997fbc4871f3b',1,'Halide']]]
 ];

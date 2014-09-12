@@ -1,7 +1,7 @@
 var struct_halide_1_1_internal_1_1_call =
 [
     [ "CallType", "struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393", null ],
-    [ "make", "struct_halide_1_1_internal_1_1_call.html#a8c80b2eb0a09c870272899bd6b153009", null ],
+    [ "make", "struct_halide_1_1_internal_1_1_call.html#a5341db5809642f196a844ea65ca6bb4b", null ],
     [ "make", "struct_halide_1_1_internal_1_1_call.html#a6b2d745fb0ee9203d78b2a6168e4b5c9", null ],
     [ "make", "struct_halide_1_1_internal_1_1_call.html#a7bdb92984ad60b5afbbeddffdbcef15e", null ],
     [ "make", "struct_halide_1_1_internal_1_1_call.html#ae297db375b4d9b86d7363f520626db8f", null ],
@@ -37,9 +37,11 @@ var struct_halide_1_1_internal_1_1_call =
     [ "return_second", "struct_halide_1_1_internal_1_1_call.html#a0da61cfb2b0de6795258029dfe512053", null ],
     [ "if_then_else", "struct_halide_1_1_internal_1_1_call.html#acf8cc995bfa94376454f6f87921b18e4", null ],
     [ "trace", "struct_halide_1_1_internal_1_1_call.html#a8f411296099667c9e73881bc434c0988", null ],
+    [ "trace_expr", "struct_halide_1_1_internal_1_1_call.html#a93117cbad3079bb82f598b77c3156551", null ],
     [ "glsl_texture_load", "struct_halide_1_1_internal_1_1_call.html#a287fdd6ff148d32129ef0e387b5a45e2", null ],
     [ "glsl_texture_store", "struct_halide_1_1_internal_1_1_call.html#a60c7e20b7add9b7d9ef50485b4373b0b", null ],
-    [ "trace_expr", "struct_halide_1_1_internal_1_1_call.html#a93117cbad3079bb82f598b77c3156551", null ],
+    [ "memoize_expr", "struct_halide_1_1_internal_1_1_call.html#ad1a498a85f91cfc1b7400521e59ff539", null ],
+    [ "copy_memory", "struct_halide_1_1_internal_1_1_call.html#a3ce219917c9b57c1dcfb13a4e8b2b049", null ],
     [ "func", "struct_halide_1_1_internal_1_1_call.html#aa44d34741d78782f55b7c2949fd3c831", null ],
     [ "value_index", "struct_halide_1_1_internal_1_1_call.html#adcb7e45845535171a44ba8c9dbcbed16", null ],
     [ "image", "struct_halide_1_1_internal_1_1_call.html#a85db8b4977d7378850e3e2394f5dfb1d", null ],

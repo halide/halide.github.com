@@ -9,6 +9,7 @@ var struct_halide_1_1_internal_1_1_box =
     [ "operator[]", "struct_halide_1_1_internal_1_1_box.html#a4cfa684eb0f0b01c2ffe8a0b8822af1c", null ],
     [ "resize", "struct_halide_1_1_internal_1_1_box.html#a8fac5038393142589c9ce5f9a368b2d2", null ],
     [ "push_back", "struct_halide_1_1_internal_1_1_box.html#a6527fa5c2cf5cf89e8d6a61826977a02", null ],
+    [ "maybe_unused", "struct_halide_1_1_internal_1_1_box.html#aa27a0c2f3a786c1806dfe51afb084c9c", null ],
     [ "used", "struct_halide_1_1_internal_1_1_box.html#a52623fd2e3c53451b55ef9cdfd0d4d64", null ],
     [ "bounds", "struct_halide_1_1_internal_1_1_box.html#ad79a32b8d7f73339e88b62f51d96d9c4", null ]
 ];
