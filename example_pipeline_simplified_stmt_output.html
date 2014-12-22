@@ -1,0 +1,128 @@
+<head><style type='text/css'>
+ body { font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 12px; background: #f8f8f8; margin-left:15px; } 
+ a, a:hover, a:visited, a:active { color: inherit; text-decoration: none; } 
+ b { font-weight: normal; }
+ p.WrapLine { margin: 0px; margin-left: 30px; text-indent:-30px; } 
+ div.WrapLine { margin-left: 30px; text-indent:-30px; } 
+ div.Indent { padding-left: 15px; }
+ div.ShowHide { position:absolute; left:-12px; width:12px; height:12px; } 
+ span.Comment { color: #998; font-style: italic; }
+ span.Keyword { color: #333; font-weight: bold; }
+ span.Assign { color: #d14; font-weight: bold; }
+ span.Symbol { color: #990073; }
+ span.Type { color: #445588; font-weight: bold; }
+ span.StringImm { color: #d14; }
+ span.IntImm { color: #099; }
+ span.FloatImm { color: #099; }
+ b.Highlight { font-weight: bold; background-color: #DDD; }
+ span.Highlight { font-weight: bold; background-color: #FF0; }
+ </style>
+<script language='javascript' type='text/javascript'>
+ function toggle(id) { 
+     e = document.getElementById(id); 
+     show = document.getElementById(id + '-show'); 
+     hide = document.getElementById(id + '-hide'); 
+     if (e.style.display != 'none') { 
+         e.style.display = 'none'; 
+         show.style.display = 'block'; 
+         hide.style.display = 'none'; 
+     } else { 
+         e.style.display = 'block'; 
+         show.style.display = 'none'; 
+         hide.style.display = 'block'; 
+     } 
+     return false; 
+ }</script>
+<link rel='stylesheet' type='text/css' href='my.css'>
+<script language='javascript' type='text/javascript' src='my.js'></script>
+<link href='http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' rel='stylesheet'>
+<script src='http://code.jquery.com/jquery-1.10.2.js'></script>
+</head>
+ <body>
+<div class='Block' id='0-1'>
+<div class='IfThenElse' id='2-3'>
+<a class=ExpandButton onclick='return toggle(5);' href=_blank><div style='position:relative; width:0; height:0;'><div class=ShowHide style='display:none;' id=5-show><i class='fa fa-plus-square-o'></i></div><div class=ShowHide id=5-hide><i class='fa fa-minus-square-o'></i></div></div><span class='Matched' id='4-6'><span class='Keyword' id='7-8'>if</span> (</span><b class='Variable Matched' id='10-11'>f1.host_and_dev_are_null</b><span class='Matched' id='4-12'>)</span></a> <span class='Matched' id='4-14'>{</span><div class='ThenBody Indent' id='5'>
+<div class='Evaluate' id='16-17'>
+<span class='Call' id='18-19'><span class='Matched' id='20-23'><span class='Symbol' id='20-21'>rewrite_buffer</span>(</span><b class='Variable Matched' id='25-26'>f1.buffer</b><span class='Matched' id='20-27'>,</span> <span class='IntImm Imm' id='20-29'>4</span><span class='Matched' id='20-31'>,</span> <span class='IntImm Imm' id='20-33'>0</span><span class='Matched' id='20-35'>,</span> <span class='IntImm Imm' id='20-37'>256</span><span class='Matched' id='20-39'>,</span> <span class='IntImm Imm' id='20-41'>1</span><span class='Matched' id='20-43'>,</span> <span class='IntImm Imm' id='20-45'>0</span><span class='Matched' id='20-47'>,</span> <span class='IntImm Imm' id='20-49'>224</span><span class='Matched' id='20-51'>,</span> <span class='IntImm Imm' id='20-53'>256</span><span class='Matched' id='20-55'>)</span></span></div>
+</div>
+<span class='Matched' id='4-57'>}</span></div>
+<div class='IfThenElse' id='2-59'>
+<a class=ExpandButton onclick='return toggle(61);' href=_blank><div style='position:relative; width:0; height:0;'><div class=ShowHide style='display:none;' id=61-show><i class='fa fa-plus-square-o'></i></div><div class=ShowHide id=61-hide><i class='fa fa-minus-square-o'></i></div></div><span class='Matched' id='60-62'><span class='Keyword' id='63-64'>if</span> (</span><span class='Not' id='60-66'>!<b class='Variable Matched' id='10-68'>f1.host_and_dev_are_null</b></span><span class='Matched' id='60-69'>)</span></a> <span class='Matched' id='60-71'>{</span><div class='ThenBody Indent' id='61'>
+<div class='Block' id='73-74'>
+<div class='AssertStmt WrapLine' id='75-76'>
+<span class='Matched' id='77-80'><span class='Symbol' id='77-78'>assert</span>(</span><span class='BinaryOp' id='77-82'><span class='Matched' id='83-84'>(</span><span class='Cast' id='83-86'><span class='Matched' id='87-88'><span class='Type' id='89-90'>int64</span>(</span><span class='IntImm Imm' id='87-92'>256</span><span class='Matched' id='87-94'>)</span></span> <span class='Operator Matched' id='83-96'>&lt=</span> <span class='Cast' id='83-98'><span class='Matched' id='99-100'><span class='Type' id='101-102'>int64</span>(</span><span class='IntImm Imm' id='99-104'>2147483647</span><span class='Matched' id='99-106'>)</span></span><span class='Matched' id='83-108'>)</span></span><span class='Matched' id='77-110'>,</span> <span class='StringImm' id='77-112'>"Total allocation for buffer f1 exceeds 2^31 - 1"</span><span class='Matched' id='77-114'>)</span></div>
+<div class='Block' id='75-116'>
+<div class='AssertStmt WrapLine' id='117-118'>
+<span class='Matched' id='119-122'><span class='Symbol' id='119-120'>assert</span>(</span><span class='BinaryOp' id='119-124'><span class='Matched' id='125-126'>(</span><span class='BinaryOp' id='125-128'><span class='Matched' id='129-130'>(</span><span class='Cast' id='129-132'><span class='Matched' id='133-134'><span class='Type' id='135-136'>int64</span>(</span><span class='IntImm Imm' id='133-138'>224</span><span class='Matched' id='133-140'>)</span></span> <span class='Operator Matched' id='129-142'>*</span> <span class='Cast' id='129-144'><span class='Matched' id='145-146'><span class='Type' id='147-148'>int64</span>(</span><span class='IntImm Imm' id='145-150'>256</span><span class='Matched' id='145-152'>)</span></span><span class='Matched' id='129-154'>)</span></span> <span class='Operator Matched' id='125-156'>&lt=</span> <span class='Cast' id='125-158'><span class='Matched' id='159-160'><span class='Type' id='161-162'>int64</span>(</span><span class='IntImm Imm' id='159-164'>2147483647</span><span class='Matched' id='159-166'>)</span></span><span class='Matched' id='125-168'>)</span></span><span class='Matched' id='119-170'>,</span> <span class='StringImm' id='119-172'>"Total allocation for buffer f1 exceeds 2^31 - 1"</span><span class='Matched' id='119-174'>)</span></div>
+<div class='Block' id='117-176'>
+<div class='AssertStmt WrapLine' id='177-178'>
+<span class='Matched' id='179-182'><span class='Symbol' id='179-180'>assert</span>(</span><span class='BinaryOp' id='179-184'><span class='Matched' id='185-186'>(</span><span class='BinaryOp' id='185-188'><span class='Matched' id='189-190'>(</span><span class='Cast' id='189-192'><span class='Matched' id='193-194'><span class='Type' id='195-196'>int64</span>(</span><span class='IntImm Imm' id='193-198'>224</span><span class='Matched' id='193-200'>)</span></span> <span class='Operator Matched' id='189-202'>*</span> <span class='Cast' id='189-204'><span class='Matched' id='205-206'><span class='Type' id='207-208'>int64</span>(</span><span class='IntImm Imm' id='205-210'>256</span><span class='Matched' id='205-212'>)</span></span><span class='Matched' id='189-214'>)</span></span> <span class='Operator Matched' id='185-216'>&lt=</span> <span class='Cast' id='185-218'><span class='Matched' id='219-220'><span class='Type' id='221-222'>int64</span>(</span><span class='IntImm Imm' id='219-224'>2147483647</span><span class='Matched' id='219-226'>)</span></span><span class='Matched' id='185-228'>)</span></span><span class='Matched' id='179-230'>,</span> <span class='StringImm' id='179-232'>"Product of extents for buffer f1 exceeds 2^31 - 1"</span><span class='Matched' id='179-234'>)</span></div>
+<div class='Produce' id='177-237'>
+<span class='Matched' id='238-240'><a class=ExpandButton onclick='return toggle(239);' href=_blank><div style='position:relative; width:0; height:0;'><div class=ShowHide style='display:none;' id=239-show><i class='fa fa-plus-square-o'></i></div><div class=ShowHide id=239-hide><i class='fa fa-minus-square-o'></i></div></div><span class='Keyword' id='241-242'>produce</span> <b class='Variable Matched' id='236-244'>f1</b></a> {</span><div class='ProduceBody Indent' id='239'>
+<div class='For' id='245-247'>
+<a class=ExpandButton onclick='return toggle(249);' href=_blank><div style='position:relative; width:0; height:0;'><div class=ShowHide style='display:none;' id=249-show><i class='fa fa-plus-square-o'></i></div><div class=ShowHide id=249-hide><i class='fa fa-minus-square-o'></i></div></div><span class='Matched' id='248-250'><span class='Keyword' id='251-252'>for</span> (</span><b class='Variable Matched' id='246-254'>f1.s0.v1.v1</b><span class='Matched' id='248-255'>,</span> <span class='IntImm Imm' id='248-257'>0</span><span class='Matched' id='248-259'>,</span> <span class='IntImm Imm' id='248-261'>14</span><span class='Matched' id='248-263'>)</span></a> <span class='Matched' id='248-265'>{</span><div class='ForBody Indent' id='249'>
+<div class='LetStmt' id='267-269'>
+<p class=WrapLine><span class='Matched' id='270-271'><span class='Keyword' id='272-273'>let</span> <b class='Variable Matched' id='268-275'>f1.s0.v1.v7.base</b></span> <span class='Operator Assign Matched' id='270-276'>=</span> <span class='Min' id='270-278'><span class='Matched' id='279-282'><span class='Symbol' id='279-280'>min</span>(</span><span class='BinaryOp' id='279-284'><span class='Matched' id='285-286'>(</span><b class='Variable Matched' id='246-288'>f1.s0.v1.v1</b> <span class='Operator Matched' id='285-289'>*</span> <span class='IntImm Imm' id='285-291'>16</span><span class='Matched' id='285-293'>)</span></span><span class='Matched' id='279-295'>,</span> <span class='IntImm Imm' id='279-297'>208</span><span class='Matched' id='279-299'>)</span></span></p><div class='Allocate' id='270-302'>
+<span class='Matched' id='303-304'><span class='Keyword' id='305-306'>allocate</span> <b class='Variable Matched' id='301-308'>f0</b>[</span><span class='Type' id='303-309'>int32</span> * <span class='IntImm Imm' id='303-311'>511</span> * <span class='IntImm Imm' id='303-313'>31</span><span class='Matched' id='303-315'>]</span><div class='AllocateBody' id='303-317'>
+<div class='Block' id='318-319'>
+<div class='Produce' id='320-322'>
+<span class='Matched' id='323-325'><a class=ExpandButton onclick='return toggle(324);' href=_blank><div style='position:relative; width:0; height:0;'><div class=ShowHide style='display:none;' id=324-show><i class='fa fa-plus-square-o'></i></div><div class=ShowHide id=324-hide><i class='fa fa-minus-square-o'></i></div></div><span class='Keyword' id='326-327'>produce</span> <b class='Variable Matched' id='321-329'>f0</b></a> {</span><div class='ProduceBody Indent' id='324'>
+<div class='For' id='330-332'>
+<a class=ExpandButton onclick='return toggle(334);' href=_blank><div style='position:relative; width:0; height:0;'><div class=ShowHide style='display:none;' id=334-show><i class='fa fa-plus-square-o'></i></div><div class=ShowHide id=334-hide><i class='fa fa-minus-square-o'></i></div></div><span class='Matched' id='333-335'><span class='Keyword' id='336-337'>parallel</span> (</span><b class='Variable Matched' id='331-339'>f0.s0.v1</b><span class='Matched' id='333-340'>,</span> <span class='BinaryOp' id='333-342'><span class='Matched' id='343-344'>(</span><b class='Variable Matched' id='268-346'>f1.s0.v1.v7.base</b> <span class='Operator Matched' id='343-347'>*</span> <span class='IntImm Imm' id='343-349'>2</span><span class='Matched' id='343-351'>)</span></span><span class='Matched' id='333-353'>,</span> <span class='IntImm Imm' id='333-355'>31</span><span class='Matched' id='333-357'>)</span></a> <span class='Matched' id='333-359'>{</span><div class='ForBody Indent' id='334'>
+<div class='For' id='361-363'>
+<a class=ExpandButton onclick='return toggle(365);' href=_blank><div style='position:relative; width:0; height:0;'><div class=ShowHide style='display:none;' id=365-show><i class='fa fa-plus-square-o'></i></div><div class=ShowHide id=365-hide><i class='fa fa-minus-square-o'></i></div></div><span class='Matched' id='364-366'><span class='Keyword' id='367-368'>for</span> (</span><b class='Variable Matched' id='362-370'>f0.s0.v0.v0.v0</b><span class='Matched' id='364-371'>,</span> <span class='IntImm Imm' id='364-373'>0</span><span class='Matched' id='364-375'>,</span> <span class='IntImm Imm' id='364-377'>64</span><span class='Matched' id='364-379'>)</span></a> <span class='Matched' id='364-381'>{</span><div class='ForBody Indent' id='365'>
+<div class='LetStmt' id='383-385'>
+<p class=WrapLine><span class='Matched' id='386-387'><span class='Keyword' id='388-389'>let</span> <b class='Variable Matched' id='384-391'>f0.s0.s1.base</b></span> <span class='Operator Assign Matched' id='386-392'>=</span> <span class='Min' id='386-394'><span class='Matched' id='395-398'><span class='Symbol' id='395-396'>min</span>(</span><span class='BinaryOp' id='395-400'><span class='Matched' id='401-402'>(</span><b class='Variable Matched' id='362-404'>f0.s0.v0.v0.v0</b> <span class='Operator Matched' id='401-405'>*</span> <span class='IntImm Imm' id='401-407'>8</span><span class='Matched' id='401-409'>)</span></span><span class='Matched' id='395-411'>,</span> <span class='IntImm Imm' id='395-413'>503</span><span class='Matched' id='395-415'>)</span></span></p><div class='Block' id='386-417'>
+<div class='Store WrapLine' id='418-419'>
+<span class='Matched' id='420-421'><b class='Variable Matched' id='321-423'>f0</b>[</span><span class='Ramp' id='420-424'><span class='Matched' id='425-428'><span class='Symbol' id='425-426'>ramp</span>(</span><span class='BinaryOp' id='425-430'><span class='Matched' id='431-432'>(</span><b class='Variable Matched' id='384-434'>f0.s0.s1.base</b> <span class='Operator Matched' id='431-435'>+</span> <span class='BinaryOp' id='431-437'><span class='Matched' id='438-439'>(</span><span class='BinaryOp' id='438-441'><span class='Matched' id='442-443'>(</span><b class='Variable Matched' id='331-445'>f0.s0.v1</b> <span class='Operator Matched' id='442-446'>-</span> <span class='BinaryOp' id='442-448'><span class='Matched' id='449-450'>(</span><b class='Variable Matched' id='268-452'>f1.s0.v1.v7.base</b> <span class='Operator Matched' id='449-453'>*</span> <span class='IntImm Imm' id='449-455'>2</span><span class='Matched' id='449-457'>)</span></span><span class='Matched' id='442-459'>)</span></span> <span class='Operator Matched' id='438-461'>*</span> <span class='IntImm Imm' id='438-463'>511</span><span class='Matched' id='438-465'>)</span></span><span class='Matched' id='431-467'>)</span></span><span class='Matched' id='425-469'>,</span> <span class='IntImm Imm' id='425-471'>1</span><span class='Matched' id='425-473'>,</span> <span class='IntImm Imm' id='425-475'>4</span><span class='Matched' id='425-477'>)</span></span><span class='Matched' id='420-479'>]</span> <span class='Operator Assign Matched' id='420-481'>=</span> <span class='StoreValue' id='420-483'><span class='Ramp' id='484-485'><span class='Matched' id='486-489'><span class='Symbol' id='486-487'>ramp</span>(</span><span class='BinaryOp' id='486-491'><span class='Matched' id='492-493'>(</span><b class='Variable Matched' id='384-495'>f0.s0.s1.base</b> <span class='Operator Matched' id='492-496'>+</span> <b class='Variable Matched' id='331-498'>f0.s0.v1</b><span class='Matched' id='492-499'>)</span></span><span class='Matched' id='486-501'>,</span> <span class='IntImm Imm' id='486-503'>1</span><span class='Matched' id='486-505'>,</span> <span class='IntImm Imm' id='486-507'>4</span><span class='Matched' id='486-509'>)</span></span></span></div>
+<div class='Store WrapLine' id='418-511'>
+<span class='Matched' id='512-513'><b class='Variable Matched' id='321-515'>f0</b>[</span><span class='Ramp' id='512-516'><span class='Matched' id='517-520'><span class='Symbol' id='517-518'>ramp</span>(</span><span class='BinaryOp' id='517-522'><span class='Matched' id='523-524'>(</span><span class='BinaryOp' id='523-526'><span class='Matched' id='527-528'>(</span><b class='Variable Matched' id='384-530'>f0.s0.s1.base</b> <span class='Operator Matched' id='527-531'>+</span> <span class='BinaryOp' id='527-533'><span class='Matched' id='534-535'>(</span><span class='BinaryOp' id='534-537'><span class='Matched' id='538-539'>(</span><b class='Variable Matched' id='331-541'>f0.s0.v1</b> <span class='Operator Matched' id='538-542'>-</span> <span class='BinaryOp' id='538-544'><span class='Matched' id='545-546'>(</span><b class='Variable Matched' id='268-548'>f1.s0.v1.v7.base</b> <span class='Operator Matched' id='545-549'>*</span> <span class='IntImm Imm' id='545-551'>2</span><span class='Matched' id='545-553'>)</span></span><span class='Matched' id='538-555'>)</span></span> <span class='Operator Matched' id='534-557'>*</span> <span class='IntImm Imm' id='534-559'>511</span><span class='Matched' id='534-561'>)</span></span><span class='Matched' id='527-563'>)</span></span> <span class='Operator Matched' id='523-565'>+</span> <span class='IntImm Imm' id='523-567'>4</span><span class='Matched' id='523-569'>)</span></span><span class='Matched' id='517-571'>,</span> <span class='IntImm Imm' id='517-573'>1</span><span class='Matched' id='517-575'>,</span> <span class='IntImm Imm' id='517-577'>4</span><span class='Matched' id='517-579'>)</span></span><span class='Matched' id='512-581'>]</span> <span class='Operator Assign Matched' id='512-583'>=</span> <span class='StoreValue' id='512-585'><span class='Ramp' id='586-587'><span class='Matched' id='588-591'><span class='Symbol' id='588-589'>ramp</span>(</span><span class='BinaryOp' id='588-593'><span class='Matched' id='594-595'>(</span><span class='BinaryOp' id='594-597'><span class='Matched' id='598-599'>(</span><b class='Variable Matched' id='384-601'>f0.s0.s1.base</b> <span class='Operator Matched' id='598-602'>+</span> <b class='Variable Matched' id='331-604'>f0.s0.v1</b><span class='Matched' id='598-605'>)</span></span> <span class='Operator Matched' id='594-607'>+</span> <span class='IntImm Imm' id='594-609'>4</span><span class='Matched' id='594-611'>)</span></span><span class='Matched' id='588-613'>,</span> <span class='IntImm Imm' id='588-615'>1</span><span class='Matched' id='588-617'>,</span> <span class='IntImm Imm' id='588-619'>4</span><span class='Matched' id='588-621'>)</span></span></span></div>
+</div>
+</div>
+</div>
+<span class='Matched' id='364-623'>}</span></div>
+</div>
+<span class='Matched' id='333-625'>}</span></div>
+</div>
+<span class='Matched' id='323-627'>}</span></div>
+<div class='For' id='320-630'>
+<a class=ExpandButton onclick='return toggle(632);' href=_blank><div style='position:relative; width:0; height:0;'><div class=ShowHide style='display:none;' id=632-show><i class='fa fa-plus-square-o'></i></div><div class=ShowHide id=632-hide><i class='fa fa-minus-square-o'></i></div></div><span class='Matched' id='631-633'><span class='Keyword' id='634-635'>for</span> (</span><b class='Variable Matched' id='629-637'>f1.s0.v0.v0</b><span class='Matched' id='631-638'>,</span> <span class='IntImm Imm' id='631-640'>0</span><span class='Matched' id='631-642'>,</span> <span class='IntImm Imm' id='631-644'>8</span><span class='Matched' id='631-646'>)</span></a> <span class='Matched' id='631-648'>{</span><div class='ForBody Indent' id='632'>
+<div class='LetStmt' id='650-652'>
+<p class=WrapLine><span class='Matched' id='653-654'><span class='Keyword' id='655-656'>let</span> <b class='Variable Matched' id='651-658'>f1.s0.v0.v6.base</b></span> <span class='Operator Assign Matched' id='653-659'>=</span> <span class='Min' id='653-661'><span class='Matched' id='662-665'><span class='Symbol' id='662-663'>min</span>(</span><span class='BinaryOp' id='662-667'><span class='Matched' id='668-669'>(</span><b class='Variable Matched' id='629-671'>f1.s0.v0.v0</b> <span class='Operator Matched' id='668-672'>*</span> <span class='IntImm Imm' id='668-674'>32</span><span class='Matched' id='668-676'>)</span></span><span class='Matched' id='662-678'>,</span> <span class='IntImm Imm' id='662-680'>224</span><span class='Matched' id='662-682'>)</span></span></p><div class='For' id='653-685'>
+<a class=ExpandButton onclick='return toggle(687);' href=_blank><div style='position:relative; width:0; height:0;'><div class=ShowHide style='display:none;' id=687-show><i class='fa fa-plus-square-o'></i></div><div class=ShowHide id=687-hide><i class='fa fa-minus-square-o'></i></div></div><span class='Matched' id='686-688'><span class='Keyword' id='689-690'>for</span> (</span><b class='Variable Matched' id='684-692'>f1.s0.v1.v7</b><span class='Matched' id='686-693'>,</span> <span class='IntImm Imm' id='686-695'>0</span><span class='Matched' id='686-697'>,</span> <span class='IntImm Imm' id='686-699'>16</span><span class='Matched' id='686-701'>)</span></a> <span class='Matched' id='686-703'>{</span><div class='ForBody Indent' id='687'>
+<div class='For' id='705-707'>
+<a class=ExpandButton onclick='return toggle(709);' href=_blank><div style='position:relative; width:0; height:0;'><div class=ShowHide style='display:none;' id=709-show><i class='fa fa-plus-square-o'></i></div><div class=ShowHide id=709-hide><i class='fa fa-minus-square-o'></i></div></div><span class='Matched' id='708-710'><span class='Keyword' id='711-712'>for</span> (</span><b class='Variable Matched' id='706-714'>f1.s0.v0.v6</b><span class='Matched' id='708-715'>,</span> <span class='IntImm Imm' id='708-717'>0</span><span class='Matched' id='708-719'>,</span> <span class='IntImm Imm' id='708-721'>32</span><span class='Matched' id='708-723'>)</span></a> <span class='Matched' id='708-725'>{</span><div class='ForBody Indent' id='709'>
+<div class='Store WrapLine' id='727-728'>
+<span class='Matched' id='729-730'><b class='Variable Matched' id='236-732'>f1</b>[</span><span class='BinaryOp' id='729-733'><span class='Matched' id='734-735'>(</span><span class='BinaryOp' id='734-737'><span class='Matched' id='738-739'>(</span><b class='Variable Matched' id='651-741'>f1.s0.v0.v6.base</b> <span class='Operator Matched' id='738-742'>+</span> <b class='Variable Matched' id='706-744'>f1.s0.v0.v6</b><span class='Matched' id='738-745'>)</span></span> <span class='Operator Matched' id='734-747'>+</span> <span class='BinaryOp' id='734-749'><span class='Matched' id='750-751'>(</span><span class='BinaryOp' id='750-753'><span class='Matched' id='754-755'>(</span><b class='Variable Matched' id='268-757'>f1.s0.v1.v7.base</b> <span class='Operator Matched' id='754-758'>+</span> <b class='Variable Matched' id='684-760'>f1.s0.v1.v7</b><span class='Matched' id='754-761'>)</span></span> <span class='Operator Matched' id='750-763'>*</span> <span class='IntImm Imm' id='750-765'>256</span><span class='Matched' id='750-767'>)</span></span><span class='Matched' id='734-769'>)</span></span><span class='Matched' id='729-771'>]</span> <span class='Operator Assign Matched' id='729-773'>=</span> <span class='StoreValue' id='729-775'><span class='Load' id='776-777'><span class='Matched' id='778-779'><b class='Variable Matched' id='321-781'>f0</b>[</span><span class='BinaryOp' id='778-782'><span class='Matched' id='783-784'>(</span><span class='BinaryOp' id='783-786'><span class='Matched' id='787-788'>(</span><span class='BinaryOp' id='787-790'><span class='Matched' id='791-792'>(</span><b class='Variable Matched' id='651-794'>f1.s0.v0.v6.base</b> <span class='Operator Matched' id='791-795'>+</span> <b class='Variable Matched' id='706-797'>f1.s0.v0.v6</b><span class='Matched' id='791-798'>)</span></span> <span class='Operator Matched' id='787-800'>*</span> <span class='IntImm Imm' id='787-802'>2</span><span class='Matched' id='787-804'>)</span></span> <span class='Operator Matched' id='783-806'>+</span> <span class='BinaryOp' id='783-808'><span class='Matched' id='809-810'>(</span><b class='Variable Matched' id='684-812'>f1.s0.v1.v7</b> <span class='Operator Matched' id='809-813'>*</span> <span class='IntImm Imm' id='809-815'>1022</span><span class='Matched' id='809-817'>)</span></span><span class='Matched' id='783-819'>)</span></span><span class='Matched' id='778-821'>]</span></span></span></div>
+</div>
+<span class='Matched' id='708-823'>}</span></div>
+</div>
+<span class='Matched' id='686-825'>}</span></div>
+</div>
+</div>
+<span class='Matched' id='631-827'>}</span></div>
+<div class='Free WrapLine' id='320-829'>
+<span class='Keyword' id='830-831'>free</span> <b class='Variable Matched' id='301-833'>f0</b></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<span class='Matched' id='248-834'>}</span></div>
+</div>
+<span class='Matched' id='238-836'>}</span></div>
+<div class='Evaluate' id='177-838'>
+<span class='IntImm Imm' id='839-840'>0</span></div>
+</div>
+</div>
+</div>
+</div>
+<span class='Matched' id='60-842'>}</span></div>
+</div>
+<script>
+$( '.Matched' ).each( function() {
+    this.onmouseover = function() { $('.Matched[id^=' + this.id.split('-')[0] + '-]').addClass('Highlight'); }
+    this.onmouseout = function() { $('.Matched[id^=' + this.id.split('-')[0] + '-]').removeClass('Highlight'); }
+} );
+</script>
+</body>
