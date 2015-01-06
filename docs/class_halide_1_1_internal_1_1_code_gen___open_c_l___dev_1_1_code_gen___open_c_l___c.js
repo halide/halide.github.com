@@ -5,6 +5,8 @@ var class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_
     [ "print_type", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#ab2e7ee2ba7339e300558d1a7921578af", null ],
     [ "print_reinterpret", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a49f06db489fa71fe22fadc324d7337eb", null ],
     [ "get_memory_space", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a742d67817edcef457f0f0ac48e0996cd", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a485637585ef70bfb6ac7efc4ae9f8dbf", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a5b4c294719bcd437c2ccf089d1f2a0af", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a4f96203e82088cc8bef750b909fe86a8", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#ad6cf6fe7b63f937144edf398ba14d243", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#ab9b982674dba77bd4595690e6339ae5d", null ],

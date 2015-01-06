@@ -1,8 +1,8 @@
 var class_halide_1_1_internal_1_1_code_gen___a_r_m =
 [
+    [ "Pattern", "struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html", "struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern" ],
     [ "CodeGen_ARM", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#ac456c63e34efb34fdece64bef5376b30", null ],
     [ "compile", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a2d20875880265f347263f572d89c65e2", null ],
-    [ "test", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a06afe3ea8c7657c559d579cf02c1ee73", null ],
     [ "get_target_triple", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#aad9a83427cb650eeaf948790079a237f", null ],
     [ "call_intrin", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#ad206e3dbd66f69f857151997a192c336", null ],
     [ "call_intrin", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a7b902c4216d83ccc1d2fb447089d813c", null ],

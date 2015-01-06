@@ -1,7 +1,9 @@
 var _i_r_equality_8h =
 [
-    [ "equal", "namespace_halide_1_1_internal.html#a31dc49947eec58e14aab236c7b0182ee", null ],
-    [ "equal", "namespace_halide_1_1_internal.html#a4d404e95dced22ae673144c0351f186f", null ],
-    [ "deep_compare", "namespace_halide_1_1_internal.html#a65590b80d11a0b92f74cf17d9fa5cf49", null ],
-    [ "deep_compare", "namespace_halide_1_1_internal.html#a19c9545816a6a6e120b5681d20bf7055", null ]
+    [ "IRDeepCompare", "struct_halide_1_1_internal_1_1_i_r_deep_compare.html", "struct_halide_1_1_internal_1_1_i_r_deep_compare" ],
+    [ "IRCompareCache", "class_halide_1_1_internal_1_1_i_r_compare_cache.html", "class_halide_1_1_internal_1_1_i_r_compare_cache" ],
+    [ "ExprWithCompareCache", "struct_halide_1_1_internal_1_1_expr_with_compare_cache.html", "struct_halide_1_1_internal_1_1_expr_with_compare_cache" ],
+    [ "equal", "_i_r_equality_8h.html#a31dc49947eec58e14aab236c7b0182ee", null ],
+    [ "equal", "_i_r_equality_8h.html#a4d404e95dced22ae673144c0351f186f", null ],
+    [ "ir_equality_test", "_i_r_equality_8h.html#a9a1dc9a55f32a7813f8c76884b83d2e2", null ]
 ];

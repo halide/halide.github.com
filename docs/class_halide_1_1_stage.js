@@ -1,6 +1,8 @@
 var class_halide_1_1_stage =
 [
-    [ "Stage", "class_halide_1_1_stage.html#a96f9a55a60adda4acdb09b71d2af5b83", null ],
+    [ "Stage", "class_halide_1_1_stage.html#af9aef7da552b97a86f0deacd27dadb66", null ],
+    [ "dump_argument_list", "class_halide_1_1_stage.html#a00c503be502d9e82a7bb04cc5affe1a6", null ],
+    [ "name", "class_halide_1_1_stage.html#ac62fc329023707dcfbdc49b31ec7149b", null ],
     [ "split", "class_halide_1_1_stage.html#a7f185fac93f1686df0aba9bf4cdd7082", null ],
     [ "fuse", "class_halide_1_1_stage.html#a88503c3004b3e0380b33abb802012c8d", null ],
     [ "serial", "class_halide_1_1_stage.html#ae3814bcec752b7a14e97c4528adf4d5f", null ],

@@ -1,5 +1,6 @@
 var class_halide_1_1_internal_1_1_closure =
 [
+    [ "BufferRef", "struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html", "struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref" ],
     [ "Closure", "class_halide_1_1_internal_1_1_closure.html#ada39ff310229eb44c1a7767cd7c4ab0e", null ],
     [ "Closure", "class_halide_1_1_internal_1_1_closure.html#a6ccd1ffac5683ddbb9b01fe214817bfc", null ],
     [ "visit", "class_halide_1_1_internal_1_1_closure.html#ab420882ae538b2c29862d8b7dc11032a", null ],

@@ -1,5 +1,6 @@
 var struct_halide_1_1_internal_1_1_j_i_t_compiled_module =
 [
+    [ "CleanupRoutine", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module_1_1_cleanup_routine.html", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module_1_1_cleanup_routine" ],
     [ "ErrorHandler", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#accabc8aeb0680e565022fcf07e0a908f", null ],
     [ "HalideTask", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#a58653dab48a781aea9a0ea9e12d1057d", null ],
     [ "TraceFn", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html#ac96e1d288eaaa85933cda36bad19c5ef", null ],

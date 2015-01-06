@@ -1,8 +1,44 @@
 var struct_halide_1_1_target =
 [
-    [ "OS", "struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20", null ],
-    [ "Arch", "struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1", null ],
-    [ "Feature", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f", null ],
+    [ "OS", "struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20", [
+      [ "OSUnknown", "struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a22c6a2fea606af61fa20b1ad6548ff29", null ],
+      [ "Linux", "struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20af58b4735f0d8e76502ef70fe11d548d4", null ],
+      [ "Windows", "struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a33d246944800a2b478899132d76a95b2", null ],
+      [ "OSX", "struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20acef0ce22d32cc53d0f72df159f62b691", null ],
+      [ "Android", "struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a5c630f5107a5a01870143d6dc042ea8c", null ],
+      [ "IOS", "struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20aae1a309042fed9d4369e831047a55447", null ],
+      [ "NaCl", "struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a9a87c261ea02f280b2357b893b7f7725", null ]
+    ] ],
+    [ "Arch", "struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1", [
+      [ "ArchUnknown", "struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1ae6d33003db3020c4c578c645239f2973", null ],
+      [ "X86", "struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1aba7faedbdb35e2ef2927e248c687a391", null ],
+      [ "ARM", "struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1a1c5f188b9b8eb5ffd951917bbbdd85f2", null ],
+      [ "PNaCl", "struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1a7a929ec3b88d34ff832d2446c6f96a15", null ],
+      [ "MIPS", "struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1a93b7e567e560c4e8275e8f1bab214d85", null ]
+    ] ],
+    [ "Feature", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f", [
+      [ "JIT", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fac04af3ed2dc70791a8ba8f793a746b30", null ],
+      [ "Debug", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf3cc1f2941a6b4df016ac08e68b9c660", null ],
+      [ "NoAsserts", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa1fc53f322ecd95ae65274a9f16c71ac2", null ],
+      [ "NoBoundsQuery", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa6f7593c40bf078bf7906ea1c391bcd80", null ],
+      [ "SSE41", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf6ada84d24838f818391b465b9a94165", null ],
+      [ "AVX", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa620c10914ea92a26c16878ab73933b2b", null ],
+      [ "AVX2", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fad7b64a080d84e2145fd219e9f7a33547", null ],
+      [ "FMA", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa9764990d6a6294a8a23f8fb6598c2c88", null ],
+      [ "FMA4", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa6ba1375f5f5982d91779173b71542e5f", null ],
+      [ "F16C", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fafc9c513f157e362fa6851a66e5d2aa90", null ],
+      [ "ARMv7s", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf37c16007f6547612713259e648cc41e", null ],
+      [ "CUDA", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fabfd3f02d7bd5f8e2d251a62f465ebcfb", null ],
+      [ "CUDACapability30", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faae6f2116a68aa9477888010a605ec0a5", null ],
+      [ "CUDACapability32", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa770a75467c600c8ce9a5efa476776742", null ],
+      [ "CUDACapability35", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa15c6f4c8ec0241c9f34f303670c18af3", null ],
+      [ "CUDACapability50", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa027631ce082530506684842b44123b8a", null ],
+      [ "OpenCL", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa84c6211e4fb941603f6104e98427d7e5", null ],
+      [ "CLDoubles", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faa371c9fa5610dc3a9efbb3fde547a719", null ],
+      [ "OpenGL", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa491aa42775c6c9d6f35f784e86b09abc", null ],
+      [ "UserContext", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fab7dbd399d2a833d37bd52451f99c50c1", null ],
+      [ "FeatureEnd", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa17b9cbfef8d1e84e32c8aaa7b2936dbc", null ]
+    ] ],
     [ "Target", "struct_halide_1_1_target.html#aeb11109583253fe6e358bba73d3e4a86", null ],
     [ "Target", "struct_halide_1_1_target.html#a849870678f8ce67d10f84a0097b9eb09", null ],
     [ "set_feature", "struct_halide_1_1_target.html#ab667943ebf46b2da858370e44eae124d", null ],
@@ -18,6 +54,8 @@ var struct_halide_1_1_target =
     [ "to_string", "struct_halide_1_1_target.html#a902e58d463f8babb79f6263709d06f01", null ],
     [ "merge_string", "struct_halide_1_1_target.html#a02c6fd99be575af8792a66777631c85b", null ],
     [ "from_string", "struct_halide_1_1_target.html#a407597a3202793e72c6a9907fe8fb2c7", null ],
+    [ "natural_vector_size", "struct_halide_1_1_target.html#a8d4855075b6ce0bb90bc981787c311a3", null ],
+    [ "natural_vector_size", "struct_halide_1_1_target.html#a0ef57e03c4031aa9105ab037e074cad4", null ],
     [ "os", "struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec", null ],
     [ "arch", "struct_halide_1_1_target.html#a53d1006f89ed385a62cf9e2e5a4fe5a9", null ],
     [ "bits", "struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32", null ]

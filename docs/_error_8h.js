@@ -1,5 +1,11 @@
 var _error_8h =
 [
+    [ "Error", "struct_halide_1_1_error.html", "struct_halide_1_1_error" ],
+    [ "RuntimeError", "struct_halide_1_1_runtime_error.html", "struct_halide_1_1_runtime_error" ],
+    [ "CompileError", "struct_halide_1_1_compile_error.html", "struct_halide_1_1_compile_error" ],
+    [ "InternalError", "struct_halide_1_1_internal_error.html", "struct_halide_1_1_internal_error" ],
+    [ "CompileTimeErrorReporter", "class_halide_1_1_compile_time_error_reporter.html", "class_halide_1_1_compile_time_error_reporter" ],
+    [ "ErrorReport", "struct_halide_1_1_internal_1_1_error_report.html", "struct_halide_1_1_internal_1_1_error_report" ],
     [ "internal_error", "_error_8h.html#a462c17e7e8b2753700f2d369b361cb68", null ],
     [ "internal_assert", "_error_8h.html#ac6b33d592fea72b20afd0039afd7360e", null ],
     [ "user_error", "_error_8h.html#a78a5394c1943bdf1a612fa2287a0ad62", null ],
@@ -7,5 +13,6 @@ var _error_8h =
     [ "user_warning", "_error_8h.html#a79e0ccc806e809fe4f6d3cc952dea89b", null ],
     [ "halide_runtime_error", "_error_8h.html#a66e89f90803cfc9caf89d801dfa9a096", null ],
     [ "_halide_user_assert", "_error_8h.html#ac33c8660a2d35cb8cc69c510bb9c0a98", null ],
-    [ "exceptions_enabled", "namespace_halide.html#ac6d27a04e65a9c083f68fc8c895f3205", null ]
+    [ "exceptions_enabled", "_error_8h.html#ac6d27a04e65a9c083f68fc8c895f3205", null ],
+    [ "set_custom_compile_time_error_reporter", "_error_8h.html#af1c76d9a6be91f972dbeb1c46ce2f68b", null ]
 ];

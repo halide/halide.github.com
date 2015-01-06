@@ -1,12 +1,17 @@
 var class_halide_1_1_internal_1_1_parameter =
 [
-    [ "Parameter", "class_halide_1_1_internal_1_1_parameter.html#a5da165be8e11804173cb73d3b3e74fb9", null ],
-    [ "Parameter", "class_halide_1_1_internal_1_1_parameter.html#a2c279a2fec721a1aa969a5363212e7d9", null ],
-    [ "Parameter", "class_halide_1_1_internal_1_1_parameter.html#a23d91e1e3ad38a044d9f085f1780ee33", null ],
+    [ "Parameter", "class_halide_1_1_internal_1_1_parameter.html#a8bd77b17b1fcadbaaa2769cb54c9a7e3", null ],
+    [ "Parameter", "class_halide_1_1_internal_1_1_parameter.html#af2cb3c6e195ec752873efabd64585b09", null ],
+    [ "Parameter", "class_halide_1_1_internal_1_1_parameter.html#a5191c5e69e74499de8fd12be6b80390c", null ],
+    [ "Parameter", "class_halide_1_1_internal_1_1_parameter.html#ada0979992f1cb75298cf049e94442d41", null ],
+    [ "~Parameter", "class_halide_1_1_internal_1_1_parameter.html#ababc6a99947b069d04e0fe693b5bae05", null ],
+    [ "operator=", "class_halide_1_1_internal_1_1_parameter.html#a7c242f9f5bff1a524855b64bd319a762", null ],
     [ "type", "class_halide_1_1_internal_1_1_parameter.html#a8a77d96d9a32c9a4bd2abaaba17952e2", null ],
+    [ "dimensions", "class_halide_1_1_internal_1_1_parameter.html#a3d79ea857a7a71a133a09b2aa0779579", null ],
     [ "name", "class_halide_1_1_internal_1_1_parameter.html#a77375e2c19021f60b6ecfe498a355736", null ],
+    [ "is_explicit_name", "class_halide_1_1_internal_1_1_parameter.html#a3cab7af1b20270238f81a84a2d2148c0", null ],
     [ "is_buffer", "class_halide_1_1_internal_1_1_parameter.html#ad8b3a7bc7014453b5c77d244092396da", null ],
-    [ "get_scalar", "class_halide_1_1_internal_1_1_parameter.html#a760b7058b6813eb905f2bcd53e5c5f43", null ],
+    [ "get_scalar", "class_halide_1_1_internal_1_1_parameter.html#a61c6cb65a97dea6ad75945efee716b50", null ],
     [ "set_scalar", "class_halide_1_1_internal_1_1_parameter.html#a066b7fa854fb3812ec6c5857d992aebe", null ],
     [ "get_buffer", "class_halide_1_1_internal_1_1_parameter.html#a8e34ac31e53c647695c2216fe5908b5c", null ],
     [ "set_buffer", "class_halide_1_1_internal_1_1_parameter.html#a5073ad9a237189ef09d4f1baf942a3ff", null ],
@@ -20,7 +25,7 @@ var class_halide_1_1_internal_1_1_parameter =
     [ "extent_constraint", "class_halide_1_1_internal_1_1_parameter.html#ae8d7bdb36818373dadb535e1816ab4ce", null ],
     [ "stride_constraint", "class_halide_1_1_internal_1_1_parameter.html#ad075645f790e2e9c863487e6fc5192a0", null ],
     [ "set_min_value", "class_halide_1_1_internal_1_1_parameter.html#af716ea2341683ff4174ef3911609a579", null ],
-    [ "get_min_value", "class_halide_1_1_internal_1_1_parameter.html#a98abfb85ef7c448788cec95965df65d2", null ],
+    [ "get_min_value", "class_halide_1_1_internal_1_1_parameter.html#a530004708fd18ff4af657fb3d10164e0", null ],
     [ "set_max_value", "class_halide_1_1_internal_1_1_parameter.html#a06afb0d9df016dff9910fce01a58e1c8", null ],
-    [ "get_max_value", "class_halide_1_1_internal_1_1_parameter.html#a7ad3495feebb5c5ebdc29ea19fe8f349", null ]
+    [ "get_max_value", "class_halide_1_1_internal_1_1_parameter.html#ae4d919b2fbf92b6bbc72d1fa730bbe79", null ]
 ];

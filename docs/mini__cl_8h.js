@@ -1,5 +1,8 @@
 var mini__cl_8h =
 [
+    [ "_cl_image_format", "struct__cl__image__format.html", "struct__cl__image__format" ],
+    [ "_cl_image_desc", "struct__cl__image__desc.html", "struct__cl__image__desc" ],
+    [ "_cl_buffer_region", "struct__cl__buffer__region.html", "struct__cl__buffer__region" ],
     [ "CL_API_CALL", "mini__cl_8h.html#adfd597c1e86063383518f8a3f64930bb", null ],
     [ "CL_CALLBACK", "mini__cl_8h.html#a193b43da2ce23c54788f9b4d4f0f4740", null ],
     [ "CL_API_ENTRY", "mini__cl_8h.html#a87504841928718b3da4a71b1cd0aeca6", null ],
