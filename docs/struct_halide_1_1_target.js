@@ -28,6 +28,7 @@ var struct_halide_1_1_target =
       [ "FMA4", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa6ba1375f5f5982d91779173b71542e5f", null ],
       [ "F16C", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fafc9c513f157e362fa6851a66e5d2aa90", null ],
       [ "ARMv7s", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf37c16007f6547612713259e648cc41e", null ],
+      [ "NoNEON", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa77c151e388125519528caf75193145ee", null ],
       [ "CUDA", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fabfd3f02d7bd5f8e2d251a62f465ebcfb", null ],
       [ "CUDACapability30", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faae6f2116a68aa9477888010a605ec0a5", null ],
       [ "CUDACapability32", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa770a75467c600c8ce9a5efa476776742", null ],
@@ -37,6 +38,7 @@ var struct_halide_1_1_target =
       [ "CLDoubles", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faa371c9fa5610dc3a9efbb3fde547a719", null ],
       [ "OpenGL", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa491aa42775c6c9d6f35f784e86b09abc", null ],
       [ "UserContext", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fab7dbd399d2a833d37bd52451f99c50c1", null ],
+      [ "RegisterMetadata", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf9bdad6d738fbf0e37aaa5eebd0db925", null ],
       [ "FeatureEnd", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa17b9cbfef8d1e84e32c8aaa7b2936dbc", null ]
     ] ],
     [ "Target", "struct_halide_1_1_target.html#aeb11109583253fe6e358bba73d3e4a86", null ],

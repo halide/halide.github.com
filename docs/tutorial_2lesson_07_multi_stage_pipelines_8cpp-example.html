@@ -118,7 +118,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line"><span class="comment">// g++ lesson_07*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_07</span></div>
 <div class="line"><span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_07</span></div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;Halide.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;Halide.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="keyword">using namespace </span>Halide;</div>
@@ -215,6 +215,16 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line">        <span class="comment">// style boundary condition, and is the simplest boundary</span></div>
 <div class="line">        <span class="comment">// condition to express in Halide.</span></div>
 <div class="line">        clamped(x, y, c) = input(clamped_x, clamped_y, c);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// Defining &#39;clamped&#39; in that way can be done more concisely</span></div>
+<div class="line">        <span class="comment">// using a helper function from the BoundaryConditions</span></div>
+<div class="line">        <span class="comment">// namespace like so:</span></div>
+<div class="line">        <span class="comment">//</span></div>
+<div class="line">        <span class="comment">// clamped = BoundaryConditions::repeat_edge(input);</span></div>
+<div class="line">        <span class="comment">//</span></div>
+<div class="line">        <span class="comment">// These are important to use for other boundary conditions,</span></div>
+<div class="line">        <span class="comment">// because they are expressed in the way that Halide can best</span></div>
+<div class="line">        <span class="comment">// understand and optimize.</span></div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Upgrade it to 16-bit, so we can do math without it</span></div>
 <div class="line">        <span class="comment">// overflowing. This time we&#39;ll refer to our new Func</span></div>

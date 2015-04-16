@@ -1,19 +1,5 @@
 var _i_r_8h =
 [
-    [ "IRNodeType", "struct_halide_1_1_internal_1_1_i_r_node_type.html", null ],
-    [ "IRNode", "struct_halide_1_1_internal_1_1_i_r_node.html", "struct_halide_1_1_internal_1_1_i_r_node" ],
-    [ "BaseStmtNode", "struct_halide_1_1_internal_1_1_base_stmt_node.html", null ],
-    [ "BaseExprNode", "struct_halide_1_1_internal_1_1_base_expr_node.html", "struct_halide_1_1_internal_1_1_base_expr_node" ],
-    [ "ExprNode", "struct_halide_1_1_internal_1_1_expr_node.html", "struct_halide_1_1_internal_1_1_expr_node" ],
-    [ "StmtNode", "struct_halide_1_1_internal_1_1_stmt_node.html", "struct_halide_1_1_internal_1_1_stmt_node" ],
-    [ "IRHandle", "struct_halide_1_1_internal_1_1_i_r_handle.html", "struct_halide_1_1_internal_1_1_i_r_handle" ],
-    [ "IntImm", "struct_halide_1_1_internal_1_1_int_imm.html", "struct_halide_1_1_internal_1_1_int_imm" ],
-    [ "FloatImm", "struct_halide_1_1_internal_1_1_float_imm.html", "struct_halide_1_1_internal_1_1_float_imm" ],
-    [ "StringImm", "struct_halide_1_1_internal_1_1_string_imm.html", "struct_halide_1_1_internal_1_1_string_imm" ],
-    [ "Expr", "struct_halide_1_1_expr.html", "struct_halide_1_1_expr" ],
-    [ "ExprCompare", "struct_halide_1_1_expr_compare.html", "struct_halide_1_1_expr_compare" ],
-    [ "Stmt", "struct_halide_1_1_internal_1_1_stmt.html", "struct_halide_1_1_internal_1_1_stmt" ],
-    [ "Compare", "struct_halide_1_1_internal_1_1_stmt_1_1_compare.html", "struct_halide_1_1_internal_1_1_stmt_1_1_compare" ],
     [ "Cast", "struct_halide_1_1_internal_1_1_cast.html", "struct_halide_1_1_internal_1_1_cast" ],
     [ "Add", "struct_halide_1_1_internal_1_1_add.html", "struct_halide_1_1_internal_1_1_add" ],
     [ "Sub", "struct_halide_1_1_internal_1_1_sub.html", "struct_halide_1_1_internal_1_1_sub" ],
@@ -39,7 +25,6 @@ var _i_r_8h =
     [ "LetStmt", "struct_halide_1_1_internal_1_1_let_stmt.html", "struct_halide_1_1_internal_1_1_let_stmt" ],
     [ "AssertStmt", "struct_halide_1_1_internal_1_1_assert_stmt.html", "struct_halide_1_1_internal_1_1_assert_stmt" ],
     [ "Pipeline", "struct_halide_1_1_internal_1_1_pipeline.html", "struct_halide_1_1_internal_1_1_pipeline" ],
-    [ "For", "struct_halide_1_1_internal_1_1_for.html", "struct_halide_1_1_internal_1_1_for" ],
     [ "Store", "struct_halide_1_1_internal_1_1_store.html", "struct_halide_1_1_internal_1_1_store" ],
     [ "Provide", "struct_halide_1_1_internal_1_1_provide.html", "struct_halide_1_1_internal_1_1_provide" ],
     [ "Allocate", "struct_halide_1_1_internal_1_1_allocate.html", "struct_halide_1_1_internal_1_1_allocate" ],
@@ -51,7 +36,6 @@ var _i_r_8h =
     [ "Evaluate", "struct_halide_1_1_internal_1_1_evaluate.html", "struct_halide_1_1_internal_1_1_evaluate" ],
     [ "Call", "struct_halide_1_1_internal_1_1_call.html", "struct_halide_1_1_internal_1_1_call" ],
     [ "Variable", "struct_halide_1_1_internal_1_1_variable.html", "struct_halide_1_1_internal_1_1_variable" ],
-    [ "Region", "_i_r_8h.html#abd1b9521b6f1f513178f281d8f395335", null ],
-    [ "ref_count< IRNode >", "_i_r_8h.html#acc591095a8e56d4d6f6587c66239fdb3", null ],
-    [ "destroy< IRNode >", "_i_r_8h.html#a7e3867f02d52edd32b4cfe38e5ee55a1", null ]
+    [ "For", "struct_halide_1_1_internal_1_1_for.html", "struct_halide_1_1_internal_1_1_for" ],
+    [ "Region", "_i_r_8h.html#abd1b9521b6f1f513178f281d8f395335", null ]
 ];

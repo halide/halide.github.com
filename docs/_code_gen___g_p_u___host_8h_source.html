@@ -119,115 +119,102 @@ $(document).ready(function(){initNavTree('_code_gen___g_p_u___host_8h_source.htm
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_code_gen___m_i_p_s_8h.html">CodeGen_MIPS.h</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_code_gen___p_na_cl_8h.html">CodeGen_PNaCl.h</a>&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>Halide {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>Internal {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_i_r_8h.html">IR.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">struct </span>CodeGen_GPU_Dev;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">struct </span>GPU_Argument;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/** A code generator that emits GPU code from a given Halide stmt. */</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CodeGen_CPU&gt;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">CodeGen_GPU_Host</a> : <span class="keyword">public</span> CodeGen_CPU {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">    /** Create a GPU code generator. GPU target is selected via</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">     * CodeGen_GPU_Options. Processor features can be enabled using the</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">     * appropriate flags from Target */</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a94513a98317e9647cfa4b99b9f419079">CodeGen_GPU_Host</a>(<a class="code" href="struct_halide_1_1_target.html">Target</a>);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac77280f6fa4f7579f8f0b776705fabd0">~CodeGen_GPU_Host</a>();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">    /** Compile to an internally-held llvm module. Takes a halide</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">     * statement, the name of the function produced, and the arguments</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">     * to the function produced. After calling this, call</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">     * CodeGen::compile_to_file or</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">     * CodeGen::compile_to_function_pointer to get at the generated machine</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">     * code. */</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a7210dda6c45eb750369f2f653d2d56f9">compile</a>(<a class="code" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> stmt, std::string name,</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                 <span class="keyword">const</span> std::vector&lt;Argument&gt; &amp;args,</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                 <span class="keyword">const</span> std::vector&lt;Buffer&gt; &amp;images_to_embed);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">protected</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">    /** Declare members of the base class that must exist to help the</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">     * compiler do name lookup. Annoying but necessary, because the</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">     * compiler doesn&#39;t know that CodeGen_CPU will in fact inherit</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">     * from CodeGen for every instantiation of this template. */</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::module;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::init_module;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::target;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::builder;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::context;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::function;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::get_user_context;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::visit;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::codegen;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::sym_push;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::sym_pop;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::sym_get;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::sym_exists;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_dev_dirty_ptr;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_host_dirty_ptr;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_elem_size_ptr;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_min_ptr;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_stride_ptr;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_extent_ptr;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_host_ptr;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_dev;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_dev_ptr;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_halide_1_1_internal.html#a71f10140e29131153c3be98d2899b090">CodeGen_CPU::llvm_type_of</a>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::create_alloca_at_entry;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::i8;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::i32;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::i64;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_t_type;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::allocations;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">    /** Nodes for which we need to override default behavior for the GPU runtime */</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// @{</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac09b90f6599d4672779ed20d427074f8">visit</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_for.html">For</a> *);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">// @}</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">    /** Finds and links in the CUDA runtime symbols prior to jitting */</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ae7862cef8fae5a39e9c8ea52d10e1fc2">jit_init</a>(llvm::ExecutionEngine *ee, llvm::Module *mod);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">    /** Reaches inside the module at sets it to use a single shared</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">     * cuda context */</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ae026d64ddc8ff3071cedbbc89870b8eb">jit_finalize</a>(llvm::ExecutionEngine *ee, llvm::Module *mod,</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                      std::vector&lt;JITCompiledModule::CleanupRoutine&gt; *cleanup_routines);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span>Halide {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>Internal {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">struct </span>CodeGen_GPU_Dev;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">struct </span>GPU_Argument;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/** A code generator that emits GPU code from a given Halide stmt. */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> CodeGen_CPU&gt;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">CodeGen_GPU_Host</a> : <span class="keyword">public</span> CodeGen_CPU {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">    /** Create a GPU code generator. GPU target is selected via</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">     * CodeGen_GPU_Options. Processor features can be enabled using the</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">     * appropriate flags from Target */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a94513a98317e9647cfa4b99b9f419079">CodeGen_GPU_Host</a>(<a class="code" href="struct_halide_1_1_target.html">Target</a>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac77280f6fa4f7579f8f0b776705fabd0">~CodeGen_GPU_Host</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a58b9d73126903184ac08569d5361e146">compile_func</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_lowered_func.html">LoweredFunc</a> &amp;func);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">    /** Declare members of the base class that must exist to help the</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">     * compiler do name lookup. Annoying but necessary, because the</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">     * compiler doesn&#39;t know that CodeGen_CPU will in fact inherit</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">     * from CodeGen for every instantiation of this template. */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::module;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::init_module;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::target;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::builder;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::context;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::function;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::get_user_context;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::visit;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::codegen;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::sym_push;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::sym_pop;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::sym_get;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::sym_exists;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_dev_dirty_ptr;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_host_dirty_ptr;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_elem_size_ptr;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_min_ptr;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_stride_ptr;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_extent_ptr;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_host_ptr;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_dev;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_dev_ptr;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_halide_1_1_internal.html#a71f10140e29131153c3be98d2899b090">CodeGen_CPU::llvm_type_of</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::create_alloca_at_entry;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::i8;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::i32;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::i64;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::buffer_t_type;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::allocations;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">using</span> CodeGen_CPU::register_destructor;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">    /** Nodes for which we need to override default behavior for the GPU runtime */</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// @{</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac09b90f6599d4672779ed20d427074f8">visit</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_for.html">For</a> *);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac09b90f6599d4672779ed20d427074f8">visit</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_free.html">Free</a> *);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac09b90f6599d4672779ed20d427074f8">visit</a>(<span class="keyword">const</span> <a class="code" href="struct_halide_1_1_internal_1_1_call.html">Call</a> *);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// @}</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a234488d8acc3b6185d3ac6e1453a8013">   79</a></span>&#160;    std::string <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a234488d8acc3b6185d3ac6e1453a8013">function_name</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    llvm::Value *<a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#aa85c49c849bbc42a2bcf187012f3f300">get_module_state</a>(<span class="keyword">const</span> std::string &amp;api_unique_name,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                  <span class="keywordtype">bool</span> create = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">private</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">    /** Child code generator for device kernels. */</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::map&lt;DeviceAPI, CodeGen_GPU_Dev *&gt; cgdev;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;};</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ab2a5b5da78a8474c86f9ed38fbdc10ad">   89</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ab2a5b5da78a8474c86f9ed38fbdc10ad">lib_cuda_linked</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}}</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">static</span> <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html">CodeGen_GPU_Dev</a>* <a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a2512999689605c4a2ee3ef36878c7ae8">make_dev</a>(<a class="code" href="struct_halide_1_1_target.html">Target</a>);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    llvm::Value *<a class="code" href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a0ea2c41bd09caf31218d6740b48af892">get_module_state</a>();</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">private</span>:<span class="comment"></span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">    /** Child code generator for device kernels. */</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html">CodeGen_GPU_Dev</a> *cgdev;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}}</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="struct_halide_1_1_internal_1_1_stmt_html"><div class="ttname"><a href="struct_halide_1_1_internal_1_1_stmt.html">Halide::Internal::Stmt</a></div><div class="ttdoc">A reference-counted handle to a statement node. </div><div class="ttdef"><b>Definition:</b> <a href="_i_r_8h_source.html#l00232">IR.h:232</a></div></div>
-<div class="ttc" id="class_halide_1_1_internal_1_1_code_gen___g_p_u___host_html_ae026d64ddc8ff3071cedbbc89870b8eb"><div class="ttname"><a href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ae026d64ddc8ff3071cedbbc89870b8eb">Halide::Internal::CodeGen_GPU_Host::jit_finalize</a></div><div class="ttdeci">void jit_finalize(llvm::ExecutionEngine *ee, llvm::Module *mod, std::vector&lt; JITCompiledModule::CleanupRoutine &gt; *cleanup_routines)</div><div class="ttdoc">Reaches inside the module at sets it to use a single shared cuda context. </div></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="class_halide_1_1_internal_1_1_code_gen___g_p_u___host_html_a58b9d73126903184ac08569d5361e146"><div class="ttname"><a href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a58b9d73126903184ac08569d5361e146">Halide::Internal::CodeGen_GPU_Host::compile_func</a></div><div class="ttdeci">void compile_func(const LoweredFunc &amp;func)</div></div>
 <div class="ttc" id="_code_gen___m_i_p_s_8h_html"><div class="ttname"><a href="_code_gen___m_i_p_s_8h.html">CodeGen_MIPS.h</a></div><div class="ttdoc">Defines the code-generator for producing MIPS machine code. </div></div>
-<div class="ttc" id="class_halide_1_1_internal_1_1_code_gen___g_p_u___host_html_a7210dda6c45eb750369f2f653d2d56f9"><div class="ttname"><a href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a7210dda6c45eb750369f2f653d2d56f9">Halide::Internal::CodeGen_GPU_Host::compile</a></div><div class="ttdeci">void compile(Stmt stmt, std::string name, const std::vector&lt; Argument &gt; &amp;args, const std::vector&lt; Buffer &gt; &amp;images_to_embed)</div><div class="ttdoc">Compile to an internally-held llvm module. </div></div>
-<div class="ttc" id="struct_halide_1_1_target_html"><div class="ttname"><a href="struct_halide_1_1_target.html">Halide::Target</a></div><div class="ttdoc">A struct representing a target machine and os to generate code for. </div><div class="ttdef"><b>Definition:</b> <a href="_target_8h_source.html#l00024">Target.h:24</a></div></div>
+<div class="ttc" id="struct_halide_1_1_target_html"><div class="ttname"><a href="struct_halide_1_1_target.html">Halide::Target</a></div><div class="ttdoc">A struct representing a target machine and os to generate code for. </div><div class="ttdef"><b>Definition:</b> <a href="_target_8h_source.html#l00019">Target.h:19</a></div></div>
 <div class="ttc" id="class_halide_1_1_internal_1_1_code_gen___g_p_u___host_html_ac77280f6fa4f7579f8f0b776705fabd0"><div class="ttname"><a href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac77280f6fa4f7579f8f0b776705fabd0">Halide::Internal::CodeGen_GPU_Host::~CodeGen_GPU_Host</a></div><div class="ttdeci">virtual ~CodeGen_GPU_Host()</div></div>
 <div class="ttc" id="class_halide_1_1_internal_1_1_code_gen___g_p_u___host_html_ac09b90f6599d4672779ed20d427074f8"><div class="ttname"><a href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac09b90f6599d4672779ed20d427074f8">Halide::Internal::CodeGen_GPU_Host::visit</a></div><div class="ttdeci">void visit(const For *)</div><div class="ttdoc">Nodes for which we need to override default behavior for the GPU runtime. </div></div>
 <div class="ttc" id="_code_gen___a_r_m_8h_html"><div class="ttname"><a href="_code_gen___a_r_m_8h.html">CodeGen_ARM.h</a></div><div class="ttdoc">Defines the code-generator for producing ARM machine code. </div></div>
-<div class="ttc" id="struct_halide_1_1_internal_1_1_for_html"><div class="ttname"><a href="struct_halide_1_1_internal_1_1_for.html">Halide::Internal::For</a></div><div class="ttdoc">A for loop. </div><div class="ttdef"><b>Definition:</b> <a href="_i_r_8h_source.html#l00480">IR.h:480</a></div></div>
+<div class="ttc" id="class_halide_1_1_internal_1_1_code_gen___g_p_u___host_html_aa85c49c849bbc42a2bcf187012f3f300"><div class="ttname"><a href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#aa85c49c849bbc42a2bcf187012f3f300">Halide::Internal::CodeGen_GPU_Host::get_module_state</a></div><div class="ttdeci">llvm::Value * get_module_state(const std::string &amp;api_unique_name, bool create=true)</div></div>
+<div class="ttc" id="struct_halide_1_1_internal_1_1_for_html"><div class="ttname"><a href="struct_halide_1_1_internal_1_1_for.html">Halide::Internal::For</a></div><div class="ttdoc">A for loop. </div><div class="ttdef"><b>Definition:</b> <a href="_i_r_8h_source.html#l00492">IR.h:492</a></div></div>
 <div class="ttc" id="_code_gen___p_na_cl_8h_html"><div class="ttname"><a href="_code_gen___p_na_cl_8h.html">CodeGen_PNaCl.h</a></div><div class="ttdoc">Defines the code-generator for producing pnacl bitcode. </div></div>
-<div class="ttc" id="class_halide_1_1_internal_1_1_code_gen___g_p_u___host_html_a2512999689605c4a2ee3ef36878c7ae8"><div class="ttname"><a href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a2512999689605c4a2ee3ef36878c7ae8">Halide::Internal::CodeGen_GPU_Host::make_dev</a></div><div class="ttdeci">static CodeGen_GPU_Dev * make_dev(Target)</div></div>
-<div class="ttc" id="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev_html"><div class="ttname"><a href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html">Halide::Internal::CodeGen_GPU_Dev</a></div><div class="ttdoc">A code generator that emits GPU code from a given Halide stmt. </div><div class="ttdef"><b>Definition:</b> <a href="_code_gen___g_p_u___dev_8h_source.html#l00031">CodeGen_GPU_Dev.h:31</a></div></div>
-<div class="ttc" id="class_halide_1_1_internal_1_1_code_gen___g_p_u___host_html_a0ea2c41bd09caf31218d6740b48af892"><div class="ttname"><a href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a0ea2c41bd09caf31218d6740b48af892">Halide::Internal::CodeGen_GPU_Host::get_module_state</a></div><div class="ttdeci">llvm::Value * get_module_state()</div></div>
+<div class="ttc" id="struct_halide_1_1_internal_1_1_call_html"><div class="ttname"><a href="struct_halide_1_1_internal_1_1_call.html">Halide::Internal::Call</a></div><div class="ttdoc">A function call. </div><div class="ttdef"><b>Definition:</b> <a href="_i_r_8h_source.html#l00345">IR.h:345</a></div></div>
+<div class="ttc" id="struct_halide_1_1_internal_1_1_lowered_func_html"><div class="ttname"><a href="struct_halide_1_1_internal_1_1_lowered_func.html">Halide::Internal::LoweredFunc</a></div><div class="ttdoc">Definition of a lowered function. </div><div class="ttdef"><b>Definition:</b> <a href="_module_8h_source.html#l00022">Module.h:22</a></div></div>
+<div class="ttc" id="class_halide_1_1_internal_1_1_code_gen___g_p_u___host_html_a234488d8acc3b6185d3ac6e1453a8013"><div class="ttname"><a href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a234488d8acc3b6185d3ac6e1453a8013">Halide::Internal::CodeGen_GPU_Host::function_name</a></div><div class="ttdeci">std::string function_name</div><div class="ttdef"><b>Definition:</b> <a href="_code_gen___g_p_u___host_8h_source.html#l00079">CodeGen_GPU_Host.h:79</a></div></div>
+<div class="ttc" id="struct_halide_1_1_internal_1_1_free_html"><div class="ttname"><a href="struct_halide_1_1_internal_1_1_free.html">Halide::Internal::Free</a></div><div class="ttdoc">Free the resources associated with the given buffer. </div><div class="ttdef"><b>Definition:</b> <a href="_i_r_8h_source.html#l00282">IR.h:282</a></div></div>
+<div class="ttc" id="_i_r_8h_html"><div class="ttname"><a href="_i_r_8h.html">IR.h</a></div><div class="ttdoc">Subtypes for Halide expressions (Halide::Expr) and statements (Halide::Internal::Stmt) ...</div></div>
 <div class="ttc" id="namespace_halide_1_1_internal_html_a71f10140e29131153c3be98d2899b090"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a71f10140e29131153c3be98d2899b090">Halide::Internal::llvm_type_of</a></div><div class="ttdeci">llvm::Type * llvm_type_of(llvm::LLVMContext *context, Halide::Type t)</div><div class="ttdoc">Get the llvm type equivalent to a given halide type. </div></div>
 <div class="ttc" id="class_halide_1_1_internal_1_1_code_gen___g_p_u___host_html_a94513a98317e9647cfa4b99b9f419079"><div class="ttname"><a href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a94513a98317e9647cfa4b99b9f419079">Halide::Internal::CodeGen_GPU_Host::CodeGen_GPU_Host</a></div><div class="ttdeci">CodeGen_GPU_Host(Target)</div><div class="ttdoc">Create a GPU code generator. </div></div>
-<div class="ttc" id="class_halide_1_1_internal_1_1_code_gen___g_p_u___host_html"><div class="ttname"><a href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a></div><div class="ttdoc">A code generator that emits GPU code from a given Halide stmt. </div><div class="ttdef"><b>Definition:</b> <a href="_code_gen___g_p_u___host_8h_source.html#l00021">CodeGen_GPU_Host.h:21</a></div></div>
-<div class="ttc" id="class_halide_1_1_internal_1_1_code_gen___g_p_u___host_html_ab2a5b5da78a8474c86f9ed38fbdc10ad"><div class="ttname"><a href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ab2a5b5da78a8474c86f9ed38fbdc10ad">Halide::Internal::CodeGen_GPU_Host::lib_cuda_linked</a></div><div class="ttdeci">static bool lib_cuda_linked</div><div class="ttdef"><b>Definition:</b> <a href="_code_gen___g_p_u___host_8h_source.html#l00089">CodeGen_GPU_Host.h:89</a></div></div>
-<div class="ttc" id="class_halide_1_1_internal_1_1_code_gen___g_p_u___host_html_ae7862cef8fae5a39e9c8ea52d10e1fc2"><div class="ttname"><a href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ae7862cef8fae5a39e9c8ea52d10e1fc2">Halide::Internal::CodeGen_GPU_Host::jit_init</a></div><div class="ttdeci">void jit_init(llvm::ExecutionEngine *ee, llvm::Module *mod)</div><div class="ttdoc">Finds and links in the CUDA runtime symbols prior to jitting. </div></div>
+<div class="ttc" id="class_halide_1_1_internal_1_1_code_gen___g_p_u___host_html"><div class="ttname"><a href="class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html">Halide::Internal::CodeGen_GPU_Host</a></div><div class="ttdoc">A code generator that emits GPU code from a given Halide stmt. </div><div class="ttdef"><b>Definition:</b> <a href="_code_gen___g_p_u___host_8h_source.html#l00024">CodeGen_GPU_Host.h:24</a></div></div>
 <div class="ttc" id="_code_gen___x86_8h_html"><div class="ttname"><a href="_code_gen___x86_8h.html">CodeGen_X86.h</a></div><div class="ttdoc">Defines the code-generator for producing x86 machine code. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

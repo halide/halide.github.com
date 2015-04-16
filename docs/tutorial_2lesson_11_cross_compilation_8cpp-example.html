@@ -118,7 +118,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line"><span class="comment">// g++ lesson_11*.cpp -g -I ../include -L ../bin -lHalide -o lesson_11</span></div>
 <div class="line"><span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_11</span></div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;Halide.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;Halide.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="keyword">using namespace </span>Halide;</div>
 <div class="line"></div>
@@ -146,7 +146,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line">    <span class="comment">// program on.  For example, if you compile and run this file on</span></div>
 <div class="line">    <span class="comment">// 64-bit linux on an x86 cpu with sse4.1, then the generated code</span></div>
 <div class="line">    <span class="comment">// will be suitable for 64-bit linux on x86 with sse4.1.</span></div>
-<div class="line">    brighter.<a name="a6"></a><a class="code" href="class_halide_1_1_func.html#a5eba1cca2827f4210244deba8a71a64e">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_host&quot;</span>, args);</div>
+<div class="line">    brighter.<a name="a6"></a><a class="code" href="class_halide_1_1_func.html#a25e70d8bbd3a27b2287444c440aa37c4">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_host&quot;</span>, args);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// We can also compile object files suitable for other cpus and</span></div>
 <div class="line">    <span class="comment">// operating systems. You do this with an optional third argument</span></div>
@@ -159,7 +159,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line">    target.<a name="a12"></a><a class="code" href="struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32">bits</a> = 32;            <span class="comment">// The bit-width of the architecture</span></div>
 <div class="line">    std::vector&lt;Target::Feature&gt; arm_features; <span class="comment">// A list of features to set</span></div>
 <div class="line">    target.<a name="a13"></a><a class="code" href="struct_halide_1_1_target.html#a6dddb1542193fca806cd9f0d9079ba32">set_features</a>(arm_features);</div>
-<div class="line">    brighter.<a class="code" href="class_halide_1_1_func.html#a5eba1cca2827f4210244deba8a71a64e">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_arm_32_android&quot;</span>, args, target); <span class="comment">// Pass the target as the last argument.</span></div>
+<div class="line">    brighter.<a class="code" href="class_halide_1_1_func.html#a25e70d8bbd3a27b2287444c440aa37c4">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_arm_32_android&quot;</span>, args, target); <span class="comment">// Pass the target as the last argument.</span></div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// And now a Windows object file for 64-bit x86 with AVX and SSE 4.1:</span></div>
 <div class="line">    target.<a class="code" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a> = <a name="a14"></a><a class="code" href="struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a33d246944800a2b478899132d76a95b2">Target::Windows</a>;</div>
@@ -169,7 +169,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line">    x86_features.push_back(<a name="a16"></a><a class="code" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa620c10914ea92a26c16878ab73933b2b">Target::AVX</a>);</div>
 <div class="line">    x86_features.push_back(<a name="a17"></a><a class="code" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf6ada84d24838f818391b465b9a94165">Target::SSE41</a>);</div>
 <div class="line">    target.<a class="code" href="struct_halide_1_1_target.html#a6dddb1542193fca806cd9f0d9079ba32">set_features</a>(x86_features);</div>
-<div class="line">    brighter.<a class="code" href="class_halide_1_1_func.html#a5eba1cca2827f4210244deba8a71a64e">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_x86_64_windows&quot;</span>, args, target);</div>
+<div class="line">    brighter.<a class="code" href="class_halide_1_1_func.html#a25e70d8bbd3a27b2287444c440aa37c4">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_x86_64_windows&quot;</span>, args, target);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// And finally an iOS mach-o object file for one of Apple&#39;s 32-bit</span></div>
 <div class="line">    <span class="comment">// ARM processors - the A6. It&#39;s used in the iPhone 5. The A6 uses</span></div>
@@ -183,7 +183,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line">    std::vector&lt;Target::Feature&gt; armv7s_features;</div>
 <div class="line">    armv7s_features.push_back(<a name="a19"></a><a class="code" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf37c16007f6547612713259e648cc41e">Target::ARMv7s</a>);</div>
 <div class="line">    target.<a class="code" href="struct_halide_1_1_target.html#a6dddb1542193fca806cd9f0d9079ba32">set_features</a>(armv7s_features);</div>
-<div class="line">    brighter.<a class="code" href="class_halide_1_1_func.html#a5eba1cca2827f4210244deba8a71a64e">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_arm_32_ios&quot;</span>, args, target);</div>
+<div class="line">    brighter.<a class="code" href="class_halide_1_1_func.html#a25e70d8bbd3a27b2287444c440aa37c4">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_arm_32_ios&quot;</span>, args, target);</div>
 <div class="line"></div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Now let&#39;s check these files are what they claim, by examining</span></div>

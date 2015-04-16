@@ -7,12 +7,6 @@ var _func_8h =
     [ "Outputs", "struct_halide_1_1_outputs.html", "struct_halide_1_1_outputs" ],
     [ "Func", "class_halide_1_1_func.html", "class_halide_1_1_func" ],
     [ "ScheduleHandle", "_func_8h.html#ad7b585cf844dcb14fa12386d743cbb24", null ],
-    [ "GPUAPI", "_func_8h.html#aa5e16c1fed60e0a8f60277fa7587ef5c", [
-      [ "GPU_Default", "_func_8h.html#aa5e16c1fed60e0a8f60277fa7587ef5ca607ce75df2e5133ac12da39b2bfd04cb", null ],
-      [ "GPU_CUDA", "_func_8h.html#aa5e16c1fed60e0a8f60277fa7587ef5cac79d1abbd09af907b0cd8cb118eef393", null ],
-      [ "GPU_OpenCL", "_func_8h.html#aa5e16c1fed60e0a8f60277fa7587ef5ca22df10f6563ebf4acbf783321a683513", null ],
-      [ "GPU_GLSL", "_func_8h.html#aa5e16c1fed60e0a8f60277fa7587ef5ca7e649b55dc1fc35650105debb81a6652", null ]
-    ] ],
     [ "StmtOutputFormat", "_func_8h.html#ad1953af304956bd6a5d0bd780b135f56", [
       [ "Text", "_func_8h.html#ad1953af304956bd6a5d0bd780b135f56a1941ee057d1e57015bf2838a63556b91", null ],
       [ "HTML", "_func_8h.html#ad1953af304956bd6a5d0bd780b135f56a0e7445a36a4c4afba58997fbc4871f3b", null ]

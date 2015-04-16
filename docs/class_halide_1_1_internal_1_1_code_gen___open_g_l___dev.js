@@ -7,6 +7,5 @@ var class_halide_1_1_internal_1_1_code_gen___open_g_l___dev =
     [ "compile_to_src", "class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html#a026b33bc0ab48d2eab954cf78e514561", null ],
     [ "get_current_kernel_name", "class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html#a540df4a4a3504f92816d723a8e330892", null ],
     [ "dump", "class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html#a71f0fc71603a44d9eccd6432d191b703", null ],
-    [ "print_gpu_name", "class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html#a3798eead42260ca70ca54b647ec12a04", null ],
-    [ "glc", "class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html#a00f7f0af3e87b6316122bd4dc7a5e0b0", null ]
+    [ "api_unique_name", "class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html#ade2140d2b2d394a1033eceab2c7d973e", null ]
 ];

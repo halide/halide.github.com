@@ -16,8 +16,8 @@ var class_halide_1_1_param =
     [ "set_range", "class_halide_1_1_param.html#adfbe0c1abe794ddaa3930701e92abcd0", null ],
     [ "set_min_value", "class_halide_1_1_param.html#a85253d6a415b3852fb4e91710cfb0a2a", null ],
     [ "set_max_value", "class_halide_1_1_param.html#ab119d5bdcd48ad105ba6774b8061b131", null ],
-    [ "get_min_value", "class_halide_1_1_param.html#ae066732cb079261114a00e05a94acb12", null ],
-    [ "get_max_value", "class_halide_1_1_param.html#ad12da97cde4ffe1b0eba9cf43cff08c5", null ],
+    [ "get_min_value", "class_halide_1_1_param.html#a6c3c4dd42422b0950ae8faec7da85614", null ],
+    [ "get_max_value", "class_halide_1_1_param.html#a536bd048a08867b993ca57c65a42c5c5", null ],
     [ "operator Expr", "class_halide_1_1_param.html#a2cd6ba2b7d6f35212de6089061d18efd", null ],
     [ "operator ExternFuncArgument", "class_halide_1_1_param.html#ae4fe5d0aed733c73617373d98a01f62d", null ],
     [ "operator Argument", "class_halide_1_1_param.html#a96f27012a64e0b5bee741e8f776df65e", null ]

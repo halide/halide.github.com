@@ -9,6 +9,7 @@ var searchData=
   ['reductiondomaincontents',['ReductionDomainContents',['../struct_halide_1_1_internal_1_1_reduction_domain_contents.html',1,'Halide::Internal']]],
   ['reductionvariable',['ReductionVariable',['../struct_halide_1_1_internal_1_1_reduction_variable.html',1,'Halide::Internal']]],
   ['refcount',['RefCount',['../class_halide_1_1_internal_1_1_ref_count.html',1,'Halide::Internal']]],
+  ['registergenerator',['RegisterGenerator',['../class_halide_1_1_register_generator.html',1,'Halide']]],
   ['runtimeerror',['RuntimeError',['../struct_halide_1_1_runtime_error.html',1,'Halide']]],
   ['rvar',['RVar',['../class_halide_1_1_r_var.html',1,'Halide']]]
 ];

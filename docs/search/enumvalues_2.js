@@ -1,7 +1,7 @@
 var searchData=
 [
   ['cldoubles',['CLDoubles',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faa371c9fa5610dc3a9efbb3fde547a719',1,'Halide::Target']]],
-  ['constant',['Constant',['../namespace_halide_1_1_internal.html#a6d77bcd7bf9bfb0b3f5e66010d9ff3eaad87898a017f26e62737125de2b4a9335',1,'Halide::Internal::Constant()'],['../namespace_halide_1_1_internal_1_1_linearity.html#aa71b2314ca859b9c36566c7d96a753fca251919d63f96a73e9782dfdaba3351f4',1,'Halide::Internal::Linearity::Constant()']]],
+  ['constant',['Constant',['../namespace_halide_1_1_internal.html#a6d77bcd7bf9bfb0b3f5e66010d9ff3eaad87898a017f26e62737125de2b4a9335',1,'Halide::Internal']]],
   ['cu_5fdevice_5fattribute_5fasync_5fengine_5fcount',['CU_DEVICE_ATTRIBUTE_ASYNC_ENGINE_COUNT',['../mini__cuda_8h.html#ae12b8a782bebe21b1ac0091bf9f4e2a3a360423d3e7beb69e5316284984c013fb',1,'mini_cuda.h']]],
   ['cu_5fdevice_5fattribute_5fcan_5fmap_5fhost_5fmemory',['CU_DEVICE_ATTRIBUTE_CAN_MAP_HOST_MEMORY',['../mini__cuda_8h.html#ae12b8a782bebe21b1ac0091bf9f4e2a3aa74a2f47a6ef6ee76e89bd32c95d5a6b',1,'mini_cuda.h']]],
   ['cu_5fdevice_5fattribute_5fcan_5ftex2d_5fgather',['CU_DEVICE_ATTRIBUTE_CAN_TEX2D_GATHER',['../mini__cuda_8h.html#ae12b8a782bebe21b1ac0091bf9f4e2a3ab758064e6b67dabe18b947a14b7e169c',1,'mini_cuda.h']]],
@@ -97,7 +97,7 @@ var searchData=
   ['cu_5fmemorytype_5fdevice',['CU_MEMORYTYPE_DEVICE',['../mini__cuda_8h.html#a401176319b8c53648d525e8859437790aec7e15ba4b111a26adb3487023707299',1,'mini_cuda.h']]],
   ['cu_5fmemorytype_5fhost',['CU_MEMORYTYPE_HOST',['../mini__cuda_8h.html#a401176319b8c53648d525e8859437790a7f98a88f26eec8490bfc180c5a73e101',1,'mini_cuda.h']]],
   ['cu_5fmemorytype_5funified',['CU_MEMORYTYPE_UNIFIED',['../mini__cuda_8h.html#a401176319b8c53648d525e8859437790a7a47ca2de6db5cf82084ad80ce66aa71',1,'mini_cuda.h']]],
-  ['cuda',['CUDA',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fabfd3f02d7bd5f8e2d251a62f465ebcfb',1,'Halide::Target']]],
+  ['cuda',['CUDA',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fabfd3f02d7bd5f8e2d251a62f465ebcfb',1,'Halide::Target::CUDA()'],['../namespace_halide.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eaa33b7755e5f9b504d2d038eaca4ff28d',1,'Halide::CUDA()']]],
   ['cuda_5ferror_5falready_5facquired',['CUDA_ERROR_ALREADY_ACQUIRED',['../mini__cuda_8h.html#ac6c391505e117393cc2558fff6bfc2e9a2a0b4de7b33922bdd74db86e34b5feac',1,'mini_cuda.h']]],
   ['cuda_5ferror_5falready_5fmapped',['CUDA_ERROR_ALREADY_MAPPED',['../mini__cuda_8h.html#ac6c391505e117393cc2558fff6bfc2e9a240bb253a699176d9f49ee2f2c91b61b',1,'mini_cuda.h']]],
   ['cuda_5ferror_5farray_5fis_5fmapped',['CUDA_ERROR_ARRAY_IS_MAPPED',['../mini__cuda_8h.html#ac6c391505e117393cc2558fff6bfc2e9ab668b10d56232c51b67db40516cc6b5b',1,'mini_cuda.h']]],

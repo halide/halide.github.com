@@ -12,6 +12,7 @@ var _i_r_operator_8h =
     [ "is_zero", "_i_r_operator_8h.html#a1a521ef987e7964954b997e6dcc5e65b", null ],
     [ "is_one", "_i_r_operator_8h.html#a940b37091a8f16bf1e4a78db7764274e", null ],
     [ "is_two", "_i_r_operator_8h.html#abeed2f66190d11ee6e56e4089a1f441b", null ],
+    [ "is_no_op", "_i_r_operator_8h.html#ab2d7b687f4ac09ca9236cb1b8b82bb51", null ],
     [ "int_cast_constant", "_i_r_operator_8h.html#a225fbecd4560e77ea24cb16541fe6b15", null ],
     [ "make_const", "_i_r_operator_8h.html#ab48739c460778f7af77999cfd251d5af", null ],
     [ "make_bool", "_i_r_operator_8h.html#a1e258c84149c36aad7d93cced54cd173", null ],
@@ -50,6 +51,7 @@ var _i_r_operator_8h =
     [ "min", "_i_r_operator_8h.html#a38b5db24ca379dda8241433c0014c940", null ],
     [ "clamp", "_i_r_operator_8h.html#a41fc11b69e1ae900cebae51c319a1caa", null ],
     [ "abs", "_i_r_operator_8h.html#ae698f4bfd37d3d15cee4bf22c4627e0d", null ],
+    [ "absd", "_i_r_operator_8h.html#a8d96f6e421c7a9a25f3d027283c7149d", null ],
     [ "select", "_i_r_operator_8h.html#a9d6371892ae38e7eb681fd3f23945b06", null ],
     [ "select", "_i_r_operator_8h.html#ae1900511e3091424d6d19a0d603dadf0", null ],
     [ "select", "_i_r_operator_8h.html#aad0bf94c96070c9b106c6c6408fc6156", null ],
@@ -133,5 +135,12 @@ var _i_r_operator_8h =
     [ "memoize_tag", "_i_r_operator_8h.html#a664cf8066c9dcaaf7352cf590aa84053", null ],
     [ "memoize_tag", "_i_r_operator_8h.html#a8fc5d97ea400dc5636985ce65e05cc00", null ],
     [ "memoize_tag", "_i_r_operator_8h.html#a3bde7f9196bf7c4b310acca81431a955", null ],
-    [ "memoize_tag", "_i_r_operator_8h.html#a6e9ce0e811c900658123b41faa389e42", null ]
+    [ "memoize_tag", "_i_r_operator_8h.html#a6e9ce0e811c900658123b41faa389e42", null ],
+    [ "likely", "_i_r_operator_8h.html#afbf18e1b8bab056f8f8e8f1af8cbd764", null ],
+    [ "scalar_to_constant_expr", "_i_r_operator_8h.html#a8f84a0040711a023783268f1213caa3e", null ],
+    [ "scalar_to_constant_expr", "_i_r_operator_8h.html#a40117c4a26ac5f612f075a99b5c87207", null ],
+    [ "scalar_to_constant_expr", "_i_r_operator_8h.html#ab5c1973a3b52e6908d939810844d8405", null ],
+    [ "scalar_to_constant_expr", "_i_r_operator_8h.html#ac14a81e0ff39d55ece7cc41600486337", null ],
+    [ "scalar_to_constant_expr", "_i_r_operator_8h.html#a3b7e626d2cf8d0e105f2d7e9b80b5d70", null ],
+    [ "scalar_from_constant_expr", "_i_r_operator_8h.html#a69be35df1689b43027589dad39bb47da", null ]
 ];

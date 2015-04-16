@@ -12,6 +12,7 @@ var class_halide_1_1_internal_1_1_parameter =
     [ "is_explicit_name", "class_halide_1_1_internal_1_1_parameter.html#a3cab7af1b20270238f81a84a2d2148c0", null ],
     [ "is_buffer", "class_halide_1_1_internal_1_1_parameter.html#ad8b3a7bc7014453b5c77d244092396da", null ],
     [ "get_scalar", "class_halide_1_1_internal_1_1_parameter.html#a61c6cb65a97dea6ad75945efee716b50", null ],
+    [ "get_scalar_expr", "class_halide_1_1_internal_1_1_parameter.html#aa468c4df7d6f9ac28a012b42a3f362fc", null ],
     [ "set_scalar", "class_halide_1_1_internal_1_1_parameter.html#a066b7fa854fb3812ec6c5857d992aebe", null ],
     [ "get_buffer", "class_halide_1_1_internal_1_1_parameter.html#a8e34ac31e53c647695c2216fe5908b5c", null ],
     [ "set_buffer", "class_halide_1_1_internal_1_1_parameter.html#a5073ad9a237189ef09d4f1baf942a3ff", null ],

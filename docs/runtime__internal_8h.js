@@ -1,7 +1,5 @@
 var runtime__internal_8h =
 [
-    [ "Printer", "class_halide_1_1_runtime_1_1_internal_1_1_printer.html", "class_halide_1_1_runtime_1_1_internal_1_1_printer" ],
-    [ "SinkPrinter", "class_halide_1_1_runtime_1_1_internal_1_1_sink_printer.html", "class_halide_1_1_runtime_1_1_internal_1_1_sink_printer" ],
     [ "NULL", "runtime__internal_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4", null ],
     [ "WEAK", "runtime__internal_8h.html#ad1480e9557edcc543498ca259cee6c7d", null ],
     [ "STDOUT_FILENO", "runtime__internal_8h.html#abd165ee6474b5b75bf075842fff13a04", null ],
@@ -17,10 +15,6 @@ var runtime__internal_8h =
     [ "size_t", "runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e", null ],
     [ "ptrdiff_t", "runtime__internal_8h.html#a6d26a0475a6d6c897e655cdc5d8019d2", null ],
     [ "ssize_t", "runtime__internal_8h.html#ab65ed42d67e6c517c746ff2a6a187016", null ],
-    [ "print", "runtime__internal_8h.html#a27d11f55790293b8550e03ccc0844820", null ],
-    [ "error", "runtime__internal_8h.html#aa0e2acd3d03af60f13a8e2332701ece9", null ],
-    [ "stringstream", "runtime__internal_8h.html#a24530b56f3bd3f2eb5575c6458a344a6", null ],
-    [ "debug", "runtime__internal_8h.html#ae60d89be1315c7744137697c10e22168", null ],
     [ "PrinterType", "runtime__internal_8h.html#a724298c91ed488cb70fd581fdfa9c190", [
       [ "BasicPrinter", "runtime__internal_8h.html#a724298c91ed488cb70fd581fdfa9c190ab89358365ba14d3967d9cb840b29c9a0", null ],
       [ "ErrorPrinter", "runtime__internal_8h.html#a724298c91ed488cb70fd581fdfa9c190a191db8da2d202f067bcf55513c54a8f4", null ],
@@ -50,5 +44,10 @@ var runtime__internal_8h =
     [ "halide_int64_to_string", "runtime__internal_8h.html#af7df07d9a6aa970b5d926cd7986847d6", null ],
     [ "halide_uint64_to_string", "runtime__internal_8h.html#a411815b8bcca77d1160519940795d82c", null ],
     [ "halide_pointer_to_string", "runtime__internal_8h.html#aec58067b8ed261df5b32053eec1815a6", null ],
-    [ "operator<<", "runtime__internal_8h.html#a12812c9acd6c0dc67590d0848e040032", null ]
+    [ "halide_use_jit_module", "runtime__internal_8h.html#a00b12364349bdd52bdc59f903400a77e", null ],
+    [ "halide_release_jit_module", "runtime__internal_8h.html#af64fff3ded0437c5031d0f589048239d", null ],
+    [ "buf", "runtime__internal_8h.html#a820af5182fa2b758297c9db1af6b2256", null ],
+    [ "dst", "runtime__internal_8h.html#a4f15ee8aa627692edfd6bdfe9a45fbf9", null ],
+    [ "end", "runtime__internal_8h.html#ad7df3e66f0d081eb6a27998bd1e681e7", null ],
+    [ "user_context", "runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf", null ]
 ];

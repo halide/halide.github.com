@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('struct_halide_1_1_internal_1_1_assert_
 </div><!--header-->
 <div class="contents">
 
-<p>If the 'condition' is false, then bail out calling halide_error.  
+<p>If the 'condition' is false, then evaluate and return the message, which should be a call to an error function.  
  <a href="struct_halide_1_1_internal_1_1_assert_stmt.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_i_r_8h_source.html">IR.h</a>&gt;</code></p>
@@ -122,12 +122,8 @@ $(document).ready(function(){initNavTree('struct_halide_1_1_internal_1_1_assert_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:abba5fb24a13bf1d269d1d801cb40223c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_assert_stmt.html#abba5fb24a13bf1d269d1d801cb40223c">make</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="struct_halide_1_1_internal_1_1_assert_stmt.html#abe8dbe9b5b7e3366081c6612009d52cd">condition</a>, const char *<a class="el" href="struct_halide_1_1_internal_1_1_assert_stmt.html#a9f6604bc37e751607639d477b4c39f0d">message</a>)</td></tr>
-<tr class="separator:abba5fb24a13bf1d269d1d801cb40223c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa911226ba4f5d7a95b3271c61af88a01"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_assert_stmt.html#aa911226ba4f5d7a95b3271c61af88a01">make</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="struct_halide_1_1_internal_1_1_assert_stmt.html#abe8dbe9b5b7e3366081c6612009d52cd">condition</a>, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="struct_halide_1_1_internal_1_1_assert_stmt.html#a9f6604bc37e751607639d477b4c39f0d">message</a>)</td></tr>
 <tr class="separator:aa911226ba4f5d7a95b3271c61af88a01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab40eec52fe7340727a1e410512f1ada6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_assert_stmt.html#ab40eec52fe7340727a1e410512f1ada6">make</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="struct_halide_1_1_internal_1_1_assert_stmt.html#abe8dbe9b5b7e3366081c6612009d52cd">condition</a>, const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;<a class="el" href="struct_halide_1_1_internal_1_1_assert_stmt.html#a9f6604bc37e751607639d477b4c39f0d">message</a>)</td></tr>
-<tr class="separator:ab40eec52fe7340727a1e410512f1ada6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -159,44 +155,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ac58783d292819fc3c4362e28d165e950 inherit pub_static_attribs_struct_halide_1_1_internal_1_1_stmt_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>If the 'condition' is false, then bail out calling halide_error. </p>
+<div class="textblock"><p>If the 'condition' is false, then evaluate and return the message, which should be a call to an error function. </p>
 
-<p>Definition at line <a class="el" href="_i_r_8h_source.html#l00444">444</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_8h_source.html#l00221">221</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="abba5fb24a13bf1d269d1d801cb40223c"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> Halide::Internal::AssertStmt::make </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>condition</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>message</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="aa911226ba4f5d7a95b3271c61af88a01"></a>
 <div class="memitem">
 <div class="memproto">
@@ -231,40 +193,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab40eec52fe7340727a1e410512f1ada6"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_internal_1_1_stmt.html">Stmt</a> Halide::Internal::AssertStmt::make </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
-          <td class="paramname"><em>condition</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>message</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="abe8dbe9b5b7e3366081c6612009d52cd"></a>
 <div class="memitem">
@@ -276,7 +204,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_i_r_8h_source.html#l00446">446</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_8h_source.html#l00223">223</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
 
 </div>
 </div>
@@ -290,7 +218,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_i_r_8h_source.html#l00447">447</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
+<p>Definition at line <a class="el" href="_i_r_8h_source.html#l00224">224</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
 
 </div>
 </div>

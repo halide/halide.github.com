@@ -154,6 +154,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a61c6cb65a97dea6ad75945efee716b50"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_parameter.html#a61c6cb65a97dea6ad75945efee716b50">get_scalar</a> () const </td></tr>
 <tr class="memdesc:a61c6cb65a97dea6ad75945efee716b50"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the parameter is a scalar parameter, get its currently bound value.  <a href="#a61c6cb65a97dea6ad75945efee716b50">More...</a><br/></td></tr>
 <tr class="separator:a61c6cb65a97dea6ad75945efee716b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa468c4df7d6f9ac28a012b42a3f362fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_parameter.html#aa468c4df7d6f9ac28a012b42a3f362fc">get_scalar_expr</a> () const </td></tr>
+<tr class="memdesc:aa468c4df7d6f9ac28a012b42a3f362fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">This returns the current value of get_scalar&lt;type()&gt;() as an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax. ">Expr</a>.  <a href="#aa468c4df7d6f9ac28a012b42a3f362fc">More...</a><br/></td></tr>
+<tr class="separator:aa468c4df7d6f9ac28a012b42a3f362fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a066b7fa854fb3812ec6c5857d992aebe"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a066b7fa854fb3812ec6c5857d992aebe"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_parameter.html#a066b7fa854fb3812ec6c5857d992aebe">set_scalar</a> (T val)</td></tr>
 <tr class="memdesc:a066b7fa854fb3812ec6c5857d992aebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the parameter is a scalar parameter, set its current value.  <a href="#a066b7fa854fb3812ec6c5857d992aebe">More...</a><br/></td></tr>
@@ -210,7 +213,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p>A reference-counted handle to a parameter to a halide pipeline. </p>
 <p>May be a scalar parameter or a buffer </p>
 
-<p>Definition at line <a class="el" href="_parameter_8h_source.html#l00017">17</a> of file <a class="el" href="_parameter_8h_source.html">Parameter.h</a>.</p>
+<p>Definition at line <a class="el" href="_parameter_8h_source.html#l00018">18</a> of file <a class="el" href="_parameter_8h_source.html">Parameter.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8bd77b17b1fcadbaaa2769cb54c9a7e3"></a>
 <div class="memitem">
@@ -382,7 +385,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the type of this parameter. </p>
 
-<p>Referenced by <a class="el" href="_parameter_8h_source.html#l00072">get_scalar()</a>, <a class="el" href="_i_r_8h_source.html#l00686">Halide::Internal::Call::make()</a>, and <a class="el" href="_parameter_8h_source.html#l00082">set_scalar()</a>.</p>
+<p>Referenced by <a class="el" href="_parameter_8h_source.html#l00073">get_scalar()</a>, <a class="el" href="_i_r_8h_source.html#l00439">Halide::Internal::Call::make()</a>, and <a class="el" href="_parameter_8h_source.html#l00087">set_scalar()</a>.</p>
 
 </div>
 </div>
@@ -419,7 +422,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the name of this parameter. </p>
 
-<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00686">Halide::Internal::Call::make()</a>, and <a class="el" href="_param_8h_source.html#l00095">Halide::Param&lt; T &gt;::name()</a>.</p>
+<p>Referenced by <a class="el" href="_i_r_8h_source.html#l00439">Halide::Internal::Call::make()</a>, and <a class="el" href="_param_8h_source.html#l00095">Halide::Param&lt; T &gt;::name()</a>.</p>
 
 </div>
 </div>
@@ -457,7 +460,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Does this parameter refer to a buffer/image? </p>
 
-<p>Referenced by <a class="el" href="_function_8h_source.html#l00038">Halide::ExternFuncArgument::ExternFuncArgument()</a>.</p>
+<p>Referenced by <a class="el" href="_function_8h_source.html#l00040">Halide::ExternFuncArgument::ExternFuncArgument()</a>.</p>
 
 </div>
 </div>
@@ -487,11 +490,30 @@ template&lt;typename T &gt; </div>
 <p>If the parameter is a scalar parameter, get its currently bound value. </p>
 <p>Only relevant when jitting </p>
 
-<p>Definition at line <a class="el" href="_parameter_8h_source.html#l00072">72</a> of file <a class="el" href="_parameter_8h_source.html">Parameter.h</a>.</p>
+<p>Definition at line <a class="el" href="_parameter_8h_source.html#l00073">73</a> of file <a class="el" href="_parameter_8h_source.html">Parameter.h</a>.</p>
 
 <p>References <a class="el" href="class_halide_1_1_internal_1_1_parameter.html#af9dae6d7ef18467872aa19749a534623">get_scalar_address()</a>, <a class="el" href="class_halide_1_1_internal_1_1_parameter.html#a8a77d96d9a32c9a4bd2abaaba17952e2">type()</a>, and <a class="el" href="_error_8h_source.html#l00150">user_assert</a>.</p>
 
 <p>Referenced by <a class="el" href="_param_8h_source.html#l00105">Halide::Param&lt; T &gt;::get()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa468c4df7d6f9ac28a012b42a3f362fc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="struct_halide_1_1_expr.html">Expr</a> Halide::Internal::Parameter::get_scalar_expr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This returns the current value of get_scalar&lt;type()&gt;() as an <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax. ">Expr</a>. </p>
+
+<p>Referenced by <a class="el" href="_param_8h_source.html#l00171">Halide::Param&lt; T &gt;::operator Argument()</a>.</p>
 
 </div>
 </div>
@@ -522,7 +544,7 @@ template&lt;typename T &gt; </div>
 <p>If the parameter is a scalar parameter, set its current value. </p>
 <p>Only relevant when jitting </p>
 
-<p>Definition at line <a class="el" href="_parameter_8h_source.html#l00082">82</a> of file <a class="el" href="_parameter_8h_source.html">Parameter.h</a>.</p>
+<p>Definition at line <a class="el" href="_parameter_8h_source.html#l00087">87</a> of file <a class="el" href="_parameter_8h_source.html">Parameter.h</a>.</p>
 
 <p>References <a class="el" href="class_halide_1_1_internal_1_1_parameter.html#af9dae6d7ef18467872aa19749a534623">get_scalar_address()</a>, <a class="el" href="class_halide_1_1_internal_1_1_parameter.html#a8a77d96d9a32c9a4bd2abaaba17952e2">type()</a>, and <a class="el" href="_error_8h_source.html#l00150">user_assert</a>.</p>
 
@@ -583,7 +605,7 @@ template&lt;typename T &gt; </div>
 <p>Get the pointer to the current value of the scalar parameter. </p>
 <p><a class="el" href="struct_halide_1_1_internal_1_1_for.html" title="A for loop. ">For</a> a given parameter, this address will never change. Only relevant when jitting. </p>
 
-<p>Referenced by <a class="el" href="_param_8h_source.html#l00116">Halide::Param&lt; T &gt;::get_address()</a>, <a class="el" href="_parameter_8h_source.html#l00072">get_scalar()</a>, and <a class="el" href="_parameter_8h_source.html#l00082">set_scalar()</a>.</p>
+<p>Referenced by <a class="el" href="_param_8h_source.html#l00116">Halide::Param&lt; T &gt;::get_address()</a>, <a class="el" href="_parameter_8h_source.html#l00073">get_scalar()</a>, and <a class="el" href="_parameter_8h_source.html#l00087">set_scalar()</a>.</p>
 
 </div>
 </div>
@@ -797,7 +819,7 @@ template&lt;typename T &gt; </div>
 <p>Get and set constraints for scalar parameters. </p>
 <p>These are used directly by <a class="el" href="class_halide_1_1_param.html" title="A scalar parameter to a halide pipeline. ">Param</a>, so they must be exported. </p>
 
-<p>Referenced by <a class="el" href="_param_8h_source.html#l00147">Halide::Param&lt; T &gt;::get_min_value()</a>.</p>
+<p>Referenced by <a class="el" href="_param_8h_source.html#l00147">Halide::Param&lt; T &gt;::get_min_value()</a>, and <a class="el" href="_param_8h_source.html#l00171">Halide::Param&lt; T &gt;::operator Argument()</a>.</p>
 
 </div>
 </div>
@@ -838,7 +860,7 @@ template&lt;typename T &gt; </div>
 <p>Get and set constraints for scalar parameters. </p>
 <p>These are used directly by <a class="el" href="class_halide_1_1_param.html" title="A scalar parameter to a halide pipeline. ">Param</a>, so they must be exported. </p>
 
-<p>Referenced by <a class="el" href="_param_8h_source.html#l00151">Halide::Param&lt; T &gt;::get_max_value()</a>.</p>
+<p>Referenced by <a class="el" href="_param_8h_source.html#l00151">Halide::Param&lt; T &gt;::get_max_value()</a>, and <a class="el" href="_param_8h_source.html#l00171">Halide::Param&lt; T &gt;::operator Argument()</a>.</p>
 
 </div>
 </div>

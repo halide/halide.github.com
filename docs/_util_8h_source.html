@@ -122,210 +122,256 @@ $(document).ready(function(){initNavTree('_util_8h_source.html','');});
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/** \file</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * Various utility functions used internally Halide. */</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// by default, the symbol EXPORT does nothing. In windows dll builds we can define it to __declspec(dllexport)</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#if defined(_WIN32) &amp;&amp; defined(Halide_SHARED)</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifdef Halide_EXPORTS</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EXPORT __declspec(dllexport)</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EXPORT __declspec(dllimport)</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">   28</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EXPORT</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// If we&#39;re in user code, we don&#39;t want certain functions to be inlined.</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#if defined(COMPILING_HALIDE) || defined(BUILDING_PYTHON)</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define NO_INLINE</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define NO_INLINE __declspec(noinline)</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">   38</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define NO_INLINE __attribute__((noinline))</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// by default, the symbol EXPORT does nothing. In windows dll builds we can define it to __declspec(dllexport)</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#if defined(_WIN32) &amp;&amp; defined(Halide_SHARED)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifdef Halide_EXPORTS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EXPORT __declspec(dllexport)</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EXPORT __declspec(dllimport)</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">   29</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EXPORT</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">// If we&#39;re in user code, we don&#39;t want certain functions to be inlined.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#if defined(COMPILING_HALIDE) || defined(BUILDING_PYTHON)</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define NO_INLINE</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define NO_INLINE __declspec(noinline)</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">   39</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define NO_INLINE __attribute__((noinline))</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">namespace </span>Halide {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">namespace </span>Internal {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/** Build small vectors of up to 10 elements. If we used C++11 and</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"> * had vector initializers, this would not be necessary, but we</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> * don&#39;t want to rely on C++11 support. */</span><span class="comment"></span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">//@{</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"></span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">   50</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a) {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::vector&lt;T&gt; v(1);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    v[0] = a;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> v;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a60049819a1e4ee7971c624c18a26210a">   57</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    std::vector&lt;T&gt; v(2);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    v[0] = a;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    v[1] = b;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> v;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a57308fdf8df2d93ff56d7dc8d2f621b1">   65</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::vector&lt;T&gt; v(3);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    v[0] = a;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    v[1] = b;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    v[2] = c;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> v;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a643930ad0d00b2138183abfb01ba7083">   74</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c, T d) {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    std::vector&lt;T&gt; v(4);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    v[0] = a;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    v[1] = b;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    v[2] = c;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    v[3] = d;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> v;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a33cbb76cabe65d3b5fc27f6d4866ce0b">   84</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c, T d, T e) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::vector&lt;T&gt; v(5);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    v[0] = a;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    v[1] = b;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    v[2] = c;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    v[3] = d;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    v[4] = e;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> v;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#ac29a0bceb82c876dc7b2d9d15ea0f5b7">   95</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c, T d, T e, T f) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    std::vector&lt;T&gt; v(6);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    v[0] = a;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    v[1] = b;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    v[2] = c;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    v[3] = d;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    v[4] = e;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    v[5] = f;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">return</span> v;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a6e0218a6965fff6add01901838ccef67">  107</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c, T d, T e, T f, T g) {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    std::vector&lt;T&gt; v(7);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    v[0] = a;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    v[1] = b;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    v[2] = c;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    v[3] = d;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    v[4] = e;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    v[5] = f;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    v[6] = g;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> v;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#ab96724ccfd5edca25ce01a24fce53a66">  120</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c, T d, T e, T f, T g, T h) {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    std::vector&lt;T&gt; v(8);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    v[0] = a;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    v[1] = b;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    v[2] = c;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    v[3] = d;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    v[4] = e;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    v[5] = f;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    v[6] = g;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    v[7] = h;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">return</span> v;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a4cb695b3df9ba1978cbf747fc24128f3">  134</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c, T d, T e, T f, T g, T h, T i) {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    std::vector&lt;T&gt; v(9);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    v[0] = a;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    v[1] = b;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    v[2] = c;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    v[3] = d;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    v[4] = e;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    v[5] = f;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    v[6] = g;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    v[7] = h;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    v[8] = i;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">return</span> v;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#aa2ab30e2bb69186df1728035d83c9b3a">  149</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c, T d, T e, T f, T g, T h, T i, T j) {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    std::vector&lt;T&gt; v(10);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    v[0] = a;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    v[1] = b;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    v[2] = c;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    v[3] = d;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    v[4] = e;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    v[5] = f;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    v[6] = g;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    v[7] = h;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    v[8] = i;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    v[9] = j;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">return</span> v;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">// @}</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">/** Convert an integer to a string. */</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#a0aeffeff26578021bc780e1506bfa448">int_to_string</a>(<span class="keywordtype">int</span> x);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">/** An aggressive form of reinterpret cast used for correct type-punning. */</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DstType, <span class="keyword">typename</span> SrcType&gt;</div>
-<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a94816d6979fdadb6e206a5d0a668e008">  170</a></span>&#160;DstType <a class="code" href="namespace_halide_1_1_internal.html#a94816d6979fdadb6e206a5d0a668e008">reinterpret_bits</a>(<span class="keyword">const</span> SrcType &amp;src) {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    assert(<span class="keyword">sizeof</span>(SrcType) == <span class="keyword">sizeof</span>(DstType));</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    DstType dst;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <a class="code" href="runtime__internal_8h.html#add55236e1a6168d059f1409762081d1a">memcpy</a>(&amp;dst, &amp;src, <span class="keyword">sizeof</span>(SrcType));</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">return</span> dst;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;}</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">/** Make a unique name for an object based on the name of the stack</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment"> * variable passed in. If introspection isn&#39;t working or there are no</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment"> * debug symbols, just uses unique_name with the given prefix. */</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#a2eb97978547d98141752de6b614195f4">make_entity_name</a>(<span class="keywordtype">void</span> *stack_ptr, <span class="keyword">const</span> std::string &amp;type, <span class="keywordtype">char</span> prefix);</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">/** Generate a unique name starting with the given character. It&#39;s</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment"> * unique relative to all other calls to unique_name done by this</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment"> * process. Not thread-safe. */</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9">unique_name</a>(<span class="keywordtype">char</span> prefix);</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">/** Generate a unique name starting with the given string.  Not</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment"> * thread-safe. */</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9">unique_name</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">bool</span> user = <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">/** Test if the first string starts with the second string */</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed">starts_with</a>(<span class="keyword">const</span> std::string &amp;str, <span class="keyword">const</span> std::string &amp;prefix);</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">/** Test if the first string ends with the second string */</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28">ends_with</a>(<span class="keyword">const</span> std::string &amp;str, <span class="keyword">const</span> std::string &amp;suffix);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">/** Replace all matches of the second string in the first string with the last string */</span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#a323b05ce69829cea65348efc21923625">replace_all</a>(std::string &amp;str, <span class="keyword">const</span> std::string &amp;find, <span class="keyword">const</span> std::string &amp;replace);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="comment"></span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">/** Return the final token of the name string using the given delimiter. */</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516">base_name</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">char</span> delim = <span class="charliteral">&#39;.&#39;</span>);</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">/** Split the source string using &#39;delim&#39; as the divider. */</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::vector&lt;std::string&gt; <a class="code" href="namespace_halide_1_1_internal.html#aedc761896b3e6a38bddce45b6c0f8b15">split_string</a>(<span class="keyword">const</span> std::string &amp;source, <span class="keyword">const</span> std::string &amp;delim);</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;}</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;}</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">namespace </span>Halide {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">namespace </span>Internal {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/** Build small vectors of up to 10 elements. If we used C++11 and</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> * had vector initializers, this would not be necessary, but we</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> * don&#39;t want to rely on C++11 support. */</span><span class="comment"></span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">//@{</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"></span><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">   51</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    std::vector&lt;T&gt; v(1);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    v[0] = a;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> v;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a60049819a1e4ee7971c624c18a26210a">   58</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::vector&lt;T&gt; v(2);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    v[0] = a;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    v[1] = b;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> v;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a57308fdf8df2d93ff56d7dc8d2f621b1">   66</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    std::vector&lt;T&gt; v(3);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    v[0] = a;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    v[1] = b;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    v[2] = c;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> v;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a643930ad0d00b2138183abfb01ba7083">   75</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c, T d) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    std::vector&lt;T&gt; v(4);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    v[0] = a;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    v[1] = b;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    v[2] = c;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    v[3] = d;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> v;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a33cbb76cabe65d3b5fc27f6d4866ce0b">   85</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c, T d, T e) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::vector&lt;T&gt; v(5);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    v[0] = a;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    v[1] = b;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    v[2] = c;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    v[3] = d;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    v[4] = e;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> v;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#ac29a0bceb82c876dc7b2d9d15ea0f5b7">   96</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c, T d, T e, T f) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    std::vector&lt;T&gt; v(6);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    v[0] = a;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    v[1] = b;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    v[2] = c;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    v[3] = d;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    v[4] = e;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    v[5] = f;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">return</span> v;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a6e0218a6965fff6add01901838ccef67">  108</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c, T d, T e, T f, T g) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    std::vector&lt;T&gt; v(7);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    v[0] = a;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    v[1] = b;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    v[2] = c;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    v[3] = d;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    v[4] = e;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    v[5] = f;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    v[6] = g;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">return</span> v;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#ab96724ccfd5edca25ce01a24fce53a66">  121</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c, T d, T e, T f, T g, T h) {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    std::vector&lt;T&gt; v(8);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    v[0] = a;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    v[1] = b;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    v[2] = c;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    v[3] = d;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    v[4] = e;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    v[5] = f;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    v[6] = g;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    v[7] = h;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">return</span> v;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a4cb695b3df9ba1978cbf747fc24128f3">  135</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c, T d, T e, T f, T g, T h, T i) {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    std::vector&lt;T&gt; v(9);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    v[0] = a;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    v[1] = b;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    v[2] = c;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    v[3] = d;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    v[4] = e;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    v[5] = f;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    v[6] = g;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    v[7] = h;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    v[8] = i;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">return</span> v;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#aa2ab30e2bb69186df1728035d83c9b3a">  150</a></span>&#160;std::vector&lt;T&gt; <a class="code" href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">vec</a>(T a, T b, T c, T d, T e, T f, T g, T h, T i, T j) {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    std::vector&lt;T&gt; v(10);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    v[0] = a;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    v[1] = b;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    v[2] = c;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    v[3] = d;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    v[4] = e;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    v[5] = f;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    v[6] = g;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    v[7] = h;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    v[8] = i;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    v[9] = j;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">return</span> v;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">// @}</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">/** Convert an integer to a string. */</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#a0aeffeff26578021bc780e1506bfa448">int_to_string</a>(<span class="keywordtype">int</span> x);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">/** An aggressive form of reinterpret cast used for correct type-punning. */</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> DstType, <span class="keyword">typename</span> SrcType&gt;</div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a94816d6979fdadb6e206a5d0a668e008">  171</a></span>&#160;DstType <a class="code" href="namespace_halide_1_1_internal.html#a94816d6979fdadb6e206a5d0a668e008">reinterpret_bits</a>(<span class="keyword">const</span> SrcType &amp;src) {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    assert(<span class="keyword">sizeof</span>(SrcType) == <span class="keyword">sizeof</span>(DstType));</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    DstType <a class="code" href="runtime__internal_8h.html#a4f15ee8aa627692edfd6bdfe9a45fbf9">dst</a>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <a class="code" href="runtime__internal_8h.html#add55236e1a6168d059f1409762081d1a">memcpy</a>(&amp;dst, &amp;src, <span class="keyword">sizeof</span>(SrcType));</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="runtime__internal_8h.html#a4f15ee8aa627692edfd6bdfe9a45fbf9">dst</a>;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">/** Make a unique name for an object based on the name of the stack</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment"> * variable passed in. If introspection isn&#39;t working or there are no</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment"> * debug symbols, just uses unique_name with the given prefix. */</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#a2eb97978547d98141752de6b614195f4">make_entity_name</a>(<span class="keywordtype">void</span> *stack_ptr, <span class="keyword">const</span> std::string &amp;type, <span class="keywordtype">char</span> prefix);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">/** Generate a unique name starting with the given character. It&#39;s</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment"> * unique relative to all other calls to unique_name done by this</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment"> * process. Not thread-safe. */</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9">unique_name</a>(<span class="keywordtype">char</span> prefix);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">/** Generate a unique name starting with the given string.  Not</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment"> * thread-safe. */</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9">unique_name</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">bool</span> user = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">/** Test if the first string starts with the second string */</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed">starts_with</a>(<span class="keyword">const</span> std::string &amp;str, <span class="keyword">const</span> std::string &amp;prefix);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">/** Test if the first string ends with the second string */</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <span class="keywordtype">bool</span> <a class="code" href="namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28">ends_with</a>(<span class="keyword">const</span> std::string &amp;str, <span class="keyword">const</span> std::string &amp;suffix);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">/** Replace all matches of the second string in the first string with the last string */</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#a323b05ce69829cea65348efc21923625">replace_all</a>(std::string &amp;str, <span class="keyword">const</span> std::string &amp;find, <span class="keyword">const</span> std::string &amp;replace);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="comment"></span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">/** Return the final token of the name string using the given delimiter. */</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string <a class="code" href="namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516">base_name</a>(<span class="keyword">const</span> std::string &amp;name, <span class="keywordtype">char</span> delim = <span class="charliteral">&#39;.&#39;</span>);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">/** Split the source string using &#39;delim&#39; as the divider. */</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::vector&lt;std::string&gt; <a class="code" href="namespace_halide_1_1_internal.html#aedc761896b3e6a38bddce45b6c0f8b15">split_string</a>(<span class="keyword">const</span> std::string &amp;source, <span class="keyword">const</span> std::string &amp;delim);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#aacabf4d4e1d92f8059e6c3ce90b06368">  208</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> <span class="keywordtype">void</span> <a class="code" href="namespace_halide_1_1_internal.html#aacabf4d4e1d92f8059e6c3ce90b06368">collect_args</a>(std::vector&lt;T&gt; &amp;collected_args) {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> T2&gt;</div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a11a5d4585e8974633558071b65ccead7">  212</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> <span class="keywordtype">void</span> <a class="code" href="namespace_halide_1_1_internal.html#aacabf4d4e1d92f8059e6c3ce90b06368">collect_args</a>(std::vector&lt;T&gt; &amp;collected_args,</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                                   T2 arg) {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    collected_args.push_back(arg);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;}</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> T2, <span class="keyword">typename</span> ...Args&gt;</div>
+<div class="line"><a name="l00218"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#afb4859b8bc2993517cfdc270931b4d8d">  218</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> <span class="keywordtype">void</span> <a class="code" href="namespace_halide_1_1_internal.html#aacabf4d4e1d92f8059e6c3ce90b06368">collect_args</a>(std::vector&lt;T&gt; &amp;collected_args,</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                                   T2 arg, Args... args) {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    collected_args.push_back(arg);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <a class="code" href="namespace_halide_1_1_internal.html#aacabf4d4e1d92f8059e6c3ce90b06368">collect_args</a>(collected_args, args...);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;}</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2, <span class="keyword">typename</span> T3, <span class="keyword">typename</span> T4 &gt;</div>
+<div class="line"><a name="l00225"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#aa3edc6396d4157000cf0b27bec127c20">  225</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> <span class="keywordtype">void</span> <a class="code" href="namespace_halide_1_1_internal.html#aa3edc6396d4157000cf0b27bec127c20">collect_paired_args</a>(std::vector&lt;std::pair&lt;T1, T2&gt;&gt; &amp;collected_args,</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                                     T3 a1, T4 a2) {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    collected_args.push_back(std::pair&lt;T1, T2&gt;(a1, a2));</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;}</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2, <span class="keyword">typename</span> T3, <span class="keyword">typename</span> T4, <span class="keyword">typename</span> ...Args&gt;</div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="namespace_halide_1_1_internal.html#a4b69555853e1ada3402c97304481c821">  231</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> <span class="keywordtype">void</span> <a class="code" href="namespace_halide_1_1_internal.html#aa3edc6396d4157000cf0b27bec127c20">collect_paired_args</a>(std::vector&lt;std::pair&lt;T1, T2&gt;&gt; &amp;collected_args,</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                                   T3 a1, T4 a2, Args... args) {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    collected_args.push_back(std::pair&lt;T1, T2&gt;(a1, a2));</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <a class="code" href="namespace_halide_1_1_internal.html#aa3edc6396d4157000cf0b27bec127c20">collect_paired_args</a>(collected_args, args...);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;}</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>... T&gt;</div>
+<div class="line"><a name="l00238"></a><span class="lineno"><a class="line" href="struct_halide_1_1_internal_1_1meta__and.html">  238</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1meta__and.html">meta_and</a> : std::true_type {};</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="struct_halide_1_1_internal_1_1meta__and_3_01_t1_00_01_args_8_8_8_4.html">  241</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1meta__and.html">meta_and</a>&lt;T1, Args...&gt; : std::integral_constant&lt;bool, T1::value &amp;&amp; meta_and&lt;Args...&gt;::value&gt; {};</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> To, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00244"></a><span class="lineno"><a class="line" href="struct_halide_1_1_internal_1_1all__are__convertible.html">  244</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_halide_1_1_internal_1_1all__are__convertible.html">all_are_convertible</a> : <a class="code" href="struct_halide_1_1_internal_1_1meta__and.html">meta_and</a>&lt;std::is_convertible&lt;Args, To&gt;...&gt; {};</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;}</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;}</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="namespace_halide_1_1_internal_html_a230079281175545b9b90b2285106ab28"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28">Halide::Internal::ends_with</a></div><div class="ttdeci">EXPORT bool ends_with(const std::string &amp;str, const std::string &amp;suffix)</div><div class="ttdoc">Test if the first string ends with the second string. </div></div>
 <div class="ttc" id="namespace_halide_1_1_internal_html_a2eb97978547d98141752de6b614195f4"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a2eb97978547d98141752de6b614195f4">Halide::Internal::make_entity_name</a></div><div class="ttdeci">EXPORT std::string make_entity_name(void *stack_ptr, const std::string &amp;type, char prefix)</div><div class="ttdoc">Make a unique name for an object based on the name of the stack variable passed in. </div></div>
-<div class="ttc" id="namespace_halide_1_1_internal_html_a94816d6979fdadb6e206a5d0a668e008"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a94816d6979fdadb6e206a5d0a668e008">Halide::Internal::reinterpret_bits</a></div><div class="ttdeci">DstType reinterpret_bits(const SrcType &amp;src)</div><div class="ttdoc">An aggressive form of reinterpret cast used for correct type-punning. </div><div class="ttdef"><b>Definition:</b> <a href="_util_8h_source.html#l00170">Util.h:170</a></div></div>
+<div class="ttc" id="namespace_halide_1_1_internal_html_a94816d6979fdadb6e206a5d0a668e008"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a94816d6979fdadb6e206a5d0a668e008">Halide::Internal::reinterpret_bits</a></div><div class="ttdeci">DstType reinterpret_bits(const SrcType &amp;src)</div><div class="ttdoc">An aggressive form of reinterpret cast used for correct type-punning. </div><div class="ttdef"><b>Definition:</b> <a href="_util_8h_source.html#l00171">Util.h:171</a></div></div>
 <div class="ttc" id="runtime__internal_8h_html_add55236e1a6168d059f1409762081d1a"><div class="ttname"><a href="runtime__internal_8h.html#add55236e1a6168d059f1409762081d1a">memcpy</a></div><div class="ttdeci">void * memcpy(void *s1, const void *s2, size_t n)</div></div>
 <div class="ttc" id="namespace_halide_1_1_internal_html_aa7703083cfe592de68f37796533724ed"><div class="ttname"><a href="namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed">Halide::Internal::starts_with</a></div><div class="ttdeci">EXPORT bool starts_with(const std::string &amp;str, const std::string &amp;prefix)</div><div class="ttdoc">Test if the first string starts with the second string. </div></div>
 <div class="ttc" id="namespace_halide_1_1_internal_html_aedc761896b3e6a38bddce45b6c0f8b15"><div class="ttname"><a href="namespace_halide_1_1_internal.html#aedc761896b3e6a38bddce45b6c0f8b15">Halide::Internal::split_string</a></div><div class="ttdeci">EXPORT std::vector&lt; std::string &gt; split_string(const std::string &amp;source, const std::string &amp;delim)</div><div class="ttdoc">Split the source string using &#39;delim&#39; as the divider. </div></div>
 <div class="ttc" id="namespace_halide_1_1_internal_html_acd575ab182df12cc793dba4aa241c1a9"><div class="ttname"><a href="namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9">Halide::Internal::unique_name</a></div><div class="ttdeci">EXPORT std::string unique_name(char prefix)</div><div class="ttdoc">Generate a unique name starting with the given character. </div></div>
+<div class="ttc" id="namespace_halide_1_1_internal_html_aa3edc6396d4157000cf0b27bec127c20"><div class="ttname"><a href="namespace_halide_1_1_internal.html#aa3edc6396d4157000cf0b27bec127c20">Halide::Internal::collect_paired_args</a></div><div class="ttdeci">NO_INLINE void collect_paired_args(std::vector&lt; std::pair&lt; T1, T2 &gt;&gt; &amp;collected_args, T3 a1, T4 a2)</div><div class="ttdef"><b>Definition:</b> <a href="_util_8h_source.html#l00225">Util.h:225</a></div></div>
+<div class="ttc" id="runtime__internal_8h_html_a4f15ee8aa627692edfd6bdfe9a45fbf9"><div class="ttname"><a href="runtime__internal_8h.html#a4f15ee8aa627692edfd6bdfe9a45fbf9">dst</a></div><div class="ttdeci">char * dst</div><div class="ttdef"><b>Definition:</b> <a href="runtime__internal_8h_source.html#l00117">runtime_internal.h:117</a></div></div>
+<div class="ttc" id="_util_8h_html_ab5ce7bd7fe4169a9f709815f03f9870b"><div class="ttname"><a href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a></div><div class="ttdeci">#define NO_INLINE</div><div class="ttdef"><b>Definition:</b> <a href="_util_8h_source.html#l00039">Util.h:39</a></div></div>
 <div class="ttc" id="namespace_halide_1_1_internal_html_ac91d88c24b89bb17c7b69c671c723516"><div class="ttname"><a href="namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516">Halide::Internal::base_name</a></div><div class="ttdeci">EXPORT std::string base_name(const std::string &amp;name, char delim= '.')</div><div class="ttdoc">Return the final token of the name string using the given delimiter. </div></div>
-<div class="ttc" id="namespace_halide_1_1_internal_html_a1581b658edf919ea8aae58ad09b4f829"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">Halide::Internal::vec</a></div><div class="ttdeci">std::vector&lt; T &gt; vec(T a)</div><div class="ttdoc">Build small vectors of up to 10 elements. </div><div class="ttdef"><b>Definition:</b> <a href="_util_8h_source.html#l00050">Util.h:50</a></div></div>
-<div class="ttc" id="_util_8h_html_a3472d8cdbb788d5f1815b3522595bc49"><div class="ttname"><a href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a></div><div class="ttdeci">#define EXPORT</div><div class="ttdef"><b>Definition:</b> <a href="_util_8h_source.html#l00028">Util.h:28</a></div></div>
+<div class="ttc" id="struct_halide_1_1_internal_1_1all__are__convertible_html"><div class="ttname"><a href="struct_halide_1_1_internal_1_1all__are__convertible.html">Halide::Internal::all_are_convertible</a></div><div class="ttdef"><b>Definition:</b> <a href="_util_8h_source.html#l00244">Util.h:244</a></div></div>
+<div class="ttc" id="namespace_halide_1_1_internal_html_a1581b658edf919ea8aae58ad09b4f829"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a1581b658edf919ea8aae58ad09b4f829">Halide::Internal::vec</a></div><div class="ttdeci">std::vector&lt; T &gt; vec(T a)</div><div class="ttdoc">Build small vectors of up to 10 elements. </div><div class="ttdef"><b>Definition:</b> <a href="_util_8h_source.html#l00051">Util.h:51</a></div></div>
+<div class="ttc" id="struct_halide_1_1_internal_1_1meta__and_html"><div class="ttname"><a href="struct_halide_1_1_internal_1_1meta__and.html">Halide::Internal::meta_and</a></div><div class="ttdef"><b>Definition:</b> <a href="_util_8h_source.html#l00238">Util.h:238</a></div></div>
+<div class="ttc" id="namespace_halide_1_1_internal_html_aacabf4d4e1d92f8059e6c3ce90b06368"><div class="ttname"><a href="namespace_halide_1_1_internal.html#aacabf4d4e1d92f8059e6c3ce90b06368">Halide::Internal::collect_args</a></div><div class="ttdeci">NO_INLINE void collect_args(std::vector&lt; T &gt; &amp;collected_args)</div><div class="ttdef"><b>Definition:</b> <a href="_util_8h_source.html#l00208">Util.h:208</a></div></div>
+<div class="ttc" id="_util_8h_html_a3472d8cdbb788d5f1815b3522595bc49"><div class="ttname"><a href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a></div><div class="ttdeci">#define EXPORT</div><div class="ttdef"><b>Definition:</b> <a href="_util_8h_source.html#l00029">Util.h:29</a></div></div>
 <div class="ttc" id="namespace_halide_1_1_internal_html_a0aeffeff26578021bc780e1506bfa448"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a0aeffeff26578021bc780e1506bfa448">Halide::Internal::int_to_string</a></div><div class="ttdeci">EXPORT std::string int_to_string(int x)</div><div class="ttdoc">Convert an integer to a string. </div></div>
 <div class="ttc" id="namespace_halide_1_1_internal_html_a323b05ce69829cea65348efc21923625"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a323b05ce69829cea65348efc21923625">Halide::Internal::replace_all</a></div><div class="ttdeci">EXPORT std::string replace_all(std::string &amp;str, const std::string &amp;find, const std::string &amp;replace)</div><div class="ttdoc">Replace all matches of the second string in the first string with the last string. </div></div>
 </div><!-- fragment --></div><!-- contents -->

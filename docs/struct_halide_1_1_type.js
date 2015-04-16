@@ -6,7 +6,11 @@ var struct_halide_1_1_type =
       [ "Float", "struct_halide_1_1_type.html#ac456d5a34cbc1cfbac65d228e6306ed4a2f758fc75c2aeb37c18a519105a488e5", null ],
       [ "Handle", "struct_halide_1_1_type.html#ac456d5a34cbc1cfbac65d228e6306ed4af4968c0293f03d836f66598dc6593f1a", null ]
     ] ],
+    [ "Type", "struct_halide_1_1_type.html#a065e12f4f355efd0b8823f6c74d5d596", null ],
+    [ "Type", "struct_halide_1_1_type.html#aba2a8390878ed77e6738dfa9d64660a3", null ],
+    [ "Type", "struct_halide_1_1_type.html#afa271c074569ed20b96286fa64ea2459", null ],
     [ "bytes", "struct_halide_1_1_type.html#a51daf7af52265b0fc1508b6bafd2361a", null ],
+    [ "operator=", "struct_halide_1_1_type.html#ac00df7d2f2f46907ed603c13377684d6", null ],
     [ "is_bool", "struct_halide_1_1_type.html#a27521675bba618c3605a1c8807831641", null ],
     [ "is_vector", "struct_halide_1_1_type.html#a4f495c8b3b8689f528f7adbad60ba8ac", null ],
     [ "is_scalar", "struct_halide_1_1_type.html#a521753edbda1aeb8c2d118a1395333d0", null ],

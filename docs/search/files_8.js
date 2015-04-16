@@ -2,6 +2,7 @@ var searchData=
 [
   ['image_2eh',['Image.h',['../_image_8h.html',1,'']]],
   ['injecthostdevbuffercopies_2eh',['InjectHostDevBufferCopies.h',['../_inject_host_dev_buffer_copies_8h.html',1,'']]],
+  ['injectimageintrinsics_2eh',['InjectImageIntrinsics.h',['../_inject_image_intrinsics_8h.html',1,'']]],
   ['injectopenglintrinsics_2eh',['InjectOpenGLIntrinsics.h',['../_inject_open_g_l_intrinsics_8h.html',1,'']]],
   ['inline_2eh',['Inline.h',['../_inline_8h.html',1,'']]],
   ['inlinereductions_2eh',['InlineReductions.h',['../_inline_reductions_8h.html',1,'']]],

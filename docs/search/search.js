@@ -12,9 +12,9 @@ var indexSectionsWithContent =
   2: "hl",
   3: "abcdefghijlmopqrstuv",
   4: "abcdefghijlmnopqrstuvwz~",
-  5: "_abcdefghilmnoprstuvwxyz",
-  6: "bcdefghilprstu",
-  7: "acfghkmopst",
+  5: "_abcdefghijklmnoprstuvwxyz",
+  6: "abcefghilprstuv",
+  7: "acdfhklmopst",
   8: "abcdefghijlmnoprstuvwx",
   9: "_bceghimnsuw",
   10: "dh"

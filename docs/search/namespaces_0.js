@@ -8,6 +8,6 @@ var searchData=
   ['internal',['Internal',['../namespace_halide_1_1_runtime_1_1_internal.html',1,'Halide::Runtime']]],
   ['internal',['Internal',['../namespace_halide_1_1_internal.html',1,'Halide']]],
   ['internal',['Internal',['../namespace_halide_1_1_boundary_conditions_1_1_internal.html',1,'Halide::BoundaryConditions']]],
-  ['linearity',['Linearity',['../namespace_halide_1_1_internal_1_1_linearity.html',1,'Halide::Internal']]],
+  ['introspection',['Introspection',['../namespace_halide_1_1_internal_1_1_introspection.html',1,'Halide::Internal']]],
   ['runtime',['Runtime',['../namespace_halide_1_1_runtime.html',1,'Halide']]]
 ];

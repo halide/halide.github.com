@@ -7,5 +7,6 @@ var structbuffer__t =
     [ "min", "structbuffer__t.html#a97948c56354956969496324defbc4a44", null ],
     [ "elem_size", "structbuffer__t.html#ae161a929ed7ed53425204ddcaf499c63", null ],
     [ "host_dirty", "structbuffer__t.html#a73a357ef44b1417a60ec0da43e9e0868", null ],
-    [ "dev_dirty", "structbuffer__t.html#a6f8e9141729081246d3bfd1e6d1b376a", null ]
+    [ "dev_dirty", "structbuffer__t.html#a6f8e9141729081246d3bfd1e6d1b376a", null ],
+    [ "_padding", "structbuffer__t.html#ac1ca774b7f2f205cc0773814dce8527f", null ]
 ];

@@ -1,6 +1,7 @@
 var class_halide_1_1_output_image_param =
 [
     [ "OutputImageParam", "class_halide_1_1_output_image_param.html#a205baf6f32d6f856decd4fa802236abb", null ],
+    [ "~OutputImageParam", "class_halide_1_1_output_image_param.html#a7182573e0726c49d95f8e582e6485768", null ],
     [ "OutputImageParam", "class_halide_1_1_output_image_param.html#aaf348c4305584ab198bdfb1f71818c94", null ],
     [ "add_implicit_args_if_placeholder", "class_halide_1_1_output_image_param.html#adcdb9139f84833f0caed676cb04962ae", null ],
     [ "name", "class_halide_1_1_output_image_param.html#a756479d8b0bb11897d690efab1b09fbd", null ],
@@ -22,7 +23,7 @@ var class_halide_1_1_output_image_param =
     [ "height", "class_halide_1_1_output_image_param.html#a31b7c69af015ba3617a281e8b2bff8af", null ],
     [ "channels", "class_halide_1_1_output_image_param.html#ae75c6e454a92a62d37eea0000ed28354", null ],
     [ "parameter", "class_halide_1_1_output_image_param.html#acdb849fdea18677d7ae59820a5e86ee9", null ],
-    [ "operator Argument", "class_halide_1_1_output_image_param.html#a0b97726a87c39a28a6a71f626e4ef271", null ],
+    [ "operator Argument", "class_halide_1_1_output_image_param.html#ad154808b553ac7f3ac6ab88cc622bf8e", null ],
     [ "operator ExternFuncArgument", "class_halide_1_1_output_image_param.html#af0de5bbcd9a85bc806f9b65bb781da04", null ],
     [ "param", "class_halide_1_1_output_image_param.html#a176ba9b414a974b30e1709d84706431e", null ]
 ];

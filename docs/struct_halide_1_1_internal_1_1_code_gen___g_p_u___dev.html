@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('struct_halide_1_1_internal_1_1_code_ge
 </div><!--header-->
 <div class="contents">
 
-<p>A code generator that emits GPU code from a given <a class="el" href="namespace_halide.html">Halide</a> stmt.  
+<p>A code generator that emits GPU code from a given <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> stmt.  
  <a href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_code_gen___g_p_u___dev_8h_source.html">CodeGen_GPU_Dev.h</a>&gt;</code></p>
@@ -136,6 +136,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a939a91a4f734a9c3281ace6c2342acfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a803b952d35a4fea02cc8fb0461ea85bb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a803b952d35a4fea02cc8fb0461ea85bb">dump</a> ()=0</td></tr>
 <tr class="separator:a803b952d35a4fea02cc8fb0461ea85bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6225d8b7c6967b9efd757ba1c8a0c7b"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#ae6225d8b7c6967b9efd757ba1c8a0c7b">api_unique_name</a> ()=0</td></tr>
+<tr class="memdesc:ae6225d8b7c6967b9efd757ba1c8a0c7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This routine returns the GPU API name that is combined into runtime routine names to ensure each GPU API has a unique name.  <a href="#ae6225d8b7c6967b9efd757ba1c8a0c7b">More...</a><br/></td></tr>
+<tr class="separator:ae6225d8b7c6967b9efd757ba1c8a0c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97090ee3ba4891b50d6c79adc9928335"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a97090ee3ba4891b50d6c79adc9928335">print_gpu_name</a> (const std::string &amp;name)=0</td></tr>
 <tr class="memdesc:a97090ee3ba4891b50d6c79adc9928335"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the specified name transformed by the variable naming rules for the GPU language backend.  <a href="#a97090ee3ba4891b50d6c79adc9928335">More...</a><br/></td></tr>
 <tr class="separator:a97090ee3ba4891b50d6c79adc9928335"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,9 +159,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:ac1562c4eda09f8bc66f5e94e2e4f4ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A code generator that emits GPU code from a given <a class="el" href="namespace_halide.html">Halide</a> stmt. </p>
+<div class="textblock"><p>A code generator that emits GPU code from a given <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> stmt. </p>
 
-<p>Definition at line <a class="el" href="_code_gen___g_p_u___dev_8h_source.html#l00031">31</a> of file <a class="el" href="_code_gen___g_p_u___dev_8h_source.html">CodeGen_GPU_Dev.h</a>.</p>
+<p>Definition at line <a class="el" href="_code_gen___g_p_u___dev_8h_source.html#l00086">86</a> of file <a class="el" href="_code_gen___g_p_u___dev_8h_source.html">CodeGen_GPU_Dev.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a7597c4d74a373eff2dbad021487d4bcd"></a>
 <div class="memitem">
@@ -223,7 +226,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Compile a GPU kernel into the module. </p>
-<p>This may be called many times with different kernels, which will all be accumulated into a single source module shared by a given <a class="el" href="namespace_halide.html">Halide</a> pipeline. </p>
+<p>This may be called many times with different kernels, which will all be accumulated into a single source module shared by a given <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> pipeline. </p>
 
 <p>Implemented in <a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a5c022d9320ba49c04dae993894231013">Halide::Internal::CodeGen_PTX_Dev</a>, <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html#af88e79dbd038bac91b601dd1dc6b1ed5">Halide::Internal::CodeGen_OpenGL_Dev</a>, and <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a328d77f5c9018228332ae8dec8d973ac">Halide::Internal::CodeGen_OpenCL_Dev</a>.</p>
 
@@ -253,7 +256,7 @@ Static Public Member Functions</h2></td></tr>
 <p>(Re)initialize the GPU kernel module. </p>
 <p>This is separate from compile, since a GPU device module will often have many kernels compiled into it for a single pipeline. </p>
 
-<p>Implemented in <a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a644643413c80d0731d08cb96bb12c023">Halide::Internal::CodeGen_PTX_Dev</a>, <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#ac7a8fc6f6aceeca4efbc8f4ce12524b5">Halide::Internal::CodeGen_OpenCL_Dev</a>, and <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html#a29e85a8fc706a97ac3709e6518edf6c8">Halide::Internal::CodeGen_OpenGL_Dev</a>.</p>
+<p>Implemented in <a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ac9f6784e96f741ecb6b7ea119d7395d1">Halide::Internal::CodeGen_PTX_Dev</a>, <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#ac7a8fc6f6aceeca4efbc8f4ce12524b5">Halide::Internal::CodeGen_OpenCL_Dev</a>, and <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html#a29e85a8fc706a97ac3709e6518edf6c8">Halide::Internal::CodeGen_OpenGL_Dev</a>.</p>
 
 </div>
 </div>
@@ -332,6 +335,33 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae6225d8b7c6967b9efd757ba1c8a0c7b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::string Halide::Internal::CodeGen_GPU_Dev::api_unique_name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This routine returns the GPU API name that is combined into runtime routine names to ensure each GPU API has a unique name. </p>
+
+<p>Implemented in <a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a2f01bb9c3bfa414bc4571c39c3ca9f55">Halide::Internal::CodeGen_PTX_Dev</a>, <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#afa9074d552c90fde3f1d18ad878dab68">Halide::Internal::CodeGen_OpenCL_Dev</a>, and <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html#ade2140d2b2d394a1033eceab2c7d973e">Halide::Internal::CodeGen_OpenGL_Dev</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a97090ee3ba4891b50d6c79adc9928335"></a>
 <div class="memitem">
 <div class="memproto">
@@ -357,7 +387,7 @@ Static Public Member Functions</h2></td></tr>
 <p>Returns the specified name transformed by the variable naming rules for the GPU language backend. </p>
 <p>Used to determine the name of a parameter during host codegen. </p>
 
-<p>Implemented in <a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ade4a0d20fa2fc8507810fef1bf8d57ab">Halide::Internal::CodeGen_PTX_Dev</a>, <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#acbd0e0b49b9e11100f04ab06ae648567">Halide::Internal::CodeGen_OpenCL_Dev</a>, and <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html#a3798eead42260ca70ca54b647ec12a04">Halide::Internal::CodeGen_OpenGL_Dev</a>.</p>
+<p>Implemented in <a class="el" href="class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ade4a0d20fa2fc8507810fef1bf8d57ab">Halide::Internal::CodeGen_PTX_Dev</a>, and <a class="el" href="class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#acbd0e0b49b9e11100f04ab06ae648567">Halide::Internal::CodeGen_OpenCL_Dev</a>.</p>
 
 </div>
 </div>

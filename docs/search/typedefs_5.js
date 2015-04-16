@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['generatorparam',['GeneratorParam',['../class_halide_1_1_names_interface.html#a14f50750abe61fe59248538697e689dc',1,'Halide::NamesInterface']]],
+  ['generatorparamvalues',['GeneratorParamValues',['../namespace_halide_1_1_internal.html#ab08852c0c8674ceba4ec8739d799256c',1,'Halide::Internal']]],
   ['glboolean',['GLboolean',['../mini__opengl_8h.html#aa010a67382116caf29c29318251ccb6c',1,'mini_opengl.h']]],
   ['glchar',['GLchar',['../mini__opengl_8h.html#af7575655ac056b187ea385966b95a22d',1,'mini_opengl.h']]],
   ['gldouble',['GLdouble',['../mini__opengl_8h.html#a4f86c02824a01bb647d89449b9a8eacc',1,'mini_opengl.h']]],

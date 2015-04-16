@@ -8,9 +8,7 @@ var hierarchy =
       [ "Halide::Internal::CodeGen_GPU_Host< CodeGen_CPU >", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html", null ]
     ] ],
     [ "CUDA_MEMCPY3D_st", "struct_c_u_d_a___m_e_m_c_p_y3_d__st.html", null ],
-    [ "Halide::Argument", "struct_halide_1_1_argument.html", [
-      [ "Halide::Internal::GPU_Argument", "struct_halide_1_1_internal_1_1_g_p_u___argument.html", null ]
-    ] ],
+    [ "Halide::Argument", "struct_halide_1_1_argument.html", null ],
     [ "Halide::Buffer", "class_halide_1_1_buffer.html", null ],
     [ "Halide::CompileTimeErrorReporter", "class_halide_1_1_compile_time_error_reporter.html", null ],
     [ "Halide::ExprCompare", "struct_halide_1_1_expr_compare.html", null ],
@@ -37,6 +35,14 @@ var hierarchy =
     [ "Halide::Internal::ExprWithCompareCache", "struct_halide_1_1_internal_1_1_expr_with_compare_cache.html", null ],
     [ "Halide::Internal::Function", "class_halide_1_1_internal_1_1_function.html", null ],
     [ "Halide::Internal::FunctionContents", "struct_halide_1_1_internal_1_1_function_contents.html", null ],
+    [ "Halide::Internal::GeneratorBase::EmitOptions", "struct_halide_1_1_internal_1_1_generator_base_1_1_emit_options.html", null ],
+    [ "Halide::Internal::GeneratorFactory", "class_halide_1_1_internal_1_1_generator_factory.html", null ],
+    [ "Halide::Internal::GeneratorParamBase", "class_halide_1_1_internal_1_1_generator_param_base.html", [
+      [ "Halide::GeneratorParam< Halide::Target >", "class_halide_1_1_generator_param.html", null ],
+      [ "Halide::GeneratorParam< T >", "class_halide_1_1_generator_param.html", null ]
+    ] ],
+    [ "Halide::Internal::GeneratorRegistry", "class_halide_1_1_internal_1_1_generator_registry.html", null ],
+    [ "Halide::Internal::GPU_Argument", "struct_halide_1_1_internal_1_1_g_p_u___argument.html", null ],
     [ "Halide::Internal::Interval", "struct_halide_1_1_internal_1_1_interval.html", null ],
     [ "Halide::Internal::IntrusivePtr< T >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
     [ "Halide::Internal::IRCompareCache", "class_halide_1_1_internal_1_1_i_r_compare_cache.html", null ],
@@ -169,7 +175,7 @@ var hierarchy =
     [ "Halide::Internal::IRNodeType", "struct_halide_1_1_internal_1_1_i_r_node_type.html", null ],
     [ "Halide::Internal::IRVisitor", "class_halide_1_1_internal_1_1_i_r_visitor.html", [
       [ "Halide::Internal::Closure", "class_halide_1_1_internal_1_1_closure.html", null ],
-      [ "Halide::Internal::CodeGen", "class_halide_1_1_internal_1_1_code_gen.html", [
+      [ "Halide::Internal::CodeGen_LLVM", "class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html", [
         [ "Halide::Internal::CodeGen_Posix", "class_halide_1_1_internal_1_1_code_gen___posix.html", [
           [ "Halide::Internal::CodeGen_ARM", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html", null ],
           [ "Halide::Internal::CodeGen_MIPS", "class_halide_1_1_internal_1_1_code_gen___m_i_p_s.html", null ],
@@ -189,9 +195,13 @@ var hierarchy =
         ] ]
       ] ]
     ] ],
-    [ "Halide::Internal::JITCompiledModule", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html", null ],
-    [ "Halide::Internal::JITCompiledModule::CleanupRoutine", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module_1_1_cleanup_routine.html", null ],
+    [ "Halide::Internal::JITHandlers", "struct_halide_1_1_internal_1_1_j_i_t_handlers.html", null ],
+    [ "Halide::Internal::JITModule", "struct_halide_1_1_internal_1_1_j_i_t_module.html", null ],
+    [ "Halide::Internal::JITModule::Symbol", "struct_halide_1_1_internal_1_1_j_i_t_module_1_1_symbol.html", null ],
+    [ "Halide::Internal::JITSharedRuntime", "class_halide_1_1_internal_1_1_j_i_t_shared_runtime.html", null ],
+    [ "Halide::Internal::JITUserContext", "struct_halide_1_1_internal_1_1_j_i_t_user_context.html", null ],
     [ "Halide::Internal::LoopLevel", "struct_halide_1_1_internal_1_1_loop_level.html", null ],
+    [ "Halide::Internal::LoweredFunc", "struct_halide_1_1_internal_1_1_lowered_func.html", null ],
     [ "Halide::Internal::ModulusRemainder", "struct_halide_1_1_internal_1_1_modulus_remainder.html", null ],
     [ "Halide::Internal::not_a_pointer< T >", "struct_halide_1_1_internal_1_1not__a__pointer.html", null ],
     [ "Halide::Internal::not_a_pointer< T * >", "struct_halide_1_1_internal_1_1not__a__pointer_3_01_t_01_5_01_4.html", null ],
@@ -211,9 +221,13 @@ var hierarchy =
     [ "Halide::Internal::Specialization", "struct_halide_1_1_internal_1_1_specialization.html", null ],
     [ "Halide::Internal::Split", "struct_halide_1_1_internal_1_1_split.html", null ],
     [ "Halide::Internal::Stmt::Compare", "struct_halide_1_1_internal_1_1_stmt_1_1_compare.html", null ],
-    [ "Halide::Internal::StmtCompiler", "class_halide_1_1_internal_1_1_stmt_compiler.html", null ],
-    [ "Halide::Internal::Term", "struct_halide_1_1_internal_1_1_term.html", null ],
     [ "Halide::Internal::UpdateDefinition", "struct_halide_1_1_internal_1_1_update_definition.html", null ],
+    [ "Halide::Module", "class_halide_1_1_module.html", null ],
+    [ "Halide::NamesInterface", "class_halide_1_1_names_interface.html", [
+      [ "Halide::Internal::GeneratorBase", "class_halide_1_1_internal_1_1_generator_base.html", [
+        [ "Halide::Generator< T >", "class_halide_1_1_generator.html", null ]
+      ] ]
+    ] ],
     [ "Halide::OutputImageParam", "class_halide_1_1_output_image_param.html", [
       [ "Halide::ImageParam", "class_halide_1_1_image_param.html", null ]
     ] ],
@@ -222,11 +236,10 @@ var hierarchy =
     [ "Halide::PrintArg", "struct_halide_1_1_print_arg.html", null ],
     [ "Halide::RDom", "class_halide_1_1_r_dom.html", null ],
     [ "Halide::Realization", "class_halide_1_1_realization.html", null ],
-    [ "Halide::Runtime::Internal::dev_copy", "struct_halide_1_1_runtime_1_1_internal_1_1dev__copy.html", null ],
-    [ "Halide::Runtime::Internal::Printer< type, length >", "class_halide_1_1_runtime_1_1_internal_1_1_printer.html", null ],
+    [ "Halide::RegisterGenerator< T >", "class_halide_1_1_register_generator.html", null ],
+    [ "Halide::Runtime::Internal::device_copy", "struct_halide_1_1_runtime_1_1_internal_1_1device__copy.html", null ],
     [ "Halide::Runtime::Internal::ScopedMutexLock", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_mutex_lock.html", null ],
     [ "Halide::Runtime::Internal::ScopedSpinLock", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html", null ],
-    [ "Halide::Runtime::Internal::SinkPrinter", "class_halide_1_1_runtime_1_1_internal_1_1_sink_printer.html", null ],
     [ "Halide::RVar", "class_halide_1_1_r_var.html", null ],
     [ "Halide::Stage", "class_halide_1_1_stage.html", null ],
     [ "Halide::Target", "struct_halide_1_1_target.html", null ],
@@ -234,7 +247,11 @@ var hierarchy =
     [ "Halide::Type", "struct_halide_1_1_type.html", null ],
     [ "Halide::Var", "class_halide_1_1_var.html", null ],
     [ "Halide::VarOrRVar", "struct_halide_1_1_var_or_r_var.html", null ],
+    [ "halide_device_interface", "structhalide__device__interface.html", null ],
+    [ "halide_filter_argument_t", "structhalide__filter__argument__t.html", null ],
+    [ "halide_filter_metadata_t", "structhalide__filter__metadata__t.html", null ],
     [ "halide_mutex", "structhalide__mutex.html", null ],
+    [ "halide_scalar_value_t", "structhalide__scalar__value__t.html", null ],
     [ "halide_trace_event", "structhalide__trace__event.html", null ],
     [ "HalideIntrospectionCanary::A", "struct_halide_introspection_canary_1_1_a.html", null ],
     [ "HalideIntrospectionCanary::A::B", "class_halide_introspection_canary_1_1_a_1_1_b.html", null ],
@@ -244,12 +261,11 @@ var hierarchy =
         [ "Halide::Internal::Stmt", "struct_halide_1_1_internal_1_1_stmt.html", null ]
       ] ]
     ] ],
-    [ "Halide::Internal::IntrusivePtr< Halide::Internal::CodeGen >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
     [ "Halide::Internal::IntrusivePtr< Halide::Internal::FunctionContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
     [ "Halide::Internal::IntrusivePtr< Halide::Internal::ReductionDomainContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
     [ "Halide::Internal::IntrusivePtr< Internal::BufferContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
     [ "Halide::Internal::IntrusivePtr< Internal::FunctionContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< JITModuleHolder >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< JITModuleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
     [ "Halide::Internal::IntrusivePtr< ParameterContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
     [ "Halide::Internal::IntrusivePtr< ScheduleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
     [ "llvm::IRBuilder< true, llvm::ConstantFolder, llvm::IRBuilderDefaultInserter< true > >", "classllvm_1_1_i_r_builder.html", null ],
@@ -274,6 +290,15 @@ var hierarchy =
           [ "Halide::InternalError", "struct_halide_1_1_internal_error.html", null ],
           [ "Halide::RuntimeError", "struct_halide_1_1_runtime_error.html", null ]
         ] ]
+      ] ]
+    ] ],
+    [ "integral_constant", null, [
+      [ "Halide::Internal::meta_and< T1, Args...>", "struct_halide_1_1_internal_1_1meta__and_3_01_t1_00_01_args_8_8_8_4.html", null ]
+    ] ],
+    [ "true_type", null, [
+      [ "Halide::Internal::meta_and< T >", "struct_halide_1_1_internal_1_1meta__and.html", null ],
+      [ "Halide::Internal::meta_and< std::is_convertible< Args, To >...>", "struct_halide_1_1_internal_1_1meta__and.html", [
+        [ "Halide::Internal::all_are_convertible< To, Args >", "struct_halide_1_1_internal_1_1all__are__convertible.html", null ]
       ] ]
     ] ]
 ];

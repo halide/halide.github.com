@@ -11,7 +11,6 @@ var searchData=
   ['scopedmutexlock',['ScopedMutexLock',['../struct_halide_1_1_runtime_1_1_internal_1_1_scoped_mutex_lock.html',1,'Halide::Runtime::Internal']]],
   ['scopedspinlock',['ScopedSpinLock',['../struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html',1,'Halide::Runtime::Internal']]],
   ['select',['Select',['../struct_halide_1_1_internal_1_1_select.html',1,'Halide::Internal']]],
-  ['sinkprinter',['SinkPrinter',['../class_halide_1_1_runtime_1_1_internal_1_1_sink_printer.html',1,'Halide::Runtime::Internal']]],
   ['smallstack',['SmallStack',['../class_halide_1_1_internal_1_1_small_stack.html',1,'Halide::Internal']]],
   ['smallstack_3c_20halide_3a_3aexpr_20_3e',['SmallStack&lt; Halide::Expr &gt;',['../class_halide_1_1_internal_1_1_small_stack.html',1,'Halide::Internal']]],
   ['smallstack_3c_20halide_3a_3ainternal_3a_3acodegen_5fposix_3a_3aallocation_20_3e',['SmallStack&lt; Halide::Internal::CodeGen_Posix::Allocation &gt;',['../class_halide_1_1_internal_1_1_small_stack.html',1,'Halide::Internal']]],
@@ -23,7 +22,6 @@ var searchData=
   ['split',['Split',['../struct_halide_1_1_internal_1_1_split.html',1,'Halide::Internal']]],
   ['stage',['Stage',['../class_halide_1_1_stage.html',1,'Halide']]],
   ['stmt',['Stmt',['../struct_halide_1_1_internal_1_1_stmt.html',1,'Halide::Internal']]],
-  ['stmtcompiler',['StmtCompiler',['../class_halide_1_1_internal_1_1_stmt_compiler.html',1,'Halide::Internal']]],
   ['stmtnode',['StmtNode',['../struct_halide_1_1_internal_1_1_stmt_node.html',1,'Halide::Internal']]],
   ['stmtnode_3c_20allocate_20_3e',['StmtNode&lt; Allocate &gt;',['../struct_halide_1_1_internal_1_1_stmt_node.html',1,'Halide::Internal']]],
   ['stmtnode_3c_20assertstmt_20_3e',['StmtNode&lt; AssertStmt &gt;',['../struct_halide_1_1_internal_1_1_stmt_node.html',1,'Halide::Internal']]],
@@ -39,5 +37,6 @@ var searchData=
   ['stmtnode_3c_20store_20_3e',['StmtNode&lt; Store &gt;',['../struct_halide_1_1_internal_1_1_stmt_node.html',1,'Halide::Internal']]],
   ['store',['Store',['../struct_halide_1_1_internal_1_1_store.html',1,'Halide::Internal']]],
   ['stringimm',['StringImm',['../struct_halide_1_1_internal_1_1_string_imm.html',1,'Halide::Internal']]],
-  ['sub',['Sub',['../struct_halide_1_1_internal_1_1_sub.html',1,'Halide::Internal']]]
+  ['sub',['Sub',['../struct_halide_1_1_internal_1_1_sub.html',1,'Halide::Internal']]],
+  ['symbol',['Symbol',['../struct_halide_1_1_internal_1_1_j_i_t_module_1_1_symbol.html',1,'Halide::Internal::JITModule']]]
 ];

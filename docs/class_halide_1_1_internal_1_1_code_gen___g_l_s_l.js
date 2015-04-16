@@ -1,7 +1,7 @@
 var class_halide_1_1_internal_1_1_code_gen___g_l_s_l =
 [
     [ "CodeGen_GLSL", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l.html#a694f62ef0deb3040761a7de8b7a3ea19", null ],
-    [ "compile", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l.html#a2a7e4bc6faddb94c42b4445bc99811fc", null ],
+    [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l.html#a7fc5828e09c7c6d1a3fac1f43a8c5bf9", null ],
     [ "print_name", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l.html#ad78b48c051fe00974f7a10fa455b656c", null ],
     [ "print_type", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l.html#a26d868a1f7da272d046be5b772c47fb2", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l.html#a564b0fc57f4ad8d2ac0b3143cea07718", null ],

@@ -1,14 +1,8 @@
 var class_halide_1_1_r_dom =
 [
     [ "RDom", "class_halide_1_1_r_dom.html#a3342100b45875bf3014a119d9a1c36c6", null ],
-    [ "RDom", "class_halide_1_1_r_dom.html#af3d53786e2ed2af434941cf5cc8ac0c1", null ],
-    [ "RDom", "class_halide_1_1_r_dom.html#a3b3cab896cd06290e2aa1ec385a63569", null ],
-    [ "RDom", "class_halide_1_1_r_dom.html#a010e34567f495bb401a69f09a3c11058", null ],
-    [ "RDom", "class_halide_1_1_r_dom.html#a37410099dfd35e6bfc23615cb8988d38", null ],
-    [ "RDom", "class_halide_1_1_r_dom.html#ae8dc8677f98fa0024261446d01c353eb", null ],
-    [ "RDom", "class_halide_1_1_r_dom.html#a78979f02cde08e15fafe0f78c25a24fd", null ],
-    [ "RDom", "class_halide_1_1_r_dom.html#a447f75c133199e6f12f81920b64da2df", null ],
-    [ "RDom", "class_halide_1_1_r_dom.html#a5e68ac4cd6f3f15a1c409dffad625dd5", null ],
+    [ "RDom", "class_halide_1_1_r_dom.html#a7afe920c6ef99b4d68c78406662af368", null ],
+    [ "RDom", "class_halide_1_1_r_dom.html#a11fc3e231c08526f7a074ca40cac0316", null ],
     [ "RDom", "class_halide_1_1_r_dom.html#a63881709137ff1664db2b370a9fe4d34", null ],
     [ "RDom", "class_halide_1_1_r_dom.html#a0629b79311675b202f7dbfae2ec1d561", null ],
     [ "RDom", "class_halide_1_1_r_dom.html#abfeb0de9abf687268b9205de9c803792", null ],

@@ -21,9 +21,7 @@ var class_halide_1_1_buffer =
     [ "defined", "class_halide_1_1_buffer.html#a2c39dfbf593697aa4a5bea422de3b7a2", null ],
     [ "name", "class_halide_1_1_buffer.html#a55989c22a6205a96ac749f6daa1ac8af", null ],
     [ "operator Argument", "class_halide_1_1_buffer.html#a12d4d7a1a23ab2ff51c2dbea52f05de3", null ],
-    [ "set_source_module", "class_halide_1_1_buffer.html#a116957181fe126d7c2b2f68fbd084a27", null ],
-    [ "source_module", "class_halide_1_1_buffer.html#a87cd6d500b2358d577d0b9dc56743ff9", null ],
     [ "copy_to_host", "class_halide_1_1_buffer.html#afc79dc98d70a8245b24c54d25d60ca46", null ],
-    [ "copy_to_dev", "class_halide_1_1_buffer.html#a9ebfdbc705afe62af3838d23c643e882", null ],
+    [ "copy_to_device", "class_halide_1_1_buffer.html#a2e8d75d77c64278c4d3c63a5749ea3f7", null ],
     [ "free_dev_buffer", "class_halide_1_1_buffer.html#a8ca6dbcd6a77154d51ef1bd6cf3348eb", null ]
 ];

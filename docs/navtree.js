@@ -29,7 +29,8 @@ var NAVTREE =
       [ "File List", "files.html", "files" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", "globals_dup" ],
-        [ "Functions", "globals_func.html", null ],
+        [ "Functions", "globals_func.html", "globals_func" ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
@@ -43,20 +44,21 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_allocation_bounds_inference_8h.html",
-"_halide_runtime_8h.html#abf85692a77aec0b887f345d0d3ca6777",
-"_lerp_8h.html#a2c00a579c3d86ae40920d5fc4ffe64cf",
-"class_halide_1_1_func.html#a0701ee43a21643855a9985b362a8eade",
-"class_halide_1_1_image_param.html#a1b9eaff64bf4cddd46349ccfbda988aa",
-"class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac09b90f6599d4672779ed20d427074f8",
-"class_halide_1_1_internal_1_1_i_r_mutator.html#a16f8130ac52f6963639e3b47a5e13eb5",
-"class_halide_1_1_output_image_param.html#a55552ff11aa62ff75cea48d84887a489",
-"functions_vars_f.html",
-"mini__cl_8h.html#a65c08e9fc588e4a6b66f35371ea8a605",
-"mini__cl_8h.html#ad3b85a972d23fe538a7bc5904ab42561",
-"mini__cuda_8h.html#ae12b8a782bebe21b1ac0091bf9f4e2a3add3d49b8118534ddd75a8c7abe4d2015",
-"runtime__internal_8h.html#aa54d82d19c94ab7fa3094d7110fe7b5f",
-"struct_halide_1_1_internal_1_1_function_contents.html#a63f5f48b7243afca9c969d1f5de1f1c9",
-"struct_halide_1_1_runtime_1_1_internal_1_1dev__copy.html#a157d6ee95fd054b29cf32df5f12e6cb3"
+"_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca0d5dfd64f10156a5d2d1453fad4bfb6c",
+"_inject_host_dev_buffer_copies_8h.html#a70fcc88dde228e4f70a90d4848ddb773",
+"_util_8h.html#a57308fdf8df2d93ff56d7dc8d2f621b1",
+"class_halide_1_1_generator_param.html#a8b6c44f656143e604f38974243bdc630",
+"class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a311c2bbc4a4ab4983731ab61dea5bd01",
+"class_halide_1_1_internal_1_1_code_gen___x86.html#a63d6d3f74f90936279977999aa216544",
+"class_halide_1_1_internal_1_1_i_r_visitor.html#adab9fd590380973b06a6ad96386f718c",
+"class_halide_1_1_stage.html#a7f185fac93f1686df0aba9bf4cdd7082",
+"mini__cl_8h.html#a1fab4aa5ddfe126400d064cd07fe93bc",
+"mini__cl_8h.html#a943bf452641977e6c1734d1ebe19c6bc",
+"mini__cuda_8h.html#a9e45c622a47315753c4725c101148a81",
+"mini__opengl_8h.html#ab7dffdc215fbbe75b6ccacfecfc14648",
+"struct_halide_1_1_extern_func_argument.html#ac39965f88b76e3fe4d8206e4090372f5",
+"struct_halide_1_1_internal_1_1_j_i_t_module_1_1_symbol.html#a74460a621cf4273aefe4905c3af86736",
+"struct_halide_1_1_type.html#a065e12f4f355efd0b8823f6c74d5d596"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

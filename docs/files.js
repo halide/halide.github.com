@@ -8,15 +8,8 @@ var files =
     [ "BoundaryConditions.h", "_boundary_conditions_8h.html", "_boundary_conditions_8h" ],
     [ "Bounds.h", "_bounds_8h.html", "_bounds_8h" ],
     [ "BoundsInference.h", "_bounds_inference_8h.html", "_bounds_inference_8h" ],
-    [ "BranchVisitors.h", "_branch_visitors_8h.html", "_branch_visitors_8h" ],
     [ "Buffer.h", "_buffer_8h.html", [
       [ "Buffer", "class_halide_1_1_buffer.html", "class_halide_1_1_buffer" ]
-    ] ],
-    [ "buffer_t.h", "buffer__t_8h.html", "buffer__t_8h" ],
-    [ "CodeGen.h", "_code_gen_8h.html", [
-      [ "IRBuilderDefaultInserter", "classllvm_1_1_i_r_builder_default_inserter.html", null ],
-      [ "IRBuilder", "classllvm_1_1_i_r_builder.html", null ],
-      [ "CodeGen", "class_halide_1_1_internal_1_1_code_gen.html", "class_halide_1_1_internal_1_1_code_gen" ]
     ] ],
     [ "CodeGen_ARM.h", "_code_gen___a_r_m_8h.html", [
       [ "CodeGen_ARM", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html", "class_halide_1_1_internal_1_1_code_gen___a_r_m" ],
@@ -33,6 +26,7 @@ var files =
       [ "CodeGen_GPU_Host", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host" ]
     ] ],
     [ "CodeGen_Internal.h", "_code_gen___internal_8h.html", "_code_gen___internal_8h" ],
+    [ "CodeGen_LLVM.h", "_code_gen___l_l_v_m_8h.html", "_code_gen___l_l_v_m_8h" ],
     [ "CodeGen_MIPS.h", "_code_gen___m_i_p_s_8h.html", [
       [ "CodeGen_MIPS", "class_halide_1_1_internal_1_1_code_gen___m_i_p_s.html", "class_halide_1_1_internal_1_1_code_gen___m_i_p_s" ]
     ] ],
@@ -63,8 +57,11 @@ var files =
     [ "DebugToFile.h", "_debug_to_file_8h.html", "_debug_to_file_8h" ],
     [ "Deinterleave.h", "_deinterleave_8h.html", "_deinterleave_8h" ],
     [ "Derivative.h", "_derivative_8h.html", "_derivative_8h" ],
+    [ "device_interface.h", "device__interface_8h.html", "device__interface_8h" ],
+    [ "DeviceInterface.h", "_device_interface_8h.html", null ],
     [ "EarlyFree.h", "_early_free_8h.html", "_early_free_8h" ],
     [ "Error.h", "_error_8h.html", "_error_8h" ],
+    [ "Expr.h", "_expr_8h.html", "_expr_8h" ],
     [ "ExprUsesVar.h", "_expr_uses_var_8h.html", "_expr_uses_var_8h" ],
     [ "Extern.h", "_extern_8h.html", "_extern_8h" ],
     [ "FastIntegerDivide.h", "_fast_integer_divide_8h.html", "_fast_integer_divide_8h" ],
@@ -77,15 +74,19 @@ var files =
       [ "Function", "class_halide_1_1_internal_1_1_function.html", "class_halide_1_1_internal_1_1_function" ]
     ] ],
     [ "FuseGPUThreadLoops.h", "_fuse_g_p_u_thread_loops_8h.html", "_fuse_g_p_u_thread_loops_8h" ],
-    [ "Generator.h", "_generator_8h.html", null ],
+    [ "Generator.h", "_generator_8h.html", "_generator_8h" ],
     [ "HalideFooter.h", "_halide_footer_8h.html", null ],
     [ "HalideRuntime.h", "_halide_runtime_8h.html", "_halide_runtime_8h" ],
+    [ "HalideRuntimeCuda.h", "_halide_runtime_cuda_8h.html", "_halide_runtime_cuda_8h" ],
+    [ "HalideRuntimeOpenCL.h", "_halide_runtime_open_c_l_8h.html", "_halide_runtime_open_c_l_8h" ],
+    [ "HalideRuntimeOpenGL.h", "_halide_runtime_open_g_l_8h.html", "_halide_runtime_open_g_l_8h" ],
     [ "HumanReadableStmt.h", "_human_readable_stmt_8h.html", "_human_readable_stmt_8h" ],
     [ "Image.h", "_image_8h.html", [
       [ "ImageBase", "class_halide_1_1_image_base.html", "class_halide_1_1_image_base" ],
       [ "Image", "class_halide_1_1_image.html", "class_halide_1_1_image" ]
     ] ],
     [ "InjectHostDevBufferCopies.h", "_inject_host_dev_buffer_copies_8h.html", "_inject_host_dev_buffer_copies_8h" ],
+    [ "InjectImageIntrinsics.h", "_inject_image_intrinsics_8h.html", "_inject_image_intrinsics_8h" ],
     [ "InjectOpenGLIntrinsics.h", "_inject_open_g_l_intrinsics_8h.html", "_inject_open_g_l_intrinsics_8h" ],
     [ "Inline.h", "_inline_8h.html", "_inline_8h" ],
     [ "InlineReductions.h", "_inline_reductions_8h.html", "_inline_reductions_8h" ],
@@ -104,29 +105,29 @@ var files =
       [ "IRVisitor", "class_halide_1_1_internal_1_1_i_r_visitor.html", "class_halide_1_1_internal_1_1_i_r_visitor" ],
       [ "IRGraphVisitor", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html", "class_halide_1_1_internal_1_1_i_r_graph_visitor" ]
     ] ],
-    [ "JITCompiledModule.h", "_j_i_t_compiled_module_8h.html", [
-      [ "JITCompiledModule", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module.html", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module" ],
-      [ "CleanupRoutine", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module_1_1_cleanup_routine.html", "struct_halide_1_1_internal_1_1_j_i_t_compiled_module_1_1_cleanup_routine" ]
-    ] ],
+    [ "JITModule.h", "_j_i_t_module_8h.html", "_j_i_t_module_8h" ],
     [ "Lambda.h", "_lambda_8h.html", "_lambda_8h" ],
-    [ "LegalizeTypes.h", "_legalize_types_8h.html", "_legalize_types_8h" ],
     [ "Lerp.h", "_lerp_8h.html", "_lerp_8h" ],
-    [ "LinearSolve.h", "_linear_solve_8h.html", "_linear_solve_8h" ],
     [ "LLVM_Headers.h", "_l_l_v_m___headers_8h.html", "_l_l_v_m___headers_8h" ],
+    [ "LLVM_Output.h", "_l_l_v_m___output_8h.html", "_l_l_v_m___output_8h" ],
+    [ "LLVM_Runtime_Linker.h", "_l_l_v_m___runtime___linker_8h.html", "_l_l_v_m___runtime___linker_8h" ],
     [ "Lower.h", "_lower_8h.html", "_lower_8h" ],
     [ "MainPage.h", "_main_page_8h.html", null ],
     [ "Memoization.h", "_memoization_8h.html", "_memoization_8h" ],
     [ "mini_cl.h", "mini__cl_8h.html", "mini__cl_8h" ],
     [ "mini_cuda.h", "mini__cuda_8h.html", "mini__cuda_8h" ],
     [ "mini_opengl.h", "mini__opengl_8h.html", "mini__opengl_8h" ],
+    [ "Module.h", "_module_8h.html", "_module_8h" ],
     [ "ModulusRemainder.h", "_modulus_remainder_8h.html", "_modulus_remainder_8h" ],
     [ "ObjectInstanceRegistry.h", "_object_instance_registry_8h.html", [
       [ "ObjectInstanceRegistry", "class_halide_1_1_internal_1_1_object_instance_registry.html", "class_halide_1_1_internal_1_1_object_instance_registry" ]
     ] ],
     [ "OneToOne.h", "_one_to_one_8h.html", "_one_to_one_8h" ],
+    [ "Output.h", "_output_8h.html", "_output_8h" ],
     [ "ParallelRVar.h", "_parallel_r_var_8h.html", "_parallel_r_var_8h" ],
     [ "Param.h", "_param_8h.html", "_param_8h" ],
     [ "Parameter.h", "_parameter_8h.html", "_parameter_8h" ],
+    [ "PartitionLoops.h", "_partition_loops_8h.html", "_partition_loops_8h" ],
     [ "Profiling.h", "_profiling_8h.html", "_profiling_8h" ],
     [ "Qualify.h", "_qualify_8h.html", "_qualify_8h" ],
     [ "Random.h", "_random_8h.html", "_random_8h" ],
@@ -158,11 +159,7 @@ var files =
     [ "Simplify.h", "_simplify_8h.html", "_simplify_8h" ],
     [ "SkipStages.h", "_skip_stages_8h.html", "_skip_stages_8h" ],
     [ "SlidingWindow.h", "_sliding_window_8h.html", "_sliding_window_8h" ],
-    [ "SpecializeBranchedLoops.h", "_specialize_branched_loops_8h.html", "_specialize_branched_loops_8h" ],
-    [ "SpecializeClampedRamps.h", "_specialize_clamped_ramps_8h.html", "_specialize_clamped_ramps_8h" ],
-    [ "StmtCompiler.h", "_stmt_compiler_8h.html", [
-      [ "StmtCompiler", "class_halide_1_1_internal_1_1_stmt_compiler.html", "class_halide_1_1_internal_1_1_stmt_compiler" ]
-    ] ],
+    [ "Solve.h", "_solve_8h.html", "_solve_8h" ],
     [ "StmtToHtml.h", "_stmt_to_html_8h.html", "_stmt_to_html_8h" ],
     [ "StorageFlattening.h", "_storage_flattening_8h.html", "_storage_flattening_8h" ],
     [ "StorageFolding.h", "_storage_folding_8h.html", "_storage_folding_8h" ],

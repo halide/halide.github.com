@@ -121,5 +121,6 @@ var mini__opengl_8h =
     [ "PFNGLGENVERTEXARRAYS", "mini__opengl_8h.html#af6d2ba260308cf4b8ed0b73d4fd4cdc7", null ],
     [ "PFNGLBINDVERTEXARRAY", "mini__opengl_8h.html#abb9f5709c504a36737e81e3e44301dab", null ],
     [ "PFNGLDELETEVERTEXARRAYS", "mini__opengl_8h.html#a575c8e4906dbe43ff5211b9c5c419283", null ],
-    [ "PFNGLGETSTRINGI", "mini__opengl_8h.html#a9349c16a10380420117c91056620ddca", null ]
+    [ "PFNGLGETSTRINGI", "mini__opengl_8h.html#a9349c16a10380420117c91056620ddca", null ],
+    [ "PFNDRAWBUFFERS", "mini__opengl_8h.html#a16c868b6f88a3a05b092e61f8922b7e7", null ]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['emitoptions',['EmitOptions',['../struct_halide_1_1_internal_1_1_generator_base_1_1_emit_options.html',1,'Halide::Internal::GeneratorBase']]],
   ['eq',['EQ',['../struct_halide_1_1_internal_1_1_e_q.html',1,'Halide::Internal']]],
   ['error',['Error',['../struct_halide_1_1_error.html',1,'Halide']]],
   ['errorreport',['ErrorReport',['../struct_halide_1_1_internal_1_1_error_report.html',1,'Halide::Internal']]],
