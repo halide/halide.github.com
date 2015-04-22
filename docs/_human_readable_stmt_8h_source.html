@@ -114,33 +114,33 @@ $(document).ready(function(){initNavTree('_human_readable_stmt_8h_source.html','
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">* Defines methods for simplifying a stmt into a human-readable form.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_i_r_8h.html">IR.h</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_func_8h.html">Func.h</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_image_8h.html">Image.h</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_target_8h.html">Target.h</a>&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>Halide {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>Internal {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * Returns a Stmt simplified using a concrete size of the output, and</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * other optional values for parameters.</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">// @{</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Stmt <a class="code" href="namespace_halide_1_1_internal.html#a67ce3fefc01a50b8f513aac7c5749e31">human_readable_stmt</a>(Function f, Stmt s, Buffer <a class="code" href="runtime__internal_8h.html#a820af5182fa2b758297c9db1af6b2256">buf</a>);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Stmt <a class="code" href="namespace_halide_1_1_internal.html#a67ce3fefc01a50b8f513aac7c5749e31">human_readable_stmt</a>(Function f, Stmt s, Buffer <a class="code" href="runtime__internal_8h.html#a820af5182fa2b758297c9db1af6b2256">buf</a>,</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                std::map&lt;std::string, Expr&gt; additional_replacements);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// @}</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}}</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_i_r_8h.html">IR.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_function_8h.html">Function.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_buffer_8h.html">Buffer.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>Halide {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>Internal {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * Returns a Stmt simplified using a concrete size of the output, and</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * other optional values for parameters.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// @{</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Stmt <a class="code" href="namespace_halide_1_1_internal.html#a67ce3fefc01a50b8f513aac7c5749e31">human_readable_stmt</a>(Function f, Stmt s, Buffer <a class="code" href="runtime__internal_8h.html#a820af5182fa2b758297c9db1af6b2256">buf</a>);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Stmt <a class="code" href="namespace_halide_1_1_internal.html#a67ce3fefc01a50b8f513aac7c5749e31">human_readable_stmt</a>(Function f, Stmt s, Buffer <a class="code" href="runtime__internal_8h.html#a820af5182fa2b758297c9db1af6b2256">buf</a>,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                std::map&lt;std::string, Expr&gt; additional_replacements);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// @}</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="namespace_halide_1_1_internal_html_a67ce3fefc01a50b8f513aac7c5749e31"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a67ce3fefc01a50b8f513aac7c5749e31">Halide::Internal::human_readable_stmt</a></div><div class="ttdeci">EXPORT Stmt human_readable_stmt(Function f, Stmt s, Buffer buf)</div><div class="ttdoc">Returns a Stmt simplified using a concrete size of the output, and other optional values for paramete...</div></div>
-<div class="ttc" id="_target_8h_html"><div class="ttname"><a href="_target_8h.html">Target.h</a></div><div class="ttdoc">Defines the structure that describes a Halide target. </div></div>
-<div class="ttc" id="_func_8h_html"><div class="ttname"><a href="_func_8h.html">Func.h</a></div><div class="ttdoc">Defines Func - the front-end handle on a halide function, and related classes. </div></div>
-<div class="ttc" id="runtime__internal_8h_html_a820af5182fa2b758297c9db1af6b2256"><div class="ttname"><a href="runtime__internal_8h.html#a820af5182fa2b758297c9db1af6b2256">buf</a></div><div class="ttdeci">char buf[length]</div><div class="ttdef"><b>Definition:</b> <a href="runtime__internal_8h_source.html#l00116">runtime_internal.h:116</a></div></div>
-<div class="ttc" id="_image_8h_html"><div class="ttname"><a href="_image_8h.html">Image.h</a></div><div class="ttdoc">Defines Halide&#39;s Image data type. </div></div>
+<div class="ttc" id="runtime__internal_8h_html_a820af5182fa2b758297c9db1af6b2256"><div class="ttname"><a href="runtime__internal_8h.html#a820af5182fa2b758297c9db1af6b2256">buf</a></div><div class="ttdeci">char buf[length]</div><div class="ttdef"><b>Definition:</b> <a href="runtime__internal_8h_source.html#l00118">runtime_internal.h:118</a></div></div>
+<div class="ttc" id="_buffer_8h_html"><div class="ttname"><a href="_buffer_8h.html">Buffer.h</a></div><div class="ttdoc">Defines Buffer - A c++ wrapper around a buffer_t. </div></div>
 <div class="ttc" id="_i_r_8h_html"><div class="ttname"><a href="_i_r_8h.html">IR.h</a></div><div class="ttdoc">Subtypes for Halide expressions (Halide::Expr) and statements (Halide::Internal::Stmt) ...</div></div>
+<div class="ttc" id="_function_8h_html"><div class="ttname"><a href="_function_8h.html">Function.h</a></div><div class="ttdoc">Defines the internal representation of a halide function and related classes. </div></div>
 <div class="ttc" id="_util_8h_html_a3472d8cdbb788d5f1815b3522595bc49"><div class="ttname"><a href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a></div><div class="ttdeci">#define EXPORT</div><div class="ttdef"><b>Definition:</b> <a href="_util_8h_source.html#l00029">Util.h:29</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

@@ -120,7 +120,7 @@ var searchData=
   ['stderr_5ffileno',['STDERR_FILENO',['../runtime__internal_8h.html#ae2fe1725bb5e9823d089c46b9ed5266e',1,'runtime_internal.h']]],
   ['stdout_5ffileno',['STDOUT_FILENO',['../runtime__internal_8h.html#abd165ee6474b5b75bf075842fff13a04',1,'runtime_internal.h']]],
   ['stmt',['Stmt',['../struct_halide_1_1_internal_1_1_stmt.html',1,'Halide::Internal']]],
-  ['stmt',['Stmt',['../struct_halide_1_1_internal_1_1_stmt.html#a67c4a3d0674a0b17c4705ecf19f218e9',1,'Halide::Internal::Stmt::Stmt()'],['../struct_halide_1_1_internal_1_1_stmt.html#a30eb2dc9fe36bdc4fad3df419bacb822',1,'Halide::Internal::Stmt::Stmt(const BaseStmtNode *n)'],['../class_halide_1_1_internal_1_1_i_r_mutator.html#a42d5555df987a19925b937cac758d3a0',1,'Halide::Internal::IRMutator::stmt()']]],
+  ['stmt',['stmt',['../class_halide_1_1_internal_1_1_i_r_mutator.html#a42d5555df987a19925b937cac758d3a0',1,'Halide::Internal::IRMutator::stmt()'],['../struct_halide_1_1_internal_1_1_stmt.html#a67c4a3d0674a0b17c4705ecf19f218e9',1,'Halide::Internal::Stmt::Stmt()'],['../struct_halide_1_1_internal_1_1_stmt.html#a30eb2dc9fe36bdc4fad3df419bacb822',1,'Halide::Internal::Stmt::Stmt(const BaseStmtNode *n)']]],
   ['stmtnode',['StmtNode',['../struct_halide_1_1_internal_1_1_stmt_node.html',1,'Halide::Internal']]],
   ['stmtnode_3c_20allocate_20_3e',['StmtNode&lt; Allocate &gt;',['../struct_halide_1_1_internal_1_1_stmt_node.html',1,'Halide::Internal']]],
   ['stmtnode_3c_20assertstmt_20_3e',['StmtNode&lt; AssertStmt &gt;',['../struct_halide_1_1_internal_1_1_stmt_node.html',1,'Halide::Internal']]],

@@ -3118,7 +3118,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Construct either the left-hand-side of a definition, or a call to a functions that happens to only contain vars as arguments. </p>
-<p>If the function has already been defined, and fewer arguments are given than the function has dimensions, then enough implicit vars are added to the end of the argument list to make up the difference (see <a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117">Var::implicit</a>) </p>
+<p>If the function has already been defined, and fewer arguments are given than the function has dimensions, then enough implicit vars are added to the end of the argument list to make up the difference (see <a class="el" href="class_halide_1_1_var.html#a333e72cf9af6339530cb3544b7fe1324">Var::implicit</a>) </p>
 
 <p>Referenced by <a class="el" href="_func_8h_source.html#l00952">operator()()</a>.</p>
 
@@ -3149,7 +3149,7 @@ template&lt;typename... Args&gt; </div>
 </div><div class="memdoc">
 
 <p>Construct either the left-hand-side of a definition, or a call to a functions that happens to only contain vars as arguments. </p>
-<p>If the function has already been defined, and fewer arguments are given than the function has dimensions, then enough implicit vars are added to the end of the argument list to make up the difference (see <a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117">Var::implicit</a>) </p>
+<p>If the function has already been defined, and fewer arguments are given than the function has dimensions, then enough implicit vars are added to the end of the argument list to make up the difference (see <a class="el" href="class_halide_1_1_var.html#a333e72cf9af6339530cb3544b7fe1324">Var::implicit</a>) </p>
 
 <p>Definition at line <a class="el" href="_func_8h_source.html#l00952">952</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
@@ -3172,7 +3172,7 @@ template&lt;typename... Args&gt; </div>
 </div><div class="memdoc">
 
 <p>Either calls to the function, or the left-hand-side of a update definition (see <a class="el" href="class_halide_1_1_r_dom.html">RDom</a>). </p>
-<p>If the function has already been defined, and fewer arguments are given than the function has dimensions, then enough implicit vars are added to the end of the argument list to make up the difference. (see <a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117">Var::implicit</a>) </p>
+<p>If the function has already been defined, and fewer arguments are given than the function has dimensions, then enough implicit vars are added to the end of the argument list to make up the difference. (see <a class="el" href="class_halide_1_1_var.html#a333e72cf9af6339530cb3544b7fe1324">Var::implicit</a>) </p>
 
 </div>
 </div>
@@ -3211,7 +3211,7 @@ template&lt;typename... Args&gt; </div>
 </div><div class="memdoc">
 
 <p>Either calls to the function, or the left-hand-side of a update definition (see <a class="el" href="class_halide_1_1_r_dom.html">RDom</a>). </p>
-<p>If the function has already been defined, and fewer arguments are given than the function has dimensions, then enough implicit vars are added to the end of the argument list to make up the difference. (see <a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117">Var::implicit</a>) </p>
+<p>If the function has already been defined, and fewer arguments are given than the function has dimensions, then enough implicit vars are added to the end of the argument list to make up the difference. (see <a class="el" href="class_halide_1_1_var.html#a333e72cf9af6339530cb3544b7fe1324">Var::implicit</a>) </p>
 
 <p>Definition at line <a class="el" href="_func_8h_source.html#l00970">970</a> of file <a class="el" href="_func_8h_source.html">Func.h</a>.</p>
 
@@ -3795,40 +3795,40 @@ template&lt;typename... Args&gt; </div>
 <div class="line">}</div>
 </div><!-- fragment --><p> This can be a good way to write a pipeline that splits, vectorizes, or tiles, but can still handle small inputs.</p>
 <p>If a <a class="el" href="class_halide_1_1_func.html" title="A halide function. ">Func</a> has several specializations, the first matching one will be used, so the order in which you define specializations is significant. For example:</p>
-<div class="fragment"><div class="line">f(x) = x + <a class="code" href="namespace_halide.html#a9d6371892ae38e7eb681fd3f23945b06">select</a>(cond1, a, b) - <a class="code" href="namespace_halide.html#a9d6371892ae38e7eb681fd3f23945b06">select</a>(cond2, c, d);</div>
+<div class="fragment"><div class="line">f(x) = x + <a class="code" href="namespace_halide.html#a9d6371892ae38e7eb681fd3f23945b06">select</a>(cond1, <a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#a67dd017542dcaa40f1181f7806bd18af">a</a>, <a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#a220e62865cb92ff423d312a69f2213e6">b</a>) - <a class="code" href="namespace_halide.html#a9d6371892ae38e7eb681fd3f23945b06">select</a>(cond2, c, d);</div>
 <div class="line">f.specialize(cond1);</div>
 <div class="line">f.specialize(cond2);</div>
 </div><!-- fragment --><p> is equivalent to: </p>
 <div class="fragment"><div class="line"><span class="keywordflow">if</span> (cond1) {</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; width; x++) {</div>
-<div class="line">    f[x] = x + a - (cond2 ? c : d);</div>
+<div class="line">    f[x] = x + <a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#a67dd017542dcaa40f1181f7806bd18af">a</a> - (cond2 ? c : d);</div>
 <div class="line">  }</div>
 <div class="line">} <span class="keywordflow">else</span> <span class="keywordflow">if</span> (cond2) {</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; width; x++) {</div>
-<div class="line">    f[x] = x + b - c;</div>
+<div class="line">    f[x] = x + <a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#a220e62865cb92ff423d312a69f2213e6">b</a> - c;</div>
 <div class="line">  }</div>
 <div class="line">} <span class="keywordflow">else</span> {</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; width; x++) {</div>
-<div class="line">    f[x] = x + b - d;</div>
+<div class="line">    f[x] = x + <a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#a220e62865cb92ff423d312a69f2213e6">b</a> - d;</div>
 <div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>Specializations may in turn be specialized, which creates a nested if statement in the generated code.</p>
-<div class="fragment"><div class="line">f(x) = x + <a class="code" href="namespace_halide.html#a9d6371892ae38e7eb681fd3f23945b06">select</a>(cond1, a, b) - <a class="code" href="namespace_halide.html#a9d6371892ae38e7eb681fd3f23945b06">select</a>(cond2, c, d);</div>
+<div class="fragment"><div class="line">f(x) = x + <a class="code" href="namespace_halide.html#a9d6371892ae38e7eb681fd3f23945b06">select</a>(cond1, <a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#a67dd017542dcaa40f1181f7806bd18af">a</a>, <a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#a220e62865cb92ff423d312a69f2213e6">b</a>) - <a class="code" href="namespace_halide.html#a9d6371892ae38e7eb681fd3f23945b06">select</a>(cond2, c, d);</div>
 <div class="line">f.specialize(cond1).specialize(cond2);</div>
 </div><!-- fragment --><p> This is equivalent to: </p>
 <div class="fragment"><div class="line"><span class="keywordflow">if</span> (cond1) {</div>
 <div class="line">  <span class="keywordflow">if</span> (cond2) {</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; width; x++) {</div>
-<div class="line">      f[x] = x + a - c;</div>
+<div class="line">      f[x] = x + <a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#a67dd017542dcaa40f1181f7806bd18af">a</a> - c;</div>
 <div class="line">    }</div>
 <div class="line">  } <span class="keywordflow">else</span> {</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; width; x++) {</div>
-<div class="line">      f[x] = x + a - d;</div>
+<div class="line">      f[x] = x + <a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#a67dd017542dcaa40f1181f7806bd18af">a</a> - d;</div>
 <div class="line">    }</div>
 <div class="line">  }</div>
 <div class="line">} <span class="keywordflow">else</span> {</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; width; x++) {</div>
-<div class="line">    f[x] = x + b - (cond2 ? c : d);</div>
+<div class="line">    f[x] = x + <a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#a220e62865cb92ff423d312a69f2213e6">b</a> - (cond2 ? c : d);</div>
 <div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --><p> To create a 4-way if statement that simplifies away all of the ternary operators above, you could say: </p>
@@ -5519,7 +5519,7 @@ template&lt;typename... Args&gt; </div>
 </div><div class="memdoc">
 
 <p>Casting a function to an expression is equivalent to calling the function with zero arguments. </p>
-<p>Implicit variables will be injected according to the function's dimensionality (see <a class="el" href="class_halide_1_1_var.html#a2e033e439e668e4f1ced0ce854682117">Var::implicit</a>).</p>
+<p>Implicit variables will be injected according to the function's dimensionality (see <a class="el" href="class_halide_1_1_var.html#a333e72cf9af6339530cb3544b7fe1324">Var::implicit</a>).</p>
 <p>This lets you write things like:</p>
 <div class="fragment"><div class="line"><a class="code" href="class_halide_1_1_func.html#aed876d44c3e1dd0a72c4111afc63018b">Func</a> f, g;</div>
 <div class="line">Var x;</div>

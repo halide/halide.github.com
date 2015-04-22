@@ -39,6 +39,7 @@ var searchData=
   ['get_5fscalar_5faddress',['get_scalar_address',['../class_halide_1_1_internal_1_1_parameter.html#af9dae6d7ef18467872aa19749a534623',1,'Halide::Internal::Parameter']]],
   ['get_5fscalar_5fexpr',['get_scalar_expr',['../class_halide_1_1_internal_1_1_parameter.html#aa468c4df7d6f9ac28a012b42a3f362fc',1,'Halide::Internal::Parameter']]],
   ['get_5fsource_5flocation',['get_source_location',['../namespace_halide_1_1_internal_1_1_introspection.html#a5b10b0e284fa3ae543ba526ae4bb85ec',1,'Halide::Internal::Introspection']]],
+  ['get_5fsymbol',['get_symbol',['../namespace_halide_1_1_runtime_1_1_internal.html#a84cd9fa9dfe65a4f32bafed15d3ff905',1,'Halide::Runtime::Internal']]],
   ['get_5ftarget',['get_target',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a9e4b11538c12c9c3529e6173b71fba1e',1,'Halide::Internal::CodeGen_LLVM::get_target()'],['../class_halide_1_1_internal_1_1_generator_base.html#ae154b827db9321f6d28b1caad388ba10',1,'Halide::Internal::GeneratorBase::get_target()']]],
   ['get_5ftarget_5ffrom_5fenvironment',['get_target_from_environment',['../namespace_halide.html#a2d655bb0051fc525e3e5d73997f93cdd',1,'Halide']]],
   ['get_5ftarget_5foptions',['get_target_options',['../namespace_halide.html#a969024cbe87c46ebf6a613214a761599',1,'Halide']]],

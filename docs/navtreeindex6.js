@@ -1,5 +1,12 @@
 var NAVTREEINDEX6 =
 {
+"class_halide_1_1_internal_1_1_code_gen___x86.html#a04b4c88e6ec1bc8ce1eab879f1118009":[2,0,0,0,18,1],
+"class_halide_1_1_internal_1_1_code_gen___x86.html#a0e9c8c920fe8575f67e7fc9d31570059":[2,0,0,0,18,17],
+"class_halide_1_1_internal_1_1_code_gen___x86.html#a145b33d3d37cf18505f3b861c0a88a5a":[2,0,0,0,18,9],
+"class_halide_1_1_internal_1_1_code_gen___x86.html#a37f621dd581029669cfa0fc247ca05b2":[2,0,0,0,18,14],
+"class_halide_1_1_internal_1_1_code_gen___x86.html#a3f8435a01dcfb92dfdcf9ae4a513d75e":[2,0,0,0,18,10],
+"class_halide_1_1_internal_1_1_code_gen___x86.html#a596f3e70dad12d882eca2b3f4ec4a7dc":[2,0,0,0,18,18],
+"class_halide_1_1_internal_1_1_code_gen___x86.html#a5bc22f9d7dabd6a93a4be2e93a95cbeb":[2,0,0,0,18,11],
 "class_halide_1_1_internal_1_1_code_gen___x86.html#a63d6d3f74f90936279977999aa216544":[2,0,0,0,18,3],
 "class_halide_1_1_internal_1_1_code_gen___x86.html#a65e12d2e25135b16a8b54d6e56c0c1a5":[2,0,0,0,18,2],
 "class_halide_1_1_internal_1_1_code_gen___x86.html#a7650dd79313f22c735d31da731717fab":[2,0,0,0,18,0],
@@ -242,12 +249,5 @@ var NAVTREEINDEX6 =
 "class_halide_1_1_internal_1_1_i_r_visitor.html#a950c008fb14e72087aa17580f9b69464":[2,0,0,0,84,10],
 "class_halide_1_1_internal_1_1_i_r_visitor.html#a98f01c67693ac564891f8c212350e1b5":[2,0,0,0,84,32],
 "class_halide_1_1_internal_1_1_i_r_visitor.html#a9ebc76cc94b262328c3b098abafd3b35":[2,0,0,0,84,2],
-"class_halide_1_1_internal_1_1_i_r_visitor.html#aa62fa8d5770fa1d76c882c495bf03dd3":[2,0,0,0,84,14],
-"class_halide_1_1_internal_1_1_i_r_visitor.html#aa7a1f36d4ec20aca4e6ecacfb6606759":[2,0,0,0,84,7],
-"class_halide_1_1_internal_1_1_i_r_visitor.html#aab63214afb0ccf4bcf46bbc8fdf2980f":[2,0,0,0,84,38],
-"class_halide_1_1_internal_1_1_i_r_visitor.html#ab30a19c9578e20170b1943a145637c69":[2,0,0,0,84,27],
-"class_halide_1_1_internal_1_1_i_r_visitor.html#ab39b8d34da662ad4cca706224d046321":[2,0,0,0,84,18],
-"class_halide_1_1_internal_1_1_i_r_visitor.html#ab65dd7fc4320532e0dc99ce6282cd675":[2,0,0,0,84,6],
-"class_halide_1_1_internal_1_1_i_r_visitor.html#ab7d91e6ce9e5b673750be425424bb284":[2,0,0,0,84,17],
-"class_halide_1_1_internal_1_1_i_r_visitor.html#ad83b4164d28611042b6a8511b04f4e9d":[2,0,0,0,84,35]
+"class_halide_1_1_internal_1_1_i_r_visitor.html#aa62fa8d5770fa1d76c882c495bf03dd3":[2,0,0,0,84,14]
 };

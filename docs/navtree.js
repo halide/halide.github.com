@@ -45,20 +45,20 @@ var NAVTREEINDEX =
 [
 "_allocation_bounds_inference_8h.html",
 "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca0d5dfd64f10156a5d2d1453fad4bfb6c",
-"_inject_host_dev_buffer_copies_8h.html#a70fcc88dde228e4f70a90d4848ddb773",
-"_util_8h.html#a57308fdf8df2d93ff56d7dc8d2f621b1",
-"class_halide_1_1_generator_param.html#a8b6c44f656143e604f38974243bdc630",
-"class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a311c2bbc4a4ab4983731ab61dea5bd01",
-"class_halide_1_1_internal_1_1_code_gen___x86.html#a63d6d3f74f90936279977999aa216544",
-"class_halide_1_1_internal_1_1_i_r_visitor.html#adab9fd590380973b06a6ad96386f718c",
-"class_halide_1_1_stage.html#a7f185fac93f1686df0aba9bf4cdd7082",
-"mini__cl_8h.html#a1fab4aa5ddfe126400d064cd07fe93bc",
-"mini__cl_8h.html#a943bf452641977e6c1734d1ebe19c6bc",
-"mini__cuda_8h.html#a9e45c622a47315753c4725c101148a81",
-"mini__opengl_8h.html#ab7dffdc215fbbe75b6ccacfecfc14648",
-"struct_halide_1_1_extern_func_argument.html#ac39965f88b76e3fe4d8206e4090372f5",
-"struct_halide_1_1_internal_1_1_j_i_t_module_1_1_symbol.html#a74460a621cf4273aefe4905c3af86736",
-"struct_halide_1_1_type.html#a065e12f4f355efd0b8823f6c74d5d596"
+"_i_r_visitor_8h_source.html",
+"_util_8h.html#a230079281175545b9b90b2285106ab28",
+"class_halide_1_1_generator.html#a6b03782c9b56e0bc64cfd124e86e43de",
+"class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a24900294c985a5e365a29a129e56e692",
+"class_halide_1_1_internal_1_1_code_gen___x86.html#a04b4c88e6ec1bc8ce1eab879f1118009",
+"class_halide_1_1_internal_1_1_i_r_visitor.html#aa7a1f36d4ec20aca4e6ecacfb6606759",
+"class_halide_1_1_stage.html#a549188358dc9782a0ab3df936b1d99e3",
+"mini__cl_8h.html#a0de7de1fc7ab88baddd443b405ac429d",
+"mini__cl_8h.html#a8cc36e5bc990d70722b41b1cd10372f9",
+"mini__cuda_8h.html#a2d777de93459219644f771c57ab471d8",
+"mini__opengl_8h.html#a85e93b355494186ced027f1a1142fefb",
+"struct_halide_1_1_argument.html#aafb5084c2561c7d8baabe914b5de55e1",
+"struct_halide_1_1_internal_1_1_intrusive_ptr.html",
+"struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa84c6211e4fb941603f6104e98427d7e5"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

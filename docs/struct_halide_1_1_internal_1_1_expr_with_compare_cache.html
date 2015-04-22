@@ -139,7 +139,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>A wrapper about Exprs so that they can be deeply compared with a cache for known-equal subexpressions. </p>
 <p>Useful for unsanitized Exprs coming in from the front-end, which may be horrible graphs with sub-expressions that are equal by value but not by identity. This isn't a comparison object like <a class="el" href="struct_halide_1_1_internal_1_1_i_r_deep_compare.html" title="A compare struct suitable for use in std::map and std::set that computes a lexical ordering on IR nod...">IRDeepCompare</a> above, because libc++ requires that comparison objects be stateless (and constructs a new one for each comparison!), so they can't have a cache associated with them. However, by sneakily making the cache a mutable member of the objects being compared, we can dodge this issue.</p>
 <p>Clunky example usage:</p>
-<div class="fragment"><div class="line">Expr a, b, c, query;</div>
+<div class="fragment"><div class="line">Expr <a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#a67dd017542dcaa40f1181f7806bd18af">a</a>, <a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#a220e62865cb92ff423d312a69f2213e6">b</a>, c, query;</div>
 <div class="line">std::set&lt;ExprWithCompareCache&gt; s;</div>
 <div class="line">IRCompareCache <a class="code" href="struct_halide_1_1_internal_1_1_expr_with_compare_cache.html#aefb84ace775abaacec0d58cda605d2ca">cache</a>(8);</div>
 <div class="line">s.insert(<a class="code" href="struct_halide_1_1_internal_1_1_expr_with_compare_cache.html#a01669a5339b7fcc45d30d44a743fbdc6">ExprWithCompareCache</a>(a, &amp;<a class="code" href="struct_halide_1_1_internal_1_1_expr_with_compare_cache.html#aefb84ace775abaacec0d58cda605d2ca">cache</a>));</div>

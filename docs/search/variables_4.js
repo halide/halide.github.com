@@ -7,7 +7,6 @@ var searchData=
   ['depth',['Depth',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#a2adc0e58f9dd5f26f8e12b570ff41fe2',1,'CUDA_MEMCPY3D_st']]],
   ['destructor',['destructor',['../struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html#a355095a7695c5bc20c071d76a94c4615',1,'Halide::Internal::CodeGen_Posix::Allocation']]],
   ['dev',['dev',['../structbuffer__t.html#a6653bc34b20aa7c42bed9807d1111548',1,'buffer_t']]],
-  ['dev_5fdirty',['dev_dirty',['../structbuffer__t.html#a6f8e9141729081246d3bfd1e6d1b376a',1,'buffer_t']]],
   ['device_5fapi',['device_api',['../struct_halide_1_1_internal_1_1_for.html#a85fa473df0f19474e84863a7ca175668',1,'Halide::Internal::For::device_api()'],['../struct_halide_1_1_internal_1_1_dim.html#aaa47164e0fc683f531fbd6b28de76bf5',1,'Halide::Internal::Dim::device_api()']]],
   ['device_5ffree',['device_free',['../structhalide__device__interface.html#ac94edda3c97520749e830bc08d9ee69e',1,'halide_device_interface']]],
   ['device_5fmalloc',['device_malloc',['../structhalide__device__interface.html#a05746fe197f531fcaa4a300456882e26',1,'halide_device_interface']]],

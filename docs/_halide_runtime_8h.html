@@ -145,6 +145,8 @@ Macros</h2></td></tr>
 <tr class="memitem:ac87d020eed3438306b57d1eec5de0364"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#ac87d020eed3438306b57d1eec5de0364">halide_assert</a>(<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, cond)&#160;&#160;&#160;if (!(cond)) <a class="el" href="runtime__internal_8h.html#ac21fd6d789f7ccd2a6c1f91ec732cbf1">halide_error</a>(<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, #cond);</td></tr>
 <tr class="memdesc:ac87d020eed3438306b57d1eec5de0364"><td class="mdescLeft">&#160;</td><td class="mdescRight">A macro that calls halide_error if the supplied condition is false.  <a href="#ac87d020eed3438306b57d1eec5de0364">More...</a><br/></td></tr>
 <tr class="separator:ac87d020eed3438306b57d1eec5de0364"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaa0f73fc7954ac27a2c11020681cdf3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#afaa0f73fc7954ac27a2c11020681cdf3">HALIDE_ATTRIBUTE_ALIGN</a>(x)&#160;&#160;&#160;__attribute__((aligned(x)))</td></tr>
+<tr class="separator:afaa0f73fc7954ac27a2c11020681cdf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2622d62cd7688033c8c6ad612cf5c3e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a2622d62cd7688033c8c6ad612cf5c3e8">BUFFER_T_DEFINED</a></td></tr>
 <tr class="separator:a2622d62cd7688033c8c6ad612cf5c3e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -199,7 +201,11 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca92667ff05a79083a7de97843d507ecdb">halide_error_code_device_malloc_failed</a> = -16, 
 <a class="el" href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca79b37d315188ac600b479f68d2627952">halide_error_code_device_sync_failed</a> = -17, 
 <a class="el" href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448cab9688dd68dbb132ba66ea80186fc18d1">halide_error_code_device_free_failed</a> = -18, 
-<a class="el" href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca006100e2007527689fe7d6104b209956">halide_error_code_no_device_interface</a> = -19
+<a class="el" href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca006100e2007527689fe7d6104b209956">halide_error_code_no_device_interface</a> = -19, 
+<br/>
+&#160;&#160;<a class="el" href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca6c123efceb388bfef491629d89065775">halide_error_code_matlab_init_failed</a> = -20, 
+<a class="el" href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448caf5c56ee69de59cfb5959461ac0a8c570">halide_error_code_matlab_bad_param_type</a> = -21, 
+<a class="el" href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca28e9d2c63f5933a4422b668b3f473867">halide_error_code_internal_error</a> = -22
 <br/>
  }</td></tr>
 <tr class="memdesc:aba16e170cc9aa30b78ff703e101a448c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The error codes that may be returned by a <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> pipeline.  <a href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448c">More...</a><br/></td></tr>
@@ -408,6 +414,24 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="afaa0f73fc7954ac27a2c11020681cdf3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HALIDE_ATTRIBUTE_ALIGN</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;__attribute__((aligned(x)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00457">457</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a2622d62cd7688033c8c6ad612cf5c3e8"></a>
 <div class="memitem">
 <div class="memproto">
@@ -418,7 +442,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00442">442</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00462">462</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -466,7 +490,7 @@ Functions</h2></td></tr>
 <p>enumerate_func_t is a callback for halide_enumerate_registered_filters; it is called once per registered filter discovered. </p>
 <p>Return 0 to continue the enumeration, or nonzero to terminate the enumeration. enumerate_context is an arbitrary pointer you can use to provide a callback argument. </p>
 
-<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00579">579</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00600">600</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -583,6 +607,15 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aba16e170cc9aa30b78ff703e101a448ca006100e2007527689fe7d6104b209956"></a>halide_error_code_no_device_interface</em>&#160;</td><td class="fielddoc">
 <p>A device operation was attempted on a buffer with no device interface. </p>
 </td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="aba16e170cc9aa30b78ff703e101a448ca6c123efceb388bfef491629d89065775"></a>halide_error_code_matlab_init_failed</em>&#160;</td><td class="fielddoc">
+<p>An error occurred when attempting to initialize the Matlab runtime. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="aba16e170cc9aa30b78ff703e101a448caf5c56ee69de59cfb5959461ac0a8c570"></a>halide_error_code_matlab_bad_param_type</em>&#160;</td><td class="fielddoc">
+<p>The type of an mxArray did not match the expected type. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="aba16e170cc9aa30b78ff703e101a448ca28e9d2c63f5933a4422b668b3f473867"></a>halide_error_code_internal_error</em>&#160;</td><td class="fielddoc">
+<p>There is a bug in the <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> compiler. </p>
+</td></tr>
 </table>
 
 <p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00293">293</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
@@ -616,7 +649,7 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00434">434</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00444">444</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -638,7 +671,7 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00519">519</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00540">540</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>

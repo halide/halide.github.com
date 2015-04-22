@@ -39,6 +39,7 @@ var struct_halide_1_1_target =
       [ "OpenGL", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa491aa42775c6c9d6f35f784e86b09abc", null ],
       [ "UserContext", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fab7dbd399d2a833d37bd52451f99c50c1", null ],
       [ "RegisterMetadata", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf9bdad6d738fbf0e37aaa5eebd0db925", null ],
+      [ "Matlab", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf1da45381c688687c95e97987fcc67cb", null ],
       [ "FeatureEnd", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa17b9cbfef8d1e84e32c8aaa7b2936dbc", null ]
     ] ],
     [ "Target", "struct_halide_1_1_target.html#aeb11109583253fe6e358bba73d3e4a86", null ],

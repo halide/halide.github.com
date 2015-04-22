@@ -46,8 +46,15 @@ var runtime__internal_8h =
     [ "halide_pointer_to_string", "runtime__internal_8h.html#aec58067b8ed261df5b32053eec1815a6", null ],
     [ "halide_use_jit_module", "runtime__internal_8h.html#a00b12364349bdd52bdc59f903400a77e", null ],
     [ "halide_release_jit_module", "runtime__internal_8h.html#af64fff3ded0437c5031d0f589048239d", null ],
+    [ "__attribute__", "runtime__internal_8h.html#a785d6233895941058ea2eeb7d9daf646", null ],
+    [ "get_symbol", "runtime__internal_8h.html#a84cd9fa9dfe65a4f32bafed15d3ff905", null ],
+    [ "halide_set_custom_print", "runtime__internal_8h.html#a796f30bc9cb976181a401d04dddd0c86", null ],
+    [ "halide_set_error_handler", "runtime__internal_8h.html#aeda5a0a60be9a348f698a19e5f021c2e", null ],
     [ "buf", "runtime__internal_8h.html#a820af5182fa2b758297c9db1af6b2256", null ],
     [ "dst", "runtime__internal_8h.html#a4f15ee8aa627692edfd6bdfe9a45fbf9", null ],
     [ "end", "runtime__internal_8h.html#ad7df3e66f0d081eb6a27998bd1e681e7", null ],
-    [ "user_context", "runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf", null ]
+    [ "user_context", "runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf", null ],
+    [ "t", "runtime__internal_8h.html#ad78f0a5d48acb1b94e3d737b5409cc1d", null ],
+    [ "a", "runtime__internal_8h.html#a67dd017542dcaa40f1181f7806bd18af", null ],
+    [ "b", "runtime__internal_8h.html#a220e62865cb92ff423d312a69f2213e6", null ]
 ];

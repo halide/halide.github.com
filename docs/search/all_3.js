@@ -85,7 +85,7 @@ var searchData=
   ['cl_5fcontext_5finterop_5fuser_5fsync',['CL_CONTEXT_INTEROP_USER_SYNC',['../mini__cl_8h.html#a408e49d45870b5bc0e90b724431650fd',1,'mini_cl.h']]],
   ['cl_5fcontext_5fnum_5fdevices',['CL_CONTEXT_NUM_DEVICES',['../mini__cl_8h.html#a6f9128cae610be2e18bb7803377fac5d',1,'mini_cl.h']]],
   ['cl_5fcontext_5fplatform',['CL_CONTEXT_PLATFORM',['../mini__cl_8h.html#a8e448a8e01b7ec15f385fad09a4f38a9',1,'mini_cl.h']]],
-  ['cl_5fcontext_5fproperties',['CL_CONTEXT_PROPERTIES',['../mini__cl_8h.html#a187926cb732f7589aad5a64ef13364b3',1,'CL_CONTEXT_PROPERTIES():&#160;mini_cl.h'],['../mini__cl_8h.html#a35c477a2768c4a1b8a0b4a40df01fac1',1,'cl_context_properties():&#160;mini_cl.h']]],
+  ['cl_5fcontext_5fproperties',['cl_context_properties',['../mini__cl_8h.html#a35c477a2768c4a1b8a0b4a40df01fac1',1,'cl_context_properties():&#160;mini_cl.h'],['../mini__cl_8h.html#a187926cb732f7589aad5a64ef13364b3',1,'CL_CONTEXT_PROPERTIES():&#160;mini_cl.h']]],
   ['cl_5fcontext_5freference_5fcount',['CL_CONTEXT_REFERENCE_COUNT',['../mini__cl_8h.html#ae9ece681cc0f7689c3e11bbc1f489bdf',1,'mini_cl.h']]],
   ['cl_5fdepth',['CL_DEPTH',['../mini__cl_8h.html#af2496c7a381835318ed3d0245b64cc7c',1,'mini_cl.h']]],
   ['cl_5fdepth_5fstencil',['CL_DEPTH_STENCIL',['../mini__cl_8h.html#afa94a1ac664422008fadd3096892cf76',1,'mini_cl.h']]],

@@ -7,6 +7,7 @@ var _halide_runtime_8h =
     [ "halide_filter_argument_t", "structhalide__filter__argument__t.html", "structhalide__filter__argument__t" ],
     [ "halide_filter_metadata_t", "structhalide__filter__metadata__t.html", "structhalide__filter__metadata__t" ],
     [ "halide_assert", "_halide_runtime_8h.html#ac87d020eed3438306b57d1eec5de0364", null ],
+    [ "HALIDE_ATTRIBUTE_ALIGN", "_halide_runtime_8h.html#afaa0f73fc7954ac27a2c11020681cdf3", null ],
     [ "BUFFER_T_DEFINED", "_halide_runtime_8h.html#a2622d62cd7688033c8c6ad612cf5c3e8", null ],
     [ "halide_type_code_t", "_halide_runtime_8h.html#abd8ef2cf42c925601df1b997c1b938bf", null ],
     [ "buffer_t", "_halide_runtime_8h.html#aebe399a52d3e6b4c16909f8216198044", null ],
@@ -41,7 +42,10 @@ var _halide_runtime_8h =
       [ "halide_error_code_device_malloc_failed", "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca92667ff05a79083a7de97843d507ecdb", null ],
       [ "halide_error_code_device_sync_failed", "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca79b37d315188ac600b479f68d2627952", null ],
       [ "halide_error_code_device_free_failed", "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448cab9688dd68dbb132ba66ea80186fc18d1", null ],
-      [ "halide_error_code_no_device_interface", "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca006100e2007527689fe7d6104b209956", null ]
+      [ "halide_error_code_no_device_interface", "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca006100e2007527689fe7d6104b209956", null ],
+      [ "halide_error_code_matlab_init_failed", "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca6c123efceb388bfef491629d89065775", null ],
+      [ "halide_error_code_matlab_bad_param_type", "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448caf5c56ee69de59cfb5959461ac0a8c570", null ],
+      [ "halide_error_code_internal_error", "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca28e9d2c63f5933a4422b668b3f473867", null ]
     ] ],
     [ "halide_type_code_t", "_halide_runtime_8h.html#a9f4c40f298e91dea4f532774dc57a450", [
       [ "halide_type_int", "_halide_runtime_8h.html#a9f4c40f298e91dea4f532774dc57a450a53ba65448e4cbe66680c29a1333c8bfa", null ],

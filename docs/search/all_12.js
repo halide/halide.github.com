@@ -71,6 +71,6 @@ var searchData=
   ['runtime_5finternal_2eh',['runtime_internal.h',['../runtime__internal_8h.html',1,'']]],
   ['runtimeerror',['RuntimeError',['../struct_halide_1_1_runtime_error.html#a45cf56a9f1d475b94f4216b92db8f6ab',1,'Halide::RuntimeError']]],
   ['runtimeerror',['RuntimeError',['../struct_halide_1_1_runtime_error.html',1,'Halide']]],
-  ['rvar',['rvar',['../struct_halide_1_1_var_or_r_var.html#ad7d3d0199cd499f168f9cfa2ea298d1b',1,'Halide::VarOrRVar::rvar()'],['../class_halide_1_1_r_var.html#aa066ac71578da8da4da883d4ac5c492f',1,'Halide::RVar::RVar()'],['../class_halide_1_1_r_var.html#acda89af04702fba704a2034aa466c112',1,'Halide::RVar::RVar(const std::string &amp;n)'],['../class_halide_1_1_r_var.html#a3531e88d92d85d60ca95cd26dc34fccf',1,'Halide::RVar::RVar(Internal::ReductionDomain domain, int index)']]],
+  ['rvar',['RVar',['../class_halide_1_1_r_var.html#aa066ac71578da8da4da883d4ac5c492f',1,'Halide::RVar::RVar()'],['../class_halide_1_1_r_var.html#acda89af04702fba704a2034aa466c112',1,'Halide::RVar::RVar(const std::string &amp;n)'],['../class_halide_1_1_r_var.html#a3531e88d92d85d60ca95cd26dc34fccf',1,'Halide::RVar::RVar(Internal::ReductionDomain domain, int index)'],['../struct_halide_1_1_var_or_r_var.html#ad7d3d0199cd499f168f9cfa2ea298d1b',1,'Halide::VarOrRVar::rvar()']]],
   ['rvar',['RVar',['../class_halide_1_1_r_var.html',1,'Halide']]]
 ];
