@@ -1,0 +1,527 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>
+lesson 12 using the gpu
+</title>
+<link rel="stylesheet" type="text/css" href="highlight.css">
+<link href="../assets/css/bootstrap.css" rel="stylesheet">
+<style>
+
+a:visited {
+color: #000000;
+}
+
+a:link {
+color: #000000;
+}
+
+a:hover {
+color: #aa0000;
+}
+
+</style>
+</head>
+<body class="hl" style="background-color: #dddddd; font-family: Helvetica, Arial, sans-serif;">
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">Halide</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="active"><a href="#overview">Overview</a></li>
+          <li><a href="#gettingstarted">Getting Started</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="http://github.com/halide/Halide/issues">Bugs</a></li>
+          <li><a href="http://github.com/halide/Halide/wiki">Wiki</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="http://stackoverflow.com/questions/tagged/halide"><i class="fa fa-stack-overflow"></i>/#halide</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+<div style="position:relative; width: 100%">
+<div style="width:200px; float:left; ">
+<a href="introduction.html" style="text-decoration:none;" ><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px;
+background-color: #ffffff; text-align: left; ">
+<b>
+00
+&nbsp</b>
+Introduction
+</div>
+</span>
+</a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_01_basics.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+01
+&nbsp</b>
+ Getting started with Funcs, Vars, and Exprs
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_02_input_image.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+02
+&nbsp</b>
+ Processing images
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_03_debugging_1.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+03
+&nbsp</b>
+ Inspecting the generated code
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_04_debugging_2.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+04
+&nbsp</b>
+ Debugging with tracing, print, and print_when
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_05_scheduling_1.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+05
+&nbsp</b>
+ Vectorize, parallelize, unroll and tile your code
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_06_realizing_over_shifted_domains.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+06
+&nbsp</b>
+ Realizing Funcs over arbitrary domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_07_multi_stage_pipelines.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+07
+&nbsp</b>
+ Multi-stage pipelines
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_08_scheduling_2.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+08
+&nbsp</b>
+ Scheduling multi-stage pipelines
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_09_update_definitions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+09
+&nbsp</b>
+ Multi-pass Funcs, update definitions, and reductions
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_10_aot_compilation_generate.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+10
+&nbsp</b>
+ AOT compilation part 1
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_10_aot_compilation_run.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+10
+&nbsp</b>
+ AOT compilation part 2
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_11_cross_compilation.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+11
+&nbsp</b>
+ Cross-compilation
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_12_using_the_gpu.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; padding-right:40px; background-color: #ffffff; color: #aa0000; text-align: left; ">
+<b>
+12
+&nbsp</b>
+ Using the GPU
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_13_tuples.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+13
+&nbsp</b>
+ Tuples
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_14_types.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+14
+&nbsp</b>
+ The Halide type system
+</div></span></a>
+</div>
+<div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
+<pre class="hl">
+<span class="hl slc">// Halide tutorial lesson 12: Using the GPU</span>
+
+<span class="hl slc">// This lesson demonstrates how to use Halide to run code on a GPU using OpenCL.</span>
+
+<span class="hl slc">// On linux, you can compile and run it like so:</span>
+<span class="hl slc">// g++ lesson_12*.cpp -g -std=c++11 -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -o lesson_12</span>
+<span class="hl slc">// LD_LIBRARY_PATH=../bin ./lesson_12</span>
+
+<span class="hl slc">// On os x:</span>
+<span class="hl slc">// g++ lesson_12*.cpp -g -std=c++11 -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_12</span>
+<span class="hl slc">// DYLD_LIBRARY_PATH=../bin ./lesson_12</span>
+
+<span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
+<span class="hl slc">// running:</span>
+<span class="hl slc">//    make tutorial_lesson_12_using_the_gpu</span>
+<span class="hl slc">// in a shell with the current directory at the top of the halide</span>
+<span class="hl slc">// source tree.</span>
+
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include &lt;stdio.h&gt;</span>
+<span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
+
+<span class="hl slc">// Include some support code for loading pngs.</span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;image_io.h&quot;</span><span class="hl ppc"></span>
+
+<span class="hl slc">// Include a clock to do performance testing.</span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;clock.h&quot;</span><span class="hl ppc"></span>
+
+<span class="hl slc">// Define some Vars to use.</span>
+Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">,</span> i<span class="hl opt">;</span>
+
+<span class="hl slc">// We're going to want to schedule a pipeline in several ways, so we</span>
+<span class="hl slc">// define the pipeline in a class so that we can recreate it several</span>
+<span class="hl slc">// times with different schedules.</span>
+<span class="hl kwc">class</span> MyPipeline <span class="hl opt">{</span>
+<span class="hl kwc">public</span><span class="hl opt">:</span>
+    Func lut<span class="hl opt">,</span> padded<span class="hl opt">,</span> padded16<span class="hl opt">,</span> sharpen<span class="hl opt">,</span> curved<span class="hl opt">;</span>
+    Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input<span class="hl opt">;</span>
+
+    <span class="hl kwd">MyPipeline</span><span class="hl opt">(</span>Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> in<span class="hl opt">) :</span> <span class="hl kwd">input</span><span class="hl opt">(</span>in<span class="hl opt">) {</span>
+        <span class="hl slc">// For this lesson, we'll use a two-stage pipeline that sharpens</span>
+        <span class="hl slc">// and then applies a look-up-table (LUT).</span>
+
+        <span class="hl slc">// First we'll define the LUT. It will be a gamma curve.</span>
+
+        <span class="hl kwd">lut</span><span class="hl opt">(</span>i<span class="hl opt">) =</span> cast<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span><span class="hl kwd">clamp</span><span class="hl opt">(</span><span class="hl kwd">pow</span><span class="hl opt">(</span>i <span class="hl opt">/</span> <span class="hl num">255.0</span>f<span class="hl opt">,</span> <span class="hl num">1.2</span>f<span class="hl opt">) *</span> <span class="hl num">255.0</span>f<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">255</span><span class="hl opt">));</span>
+
+        <span class="hl slc">// Augment the input with a boundary condition.</span>
+        <span class="hl kwd">padded</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) =</span> <span class="hl kwd">input</span><span class="hl opt">(</span><span class="hl kwd">clamp</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">()-</span><span class="hl num">1</span><span class="hl opt">),</span>
+                                <span class="hl kwd">clamp</span><span class="hl opt">(</span>y<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">()-</span><span class="hl num">1</span><span class="hl opt">),</span> c<span class="hl opt">);</span>
+
+        <span class="hl slc">// Cast it to 16-bit to do the math.</span>
+        <span class="hl kwd">padded16</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) =</span> cast<span class="hl opt">&lt;</span><span class="hl kwb">uint16_t</span><span class="hl opt">&gt;(</span><span class="hl kwd">padded</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">));</span>
+
+        <span class="hl slc">// Next we sharpen it with a five-tap filter.</span>
+        <span class="hl kwd">sharpen</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) = (</span><span class="hl kwd">padded16</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) *</span> <span class="hl num">2</span><span class="hl opt">-</span>
+                            <span class="hl opt">(</span><span class="hl kwd">padded16</span><span class="hl opt">(</span>x <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) +</span>
+                             <span class="hl kwd">padded16</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">,</span> c<span class="hl opt">) +</span>
+                             <span class="hl kwd">padded16</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) +</span>
+                             <span class="hl kwd">padded16</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> c<span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// Then apply the LUT.</span>
+        <span class="hl kwd">curved</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) =</span> <span class="hl kwd">lut</span><span class="hl opt">(</span><span class="hl kwd">sharpen</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">));</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Now we define methods that give our pipeline several different</span>
+    <span class="hl slc">// schedules.</span>
+    <span class="hl kwb">void</span> <span class="hl kwd">schedule_for_cpu</span><span class="hl opt">() {</span>
+        <span class="hl slc">// Compute the look-up-table ahead of time.</span>
+        lut<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// Compute color channels innermost. Promise that there will</span>
+        <span class="hl slc">// be three of them and unroll across them.</span>
+        curved<span class="hl opt">.</span><span class="hl kwd">reorder</span><span class="hl opt">(</span>c<span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">)</span>
+              <span class="hl opt">.</span><span class="hl kwd">bound</span><span class="hl opt">(</span>c<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">)</span>
+              <span class="hl opt">.</span><span class="hl kwd">unroll</span><span class="hl opt">(</span>c<span class="hl opt">);</span>
+
+        <span class="hl slc">// Look-up-tables don't vectorize well, so just parallelize</span>
+        <span class="hl slc">// curved in slices of 16 scanlines.</span>
+        Var yo<span class="hl opt">,</span> yi<span class="hl opt">;</span>
+        curved<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>y<span class="hl opt">,</span> yo<span class="hl opt">,</span> yi<span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">)</span>
+              <span class="hl opt">.</span><span class="hl kwd">parallel</span><span class="hl opt">(</span>yo<span class="hl opt">);</span>
+
+        <span class="hl slc">// Compute sharpen as needed per scanline of curved, reusing</span>
+        <span class="hl slc">// previous values computed within the same strip of 16</span>
+        <span class="hl slc">// scanlines.</span>
+        sharpen<span class="hl opt">.</span><span class="hl kwd">store_at</span><span class="hl opt">(</span>curved<span class="hl opt">,</span> yo<span class="hl opt">)</span>
+               <span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>curved<span class="hl opt">,</span> yi<span class="hl opt">);</span>
+
+        <span class="hl slc">// Vectorize the sharpen. It's 16-bit so we'll vectorize it 8-wide.</span>
+        sharpen<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// Compute the padded input at the same granularity as the</span>
+        <span class="hl slc">// sharpen. We'll leave the cast to 16-bit inlined into</span>
+        <span class="hl slc">// sharpen.</span>
+        padded<span class="hl opt">.</span><span class="hl kwd">store_at</span><span class="hl opt">(</span>curved<span class="hl opt">,</span> yo<span class="hl opt">)</span>
+              <span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>curved<span class="hl opt">,</span> yi<span class="hl opt">);</span>
+
+        <span class="hl slc">// Also vectorize the padding. It's 8-bit, so we'll vectorize</span>
+        <span class="hl slc">// 16-wide.</span>
+        padded<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// JIT-compile the pipeline for the CPU.</span>
+        curved<span class="hl opt">.</span><span class="hl kwd">compile_jit</span><span class="hl opt">();</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Now a schedule that uses CUDA or OpenCL.</span>
+    <span class="hl kwb">void</span> <span class="hl kwd">schedule_for_gpu</span><span class="hl opt">() {</span>
+        <span class="hl slc">// We make the decision about whether to use the GPU for each</span>
+        <span class="hl slc">// Func independently. If you have one Func computed on the</span>
+        <span class="hl slc">// CPU, and the next computed on the GPU, Halide will do the</span>
+        <span class="hl slc">// copy-to-gpu under the hood. For this pipeline, there's no</span>
+        <span class="hl slc">// reason to use the CPU for any of the stages. Halide will</span>
+        <span class="hl slc">// copy the input image to the GPU the first time we run the</span>
+        <span class="hl slc">// pipeline, and leave it there to reuse on subsequent runs.</span>
+
+        <span class="hl slc">// As before, we'll compute the LUT once at the start of the</span>
+        <span class="hl slc">// pipeline.</span>
+        lut<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// Let's compute the look-up-table using the GPU in 16-wide</span>
+        <span class="hl slc">// one-dimensional thread blocks. First we split the index</span>
+        <span class="hl slc">// into blocks of size 16:</span>
+        Var block<span class="hl opt">,</span> thread<span class="hl opt">;</span>
+        lut<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>i<span class="hl opt">,</span> block<span class="hl opt">,</span> thread<span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">);</span>
+        <span class="hl slc">// Then we tell cuda that our Vars 'block' and 'thread'</span>
+        <span class="hl slc">// correspond to CUDA's notions of blocks and threads, or</span>
+        <span class="hl slc">// OpenCL's notions of thread groups and threads.</span>
+        lut<span class="hl opt">.</span><span class="hl kwd">gpu_blocks</span><span class="hl opt">(</span>block<span class="hl opt">)</span>
+           <span class="hl opt">.</span><span class="hl kwd">gpu_threads</span><span class="hl opt">(</span>thread<span class="hl opt">);</span>
+
+        <span class="hl slc">// This is a very common scheduling pattern on the GPU, so</span>
+        <span class="hl slc">// there's a shorthand for it:</span>
+
+        <span class="hl slc">// lut.gpu_tile(i, 16);</span>
+
+        <span class="hl slc">// Func::gpu_tile method is similar to Func::tile, except that</span>
+        <span class="hl slc">// it also specifies that the tile coordinates correspond to</span>
+        <span class="hl slc">// GPU blocks, and the coordinates within each tile correspond</span>
+        <span class="hl slc">// to GPU threads.</span>
+
+        <span class="hl slc">// Compute color channels innermost. Promise that there will</span>
+        <span class="hl slc">// be three of them and unroll across them.</span>
+        curved<span class="hl opt">.</span><span class="hl kwd">reorder</span><span class="hl opt">(</span>c<span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">)</span>
+              <span class="hl opt">.</span><span class="hl kwd">bound</span><span class="hl opt">(</span>c<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">)</span>
+              <span class="hl opt">.</span><span class="hl kwd">unroll</span><span class="hl opt">(</span>c<span class="hl opt">);</span>
+
+        <span class="hl slc">// Compute curved in 2D 8x8 tiles using the GPU.</span>
+        curved<span class="hl opt">.</span><span class="hl kwd">gpu_tile</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// This is equivalent to:</span>
+        <span class="hl slc">// curved.tile(x, y, xo, yo, xi, yi, 8, 8)</span>
+        <span class="hl slc">//       .gpu_blocks(xo, yo)</span>
+        <span class="hl slc">//       .gpu_threads(xi, yi);</span>
+
+        <span class="hl slc">// We'll leave sharpen as inlined into curved.</span>
+
+        <span class="hl slc">// Compute the padded input as needed per GPU block, storing the</span>
+        <span class="hl slc">// intermediate result in shared memory. Var::gpu_blocks, and</span>
+        <span class="hl slc">// Var::gpu_threads exist to help you schedule producers within</span>
+        <span class="hl slc">// GPU threads and blocks.</span>
+        padded<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>curved<span class="hl opt">,</span> Var<span class="hl opt">::</span><span class="hl kwd">gpu_blocks</span><span class="hl opt">());</span>
+
+        <span class="hl slc">// Use the GPU threads for the x and y coordinates of the</span>
+        <span class="hl slc">// padded input.</span>
+        padded<span class="hl opt">.</span><span class="hl kwd">gpu_threads</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+
+        <span class="hl slc">// JIT-compile the pipeline for the GPU. CUDA or OpenCL are</span>
+        <span class="hl slc">// not enabled by default. We have to construct a Target</span>
+        <span class="hl slc">// object, enable one of them, and then pass that target</span>
+        <span class="hl slc">// object to compile_jit. Otherwise your CPU will very slowly</span>
+        <span class="hl slc">// pretend it's a GPU, and use one thread per output pixel.</span>
+
+        <span class="hl slc">// Start with a target suitable for the machine you're running</span>
+        <span class="hl slc">// this on.</span>
+        Target target <span class="hl opt">=</span> <span class="hl kwd">get_host_target</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// Then enable OpenCL or CUDA.</span>
+
+        <span class="hl slc">// We'll enable OpenCL here, because it tends to give better</span>
+        <span class="hl slc">// performance than CUDA, even with NVidia's drivers, because</span>
+        <span class="hl slc">// NVidia's open source LLVM backend doesn't seem to do all</span>
+        <span class="hl slc">// the same optimizations their proprietary compiler does.</span>
+        target<span class="hl opt">.</span><span class="hl kwd">set_feature</span><span class="hl opt">(</span>Target<span class="hl opt">::</span>OpenCL<span class="hl opt">);</span>
+
+        <span class="hl slc">// Uncomment the next line and comment out the line above to</span>
+        <span class="hl slc">// try CUDA instead.</span>
+        <span class="hl slc">// target.set_feature(Target::CUDA);</span>
+
+        <span class="hl slc">// If you want to see all of the OpenCL or CUDA API calls done</span>
+        <span class="hl slc">// by the pipeline, you can also enable the Debug</span>
+        <span class="hl slc">// flag. This is helpful for figuring out which stages are</span>
+        <span class="hl slc">// slow, or when CPU -&gt; GPU copies happen. It hurts</span>
+        <span class="hl slc">// performance though, so we'll leave it commented out.</span>
+        <span class="hl slc">// target.set_feature(Target::Debug);</span>
+
+        curved<span class="hl opt">.</span><span class="hl kwd">compile_jit</span><span class="hl opt">(</span>target<span class="hl opt">);</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl kwb">void</span> <span class="hl kwd">test_performance</span><span class="hl opt">() {</span>
+        <span class="hl slc">// Test the performance of the scheduled MyPipeline.</span>
+
+        <span class="hl slc">// If we realize curved into a Halide::Image, that will</span>
+        <span class="hl slc">// unfairly penalize GPU performance by including a GPU-&gt;CPU</span>
+        <span class="hl slc">// copy in every run. Halide::Image objects always exist on</span>
+        <span class="hl slc">// the CPU.</span>
+
+        <span class="hl slc">// Halide::Buffer, however, represents a buffer that may</span>
+        <span class="hl slc">// exist on either CPU or GPU or both.</span>
+        Buffer <span class="hl kwd">output</span><span class="hl opt">(</span><span class="hl kwd">UInt</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">),</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">());</span>
+
+        <span class="hl slc">// Run the filter once to initialize any GPU runtime state.</span>
+        curved<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>output<span class="hl opt">);</span>
+
+        <span class="hl slc">// Now take the best of 3 runs for timing.</span>
+        <span class="hl kwb">double</span> best_time<span class="hl opt">;</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">3</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
+
+            <span class="hl kwb">double</span> t1 <span class="hl opt">=</span> <span class="hl kwd">current_time</span><span class="hl opt">();</span>
+
+            <span class="hl slc">// Run the filter 100 times.</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> j <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> j <span class="hl opt">&lt;</span> <span class="hl num">100</span><span class="hl opt">;</span> j<span class="hl opt">++) {</span>
+                curved<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>output<span class="hl opt">);</span>
+            <span class="hl opt">}</span>
+
+            <span class="hl slc">// Force any GPU code to finish by copying the buffer back to the CPU.</span>
+            output<span class="hl opt">.</span><span class="hl kwd">copy_to_host</span><span class="hl opt">();</span>
+
+            <span class="hl kwb">double</span> t2 <span class="hl opt">=</span> <span class="hl kwd">current_time</span><span class="hl opt">();</span>
+
+            <span class="hl kwb">double</span> elapsed <span class="hl opt">= (</span>t2 <span class="hl opt">-</span> t1<span class="hl opt">)/</span><span class="hl num">100</span><span class="hl opt">;</span>
+            <span class="hl kwa">if</span> <span class="hl opt">(</span>i <span class="hl opt">==</span> <span class="hl num">0</span> <span class="hl opt">||</span> elapsed <span class="hl opt">&lt;</span> best_time<span class="hl opt">) {</span>
+                best_time <span class="hl opt">=</span> elapsed<span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;%1.4f milliseconds</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> best_time<span class="hl opt">);</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl kwb">void</span> <span class="hl kwd">test_correctness</span><span class="hl opt">(</span>Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> reference_output<span class="hl opt">) {</span>
+        Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> curved<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">());</span>
+
+        <span class="hl slc">// Check against the reference output.</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> c <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> c <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">();</span> c<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">();</span> y<span class="hl opt">++) {</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">();</span> x<span class="hl opt">++) {</span>
+                    <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">output</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) !=</span> <span class="hl kwd">reference_output</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">)) {</span>
+                        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Mismatch between output (%d) and &quot;</span>
+                               <span class="hl str">&quot;reference output (%d) at %d, %d, %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                               <span class="hl kwd">output</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">),</span>
+                               <span class="hl kwd">reference_output</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">),</span>
+                               x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">);</span>
+                        <span class="hl kwd">exit</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">);</span>
+                    <span class="hl opt">}</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+    <span class="hl opt">}</span>
+<span class="hl opt">};</span>
+
+<span class="hl kwb">bool</span> <span class="hl kwd">have_opencl</span><span class="hl opt">();</span>
+
+<span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
+    <span class="hl slc">// Load an input image.</span>
+    Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> load<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
+
+    <span class="hl slc">// Allocated an image that will store the correct output</span>
+    Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">reference_output</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">());</span>
+
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Testing performance on CPU:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+    MyPipeline <span class="hl kwd">p1</span><span class="hl opt">(</span>input<span class="hl opt">);</span>
+    p1<span class="hl opt">.</span><span class="hl kwd">schedule_for_cpu</span><span class="hl opt">();</span>
+    p1<span class="hl opt">.</span><span class="hl kwd">test_performance</span><span class="hl opt">();</span>
+    p1<span class="hl opt">.</span>curved<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>reference_output<span class="hl opt">);</span>
+
+    <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">have_opencl</span><span class="hl opt">()) {</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Testing performance on GPU:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        MyPipeline <span class="hl kwd">p2</span><span class="hl opt">(</span>input<span class="hl opt">);</span>
+        p2<span class="hl opt">.</span><span class="hl kwd">schedule_for_gpu</span><span class="hl opt">();</span>
+        p2<span class="hl opt">.</span><span class="hl kwd">test_performance</span><span class="hl opt">();</span>
+        p2<span class="hl opt">.</span><span class="hl kwd">test_correctness</span><span class="hl opt">(</span>reference_output<span class="hl opt">);</span>
+    <span class="hl opt">}</span> <span class="hl kwa">else</span> <span class="hl opt">{</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Not testing performance on GPU, because I can't find the opencl library</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
+
+
+<span class="hl slc">// A helper function to check if OpenCL seems to exist on this machine.</span>
+
+<span class="hl ppc">#ifdef _WIN32</span>
+<span class="hl ppc">#include &lt;windows.h&gt;</span>
+<span class="hl ppc">#else</span>
+<span class="hl ppc">#include &lt;dlfcn.h&gt;</span>
+<span class="hl ppc">#endif</span>
+
+<span class="hl kwb">bool</span> <span class="hl kwd">have_opencl</span><span class="hl opt">() {</span>
+<span class="hl ppc">#ifdef _WIN32</span>
+    <span class="hl kwa">return</span> <span class="hl kwd">LoadLibrary</span><span class="hl opt">(</span><span class="hl str">&quot;OpenCL.dll&quot;</span><span class="hl opt">) !=</span> NULL<span class="hl opt">;</span>
+<span class="hl ppc">#elif __APPLE__</span>
+    <span class="hl kwa">return</span> <span class="hl kwd">dlopen</span><span class="hl opt">(</span><span class="hl str">&quot;/System/Library/Frameworks/OpenCL.framework/Versions/Current/OpenCL&quot;</span><span class="hl opt">,</span> RTLD_LAZY<span class="hl opt">) !=</span> NULL<span class="hl opt">;</span>
+<span class="hl ppc">#else</span>
+    <span class="hl kwa">return</span> <span class="hl kwd">dlopen</span><span class="hl opt">(</span><span class="hl str">&quot;libOpenCL.so&quot;</span><span class="hl opt">,</span> RTLD_LAZY<span class="hl opt">) !=</span> NULL<span class="hl opt">;</span>
+<span class="hl ppc">#endif</span>
+<span class="hl opt">}</span>
+</pre>
+</div>
+</body>
+</html>
