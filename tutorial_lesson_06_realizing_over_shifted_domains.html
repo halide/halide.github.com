@@ -1,0 +1,328 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>
+lesson 06 realizing over shifted domains
+</title>
+<link rel="stylesheet" type="text/css" href="highlight.css">
+<style>
+
+a:visited {
+color: #000000;
+}
+
+a:link {
+color: #000000;
+}
+
+a:hover {
+color: #aa0000;
+}
+
+</style>
+</head>
+<body class="hl" style="background-color: #dddddd; font-family: Helvetica, Arial, sans-serif;">
+
+<div>
+<style scoped>
+@import "../assets/css/bootstrap.css";
+</style>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">Halide</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="active"><a href="index.html#overview">Overview</a></li>
+          <li><a href="index.html#gettingstarted">Getting Started</a></li>
+          <li><a href="index.html#publications">Publications</a></li>
+          <li><a href="index.html#resources">Resources</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="http://github.com/halide/Halide/issues">Bugs</a></li>
+          <li><a href="http://github.com/halide/Halide/wiki">Wiki</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="http://stackoverflow.com/questions/tagged/halide"><i class="fa fa-stack-overflow"></i>/#halide</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
+<div style="position:relative; width: 100%; top:40px;">
+<div style="width:200px; float:left; ">
+<a href="tutorial_introduction.html" style="text-decoration:none;" ><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px;
+background-color: #ffffff; text-align: left; ">
+<b>
+00
+&nbsp</b>
+Introduction
+</div>
+</span>
+</a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_01_basics.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+01
+&nbsp</b>
+ Getting started with Funcs, Vars, and Exprs
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_02_input_image.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+02
+&nbsp</b>
+ Processing images
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_03_debugging_1.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+03
+&nbsp</b>
+ Inspecting the generated code
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_04_debugging_2.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+04
+&nbsp</b>
+ Debugging with tracing, print, and print_when
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_05_scheduling_1.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+05
+&nbsp</b>
+ Vectorize, parallelize, unroll and tile your code
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_06_realizing_over_shifted_domains.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; padding-right:40px; background-color: #ffffff; color: #aa0000; text-align: left; ">
+<b>
+06
+&nbsp</b>
+ Realizing Funcs over arbitrary domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_07_multi_stage_pipelines.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+07
+&nbsp</b>
+ Multi-stage pipelines
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_08_scheduling_2.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+08
+&nbsp</b>
+ Scheduling multi-stage pipelines
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_09_update_definitions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+09
+&nbsp</b>
+ Multi-pass Funcs, update definitions, and reductions
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_10_aot_compilation_generate.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+10
+&nbsp</b>
+ AOT compilation part 1
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_10_aot_compilation_run.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+10
+&nbsp</b>
+ AOT compilation part 2
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_11_cross_compilation.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+11
+&nbsp</b>
+ Cross-compilation
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_12_using_the_gpu.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+12
+&nbsp</b>
+ Using the GPU
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_13_tuples.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+13
+&nbsp</b>
+ Tuples
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_14_types.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #ffffff; text-align: left; ">
+<b>
+14
+&nbsp</b>
+ The Halide type system
+</div></span></a>
+</div>
+<div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
+<pre class="hl">
+<span class="hl slc">// Halide tutorial lesson 6: Realizing Funcs over arbitrary domains</span>
+
+<span class="hl slc">// This lesson demonstrates how to evaluate a Func over a domain that</span>
+<span class="hl slc">// does not start at (0, 0).</span>
+
+<span class="hl slc">// On linux, you can compile and run it like so:</span>
+<span class="hl slc">// g++ lesson_06*.cpp -g -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_06 -std=c++11</span>
+<span class="hl slc">// LD_LIBRARY_PATH=../bin ./lesson_06</span>
+
+<span class="hl slc">// On os x:</span>
+<span class="hl slc">// g++ lesson_06*.cpp -g -I ../include -L ../bin -lHalide -o lesson_06 -std=c++11</span>
+<span class="hl slc">// DYLD_LIBRARY_PATH=../bin ./lesson_06</span>
+
+<span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
+<span class="hl slc">// running:</span>
+<span class="hl slc">//    make tutorial_lesson_06_realizing_over_shifted_domains</span>
+<span class="hl slc">// in a shell with the current directory at the top of the halide</span>
+<span class="hl slc">// source tree.</span>
+
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include &lt;stdio.h&gt;</span>
+
+<span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
+
+<span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
+
+    <span class="hl slc">// The last lesson was quite involved, and scheduling complex</span>
+    <span class="hl slc">// multi-stage pipelines is ahead of us. As an interlude, let's</span>
+    <span class="hl slc">// consider something easy: evaluating funcs over rectangular</span>
+    <span class="hl slc">// domains that do not start at the origin.</span>
+
+    <span class="hl slc">// We define our familiar gradient function.</span>
+    Func <span class="hl kwd">gradient</span><span class="hl opt">(</span><span class="hl str">&quot;gradient&quot;</span><span class="hl opt">);</span>
+    Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">);</span>
+    <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+
+    <span class="hl slc">// And turn on tracing so we can see how it is being evaluated.</span>
+    gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+    <span class="hl slc">// Previously we've realized gradient like so:</span>
+    <span class="hl slc">//</span>
+    <span class="hl slc">// gradient.realize(8, 8);</span>
+    <span class="hl slc">//</span>
+    <span class="hl slc">// This does three things internally:</span>
+    <span class="hl slc">// 1) Generates code than can evaluate gradient over an arbitrary</span>
+    <span class="hl slc">// rectangle.</span>
+    <span class="hl slc">// 2) Allocates a new 8 x 8 image.</span>
+    <span class="hl slc">// 3) Runs the generated code to evaluate gradient for all x, y</span>
+    <span class="hl slc">// from (0, 0) to (7, 7) and puts the result into the image.</span>
+    <span class="hl slc">// 4) Returns the new image as the result of the realize call.</span>
+
+    <span class="hl slc">// What if we're managing memory carefully and don't want Halide</span>
+    <span class="hl slc">// to allocate a new image for us? We can call realize another</span>
+    <span class="hl slc">// way. We can pass it an image we would like it to fill in. The</span>
+    <span class="hl slc">// following evaluates our Func into an existing image:</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient from (0, 0) to (7, 7)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+    Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> <span class="hl kwd">result</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+    gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>result<span class="hl opt">);</span>
+
+    <span class="hl slc">// Let's check it did what we expect:</span>
+    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+            <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">result</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) !=</span> x <span class="hl opt">+</span> y<span class="hl opt">) {</span>
+                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Something went wrong!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+                <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Now let's evaluate gradient over a 5 x 7 rectangle that starts</span>
+    <span class="hl slc">// somewhere else -- at position (100, 50). So x and y will run</span>
+    <span class="hl slc">// from (100, 50) to (104, 56) inclusive.</span>
+
+    <span class="hl slc">// We start by creating an image that represents that rectangle:</span>
+    Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> <span class="hl kwd">shifted</span><span class="hl opt">(</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">7</span><span class="hl opt">);</span> <span class="hl slc">// In the constructor we tell it the size.</span>
+    shifted<span class="hl opt">.</span><span class="hl kwd">set_min</span><span class="hl opt">(</span><span class="hl num">100</span><span class="hl opt">,</span> <span class="hl num">50</span><span class="hl opt">);</span> <span class="hl slc">// Then we tell it the top-left corner.</span>
+
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient from (100, 50) to (104, 56)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+    <span class="hl slc">// Note that this won't need to compile any new code, because when</span>
+    <span class="hl slc">// we realized it the first time, we generated code capable of</span>
+    <span class="hl slc">// evaluating gradient over an arbitrary rectangle.</span>
+    gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>shifted<span class="hl opt">);</span>
+
+    <span class="hl slc">// From C++, we also access the image object using coordinates</span>
+    <span class="hl slc">// that start at (100, 50).</span>
+    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">50</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">57</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">100</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">105</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+            <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">shifted</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) !=</span> x <span class="hl opt">+</span> y<span class="hl opt">) {</span>
+                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Something went wrong!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+                <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+    <span class="hl slc">// The image 'shifted' stores the value of our Func over a domain</span>
+    <span class="hl slc">// that starts at (100, 50), so asking for shifted(0, 0) would in</span>
+    <span class="hl slc">// fact read out-of-bounds and probably crash.</span>
+
+    <span class="hl slc">// What if we want to evaluate our Func over some region that</span>
+    <span class="hl slc">// isn't rectangular? Too bad. Halide only does rectangles :)</span>
+
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+    <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
+</pre>
+</div></body></html>
