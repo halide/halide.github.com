@@ -325,13 +325,13 @@ tutorial_lesson_14_types.html
     <span class="hl kwb">FILE</span> <span class="hl opt">*</span>f <span class="hl opt">=</span> <span class="hl kwd">fopen</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_11_arm_32_android.o&quot;</span><span class="hl opt">,</span> <span class="hl str">&quot;rb&quot;</span><span class="hl opt">);</span>
     <span class="hl kwb">uint8_t</span> header<span class="hl opt">[</span><span class="hl num">32</span><span class="hl opt">];</span>
     <span class="hl kwa">if</span> <span class="hl opt">(!</span>f <span class="hl opt">||</span> <span class="hl kwd">fread</span><span class="hl opt">(</span>header<span class="hl opt">,</span> <span class="hl num">32</span><span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> f<span class="hl opt">) !=</span> <span class="hl num">1</span><span class="hl opt">) {</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Object file not generated</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Object file not generated</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
     <span class="hl opt">}</span>
     <span class="hl kwd">fclose</span><span class="hl opt">(</span>f<span class="hl opt">);</span>
 
     <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">memcmp</span><span class="hl opt">(</span>header<span class="hl opt">,</span> arm_32_android_magic<span class="hl opt">,</span> <span class="hl kwa">sizeof</span><span class="hl opt">(</span>arm_32_android_magic<span class="hl opt">))) {</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Unexpected header bytes in 32-bit arm object file.</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Unexpected header bytes in 32-bit arm object file.</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
     <span class="hl opt">}</span>
 
@@ -341,13 +341,13 @@ tutorial_lesson_14_types.html
 
     f <span class="hl opt">=</span> <span class="hl kwd">fopen</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_11_x86_64_windows.o&quot;</span><span class="hl opt">,</span> <span class="hl str">&quot;rb&quot;</span><span class="hl opt">);</span>
     <span class="hl kwa">if</span> <span class="hl opt">(!</span>f <span class="hl opt">||</span> <span class="hl kwd">fread</span><span class="hl opt">(</span>header<span class="hl opt">,</span> <span class="hl num">32</span><span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> f<span class="hl opt">) !=</span> <span class="hl num">1</span><span class="hl opt">) {</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Object file not generated</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Object file not generated</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
     <span class="hl opt">}</span>
     <span class="hl kwd">fclose</span><span class="hl opt">(</span>f<span class="hl opt">);</span>
 
     <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">memcmp</span><span class="hl opt">(</span>header<span class="hl opt">,</span> win_64_magic<span class="hl opt">,</span> <span class="hl kwa">sizeof</span><span class="hl opt">(</span>win_64_magic<span class="hl opt">))) {</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Unexpected header bytes in 64-bit windows object file.</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Unexpected header bytes in 64-bit windows object file.</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
     <span class="hl opt">}</span>
 
@@ -358,13 +358,13 @@ tutorial_lesson_14_types.html
                                    <span class="hl num">1</span><span class="hl opt">};</span>  <span class="hl slc">// It's a relocatable object file.</span>
     f <span class="hl opt">=</span> <span class="hl kwd">fopen</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_11_arm_32_ios.o&quot;</span><span class="hl opt">,</span> <span class="hl str">&quot;rb&quot;</span><span class="hl opt">);</span>
     <span class="hl kwa">if</span> <span class="hl opt">(!</span>f <span class="hl opt">||</span> <span class="hl kwd">fread</span><span class="hl opt">(</span>header<span class="hl opt">,</span> <span class="hl num">32</span><span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> f<span class="hl opt">) !=</span> <span class="hl num">1</span><span class="hl opt">) {</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Object file not generated</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Object file not generated</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
     <span class="hl opt">}</span>
     <span class="hl kwd">fclose</span><span class="hl opt">(</span>f<span class="hl opt">);</span>
 
     <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">memcmp</span><span class="hl opt">(</span>header<span class="hl opt">,</span> arm_32_ios_magic<span class="hl opt">,</span> <span class="hl kwa">sizeof</span><span class="hl opt">(</span>arm_32_ios_magic<span class="hl opt">))) {</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Unexpected header bytes in 32-bit arm ios object file.</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Unexpected header bytes in 32-bit arm ios object file.</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
     <span class="hl opt">}</span>
 
@@ -376,7 +376,7 @@ tutorial_lesson_14_types.html
     <span class="hl slc">// Halide repository under the apps folder. See HelloAndroid and</span>
     <span class="hl slc">// HelloiOS here:</span>
     <span class="hl slc">// https://github.com/halide/Halide/tree/master/apps/</span>
-    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
 <span class="hl opt">}</span>
 </pre>

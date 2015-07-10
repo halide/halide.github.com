@@ -142,11 +142,13 @@ fi
 
 echo '</div></body></html>' >> $h
 
+cat $h
+
 # Inline the figures
 IFS=''
 NEXT_FIG=""
 mv $h tmp.html
-cat tmp.html | while read LINE; do
+cat tmp.html | while read -r LINE; do
 if [[ "$LINE" == *figures/lesson* ]]
 then
 # Remember this figure and place it on the next empty line
@@ -176,7 +178,7 @@ else
 echo >> $h
 fi
 else
-echo "$LINE" >> $h
+echo $LINE >> $h
 fi
 done
 

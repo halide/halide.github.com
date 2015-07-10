@@ -245,13 +245,6 @@ tutorial_lesson_14_types.html
 <span class="hl ppc">#include &lt;stdio.h&gt;</span>
 <span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
 
-<span class="hl ppc">#include &lt;unistd.h&gt;</span>
-<span class="hl kwc">extern</span> <span class="hl str">&quot;C&quot;</span> <span class="hl kwb">int</span> <span class="hl kwd">slow</span><span class="hl opt">(</span><span class="hl kwb">int</span> x<span class="hl opt">) {</span>
-    <span class="hl kwd">usleep</span><span class="hl opt">(</span><span class="hl kwd">rand</span><span class="hl opt">() &amp;</span> <span class="hl num">1023</span><span class="hl opt">);</span>
-    <span class="hl kwa">return</span> x<span class="hl opt">;</span>
-<span class="hl opt">}</span>
-<span class="hl kwd">HalideExtern_1</span><span class="hl opt">(</span><span class="hl kwb">int</span><span class="hl opt">,</span> slow<span class="hl opt">,</span> <span class="hl kwb">int</span><span class="hl opt">);</span>
-
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
 
     <span class="hl slc">// We're going to define and schedule our gradient function in</span>
@@ -270,7 +263,7 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// columns. This means x varies quickly, and y varies</span>
         <span class="hl slc">// slowly. x is the column and y is the row, so this is a</span>
         <span class="hl slc">// row-major traversal.</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient row-major</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient row-major</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
         <span class="hl slc">// See below for a visualization of</span>
@@ -279,20 +272,20 @@ tutorial_lesson_14_types.html
          <span><img src= figures/lesson_05_row_major.gif ></span>
 
         <span class="hl slc">// The equivalent C is:</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
-                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">nn</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Tracing is one useful way to understand what a schedule is</span>
         <span class="hl slc">// doing. You can also ask Halide to print out pseudocode</span>
         <span class="hl slc">// showing what loops Halide is generating:</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Because we're using the default ordering, it should print:</span>
         <span class="hl slc">// compute gradient:</span>
@@ -318,7 +311,7 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// column) will vary slowly, so this is a column-major</span>
         <span class="hl slc">// traversal.</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient column-major</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient column-major</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
         <span class="hl slc">// See below for a visualization of</span>
@@ -326,19 +319,19 @@ tutorial_lesson_14_types.html
 
          <span><img src= figures/lesson_05_col_major.gif ></span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
-                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// If we print pseudo-code for this schedule, we'll see that</span>
         <span class="hl slc">// the loop over y is now inside the loop over x.</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl opt">}</span>
 
     <span class="hl slc">// Split a variable into two.</span>
@@ -362,23 +355,23 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// old loop started at a value other than zero, then that is</span>
         <span class="hl slc">// also added within the loops.</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x split into x_outer and x_inner</span> <span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x split into x_outer and x_inner</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_outer <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> x_outer<span class="hl opt">++) {</span>
                 <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_inner <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> x_inner<span class="hl opt">++) {</span>
                     <span class="hl kwb">int</span> x <span class="hl opt">=</span> x_outer <span class="hl opt">*</span> <span class="hl num">2</span> <span class="hl opt">+</span> x_inner<span class="hl opt">;</span>
-                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
                 <span class="hl opt">}</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Note that the order of evaluation of pixels didn't actually</span>
         <span class="hl slc">// change! Splitting by itself does nothing, but it does open</span>
@@ -400,20 +393,20 @@ tutorial_lesson_14_types.html
         Var fused<span class="hl opt">;</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">fuse</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> fused<span class="hl opt">);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x and y fused</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x and y fused</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> fused <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> fused <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">*</span><span class="hl num">4</span><span class="hl opt">;</span> fused<span class="hl opt">++) {</span>
             <span class="hl kwb">int</span> y <span class="hl opt">=</span> fused <span class="hl opt">/</span> <span class="hl num">4</span><span class="hl opt">;</span>
             <span class="hl kwb">int</span> x <span class="hl opt">=</span> fused <span class="hl opt">%</span> <span class="hl num">4</span><span class="hl opt">;</span>
-            <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+            <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
         <span class="hl opt">}</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl opt">}</span>
 
     <span class="hl slc">// Evaluating in tiles.</span>
@@ -440,7 +433,7 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// This pattern is common enough that there's a shorthand for it:</span>
         <span class="hl slc">// gradient.tile(x, y, x_outer, y_outer, x_inner, y_inner, 4, 4);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient in 4x4 tiles</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient in 4x4 tiles</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
 
         <span class="hl slc">// See below for a visualization of this</span>
@@ -448,23 +441,23 @@ tutorial_lesson_14_types.html
 
          <span><img src= figures/lesson_05_tiled.gif ></span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y_outer <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> y_outer<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_outer <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> x_outer<span class="hl opt">++) {</span>
                 <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y_inner <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y_inner<span class="hl opt">++) {</span>
                     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_inner <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x_inner<span class="hl opt">++) {</span>
                         <span class="hl kwb">int</span> x <span class="hl opt">=</span> x_outer <span class="hl opt">*</span> <span class="hl num">4</span> <span class="hl opt">+</span> x_inner<span class="hl opt">;</span>
                         <span class="hl kwb">int</span> y <span class="hl opt">=</span> y_outer <span class="hl opt">*</span> <span class="hl num">4</span> <span class="hl opt">+</span> y_inner<span class="hl opt">;</span>
-                        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+                        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
                     <span class="hl opt">}</span>
                 <span class="hl opt">}</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl opt">}</span>
 
     <span class="hl slc">// Evaluating in vectors.</span>
@@ -501,14 +494,14 @@ tutorial_lesson_14_types.html
 
         <span class="hl slc">// This time we'll evaluate over an 8x4 box, so that we have</span>
         <span class="hl slc">// more than one vector of work per scanline.</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x_inner vectorized</span> <span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x_inner vectorized</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 
          <span><img src= figures/lesson_05_vectors.gif ></span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_outer <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> x_outer<span class="hl opt">++) {</span>
                 <span class="hl slc">// The loop over x_inner has gone away, and has been</span>
@@ -523,17 +516,17 @@ tutorial_lesson_14_types.html
                              x_vec<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] +</span> y<span class="hl opt">,</span>
                              x_vec<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">] +</span> y<span class="hl opt">,</span>
                              x_vec<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">] +</span> y<span class="hl opt">};</span>
-                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at &lt;%d, %d, %d, %d&gt;, &lt;%d, %d, %d, %d&gt;: &lt;%d, %d, %d, %d&gt;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at &lt;%d, %d, %d, %d&gt;, &lt;%d, %d, %d, %d&gt;: &lt;%d, %d, %d, %d&gt;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
                        x_vec<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">],</span> x_vec<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">],</span> x_vec<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">],</span> x_vec<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">],</span>
                        y<span class="hl opt">,</span> y<span class="hl opt">,</span> y<span class="hl opt">,</span> y<span class="hl opt">,</span>
                        val<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">],</span> val<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">],</span> val<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">],</span> val<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]);</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl opt">}</span>
 
     <span class="hl slc">// Unrolling a loop.</span>
@@ -555,10 +548,10 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// The shorthand for this is:</span>
         <span class="hl slc">// gradient.unroll(x, 2);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient unrolled by a factor of two</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient unrolled by a factor of two</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_outer <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> x_outer<span class="hl opt">++) {</span>
                 <span class="hl slc">// Instead of a for loop over x_inner, we get two</span>
@@ -566,20 +559,20 @@ tutorial_lesson_14_types.html
                 <span class="hl opt">{</span>
                     <span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
                     <span class="hl kwb">int</span> x <span class="hl opt">=</span> x_outer <span class="hl opt">*</span> <span class="hl num">2</span> <span class="hl opt">+</span> x_inner<span class="hl opt">;</span>
-                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
                 <span class="hl opt">}</span>
                 <span class="hl opt">{</span>
                     <span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">1</span><span class="hl opt">;</span>
                     <span class="hl kwb">int</span> x <span class="hl opt">=</span> x_outer <span class="hl opt">*</span> <span class="hl num">2</span> <span class="hl opt">+</span> x_inner<span class="hl opt">;</span>
-                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
                 <span class="hl opt">}</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl opt">}</span>
 
     <span class="hl slc">// Splitting by factors that don't divide the extent.</span>
@@ -597,7 +590,7 @@ tutorial_lesson_14_types.html
         Var x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">;</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>x<span class="hl opt">,</span> x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient over a 7x4 box with x split by three</span> <span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient over a 7x4 box with x split by three</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
         <span class="hl slc">// See below for a visualization</span>
@@ -606,7 +599,7 @@ tutorial_lesson_14_types.html
 
          <span><img src= figures/lesson_05_split_7_by_3.gif ></span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_outer <span class="hl opt">&lt;</span> <span class="hl num">3</span><span class="hl opt">;</span> x_outer<span class="hl opt">++) {</span> <span class="hl slc">// Now runs from 0 to 3</span>
                 <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_inner <span class="hl opt">&lt;</span> <span class="hl num">3</span><span class="hl opt">;</span> x_inner<span class="hl opt">++) {</span>
@@ -617,15 +610,15 @@ tutorial_lesson_14_types.html
                     <span class="hl slc">// factor).</span>
                     <span class="hl kwa">if</span> <span class="hl opt">(</span>x <span class="hl opt">&gt;</span> <span class="hl num">4</span><span class="hl opt">)</span> x <span class="hl opt">=</span> <span class="hl num">4</span><span class="hl opt">;</span>
                     x <span class="hl opt">+=</span> x_inner<span class="hl opt">;</span>
-                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
                 <span class="hl opt">}</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// If you read the output, you'll see that some coordinates</span>
         <span class="hl slc">// were evaluated more than once. That's generally OK, because</span>
@@ -666,7 +659,7 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// parallel variables into a single parallel for loop.</span>
 
         Func <span class="hl kwd">gradient</span><span class="hl opt">(</span><span class="hl str">&quot;gradient_fused_tiles&quot;</span><span class="hl opt">);</span>
-        <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">slow</span><span class="hl opt">(</span>x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+        <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
         <span class="hl slc">// First we'll tile, then we'll fuse the tile indices and</span>
@@ -686,7 +679,7 @@ tutorial_lesson_14_types.html
         <span class="hl slc">//     .parallel(tile_index);</span>
 
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient tiles in parallel</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient tiles in parallel</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
 
         <span class="hl slc">// The tiles should occur in arbitrary order, but within each</span>
@@ -695,7 +688,7 @@ tutorial_lesson_14_types.html
 
          <span><img src= figures/lesson_05_parallel_tiles.gif ></span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent (serial) C:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent (serial) C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl slc">// This outermost loop should be a parallel for loop, but that's hard in C.</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> tile_index <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> tile_index <span class="hl opt">&lt;</span> <span class="hl num">16</span><span class="hl opt">;</span> tile_index<span class="hl opt">++) {</span>
             <span class="hl kwb">int</span> y_outer <span class="hl opt">=</span> tile_index <span class="hl opt">/</span> <span class="hl num">4</span><span class="hl opt">;</span>
@@ -704,15 +697,15 @@ tutorial_lesson_14_types.html
                 <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_inner <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x_inner<span class="hl opt">++) {</span>
                     <span class="hl kwb">int</span> y <span class="hl opt">=</span> y_outer <span class="hl opt">*</span> <span class="hl num">4</span> <span class="hl opt">+</span> y_inner<span class="hl opt">;</span>
                     <span class="hl kwb">int</span> x <span class="hl opt">=</span> x_outer <span class="hl opt">*</span> <span class="hl num">4</span> <span class="hl opt">+</span> x_inner<span class="hl opt">;</span>
-                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
                 <span class="hl opt">}</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl opt">}</span>
 
     <span class="hl slc">// Putting it all together.</span>
@@ -756,7 +749,7 @@ tutorial_lesson_14_types.html
 
          <span><video autoplay loop><source src= figures/lesson_05_fast.mp4  />Your browser does not support the video tag :(</video></span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Checking Halide result against equivalent C...</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Checking Halide result against equivalent C...</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> tile_index <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> tile_index <span class="hl opt">&lt;</span> <span class="hl num">4</span> <span class="hl opt">*</span> <span class="hl num">3</span><span class="hl opt">;</span> tile_index<span class="hl opt">++) {</span>
             <span class="hl kwb">int</span> y_outer <span class="hl opt">=</span> tile_index <span class="hl opt">/</span> <span class="hl num">4</span><span class="hl opt">;</span>
             <span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> tile_index <span class="hl opt">%</span> <span class="hl num">4</span><span class="hl opt">;</span>
@@ -783,7 +776,7 @@ tutorial_lesson_14_types.html
                         <span class="hl slc">// Check the result.</span>
                         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
                             <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">result</span><span class="hl opt">(</span>x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]) !=</span> val<span class="hl opt">[</span>i<span class="hl opt">]) {</span>
-                                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;There was an error at %d %d!</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]);</span>
+                                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;There was an error at %d %d!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]);</span>
                                 <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
                             <span class="hl opt">}</span>
                         <span class="hl opt">}</span>
@@ -800,7 +793,7 @@ tutorial_lesson_14_types.html
                         <span class="hl slc">// Check the result.</span>
                         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
                             <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">result</span><span class="hl opt">(</span>x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]) !=</span> val<span class="hl opt">[</span>i<span class="hl opt">]) {</span>
-                                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;There was an error at %d %d!</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]);</span>
+                                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;There was an error at %d %d!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]);</span>
                                 <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
                             <span class="hl opt">}</span>
                         <span class="hl opt">}</span>
@@ -808,11 +801,11 @@ tutorial_lesson_14_types.html
                 <span class="hl opt">}</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient_fast<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Note that in the Halide version, the algorithm is specified</span>
         <span class="hl slc">// once at the top, separately from the optimizations, and there</span>
@@ -826,7 +819,7 @@ tutorial_lesson_14_types.html
     <span class="hl opt">}</span>
 
 
-    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
 <span class="hl opt">}</span>
 </pre>

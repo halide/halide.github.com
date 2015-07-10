@@ -457,7 +457,7 @@ Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;%1.4f milliseconds</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> best_time<span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;%1.4f milliseconds</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> best_time<span class="hl opt">);</span>
     <span class="hl opt">}</span>
 
     <span class="hl kwb">void</span> <span class="hl kwd">test_correctness</span><span class="hl opt">(</span>Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> reference_output<span class="hl opt">) {</span>
@@ -469,7 +469,7 @@ Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="
                 <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">();</span> x<span class="hl opt">++) {</span>
                     <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">output</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) !=</span> <span class="hl kwd">reference_output</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">)) {</span>
                         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Mismatch between output (%d) and &quot;</span>
-                               <span class="hl str">&quot;reference output (%d) at %d, %d, %d</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                               <span class="hl str">&quot;reference output (%d) at %d, %d, %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
                                <span class="hl kwd">output</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">),</span>
                                <span class="hl kwd">reference_output</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">),</span>
                                x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">);</span>
@@ -491,20 +491,20 @@ Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="
     <span class="hl slc">// Allocated an image that will store the correct output</span>
     Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">reference_output</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">());</span>
 
-    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Testing performance on CPU:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Testing performance on CPU:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     MyPipeline <span class="hl kwd">p1</span><span class="hl opt">(</span>input<span class="hl opt">);</span>
     p1<span class="hl opt">.</span><span class="hl kwd">schedule_for_cpu</span><span class="hl opt">();</span>
     p1<span class="hl opt">.</span><span class="hl kwd">test_performance</span><span class="hl opt">();</span>
     p1<span class="hl opt">.</span>curved<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>reference_output<span class="hl opt">);</span>
 
     <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">have_opencl</span><span class="hl opt">()) {</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Testing performance on GPU:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Testing performance on GPU:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         MyPipeline <span class="hl kwd">p2</span><span class="hl opt">(</span>input<span class="hl opt">);</span>
         p2<span class="hl opt">.</span><span class="hl kwd">schedule_for_gpu</span><span class="hl opt">();</span>
         p2<span class="hl opt">.</span><span class="hl kwd">test_performance</span><span class="hl opt">();</span>
         p2<span class="hl opt">.</span><span class="hl kwd">test_correctness</span><span class="hl opt">(</span>reference_output<span class="hl opt">);</span>
     <span class="hl opt">}</span> <span class="hl kwa">else</span> <span class="hl opt">{</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Not testing performance on GPU, because I can't find the opencl library</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Not testing performance on GPU, because I can't find the opencl library</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl opt">}</span>
 
     <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
