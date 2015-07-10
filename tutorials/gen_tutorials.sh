@@ -28,7 +28,7 @@ head -n1 $f | sed "s/.*://" >> $h
 fi
 cat >>$h <<EOF
 </title>
-<link rel="stylesheet" type="text/css" href="/assets/css/highlight.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/highlight.css">
 <style>
 
 a:visited {
@@ -141,5 +141,43 @@ echo '</pre>' >> $h
 fi
 
 echo '</div></body></html>' >> $h
+
+# Inline the figures
+IFS=''
+NEXT_FIG=""
+mv $h tmp.html
+cat tmp.html | while read LINE; do
+if [[ "$LINE" == *figures/lesson* ]]
+then
+# Remember this figure and place it on the next empty line
+NEXT_FIG=$(echo $LINE | sed "s/^.*\(figures.lesson[^ ]*\).*$/\1/")
+# Also remember the current indentation level
+SPACES=$(echo $LINE | sed "s/^\( *\).*$/\1/")
+echo "$LINE" | sed "s/figure[^ ]*/below/" >> $h
+elif [[ "$LINE" == "" ]]
+then
+if [[ "$NEXT_FIG" != "" ]]
+then
+# Go grab the figure
+mkdir -p figures
+cp $(dirname $f)/$NEXT_FIG figures/
+echo >> $h
+if [[ $NEXT_FIG == *gif ]]
+then
+# It's an animated gif
+echo "${SPACES}" '<span><img src=' ${NEXT_FIG} '></span>' >> $h
+else
+# Assume it's a video
+echo "${SPACES}" '<span><video autoplay loop><source src=' ${NEXT_FIG} ' />Your browser does not support the video tag :(</video></span>' >> $h
+fi
+echo >> $h
+NEXT_FIG=""
+else
+echo >> $h
+fi
+else
+echo "$LINE" >> $h
+fi
+done
 
 done

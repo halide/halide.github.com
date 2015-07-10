@@ -5,7 +5,7 @@
 <title>
  Scheduling multi-stage pipelines
 </title>
-<link rel="stylesheet" type="text/css" href="/assets/css/highlight.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/highlight.css">
 <style>
 
 a:visited {
@@ -268,7 +268,7 @@ tutorial_lesson_14_types.html
         producer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
         <span class="hl slc">// And evaluate it over a 4x4 box.</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer-consumer pipeline with default schedule</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">Evaluating producer-consumer pipeline with default schedule</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
         <span class="hl slc">// There were no messages about computing values of the</span>
@@ -295,13 +295,13 @@ tutorial_lesson_14_types.html
                                 <span class="hl kwd">sqrt</span><span class="hl opt">((</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">)*(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">)));</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// If we look at the loop nest, the producer doesn't appear</span>
         <span class="hl slc">// at all. It has been inlined into the consumer.</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl opt">}</span>
 
     <span class="hl slc">// Next we'll examine the next simplest option - computing all</span>
@@ -324,7 +324,7 @@ tutorial_lesson_14_types.html
         producer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
         <span class="hl slc">// Compile and run.</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.compute_root()</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">Evaluating producer.compute_root()</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Reading the output we can see that:</span>
@@ -364,9 +364,9 @@ tutorial_lesson_14_types.html
 
         <span class="hl slc">// If we print the loop nest, we'll see something very</span>
         <span class="hl slc">// similar to the C above.</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl opt">}</span>
 
     <span class="hl slc">// Let's compare the two approaches above from a performance</span>
@@ -427,7 +427,7 @@ tutorial_lesson_14_types.html
         consumer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
         <span class="hl slc">// Compile and run.</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.compute_at(consumer, y)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">Evaluating producer.compute_at(consumer, y)</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Reading the log you should see that producer and consumer</span>
@@ -460,9 +460,9 @@ tutorial_lesson_14_types.html
 
         <span class="hl slc">// Again, if we print the loop nest, we'll see something very</span>
         <span class="hl slc">// similar to the C above.</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// The performance characteristics of this strategy are in</span>
         <span class="hl slc">// between inlining and compute root. We still allocate some</span>
@@ -502,7 +502,7 @@ tutorial_lesson_14_types.html
         producer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.store_root().compute_at(consumer, y)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">Evaluating producer.store_root().compute_at(consumer, y)</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Reading the log you should see that producer and consumer</span>
@@ -546,9 +546,9 @@ tutorial_lesson_14_types.html
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// The performance characteristics of this strategy are pretty</span>
         <span class="hl slc">// good! The numbers are similar compute_root, except locality</span>
@@ -609,7 +609,7 @@ tutorial_lesson_14_types.html
         producer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.store_root().compute_at(consumer, x)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">Evaluating producer.store_root().compute_at(consumer, x)</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Reading the log, you should see that producer and consumer</span>
@@ -644,9 +644,9 @@ tutorial_lesson_14_types.html
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// The performance characteristics of this strategy are the</span>
         <span class="hl slc">// best so far. One of the four values of the producer we need</span>
@@ -705,9 +705,9 @@ tutorial_lesson_14_types.html
         producer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span>
-               <span class="hl str">&quot;consumer.tile(x, y, x_outer, y_outer, x_inner, y_inner, 2, 2);</span><span class="hl esc">\n</span><span class="hl str">&quot;</span>
-               <span class="hl str">&quot;producer.compute_at(consumer, x_outer);</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">Evaluating:</span><span class="hl esc">n</span><span class="hl str">&quot;</span>
+               <span class="hl str">&quot;consumer.tile(x, y, x_outer, y_outer, x_inner, y_inner, 2, 2);</span><span class="hl esc">n</span><span class="hl str">&quot;</span>
+               <span class="hl str">&quot;producer.compute_at(consumer, x_outer);</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Reading the log, you should see that producer and consumer</span>
@@ -746,9 +746,9 @@ tutorial_lesson_14_types.html
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Tiling can make sense for problems like this one with</span>
         <span class="hl slc">// stencils that reach outwards in x and y. Each tile can be</span>
@@ -863,9 +863,9 @@ tutorial_lesson_14_types.html
 
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Look on my code, ye mighty, and despair!</span>
 
@@ -877,7 +877,7 @@ tutorial_lesson_14_types.html
                 <span class="hl kwb">float</span> error <span class="hl opt">=</span> <span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) -</span> c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">];</span>
                 <span class="hl slc">// It's floating-point math, so we'll allow some slop:</span>
                 <span class="hl kwa">if</span> <span class="hl opt">(</span>error <span class="hl opt">&lt; -</span><span class="hl num">0.001</span>f <span class="hl opt">||</span> error <span class="hl opt">&gt;</span> <span class="hl num">0.001</span>f<span class="hl opt">) {</span>
-                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;halide_result(%d, %d) = %f instead of %f</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;halide_result(%d, %d) = %f instead of %f</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
                            x<span class="hl opt">,</span> y<span class="hl opt">,</span> <span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">),</span> c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">]);</span>
                     <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
                 <span class="hl opt">}</span>
@@ -915,7 +915,7 @@ tutorial_lesson_14_types.html
     <span class="hl slc">// trade-offs between locality, redundant work, and parallelism,</span>
     <span class="hl slc">// without messing up the actual result you're trying to compute.</span>
 
-    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
 <span class="hl opt">}</span>
 </pre>
