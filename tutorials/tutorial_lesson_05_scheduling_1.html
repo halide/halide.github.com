@@ -702,7 +702,8 @@ tutorial_lesson_14_types.html
                              x_vec<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] +</span> y<span class="hl opt">,</span>
                              x_vec<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">] +</span> y<span class="hl opt">,</span>
                              x_vec<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">] +</span> y<span class="hl opt">};</span>
-                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at &lt;%d, %d, %d, %d&gt;, &lt;%d, %d, %d, %d&gt;: &lt;%d, %d, %d, %d&gt;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at &lt;%d, %d, %d, %d&gt;, &lt;%d, %d, %d, %d&gt;:&quot;</span>
+                       <span class="hl str">&quot; &lt;%d, %d, %d, %d&gt;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
                        x_vec<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">],</span> x_vec<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">],</span> x_vec<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">],</span> x_vec<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">],</span>
                        y<span class="hl opt">,</span> y<span class="hl opt">,</span> y<span class="hl opt">,</span> y<span class="hl opt">,</span>
                        val<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">],</span> val<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">],</span> val<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">],</span> val<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]);</span>
@@ -713,7 +714,7 @@ tutorial_lesson_14_types.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span> 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        <a onclick='return toggle("_298");'><b id=_298-show>// Click to show output ...</b></a><div id=_298 style= "display:none; background:#333333; color:#ffffff"><b>
+        <a onclick='return toggle("_299");'><b id=_299-show>// Click to show output ...</b></a><div id=_299 style= "display:none; background:#333333; color:#ffffff"><b>
  > compute gradient_in_vectors:
  >   for y:
  >     for x.x_outer:
@@ -744,7 +745,7 @@ tutorial_lesson_14_types.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient unrolled by a factor of two</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span> 
-        <a onclick='return toggle("_322");'><b id=_322-show>// Click to show output ...</b></a><div id=_322 style= "display:none; background:#333333; color:#ffffff"><b>
+        <a onclick='return toggle("_323");'><b id=_323-show>// Click to show output ...</b></a><div id=_323 style= "display:none; background:#333333; color:#ffffff"><b>
  > Store gradient_unroll.0(0, 0) = 0
  > Store gradient_unroll.0(1, 0) = 1
  > Store gradient_unroll.0(2, 0) = 2
@@ -786,7 +787,7 @@ tutorial_lesson_14_types.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span> 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        <a onclick='return toggle("_344");'><b id=_344-show>// Click to show output ...</b></a><div id=_344 style= "display:none; background:#333333; color:#ffffff"><b>
+        <a onclick='return toggle("_345");'><b id=_345-show>// Click to show output ...</b></a><div id=_345 style= "display:none; background:#333333; color:#ffffff"><b>
  > compute gradient_unroll:
  >   for y:
  >     for x.x_outer:
@@ -813,7 +814,7 @@ tutorial_lesson_14_types.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient over a 7x4 box with x split by three</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span> 
-        <a onclick='return toggle("_364");'><b id=_364-show>// Click to show output ...</b></a><div id=_364 style= "display:none; background:#333333; color:#ffffff"><b>
+        <a onclick='return toggle("_365");'><b id=_365-show>// Click to show output ...</b></a><div id=_365 style= "display:none; background:#333333; color:#ffffff"><b>
  > Store gradient_split_7x4.0(0, 0) = 0
  > Store gradient_split_7x4.0(1, 0) = 1
  > Store gradient_split_7x4.0(2, 0) = 2
@@ -879,7 +880,7 @@ tutorial_lesson_14_types.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span> 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        <a onclick='return toggle("_388");'><b id=_388-show>// Click to show output ...</b></a><div id=_388 style= "display:none; background:#333333; color:#ffffff"><b>
+        <a onclick='return toggle("_389");'><b id=_389-show>// Click to show output ...</b></a><div id=_389 style= "display:none; background:#333333; color:#ffffff"><b>
  > compute gradient_split_7x4:
  >   for y:
  >     for x.x_outer:
@@ -949,7 +950,7 @@ tutorial_lesson_14_types.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient tiles in parallel</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span> 
-        <a onclick='return toggle("_451");'><b id=_451-show>// Click to show output ...</b></a><div id=_451 style= "display:none; background:#333333; color:#ffffff"><b>
+        <a onclick='return toggle("_452");'><b id=_452-show>// Click to show output ...</b></a><div id=_452 style= "display:none; background:#333333; color:#ffffff"><b>
  > Store gradient_fused_tiles.0(0, 0) = 0
  > Store gradient_fused_tiles.0(1, 0) = 1
  > Store gradient_fused_tiles.0(2, 0) = 2
@@ -958,13 +959,20 @@ tutorial_lesson_14_types.html
  > Store gradient_fused_tiles.0(1, 1) = 2
  > Store gradient_fused_tiles.0(2, 1) = 3
  > Store gradient_fused_tiles.0(3, 1) = 4
+ > Store gradient_fused_tiles.0(0, 2) = 2
+ > Store gradient_fused_tiles.0(1, 2) = 3
+ > Store gradient_fused_tiles.0(2, 2) = 4
+ > Store gradient_fused_tiles.0(3, 2) = 5
+ > Store gradient_fused_tiles.0(0, 3) = 3
+ > Store gradient_fused_tiles.0(1, 3) = 4
+ > Store gradient_fused_tiles.0(2, 3) = 5
  > Store gradient_fused_tiles.0(4, 0) = 4
  > Store gradient_fused_tiles.0(5, 0) = 5
  > Store gradient_fused_tiles.0(6, 0) = 6
  > Store gradient_fused_tiles.0(0, 4) = 4
  > Store gradient_fused_tiles.0(1, 4) = 5
  > Store gradient_fused_tiles.0(2, 4) = 6
- > Store gradient_fused_tiles.0(4, 4) = 8
+ > Store gradient_fused_tiles.0(3, 4) = 7
  > Store gradient_fused_tiles.0(0, 5) = 5
  > Store gradient_fused_tiles.0(1, 5) = 6
  > Store gradient_fused_tiles.0(2, 5) = 7
@@ -977,10 +985,6 @@ tutorial_lesson_14_types.html
  > Store gradient_fused_tiles.0(1, 7) = 8
  > Store gradient_fused_tiles.0(2, 7) = 9
  > Store gradient_fused_tiles.0(3, 7) = 10
- >  7) = 11
- > Store gradient_fused_tiles.0(5, 7) = 12
- > Store gradient_fused_tiles.0(6, 7) = 13
- > Store gradient_fused_tiles.0(7, 7) = 14
 
 </b></div>
 
@@ -1008,7 +1012,7 @@ tutorial_lesson_14_types.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span> 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        <a onclick='return toggle("_473");'><b id=_473-show>// Click to show output ...</b></a><div id=_473 style= "display:none; background:#333333; color:#ffffff"><b>
+        <a onclick='return toggle("_474");'><b id=_474-show>// Click to show output ...</b></a><div id=_474 style= "display:none; background:#333333; color:#ffffff"><b>
  > compute gradient_fused_tiles:
  >   parallel x.x_outer.tile_index:
  >     for y.y_inner in [0, 3]:
@@ -1086,7 +1090,8 @@ tutorial_lesson_14_types.html
                         <span class="hl slc">// Check the result.</span>
                         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
                             <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">result</span><span class="hl opt">(</span>x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]) !=</span> val<span class="hl opt">[</span>i<span class="hl opt">]) {</span>
-                                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;There was an error at %d %d!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]);</span>
+                                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;There was an error at %d %d!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                                       x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]);</span>
                                 <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
                             <span class="hl opt">}</span>
                         <span class="hl opt">}</span>
@@ -1103,7 +1108,8 @@ tutorial_lesson_14_types.html
                         <span class="hl slc">// Check the result.</span>
                         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
                             <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">result</span><span class="hl opt">(</span>x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]) !=</span> val<span class="hl opt">[</span>i<span class="hl opt">]) {</span>
-                                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;There was an error at %d %d!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]);</span>
+                                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;There was an error at %d %d!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                                       x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]);</span>
                                 <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
                             <span class="hl opt">}</span>
                         <span class="hl opt">}</span>
@@ -1116,7 +1122,7 @@ tutorial_lesson_14_types.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient_fast<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span> 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        <a onclick='return toggle("_571");'><b id=_571-show>// Click to show output ...</b></a><div id=_571 style= "display:none; background:#333333; color:#ffffff"><b>
+        <a onclick='return toggle("_574");'><b id=_574-show>// Click to show output ...</b></a><div id=_574 style= "display:none; background:#333333; color:#ffffff"><b>
  > compute gradient_fast:
  >   parallel x.x_outer.tile_index:
  >     for y.y_inner.y_inner_outer:

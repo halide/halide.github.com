@@ -305,16 +305,24 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// definition in all references to the function on the left-</span>
         <span class="hl slc">// and right-hand sides. So the following definitions are</span>
         <span class="hl slc">// legal updates:</span>
-        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">17</span><span class="hl opt">) =</span> x <span class="hl opt">+</span> <span class="hl num">8</span><span class="hl opt">;</span> <span class="hl slc">// x is used, so all uses of f must have x as the first argument.</span>
-        <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> y<span class="hl opt">) =</span> y <span class="hl opt">*</span> <span class="hl num">8</span><span class="hl opt">;</span>  <span class="hl slc">// y is used, so all uses of f must have y as the second argument.</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">17</span><span class="hl opt">) =</span> x <span class="hl opt">+</span> <span class="hl num">8</span><span class="hl opt">;</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> y<span class="hl opt">) =</span> y <span class="hl opt">*</span> <span class="hl num">8</span><span class="hl opt">;</span>
         <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) =</span> x <span class="hl opt">+</span> <span class="hl num">8</span><span class="hl opt">;</span>
         <span class="hl kwd">f</span><span class="hl opt">(</span>y<span class="hl opt">/</span><span class="hl num">2</span><span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> y<span class="hl opt">) *</span> <span class="hl num">17</span><span class="hl opt">;</span>
 
         <span class="hl slc">// But these ones would cause an error:</span>
-        <span class="hl slc">// f(x, 0) = f(x + 1, 0) &lt;- First argument to f on the right-hand-side must be 'x', not 'x + 1'.</span>
-        <span class="hl slc">// f(y, y + 1) = y + 8   &lt;- Second argument to f on the left-hand-side must be 'y', not 'y + 1'.</span>
-        <span class="hl slc">// f(y, x) = y - x;      &lt;- Arguments to f on the left-hand-side are in the wrong places.</span>
-        <span class="hl slc">// f(3, 4) = x + y;      &lt;- Free variables appear on the right-hand-side but not the left-hand-side.</span>
+
+        <span class="hl slc">// f(x, 0) = f(x + 1, 0);</span>
+        <span class="hl slc">// First argument to f on the right-hand-side must be 'x', not 'x + 1'.</span>
+
+        <span class="hl slc">// f(y, y + 1) = y + 8;</span>
+        <span class="hl slc">// Second argument to f on the left-hand-side must be 'y', not 'y + 1'.</span>
+
+        <span class="hl slc">// f(y, x) = y - x;</span>
+        <span class="hl slc">// Arguments to f on the left-hand-side are in the wrong places.</span>
+
+        <span class="hl slc">// f(3, 4) = x + y;</span>
+        <span class="hl slc">// Free variables appear on the right-hand-side but not the left-hand-side.</span>
 
         <span class="hl slc">// We'll realize this one just to make sure it compiles. The</span>
         <span class="hl slc">// second-to-last definition forces us to realize over a</span>
@@ -333,7 +341,7 @@ tutorial_lesson_14_types.html
         g<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
         g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span> 
-        <a onclick='return toggle("_99");'><b id=_99-show>// Click to show output ...</b></a><div id=_99 style= "display:none; background:#333333; color:#ffffff"><b>
+        <a onclick='return toggle("_107");'><b id=_107-show>// Click to show output ...</b></a><div id=_107 style= "display:none; background:#333333; color:#ffffff"><b>
  > Store g.0(0, 0) = 0
  > Store g.0(1, 0) = 1
  > Store g.0(2, 0) = 2
@@ -850,7 +858,8 @@ tutorial_lesson_14_types.html
             <span class="hl opt">}</span>
             <span class="hl slc">// Update step for the consumer.</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">10</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
-                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> r <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> r<span class="hl opt">++) {</span> <span class="hl slc">// The loop over the reduction domain is always the inner loop.</span>
+                <span class="hl slc">// The loop over the reduction domain is always the inner loop.</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> r <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> r<span class="hl opt">++) {</span>
                     <span class="hl slc">// We've schedule the storage and computation of</span>
                     <span class="hl slc">// the producer here. We just need a single value.</span>
                     <span class="hl kwb">int</span> producer_storage<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
