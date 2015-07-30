@@ -253,15 +253,15 @@ tutorial_lesson_14_types.html
 
         <span class="hl slc">// The first stage will be some simple pointwise math similar</span>
         <span class="hl slc">// to our familiar gradient function. The value at position x,</span>
-        <span class="hl slc">// y is the sqrt of product of x and y.</span>
-        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+        <span class="hl slc">// y is the sin of product of x and y.</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
 
-        <span class="hl slc">// Now we'll add a second stage which adds together multiple</span>
+        <span class="hl slc">// Now we'll add a second stage which averages together multiple</span>
         <span class="hl slc">// points in the first stage.</span>
         <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span>
                           <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) +</span>
                           <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
-                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">));</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">))/</span><span class="hl num">4</span><span class="hl opt">;</span>
 
         <span class="hl slc">// We'll turn on tracing for both functions.</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
@@ -276,10 +276,10 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// inlines 'producer' into 'consumer'. It is as if we had</span>
         <span class="hl slc">// written the following code instead:</span>
 
-        <span class="hl slc">// consumer(x, y) = (sqrt(x * y) +</span>
-        <span class="hl slc">//                   sqrt(x * (y + 1)) +</span>
-        <span class="hl slc">//                   sqrt((x + 1) * y) +</span>
-        <span class="hl slc">//                   sqrt((x + 1) * (y + 1)));</span>
+        <span class="hl slc">// consumer(x, y) = (sin(x * y) +</span>
+        <span class="hl slc">//                   sin(x * (y + 1)) +</span>
+        <span class="hl slc">//                   sin((x + 1) * y) +</span>
+        <span class="hl slc">//                   sin((x + 1) * (y + 1)));</span>
 
         <span class="hl slc">// All calls to 'producer' have been replaced with the body of</span>
         <span class="hl slc">// 'producer', with the arguments subtituted in for the</span>
@@ -289,10 +289,10 @@ tutorial_lesson_14_types.html
         <span class="hl kwb">float</span> result<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">][</span><span class="hl num">4</span><span class="hl opt">];</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
-                result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span><span class="hl kwd">sqrt</span><span class="hl opt">(</span>x<span class="hl opt">*</span>y<span class="hl opt">) +</span>
-                                <span class="hl kwd">sqrt</span><span class="hl opt">(</span>x<span class="hl opt">*(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">)) +</span>
-                                <span class="hl kwd">sqrt</span><span class="hl opt">((</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">)*</span>y<span class="hl opt">) +</span>
-                                <span class="hl kwd">sqrt</span><span class="hl opt">((</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">)*(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">)));</span>
+                result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span><span class="hl kwd">sin</span><span class="hl opt">(</span>x<span class="hl opt">*</span>y<span class="hl opt">) +</span>
+                                <span class="hl kwd">sin</span><span class="hl opt">(</span>x<span class="hl opt">*(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">)) +</span>
+                                <span class="hl kwd">sin</span><span class="hl opt">((</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">)*</span>y<span class="hl opt">) +</span>
+                                <span class="hl kwd">sin</span><span class="hl opt">((</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">)*(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">)))/</span><span class="hl num">4</span><span class="hl opt">;</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
@@ -310,11 +310,11 @@ tutorial_lesson_14_types.html
     <span class="hl opt">{</span>
         <span class="hl slc">// Start with the same function definitions:</span>
         Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_root&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_root&quot;</span><span class="hl opt">);</span>
-        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
         <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span>
                           <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) +</span>
                           <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
-                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">));</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">))/</span><span class="hl num">4</span><span class="hl opt">;</span>
 
         <span class="hl slc">// Tell Halide to evaluate all of producer before any of consumer.</span>
         producer<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
@@ -331,6 +331,12 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// A) There were stores to producer.</span>
         <span class="hl slc">// B) They all happened before any stores to consumer.</span>
 
+        <span class="hl slc">// See below for a visualization.</span>
+        <span class="hl slc">// The producer is on the left and the consumer is on the</span>
+        <span class="hl slc">// right. Stores are marked in orange and loads are marked in</span>
+        <span class="hl slc">// blue.</span>
+
+         <span><img src= figures/lesson_08_compute_root.gif ></span>
 
         <span class="hl slc">// Equivalent C:</span>
 
@@ -342,7 +348,7 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// Compute the producer.</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
-                producer_storage<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] =</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+                producer_storage<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
 
@@ -352,7 +358,7 @@ tutorial_lesson_14_types.html
                 result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span>producer_storage<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] +</span>
                                 producer_storage<span class="hl opt">[</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
                                 producer_storage<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">] +</span>
-                                producer_storage<span class="hl opt">[</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">]);</span>
+                                producer_storage<span class="hl opt">[</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">])/</span><span class="hl num">4</span><span class="hl opt">;</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
 
@@ -376,27 +382,27 @@ tutorial_lesson_14_types.html
     <span class="hl slc">// - Temporary memory allocated: 0</span>
     <span class="hl slc">// - Loads: 0</span>
     <span class="hl slc">// - Stores: 16</span>
-    <span class="hl slc">// - Calls to sqrt: 64</span>
+    <span class="hl slc">// - Calls to sin: 64</span>
 
     <span class="hl slc">// producer.compute_root():</span>
     <span class="hl slc">// - Temporary memory allocated: 25 floats</span>
     <span class="hl slc">// - Loads: 64</span>
     <span class="hl slc">// - Stores: 39</span>
-    <span class="hl slc">// - Calls to sqrt: 25</span>
+    <span class="hl slc">// - Calls to sin: 25</span>
 
     <span class="hl slc">// There's a trade-off here. Full inlining used minimal temporary</span>
     <span class="hl slc">// memory and memory bandwidth, but did a whole bunch of redundant</span>
-    <span class="hl slc">// expensive math (calling sqrt). It evaluated most points in</span>
+    <span class="hl slc">// expensive math (calling sin). It evaluated most points in</span>
     <span class="hl slc">// 'producer' four times. The second schedule,</span>
     <span class="hl slc">// producer.compute_root(), did the mimimum number of calls to</span>
-    <span class="hl slc">// sqrt, but used more temporary memory and more memory bandwidth.</span>
+    <span class="hl slc">// sin, but used more temporary memory and more memory bandwidth.</span>
 
     <span class="hl slc">// In any given situation the correct choice can be difficult to</span>
     <span class="hl slc">// make. If you're memory-bandwidth limited, or don't have much</span>
     <span class="hl slc">// memory (e.g. because you're running on an old cell-phone), then</span>
-    <span class="hl slc">// it can make sense to do redundant math. On the other hand, sqrt</span>
+    <span class="hl slc">// it can make sense to do redundant math. On the other hand, sin</span>
     <span class="hl slc">// is expensive, so if you're compute-limited then fewer calls to</span>
-    <span class="hl slc">// sqrt will make your program faster. Adding vectorization or</span>
+    <span class="hl slc">// sin will make your program faster. Adding vectorization or</span>
     <span class="hl slc">// multi-core parallelism tilts the scales in favor of doing</span>
     <span class="hl slc">// redundant work, because firing up multiple cpu cores increases</span>
     <span class="hl slc">// the amount of math you can do per second, but doesn't increase</span>
@@ -408,11 +414,11 @@ tutorial_lesson_14_types.html
     <span class="hl opt">{</span>
         <span class="hl slc">// Start with the same function definitions:</span>
         Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_y&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_y&quot;</span><span class="hl opt">);</span>
-        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
         <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span>
                           <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) +</span>
                           <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
-                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">));</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">))/</span><span class="hl num">4</span><span class="hl opt">;</span>
 
         <span class="hl slc">// Tell Halide to evaluate producer as needed per y coordinate</span>
         <span class="hl slc">// of the consumer:</span>
@@ -430,9 +436,13 @@ tutorial_lesson_14_types.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.compute_at(consumer, y)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
-        <span class="hl slc">// Reading the log you should see that producer and consumer</span>
-        <span class="hl slc">// alternate on a per-scanline basis. Let's look at the</span>
-        <span class="hl slc">// equivalent C:</span>
+        <span class="hl slc">// See below for a visualization.</span>
+
+         <span><img src= figures/lesson_08_compute_y.gif ></span>
+
+        <span class="hl slc">// Reading the log or looking at the figure you should see</span>
+        <span class="hl slc">// that producer and consumer alternate on a per-scanline</span>
+        <span class="hl slc">// basis. Let's look at the equivalent C:</span>
 
         <span class="hl kwb">float</span> result<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">][</span><span class="hl num">4</span><span class="hl opt">];</span>
 
@@ -445,7 +455,7 @@ tutorial_lesson_14_types.html
             <span class="hl kwb">float</span> producer_storage<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">][</span><span class="hl num">5</span><span class="hl opt">];</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> py <span class="hl opt">=</span> y<span class="hl opt">;</span> py <span class="hl opt">&lt;</span> y <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">;</span> py<span class="hl opt">++) {</span>
                 <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> px <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> px <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> px<span class="hl opt">++) {</span>
-                    producer_storage<span class="hl opt">[</span>py<span class="hl opt">-</span>y<span class="hl opt">][</span>px<span class="hl opt">] =</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>px <span class="hl opt">*</span> py<span class="hl opt">);</span>
+                    producer_storage<span class="hl opt">[</span>py<span class="hl opt">-</span>y<span class="hl opt">][</span>px<span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>px <span class="hl opt">*</span> py<span class="hl opt">);</span>
                 <span class="hl opt">}</span>
             <span class="hl opt">}</span>
 
@@ -454,7 +464,7 @@ tutorial_lesson_14_types.html
                 result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span>producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
                                 producer_storage<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
                                 producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">] +</span>
-                                producer_storage<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">]);</span>
+                                producer_storage<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">])/</span><span class="hl num">4</span><span class="hl opt">;</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
 
@@ -475,7 +485,7 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// - Temporary memory allocated: 10 floats</span>
         <span class="hl slc">// - Loads: 64</span>
         <span class="hl slc">// - Stores: 56</span>
-        <span class="hl slc">// - Calls to sqrt: 40</span>
+        <span class="hl slc">// - Calls to sin: 40</span>
     <span class="hl opt">}</span>
 
     <span class="hl slc">// We could also say producer.compute_at(consumer, x), but this</span>
@@ -484,12 +494,12 @@ tutorial_lesson_14_types.html
     <span class="hl slc">// which we allocate storage for producer, and the loop level at</span>
     <span class="hl slc">// which we actually compute it. This unlocks a few optimizations.</span>
     <span class="hl opt">{</span>
-        Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_store_root_compute_y&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_store_root_compute_y&quot;</span><span class="hl opt">);</span>
-        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+        Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_root_y&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_root_y&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
         <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span>
                           <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) +</span>
                           <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
-                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">));</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">))/</span><span class="hl num">4</span><span class="hl opt">;</span>
 
 
         <span class="hl slc">// Tell Halide to make a buffer to store all of producer at</span>
@@ -505,11 +515,17 @@ tutorial_lesson_14_types.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.store_root().compute_at(consumer, y)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
-        <span class="hl slc">// Reading the log you should see that producer and consumer</span>
-        <span class="hl slc">// again alternate on a per-scanline basis. It computes a 5x2</span>
-        <span class="hl slc">// box of the producer to satisfy the first scanline of the</span>
-        <span class="hl slc">// consumer, but after that it only computes a 5x1 box of the</span>
-        <span class="hl slc">// output for each new scanline of the consumer!</span>
+        <span class="hl slc">// See below for a</span>
+        <span class="hl slc">// visualization.</span>
+
+         <span><img src= figures/lesson_08_store_root_compute_y.gif ></span>
+
+        <span class="hl slc">// Reading the log or looking at the figure you should see</span>
+        <span class="hl slc">// that producer and consumer again alternate on a</span>
+        <span class="hl slc">// per-scanline basis. It computes a 5x2 box of the producer</span>
+        <span class="hl slc">// to satisfy the first scanline of the consumer, but after</span>
+        <span class="hl slc">// that it only computes a 5x1 box of the output for each new</span>
+        <span class="hl slc">// scanline of the consumer!</span>
         <span class="hl slc">//</span>
         <span class="hl slc">// Halide has detected that for all scanlines except for the</span>
         <span class="hl slc">// first, it can reuse the values already sitting in the</span>
@@ -533,7 +549,7 @@ tutorial_lesson_14_types.html
                 <span class="hl kwa">if</span> <span class="hl opt">(</span>y <span class="hl opt">&gt;</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> py <span class="hl opt">==</span> y<span class="hl opt">)</span> <span class="hl kwa">continue</span><span class="hl opt">;</span>
 
                 <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> px <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> px <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> px<span class="hl opt">++) {</span>
-                    producer_storage<span class="hl opt">[</span>py<span class="hl opt">][</span>px<span class="hl opt">] =</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>px <span class="hl opt">*</span> py<span class="hl opt">);</span>
+                    producer_storage<span class="hl opt">[</span>py<span class="hl opt">][</span>px<span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>px <span class="hl opt">*</span> py<span class="hl opt">);</span>
                 <span class="hl opt">}</span>
             <span class="hl opt">}</span>
 
@@ -542,7 +558,7 @@ tutorial_lesson_14_types.html
                 result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span>producer_storage<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] +</span>
                                 producer_storage<span class="hl opt">[</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
                                 producer_storage<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">] +</span>
-                                producer_storage<span class="hl opt">[</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">]);</span>
+                                producer_storage<span class="hl opt">[</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">])/</span><span class="hl num">4</span><span class="hl opt">;</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
 
@@ -552,7 +568,7 @@ tutorial_lesson_14_types.html
 
         <span class="hl slc">// The performance characteristics of this strategy are pretty</span>
         <span class="hl slc">// good! The numbers are similar compute_root, except locality</span>
-        <span class="hl slc">// is better. We're doing the minimum number of sqrt calls,</span>
+        <span class="hl slc">// is better. We're doing the minimum number of sin calls,</span>
         <span class="hl slc">// and we load values soon after they are stored, so we're</span>
         <span class="hl slc">// probably making good use of the cache:</span>
 
@@ -560,7 +576,7 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// - Temporary memory allocated: 10 floats</span>
         <span class="hl slc">// - Loads: 64</span>
         <span class="hl slc">// - Stores: 39</span>
-        <span class="hl slc">// - Calls to sqrt: 25</span>
+        <span class="hl slc">// - Calls to sin: 25</span>
 
         <span class="hl slc">// Note that my claimed amount of memory allocated doesn't</span>
         <span class="hl slc">// match the reference C code. Halide is performing one more</span>
@@ -576,7 +592,7 @@ tutorial_lesson_14_types.html
                     <span class="hl kwa">if</span> <span class="hl opt">(</span>y <span class="hl opt">&gt;</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> py <span class="hl opt">==</span> y<span class="hl opt">)</span> <span class="hl kwa">continue</span><span class="hl opt">;</span>
                     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> px <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> px <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> px<span class="hl opt">++) {</span>
                         <span class="hl slc">// Stores to producer_storage have their y coordinate bit-masked.</span>
-                        producer_storage<span class="hl opt">[</span>py <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>px<span class="hl opt">] =</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>px <span class="hl opt">*</span> py<span class="hl opt">);</span>
+                        producer_storage<span class="hl opt">[</span>py <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>px<span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>px <span class="hl opt">*</span> py<span class="hl opt">);</span>
                     <span class="hl opt">}</span>
                 <span class="hl opt">}</span>
 
@@ -586,7 +602,7 @@ tutorial_lesson_14_types.html
                     result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span>producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
                                     producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
                                     producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">] +</span>
-                                    producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">]);</span>
+                                    producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">])/</span><span class="hl num">4</span><span class="hl opt">;</span>
                 <span class="hl opt">}</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
@@ -595,12 +611,12 @@ tutorial_lesson_14_types.html
     <span class="hl slc">// We can do even better, by leaving the storage outermost, but</span>
     <span class="hl slc">// moving the computation into the innermost loop:</span>
     <span class="hl opt">{</span>
-        Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_store_root_compute_x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_store_root_compute_x&quot;</span><span class="hl opt">);</span>
-        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+        Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_root_x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_root_x&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
         <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span>
                           <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) +</span>
                           <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
-                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">));</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">))/</span><span class="hl num">4</span><span class="hl opt">;</span>
 
 
         <span class="hl slc">// Store outermost, compute innermost.</span>
@@ -612,8 +628,13 @@ tutorial_lesson_14_types.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.store_root().compute_at(consumer, x)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
-        <span class="hl slc">// Reading the log, you should see that producer and consumer</span>
-        <span class="hl slc">// now alternate on a per-pixel basis. Here's the equivalent C:</span>
+        <span class="hl slc">// See below for a</span>
+        <span class="hl slc">// visualization.</span>
+
+         <span><img src= figures/lesson_08_store_root_compute_x.gif ></span>
+
+        <span class="hl slc">// You should see that producer and consumer now alternate on</span>
+        <span class="hl slc">// a per-pixel basis. Here's the equivalent C:</span>
 
         <span class="hl kwb">float</span> result<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">][</span><span class="hl num">4</span><span class="hl opt">];</span>
 
@@ -630,17 +651,17 @@ tutorial_lesson_14_types.html
                 <span class="hl slc">// pixel of the consumer, but skip values that we've</span>
                 <span class="hl slc">// already computed:</span>
                 <span class="hl kwa">if</span> <span class="hl opt">(</span>y <span class="hl opt">==</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> x <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">)</span>
-                    producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] =</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>x<span class="hl opt">*</span>y<span class="hl opt">);</span>
+                    producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x<span class="hl opt">*</span>y<span class="hl opt">);</span>
                 <span class="hl kwa">if</span> <span class="hl opt">(</span>y <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">)</span>
-                    producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">] =</span> <span class="hl kwd">sqrt</span><span class="hl opt">((</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">)*</span>y<span class="hl opt">);</span>
+                    producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">((</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">)*</span>y<span class="hl opt">);</span>
                 <span class="hl kwa">if</span> <span class="hl opt">(</span>x <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">)</span>
-                    producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] =</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>x<span class="hl opt">*(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">));</span>
-                producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">] =</span> <span class="hl kwd">sqrt</span><span class="hl opt">((</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">)*(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">));</span>
+                    producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x<span class="hl opt">*(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">));</span>
+                producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">((</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">)*(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">));</span>
 
                 result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span>producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
                                 producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
                                 producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">] +</span>
-                                producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">]);</span>
+                                producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">])/</span><span class="hl num">4</span><span class="hl opt">;</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
 
@@ -656,7 +677,7 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// - Temporary memory allocated: 10 floats</span>
         <span class="hl slc">// - Loads: 48</span>
         <span class="hl slc">// - Stores: 56</span>
-        <span class="hl slc">// - Calls to sqrt: 40</span>
+        <span class="hl slc">// - Calls to sin: 40</span>
     <span class="hl opt">}</span>
 
     <span class="hl slc">// So what's the catch? Why not always do</span>
@@ -681,16 +702,15 @@ tutorial_lesson_14_types.html
     <span class="hl slc">// respect to those. We'll use this to express fusion in tiles:</span>
     <span class="hl opt">{</span>
         Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_tile&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_tile&quot;</span><span class="hl opt">);</span>
-        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
         <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span>
                           <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) +</span>
                           <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
-                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">));</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">))/</span><span class="hl num">4</span><span class="hl opt">;</span>
 
-
-        <span class="hl slc">// Tile the consumer using 2x2 tiles.</span>
+        <span class="hl slc">// We'll compute 8x8 of the consumer, in 4x4 tiles.</span>
         Var x_outer<span class="hl opt">,</span> y_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> y_inner<span class="hl opt">;</span>
-        consumer<span class="hl opt">.</span><span class="hl kwd">tile</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> x_outer<span class="hl opt">,</span> y_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> y_inner<span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">tile</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> x_outer<span class="hl opt">,</span> y_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> y_inner<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Compute the producer per tile of the consumer</span>
         producer<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> x_outer<span class="hl opt">);</span>
@@ -706,41 +726,45 @@ tutorial_lesson_14_types.html
         consumer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span>
-               <span class="hl str">&quot;consumer.tile(x, y, x_outer, y_outer, x_inner, y_inner, 2, 2);</span><span class="hl esc">\n</span><span class="hl str">&quot;</span>
+               <span class="hl str">&quot;consumer.tile(x, y, x_outer, y_outer, x_inner, y_inner, 4, 4);</span><span class="hl esc">\n</span><span class="hl str">&quot;</span>
                <span class="hl str">&quot;producer.compute_at(consumer, x_outer);</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
 
-        <span class="hl slc">// Reading the log, you should see that producer and consumer</span>
-        <span class="hl slc">// now alternate on a per-tile basis. Here's the equivalent C:</span>
+        <span class="hl slc">// See below for a visualization.</span>
 
-        <span class="hl kwb">float</span> result<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">][</span><span class="hl num">4</span><span class="hl opt">];</span>
+         <span><img src= figures/lesson_08_tile.gif ></span>
+
+        <span class="hl slc">// The producer and consumer now alternate on a per-tile</span>
+        <span class="hl slc">// basis. Here's the equivalent C:</span>
+
+        <span class="hl kwb">float</span> result<span class="hl opt">[</span><span class="hl num">8</span><span class="hl opt">][</span><span class="hl num">8</span><span class="hl opt">];</span>
 
         <span class="hl slc">// For every tile of the consumer:</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y_outer <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> y_outer<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_outer <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> x_outer<span class="hl opt">++) {</span>
                 <span class="hl slc">// Compute the x and y coords of the start of this tile.</span>
-                <span class="hl kwb">int</span> x_base <span class="hl opt">=</span> x_outer<span class="hl opt">*</span><span class="hl num">2</span><span class="hl opt">;</span>
-                <span class="hl kwb">int</span> y_base <span class="hl opt">=</span> y_outer<span class="hl opt">*</span><span class="hl num">2</span><span class="hl opt">;</span>
+                <span class="hl kwb">int</span> x_base <span class="hl opt">=</span> x_outer<span class="hl opt">*</span><span class="hl num">4</span><span class="hl opt">;</span>
+                <span class="hl kwb">int</span> y_base <span class="hl opt">=</span> y_outer<span class="hl opt">*</span><span class="hl num">4</span><span class="hl opt">;</span>
 
                 <span class="hl slc">// Compute enough of producer to satisfy this tile. A</span>
-                <span class="hl slc">// 2x2 tile of the consumer requires a 3x3 tile of the</span>
+                <span class="hl slc">// 4x4 tile of the consumer requires a 5x5 tile of the</span>
                 <span class="hl slc">// producer.</span>
-                <span class="hl kwb">float</span> producer_storage<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">][</span><span class="hl num">3</span><span class="hl opt">];</span>
-                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> py <span class="hl opt">=</span> y_base<span class="hl opt">;</span> py <span class="hl opt">&lt;</span> y_base <span class="hl opt">+</span> <span class="hl num">3</span><span class="hl opt">;</span> py<span class="hl opt">++) {</span>
-                    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> px <span class="hl opt">=</span> x_base<span class="hl opt">;</span> px <span class="hl opt">&lt;</span> x_base <span class="hl opt">+</span> <span class="hl num">3</span><span class="hl opt">;</span> px<span class="hl opt">++) {</span>
-                        producer_storage<span class="hl opt">[</span>py<span class="hl opt">-</span>y_base<span class="hl opt">][</span>px<span class="hl opt">-</span>x_base<span class="hl opt">] =</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>px <span class="hl opt">*</span> py<span class="hl opt">);</span>
+                <span class="hl kwb">float</span> producer_storage<span class="hl opt">[</span><span class="hl num">5</span><span class="hl opt">][</span><span class="hl num">5</span><span class="hl opt">];</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> py <span class="hl opt">=</span> y_base<span class="hl opt">;</span> py <span class="hl opt">&lt;</span> y_base <span class="hl opt">+</span> <span class="hl num">5</span><span class="hl opt">;</span> py<span class="hl opt">++) {</span>
+                    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> px <span class="hl opt">=</span> x_base<span class="hl opt">;</span> px <span class="hl opt">&lt;</span> x_base <span class="hl opt">+</span> <span class="hl num">5</span><span class="hl opt">;</span> px<span class="hl opt">++) {</span>
+                        producer_storage<span class="hl opt">[</span>py<span class="hl opt">-</span>y_base<span class="hl opt">][</span>px<span class="hl opt">-</span>x_base<span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>px <span class="hl opt">*</span> py<span class="hl opt">);</span>
                     <span class="hl opt">}</span>
                 <span class="hl opt">}</span>
 
                 <span class="hl slc">// Compute this tile of the consumer</span>
-                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y_inner <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> y_inner<span class="hl opt">++) {</span>
-                    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_inner <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> x_inner<span class="hl opt">++) {</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y_inner <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y_inner<span class="hl opt">++) {</span>
+                    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_inner <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x_inner<span class="hl opt">++) {</span>
                         <span class="hl kwb">int</span> x <span class="hl opt">=</span> x_base <span class="hl opt">+</span> x_inner<span class="hl opt">;</span>
                         <span class="hl kwb">int</span> y <span class="hl opt">=</span> y_base <span class="hl opt">+</span> y_inner<span class="hl opt">;</span>
                         result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span>producer_storage<span class="hl opt">[</span>y <span class="hl opt">-</span> y_base<span class="hl opt">][</span>x <span class="hl opt">-</span> x_base<span class="hl opt">] +</span>
                                         producer_storage<span class="hl opt">[</span>y <span class="hl opt">-</span> y_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">][</span>x <span class="hl opt">-</span> x_base<span class="hl opt">] +</span>
                                         producer_storage<span class="hl opt">[</span>y <span class="hl opt">-</span> y_base<span class="hl opt">][</span>x <span class="hl opt">-</span> x_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">] +</span>
-                                        producer_storage<span class="hl opt">[</span>y <span class="hl opt">-</span> y_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">][</span>x <span class="hl opt">-</span> x_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">]);</span>
+                                        producer_storage<span class="hl opt">[</span>y <span class="hl opt">-</span> y_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">][</span>x <span class="hl opt">-</span> x_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">])/</span><span class="hl num">4</span><span class="hl opt">;</span>
                     <span class="hl opt">}</span>
                 <span class="hl opt">}</span>
             <span class="hl opt">}</span>
@@ -764,11 +788,11 @@ tutorial_lesson_14_types.html
     <span class="hl slc">// in Halide.</span>
     <span class="hl opt">{</span>
         Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_mixed&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_mixed&quot;</span><span class="hl opt">);</span>
-        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
         <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span>
                           <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) +</span>
                           <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
-                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">));</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">))/</span><span class="hl num">4</span><span class="hl opt">;</span>
 
         <span class="hl slc">// Split the y coordinate of the consumer into strips of 16 scanlines:</span>
         Var yo<span class="hl opt">,</span> yi<span class="hl opt">;</span>
@@ -785,7 +809,7 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// Within each strip, compute the producer per scanline of the</span>
         <span class="hl slc">// consumer, skipping work done on previous scanlines.</span>
         producer<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> yi<span class="hl opt">);</span>
-        <span class="hl slc">// Also vectorize the producer (because sqrt is vectorizable on x86 using SSE).</span>
+        <span class="hl slc">// Also vectorize the producer (because sin is vectorizable on x86 using SSE).</span>
         producer<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Let's leave tracing off this time, because we're going to</span>
@@ -793,21 +817,27 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// consumer.trace_stores();</span>
         <span class="hl slc">// producer.trace_stores();</span>
 
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">800</span><span class="hl opt">,</span> <span class="hl num">600</span><span class="hl opt">);</span>
+        Image<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">160</span><span class="hl opt">,</span> <span class="hl num">160</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// See below for a visualization.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_08_mixed.mp4  />Your browser does not support the video tag :(</video></span>
 
         <span class="hl slc">// Here's the equivalent (serial) C:</span>
 
-        <span class="hl kwb">float</span> c_result<span class="hl opt">[</span><span class="hl num">600</span><span class="hl opt">][</span><span class="hl num">800</span><span class="hl opt">];</span>
+        <span class="hl kwb">float</span> c_result<span class="hl opt">[</span><span class="hl num">160</span><span class="hl opt">][</span><span class="hl num">160</span><span class="hl opt">];</span>
 
-        <span class="hl slc">// For every strip of 16 scanlines</span>
-        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> yo <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> yo <span class="hl opt">&lt;</span> <span class="hl num">600</span><span class="hl opt">/</span><span class="hl num">16</span> <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">;</span> yo<span class="hl opt">++) {</span> <span class="hl slc">// (this loop is parallel in the Halide version)</span>
+        <span class="hl slc">// For every strip of 16 scanlines (this loop is parallel in</span>
+        <span class="hl slc">// the Halide version)</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> yo <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> yo <span class="hl opt">&lt;</span> <span class="hl num">160</span><span class="hl opt">/</span><span class="hl num">16</span> <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">;</span> yo<span class="hl opt">++) {</span>
 
-            <span class="hl slc">// 16 doesn't divide 600, so push the last slice upwards to fit within [0, 599] (see lesson 05).</span>
+            <span class="hl slc">// 16 doesn't divide 160, so push the last slice upwards</span>
+            <span class="hl slc">// to fit within [0, 159] (see lesson 05).</span>
             <span class="hl kwb">int</span> y_base <span class="hl opt">=</span> yo <span class="hl opt">*</span> <span class="hl num">16</span><span class="hl opt">;</span>
-            <span class="hl kwa">if</span> <span class="hl opt">(</span>y_base <span class="hl opt">&gt;</span> <span class="hl num">600</span><span class="hl opt">-</span><span class="hl num">16</span><span class="hl opt">)</span> y_base <span class="hl opt">=</span> <span class="hl num">600</span><span class="hl opt">-</span><span class="hl num">16</span><span class="hl opt">;</span>
+            <span class="hl kwa">if</span> <span class="hl opt">(</span>y_base <span class="hl opt">&gt;</span> <span class="hl num">160</span><span class="hl opt">-</span><span class="hl num">16</span><span class="hl opt">)</span> y_base <span class="hl opt">=</span> <span class="hl num">160</span><span class="hl opt">-</span><span class="hl num">16</span><span class="hl opt">;</span>
 
             <span class="hl slc">// Allocate a two-scanline circular buffer for the producer</span>
-            <span class="hl kwb">float</span> producer_storage<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">][</span><span class="hl num">801</span><span class="hl opt">];</span>
+            <span class="hl kwb">float</span> producer_storage<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">][</span><span class="hl num">161</span><span class="hl opt">];</span>
 
             <span class="hl slc">// For every scanline in the strip of 16:</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> yi <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> yi <span class="hl opt">&lt;</span> <span class="hl num">16</span><span class="hl opt">;</span> yi<span class="hl opt">++) {</span>
@@ -818,13 +848,14 @@ tutorial_lesson_14_types.html
                     <span class="hl kwa">if</span> <span class="hl opt">(</span>yi <span class="hl opt">&gt;</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> py <span class="hl opt">==</span> y<span class="hl opt">)</span> <span class="hl kwa">continue</span><span class="hl opt">;</span>
 
                     <span class="hl slc">// Compute this scanline of the producer in 4-wide vectors</span>
-                    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_vec <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_vec <span class="hl opt">&lt;</span> <span class="hl num">800</span><span class="hl opt">/</span><span class="hl num">4</span> <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">;</span> x_vec<span class="hl opt">++) {</span>
+                    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_vec <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_vec <span class="hl opt">&lt;</span> <span class="hl num">160</span><span class="hl opt">/</span><span class="hl num">4</span> <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">;</span> x_vec<span class="hl opt">++) {</span>
                         <span class="hl kwb">int</span> x_base <span class="hl opt">=</span> x_vec<span class="hl opt">*</span><span class="hl num">4</span><span class="hl opt">;</span>
-                        <span class="hl slc">// 4 doesn't divide 801, so push the last vector left (see lesson 05).</span>
-                        <span class="hl kwa">if</span> <span class="hl opt">(</span>x_base <span class="hl opt">&gt;</span> <span class="hl num">801</span> <span class="hl opt">-</span> <span class="hl num">4</span><span class="hl opt">)</span> x_base <span class="hl opt">=</span> <span class="hl num">801</span> <span class="hl opt">-</span> <span class="hl num">4</span><span class="hl opt">;</span>
+                        <span class="hl slc">// 4 doesn't divide 161, so push the last vector left (see lesson 05).</span>
+                        <span class="hl kwa">if</span> <span class="hl opt">(</span>x_base <span class="hl opt">&gt;</span> <span class="hl num">161</span> <span class="hl opt">-</span> <span class="hl num">4</span><span class="hl opt">)</span> x_base <span class="hl opt">=</span> <span class="hl num">161</span> <span class="hl opt">-</span> <span class="hl num">4</span><span class="hl opt">;</span>
                         <span class="hl slc">// If you're on x86, Halide generates SSE code for this part:</span>
                         <span class="hl kwb">int</span> x<span class="hl opt">[] = {</span>x_base<span class="hl opt">,</span> x_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> x_base <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">,</span> x_base <span class="hl opt">+</span> <span class="hl num">3</span><span class="hl opt">};</span>
-                        <span class="hl kwb">float</span> vec<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">] = {</span><span class="hl kwd">sqrtf</span><span class="hl opt">(</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] *</span> py<span class="hl opt">),</span> <span class="hl kwd">sqrtf</span><span class="hl opt">(</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] *</span> py<span class="hl opt">),</span> <span class="hl kwd">sqrtf</span><span class="hl opt">(</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">] *</span> py<span class="hl opt">),</span> <span class="hl kwd">sqrtf</span><span class="hl opt">(</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">] *</span> py<span class="hl opt">)};</span>
+                        <span class="hl kwb">float</span> vec<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">] = {</span><span class="hl kwd">sinf</span><span class="hl opt">(</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] *</span> py<span class="hl opt">),</span> <span class="hl kwd">sinf</span><span class="hl opt">(</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] *</span> py<span class="hl opt">),</span>
+                                        <span class="hl kwd">sinf</span><span class="hl opt">(</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">] *</span> py<span class="hl opt">),</span> <span class="hl kwd">sinf</span><span class="hl opt">(</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">] *</span> py<span class="hl opt">)};</span>
                         producer_storage<span class="hl opt">[</span>py <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]] =</span> vec<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
                         producer_storage<span class="hl opt">[</span>py <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]] =</span> vec<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
                         producer_storage<span class="hl opt">[</span>py <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]] =</span> vec<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">];</span>
@@ -833,7 +864,7 @@ tutorial_lesson_14_types.html
                 <span class="hl opt">}</span>
 
                 <span class="hl slc">// Now compute consumer for this scanline:</span>
-                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_vec <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_vec <span class="hl opt">&lt;</span> <span class="hl num">800</span><span class="hl opt">/</span><span class="hl num">4</span><span class="hl opt">;</span> x_vec<span class="hl opt">++) {</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_vec <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_vec <span class="hl opt">&lt;</span> <span class="hl num">160</span><span class="hl opt">/</span><span class="hl num">4</span><span class="hl opt">;</span> x_vec<span class="hl opt">++) {</span>
                     <span class="hl kwb">int</span> x_base <span class="hl opt">=</span> x_vec <span class="hl opt">*</span> <span class="hl num">4</span><span class="hl opt">;</span>
                     <span class="hl slc">// Again, Halide's equivalent here uses SSE.</span>
                     <span class="hl kwb">int</span> x<span class="hl opt">[] = {</span>x_base<span class="hl opt">,</span> x_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> x_base <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">,</span> x_base <span class="hl opt">+</span> <span class="hl num">3</span><span class="hl opt">};</span>
@@ -841,19 +872,19 @@ tutorial_lesson_14_types.html
                         <span class="hl opt">(</span>producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]] +</span>
                          producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]] +</span>
                          producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]+</span><span class="hl num">1</span><span class="hl opt">] +</span>
-                         producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]+</span><span class="hl num">1</span><span class="hl opt">]),</span>
+                         producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]+</span><span class="hl num">1</span><span class="hl opt">])/</span><span class="hl num">4</span><span class="hl opt">,</span>
                         <span class="hl opt">(</span>producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]] +</span>
                          producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]] +</span>
                          producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]+</span><span class="hl num">1</span><span class="hl opt">] +</span>
-                         producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]+</span><span class="hl num">1</span><span class="hl opt">]),</span>
+                         producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]+</span><span class="hl num">1</span><span class="hl opt">])/</span><span class="hl num">4</span><span class="hl opt">,</span>
                         <span class="hl opt">(</span>producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]] +</span>
                          producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]] +</span>
                          producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]+</span><span class="hl num">1</span><span class="hl opt">] +</span>
-                         producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]+</span><span class="hl num">1</span><span class="hl opt">]),</span>
+                         producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]+</span><span class="hl num">1</span><span class="hl opt">])/</span><span class="hl num">4</span><span class="hl opt">,</span>
                         <span class="hl opt">(</span>producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]] +</span>
                          producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]] +</span>
                          producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]+</span><span class="hl num">1</span><span class="hl opt">] +</span>
-                         producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]+</span><span class="hl num">1</span><span class="hl opt">])};</span>
+                         producer_storage<span class="hl opt">[(</span>y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]+</span><span class="hl num">1</span><span class="hl opt">])/</span><span class="hl num">4</span><span class="hl opt">};</span>
 
                     c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]] =</span> vec<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
                     c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]] =</span> vec<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
@@ -872,8 +903,8 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// Let's check the C result against the Halide result. Doing</span>
         <span class="hl slc">// this I found several bugs in my C implementation, which</span>
         <span class="hl slc">// should tell you something.</span>
-        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">600</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
-            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">800</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">160</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">160</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
                 <span class="hl kwb">float</span> error <span class="hl opt">=</span> <span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) -</span> c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">];</span>
                 <span class="hl slc">// It's floating-point math, so we'll allow some slop:</span>
                 <span class="hl kwa">if</span> <span class="hl opt">(</span>error <span class="hl opt">&lt; -</span><span class="hl num">0.001</span>f <span class="hl opt">||</span> error <span class="hl opt">&gt;</span> <span class="hl num">0.001</span>f<span class="hl opt">) {</span>
