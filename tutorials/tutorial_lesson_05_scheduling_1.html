@@ -743,7 +743,26 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// gradient.unroll(x, 2);</span>
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient unrolled by a factor of two</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span> 
+        <a onclick='return toggle("_322");'><b id=_322-show>// Click to show output ...</b></a><div id=_322 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Store gradient_unroll.0(0, 0) = 0
+ > Store gradient_unroll.0(1, 0) = 1
+ > Store gradient_unroll.0(2, 0) = 2
+ > Store gradient_unroll.0(3, 0) = 3
+ > Store gradient_unroll.0(0, 1) = 1
+ > Store gradient_unroll.0(1, 1) = 2
+ > Store gradient_unroll.0(2, 1) = 3
+ > Store gradient_unroll.0(3, 1) = 4
+ > Store gradient_unroll.0(0, 2) = 2
+ > Store gradient_unroll.0(1, 2) = 3
+ > Store gradient_unroll.0(2, 2) = 4
+ > Store gradient_unroll.0(3, 2) = 5
+ > Store gradient_unroll.0(0, 3) = 3
+ > Store gradient_unroll.0(1, 3) = 4
+ > Store gradient_unroll.0(2, 3) = 5
+ > Store gradient_unroll.0(3, 3) = 6
+
+</b></div>
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
@@ -939,23 +958,26 @@ tutorial_lesson_14_types.html
  > Store gradient_fused_tiles.0(1, 1) = 2
  > Store gradient_fused_tiles.0(2, 1) = 3
  > Store gradient_fused_tiles.0(3, 1) = 4
- > Store gradient_fused_tiles.0(0, 2) = 2
  > Store gradient_fused_tiles.0(4, 0) = 4
- > Store gradient_fused_tiles.0(2, 2) = 4
- > Store gradient_fused_tiles.0(3, 2) = 5
- > Store gradient_fused_tiles.0(0, 3) = 3
- > Store gradient_fused_tiles.0(1, 3) = 4
- > Store gradient_fused_tiles.0(2, 3) = 5
- > Store gradient_fused_tiles.0(3, 3) = 6
+ > Store gradient_fused_tiles.0(5, 0) = 5
+ > Store gradient_fused_tiles.0(6, 0) = 6
  > Store gradient_fused_tiles.0(0, 4) = 4
- > Store gradient_fused_tiles.0(5, 4) = 9
  > Store gradient_fused_tiles.0(1, 4) = 5
- > SStore gradient_fused_tiles.0(7, 4) = 1StStore gradient_fused_tiles.0(4, 5) = StStore gradient_fused_tiles.0(5, 5) = StoStore gradient_fused_tiles.0(6, 5) =StorStore gradient_fused_tiles.0(7, 5) = 12
- > Store gradient_fused_tiles.0(4, 6) = 10
- > Store gradient_fused_tiles.0(5, 6) = 11
- > Store gradient_fused_tiles.0(6, 6) = 12
- > Store gradient_fused_tiles.0(7, 6) = 13
- > Store gradient_fused_tiles.0(4, 7) = 11
+ > Store gradient_fused_tiles.0(2, 4) = 6
+ > Store gradient_fused_tiles.0(4, 4) = 8
+ > Store gradient_fused_tiles.0(0, 5) = 5
+ > Store gradient_fused_tiles.0(1, 5) = 6
+ > Store gradient_fused_tiles.0(2, 5) = 7
+ > Store gradient_fused_tiles.0(3, 5) = 8
+ > Store gradient_fused_tiles.0(0, 6) = 6
+ > Store gradient_fused_tiles.0(1, 6) = 7
+ > Store gradient_fused_tiles.0(2, 6) = 8
+ > Store gradient_fused_tiles.0(3, 6) = 9
+ > Store gradient_fused_tiles.0(0, 7) = 7
+ > Store gradient_fused_tiles.0(1, 7) = 8
+ > Store gradient_fused_tiles.0(2, 7) = 9
+ > Store gradient_fused_tiles.0(3, 7) = 10
+ >  7) = 11
  > Store gradient_fused_tiles.0(5, 7) = 12
  > Store gradient_fused_tiles.0(6, 7) = 13
  > Store gradient_fused_tiles.0(7, 7) = 14
