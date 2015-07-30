@@ -1,32 +1,29 @@
 #!/bin/bash
 
-for f in tutorial_introduction_stub.html $@
-do
+for f in tutorial_introduction_stub.html $@; do
 
-echo $f
+    echo $f
 
-bf=$(basename $f)
-if [ $bf = tutorial_introduction_stub.html ]
-then
-h="tutorial_introduction.html"
-else
-h=tutorial_${bf/cpp/html}
-fi
+    bf=$(basename $f)
+    if [ $bf = tutorial_introduction_stub.html ]; then
+        h="tutorial_introduction.html"
+    else
+        h=tutorial_${bf/cpp/html}
+    fi
 
-cat >$h <<EOF
+    cat >$h <<EOF
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 <title>
 EOF
-if [ $bf = tutorial_introduction_stub.html ]
-then
-echo Introduction >> $h
-else
-head -n1 $f | sed "s/.*://" >> $h
-fi
-cat >>$h <<EOF
+    if [ $bf = tutorial_introduction_stub.html ]; then
+        echo Introduction >> $h
+    else
+        head -n1 $f | sed "s/.*://" >> $h
+    fi
+    cat >>$h <<EOF
 </title>
 <link rel="stylesheet" type="text/css" href="../assets/css/highlight.css">
 <style>
@@ -46,7 +43,20 @@ color: #aa0000;
 </style>
 </head>
 <body class="hl" style="background-color: #444444; font-family: Helvetica, Arial, sans-serif;">
-
+<script>
+function toggle(id) {
+    e = document.getElementById(id);
+    show = document.getElementById(id + '-show');
+    if (e.style.display != 'none') {
+        e.style.display = 'none';
+        show.innerHTML = "// Click to show output ...";
+    } else {
+        e.style.display = 'block';
+        show.innerHTML = "// Click to hide output ...";
+    }
+    return false;
+}
+</script>
 <div>
 <style scoped>
 @import "../assets/css/bootstrap.css";
@@ -78,20 +88,19 @@ color: #aa0000;
   </div>
 </div>
 
-<div style='position:relative; width:1000pt; top:60px;'>
+<div style='position:relative; width:900pt; top:60px;'>
 <div style="width:200px; float:left; ">
 <a href="tutorial_introduction.html" style="text-decoration:none;" ><span style="width:100%; height:100%; top:0; left:0;">
 <div style="width:200px; padding:20px;
 EOF
 
-if [ $h = tutorial_introduction.html ]
-then
-echo 'padding-right:40px; color: #000000; background-color: #ffffff; ' >> $h
-else
-echo 'background-color: #dddddd; ' >> $h
-fi
+    if [ $h = tutorial_introduction.html ]; then
+        echo 'padding-right:40px; color: #000000; background-color: #ffffff; ' >> $h
+    else
+        echo 'background-color: #dddddd; ' >> $h
+    fi
 
-cat >>$h <<EOF
+    cat >>$h <<EOF
 text-align: left; ">
 <b>
 00
@@ -102,84 +111,110 @@ Introduction
 </a>
 EOF
 
-for f2 in $@
-do
-bf2=$(basename $f2)
-h2=tutorial_${bf2/cpp/html}
+    for f2 in $@; do
+        bf2=$(basename $f2)
+        h2=tutorial_${bf2/cpp/html}
 
-echo '<div style="width:200px; height:20px;"></div>' >> $h
-echo '<a href=' >> $h
-echo $h2 >> $h
-echo ' style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">' >> $h
+        echo '<div style="width:200px; height:20px;"></div>' >> $h
+        echo '<a href=' >> $h
+        echo $h2 >> $h
+        echo ' style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">' >> $h
 
-if [ "$f" = "$f2" ]; then
-echo '<div style="width:200px; padding:20px; padding-right:40px; background-color: #ffffff; color: #000000; text-align: left; ">' >> $h
-else
-echo '<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">' >> $h
-fi
+        if [ "$f" = "$f2" ]; then
+            echo '<div style="width:200px; padding:20px; padding-right:40px; background-color: #ffffff; color: #000000; text-align: left; ">' >> $h
+        else
+            echo '<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">' >> $h
+        fi
 
-echo '<b>' >> $h
-echo $bf2 | cut -d'_' -f2 >> $h
-echo '&nbsp</b>' >> $h
-head -n1 $f2 | sed "s/.*://" >> $h
-echo '</div></span></a>' >> $h
+        echo '<b>' >> $h
+        echo $bf2 | cut -d'_' -f2 >> $h
+        echo '&nbsp</b>' >> $h
+        head -n1 $f2 | sed "s/.*://" >> $h
+        echo '</div></span></a>' >> $h
 
-done
+    done
 
-cat >>$h <<EOF
+    cat >>$h <<EOF
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 EOF
 
-if [ $h = tutorial_introduction.html ]
-then
-cat $f >> $h
-else
-echo '<pre class="hl">' >> $h
-highlight -k monospace -K 12 --config-file=Halide.theme -s Halide -f $f >> $h
-echo '</pre>' >> $h
-fi
+    if [ $h = tutorial_introduction.html ]; then
+        cat $f >> $h
+    else
 
-echo '</div></body></html>' >> $h
+        # Inject markers for where "show output" blocks should occur
+        rm -f tmp.cpp
+        LINE_NUMBER=0
+        cat $f | while read -r LINE; do
+            let LINE_NUMBER+=1
+            OUTPUT_SNIPPET_FILE=$(echo $f | sed "s/lesson_\(..\).*/figures\/lesson_\1_output_${LINE_NUMBER}.txt/")
+            if [ -f $OUTPUT_SNIPPET_FILE ]; then
+                echo $LINE //OUTPUT_SNIPPET $OUTPUT_SNIPPET_FILE >> tmp.cpp
+            else
+                echo $LINE >> tmp.cpp
+            fi
+        done
 
-cat $h
+        echo '<pre class="hl">' >> $h
+        highlight -k monospace -K 12 --config-file=Halide.theme -s Halide -f tmp.cpp >> $h
+        echo '</pre>' >> $h
+    fi
 
-# Inline the figures
-IFS=''
-NEXT_FIG=""
-mv $h tmp.html
-cat tmp.html | while read -r LINE; do
-if [[ "$LINE" == *figures/lesson* ]]
-then
-# Remember this figure and place it on the next empty line
-NEXT_FIG=$(echo $LINE | sed "s/^.*\(figures.lesson[^ ]*\).*$/\1/")
-# Also remember the current indentation level
-SPACES=$(echo $LINE | sed "s/^\( *\).*$/\1/")
-echo "$LINE" | sed "s/figure[^ ]*/below/" >> $h
-elif [[ "$LINE" == "" ]]
-then
-if [[ "$NEXT_FIG" != "" ]]
-then
-# Go grab the figure
-mkdir -p figures
-cp $(dirname $f)/$NEXT_FIG figures/
-echo >> $h
-if [[ $NEXT_FIG == *gif ]]
-then
-# It's an animated gif
-echo "${SPACES}" '<span><img src=' ${NEXT_FIG} '></span>' >> $h
-else
-# Assume it's a video
-echo "${SPACES}" '<span><video autoplay loop><source src=' ${NEXT_FIG} ' />Your browser does not support the video tag :(</video></span>' >> $h
-fi
-echo >> $h
-NEXT_FIG=""
-else
-echo >> $h
-fi
-else
-echo $LINE >> $h
-fi
-done
+    echo '</div></body></html>' >> $h
 
+    cat $h
+
+    # Inline the figures
+    IFS=''
+    NEXT_FIG=""
+    NEXT_OUTPUT_SNIPPET=""
+    mv $h tmp.html
+    # Process each line
+    cat tmp.html | while read -r LINE; do
+        if [[ "$LINE" == *OUTPUT_SNIPPET* ]]; then
+            # Found a block of output to include. Put in on the next line.
+            NEXT_OUTPUT_SNIPPET=$(echo $LINE | sed "s/.*OUTPUT_SNIPPET //" | sed "s/<.*//")
+            # Also remember the current indentation level
+            SNIPPET_SPACES=$(echo $LINE | sed "s/^\( *\).*$/\1/")
+            echo "$LINE" | sed "s/.span[^<]*OUTPUT_SNIPPET[^>]*span.//" >> $h
+        elif [[ "$LINE" == *figures/lesson* ]]; then
+            # Found a figure reference. Remember this figure and place
+            # it on the next empty line
+            NEXT_FIG=$(echo $LINE | sed "s/^.*\(figures.lesson[^ ]*\).*$/\1/")
+            # Also remember the current indentation level
+            FIG_SPACES=$(echo $LINE | sed "s/^\( *\).*$/\1/")
+            echo "$LINE" | sed "s/figure[^ ]*/below/" >> $h
+        elif [[ ("$LINE" == "") || ("$LINE" =~ '>}<') ]]; then
+            # Got an empty line.
+            if [[ "$NEXT_FIG" != "" ]]; then
+                # Go grab the figure
+                mkdir -p figures
+                echo "Grabbing figure" $NEXT_FIG
+                cp $(dirname $f)/$NEXT_FIG figures/
+                echo >> $h
+                if [[ $NEXT_FIG == *mp4 ]]; then
+                    # It's a video
+                    echo "${FIG_SPACES}" '<span><video autoplay loop><source src=' ${NEXT_FIG} ' />Your browser does not support the video tag :(</video></span>' >> $h
+                else
+                    # It's an image
+                    echo "${FIG_SPACES}" '<span><img src=' ${NEXT_FIG} '></span>' >> $h
+                fi
+                NEXT_FIG=""
+            elif [[ "$NEXT_OUTPUT_SNIPPET" != "" ]]; then
+
+                ID=$(echo $NEXT_OUTPUT_SNIPPET | sed "s/.*output//" | sed "s/.txt//")
+                echo "${SNIPPET_SPACES}<a onclick='return toggle(\"${ID}\");'><b id=${ID}-show>// Click to show output ...</b></a><div id=${ID} style=" '"display:none; background:#333333; color:#ffffff"><b>' >> $h
+                cat $NEXT_OUTPUT_SNIPPET | grep "." | sed "s/^/ > /" >> $h
+                echo >> $h
+                echo "</b></div>" >> $h
+                NEXT_OUTPUT_SNIPPET=""
+            fi
+
+            # Preserve the original line
+            echo $LINE >> $h
+        else
+            echo $LINE >> $h
+        fi
+    done
 done

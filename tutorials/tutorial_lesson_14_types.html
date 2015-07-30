@@ -23,7 +23,20 @@ color: #aa0000;
 </style>
 </head>
 <body class="hl" style="background-color: #444444; font-family: Helvetica, Arial, sans-serif;">
-
+<script>
+function toggle(id) {
+    e = document.getElementById(id);
+    show = document.getElementById(id + '-show');
+    if (e.style.display != 'none') {
+        e.style.display = 'none';
+        show.innerHTML = "// Click to show output ...";
+    } else {
+        e.style.display = 'block';
+        show.innerHTML = "// Click to hide output ...";
+    }
+    return false;
+}
+</script>
 <div>
 <style scoped>
 @import "../assets/css/bootstrap.css";
@@ -55,7 +68,7 @@ color: #aa0000;
   </div>
 </div>
 
-<div style='position:relative; width:1000pt; top:60px;'>
+<div style='position:relative; width:900pt; top:60px;'>
 <div style="width:200px; float:left; ">
 <a href="tutorial_introduction.html" style="text-decoration:none;" ><span style="width:100%; height:100%; top:0; left:0;">
 <div style="width:200px; padding:20px;

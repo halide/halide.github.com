@@ -23,7 +23,20 @@ color: #aa0000;
 </style>
 </head>
 <body class="hl" style="background-color: #444444; font-family: Helvetica, Arial, sans-serif;">
-
+<script>
+function toggle(id) {
+    e = document.getElementById(id);
+    show = document.getElementById(id + '-show');
+    if (e.style.display != 'none') {
+        e.style.display = 'none';
+        show.innerHTML = "// Click to show output ...";
+    } else {
+        e.style.display = 'block';
+        show.innerHTML = "// Click to hide output ...";
+    }
+    return false;
+}
+</script>
 <div>
 <style scoped>
 @import "../assets/css/bootstrap.css";
@@ -55,7 +68,7 @@ color: #aa0000;
   </div>
 </div>
 
-<div style='position:relative; width:1000pt; top:60px;'>
+<div style='position:relative; width:900pt; top:60px;'>
 <div style="width:200px; float:left; ">
 <a href="tutorial_introduction.html" style="text-decoration:none;" ><span style="width:100%; height:100%; top:0; left:0;">
 <div style="width:200px; padding:20px;
@@ -256,6 +269,10 @@ tutorial_lesson_14_types.html
     <span class="hl slc">// First we'll load the input image we wish to brighten.</span>
     Halide<span class="hl opt">::</span>Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> load<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
 
+    <span class="hl slc">// See below for a smaller version.</span>
+
+     <span><img src= figures/lesson_02_input.jpg ></span>
+
     <span class="hl slc">// Next we define our Func object that represents our one pipeline</span>
     <span class="hl slc">// stage.</span>
     Halide<span class="hl opt">::</span>Func brighter<span class="hl opt">;</span>
@@ -302,7 +319,7 @@ tutorial_lesson_14_types.html
     <span class="hl slc">// - I left the Halide:: off clamp. It's unnecessary due to Koenig</span>
     <span class="hl slc">//   lookup.</span>
 
-    <span class="hl slc">// Remember. All we've done so far is build a representation of a</span>
+    <span class="hl slc">// Remember, all we've done so far is build a representation of a</span>
     <span class="hl slc">// Halide program in memory. We haven't actually processed any</span>
     <span class="hl slc">// pixels yet. We haven't even compiled that Halide program yet.</span>
 
@@ -316,6 +333,10 @@ tutorial_lesson_14_types.html
 
     <span class="hl slc">// Save the output for inspection. It should look like a bright parrot.</span>
     <span class="hl kwd">save</span><span class="hl opt">(</span>output<span class="hl opt">,</span> <span class="hl str">&quot;brighter.png&quot;</span><span class="hl opt">);</span>
+
+    <span class="hl slc">// See below for a small version of the output.</span>
+
+     <span><img src= figures/lesson_02_output.jpg ></span>
 
     <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
