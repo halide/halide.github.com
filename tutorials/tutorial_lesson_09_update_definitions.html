@@ -370,7 +370,12 @@ tutorial_lesson_14_types.html
 
 </b></div>
 
-        <span class="hl slc">// Reading the log, we see that each pass is applied in turn. The equivalent C is:</span>
+        <span class="hl slc">// See below for a visualization.</span>
+
+         <span><img src= figures/lesson_09_update.gif ></span>
+
+        <span class="hl slc">// Reading the log, we see that each pass is applied in</span>
+        <span class="hl slc">// turn. The equivalent C is:</span>
         <span class="hl kwb">int</span> result<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">][</span><span class="hl num">4</span><span class="hl opt">];</span>
         <span class="hl slc">// Pure definition</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
@@ -390,7 +395,7 @@ tutorial_lesson_14_types.html
     <span class="hl opt">{</span>
         <span class="hl slc">// Starting with this pure definition:</span>
         Func f<span class="hl opt">;</span>
-        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span>x <span class="hl opt">+</span> y<span class="hl opt">)/</span><span class="hl num">100.0</span>f<span class="hl opt">;</span>
 
         <span class="hl slc">// Say we want an update that squares the first fifty rows. We</span>
         <span class="hl slc">// could do this by adding 50 update definitions:</span>
@@ -411,13 +416,17 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// domain&quot; and using it inside an update definition:</span>
         RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">50</span><span class="hl opt">);</span>
         <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> r<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> r<span class="hl opt">) *</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> r<span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">100</span><span class="hl opt">,</span> <span class="hl num">100</span><span class="hl opt">);</span>
+        Image<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">100</span><span class="hl opt">,</span> <span class="hl num">100</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// See below for a visualization.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_09_update_rdom.mp4  />Your browser does not support the video tag :(</video></span>
 
         <span class="hl slc">// The equivalent C is:</span>
-        <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">100</span><span class="hl opt">][</span><span class="hl num">100</span><span class="hl opt">];</span>
+        <span class="hl kwb">float</span> c_result<span class="hl opt">[</span><span class="hl num">100</span><span class="hl opt">][</span><span class="hl num">100</span><span class="hl opt">];</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">100</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">100</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
-                c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+                c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span>x <span class="hl opt">+</span> y<span class="hl opt">)/</span><span class="hl num">100.0</span>f<span class="hl opt">;</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">100</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
@@ -432,8 +441,8 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// Check the results match:</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">100</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">100</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
-                <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) !=</span> c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">]) {</span>
-                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;halide_result(%d, %d) = %d instead of %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">fabs</span><span class="hl opt">(</span><span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) -</span> c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">]) &gt;</span> <span class="hl num">0.01</span>f<span class="hl opt">) {</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;halide_result(%d, %d) = %f instead of %f</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
                            x<span class="hl opt">,</span> y<span class="hl opt">,</span> <span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">),</span> c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">]);</span>
                     <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
                 <span class="hl opt">}</span>
@@ -498,10 +507,10 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// Consider the definition:</span>
         Func f<span class="hl opt">;</span>
         <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x<span class="hl opt">*</span>y<span class="hl opt">;</span>
-        <span class="hl slc">// Set the second row to equal the first row.</span>
-        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">);</span>
-        <span class="hl slc">// Set the second column to equal the first column plus 2.</span>
-        <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl num">2</span><span class="hl opt">;</span>
+        <span class="hl slc">// Set row zero to each row 8</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+        <span class="hl slc">// Set column 1 equal to column 8 plus 2</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl num">2</span><span class="hl opt">;</span>
 
         <span class="hl slc">// The pure variables in each stage can be scheduled</span>
         <span class="hl slc">// independently. To control the pure definition, we schedule</span>
@@ -523,6 +532,10 @@ tutorial_lesson_14_types.html
 
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">16</span><span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">);</span>
 
+        <span class="hl slc">// See below for a visualization.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_09_update_schedule.mp4  />Your browser does not support the video tag :(</video></span>
+
         <span class="hl slc">// Here's the equivalent (serial) C:</span>
         <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">16</span><span class="hl opt">][</span><span class="hl num">16</span><span class="hl opt">];</span>
 
@@ -540,17 +553,17 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// First update. Vectorized in x.</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_vec <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_vec <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x_vec<span class="hl opt">++) {</span>
             <span class="hl kwb">int</span> x<span class="hl opt">[] = {</span>x_vec<span class="hl opt">*</span><span class="hl num">4</span><span class="hl opt">,</span> x_vec<span class="hl opt">*</span><span class="hl num">4</span><span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> x_vec<span class="hl opt">*</span><span class="hl num">4</span><span class="hl opt">+</span><span class="hl num">2</span><span class="hl opt">,</span> x_vec<span class="hl opt">*</span><span class="hl num">4</span><span class="hl opt">+</span><span class="hl num">3</span><span class="hl opt">};</span>
-            c_result<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]] =</span> c_result<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]];</span>
-            c_result<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]] =</span> c_result<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]];</span>
-            c_result<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]] =</span> c_result<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]];</span>
-            c_result<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]] =</span> c_result<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]];</span>
+            c_result<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]] =</span> c_result<span class="hl opt">[</span><span class="hl num">8</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]];</span>
+            c_result<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]] =</span> c_result<span class="hl opt">[</span><span class="hl num">8</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]];</span>
+            c_result<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]] =</span> c_result<span class="hl opt">[</span><span class="hl num">8</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]];</span>
+            c_result<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]] =</span> c_result<span class="hl opt">[</span><span class="hl num">8</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]];</span>
         <span class="hl opt">}</span>
 
         <span class="hl slc">// Second update. Parallelized in chunks of size 4 in y.</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> yo <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> yo <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> yo<span class="hl opt">++) {</span> <span class="hl slc">// Should be a parallel for loop</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> yi <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> yi <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> yi<span class="hl opt">++) {</span>
                 <span class="hl kwb">int</span> y <span class="hl opt">=</span> yo<span class="hl opt">*</span><span class="hl num">4</span> <span class="hl opt">+</span> yi<span class="hl opt">;</span>
-                c_result<span class="hl opt">[</span>y<span class="hl opt">][</span><span class="hl num">1</span><span class="hl opt">] =</span> c_result<span class="hl opt">[</span>y<span class="hl opt">][</span><span class="hl num">0</span><span class="hl opt">] +</span> <span class="hl num">2</span><span class="hl opt">;</span>
+                c_result<span class="hl opt">[</span>y<span class="hl opt">][</span><span class="hl num">0</span><span class="hl opt">] =</span> c_result<span class="hl opt">[</span>y<span class="hl opt">][</span><span class="hl num">8</span><span class="hl opt">] +</span> <span class="hl num">2</span><span class="hl opt">;</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
 
@@ -577,19 +590,23 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// in the innermost loop of their consumer. Consider this</span>
         <span class="hl slc">// trivial example:</span>
         Func producer<span class="hl opt">,</span> consumer<span class="hl opt">;</span>
-        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> x<span class="hl opt">*</span><span class="hl num">17</span><span class="hl opt">;</span>
-        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">) +=</span> <span class="hl num">1</span><span class="hl opt">;</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> x<span class="hl opt">*</span><span class="hl num">2</span><span class="hl opt">;</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">) +=</span> <span class="hl num">10</span><span class="hl opt">;</span>
         <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// See below for a visualization.</span>
+
+         <span><img src= figures/lesson_09_inline_reduction.gif ></span>
 
         <span class="hl slc">// The equivalent C is:</span>
         <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">10</span><span class="hl opt">];</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">10</span><span class="hl opt">;</span> x<span class="hl opt">++)  {</span>
             <span class="hl kwb">int</span> producer_storage<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
             <span class="hl slc">// Pure step for producer</span>
-            producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> x <span class="hl opt">*</span> <span class="hl num">17</span><span class="hl opt">;</span>
+            producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> x <span class="hl opt">*</span> <span class="hl num">2</span><span class="hl opt">;</span>
             <span class="hl slc">// Update step for producer</span>
-            producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] +</span> <span class="hl num">1</span><span class="hl opt">;</span>
+            producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] +</span> <span class="hl num">10</span><span class="hl opt">;</span>
             <span class="hl slc">// Pure step for consumer</span>
             c_result<span class="hl opt">[</span>x<span class="hl opt">] =</span> <span class="hl num">2</span> <span class="hl opt">*</span> producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
         <span class="hl opt">}</span>
@@ -617,7 +634,7 @@ tutorial_lesson_14_types.html
             <span class="hl slc">// The producer is pure.</span>
             <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> x<span class="hl opt">*</span><span class="hl num">17</span><span class="hl opt">;</span>
             <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">);</span>
-            <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) +=</span> <span class="hl num">1</span><span class="hl opt">;</span>
+            <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) +=</span> <span class="hl num">50</span><span class="hl opt">;</span>
 
             <span class="hl slc">// The valid schedules for the producer in this case are</span>
             <span class="hl slc">// the default schedule - inlined, and also:</span>
@@ -639,6 +656,10 @@ tutorial_lesson_14_types.html
 
             Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
 
+            <span class="hl slc">// See below for a visualization.</span>
+
+             <span><img src= figures/lesson_09_compute_at_pure.gif ></span>
+
             <span class="hl slc">// The equivalent C is:</span>
             <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">10</span><span class="hl opt">];</span>
             <span class="hl slc">// Pure step for the consumer</span>
@@ -650,7 +671,7 @@ tutorial_lesson_14_types.html
             <span class="hl opt">}</span>
             <span class="hl slc">// Update step for the consumer</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">10</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
-                c_result<span class="hl opt">[</span>x<span class="hl opt">] +=</span> <span class="hl num">1</span><span class="hl opt">;</span>
+                c_result<span class="hl opt">[</span>x<span class="hl opt">] +=</span> <span class="hl num">50</span><span class="hl opt">;</span>
             <span class="hl opt">}</span>
 
             <span class="hl slc">// All of the pure step is evaluated before any of the</span>
@@ -670,7 +691,7 @@ tutorial_lesson_14_types.html
             <span class="hl slc">// Case 2: The consumer references the producer in the update step only</span>
             Func producer<span class="hl opt">,</span> consumer<span class="hl opt">;</span>
             <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> x <span class="hl opt">*</span> <span class="hl num">17</span><span class="hl opt">;</span>
-            <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> x<span class="hl opt">;</span>
+            <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl num">100</span> <span class="hl opt">-</span> x <span class="hl opt">*</span> <span class="hl num">10</span><span class="hl opt">;</span>
             <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) +=</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">);</span>
 
             <span class="hl slc">// Again we compute the producer per x coordinate of the</span>
@@ -689,11 +710,15 @@ tutorial_lesson_14_types.html
 
             Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
 
+            <span class="hl slc">// See below for a visualization.</span>
+
+             <span><img src= figures/lesson_09_compute_at_update.gif ></span>
+
             <span class="hl slc">// The equivalent C is:</span>
             <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">10</span><span class="hl opt">];</span>
             <span class="hl slc">// Pure step for the consumer</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">10</span><span class="hl opt">;</span> x<span class="hl opt">++)  {</span>
-                c_result<span class="hl opt">[</span>x<span class="hl opt">] =</span> x<span class="hl opt">;</span>
+                c_result<span class="hl opt">[</span>x<span class="hl opt">] =</span> <span class="hl num">100</span> <span class="hl opt">-</span> x <span class="hl opt">*</span> <span class="hl num">10</span><span class="hl opt">;</span>
             <span class="hl opt">}</span>
             <span class="hl slc">// Update step for the consumer</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">10</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
@@ -719,17 +744,21 @@ tutorial_lesson_14_types.html
             <span class="hl slc">// multiple steps that share common variables</span>
             Func producer<span class="hl opt">,</span> consumer<span class="hl opt">;</span>
             <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> x <span class="hl opt">*</span> <span class="hl num">17</span><span class="hl opt">;</span>
-            <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">) *</span> x<span class="hl opt">;</span>
-            <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) +=</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">);</span>
+            <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl num">170</span> <span class="hl opt">-</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">);</span>
+            <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) +=</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">)/</span><span class="hl num">2</span><span class="hl opt">;</span>
 
             <span class="hl slc">// Again we compute the producer per x coordinate of the</span>
             <span class="hl slc">// consumer. This places producer code inside both the</span>
-            <span class="hl slc">// pure and the update step of the producer. So there ends</span>
+            <span class="hl slc">// pure and the update step of the producer. So there end</span>
             <span class="hl slc">// up being two separate realizations of the producer, and</span>
             <span class="hl slc">// redundant work occurs.</span>
             producer<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> x<span class="hl opt">);</span>
 
             Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+
+            <span class="hl slc">// See below for a visualization.</span>
+
+             <span><img src= figures/lesson_09_compute_at_pure_and_update.gif ></span>
 
             <span class="hl slc">// The equivalent C is:</span>
             <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">10</span><span class="hl opt">];</span>
@@ -738,14 +767,14 @@ tutorial_lesson_14_types.html
                 <span class="hl slc">// Pure step for producer</span>
                 <span class="hl kwb">int</span> producer_storage<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
                 producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> x <span class="hl opt">*</span> <span class="hl num">17</span><span class="hl opt">;</span>
-                c_result<span class="hl opt">[</span>x<span class="hl opt">] =</span> producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] *</span> x<span class="hl opt">;</span>
+                c_result<span class="hl opt">[</span>x<span class="hl opt">] =</span> <span class="hl num">170</span> <span class="hl opt">-</span> producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
             <span class="hl opt">}</span>
             <span class="hl slc">// Update step for the consumer</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">10</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
                 <span class="hl slc">// Another copy of the pure step for producer</span>
                 <span class="hl kwb">int</span> producer_storage<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
                 producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> x <span class="hl opt">*</span> <span class="hl num">17</span><span class="hl opt">;</span>
-                c_result<span class="hl opt">[</span>x<span class="hl opt">] +=</span> producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
+                c_result<span class="hl opt">[</span>x<span class="hl opt">] +=</span> producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]/</span><span class="hl num">2</span><span class="hl opt">;</span>
             <span class="hl opt">}</span>
 
             <span class="hl slc">// Check the results match</span>
@@ -762,7 +791,7 @@ tutorial_lesson_14_types.html
             <span class="hl slc">// Case 4: The consumer references the producer in</span>
             <span class="hl slc">// multiple steps that do not share common variables</span>
             Func producer<span class="hl opt">,</span> consumer<span class="hl opt">;</span>
-            <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x<span class="hl opt">*</span>y<span class="hl opt">;</span>
+            <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span>x <span class="hl opt">*</span> y<span class="hl opt">) /</span> <span class="hl num">10</span> <span class="hl opt">+</span> <span class="hl num">8</span><span class="hl opt">;</span>
             <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
             <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">) =</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> x<span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">);</span>
             <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>y<span class="hl opt">,</span> y<span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">);</span>
@@ -781,20 +810,24 @@ tutorial_lesson_14_types.html
             <span class="hl slc">// those instead:</span>
 
             <span class="hl slc">// Attempt 2:</span>
-            Func producer_wrapper_1<span class="hl opt">,</span> producer_wrapper_2<span class="hl opt">,</span> consumer_2<span class="hl opt">;</span>
-            <span class="hl kwd">producer_wrapper_1</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
-            <span class="hl kwd">producer_wrapper_2</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+            Func producer_1<span class="hl opt">,</span> producer_2<span class="hl opt">,</span> consumer_2<span class="hl opt">;</span>
+            <span class="hl kwd">producer_1</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+            <span class="hl kwd">producer_2</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
 
             <span class="hl kwd">consumer_2</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
-            <span class="hl kwd">consumer_2</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">) +=</span> <span class="hl kwd">producer_wrapper_1</span><span class="hl opt">(</span>x<span class="hl opt">,</span> x<span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">);</span>
-            <span class="hl kwd">consumer_2</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> y<span class="hl opt">) +=</span> <span class="hl kwd">producer_wrapper_2</span><span class="hl opt">(</span>y<span class="hl opt">,</span> y<span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">);</span>
+            <span class="hl kwd">consumer_2</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">) +=</span> <span class="hl kwd">producer_1</span><span class="hl opt">(</span>x<span class="hl opt">,</span> x<span class="hl opt">);</span>
+            <span class="hl kwd">consumer_2</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> y<span class="hl opt">) +=</span> <span class="hl kwd">producer_2</span><span class="hl opt">(</span>y<span class="hl opt">,</span> <span class="hl num">9</span><span class="hl opt">-</span>y<span class="hl opt">);</span>
 
             <span class="hl slc">// The wrapper functions give us two separate handles on</span>
             <span class="hl slc">// the producer, so we can schedule them differently.</span>
-            producer_wrapper_1<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer_2<span class="hl opt">,</span> x<span class="hl opt">);</span>
-            producer_wrapper_2<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer_2<span class="hl opt">,</span> y<span class="hl opt">);</span>
+            producer_1<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer_2<span class="hl opt">,</span> x<span class="hl opt">);</span>
+            producer_2<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer_2<span class="hl opt">,</span> y<span class="hl opt">);</span>
 
             Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer_2<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">,</span> <span class="hl num">10</span><span class="hl opt">);</span>
+
+            <span class="hl slc">// See below for a visualization.</span>
+
+             <span><video autoplay loop><source src= figures/lesson_09_compute_at_multiple_updates.mp4  />Your browser does not support the video tag :(</video></span>
 
             <span class="hl slc">// The equivalent C is:</span>
             <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">10</span><span class="hl opt">][</span><span class="hl num">10</span><span class="hl opt">];</span>
@@ -806,15 +839,15 @@ tutorial_lesson_14_types.html
             <span class="hl opt">}</span>
             <span class="hl slc">// First update step for consumer</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">10</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
-                <span class="hl kwb">int</span> producer_wrapper_1_storage<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
-                producer_wrapper_1_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> x <span class="hl opt">* (</span>x<span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">);</span>
-                c_result<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">][</span>x<span class="hl opt">] +=</span> producer_wrapper_1_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
+                <span class="hl kwb">int</span> producer_1_storage<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
+                producer_1_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] = (</span>x <span class="hl opt">*</span> x<span class="hl opt">) /</span> <span class="hl num">10</span> <span class="hl opt">+</span> <span class="hl num">8</span><span class="hl opt">;</span>
+                c_result<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">][</span>x<span class="hl opt">] +=</span> producer_1_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
             <span class="hl opt">}</span>
             <span class="hl slc">// Second update step for consumer</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">10</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
-                <span class="hl kwb">int</span> producer_wrapper_2_storage<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
-                producer_wrapper_2_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> y <span class="hl opt">* (</span>y<span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">);</span>
-                c_result<span class="hl opt">[</span>y<span class="hl opt">][</span><span class="hl num">0</span><span class="hl opt">] +=</span> producer_wrapper_2_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
+                <span class="hl kwb">int</span> producer_2_storage<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
+                producer_2_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] = (</span>y <span class="hl opt">* (</span><span class="hl num">9</span><span class="hl opt">-</span>y<span class="hl opt">)) /</span> <span class="hl num">10</span> <span class="hl opt">+</span> <span class="hl num">8</span><span class="hl opt">;</span>
+                c_result<span class="hl opt">[</span>y<span class="hl opt">][</span><span class="hl num">0</span><span class="hl opt">] +=</span> producer_2_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
             <span class="hl opt">}</span>
 
             <span class="hl slc">// Check the results match</span>
@@ -842,13 +875,17 @@ tutorial_lesson_14_types.html
             Func producer<span class="hl opt">,</span> consumer<span class="hl opt">;</span>
 
             RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">);</span>
-            <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> x <span class="hl opt">*</span> <span class="hl num">17</span><span class="hl opt">;</span>
+            <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> x <span class="hl opt">%</span> <span class="hl num">8</span><span class="hl opt">;</span>
             <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> x <span class="hl opt">+</span> <span class="hl num">10</span><span class="hl opt">;</span>
             <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) +=</span> r <span class="hl opt">+</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> r<span class="hl opt">);</span>
 
             producer<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> r<span class="hl opt">);</span>
 
             Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+
+            <span class="hl slc">// See below for a visualization.</span>
+
+             <span><img src= figures/lesson_09_compute_at_rvar.gif ></span>
 
             <span class="hl slc">// The equivalent C is:</span>
             <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">10</span><span class="hl opt">];</span>
@@ -864,7 +901,7 @@ tutorial_lesson_14_types.html
                     <span class="hl slc">// the producer here. We just need a single value.</span>
                     <span class="hl kwb">int</span> producer_storage<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
                     <span class="hl slc">// Pure step of the producer.</span>
-                    producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] = (</span>x <span class="hl opt">+</span> r<span class="hl opt">) *</span> <span class="hl num">17</span><span class="hl opt">;</span>
+                    producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] = (</span>x <span class="hl opt">+</span> r<span class="hl opt">) %</span> <span class="hl num">8</span><span class="hl opt">;</span>
 
                     <span class="hl slc">// Now use it in the update step of the consumer.</span>
                     c_result<span class="hl opt">[</span>x<span class="hl opt">] +=</span> r <span class="hl opt">+</span> producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
@@ -883,7 +920,6 @@ tutorial_lesson_14_types.html
 
         <span class="hl opt">}</span>
     <span class="hl opt">}</span>
-
 
     <span class="hl slc">// A real-world example of a reduction inside a producer-consumer chain.</span>
     <span class="hl opt">{</span>
@@ -998,7 +1034,6 @@ tutorial_lesson_14_types.html
         <span class="hl opt">}</span>
     <span class="hl opt">}</span>
 
-
     <span class="hl slc">// A complex example that uses reduction helpers.</span>
     <span class="hl opt">{</span>
         <span class="hl slc">// Other reduction helpers include &quot;product&quot;, &quot;minimum&quot;,</span>
@@ -1076,7 +1111,8 @@ tutorial_lesson_14_types.html
                     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> cy <span class="hl opt">=</span> min_y_clamped<span class="hl opt">;</span> cy <span class="hl opt">&lt;=</span> max_y_clamped<span class="hl opt">;</span> cy<span class="hl opt">++) {</span>
                         <span class="hl slc">// Figure out which row of the circular buffer</span>
                         <span class="hl slc">// we're filling in using bitmasking:</span>
-                        <span class="hl kwb">uint8_t</span> <span class="hl opt">*</span>clamped_row <span class="hl opt">=</span> clamped_storage <span class="hl opt">+ (</span>cy <span class="hl opt">&amp;</span> <span class="hl num">7</span><span class="hl opt">) *</span> clamped_width<span class="hl opt">;</span>
+                        <span class="hl kwb">uint8_t</span> <span class="hl opt">*</span>clamped_row <span class="hl opt">=</span>
+                            clamped_storage <span class="hl opt">+ (</span>cy <span class="hl opt">&amp;</span> <span class="hl num">7</span><span class="hl opt">) *</span> clamped_width<span class="hl opt">;</span>
 
                         <span class="hl slc">// Figure out which row of the input we're reading</span>
                         <span class="hl slc">// from by clamping the y coordinate:</span>
@@ -1103,9 +1139,11 @@ tutorial_lesson_14_types.html
 
                         <span class="hl slc">// The update step for maximum</span>
                         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> max_y <span class="hl opt">=</span> y <span class="hl opt">-</span> <span class="hl num">2</span><span class="hl opt">;</span> max_y <span class="hl opt">&lt;=</span> y <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">;</span> max_y<span class="hl opt">++) {</span>
-                            <span class="hl kwb">uint8_t</span> <span class="hl opt">*</span>clamped_row <span class="hl opt">=</span> clamped_storage <span class="hl opt">+ (</span>max_y <span class="hl opt">&amp;</span> <span class="hl num">7</span><span class="hl opt">) *</span> clamped_width<span class="hl opt">;</span>
+                            <span class="hl kwb">uint8_t</span> <span class="hl opt">*</span>clamped_row <span class="hl opt">=</span>
+                                clamped_storage <span class="hl opt">+ (</span>max_y <span class="hl opt">&amp;</span> <span class="hl num">7</span><span class="hl opt">) *</span> clamped_width<span class="hl opt">;</span>
                             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> max_x <span class="hl opt">=</span> x_base <span class="hl opt">-</span> <span class="hl num">2</span><span class="hl opt">;</span> max_x <span class="hl opt">&lt;=</span> x_base <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">;</span> max_x<span class="hl opt">++) {</span>
-                                __m128i v <span class="hl opt">=</span> <span class="hl kwd">_mm_loadu_si128</span><span class="hl opt">((</span>__m128i <span class="hl kwb">const</span> <span class="hl opt">*)(</span>clamped_row <span class="hl opt">+</span> max_x <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">));</span>
+                                __m128i v <span class="hl opt">=</span> <span class="hl kwd">_mm_loadu_si128</span><span class="hl opt">(</span>
+                                    <span class="hl opt">(</span>__m128i <span class="hl kwb">const</span> <span class="hl opt">*)(</span>clamped_row <span class="hl opt">+</span> max_x <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">));</span>
                                 maximum_storage <span class="hl opt">=</span> <span class="hl kwd">_mm_max_epu8</span><span class="hl opt">(</span>maximum_storage<span class="hl opt">,</span> v<span class="hl opt">);</span>
                             <span class="hl opt">}</span>
                         <span class="hl opt">}</span>
@@ -1118,9 +1156,11 @@ tutorial_lesson_14_types.html
 
                         <span class="hl slc">// The update step for minimum.</span>
                         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> min_y <span class="hl opt">=</span> y <span class="hl opt">-</span> <span class="hl num">2</span><span class="hl opt">;</span> min_y <span class="hl opt">&lt;=</span> y <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">;</span> min_y<span class="hl opt">++) {</span>
-                            <span class="hl kwb">uint8_t</span> <span class="hl opt">*</span>clamped_row <span class="hl opt">=</span> clamped_storage <span class="hl opt">+ (</span>min_y <span class="hl opt">&amp;</span> <span class="hl num">7</span><span class="hl opt">) *</span> clamped_width<span class="hl opt">;</span>
+                            <span class="hl kwb">uint8_t</span> <span class="hl opt">*</span>clamped_row <span class="hl opt">=</span>
+                                clamped_storage <span class="hl opt">+ (</span>min_y <span class="hl opt">&amp;</span> <span class="hl num">7</span><span class="hl opt">) *</span> clamped_width<span class="hl opt">;</span>
                             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> min_x <span class="hl opt">=</span> x_base <span class="hl opt">-</span> <span class="hl num">2</span><span class="hl opt">;</span> min_x <span class="hl opt">&lt;=</span> x_base <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">;</span> min_x<span class="hl opt">++) {</span>
-                                __m128i v <span class="hl opt">=</span> <span class="hl kwd">_mm_loadu_si128</span><span class="hl opt">((</span>__m128i <span class="hl kwb">const</span> <span class="hl opt">*)(</span>clamped_row <span class="hl opt">+</span> min_x <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">));</span>
+                                __m128i v <span class="hl opt">=</span> <span class="hl kwd">_mm_loadu_si128</span><span class="hl opt">(</span>
+                                    <span class="hl opt">(</span>__m128i <span class="hl kwb">const</span> <span class="hl opt">*)(</span>clamped_row <span class="hl opt">+</span> min_x <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">));</span>
                                 minimum_storage <span class="hl opt">=</span> <span class="hl kwd">_mm_min_epu8</span><span class="hl opt">(</span>minimum_storage<span class="hl opt">,</span> v<span class="hl opt">);</span>
                             <span class="hl opt">}</span>
                         <span class="hl opt">}</span>
