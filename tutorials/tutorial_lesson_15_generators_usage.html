@@ -1,0 +1,485 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>
+ Generators part 2
+</title>
+<link rel="stylesheet" type="text/css" href="../assets/css/highlight.css">
+<style>
+
+a:visited {
+color: #000000;
+}
+
+a:link {
+color: #000000;
+}
+
+a:hover {
+color: #aa0000;
+}
+
+</style>
+</head>
+<body class="hl" style="background-color: #444444; font-family: Helvetica, Arial, sans-serif;">
+<script>
+function toggle(id) {
+    e = document.getElementById(id);
+    show = document.getElementById(id + '-show');
+    if (e.style.display != 'none') {
+        e.style.display = 'none';
+        show.innerHTML = "// Click to show output ...";
+    } else {
+        e.style.display = 'block';
+        show.innerHTML = "// Click to hide output ...";
+    }
+    return false;
+}
+</script>
+<div>
+<style scoped>
+@import "../assets/css/bootstrap.css";
+</style>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/index.html">Halide</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><a href="/index.html#gettingstarted">Getting Started</a></li>
+          <li><a href="/tutorials/tutorial_introduction.html">Tutorials</a></li>
+          <li><a href="/index.html#publications">Publications</a></li>
+          <li><a href="/index.html#resources">Resources</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="http://github.com/halide/Halide/issues">Bugs</a></li>
+          <li><a href="http://github.com/halide/Halide/wiki">Wiki</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="http://stackoverflow.com/questions/tagged/halide"><i class="fa fa-stack-overflow"></i>/#halide</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
+<div style='position:relative; width:900pt; top:60px;'>
+<div style="width:200px; float:left; ">
+<a href="tutorial_introduction.html" style="text-decoration:none;" ><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px;
+background-color: #dddddd; 
+text-align: left; ">
+<b>
+00
+&nbsp</b>
+Introduction
+</div>
+</span>
+</a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_01_basics.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+01
+&nbsp</b>
+ Getting started with Funcs, Vars, and Exprs
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_02_input_image.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+02
+&nbsp</b>
+ Processing images
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_03_debugging_1.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+03
+&nbsp</b>
+ Inspecting the generated code
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_04_debugging_2.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+04
+&nbsp</b>
+ Debugging with tracing, print, and print_when
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_05_scheduling_1.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+05
+&nbsp</b>
+ Vectorize, parallelize, unroll and tile your code
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_06_realizing_over_shifted_domains.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+06
+&nbsp</b>
+ Realizing Funcs over arbitrary domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_07_multi_stage_pipelines.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+07
+&nbsp</b>
+ Multi-stage pipelines
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_08_scheduling_2.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+08
+&nbsp</b>
+ Scheduling multi-stage pipelines
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_09_update_definitions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+09
+&nbsp</b>
+ Multi-pass Funcs, update definitions, and reductions
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_10_aot_compilation_generate.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+10
+&nbsp</b>
+ AOT compilation part 1
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_10_aot_compilation_run.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+10
+&nbsp</b>
+ AOT compilation part 2
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_11_cross_compilation.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+11
+&nbsp</b>
+ Cross-compilation
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_12_using_the_gpu.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+12
+&nbsp</b>
+ Using the GPU
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_13_tuples.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+13
+&nbsp</b>
+ Tuples
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_14_types.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+14
+&nbsp</b>
+ The Halide type system
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_15_generators.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+15
+&nbsp</b>
+ Generators part 1
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_15_generators_usage.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; padding-right:40px; background-color: #ffffff; color: #000000; text-align: left; ">
+<b>
+15
+&nbsp</b>
+ Generators part 2
+</div></span></a>
+</div>
+<div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
+<pre class="hl">
+<span class="hl slc"># Halide tutorial lesson 15: Generators part 2</span>
+
+<span class="hl slc"># This shell script demonstrates how to use a binary containing</span>
+<span class="hl slc"># Generators from the command line. Normally you'd call these binaries</span>
+<span class="hl slc"># from your build system of choice rather than running them manually</span>
+<span class="hl slc"># like we do here.</span>
+
+<span class="hl slc"># This script assumes that you're in the tutorials directory, and the</span>
+<span class="hl slc"># generator has been compiled for the current system and is called</span>
+<span class="hl slc"># &quot;lesson_15_generate&quot;.</span>
+
+<span class="hl slc"># To run this script:</span>
+<span class="hl slc"># bash lesson_15_generators_build.sh</span>
+
+<span class="hl slc"># First we define a helper function that checks that a file exists</span>
+check_file_exists<span class="hl opt">()</span>
+<span class="hl opt">{</span>
+    FILE<span class="hl opt">=</span><span class="hl kwd">$1</span>
+    <span class="hl kwa">if</span> <span class="hl opt">[ ! -</span>f <span class="hl kwd">$FILE</span> <span class="hl opt">];</span> <span class="hl kwa">then</span>
+        <span class="hl kwb">echo</span> <span class="hl kwd">$FILE</span> not found
+        <span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
+    <span class="hl kwa">fi</span>
+<span class="hl opt">}</span>
+
+<span class="hl slc"># And another helper function to check if a symbol exists in an object file</span>
+check_symbol<span class="hl opt">()</span>
+<span class="hl opt">{</span>
+    FILE<span class="hl opt">=</span><span class="hl kwd">$1</span>
+    SYM<span class="hl opt">=</span><span class="hl kwd">$2</span>
+    <span class="hl kwa">if</span> <span class="hl opt">!(</span>nm <span class="hl kwd">$FILE</span> | <span class="hl kwc">grep</span> <span class="hl kwd">$SYM</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">);</span> <span class="hl kwa">then</span>
+        <span class="hl kwb">echo</span> <span class="hl str">&quot;$SYM not found in $FILE&quot;</span>
+	<span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
+    <span class="hl kwa">fi</span>
+<span class="hl opt">}</span>
+
+<span class="hl slc"># Bail out on error</span>
+<span class="hl slc">#set -e</span>
+
+<span class="hl slc"># Set up LD_LIBRARY_PATH so that we can find libHalide.so</span>
+<span class="hl kwb">export</span> LD_LIBRARY_PATH<span class="hl opt">=</span><span class="hl kwd">${LD_LIBRARY_PATH}</span><span class="hl opt">:</span>..<span class="hl opt">/</span>bin
+<span class="hl kwb">export</span> DYLD_LIBRARY_PATH<span class="hl opt">=</span><span class="hl kwd">${DYLD_LIBRARY_PATH}</span><span class="hl opt">:</span>..<span class="hl opt">/</span>bin
+
+<span class="hl slc">#########################</span>
+<span class="hl slc"># Basic generator usage #</span>
+<span class="hl slc">#########################</span>
+
+<span class="hl slc"># First let's compile the first generator for the host system:</span>
+.<span class="hl opt">/</span>lesson_15_generate <span class="hl opt">-</span>g my_first_generator <span class="hl opt">-</span>o . target<span class="hl opt">=</span><span class="hl kwc">host</span>
+
+<span class="hl slc"># That should create a pair of files in the current directory:</span>
+<span class="hl slc"># &quot;my_first_generator.o&quot;, and &quot;my_first_generator.h&quot;, which define a</span>
+<span class="hl slc"># function &quot;my_first_generator&quot; representing the compiled pipeline.</span>
+
+check_file_exists my_first_generator.o
+check_file_exists my_first_generator.h
+check_symbol my_first_generator.o my_first_generator
+
+<span class="hl slc">#####################</span>
+<span class="hl slc"># Cross-compilation #</span>
+<span class="hl slc">#####################</span>
+
+<span class="hl slc"># We can also use a generator to compile object files for some other</span>
+<span class="hl slc"># target. Let's cross-compile a windows 32-bit object file and header</span>
+<span class="hl slc"># for the first generator:</span>
+
+.<span class="hl opt">/</span>lesson_15_generate \
+    <span class="hl opt">-</span>g my_first_generator \
+    <span class="hl opt">-</span>f my_first_generator_win32 \
+    <span class="hl opt">-</span>o . \
+    target<span class="hl opt">=</span>x86<span class="hl opt">-</span><span class="hl num">32</span><span class="hl opt">-</span>windows
+
+<span class="hl slc"># This generates a file called &quot;my_first_generator_win32.obj&quot; in the</span>
+<span class="hl slc"># current directory, along with a matching header. The function</span>
+<span class="hl slc"># defined is called &quot;my_first_generator_win32&quot;.</span>
+
+check_file_exists my_first_generator_win32.obj
+check_file_exists my_first_generator_win32.h
+
+<span class="hl slc">################################</span>
+<span class="hl slc"># Generating pipeline variants #</span>
+<span class="hl slc">################################</span>
+
+<span class="hl slc"># The full set of command-line arguments to the generator binary are:</span>
+
+<span class="hl slc"># -g generator_name : Selects which generator to run. If you only have</span>
+<span class="hl slc"># one generator in your binary you can omit this.</span>
+
+<span class="hl slc"># -o directory : Specifies which directory to create the outputs</span>
+<span class="hl slc"># in. Usually a build directory.</span>
+
+<span class="hl slc"># -f name : Specifies the name of the generated function, and also the</span>
+<span class="hl slc"># name of the object file. If you omit this, it defaults to the</span>
+<span class="hl slc"># generator name.</span>
+
+<span class="hl slc"># -e assembly,bitcode,stmt,html: A list of comma separated values</span>
+<span class="hl slc"># specifying additional outputs to create. &quot;assembly&quot; generates</span>
+<span class="hl slc"># assembly equivalent to the generated object file. &quot;bitcode&quot;</span>
+<span class="hl slc"># generates llvm bitcode for the pipeline. &quot;stmt&quot; generates</span>
+<span class="hl slc"># human-readable pseudocode for the pipeline (similar to setting</span>
+<span class="hl slc"># HL_DEBUG_CODEGEN). &quot;html&quot; generates an html version of the</span>
+<span class="hl slc"># pseudocode, which can be much nicer to read than the raw .stmt</span>
+<span class="hl slc"># file.</span>
+
+<span class="hl slc"># target=... : The target to compile for.</span>
+
+<span class="hl slc"># my_generator_param=value : The value of your generator params.</span>
+
+<span class="hl slc"># Let's now generate some human-readable pseudocode for the first</span>
+<span class="hl slc"># generator:</span>
+
+.<span class="hl opt">/</span>lesson_15_generate <span class="hl opt">-</span>g my_first_generator <span class="hl opt">-</span>e stmt <span class="hl opt">-</span>o . target<span class="hl opt">=</span><span class="hl kwc">host</span>
+
+check_file_exists my_first_generator.stmt
+
+<span class="hl slc"># The second generator has generator params, which can be specified on</span>
+<span class="hl slc"># the command-line after the target. Let's compile a few different variants:</span>
+.<span class="hl opt">/</span>lesson_15_generate <span class="hl opt">-</span>g my_second_generator <span class="hl opt">-</span>f my_second_generator_1 <span class="hl opt">-</span>o . \
+target<span class="hl opt">=</span><span class="hl kwc">host</span> parallel<span class="hl opt">=</span>false scale<span class="hl opt">=</span><span class="hl num">3.0</span> rotation<span class="hl opt">=</span>ccw output_type<span class="hl opt">=</span>uint16
+
+.<span class="hl opt">/</span>lesson_15_generate <span class="hl opt">-</span>g my_second_generator <span class="hl opt">-</span>f my_second_generator_2 <span class="hl opt">-</span>o . \
+target<span class="hl opt">=</span><span class="hl kwc">host</span> scale<span class="hl opt">=</span><span class="hl num">9.0</span> rotation<span class="hl opt">=</span>ccw output_type<span class="hl opt">=</span>float32
+
+.<span class="hl opt">/</span>lesson_15_generate <span class="hl opt">-</span>g my_second_generator <span class="hl opt">-</span>f my_second_generator_3 <span class="hl opt">-</span>o . \
+target<span class="hl opt">=</span><span class="hl kwc">host</span> parallel<span class="hl opt">=</span>false output_type<span class="hl opt">=</span>float64
+
+check_file_exists my_second_generator_1.o
+check_file_exists my_second_generator_1.h
+check_symbol      my_second_generator_1.o my_second_generator_1
+check_file_exists my_second_generator_2.o
+check_file_exists my_second_generator_2.h
+check_symbol      my_second_generator_2.o my_second_generator_2
+check_file_exists my_second_generator_3.o
+check_file_exists my_second_generator_3.h
+check_symbol      my_second_generator_3.o my_second_generator_3
+
+<span class="hl slc"># Use of these generated object files and headers is exactly the same</span>
+<span class="hl slc"># as in lesson 10.</span>
+
+<span class="hl slc">######################</span>
+<span class="hl slc"># The Halide runtime #</span>
+<span class="hl slc">######################</span>
+
+<span class="hl slc"># Each generated Halide object file contains a simple runtime that</span>
+<span class="hl slc"># defines things like how to run a parallel for loop, how to launch a</span>
+<span class="hl slc"># cuda program, etc. You can see this runtime in the generated object</span>
+<span class="hl slc"># files.</span>
+
+<span class="hl kwb">echo</span> <span class="hl str">&quot;The halide runtime:&quot;</span>
+nm my_second_generator_1.o | <span class="hl kwc">grep</span> <span class="hl str">&quot;[SW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span>
+
+<span class="hl slc"># Let's define some functions to check that the runtime exists in a file.</span>
+check_runtime<span class="hl opt">()</span>
+<span class="hl opt">{</span>
+    <span class="hl kwa">if</span> <span class="hl opt">!(</span>nm <span class="hl kwd">$1</span> | <span class="hl kwc">grep</span> <span class="hl str">&quot;[SW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">);</span> <span class="hl kwa">then</span>
+        <span class="hl kwb">echo</span> <span class="hl str">&quot;Halide runtime not found in $1&quot;</span>
+	<span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
+    <span class="hl kwa">fi</span>
+<span class="hl opt">}</span>
+
+check_no_runtime<span class="hl opt">()</span>
+<span class="hl opt">{</span>
+    <span class="hl kwa">if</span> nm <span class="hl kwd">$1</span> | <span class="hl kwc">grep</span> <span class="hl str">&quot;[SW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">;</span> <span class="hl kwa">then</span>
+        <span class="hl kwb">echo</span> <span class="hl str">&quot;Halide runtime found in $1&quot;</span>
+	<span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
+    <span class="hl kwa">fi</span>
+<span class="hl opt">}</span>
+
+<span class="hl slc"># Declarations and documentation for these runtime functions are in</span>
+<span class="hl slc"># HalideRuntime.h</span>
+
+<span class="hl slc"># If you're compiling and linking multiple Halide pipelines, then the</span>
+<span class="hl slc"># multiple copies of the runtime should combine into a single copy</span>
+<span class="hl slc"># (via weak linkage). If you're compiling and linking for multiple</span>
+<span class="hl slc"># different targets (e.g. avx and non-avx), then the runtimes might be</span>
+<span class="hl slc"># different, and you can't control which copy of the runtime the</span>
+<span class="hl slc"># linker selects.</span>
+
+<span class="hl slc"># You can control this behavior explicitly by compiling your pipelines</span>
+<span class="hl slc"># with the no_runtime target flag. Let's generate and link several</span>
+<span class="hl slc"># different versions of the first pipeline for different x86 variants:</span>
+
+.<span class="hl opt">/</span>lesson_15_generate \
+    <span class="hl opt">-</span>g my_first_generator \
+    <span class="hl opt">-</span>f my_first_generator_basic \
+    <span class="hl opt">-</span>o . \
+    target<span class="hl opt">=</span>x86<span class="hl opt">-</span><span class="hl num">64</span><span class="hl opt">-</span>no_runtime
+
+.<span class="hl opt">/</span>lesson_15_generate \
+    <span class="hl opt">-</span>g my_first_generator \
+    <span class="hl opt">-</span>f my_first_generator_sse41 \
+    <span class="hl opt">-</span>o . \
+    target<span class="hl opt">=</span>x86<span class="hl opt">-</span><span class="hl num">64</span><span class="hl opt">-</span>sse41<span class="hl opt">-</span>no_runtime
+
+.<span class="hl opt">/</span>lesson_15_generate \
+    <span class="hl opt">-</span>g my_first_generator \
+    <span class="hl opt">-</span>f my_first_generator_avx \
+    <span class="hl opt">-</span>o . \
+    target<span class="hl opt">=</span>x86<span class="hl opt">-</span><span class="hl num">64</span><span class="hl opt">-</span>avx<span class="hl opt">-</span>no_runtime
+
+<span class="hl slc"># These files don't contain the runtime</span>
+check_no_runtime my_first_generator_basic.o
+check_symbol     my_first_generator_basic.o my_first_generator_basic
+check_no_runtime my_first_generator_sse41.o
+check_symbol     my_first_generator_sse41.o my_first_generator_sse41
+check_no_runtime my_first_generator_avx.o
+check_symbol     my_first_generator_avx.o my_first_generator_avx
+
+<span class="hl slc"># We can then use the generator to emit just the runtime:</span>
+.<span class="hl opt">/</span>lesson_15_generate <span class="hl opt">-</span>r halide_runtime_x86.o <span class="hl opt">-</span>o . target<span class="hl opt">=</span>x86<span class="hl opt">-</span><span class="hl num">64</span>
+check_runtime halide_runtime_x86.o
+
+<span class="hl slc"># Linking the standalone runtime with the three generated object files</span>
+<span class="hl slc"># gives us three versions of the pipeline for varying levels of x86,</span>
+<span class="hl slc"># combined with a single runtime that will work on nearly all x86</span>
+<span class="hl slc"># processors.</span>
+<span class="hl kwc">ar</span> q my_first_generator_multi.a \
+    my_first_generator_basic.o \
+    my_first_generator_sse41.o \
+    my_first_generator_avx.o \
+    halide_runtime_x86.o
+
+check_runtime my_first_generator_multi.a
+check_symbol  my_first_generator_multi.a my_first_generator_basic
+check_symbol  my_first_generator_multi.a my_first_generator_sse41
+check_symbol  my_first_generator_multi.a my_first_generator_avx
+
+<span class="hl kwb">echo</span> <span class="hl str">&quot;Success!&quot;</span>
+</pre>
+</div></body></html>
