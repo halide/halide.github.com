@@ -24,5 +24,6 @@ var class_halide_1_1_internal_1_1_schedule =
     [ "store_level", "class_halide_1_1_internal_1_1_schedule.html#a8752c8c5bf323888daef8ddae55b9e6e", null ],
     [ "compute_level", "class_halide_1_1_internal_1_1_schedule.html#a8aeb300e48bf96594024dc7c6592871e", null ],
     [ "allow_race_conditions", "class_halide_1_1_internal_1_1_schedule.html#a549c00d4a1cd393462c058392f63fbe2", null ],
-    [ "allow_race_conditions", "class_halide_1_1_internal_1_1_schedule.html#a84fe220118306f20cab80aa1d3328865", null ]
+    [ "allow_race_conditions", "class_halide_1_1_internal_1_1_schedule.html#a84fe220118306f20cab80aa1d3328865", null ],
+    [ "accept", "class_halide_1_1_internal_1_1_schedule.html#a8bc6aa6e864ae9960f168785fcb21b50", null ]
 ];

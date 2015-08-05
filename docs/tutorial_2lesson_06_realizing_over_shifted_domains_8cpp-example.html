@@ -101,15 +101,10 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_06_realizing_over_shi
 <div class="title">tutorial/lesson_06_realizing_over_shifted_domains.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 6.</span></div>
+<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 6: Realizing Funcs over arbitrary domains</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// This lesson demonstrates how to evaluate a Func over a domain that</span></div>
 <div class="line"><span class="comment">// does not start at (0, 0).</span></div>
-<div class="line"></div>
-<div class="line"><span class="comment">// This lesson can be built by invoking the command:</span></div>
-<div class="line"><span class="comment">//    make tutorial_lesson_06_realizing_over_shifted_domains</span></div>
-<div class="line"><span class="comment">// in a shell with the current directory at the top of the halide source tree.</span></div>
-<div class="line"><span class="comment">// Otherwise, see the platform-specific compiler invocations below.</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// On linux, you can compile and run it like so:</span></div>
 <div class="line"><span class="comment">// g++ lesson_06*.cpp -g -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_06 -std=c++11</span></div>
@@ -118,6 +113,12 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_06_realizing_over_shi
 <div class="line"><span class="comment">// On os x:</span></div>
 <div class="line"><span class="comment">// g++ lesson_06*.cpp -g -I ../include -L ../bin -lHalide -o lesson_06 -std=c++11</span></div>
 <div class="line"><span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_06</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">// If you have the entire Halide source tree, you can also build it by</span></div>
+<div class="line"><span class="comment">// running:</span></div>
+<div class="line"><span class="comment">//    make tutorial_lesson_06_realizing_over_shifted_domains</span></div>
+<div class="line"><span class="comment">// in a shell with the current directory at the top of the halide</span></div>
+<div class="line"><span class="comment">// source tree.</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &quot;Halide.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
@@ -157,7 +158,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_06_realizing_over_shi
 <div class="line">    <span class="comment">// following evaluates our Func into an existing image:</span></div>
 <div class="line">    printf(<span class="stringliteral">&quot;Evaluating gradient from (0, 0) to (7, 7)\n&quot;</span>);</div>
 <div class="line">    <a name="_a3"></a><a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> result(8, 8);</div>
-<div class="line">    gradient.<a name="a4"></a><a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(result);</div>
+<div class="line">    gradient.<a name="a4"></a><a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(result);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Let&#39;s check it did what we expect:</span></div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; 8; y++) {</div>
@@ -182,7 +183,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_06_realizing_over_shi
 <div class="line">    <span class="comment">// Note that this won&#39;t need to compile any new code, because when</span></div>
 <div class="line">    <span class="comment">// we realized it the first time, we generated code capable of</span></div>
 <div class="line">    <span class="comment">// evaluating gradient over an arbitrary rectangle.</span></div>
-<div class="line">    gradient.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(shifted);</div>
+<div class="line">    gradient.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(shifted);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// From C++, we also access the image object using coordinates</span></div>
 <div class="line">    <span class="comment">// that start at (100, 50).</span></div>

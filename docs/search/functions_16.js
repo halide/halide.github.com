@@ -4,5 +4,6 @@ var searchData=
   ['width',['width',['../class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916',1,'Halide::ImageBase::width()'],['../class_halide_1_1_output_image_param.html#a597bc950726074ffe094f0a8509e91df',1,'Halide::OutputImageParam::width()']]],
   ['with_5ffeature',['with_feature',['../struct_halide_1_1_target.html#aafc1372f492ae82156f56792eccc6a64',1,'Halide::Target']]],
   ['without_5ffeature',['without_feature',['../struct_halide_1_1_target.html#ab52878468db5e366d04748ed6fc64cf5',1,'Halide::Target']]],
-  ['write',['write',['../runtime__internal_8h.html#a938dc2c8076f4c9351e857aa6624c442',1,'runtime_internal.h']]]
+  ['write',['write',['../runtime__internal_8h.html#a938dc2c8076f4c9351e857aa6624c442',1,'runtime_internal.h']]],
+  ['writebitcodetofile',['WriteBitcodeToFile',['../namespacellvm__3__2.html#a351b6c06a13fec0c01ba5106a44e096a',1,'llvm_3_2::WriteBitcodeToFile(const llvm::Module *M, llvm::raw_ostream &amp;Out, bool ShouldPreserveUseListOrder=false)'],['../namespacellvm__3__2.html#adeb00835eaad165ea633010ab2a6e1a1',1,'llvm_3_2::WriteBitcodeToFile(const llvm::Module *M, llvm::raw_ostream &amp;Out)']]]
 ];

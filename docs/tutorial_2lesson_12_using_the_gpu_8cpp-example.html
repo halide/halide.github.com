@@ -101,29 +101,31 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_12_using_the_gpu_8cpp
 <div class="title">tutorial/lesson_12_using_the_gpu.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 12.</span></div>
+<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 12: Using the GPU</span></div>
 <div class="line"></div>
-<div class="line"><span class="comment">// This lesson demonstrates how to use Halide to run code on a GPU.</span></div>
-<div class="line"></div>
-<div class="line"><span class="comment">// This lesson can be built by invoking the command:</span></div>
-<div class="line"><span class="comment">//    make tutorial_lesson_12_using_the_gpu</span></div>
-<div class="line"><span class="comment">// in a shell with the current directory at the top of the halide source tree.</span></div>
-<div class="line"><span class="comment">// Otherwise, see the platform-specific compiler invocations below.</span></div>
+<div class="line"><span class="comment">// This lesson demonstrates how to use Halide to run code on a GPU using OpenCL.</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// On linux, you can compile and run it like so:</span></div>
-<div class="line"><span class="comment">// g++ lesson_12*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -o lesson_12</span></div>
+<div class="line"><span class="comment">// g++ lesson_12*.cpp -g -std=c++11 -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -o lesson_12</span></div>
 <div class="line"><span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_12</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// On os x:</span></div>
-<div class="line"><span class="comment">// g++ lesson_12*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_12</span></div>
+<div class="line"><span class="comment">// g++ lesson_12*.cpp -g -std=c++11 -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_12</span></div>
 <div class="line"><span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_12</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">// If you have the entire Halide source tree, you can also build it by</span></div>
+<div class="line"><span class="comment">// running:</span></div>
+<div class="line"><span class="comment">//    make tutorial_lesson_12_using_the_gpu</span></div>
+<div class="line"><span class="comment">// in a shell with the current directory at the top of the halide</span></div>
+<div class="line"><span class="comment">// source tree.</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &quot;Halide.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="keyword">using namespace </span>Halide;</div>
 <div class="line"></div>
 <div class="line"><span class="comment">// Include some support code for loading pngs.</span></div>
-<div class="line"><span class="preprocessor">#include &quot;image_io.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;halide_image_io.h&quot;</span></div>
+<div class="line"><span class="keyword">using namespace </span>Halide::Tools;</div>
 <div class="line"></div>
 <div class="line"><span class="comment">// Include a clock to do performance testing.</span></div>
 <div class="line"><span class="preprocessor">#include &quot;clock.h&quot;</span></div>
@@ -134,12 +136,12 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_12_using_the_gpu_8cpp
 <div class="line"><span class="comment">// We&#39;re going to want to schedule a pipeline in several ways, so we</span></div>
 <div class="line"><span class="comment">// define the pipeline in a class so that we can recreate it several</span></div>
 <div class="line"><span class="comment">// times with different schedules.</span></div>
-<div class="line"><span class="keyword">class </span>Pipeline {</div>
+<div class="line"><span class="keyword">class </span>MyPipeline {</div>
 <div class="line"><span class="keyword">public</span>:</div>
 <div class="line">    <a name="_a1"></a><a class="code" href="class_halide_1_1_func.html">Func</a> lut, padded, padded16, sharpen, curved;</div>
 <div class="line">    <a name="_a2"></a><a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> input;</div>
 <div class="line"></div>
-<div class="line">    Pipeline(<a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> in) : input(in) {</div>
+<div class="line">    MyPipeline(<a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> in) : input(in) {</div>
 <div class="line">        <span class="comment">// For this lesson, we&#39;ll use a two-stage pipeline that sharpens</span></div>
 <div class="line">        <span class="comment">// and then applies a look-up-table (LUT).</span></div>
 <div class="line"></div>
@@ -300,7 +302,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_12_using_the_gpu_8cpp
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordtype">void</span> test_performance() {</div>
-<div class="line">        <span class="comment">// Test the performance of the scheduled Pipeline.</span></div>
+<div class="line">        <span class="comment">// Test the performance of the scheduled MyPipeline.</span></div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// If we realize curved into a Halide::Image, that will</span></div>
 <div class="line">        <span class="comment">// unfairly penalize GPU performance by including a GPU-&gt;CPU</span></div>
@@ -340,7 +342,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_12_using_the_gpu_8cpp
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordtype">void</span> test_correctness(<a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> reference_output) {</div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> output = curved.realize(input.width(), input.height(), input.channels());</div>
+<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> output =</div>
+<div class="line">            curved.realize(input.width(), input.height(), input.channels());</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Check against the reference output.</span></div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> c = 0; c &lt; input.channels(); c++) {</div>
@@ -365,25 +368,26 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_12_using_the_gpu_8cpp
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
 <div class="line">    <span class="comment">// Load an input image.</span></div>
-<div class="line">    <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> input = load&lt;uint8_t&gt;(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
+<div class="line">    <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Allocated an image that will store the correct output</span></div>
 <div class="line">    <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> reference_output(input.<a name="a15"></a><a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a name="a16"></a><a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>(), input.<a name="a17"></a><a class="code" href="class_halide_1_1_image_base.html#a841b4202f4ec79856529d83b8c048f3e">channels</a>());</div>
 <div class="line"></div>
 <div class="line">    printf(<span class="stringliteral">&quot;Testing performance on CPU:\n&quot;</span>);</div>
-<div class="line">    Pipeline p1(input);</div>
+<div class="line">    MyPipeline p1(input);</div>
 <div class="line">    p1.schedule_for_cpu();</div>
 <div class="line">    p1.test_performance();</div>
 <div class="line">    p1.curved.realize(reference_output);</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">if</span> (have_opencl()) {</div>
 <div class="line">        printf(<span class="stringliteral">&quot;Testing performance on GPU:\n&quot;</span>);</div>
-<div class="line">        Pipeline p2(input);</div>
+<div class="line">        MyPipeline p2(input);</div>
 <div class="line">        p2.schedule_for_gpu();</div>
 <div class="line">        p2.test_performance();</div>
 <div class="line">        p2.test_correctness(reference_output);</div>
 <div class="line">    } <span class="keywordflow">else</span> {</div>
-<div class="line">        printf(<span class="stringliteral">&quot;Not testing performance on GPU, because I can&#39;t find the opencl library\n&quot;</span>);</div>
+<div class="line">        printf(<span class="stringliteral">&quot;Not testing performance on GPU, &quot;</span></div>
+<div class="line">               <span class="stringliteral">&quot;because I can&#39;t find the opencl library\n&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>

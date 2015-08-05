@@ -6,6 +6,5 @@ var searchData=
   ['func',['Func',['../class_halide_1_1_func.html',1,'Halide']]],
   ['funcrefexpr',['FuncRefExpr',['../class_halide_1_1_func_ref_expr.html',1,'Halide']]],
   ['funcrefvar',['FuncRefVar',['../class_halide_1_1_func_ref_var.html',1,'Halide']]],
-  ['function',['Function',['../class_halide_1_1_internal_1_1_function.html',1,'Halide::Internal']]],
-  ['functioncontents',['FunctionContents',['../struct_halide_1_1_internal_1_1_function_contents.html',1,'Halide::Internal']]]
+  ['function',['Function',['../class_halide_1_1_internal_1_1_function.html',1,'Halide::Internal']]]
 ];

@@ -37,9 +37,13 @@ var struct_halide_1_1_target =
       [ "OpenCL", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa84c6211e4fb941603f6104e98427d7e5", null ],
       [ "CLDoubles", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faa371c9fa5610dc3a9efbb3fde547a719", null ],
       [ "OpenGL", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa491aa42775c6c9d6f35f784e86b09abc", null ],
+      [ "OpenGLCompute", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa17e80def356dcd03337ef044ccee459a", null ],
+      [ "Renderscript", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa3030f9e68ebaaee39d5feb81595b2f20", null ],
       [ "UserContext", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fab7dbd399d2a833d37bd52451f99c50c1", null ],
       [ "RegisterMetadata", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf9bdad6d738fbf0e37aaa5eebd0db925", null ],
       [ "Matlab", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf1da45381c688687c95e97987fcc67cb", null ],
+      [ "Profile", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faec9457be1a9efa835825706a62551cd7", null ],
+      [ "NoRuntime", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa90bf2d575c86cf9ca5a2302afbfb9f6b", null ],
       [ "FeatureEnd", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa17b9cbfef8d1e84e32c8aaa7b2936dbc", null ]
     ] ],
     [ "Target", "struct_halide_1_1_target.html#aeb11109583253fe6e358bba73d3e4a86", null ],

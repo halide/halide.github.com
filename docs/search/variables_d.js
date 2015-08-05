@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['m',['m',['../structrs__matrix4x4.html#a959ed51f0bb03879fb903cb9fbd2a6d0',1,'rs_matrix4x4::m()'],['../structrs__matrix3x3.html#ab3324fd8d7df58b235689694ed068a2f',1,'rs_matrix3x3::m()'],['../structrs__matrix2x2.html#a01e572b90eab650ca5f91250c84ed880',1,'rs_matrix2x2::m()'],['../struct_rs_blas_call.html#a0d1e2c547c70f674652135506fd94cfa',1,'RsBlasCall::M()']]],
   ['make_5ffloat64',['make_float64',['../struct_halide_1_1_internal_1_1_call.html#af25a90b7b239e3276c3c8e3f797d65c5',1,'Halide::Internal::Call']]],
   ['make_5fint64',['make_int64',['../struct_halide_1_1_internal_1_1_call.html#aae271d69f84c4e9a0d32a785810f16ec',1,'Halide::Internal::Call']]],
   ['make_5fstruct',['make_struct',['../struct_halide_1_1_internal_1_1_call.html#abed116c7cecec7ad95972690c7342f53',1,'Halide::Internal::Call']]],

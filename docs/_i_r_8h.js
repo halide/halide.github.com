@@ -24,7 +24,7 @@ var _i_r_8h =
     [ "Let", "struct_halide_1_1_internal_1_1_let.html", "struct_halide_1_1_internal_1_1_let" ],
     [ "LetStmt", "struct_halide_1_1_internal_1_1_let_stmt.html", "struct_halide_1_1_internal_1_1_let_stmt" ],
     [ "AssertStmt", "struct_halide_1_1_internal_1_1_assert_stmt.html", "struct_halide_1_1_internal_1_1_assert_stmt" ],
-    [ "Pipeline", "struct_halide_1_1_internal_1_1_pipeline.html", "struct_halide_1_1_internal_1_1_pipeline" ],
+    [ "ProducerConsumer", "struct_halide_1_1_internal_1_1_producer_consumer.html", "struct_halide_1_1_internal_1_1_producer_consumer" ],
     [ "Store", "struct_halide_1_1_internal_1_1_store.html", "struct_halide_1_1_internal_1_1_store" ],
     [ "Provide", "struct_halide_1_1_internal_1_1_provide.html", "struct_halide_1_1_internal_1_1_provide" ],
     [ "Allocate", "struct_halide_1_1_internal_1_1_allocate.html", "struct_halide_1_1_internal_1_1_allocate" ],

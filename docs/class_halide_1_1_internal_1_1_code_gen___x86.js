@@ -1,8 +1,6 @@
 var class_halide_1_1_internal_1_1_code_gen___x86 =
 [
     [ "CodeGen_X86", "class_halide_1_1_internal_1_1_code_gen___x86.html#a7650dd79313f22c735d31da731717fab", null ],
-    [ "get_target_triple", "class_halide_1_1_internal_1_1_code_gen___x86.html#a04b4c88e6ec1bc8ce1eab879f1118009", null ],
-    [ "get_data_layout", "class_halide_1_1_internal_1_1_code_gen___x86.html#a65e12d2e25135b16a8b54d6e56c0c1a5", null ],
     [ "mcpu", "class_halide_1_1_internal_1_1_code_gen___x86.html#a63d6d3f74f90936279977999aa216544", null ],
     [ "mattrs", "class_halide_1_1_internal_1_1_code_gen___x86.html#a84f21b8067ee4bf1315e6eeabeffd8f9", null ],
     [ "use_soft_float_abi", "class_halide_1_1_internal_1_1_code_gen___x86.html#ad2875ba4fae79ed07d9fea0062368e84", null ],

@@ -6,6 +6,9 @@ var _halide_runtime_8h =
     [ "halide_scalar_value_t", "structhalide__scalar__value__t.html", "structhalide__scalar__value__t" ],
     [ "halide_filter_argument_t", "structhalide__filter__argument__t.html", "structhalide__filter__argument__t" ],
     [ "halide_filter_metadata_t", "structhalide__filter__metadata__t.html", "structhalide__filter__metadata__t" ],
+    [ "halide_profiler_func_stats", "structhalide__profiler__func__stats.html", "structhalide__profiler__func__stats" ],
+    [ "halide_profiler_pipeline_stats", "structhalide__profiler__pipeline__stats.html", "structhalide__profiler__pipeline__stats" ],
+    [ "halide_profiler_state", "structhalide__profiler__state.html", "structhalide__profiler__state" ],
     [ "halide_assert", "_halide_runtime_8h.html#ac87d020eed3438306b57d1eec5de0364", null ],
     [ "HALIDE_ATTRIBUTE_ALIGN", "_halide_runtime_8h.html#afaa0f73fc7954ac27a2c11020681cdf3", null ],
     [ "BUFFER_T_DEFINED", "_halide_runtime_8h.html#a2622d62cd7688033c8c6ad612cf5c3e8", null ],
@@ -45,7 +48,8 @@ var _halide_runtime_8h =
       [ "halide_error_code_no_device_interface", "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca006100e2007527689fe7d6104b209956", null ],
       [ "halide_error_code_matlab_init_failed", "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca6c123efceb388bfef491629d89065775", null ],
       [ "halide_error_code_matlab_bad_param_type", "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448caf5c56ee69de59cfb5959461ac0a8c570", null ],
-      [ "halide_error_code_internal_error", "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca28e9d2c63f5933a4422b668b3f473867", null ]
+      [ "halide_error_code_internal_error", "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca28e9d2c63f5933a4422b668b3f473867", null ],
+      [ "halide_error_code_device_run_failed", "_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448cacf7f17603b30be3f4df86d701df4ee2a", null ]
     ] ],
     [ "halide_type_code_t", "_halide_runtime_8h.html#a9f4c40f298e91dea4f532774dc57a450", [
       [ "halide_type_int", "_halide_runtime_8h.html#a9f4c40f298e91dea4f532774dc57a450a53ba65448e4cbe66680c29a1333c8bfa", null ],
@@ -58,6 +62,8 @@ var _halide_runtime_8h =
       [ "halide_argument_kind_input_buffer", "_halide_runtime_8h.html#afdce5dc7a11fa96f39baa1aee2333745af4d5e7ee6d3fb12c5a5c0d9edd845a5b", null ],
       [ "halide_argument_kind_output_buffer", "_halide_runtime_8h.html#afdce5dc7a11fa96f39baa1aee2333745a0113d76303e0327745f3b3e4070dccd8", null ]
     ] ],
+    [ "halide_profiler_outside_of_halide", "_halide_runtime_8h.html#a06fc87d81c62e9abb8790b6e5713c55bab6b9a850264048aeff726f435f21ac25", null ],
+    [ "halide_profiler_please_stop", "_halide_runtime_8h.html#a06fc87d81c62e9abb8790b6e5713c55baa07fb8b03c126c5357f8bbe679def9b5", null ],
     [ "halide_print", "_halide_runtime_8h.html#a96fe1dd85166a7f0da1b8f82f734296a", null ],
     [ "halide_error", "_halide_runtime_8h.html#aea28d04de54b94f0dd6ada140b7734d8", null ],
     [ "halide_mutex_lock", "_halide_runtime_8h.html#a479133225b3cdf7b931f3c44e878e4e8", null ],
@@ -65,11 +71,12 @@ var _halide_runtime_8h =
     [ "halide_mutex_cleanup", "_halide_runtime_8h.html#aa6af6c192bfc0ad72171b66df883e2d4", null ],
     [ "halide_do_par_for", "_halide_runtime_8h.html#a05193f80c8fc7df76ceadd82c4ce7b56", null ],
     [ "halide_shutdown_thread_pool", "_halide_runtime_8h.html#a5e9d22d2b79a3dc66a32159423b17910", null ],
+    [ "halide_spawn_thread", "_halide_runtime_8h.html#abe0a99abe6ed3a51e322dbfe9f37237a", null ],
     [ "halide_set_num_threads", "_halide_runtime_8h.html#a570aecb8f41519bc12356d1e63f68160", null ],
     [ "halide_malloc", "_halide_runtime_8h.html#aa5bb359ed77ef4c1f89251bcd7eb2613", null ],
     [ "halide_free", "_halide_runtime_8h.html#a2fa49d775b9a20fab152a0650c4c936b", null ],
     [ "halide_debug_to_file", "_halide_runtime_8h.html#a173a9669d4c2a9fb6fa0225a5fdabcd4", null ],
-    [ "halide_trace", "_halide_runtime_8h.html#a15078a46b8fe517dcfdd26acadd2293a", null ],
+    [ "halide_trace", "_halide_runtime_8h.html#aaa248ca9ece01af82bdddfdedebd4d0b", null ],
     [ "halide_set_trace_file", "_halide_runtime_8h.html#a8761e708f878372e3201126e83d6f3b6", null ],
     [ "halide_get_trace_file", "_halide_runtime_8h.html#aee99b65dcbc81d91a0f22507eb7f8017", null ],
     [ "halide_shutdown_trace", "_halide_runtime_8h.html#a618bb97f5d713e1097835a24670948f4", null ],
@@ -82,8 +89,9 @@ var _halide_runtime_8h =
     [ "halide_set_gpu_device", "_halide_runtime_8h.html#a9906fca5a688c26e0465a1b3da84ccfb", null ],
     [ "halide_get_gpu_device", "_halide_runtime_8h.html#adc511579a9ad82da9c1c611f008dd454", null ],
     [ "halide_memoization_cache_set_size", "_halide_runtime_8h.html#abf85692a77aec0b887f345d0d3ca6777", null ],
-    [ "halide_memoization_cache_lookup", "_halide_runtime_8h.html#a066561dd8530528cf8b5842852ec7657", null ],
+    [ "halide_memoization_cache_lookup", "_halide_runtime_8h.html#af2852fe59c016c06022fe2b2f0aa55ce", null ],
     [ "halide_memoization_cache_store", "_halide_runtime_8h.html#a89b915ff5eca660c4179b5f332fce0f3", null ],
+    [ "halide_memoization_cache_release", "_halide_runtime_8h.html#a714f9e341f1d71baf8abc77bc50e1db5", null ],
     [ "halide_memoization_cache_cleanup", "_halide_runtime_8h.html#a30f9bdd5b6ac08b3fa785f3332cca996", null ],
     [ "halide_error_bounds_inference_call_failed", "_halide_runtime_8h.html#a56de7e95e571c442a05506a451318f00", null ],
     [ "halide_error_extern_stage_failed", "_halide_runtime_8h.html#a83ec7fcc618e1b0508a6f4f726a7bcae", null ],
@@ -103,5 +111,8 @@ var _halide_runtime_8h =
     [ "halide_error_out_of_memory", "_halide_runtime_8h.html#a64356948f9a36e16664585fff6f0949d", null ],
     [ "halide_error_buffer_argument_is_null", "_halide_runtime_8h.html#aab974b4b7963cad8613c3825a5689086", null ],
     [ "halide_error_debug_to_file_failed", "_halide_runtime_8h.html#a6d12212093b19b3c2ea2b83df15302e3", null ],
-    [ "halide_enumerate_registered_filters", "_halide_runtime_8h.html#a3454e11a6ec4e53fd2883fe291a1b0dd", null ]
+    [ "halide_enumerate_registered_filters", "_halide_runtime_8h.html#a3454e11a6ec4e53fd2883fe291a1b0dd", null ],
+    [ "halide_profiler_get_state", "_halide_runtime_8h.html#a94ff0942ee2a8a3ce2334a09eb29e7f4", null ],
+    [ "halide_profiler_reset", "_halide_runtime_8h.html#a046ccf558100c9a2b0664074157c6563", null ],
+    [ "halide_profiler_report", "_halide_runtime_8h.html#a98690684642752376f858a9c6f1ccd29", null ]
 ];

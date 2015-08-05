@@ -4,11 +4,11 @@ var searchData=
   ['base_5fname',['base_name',['../namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516',1,'Halide::Internal']]],
   ['begin',['begin',['../class_halide_1_1_internal_1_1_scope.html#a463665e9350811b15521004677f0a375',1,'Halide::Internal::Scope']]],
   ['bitcode',['bitcode',['../struct_halide_1_1_outputs.html#a4c848f08e555f4077309e7046de9137f',1,'Halide::Outputs']]],
-  ['bool',['Bool',['../class_halide_1_1_names_interface.html#a48cd342c253c992db339733936d4aaff',1,'Halide::NamesInterface::Bool()'],['../namespace_halide.html#a7b918730b9d45b139cabdcef54b25773',1,'Halide::Bool()']]],
+  ['bool',['Bool',['../class_halide_1_1_names_interface.html#a74bf1c1a815e6bb8d3a10afb966be571',1,'Halide::NamesInterface::Bool()'],['../namespace_halide.html#a7b918730b9d45b139cabdcef54b25773',1,'Halide::Bool()']]],
   ['bottom',['bottom',['../class_halide_1_1_image_base.html#af4d2083396973909ad2356360444e52f',1,'Halide::ImageBase::bottom()'],['../class_halide_1_1_output_image_param.html#a831501a5b13f26409366c4e10dca324e',1,'Halide::OutputImageParam::bottom()']]],
   ['bound',['bound',['../class_halide_1_1_func.html#afadd04bc51ed5999496eaa876a4ee790',1,'Halide::Func']]],
   ['bounds',['bounds',['../class_halide_1_1_internal_1_1_schedule.html#a49ba3b938c80888c5815282d84860d90',1,'Halide::Internal::Schedule::bounds() const '],['../class_halide_1_1_internal_1_1_schedule.html#a3b654511c97cecfb4d6b421b11619392',1,'Halide::Internal::Schedule::bounds()']]],
-  ['bounds_5finference',['bounds_inference',['../namespace_halide_1_1_internal.html#a9f57a77cbbb8e2e2e7212a75a470fec7',1,'Halide::Internal']]],
+  ['bounds_5finference',['bounds_inference',['../namespace_halide_1_1_internal.html#acbf8a2b7f0ce5342f20b6fe4b0e183cc',1,'Halide::Internal']]],
   ['bounds_5fof_5fexpr_5fin_5fscope',['bounds_of_expr_in_scope',['../namespace_halide_1_1_internal.html#ab7f7e59492cfa4804a6dece2d867a5db',1,'Halide::Internal']]],
   ['bounds_5ftest',['bounds_test',['../namespace_halide_1_1_internal.html#a439ef9127bf30f5e2a67963eb8db0323',1,'Halide::Internal']]],
   ['box',['Box',['../struct_halide_1_1_internal_1_1_box.html#a8fd3706b1415ab27ba57816ece1820ee',1,'Halide::Internal::Box::Box()'],['../struct_halide_1_1_internal_1_1_box.html#a1fab4f1a64ec075c717bb0d067b76327',1,'Halide::Internal::Box::Box(size_t sz)'],['../struct_halide_1_1_internal_1_1_box.html#ac90ff94522f9b9b3722b6183edd09364',1,'Halide::Internal::Box::Box(const std::vector&lt; Interval &gt; &amp;b)']]],
@@ -38,7 +38,7 @@ var searchData=
   ['buffer_5fstride',['buffer_stride',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#aba6510551b6c886ca469e1389b1a58f6',1,'Halide::Internal::CodeGen_LLVM']]],
   ['buffer_5fstride_5fptr',['buffer_stride_ptr',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a8d54dd8fccebb73f84a8dfe36f3d576a',1,'Halide::Internal::CodeGen_LLVM']]],
   ['bufferref',['BufferRef',['../struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#a996f69680f5f9138053c9a2020142728',1,'Halide::Internal::Closure::BufferRef']]],
-  ['build',['build',['../class_halide_1_1_internal_1_1_generator_base.html#ac7d717807f1e617291804197ec10bebb',1,'Halide::Internal::GeneratorBase']]],
+  ['build_5fpipeline',['build_pipeline',['../class_halide_1_1_internal_1_1_generator_base.html#a4cf1046fdf2d81c078fd2929a1eb5aa0',1,'Halide::Internal::GeneratorBase::build_pipeline()'],['../class_halide_1_1_generator.html#ac7d23abcbd64f27d622a56074d2388d1',1,'Halide::Generator::build_pipeline()']]],
   ['build_5ftype',['build_type',['../class_halide_1_1_internal_1_1_closure.html#ae61a219724f237e57cebc835003f070c',1,'Halide::Internal::Closure']]],
   ['bytes',['bytes',['../struct_halide_1_1_type.html#a51daf7af52265b0fc1508b6bafd2361a',1,'Halide::Type']]]
 ];

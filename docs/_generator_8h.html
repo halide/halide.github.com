@@ -191,14 +191,14 @@ Functions</h2></td></tr>
 <div class="fragment"><div class="line">RegisterGenerator&lt;ExampleGen&gt; register_jit_example{<span class="stringliteral">&quot;jit_example&quot;</span>};</div>
 </div><!-- fragment --><p>The registered name of the Generator is provided as an argument (which must match the same rules as Param names, above).</p>
 <p>(If you are jitting, you may not need to bother registering your Generator, but it's considered best practice to always do so anyway.)</p>
-<p>Most Generator classes will only need to override the build() method, and perhaps declare a Param and/or GeneratorParam:</p>
+<p>Most Generator classes will only need to provide a build() method that the base class will call, and perhaps declare a Param and/or GeneratorParam:</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>XorImage : <span class="keyword">public</span> Generator&lt;XorImage&gt; {</div>
 <div class="line"><span class="keyword">public</span>:</div>
 <div class="line">    GeneratorParam&lt;int&gt; channels{<span class="stringliteral">&quot;channels&quot;</span>, 3};</div>
 <div class="line">    ImageParam input{<a class="code" href="namespace_halide.html#addc1a3eb6d907e515712a228e1d5cbc9">UInt</a>(8), 3, <span class="stringliteral">&quot;input&quot;</span>};</div>
 <div class="line">    Param&lt;uint8_t&gt; mask{<span class="stringliteral">&quot;mask&quot;</span>};</div>
 <div class="line"></div>
-<div class="line">    Func build()<span class="keyword"> override </span>{</div>
+<div class="line">    Func build() {</div>
 <div class="line">        Var x, y, c;</div>
 <div class="line">        Func f;</div>
 <div class="line">        f(x, y, c) = input(x, y, c) ^ mask;</div>
@@ -208,7 +208,8 @@ Functions</h2></td></tr>
 <div class="line">};</div>
 <div class="line">RegisterGenerator&lt;XorImage&gt; reg_xor{<span class="stringliteral">&quot;xor_image&quot;</span>};</div>
 </div><!-- fragment --><p>By default, this code schedules itself for 3-channel (RGB) images; by changing the value of the "channels" GeneratorParam before calling build() we can produce code suited for different channel counts.</p>
-<p>Note that a Generator is always executed with a specific Target assigned to it, that you can access via the get_target() method. (You should <em>not</em> use the global <a class="el" href="namespace_halide.html#a2d655bb0051fc525e3e5d73997f93cdd" title="Return the target that Halide will use. ">get_target_from_environment()</a>, etc. methods provided in <a class="el" href="_target_8h.html" title="Defines the structure that describes a Halide target. ">Target.h</a>) </p>
+<p>Note that a Generator is always executed with a specific Target assigned to it, that you can access via the get_target() method. (You should <em>not</em> use the global <a class="el" href="namespace_halide.html#a2d655bb0051fc525e3e5d73997f93cdd" title="Return the target that Halide will use. ">get_target_from_environment()</a>, etc. methods provided in <a class="el" href="_target_8h.html" title="Defines the structure that describes a Halide target. ">Target.h</a>)</p>
+<p>Your build() method will usually return a Func. If you have a pipeline that outputs multiple Funcs, you can also return a Pipeline object. </p>
 
 <p>Definition in file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 </div></div><!-- contents -->

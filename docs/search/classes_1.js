@@ -5,6 +5,7 @@ var searchData=
   ['all_5fare_5fconvertible',['all_are_convertible',['../struct_halide_1_1_internal_1_1all__are__convertible.html',1,'Halide::Internal']]],
   ['allocate',['Allocate',['../struct_halide_1_1_internal_1_1_allocate.html',1,'Halide::Internal']]],
   ['allocation',['Allocation',['../struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html',1,'Halide::Internal::CodeGen_Posix']]],
+  ['allocation',['Allocation',['../struct_halide_1_1_internal_1_1_code_gen___c_1_1_allocation.html',1,'Halide::Internal::CodeGen_C']]],
   ['and',['And',['../struct_halide_1_1_internal_1_1_and.html',1,'Halide::Internal']]],
   ['argument',['Argument',['../struct_halide_1_1_argument.html',1,'Halide']]],
   ['assertstmt',['AssertStmt',['../struct_halide_1_1_internal_1_1_assert_stmt.html',1,'Halide::Internal']]]

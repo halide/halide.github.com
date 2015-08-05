@@ -31,11 +31,13 @@ var class_halide_1_1_image_base =
     [ "operator()", "class_halide_1_1_image_base.html#adfdc3ef160d5acd4c47cce2e4a683321", null ],
     [ "operator()", "class_halide_1_1_image_base.html#a6d11e22f2eade8eb8cd8fc4740832796", null ],
     [ "raw_buffer", "class_halide_1_1_image_base.html#a5646e0d4b0777d35d6e2f7299465c5fa", null ],
+    [ "address_of", "class_halide_1_1_image_base.html#a86608260a54ed735f0f87613831542f0", null ],
     [ "buffer", "class_halide_1_1_image_base.html#a6be238f9e44fef2a9b778a46beaf53f0", null ],
     [ "origin", "class_halide_1_1_image_base.html#af5cf1d502b22f0cc658d9155e623cda9", null ],
     [ "stride_0", "class_halide_1_1_image_base.html#ab8f351eddc5ba0e9c76f9e683c56e9b9", null ],
     [ "stride_1", "class_halide_1_1_image_base.html#a7e1610a143e29fd066556aec22c619f2", null ],
     [ "stride_2", "class_halide_1_1_image_base.html#ad0b8de0f042392c82d852fa68f75b7f3", null ],
     [ "stride_3", "class_halide_1_1_image_base.html#a7487663036dc6af113e453739d41e3fb", null ],
-    [ "dims", "class_halide_1_1_image_base.html#ae13899225583103e9116027dcb5f2b8f", null ]
+    [ "dims", "class_halide_1_1_image_base.html#ae13899225583103e9116027dcb5f2b8f", null ],
+    [ "elem_size", "class_halide_1_1_image_base.html#a3675bbef51f1361c80345de6383d82ca", null ]
 ];

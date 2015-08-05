@@ -119,31 +119,20 @@ $(document).ready(function(){initNavTree('_profiling_8h_source.html','');});
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>Halide {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>Internal {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/** Take a statement representing a halide pipeline, and (depending on</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * the environment variable HL_PROFILE), insert high-resolution timing</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * into the generated code; summaries of execution times and counts will</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * be logged at the end. Should be done before storage flattening, but</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * after all bounds inference. Use util/HalideProf to analyze the output.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/** Take a statement representing a halide pipeline insert</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * high-resolution timing into the generated code (via spawning a</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * thread that acts as a sampling profiler); summaries of execution</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * times and counts will be logged at the end. Should be done before</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * storage flattening, but after all bounds inference.</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * NOTE: this makes no effort to provide accurate or useful information</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * when parallelization is scheduled; more work would need to be done</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * to safely record data from multiple threads.</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * NOTE: this makes no effort to account for overhead from the profiling</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * instructions inserted; profile-enabled runtimes will be slower,</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * and inner loops will be more profoundly affected.</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;Stmt <a class="code" href="namespace_halide_1_1_internal.html#a568a0554db6866ee8560c3f599bceadd">inject_profiling</a>(Stmt, std::string);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/** Gets the current profiling level (by reading HL_PROFILE) */</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">int</span> <a class="code" href="namespace_halide_1_1_internal.html#ae828a911751c5115cb503d05afb1dcbe">profiling_level</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="namespace_halide_1_1_internal_html_a568a0554db6866ee8560c3f599bceadd"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a568a0554db6866ee8560c3f599bceadd">Halide::Internal::inject_profiling</a></div><div class="ttdeci">Stmt inject_profiling(Stmt, std::string)</div><div class="ttdoc">Take a statement representing a halide pipeline, and (depending on the environment variable HL_PROFIL...</div></div>
-<div class="ttc" id="namespace_halide_1_1_internal_html_ae828a911751c5115cb503d05afb1dcbe"><div class="ttname"><a href="namespace_halide_1_1_internal.html#ae828a911751c5115cb503d05afb1dcbe">Halide::Internal::profiling_level</a></div><div class="ttdeci">int profiling_level()</div><div class="ttdoc">Gets the current profiling level (by reading HL_PROFILE) </div></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;Stmt <a class="code" href="namespace_halide_1_1_internal.html#a568a0554db6866ee8560c3f599bceadd">inject_profiling</a>(Stmt, std::string);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="namespace_halide_1_1_internal_html_a568a0554db6866ee8560c3f599bceadd"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a568a0554db6866ee8560c3f599bceadd">Halide::Internal::inject_profiling</a></div><div class="ttdeci">Stmt inject_profiling(Stmt, std::string)</div><div class="ttdoc">Take a statement representing a halide pipeline insert high-resolution timing into the generated code...</div></div>
 <div class="ttc" id="_i_r_8h_html"><div class="ttname"><a href="_i_r_8h.html">IR.h</a></div><div class="ttdoc">Subtypes for Halide expressions (Halide::Expr) and statements (Halide::Internal::Stmt) ...</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

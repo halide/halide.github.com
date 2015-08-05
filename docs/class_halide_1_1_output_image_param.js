@@ -1,12 +1,11 @@
 var class_halide_1_1_output_image_param =
 [
     [ "OutputImageParam", "class_halide_1_1_output_image_param.html#a205baf6f32d6f856decd4fa802236abb", null ],
-    [ "~OutputImageParam", "class_halide_1_1_output_image_param.html#a7182573e0726c49d95f8e582e6485768", null ],
-    [ "OutputImageParam", "class_halide_1_1_output_image_param.html#aaf348c4305584ab198bdfb1f71818c94", null ],
+    [ "OutputImageParam", "class_halide_1_1_output_image_param.html#abbca7dfdbc9f87bbc21a5108fd8fb4f0", null ],
     [ "add_implicit_args_if_placeholder", "class_halide_1_1_output_image_param.html#adcdb9139f84833f0caed676cb04962ae", null ],
     [ "name", "class_halide_1_1_output_image_param.html#a756479d8b0bb11897d690efab1b09fbd", null ],
     [ "type", "class_halide_1_1_output_image_param.html#ad8a1e63a428bcd2d4bbce576f4e18734", null ],
-    [ "defined", "class_halide_1_1_output_image_param.html#ae5b817f43de08b64a6c12df4ba62834c", null ],
+    [ "defined", "class_halide_1_1_output_image_param.html#a4172ef8a278cc9be7f1601c9d1986730", null ],
     [ "min", "class_halide_1_1_output_image_param.html#a353b7b2aba75bde37900d553ef5979ae", null ],
     [ "extent", "class_halide_1_1_output_image_param.html#a422984df30887bca35aa1a31da0b2aef", null ],
     [ "stride", "class_halide_1_1_output_image_param.html#a8284d6c692f31b323d30a79a9860f0ae", null ],
@@ -23,7 +22,8 @@ var class_halide_1_1_output_image_param =
     [ "height", "class_halide_1_1_output_image_param.html#a31b7c69af015ba3617a281e8b2bff8af", null ],
     [ "channels", "class_halide_1_1_output_image_param.html#ae75c6e454a92a62d37eea0000ed28354", null ],
     [ "parameter", "class_halide_1_1_output_image_param.html#acdb849fdea18677d7ae59820a5e86ee9", null ],
-    [ "operator Argument", "class_halide_1_1_output_image_param.html#ad154808b553ac7f3ac6ab88cc622bf8e", null ],
+    [ "operator Argument", "class_halide_1_1_output_image_param.html#a0b97726a87c39a28a6a71f626e4ef271", null ],
     [ "operator ExternFuncArgument", "class_halide_1_1_output_image_param.html#af0de5bbcd9a85bc806f9b65bb781da04", null ],
-    [ "param", "class_halide_1_1_output_image_param.html#a176ba9b414a974b30e1709d84706431e", null ]
+    [ "param", "class_halide_1_1_output_image_param.html#a176ba9b414a974b30e1709d84706431e", null ],
+    [ "kind", "class_halide_1_1_output_image_param.html#ac026e04151f3824acd26799d42577e7a", null ]
 ];

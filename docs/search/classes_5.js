@@ -37,5 +37,6 @@ var searchData=
   ['exprnode_3c_20variable_20_3e',['ExprNode&lt; Variable &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprusesvars',['ExprUsesVars',['../class_halide_1_1_internal_1_1_expr_uses_vars.html',1,'Halide::Internal']]],
   ['exprwithcomparecache',['ExprWithCompareCache',['../struct_halide_1_1_internal_1_1_expr_with_compare_cache.html',1,'Halide::Internal']]],
-  ['externfuncargument',['ExternFuncArgument',['../struct_halide_1_1_extern_func_argument.html',1,'Halide']]]
+  ['externfuncargument',['ExternFuncArgument',['../struct_halide_1_1_extern_func_argument.html',1,'Halide']]],
+  ['externsignature',['ExternSignature',['../struct_halide_1_1_extern_signature.html',1,'Halide']]]
 ];

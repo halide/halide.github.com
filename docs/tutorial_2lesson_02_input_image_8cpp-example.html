@@ -101,30 +101,31 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_02_input_image_8cpp-e
 <div class="title">tutorial/lesson_02_input_image.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 2.</span></div>
+<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 2: Processing images</span></div>
 <div class="line"></div>
-<div class="line"><span class="comment">// This lesson demonstrates how to pass in input images.</span></div>
-<div class="line"></div>
-<div class="line"><span class="comment">// This lesson can be built by invoking the command:</span></div>
-<div class="line"><span class="comment">//    make tutorial_lesson_02_input_image</span></div>
-<div class="line"><span class="comment">// in a shell with the current directory at the top of the halide source tree.</span></div>
-<div class="line"><span class="comment">// Otherwise, see the platform-specific compiler invocations below.</span></div>
+<div class="line"><span class="comment">// This lesson demonstrates how to pass in input images and manipulate</span></div>
+<div class="line"><span class="comment">// them.</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// On linux, you can compile and run it like so:</span></div>
-<div class="line"><span class="comment">// g++ lesson_02*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -o lesson_02 -std=c++1</span></div>
+<div class="line"><span class="comment">// g++ lesson_02*.cpp -g -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -o lesson_02 -std=c++11</span></div>
 <div class="line"><span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_02</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// On os x:</span></div>
-<div class="line"><span class="comment">// g++ lesson_02*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_02 -std=c++11</span></div>
+<div class="line"><span class="comment">// g++ lesson_02*.cpp -g -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_02 -std=c++11</span></div>
 <div class="line"><span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_02</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">// If you have the entire Halide source tree, you can also build it by</span></div>
+<div class="line"><span class="comment">// running:</span></div>
+<div class="line"><span class="comment">//    make tutorial_lesson_02_input_image</span></div>
+<div class="line"><span class="comment">// in a shell with the current directory at the top of the halide</span></div>
+<div class="line"><span class="comment">// source tree.</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// The only Halide header file you need is Halide.h. It includes all of Halide.</span></div>
 <div class="line"><span class="preprocessor">#include &quot;Halide.h&quot;</span></div>
 <div class="line"></div>
-<div class="line"><span class="comment">// Include some support code for loading pngs. It assumes there&#39;s an</span></div>
-<div class="line"><span class="comment">// Image type, so we&#39;ll pull the one from Halide namespace;</span></div>
-<div class="line"><span class="keyword">using</span> <a name="_a0"></a><a class="code" href="class_halide_1_1_image.html">Halide::Image</a>;</div>
-<div class="line"><span class="preprocessor">#include &quot;image_io.h&quot;</span></div>
+<div class="line"><span class="comment">// Include some support code for loading pngs.</span></div>
+<div class="line"><span class="preprocessor">#include &quot;halide_image_io.h&quot;</span></div>
+<div class="line"><span class="keyword">using namespace </span>Halide::Tools;</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
 <div class="line"></div>
@@ -132,7 +133,9 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_02_input_image_8cpp-e
 <div class="line">    <span class="comment">// brightens an image.</span></div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// First we&#39;ll load the input image we wish to brighten.</span></div>
-<div class="line">    <a class="code" href="class_halide_1_1_image.html">Halide::Image&lt;uint8_t&gt;</a> input = load&lt;uint8_t&gt;(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
+<div class="line">    <a name="_a0"></a><a class="code" href="class_halide_1_1_image.html">Halide::Image&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// See figures/lesson_02_input.jpg for a smaller version.</span></div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Next we define our Func object that represents our one pipeline</span></div>
 <div class="line">    <span class="comment">// stage.</span></div>
@@ -180,7 +183,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_02_input_image_8cpp-e
 <div class="line">    <span class="comment">// - I left the Halide:: off clamp. It&#39;s unnecessary due to Koenig</span></div>
 <div class="line">    <span class="comment">//   lookup.</span></div>
 <div class="line"></div>
-<div class="line">    <span class="comment">// Remember. All we&#39;ve done so far is build a representation of a</span></div>
+<div class="line">    <span class="comment">// Remember, all we&#39;ve done so far is build a representation of a</span></div>
 <div class="line">    <span class="comment">// Halide program in memory. We haven&#39;t actually processed any</span></div>
 <div class="line">    <span class="comment">// pixels yet. We haven&#39;t even compiled that Halide program yet.</span></div>
 <div class="line"></div>
@@ -190,10 +193,12 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_02_input_image_8cpp-e
 <div class="line">    <span class="comment">// smaller size. If we request a larger size Halide will throw an</span></div>
 <div class="line">    <span class="comment">// error at runtime telling us we&#39;re trying to read out of bounds</span></div>
 <div class="line">    <span class="comment">// on the input image.</span></div>
-<div class="line">    <a class="code" href="class_halide_1_1_image.html">Halide::Image&lt;uint8_t&gt;</a> output = brighter.realize(input.<a name="a5"></a><a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a name="a6"></a><a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>(), input.<a name="a7"></a><a class="code" href="class_halide_1_1_image_base.html#a841b4202f4ec79856529d83b8c048f3e">channels</a>());</div>
+<div class="line">    <a class="code" href="class_halide_1_1_image.html">Halide::Image&lt;uint8_t&gt;</a> output = brighter.<a name="a5"></a><a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(input.<a name="a6"></a><a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a name="a7"></a><a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>(), input.<a name="a8"></a><a class="code" href="class_halide_1_1_image_base.html#a841b4202f4ec79856529d83b8c048f3e">channels</a>());</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Save the output for inspection. It should look like a bright parrot.</span></div>
-<div class="line">    save(output, <span class="stringliteral">&quot;brighter.png&quot;</span>);</div>
+<div class="line">    save_image(output, <span class="stringliteral">&quot;brighter.png&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// See figures/lesson_02_output.jpg for a small version of the output.</span></div>
 <div class="line"></div>
 <div class="line">    printf(<span class="stringliteral">&quot;Success!\n&quot;</span>);</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>

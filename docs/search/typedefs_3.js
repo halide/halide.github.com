@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['enumerate_5ffunc_5ft',['enumerate_func_t',['../_halide_runtime_8h.html#acfc1ecebda4db1628bc2723f1517afa1',1,'HalideRuntime.h']]],
-  ['expr',['Expr',['../class_halide_1_1_names_interface.html#a8d46151b07eba49f5812791609474cb5',1,'Halide::NamesInterface']]],
-  ['externfuncargument',['ExternFuncArgument',['../class_halide_1_1_names_interface.html#a3167fccb10c54f139d2be8a2b7c9b451',1,'Halide::NamesInterface']]]
+  ['devicecreatefnptr',['DeviceCreateFnPtr',['../mini__renderscript_8h.html#a8afdec7e7f55446f6f04dc2f5d51c603',1,'mini_renderscript.h']]],
+  ['devicedestroyfnptr',['DeviceDestroyFnPtr',['../mini__renderscript_8h.html#a82fd85864f0b2b2a9d052e75028805eb',1,'mini_renderscript.h']]],
+  ['devicesetconfigfnptr',['DeviceSetConfigFnPtr',['../mini__renderscript_8h.html#aeba1c385828f8a538666404e9c1addd0',1,'mini_renderscript.h']]]
 ];

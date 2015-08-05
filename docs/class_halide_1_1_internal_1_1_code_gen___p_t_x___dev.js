@@ -9,8 +9,6 @@ var class_halide_1_1_internal_1_1_code_gen___p_t_x___dev =
     [ "print_gpu_name", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ade4a0d20fa2fc8507810fef1bf8d57ab", null ],
     [ "api_unique_name", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a2f01bb9c3bfa414bc4571c39c3ca9f55", null ],
     [ "init_module", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#ac9f6784e96f741ecb6b7ea119d7395d1", null ],
-    [ "get_target_triple", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a9f79d6083fe1497fb690da1724a16bdd", null ],
-    [ "get_data_layout", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#aaa793114a42e2fa3adaabe8f6a8db68e", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a9458eeb41a3d3d19c9814ab9b4c54a83", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#acdf09bdf43e551c810062598392689fa", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html#a107885488d5f0b028b2a46cc95aac715", null ],

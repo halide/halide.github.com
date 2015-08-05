@@ -147,9 +147,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a242a3dc7c2f5a5db99eab8018b77ac6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Single-dimensional reduction domains can be also be used as Exprs directly.  <a href="#a242a3dc7c2f5a5db99eab8018b77ac6d">More...</a><br/></td></tr>
 <tr class="separator:a242a3dc7c2f5a5db99eab8018b77ac6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:a7afe920c6ef99b4d68c78406662af368"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_r_dom.html#a7afe920c6ef99b4d68c78406662af368">RDom</a> (const std::vector&lt; std::pair&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a>, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &gt; &amp;ranges, std::string name=&quot;&quot;)</td></tr>
-<tr class="memdesc:a7afe920c6ef99b4d68c78406662af368"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a multi-dimensional reduction domain with the given name.  <a href="#a7afe920c6ef99b4d68c78406662af368">More...</a><br/></td></tr>
-<tr class="separator:a7afe920c6ef99b4d68c78406662af368"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a333abe02d62548e3420914b0413c77d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_r_dom.html#a333abe02d62548e3420914b0413c77d6">RDom</a> (const std::vector&lt; std::pair&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a>, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt;&gt; &amp;ranges, std::string name=&quot;&quot;)</td></tr>
+<tr class="memdesc:a333abe02d62548e3420914b0413c77d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a multi-dimensional reduction domain with the given name.  <a href="#a333abe02d62548e3420914b0413c77d6">More...</a><br/></td></tr>
+<tr class="separator:a333abe02d62548e3420914b0413c77d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11fc3e231c08526f7a074ca40cac0316"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
 <tr class="memitem:a11fc3e231c08526f7a074ca40cac0316"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_r_dom.html#a11fc3e231c08526f7a074ca40cac0316">RDom</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940">min</a>, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> extent, Args...args)</td></tr>
 <tr class="memdesc:a11fc3e231c08526f7a074ca40cac0316"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a multi-dimensional reduction domain with the given name.  <a href="#a11fc3e231c08526f7a074ca40cac0316">More...</a><br/></td></tr>
@@ -228,7 +228,7 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment --><p>When you mix reduction variables and pure dimensions, the reduction domain is traversed outermost. That is, for each point in the reduction domain, the inferred pure domain is traversed in its entirety. For the above example, this means that sum_x walks down the columns, and sum_y walks along the rows. This may not be cache-coherent. You may try reordering these dimensions using the schedule, but <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> will return an error if it decides that this risks changing the meaning of your function. The solution lies in clever scheduling. If we say:</p>
 <div class="fragment"><div class="line">sum_x.compute_at(sum_y, y);</div>
 </div><!-- fragment --><p>Then the sum in x is computed only as necessary for each scanline of the sum in y. This not only results in sum_x walking along the rows, it also improves the locality of the entire pipeline. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#_a6">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#_a6">tutorial/lesson_09_update_definitions.cpp</a>, and <a class="el" href="tutorial_2lesson_13_tuples_8cpp-example.html#_a11">tutorial/lesson_13_tuples.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00181">181</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -259,7 +259,7 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7afe920c6ef99b4d68c78406662af368"></a>
+<a class="anchor" id="a333abe02d62548e3420914b0413c77d6"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -269,7 +269,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> Halide::RDom::RDom </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; std::pair&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a>, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; std::pair&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a>, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt;&gt; &amp;&#160;</td>
           <td class="paramname"><em>ranges</em>, </td>
         </tr>
         <tr>
@@ -454,7 +454,7 @@ template&lt;typename... Args&gt; </div>
 
 <p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00229">229</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
-<p>References <a class="el" href="_reduction_8h_source.html#l00042">Halide::Internal::ReductionDomain::defined()</a>.</p>
+<p>References <a class="el" href="_reduction_8h_source.html#l00036">Halide::Internal::ReductionDomain::defined()</a>.</p>
 
 </div>
 </div>
@@ -484,7 +484,7 @@ template&lt;typename... Args&gt; </div>
 
 <p>Definition at line <a class="el" href="_r_dom_8h_source.html#l00232">232</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
-<p>References <a class="el" href="_reduction_8h_source.html#l00049">Halide::Internal::ReductionDomain::same_as()</a>.</p>
+<p>References <a class="el" href="_reduction_8h_source.html#l00043">Halide::Internal::ReductionDomain::same_as()</a>.</p>
 
 </div>
 </div>

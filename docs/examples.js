@@ -12,5 +12,7 @@ var examples =
     [ "tutorial/lesson_10_aot_compilation_generate.cpp", "tutorial_2lesson_10_aot_compilation_generate_8cpp-example.html", null ],
     [ "tutorial/lesson_10_aot_compilation_run.cpp", "tutorial_2lesson_10_aot_compilation_run_8cpp-example.html", null ],
     [ "tutorial/lesson_11_cross_compilation.cpp", "tutorial_2lesson_11_cross_compilation_8cpp-example.html", null ],
-    [ "tutorial/lesson_12_using_the_gpu.cpp", "tutorial_2lesson_12_using_the_gpu_8cpp-example.html", null ]
+    [ "tutorial/lesson_12_using_the_gpu.cpp", "tutorial_2lesson_12_using_the_gpu_8cpp-example.html", null ],
+    [ "tutorial/lesson_13_tuples.cpp", "tutorial_2lesson_13_tuples_8cpp-example.html", null ],
+    [ "tutorial/lesson_14_types.cpp", "tutorial_2lesson_14_types_8cpp-example.html", null ]
 ];

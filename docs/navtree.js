@@ -31,9 +31,9 @@ var NAVTREE =
         [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", "globals_func" ],
         [ "Variables", "globals_vars.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
+        [ "Typedefs", "globals_type.html", "globals_type" ],
         [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
+        [ "Enumerator", "globals_eval.html", "globals_eval" ],
         [ "Macros", "globals_defs.html", "globals_defs" ]
       ] ]
     ] ],
@@ -43,22 +43,26 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_allocation_bounds_inference_8h.html",
-"_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca0d5dfd64f10156a5d2d1453fad4bfb6c",
-"_i_r_visitor_8h_source.html",
-"_util_8h.html#a230079281175545b9b90b2285106ab28",
-"class_halide_1_1_generator.html#a6b03782c9b56e0bc64cfd124e86e43de",
-"class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a24900294c985a5e365a29a129e56e692",
-"class_halide_1_1_internal_1_1_code_gen___x86.html#a04b4c88e6ec1bc8ce1eab879f1118009",
-"class_halide_1_1_internal_1_1_i_r_visitor.html#aa7a1f36d4ec20aca4e6ecacfb6606759",
-"class_halide_1_1_stage.html#a549188358dc9782a0ab3df936b1d99e3",
-"mini__cl_8h.html#a0de7de1fc7ab88baddd443b405ac429d",
-"mini__cl_8h.html#a8cc36e5bc990d70722b41b1cd10372f9",
-"mini__cuda_8h.html#a2d777de93459219644f771c57ab471d8",
-"mini__opengl_8h.html#a85e93b355494186ced027f1a1142fefb",
-"struct_halide_1_1_argument.html#aafb5084c2561c7d8baabe914b5de55e1",
-"struct_halide_1_1_internal_1_1_intrusive_ptr.html",
-"struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa84c6211e4fb941603f6104e98427d7e5"
+"35_2_reader_writer__3__2_8h.html",
+"_halide_runtime_8h.html#a83ec7fcc618e1b0508a6f4f726a7bcae",
+"_i_r_operator_8h.html#af3da8f6192d557a4bd47cf244b79a9db",
+"_storage_folding_8h_source.html",
+"class_halide_1_1_func.html#ab4893db240671acf18233ed18d3bfca8",
+"class_halide_1_1_internal_1_1_code_gen___c.html#ac7d30b280e05e4d5722840f8a2140f65",
+"class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a75f424594f0f6eb6d19ca85e3fc7287c",
+"class_halide_1_1_internal_1_1_i_r_graph_visitor.html#abd2258d1a33e9e2505a8d11863b19f18",
+"class_halide_1_1_module.html",
+"classllvm__3__2_1_1_value_enumerator.html#a6156bc5c4e6f9b29c183db0dae55bacb",
+"mini__cl_8h.html#a038bb119ee497359824645d90466517f",
+"mini__cl_8h.html#a96a7d9b65e8319e2f8c751455ae92ec8",
+"mini__cuda_8h.html#af19313e44c60ca273901b267a591bffaa2d2c14b2a45b663b91af6533d824ed8d",
+"mini__renderscript_8h.html#a02ec4d4448d180273e8d35baf641c618a215892106fd14e1e03e6856f5eaf14de",
+"mini__renderscript_8h.html#aa608d19131bddfbbff670297ec7179daad1b23de91e60a1e667108b19661fb981",
+"mini__renderscript_8h.html#aff88c715a5f5fbd1ef95d4fb71a7eaccafa0a914d5db92aa173d5a3fbd5792152",
+"struct_halide_1_1_internal_1_1_assert_stmt.html",
+"struct_halide_1_1_internal_1_1_loop_level.html#a0ffc0ef1807fe10a93529571b9a9cc7d",
+"struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a5c630f5107a5a01870143d6dc042ea8c",
+"structhalide__trace__event.html#a34e290a904566e28bf97cb99a557c0ff"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

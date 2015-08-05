@@ -1,5 +1,6 @@
 var class_halide_1_1_image =
 [
+    [ "ElemType", "class_halide_1_1_image.html#afcb835bc4170872a1f9811903c39a9d3", null ],
     [ "Image", "class_halide_1_1_image.html#a93767feb729f00c63cde76f4c03433bc", null ],
     [ "Image", "class_halide_1_1_image.html#ae0c0bcd330ffc40ab466bbbc68308403", null ],
     [ "Image", "class_halide_1_1_image.html#a9529a134b3f40b98d750a9886b87610b", null ],

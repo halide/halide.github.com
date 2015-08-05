@@ -1,5 +1,7 @@
 var files =
 [
+    [ "AddImageChecks.h", "_add_image_checks_8h.html", "_add_image_checks_8h" ],
+    [ "AddParameterChecks.h", "_add_parameter_checks_8h.html", "_add_parameter_checks_8h" ],
     [ "AllocationBoundsInference.h", "_allocation_bounds_inference_8h.html", "_allocation_bounds_inference_8h" ],
     [ "Argument.h", "_argument_8h.html", [
       [ "Argument", "struct_halide_1_1_argument.html", "struct_halide_1_1_argument" ]
@@ -11,12 +13,14 @@ var files =
     [ "Buffer.h", "_buffer_8h.html", [
       [ "Buffer", "class_halide_1_1_buffer.html", "class_halide_1_1_buffer" ]
     ] ],
+    [ "cl_functions.h", "cl__functions_8h.html", "cl__functions_8h" ],
     [ "CodeGen_ARM.h", "_code_gen___a_r_m_8h.html", [
       [ "CodeGen_ARM", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html", "class_halide_1_1_internal_1_1_code_gen___a_r_m" ],
       [ "Pattern", "struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html", "struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern" ]
     ] ],
     [ "CodeGen_C.h", "_code_gen___c_8h.html", [
-      [ "CodeGen_C", "class_halide_1_1_internal_1_1_code_gen___c.html", "class_halide_1_1_internal_1_1_code_gen___c" ]
+      [ "CodeGen_C", "class_halide_1_1_internal_1_1_code_gen___c.html", "class_halide_1_1_internal_1_1_code_gen___c" ],
+      [ "Allocation", "struct_halide_1_1_internal_1_1_code_gen___c_1_1_allocation.html", "struct_halide_1_1_internal_1_1_code_gen___c_1_1_allocation" ]
     ] ],
     [ "CodeGen_GPU_Dev.h", "_code_gen___g_p_u___dev_8h.html", [
       [ "GPU_Argument", "struct_halide_1_1_internal_1_1_g_p_u___argument.html", "struct_halide_1_1_internal_1_1_g_p_u___argument" ],
@@ -36,7 +40,12 @@ var files =
     ] ],
     [ "CodeGen_OpenGL_Dev.h", "_code_gen___open_g_l___dev_8h.html", [
       [ "CodeGen_OpenGL_Dev", "class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html", "class_halide_1_1_internal_1_1_code_gen___open_g_l___dev" ],
+      [ "CodeGen_GLSLBase", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base" ],
       [ "CodeGen_GLSL", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l.html", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l" ]
+    ] ],
+    [ "CodeGen_OpenGLCompute_Dev.h", "_code_gen___open_g_l_compute___dev_8h.html", [
+      [ "CodeGen_OpenGLCompute_Dev", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev.html", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev" ],
+      [ "CodeGen_OpenGLCompute_C", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c" ]
     ] ],
     [ "CodeGen_PNaCl.h", "_code_gen___p_na_cl_8h.html", [
       [ "CodeGen_PNaCl", "class_halide_1_1_internal_1_1_code_gen___p_na_cl.html", "class_halide_1_1_internal_1_1_code_gen___p_na_cl" ]
@@ -48,10 +57,14 @@ var files =
     [ "CodeGen_PTX_Dev.h", "_code_gen___p_t_x___dev_8h.html", [
       [ "CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev" ]
     ] ],
+    [ "CodeGen_Renderscript_Dev.h", "_code_gen___renderscript___dev_8h.html", [
+      [ "CodeGen_Renderscript_Dev", "class_halide_1_1_internal_1_1_code_gen___renderscript___dev.html", "class_halide_1_1_internal_1_1_code_gen___renderscript___dev" ]
+    ] ],
     [ "CodeGen_X86.h", "_code_gen___x86_8h.html", [
       [ "CodeGen_X86", "class_halide_1_1_internal_1_1_code_gen___x86.html", "class_halide_1_1_internal_1_1_code_gen___x86" ]
     ] ],
     [ "CSE.h", "_c_s_e_8h.html", "_c_s_e_8h" ],
+    [ "cuda_functions.h", "cuda__functions_8h.html", "cuda__functions_8h" ],
     [ "cuda_opencl_shared.h", "cuda__opencl__shared_8h.html", "cuda__opencl__shared_8h" ],
     [ "Debug.h", "_debug_8h.html", "_debug_8h" ],
     [ "DebugToFile.h", "_debug_to_file_8h.html", "_debug_to_file_8h" ],
@@ -70,7 +83,6 @@ var files =
     [ "Function.h", "_function_8h.html", [
       [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html", "struct_halide_1_1_extern_func_argument" ],
       [ "UpdateDefinition", "struct_halide_1_1_internal_1_1_update_definition.html", "struct_halide_1_1_internal_1_1_update_definition" ],
-      [ "FunctionContents", "struct_halide_1_1_internal_1_1_function_contents.html", "struct_halide_1_1_internal_1_1_function_contents" ],
       [ "Function", "class_halide_1_1_internal_1_1_function.html", "class_halide_1_1_internal_1_1_function" ]
     ] ],
     [ "FuseGPUThreadLoops.h", "_fuse_g_p_u_thread_loops_8h.html", "_fuse_g_p_u_thread_loops_8h" ],
@@ -80,7 +92,8 @@ var files =
     [ "HalideRuntimeCuda.h", "_halide_runtime_cuda_8h.html", "_halide_runtime_cuda_8h" ],
     [ "HalideRuntimeOpenCL.h", "_halide_runtime_open_c_l_8h.html", "_halide_runtime_open_c_l_8h" ],
     [ "HalideRuntimeOpenGL.h", "_halide_runtime_open_g_l_8h.html", "_halide_runtime_open_g_l_8h" ],
-    [ "HumanReadableStmt.h", "_human_readable_stmt_8h.html", "_human_readable_stmt_8h" ],
+    [ "HalideRuntimeOpenGLCompute.h", "_halide_runtime_open_g_l_compute_8h.html", "_halide_runtime_open_g_l_compute_8h" ],
+    [ "HalideRuntimeRenderscript.h", "_halide_runtime_renderscript_8h.html", "_halide_runtime_renderscript_8h" ],
     [ "Image.h", "_image_8h.html", [
       [ "ImageBase", "class_halide_1_1_image_base.html", "class_halide_1_1_image_base" ],
       [ "Image", "class_halide_1_1_image.html", "class_halide_1_1_image" ]
@@ -107,6 +120,8 @@ var files =
     ] ],
     [ "JITModule.h", "_j_i_t_module_8h.html", "_j_i_t_module_8h" ],
     [ "Lambda.h", "_lambda_8h.html", "_lambda_8h" ],
+    [ "legacy_bitcode.h", "legacy__bitcode_8h.html", null ],
+    [ "35/legacy_bitcode.h", "35_2legacy__bitcode_8h.html", null ],
     [ "Lerp.h", "_lerp_8h.html", "_lerp_8h" ],
     [ "LLVM_Headers.h", "_l_l_v_m___headers_8h.html", "_l_l_v_m___headers_8h" ],
     [ "LLVM_Output.h", "_l_l_v_m___output_8h.html", "_l_l_v_m___output_8h" ],
@@ -119,6 +134,7 @@ var files =
     [ "mini_cl.h", "mini__cl_8h.html", "mini__cl_8h" ],
     [ "mini_cuda.h", "mini__cuda_8h.html", "mini__cuda_8h" ],
     [ "mini_opengl.h", "mini__opengl_8h.html", "mini__opengl_8h" ],
+    [ "mini_renderscript.h", "mini__renderscript_8h.html", "mini__renderscript_8h" ],
     [ "Module.h", "_module_8h.html", "_module_8h" ],
     [ "ModulusRemainder.h", "_modulus_remainder_8h.html", "_modulus_remainder_8h" ],
     [ "ObjectInstanceRegistry.h", "_object_instance_registry_8h.html", [
@@ -130,13 +146,17 @@ var files =
     [ "Param.h", "_param_8h.html", "_param_8h" ],
     [ "Parameter.h", "_parameter_8h.html", "_parameter_8h" ],
     [ "PartitionLoops.h", "_partition_loops_8h.html", "_partition_loops_8h" ],
+    [ "Pipeline.h", "_pipeline_8h.html", "_pipeline_8h" ],
+    [ "PrintLoopNest.h", "_print_loop_nest_8h.html", "_print_loop_nest_8h" ],
     [ "Profiling.h", "_profiling_8h.html", "_profiling_8h" ],
     [ "Qualify.h", "_qualify_8h.html", "_qualify_8h" ],
     [ "Random.h", "_random_8h.html", "_random_8h" ],
     [ "RDom.h", "_r_dom_8h.html", "_r_dom_8h" ],
+    [ "ReaderWriter_3_2.h", "_reader_writer__3__2_8h.html", "_reader_writer__3__2_8h" ],
+    [ "35/ReaderWriter_3_2.h", "35_2_reader_writer__3__2_8h.html", "35_2_reader_writer__3__2_8h" ],
+    [ "RealizationOrder.h", "_realization_order_8h.html", "_realization_order_8h" ],
     [ "Reduction.h", "_reduction_8h.html", [
       [ "ReductionVariable", "struct_halide_1_1_internal_1_1_reduction_variable.html", "struct_halide_1_1_internal_1_1_reduction_variable" ],
-      [ "ReductionDomainContents", "struct_halide_1_1_internal_1_1_reduction_domain_contents.html", "struct_halide_1_1_internal_1_1_reduction_domain_contents" ],
       [ "ReductionDomain", "class_halide_1_1_internal_1_1_reduction_domain.html", "class_halide_1_1_internal_1_1_reduction_domain" ]
     ] ],
     [ "RemoveDeadAllocations.h", "_remove_dead_allocations_8h.html", "_remove_dead_allocations_8h" ],
@@ -151,6 +171,7 @@ var files =
       [ "Specialization", "struct_halide_1_1_internal_1_1_specialization.html", "struct_halide_1_1_internal_1_1_specialization" ],
       [ "Schedule", "class_halide_1_1_internal_1_1_schedule.html", "class_halide_1_1_internal_1_1_schedule" ]
     ] ],
+    [ "ScheduleFunctions.h", "_schedule_functions_8h.html", "_schedule_functions_8h" ],
     [ "Scope.h", "_scope_8h.html", "_scope_8h" ],
     [ "scoped_mutex_lock.h", "scoped__mutex__lock_8h.html", [
       [ "ScopedMutexLock", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_mutex_lock.html", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_mutex_lock" ]
@@ -158,6 +179,7 @@ var files =
     [ "scoped_spin_lock.h", "scoped__spin__lock_8h.html", [
       [ "ScopedSpinLock", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock" ]
     ] ],
+    [ "SelectGPUAPI.h", "_select_g_p_u_a_p_i_8h.html", "_select_g_p_u_a_p_i_8h" ],
     [ "Simplify.h", "_simplify_8h.html", "_simplify_8h" ],
     [ "SkipStages.h", "_skip_stages_8h.html", "_skip_stages_8h" ],
     [ "SlidingWindow.h", "_sliding_window_8h.html", "_sliding_window_8h" ],
@@ -174,6 +196,12 @@ var files =
     [ "UniquifyVariableNames.h", "_uniquify_variable_names_8h.html", "_uniquify_variable_names_8h" ],
     [ "UnrollLoops.h", "_unroll_loops_8h.html", "_unroll_loops_8h" ],
     [ "Util.h", "_util_8h.html", "_util_8h" ],
+    [ "ValueEnumerator.h", "_value_enumerator_8h.html", [
+      [ "ValueEnumerator", "classllvm__3__2_1_1_value_enumerator.html", "classllvm__3__2_1_1_value_enumerator" ]
+    ] ],
+    [ "35/ValueEnumerator.h", "35_2_value_enumerator_8h.html", [
+      [ "ValueEnumerator", "classllvm__3__2_1_1_value_enumerator.html", "classllvm__3__2_1_1_value_enumerator" ]
+    ] ],
     [ "Var.h", "_var_8h.html", "_var_8h" ],
     [ "VaryingAttributes.h", "_varying_attributes_8h.html", "_varying_attributes_8h" ],
     [ "VectorizeLoops.h", "_vectorize_loops_8h.html", "_vectorize_loops_8h" ]

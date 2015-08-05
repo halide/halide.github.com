@@ -12,5 +12,5 @@ var searchData=
   ['llvm_5fnvptx_5fenabled',['llvm_NVPTX_enabled',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a9c6e91cd733d51b59c5b4a316d3be996',1,'Halide::Internal::CodeGen_LLVM']]],
   ['llvm_5ftype',['llvm_type',['../struct_halide_1_1_internal_1_1_j_i_t_module_1_1_symbol.html#adb8ee6aa0e9a5a27a59b9b276bd1c786',1,'Halide::Internal::JITModule::Symbol']]],
   ['llvm_5fx86_5fenabled',['llvm_X86_enabled',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#ab6f4ff44578e327ab5da9dd963f623bc',1,'Halide::Internal::CodeGen_LLVM']]],
-  ['lock',['lock',['../struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html#adc0ee9b48dcc82287d3a69548a061207',1,'Halide::Runtime::Internal::ScopedSpinLock']]]
+  ['lock',['lock',['../structhalide__profiler__state.html#a417a692cd11e6ae8945aa605f8a810d2',1,'halide_profiler_state::lock()'],['../struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html#adc0ee9b48dcc82287d3a69548a061207',1,'Halide::Runtime::Internal::ScopedSpinLock::lock()']]]
 ];

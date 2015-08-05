@@ -101,22 +101,21 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="title">tutorial/lesson_07_multi_stage_pipelines.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 7</span></div>
-<div class="line"></div>
-<div class="line"><span class="comment">// This lesson demonstrates how express multi-stage pipelines.</span></div>
-<div class="line"></div>
-<div class="line"><span class="comment">// This lesson can be built by invoking the command:</span></div>
-<div class="line"><span class="comment">//    make tutorial_lesson_07_multi_stage_pipelines</span></div>
-<div class="line"><span class="comment">// in a shell with the current directory at the top of the halide source tree.</span></div>
-<div class="line"><span class="comment">// Otherwise, see the platform-specific compiler invocations below.</span></div>
+<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 7: Multi-stage pipelines</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// On linux, you can compile and run it like so:</span></div>
-<div class="line"><span class="comment">// g++ lesson_07*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -o lesson_07</span></div>
+<div class="line"><span class="comment">// g++ lesson_07*.cpp -g -std=c++11 -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -o lesson_07</span></div>
 <div class="line"><span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_07</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// On os x:</span></div>
-<div class="line"><span class="comment">// g++ lesson_07*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_07</span></div>
+<div class="line"><span class="comment">// g++ lesson_07*.cpp -g -std=c++11 -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_07</span></div>
 <div class="line"><span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_07</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">// If you have the entire Halide source tree, you can also build it by</span></div>
+<div class="line"><span class="comment">// running:</span></div>
+<div class="line"><span class="comment">//    make tutorial_lesson_07_multi_stage_pipelines</span></div>
+<div class="line"><span class="comment">// in a shell with the current directory at the top of the halide</span></div>
+<div class="line"><span class="comment">// source tree.</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &quot;Halide.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
@@ -124,7 +123,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line"><span class="keyword">using namespace </span>Halide;</div>
 <div class="line"></div>
 <div class="line"><span class="comment">// Support code for loading pngs.</span></div>
-<div class="line"><span class="preprocessor">#include &quot;image_io.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;halide_image_io.h&quot;</span></div>
+<div class="line"><span class="keyword">using namespace </span>Halide::Tools;</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
 <div class="line">    <span class="comment">// First we&#39;ll declare some Vars to use below.</span></div>
@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line">    <span class="comment">// first horizontally, and then vertically.</span></div>
 <div class="line">    {</div>
 <div class="line">        <span class="comment">// Take a color 8-bit input</span></div>
-<div class="line">        <a name="_a1"></a><a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> input = load&lt;uint8_t&gt;(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
+<div class="line">        <a name="_a1"></a><a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Upgrade it to 16-bit, so we can do math without it overflowing.</span></div>
 <div class="line">        <a name="_a2"></a><a class="code" href="class_halide_1_1_func.html">Func</a> input_16(<span class="stringliteral">&quot;input_16&quot;</span>);</div>
@@ -142,11 +142,15 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line"></div>
 <div class="line">        <span class="comment">// Blur it horizontally:</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> blur_x(<span class="stringliteral">&quot;blur_x&quot;</span>);</div>
-<div class="line">        blur_x(x, y, c) = (input_16(x-1, y, c) + 2*input_16(x, y, c) + input_16(x+1, y, c))/4;</div>
+<div class="line">        blur_x(x, y, c) = (input_16(x-1, y, c) +</div>
+<div class="line">                           2 * input_16(x, y, c) +</div>
+<div class="line">                           input_16(x+1, y, c)) / 4;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Blur it vertically:</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> blur_y(<span class="stringliteral">&quot;blur_y&quot;</span>);</div>
-<div class="line">        blur_y(x, y, c) = (blur_x(x, y-1, c) + 2*blur_x(x, y, c) + blur_x(x, y+1, c))/4;</div>
+<div class="line">        blur_y(x, y, c) = (blur_x(x, y-1, c) +</div>
+<div class="line">                           2 * blur_x(x, y, c) +</div>
+<div class="line">                           blur_x(x, y+1, c)) / 4;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Convert back to 8-bit.</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> output(<span class="stringliteral">&quot;output&quot;</span>);</div>
@@ -183,12 +187,12 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line">        <span class="comment">// to do this in the previous lesson:</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> result(input.<a name="a3"></a><a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>()-2, input.<a name="a4"></a><a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>()-2, 3);</div>
 <div class="line">        result.<a name="a5"></a><a class="code" href="class_halide_1_1_image_base.html#a0a481abd541f30d2ef897bbae76e4cca">set_min</a>(1, 1);</div>
-<div class="line">        output.<a name="a6"></a><a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(result);</div>
+<div class="line">        output.<a name="a6"></a><a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(result);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Save the result. It should look like a slightly blurry</span></div>
 <div class="line">        <span class="comment">// parrot, and it should be two pixels narrower and two pixels</span></div>
 <div class="line">        <span class="comment">// shorter than the input image.</span></div>
-<div class="line">        save(result, <span class="stringliteral">&quot;blurry_parrot_1.png&quot;</span>);</div>
+<div class="line">        save_image(result, <span class="stringliteral">&quot;blurry_parrot_1.png&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// This is usually the fastest way to deal with boundaries:</span></div>
 <div class="line">        <span class="comment">// don&#39;t write code that reads out of bounds :) The more</span></div>
@@ -198,13 +202,13 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line">    <span class="comment">// The same pipeline, with a boundary condition on the input.</span></div>
 <div class="line">    {</div>
 <div class="line">        <span class="comment">// Take a color 8-bit input</span></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> input = load&lt;uint8_t&gt;(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// This time, we&#39;ll wrap the input in a Func that prevents</span></div>
 <div class="line">        <span class="comment">// reading out of bounds:</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> clamped(<span class="stringliteral">&quot;clamped&quot;</span>);</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">// Define an expression that clamps x to lie within the the</span></div>
+<div class="line">        <span class="comment">// Define an expression that clamps x to lie within the</span></div>
 <div class="line">        <span class="comment">// range [0, input.width()-1].</span></div>
 <div class="line">        <a name="_a7"></a><a class="code" href="struct_halide_1_1_expr.html">Expr</a> clamped_x = <a name="a8"></a><a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa">clamp</a>(x, 0, input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>()-1);</div>
 <div class="line">        <span class="comment">// Similarly clamp y.</span></div>
@@ -237,11 +241,15 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line"></div>
 <div class="line">        <span class="comment">// Blur it horizontally:</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> blur_x(<span class="stringliteral">&quot;blur_x&quot;</span>);</div>
-<div class="line">        blur_x(x, y, c) = (input_16(x-1, y, c) + 2*input_16(x, y, c) + input_16(x+1, y, c))/4;</div>
+<div class="line">        blur_x(x, y, c) = (input_16(x-1, y, c) +</div>
+<div class="line">                           2 * input_16(x, y, c) +</div>
+<div class="line">                           input_16(x+1, y, c)) / 4;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Blur it vertically:</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> blur_y(<span class="stringliteral">&quot;blur_y&quot;</span>);</div>
-<div class="line">        blur_y(x, y, c) = (blur_x(x, y-1, c) + 2*blur_x(x, y, c) + blur_x(x, y+1, c))/4;</div>
+<div class="line">        blur_y(x, y, c) = (blur_x(x, y-1, c) +</div>
+<div class="line">                           2 * blur_x(x, y, c) +</div>
+<div class="line">                           blur_x(x, y+1, c)) / 4;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Convert back to 8-bit.</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> output(<span class="stringliteral">&quot;output&quot;</span>);</div>
@@ -249,12 +257,12 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line"></div>
 <div class="line">        <span class="comment">// This time it&#39;s safe to evaluate the output over the some</span></div>
 <div class="line">        <span class="comment">// domain as the input, because we have a boundary condition.</span></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> result = output.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>(), 3);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> result = output.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>(), 3);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Save the result. It should look like a slightly blurry</span></div>
 <div class="line">        <span class="comment">// parrot, but this time it will be the same size as the</span></div>
 <div class="line">        <span class="comment">// input.</span></div>
-<div class="line">        save(result, <span class="stringliteral">&quot;blurry_parrot_2.png&quot;</span>);</div>
+<div class="line">        save_image(result, <span class="stringliteral">&quot;blurry_parrot_2.png&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    printf(<span class="stringliteral">&quot;Success!\n&quot;</span>);</div>

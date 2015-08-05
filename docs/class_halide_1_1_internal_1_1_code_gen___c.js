@@ -1,5 +1,6 @@
 var class_halide_1_1_internal_1_1_code_gen___c =
 [
+    [ "Allocation", "struct_halide_1_1_internal_1_1_code_gen___c_1_1_allocation.html", "struct_halide_1_1_internal_1_1_code_gen___c_1_1_allocation" ],
     [ "CodeGen_C", "class_halide_1_1_internal_1_1_code_gen___c.html#a5d3f5f1ca0b86be42823bbd1bd0698da", null ],
     [ "~CodeGen_C", "class_halide_1_1_internal_1_1_code_gen___c.html#a531c2eec28c44f5defb732e3462ee939", null ],
     [ "compile", "class_halide_1_1_internal_1_1_code_gen___c.html#ad7832a8c3c3a56a503d38d0f1aa2707f", null ],
@@ -43,7 +44,7 @@ var class_halide_1_1_internal_1_1_code_gen___c =
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#a0e235827a000de01f184e5ba68747f0b", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#af678c10245f2f806574ec16dd2fe2ea9", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#acc48a704f71b0b0725afd8dcf330d298", null ],
-    [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#a43b0ee8b5a3b6db953dfc0b02c05ef84", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#a5ab82f6447044fd4e15aec3d9e726a60", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#a59e9a48309e770c44c8e57689d27356d", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#aa4a86336619d225510afae79dfa54765", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#a6eca250d00ed15eef36bd1a98f4ab074", null ],
@@ -56,7 +57,7 @@ var class_halide_1_1_internal_1_1_code_gen___c =
     [ "is_header", "class_halide_1_1_internal_1_1_code_gen___c.html#aac287c92d20a799679d336fff807302e", null ],
     [ "cache", "class_halide_1_1_internal_1_1_code_gen___c.html#af6d9429f3ca6c236a8da179c538009d2", null ],
     [ "emitted", "class_halide_1_1_internal_1_1_code_gen___c.html#a936cdc1aa5c7bdfbcb265bd5c67a1eec", null ],
-    [ "allocations", "class_halide_1_1_internal_1_1_code_gen___c.html#afe5d2cc7743f47c402317b561615a93a", null ],
+    [ "allocations", "class_halide_1_1_internal_1_1_code_gen___c.html#a77286af3480e2ebe58a59dd2969adb36", null ],
     [ "heap_allocations", "class_halide_1_1_internal_1_1_code_gen___c.html#a0d867f0e390182e00054eb629181516d", null ],
     [ "have_user_context", "class_halide_1_1_internal_1_1_code_gen___c.html#abd679d9da0e82113f78358e8d0a75eb1", null ]
 ];

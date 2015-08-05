@@ -1,19 +1,10 @@
 var searchData=
 [
-  ['image_2eh',['Image.h',['../_image_8h.html',1,'']]],
-  ['injecthostdevbuffercopies_2eh',['InjectHostDevBufferCopies.h',['../_inject_host_dev_buffer_copies_8h.html',1,'']]],
-  ['injectimageintrinsics_2eh',['InjectImageIntrinsics.h',['../_inject_image_intrinsics_8h.html',1,'']]],
-  ['injectopenglintrinsics_2eh',['InjectOpenGLIntrinsics.h',['../_inject_open_g_l_intrinsics_8h.html',1,'']]],
-  ['inline_2eh',['Inline.h',['../_inline_8h.html',1,'']]],
-  ['inlinereductions_2eh',['InlineReductions.h',['../_inline_reductions_8h.html',1,'']]],
-  ['integerdivisiontable_2eh',['IntegerDivisionTable.h',['../_integer_division_table_8h.html',1,'']]],
-  ['introspection_2eh',['Introspection.h',['../_introspection_8h.html',1,'']]],
-  ['intrusiveptr_2eh',['IntrusivePtr.h',['../_intrusive_ptr_8h.html',1,'']]],
-  ['ir_2eh',['IR.h',['../_i_r_8h.html',1,'']]],
-  ['irequality_2eh',['IREquality.h',['../_i_r_equality_8h.html',1,'']]],
-  ['irmatch_2eh',['IRMatch.h',['../_i_r_match_8h.html',1,'']]],
-  ['irmutator_2eh',['IRMutator.h',['../_i_r_mutator_8h.html',1,'']]],
-  ['iroperator_2eh',['IROperator.h',['../_i_r_operator_8h.html',1,'']]],
-  ['irprinter_2eh',['IRPrinter.h',['../_i_r_printer_8h.html',1,'']]],
-  ['irvisitor_2eh',['IRVisitor.h',['../_i_r_visitor_8h.html',1,'']]]
+  ['halidefooter_2eh',['HalideFooter.h',['../_halide_footer_8h.html',1,'']]],
+  ['halideruntime_2eh',['HalideRuntime.h',['../_halide_runtime_8h.html',1,'']]],
+  ['halideruntimecuda_2eh',['HalideRuntimeCuda.h',['../_halide_runtime_cuda_8h.html',1,'']]],
+  ['halideruntimeopencl_2eh',['HalideRuntimeOpenCL.h',['../_halide_runtime_open_c_l_8h.html',1,'']]],
+  ['halideruntimeopengl_2eh',['HalideRuntimeOpenGL.h',['../_halide_runtime_open_g_l_8h.html',1,'']]],
+  ['halideruntimeopenglcompute_2eh',['HalideRuntimeOpenGLCompute.h',['../_halide_runtime_open_g_l_compute_8h.html',1,'']]],
+  ['halideruntimerenderscript_2eh',['HalideRuntimeRenderscript.h',['../_halide_runtime_renderscript_8h.html',1,'']]]
 ];

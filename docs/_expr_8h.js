@@ -20,7 +20,9 @@ var _expr_8h =
       [ "Default_GPU", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eaee977b69833eed1db30528c41d839ef8", null ],
       [ "CUDA", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eaa33b7755e5f9b504d2d038eaca4ff28d", null ],
       [ "OpenCL", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea7982b09a852b37f2afb1227eaf552e47", null ],
-      [ "GLSL", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea2a2c1392bcbaececf702b611e7d7df25", null ]
+      [ "GLSL", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea2a2c1392bcbaececf702b611e7d7df25", null ],
+      [ "Renderscript", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eab79f9fcb64263765842486e340edd503", null ],
+      [ "OpenGLCompute", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea3adf0945d2bbb4c868f37d38e02684d5", null ]
     ] ],
     [ "ForType", "_expr_8h.html#a6a8761f129e6554b9ea03de31bf066f1", [
       [ "Serial", "_expr_8h.html#a6a8761f129e6554b9ea03de31bf066f1a5255d3daaa0a6276b844d61401e6f493", null ],

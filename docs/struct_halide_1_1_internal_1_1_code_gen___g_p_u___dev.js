@@ -7,5 +7,6 @@ var struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev =
     [ "get_current_kernel_name", "struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a939a91a4f734a9c3281ace6c2342acfc", null ],
     [ "dump", "struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a803b952d35a4fea02cc8fb0461ea85bb", null ],
     [ "api_unique_name", "struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#ae6225d8b7c6967b9efd757ba1c8a0c7b", null ],
-    [ "print_gpu_name", "struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a97090ee3ba4891b50d6c79adc9928335", null ]
+    [ "print_gpu_name", "struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a97090ee3ba4891b50d6c79adc9928335", null ],
+    [ "slots_taken", "struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a24a090de612b934955aa5116452e87c0", null ]
 ];

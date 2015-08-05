@@ -1,6 +1,16 @@
 var searchData=
 [
+  ['always',['Always',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a431585f4447c39d5639672baa5b1c5d2a65f0774ca71b47cdb4461248276337b3',1,'Halide::Internal::CodeGen_LLVM']]],
   ['android',['Android',['../struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a5c630f5107a5a01870143d6dc042ea8c',1,'Halide::Target']]],
+  ['android_5flog_5fdebug',['ANDROID_LOG_DEBUG',['../mini__renderscript_8h.html#a99fb83031ce9923c84392b4e92f956b5a3357428f473998c530d5de9519a74d45',1,'mini_renderscript.h']]],
+  ['android_5flog_5fdefault',['ANDROID_LOG_DEFAULT',['../mini__renderscript_8h.html#a99fb83031ce9923c84392b4e92f956b5a78eac1c0035b045de012f3a42660c1e0',1,'mini_renderscript.h']]],
+  ['android_5flog_5ferror',['ANDROID_LOG_ERROR',['../mini__renderscript_8h.html#a99fb83031ce9923c84392b4e92f956b5af1067b5ff6e64a6ece3249c113d2d164',1,'mini_renderscript.h']]],
+  ['android_5flog_5ffatal',['ANDROID_LOG_FATAL',['../mini__renderscript_8h.html#a99fb83031ce9923c84392b4e92f956b5a28ceb8fa306acd280b7b891214ec2de2',1,'mini_renderscript.h']]],
+  ['android_5flog_5finfo',['ANDROID_LOG_INFO',['../mini__renderscript_8h.html#a99fb83031ce9923c84392b4e92f956b5ad46329103f1e9bf318b889f331d1ea8b',1,'mini_renderscript.h']]],
+  ['android_5flog_5fsilent',['ANDROID_LOG_SILENT',['../mini__renderscript_8h.html#a99fb83031ce9923c84392b4e92f956b5a8daee540c7d1fc04a9dfecc2db988f3b',1,'mini_renderscript.h']]],
+  ['android_5flog_5funknown',['ANDROID_LOG_UNKNOWN',['../mini__renderscript_8h.html#a99fb83031ce9923c84392b4e92f956b5a6927fcfc48b12aa4c2495182c1a77abc',1,'mini_renderscript.h']]],
+  ['android_5flog_5fverbose',['ANDROID_LOG_VERBOSE',['../mini__renderscript_8h.html#a99fb83031ce9923c84392b4e92f956b5a0adbaa5c45010323cfffffa93234578c',1,'mini_renderscript.h']]],
+  ['android_5flog_5fwarn',['ANDROID_LOG_WARN',['../mini__renderscript_8h.html#a99fb83031ce9923c84392b4e92f956b5a14a2da1996b5063456ac916077f2597e',1,'mini_renderscript.h']]],
   ['archunknown',['ArchUnknown',['../struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1ae6d33003db3020c4c578c645239f2973',1,'Halide::Target']]],
   ['arm',['ARM',['../struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1a1c5f188b9b8eb5ffd951917bbbdd85f2',1,'Halide::Target']]],
   ['armv7s',['ARMv7s',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf37c16007f6547612713259e648cc41e',1,'Halide::Target']]],

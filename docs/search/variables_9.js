@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['i',['i',['../struct_rs_float_complex.html#a24ed739664472ab71eccb2e07c4493a4',1,'RsFloatComplex::i()'],['../struct_rs_double_complex.html#ac3868716a661b21185efcc3aa2d20c89',1,'RsDoubleComplex::i()']]],
   ['i1',['i1',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a4994d998ee1bc1f6a5ea80004afc7bc7',1,'Halide::Internal::CodeGen_LLVM']]],
   ['i16',['i16',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#aaa01af28a260c9ea85d5c435937eb349',1,'Halide::Internal::CodeGen_LLVM::i16()'],['../structhalide__scalar__value__t.html#a9c0b1365fed0ef7393290e98ca85ed30',1,'halide_scalar_value_t::i16()']]],
   ['i16x16',['i16x16',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a4d3d60d0495f054168902fb2aaa56b98',1,'Halide::Internal::CodeGen_LLVM']]],
@@ -32,14 +33,19 @@ var searchData=
   ['image_5fstore',['image_store',['../struct_halide_1_1_internal_1_1_call.html#af7475def2dbb4dc872df21445425da0f',1,'Halide::Internal::Call']]],
   ['image_5ftype',['image_type',['../struct__cl__image__desc.html#aad9377b93ee8875dbbc24cffc44d353f',1,'_cl_image_desc']]],
   ['image_5fwidth',['image_width',['../struct__cl__image__desc.html#a0eb67a2cecf5e7ee550e287ef74b65ea',1,'_cl_image_desc']]],
+  ['incx',['incX',['../struct_rs_blas_call.html#ac725321af205dbc431937837e77678ef',1,'RsBlasCall']]],
+  ['incy',['incY',['../struct_rs_blas_call.html#ad48344e0016dcd61064238d0fb035440',1,'RsBlasCall']]],
   ['indent',['indent',['../class_halide_1_1_internal_1_1_i_r_printer.html#a2023abc07c7c54f7b9fdf8d4a8139255',1,'Halide::Internal::IRPrinter']]],
   ['index',['index',['../struct_halide_1_1_internal_1_1_load.html#ac287039b983a917345b7be04d8200fde',1,'Halide::Internal::Load::index()'],['../struct_halide_1_1_internal_1_1_store.html#a0607ec7232499b7e2909fc521497e8e3',1,'Halide::Internal::Store::index()']]],
   ['initialized',['initialized',['../struct_halide_1_1_internal_1_1debug.html#a6f61a3ee32ccea5d363bbb8ba5df3031',1,'Halide::Internal::debug']]],
   ['inner',['inner',['../struct_halide_1_1_internal_1_1_split.html#addcc9ba56f72ca2c790f948c27f46207',1,'Halide::Internal::Split']]],
   ['interleave_5fvectors',['interleave_vectors',['../struct_halide_1_1_internal_1_1_call.html#a60ae6825f1d775aab5133e8913daa84b',1,'Halide::Internal::Call']]],
-  ['intrin',['intrin',['../struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html#a884faae52a74489eb46e6287d7654a19',1,'Halide::Internal::CodeGen_ARM::Pattern']]],
+  ['intrin32',['intrin32',['../struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html#a9a734ad3699cc27aa222b2509a7c8638',1,'Halide::Internal::CodeGen_ARM::Pattern']]],
+  ['intrin64',['intrin64',['../struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html#a7c9f0ef23f3773c9cb7d5fc7e13b5cfd',1,'Halide::Internal::CodeGen_ARM::Pattern']]],
   ['intrin_5fwidth',['intrin_width',['../struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html#a201515e37b95cb087404ea028a116396',1,'Halide::Internal::CodeGen_ARM::Pattern']]],
-  ['is_5fbuffer',['is_buffer',['../struct_halide_1_1_internal_1_1_g_p_u___argument.html#a05649a9c821d3b72b7a32aeaee9a5fe5',1,'Halide::Internal::GPU_Argument']]],
+  ['invokeclosurecreate',['InvokeClosureCreate',['../structdispatch_table.html#a3ff7b15ec2861ed85d8dee245f543bd3',1,'dispatchTable']]],
+  ['is_5fbuffer',['is_buffer',['../struct_halide_1_1_internal_1_1_g_p_u___argument.html#a05649a9c821d3b72b7a32aeaee9a5fe5',1,'Halide::Internal::GPU_Argument::is_buffer()'],['../struct_halide_1_1_scalar_or_buffer_t.html#ac634eb963a7244636f6f710322981a28',1,'Halide::ScalarOrBufferT::is_buffer()']]],
   ['is_5fheader',['is_header',['../class_halide_1_1_internal_1_1_code_gen___c.html#aac287c92d20a799679d336fff807302e',1,'Halide::Internal::CodeGen_C']]],
-  ['is_5frvar',['is_rvar',['../struct_halide_1_1_var_or_r_var.html#a55f1535c001e2c84c8a29e1237803014',1,'Halide::VarOrRVar']]]
+  ['is_5frvar',['is_rvar',['../struct_halide_1_1_var_or_r_var.html#a55f1535c001e2c84c8a29e1237803014',1,'Halide::VarOrRVar']]],
+  ['is_5fvoid_5freturn',['is_void_return',['../struct_halide_1_1_extern_signature.html#a31ebdcb36514524f1d80bf22305f2323',1,'Halide::ExternSignature']]]
 ];

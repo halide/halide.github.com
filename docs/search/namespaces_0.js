@@ -1,6 +1,7 @@
 var searchData=
 [
   ['boundaryconditions',['BoundaryConditions',['../namespace_halide_1_1_boundary_conditions.html',1,'Halide']]],
+  ['cuda',['Cuda',['../namespace_halide_1_1_runtime_1_1_internal_1_1_cuda.html',1,'Halide::Runtime::Internal']]],
   ['halide',['Halide',['../namespace_halide.html',1,'']]],
   ['halideintrospectioncanary',['HalideIntrospectionCanary',['../namespace_halide_introspection_canary.html',1,'']]],
   ['integerdividetable',['IntegerDivideTable',['../namespace_halide_1_1_integer_divide_table.html',1,'Halide']]],

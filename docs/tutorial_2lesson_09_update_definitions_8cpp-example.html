@@ -101,22 +101,21 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="title">tutorial/lesson_09_update_definitions.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 9</span></div>
-<div class="line"></div>
-<div class="line"><span class="comment">// This lesson demonstrates how to define a Func in multiple passes, including scattering.</span></div>
-<div class="line"></div>
-<div class="line"><span class="comment">// This lesson can be built by invoking the command:</span></div>
-<div class="line"><span class="comment">//    make tutorial_lesson_09_update_definitions</span></div>
-<div class="line"><span class="comment">// in a shell with the current directory at the top of the halide source tree.</span></div>
-<div class="line"><span class="comment">// Otherwise, see the platform-specific compiler invocations below.</span></div>
+<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 9: Multi-pass Funcs, update definitions, and reductions</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// On linux, you can compile and run it like so:</span></div>
-<div class="line"><span class="comment">// g++ lesson_09*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -fopenmp -o lesson_09</span></div>
+<div class="line"><span class="comment">// g++ lesson_09*.cpp -g -std=c++11 -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -fopenmp -o lesson_09</span></div>
 <div class="line"><span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_09</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// On os x (will only work if you actually have g++, not Apple&#39;s pretend g++ which is actually clang):</span></div>
-<div class="line"><span class="comment">// g++ lesson_09*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -fopenmp -o lesson_09</span></div>
+<div class="line"><span class="comment">// g++ lesson_09*.cpp -g -std=c++11 -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -fopenmp -o lesson_09</span></div>
 <div class="line"><span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_09</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">// If you have the entire Halide source tree, you can also build it by</span></div>
+<div class="line"><span class="comment">// running:</span></div>
+<div class="line"><span class="comment">//    make tutorial_lesson_09_update_definitions</span></div>
+<div class="line"><span class="comment">// in a shell with the current directory at the top of the halide</span></div>
+<div class="line"><span class="comment">// source tree.</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &quot;Halide.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
@@ -132,14 +131,15 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line"><span class="keyword">using namespace </span>Halide;</div>
 <div class="line"></div>
 <div class="line"><span class="comment">// Support code for loading pngs.</span></div>
-<div class="line"><span class="preprocessor">#include &quot;image_io.h&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;halide_image_io.h&quot;</span></div>
+<div class="line"><span class="keyword">using namespace </span>Halide::Tools;</div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
 <div class="line">    <span class="comment">// Declare some Vars to use below.</span></div>
 <div class="line">    <a name="_a0"></a><a class="code" href="class_halide_1_1_var.html">Var</a> x(<span class="stringliteral">&quot;x&quot;</span>), y(<span class="stringliteral">&quot;y&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Load a grayscale image to use as an input.</span></div>
-<div class="line">    <a name="_a1"></a><a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> input = load&lt;uint8_t&gt;(<span class="stringliteral">&quot;images/gray.png&quot;</span>);</div>
+<div class="line">    <a name="_a1"></a><a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/gray.png&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// You can define a Func in multiple passes. Let&#39;s see a toy</span></div>
 <div class="line">    <span class="comment">// example first.</span></div>
@@ -173,21 +173,29 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// definition in all references to the function on the left-</span></div>
 <div class="line">        <span class="comment">// and right-hand sides. So the following definitions are</span></div>
 <div class="line">        <span class="comment">// legal updates:</span></div>
-<div class="line">        f(x, 17) = x + 8; <span class="comment">// x is used, so all uses of f must have x as the first argument.</span></div>
-<div class="line">        f(0, y) = y * 8;  <span class="comment">// y is used, so all uses of f must have y as the second argument.</span></div>
+<div class="line">        f(x, 17) = x + 8;</div>
+<div class="line">        f(0, y) = y * 8;</div>
 <div class="line">        f(x, x + 1) = x + 8;</div>
 <div class="line">        f(y/2, y) = f(0, y) * 17;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// But these ones would cause an error:</span></div>
-<div class="line">        <span class="comment">// f(x, 0) = f(x + 1, 0) &lt;- First argument to f on the right-hand-side must be &#39;x&#39;, not &#39;x + 1&#39;.</span></div>
-<div class="line">        <span class="comment">// f(y, y + 1) = y + 8   &lt;- Second argument to f on the left-hand-side must be &#39;y&#39;, not &#39;y + 1&#39;.</span></div>
-<div class="line">        <span class="comment">// f(y, x) = y - x;      &lt;- Arguments to f on the left-hand-side are in the wrong places.</span></div>
-<div class="line">        <span class="comment">// f(3, 4) = x + y;      &lt;- Free variables appear on the right-hand-side but not the left-hand-side.</span></div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// f(x, 0) = f(x + 1, 0);</span></div>
+<div class="line">        <span class="comment">// First argument to f on the right-hand-side must be &#39;x&#39;, not &#39;x + 1&#39;.</span></div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// f(y, y + 1) = y + 8;</span></div>
+<div class="line">        <span class="comment">// Second argument to f on the left-hand-side must be &#39;y&#39;, not &#39;y + 1&#39;.</span></div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// f(y, x) = y - x;</span></div>
+<div class="line">        <span class="comment">// Arguments to f on the left-hand-side are in the wrong places.</span></div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// f(3, 4) = x + y;</span></div>
+<div class="line">        <span class="comment">// Free variables appear on the right-hand-side but not the left-hand-side.</span></div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// We&#39;ll realize this one just to make sure it compiles. The</span></div>
 <div class="line">        <span class="comment">// second-to-last definition forces us to realize over a</span></div>
 <div class="line">        <span class="comment">// domain that is taller than it is wide.</span></div>
-<div class="line">        f.<a name="a3"></a><a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(100, 101);</div>
+<div class="line">        f.<a name="a3"></a><a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(100, 101);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// For each realization of f, each step runs in its entirety</span></div>
 <div class="line">        <span class="comment">// before the next one begins. Let&#39;s trace the loads and</span></div>
@@ -200,9 +208,12 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        g.<a name="a4"></a><a class="code" href="class_halide_1_1_func.html#a375c44be83cecdc181115a0018a7f31b">trace_loads</a>();</div>
 <div class="line">        g.<a name="a5"></a><a class="code" href="class_halide_1_1_func.html#ad88d11ad4164bce72320f2c064fc87d2">trace_stores</a>();</div>
 <div class="line"></div>
-<div class="line">        g.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(4, 4);</div>
+<div class="line">        g.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(4, 4);</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">// Reading the log, we see that each pass is applied in turn. The equivalent C is:</span></div>
+<div class="line">        <span class="comment">// See figures/lesson_09_update.gif for a visualization.</span></div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// Reading the log, we see that each pass is applied in</span></div>
+<div class="line">        <span class="comment">// turn. The equivalent C is:</span></div>
 <div class="line">        <span class="keywordtype">int</span> result[4][4];</div>
 <div class="line">        <span class="comment">// Pure definition</span></div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; 4; y++) {</div>
@@ -222,7 +233,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">    {</div>
 <div class="line">        <span class="comment">// Starting with this pure definition:</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> f;</div>
-<div class="line">        f(x, y) = x + y;</div>
+<div class="line">        f(x, y) = (x + y)/100.0f;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Say we want an update that squares the first fifty rows. We</span></div>
 <div class="line">        <span class="comment">// could do this by adding 50 update definitions:</span></div>
@@ -243,13 +254,15 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// domain&quot; and using it inside an update definition:</span></div>
 <div class="line">        <a name="_a6"></a><a class="code" href="class_halide_1_1_r_dom.html">RDom</a> r(0, 50);</div>
 <div class="line">        f(x, r) = f(x, r) * f(x, r);</div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = f.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(100, 100);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;float&gt;</a> halide_result = f.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(100, 100);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// See figures/lesson_09_update_rdom.mp4 for a visualization.</span></div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// The equivalent C is:</span></div>
-<div class="line">        <span class="keywordtype">int</span> c_result[100][100];</div>
+<div class="line">        <span class="keywordtype">float</span> c_result[100][100];</div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; 100; y++) {</div>
 <div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 100; x++) {</div>
-<div class="line">                c_result[y][x] = x + y;</div>
+<div class="line">                c_result[y][x] = (x + y)/100.0f;</div>
 <div class="line">            }</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 100; x++) {</div>
@@ -264,8 +277,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// Check the results match:</span></div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; 100; y++) {</div>
 <div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 100; x++) {</div>
-<div class="line">                <span class="keywordflow">if</span> (halide_result(x, y) != c_result[y][x]) {</div>
-<div class="line">                    printf(<span class="stringliteral">&quot;halide_result(%d, %d) = %d instead of %d\n&quot;</span>,</div>
+<div class="line">                <span class="keywordflow">if</span> (fabs(halide_result(x, y) - c_result[y][x]) &gt; 0.01f) {</div>
+<div class="line">                    printf(<span class="stringliteral">&quot;halide_result(%d, %d) = %f instead of %f\n&quot;</span>,</div>
 <div class="line">                           x, y, halide_result(x, y), c_result[y][x]);</div>
 <div class="line">                    <span class="keywordflow">return</span> -1;</div>
 <div class="line">                }</div>
@@ -295,7 +308,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// input image at that point.</span></div>
 <div class="line">        histogram(input(r.x, r.y)) += 1;</div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = histogram.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(256);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = histogram.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(256);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// The equivalent C is:</span></div>
 <div class="line">        <span class="keywordtype">int</span> c_result[256];</div>
@@ -330,10 +343,10 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// Consider the definition:</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> f;</div>
 <div class="line">        f(x, y) = x*y;</div>
-<div class="line">        <span class="comment">// Set the second row to equal the first row.</span></div>
-<div class="line">        f(x, 1) = f(x, 0);</div>
-<div class="line">        <span class="comment">// Set the second column to equal the first column plus 2.</span></div>
-<div class="line">        f(1, y) = f(0, y) + 2;</div>
+<div class="line">        <span class="comment">// Set row zero to each row 8</span></div>
+<div class="line">        f(x, 0) = f(x, 8);</div>
+<div class="line">        <span class="comment">// Set column 1 equal to column 8 plus 2</span></div>
+<div class="line">        f(0, y) = f(8, y) + 2;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// The pure variables in each stage can be scheduled</span></div>
 <div class="line">        <span class="comment">// independently. To control the pure definition, we schedule</span></div>
@@ -353,7 +366,9 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <a class="code" href="class_halide_1_1_var.html">Var</a> yo, yi;</div>
 <div class="line">        f.<a class="code" href="class_halide_1_1_func.html#ae2013b9623e9c24a47930ef1874d2b4b">update</a>(1).<a name="a13"></a>split(y, yo, yi, 4).parallel(yo);</div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = f.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(16, 16);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = f.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(16, 16);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// See figures/lesson_09_update_schedule.mp4 for a visualization.</span></div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Here&#39;s the equivalent (serial) C:</span></div>
 <div class="line">        <span class="keywordtype">int</span> c_result[16][16];</div>
@@ -372,17 +387,17 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// First update. Vectorized in x.</span></div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x_vec = 0; x_vec &lt; 4; x_vec++) {</div>
 <div class="line">            <span class="keywordtype">int</span> x[] = {x_vec*4, x_vec*4+1, x_vec*4+2, x_vec*4+3};</div>
-<div class="line">            c_result[1][x[0]] = c_result[0][x[0]];</div>
-<div class="line">            c_result[1][x[1]] = c_result[0][x[1]];</div>
-<div class="line">            c_result[1][x[2]] = c_result[0][x[2]];</div>
-<div class="line">            c_result[1][x[3]] = c_result[0][x[3]];</div>
+<div class="line">            c_result[0][x[0]] = c_result[8][x[0]];</div>
+<div class="line">            c_result[0][x[1]] = c_result[8][x[1]];</div>
+<div class="line">            c_result[0][x[2]] = c_result[8][x[2]];</div>
+<div class="line">            c_result[0][x[3]] = c_result[8][x[3]];</div>
 <div class="line">        }</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Second update. Parallelized in chunks of size 4 in y.</span></div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> yo = 0; yo &lt; 4; yo++) { <span class="comment">// Should be a parallel for loop</span></div>
 <div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> yi = 0; yi &lt; 4; yi++) {</div>
 <div class="line">                <span class="keywordtype">int</span> y = yo*4 + yi;</div>
-<div class="line">                c_result[y][1] = c_result[y][0] + 2;</div>
+<div class="line">                c_result[y][0] = c_result[y][8] + 2;</div>
 <div class="line">            }</div>
 <div class="line">        }</div>
 <div class="line"></div>
@@ -409,19 +424,21 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// in the innermost loop of their consumer. Consider this</span></div>
 <div class="line">        <span class="comment">// trivial example:</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> producer, consumer;</div>
-<div class="line">        producer(x) = x*17;</div>
-<div class="line">        producer(x) += 1;</div>
+<div class="line">        producer(x) = x*2;</div>
+<div class="line">        producer(x) += 10;</div>
 <div class="line">        consumer(x) = 2 * producer(x);</div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(10);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">// See figures/lesson_09_inline_reduction.gif for a visualization.</span></div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// The equivalent C is:</span></div>
 <div class="line">        <span class="keywordtype">int</span> c_result[10];</div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 10; x++)  {</div>
 <div class="line">            <span class="keywordtype">int</span> producer_storage[1];</div>
 <div class="line">            <span class="comment">// Pure step for producer</span></div>
-<div class="line">            producer_storage[0] = x * 17;</div>
+<div class="line">            producer_storage[0] = x * 2;</div>
 <div class="line">            <span class="comment">// Update step for producer</span></div>
-<div class="line">            producer_storage[0] = producer_storage[0] + 1;</div>
+<div class="line">            producer_storage[0] = producer_storage[0] + 10;</div>
 <div class="line">            <span class="comment">// Pure step for consumer</span></div>
 <div class="line">            c_result[x] = 2 * producer_storage[0];</div>
 <div class="line">        }</div>
@@ -449,7 +466,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">            <span class="comment">// The producer is pure.</span></div>
 <div class="line">            producer(x) = x*17;</div>
 <div class="line">            consumer(x) = 2 * producer(x);</div>
-<div class="line">            consumer(x) += 1;</div>
+<div class="line">            consumer(x) += 50;</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// The valid schedules for the producer in this case are</span></div>
 <div class="line">            <span class="comment">// the default schedule - inlined, and also:</span></div>
@@ -469,7 +486,9 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line"></div>
 <div class="line">            producer.<a name="a14"></a><a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273">compute_at</a>(consumer, x);</div>
 <div class="line"></div>
-<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(10);</div>
+<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
+<div class="line"></div>
+<div class="line">            <span class="comment">// See figures/lesson_09_compute_at_pure.gif for a visualization.</span></div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// The equivalent C is:</span></div>
 <div class="line">            <span class="keywordtype">int</span> c_result[10];</div>
@@ -482,7 +501,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">            }</div>
 <div class="line">            <span class="comment">// Update step for the consumer</span></div>
 <div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 10; x++) {</div>
-<div class="line">                c_result[x] += 1;</div>
+<div class="line">                c_result[x] += 50;</div>
 <div class="line">            }</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// All of the pure step is evaluated before any of the</span></div>
@@ -502,7 +521,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">            <span class="comment">// Case 2: The consumer references the producer in the update step only</span></div>
 <div class="line">            <a class="code" href="class_halide_1_1_func.html">Func</a> producer, consumer;</div>
 <div class="line">            producer(x) = x * 17;</div>
-<div class="line">            consumer(x) = x;</div>
+<div class="line">            consumer(x) = 100 - x * 10;</div>
 <div class="line">            consumer(x) += producer(x);</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// Again we compute the producer per x coordinate of the</span></div>
@@ -519,13 +538,15 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">            <span class="comment">// the Vars of a Func are shared across the pure and</span></div>
 <div class="line">            <span class="comment">// update steps.</span></div>
 <div class="line"></div>
-<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(10);</div>
+<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
+<div class="line"></div>
+<div class="line">            <span class="comment">// See figures/lesson_09_compute_at_update.gif for a visualization.</span></div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// The equivalent C is:</span></div>
 <div class="line">            <span class="keywordtype">int</span> c_result[10];</div>
 <div class="line">            <span class="comment">// Pure step for the consumer</span></div>
 <div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 10; x++)  {</div>
-<div class="line">                c_result[x] = x;</div>
+<div class="line">                c_result[x] = 100 - x * 10;</div>
 <div class="line">            }</div>
 <div class="line">            <span class="comment">// Update step for the consumer</span></div>
 <div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 10; x++) {</div>
@@ -551,17 +572,19 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">            <span class="comment">// multiple steps that share common variables</span></div>
 <div class="line">            <a class="code" href="class_halide_1_1_func.html">Func</a> producer, consumer;</div>
 <div class="line">            producer(x) = x * 17;</div>
-<div class="line">            consumer(x) = producer(x) * x;</div>
-<div class="line">            consumer(x) += producer(x);</div>
+<div class="line">            consumer(x) = 170 - producer(x);</div>
+<div class="line">            consumer(x) += producer(x)/2;</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// Again we compute the producer per x coordinate of the</span></div>
 <div class="line">            <span class="comment">// consumer. This places producer code inside both the</span></div>
-<div class="line">            <span class="comment">// pure and the update step of the producer. So there ends</span></div>
+<div class="line">            <span class="comment">// pure and the update step of the producer. So there end</span></div>
 <div class="line">            <span class="comment">// up being two separate realizations of the producer, and</span></div>
 <div class="line">            <span class="comment">// redundant work occurs.</span></div>
 <div class="line">            producer.<a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273">compute_at</a>(consumer, x);</div>
 <div class="line"></div>
-<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(10);</div>
+<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
+<div class="line"></div>
+<div class="line">            <span class="comment">// See figures/lesson_09_compute_at_pure_and_update.gif for a visualization.</span></div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// The equivalent C is:</span></div>
 <div class="line">            <span class="keywordtype">int</span> c_result[10];</div>
@@ -570,14 +593,14 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">                <span class="comment">// Pure step for producer</span></div>
 <div class="line">                <span class="keywordtype">int</span> producer_storage[1];</div>
 <div class="line">                producer_storage[0] = x * 17;</div>
-<div class="line">                c_result[x] = producer_storage[0] * x;</div>
+<div class="line">                c_result[x] = 170 - producer_storage[0];</div>
 <div class="line">            }</div>
 <div class="line">            <span class="comment">// Update step for the consumer</span></div>
 <div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 10; x++) {</div>
 <div class="line">                <span class="comment">// Another copy of the pure step for producer</span></div>
 <div class="line">                <span class="keywordtype">int</span> producer_storage[1];</div>
 <div class="line">                producer_storage[0] = x * 17;</div>
-<div class="line">                c_result[x] += producer_storage[0];</div>
+<div class="line">                c_result[x] += producer_storage[0]/2;</div>
 <div class="line">            }</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// Check the results match</span></div>
@@ -594,7 +617,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">            <span class="comment">// Case 4: The consumer references the producer in</span></div>
 <div class="line">            <span class="comment">// multiple steps that do not share common variables</span></div>
 <div class="line">            <a class="code" href="class_halide_1_1_func.html">Func</a> producer, consumer;</div>
-<div class="line">            producer(x, y) = x*y;</div>
+<div class="line">            producer(x, y) = (x * y) / 10 + 8;</div>
 <div class="line">            consumer(x, y) = x + y;</div>
 <div class="line">            consumer(x, 0) = producer(x, x-1);</div>
 <div class="line">            consumer(0, y) = producer(y, y-1);</div>
@@ -613,20 +636,22 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">            <span class="comment">// those instead:</span></div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// Attempt 2:</span></div>
-<div class="line">            <a class="code" href="class_halide_1_1_func.html">Func</a> producer_wrapper_1, producer_wrapper_2, consumer_2;</div>
-<div class="line">            producer_wrapper_1(x, y) = producer(x, y);</div>
-<div class="line">            producer_wrapper_2(x, y) = producer(x, y);</div>
+<div class="line">            <a class="code" href="class_halide_1_1_func.html">Func</a> producer_1, producer_2, consumer_2;</div>
+<div class="line">            producer_1(x, y) = producer(x, y);</div>
+<div class="line">            producer_2(x, y) = producer(x, y);</div>
 <div class="line"></div>
 <div class="line">            consumer_2(x, y) = x + y;</div>
-<div class="line">            consumer_2(x, 0) += producer_wrapper_1(x, x-1);</div>
-<div class="line">            consumer_2(0, y) += producer_wrapper_2(y, y-1);</div>
+<div class="line">            consumer_2(x, 0) += producer_1(x, x);</div>
+<div class="line">            consumer_2(0, y) += producer_2(y, 9-y);</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// The wrapper functions give us two separate handles on</span></div>
 <div class="line">            <span class="comment">// the producer, so we can schedule them differently.</span></div>
-<div class="line">            producer_wrapper_1.<a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273">compute_at</a>(consumer_2, x);</div>
-<div class="line">            producer_wrapper_2.<a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273">compute_at</a>(consumer_2, y);</div>
+<div class="line">            producer_1.<a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273">compute_at</a>(consumer_2, x);</div>
+<div class="line">            producer_2.<a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273">compute_at</a>(consumer_2, y);</div>
 <div class="line"></div>
-<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer_2.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(10, 10);</div>
+<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer_2.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10, 10);</div>
+<div class="line"></div>
+<div class="line">            <span class="comment">// See figures/lesson_09_compute_at_multiple_updates.mp4 for a visualization.</span></div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// The equivalent C is:</span></div>
 <div class="line">            <span class="keywordtype">int</span> c_result[10][10];</div>
@@ -638,15 +663,15 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">            }</div>
 <div class="line">            <span class="comment">// First update step for consumer</span></div>
 <div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 10; x++) {</div>
-<div class="line">                <span class="keywordtype">int</span> producer_wrapper_1_storage[1];</div>
-<div class="line">                producer_wrapper_1_storage[0] = x * (x-1);</div>
-<div class="line">                c_result[0][x] += producer_wrapper_1_storage[0];</div>
+<div class="line">                <span class="keywordtype">int</span> producer_1_storage[1];</div>
+<div class="line">                producer_1_storage[0] = (x * x) / 10 + 8;</div>
+<div class="line">                c_result[0][x] += producer_1_storage[0];</div>
 <div class="line">            }</div>
 <div class="line">            <span class="comment">// Second update step for consumer</span></div>
 <div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; 10; y++) {</div>
-<div class="line">                <span class="keywordtype">int</span> producer_wrapper_2_storage[1];</div>
-<div class="line">                producer_wrapper_2_storage[0] = y * (y-1);</div>
-<div class="line">                c_result[y][0] += producer_wrapper_2_storage[0];</div>
+<div class="line">                <span class="keywordtype">int</span> producer_2_storage[1];</div>
+<div class="line">                producer_2_storage[0] = (y * (9-y)) / 10 + 8;</div>
+<div class="line">                c_result[y][0] += producer_2_storage[0];</div>
 <div class="line">            }</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// Check the results match</span></div>
@@ -674,13 +699,15 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">            <a class="code" href="class_halide_1_1_func.html">Func</a> producer, consumer;</div>
 <div class="line"></div>
 <div class="line">            <a class="code" href="class_halide_1_1_r_dom.html">RDom</a> r(0, 5);</div>
-<div class="line">            producer(x) = x * 17;</div>
+<div class="line">            producer(x) = x % 8;</div>
 <div class="line">            consumer(x) = x + 10;</div>
 <div class="line">            consumer(x) += r + producer(x + r);</div>
 <div class="line"></div>
 <div class="line">            producer.compute_at(consumer, r);</div>
 <div class="line"></div>
-<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(10);</div>
+<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
+<div class="line"></div>
+<div class="line">            <span class="comment">// See figures/lesson_09_compute_at_rvar.gif for a visualization.</span></div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// The equivalent C is:</span></div>
 <div class="line">            <span class="keywordtype">int</span> c_result[10];</div>
@@ -690,12 +717,13 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">            }</div>
 <div class="line">            <span class="comment">// Update step for the consumer.</span></div>
 <div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 10; x++) {</div>
-<div class="line">                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r = 0; r &lt; 5; r++) { <span class="comment">// The loop over the reduction domain is always the inner loop.</span></div>
+<div class="line">                <span class="comment">// The loop over the reduction domain is always the inner loop.</span></div>
+<div class="line">                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r = 0; r &lt; 5; r++) {</div>
 <div class="line">                    <span class="comment">// We&#39;ve schedule the storage and computation of</span></div>
 <div class="line">                    <span class="comment">// the producer here. We just need a single value.</span></div>
 <div class="line">                    <span class="keywordtype">int</span> producer_storage[1];</div>
 <div class="line">                    <span class="comment">// Pure step of the producer.</span></div>
-<div class="line">                    producer_storage[0] = (x + r) * 17;</div>
+<div class="line">                    producer_storage[0] = (x + r) % 8;</div>
 <div class="line"></div>
 <div class="line">                    <span class="comment">// Now use it in the update step of the consumer.</span></div>
 <div class="line">                    c_result[x] += r + producer_storage[0];</div>
@@ -715,7 +743,6 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line"></div>
-<div class="line"></div>
 <div class="line">    <span class="comment">// A real-world example of a reduction inside a producer-consumer chain.</span></div>
 <div class="line">    {</div>
 <div class="line">        <span class="comment">// The default schedule for a reduction is a good one for</span></div>
@@ -724,7 +751,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// clamp-to-edge boundary condition:</span></div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// First add the boundary condition.</span></div>
-<div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> clamped = <a name="a15"></a><a class="code" href="namespace_halide_1_1_boundary_conditions.html#a2432026c4f3e024c2f0082e700bef4f2">BoundaryConditions::repeat_edge</a>(input);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> clamped = <a name="a15"></a><a class="code" href="namespace_halide_1_1_boundary_conditions.html#a7cf9728da6c7feb5d534eb82661e4aa9">BoundaryConditions::repeat_edge</a>(input);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Define a 5x5 box that starts at (-2, -2)</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_r_dom.html">RDom</a> r(-2, 5, -2, 5);</div>
@@ -738,7 +765,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> blurry;</div>
 <div class="line">        blurry(x, y) = cast&lt;uint8_t&gt;(local_sum(x, y) / 25);</div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> halide_result = blurry.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>());</div>
+<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> halide_result = blurry.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>());</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// The default schedule will inline &#39;clamped&#39; into the update</span></div>
 <div class="line">        <span class="comment">// step of &#39;local_sum&#39;, because clamped only has a pure</span></div>
@@ -800,8 +827,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// pure function. The reduction domain has been swallowed to</span></div>
 <div class="line">        <span class="comment">// define the inner anonymous reduction.</span></div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result_1 = f1.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(10);</div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result_2 = f2.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(10);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result_1 = f1.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result_2 = f2.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// The equivalent C is:</span></div>
 <div class="line">        <span class="keywordtype">int</span> c_result[10];</div>
@@ -828,7 +855,6 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">            }</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
-<div class="line"></div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// A complex example that uses reduction helpers.</span></div>
 <div class="line">    {</div>
@@ -864,7 +890,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// as we need it in a circular buffer (see lesson 08).</span></div>
 <div class="line">        clamped.<a name="a27"></a><a class="code" href="class_halide_1_1_func.html#a33cb0d00bc9585bf3027011ecb1412b7">store_at</a>(spread, yo).<a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273">compute_at</a>(spread, yi);</div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> halide_result = spread.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>());</div>
+<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> halide_result = spread.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>());</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// The C equivalent is almost too horrible to contemplate (and</span></div>
 <div class="line">        <span class="comment">// took me a long time to debug). This time I want to time</span></div>
@@ -907,7 +933,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> cy = min_y_clamped; cy &lt;= max_y_clamped; cy++) {</div>
 <div class="line">                        <span class="comment">// Figure out which row of the circular buffer</span></div>
 <div class="line">                        <span class="comment">// we&#39;re filling in using bitmasking:</span></div>
-<div class="line">                        <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *clamped_row = clamped_storage + (cy &amp; 7) * clamped_width;</div>
+<div class="line">                        <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *clamped_row =</div>
+<div class="line">                            clamped_storage + (cy &amp; 7) * clamped_width;</div>
 <div class="line"></div>
 <div class="line">                        <span class="comment">// Figure out which row of the input we&#39;re reading</span></div>
 <div class="line">                        <span class="comment">// from by clamping the y coordinate:</span></div>
@@ -934,9 +961,11 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line"></div>
 <div class="line">                        <span class="comment">// The update step for maximum</span></div>
 <div class="line">                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> max_y = y - 2; max_y &lt;= y + 2; max_y++) {</div>
-<div class="line">                            <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *clamped_row = clamped_storage + (max_y &amp; 7) * clamped_width;</div>
+<div class="line">                            <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *clamped_row =</div>
+<div class="line">                                clamped_storage + (max_y &amp; 7) * clamped_width;</div>
 <div class="line">                            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> max_x = x_base - 2; max_x &lt;= x_base + 2; max_x++) {</div>
-<div class="line">                                __m128i v = _mm_loadu_si128((__m128i <span class="keyword">const</span> *)(clamped_row + max_x + 2));</div>
+<div class="line">                                __m128i v = _mm_loadu_si128(</div>
+<div class="line">                                    (__m128i <span class="keyword">const</span> *)(clamped_row + max_x + 2));</div>
 <div class="line">                                maximum_storage = _mm_max_epu8(maximum_storage, v);</div>
 <div class="line">                            }</div>
 <div class="line">                        }</div>
@@ -949,9 +978,11 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line"></div>
 <div class="line">                        <span class="comment">// The update step for minimum.</span></div>
 <div class="line">                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> min_y = y - 2; min_y &lt;= y + 2; min_y++) {</div>
-<div class="line">                            <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *clamped_row = clamped_storage + (min_y &amp; 7) * clamped_width;</div>
+<div class="line">                            <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *clamped_row =</div>
+<div class="line">                                clamped_storage + (min_y &amp; 7) * clamped_width;</div>
 <div class="line">                            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> min_x = x_base - 2; min_x &lt;= x_base + 2; min_x++) {</div>
-<div class="line">                                __m128i v = _mm_loadu_si128((__m128i <span class="keyword">const</span> *)(clamped_row + min_x + 2));</div>
+<div class="line">                                __m128i v = _mm_loadu_si128(</div>
+<div class="line">                                    (__m128i <span class="keyword">const</span> *)(clamped_row + min_x + 2));</div>
 <div class="line">                                minimum_storage = _mm_min_epu8(minimum_storage, v);</div>
 <div class="line">                            }</div>
 <div class="line">                        }</div>
@@ -977,7 +1008,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// Now run the Halide version again without the</span></div>
 <div class="line">        <span class="comment">// jit-compilation overhead. Also run it one hundred times.</span></div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> iters = 0; iters &lt; 100; iters++) {</div>
-<div class="line">            spread.<a class="code" href="class_halide_1_1_func.html#a1fb0423663cc62b6e5ad0fef2195352b">realize</a>(halide_result);</div>
+<div class="line">            spread.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(halide_result);</div>
 <div class="line">        }</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordtype">double</span> t3 = current_time();</div>

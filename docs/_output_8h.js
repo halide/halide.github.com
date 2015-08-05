@@ -10,5 +10,6 @@ var _output_8h =
     [ "compile_module_to_c_source", "_output_8h.html#a0f919e399c8c96c5c5002ce8ab63ff21", null ],
     [ "compile_module_to_c", "_output_8h.html#a62be5e3c52d9d798c1a829e9f737486e", null ],
     [ "compile_module_to_html", "_output_8h.html#aef96845759806d27c854a43343bc2dff", null ],
-    [ "compile_module_to_text", "_output_8h.html#a4a4a0e8caaf508ece646727fecf5eb32", null ]
+    [ "compile_module_to_text", "_output_8h.html#a4a4a0e8caaf508ece646727fecf5eb32", null ],
+    [ "compile_standalone_runtime", "_output_8h.html#a572e74d280e8f818abd508f5282eb2dd", null ]
 ];

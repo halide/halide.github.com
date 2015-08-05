@@ -30,7 +30,7 @@ var class_halide_1_1_internal_1_1_i_r_visitor =
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#ab30a19c9578e20170b1943a145637c69", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a3c07a2c04eed38784dfd39f1b4676b78", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a4ba83cae40a6afb509d36b8e5e56b426", null ],
-    [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a77e07ec2b6c342f55d808551a6c0d2da", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a6eccdc0b2a1a2555b9cf8c81316edffe", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a4015eeaaeb81f8cc2d70f0b8ce74a946", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a98f01c67693ac564891f8c212350e1b5", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a45a13c13c097b97b6d0ea96bc13ab2ae", null ],

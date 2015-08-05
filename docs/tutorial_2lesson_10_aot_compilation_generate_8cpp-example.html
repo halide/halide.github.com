@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_10_aot_compilation_ge
 <div class="title">tutorial/lesson_10_aot_compilation_generate.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 10.</span></div>
+<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 10: AOT compilation part 1</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// This lesson demonstrates how to use Halide as an more traditional</span></div>
 <div class="line"><span class="comment">// ahead-of-time (AOT) compiler.</span></div>
@@ -112,19 +112,14 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_10_aot_compilation_ge
 <div class="line"><span class="comment">// to actually run the pipeline. This means that compiling this code</span></div>
 <div class="line"><span class="comment">// is a multi-step process.</span></div>
 <div class="line"></div>
-<div class="line"><span class="comment">// This lesson can be built by invoking the command:</span></div>
-<div class="line"><span class="comment">//    make tutorial_lesson_10_aot_compilation_run</span></div>
-<div class="line"><span class="comment">// in a shell with the current directory at the top of the halide source tree.</span></div>
-<div class="line"><span class="comment">// Otherwise, see the platform-specific compiler invocations below.</span></div>
-<div class="line"></div>
 <div class="line"><span class="comment">// On linux, you can compile and run it like so:</span></div>
-<div class="line"><span class="comment">// g++ lesson_10*generate.cpp -g -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_10_generate</span></div>
+<div class="line"><span class="comment">// g++ lesson_10*generate.cpp -g -std=c++11 -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_10_generate</span></div>
 <div class="line"><span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_10_generate</span></div>
 <div class="line"><span class="comment">// g++ lesson_10*run.cpp lesson_10_halide.o -lpthread -o lesson_10_run</span></div>
 <div class="line"><span class="comment">// ./lesson_10_run</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// On os x:</span></div>
-<div class="line"><span class="comment">// g++ lesson_10*generate.cpp -g -I ../include -L ../bin -lHalide -o lesson_10_generate</span></div>
+<div class="line"><span class="comment">// g++ lesson_10*generate.cpp -g -std=c++11 -I ../include -L ../bin -lHalide -o lesson_10_generate</span></div>
 <div class="line"><span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_10_generate</span></div>
 <div class="line"><span class="comment">// g++ lesson_10*run.cpp lesson_10_halide.o -o lesson_10_run</span></div>
 <div class="line"><span class="comment">// ./lesson_10_run</span></div>
@@ -132,6 +127,12 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_10_aot_compilation_ge
 <div class="line"><span class="comment">// The benefits of this approach are that the final program:</span></div>
 <div class="line"><span class="comment">// - Doesn&#39;t do any jit compilation at runtime, so it&#39;s fast.</span></div>
 <div class="line"><span class="comment">// - Doesn&#39;t depend on libHalide at all, so it&#39;s a small, easy-to-deploy binary.</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">// If you have the entire Halide source tree, you can also build it by</span></div>
+<div class="line"><span class="comment">// running:</span></div>
+<div class="line"><span class="comment">//    make tutorial_lesson_10_aot_compilation_run</span></div>
+<div class="line"><span class="comment">// in a shell with the current directory at the top of the halide</span></div>
+<div class="line"><span class="comment">// source tree.</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &quot;Halide.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
@@ -173,9 +174,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_10_aot_compilation_ge
 <div class="line">    <span class="comment">// For AOT-compiled code, we need to explicitly declare the</span></div>
 <div class="line">    <span class="comment">// arguments to the routine. This routine takes two. Arguments are</span></div>
 <div class="line">    <span class="comment">// usually Params or ImageParams.</span></div>
-<div class="line">    std::vector&lt;Argument&gt; args(2);</div>
-<div class="line">    args[0] = input;</div>
-<div class="line">    args[1] = offset;</div>
+<div class="line">    std::vector&lt;Argument&gt; args = {input, offset};</div>
 <div class="line">    brighter.<a name="a6"></a><a class="code" href="class_halide_1_1_func.html#a25e70d8bbd3a27b2287444c440aa37c4">compile_to_file</a>(<span class="stringliteral">&quot;lesson_10_halide&quot;</span>, args);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// If you&#39;re using C++11, you can just say:</span></div>

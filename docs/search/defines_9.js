@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['stderr_5ffileno',['STDERR_FILENO',['../runtime__internal_8h.html#ae2fe1725bb5e9823d089c46b9ed5266e',1,'runtime_internal.h']]],
-  ['stdout_5ffileno',['STDOUT_FILENO',['../runtime__internal_8h.html#abd165ee6474b5b75bf075842fff13a04',1,'runtime_internal.h']]]
+  ['no_5finline',['NO_INLINE',['../_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b',1,'Util.h']]],
+  ['null',['NULL',['../runtime__internal_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4',1,'runtime_internal.h']]]
 ];

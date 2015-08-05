@@ -101,22 +101,24 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="title">tutorial/lesson_11_cross_compilation.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 11.</span></div>
+<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 11: Cross-compilation</span></div>
 <div class="line"></div>
-<div class="line"><span class="comment">// This lesson demonstrates how to use Halide as a cross-compiler.</span></div>
-<div class="line"></div>
-<div class="line"><span class="comment">// This lesson can be built by invoking the command:</span></div>
-<div class="line"><span class="comment">//    make tutorial_lesson_11_cross_compilation</span></div>
-<div class="line"><span class="comment">// in a shell with the current directory at the top of the halide source tree.</span></div>
-<div class="line"><span class="comment">// Otherwise, see the platform-specific compiler invocations below.</span></div>
+<div class="line"><span class="comment">// This lesson demonstrates how to use Halide as a cross-compiler to</span></div>
+<div class="line"><span class="comment">// generate code for any platform from any platform.</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// On linux, you can compile and run it like so:</span></div>
-<div class="line"><span class="comment">// g++ lesson_11*.cpp -g -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_11</span></div>
+<div class="line"><span class="comment">// g++ lesson_11*.cpp -g -std=c++11 -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_11</span></div>
 <div class="line"><span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_11</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// On os x:</span></div>
-<div class="line"><span class="comment">// g++ lesson_11*.cpp -g -I ../include -L ../bin -lHalide -o lesson_11</span></div>
+<div class="line"><span class="comment">// g++ lesson_11*.cpp -g -std=c++11 -I ../include -L ../bin -lHalide -o lesson_11</span></div>
 <div class="line"><span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_11</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">// If you have the entire Halide source tree, you can also build it by</span></div>
+<div class="line"><span class="comment">// running:</span></div>
+<div class="line"><span class="comment">//    make tutorial_lesson_11_cross_compilation</span></div>
+<div class="line"><span class="comment">// in a shell with the current directory at the top of the halide</span></div>
+<div class="line"><span class="comment">// source tree.</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &quot;Halide.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
@@ -159,7 +161,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line">    target.<a name="a12"></a><a class="code" href="struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32">bits</a> = 32;            <span class="comment">// The bit-width of the architecture</span></div>
 <div class="line">    std::vector&lt;Target::Feature&gt; arm_features; <span class="comment">// A list of features to set</span></div>
 <div class="line">    target.<a name="a13"></a><a class="code" href="struct_halide_1_1_target.html#a6dddb1542193fca806cd9f0d9079ba32">set_features</a>(arm_features);</div>
-<div class="line">    brighter.<a class="code" href="class_halide_1_1_func.html#a25e70d8bbd3a27b2287444c440aa37c4">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_arm_32_android&quot;</span>, args, target); <span class="comment">// Pass the target as the last argument.</span></div>
+<div class="line">    <span class="comment">// We then pass the target as the last argument to compile_to_file.</span></div>
+<div class="line">    brighter.<a class="code" href="class_halide_1_1_func.html#a25e70d8bbd3a27b2287444c440aa37c4">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_arm_32_android&quot;</span>, args, target);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// And now a Windows object file for 64-bit x86 with AVX and SSE 4.1:</span></div>
 <div class="line">    target.<a class="code" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a> = <a name="a14"></a><a class="code" href="struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a33d246944800a2b478899132d76a95b2">Target::Windows</a>;</div>
@@ -217,7 +220,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line">    <span class="comment">// (presumably referring to x86-64)</span></div>
 <div class="line">    <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> win_64_magic[] = {0x64, 0x86};</div>
 <div class="line"></div>
-<div class="line">    f = fopen(<span class="stringliteral">&quot;lesson_11_x86_64_windows.o&quot;</span>, <span class="stringliteral">&quot;rb&quot;</span>);</div>
+<div class="line">    f = fopen(<span class="stringliteral">&quot;lesson_11_x86_64_windows.obj&quot;</span>, <span class="stringliteral">&quot;rb&quot;</span>);</div>
 <div class="line">    <span class="keywordflow">if</span> (!f || fread(header, 32, 1, f) != 1) {</div>
 <div class="line">        printf(<span class="stringliteral">&quot;Object file not generated\n&quot;</span>);</div>
 <div class="line">        <span class="keywordflow">return</span> -1;</div>

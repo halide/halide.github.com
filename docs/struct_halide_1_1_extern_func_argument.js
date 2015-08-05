@@ -10,6 +10,8 @@ var struct_halide_1_1_extern_func_argument =
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a2857a09b3c0fb8a149e4b7d901ee1ded", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a7a506233e78da6af67e6174a8a53f7e8", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#ac39965f88b76e3fe4d8206e4090372f5", null ],
+    [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#af321dd81fbcf5ec5c8a638dfd839b506", null ],
+    [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a36aa8c858f9dcc85ca23f41f9b2452d9", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a45c5ed8cd917186302e534f3d40f2aa6", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a389f0bf5e6e8c6dabe3d8637f37f16ee", null ],
     [ "is_func", "struct_halide_1_1_extern_func_argument.html#a5245bf0cba61253bbd51659596d2dbc5", null ],

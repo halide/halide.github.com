@@ -2,8 +2,6 @@ var class_halide_1_1_internal_1_1_code_gen___a_r_m =
 [
     [ "Pattern", "struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html", "struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern" ],
     [ "CodeGen_ARM", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#ac456c63e34efb34fdece64bef5376b30", null ],
-    [ "get_target_triple", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#aad9a83427cb650eeaf948790079a237f", null ],
-    [ "get_data_layout", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a68985e8942b4e6412bd263e64251eede", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a17842d55983524119789e0a7d769a989", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a418228c3d2ca490b503f896681018f20", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#addf8c6215bb8af349062c272f61d05e4", null ],
@@ -14,6 +12,8 @@ var class_halide_1_1_internal_1_1_code_gen___a_r_m =
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a5ca799b9bd1e2ddfd48d9dec2be5cb07", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#ad14f3bb3b9f6a8bcc1c535179366efb1", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a9f559c39f45a7395f606a9be74d0b440", null ],
+    [ "call_pattern", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#accc90800d4c4a365f0b14b71b97952e4", null ],
+    [ "call_pattern", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a5a2641edd9aca3de93fda4a23a6bfa16", null ],
     [ "mcpu", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#afee54d94ecb545086ea4517bb9e168c2", null ],
     [ "mattrs", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#aaf4637510ee85222873e4b038ed94fa7", null ],
     [ "use_soft_float_abi", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#ae1ceb0a2aa9ae80eeae416f4e5c0f845", null ],

@@ -6,6 +6,7 @@ var searchData=
   ['codegen_5farm',['CodeGen_ARM',['../class_halide_1_1_internal_1_1_code_gen___a_r_m.html',1,'Halide::Internal']]],
   ['codegen_5fc',['CodeGen_C',['../class_halide_1_1_internal_1_1_code_gen___c.html',1,'Halide::Internal']]],
   ['codegen_5fglsl',['CodeGen_GLSL',['../class_halide_1_1_internal_1_1_code_gen___g_l_s_l.html',1,'Halide::Internal']]],
+  ['codegen_5fglslbase',['CodeGen_GLSLBase',['../class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html',1,'Halide::Internal']]],
   ['codegen_5fgpu_5fdev',['CodeGen_GPU_Dev',['../struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html',1,'Halide::Internal']]],
   ['codegen_5fgpu_5fhost',['CodeGen_GPU_Host',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html',1,'Halide::Internal']]],
   ['codegen_5fllvm',['CodeGen_LLVM',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html',1,'Halide::Internal']]],
@@ -13,13 +14,17 @@ var searchData=
   ['codegen_5fopencl_5fc',['CodeGen_OpenCL_C',['../class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html',1,'Halide::Internal::CodeGen_OpenCL_Dev']]],
   ['codegen_5fopencl_5fdev',['CodeGen_OpenCL_Dev',['../class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html',1,'Halide::Internal']]],
   ['codegen_5fopengl_5fdev',['CodeGen_OpenGL_Dev',['../class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html',1,'Halide::Internal']]],
+  ['codegen_5fopenglcompute_5fc',['CodeGen_OpenGLCompute_C',['../class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html',1,'Halide::Internal::CodeGen_OpenGLCompute_Dev']]],
+  ['codegen_5fopenglcompute_5fdev',['CodeGen_OpenGLCompute_Dev',['../class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev.html',1,'Halide::Internal']]],
   ['codegen_5fpnacl',['CodeGen_PNaCl',['../class_halide_1_1_internal_1_1_code_gen___p_na_cl.html',1,'Halide::Internal']]],
   ['codegen_5fposix',['CodeGen_Posix',['../class_halide_1_1_internal_1_1_code_gen___posix.html',1,'Halide::Internal']]],
   ['codegen_5fptx_5fdev',['CodeGen_PTX_Dev',['../class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html',1,'Halide::Internal']]],
+  ['codegen_5frenderscript_5fdev',['CodeGen_Renderscript_Dev',['../class_halide_1_1_internal_1_1_code_gen___renderscript___dev.html',1,'Halide::Internal']]],
   ['codegen_5fx86',['CodeGen_X86',['../class_halide_1_1_internal_1_1_code_gen___x86.html',1,'Halide::Internal']]],
   ['compare',['Compare',['../struct_halide_1_1_internal_1_1_stmt_1_1_compare.html',1,'Halide::Internal::Stmt']]],
   ['compileerror',['CompileError',['../struct_halide_1_1_compile_error.html',1,'Halide']]],
   ['compiletimeerrorreporter',['CompileTimeErrorReporter',['../class_halide_1_1_compile_time_error_reporter.html',1,'Halide']]],
   ['const_5fiterator',['const_iterator',['../class_halide_1_1_internal_1_1_scope_1_1const__iterator.html',1,'Halide::Internal::Scope']]],
-  ['cuda_5fmemcpy3d_5fst',['CUDA_MEMCPY3D_st',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html',1,'']]]
+  ['cuda_5fmemcpy3d_5fst',['CUDA_MEMCPY3D_st',['../struct_halide_1_1_runtime_1_1_internal_1_1_cuda_1_1_c_u_d_a___m_e_m_c_p_y3_d__st.html',1,'Halide::Runtime::Internal::Cuda']]],
+  ['customloweringpass',['CustomLoweringPass',['../struct_halide_1_1_custom_lowering_pass.html',1,'Halide']]]
 ];

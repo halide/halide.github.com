@@ -3,7 +3,7 @@ var searchData=
   ['w',['w',['../class_halide_1_1_r_dom.html#a6111104a192cc83a1fa7d58d9202b8fc',1,'Halide::RDom']]],
   ['warning',['warning',['../struct_halide_1_1_internal_1_1_error_report.html#acc69b2238d5488fcc7e1c058149cf3a8',1,'Halide::Internal::ErrorReport']]],
   ['width',['width',['../struct_halide_1_1_internal_1_1_ramp.html#a2f447c8afa283e56b5265e954073c053',1,'Halide::Internal::Ramp::width()'],['../struct_halide_1_1_internal_1_1_broadcast.html#a6d47d23833624ee50d201126499e6d7c',1,'Halide::Internal::Broadcast::width()'],['../struct_halide_1_1_type.html#ae3447d16160da9982d6f093c6bf24c5a',1,'Halide::Type::width()']]],
-  ['widthinbytes',['WidthInBytes',['../struct_c_u_d_a___m_e_m_c_p_y3_d__st.html#a3f3b53b0597c5afc13c9a3147271ca30',1,'CUDA_MEMCPY3D_st']]],
+  ['widthinbytes',['WidthInBytes',['../struct_halide_1_1_runtime_1_1_internal_1_1_cuda_1_1_c_u_d_a___m_e_m_c_p_y3_d__st.html#a018226aaad685f2c98785de4a4d4f31f',1,'Halide::Runtime::Internal::Cuda::CUDA_MEMCPY3D_st']]],
   ['wild_5ff32x2',['wild_f32x2',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a5c7b6be3a108061ac66246932dfe516b',1,'Halide::Internal::CodeGen_LLVM']]],
   ['wild_5ff32x4',['wild_f32x4',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#aefa03a601261ad74d845ba347358fcc5',1,'Halide::Internal::CodeGen_LLVM']]],
   ['wild_5ff32x8',['wild_f32x8',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a8153de3b96dc065ec1e617c385b7d939',1,'Halide::Internal::CodeGen_LLVM']]],
@@ -42,5 +42,6 @@ var searchData=
   ['wild_5fu8x32',['wild_u8x32',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#aa85716a13969b0126e6bb4549a1a78dc',1,'Halide::Internal::CodeGen_LLVM']]],
   ['wild_5fu8x8',['wild_u8x8',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#ab5ebf91e1c52b4283670c9cfbd2711d1',1,'Halide::Internal::CodeGen_LLVM']]],
   ['wild_5fu8x_5f',['wild_u8x_',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a7eafcdfb329717fd4e8213d26cd8a71e',1,'Halide::Internal::CodeGen_LLVM']]],
+  ['workgroup_5fsize',['workgroup_size',['../class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html#a034b05f95547d25a8141e1d010e9dc3d',1,'Halide::Internal::CodeGen_OpenGLCompute_Dev::CodeGen_OpenGLCompute_C']]],
   ['write',['write',['../struct_halide_1_1_internal_1_1_g_p_u___argument.html#a4e32a73f43ea383aee5e025c3e214996',1,'Halide::Internal::GPU_Argument::write()'],['../struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#ab728f01010546a21410a93d4b747cfe4',1,'Halide::Internal::Closure::BufferRef::write()']]]
 ];

@@ -1,7 +1,7 @@
 var structhalide__trace__event =
 [
     [ "func", "structhalide__trace__event.html#a2de75a001c98389e4aaaba6925c74a67", null ],
-    [ "event", "structhalide__trace__event.html#ac6501488fa8ef8f6a7fab582f07bee41", null ],
+    [ "event", "structhalide__trace__event.html#a777111b40ff4829047777f6aa70a9531", null ],
     [ "parent_id", "structhalide__trace__event.html#a34e290a904566e28bf97cb99a557c0ff", null ],
     [ "type_code", "structhalide__trace__event.html#ad50f9e35d3cbdf066deb79ec20a17654", null ],
     [ "bits", "structhalide__trace__event.html#ae85b0edbd9810d1f955a4b2aece6dd29", null ],

@@ -139,6 +139,15 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhalide__filter__metadata__t.html">halide_filter_metadata_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhalide__profiler__func__stats.html">halide_profiler_func_stats</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The functions below here are relevant for pipelines compiled with the -profile target flag, which runs a sampling profiler thread alongside the pipeline.  <a href="structhalide__profiler__func__stats.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhalide__profiler__pipeline__stats.html">halide_profiler_pipeline_stats</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Per-pipeline state tracked by the sampling profiler.  <a href="structhalide__profiler__pipeline__stats.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhalide__profiler__state.html">halide_profiler_state</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The global state of the profiler.  <a href="structhalide__profiler__state.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
@@ -205,7 +214,8 @@ Enumerations</h2></td></tr>
 <br/>
 &#160;&#160;<a class="el" href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca6c123efceb388bfef491629d89065775">halide_error_code_matlab_init_failed</a> = -20, 
 <a class="el" href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448caf5c56ee69de59cfb5959461ac0a8c570">halide_error_code_matlab_bad_param_type</a> = -21, 
-<a class="el" href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca28e9d2c63f5933a4422b668b3f473867">halide_error_code_internal_error</a> = -22
+<a class="el" href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca28e9d2c63f5933a4422b668b3f473867">halide_error_code_internal_error</a> = -22, 
+<a class="el" href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448cacf7f17603b30be3f4df86d701df4ee2a">halide_error_code_device_run_failed</a> = -23
 <br/>
  }</td></tr>
 <tr class="memdesc:aba16e170cc9aa30b78ff703e101a448c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The error codes that may be returned by a <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> pipeline.  <a href="_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448c">More...</a><br/></td></tr>
@@ -222,6 +232,11 @@ Enumerations</h2></td></tr>
 <a class="el" href="_halide_runtime_8h.html#afdce5dc7a11fa96f39baa1aee2333745a0113d76303e0327745f3b3e4070dccd8">halide_argument_kind_output_buffer</a> = 2
  }</td></tr>
 <tr class="separator:afdce5dc7a11fa96f39baa1aee2333745"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="_halide_runtime_8h.html#a06fc87d81c62e9abb8790b6e5713c55bab6b9a850264048aeff726f435f21ac25">halide_profiler_outside_of_halide</a> = -1, 
+<a class="el" href="_halide_runtime_8h.html#a06fc87d81c62e9abb8790b6e5713c55baa07fb8b03c126c5357f8bbe679def9b5">halide_profiler_please_stop</a> = -2
+ }</td></tr>
+<tr class="memdesc:a06fc87d81c62e9abb8790b6e5713c55b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Profiler func ids with special meanings.  <a href="_halide_runtime_8h.html#a06fc87d81c62e9abb8790b6e5713c55b">More...</a><br/></td></tr>
+<tr class="separator:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -231,15 +246,18 @@ Functions</h2></td></tr>
 <tr class="memitem:aea28d04de54b94f0dd6ada140b7734d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#aea28d04de54b94f0dd6ada140b7734d8">halide_error</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, const char *)</td></tr>
 <tr class="memdesc:aea28d04de54b94f0dd6ada140b7734d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define halide_error to catch errors messages at runtime (for example bounds checking failures).  <a href="#aea28d04de54b94f0dd6ada140b7734d8">More...</a><br/></td></tr>
 <tr class="separator:aea28d04de54b94f0dd6ada140b7734d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe0a99abe6ed3a51e322dbfe9f37237a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#abe0a99abe6ed3a51e322dbfe9f37237a">halide_spawn_thread</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, void(*f)(void *), void *closure)</td></tr>
+<tr class="memdesc:abe0a99abe6ed3a51e322dbfe9f37237a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spawn a thread, independent of halide's thread pool.  <a href="#abe0a99abe6ed3a51e322dbfe9f37237a">More...</a><br/></td></tr>
+<tr class="separator:abe0a99abe6ed3a51e322dbfe9f37237a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a570aecb8f41519bc12356d1e63f68160"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a570aecb8f41519bc12356d1e63f68160">halide_set_num_threads</a> (int n)</td></tr>
 <tr class="memdesc:a570aecb8f41519bc12356d1e63f68160"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the number of threads used by <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a>'s thread pool.  <a href="#a570aecb8f41519bc12356d1e63f68160">More...</a><br/></td></tr>
 <tr class="separator:a570aecb8f41519bc12356d1e63f68160"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a173a9669d4c2a9fb6fa0225a5fdabcd4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a173a9669d4c2a9fb6fa0225a5fdabcd4">halide_debug_to_file</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, const char *filename, <a class="el" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *data, <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> s0, <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> s1, <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> s2, <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> s3, <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> type_code, <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> bytes_per_element)</td></tr>
 <tr class="memdesc:a173a9669d4c2a9fb6fa0225a5fdabcd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when debug_to_file is used inside Halide code.  <a href="#a173a9669d4c2a9fb6fa0225a5fdabcd4">More...</a><br/></td></tr>
 <tr class="separator:a173a9669d4c2a9fb6fa0225a5fdabcd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15078a46b8fe517dcfdd26acadd2293a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a15078a46b8fe517dcfdd26acadd2293a">halide_trace</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, const <a class="el" href="structhalide__trace__event.html">halide_trace_event</a> *event)</td></tr>
-<tr class="memdesc:a15078a46b8fe517dcfdd26acadd2293a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when Funcs are marked as trace_load, trace_store, or trace_realization.  <a href="#a15078a46b8fe517dcfdd26acadd2293a">More...</a><br/></td></tr>
-<tr class="separator:a15078a46b8fe517dcfdd26acadd2293a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa248ca9ece01af82bdddfdedebd4d0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#aaa248ca9ece01af82bdddfdedebd4d0b">halide_trace</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, const struct <a class="el" href="structhalide__trace__event.html">halide_trace_event</a> *event)</td></tr>
+<tr class="memdesc:aaa248ca9ece01af82bdddfdedebd4d0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when Funcs are marked as trace_load, trace_store, or trace_realization.  <a href="#aaa248ca9ece01af82bdddfdedebd4d0b">More...</a><br/></td></tr>
+<tr class="separator:aaa248ca9ece01af82bdddfdedebd4d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8761e708f878372e3201126e83d6f3b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a8761e708f878372e3201126e83d6f3b6">halide_set_trace_file</a> (int fd)</td></tr>
 <tr class="memdesc:a8761e708f878372e3201126e83d6f3b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the file descriptor that <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> should write binary trace events to.  <a href="#a8761e708f878372e3201126e83d6f3b6">More...</a><br/></td></tr>
 <tr class="separator:a8761e708f878372e3201126e83d6f3b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -252,19 +270,19 @@ Functions</h2></td></tr>
 <tr class="memitem:a6d0dfed73af7da529e2d7e30d162d24c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a6d0dfed73af7da529e2d7e30d162d24c">halide_device_release</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, const <a class="el" href="structhalide__device__interface.html">halide_device_interface</a> *interface)</td></tr>
 <tr class="memdesc:a6d0dfed73af7da529e2d7e30d162d24c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release all data associated with the current GPU backend, in particular all resources (memory, texture, context handles) allocated by <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a>.  <a href="#a6d0dfed73af7da529e2d7e30d162d24c">More...</a><br/></td></tr>
 <tr class="separator:a6d0dfed73af7da529e2d7e30d162d24c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5980f17918155363078056e6a32de301"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a5980f17918155363078056e6a32de301">halide_copy_to_host</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, struct <a class="el" href="structbuffer__t.html">buffer_t</a> *<a class="el" href="runtime__internal_8h.html#a820af5182fa2b758297c9db1af6b2256">buf</a>)</td></tr>
+<tr class="memitem:a5980f17918155363078056e6a32de301"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a5980f17918155363078056e6a32de301">halide_copy_to_host</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, struct <a class="el" href="structbuffer__t.html">buffer_t</a> *<a class="el" href="runtime__internal_8h.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
 <tr class="memdesc:a5980f17918155363078056e6a32de301"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy image data from device memory to host memory.  <a href="#a5980f17918155363078056e6a32de301">More...</a><br/></td></tr>
 <tr class="separator:a5980f17918155363078056e6a32de301"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dee88259b2783c3559be8cd419d2d3d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a4dee88259b2783c3559be8cd419d2d3d">halide_copy_to_device</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, struct <a class="el" href="structbuffer__t.html">buffer_t</a> *<a class="el" href="runtime__internal_8h.html#a820af5182fa2b758297c9db1af6b2256">buf</a>, const <a class="el" href="structhalide__device__interface.html">halide_device_interface</a> *interface)</td></tr>
+<tr class="memitem:a4dee88259b2783c3559be8cd419d2d3d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a4dee88259b2783c3559be8cd419d2d3d">halide_copy_to_device</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, struct <a class="el" href="structbuffer__t.html">buffer_t</a> *<a class="el" href="runtime__internal_8h.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, const <a class="el" href="structhalide__device__interface.html">halide_device_interface</a> *interface)</td></tr>
 <tr class="memdesc:a4dee88259b2783c3559be8cd419d2d3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy image data from host memory to device memory.  <a href="#a4dee88259b2783c3559be8cd419d2d3d">More...</a><br/></td></tr>
 <tr class="separator:a4dee88259b2783c3559be8cd419d2d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68ef5b5e82021e9ffc31a734b9123903"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a68ef5b5e82021e9ffc31a734b9123903">halide_device_sync</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, struct <a class="el" href="structbuffer__t.html">buffer_t</a> *<a class="el" href="runtime__internal_8h.html#a820af5182fa2b758297c9db1af6b2256">buf</a>)</td></tr>
+<tr class="memitem:a68ef5b5e82021e9ffc31a734b9123903"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a68ef5b5e82021e9ffc31a734b9123903">halide_device_sync</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, struct <a class="el" href="structbuffer__t.html">buffer_t</a> *<a class="el" href="runtime__internal_8h.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
 <tr class="memdesc:a68ef5b5e82021e9ffc31a734b9123903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for current GPU operations to complete.  <a href="#a68ef5b5e82021e9ffc31a734b9123903">More...</a><br/></td></tr>
 <tr class="separator:a68ef5b5e82021e9ffc31a734b9123903"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14ceaa392c87af3f8736236a5fce260c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a14ceaa392c87af3f8736236a5fce260c">halide_device_malloc</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, struct <a class="el" href="structbuffer__t.html">buffer_t</a> *<a class="el" href="runtime__internal_8h.html#a820af5182fa2b758297c9db1af6b2256">buf</a>, const <a class="el" href="structhalide__device__interface.html">halide_device_interface</a> *interface)</td></tr>
+<tr class="memitem:a14ceaa392c87af3f8736236a5fce260c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a14ceaa392c87af3f8736236a5fce260c">halide_device_malloc</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, struct <a class="el" href="structbuffer__t.html">buffer_t</a> *<a class="el" href="runtime__internal_8h.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, const <a class="el" href="structhalide__device__interface.html">halide_device_interface</a> *interface)</td></tr>
 <tr class="memdesc:a14ceaa392c87af3f8736236a5fce260c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate device memory to back a <a class="el" href="structbuffer__t.html" title="The raw representation of an image passed around by generated Halide code. ">buffer_t</a>.  <a href="#a14ceaa392c87af3f8736236a5fce260c">More...</a><br/></td></tr>
 <tr class="separator:a14ceaa392c87af3f8736236a5fce260c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab234e67973d0504a63002c64db55d6fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#ab234e67973d0504a63002c64db55d6fa">halide_device_free</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, struct <a class="el" href="structbuffer__t.html">buffer_t</a> *<a class="el" href="runtime__internal_8h.html#a820af5182fa2b758297c9db1af6b2256">buf</a>)</td></tr>
+<tr class="memitem:ab234e67973d0504a63002c64db55d6fa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#ab234e67973d0504a63002c64db55d6fa">halide_device_free</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, struct <a class="el" href="structbuffer__t.html">buffer_t</a> *<a class="el" href="runtime__internal_8h.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
 <tr class="separator:ab234e67973d0504a63002c64db55d6fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9906fca5a688c26e0465a1b3da84ccfb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a9906fca5a688c26e0465a1b3da84ccfb">halide_set_gpu_device</a> (int n)</td></tr>
 <tr class="memdesc:a9906fca5a688c26e0465a1b3da84ccfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selects which gpu device to use.  <a href="#a9906fca5a688c26e0465a1b3da84ccfb">More...</a><br/></td></tr>
@@ -275,12 +293,15 @@ Functions</h2></td></tr>
 <tr class="memitem:abf85692a77aec0b887f345d0d3ca6777"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#abf85692a77aec0b887f345d0d3ca6777">halide_memoization_cache_set_size</a> (<a class="el" href="runtime__internal_8h.html#a11cbdb02b138f338b174a78c683f85fc">int64_t</a> size)</td></tr>
 <tr class="memdesc:abf85692a77aec0b887f345d0d3ca6777"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the soft maximum amount of memory, in bytes, that the LRU cache will use to memoize Func results.  <a href="#abf85692a77aec0b887f345d0d3ca6777">More...</a><br/></td></tr>
 <tr class="separator:abf85692a77aec0b887f345d0d3ca6777"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a066561dd8530528cf8b5842852ec7657"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a066561dd8530528cf8b5842852ec7657">halide_memoization_cache_lookup</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, const <a class="el" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *cache_key, <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> size, <a class="el" href="structbuffer__t.html">buffer_t</a> *realized_bounds, <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> tuple_count, <a class="el" href="structbuffer__t.html">buffer_t</a> **tuple_buffers)</td></tr>
-<tr class="memdesc:a066561dd8530528cf8b5842852ec7657"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a cache key for a memoized result, currently constructed from the Func name and top-level Func name plus the arguments of the computation, determine if the result is in the cache and return it if so.  <a href="#a066561dd8530528cf8b5842852ec7657">More...</a><br/></td></tr>
-<tr class="separator:a066561dd8530528cf8b5842852ec7657"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2852fe59c016c06022fe2b2f0aa55ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#af2852fe59c016c06022fe2b2f0aa55ce">halide_memoization_cache_lookup</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, const <a class="el" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *cache_key, <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> size, <a class="el" href="structbuffer__t.html">buffer_t</a> *realized_bounds, <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> tuple_count, <a class="el" href="structbuffer__t.html">buffer_t</a> **tuple_buffers)</td></tr>
+<tr class="memdesc:af2852fe59c016c06022fe2b2f0aa55ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a cache key for a memoized result, currently constructed from the Func name and top-level Func name plus the arguments of the computation, determine if the result is in the cache and return it if so.  <a href="#af2852fe59c016c06022fe2b2f0aa55ce">More...</a><br/></td></tr>
+<tr class="separator:af2852fe59c016c06022fe2b2f0aa55ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89b915ff5eca660c4179b5f332fce0f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a89b915ff5eca660c4179b5f332fce0f3">halide_memoization_cache_store</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, const <a class="el" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *cache_key, <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> size, <a class="el" href="structbuffer__t.html">buffer_t</a> *realized_bounds, <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> tuple_count, <a class="el" href="structbuffer__t.html">buffer_t</a> **tuple_buffers)</td></tr>
 <tr class="memdesc:a89b915ff5eca660c4179b5f332fce0f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a cache key for a memoized result, currently constructed from the Func name and top-level Func name plus the arguments of the computation, store the result in the cache for futre access by halide_memoization_cache_lookup.  <a href="#a89b915ff5eca660c4179b5f332fce0f3">More...</a><br/></td></tr>
 <tr class="separator:a89b915ff5eca660c4179b5f332fce0f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a714f9e341f1d71baf8abc77bc50e1db5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a714f9e341f1d71baf8abc77bc50e1db5">halide_memoization_cache_release</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, void *host)</td></tr>
+<tr class="memdesc:a714f9e341f1d71baf8abc77bc50e1db5"><td class="mdescLeft">&#160;</td><td class="mdescRight">If halide_memoization_cache_lookup succeeds, halide_memoization_cache_release must be called to signal the storage is no longer being used by the caller.  <a href="#a714f9e341f1d71baf8abc77bc50e1db5">More...</a><br/></td></tr>
+<tr class="separator:a714f9e341f1d71baf8abc77bc50e1db5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30f9bdd5b6ac08b3fa785f3332cca996"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a30f9bdd5b6ac08b3fa785f3332cca996">halide_memoization_cache_cleanup</a> ()</td></tr>
 <tr class="memdesc:a30f9bdd5b6ac08b3fa785f3332cca996"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all memory and resources associated with the memoization cache.  <a href="#a30f9bdd5b6ac08b3fa785f3332cca996">More...</a><br/></td></tr>
 <tr class="separator:a30f9bdd5b6ac08b3fa785f3332cca996"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -293,6 +314,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a3454e11a6ec4e53fd2883fe291a1b0dd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a3454e11a6ec4e53fd2883fe291a1b0dd">halide_enumerate_registered_filters</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, void *enumerate_context, <a class="el" href="_halide_runtime_8h.html#acfc1ecebda4db1628bc2723f1517afa1">enumerate_func_t</a> func)</td></tr>
 <tr class="memdesc:a3454e11a6ec4e53fd2883fe291a1b0dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">If a filter is compiled with Target::RegisterMetadata, it will register itself in an internal list at load time; <a class="el" href="_halide_runtime_8h.html#a3454e11a6ec4e53fd2883fe291a1b0dd" title="If a filter is compiled with Target::RegisterMetadata, it will register itself in an internal list at...">halide_enumerate_registered_filters()</a> allows you to enumerate all such filters at runtime.  <a href="#a3454e11a6ec4e53fd2883fe291a1b0dd">More...</a><br/></td></tr>
 <tr class="separator:a3454e11a6ec4e53fd2883fe291a1b0dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94ff0942ee2a8a3ce2334a09eb29e7f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhalide__profiler__state.html">halide_profiler_state</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a94ff0942ee2a8a3ce2334a09eb29e7f4">halide_profiler_get_state</a> ()</td></tr>
+<tr class="memdesc:a94ff0942ee2a8a3ce2334a09eb29e7f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the global profiler state for programmatic inspection.  <a href="#a94ff0942ee2a8a3ce2334a09eb29e7f4">More...</a><br/></td></tr>
+<tr class="separator:a94ff0942ee2a8a3ce2334a09eb29e7f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a046ccf558100c9a2b0664074157c6563"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a046ccf558100c9a2b0664074157c6563">halide_profiler_reset</a> ()</td></tr>
+<tr class="memdesc:a046ccf558100c9a2b0664074157c6563"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset all profiler state.  <a href="#a046ccf558100c9a2b0664074157c6563">More...</a><br/></td></tr>
+<tr class="separator:a046ccf558100c9a2b0664074157c6563"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98690684642752376f858a9c6f1ccd29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a98690684642752376f858a9c6f1ccd29">halide_profiler_report</a> (void *<a class="el" href="runtime__internal_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>)</td></tr>
+<tr class="memdesc:a98690684642752376f858a9c6f1ccd29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print out timing statistics for everything run since the last reset.  <a href="#a98690684642752376f858a9c6f1ccd29">More...</a><br/></td></tr>
+<tr class="separator:a98690684642752376f858a9c6f1ccd29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:a479133225b3cdf7b931f3c44e878e4e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_8h.html#a479133225b3cdf7b931f3c44e878e4e8">halide_mutex_lock</a> (struct <a class="el" href="structhalide__mutex.html">halide_mutex</a> *mutex)</td></tr>
 <tr class="memdesc:a479133225b3cdf7b931f3c44e878e4e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A basic set of mutex functions, which call platform specific code for mutual exclusion.  <a href="#a479133225b3cdf7b931f3c44e878e4e8">More...</a><br/></td></tr>
@@ -428,7 +458,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00457">457</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00490">490</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -442,7 +472,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00462">462</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00495">495</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -490,7 +520,7 @@ Functions</h2></td></tr>
 <p>enumerate_func_t is a callback for halide_enumerate_registered_filters; it is called once per registered filter discovered. </p>
 <p>Return 0 to continue the enumeration, or nonzero to terminate the enumeration. enumerate_context is an arbitrary pointer you can use to provide a callback argument. </p>
 
-<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00600">600</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00638">638</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -523,7 +553,7 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00129">129</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00132">132</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -616,9 +646,13 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><em><a class="anchor" id="aba16e170cc9aa30b78ff703e101a448ca28e9d2c63f5933a4422b668b3f473867"></a>halide_error_code_internal_error</em>&#160;</td><td class="fielddoc">
 <p>There is a bug in the <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> compiler. </p>
 </td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="aba16e170cc9aa30b78ff703e101a448cacf7f17603b30be3f4df86d701df4ee2a"></a>halide_error_code_device_run_failed</em>&#160;</td><td class="fielddoc">
+<p>The <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> runtime encountered an error while trying to launch a GPU kernel. </p>
+<p>Turn on -debug in your target string to see more details. </p>
+</td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00293">293</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00321">321</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -649,7 +683,7 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00444">444</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00477">477</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -671,7 +705,32 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00540">540</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00578">578</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a06fc87d81c62e9abb8790b6e5713c55b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Profiler func ids with special meanings. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a06fc87d81c62e9abb8790b6e5713c55bab6b9a850264048aeff726f435f21ac25"></a>halide_profiler_outside_of_halide</em>&#160;</td><td class="fielddoc">
+<p>current_func takes on this value when not inside <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> code </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a06fc87d81c62e9abb8790b6e5713c55baa07fb8b03c126c5357f8bbe679def9b5"></a>halide_profiler_please_stop</em>&#160;</td><td class="fielddoc">
+<p>Set current_func to this value to tell the profiling thread to halt. </p>
+<p>It will start up again next time you run a pipeline with profiling enabled. </p>
+</td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00728">728</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -857,6 +916,40 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="abe0a99abe6ed3a51e322dbfe9f37237a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void halide_spawn_thread </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(void *)&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>closure</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Spawn a thread, independent of halide's thread pool. </p>
+
+</div>
+</div>
 <a class="anchor" id="a570aecb8f41519bc12356d1e63f68160"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1006,7 +1099,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a15078a46b8fe517dcfdd26acadd2293a"></a>
+<a class="anchor" id="aaa248ca9ece01af82bdddfdedebd4d0b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -1019,7 +1112,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structhalide__trace__event.html">halide_trace_event</a> *&#160;</td>
+          <td class="paramtype">const struct <a class="el" href="structhalide__trace__event.html">halide_trace_event</a> *&#160;</td>
           <td class="paramname"><em>event</em>&#160;</td>
         </tr>
         <tr>
@@ -1333,12 +1426,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a066561dd8530528cf8b5842852ec7657"></a>
+<a class="anchor" id="af2852fe59c016c06022fe2b2f0aa55ce"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool halide_memoization_cache_lookup </td>
+          <td class="memname">int halide_memoization_cache_lookup </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>user_context</em>, </td>
@@ -1382,7 +1475,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Given a cache key for a memoized result, currently constructed from the Func name and top-level Func name plus the arguments of the computation, determine if the result is in the cache and return it if so. </p>
-<p>(The internals of the cache key should be considered opaque by this function.) If this routine returns true, it is a cache miss. Otherwise, it will return false and the buffers passed in will be filled, via copying, with memoized data. The last argument is a list if <a class="el" href="structbuffer__t.html" title="The raw representation of an image passed around by generated Halide code. ">buffer_t</a> pointers which represents the outputs of the memoized Func. If the Func does not return a Tuple, there will only be one <a class="el" href="structbuffer__t.html" title="The raw representation of an image passed around by generated Halide code. ">buffer_t</a> in the list. The tuple_count parameters determines the length of the list. </p>
+<p>(The internals of the cache key should be considered opaque by this function.) If this routine returns true, it is a cache miss. Otherwise, it will return false and the buffers passed in will be filled, via copying, with memoized data. The last argument is a list if <a class="el" href="structbuffer__t.html" title="The raw representation of an image passed around by generated Halide code. ">buffer_t</a> pointers which represents the outputs of the memoized Func. If the Func does not return a Tuple, there will only be one <a class="el" href="structbuffer__t.html" title="The raw representation of an image passed around by generated Halide code. ">buffer_t</a> in the list. The tuple_count parameters determines the length of the list.</p>
+<p>The return values are: -1: Signals an error. 0: Success and cache hit. 1: Success and cache miss. </p>
 
 </div>
 </div>
@@ -1435,7 +1529,38 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Given a cache key for a memoized result, currently constructed from the Func name and top-level Func name plus the arguments of the computation, store the result in the cache for futre access by halide_memoization_cache_lookup. </p>
-<p>(The internals of the cache key should be considered opaque by this function.) Data is copied out from the inputs and inputs are unmodified. The last argument is a list if <a class="el" href="structbuffer__t.html" title="The raw representation of an image passed around by generated Halide code. ">buffer_t</a> pointers which represents the outputs of the memoized Func. If the Func does not return a Tuple, there will only be one <a class="el" href="structbuffer__t.html" title="The raw representation of an image passed around by generated Halide code. ">buffer_t</a> in the list. The tuple_count parameters determines the length of the list. </p>
+<p>(The internals of the cache key should be considered opaque by this function.) Data is copied out from the inputs and inputs are unmodified. The last argument is a list if <a class="el" href="structbuffer__t.html" title="The raw representation of an image passed around by generated Halide code. ">buffer_t</a> pointers which represents the outputs of the memoized Func. If the Func does not return a Tuple, there will only be one <a class="el" href="structbuffer__t.html" title="The raw representation of an image passed around by generated Halide code. ">buffer_t</a> in the list. The tuple_count parameters determines the length of the list.</p>
+<p>If there is a memory allocation failure, the store does not store the data into the cache. </p>
+
+</div>
+</div>
+<a class="anchor" id="a714f9e341f1d71baf8abc77bc50e1db5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void halide_memoization_cache_release </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>host</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>If halide_memoization_cache_lookup succeeds, halide_memoization_cache_release must be called to signal the storage is no longer being used by the caller. </p>
+<p>It will be passed the host pointer of one the buffers returned by halide_memoization_cache_lookup. That is halide_memoization_cache_release will be called multiple times for the case where halide_memoization_cache_lookup is handling multiple buffers. (This corresponds to memoizing a Tuple in <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a>.) Note that the host pointer must be sufficient to get to all information the relase operation needs. The default <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> cache impleemntation accomplishes this by storing extra data before the start of the user modifiable host storage.</p>
+<p>This call is like free and does not have a failure return. </p>
 
 </div>
 </div>
@@ -2249,6 +2374,60 @@ Functions</h2></td></tr>
 <p>This allows you to link together arbitrary AOT-compiled filters and introspect/call them easily. Note:</p>
 <p>&ndash; Only filters compiled with Target::RegisterMetadata enabled will be enumerated. &ndash; This function should not be called before or after main() (i.e., must not be called from static ctors or dtors). &ndash; Filters will be enumerated in an unpredictable order; it is essential you do not rely on a particular order of enumeration. &ndash; It is <em>not</em> guaranteed that the names in an enumeration are unique!</p>
 <p>The return value is zero if the enumerate_func_t always returns zero; if the enumerate_func_t returns a nonzero value, enumeration will terminate early and return that nonzero result. </p>
+
+</div>
+</div>
+<a class="anchor" id="a94ff0942ee2a8a3ce2334a09eb29e7f4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structhalide__profiler__state.html">halide_profiler_state</a>* halide_profiler_get_state </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a pointer to the global profiler state for programmatic inspection. </p>
+<p>Lock it before using to pause the profiler. </p>
+
+</div>
+</div>
+<a class="anchor" id="a046ccf558100c9a2b0664074157c6563"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void halide_profiler_reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reset all profiler state. </p>
+
+</div>
+</div>
+<a class="anchor" id="a98690684642752376f858a9c6f1ccd29"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void halide_profiler_report </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Print out timing statistics for everything run since the last reset. </p>
+<p>Also happens at process exit. </p>
 
 </div>
 </div>
