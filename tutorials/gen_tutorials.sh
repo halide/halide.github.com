@@ -8,7 +8,8 @@ for f in tutorial_introduction_stub.html $@; do
     if [ $bf = tutorial_introduction_stub.html ]; then
         h="tutorial_introduction.html"
     else
-        h=tutorial_${bf/cpp/html}
+        h=tutorial_${bf/.cpp/.html}
+        h=${h/.sh/.html}
     fi
 
     cat >$h <<EOF
@@ -74,6 +75,7 @@ function toggle(id) {
         <ul class="nav">
           <li class="active"><a href="/index.html#overview">Overview</a></li>
           <li><a href="/index.html#gettingstarted">Getting Started</a></li>
+          <li><a href="/tutorials/tutorial_introduction.html">Tutorials</a></li>
           <li><a href="/index.html#publications">Publications</a></li>
           <li><a href="/index.html#resources">Resources</a></li>
           <li class="divider-vertical"></li>
@@ -113,7 +115,8 @@ EOF
 
     for f2 in $@; do
         bf2=$(basename $f2)
-        h2=tutorial_${bf2/cpp/html}
+        h2=tutorial_${bf2/.cpp/.html}
+        h2=${h2/.sh/.html}
 
         echo '<div style="width:200px; height:20px;"></div>' >> $h
         echo '<a href=' >> $h
@@ -139,8 +142,12 @@ EOF
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 EOF
 
-    if [ $h = tutorial_introduction.html ]; then
+    if [[ $h == tutorial_introduction.html ]]; then
         cat $f >> $h
+    elif [[ "$f" == *.sh ]]; then
+        echo '<pre class="hl">' >> $h
+        highlight -k monospace -K 12 --config-file=Halide.theme -s Halide -f $f >> $h
+        echo '</pre>' >> $h
     else
 
         # Inject markers for where "show output" blocks should occur

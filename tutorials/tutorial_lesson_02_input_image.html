@@ -54,6 +54,7 @@ function toggle(id) {
         <ul class="nav">
           <li class="active"><a href="/index.html#overview">Overview</a></li>
           <li><a href="/index.html#gettingstarted">Getting Started</a></li>
+          <li><a href="/tutorials/tutorial_introduction.html">Tutorials</a></li>
           <li><a href="/index.html#publications">Publications</a></li>
           <li><a href="/index.html#resources">Resources</a></li>
           <li class="divider-vertical"></li>
@@ -240,11 +241,11 @@ tutorial_lesson_14_types.html
 <span class="hl slc">// them.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_02*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -o lesson_02 -std=c++11</span>
+<span class="hl slc">// g++ lesson_02*.cpp -g -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -o lesson_02 -std=c++11</span>
 <span class="hl slc">// LD_LIBRARY_PATH=../bin ./lesson_02</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_02*.cpp -g -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_02 -std=c++11</span>
+<span class="hl slc">// g++ lesson_02*.cpp -g -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_02 -std=c++11</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=../bin ./lesson_02</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -256,10 +257,9 @@ tutorial_lesson_14_types.html
 <span class="hl slc">// The only Halide header file you need is Halide.h. It includes all of Halide.</span>
 <span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
 
-<span class="hl slc">// Include some support code for loading pngs. It assumes there's an</span>
-<span class="hl slc">// Image type, so we'll pull the one from Halide namespace;</span>
-<span class="hl kwa">using</span> Halide<span class="hl opt">::</span>Image<span class="hl opt">;</span>
-<span class="hl ppc">#include</span> <span class="hl pps">&quot;image_io.h&quot;</span><span class="hl ppc"></span>
+<span class="hl slc">// Include some support code for loading pngs.</span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;halide_image_io.h&quot;</span><span class="hl ppc"></span>
+<span class="hl kwa">using namespace</span> Halide<span class="hl opt">::</span>Tools<span class="hl opt">;</span>
 
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
 
@@ -267,7 +267,7 @@ tutorial_lesson_14_types.html
     <span class="hl slc">// brightens an image.</span>
 
     <span class="hl slc">// First we'll load the input image we wish to brighten.</span>
-    Halide<span class="hl opt">::</span>Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> load<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
+    Halide<span class="hl opt">::</span>Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> <span class="hl kwd">load_image</span><span class="hl opt">(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
 
     <span class="hl slc">// See below for a smaller version.</span>
 
@@ -332,7 +332,7 @@ tutorial_lesson_14_types.html
     Halide<span class="hl opt">::</span>Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> brighter<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">());</span>
 
     <span class="hl slc">// Save the output for inspection. It should look like a bright parrot.</span>
-    <span class="hl kwd">save</span><span class="hl opt">(</span>output<span class="hl opt">,</span> <span class="hl str">&quot;brighter.png&quot;</span><span class="hl opt">);</span>
+    <span class="hl kwd">save_image</span><span class="hl opt">(</span>output<span class="hl opt">,</span> <span class="hl str">&quot;brighter.png&quot;</span><span class="hl opt">);</span>
 
     <span class="hl slc">// See below for a small version of the output.</span>
 

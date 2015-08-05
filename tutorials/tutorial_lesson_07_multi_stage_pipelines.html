@@ -54,6 +54,7 @@ function toggle(id) {
         <ul class="nav">
           <li class="active"><a href="/index.html#overview">Overview</a></li>
           <li><a href="/index.html#gettingstarted">Getting Started</a></li>
+          <li><a href="/tutorials/tutorial_introduction.html">Tutorials</a></li>
           <li><a href="/index.html#publications">Publications</a></li>
           <li><a href="/index.html#resources">Resources</a></li>
           <li class="divider-vertical"></li>
@@ -237,11 +238,11 @@ tutorial_lesson_14_types.html
 <span class="hl slc">// Halide tutorial lesson 7: Multi-stage pipelines</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_07*.cpp -g -std=c++11 -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -o lesson_07</span>
+<span class="hl slc">// g++ lesson_07*.cpp -g -std=c++11 -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -o lesson_07</span>
 <span class="hl slc">// LD_LIBRARY_PATH=../bin ./lesson_07</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_07*.cpp -g -std=c++11 -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_07</span>
+<span class="hl slc">// g++ lesson_07*.cpp -g -std=c++11 -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -o lesson_07</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=../bin ./lesson_07</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -256,7 +257,8 @@ tutorial_lesson_14_types.html
 <span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
 
 <span class="hl slc">// Support code for loading pngs.</span>
-<span class="hl ppc">#include</span> <span class="hl pps">&quot;image_io.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;halide_image_io.h&quot;</span><span class="hl ppc"></span>
+<span class="hl kwa">using namespace</span> Halide<span class="hl opt">::</span>Tools<span class="hl opt">;</span>
 
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
     <span class="hl slc">// First we'll declare some Vars to use below.</span>
@@ -266,7 +268,7 @@ tutorial_lesson_14_types.html
     <span class="hl slc">// first horizontally, and then vertically.</span>
     <span class="hl opt">{</span>
         <span class="hl slc">// Take a color 8-bit input</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> load<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
+        Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> <span class="hl kwd">load_image</span><span class="hl opt">(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Upgrade it to 16-bit, so we can do math without it overflowing.</span>
         Func <span class="hl kwd">input_16</span><span class="hl opt">(</span><span class="hl str">&quot;input_16&quot;</span><span class="hl opt">);</span>
@@ -324,7 +326,7 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// Save the result. It should look like a slightly blurry</span>
         <span class="hl slc">// parrot, and it should be two pixels narrower and two pixels</span>
         <span class="hl slc">// shorter than the input image.</span>
-        <span class="hl kwd">save</span><span class="hl opt">(</span>result<span class="hl opt">,</span> <span class="hl str">&quot;blurry_parrot_1.png&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">save_image</span><span class="hl opt">(</span>result<span class="hl opt">,</span> <span class="hl str">&quot;blurry_parrot_1.png&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// This is usually the fastest way to deal with boundaries:</span>
         <span class="hl slc">// don't write code that reads out of bounds :) The more</span>
@@ -334,7 +336,7 @@ tutorial_lesson_14_types.html
     <span class="hl slc">// The same pipeline, with a boundary condition on the input.</span>
     <span class="hl opt">{</span>
         <span class="hl slc">// Take a color 8-bit input</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> load<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
+        Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> <span class="hl kwd">load_image</span><span class="hl opt">(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// This time, we'll wrap the input in a Func that prevents</span>
         <span class="hl slc">// reading out of bounds:</span>
@@ -394,7 +396,7 @@ tutorial_lesson_14_types.html
         <span class="hl slc">// Save the result. It should look like a slightly blurry</span>
         <span class="hl slc">// parrot, but this time it will be the same size as the</span>
         <span class="hl slc">// input.</span>
-        <span class="hl kwd">save</span><span class="hl opt">(</span>result<span class="hl opt">,</span> <span class="hl str">&quot;blurry_parrot_2.png&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">save_image</span><span class="hl opt">(</span>result<span class="hl opt">,</span> <span class="hl str">&quot;blurry_parrot_2.png&quot;</span><span class="hl opt">);</span>
     <span class="hl opt">}</span>
 
     <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>

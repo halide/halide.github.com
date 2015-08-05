@@ -54,6 +54,7 @@ function toggle(id) {
         <ul class="nav">
           <li class="active"><a href="/index.html#overview">Overview</a></li>
           <li><a href="/index.html#gettingstarted">Getting Started</a></li>
+          <li><a href="/tutorials/tutorial_introduction.html">Tutorials</a></li>
           <li><a href="/index.html#publications">Publications</a></li>
           <li><a href="/index.html#resources">Resources</a></li>
           <li class="divider-vertical"></li>
@@ -237,11 +238,11 @@ tutorial_lesson_14_types.html
 <span class="hl slc">// Halide tutorial lesson 9: Multi-pass Funcs, update definitions, and reductions</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_09*.cpp -g -std=c++11 -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -fopenmp -o lesson_09</span>
+<span class="hl slc">// g++ lesson_09*.cpp -g -std=c++11 -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -lpthread -ldl -fopenmp -o lesson_09</span>
 <span class="hl slc">// LD_LIBRARY_PATH=../bin ./lesson_09</span>
 
 <span class="hl slc">// On os x (will only work if you actually have g++, not Apple's pretend g++ which is actually clang):</span>
-<span class="hl slc">// g++ lesson_09*.cpp -g -std=c++11 -I ../include -L ../bin -lHalide `libpng-config --cflags --ldflags` -fopenmp -o lesson_09</span>
+<span class="hl slc">// g++ lesson_09*.cpp -g -std=c++11 -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -fopenmp -o lesson_09</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=../bin ./lesson_09</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -264,14 +265,15 @@ tutorial_lesson_14_types.html
 <span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
 
 <span class="hl slc">// Support code for loading pngs.</span>
-<span class="hl ppc">#include</span> <span class="hl pps">&quot;image_io.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;halide_image_io.h&quot;</span><span class="hl ppc"></span>
+<span class="hl kwa">using namespace</span> Halide<span class="hl opt">::</span>Tools<span class="hl opt">;</span>
 
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
     <span class="hl slc">// Declare some Vars to use below.</span>
     Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">);</span>
 
     <span class="hl slc">// Load a grayscale image to use as an input.</span>
-    Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> load<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span><span class="hl str">&quot;images/gray.png&quot;</span><span class="hl opt">);</span>
+    Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> <span class="hl kwd">load_image</span><span class="hl opt">(</span><span class="hl str">&quot;images/gray.png&quot;</span><span class="hl opt">);</span>
 
     <span class="hl slc">// You can define a Func in multiple passes. Let's see a toy</span>
     <span class="hl slc">// example first.</span>
@@ -340,8 +342,8 @@ tutorial_lesson_14_types.html
         g<span class="hl opt">.</span><span class="hl kwd">trace_loads</span><span class="hl opt">();</span>
         g<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
-        g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span> 
-        <a onclick='return toggle("_107");'><b id=_107-show>// Click to show output ...</b></a><div id=_107 style= "display:none; background:#333333; color:#ffffff"><b>
+        g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+<a onclick='return toggle("_107");'><b id=_107-show>// Click to show output ...</b></a><div id=_107 style= "display:none; background:#333333; color:#ffffff"><b>
  > Store g.0(0, 0) = 0
  > Store g.0(1, 0) = 1
  > Store g.0(2, 0) = 2
