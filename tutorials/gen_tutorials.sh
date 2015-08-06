@@ -156,7 +156,8 @@ EOF
             let LINE_NUMBER+=1
             OUTPUT_SNIPPET_FILE=$(echo $f | sed "s/lesson_\(..\).*/figures\/lesson_\1_output_${LINE_NUMBER}.txt/")
             if [ -f $OUTPUT_SNIPPET_FILE ]; then
-                echo $LINE //OUTPUT_SNIPPET $OUTPUT_SNIPPET_FILE >> tmp.cpp
+                echo $LINE >> tmp.cpp
+                echo //OUTPUT_SNIPPET $OUTPUT_SNIPPET_FILE >> tmp.cpp
             else
                 echo $LINE >> tmp.cpp
             fi
@@ -183,7 +184,8 @@ EOF
             NEXT_OUTPUT_SNIPPET=$(echo $LINE | sed "s/.*OUTPUT_SNIPPET //" | sed "s/<.*//")
             # Also remember the current indentation level
             SNIPPET_SPACES=$(echo $LINE | sed "s/^\( *\).*$/\1/")
-            echo "$LINE" | sed "s/.span[^<]*OUTPUT_SNIPPET[^>]*span.//" >> $h
+            echo FOO $LINE
+            #echo "$LINE" | sed "s/.span[^<]*OUTPUT_SNIPPET[^>]*span.//" >> $h
         elif [[ "$LINE" == *figures/lesson* ]]; then
             # Found a figure reference. Remember this figure and place
             # it on the next empty line
