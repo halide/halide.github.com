@@ -348,7 +348,8 @@ tutorial_lesson_15_generators_usage.html
     <span class="hl slc">// smaller size. If we request a larger size Halide will throw an</span>
     <span class="hl slc">// error at runtime telling us we're trying to read out of bounds</span>
     <span class="hl slc">// on the input image.</span>
-    Halide<span class="hl opt">::</span>Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> brighter<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">());</span>
+    Halide<span class="hl opt">::</span>Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span>
+        brighter<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">());</span>
 
     <span class="hl slc">// Save the output for inspection. It should look like a bright parrot.</span>
     <span class="hl kwd">save_image</span><span class="hl opt">(</span>output<span class="hl opt">,</span> <span class="hl str">&quot;brighter.png&quot;</span><span class="hl opt">);</span>
