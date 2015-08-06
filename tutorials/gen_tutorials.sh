@@ -157,7 +157,8 @@ EOF
             OUTPUT_SNIPPET_FILE=$(echo $f | sed "s/lesson_\(..\).*/figures\/lesson_\1_output_${LINE_NUMBER}.txt/")
             if [ -f $OUTPUT_SNIPPET_FILE ]; then
                 echo $LINE >> tmp.cpp
-                echo //OUTPUT_SNIPPET $OUTPUT_SNIPPET_FILE >> tmp.cpp
+                SNIPPET_SPACES=$(echo $LINE | sed "s/^\( *\).*$/\1/")
+                echo "${SNIPPET_SPACES}//OUTPUT_SNIPPET" $OUTPUT_SNIPPET_FILE >> tmp.cpp
             else
                 echo $LINE >> tmp.cpp
             fi
