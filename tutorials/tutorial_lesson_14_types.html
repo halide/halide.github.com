@@ -391,8 +391,9 @@ Expr <span class="hl kwd">average</span><span class="hl opt">(</span>Expr a<span
         <span class="hl slc">// The rules above handle all the floating-point cases. The</span>
         <span class="hl slc">// following three rules handle the integer cases.</span>
 
-        <span class="hl slc">// 5) If one of the expressions is an integer constant, then it is</span>
-        <span class="hl slc">// coerced to the type of the other expression.</span>
+        <span class="hl slc">// 5) If one of the arguments is an C++ int, and the other is</span>
+        <span class="hl slc">// a Halide::Expr, then the int is coerced to the type of the</span>
+        <span class="hl slc">// expression.</span>
         <span class="hl kwa">assert</span><span class="hl opt">((</span>u32 <span class="hl opt">+</span> <span class="hl num">3</span><span class="hl opt">).</span><span class="hl kwd">type</span><span class="hl opt">() ==</span> <span class="hl kwd">UInt</span><span class="hl opt">(</span><span class="hl num">32</span><span class="hl opt">));</span>
         <span class="hl kwa">assert</span><span class="hl opt">((</span><span class="hl num">3</span> <span class="hl opt">+</span> s16<span class="hl opt">).</span><span class="hl kwd">type</span><span class="hl opt">() ==</span> <span class="hl kwd">Int</span><span class="hl opt">(</span><span class="hl num">16</span><span class="hl opt">));</span>
 

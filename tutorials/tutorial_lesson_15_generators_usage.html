@@ -407,7 +407,7 @@ nm my_second_generator_1.o | <span class="hl kwc">grep</span> <span class="hl st
 <span class="hl slc"># Let's define some functions to check that the runtime exists in a file.</span>
 check_runtime<span class="hl opt">()</span>
 <span class="hl opt">{</span>
-    <span class="hl kwa">if</span> <span class="hl opt">!(</span>nm <span class="hl kwd">$1</span> | <span class="hl kwc">grep</span> <span class="hl str">&quot;[SW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">);</span> <span class="hl kwa">then</span>
+    <span class="hl kwa">if</span> <span class="hl opt">!(</span>nm <span class="hl kwd">$1</span> | <span class="hl kwc">grep</span> <span class="hl str">&quot;[TSW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">);</span> <span class="hl kwa">then</span>
         <span class="hl kwb">echo</span> <span class="hl str">&quot;Halide runtime not found in $1&quot;</span>
 	<span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
     <span class="hl kwa">fi</span>
@@ -415,7 +415,7 @@ check_runtime<span class="hl opt">()</span>
 
 check_no_runtime<span class="hl opt">()</span>
 <span class="hl opt">{</span>
-    <span class="hl kwa">if</span> nm <span class="hl kwd">$1</span> | <span class="hl kwc">grep</span> <span class="hl str">&quot;[SW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">;</span> <span class="hl kwa">then</span>
+    <span class="hl kwa">if</span> nm <span class="hl kwd">$1</span> | <span class="hl kwc">grep</span> <span class="hl str">&quot;[TSW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">;</span> <span class="hl kwa">then</span>
         <span class="hl kwb">echo</span> <span class="hl str">&quot;Halide runtime found in $1&quot;</span>
 	<span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
     <span class="hl kwa">fi</span>

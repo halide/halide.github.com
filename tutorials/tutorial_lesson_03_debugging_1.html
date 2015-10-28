@@ -335,9 +335,9 @@ tutorial_lesson_15_generators_usage.html
  >   assert((gradient.elem_size == 4), halide_error_bad_elem_size("Output buffer gradient", "int32", gradient.elem_size, 4))
  >   assert((gradient.stride.0 == 1), halide_error_constraint_violated("gradient.stride.0", gradient.stride.0, "1", 1))
  >   let gradient.total_extent.1 = (int64(gradient.extent.1)*int64(gradient.extent.0))
- >   assert((int64(gradient.extent.0) <= int64(2147483647)), halide_error_buffer_allocation_too_large("gradient", int64(gradient.extent.0), int64(2147483647)))
- >   assert(((int64(gradient.extent.1)*int64(gradient.stride.1)) <= int64(2147483647)), halide_error_buffer_allocation_too_large("gradient", (int64(gradient.extent.1)*int64(gradient.stride.1)), int64(2147483647)))
- >   assert((gradient.total_extent.1 <= int64(2147483647)), halide_error_buffer_extents_too_large("gradient", gradient.total_extent.1, int64(2147483647)))
+ >   assert((int64(gradient.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("gradient", int64(gradient.extent.0), (int64)2147483647))
+ >   assert(((int64(gradient.extent.1)*int64(gradient.stride.1)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("gradient", (int64(gradient.extent.1)*int64(gradient.stride.1)), (int64)2147483647))
+ >   assert((gradient.total_extent.1 <= (int64)2147483647), halide_error_buffer_extents_too_large("gradient", gradient.total_extent.1, (int64)2147483647))
  >   produce gradient {
  >     for (gradient.s0.y, gradient.min.1, gradient.extent.1) {
  >       for (gradient.s0.x, gradient.min.0, gradient.extent.0) {
@@ -354,8 +354,8 @@ tutorial_lesson_15_generators_usage.html
  > Generating llvm bitcode for function gradient...
  > JIT compiling shared runtime
  > JIT compiling halide_module_gradient
- > JIT input scalar argument __user_context @ 0x1f87c60
- > JIT output buffer b0 @ 0x1f4af30
+ > JIT input scalar argument __user_context @ 0x1302d60
+ > JIT output buffer b0 @ 0x13789f0
  > Creating initial loop nests...
  > Injecting realization of gradient
  > Skipping injecting memoization...
@@ -389,9 +389,9 @@ tutorial_lesson_15_generators_usage.html
  >   assert((gradient.elem_size == 4), halide_error_bad_elem_size("Output buffer gradient", "int32", gradient.elem_size, 4))
  >   assert((gradient.stride.0 == 1), halide_error_constraint_violated("gradient.stride.0", gradient.stride.0, "1", 1))
  >   let gradient.total_extent.1 = (int64(gradient.extent.1)*int64(gradient.extent.0))
- >   assert((int64(gradient.extent.0) <= int64(2147483647)), halide_error_buffer_allocation_too_large("gradient", int64(gradient.extent.0), int64(2147483647)))
- >   assert(((int64(gradient.extent.1)*int64(gradient.stride.1)) <= int64(2147483647)), halide_error_buffer_allocation_too_large("gradient", (int64(gradient.extent.1)*int64(gradient.stride.1)), int64(2147483647)))
- >   assert((gradient.total_extent.1 <= int64(2147483647)), halide_error_buffer_extents_too_large("gradient", gradient.total_extent.1, int64(2147483647)))
+ >   assert((int64(gradient.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("gradient", int64(gradient.extent.0), (int64)2147483647))
+ >   assert(((int64(gradient.extent.1)*int64(gradient.stride.1)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("gradient", (int64(gradient.extent.1)*int64(gradient.stride.1)), (int64)2147483647))
+ >   assert((gradient.total_extent.1 <= (int64)2147483647), halide_error_buffer_extents_too_large("gradient", gradient.total_extent.1, (int64)2147483647))
  >   produce gradient {
  >     for (gradient.s0.y, gradient.min.1, gradient.extent.1) {
  >       for (gradient.s0.x, gradient.min.0, gradient.extent.0) {

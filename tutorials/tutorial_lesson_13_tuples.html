@@ -344,10 +344,10 @@ tutorial_lesson_15_generators_usage.html
     <span class="hl opt">{</span>
         Realization r <span class="hl opt">=</span> multi_valued<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">80</span><span class="hl opt">,</span> <span class="hl num">60</span><span class="hl opt">);</span>
         <span class="hl kwa">assert</span><span class="hl opt">(</span>r<span class="hl opt">.</span><span class="hl kwd">size</span><span class="hl opt">() ==</span> <span class="hl num">2</span><span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> im1 <span class="hl opt">=</span> r<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> im2 <span class="hl opt">=</span> r<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
-        <span class="hl kwa">assert</span><span class="hl opt">(</span><span class="hl kwd">im1</span><span class="hl opt">(</span><span class="hl num">30</span><span class="hl opt">,</span> <span class="hl num">40</span><span class="hl opt">) ==</span> <span class="hl num">30</span> <span class="hl opt">+</span> <span class="hl num">40</span><span class="hl opt">);</span>
-        <span class="hl kwa">assert</span><span class="hl opt">(</span><span class="hl kwd">im2</span><span class="hl opt">(</span><span class="hl num">30</span><span class="hl opt">,</span> <span class="hl num">40</span><span class="hl opt">) ==</span> <span class="hl kwd">sinf</span><span class="hl opt">(</span><span class="hl num">30</span> <span class="hl opt">*</span> <span class="hl num">40</span><span class="hl opt">));</span>
+        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> im0 <span class="hl opt">=</span> r<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
+        Image<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> im1 <span class="hl opt">=</span> r<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
+        <span class="hl kwa">assert</span><span class="hl opt">(</span><span class="hl kwd">im0</span><span class="hl opt">(</span><span class="hl num">30</span><span class="hl opt">,</span> <span class="hl num">40</span><span class="hl opt">) ==</span> <span class="hl num">30</span> <span class="hl opt">+</span> <span class="hl num">40</span><span class="hl opt">);</span>
+        <span class="hl kwa">assert</span><span class="hl opt">(</span><span class="hl kwd">im1</span><span class="hl opt">(</span><span class="hl num">30</span><span class="hl opt">,</span> <span class="hl num">40</span><span class="hl opt">) ==</span> <span class="hl kwd">sinf</span><span class="hl opt">(</span><span class="hl num">30</span> <span class="hl opt">*</span> <span class="hl num">40</span><span class="hl opt">));</span>
     <span class="hl opt">}</span>
 
     <span class="hl slc">// All Tuple elements are evaluated together over the same domain</span>
@@ -355,7 +355,7 @@ tutorial_lesson_15_generators_usage.html
     <span class="hl slc">// equivalent C++ code to the above is:</span>
     <span class="hl opt">{</span>
         <span class="hl kwb">int</span> multi_valued_0<span class="hl opt">[</span><span class="hl num">80</span><span class="hl opt">*</span><span class="hl num">60</span><span class="hl opt">];</span>
-        <span class="hl kwb">int</span> multi_valued_1<span class="hl opt">[</span><span class="hl num">80</span><span class="hl opt">*</span><span class="hl num">60</span><span class="hl opt">];</span>
+        <span class="hl kwb">float</span> multi_valued_1<span class="hl opt">[</span><span class="hl num">80</span><span class="hl opt">*</span><span class="hl num">60</span><span class="hl opt">];</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">80</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">60</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
                 multi_valued_0<span class="hl opt">[</span>x <span class="hl opt">+</span> <span class="hl num">60</span><span class="hl opt">*</span>y<span class="hl opt">] =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
@@ -400,8 +400,8 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl kwd">input_func</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x<span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> input_func<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">100</span><span class="hl opt">);</span>
 
-        <span class="hl slc">// Then we defined a 2-valued Tuple which tracks the maximum value</span>
-        <span class="hl slc">// its index.</span>
+        <span class="hl slc">// Then we define a 2-valued Tuple which tracks the maximum</span>
+        <span class="hl slc">// value and its index.</span>
         Func arg_max<span class="hl opt">;</span>
 
         <span class="hl slc">// Pure definition.</span>

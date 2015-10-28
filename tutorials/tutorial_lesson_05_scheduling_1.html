@@ -300,6 +300,7 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient row-major</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
         <a onclick='return toggle("_45");'><b id=_45-show>// Click to show output ...</b></a><div id=_45 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline gradient.0()
  > Store gradient.0(0, 0) = 0
  > Store gradient.0(1, 0) = 1
  > Store gradient.0(2, 0) = 2
@@ -316,6 +317,7 @@ tutorial_lesson_15_generators_usage.html
  > Store gradient.0(1, 3) = 4
  > Store gradient.0(2, 3) = 5
  > Store gradient.0(3, 3) = 6
+ > End pipeline gradient.0()
 
 </b></div>
 
@@ -374,6 +376,7 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient column-major</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
         <a onclick='return toggle("_91");'><b id=_91-show>// Click to show output ...</b></a><div id=_91 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline gradient_col_major.0()
  > Store gradient_col_major.0(0, 0) = 0
  > Store gradient_col_major.0(0, 1) = 1
  > Store gradient_col_major.0(0, 2) = 2
@@ -390,6 +393,7 @@ tutorial_lesson_15_generators_usage.html
  > Store gradient_col_major.0(3, 1) = 4
  > Store gradient_col_major.0(3, 2) = 5
  > Store gradient_col_major.0(3, 3) = 6
+ > End pipeline gradient_col_major.0()
 
 </b></div>
 
@@ -444,6 +448,7 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x split into x_outer and x_inner</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
         <a onclick='return toggle("_133");'><b id=_133-show>// Click to show output ...</b></a><div id=_133 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline gradient_split.0()
  > Store gradient_split.0(0, 0) = 0
  > Store gradient_split.0(1, 0) = 1
  > Store gradient_split.0(2, 0) = 2
@@ -460,6 +465,7 @@ tutorial_lesson_15_generators_usage.html
  > Store gradient_split.0(1, 3) = 4
  > Store gradient_split.0(2, 3) = 5
  > Store gradient_split.0(3, 3) = 6
+ > End pipeline gradient_split.0()
 
 </b></div>
 
@@ -555,6 +561,7 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient in 4x4 tiles</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
         <a onclick='return toggle("_211");'><b id=_211-show>// Click to show output ...</b></a><div id=_211 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline gradient_tiled.0()
  > Store gradient_tiled.0(0, 0) = 0
  > Store gradient_tiled.0(1, 0) = 1
  > Store gradient_tiled.0(2, 0) = 2
@@ -619,6 +626,7 @@ tutorial_lesson_15_generators_usage.html
  > Store gradient_tiled.0(5, 7) = 12
  > Store gradient_tiled.0(6, 7) = 13
  > Store gradient_tiled.0(7, 7) = 14
+ > End pipeline gradient_tiled.0()
 
 </b></div>
 
@@ -692,6 +700,7 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x_inner vectorized</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
         <a onclick='return toggle("_270");'><b id=_270-show>// Click to show output ...</b></a><div id=_270 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline gradient_in_vectors.0()
  > Store gradient_in_vectors.0(<0, 1, 2, 3>, <0, 0, 0, 0>) = <0, 1, 2, 3>
  > Store gradient_in_vectors.0(<4, 5, 6, 7>, <0, 0, 0, 0>) = <4, 5, 6, 7>
  > Store gradient_in_vectors.0(<0, 1, 2, 3>, <1, 1, 1, 1>) = <1, 2, 3, 4>
@@ -700,6 +709,7 @@ tutorial_lesson_15_generators_usage.html
  > Store gradient_in_vectors.0(<4, 5, 6, 7>, <2, 2, 2, 2>) = <6, 7, 8, 9>
  > Store gradient_in_vectors.0(<0, 1, 2, 3>, <3, 3, 3, 3>) = <3, 4, 5, 6>
  > Store gradient_in_vectors.0(<4, 5, 6, 7>, <3, 3, 3, 3>) = <7, 8, 9, 10>
+ > End pipeline gradient_in_vectors.0()
 
 </b></div>
 
@@ -766,6 +776,7 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient unrolled by a factor of two</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
         <a onclick='return toggle("_323");'><b id=_323-show>// Click to show output ...</b></a><div id=_323 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline gradient_unroll.0()
  > Store gradient_unroll.0(0, 0) = 0
  > Store gradient_unroll.0(1, 0) = 1
  > Store gradient_unroll.0(2, 0) = 2
@@ -782,6 +793,7 @@ tutorial_lesson_15_generators_usage.html
  > Store gradient_unroll.0(1, 3) = 4
  > Store gradient_unroll.0(2, 3) = 5
  > Store gradient_unroll.0(3, 3) = 6
+ > End pipeline gradient_unroll.0()
 
 </b></div>
 
@@ -819,7 +831,7 @@ tutorial_lesson_15_generators_usage.html
 
     <span class="hl slc">// Splitting by factors that don't divide the extent.</span>
     <span class="hl opt">{</span>
-        Func <span class="hl kwd">gradient</span><span class="hl opt">(</span><span class="hl str">&quot;gradient_split_7x4&quot;</span><span class="hl opt">);</span>
+        Func <span class="hl kwd">gradient</span><span class="hl opt">(</span><span class="hl str">&quot;gradient_split_7x2&quot;</span><span class="hl opt">);</span>
         <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
@@ -828,49 +840,33 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl slc">// above. So what happens when the total extent we wish to</span>
         <span class="hl slc">// evaluate x over isn't a multiple of the split factor? We'll</span>
         <span class="hl slc">// split by a factor three, and we'll evaluate gradient over a</span>
-        <span class="hl slc">// 7x4 box instead of the 4x4 box we've been using.</span>
+        <span class="hl slc">// 7x2 box instead of the 4x4 box we've been using.</span>
         Var x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">;</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>x<span class="hl opt">,</span> x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
 
-        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient over a 7x4 box with x split by three</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient over a 7x2 box with x split by three</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">);</span>
         <a onclick='return toggle("_365");'><b id=_365-show>// Click to show output ...</b></a><div id=_365 style= "display:none; background:#333333; color:#ffffff"><b>
- > Store gradient_split_7x4.0(0, 0) = 0
- > Store gradient_split_7x4.0(1, 0) = 1
- > Store gradient_split_7x4.0(2, 0) = 2
- > Store gradient_split_7x4.0(3, 0) = 3
- > Store gradient_split_7x4.0(4, 0) = 4
- > Store gradient_split_7x4.0(5, 0) = 5
- > Store gradient_split_7x4.0(4, 0) = 4
- > Store gradient_split_7x4.0(5, 0) = 5
- > Store gradient_split_7x4.0(6, 0) = 6
- > Store gradient_split_7x4.0(0, 1) = 1
- > Store gradient_split_7x4.0(1, 1) = 2
- > Store gradient_split_7x4.0(2, 1) = 3
- > Store gradient_split_7x4.0(3, 1) = 4
- > Store gradient_split_7x4.0(4, 1) = 5
- > Store gradient_split_7x4.0(5, 1) = 6
- > Store gradient_split_7x4.0(4, 1) = 5
- > Store gradient_split_7x4.0(5, 1) = 6
- > Store gradient_split_7x4.0(6, 1) = 7
- > Store gradient_split_7x4.0(0, 2) = 2
- > Store gradient_split_7x4.0(1, 2) = 3
- > Store gradient_split_7x4.0(2, 2) = 4
- > Store gradient_split_7x4.0(3, 2) = 5
- > Store gradient_split_7x4.0(4, 2) = 6
- > Store gradient_split_7x4.0(5, 2) = 7
- > Store gradient_split_7x4.0(4, 2) = 6
- > Store gradient_split_7x4.0(5, 2) = 7
- > Store gradient_split_7x4.0(6, 2) = 8
- > Store gradient_split_7x4.0(0, 3) = 3
- > Store gradient_split_7x4.0(1, 3) = 4
- > Store gradient_split_7x4.0(2, 3) = 5
- > Store gradient_split_7x4.0(3, 3) = 6
- > Store gradient_split_7x4.0(4, 3) = 7
- > Store gradient_split_7x4.0(5, 3) = 8
- > Store gradient_split_7x4.0(4, 3) = 7
- > Store gradient_split_7x4.0(5, 3) = 8
- > Store gradient_split_7x4.0(6, 3) = 9
+ > Begin pipeline gradient_split_7x2.0()
+ > Store gradient_split_7x2.0(0, 0) = 0
+ > Store gradient_split_7x2.0(1, 0) = 1
+ > Store gradient_split_7x2.0(2, 0) = 2
+ > Store gradient_split_7x2.0(3, 0) = 3
+ > Store gradient_split_7x2.0(4, 0) = 4
+ > Store gradient_split_7x2.0(5, 0) = 5
+ > Store gradient_split_7x2.0(4, 0) = 4
+ > Store gradient_split_7x2.0(5, 0) = 5
+ > Store gradient_split_7x2.0(6, 0) = 6
+ > Store gradient_split_7x2.0(0, 1) = 1
+ > Store gradient_split_7x2.0(1, 1) = 2
+ > Store gradient_split_7x2.0(2, 1) = 3
+ > Store gradient_split_7x2.0(3, 1) = 4
+ > Store gradient_split_7x2.0(4, 1) = 5
+ > Store gradient_split_7x2.0(5, 1) = 6
+ > Store gradient_split_7x2.0(4, 1) = 5
+ > Store gradient_split_7x2.0(5, 1) = 6
+ > Store gradient_split_7x2.0(6, 1) = 7
+ > End pipeline gradient_split_7x2.0()
 
 </b></div>
 
@@ -881,12 +877,12 @@ tutorial_lesson_15_generators_usage.html
          <span><img src= figures/lesson_05_split_7_by_3.gif ></span>
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
-            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_outer <span class="hl opt">&lt;</span> <span class="hl num">3</span><span class="hl opt">;</span> x_outer<span class="hl opt">++) {</span> <span class="hl slc">// Now runs from 0 to 3</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_outer <span class="hl opt">&lt;</span> <span class="hl num">3</span><span class="hl opt">;</span> x_outer<span class="hl opt">++) {</span> <span class="hl slc">// Now runs from 0 to 2</span>
                 <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_inner <span class="hl opt">&lt;</span> <span class="hl num">3</span><span class="hl opt">;</span> x_inner<span class="hl opt">++) {</span>
                     <span class="hl kwb">int</span> x <span class="hl opt">=</span> x_outer <span class="hl opt">*</span> <span class="hl num">3</span><span class="hl opt">;</span>
                     <span class="hl slc">// Before we add x_inner, make sure we don't</span>
-                    <span class="hl slc">// evaluate points outside of the 7x4 box. We'll</span>
+                    <span class="hl slc">// evaluate points outside of the 7x2 box. We'll</span>
                     <span class="hl slc">// clamp x to be at most 4 (7 minus the split</span>
                     <span class="hl slc">// factor).</span>
                     <span class="hl kwa">if</span> <span class="hl opt">(</span>x <span class="hl opt">&gt;</span> <span class="hl num">4</span><span class="hl opt">)</span> x <span class="hl opt">=</span> <span class="hl num">4</span><span class="hl opt">;</span>
@@ -901,11 +897,11 @@ tutorial_lesson_15_generators_usage.html
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_389");'><b id=_389-show>// Click to show output ...</b></a><div id=_389 style= "display:none; background:#333333; color:#ffffff"><b>
- > compute gradient_split_7x4:
+ > compute gradient_split_7x2:
  >   for y:
  >     for x.x_outer:
  >       for x.x_inner in [0, 2]:
- >         gradient_split_7x4(...) = ...
+ >         gradient_split_7x2(...) = ...
 
 </b></div>
 
@@ -971,70 +967,72 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient tiles in parallel</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
         <a onclick='return toggle("_452");'><b id=_452-show>// Click to show output ...</b></a><div id=_452 style= "display:none; background:#333333; color:#ffffff"><b>
- > Store gradient_fused_tiles.0(4, 0) = 4
- > Store gradient_fused_tiles.0(5, 0) = 5
- > Store gradient_fused_tiles.0(6, 0) = 6
- > Store gradient_fused_tiles.0(7, 0) = 7
- > Store gradient_fused_tiles.0(4, 1) = 5
- > Store gradient_fused_tiles.0(5, 1) = 6
- > Store gradient_fused_tiles.0(6, 1) = 7
- > Store gradient_fused_tiles.0(7, 1) = 8
- > Store gradient_fused_tiles.0(4, 2) = 6
- > Store gradient_fused_tiles.0(5, 2) = 7
- > Store gradient_fused_tiles.0(6, 2) = 8
- > Store gradient_fused_tiles.0(7, 2) = 9
- > Store gradient_fused_tiles.0(4, 3) = 7
- > Store gradient_fused_tiles.0(5, 3) = 8
- > Store gradient_fused_tiles.0(6, 3) = 9
- > Store gradient_fused_tiles.0(7, 3) = 10
+ > Begin pipeline gradient_fused_tiles.0()
  > Store gradient_fused_tiles.0(0, 0) = 0
  > Store gradient_fused_tiles.0(1, 0) = 1
- > Store gradient_fused_tiles.0(0, 4) = 4
  > Store gradient_fused_tiles.0(2, 0) = 2
- > Store gradient_fused_tiles.0(4, 4) = 8
  > Store gradient_fused_tiles.0(3, 0) = 3
- > Store gradient_fused_tiles.0(1, 4) = 5
  > Store gradient_fused_tiles.0(0, 1) = 1
- > Store gradient_fused_tiles.0(5, 4) = 9
  > Store gradient_fused_tiles.0(1, 1) = 2
- > Store gradient_fused_tiles.0(2, 4) = 6
  > Store gradient_fused_tiles.0(2, 1) = 3
- > Store gradient_fused_tiles.0(6, 4) = 10
  > Store gradient_fused_tiles.0(3, 1) = 4
- > Store gradient_fused_tiles.0(3, 4) = 7
- > Store gradient_fused_tiles.0(7, 4) = 11
  > Store gradient_fused_tiles.0(0, 2) = 2
- > Store gradient_fused_tiles.0(4, 5) = 9
  > Store gradient_fused_tiles.0(1, 2) = 3
- > Store gradient_fused_tiles.0(0, 5) = 5
  > Store gradient_fused_tiles.0(2, 2) = 4
- > Store gradient_fused_tiles.0(5, 5) = 10
  > Store gradient_fused_tiles.0(3, 2) = 5
- > Store gradient_fused_tiles.0(1, 5) = 6
  > Store gradient_fused_tiles.0(0, 3) = 3
- > Store gradient_fused_tiles.0(6, 5) = 11
  > Store gradient_fused_tiles.0(1, 3) = 4
- > Store gradient_fused_tiles.0(7, 5) = 12
  > Store gradient_fused_tiles.0(2, 3) = 5
- > Store gradient_fused_tiles.0(2, 5) = 7
  > Store gradient_fused_tiles.0(3, 3) = 6
- > Store gradient_fused_tiles.0(3, 5) = 8
+ > Store gradient_fused_tiles.0(4, 4) = 8
+ > Store gradient_fused_tiles.0(5, 4) = 9
+ > Store gradient_fused_tiles.0(6, 4) = 10
+ > Store gradient_fused_tiles.0(7, 4) = 11
+ > Store gradient_fused_tiles.0(4, 5) = 9
+ > Store gradient_fused_tiles.0(5, 5) = 10
+ > Store gradient_fused_tiles.0(6, 5) = 11
+ > Store gradient_fused_tiles.0(7, 5) = 12
  > Store gradient_fused_tiles.0(4, 6) = 10
- > Store gradient_fused_tiles.0(0, 6) = 6
+ > Store gradient_fused_tiles.0(4, 0) = 4
+ > Store gradient_fused_tiles.0(0, 4) = 4
  > Store gradient_fused_tiles.0(5, 6) = 11
- > Store gradient_fused_tiles.0(1, 6) = 7
  > Store gradient_fused_tiles.0(6, 6) = 12
- > Store gradient_fused_tiles.0(2, 6) = 8
+ > Store gradient_fused_tiles.0(5, 0) = 5
  > Store gradient_fused_tiles.0(7, 6) = 13
- > Store gradient_fused_tiles.0(3, 6) = 9
+ > Store gradient_fused_tiles.0(1, 4) = 5
+ > Store gradient_fused_tiles.0(6, 0) = 6
  > Store gradient_fused_tiles.0(4, 7) = 11
- > Store gradient_fused_tiles.0(0, 7) = 7
+ > Store gradient_fused_tiles.0(7, 0) = 7
  > Store gradient_fused_tiles.0(5, 7) = 12
- > Store gradient_fused_tiles.0(1, 7) = 8
+ > Store gradient_fused_tiles.0(2, 4) = 6
+ > Store gradient_fused_tiles.0(4, 1) = 5
  > Store gradient_fused_tiles.0(6, 7) = 13
- > Store gradient_fused_tiles.0(2, 7) = 9
+ > Store gradient_fused_tiles.0(3, 4) = 7
+ > Store gradient_fused_tiles.0(5, 1) = 6
  > Store gradient_fused_tiles.0(7, 7) = 14
+ > Store gradient_fused_tiles.0(0, 5) = 5
+ > Store gradient_fused_tiles.0(6, 1) = 7
+ > Store gradient_fused_tiles.0(1, 5) = 6
+ > Store gradient_fused_tiles.0(7, 1) = 8
+ > Store gradient_fused_tiles.0(2, 5) = 7
+ > Store gradient_fused_tiles.0(4, 2) = 6
+ > Store gradient_fused_tiles.0(3, 5) = 8
+ > Store gradient_fused_tiles.0(5, 2) = 7
+ > Store gradient_fused_tiles.0(6, 2) = 8
+ > Store gradient_fused_tiles.0(0, 6) = 6
+ > Store gradient_fused_tiles.0(7, 2) = 9
+ > Store gradient_fused_tiles.0(1, 6) = 7
+ > Store gradient_fused_tiles.0(4, 3) = 7
+ > Store gradient_fused_tiles.0(2, 6) = 8
+ > Store gradient_fused_tiles.0(5, 3) = 8
+ > Store gradient_fused_tiles.0(3, 6) = 9
+ > Store gradient_fused_tiles.0(6, 3) = 9
+ > Store gradient_fused_tiles.0(0, 7) = 7
+ > Store gradient_fused_tiles.0(7, 3) = 10
+ > Store gradient_fused_tiles.0(1, 7) = 8
+ > Store gradient_fused_tiles.0(2, 7) = 9
  > Store gradient_fused_tiles.0(3, 7) = 10
+ > End pipeline gradient_fused_tiles.0()
 
 </b></div>
 

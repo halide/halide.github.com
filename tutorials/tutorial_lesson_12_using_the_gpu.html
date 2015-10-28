@@ -338,18 +338,15 @@ Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="
         curved<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>y<span class="hl opt">,</span> yo<span class="hl opt">,</span> yi<span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">)</span>
               <span class="hl opt">.</span><span class="hl kwd">parallel</span><span class="hl opt">(</span>yo<span class="hl opt">);</span>
 
-        <span class="hl slc">// Compute sharpen as needed per scanline of curved, reusing</span>
-        <span class="hl slc">// previous values computed within the same strip of 16</span>
-        <span class="hl slc">// scanlines.</span>
-        sharpen<span class="hl opt">.</span><span class="hl kwd">store_at</span><span class="hl opt">(</span>curved<span class="hl opt">,</span> yo<span class="hl opt">)</span>
-               <span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>curved<span class="hl opt">,</span> yi<span class="hl opt">);</span>
+        <span class="hl slc">// Compute sharpen as needed per scanline of curved.</span>
+        sharpen<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>curved<span class="hl opt">,</span> yi<span class="hl opt">);</span>
 
         <span class="hl slc">// Vectorize the sharpen. It's 16-bit so we'll vectorize it 8-wide.</span>
         sharpen<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
 
-        <span class="hl slc">// Compute the padded input at the same granularity as the</span>
-        <span class="hl slc">// sharpen. We'll leave the cast to 16-bit inlined into</span>
-        <span class="hl slc">// sharpen.</span>
+        <span class="hl slc">// Compute the padded input as needed per scanline of curved,</span>
+        <span class="hl slc">// reusing previous values computed within the same strip of</span>
+        <span class="hl slc">// 16 scanlines.</span>
         padded<span class="hl opt">.</span><span class="hl kwd">store_at</span><span class="hl opt">(</span>curved<span class="hl opt">,</span> yo<span class="hl opt">)</span>
               <span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>curved<span class="hl opt">,</span> yi<span class="hl opt">);</span>
 

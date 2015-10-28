@@ -363,6 +363,7 @@ tutorial_lesson_15_generators_usage.html
 
         g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
         <a onclick='return toggle("_108");'><b id=_108-show>// Click to show output ...</b></a><div id=_108 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline g.0()
  > Store g.0(0, 0) = 0
  > Store g.0(1, 0) = 1
  > Store g.0(2, 0) = 2
@@ -388,6 +389,7 @@ tutorial_lesson_15_generators_usage.html
  > Store g.0(2, 0) = 42
  > Load g.0(3, 1) = 4
  > Store g.0(3, 0) = 4
+ > End pipeline g.0()
 
 </b></div>
 
@@ -814,8 +816,8 @@ tutorial_lesson_15_generators_usage.html
             Func producer<span class="hl opt">,</span> consumer<span class="hl opt">;</span>
             <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span>x <span class="hl opt">*</span> y<span class="hl opt">) /</span> <span class="hl num">10</span> <span class="hl opt">+</span> <span class="hl num">8</span><span class="hl opt">;</span>
             <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
-            <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">) =</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> x<span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">);</span>
-            <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>y<span class="hl opt">,</span> y<span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">);</span>
+            <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">) =</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> x<span class="hl opt">);</span>
+            <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>y<span class="hl opt">,</span> <span class="hl num">9</span><span class="hl opt">-</span>y<span class="hl opt">);</span>
 
             <span class="hl slc">// In this case neither producer.compute_at(consumer, x)</span>
             <span class="hl slc">// nor producer.compute_at(consumer, y) will work, because</span>
