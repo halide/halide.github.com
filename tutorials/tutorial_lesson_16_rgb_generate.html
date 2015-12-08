@@ -1,0 +1,512 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>
+ RGB images and memory layouts part 1
+</title>
+<link rel="stylesheet" type="text/css" href="../assets/css/highlight.css">
+<style>
+
+a:visited {
+color: #000000;
+}
+
+a:link {
+color: #000000;
+}
+
+a:hover {
+color: #aa0000;
+}
+
+</style>
+</head>
+<body class="hl" style="background-color: #444444; font-family: Helvetica, Arial, sans-serif;">
+<script>
+function toggle(id) {
+    e = document.getElementById(id);
+    show = document.getElementById(id + '-show');
+    if (e.style.display != 'none') {
+        e.style.display = 'none';
+        show.innerHTML = "// Click to show output ...";
+    } else {
+        e.style.display = 'block';
+        show.innerHTML = "// Click to hide output ...";
+    }
+    return false;
+}
+</script>
+<div>
+<style scoped>
+@import "../assets/css/bootstrap.css";
+</style>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/index.html">Halide</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><a href="/index.html#gettingstarted">Getting Started</a></li>
+          <li><a href="/tutorials/tutorial_introduction.html">Tutorials</a></li>
+          <li><a href="/index.html#publications">Publications</a></li>
+          <li><a href="/index.html#resources">Resources</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="http://github.com/halide/Halide/issues">Bugs</a></li>
+          <li><a href="http://github.com/halide/Halide/wiki">Wiki</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="http://stackoverflow.com/questions/tagged/halide"><i class="fa fa-stack-overflow"></i>/#halide</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
+<div style='position:relative; width:900pt; top:60px;'>
+<div style="width:200px; float:left; ">
+<a href="tutorial_introduction.html" style="text-decoration:none;" ><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px;
+background-color: #dddddd; 
+text-align: left; ">
+<b>
+00
+&nbsp</b>
+Introduction
+</div>
+</span>
+</a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_01_basics.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+01
+&nbsp</b>
+ Getting started with Funcs, Vars, and Exprs
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_02_input_image.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+02
+&nbsp</b>
+ Processing images
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_03_debugging_1.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+03
+&nbsp</b>
+ Inspecting the generated code
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_04_debugging_2.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+04
+&nbsp</b>
+ Debugging with tracing, print, and print_when
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_05_scheduling_1.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+05
+&nbsp</b>
+ Vectorize, parallelize, unroll and tile your code
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_06_realizing_over_shifted_domains.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+06
+&nbsp</b>
+ Realizing Funcs over arbitrary domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_07_multi_stage_pipelines.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+07
+&nbsp</b>
+ Multi-stage pipelines
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_08_scheduling_2.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+08
+&nbsp</b>
+ Scheduling multi-stage pipelines
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_09_update_definitions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+09
+&nbsp</b>
+ Multi-pass Funcs, update definitions, and reductions
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_10_aot_compilation_generate.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+10
+&nbsp</b>
+ AOT compilation part 1
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_10_aot_compilation_run.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+10
+&nbsp</b>
+ AOT compilation part 2
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_11_cross_compilation.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+11
+&nbsp</b>
+ Cross-compilation
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_12_using_the_gpu.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+12
+&nbsp</b>
+ Using the GPU
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_13_tuples.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+13
+&nbsp</b>
+ Tuples
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_14_types.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+14
+&nbsp</b>
+ The Halide type system
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_15_generators.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+15
+&nbsp</b>
+ Generators part 1
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_16_rgb_generate.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; padding-right:40px; background-color: #ffffff; color: #000000; text-align: left; ">
+<b>
+16
+&nbsp</b>
+ RGB images and memory layouts part 1
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_16_rgb_run.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+16
+&nbsp</b>
+ RGB images and memory layouts part 2
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_15_generators_usage.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+15
+&nbsp</b>
+ Generators part 2
+</div></span></a>
+</div>
+<div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
+<pre class="hl">
+<span class="hl slc">// Halide tutorial lesson 16: RGB images and memory layouts part 1</span>
+
+<span class="hl slc">// This lesson demonstrates how to feed Halide RGB images in</span>
+<span class="hl slc">// interleaved or planar format, and how to write code optimized for</span>
+<span class="hl slc">// each case.</span>
+
+<span class="hl com">/* On linux or os x, you can compile and run it like so:</span>
+<span class="hl com"></span>
+<span class="hl com">g++ lesson_16_rgb_generate.cpp ../tools/GenGen.cpp -g -std=c++11 -fno-rtti -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_16_generate</span>
+<span class="hl com">export LD_LIBRARY_PATH=../bin   # For linux</span>
+<span class="hl com">export DYLD_LIBRARY_PATH=../bin # For OS X</span>
+<span class="hl com">./lesson_16_generate -o . -f brighten_planar      target=host layout=planar</span>
+<span class="hl com">./lesson_16_generate -o . -f brighten_interleaved target=host layout=interleaved</span>
+<span class="hl com">./lesson_16_generate -o . -f brighten_either      target=host layout=either</span>
+<span class="hl com">./lesson_16_generate -o . -f brighten_specialized target=host layout=specialized</span>
+<span class="hl com">g++ lesson_16_rgb_run.cpp brighten_*.o -ldl -lpthread -o lesson_16_run</span>
+<span class="hl com">./lesson_16_run</span>
+<span class="hl com"></span>
+<span class="hl com">figures/</span>
+<span class="hl com"></span>
+<span class="hl com">// If you have the entire Halide source tree, you can also build it by</span>
+<span class="hl com">// running:</span>
+<span class="hl com">//    make tutorial_lesson_16_rgb_run</span>
+<span class="hl com">// in a shell with the current directory at the top of the halide</span>
+<span class="hl com">// source tree.</span>
+<span class="hl com"></span>
+<span class="hl com">#include &quot;Halide.h&quot;</span>
+<span class="hl com">#include &lt;stdio.h&gt;</span>
+<span class="hl com"></span>
+<span class="hl com">using namespace Halide;</span>
+<span class="hl com"></span>
+<span class="hl com">// We will define a generator that brightens an RGB image.</span>
+<span class="hl com">class Brighten : public Halide::Generator&lt;Brighten&gt; {</span>
+<span class="hl com">public:</span>
+<span class="hl com">    // We declare a three-dimensional input image. The first two</span>
+<span class="hl com">    // dimensions will be x, and y, and the third dimension will be</span>
+<span class="hl com">    // the color channel.</span>
+<span class="hl com">    ImageParam input{UInt(8), 3, &quot;input&quot;};</span>
+<span class="hl com"></span>
+<span class="hl com">    // We will compile this generator in several ways to accept</span>
+<span class="hl com">    // several different memory layouts for the input and output. This</span>
+<span class="hl com">    // is a good use of a GeneratorParam (see lesson 15).</span>
+<span class="hl com">    enum class Layout { Planar, Interleaved, Either, Specialized };</span>
+<span class="hl com">    GeneratorParam&lt;Layout&gt; layout{&quot;layout&quot;,</span>
+<span class="hl com">            // default value</span>
+<span class="hl com">            Layout::Planar,</span>
+<span class="hl com">            // map from names to values</span>
+<span class="hl com">                {{ &quot;planar&quot;,        Layout::Planar },</span>
+<span class="hl com">                 { &quot;interleaved&quot;,   Layout::Interleaved },</span>
+<span class="hl com">                 { &quot;either&quot;,        Layout::Either },</span>
+<span class="hl com">                 { &quot;specialized&quot;,   Layout::Specialized }}};</span>
+<span class="hl com"></span>
+<span class="hl com">    // We also declare a scalar parameter to control the amount of</span>
+<span class="hl com">    // brightening.</span>
+<span class="hl com">    Param&lt;uint8_t&gt; offset{&quot;offset&quot;};</span>
+<span class="hl com"></span>
+<span class="hl com">    // Declare our Vars</span>
+<span class="hl com">    Var x, y, c;</span>
+<span class="hl com"></span>
+<span class="hl com">    Func build() {</span>
+<span class="hl com">        // Define the Func.</span>
+<span class="hl com">        Func brighter(&quot;brighter&quot;);</span>
+<span class="hl com">        brighter(x, y, c) = input(x, y, c) + offset;</span>
+<span class="hl com"></span>
+<span class="hl com">        // Schedule it.</span>
+<span class="hl com">        brighter.vectorize(x, 16);</span>
+<span class="hl com"></span>
+<span class="hl com">        // We will compile this pipeline to handle memory layouts in</span>
+<span class="hl com">        // several different ways, depending on the 'layout' generator</span>
+<span class="hl com">        // param.</span>
+<span class="hl com">        if (layout == Layout::Planar) {</span>
+<span class="hl com">            // This pipeline as written will only work with images in</span>
+<span class="hl com">            // which each scanline is densely-packed single color</span>
+<span class="hl com">            // channel. In terms of the strides described in lesson</span>
+<span class="hl com">            // 10, Halide assumes and asserts that the stride in x is</span>
+<span class="hl com">            // one.</span>
+<span class="hl com"></span>
+<span class="hl com">            // This constraint permits planar images, where the red,</span>
+<span class="hl com">            // green, and blue channels are laid out in memory like</span>
+<span class="hl com">            // this:</span>
+<span class="hl com"></span>
+<span class="hl com">            // RRRRRRRR</span>
+<span class="hl com">            // RRRRRRRR</span>
+<span class="hl com">            // RRRRRRRR</span>
+<span class="hl com">            // RRRRRRRR</span>
+<span class="hl com">            // GGGGGGGG</span>
+<span class="hl com">            // GGGGGGGG</span>
+<span class="hl com">            // GGGGGGGG</span>
+<span class="hl com">            // GGGGGGGG</span>
+<span class="hl com">            // BBBBBBBB</span>
+<span class="hl com">            // BBBBBBBB</span>
+<span class="hl com">            // BBBBBBBB</span>
+<span class="hl com">            // BBBBBBBB</span>
+<span class="hl com"></span>
+<span class="hl com">            // It also works with the less-commonly used line-by-line</span>
+<span class="hl com">            // layout, in which scanlines of red, green, and blue</span>
+<span class="hl com">            // alternate.</span>
+<span class="hl com"></span>
+<span class="hl com">            // RRRRRRRR</span>
+<span class="hl com">            // GGGGGGGG</span>
+<span class="hl com">            // BBBBBBBB</span>
+<span class="hl com">            // RRRRRRRR</span>
+<span class="hl com">            // GGGGGGGG</span>
+<span class="hl com">            // BBBBBBBB</span>
+<span class="hl com">            // RRRRRRRR</span>
+<span class="hl com">            // GGGGGGGG</span>
+<span class="hl com">            // BBBBBBBB</span>
+<span class="hl com">            // RRRRRRRR</span>
+<span class="hl com">            // GGGGGGGG</span>
+<span class="hl com">            // BBBBBBBB</span>
+<span class="hl com"></span>
+<span class="hl com">        } else if (layout == Layout::Interleaved) {</span>
+<span class="hl com">            // Another common format is 'interleaved', in which the</span>
+<span class="hl com">            // red, green, and blue values for each pixel occur next</span>
+<span class="hl com">            // to each other in memory:</span>
+<span class="hl com"></span>
+<span class="hl com">            // RGBRGBRGBRGBRGBRGBRGBRGB</span>
+<span class="hl com">            // RGBRGBRGBRGBRGBRGBRGBRGB</span>
+<span class="hl com">            // RGBRGBRGBRGBRGBRGBRGBRGB</span>
+<span class="hl com">            // RGBRGBRGBRGBRGBRGBRGBRGB</span>
+<span class="hl com"></span>
+<span class="hl com">            // In this case the stride in x is three, the stride in y</span>
+<span class="hl com">            // is three times the width of the image, and the stride</span>
+<span class="hl com">            // in c is one. We can tell Halide to assume (and assert)</span>
+<span class="hl com">            // that this is the case for the input and output like so:</span>
+<span class="hl com"></span>
+<span class="hl com">            input</span>
+<span class="hl com">                .set_stride(0, 3) // stride in dimension 0 (x) is three</span>
+<span class="hl com">                .set_stride(2, 1); // stride in dimension 2 (c) is one</span>
+<span class="hl com"></span>
+<span class="hl com">            brighter.output_buffer()</span>
+<span class="hl com">                .set_stride(0, 3)</span>
+<span class="hl com">                .set_stride(2, 1);</span>
+<span class="hl com"></span>
+<span class="hl com">            // For interleaved layout, you may want to use a different</span>
+<span class="hl com">            // schedule. We'll tell Halide to additionally assume and</span>
+<span class="hl com">            // assert that there are three color channels, then</span>
+<span class="hl com">            // exploit this fact to make the loop over 'c' innermost</span>
+<span class="hl com">            // and unrolled.</span>
+<span class="hl com"></span>
+<span class="hl com">            input.set_bounds(2, 0, 3); // Dimension 2 (c) starts at 0 and has extent 3.</span>
+<span class="hl com">            brighter.output_buffer().set_bounds(2, 0, 3);</span>
+<span class="hl com"></span>
+<span class="hl com">            // Move the loop over color channels innermost and unroll</span>
+<span class="hl com">            // it.</span>
+<span class="hl com">            brighter.reorder(c, x, y).unroll(c);</span>
+<span class="hl com"></span>
+<span class="hl com">            // Note that if we were dealing with an image with an</span>
+<span class="hl com">            // alpha channel (RGBA), then the stride in x and the</span>
+<span class="hl com">            // bounds of the channels dimension would both be four</span>
+<span class="hl com">            // instead of three.</span>
+<span class="hl com"></span>
+<span class="hl com">        } else if (layout == Layout::Either) {</span>
+<span class="hl com">            // We can also remove all constraints and compile a</span>
+<span class="hl com">            // pipeline that will work with any memory layout. It will</span>
+<span class="hl com">            // probably be slow, because all vector loads become</span>
+<span class="hl com">            // gathers, and all vector stores become scatters.</span>
+<span class="hl com">            input.set_stride(0, Expr()); // Use a default-constructed</span>
+<span class="hl com">                                         // undefined Expr to mean</span>
+<span class="hl com">                                         // there is no constraint.</span>
+<span class="hl com"></span>
+<span class="hl com">            brighter.output_buffer().set_stride(0, Expr());</span>
+<span class="hl com"></span>
+<span class="hl com">        } else if (layout == Layout::Specialized) {</span>
+<span class="hl com">            // We can accept any memory layout with good performance</span>
+<span class="hl com">            // by telling Halide to inspect the memory layout at</span>
+<span class="hl com">            // runtime, and branch to different code depending on the</span>
+<span class="hl com">            // strides it find. First we relax the default constraint</span>
+<span class="hl com">            // that stride(0) == 1:</span>
+<span class="hl com"></span>
+<span class="hl com">            input.set_stride(0, Expr()); // Use an undefined Expr to</span>
+<span class="hl com">                                         // mean there is no</span>
+<span class="hl com">                                         // constraint.</span>
+<span class="hl com"></span>
+<span class="hl com">            brighter.output_buffer().set_stride(0, Expr());</span>
+<span class="hl com"></span>
+<span class="hl com">            // The we construct boolean Exprs that detect at runtime</span>
+<span class="hl com">            // whether we're planar or interleaved. The conditions</span>
+<span class="hl com">            // should check for all the facts we want to exploit in</span>
+<span class="hl com">            // each case.</span>
+<span class="hl com">            Expr input_is_planar =</span>
+<span class="hl com">                (input.stride(0) == 1);</span>
+<span class="hl com">            Expr input_is_interleaved =</span>
+<span class="hl com">                (input.stride(0) == 3 &amp;&amp;</span>
+<span class="hl com">                 input.stride(2) == 1 &amp;&amp;</span>
+<span class="hl com">                 input.extent(2) == 3);</span>
+<span class="hl com"></span>
+<span class="hl com">            Expr output_is_planar =</span>
+<span class="hl com">                (brighter.output_buffer().stride(0) == 1);</span>
+<span class="hl com">            Expr output_is_interleaved =</span>
+<span class="hl com">                (brighter.output_buffer().stride(0) == 3 &amp;&amp;</span>
+<span class="hl com">                 brighter.output_buffer().stride(2) == 1 &amp;&amp;</span>
+<span class="hl com">                 brighter.output_buffer().extent(2) == 3);</span>
+<span class="hl com"></span>
+<span class="hl com">            // We can then use Func::specialize to write a schedule</span>
+<span class="hl com">            // that switches at runtime to specialized code based on a</span>
+<span class="hl com">            // boolean Expr. That code will exploit the fact that the</span>
+<span class="hl com">            // Expr is known to be true.</span>
+<span class="hl com">            brighter.specialize(input_is_planar &amp;&amp; output_is_planar);</span>
+<span class="hl com"></span>
+<span class="hl com">            // We've already vectorized and parallelized brighter, and</span>
+<span class="hl com">            // our two specializations will inherit those scheduling</span>
+<span class="hl com">            // directives. We can also add additional scheduling</span>
+<span class="hl com">            // directives that apply to a single specialization</span>
+<span class="hl com">            // only. We'll tell Halide to make a specialized version</span>
+<span class="hl com">            // of the code for interleaved layouts, and to reorder and</span>
+<span class="hl com">            // unroll that specialized code.</span>
+<span class="hl com">            brighter.specialize(input_is_interleaved &amp;&amp; output_is_interleaved)</span>
+<span class="hl com">                .reorder(c, x, y).unroll(c);</span>
+<span class="hl com"></span>
+<span class="hl com">            // We could also add specializations for if the input is</span>
+<span class="hl com">            // interleaved and the output is planar, and vice versa,</span>
+<span class="hl com">            // but two specializations is enough to demonstrate the</span>
+<span class="hl com">            // feature. A later tutorial will explore more creative</span>
+<span class="hl com">            // uses of Func::specialize.</span>
+<span class="hl com"></span>
+<span class="hl com">            // Adding specializations can improve performance</span>
+<span class="hl com">            // substantially for the cases they apply to, but it also</span>
+<span class="hl com">            // increases the amount of code to compile and ship. If</span>
+<span class="hl com">            // binary sizes are a concern and the input and output</span>
+<span class="hl com">            // memory layouts are known, you probably want to use</span>
+<span class="hl com">            // set_stride and set_extent instead.</span>
+<span class="hl com">        }</span>
+<span class="hl com"></span>
+<span class="hl com">        return brighter;</span>
+<span class="hl com">    }</span>
+<span class="hl com">};</span>
+<span class="hl com"></span>
+<span class="hl com">// As in lesson 15, we register our generator and then compile this</span>
+<span class="hl com">// file along with tools/GenGen.cpp.</span>
+<span class="hl com">RegisterGenerator&lt;Brighten&gt; my_first_generator{&quot;brighten&quot;};</span>
+<span class="hl com"></span>
+<span class="hl com">// After compiling this file, see how to use it in</span>
+<span class="hl com">// lesson_16_rgb_run.cpp</span>
+</pre>
+</div></body></html>
