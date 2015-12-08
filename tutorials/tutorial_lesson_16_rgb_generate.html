@@ -243,6 +243,16 @@ tutorial_lesson_15_generators.html
 </div></span></a>
 <div style="width:200px; height:20px;"></div>
 <a href=
+tutorial_lesson_15_generators_usage.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+15
+&nbsp</b>
+ Generators part 2
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
 tutorial_lesson_16_rgb_generate.html
  style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
 <div style="width:200px; padding:20px; padding-right:40px; background-color: #ffffff; color: #000000; text-align: left; ">
@@ -261,16 +271,6 @@ tutorial_lesson_16_rgb_run.html
 &nbsp</b>
  RGB images and memory layouts part 2
 </div></span></a>
-<div style="width:200px; height:20px;"></div>
-<a href=
-tutorial_lesson_15_generators_usage.html
- style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
-<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
-<b>
-15
-&nbsp</b>
- Generators part 2
-</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -280,233 +280,255 @@ tutorial_lesson_15_generators_usage.html
 <span class="hl slc">// interleaved or planar format, and how to write code optimized for</span>
 <span class="hl slc">// each case.</span>
 
-<span class="hl com">/* On linux or os x, you can compile and run it like so:</span>
-<span class="hl com"></span>
-<span class="hl com">g++ lesson_16_rgb_generate.cpp ../tools/GenGen.cpp -g -std=c++11 -fno-rtti -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_16_generate</span>
-<span class="hl com">export LD_LIBRARY_PATH=../bin   # For linux</span>
-<span class="hl com">export DYLD_LIBRARY_PATH=../bin # For OS X</span>
-<span class="hl com">./lesson_16_generate -o . -f brighten_planar      target=host layout=planar</span>
-<span class="hl com">./lesson_16_generate -o . -f brighten_interleaved target=host layout=interleaved</span>
-<span class="hl com">./lesson_16_generate -o . -f brighten_either      target=host layout=either</span>
-<span class="hl com">./lesson_16_generate -o . -f brighten_specialized target=host layout=specialized</span>
-<span class="hl com">g++ lesson_16_rgb_run.cpp brighten_*.o -ldl -lpthread -o lesson_16_run</span>
-<span class="hl com">./lesson_16_run</span>
-<span class="hl com"></span>
-<span class="hl com">figures/</span>
-<span class="hl com"></span>
-<span class="hl com">// If you have the entire Halide source tree, you can also build it by</span>
-<span class="hl com">// running:</span>
-<span class="hl com">//    make tutorial_lesson_16_rgb_run</span>
-<span class="hl com">// in a shell with the current directory at the top of the halide</span>
-<span class="hl com">// source tree.</span>
-<span class="hl com"></span>
-<span class="hl com">#include &quot;Halide.h&quot;</span>
-<span class="hl com">#include &lt;stdio.h&gt;</span>
-<span class="hl com"></span>
-<span class="hl com">using namespace Halide;</span>
-<span class="hl com"></span>
-<span class="hl com">// We will define a generator that brightens an RGB image.</span>
-<span class="hl com">class Brighten : public Halide::Generator&lt;Brighten&gt; {</span>
-<span class="hl com">public:</span>
-<span class="hl com">    // We declare a three-dimensional input image. The first two</span>
-<span class="hl com">    // dimensions will be x, and y, and the third dimension will be</span>
-<span class="hl com">    // the color channel.</span>
-<span class="hl com">    ImageParam input{UInt(8), 3, &quot;input&quot;};</span>
-<span class="hl com"></span>
-<span class="hl com">    // We will compile this generator in several ways to accept</span>
-<span class="hl com">    // several different memory layouts for the input and output. This</span>
-<span class="hl com">    // is a good use of a GeneratorParam (see lesson 15).</span>
-<span class="hl com">    enum class Layout { Planar, Interleaved, Either, Specialized };</span>
-<span class="hl com">    GeneratorParam&lt;Layout&gt; layout{&quot;layout&quot;,</span>
-<span class="hl com">            // default value</span>
-<span class="hl com">            Layout::Planar,</span>
-<span class="hl com">            // map from names to values</span>
-<span class="hl com">                {{ &quot;planar&quot;,        Layout::Planar },</span>
-<span class="hl com">                 { &quot;interleaved&quot;,   Layout::Interleaved },</span>
-<span class="hl com">                 { &quot;either&quot;,        Layout::Either },</span>
-<span class="hl com">                 { &quot;specialized&quot;,   Layout::Specialized }}};</span>
-<span class="hl com"></span>
-<span class="hl com">    // We also declare a scalar parameter to control the amount of</span>
-<span class="hl com">    // brightening.</span>
-<span class="hl com">    Param&lt;uint8_t&gt; offset{&quot;offset&quot;};</span>
-<span class="hl com"></span>
-<span class="hl com">    // Declare our Vars</span>
-<span class="hl com">    Var x, y, c;</span>
-<span class="hl com"></span>
-<span class="hl com">    Func build() {</span>
-<span class="hl com">        // Define the Func.</span>
-<span class="hl com">        Func brighter(&quot;brighter&quot;);</span>
-<span class="hl com">        brighter(x, y, c) = input(x, y, c) + offset;</span>
-<span class="hl com"></span>
-<span class="hl com">        // Schedule it.</span>
-<span class="hl com">        brighter.vectorize(x, 16);</span>
-<span class="hl com"></span>
-<span class="hl com">        // We will compile this pipeline to handle memory layouts in</span>
-<span class="hl com">        // several different ways, depending on the 'layout' generator</span>
-<span class="hl com">        // param.</span>
-<span class="hl com">        if (layout == Layout::Planar) {</span>
-<span class="hl com">            // This pipeline as written will only work with images in</span>
-<span class="hl com">            // which each scanline is densely-packed single color</span>
-<span class="hl com">            // channel. In terms of the strides described in lesson</span>
-<span class="hl com">            // 10, Halide assumes and asserts that the stride in x is</span>
-<span class="hl com">            // one.</span>
-<span class="hl com"></span>
-<span class="hl com">            // This constraint permits planar images, where the red,</span>
-<span class="hl com">            // green, and blue channels are laid out in memory like</span>
-<span class="hl com">            // this:</span>
-<span class="hl com"></span>
-<span class="hl com">            // RRRRRRRR</span>
-<span class="hl com">            // RRRRRRRR</span>
-<span class="hl com">            // RRRRRRRR</span>
-<span class="hl com">            // RRRRRRRR</span>
-<span class="hl com">            // GGGGGGGG</span>
-<span class="hl com">            // GGGGGGGG</span>
-<span class="hl com">            // GGGGGGGG</span>
-<span class="hl com">            // GGGGGGGG</span>
-<span class="hl com">            // BBBBBBBB</span>
-<span class="hl com">            // BBBBBBBB</span>
-<span class="hl com">            // BBBBBBBB</span>
-<span class="hl com">            // BBBBBBBB</span>
-<span class="hl com"></span>
-<span class="hl com">            // It also works with the less-commonly used line-by-line</span>
-<span class="hl com">            // layout, in which scanlines of red, green, and blue</span>
-<span class="hl com">            // alternate.</span>
-<span class="hl com"></span>
-<span class="hl com">            // RRRRRRRR</span>
-<span class="hl com">            // GGGGGGGG</span>
-<span class="hl com">            // BBBBBBBB</span>
-<span class="hl com">            // RRRRRRRR</span>
-<span class="hl com">            // GGGGGGGG</span>
-<span class="hl com">            // BBBBBBBB</span>
-<span class="hl com">            // RRRRRRRR</span>
-<span class="hl com">            // GGGGGGGG</span>
-<span class="hl com">            // BBBBBBBB</span>
-<span class="hl com">            // RRRRRRRR</span>
-<span class="hl com">            // GGGGGGGG</span>
-<span class="hl com">            // BBBBBBBB</span>
-<span class="hl com"></span>
-<span class="hl com">        } else if (layout == Layout::Interleaved) {</span>
-<span class="hl com">            // Another common format is 'interleaved', in which the</span>
-<span class="hl com">            // red, green, and blue values for each pixel occur next</span>
-<span class="hl com">            // to each other in memory:</span>
-<span class="hl com"></span>
-<span class="hl com">            // RGBRGBRGBRGBRGBRGBRGBRGB</span>
-<span class="hl com">            // RGBRGBRGBRGBRGBRGBRGBRGB</span>
-<span class="hl com">            // RGBRGBRGBRGBRGBRGBRGBRGB</span>
-<span class="hl com">            // RGBRGBRGBRGBRGBRGBRGBRGB</span>
-<span class="hl com"></span>
-<span class="hl com">            // In this case the stride in x is three, the stride in y</span>
-<span class="hl com">            // is three times the width of the image, and the stride</span>
-<span class="hl com">            // in c is one. We can tell Halide to assume (and assert)</span>
-<span class="hl com">            // that this is the case for the input and output like so:</span>
-<span class="hl com"></span>
-<span class="hl com">            input</span>
-<span class="hl com">                .set_stride(0, 3) // stride in dimension 0 (x) is three</span>
-<span class="hl com">                .set_stride(2, 1); // stride in dimension 2 (c) is one</span>
-<span class="hl com"></span>
-<span class="hl com">            brighter.output_buffer()</span>
-<span class="hl com">                .set_stride(0, 3)</span>
-<span class="hl com">                .set_stride(2, 1);</span>
-<span class="hl com"></span>
-<span class="hl com">            // For interleaved layout, you may want to use a different</span>
-<span class="hl com">            // schedule. We'll tell Halide to additionally assume and</span>
-<span class="hl com">            // assert that there are three color channels, then</span>
-<span class="hl com">            // exploit this fact to make the loop over 'c' innermost</span>
-<span class="hl com">            // and unrolled.</span>
-<span class="hl com"></span>
-<span class="hl com">            input.set_bounds(2, 0, 3); // Dimension 2 (c) starts at 0 and has extent 3.</span>
-<span class="hl com">            brighter.output_buffer().set_bounds(2, 0, 3);</span>
-<span class="hl com"></span>
-<span class="hl com">            // Move the loop over color channels innermost and unroll</span>
-<span class="hl com">            // it.</span>
-<span class="hl com">            brighter.reorder(c, x, y).unroll(c);</span>
-<span class="hl com"></span>
-<span class="hl com">            // Note that if we were dealing with an image with an</span>
-<span class="hl com">            // alpha channel (RGBA), then the stride in x and the</span>
-<span class="hl com">            // bounds of the channels dimension would both be four</span>
-<span class="hl com">            // instead of three.</span>
-<span class="hl com"></span>
-<span class="hl com">        } else if (layout == Layout::Either) {</span>
-<span class="hl com">            // We can also remove all constraints and compile a</span>
-<span class="hl com">            // pipeline that will work with any memory layout. It will</span>
-<span class="hl com">            // probably be slow, because all vector loads become</span>
-<span class="hl com">            // gathers, and all vector stores become scatters.</span>
-<span class="hl com">            input.set_stride(0, Expr()); // Use a default-constructed</span>
-<span class="hl com">                                         // undefined Expr to mean</span>
-<span class="hl com">                                         // there is no constraint.</span>
-<span class="hl com"></span>
-<span class="hl com">            brighter.output_buffer().set_stride(0, Expr());</span>
-<span class="hl com"></span>
-<span class="hl com">        } else if (layout == Layout::Specialized) {</span>
-<span class="hl com">            // We can accept any memory layout with good performance</span>
-<span class="hl com">            // by telling Halide to inspect the memory layout at</span>
-<span class="hl com">            // runtime, and branch to different code depending on the</span>
-<span class="hl com">            // strides it find. First we relax the default constraint</span>
-<span class="hl com">            // that stride(0) == 1:</span>
-<span class="hl com"></span>
-<span class="hl com">            input.set_stride(0, Expr()); // Use an undefined Expr to</span>
-<span class="hl com">                                         // mean there is no</span>
-<span class="hl com">                                         // constraint.</span>
-<span class="hl com"></span>
-<span class="hl com">            brighter.output_buffer().set_stride(0, Expr());</span>
-<span class="hl com"></span>
-<span class="hl com">            // The we construct boolean Exprs that detect at runtime</span>
-<span class="hl com">            // whether we're planar or interleaved. The conditions</span>
-<span class="hl com">            // should check for all the facts we want to exploit in</span>
-<span class="hl com">            // each case.</span>
-<span class="hl com">            Expr input_is_planar =</span>
-<span class="hl com">                (input.stride(0) == 1);</span>
-<span class="hl com">            Expr input_is_interleaved =</span>
-<span class="hl com">                (input.stride(0) == 3 &amp;&amp;</span>
-<span class="hl com">                 input.stride(2) == 1 &amp;&amp;</span>
-<span class="hl com">                 input.extent(2) == 3);</span>
-<span class="hl com"></span>
-<span class="hl com">            Expr output_is_planar =</span>
-<span class="hl com">                (brighter.output_buffer().stride(0) == 1);</span>
-<span class="hl com">            Expr output_is_interleaved =</span>
-<span class="hl com">                (brighter.output_buffer().stride(0) == 3 &amp;&amp;</span>
-<span class="hl com">                 brighter.output_buffer().stride(2) == 1 &amp;&amp;</span>
-<span class="hl com">                 brighter.output_buffer().extent(2) == 3);</span>
-<span class="hl com"></span>
-<span class="hl com">            // We can then use Func::specialize to write a schedule</span>
-<span class="hl com">            // that switches at runtime to specialized code based on a</span>
-<span class="hl com">            // boolean Expr. That code will exploit the fact that the</span>
-<span class="hl com">            // Expr is known to be true.</span>
-<span class="hl com">            brighter.specialize(input_is_planar &amp;&amp; output_is_planar);</span>
-<span class="hl com"></span>
-<span class="hl com">            // We've already vectorized and parallelized brighter, and</span>
-<span class="hl com">            // our two specializations will inherit those scheduling</span>
-<span class="hl com">            // directives. We can also add additional scheduling</span>
-<span class="hl com">            // directives that apply to a single specialization</span>
-<span class="hl com">            // only. We'll tell Halide to make a specialized version</span>
-<span class="hl com">            // of the code for interleaved layouts, and to reorder and</span>
-<span class="hl com">            // unroll that specialized code.</span>
-<span class="hl com">            brighter.specialize(input_is_interleaved &amp;&amp; output_is_interleaved)</span>
-<span class="hl com">                .reorder(c, x, y).unroll(c);</span>
-<span class="hl com"></span>
-<span class="hl com">            // We could also add specializations for if the input is</span>
-<span class="hl com">            // interleaved and the output is planar, and vice versa,</span>
-<span class="hl com">            // but two specializations is enough to demonstrate the</span>
-<span class="hl com">            // feature. A later tutorial will explore more creative</span>
-<span class="hl com">            // uses of Func::specialize.</span>
-<span class="hl com"></span>
-<span class="hl com">            // Adding specializations can improve performance</span>
-<span class="hl com">            // substantially for the cases they apply to, but it also</span>
-<span class="hl com">            // increases the amount of code to compile and ship. If</span>
-<span class="hl com">            // binary sizes are a concern and the input and output</span>
-<span class="hl com">            // memory layouts are known, you probably want to use</span>
-<span class="hl com">            // set_stride and set_extent instead.</span>
-<span class="hl com">        }</span>
-<span class="hl com"></span>
-<span class="hl com">        return brighter;</span>
-<span class="hl com">    }</span>
-<span class="hl com">};</span>
-<span class="hl com"></span>
-<span class="hl com">// As in lesson 15, we register our generator and then compile this</span>
-<span class="hl com">// file along with tools/GenGen.cpp.</span>
-<span class="hl com">RegisterGenerator&lt;Brighten&gt; my_first_generator{&quot;brighten&quot;};</span>
-<span class="hl com"></span>
-<span class="hl com">// After compiling this file, see how to use it in</span>
-<span class="hl com">// lesson_16_rgb_run.cpp</span>
+<span class="hl slc">// On linux or os x, you can compile and run it like so:</span>
+
+<span class="hl slc">// g++ lesson_16_rgb_generate.cpp ../tools/GenGen.cpp -g -std=c++11 -fno-rtti -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_16_generate</span>
+<span class="hl slc">// export LD_LIBRARY_PATH=../bin   # For linux</span>
+<span class="hl slc">// export DYLD_LIBRARY_PATH=../bin # For OS X</span>
+<span class="hl slc">// ./lesson_16_generate -o . -f brighten_planar      target=host layout=planar</span>
+<span class="hl slc">// ./lesson_16_generate -o . -f brighten_interleaved target=host layout=interleaved</span>
+<span class="hl slc">// ./lesson_16_generate -o . -f brighten_either      target=host layout=either</span>
+<span class="hl slc">// ./lesson_16_generate -o . -f brighten_specialized target=host layout=specialized</span>
+<span class="hl slc">// g++ lesson_16_rgb_run.cpp brighten_*.o -ldl -lpthread -o lesson_16_run</span>
+<span class="hl slc">// ./lesson_16_run</span>
+
+<span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
+<span class="hl slc">// running:</span>
+<span class="hl slc">//    make tutorial_lesson_16_rgb_run</span>
+<span class="hl slc">// in a shell with the current directory at the top of the halide</span>
+<span class="hl slc">// source tree.</span>
+
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include &lt;stdio.h&gt;</span>
+
+<span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
+
+<span class="hl slc">// We will define a generator that brightens an RGB image.</span>
+<span class="hl kwc">class</span> Brighten <span class="hl opt">:</span> <span class="hl kwc">public</span> Halide<span class="hl opt">::</span>Generator<span class="hl opt">&lt;</span>Brighten<span class="hl opt">&gt; {</span>
+<span class="hl kwc">public</span><span class="hl opt">:</span>
+    <span class="hl slc">// We declare a three-dimensional input image. The first two</span>
+    <span class="hl slc">// dimensions will be x, and y, and the third dimension will be</span>
+    <span class="hl slc">// the color channel.</span>
+    ImageParam input<span class="hl opt">{</span><span class="hl kwd">UInt</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">),</span> <span class="hl num">3</span><span class="hl opt">,</span> <span class="hl str">&quot;input&quot;</span><span class="hl opt">};</span>
+
+    <span class="hl slc">// We will compile this generator in several ways to accept</span>
+    <span class="hl slc">// several different memory layouts for the input and output. This</span>
+    <span class="hl slc">// is a good use of a GeneratorParam (see lesson 15).</span>
+    <span class="hl kwb">enum</span> <span class="hl kwc">class</span> Layout <span class="hl opt">{</span> Planar<span class="hl opt">,</span> Interleaved<span class="hl opt">,</span> Either<span class="hl opt">,</span> Specialized <span class="hl opt">};</span>
+    GeneratorParam<span class="hl opt">&lt;</span>Layout<span class="hl opt">&gt;</span> layout<span class="hl opt">{</span><span class="hl str">&quot;layout&quot;</span><span class="hl opt">,</span>
+            <span class="hl slc">// default value</span>
+            Layout<span class="hl opt">::</span>Planar<span class="hl opt">,</span>
+            <span class="hl slc">// map from names to values</span>
+                <span class="hl opt">{{</span> <span class="hl str">&quot;planar&quot;</span><span class="hl opt">,</span>        Layout<span class="hl opt">::</span>Planar <span class="hl opt">},</span>
+                 <span class="hl opt">{</span> <span class="hl str">&quot;interleaved&quot;</span><span class="hl opt">,</span>   Layout<span class="hl opt">::</span>Interleaved <span class="hl opt">},</span>
+                 <span class="hl opt">{</span> <span class="hl str">&quot;either&quot;</span><span class="hl opt">,</span>        Layout<span class="hl opt">::</span>Either <span class="hl opt">},</span>
+                 <span class="hl opt">{</span> <span class="hl str">&quot;specialized&quot;</span><span class="hl opt">,</span>   Layout<span class="hl opt">::</span>Specialized <span class="hl opt">}}};</span>
+
+    <span class="hl slc">// We also declare a scalar parameter to control the amount of</span>
+    <span class="hl slc">// brightening.</span>
+    Param<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> offset<span class="hl opt">{</span><span class="hl str">&quot;offset&quot;</span><span class="hl opt">};</span>
+
+    <span class="hl slc">// Declare our Vars</span>
+    Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">;</span>
+
+    Func <span class="hl kwd">build</span><span class="hl opt">() {</span>
+        <span class="hl slc">// Define the Func.</span>
+        Func <span class="hl kwd">brighter</span><span class="hl opt">(</span><span class="hl str">&quot;brighter&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">brighter</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) =</span> <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) +</span> offset<span class="hl opt">;</span>
+
+        <span class="hl slc">// Schedule it.</span>
+        brighter<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// We will compile this pipeline to handle memory layouts in</span>
+        <span class="hl slc">// several different ways, depending on the 'layout' generator</span>
+        <span class="hl slc">// param.</span>
+        <span class="hl kwa">if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> Layout<span class="hl opt">::</span>Planar<span class="hl opt">) {</span>
+            <span class="hl slc">// This pipeline as written will only work with images in</span>
+            <span class="hl slc">// which each scanline is densely-packed single color</span>
+            <span class="hl slc">// channel. In terms of the strides described in lesson</span>
+            <span class="hl slc">// 10, Halide assumes and asserts that the stride in x is</span>
+            <span class="hl slc">// one.</span>
+
+            <span class="hl slc">// This constraint permits planar images, where the red,</span>
+            <span class="hl slc">// green, and blue channels are laid out in memory like</span>
+            <span class="hl slc">// this:</span>
+
+            <span class="hl slc">// RRRRRRRR</span>
+            <span class="hl slc">// RRRRRRRR</span>
+            <span class="hl slc">// RRRRRRRR</span>
+            <span class="hl slc">// RRRRRRRR</span>
+            <span class="hl slc">// GGGGGGGG</span>
+            <span class="hl slc">// GGGGGGGG</span>
+            <span class="hl slc">// GGGGGGGG</span>
+            <span class="hl slc">// GGGGGGGG</span>
+            <span class="hl slc">// BBBBBBBB</span>
+            <span class="hl slc">// BBBBBBBB</span>
+            <span class="hl slc">// BBBBBBBB</span>
+            <span class="hl slc">// BBBBBBBB</span>
+
+            <span class="hl slc">// It also works with the less-commonly used line-by-line</span>
+            <span class="hl slc">// layout, in which scanlines of red, green, and blue</span>
+            <span class="hl slc">// alternate.</span>
+
+            <span class="hl slc">// RRRRRRRR</span>
+            <span class="hl slc">// GGGGGGGG</span>
+            <span class="hl slc">// BBBBBBBB</span>
+            <span class="hl slc">// RRRRRRRR</span>
+            <span class="hl slc">// GGGGGGGG</span>
+            <span class="hl slc">// BBBBBBBB</span>
+            <span class="hl slc">// RRRRRRRR</span>
+            <span class="hl slc">// GGGGGGGG</span>
+            <span class="hl slc">// BBBBBBBB</span>
+            <span class="hl slc">// RRRRRRRR</span>
+            <span class="hl slc">// GGGGGGGG</span>
+            <span class="hl slc">// BBBBBBBB</span>
+            <a onclick='return toggle("_108");'><b id=_108-show>// Click to show output ...</b></a><div id=_108 style= "display:none; background:#333333; color:#ffffff"><b>
+ > brighten_planar: 41.740000
+
+</b></div>
+
+        <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> Layout<span class="hl opt">::</span>Interleaved<span class="hl opt">) {</span>
+            <span class="hl slc">// Another common format is 'interleaved', in which the</span>
+            <span class="hl slc">// red, green, and blue values for each pixel occur next</span>
+            <span class="hl slc">// to each other in memory:</span>
+            <a onclick='return toggle("_113");'><b id=_113-show>// Click to show output ...</b></a><div id=_113 style= "display:none; background:#333333; color:#ffffff"><b>
+ > brighten_interleaved: 65.569000
+
+</b></div>
+
+            <span class="hl slc">// RGBRGBRGBRGBRGBRGBRGBRGB</span>
+            <span class="hl slc">// RGBRGBRGBRGBRGBRGBRGBRGB</span>
+            <span class="hl slc">// RGBRGBRGBRGBRGBRGBRGBRGB</span>
+            <span class="hl slc">// RGBRGBRGBRGBRGBRGBRGBRGB</span>
+
+            <span class="hl slc">// In this case the stride in x is three, the stride in y</span>
+            <span class="hl slc">// is three times the width of the image, and the stride</span>
+            <span class="hl slc">// in c is one. We can tell Halide to assume (and assert)</span>
+            <span class="hl slc">// that this is the case for the input and output like so:</span>
+
+            input
+                <span class="hl opt">.</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">)</span> <span class="hl slc">// stride in dimension 0 (x) is three</span>
+                <span class="hl opt">.</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">);</span> <span class="hl slc">// stride in dimension 2 (c) is one</span>
+
+            brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">()</span>
+                <span class="hl opt">.</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">)</span>
+                <span class="hl opt">.</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">);</span>
+
+            <span class="hl slc">// For interleaved layout, you may want to use a different</span>
+            <span class="hl slc">// schedule. We'll tell Halide to additionally assume and</span>
+            <span class="hl slc">// assert that there are three color channels, then</span>
+            <span class="hl slc">// exploit this fact to make the loop over 'c' innermost</span>
+            <span class="hl slc">// and unrolled.</span>
+            <a onclick='return toggle("_134");'><b id=_134-show>// Click to show output ...</b></a><div id=_134 style= "display:none; background:#333333; color:#ffffff"><b>
+ > brighten_either on planar images: 169.257000
+
+</b></div>
+
+            input<span class="hl opt">.</span><span class="hl kwd">set_bounds</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span> <span class="hl slc">// Dimension 2 (c) starts at 0 and has extent 3.</span>
+            brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">set_bounds</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+            <a onclick='return toggle("_140");'><b id=_140-show>// Click to show output ...</b></a><div id=_140 style= "display:none; background:#333333; color:#ffffff"><b>
+ > brighten_either on interleaved images: 181.984000
+
+</b></div>
+
+            <span class="hl slc">// Move the loop over color channels innermost and unroll</span>
+            <span class="hl slc">// it.</span>
+            brighter<span class="hl opt">.</span><span class="hl kwd">reorder</span><span class="hl opt">(</span>c<span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">).</span><span class="hl kwd">unroll</span><span class="hl opt">(</span>c<span class="hl opt">);</span>
+
+            <span class="hl slc">// Note that if we were dealing with an image with an</span>
+            <span class="hl slc">// alpha channel (RGBA), then the stride in x and the</span>
+            <span class="hl slc">// bounds of the channels dimension would both be four</span>
+            <span class="hl slc">// instead of three.</span>
+
+<a onclick='return toggle("_150");'><b id=_150-show>// Click to show output ...</b></a><div id=_150 style= "display:none; background:#333333; color:#ffffff"><b>
+ > brighten_specialized on planar images: 29.873000
+
+</b></div>
+        <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> Layout<span class="hl opt">::</span>Either<span class="hl opt">) {</span>
+            <span class="hl slc">// We can also remove all constraints and compile a</span>
+            <span class="hl slc">// pipeline that will work with any memory layout. It will</span>
+            <span class="hl slc">// probably be slow, because all vector loads become</span>
+            <span class="hl slc">// gathers, and all vector stores become scatters.</span>
+            input<span class="hl opt">.</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl kwd">Expr</span><span class="hl opt">());</span> <span class="hl slc">// Use a default-constructed</span>
+                                         <span class="hl slc">// undefined Expr to mean</span>
+                                         <span class="hl slc">// there is no constraint.</span>
+
+            brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl kwd">Expr</span><span class="hl opt">());</span>
+            <a onclick='return toggle("_160");'><b id=_160-show>// Click to show output ...</b></a><div id=_160 style= "display:none; background:#333333; color:#ffffff"><b>
+ > brighten_specialized on interleaved images: 67.370000
+
+</b></div>
+
+        <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> Layout<span class="hl opt">::</span>Specialized<span class="hl opt">) {</span>
+            <span class="hl slc">// We can accept any memory layout with good performance</span>
+            <span class="hl slc">// by telling Halide to inspect the memory layout at</span>
+            <span class="hl slc">// runtime, and branch to different code depending on the</span>
+            <span class="hl slc">// strides it find. First we relax the default constraint</span>
+            <span class="hl slc">// that stride(0) == 1:</span>
+
+            input<span class="hl opt">.</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl kwd">Expr</span><span class="hl opt">());</span> <span class="hl slc">// Use an undefined Expr to</span>
+                                         <span class="hl slc">// mean there is no</span>
+                                         <span class="hl slc">// constraint.</span>
+
+            brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl kwd">Expr</span><span class="hl opt">());</span>
+
+            <span class="hl slc">// The we construct boolean Exprs that detect at runtime</span>
+            <span class="hl slc">// whether we're planar or interleaved. The conditions</span>
+            <span class="hl slc">// should check for all the facts we want to exploit in</span>
+            <span class="hl slc">// each case.</span>
+            Expr input_is_planar <span class="hl opt">=</span>
+                <span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">) ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
+            Expr input_is_interleaved <span class="hl opt">=</span>
+                <span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">) ==</span> <span class="hl num">3</span> <span class="hl opt">&amp;&amp;</span>
+                 input<span class="hl opt">.</span><span class="hl kwd">stride</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">) ==</span> <span class="hl num">1</span> <span class="hl opt">&amp;&amp;</span>
+                 input<span class="hl opt">.</span><span class="hl kwd">extent</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">) ==</span> <span class="hl num">3</span><span class="hl opt">);</span>
+
+            Expr output_is_planar <span class="hl opt">=</span>
+                <span class="hl opt">(</span>brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">) ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
+            Expr output_is_interleaved <span class="hl opt">=</span>
+                <span class="hl opt">(</span>brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">) ==</span> <span class="hl num">3</span> <span class="hl opt">&amp;&amp;</span>
+                 brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">stride</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">) ==</span> <span class="hl num">1</span> <span class="hl opt">&amp;&amp;</span>
+                 brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">extent</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">) ==</span> <span class="hl num">3</span><span class="hl opt">);</span>
+
+            <span class="hl slc">// We can then use Func::specialize to write a schedule</span>
+            <span class="hl slc">// that switches at runtime to specialized code based on a</span>
+            <span class="hl slc">// boolean Expr. That code will exploit the fact that the</span>
+            <span class="hl slc">// Expr is known to be true.</span>
+            brighter<span class="hl opt">.</span><span class="hl kwd">specialize</span><span class="hl opt">(</span>input_is_planar <span class="hl opt">&amp;&amp;</span> output_is_planar<span class="hl opt">);</span>
+
+            <span class="hl slc">// We've already vectorized and parallelized brighter, and</span>
+            <span class="hl slc">// our two specializations will inherit those scheduling</span>
+            <span class="hl slc">// directives. We can also add additional scheduling</span>
+            <span class="hl slc">// directives that apply to a single specialization</span>
+            <span class="hl slc">// only. We'll tell Halide to make a specialized version</span>
+            <span class="hl slc">// of the code for interleaved layouts, and to reorder and</span>
+            <span class="hl slc">// unroll that specialized code.</span>
+            brighter<span class="hl opt">.</span><span class="hl kwd">specialize</span><span class="hl opt">(</span>input_is_interleaved <span class="hl opt">&amp;&amp;</span> output_is_interleaved<span class="hl opt">)</span>
+                <span class="hl opt">.</span><span class="hl kwd">reorder</span><span class="hl opt">(</span>c<span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">).</span><span class="hl kwd">unroll</span><span class="hl opt">(</span>c<span class="hl opt">);</span>
+
+            <span class="hl slc">// We could also add specializations for if the input is</span>
+            <span class="hl slc">// interleaved and the output is planar, and vice versa,</span>
+            <span class="hl slc">// but two specializations is enough to demonstrate the</span>
+            <span class="hl slc">// feature. A later tutorial will explore more creative</span>
+            <span class="hl slc">// uses of Func::specialize.</span>
+
+            <span class="hl slc">// Adding specializations can improve performance</span>
+            <span class="hl slc">// substantially for the cases they apply to, but it also</span>
+            <span class="hl slc">// increases the amount of code to compile and ship. If</span>
+            <span class="hl slc">// binary sizes are a concern and the input and output</span>
+            <span class="hl slc">// memory layouts are known, you probably want to use</span>
+            <span class="hl slc">// set_stride and set_extent instead.</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwa">return</span> brighter<span class="hl opt">;</span>
+    <span class="hl opt">}</span>
+<span class="hl opt">};</span>
+
+<span class="hl slc">// As in lesson 15, we register our generator and then compile this</span>
+<span class="hl slc">// file along with tools/GenGen.cpp.</span>
+RegisterGenerator<span class="hl opt">&lt;</span>Brighten<span class="hl opt">&gt;</span> my_first_generator<span class="hl opt">{</span><span class="hl str">&quot;brighten&quot;</span><span class="hl opt">};</span>
+
+<span class="hl slc">// After compiling this file, see how to use it in</span>
+<span class="hl slc">// lesson_16_rgb_run.cpp</span>
 </pre>
 </div></body></html>
