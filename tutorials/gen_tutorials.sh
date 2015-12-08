@@ -143,7 +143,7 @@ EOF
 
     if [[ $h == tutorial_introduction.html ]]; then
         cat $f >> $h
-    elif [[ "$f" == *.sh ]]; then
+    elif [[ "$f" == *.sh ]] || [[ "$f" == *lesson_16*generate.cpp ]]; then
         echo '<pre class="hl">' >> $h
         highlight -k monospace -K 12 --config-file=Halide.theme -s Halide -f $f >> $h
         echo '</pre>' >> $h

@@ -382,19 +382,11 @@ tutorial_lesson_16_rgb_run.html
             <span class="hl slc">// RRRRRRRR</span>
             <span class="hl slc">// GGGGGGGG</span>
             <span class="hl slc">// BBBBBBBB</span>
-            <a onclick='return toggle("_108");'><b id=_108-show>// Click to show output ...</b></a><div id=_108 style= "display:none; background:#333333; color:#ffffff"><b>
- > brighten_planar: 41.740000
-
-</b></div>
 
         <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> Layout<span class="hl opt">::</span>Interleaved<span class="hl opt">) {</span>
             <span class="hl slc">// Another common format is 'interleaved', in which the</span>
             <span class="hl slc">// red, green, and blue values for each pixel occur next</span>
             <span class="hl slc">// to each other in memory:</span>
-            <a onclick='return toggle("_113");'><b id=_113-show>// Click to show output ...</b></a><div id=_113 style= "display:none; background:#333333; color:#ffffff"><b>
- > brighten_interleaved: 65.569000
-
-</b></div>
 
             <span class="hl slc">// RGBRGBRGBRGBRGBRGBRGBRGB</span>
             <span class="hl slc">// RGBRGBRGBRGBRGBRGBRGBRGB</span>
@@ -419,17 +411,9 @@ tutorial_lesson_16_rgb_run.html
             <span class="hl slc">// assert that there are three color channels, then</span>
             <span class="hl slc">// exploit this fact to make the loop over 'c' innermost</span>
             <span class="hl slc">// and unrolled.</span>
-            <a onclick='return toggle("_134");'><b id=_134-show>// Click to show output ...</b></a><div id=_134 style= "display:none; background:#333333; color:#ffffff"><b>
- > brighten_either on planar images: 169.257000
-
-</b></div>
 
             input<span class="hl opt">.</span><span class="hl kwd">set_bounds</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span> <span class="hl slc">// Dimension 2 (c) starts at 0 and has extent 3.</span>
             brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">set_bounds</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
-            <a onclick='return toggle("_140");'><b id=_140-show>// Click to show output ...</b></a><div id=_140 style= "display:none; background:#333333; color:#ffffff"><b>
- > brighten_either on interleaved images: 181.984000
-
-</b></div>
 
             <span class="hl slc">// Move the loop over color channels innermost and unroll</span>
             <span class="hl slc">// it.</span>
@@ -440,10 +424,6 @@ tutorial_lesson_16_rgb_run.html
             <span class="hl slc">// bounds of the channels dimension would both be four</span>
             <span class="hl slc">// instead of three.</span>
 
-<a onclick='return toggle("_150");'><b id=_150-show>// Click to show output ...</b></a><div id=_150 style= "display:none; background:#333333; color:#ffffff"><b>
- > brighten_specialized on planar images: 29.873000
-
-</b></div>
         <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> Layout<span class="hl opt">::</span>Either<span class="hl opt">) {</span>
             <span class="hl slc">// We can also remove all constraints and compile a</span>
             <span class="hl slc">// pipeline that will work with any memory layout. It will</span>
@@ -454,10 +434,6 @@ tutorial_lesson_16_rgb_run.html
                                          <span class="hl slc">// there is no constraint.</span>
 
             brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl kwd">Expr</span><span class="hl opt">());</span>
-            <a onclick='return toggle("_160");'><b id=_160-show>// Click to show output ...</b></a><div id=_160 style= "display:none; background:#333333; color:#ffffff"><b>
- > brighten_specialized on interleaved images: 67.370000
-
-</b></div>
 
         <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> Layout<span class="hl opt">::</span>Specialized<span class="hl opt">) {</span>
             <span class="hl slc">// We can accept any memory layout with good performance</span>
