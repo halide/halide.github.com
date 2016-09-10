@@ -307,7 +307,7 @@ tutorial_lesson_16_rgb_run.html
     <span class="hl kwd">single_valued</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
 
     <span class="hl slc">// One way to write a Func that returns a collection of values is</span>
-    <span class="hl slc">// to add an additional dimension which indexes that</span>
+    <span class="hl slc">// to add an additional dimension that indexes that</span>
     <span class="hl slc">// collection. This is how we typically deal with color. For</span>
     <span class="hl slc">// example, the Func below represents a collection of three values</span>
     <span class="hl slc">// for every x, y coordinate indexed by c.</span>
@@ -352,9 +352,9 @@ tutorial_lesson_16_rgb_run.html
 
     <span class="hl slc">// A third alternative is to define a Func as evaluating to a</span>
     <span class="hl slc">// Tuple instead of an Expr. A Tuple is a fixed-size collection of</span>
-    <span class="hl slc">// Exprs which may have different type. The following function</span>
-    <span class="hl slc">// evaluates to an integer value (x+y), and a floating point value</span>
-    <span class="hl slc">// (sin(x*y)).</span>
+    <span class="hl slc">// Exprs. Each Expr in a Tuple may have a different type. The</span>
+    <span class="hl slc">// following function evaluates to an integer value (x+y), and a</span>
+    <span class="hl slc">// floating point value (sin(x*y)).</span>
     Func multi_valued<span class="hl opt">;</span>
     <span class="hl kwd">multi_valued</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">Tuple</span><span class="hl opt">(</span>x <span class="hl opt">+</span> y<span class="hl opt">,</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">));</span>
 
@@ -420,8 +420,8 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl kwd">input_func</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x<span class="hl opt">);</span>
         Image<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> input_func<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">100</span><span class="hl opt">);</span>
 
-        <span class="hl slc">// Then we define a 2-valued Tuple which tracks the maximum</span>
-        <span class="hl slc">// value and its index.</span>
+        <span class="hl slc">// Then we define a 2-valued Tuple which tracks the index of</span>
+        <span class="hl slc">// the maximum value and the value itself.</span>
         Func arg_max<span class="hl opt">;</span>
 
         <span class="hl slc">// Pure definition.</span>
@@ -485,8 +485,7 @@ tutorial_lesson_16_rgb_run.html
             <span class="hl kwd">Complex</span><span class="hl opt">(</span>Expr r<span class="hl opt">,</span> Expr i<span class="hl opt">) :</span> <span class="hl kwd">real</span><span class="hl opt">(</span>r<span class="hl opt">),</span> <span class="hl kwd">imag</span><span class="hl opt">(</span>i<span class="hl opt">) {}</span>
 
             <span class="hl slc">// Construct from a call to a Func by treating it as a Tuple</span>
-            <span class="hl kwd">Complex</span><span class="hl opt">(</span>FuncRefExpr t<span class="hl opt">) :</span> <span class="hl kwd">Complex</span><span class="hl opt">(</span><span class="hl kwd">Tuple</span><span class="hl opt">(</span>t<span class="hl opt">)) {}</span>
-            <span class="hl kwd">Complex</span><span class="hl opt">(</span>FuncRefVar t<span class="hl opt">) :</span> <span class="hl kwd">Complex</span><span class="hl opt">(</span><span class="hl kwd">Tuple</span><span class="hl opt">(</span>t<span class="hl opt">)) {}</span>
+            <span class="hl kwd">Complex</span><span class="hl opt">(</span>FuncRef t<span class="hl opt">) :</span> <span class="hl kwd">Complex</span><span class="hl opt">(</span><span class="hl kwd">Tuple</span><span class="hl opt">(</span>t<span class="hl opt">)) {}</span>
 
             <span class="hl slc">// Convert to a Tuple</span>
             <span class="hl kwc">operator</span> <span class="hl kwd">Tuple</span><span class="hl opt">()</span> <span class="hl kwb">const</span> <span class="hl opt">{</span>

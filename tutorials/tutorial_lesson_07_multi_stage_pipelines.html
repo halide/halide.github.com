@@ -384,6 +384,8 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// Define an expression that clamps x to lie within the</span>
         <span class="hl slc">// range [0, input.width()-1].</span>
         Expr clamped_x <span class="hl opt">=</span> <span class="hl kwd">clamp</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">()-</span><span class="hl num">1</span><span class="hl opt">);</span>
+        <span class="hl slc">// clamp(x, a, b) is equivalent to max(min(x, b), a).</span>
+
         <span class="hl slc">// Similarly clamp y.</span>
         Expr clamped_y <span class="hl opt">=</span> <span class="hl kwd">clamp</span><span class="hl opt">(</span>y<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">()-</span><span class="hl num">1</span><span class="hl opt">);</span>
         <span class="hl slc">// Load from input at the clamped coordinates. This means that</span>
@@ -401,7 +403,8 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">//</span>
         <span class="hl slc">// These are important to use for other boundary conditions,</span>
         <span class="hl slc">// because they are expressed in the way that Halide can best</span>
-        <span class="hl slc">// understand and optimize.</span>
+        <span class="hl slc">// understand and optimize. When used correctly they are as</span>
+        <span class="hl slc">// cheap as having no boundary condition at all.</span>
 
         <span class="hl slc">// Upgrade it to 16-bit, so we can do math without it</span>
         <span class="hl slc">// overflowing. This time we'll refer to our new Func</span>

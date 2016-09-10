@@ -342,16 +342,16 @@ tutorial_lesson_16_rgb_run.html
 
     <span class="hl slc">// This time, instead of calling brighter.realize(...), which</span>
     <span class="hl slc">// would compile and run the pipeline immediately, we'll call a</span>
-    <span class="hl slc">// method that compiles the pipeline to an object file and header.</span>
+    <span class="hl slc">// method that compiles the pipeline to a static library and header.</span>
     <span class="hl slc">//</span>
     <span class="hl slc">// For AOT-compiled code, we need to explicitly declare the</span>
     <span class="hl slc">// arguments to the routine. This routine takes two. Arguments are</span>
     <span class="hl slc">// usually Params or ImageParams.</span>
     std<span class="hl opt">::</span>vector<span class="hl opt">&lt;</span>Argument<span class="hl opt">&gt;</span> args <span class="hl opt">= {</span>input<span class="hl opt">,</span> offset<span class="hl opt">};</span>
-    brighter<span class="hl opt">.</span><span class="hl kwd">compile_to_file</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_10_halide&quot;</span><span class="hl opt">,</span> args<span class="hl opt">);</span>
+    brighter<span class="hl opt">.</span><span class="hl kwd">compile_to_static_library</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_10_halide&quot;</span><span class="hl opt">,</span> args<span class="hl opt">);</span>
 
     <span class="hl slc">// If you're using C++11, you can just say:</span>
-    <span class="hl slc">// brighter.compile_to_file(&quot;lesson_10_halide&quot;, {input, offset});</span>
+    <span class="hl slc">// brighter.compile_to_static_library(&quot;lesson_10_halide&quot;, {input, offset});</span>
 
     <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Halide pipeline compiled, but not yet run.</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 

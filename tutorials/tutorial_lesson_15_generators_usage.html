@@ -324,12 +324,12 @@ check_symbol<span class="hl opt">()</span>
 .<span class="hl opt">/</span>lesson_15_generate <span class="hl opt">-</span>g my_first_generator <span class="hl opt">-</span>o . target<span class="hl opt">=</span><span class="hl kwc">host</span>
 
 <span class="hl slc"># That should create a pair of files in the current directory:</span>
-<span class="hl slc"># &quot;my_first_generator.o&quot;, and &quot;my_first_generator.h&quot;, which define a</span>
+<span class="hl slc"># &quot;my_first_generator.a&quot;, and &quot;my_first_generator.h&quot;, which define a</span>
 <span class="hl slc"># function &quot;my_first_generator&quot; representing the compiled pipeline.</span>
 
-check_file_exists my_first_generator.o
+check_file_exists my_first_generator.a
 check_file_exists my_first_generator.h
-check_symbol my_first_generator.o my_first_generator
+check_symbol my_first_generator.a my_first_generator
 
 <span class="hl slc">#####################</span>
 <span class="hl slc"># Cross-compilation #</span>
@@ -345,11 +345,11 @@ check_symbol my_first_generator.o my_first_generator
     <span class="hl opt">-</span>o . \
     target<span class="hl opt">=</span>x86<span class="hl opt">-</span><span class="hl num">32</span><span class="hl opt">-</span>windows
 
-<span class="hl slc"># This generates a file called &quot;my_first_generator_win32.obj&quot; in the</span>
+<span class="hl slc"># This generates a file called &quot;my_first_generator_win32.lib&quot; in the</span>
 <span class="hl slc"># current directory, along with a matching header. The function</span>
 <span class="hl slc"># defined is called &quot;my_first_generator_win32&quot;.</span>
 
-check_file_exists my_first_generator_win32.obj
+check_file_exists my_first_generator_win32.lib
 check_file_exists my_first_generator_win32.h
 
 <span class="hl slc">################################</span>
@@ -364,18 +364,27 @@ check_file_exists my_first_generator_win32.h
 <span class="hl slc"># -o directory : Specifies which directory to create the outputs</span>
 <span class="hl slc"># in. Usually a build directory.</span>
 
-<span class="hl slc"># -f name : Specifies the name of the generated function, and also the</span>
-<span class="hl slc"># name of the object file. If you omit this, it defaults to the</span>
-<span class="hl slc"># generator name.</span>
+<span class="hl slc"># -f name : Specifies the name of the generated function. If you omit</span>
+<span class="hl slc"># this, it defaults to the generator name.</span>
 
-<span class="hl slc"># -e assembly,bitcode,stmt,html: A list of comma separated values</span>
-<span class="hl slc"># specifying additional outputs to create. &quot;assembly&quot; generates</span>
-<span class="hl slc"># assembly equivalent to the generated object file. &quot;bitcode&quot;</span>
-<span class="hl slc"># generates llvm bitcode for the pipeline. &quot;stmt&quot; generates</span>
-<span class="hl slc"># human-readable pseudocode for the pipeline (similar to setting</span>
-<span class="hl slc"># HL_DEBUG_CODEGEN). &quot;html&quot; generates an html version of the</span>
-<span class="hl slc"># pseudocode, which can be much nicer to read than the raw .stmt</span>
-<span class="hl slc"># file.</span>
+<span class="hl slc"># -n file_base_name : Specifies the basename of the generated file(s). If</span>
+<span class="hl slc"># you omit this, it defaults to the name of the generated function.</span>
+
+<span class="hl slc"># -e static_library,o,h,assembly,bitcode,stmt,html: A list of</span>
+<span class="hl slc"># comma-separated values specifying outputs to create. The default is</span>
+<span class="hl slc"># &quot;static_library,h&quot;. &quot;assembly&quot; generates assembly equivalent to the</span>
+<span class="hl slc"># generated object file. &quot;bitcode&quot; generates llvm bitcode for the pipeline.</span>
+<span class="hl slc"># &quot;stmt&quot; generates human-readable pseudocode for the pipeline (similar to</span>
+<span class="hl slc"># setting HL_DEBUG_CODEGEN). &quot;html&quot; generates an html version of the</span>
+<span class="hl slc"># pseudocode, which can be much nicer to read than the raw .stmt file.</span>
+
+<span class="hl slc"># -r file_base_name : Specifies that the generator should create a</span>
+<span class="hl slc"># standalone file for just the runtime. For use when generating multiple</span>
+<span class="hl slc"># pipelines from a single generator, to be linked together in one</span>
+<span class="hl slc"># executable. See example below.</span>
+
+<span class="hl slc"># -x .old=new,.old2=.new2,... : A comma-separated list of file extension</span>
+<span class="hl slc"># pairs to substitute during file naming.</span>
 
 <span class="hl slc"># target=... : The target to compile for.</span>
 
@@ -399,15 +408,15 @@ target<span class="hl opt">=</span><span class="hl kwc">host</span> scale<span c
 .<span class="hl opt">/</span>lesson_15_generate <span class="hl opt">-</span>g my_second_generator <span class="hl opt">-</span>f my_second_generator_3 <span class="hl opt">-</span>o . \
 target<span class="hl opt">=</span><span class="hl kwc">host</span> parallel<span class="hl opt">=</span>false output_type<span class="hl opt">=</span>float64
 
-check_file_exists my_second_generator_1.o
+check_file_exists my_second_generator_1.a
 check_file_exists my_second_generator_1.h
-check_symbol      my_second_generator_1.o my_second_generator_1
-check_file_exists my_second_generator_2.o
+check_symbol      my_second_generator_1.a my_second_generator_1
+check_file_exists my_second_generator_2.a
 check_file_exists my_second_generator_2.h
-check_symbol      my_second_generator_2.o my_second_generator_2
-check_file_exists my_second_generator_3.o
+check_symbol      my_second_generator_2.a my_second_generator_2
+check_file_exists my_second_generator_3.a
 check_file_exists my_second_generator_3.h
-check_symbol      my_second_generator_3.o my_second_generator_3
+check_symbol      my_second_generator_3.a my_second_generator_3
 
 <span class="hl slc"># Use of these generated object files and headers is exactly the same</span>
 <span class="hl slc"># as in lesson 10.</span>
@@ -422,7 +431,7 @@ check_symbol      my_second_generator_3.o my_second_generator_3
 <span class="hl slc"># files.</span>
 
 <span class="hl kwb">echo</span> <span class="hl str">&quot;The halide runtime:&quot;</span>
-nm my_second_generator_1.o | <span class="hl kwc">grep</span> <span class="hl str">&quot;[SW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span>
+nm my_second_generator_1.a | <span class="hl kwc">grep</span> <span class="hl str">&quot;[SW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span>
 
 <span class="hl slc"># Let's define some functions to check that the runtime exists in a file.</span>
 check_runtime<span class="hl opt">()</span>
@@ -455,23 +464,30 @@ check_no_runtime<span class="hl opt">()</span>
 <span class="hl slc"># with the no_runtime target flag. Let's generate and link several</span>
 <span class="hl slc"># different versions of the first pipeline for different x86 variants:</span>
 
+<span class="hl slc"># (Note that we'll ask the generators to just give us object files (&quot;-e o&quot;), </span>
+<span class="hl slc"># instead of static libraries, so that we can easily link them all into a </span>
+<span class="hl slc"># single static library.)</span>
+
 .<span class="hl opt">/</span>lesson_15_generate \
     <span class="hl opt">-</span>g my_first_generator \
     <span class="hl opt">-</span>f my_first_generator_basic \
+    <span class="hl opt">-</span>e o<span class="hl opt">,</span>h \
     <span class="hl opt">-</span>o . \
-    target<span class="hl opt">=</span>x86<span class="hl opt">-</span><span class="hl num">64</span><span class="hl opt">-</span>no_runtime
+    target<span class="hl opt">=</span><span class="hl kwc">host</span><span class="hl opt">-</span>x86<span class="hl opt">-</span><span class="hl num">64</span><span class="hl opt">-</span>no_runtime
 
 .<span class="hl opt">/</span>lesson_15_generate \
     <span class="hl opt">-</span>g my_first_generator \
     <span class="hl opt">-</span>f my_first_generator_sse41 \
+    <span class="hl opt">-</span>e o<span class="hl opt">,</span>h \
     <span class="hl opt">-</span>o . \
-    target<span class="hl opt">=</span>x86<span class="hl opt">-</span><span class="hl num">64</span><span class="hl opt">-</span>sse41<span class="hl opt">-</span>no_runtime
+    target<span class="hl opt">=</span><span class="hl kwc">host</span><span class="hl opt">-</span>x86<span class="hl opt">-</span><span class="hl num">64</span><span class="hl opt">-</span>sse41<span class="hl opt">-</span>no_runtime
 
 .<span class="hl opt">/</span>lesson_15_generate \
     <span class="hl opt">-</span>g my_first_generator \
     <span class="hl opt">-</span>f my_first_generator_avx \
+    <span class="hl opt">-</span>e o<span class="hl opt">,</span>h \
     <span class="hl opt">-</span>o . \
-    target<span class="hl opt">=</span>x86<span class="hl opt">-</span><span class="hl num">64</span><span class="hl opt">-</span>avx<span class="hl opt">-</span>no_runtime
+    target<span class="hl opt">=</span><span class="hl kwc">host</span><span class="hl opt">-</span>x86<span class="hl opt">-</span><span class="hl num">64</span><span class="hl opt">-</span>avx<span class="hl opt">-</span>no_runtime
 
 <span class="hl slc"># These files don't contain the runtime</span>
 check_no_runtime my_first_generator_basic.o
@@ -482,12 +498,16 @@ check_no_runtime my_first_generator_avx.o
 check_symbol     my_first_generator_avx.o my_first_generator_avx
 
 <span class="hl slc"># We can then use the generator to emit just the runtime:</span>
-.<span class="hl opt">/</span>lesson_15_generate <span class="hl opt">-</span>r halide_runtime_x86.o <span class="hl opt">-</span>o . target<span class="hl opt">=</span>x86<span class="hl opt">-</span><span class="hl num">64</span>
+.<span class="hl opt">/</span>lesson_15_generate \
+    <span class="hl opt">-</span>r halide_runtime_x86 \
+    <span class="hl opt">-</span>e o<span class="hl opt">,</span>h \
+    <span class="hl opt">-</span>o . \
+    target<span class="hl opt">=</span><span class="hl kwc">host</span><span class="hl opt">-</span>x86<span class="hl opt">-</span><span class="hl num">64</span>
 check_runtime halide_runtime_x86.o
 
-<span class="hl slc"># Linking the standalone runtime with the three generated object files</span>
-<span class="hl slc"># gives us three versions of the pipeline for varying levels of x86,</span>
-<span class="hl slc"># combined with a single runtime that will work on nearly all x86</span>
+<span class="hl slc"># Linking the standalone runtime with the three generated object files     </span>
+<span class="hl slc"># gives us three versions of the pipeline for varying levels of x86,      </span>
+<span class="hl slc"># combined with a single runtime that will work on nearly all x86     </span>
 <span class="hl slc"># processors.</span>
 <span class="hl kwc">ar</span> q my_first_generator_multi.a \
     my_first_generator_basic.o \
