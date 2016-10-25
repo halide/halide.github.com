@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['_7ebuffer',['~Buffer',['../class_halide_1_1_buffer.html#aa05fc82b82832089da167b7ca90c7b0d',1,'Halide::Buffer']]],
   ['_7ecodegen_5fc',['~CodeGen_C',['../class_halide_1_1_internal_1_1_code_gen___c.html#a531c2eec28c44f5defb732e3462ee939',1,'Halide::Internal::CodeGen_C']]],
   ['_7ecodegen_5fgpu_5fdev',['~CodeGen_GPU_Dev',['../struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a7597c4d74a373eff2dbad021487d4bcd',1,'Halide::Internal::CodeGen_GPU_Dev']]],
   ['_7ecodegen_5fgpu_5fhost',['~CodeGen_GPU_Host',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#ac77280f6fa4f7579f8f0b776705fabd0',1,'Halide::Internal::CodeGen_GPU_Host']]],
@@ -16,6 +17,8 @@ var searchData=
   ['_7eirnode',['~IRNode',['../struct_halide_1_1_internal_1_1_i_r_node.html#ac1f05b9a8073197a7efdc202a3af6ef7',1,'Halide::Internal::IRNode']]],
   ['_7eirvisitor',['~IRVisitor',['../class_halide_1_1_internal_1_1_i_r_visitor.html#a0cb5bef2ee0f4c947ffa71f198a0153f',1,'Halide::Internal::IRVisitor']]],
   ['_7eparameter',['~Parameter',['../class_halide_1_1_internal_1_1_parameter.html#ababc6a99947b069d04e0fe693b5bae05',1,'Halide::Internal::Parameter']]],
+  ['_7epipelinecontext',['~PipelineContext',['../class_pipeline_context.html#a0fce148fdf555c1e2f8f17eb580cbbb3',1,'PipelineContext']]],
   ['_7escopedmutexlock',['~ScopedMutexLock',['../struct_halide_1_1_runtime_1_1_internal_1_1_scoped_mutex_lock.html#afa9b6fded8596e3b8fd8370fd7f3ae10',1,'Halide::Runtime::Internal::ScopedMutexLock']]],
-  ['_7escopedspinlock',['~ScopedSpinLock',['../struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html#a5f994750f194c5ae7bb5ed32e07e2b1e',1,'Halide::Runtime::Internal::ScopedSpinLock']]]
+  ['_7escopedspinlock',['~ScopedSpinLock',['../struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html#a5f994750f194c5ae7bb5ed32e07e2b1e',1,'Halide::Runtime::Internal::ScopedSpinLock']]],
+  ['_7etemporaryfile',['~TemporaryFile',['../class_halide_1_1_internal_1_1_temporary_file.html#a7ba3c5afd02ab0f327d0f7ca2fa744bf',1,'Halide::Internal::TemporaryFile']]]
 ];

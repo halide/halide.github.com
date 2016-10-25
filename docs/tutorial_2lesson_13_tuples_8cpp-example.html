@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">    single_valued(x, y) = x + y;</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// One way to write a Func that returns a collection of values is</span></div>
-<div class="line">    <span class="comment">// to add an additional dimension which indexes that</span></div>
+<div class="line">    <span class="comment">// to add an additional dimension that indexes that</span></div>
 <div class="line">    <span class="comment">// collection. This is how we typically deal with color. For</span></div>
 <div class="line">    <span class="comment">// example, the Func below represents a collection of three values</span></div>
 <div class="line">    <span class="comment">// for every x, y coordinate indexed by c.</span></div>
@@ -179,9 +179,9 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line"></div>
 <div class="line">    <span class="comment">// A third alternative is to define a Func as evaluating to a</span></div>
 <div class="line">    <span class="comment">// Tuple instead of an Expr. A Tuple is a fixed-size collection of</span></div>
-<div class="line">    <span class="comment">// Exprs which may have different type. The following function</span></div>
-<div class="line">    <span class="comment">// evaluates to an integer value (x+y), and a floating point value</span></div>
-<div class="line">    <span class="comment">// (sin(x*y)).</span></div>
+<div class="line">    <span class="comment">// Exprs. Each Expr in a Tuple may have a different type. The</span></div>
+<div class="line">    <span class="comment">// following function evaluates to an integer value (x+y), and a</span></div>
+<div class="line">    <span class="comment">// floating point value (sin(x*y)).</span></div>
 <div class="line">    <a class="code" href="class_halide_1_1_func.html">Func</a> multi_valued;</div>
 <div class="line">    multi_valued(x, y) = <a name="_a5"></a><a class="code" href="class_halide_1_1_tuple.html">Tuple</a>(x + y, <a class="code" href="namespace_halide.html#a5e1fca22f79625765096133e39caee5e">sin</a>(x * y));</div>
 <div class="line"></div>
@@ -191,10 +191,10 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">    {</div>
 <div class="line">        <a name="_a6"></a><a class="code" href="class_halide_1_1_realization.html">Realization</a> r = multi_valued.<a name="a7"></a><a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(80, 60);</div>
 <div class="line">        assert(r.<a name="a8"></a><a class="code" href="class_halide_1_1_realization.html#a87355234ff3a5404e4bddf122172b7e0">size</a>() == 2);</div>
-<div class="line">        <a name="_a9"></a><a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> im1 = r[0];</div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;float&gt;</a> im2 = r[1];</div>
-<div class="line">        assert(im1(30, 40) == 30 + 40);</div>
-<div class="line">        assert(im2(30, 40) == sinf(30 * 40));</div>
+<div class="line">        <a name="_a9"></a><a class="code" href="class_halide_1_1_buffer.html">Image&lt;int&gt;</a> im0 = r[0];</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;float&gt;</a> im1 = r[1];</div>
+<div class="line">        assert(im0(30, 40) == 30 + 40);</div>
+<div class="line">        assert(im1(30, 40) == sinf(30 * 40));</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// All Tuple elements are evaluated together over the same domain</span></div>
@@ -202,7 +202,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">    <span class="comment">// equivalent C++ code to the above is:</span></div>
 <div class="line">    {</div>
 <div class="line">        <span class="keywordtype">int</span> multi_valued_0[80*60];</div>
-<div class="line">        <span class="keywordtype">int</span> multi_valued_1[80*60];</div>
+<div class="line">        <span class="keywordtype">float</span> multi_valued_1[80*60];</div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; 80; y++) {</div>
 <div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 60; x++) {</div>
 <div class="line">                multi_valued_0[x + 60*y] = x + y;</div>
@@ -245,10 +245,10 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">        <span class="comment">// First we create an Image to take the argmax over.</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> input_func;</div>
 <div class="line">        input_func(x) = <a class="code" href="namespace_halide.html#a5e1fca22f79625765096133e39caee5e">sin</a>(x);</div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;float&gt;</a> input = input_func.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(100);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;float&gt;</a> input = input_func.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(100);</div>
 <div class="line"></div>
-<div class="line">        <span class="comment">// Then we defined a 2-valued Tuple which tracks the maximum value</span></div>
-<div class="line">        <span class="comment">// its index.</span></div>
+<div class="line">        <span class="comment">// Then we define a 2-valued Tuple which tracks the index of</span></div>
+<div class="line">        <span class="comment">// the maximum value and the value itself.</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> arg_max;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Pure definition.</span></div>
@@ -259,7 +259,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">        <a class="code" href="struct_halide_1_1_expr.html">Expr</a> old_index = arg_max()[0];</div>
 <div class="line">        <a class="code" href="struct_halide_1_1_expr.html">Expr</a> old_max   = arg_max()[1];</div>
 <div class="line">        <a class="code" href="struct_halide_1_1_expr.html">Expr</a> new_index = <a class="code" href="namespace_halide.html#a9d6371892ae38e7eb681fd3f23945b06">select</a>(old_max &gt; input(r), r, old_index);</div>
-<div class="line">        <a class="code" href="struct_halide_1_1_expr.html">Expr</a> new_max   = <a name="a12"></a><a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec">max</a>(input(r), old_max);</div>
+<div class="line">        <a class="code" href="struct_halide_1_1_expr.html">Expr</a> new_max   = <a name="a12"></a><a class="code" href="namespace_halide.html#af35ec3cd58f7426ff2cc5d5f257ffa52">max</a>(input(r), old_max);</div>
 <div class="line">        arg_max() = {new_index, new_max};</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// The equivalent C++ is:</span></div>
@@ -269,7 +269,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">            <span class="keywordtype">int</span> old_index = arg_max_0;</div>
 <div class="line">            <span class="keywordtype">float</span> old_max = arg_max_1;</div>
 <div class="line">            <span class="keywordtype">int</span> new_index = old_max &gt; input(r) ? r : old_index;</div>
-<div class="line">            <span class="keywordtype">float</span> new_max = <a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec">std::max</a>(input(r), old_max);</div>
+<div class="line">            <span class="keywordtype">float</span> new_max = <a class="code" href="namespace_halide.html#af35ec3cd58f7426ff2cc5d5f257ffa52">std::max</a>(input(r), old_max);</div>
 <div class="line">            <span class="comment">// In a tuple update definition, all loads and computation</span></div>
 <div class="line">            <span class="comment">// are done before any stores, so that all Tuple elements</span></div>
 <div class="line">            <span class="comment">// are updated atomically with respect to recursive calls</span></div>
@@ -282,8 +282,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">        <span class="comment">// value and index.</span></div>
 <div class="line">        {</div>
 <div class="line">            <a class="code" href="class_halide_1_1_realization.html">Realization</a> r = arg_max.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>();</div>
-<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> r0 = r[0];</div>
-<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;float&gt;</a> r1 = r[1];</div>
+<div class="line">            <a class="code" href="class_halide_1_1_buffer.html">Image&lt;int&gt;</a> r0 = r[0];</div>
+<div class="line">            <a class="code" href="class_halide_1_1_buffer.html">Image&lt;float&gt;</a> r1 = r[1];</div>
 <div class="line">            assert(arg_max_0 == r0(0));</div>
 <div class="line">            assert(arg_max_1 == r1(0));</div>
 <div class="line">        }</div>
@@ -312,8 +312,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">            Complex(<a class="code" href="struct_halide_1_1_expr.html">Expr</a> r, <a class="code" href="struct_halide_1_1_expr.html">Expr</a> i) : real(r), imag(i) {}</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// Construct from a call to a Func by treating it as a Tuple</span></div>
-<div class="line">            Complex(<a name="_a14"></a><a class="code" href="class_halide_1_1_func_ref_expr.html">FuncRefExpr</a> t) : Complex(<a class="code" href="class_halide_1_1_tuple.html">Tuple</a>(t)) {}</div>
-<div class="line">            Complex(<a name="_a15"></a><a class="code" href="class_halide_1_1_func_ref_var.html">FuncRefVar</a> t) : Complex(<a class="code" href="class_halide_1_1_tuple.html">Tuple</a>(t)) {}</div>
+<div class="line">            Complex(<a name="_a14"></a><a class="code" href="class_halide_1_1_func_ref.html">FuncRef</a> t) : Complex(<a class="code" href="class_halide_1_1_tuple.html">Tuple</a>(t)) {}</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// Convert to a Tuple</span></div>
 <div class="line">            <span class="keyword">operator</span> <a class="code" href="class_halide_1_1_tuple.html">Tuple</a>()<span class="keyword"> const </span>{</div>
@@ -321,12 +320,12 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">            }</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// Complex addition</span></div>
-<div class="line">            Complex <a name="a16"></a><a class="code" href="namespace_halide.html#a2db532b84ba55ff72555c4b427fc42bc">operator+</a>(<span class="keyword">const</span> Complex &amp;other)<span class="keyword"> const </span>{</div>
+<div class="line">            Complex <a name="a15"></a><a class="code" href="namespace_halide.html#ad45ccd6b0ed9b73366c88662c251c7cf">operator+</a>(<span class="keyword">const</span> Complex &amp;other)<span class="keyword"> const </span>{</div>
 <div class="line">                <span class="keywordflow">return</span> {real + other.real, imag + other.imag};</div>
 <div class="line">            }</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// Complex multiplication</span></div>
-<div class="line">            Complex <a name="a17"></a><a class="code" href="namespace_halide.html#a908c6748ab34a4a66274b196b6900af5">operator*</a>(<span class="keyword">const</span> Complex &amp;other)<span class="keyword"> const </span>{</div>
+<div class="line">            Complex <a name="a16"></a><a class="code" href="namespace_halide.html#ab9ac81b11fc049daa650e4b764c8a44f">operator*</a>(<span class="keyword">const</span> Complex &amp;other)<span class="keyword"> const </span>{</div>
 <div class="line">                <span class="keywordflow">return</span> {real * other.real - imag * other.imag,</div>
 <div class="line">                        real * other.imag + imag * other.real};</div>
 <div class="line">            }</div>
@@ -368,7 +367,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">        <span class="comment">// true.</span></div>
 <div class="line"></div>
 <div class="line">        <a class="code" href="struct_halide_1_1_expr.html">Expr</a> escape_condition = Complex(mandelbrot(x, y, r)).magnitude() &lt; 16.0f;</div>
-<div class="line">        <a class="code" href="class_halide_1_1_tuple.html">Tuple</a> first_escape = <a name="a18"></a><a class="code" href="namespace_halide.html#a6b42c8c37893bacb33261bdec53303d3">argmin</a>(escape_condition);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_tuple.html">Tuple</a> first_escape = <a name="a17"></a><a class="code" href="namespace_halide.html#a6b42c8c37893bacb33261bdec53303d3">argmin</a>(escape_condition);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// We only want the index, not the value, but argmin returns</span></div>
 <div class="line">        <span class="comment">// both, so we&#39;ll index the argmin Tuple expression using</span></div>
@@ -377,10 +376,10 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">        escape(x, y) = first_escape[0];</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Realize the pipeline and print the result as ascii art.</span></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> result = escape.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(61, 25);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;int&gt;</a> result = escape.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(61, 25);</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *code = <span class="stringliteral">&quot; .:-~*={}&amp;%#@&quot;</span>;</div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; result.<a name="a19"></a><a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>(); y++) {</div>
-<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; result.<a name="a20"></a><a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(); x++) {</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; result.<a name="a18"></a><a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>(); y++) {</div>
+<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; result.<a name="a19"></a><a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>(); x++) {</div>
 <div class="line">                printf(<span class="stringliteral">&quot;%c&quot;</span>, code[result(x, y)]);</div>
 <div class="line">            }</div>
 <div class="line">            printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>

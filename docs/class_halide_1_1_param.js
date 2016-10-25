@@ -3,7 +3,7 @@ var class_halide_1_1_param =
     [ "Param", "class_halide_1_1_param.html#ae32b1d95ee6bf9ab2c744cc17ba67d4f", null ],
     [ "Param", "class_halide_1_1_param.html#aee0fc66aed3d24c3571ed8a82aae40ea", null ],
     [ "Param", "class_halide_1_1_param.html#a62cbd1af85b1f64f79a28eb4e68d5195", null ],
-    [ "Param", "class_halide_1_1_param.html#a1cf5e490d8b49a4b7fbeb211f2b24d20", null ],
+    [ "Param", "class_halide_1_1_param.html#a26c3226f6468f93a74fd55e6842f8de7", null ],
     [ "Param", "class_halide_1_1_param.html#aba0cf523d62e51023dcbb2da57639344", null ],
     [ "Param", "class_halide_1_1_param.html#aa78f92bd21882b1178b1d8bfb51303a0", null ],
     [ "Param", "class_halide_1_1_param.html#a5356b09a1d5a0771e6790462e0efcb7c", null ],

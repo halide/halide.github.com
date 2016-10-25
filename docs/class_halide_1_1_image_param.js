@@ -3,14 +3,15 @@ var class_halide_1_1_image_param =
     [ "ImageParam", "class_halide_1_1_image_param.html#a1fc8b51881bdc173eb9853b0f5dab464", null ],
     [ "ImageParam", "class_halide_1_1_image_param.html#a49cec4df7402ff821a9cf4bf95f4826c", null ],
     [ "ImageParam", "class_halide_1_1_image_param.html#a0f8810cb13082f708fad12c53965251b", null ],
-    [ "set", "class_halide_1_1_image_param.html#a63af6a98c8cf6b3b7411a1ba4beb7e35", null ],
-    [ "get", "class_halide_1_1_image_param.html#a85e3c9a808384a4fa0f5faa628c395ff", null ],
-    [ "operator()", "class_halide_1_1_image_param.html#a582d8f91256ef008e5d3c291e6324db6", null ],
-    [ "operator()", "class_halide_1_1_image_param.html#a8dcc284036ecd1d2df797d2992d97949", null ],
-    [ "operator()", "class_halide_1_1_image_param.html#a8db0de0cf308bf3d5f35b856104930e0", null ],
-    [ "operator()", "class_halide_1_1_image_param.html#aa04b8925f6c9ce0c4e9796b20bdceacb", null ],
-    [ "operator()", "class_halide_1_1_image_param.html#a02cde56449aa3be3eff3a3bd6347d146", null ],
+    [ "set", "class_halide_1_1_image_param.html#a997a1ae403aa27cc8ba46b17428d9f22", null ],
+    [ "get", "class_halide_1_1_image_param.html#a5ee289d3899a467dd464d143fe3fbcca", null ],
+    [ "get", "class_halide_1_1_image_param.html#a1999dbcf54f95dc6bb47ebac70a74812", null ],
+    [ "reset", "class_halide_1_1_image_param.html#a90715e53c4a4f927df08c1cf31cfbadf", null ],
+    [ "operator()", "class_halide_1_1_image_param.html#a2346328ea287e55b47738c6170490ecf", null ],
     [ "operator()", "class_halide_1_1_image_param.html#ab8c56da2bff9cd7026abba110efa22a9", null ],
     [ "operator()", "class_halide_1_1_image_param.html#a1b9eaff64bf4cddd46349ccfbda988aa", null ],
-    [ "operator Expr", "class_halide_1_1_image_param.html#a594525ce5f51a6207843810613eb5610", null ]
+    [ "operator Func", "class_halide_1_1_image_param.html#abd117cce2464a800e07bf71b708c5efa", null ],
+    [ "in", "class_halide_1_1_image_param.html#ac260ae26cc40a115a41a875d66367332", null ],
+    [ "in", "class_halide_1_1_image_param.html#ab2524df90d4ed8f4489253050b2c151a", null ],
+    [ "in", "class_halide_1_1_image_param.html#ae8c677c433e22924ebf7396b42fbd94f", null ]
 ];

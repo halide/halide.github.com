@@ -113,9 +113,10 @@ $(document).ready(function(){initNavTree('_util_8h.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Various utility functions used internally <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a>.  
+<p>Various utility functions used internally <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a>.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;assert.h&gt;</code><br/>
+<code>#include &lt;cstdint&gt;</code><br/>
 <code>#include &lt;utility&gt;</code><br/>
 <code>#include &lt;vector&gt;</code><br/>
 <code>#include &lt;string&gt;</code><br/>
@@ -131,14 +132,18 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1all__are__convertible.html">Halide::Internal::all_are_convertible&lt; To, Args &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_file_stat.html">Halide::Internal::FileStat</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_temporary_file.html">Halide::Internal::TemporaryFile</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple utility class that creates a temporary file in its ctor and deletes that file in its dtor; this is useful for temporary files that you want to ensure are deleted when exiting a certain scope.  <a href="class_halide_1_1_internal_1_1_temporary_file.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_halide"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html">Halide</a></td></tr>
-<tr class="memdesc:namespace_halide"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines methods for solving equations. <br/></td></tr>
+<tr class="memdesc:namespace_halide"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines methods for manipulating and analyzing boolean expressions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_halide_1_1_internal"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html">Halide::Internal</a></td></tr>
-<tr class="memdesc:namespace_halide_1_1_internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct used to detect if a type is a pointer. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -157,45 +162,79 @@ Functions</h2></td></tr>
 <tr class="memitem:a2eb97978547d98141752de6b614195f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a2eb97978547d98141752de6b614195f4">Halide::Internal::make_entity_name</a> (void *stack_ptr, const std::string &amp;type, char prefix)</td></tr>
 <tr class="memdesc:a2eb97978547d98141752de6b614195f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make a unique name for an object based on the name of the stack variable passed in.  <a href="#a2eb97978547d98141752de6b614195f4">More...</a><br/></td></tr>
 <tr class="separator:a2eb97978547d98141752de6b614195f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd575ab182df12cc793dba4aa241c1a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9">Halide::Internal::unique_name</a> (char prefix)</td></tr>
-<tr class="memdesc:acd575ab182df12cc793dba4aa241c1a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a unique name starting with the given character.  <a href="#acd575ab182df12cc793dba4aa241c1a9">More...</a><br/></td></tr>
-<tr class="separator:acd575ab182df12cc793dba4aa241c1a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafd40e47c06b4ccb5d2173528ae0523f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aafd40e47c06b4ccb5d2173528ae0523f">Halide::Internal::unique_name</a> (const std::string &amp;name, bool user=true)</td></tr>
-<tr class="memdesc:aafd40e47c06b4ccb5d2173528ae0523f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a unique name starting with the given string.  <a href="#aafd40e47c06b4ccb5d2173528ae0523f">More...</a><br/></td></tr>
-<tr class="separator:aafd40e47c06b4ccb5d2173528ae0523f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5c91808e78c03a99a02fb7b37d2c02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a3f5c91808e78c03a99a02fb7b37d2c02">Halide::Internal::get_env_variable</a> (char const *env_var_name, <a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a> &amp;var_defined)</td></tr>
+<tr class="memdesc:a3f5c91808e78c03a99a02fb7b37d2c02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get value of an environment variable.  <a href="#a3f5c91808e78c03a99a02fb7b37d2c02">More...</a><br/></td></tr>
+<tr class="separator:a3f5c91808e78c03a99a02fb7b37d2c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa67ba715b9cc517c979f2f56f1236a33"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa67ba715b9cc517c979f2f56f1236a33">Halide::Internal::running_program_name</a> ()</td></tr>
+<tr class="memdesc:aa67ba715b9cc517c979f2f56f1236a33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name of the currently running executable.  <a href="#aa67ba715b9cc517c979f2f56f1236a33">More...</a><br/></td></tr>
+<tr class="separator:aa67ba715b9cc517c979f2f56f1236a33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7703083cfe592de68f37796533724ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa7703083cfe592de68f37796533724ed">Halide::Internal::starts_with</a> (const std::string &amp;str, const std::string &amp;prefix)</td></tr>
 <tr class="memdesc:aa7703083cfe592de68f37796533724ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if the first string starts with the second string.  <a href="#aa7703083cfe592de68f37796533724ed">More...</a><br/></td></tr>
 <tr class="separator:aa7703083cfe592de68f37796533724ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a230079281175545b9b90b2285106ab28"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a230079281175545b9b90b2285106ab28">Halide::Internal::ends_with</a> (const std::string &amp;str, const std::string &amp;suffix)</td></tr>
 <tr class="memdesc:a230079281175545b9b90b2285106ab28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if the first string ends with the second string.  <a href="#a230079281175545b9b90b2285106ab28">More...</a><br/></td></tr>
 <tr class="separator:a230079281175545b9b90b2285106ab28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a323b05ce69829cea65348efc21923625"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a323b05ce69829cea65348efc21923625">Halide::Internal::replace_all</a> (std::string &amp;str, const std::string &amp;find, const std::string &amp;replace)</td></tr>
-<tr class="memdesc:a323b05ce69829cea65348efc21923625"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace all matches of the second string in the first string with the last string.  <a href="#a323b05ce69829cea65348efc21923625">More...</a><br/></td></tr>
-<tr class="separator:a323b05ce69829cea65348efc21923625"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac91d88c24b89bb17c7b69c671c723516"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ac91d88c24b89bb17c7b69c671c723516">Halide::Internal::base_name</a> (const std::string &amp;name, char delim= '.')</td></tr>
-<tr class="memdesc:ac91d88c24b89bb17c7b69c671c723516"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the final token of the name string using the given delimiter.  <a href="#ac91d88c24b89bb17c7b69c671c723516">More...</a><br/></td></tr>
-<tr class="separator:ac91d88c24b89bb17c7b69c671c723516"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acba3d0dce3432d1af82c8548d40406c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#acba3d0dce3432d1af82c8548d40406c5">Halide::Internal::replace_all</a> (const std::string &amp;str, const std::string &amp;find, const std::string &amp;replace)</td></tr>
+<tr class="memdesc:acba3d0dce3432d1af82c8548d40406c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace all matches of the second string in the first string with the last string.  <a href="#acba3d0dce3432d1af82c8548d40406c5">More...</a><br/></td></tr>
+<tr class="separator:acba3d0dce3432d1af82c8548d40406c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedc761896b3e6a38bddce45b6c0f8b15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aedc761896b3e6a38bddce45b6c0f8b15">Halide::Internal::split_string</a> (const std::string &amp;source, const std::string &amp;delim)</td></tr>
 <tr class="memdesc:aedc761896b3e6a38bddce45b6c0f8b15"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_halide_1_1_internal_1_1_split.html">Split</a> the source string using 'delim' as the divider.  <a href="#aedc761896b3e6a38bddce45b6c0f8b15">More...</a><br/></td></tr>
 <tr class="separator:aedc761896b3e6a38bddce45b6c0f8b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacabf4d4e1d92f8059e6c3ce90b06368"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aacabf4d4e1d92f8059e6c3ce90b06368"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aacabf4d4e1d92f8059e6c3ce90b06368">Halide::Internal::collect_args</a> (std::vector&lt; T &gt; &amp;collected_args)</td></tr>
-<tr class="separator:aacabf4d4e1d92f8059e6c3ce90b06368"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11a5d4585e8974633558071b65ccead7"><td class="memTemplParams" colspan="2">template&lt;typename T , typename T2 &gt; </td></tr>
-<tr class="memitem:a11a5d4585e8974633558071b65ccead7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a11a5d4585e8974633558071b65ccead7">Halide::Internal::collect_args</a> (std::vector&lt; T &gt; &amp;collected_args, T2 arg)</td></tr>
-<tr class="separator:a11a5d4585e8974633558071b65ccead7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb4859b8bc2993517cfdc270931b4d8d"><td class="memTemplParams" colspan="2">template&lt;typename T , typename T2 , typename... Args&gt; </td></tr>
-<tr class="memitem:afb4859b8bc2993517cfdc270931b4d8d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#afb4859b8bc2993517cfdc270931b4d8d">Halide::Internal::collect_args</a> (std::vector&lt; T &gt; &amp;collected_args, T2 arg, Args...args)</td></tr>
-<tr class="separator:afb4859b8bc2993517cfdc270931b4d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3edc6396d4157000cf0b27bec127c20"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , typename T3 , typename T4 &gt; </td></tr>
-<tr class="memitem:aa3edc6396d4157000cf0b27bec127c20"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa3edc6396d4157000cf0b27bec127c20">Halide::Internal::collect_paired_args</a> (std::vector&lt; std::pair&lt; T1, T2 &gt;&gt; &amp;collected_args, T3 a1, T4 a2)</td></tr>
-<tr class="separator:aa3edc6396d4157000cf0b27bec127c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b69555853e1ada3402c97304481c821"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , typename T3 , typename T4 , typename... Args&gt; </td></tr>
-<tr class="memitem:a4b69555853e1ada3402c97304481c821"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a4b69555853e1ada3402c97304481c821">Halide::Internal::collect_paired_args</a> (std::vector&lt; std::pair&lt; T1, T2 &gt;&gt; &amp;collected_args, T3 a1, T4 a2, Args...args)</td></tr>
-<tr class="separator:a4b69555853e1ada3402c97304481c821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaee1bb2b0dc659851899df7c12437ba"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Fn &gt; </td></tr>
+<tr class="memitem:aaaee1bb2b0dc659851899df7c12437ba"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aaaee1bb2b0dc659851899df7c12437ba">Halide::Internal::fold_left</a> (const std::vector&lt; T &gt; &amp;vec, Fn f)</td></tr>
+<tr class="memdesc:aaaee1bb2b0dc659851899df7c12437ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a left fold of a vector.  <a href="#aaaee1bb2b0dc659851899df7c12437ba">More...</a><br/></td></tr>
+<tr class="separator:aaaee1bb2b0dc659851899df7c12437ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afedfcf82469516f0f05eb5a4699f480a"><td class="memTemplParams" colspan="2">template&lt;typename T , typename Fn &gt; </td></tr>
+<tr class="memitem:afedfcf82469516f0f05eb5a4699f480a"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#afedfcf82469516f0f05eb5a4699f480a">Halide::Internal::fold_right</a> (const std::vector&lt; T &gt; &amp;vec, Fn f)</td></tr>
+<tr class="memdesc:afedfcf82469516f0f05eb5a4699f480a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a right fold of a vector.  <a href="#afedfcf82469516f0f05eb5a4699f480a">More...</a><br/></td></tr>
+<tr class="separator:afedfcf82469516f0f05eb5a4699f480a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0f0ecaee7837d40c1d42846617992fb"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , typename T3 , typename T4 &gt; </td></tr>
+<tr class="memitem:aa0f0ecaee7837d40c1d42846617992fb"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa0f0ecaee7837d40c1d42846617992fb">Halide::Internal::collect_paired_args</a> (std::vector&lt; std::pair&lt; T1, T2 &gt;&gt; &amp;collected_args, const T3 &amp;a1, const T4 &amp;a2)</td></tr>
+<tr class="separator:aa0f0ecaee7837d40c1d42846617992fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f8060f18ae092b69122b0334f9e05f4"><td class="memTemplParams" colspan="2">template&lt;typename T1 , typename T2 , typename T3 , typename T4 , typename... Args&gt; </td></tr>
+<tr class="memitem:a0f8060f18ae092b69122b0334f9e05f4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a0f8060f18ae092b69122b0334f9e05f4">Halide::Internal::collect_paired_args</a> (std::vector&lt; std::pair&lt; T1, T2 &gt;&gt; &amp;collected_args, const T3 &amp;a1, const T4 &amp;a2, Args &amp;&amp;...args)</td></tr>
+<tr class="separator:a0f8060f18ae092b69122b0334f9e05f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93192a2ea0afe58664e69232595ae08e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a93192a2ea0afe58664e69232595ae08e">Halide::Internal::extract_namespaces</a> (const std::string &amp;name, std::vector&lt; std::string &gt; &amp;namespaces)</td></tr>
+<tr class="memdesc:a93192a2ea0afe58664e69232595ae08e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns base name and fills in namespaces, outermost one first in vector.  <a href="#a93192a2ea0afe58664e69232595ae08e">More...</a><br/></td></tr>
+<tr class="separator:a93192a2ea0afe58664e69232595ae08e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afce725835e748b650a0836269a140615"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#afce725835e748b650a0836269a140615">Halide::Internal::file_make_temp</a> (const std::string &amp;prefix, const std::string &amp;suffix)</td></tr>
+<tr class="memdesc:afce725835e748b650a0836269a140615"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a unique file with a name of the form prefixXXXXXsuffix in an arbitrary (but writable) directory; this is typically /tmp, but the specific location is not guaranteed.  <a href="#afce725835e748b650a0836269a140615">More...</a><br/></td></tr>
+<tr class="separator:afce725835e748b650a0836269a140615"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cf1e96bff058c5a479b08c236cec689"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a1cf1e96bff058c5a479b08c236cec689">Halide::Internal::dir_make_temp</a> ()</td></tr>
+<tr class="memdesc:a1cf1e96bff058c5a479b08c236cec689"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a unique directory in an arbitrary (but writable) directory; this is typically somewhere inside /tmp, but the specific location is not guaranteed.  <a href="#a1cf1e96bff058c5a479b08c236cec689">More...</a><br/></td></tr>
+<tr class="separator:a1cf1e96bff058c5a479b08c236cec689"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a518086fef4df79fd915e6489e3be703e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a518086fef4df79fd915e6489e3be703e">Halide::Internal::file_exists</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a518086fef4df79fd915e6489e3be703e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper for access().  <a href="#a518086fef4df79fd915e6489e3be703e">More...</a><br/></td></tr>
+<tr class="separator:a518086fef4df79fd915e6489e3be703e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b0f0dfc46541dab4528baf664a63ea7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a6b0f0dfc46541dab4528baf664a63ea7">Halide::Internal::file_unlink</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a6b0f0dfc46541dab4528baf664a63ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper for unlink().  <a href="#a6b0f0dfc46541dab4528baf664a63ea7">More...</a><br/></td></tr>
+<tr class="separator:a6b0f0dfc46541dab4528baf664a63ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a205a11ea75c89d6642c8476372e2f83d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a205a11ea75c89d6642c8476372e2f83d">Halide::Internal::dir_rmdir</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a205a11ea75c89d6642c8476372e2f83d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper for rmdir().  <a href="#a205a11ea75c89d6642c8476372e2f83d">More...</a><br/></td></tr>
+<tr class="separator:a205a11ea75c89d6642c8476372e2f83d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb54eb008076b8c9d945a770e24799af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> FileStat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#acb54eb008076b8c9d945a770e24799af">Halide::Internal::file_stat</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:acb54eb008076b8c9d945a770e24799af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper for stat().  <a href="#acb54eb008076b8c9d945a770e24799af">More...</a><br/></td></tr>
+<tr class="separator:acb54eb008076b8c9d945a770e24799af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:acd575ab182df12cc793dba4aa241c1a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#acd575ab182df12cc793dba4aa241c1a9">Halide::Internal::unique_name</a> (char prefix)</td></tr>
+<tr class="memdesc:acd575ab182df12cc793dba4aa241c1a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a unique name starting with the given prefix.  <a href="#acd575ab182df12cc793dba4aa241c1a9">More...</a><br/></td></tr>
+<tr class="separator:acd575ab182df12cc793dba4aa241c1a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd494d26bfdb439727f5a9e8ecc48537"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#acd494d26bfdb439727f5a9e8ecc48537">Halide::Internal::unique_name</a> (const std::string &amp;prefix)</td></tr>
+<tr class="memdesc:acd494d26bfdb439727f5a9e8ecc48537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate a unique name starting with the given prefix.  <a href="#acd494d26bfdb439727f5a9e8ecc48537">More...</a><br/></td></tr>
+<tr class="separator:acd494d26bfdb439727f5a9e8ecc48537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:a8cc678d669d07fdd15685b87e3b8b620"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a8cc678d669d07fdd15685b87e3b8b620">Halide::Internal::add_would_overflow</a> (int bits, <a class="el" href="runtime__internal_8h.html#a11cbdb02b138f338b174a78c683f85fc">int64_t</a> a, <a class="el" href="runtime__internal_8h.html#a11cbdb02b138f338b174a78c683f85fc">int64_t</a> b)</td></tr>
+<tr class="memdesc:a8cc678d669d07fdd15685b87e3b8b620"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routines to test if math would overflow for signed integers with the given number of bits.  <a href="#a8cc678d669d07fdd15685b87e3b8b620">More...</a><br/></td></tr>
+<tr class="separator:a8cc678d669d07fdd15685b87e3b8b620"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82c64641e261b5596a2ab6d7da7f8ef8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a82c64641e261b5596a2ab6d7da7f8ef8">Halide::Internal::sub_would_overflow</a> (int bits, <a class="el" href="runtime__internal_8h.html#a11cbdb02b138f338b174a78c683f85fc">int64_t</a> a, <a class="el" href="runtime__internal_8h.html#a11cbdb02b138f338b174a78c683f85fc">int64_t</a> b)</td></tr>
+<tr class="memdesc:a82c64641e261b5596a2ab6d7da7f8ef8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routines to test if math would overflow for signed integers with the given number of bits.  <a href="#a82c64641e261b5596a2ab6d7da7f8ef8">More...</a><br/></td></tr>
+<tr class="separator:a82c64641e261b5596a2ab6d7da7f8ef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aaa735c9ff93372dce25222fb551b67"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a9aaa735c9ff93372dce25222fb551b67">Halide::Internal::mul_would_overflow</a> (int bits, <a class="el" href="runtime__internal_8h.html#a11cbdb02b138f338b174a78c683f85fc">int64_t</a> a, <a class="el" href="runtime__internal_8h.html#a11cbdb02b138f338b174a78c683f85fc">int64_t</a> b)</td></tr>
+<tr class="memdesc:a9aaa735c9ff93372dce25222fb551b67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Routines to test if math would overflow for signed integers with the given number of bits.  <a href="#a9aaa735c9ff93372dce25222fb551b67">More...</a><br/></td></tr>
+<tr class="separator:a9aaa735c9ff93372dce25222fb551b67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Various utility functions used internally <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a>. </p>
+<div class="textblock"><p>Various utility functions used internally <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a>. </p>
 
 <p>Definition in file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
@@ -209,7 +248,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_util_8h_source.html#l00029">29</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
+<p>Definition at line <a class="el" href="_util_8h_source.html#l00030">30</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_func_8h_source.html#l00930">Halide::Func::operator()()</a>, <a class="el" href="_func_8h_source.html#l00193">Halide::Stage::reorder()</a>, <a class="el" href="_func_8h_source.html#l01159">Halide::Func::reorder()</a>, and <a class="el" href="_func_8h_source.html#l01481">Halide::Func::reorder_storage()</a>.</p>
 
 </div>
 </div>
@@ -223,7 +264,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_util_8h_source.html#l00039">39</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
+<p>Definition at line <a class="el" href="_util_8h_source.html#l00040">40</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_func_8h_source.html#l00930">Halide::Func::operator()()</a>.</p>
 
 </div>
 </div>
@@ -232,7 +275,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_util_8h.html">Util.h</a></li>
+    <li class="navelem"><a class="el" href="dir_de4960fb9afd4052b9300248cfe3cde2.html">src</a></li><li class="navelem"><a class="el" href="_util_8h.html">Util.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

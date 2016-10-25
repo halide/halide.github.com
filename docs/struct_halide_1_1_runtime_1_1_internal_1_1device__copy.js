@@ -1,5 +1,6 @@
 var struct_halide_1_1_runtime_1_1_internal_1_1device__copy =
 [
+    [ "copy_memory", "struct_halide_1_1_runtime_1_1_internal_1_1device__copy.html#a93b70e56678dc6f41afc4479a79d0500", null ],
     [ "src", "struct_halide_1_1_runtime_1_1_internal_1_1device__copy.html#a70e6d3118d954c045940fc61a2ff76a5", null ],
     [ "dst", "struct_halide_1_1_runtime_1_1_internal_1_1device__copy.html#ab254835340699db2b043203017bff96a", null ],
     [ "extent", "struct_halide_1_1_runtime_1_1_internal_1_1device__copy.html#a967a89ad7b2a7baf57d6031631a6763c", null ],

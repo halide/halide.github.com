@@ -9,5 +9,6 @@ var searchData=
   ['broadcast',['Broadcast',['../struct_halide_1_1_internal_1_1_broadcast.html',1,'Halide::Internal']]],
   ['buffer',['Buffer',['../class_halide_1_1_buffer.html',1,'Halide']]],
   ['buffer_5ft',['buffer_t',['../structbuffer__t.html',1,'']]],
+  ['bufferptr',['BufferPtr',['../class_halide_1_1_internal_1_1_buffer_ptr.html',1,'Halide::Internal']]],
   ['bufferref',['BufferRef',['../struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html',1,'Halide::Internal::Closure']]]
 ];

@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['uint',['UInt',['../struct_halide_1_1_type.html#ac456d5a34cbc1cfbac65d228e6306ed4a21005f3dc4cda64ce42d4f1957dafb91',1,'Halide::Type']]],
-  ['undefinedarg',['UndefinedArg',['../struct_halide_1_1_extern_func_argument.html#acaf18f00d1d41e200ba8c7ac799a172ba78648830262a9f7eb6e778ca8ca6c541',1,'Halide::ExternFuncArgument']]],
-  ['unknown',['Unknown',['../namespace_halide_1_1_internal.html#a6d77bcd7bf9bfb0b3f5e66010d9ff3eaa33f442ca80fb5f8ce55a5becac9a30cf',1,'Halide::Internal']]],
-  ['unrolled',['Unrolled',['../namespace_halide_1_1_internal.html#a6a8761f129e6554b9ea03de31bf066f1ae53597647de81f4cc9e098fc119ba0ac',1,'Halide::Internal']]],
-  ['usercontext',['UserContext',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fab7dbd399d2a833d37bd52451f99c50c1',1,'Halide::Target']]]
+  ['text',['Text',['../namespace_halide.html#ad1953af304956bd6a5d0bd780b135f56a1941ee057d1e57015bf2838a63556b91',1,'Halide']]],
+  ['tonearesttiestoaway',['ToNearestTiesToAway',['../namespace_halide.html#abff9f4f741ecf5b3b24bbe4efc4d0513a84d9da9f10a18c861aae1c0c766c9655',1,'Halide']]],
+  ['tonearesttiestoeven',['ToNearestTiesToEven',['../namespace_halide.html#abff9f4f741ecf5b3b24bbe4efc4d0513acf4d106815d24a039c00a89df3477920',1,'Halide']]],
+  ['towardnegativeinfinity',['TowardNegativeInfinity',['../namespace_halide.html#abff9f4f741ecf5b3b24bbe4efc4d0513a08beb24b64ed999c6957d184e2cf102d',1,'Halide']]],
+  ['towardpositiveinfinity',['TowardPositiveInfinity',['../namespace_halide.html#abff9f4f741ecf5b3b24bbe4efc4d0513ad81a1edda059bdb858a0ca851d27a212',1,'Halide']]],
+  ['towardzero',['TowardZero',['../namespace_halide.html#abff9f4f741ecf5b3b24bbe4efc4d0513a2113e9520b32addb451df3b9fec51a96',1,'Halide']]]
 ];

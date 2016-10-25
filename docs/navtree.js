@@ -10,7 +10,7 @@ var NAVTREE =
         [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
-        [ "Enumerator", "namespacemembers_eval.html", null ]
+        [ "Enumerator", "namespacemembers_eval.html", "namespacemembers_eval" ]
       ] ]
     ] ],
     [ "Classes", null, [
@@ -43,26 +43,30 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"35_2_reader_writer__3__2_8h.html",
-"_halide_runtime_8h.html#a83ec7fcc618e1b0508a6f4f726a7bcae",
-"_i_r_operator_8h.html#af3da8f6192d557a4bd47cf244b79a9db",
-"_storage_folding_8h_source.html",
-"class_halide_1_1_func.html#ab4893db240671acf18233ed18d3bfca8",
-"class_halide_1_1_internal_1_1_code_gen___c.html#ac7d30b280e05e4d5722840f8a2140f65",
-"class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a75f424594f0f6eb6d19ca85e3fc7287c",
-"class_halide_1_1_internal_1_1_i_r_graph_visitor.html#abd2258d1a33e9e2505a8d11863b19f18",
-"class_halide_1_1_module.html",
-"classllvm__3__2_1_1_value_enumerator.html#a6156bc5c4e6f9b29c183db0dae55bacb",
-"mini__cl_8h.html#a038bb119ee497359824645d90466517f",
-"mini__cl_8h.html#a96a7d9b65e8319e2f8c751455ae92ec8",
-"mini__cuda_8h.html#af19313e44c60ca273901b267a591bffaa2d2c14b2a45b663b91af6533d824ed8d",
-"mini__renderscript_8h.html#a02ec4d4448d180273e8d35baf641c618a215892106fd14e1e03e6856f5eaf14de",
-"mini__renderscript_8h.html#aa608d19131bddfbbff670297ec7179daad1b23de91e60a1e667108b19661fb981",
-"mini__renderscript_8h.html#aff88c715a5f5fbd1ef95d4fb71a7eaccafa0a914d5db92aa173d5a3fbd5792152",
-"struct_halide_1_1_internal_1_1_assert_stmt.html",
-"struct_halide_1_1_internal_1_1_loop_level.html#a0ffc0ef1807fe10a93529571b9a9cc7d",
-"struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a5c630f5107a5a01870143d6dc042ea8c",
-"structhalide__trace__event.html#a34e290a904566e28bf97cb99a557c0ff"
+"_add_image_checks_8h.html",
+"_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2acbe1377636dc5dc95b68ff96203249cc",
+"_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca28e9d2c63f5933a4422b668b3f473867",
+"_i_r_operator_8h.html#a80881209a15ed749e168d6edbcb6f687",
+"_output_image_param_8h_source.html",
+"android__ioctl_8h.html#aac9326e045ee2b98b9e999076de6d006",
+"class_halide_1_1_func.html#aabbca0a4e813bd81f264c229a6eeb61d",
+"class_halide_1_1_internal_1_1_code_gen___g_l_s_l.html#a727f54656d112413b7a3736c0ef69bce",
+"class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#adf616481b12366a4fcdbf28bb5488f49",
+"class_halide_1_1_internal_1_1_definition.html#ad4875343613fadef83aeae524512fe5e",
+"class_halide_1_1_internal_1_1_i_r_printer.html#af3f28014287a3239a7de01852479ec38",
+"class_halide_1_1_param.html#a32d6366da61a68ece00facc24d7a44d4",
+"elf_8h.html#a3cab103b1cdc9025731a8fa4d6d1955c",
+"mini__cl_8h.html#a1e7a708f426cc4d081cbee824e896004",
+"mini__cl_8h.html#aa7b9320a4af8b877680d1243fb0458ea",
+"mini__cuda_8h.html#af19313e44c60ca273901b267a591bffaa8719e4547cebfb2655b7b486a79b7425",
+"mini__renderscript_8h.html#a02ec4d4448d180273e8d35baf641c618aa31a602144b121775366286ae286169d",
+"mini__renderscript_8h.html#aba7e47cf93028789af73b4b727a36cfc",
+"namespace_halide_1_1_integer_divide_table.html",
+"struct_halide_1_1_all_ints_3_4.html",
+"struct_halide_1_1_internal_1_1_file_stat.html#a9dddec0ce5aa64cd04550c202897c24f",
+"struct_halide_1_1_internal_1_1_storage_dim.html#a0157f5cf508314a37bfc48485e4cb9bc",
+"struct_halide_1_1_type.html#a4f495c8b3b8689f528f7adbad60ba8ac",
+"structelf__t.html#a8a5516f7d3ec33e725270de764ac12d2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

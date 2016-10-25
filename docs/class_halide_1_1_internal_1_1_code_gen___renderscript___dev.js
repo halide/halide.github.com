@@ -2,7 +2,7 @@ var class_halide_1_1_internal_1_1_code_gen___renderscript___dev =
 [
     [ "CodeGen_Renderscript_Dev", "class_halide_1_1_internal_1_1_code_gen___renderscript___dev.html#a00d627ffc8df2374bca771d163142fa3", null ],
     [ "~CodeGen_Renderscript_Dev", "class_halide_1_1_internal_1_1_code_gen___renderscript___dev.html#a90d8d65ee11b78f01d9e63dfd2781f63", null ],
-    [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___renderscript___dev.html#aaac2dfcd087daf0d35be7e284d0295ad", null ],
+    [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___renderscript___dev.html#a672798c4528e5fe1e9f438fb0bcffc19", null ],
     [ "compile_to_src", "class_halide_1_1_internal_1_1_code_gen___renderscript___dev.html#ad3b49c7d7d80ca2e79cad02a9720400c", null ],
     [ "get_current_kernel_name", "class_halide_1_1_internal_1_1_code_gen___renderscript___dev.html#a09a1948f92b2d3fa18e87b046a535990", null ],
     [ "dump", "class_halide_1_1_internal_1_1_code_gen___renderscript___dev.html#a1ea01447ba192fe856734721f8808e59", null ],

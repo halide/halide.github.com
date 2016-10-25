@@ -148,7 +148,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line">    <span class="comment">// program on.  For example, if you compile and run this file on</span></div>
 <div class="line">    <span class="comment">// 64-bit linux on an x86 cpu with sse4.1, then the generated code</span></div>
 <div class="line">    <span class="comment">// will be suitable for 64-bit linux on x86 with sse4.1.</span></div>
-<div class="line">    brighter.<a name="a6"></a><a class="code" href="class_halide_1_1_func.html#a25e70d8bbd3a27b2287444c440aa37c4">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_host&quot;</span>, args);</div>
+<div class="line">    brighter.<a name="a6"></a><a class="code" href="class_halide_1_1_func.html#a980e56939f009104a0d9fb4c7a15e124">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_host&quot;</span>, args, <span class="stringliteral">&quot;brighter&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// We can also compile object files suitable for other cpus and</span></div>
 <div class="line">    <span class="comment">// operating systems. You do this with an optional third argument</span></div>
@@ -162,7 +162,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line">    std::vector&lt;Target::Feature&gt; arm_features; <span class="comment">// A list of features to set</span></div>
 <div class="line">    target.<a name="a13"></a><a class="code" href="struct_halide_1_1_target.html#a6dddb1542193fca806cd9f0d9079ba32">set_features</a>(arm_features);</div>
 <div class="line">    <span class="comment">// We then pass the target as the last argument to compile_to_file.</span></div>
-<div class="line">    brighter.<a class="code" href="class_halide_1_1_func.html#a25e70d8bbd3a27b2287444c440aa37c4">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_arm_32_android&quot;</span>, args, target);</div>
+<div class="line">    brighter.<a class="code" href="class_halide_1_1_func.html#a980e56939f009104a0d9fb4c7a15e124">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_arm_32_android&quot;</span>, args, <span class="stringliteral">&quot;brighter&quot;</span>, target);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// And now a Windows object file for 64-bit x86 with AVX and SSE 4.1:</span></div>
 <div class="line">    target.<a class="code" href="struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec">os</a> = <a name="a14"></a><a class="code" href="struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a33d246944800a2b478899132d76a95b2">Target::Windows</a>;</div>
@@ -172,7 +172,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line">    x86_features.push_back(<a name="a16"></a><a class="code" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa620c10914ea92a26c16878ab73933b2b">Target::AVX</a>);</div>
 <div class="line">    x86_features.push_back(<a name="a17"></a><a class="code" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf6ada84d24838f818391b465b9a94165">Target::SSE41</a>);</div>
 <div class="line">    target.<a class="code" href="struct_halide_1_1_target.html#a6dddb1542193fca806cd9f0d9079ba32">set_features</a>(x86_features);</div>
-<div class="line">    brighter.<a class="code" href="class_halide_1_1_func.html#a25e70d8bbd3a27b2287444c440aa37c4">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_x86_64_windows&quot;</span>, args, target);</div>
+<div class="line">    brighter.<a class="code" href="class_halide_1_1_func.html#a980e56939f009104a0d9fb4c7a15e124">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_x86_64_windows&quot;</span>, args, <span class="stringliteral">&quot;brighter&quot;</span>, target);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// And finally an iOS mach-o object file for one of Apple&#39;s 32-bit</span></div>
 <div class="line">    <span class="comment">// ARM processors - the A6. It&#39;s used in the iPhone 5. The A6 uses</span></div>
@@ -186,7 +186,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line">    std::vector&lt;Target::Feature&gt; armv7s_features;</div>
 <div class="line">    armv7s_features.push_back(<a name="a19"></a><a class="code" href="struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf37c16007f6547612713259e648cc41e">Target::ARMv7s</a>);</div>
 <div class="line">    target.<a class="code" href="struct_halide_1_1_target.html#a6dddb1542193fca806cd9f0d9079ba32">set_features</a>(armv7s_features);</div>
-<div class="line">    brighter.<a class="code" href="class_halide_1_1_func.html#a25e70d8bbd3a27b2287444c440aa37c4">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_arm_32_ios&quot;</span>, args, target);</div>
+<div class="line">    brighter.<a class="code" href="class_halide_1_1_func.html#a980e56939f009104a0d9fb4c7a15e124">compile_to_file</a>(<span class="stringliteral">&quot;lesson_11_arm_32_ios&quot;</span>, args, <span class="stringliteral">&quot;brighter&quot;</span>, target);</div>
 <div class="line"></div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Now let&#39;s check these files are what they claim, by examining</span></div>
@@ -196,12 +196,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line">    <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> arm_32_android_magic[] = {0x7f, <span class="charliteral">&#39;E&#39;</span>, <span class="charliteral">&#39;L&#39;</span>, <span class="charliteral">&#39;F&#39;</span>, <span class="comment">// ELF format</span></div>
 <div class="line">                                      1,       <span class="comment">// 32-bit</span></div>
 <div class="line">                                      1,       <span class="comment">// 2&#39;s complement little-endian</span></div>
-<div class="line">                                      1,       <span class="comment">// Current version of elf</span></div>
-<div class="line">                                      3,       <span class="comment">// Linux</span></div>
-<div class="line">                                      0, 0, 0, 0, 0, 0, 0, 0, <span class="comment">// 8 unused bytes</span></div>
-<div class="line">                                      1, 0,    <span class="comment">// Relocatable</span></div>
-<div class="line">                                      0x28, 0};  <span class="comment">// ARM</span></div>
-<div class="line"></div>
+<div class="line">                                      1};      <span class="comment">// Current version of elf</span></div>
 <div class="line"></div>
 <div class="line">    FILE *f = fopen(<span class="stringliteral">&quot;lesson_11_arm_32_android.o&quot;</span>, <span class="stringliteral">&quot;rb&quot;</span>);</div>
 <div class="line">    <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> header[32];</div>

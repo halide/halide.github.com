@@ -2,7 +2,7 @@ var class_halide_1_1_internal_1_1_code_gen___open_c_l___dev =
 [
     [ "CodeGen_OpenCL_C", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c" ],
     [ "CodeGen_OpenCL_Dev", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a7122eddbe6562be3a66e4f7caf636084", null ],
-    [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a328d77f5c9018228332ae8dec8d973ac", null ],
+    [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a683cf23a7285f3ad130b271e3d0029e2", null ],
     [ "init_module", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#ac7a8fc6f6aceeca4efbc8f4ce12524b5", null ],
     [ "compile_to_src", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a98f2a97578f49ea304c2648174528cd1", null ],
     [ "get_current_kernel_name", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a9de754c4d148ef81c49c320fc3ab777b", null ],

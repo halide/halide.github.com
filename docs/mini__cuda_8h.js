@@ -56,6 +56,7 @@ var mini__cuda_8h =
       [ "CUDA_ERROR_PEER_ACCESS_NOT_ENABLED", "mini__cuda_8h.html#a2f191c22706ed27f2c64f0e1ab3d4ab9a44098f22001f11e8e9b9c0eff1cb7cad", null ],
       [ "CUDA_ERROR_PRIMARY_CONTEXT_ACTIVE", "mini__cuda_8h.html#a2f191c22706ed27f2c64f0e1ab3d4ab9af615772e46e356ad648c83d2e7937fc6", null ],
       [ "CUDA_ERROR_CONTEXT_IS_DESTROYED", "mini__cuda_8h.html#a2f191c22706ed27f2c64f0e1ab3d4ab9aae236899560803f838064b5edcccbade", null ],
+      [ "CUDA_ERROR_ILLEGAL_INSTRUCTION", "mini__cuda_8h.html#a2f191c22706ed27f2c64f0e1ab3d4ab9a7acbc05506e806ac987bb094df06aaa5", null ],
       [ "CUDA_ERROR_UNKNOWN", "mini__cuda_8h.html#a2f191c22706ed27f2c64f0e1ab3d4ab9aa0b166ead143378c3d57cd1c97f36043", null ]
     ] ],
     [ "CUdevice_attribute", "mini__cuda_8h.html#af19313e44c60ca273901b267a591bffa", [

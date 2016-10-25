@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line">    <span class="comment">// first horizontally, and then vertically.</span></div>
 <div class="line">    {</div>
 <div class="line">        <span class="comment">// Take a color 8-bit input</span></div>
-<div class="line">        <a name="_a1"></a><a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
+<div class="line">        <a name="_a1"></a><a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Upgrade it to 16-bit, so we can do math without it overflowing.</span></div>
 <div class="line">        <a name="_a2"></a><a class="code" href="class_halide_1_1_func.html">Func</a> input_16(<span class="stringliteral">&quot;input_16&quot;</span>);</div>
@@ -185,8 +185,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line">        <span class="comment">// over a domain shifted inwards by one pixel, we won&#39;t be</span></div>
 <div class="line">        <span class="comment">// asking the Halide routine to read out of bounds. We saw how</span></div>
 <div class="line">        <span class="comment">// to do this in the previous lesson:</span></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> result(input.<a name="a3"></a><a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>()-2, input.<a name="a4"></a><a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>()-2, 3);</div>
-<div class="line">        result.<a name="a5"></a><a class="code" href="class_halide_1_1_image_base.html#a0a481abd541f30d2ef897bbae76e4cca">set_min</a>(1, 1);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> result(input.<a name="a3"></a><a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>()-2, input.<a name="a4"></a><a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>()-2, 3);</div>
+<div class="line">        result.<a name="a5"></a><a class="code" href="class_halide_1_1_buffer.html#a18b1ec3b9f174f27c9b8034d87c92b40">set_min</a>(1, 1);</div>
 <div class="line">        output.<a name="a6"></a><a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(result);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Save the result. It should look like a slightly blurry</span></div>
@@ -202,7 +202,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line">    <span class="comment">// The same pipeline, with a boundary condition on the input.</span></div>
 <div class="line">    {</div>
 <div class="line">        <span class="comment">// Take a color 8-bit input</span></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// This time, we&#39;ll wrap the input in a Func that prevents</span></div>
 <div class="line">        <span class="comment">// reading out of bounds:</span></div>
@@ -210,9 +210,11 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line"></div>
 <div class="line">        <span class="comment">// Define an expression that clamps x to lie within the</span></div>
 <div class="line">        <span class="comment">// range [0, input.width()-1].</span></div>
-<div class="line">        <a name="_a7"></a><a class="code" href="struct_halide_1_1_expr.html">Expr</a> clamped_x = <a name="a8"></a><a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa">clamp</a>(x, 0, input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>()-1);</div>
+<div class="line">        <a name="_a7"></a><a class="code" href="struct_halide_1_1_expr.html">Expr</a> clamped_x = <a name="a8"></a><a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa">clamp</a>(x, 0, input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>()-1);</div>
+<div class="line">        <span class="comment">// clamp(x, a, b) is equivalent to max(min(x, b), a).</span></div>
+<div class="line"></div>
 <div class="line">        <span class="comment">// Similarly clamp y.</span></div>
-<div class="line">        <a class="code" href="struct_halide_1_1_expr.html">Expr</a> clamped_y = <a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa">clamp</a>(y, 0, input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>()-1);</div>
+<div class="line">        <a class="code" href="struct_halide_1_1_expr.html">Expr</a> clamped_y = <a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa">clamp</a>(y, 0, input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>()-1);</div>
 <div class="line">        <span class="comment">// Load from input at the clamped coordinates. This means that</span></div>
 <div class="line">        <span class="comment">// no matter how we evaluated the Func &#39;clamped&#39;, we&#39;ll never</span></div>
 <div class="line">        <span class="comment">// read out of bounds on the input. This is a clamp-to-edge</span></div>
@@ -228,7 +230,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line">        <span class="comment">//</span></div>
 <div class="line">        <span class="comment">// These are important to use for other boundary conditions,</span></div>
 <div class="line">        <span class="comment">// because they are expressed in the way that Halide can best</span></div>
-<div class="line">        <span class="comment">// understand and optimize.</span></div>
+<div class="line">        <span class="comment">// understand and optimize. When used correctly they are as</span></div>
+<div class="line">        <span class="comment">// cheap as having no boundary condition at all.</span></div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Upgrade it to 16-bit, so we can do math without it</span></div>
 <div class="line">        <span class="comment">// overflowing. This time we&#39;ll refer to our new Func</span></div>
@@ -257,7 +260,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line"></div>
 <div class="line">        <span class="comment">// This time it&#39;s safe to evaluate the output over the some</span></div>
 <div class="line">        <span class="comment">// domain as the input, because we have a boundary condition.</span></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> result = output.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>(), 3);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> result = output.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>(), input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>(), 3);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Save the result. It should look like a slightly blurry</span></div>
 <div class="line">        <span class="comment">// parrot, but this time it will be the same size as the</span></div>

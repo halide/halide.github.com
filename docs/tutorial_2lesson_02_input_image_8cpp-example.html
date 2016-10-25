@@ -133,7 +133,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_02_input_image_8cpp-e
 <div class="line">    <span class="comment">// brightens an image.</span></div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// First we&#39;ll load the input image we wish to brighten.</span></div>
-<div class="line">    <a name="_a0"></a><a class="code" href="class_halide_1_1_image.html">Halide::Image&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
+<div class="line">    <a name="_a0"></a><a class="code" href="class_halide_1_1_buffer.html">Halide::Image&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// See figures/lesson_02_input.jpg for a smaller version.</span></div>
 <div class="line"></div>
@@ -163,7 +163,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_02_input_image_8cpp-e
 <div class="line"></div>
 <div class="line">    <span class="comment">// Clamp it to be less than 255, so we don&#39;t get overflow when we</span></div>
 <div class="line">    <span class="comment">// cast it back to an 8-bit unsigned int.</span></div>
-<div class="line">    value = <a name="a4"></a><a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940">Halide::min</a>(value, 255.0f);</div>
+<div class="line">    value = <a name="a4"></a><a class="code" href="namespace_halide.html#a7fcf5168032f227aee3aec229b02c504">Halide::min</a>(value, 255.0f);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Cast it back to an 8-bit unsigned integer.</span></div>
 <div class="line">    value = Halide::cast&lt;uint8_t&gt;(value);</div>
@@ -178,10 +178,11 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_02_input_image_8cpp-e
 <div class="line">    <span class="comment">// In the shorter version:</span></div>
 <div class="line">    <span class="comment">// - I skipped the cast to float, because multiplying by 1.5f does</span></div>
 <div class="line">    <span class="comment">//   that automatically.</span></div>
-<div class="line">    <span class="comment">// - I also used integer constants in clamp, because they get cast</span></div>
-<div class="line">    <span class="comment">//   to match the type of the first argument.</span></div>
-<div class="line">    <span class="comment">// - I left the Halide:: off clamp. It&#39;s unnecessary due to Koenig</span></div>
-<div class="line">    <span class="comment">//   lookup.</span></div>
+<div class="line">    <span class="comment">// - I also used an integer constant as the second argument in the</span></div>
+<div class="line">    <span class="comment">//   call to min, because it gets cast to float to be compatible</span></div>
+<div class="line">    <span class="comment">//   with the first argument.</span></div>
+<div class="line">    <span class="comment">// - I left the Halide:: off the call to min. It&#39;s unnecessary due</span></div>
+<div class="line">    <span class="comment">//   to Koenig lookup.</span></div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Remember, all we&#39;ve done so far is build a representation of a</span></div>
 <div class="line">    <span class="comment">// Halide program in memory. We haven&#39;t actually processed any</span></div>
@@ -193,7 +194,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_02_input_image_8cpp-e
 <div class="line">    <span class="comment">// smaller size. If we request a larger size Halide will throw an</span></div>
 <div class="line">    <span class="comment">// error at runtime telling us we&#39;re trying to read out of bounds</span></div>
 <div class="line">    <span class="comment">// on the input image.</span></div>
-<div class="line">    <a class="code" href="class_halide_1_1_image.html">Halide::Image&lt;uint8_t&gt;</a> output = brighter.<a name="a5"></a><a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(input.<a name="a6"></a><a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a name="a7"></a><a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>(), input.<a name="a8"></a><a class="code" href="class_halide_1_1_image_base.html#a841b4202f4ec79856529d83b8c048f3e">channels</a>());</div>
+<div class="line">    <a class="code" href="class_halide_1_1_buffer.html">Halide::Image&lt;uint8_t&gt;</a> output =</div>
+<div class="line">        brighter.<a name="a5"></a><a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(input.<a name="a6"></a><a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>(), input.<a name="a7"></a><a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>(), input.<a name="a8"></a><a class="code" href="class_halide_1_1_buffer.html#ac55371dab681299cac52cc76de00e6f8">channels</a>());</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Save the output for inspection. It should look like a bright parrot.</span></div>
 <div class="line">    save_image(output, <span class="stringliteral">&quot;brighter.png&quot;</span>);</div>

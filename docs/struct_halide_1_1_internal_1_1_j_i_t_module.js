@@ -13,7 +13,7 @@ var struct_halide_1_1_internal_1_1_j_i_t_module =
     [ "add_symbol_for_export", "struct_halide_1_1_internal_1_1_j_i_t_module.html#aa4469b309aaa094c74e95a609742ed8f", null ],
     [ "add_extern_for_export", "struct_halide_1_1_internal_1_1_j_i_t_module.html#adf2bb4a262902b115f95aeca80b4b6eb", null ],
     [ "find_symbol_by_name", "struct_halide_1_1_internal_1_1_j_i_t_module.html#acd7ee0a038d46382b63dcf55fbdbed48", null ],
-    [ "compile_module", "struct_halide_1_1_internal_1_1_j_i_t_module.html#aa26bf7f727dba540410a401cd6b4c7d4", null ],
+    [ "compile_module", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a362a5b9fdf6fc9f1c7586897cf63976d", null ],
     [ "copy_to_device", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a305570bc205756395b8294776d456db3", null ],
     [ "copy_to_host", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a29110647ff5bd704ff73f88011969678", null ],
     [ "device_free", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a9af72ba977f36a90cd543a263197b429", null ],

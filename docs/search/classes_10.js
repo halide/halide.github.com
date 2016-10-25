@@ -9,6 +9,7 @@ var searchData=
   ['reductionvariable',['ReductionVariable',['../struct_halide_1_1_internal_1_1_reduction_variable.html',1,'Halide::Internal']]],
   ['refcount',['RefCount',['../class_halide_1_1_internal_1_1_ref_count.html',1,'Halide::Internal']]],
   ['registergenerator',['RegisterGenerator',['../class_halide_1_1_register_generator.html',1,'Halide']]],
+  ['rela_5ft',['rela_t',['../structrela__t.html',1,'']]],
   ['rs_5fmatrix2x2',['rs_matrix2x2',['../structrs__matrix2x2.html',1,'']]],
   ['rs_5fmatrix3x3',['rs_matrix3x3',['../structrs__matrix3x3.html',1,'']]],
   ['rs_5fmatrix4x4',['rs_matrix4x4',['../structrs__matrix4x4.html',1,'']]],

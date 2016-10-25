@@ -98,18 +98,18 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title"><a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> </div>  </div>
+<div class="title"><a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> is a programming language designed to make it easier to write high-performance image processing code on modern machines. Its front end is embedded in C++. Compiler targets include x86/SSE, ARM v7/NEON, CUDA, Native Client, and OpenCL.</p>
-<p>You build a <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> program by writing C++ code using objects of type <a class="el" href="class_halide_1_1_var.html">Halide::Var</a>, <a class="el" href="struct_halide_1_1_expr.html">Halide::Expr</a>, and <a class="el" href="class_halide_1_1_func.html">Halide::Func</a>, and then calling <a class="el" href="class_halide_1_1_func.html#a25e70d8bbd3a27b2287444c440aa37c4">Halide::Func::compile_to_file</a> to generate an object file and header (good for deploying large routines), or calling <a class="el" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">Halide::Func::realize</a> to JIT-compile and run the pipeline immediately (good for testing small routines).</p>
-<p>To learn <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a>, we recommend you start with the <a href="examples.html">tutorials</a>.</p>
-<p>You can also look in the test folder for many small examples that use <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a>'s various features, and in the apps folder for some larger examples that statically compile halide pipelines. In particular check out local_laplacian, bilateral_grid, and interpolate.</p>
-<p>Below are links to the documentation for the important classes in <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a>.</p>
+<div class="textblock"><p><a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> is a programming language designed to make it easier to write high-performance image processing code on modern machines. Its front end is embedded in C++. Compiler targets include x86/SSE, ARM v7/NEON, CUDA, Native Client, OpenCL, and Metal.</p>
+<p>You build a <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> program by writing C++ code using objects of type <a class="el" href="class_halide_1_1_var.html">Halide::Var</a>, <a class="el" href="struct_halide_1_1_expr.html">Halide::Expr</a>, and <a class="el" href="class_halide_1_1_func.html">Halide::Func</a>, and then calling <a class="el" href="class_halide_1_1_func.html#a980e56939f009104a0d9fb4c7a15e124">Halide::Func::compile_to_file</a> to generate an object file and header (good for deploying large routines), or calling <a class="el" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">Halide::Func::realize</a> to JIT-compile and run the pipeline immediately (good for testing small routines).</p>
+<p>To learn <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a>, we recommend you start with the <a href="examples.html">tutorials</a>.</p>
+<p>You can also look in the test folder for many small examples that use <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a>'s various features, and in the apps folder for some larger examples that statically compile halide pipelines. In particular check out local_laplacian, bilateral_grid, and interpolate.</p>
+<p>Below are links to the documentation for the important classes in <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a>.</p>
 <p>For defining, scheduling, and evaluating basic pipelines:</p>
 <p><a class="el" href="class_halide_1_1_func.html" title="A halide function. ">Halide::Func</a>, <a class="el" href="class_halide_1_1_stage.html" title="A single definition of a Func. ">Halide::Stage</a>, <a class="el" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions. ">Halide::Var</a></p>
 <p>Our image data type:</p>
-<p><a class="el" href="class_halide_1_1_image.html" title="A reference-counted handle on a dense multidimensional array containing scalar values of type T...">Halide::Image</a></p>
+<p><a class="el" href="class_halide_1_1_buffer.html" title="A templated Buffer class that wraps buffer_t and adds functionality. ">Halide::Buffer</a></p>
 <p>For passing around and reusing halide expressions:</p>
 <p><a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax. ">Halide::Expr</a></p>
 <p>For representing scalar and image parameters to pipelines:</p>
@@ -117,7 +117,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>For writing functions that reduce or scatter over some domain:</p>
 <p><a class="el" href="class_halide_1_1_r_dom.html" title="A multi-dimensional domain over which to iterate. ">Halide::RDom</a></p>
 <p>For writing and evaluating functions that return multiple values:</p>
-<p><a class="el" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs. ">Halide::Tuple</a>, <a class="el" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple buffers when you realize them. ">Halide::Realization</a> </p>
+<p><a class="el" href="class_halide_1_1_tuple.html" title="Create a small array of Exprs for defining and calling functions with multiple outputs. ">Halide::Tuple</a>, <a class="el" href="class_halide_1_1_realization.html" title="Funcs with Tuple values return multiple images when you realize them. ">Halide::Realization</a> </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

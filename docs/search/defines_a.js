@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['rs_5fversion',['RS_VERSION',['../mini__renderscript_8h.html#a785226795b8ec0079cda6554f70e9866',1,'mini_renderscript.h']]]
+  ['o_5frdonly',['O_RDONLY',['../runtime__internal_8h.html#a7a68c9ffaac7dbcd652225dd7c06a54b',1,'runtime_internal.h']]],
+  ['o_5frdwr',['O_RDWR',['../runtime__internal_8h.html#abb0586253488ee61072b73557eeb873b',1,'runtime_internal.h']]]
 ];

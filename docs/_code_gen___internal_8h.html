@@ -104,7 +104,6 @@ $(document).ready(function(){initNavTree('_code_gen___internal_8h.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -114,42 +113,64 @@ $(document).ready(function(){initNavTree('_code_gen___internal_8h.html','');});
 
 <p>Defines functionality that's useful to multiple target-specific CodeGen paths, but shouldn't live in <a class="el" href="_code_gen___l_l_v_m_8h.html" title="Defines the base-class for all architecture-specific code generators that use llvm. ">CodeGen_LLVM.h</a> (because that's the front-end-facing interface to CodeGen).  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_i_r_8h_source.html">IR.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &lt;memory&gt;</code><br/>
+<code>#include &quot;<a class="el" href="_closure_8h_source.html">Closure.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_i_r_8h_source.html">IR.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_i_r_visitor_8h_source.html">IRVisitor.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_l_l_v_m___headers_8h_source.html">LLVM_Headers.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_scope_8h_source.html">Scope.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_target_8h_source.html">Target.h</a>&quot;</code><br/>
 </div>
 <p><a href="_code_gen___internal_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_closure.html">Halide::Internal::Closure</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A helper class to manage closures.  <a href="class_halide_1_1_internal_1_1_closure.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html">Halide::Internal::Closure::BufferRef</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Information about a buffer reference from a closure.  <a href="struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_halide"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html">Halide</a></td></tr>
-<tr class="memdesc:namespace_halide"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines methods for solving equations. <br/></td></tr>
+<tr class="memdesc:namespace_halide"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines methods for manipulating and analyzing boolean expressions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_halide_1_1_internal"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html">Halide::Internal</a></td></tr>
-<tr class="memdesc:namespace_halide_1_1_internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct used to detect if a type is a pointer. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a1a1e270066706802bc3903a17703f173"><td class="memItemLeft" align="right" valign="top">llvm::StructType *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a1a1e270066706802bc3903a17703f173">Halide::Internal::build_closure_type</a> (const Closure &amp;closure, llvm::StructType *<a class="el" href="structbuffer__t.html">buffer_t</a>, llvm::LLVMContext *context)</td></tr>
+<tr class="memdesc:a1a1e270066706802bc3903a17703f173"><td class="mdescLeft">&#160;</td><td class="mdescRight">The llvm type of a struct containing all of the externally referenced state of a <a class="el" href="class_halide_1_1_internal_1_1_closure.html" title="A helper class to manage closures. ">Closure</a>.  <a href="#a1a1e270066706802bc3903a17703f173">More...</a><br/></td></tr>
+<tr class="separator:a1a1e270066706802bc3903a17703f173"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9bb457246f10a99d7884697912d5542"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ab9bb457246f10a99d7884697912d5542">Halide::Internal::pack_closure</a> (llvm::Type *type, llvm::Value *<a class="el" href="printer_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>, const Closure &amp;closure, const Scope&lt; llvm::Value * &gt; &amp;src, llvm::StructType *<a class="el" href="structbuffer__t.html">buffer_t</a>, <a class="el" href="classllvm_1_1_i_r_builder.html">llvm::IRBuilder</a>&lt;&gt; *builder)</td></tr>
+<tr class="memdesc:ab9bb457246f10a99d7884697912d5542"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit code that builds a struct containing all the externally referenced state.  <a href="#ab9bb457246f10a99d7884697912d5542">More...</a><br/></td></tr>
+<tr class="separator:ab9bb457246f10a99d7884697912d5542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa343f8851b8c07de8d1b9f964fc830c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa343f8851b8c07de8d1b9f964fc830c7">Halide::Internal::unpack_closure</a> (const Closure &amp;closure, Scope&lt; llvm::Value * &gt; &amp;<a class="el" href="printer_8h.html#a961c13eb7fcda15b167b953cac1ab3ec">dst</a>, llvm::Type *type, llvm::Value *src, <a class="el" href="classllvm_1_1_i_r_builder.html">llvm::IRBuilder</a>&lt;&gt; *builder)</td></tr>
+<tr class="memdesc:aa343f8851b8c07de8d1b9f964fc830c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Emit code that unpacks a struct containing all the externally referenced state into a symbol table.  <a href="#aa343f8851b8c07de8d1b9f964fc830c7">More...</a><br/></td></tr>
+<tr class="separator:aa343f8851b8c07de8d1b9f964fc830c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71f10140e29131153c3be98d2899b090"><td class="memItemLeft" align="right" valign="top">llvm::Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a71f10140e29131153c3be98d2899b090">Halide::Internal::llvm_type_of</a> (llvm::LLVMContext *context, <a class="el" href="struct_halide_1_1_type.html">Halide::Type</a> t)</td></tr>
 <tr class="memdesc:a71f10140e29131153c3be98d2899b090"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the llvm type equivalent to a given halide type.  <a href="#a71f10140e29131153c3be98d2899b090">More...</a><br/></td></tr>
 <tr class="separator:a71f10140e29131153c3be98d2899b090"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dec1d917db83734b33d5a208e9ca973"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a8dec1d917db83734b33d5a208e9ca973">Halide::Internal::constant_allocation_size</a> (const std::vector&lt; Expr &gt; &amp;extents, const std::string &amp;name, <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> &amp;size)</td></tr>
-<tr class="memdesc:a8dec1d917db83734b33d5a208e9ca973"><td class="mdescLeft">&#160;</td><td class="mdescRight">A routine to check if a list of extents are all constants, and if so verify the total size is less than 2^31 - 1.  <a href="#a8dec1d917db83734b33d5a208e9ca973">More...</a><br/></td></tr>
-<tr class="separator:a8dec1d917db83734b33d5a208e9ca973"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc60421b682a09ea4c4dcaaaa3e105e2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#adc60421b682a09ea4c4dcaaaa3e105e2">Halide::Internal::function_takes_user_context</a> (const std::string &amp;name)</td></tr>
 <tr class="memdesc:adc60421b682a09ea4c4dcaaaa3e105e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Which built-in functions require a user-context first argument?  <a href="#adc60421b682a09ea4c4dcaaaa3e105e2">More...</a><br/></td></tr>
 <tr class="separator:adc60421b682a09ea4c4dcaaaa3e105e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa783278be5bae448cf01fec2df4a9a6f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa783278be5bae448cf01fec2df4a9a6f">Halide::Internal::can_allocation_fit_on_stack</a> (<a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> size)</td></tr>
+<tr class="memdesc:aa783278be5bae448cf01fec2df4a9a6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a size (in bytes), return True if the allocation size can fit on the stack; otherwise, return False.  <a href="#aa783278be5bae448cf01fec2df4a9a6f">More...</a><br/></td></tr>
+<tr class="separator:aa783278be5bae448cf01fec2df4a9a6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b4fa94b1f3a877eb3387824c09df826"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a7b4fa94b1f3a877eb3387824c09df826">Halide::Internal::get_target_options</a> (const llvm::Module &amp;module, llvm::TargetOptions &amp;options, std::string &amp;mcpu, std::string &amp;mattrs)</td></tr>
+<tr class="memdesc:a7b4fa94b1f3a877eb3387824c09df826"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given an llvm::Module, set llvm:TargetOptions, cpu and attr information.  <a href="#a7b4fa94b1f3a877eb3387824c09df826">More...</a><br/></td></tr>
+<tr class="separator:a7b4fa94b1f3a877eb3387824c09df826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b16d175882e16f544bf4bf92ec931b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a1b16d175882e16f544bf4bf92ec931b5">Halide::Internal::clone_target_options</a> (const llvm::Module &amp;from, llvm::Module &amp;to)</td></tr>
+<tr class="memdesc:a1b16d175882e16f544bf4bf92ec931b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given two llvm::Modules, clone target options from one to the other.  <a href="#a1b16d175882e16f544bf4bf92ec931b5">More...</a><br/></td></tr>
+<tr class="separator:a1b16d175882e16f544bf4bf92ec931b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1e20aff45028d266f854487159df341"><td class="memItemLeft" align="right" valign="top">std::unique_ptr<br class="typebreak"/>
+&lt; llvm::TargetMachine &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#af1e20aff45028d266f854487159df341">Halide::Internal::make_target_machine</a> (const llvm::Module &amp;module)</td></tr>
+<tr class="memdesc:af1e20aff45028d266f854487159df341"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given an llvm::Module, get or create an llvm:TargetMachine.  <a href="#af1e20aff45028d266f854487159df341">More...</a><br/></td></tr>
+<tr class="separator:af1e20aff45028d266f854487159df341"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfe55211c4dbc852f29c8e764360c670"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#abfe55211c4dbc852f29c8e764360c670">Halide::Internal::set_function_attributes_for_target</a> (llvm::Function *, Target)</td></tr>
+<tr class="memdesc:abfe55211c4dbc852f29c8e764360c670"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the appropriate llvm <a class="el" href="class_halide_1_1_internal_1_1_function.html" title="A reference-counted handle to Halide&#39;s internal representation of a function. ">Function</a> attributes given a <a class="el" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for. ">Target</a>.  <a href="#abfe55211c4dbc852f29c8e764360c670">More...</a><br/></td></tr>
+<tr class="separator:abfe55211c4dbc852f29c8e764360c670"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader"></div></td></tr>
+<tr class="memitem:ab7a4f18b650b23e1e6ed980d1feebcf5"><td class="memItemLeft" align="right" valign="top">Expr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ab7a4f18b650b23e1e6ed980d1feebcf5">Halide::Internal::lower_euclidean_div</a> (Expr a, Expr b)</td></tr>
+<tr class="memdesc:ab7a4f18b650b23e1e6ed980d1feebcf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> Euclidean division/mod operation, define it in terms of div_round_to_zero or mod_round_to_zero.  <a href="#ab7a4f18b650b23e1e6ed980d1feebcf5">More...</a><br/></td></tr>
+<tr class="separator:ab7a4f18b650b23e1e6ed980d1feebcf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae81d78fd7f3115750e17167ebf0fe920"><td class="memItemLeft" align="right" valign="top">Expr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ae81d78fd7f3115750e17167ebf0fe920">Halide::Internal::lower_euclidean_mod</a> (Expr a, Expr b)</td></tr>
+<tr class="memdesc:ae81d78fd7f3115750e17167ebf0fe920"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> Euclidean division/mod operation, define it in terms of div_round_to_zero or mod_round_to_zero.  <a href="#ae81d78fd7f3115750e17167ebf0fe920">More...</a><br/></td></tr>
+<tr class="separator:ae81d78fd7f3115750e17167ebf0fe920"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines functionality that's useful to multiple target-specific CodeGen paths, but shouldn't live in <a class="el" href="_code_gen___l_l_v_m_8h.html" title="Defines the base-class for all architecture-specific code generators that use llvm. ">CodeGen_LLVM.h</a> (because that's the front-end-facing interface to CodeGen). </p>
@@ -160,7 +181,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_code_gen___internal_8h.html">CodeGen_Internal.h</a></li>
+    <li class="navelem"><a class="el" href="dir_de4960fb9afd4052b9300248cfe3cde2.html">src</a></li><li class="navelem"><a class="el" href="_code_gen___internal_8h.html">CodeGen_Internal.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

@@ -7,5 +7,5 @@ var _introspection_8h =
     [ "deregister_heap_object", "_introspection_8h.html#ad8473327863ab64c1cadf222418e9e11", null ],
     [ "get_introspection_helper", "_introspection_8h.html#afa3269366dd01545acd1fa4d1f0da99a", null ],
     [ "get_source_location", "_introspection_8h.html#a5b10b0e284fa3ae543ba526ae4bb85ec", null ],
-    [ "test_compilation_unit", "_introspection_8h.html#aada7558e820df9fdf59ffe1e13871f45", null ]
+    [ "test_compilation_unit", "_introspection_8h.html#a1f8ffe77ef668ddb5cc718385632d526", null ]
 ];

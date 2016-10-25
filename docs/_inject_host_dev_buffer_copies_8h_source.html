@@ -120,28 +120,30 @@ $(document).ready(function(){initNavTree('_inject_host_dev_buffer_copies_8h_sour
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>Halide {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>Internal {</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/** Inject calls to halide_device_malloc, halide_copy_to_device, and</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * halide_copy_to_host as needed. */</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;Stmt <a class="code" href="namespace_halide_1_1_internal.html#a9fa15ced2f13142e6c4b5e5f4649aa15">inject_host_dev_buffer_copies</a>(Stmt s, <span class="keyword">const</span> Target &amp;<a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#ad78f0a5d48acb1b94e3d737b5409cc1d">t</a>);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/** A helper function to call an extern function, and assert that it</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * returns 0. */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Stmt <a class="code" href="namespace_halide_1_1_internal.html#a47a26bb3066dde7afbe33a1007992a22">call_extern_and_assert</a>(<span class="keyword">const</span> std::string&amp; name, <span class="keyword">const</span> std::vector&lt;Expr&gt;&amp; args);</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/** Inject calls to halide_dev_free as needed. */</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;Stmt <a class="code" href="namespace_halide_1_1_internal.html#a70fcc88dde228e4f70a90d4848ddb773">inject_dev_frees</a>(Stmt s);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/** Inject calls to halide_device_malloc, halide_copy_to_device, and</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * halide_copy_to_host as needed. */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<a class="code" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Stmt <a class="code" href="namespace_halide_1_1_internal.html#a0d2f86eb8a14e51d81926be0688bb9d0">inject_host_dev_buffer_copies</a>(Stmt s, <span class="keyword">const</span> Target &amp;<a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#ad78f0a5d48acb1b94e3d737b5409cc1d">t</a>);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="namespace_halide_1_1_internal_html_a9fa15ced2f13142e6c4b5e5f4649aa15"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a9fa15ced2f13142e6c4b5e5f4649aa15">Halide::Internal::inject_host_dev_buffer_copies</a></div><div class="ttdeci">Stmt inject_host_dev_buffer_copies(Stmt s, const Target &amp;t)</div><div class="ttdoc">Inject calls to halide_device_malloc, halide_copy_to_device, and halide_copy_to_host as needed...</div></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="_target_8h_html"><div class="ttname"><a href="_target_8h.html">Target.h</a></div><div class="ttdoc">Defines the structure that describes a Halide target. </div></div>
-<div class="ttc" id="namespace_halide_1_1_runtime_1_1_internal_html_ad78f0a5d48acb1b94e3d737b5409cc1d"><div class="ttname"><a href="namespace_halide_1_1_runtime_1_1_internal.html#ad78f0a5d48acb1b94e3d737b5409cc1d">Halide::Runtime::Internal::t</a></div><div class="ttdeci">T &amp;b T t</div><div class="ttdef"><b>Definition:</b> <a href="runtime__internal_8h_source.html#l00246">runtime_internal.h:246</a></div></div>
+<div class="ttc" id="namespace_halide_1_1_internal_html_a47a26bb3066dde7afbe33a1007992a22"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a47a26bb3066dde7afbe33a1007992a22">Halide::Internal::call_extern_and_assert</a></div><div class="ttdeci">EXPORT Stmt call_extern_and_assert(const std::string &amp;name, const std::vector&lt; Expr &gt; &amp;args)</div><div class="ttdoc">A helper function to call an extern function, and assert that it returns 0. </div></div>
+<div class="ttc" id="namespace_halide_1_1_runtime_1_1_internal_html_ad78f0a5d48acb1b94e3d737b5409cc1d"><div class="ttname"><a href="namespace_halide_1_1_runtime_1_1_internal.html#ad78f0a5d48acb1b94e3d737b5409cc1d">Halide::Runtime::Internal::t</a></div><div class="ttdeci">T &amp;b T t</div><div class="ttdef"><b>Definition:</b> <a href="runtime__internal_8h_source.html#l00184">runtime_internal.h:184</a></div></div>
+<div class="ttc" id="namespace_halide_1_1_internal_html_a0d2f86eb8a14e51d81926be0688bb9d0"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a0d2f86eb8a14e51d81926be0688bb9d0">Halide::Internal::inject_host_dev_buffer_copies</a></div><div class="ttdeci">EXPORT Stmt inject_host_dev_buffer_copies(Stmt s, const Target &amp;t)</div><div class="ttdoc">Inject calls to halide_device_malloc, halide_copy_to_device, and halide_copy_to_host as needed...</div></div>
 <div class="ttc" id="_i_r_8h_html"><div class="ttname"><a href="_i_r_8h.html">IR.h</a></div><div class="ttdoc">Subtypes for Halide expressions (Halide::Expr) and statements (Halide::Internal::Stmt) ...</div></div>
-<div class="ttc" id="namespace_halide_1_1_internal_html_a70fcc88dde228e4f70a90d4848ddb773"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a70fcc88dde228e4f70a90d4848ddb773">Halide::Internal::inject_dev_frees</a></div><div class="ttdeci">Stmt inject_dev_frees(Stmt s)</div><div class="ttdoc">Inject calls to halide_dev_free as needed. </div></div>
+<div class="ttc" id="_util_8h_html_a3472d8cdbb788d5f1815b3522595bc49"><div class="ttname"><a href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a></div><div class="ttdeci">#define EXPORT</div><div class="ttdef"><b>Definition:</b> <a href="_util_8h_source.html#l00030">Util.h:30</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_inject_host_dev_buffer_copies_8h.html">InjectHostDevBufferCopies.h</a></li>
+    <li class="navelem"><a class="el" href="dir_de4960fb9afd4052b9300248cfe3cde2.html">src</a></li><li class="navelem"><a class="el" href="_inject_host_dev_buffer_copies_8h.html">InjectHostDevBufferCopies.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

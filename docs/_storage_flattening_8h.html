@@ -115,23 +115,23 @@ $(document).ready(function(){initNavTree('_storage_flattening_8h.html','');});
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;map&gt;</code><br/>
 <code>#include &quot;<a class="el" href="_i_r_8h_source.html">IR.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_target_8h_source.html">Target.h</a>&quot;</code><br/>
 </div>
 <p><a href="_storage_flattening_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_halide"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html">Halide</a></td></tr>
-<tr class="memdesc:namespace_halide"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines methods for solving equations. <br/></td></tr>
+<tr class="memdesc:namespace_halide"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines methods for manipulating and analyzing boolean expressions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_halide_1_1_internal"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html">Halide::Internal</a></td></tr>
-<tr class="memdesc:namespace_halide_1_1_internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct used to detect if a type is a pointer. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:abfcb6eee27d7ce60732de80c45f1ca11"><td class="memItemLeft" align="right" valign="top">Stmt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#abfcb6eee27d7ce60732de80c45f1ca11">Halide::Internal::storage_flattening</a> (Stmt s, const std::vector&lt; Function &gt; &amp;outputs, const std::map&lt; std::string, Function &gt; &amp;env)</td></tr>
-<tr class="memdesc:abfcb6eee27d7ce60732de80c45f1ca11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a statement with multi-dimensional <a class="el" href="struct_halide_1_1_internal_1_1_realize.html" title="Allocate a multi-dimensional buffer of the given type and size. ">Realize</a>, <a class="el" href="struct_halide_1_1_internal_1_1_provide.html" title="This defines the value of a function at a multi-dimensional location. ">Provide</a>, and <a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call. ">Call</a> nodes, and turn it into a statement with single-dimensional <a class="el" href="struct_halide_1_1_internal_1_1_allocate.html" title="Allocate a scratch area called with the given name, type, and size. ">Allocate</a>, <a class="el" href="struct_halide_1_1_internal_1_1_store.html" title="Store a &#39;value&#39; to the buffer called &#39;name&#39; at a given &#39;index&#39;. ">Store</a>, and <a class="el" href="struct_halide_1_1_internal_1_1_load.html" title="Load a value from a named buffer. ">Load</a> nodes respectively.  <a href="#abfcb6eee27d7ce60732de80c45f1ca11">More...</a><br/></td></tr>
-<tr class="separator:abfcb6eee27d7ce60732de80c45f1ca11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8cb6fe2cb6171bf79124c2c1b1e867f"><td class="memItemLeft" align="right" valign="top">Stmt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ac8cb6fe2cb6171bf79124c2c1b1e867f">Halide::Internal::storage_flattening</a> (Stmt s, const std::vector&lt; Function &gt; &amp;outputs, const std::map&lt; std::string, Function &gt; &amp;env, const Target &amp;target)</td></tr>
+<tr class="memdesc:ac8cb6fe2cb6171bf79124c2c1b1e867f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take a statement with multi-dimensional <a class="el" href="struct_halide_1_1_internal_1_1_realize.html" title="Allocate a multi-dimensional buffer of the given type and size. ">Realize</a>, <a class="el" href="struct_halide_1_1_internal_1_1_provide.html" title="This defines the value of a function at a multi-dimensional location. ">Provide</a>, and <a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call. ">Call</a> nodes, and turn it into a statement with single-dimensional <a class="el" href="struct_halide_1_1_internal_1_1_allocate.html" title="Allocate a scratch area called with the given name, type, and size. ">Allocate</a>, <a class="el" href="struct_halide_1_1_internal_1_1_store.html" title="Store a &#39;value&#39; to the buffer called &#39;name&#39; at a given &#39;index&#39;. ">Store</a>, and <a class="el" href="struct_halide_1_1_internal_1_1_load.html" title="Load a value from a named buffer. ">Load</a> nodes respectively.  <a href="#ac8cb6fe2cb6171bf79124c2c1b1e867f">More...</a><br/></td></tr>
+<tr class="separator:ac8cb6fe2cb6171bf79124c2c1b1e867f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines the lowering pass that flattens multi-dimensional storage into single-dimensional array access. </p>
@@ -142,7 +142,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_storage_flattening_8h.html">StorageFlattening.h</a></li>
+    <li class="navelem"><a class="el" href="dir_de4960fb9afd4052b9300248cfe3cde2.html">src</a></li><li class="navelem"><a class="el" href="_storage_flattening_8h.html">StorageFlattening.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

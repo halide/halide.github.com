@@ -106,24 +106,32 @@ $(document).ready(function(){initNavTree('_module_8h.html','');});
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Module.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Defines Module, an IR container that fully describes a <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> program.  
+<p>Defines Module, an IR container that fully describes a <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> program.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_i_r_8h_source.html">IR.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="_buffer_8h_source.html">Buffer.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &lt;functional&gt;</code><br/>
+<code>#include &quot;<a class="el" href="_argument_8h_source.html">Argument.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_buffer_ptr_8h_source.html">BufferPtr.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_i_r_8h_source.html">IR.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_modulus_remainder_8h_source.html">ModulusRemainder.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_outputs_8h_source.html">Outputs.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_target_8h_source.html">Target.h</a>&quot;</code><br/>
 </div>
 <p><a href="_module_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_lowered_argument.html">Halide::Internal::LoweredArgument</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_halide_1_1_internal_1_1_definition.html" title="A Function definition which can either represent a init or an update definition. ">Definition</a> of an argument to a <a class="el" href="struct_halide_1_1_internal_1_1_lowered_func.html" title="Definition of a lowered function. ">LoweredFunc</a>.  <a href="struct_halide_1_1_internal_1_1_lowered_argument.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_lowered_func.html">Halide::Internal::LoweredFunc</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of a lowered function.  <a href="struct_halide_1_1_internal_1_1_lowered_func.html#details">More...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_halide_1_1_internal_1_1_definition.html" title="A Function definition which can either represent a init or an update definition. ">Definition</a> of a lowered function.  <a href="struct_halide_1_1_internal_1_1_lowered_func.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_module.html">Halide::Module</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A halide module.  <a href="class_halide_1_1_module.html#details">More...</a><br/></td></tr>
@@ -132,20 +140,33 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_halide"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html">Halide</a></td></tr>
-<tr class="memdesc:namespace_halide"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines methods for solving equations. <br/></td></tr>
+<tr class="memdesc:namespace_halide"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines methods for manipulating and analyzing boolean expressions. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_halide_1_1_internal"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html">Halide::Internal</a></td></tr>
-<tr class="memdesc:namespace_halide_1_1_internal"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct used to detect if a type is a pointer. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a5e8c9a31b7ae5ccff9ef3234a68fc95c"><td class="memItemLeft" align="right" valign="top">typedef std::function&lt; Module(const <br class="typebreak"/>
+std::string &amp;, const Target &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a5e8c9a31b7ae5ccff9ef3234a68fc95c">Halide::ModuleProducer</a></td></tr>
+<tr class="separator:a5e8c9a31b7ae5ccff9ef3234a68fc95c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aa04503a9bc12b1befcfd19b0dce65d42"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Module&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#aa04503a9bc12b1befcfd19b0dce65d42">Halide::link_modules</a> (const std::string &amp;name, const std::vector&lt; Module &gt; &amp;modules)</td></tr>
 <tr class="memdesc:aa04503a9bc12b1befcfd19b0dce65d42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Link a set of modules together into one module.  <a href="#aa04503a9bc12b1befcfd19b0dce65d42">More...</a><br/></td></tr>
 <tr class="separator:aa04503a9bc12b1befcfd19b0dce65d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab982a43eb5dece82c6fe363a076efed7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#ab982a43eb5dece82c6fe363a076efed7">Halide::compile_standalone_runtime</a> (const std::string &amp;object_filename, Target t)</td></tr>
+<tr class="memdesc:ab982a43eb5dece82c6fe363a076efed7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an object file containing the <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> runtime for a given target.  <a href="#ab982a43eb5dece82c6fe363a076efed7">More...</a><br/></td></tr>
+<tr class="separator:ab982a43eb5dece82c6fe363a076efed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3eee73adcd88a33e656e1753b32d863"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Outputs&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#af3eee73adcd88a33e656e1753b32d863">Halide::compile_standalone_runtime</a> (const Outputs &amp;output_files, Target t)</td></tr>
+<tr class="memdesc:af3eee73adcd88a33e656e1753b32d863"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an object and/or static library file containing the <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> runtime for a given target.  <a href="#af3eee73adcd88a33e656e1753b32d863">More...</a><br/></td></tr>
+<tr class="separator:af3eee73adcd88a33e656e1753b32d863"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe7f1bbb9c788fbe7fbd743ec253039a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#afe7f1bbb9c788fbe7fbd743ec253039a">Halide::compile_multitarget</a> (const std::string &amp;fn_name, const Outputs &amp;output_files, const std::vector&lt; Target &gt; &amp;targets, ModuleProducer module_producer, const std::map&lt; std::string, std::string &gt; &amp;suffixes={})</td></tr>
+<tr class="separator:afe7f1bbb9c788fbe7fbd743ec253039a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Defines Module, an IR container that fully describes a <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> program. </p>
+<div class="textblock"><p>Defines Module, an IR container that fully describes a <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> program. </p>
 
 <p>Definition in file <a class="el" href="_module_8h_source.html">Module.h</a>.</p>
 </div></div><!-- contents -->
@@ -153,7 +174,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_module_8h.html">Module.h</a></li>
+    <li class="navelem"><a class="el" href="dir_de4960fb9afd4052b9300248cfe3cde2.html">src</a></li><li class="navelem"><a class="el" href="_module_8h.html">Module.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

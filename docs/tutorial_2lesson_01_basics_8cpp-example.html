@@ -176,9 +176,9 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_01_basics_8cpp-exampl
 <div class="line">    <span class="comment">// also need to tell Halide the domain over which to evaluate the</span></div>
 <div class="line">    <span class="comment">// Func, which determines the range of x and y above, and the</span></div>
 <div class="line">    <span class="comment">// resolution of the output image. Halide.h also provides a basic</span></div>
-<div class="line">    <span class="comment">// templatized Image type we can use. We&#39;ll make an 800 x 600</span></div>
+<div class="line">    <span class="comment">// templatized image type we can use. We&#39;ll make an 800 x 600</span></div>
 <div class="line">    <span class="comment">// image.</span></div>
-<div class="line">    <a name="_a3"></a><a class="code" href="class_halide_1_1_image.html">Halide::Image&lt;int32_t&gt;</a> output = gradient.<a name="a4"></a><a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(800, 600);</div>
+<div class="line">    <a name="_a3"></a><a class="code" href="class_halide_1_1_buffer.html">Halide::Image&lt;int32_t&gt;</a> output = gradient.<a name="a4"></a><a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(800, 600);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Halide does type inference for you. Var objects represent</span></div>
 <div class="line">    <span class="comment">// 32-bit integers, so the Expr object &#39;x + y&#39; also represents a</span></div>
@@ -189,8 +189,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_01_basics_8cpp-exampl
 <div class="line"></div>
 <div class="line">    <span class="comment">// Let&#39;s check everything worked, and we got the output we were</span></div>
 <div class="line">    <span class="comment">// expecting:</span></div>
-<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; output.<a name="a5"></a><a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>(); j++) {</div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; output.<a name="a6"></a><a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(); i++) {</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; output.<a name="a5"></a><a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>(); j++) {</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; output.<a name="a6"></a><a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>(); i++) {</div>
 <div class="line">            <span class="comment">// We can access a pixel of an Image object using similar</span></div>
 <div class="line">            <span class="comment">// syntax to defining and using functions.</span></div>
 <div class="line">            <span class="keywordflow">if</span> (output(i, j) != i + j) {</div>

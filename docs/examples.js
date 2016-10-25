@@ -14,5 +14,6 @@ var examples =
     [ "tutorial/lesson_11_cross_compilation.cpp", "tutorial_2lesson_11_cross_compilation_8cpp-example.html", null ],
     [ "tutorial/lesson_12_using_the_gpu.cpp", "tutorial_2lesson_12_using_the_gpu_8cpp-example.html", null ],
     [ "tutorial/lesson_13_tuples.cpp", "tutorial_2lesson_13_tuples_8cpp-example.html", null ],
-    [ "tutorial/lesson_14_types.cpp", "tutorial_2lesson_14_types_8cpp-example.html", null ]
+    [ "tutorial/lesson_14_types.cpp", "tutorial_2lesson_14_types_8cpp-example.html", null ],
+    [ "tutorial/lesson_15_generators.cpp", "tutorial_2lesson_15_generators_8cpp-example.html", null ]
 ];

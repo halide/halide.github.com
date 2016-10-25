@@ -2,7 +2,7 @@ var class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev =
 [
     [ "CodeGen_OpenGLCompute_C", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c" ],
     [ "CodeGen_OpenGLCompute_Dev", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev.html#aadd51ee60a85cf3816256c61a6d7a45c", null ],
-    [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev.html#a18b9f47571fcd8d69aed023aa3cfac70", null ],
+    [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev.html#a00e1ac0176e5431f37f55d05a05477d2", null ],
     [ "init_module", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev.html#ab1f42d754f2cae49ccc9d5691fd94a01", null ],
     [ "compile_to_src", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev.html#a4d2a40ced8eccb22a5af1f708f898d5d", null ],
     [ "get_current_kernel_name", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev.html#aae1dfa82b45213b80613e55e9eb3f738", null ],

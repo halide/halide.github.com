@@ -3,6 +3,7 @@ var class_halide_1_1_internal_1_1_i_r_mutator =
     [ "mutate", "class_halide_1_1_internal_1_1_i_r_mutator.html#a7cb765daa7e68fee87e2b232f1e00c37", null ],
     [ "mutate", "class_halide_1_1_internal_1_1_i_r_mutator.html#a5eee99df1dbb0f7f110a58f6abc1fd73", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_mutator.html#a26b398b20e5ca64443d74623cec35531", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_i_r_mutator.html#ab0ebacb52f467318e0b491a267343944", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_mutator.html#aacd4bca4337748474f7bbbcf53fd5264", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_mutator.html#a746e978f75b6c5f039e229d28108d589", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_mutator.html#aa34535fa43dcc9455977550cdf7437ec", null ],

@@ -7,5 +7,7 @@ var structhalide__device__interface =
     [ "device_sync", "structhalide__device__interface.html#af912a893e7a326fdbd39104101e680e0", null ],
     [ "device_release", "structhalide__device__interface.html#acb93ee394b687d001edc2ffbf88d8131", null ],
     [ "copy_to_host", "structhalide__device__interface.html#ae4612d29829bf1091263d8b530b342bf", null ],
-    [ "copy_to_device", "structhalide__device__interface.html#a51fd826085ef332202e408ba00e3fe5d", null ]
+    [ "copy_to_device", "structhalide__device__interface.html#a51fd826085ef332202e408ba00e3fe5d", null ],
+    [ "device_and_host_malloc", "structhalide__device__interface.html#a0d2092a0c48aaf294ec387e568ce24c8", null ],
+    [ "device_and_host_free", "structhalide__device__interface.html#ab30a757aad8c07cac1ac667f8a0cd5a0", null ]
 ];

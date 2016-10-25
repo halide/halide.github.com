@@ -1,23 +1,42 @@
 var class_halide_1_1_internal_1_1_code_gen___c =
 [
     [ "Allocation", "struct_halide_1_1_internal_1_1_code_gen___c_1_1_allocation.html", "struct_halide_1_1_internal_1_1_code_gen___c_1_1_allocation" ],
-    [ "CodeGen_C", "class_halide_1_1_internal_1_1_code_gen___c.html#a5d3f5f1ca0b86be42823bbd1bd0698da", null ],
+    [ "OutputKind", "class_halide_1_1_internal_1_1_code_gen___c.html#a00541f7eab8b36568c7a6f9cb5c5f88d", [
+      [ "CHeader", "class_halide_1_1_internal_1_1_code_gen___c.html#a00541f7eab8b36568c7a6f9cb5c5f88dabd64acd43695f0b47085525baee972a6", null ],
+      [ "CPlusPlusHeader", "class_halide_1_1_internal_1_1_code_gen___c.html#a00541f7eab8b36568c7a6f9cb5c5f88da63a3a9025f4382815a4735c36481f0a4", null ],
+      [ "CImplementation", "class_halide_1_1_internal_1_1_code_gen___c.html#a00541f7eab8b36568c7a6f9cb5c5f88dad8f2d1a687b277631a1d571dc0be5c97", null ],
+      [ "CPlusPlusImplementation", "class_halide_1_1_internal_1_1_code_gen___c.html#a00541f7eab8b36568c7a6f9cb5c5f88da83ff060fbd8993a7b95ad3d01960c96d", null ]
+    ] ],
+    [ "AppendSpaceIfNeeded", "class_halide_1_1_internal_1_1_code_gen___c.html#aa9d423572079a0db3dc4210d0daf54b9", [
+      [ "DoNotAppendSpace", "class_halide_1_1_internal_1_1_code_gen___c.html#aa9d423572079a0db3dc4210d0daf54b9a75f381c061ee36f35692275a9df2a949", null ],
+      [ "AppendSpace", "class_halide_1_1_internal_1_1_code_gen___c.html#aa9d423572079a0db3dc4210d0daf54b9aa68dce6c6dacd680e72c99f8285c45bf", null ]
+    ] ],
+    [ "COrCPlusPlus", "class_halide_1_1_internal_1_1_code_gen___c.html#ac6cd7570be95cd49a96a4e905360de4b", [
+      [ "Default", "class_halide_1_1_internal_1_1_code_gen___c.html#ac6cd7570be95cd49a96a4e905360de4ba7a1920d61156abc05a60135aefe8bc67", null ],
+      [ "C", "class_halide_1_1_internal_1_1_code_gen___c.html#ac6cd7570be95cd49a96a4e905360de4ba0d61f8370cad1d412f80b84d143e1257", null ],
+      [ "CPlusPlus", "class_halide_1_1_internal_1_1_code_gen___c.html#ac6cd7570be95cd49a96a4e905360de4ba618c337d168d3e2f339a16f8f6069c20", null ]
+    ] ],
+    [ "CodeGen_C", "class_halide_1_1_internal_1_1_code_gen___c.html#a2b28382c0de0b9769628e54a19b2984a", null ],
     [ "~CodeGen_C", "class_halide_1_1_internal_1_1_code_gen___c.html#a531c2eec28c44f5defb732e3462ee939", null ],
     [ "compile", "class_halide_1_1_internal_1_1_code_gen___c.html#ad7832a8c3c3a56a503d38d0f1aa2707f", null ],
     [ "compile", "class_halide_1_1_internal_1_1_code_gen___c.html#a1bcf1dc0bbc1364c81758e2defc81d4b", null ],
-    [ "compile", "class_halide_1_1_internal_1_1_code_gen___c.html#af12561f3d04bfb82eae95f2078cf886e", null ],
+    [ "compile", "class_halide_1_1_internal_1_1_code_gen___c.html#a026a835edb4c64562f5e5b518b3a0a9d", null ],
     [ "print_expr", "class_halide_1_1_internal_1_1_code_gen___c.html#af49deb67c9064941d734fc0daa180ef1", null ],
     [ "print_stmt", "class_halide_1_1_internal_1_1_code_gen___c.html#ae8751ee70e7cca44cb27ee6f125e1aa4", null ],
-    [ "print_type", "class_halide_1_1_internal_1_1_code_gen___c.html#a2cb2800c6929351fbb1e92ba7036c59f", null ],
+    [ "print_type", "class_halide_1_1_internal_1_1_code_gen___c.html#a0ddcd5b5b4ae046d74443963cdf7de7f", null ],
     [ "print_reinterpret", "class_halide_1_1_internal_1_1_code_gen___c.html#a5e31948bd95ab664b3608e6059f27cd7", null ],
     [ "print_name", "class_halide_1_1_internal_1_1_code_gen___c.html#a772bf939e7211b2abaf9b072c09c0abf", null ],
     [ "print_assignment", "class_halide_1_1_internal_1_1_code_gen___c.html#a771ef91ff341ea0ed96fa88876dbd12d", null ],
+    [ "is_header", "class_halide_1_1_internal_1_1_code_gen___c.html#a4135177d02f26446262bcf4065f6e211", null ],
+    [ "is_c_plus_plus_interface", "class_halide_1_1_internal_1_1_code_gen___c.html#a9be8b2f340b84bd02e484356e746058b", null ],
     [ "open_scope", "class_halide_1_1_internal_1_1_code_gen___c.html#a3b9b291608bd137af4f788bae7b859b3", null ],
     [ "close_scope", "class_halide_1_1_internal_1_1_code_gen___c.html#a2c813cd941a2e028ace0daa9d3cd207b", null ],
     [ "push_buffer", "class_halide_1_1_internal_1_1_code_gen___c.html#a58d5d8cdb68111824c3e64e7bd78fb06", null ],
     [ "pop_buffer", "class_halide_1_1_internal_1_1_code_gen___c.html#ac804c120d0094ade948fa69e337604e2", null ],
+    [ "switch_to_c_or_c_plus_plus", "class_halide_1_1_internal_1_1_code_gen___c.html#aacbdbb5c39613a4713a0eefe4e7fa283", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#a0c7d16220e07b92403dd948dfa042680", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#a2b1758e25983daaa650d70ba38e42a12", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#a2181c9436f22c079b3cc04bde5c8b513", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#a677af8c5879f423150901f076d80f1bc", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#a841cb4e86cf823c1e964fff0338dd114", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#af9a46ef7f7695169235c89c5a1ade0f1", null ],
@@ -54,10 +73,11 @@ var class_halide_1_1_internal_1_1_code_gen___c =
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___c.html#aa40a35a45a134b0cc922e4b97ef6f8a5", null ],
     [ "visit_binop", "class_halide_1_1_internal_1_1_code_gen___c.html#a97fa42e46aa0e52fe2a45c118763c84b", null ],
     [ "id", "class_halide_1_1_internal_1_1_code_gen___c.html#aa2a0647e17ceb7a5483257016b2f7f93", null ],
-    [ "is_header", "class_halide_1_1_internal_1_1_code_gen___c.html#aac287c92d20a799679d336fff807302e", null ],
+    [ "output_kind", "class_halide_1_1_internal_1_1_code_gen___c.html#a4014409a66b1e25caaba62f90ec5a031", null ],
     [ "cache", "class_halide_1_1_internal_1_1_code_gen___c.html#af6d9429f3ca6c236a8da179c538009d2", null ],
     [ "emitted", "class_halide_1_1_internal_1_1_code_gen___c.html#a936cdc1aa5c7bdfbcb265bd5c67a1eec", null ],
     [ "allocations", "class_halide_1_1_internal_1_1_code_gen___c.html#a77286af3480e2ebe58a59dd2969adb36", null ],
     [ "heap_allocations", "class_halide_1_1_internal_1_1_code_gen___c.html#a0d867f0e390182e00054eb629181516d", null ],
-    [ "have_user_context", "class_halide_1_1_internal_1_1_code_gen___c.html#abd679d9da0e82113f78358e8d0a75eb1", null ]
+    [ "have_user_context", "class_halide_1_1_internal_1_1_code_gen___c.html#abd679d9da0e82113f78358e8d0a75eb1", null ],
+    [ "extern_c_open", "class_halide_1_1_internal_1_1_code_gen___c.html#ac6047accc838282f333d1a80b8af3c09", null ]
 ];

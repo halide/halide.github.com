@@ -114,41 +114,45 @@ $(document).ready(function(){initNavTree('_l_l_v_m___runtime___linker_8h_source.
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Support for linking LLVM modules that comprise the runtime.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_target_8h.html">Target.h</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>llvm {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">class </span>Module;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">class </span>LLVMContext;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>Halide {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_target_8h.html">Target.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>llvm {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">class </span>Module;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">class </span>LLVMContext;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">class </span>Triple;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}  <span class="comment">// namespace llvm</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>Internal {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/** Create an llvm module containing the support code for a given target. */</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;llvm::Module *<a class="code" href="namespace_halide_1_1_internal.html#a55cf32e5a054a8b3c42884529527b89f">get_initial_module_for_target</a>(Target, llvm::LLVMContext *, <span class="keywordtype">bool</span> for_shared_jit_runtime = <span class="keyword">false</span>, <span class="keywordtype">bool</span> just_gpu = <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/** Create an llvm module containing the support code for ptx device. */</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;llvm::Module *<a class="code" href="namespace_halide_1_1_internal.html#ae550b1911283d65000a7abb81fdc3c14">get_initial_module_for_ptx_device</a>(Target, llvm::LLVMContext *c);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/** Create an llvm module containing the support code for renderscript. */</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;llvm::Module *<a class="code" href="namespace_halide_1_1_internal.html#a8de57678f9f83af8ac1b77d3b9b672fc">get_initial_module_for_renderscript_device</a>(Target target, llvm::LLVMContext *c);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>Halide {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span>Internal {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/** Return the llvm::Triple that corresponds to the given Halide Target */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;llvm::Triple <a class="code" href="namespace_halide_1_1_internal.html#a496ad11988df981c987a2557c3cd2d8c">get_triple_for_target</a>(<span class="keyword">const</span> Target &amp;target);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/** Create an llvm module containing the support code for a given target. */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;std::unique_ptr&lt;llvm::Module&gt; <a class="code" href="namespace_halide_1_1_internal.html#a30b2ac324e660b73262abdb4b0643451">get_initial_module_for_target</a>(Target, llvm::LLVMContext *, <span class="keywordtype">bool</span> for_shared_jit_runtime = <span class="keyword">false</span>, <span class="keywordtype">bool</span> just_gpu = <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/** Create an llvm module containing the support code for ptx device. */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;std::unique_ptr&lt;llvm::Module&gt; <a class="code" href="namespace_halide_1_1_internal.html#a9e77b70f4bfb715115d8c3a690b2faa0">get_initial_module_for_ptx_device</a>(Target, llvm::LLVMContext *c);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/** Create an llvm module containing the support code for renderscript. */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;std::unique_ptr&lt;llvm::Module&gt; <a class="code" href="namespace_halide_1_1_internal.html#aabff7722c0ee5cf28db2fd08ca7d18b6">get_initial_module_for_renderscript_device</a>(Target target, llvm::LLVMContext *c);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="namespace_halide_1_1_internal_html_ae550b1911283d65000a7abb81fdc3c14"><div class="ttname"><a href="namespace_halide_1_1_internal.html#ae550b1911283d65000a7abb81fdc3c14">Halide::Internal::get_initial_module_for_ptx_device</a></div><div class="ttdeci">llvm::Module * get_initial_module_for_ptx_device(Target, llvm::LLVMContext *c)</div><div class="ttdoc">Create an llvm module containing the support code for ptx device. </div></div>
-<div class="ttc" id="namespace_halide_1_1_internal_html_a8de57678f9f83af8ac1b77d3b9b672fc"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a8de57678f9f83af8ac1b77d3b9b672fc">Halide::Internal::get_initial_module_for_renderscript_device</a></div><div class="ttdeci">llvm::Module * get_initial_module_for_renderscript_device(Target target, llvm::LLVMContext *c)</div><div class="ttdoc">Create an llvm module containing the support code for renderscript. </div></div>
-<div class="ttc" id="namespace_halide_1_1_internal_html_a55cf32e5a054a8b3c42884529527b89f"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a55cf32e5a054a8b3c42884529527b89f">Halide::Internal::get_initial_module_for_target</a></div><div class="ttdeci">llvm::Module * get_initial_module_for_target(Target, llvm::LLVMContext *, bool for_shared_jit_runtime=false, bool just_gpu=false)</div><div class="ttdoc">Create an llvm module containing the support code for a given target. </div></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}  <span class="comment">// namespace Internal</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}  <span class="comment">// namespace Halide</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="namespace_halide_1_1_internal_html_a30b2ac324e660b73262abdb4b0643451"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a30b2ac324e660b73262abdb4b0643451">Halide::Internal::get_initial_module_for_target</a></div><div class="ttdeci">std::unique_ptr&lt; llvm::Module &gt; get_initial_module_for_target(Target, llvm::LLVMContext *, bool for_shared_jit_runtime=false, bool just_gpu=false)</div><div class="ttdoc">Create an llvm module containing the support code for a given target. </div></div>
 <div class="ttc" id="_target_8h_html"><div class="ttname"><a href="_target_8h.html">Target.h</a></div><div class="ttdoc">Defines the structure that describes a Halide target. </div></div>
+<div class="ttc" id="namespace_halide_1_1_internal_html_aabff7722c0ee5cf28db2fd08ca7d18b6"><div class="ttname"><a href="namespace_halide_1_1_internal.html#aabff7722c0ee5cf28db2fd08ca7d18b6">Halide::Internal::get_initial_module_for_renderscript_device</a></div><div class="ttdeci">std::unique_ptr&lt; llvm::Module &gt; get_initial_module_for_renderscript_device(Target target, llvm::LLVMContext *c)</div><div class="ttdoc">Create an llvm module containing the support code for renderscript. </div></div>
+<div class="ttc" id="namespace_halide_1_1_internal_html_a9e77b70f4bfb715115d8c3a690b2faa0"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a9e77b70f4bfb715115d8c3a690b2faa0">Halide::Internal::get_initial_module_for_ptx_device</a></div><div class="ttdeci">std::unique_ptr&lt; llvm::Module &gt; get_initial_module_for_ptx_device(Target, llvm::LLVMContext *c)</div><div class="ttdoc">Create an llvm module containing the support code for ptx device. </div></div>
+<div class="ttc" id="namespace_halide_1_1_internal_html_a496ad11988df981c987a2557c3cd2d8c"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a496ad11988df981c987a2557c3cd2d8c">Halide::Internal::get_triple_for_target</a></div><div class="ttdeci">llvm::Triple get_triple_for_target(const Target &amp;target)</div><div class="ttdoc">Return the llvm::Triple that corresponds to the given Halide Target. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_l_l_v_m___runtime___linker_8h.html">LLVM_Runtime_Linker.h</a></li>
+    <li class="navelem"><a class="el" href="dir_de4960fb9afd4052b9300248cfe3cde2.html">src</a></li><li class="navelem"><a class="el" href="_l_l_v_m___runtime___linker_8h.html">LLVM_Runtime_Linker.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

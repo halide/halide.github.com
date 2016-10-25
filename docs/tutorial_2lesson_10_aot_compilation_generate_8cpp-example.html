@@ -101,27 +101,28 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_10_aot_compilation_ge
 <div class="title">tutorial/lesson_10_aot_compilation_generate.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 10: AOT compilation part 1</span></div>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="comment">// Halide tutorial lesson 10: AOT compilation part 1</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// This lesson demonstrates how to use Halide as an more traditional</span></div>
 <div class="line"><span class="comment">// ahead-of-time (AOT) compiler.</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// This lesson is split across two files. The first (this one), builds</span></div>
-<div class="line"><span class="comment">// a Halide pipeline and compiles it to an object file and header. The</span></div>
-<div class="line"><span class="comment">// second (lesson_10_aot_compilation_run.cpp), uses that object file</span></div>
-<div class="line"><span class="comment">// to actually run the pipeline. This means that compiling this code</span></div>
-<div class="line"><span class="comment">// is a multi-step process.</span></div>
+<div class="line"><span class="comment">// a Halide pipeline and compiles it to a static library and</span></div>
+<div class="line"><span class="comment">// header. The second (lesson_10_aot_compilation_run.cpp), uses that</span></div>
+<div class="line"><span class="comment">// static library to actually run the pipeline. This means that</span></div>
+<div class="line"><span class="comment">// compiling this code is a multi-step process.</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// On linux, you can compile and run it like so:</span></div>
 <div class="line"><span class="comment">// g++ lesson_10*generate.cpp -g -std=c++11 -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_10_generate</span></div>
 <div class="line"><span class="comment">// LD_LIBRARY_PATH=../bin ./lesson_10_generate</span></div>
-<div class="line"><span class="comment">// g++ lesson_10*run.cpp lesson_10_halide.o -lpthread -o lesson_10_run</span></div>
+<div class="line"><span class="comment">// g++ lesson_10*run.cpp lesson_10_halide.a -lpthread -ldl -o lesson_10_run</span></div>
 <div class="line"><span class="comment">// ./lesson_10_run</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// On os x:</span></div>
 <div class="line"><span class="comment">// g++ lesson_10*generate.cpp -g -std=c++11 -I ../include -L ../bin -lHalide -o lesson_10_generate</span></div>
 <div class="line"><span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_10_generate</span></div>
-<div class="line"><span class="comment">// g++ lesson_10*run.cpp lesson_10_halide.o -o lesson_10_run</span></div>
+<div class="line"><span class="comment">// g++ lesson_10*run.cpp lesson_10_halide.a -o lesson_10_run</span></div>
 <div class="line"><span class="comment">// ./lesson_10_run</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// The benefits of this approach are that the final program:</span></div>
@@ -169,16 +170,12 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_10_aot_compilation_ge
 <div class="line"></div>
 <div class="line">    <span class="comment">// This time, instead of calling brighter.realize(...), which</span></div>
 <div class="line">    <span class="comment">// would compile and run the pipeline immediately, we&#39;ll call a</span></div>
-<div class="line">    <span class="comment">// method that compiles the pipeline to an object file and header.</span></div>
+<div class="line">    <span class="comment">// method that compiles the pipeline to a static library and header.</span></div>
 <div class="line">    <span class="comment">//</span></div>
 <div class="line">    <span class="comment">// For AOT-compiled code, we need to explicitly declare the</span></div>
 <div class="line">    <span class="comment">// arguments to the routine. This routine takes two. Arguments are</span></div>
 <div class="line">    <span class="comment">// usually Params or ImageParams.</span></div>
-<div class="line">    std::vector&lt;Argument&gt; args = {input, offset};</div>
-<div class="line">    brighter.<a name="a6"></a><a class="code" href="class_halide_1_1_func.html#a25e70d8bbd3a27b2287444c440aa37c4">compile_to_file</a>(<span class="stringliteral">&quot;lesson_10_halide&quot;</span>, args);</div>
-<div class="line"></div>
-<div class="line">    <span class="comment">// If you&#39;re using C++11, you can just say:</span></div>
-<div class="line">    <span class="comment">// brighter.compile_to_file(&quot;lesson_10_halide&quot;, {input, offset});</span></div>
+<div class="line">    brighter.<a name="a6"></a><a class="code" href="class_halide_1_1_func.html#a966c1ff2ca5fd52bf65df2652d752b18">compile_to_static_library</a>(<span class="stringliteral">&quot;lesson_10_halide&quot;</span>, {input, offset}, <span class="stringliteral">&quot;brighter&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">    printf(<span class="stringliteral">&quot;Halide pipeline compiled, but not yet run.\n&quot;</span>);</div>
 <div class="line"></div>

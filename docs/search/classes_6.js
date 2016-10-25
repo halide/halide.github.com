@@ -1,10 +1,13 @@
 var searchData=
 [
+  ['filestat',['FileStat',['../struct_halide_1_1_internal_1_1_file_stat.html',1,'Halide::Internal']]],
+  ['float16_5ft',['float16_t',['../struct_halide_1_1float16__t.html',1,'Halide']]],
   ['floatimm',['FloatImm',['../struct_halide_1_1_internal_1_1_float_imm.html',1,'Halide::Internal']]],
   ['for',['For',['../struct_halide_1_1_internal_1_1_for.html',1,'Halide::Internal']]],
+  ['for_5feach_5felement_5fhelpers',['for_each_element_helpers',['../struct_halide_1_1for__each__element__helpers.html',1,'Halide']]],
   ['free',['Free',['../struct_halide_1_1_internal_1_1_free.html',1,'Halide::Internal']]],
   ['func',['Func',['../class_halide_1_1_func.html',1,'Halide']]],
-  ['funcrefexpr',['FuncRefExpr',['../class_halide_1_1_func_ref_expr.html',1,'Halide']]],
-  ['funcrefvar',['FuncRefVar',['../class_halide_1_1_func_ref_var.html',1,'Halide']]],
-  ['function',['Function',['../class_halide_1_1_internal_1_1_function.html',1,'Halide::Internal']]]
+  ['funcref',['FuncRef',['../class_halide_1_1_func_ref.html',1,'Halide']]],
+  ['function',['Function',['../class_halide_1_1_internal_1_1_function.html',1,'Halide::Internal']]],
+  ['functupleelementref',['FuncTupleElementRef',['../class_halide_1_1_func_tuple_element_ref.html',1,'Halide']]]
 ];

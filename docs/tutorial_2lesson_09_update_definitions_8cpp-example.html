@@ -139,7 +139,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">    <a name="_a0"></a><a class="code" href="class_halide_1_1_var.html">Var</a> x(<span class="stringliteral">&quot;x&quot;</span>), y(<span class="stringliteral">&quot;y&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Load a grayscale image to use as an input.</span></div>
-<div class="line">    <a name="_a1"></a><a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/gray.png&quot;</span>);</div>
+<div class="line">    <a name="_a1"></a><a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/gray.png&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// You can define a Func in multiple passes. Let&#39;s see a toy</span></div>
 <div class="line">    <span class="comment">// example first.</span></div>
@@ -254,7 +254,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// domain&quot; and using it inside an update definition:</span></div>
 <div class="line">        <a name="_a6"></a><a class="code" href="class_halide_1_1_r_dom.html">RDom</a> r(0, 50);</div>
 <div class="line">        f(x, r) = f(x, r) * f(x, r);</div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;float&gt;</a> halide_result = f.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(100, 100);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;float&gt;</a> halide_result = f.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(100, 100);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// See figures/lesson_09_update_rdom.mp4 for a visualization.</span></div>
 <div class="line"></div>
@@ -301,22 +301,22 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        histogram(x) = 0;</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Define a multi-dimensional reduction domain over the input image:</span></div>
-<div class="line">        <a class="code" href="class_halide_1_1_r_dom.html">RDom</a> r(0, input.<a name="a7"></a><a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), 0, input.<a name="a8"></a><a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>());</div>
+<div class="line">        <a class="code" href="class_halide_1_1_r_dom.html">RDom</a> r(0, input.<a name="a7"></a><a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>(), 0, input.<a name="a8"></a><a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>());</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// For every point in the reduction domain, increment the</span></div>
 <div class="line">        <span class="comment">// histogram bucket corresponding to the intensity of the</span></div>
 <div class="line">        <span class="comment">// input image at that point.</span></div>
 <div class="line">        histogram(input(r.x, r.y)) += 1;</div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = histogram.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(256);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;int&gt;</a> halide_result = histogram.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(256);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// The equivalent C is:</span></div>
 <div class="line">        <span class="keywordtype">int</span> c_result[256];</div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 256; x++) {</div>
 <div class="line">            c_result[x] = 0;</div>
 <div class="line">        }</div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r_y = 0; r_y &lt; input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>(); r_y++) {</div>
-<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r_x = 0; r_x &lt; input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(); r_x++) {</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r_y = 0; r_y &lt; input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>(); r_y++) {</div>
+<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r_x = 0; r_x &lt; input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>(); r_x++) {</div>
 <div class="line">                c_result[input(r_x, r_y)] += 1;</div>
 <div class="line">            }</div>
 <div class="line">        }</div>
@@ -366,7 +366,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <a class="code" href="class_halide_1_1_var.html">Var</a> yo, yi;</div>
 <div class="line">        f.<a class="code" href="class_halide_1_1_func.html#ae2013b9623e9c24a47930ef1874d2b4b">update</a>(1).<a name="a13"></a>split(y, yo, yi, 4).parallel(yo);</div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = f.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(16, 16);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;int&gt;</a> halide_result = f.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(16, 16);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// See figures/lesson_09_update_schedule.mp4 for a visualization.</span></div>
 <div class="line"></div>
@@ -427,7 +427,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        producer(x) = x*2;</div>
 <div class="line">        producer(x) += 10;</div>
 <div class="line">        consumer(x) = 2 * producer(x);</div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// See figures/lesson_09_inline_reduction.gif for a visualization.</span></div>
 <div class="line"></div>
@@ -486,7 +486,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line"></div>
 <div class="line">            producer.<a name="a14"></a><a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273">compute_at</a>(consumer, x);</div>
 <div class="line"></div>
-<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
+<div class="line">            <a class="code" href="class_halide_1_1_buffer.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// See figures/lesson_09_compute_at_pure.gif for a visualization.</span></div>
 <div class="line"></div>
@@ -526,7 +526,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line"></div>
 <div class="line">            <span class="comment">// Again we compute the producer per x coordinate of the</span></div>
 <div class="line">            <span class="comment">// consumer. This places producer code inside the update</span></div>
-<div class="line">            <span class="comment">// step of the producer, because that&#39;s the only step that</span></div>
+<div class="line">            <span class="comment">// step of the consumer, because that&#39;s the only step that</span></div>
 <div class="line">            <span class="comment">// uses the producer.</span></div>
 <div class="line">            producer.<a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273">compute_at</a>(consumer, x);</div>
 <div class="line"></div>
@@ -538,7 +538,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">            <span class="comment">// the Vars of a Func are shared across the pure and</span></div>
 <div class="line">            <span class="comment">// update steps.</span></div>
 <div class="line"></div>
-<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
+<div class="line">            <a class="code" href="class_halide_1_1_buffer.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// See figures/lesson_09_compute_at_update.gif for a visualization.</span></div>
 <div class="line"></div>
@@ -577,12 +577,12 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line"></div>
 <div class="line">            <span class="comment">// Again we compute the producer per x coordinate of the</span></div>
 <div class="line">            <span class="comment">// consumer. This places producer code inside both the</span></div>
-<div class="line">            <span class="comment">// pure and the update step of the producer. So there end</span></div>
+<div class="line">            <span class="comment">// pure and the update step of the consumer. So there end</span></div>
 <div class="line">            <span class="comment">// up being two separate realizations of the producer, and</span></div>
 <div class="line">            <span class="comment">// redundant work occurs.</span></div>
 <div class="line">            producer.<a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273">compute_at</a>(consumer, x);</div>
 <div class="line"></div>
-<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
+<div class="line">            <a class="code" href="class_halide_1_1_buffer.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// See figures/lesson_09_compute_at_pure_and_update.gif for a visualization.</span></div>
 <div class="line"></div>
@@ -619,8 +619,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">            <a class="code" href="class_halide_1_1_func.html">Func</a> producer, consumer;</div>
 <div class="line">            producer(x, y) = (x * y) / 10 + 8;</div>
 <div class="line">            consumer(x, y) = x + y;</div>
-<div class="line">            consumer(x, 0) = producer(x, x-1);</div>
-<div class="line">            consumer(0, y) = producer(y, y-1);</div>
+<div class="line">            consumer(x, 0) = producer(x, x);</div>
+<div class="line">            consumer(0, y) = producer(y, 9-y);</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// In this case neither producer.compute_at(consumer, x)</span></div>
 <div class="line">            <span class="comment">// nor producer.compute_at(consumer, y) will work, because</span></div>
@@ -649,7 +649,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">            producer_1.<a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273">compute_at</a>(consumer_2, x);</div>
 <div class="line">            producer_2.<a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273">compute_at</a>(consumer_2, y);</div>
 <div class="line"></div>
-<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer_2.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10, 10);</div>
+<div class="line">            <a class="code" href="class_halide_1_1_buffer.html">Image&lt;int&gt;</a> halide_result = consumer_2.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10, 10);</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// See figures/lesson_09_compute_at_multiple_updates.mp4 for a visualization.</span></div>
 <div class="line"></div>
@@ -705,7 +705,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line"></div>
 <div class="line">            producer.compute_at(consumer, r);</div>
 <div class="line"></div>
-<div class="line">            <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
+<div class="line">            <a class="code" href="class_halide_1_1_buffer.html">Image&lt;int&gt;</a> halide_result = consumer.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// See figures/lesson_09_compute_at_rvar.gif for a visualization.</span></div>
 <div class="line"></div>
@@ -765,7 +765,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> blurry;</div>
 <div class="line">        blurry(x, y) = cast&lt;uint8_t&gt;(local_sum(x, y) / 25);</div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> halide_result = blurry.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>());</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> halide_result = blurry.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>(), input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>());</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// The default schedule will inline &#39;clamped&#39; into the update</span></div>
 <div class="line">        <span class="comment">// step of &#39;local_sum&#39;, because clamped only has a pure</span></div>
@@ -774,9 +774,9 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// because the default schedule for reductions is</span></div>
 <div class="line">        <span class="comment">// compute-innermost. Here&#39;s the equivalent C:</span></div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> c_result(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>());</div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>(); y++) {</div>
-<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(); x++) {</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> c_result(input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>(), input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>());</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>(); y++) {</div>
+<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>(); x++) {</div>
 <div class="line">                <span class="keywordtype">int</span> local_sum[1];</div>
 <div class="line">                <span class="comment">// Pure step of local_sum</span></div>
 <div class="line">                local_sum[0] = 0;</div>
@@ -784,8 +784,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r_y = -2; r_y &lt;= 2; r_y++) {</div>
 <div class="line">                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> r_x = -2; r_x &lt;= 2; r_x++) {</div>
 <div class="line">                        <span class="comment">// The clamping has been inlined into the update step.</span></div>
-<div class="line">                        <span class="keywordtype">int</span> clamped_x = <a name="a18"></a><a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940">std::min</a>(<a name="a19"></a><a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec">std::max</a>(x + r_x, 0), input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>()-1);</div>
-<div class="line">                        <span class="keywordtype">int</span> clamped_y = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940">std::min</a>(<a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec">std::max</a>(y + r_y, 0), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>()-1);</div>
+<div class="line">                        <span class="keywordtype">int</span> clamped_x = <a name="a18"></a><a class="code" href="namespace_halide.html#a7fcf5168032f227aee3aec229b02c504">std::min</a>(<a name="a19"></a><a class="code" href="namespace_halide.html#af35ec3cd58f7426ff2cc5d5f257ffa52">std::max</a>(x + r_x, 0), input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>()-1);</div>
+<div class="line">                        <span class="keywordtype">int</span> clamped_y = <a class="code" href="namespace_halide.html#a7fcf5168032f227aee3aec229b02c504">std::min</a>(<a class="code" href="namespace_halide.html#af35ec3cd58f7426ff2cc5d5f257ffa52">std::max</a>(y + r_y, 0), input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>()-1);</div>
 <div class="line">                        local_sum[0] += input(clamped_x, clamped_y);</div>
 <div class="line">                    }</div>
 <div class="line">                }</div>
@@ -795,8 +795,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        }</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Check the results match</span></div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>(); y++) {</div>
-<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(); x++) {</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>(); y++) {</div>
+<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>(); x++) {</div>
 <div class="line">                <span class="keywordflow">if</span> (halide_result(x, y) != c_result(x, y)) {</div>
 <div class="line">                    printf(<span class="stringliteral">&quot;halide_result(%d, %d) = %d instead of %d\n&quot;</span>,</div>
 <div class="line">                           x, y, halide_result(x, y), c_result(x, y));</div>
@@ -827,8 +827,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// pure function. The reduction domain has been swallowed to</span></div>
 <div class="line">        <span class="comment">// define the inner anonymous reduction.</span></div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result_1 = f1.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;int&gt;</a> halide_result_2 = f2.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;int&gt;</a> halide_result_1 = f1.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;int&gt;</a> halide_result_2 = f2.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(10);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// The equivalent C is:</span></div>
 <div class="line">        <span class="keywordtype">int</span> c_result[10];</div>
@@ -866,8 +866,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line"></div>
 <div class="line">        <span class="comment">// First, add a boundary condition to the input.</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> clamped;</div>
-<div class="line">        <a name="_a22"></a><a class="code" href="struct_halide_1_1_expr.html">Expr</a> x_clamped = <a name="a23"></a><a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa">clamp</a>(x, 0, input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>()-1);</div>
-<div class="line">        <a class="code" href="struct_halide_1_1_expr.html">Expr</a> y_clamped = <a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa">clamp</a>(y, 0, input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>()-1);</div>
+<div class="line">        <a name="_a22"></a><a class="code" href="struct_halide_1_1_expr.html">Expr</a> x_clamped = <a name="a23"></a><a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa">clamp</a>(x, 0, input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>()-1);</div>
+<div class="line">        <a class="code" href="struct_halide_1_1_expr.html">Expr</a> y_clamped = <a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa">clamp</a>(y, 0, input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>()-1);</div>
 <div class="line">        clamped(x, y) = input(x_clamped, y_clamped);</div>
 <div class="line"></div>
 <div class="line">        <a class="code" href="class_halide_1_1_r_dom.html">RDom</a> box(-2, 5, -2, 5);</div>
@@ -878,7 +878,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line"></div>
 <div class="line">        <span class="comment">// Compute the result in strips of 32 scanlines</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_var.html">Var</a> yo, yi;</div>
-<div class="line">        spread.<a name="a26"></a><a class="code" href="class_halide_1_1_func.html#a52a4cace19fc024959cda3a7e82dd9f6">split</a>(y, yo, yi, 32).<a class="code" href="class_halide_1_1_func.html#aa0050c604179b43a8deb42b62dedd29d">parallel</a>(yo);</div>
+<div class="line">        spread.<a name="a26"></a><a class="code" href="class_halide_1_1_func.html#a9021ba910e4d6e0712b3e8964c30addb">split</a>(y, yo, yi, 32).<a class="code" href="class_halide_1_1_func.html#aa0050c604179b43a8deb42b62dedd29d">parallel</a>(yo);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Vectorize across x within the strips. This implicitly</span></div>
 <div class="line">        <span class="comment">// vectorizes stuff that is computed within the loop over x in</span></div>
@@ -890,7 +890,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="comment">// as we need it in a circular buffer (see lesson 08).</span></div>
 <div class="line">        clamped.<a name="a27"></a><a class="code" href="class_halide_1_1_func.html#a33cb0d00bc9585bf3027011ecb1412b7">store_at</a>(spread, yo).<a class="code" href="class_halide_1_1_func.html#a11de589971243d53709563789ef09273">compute_at</a>(spread, yi);</div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> halide_result = spread.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>());</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> halide_result = spread.<a class="code" href="class_halide_1_1_func.html#af4b4feae2b40e2ee5f29e2d1d99ae190">realize</a>(input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>(), input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>());</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// The C equivalent is almost too horrible to contemplate (and</span></div>
 <div class="line">        <span class="comment">// took me a long time to debug). This time I want to time</span></div>
@@ -901,7 +901,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line"><span class="preprocessor">        #ifdef __SSE2__</span></div>
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line">        <span class="comment">// Don&#39;t include the time required to allocate the output buffer.</span></div>
-<div class="line">        <a class="code" href="class_halide_1_1_image.html">Image&lt;uint8_t&gt;</a> c_result(input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>());</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> c_result(input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>(), input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>());</div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">        #ifdef _OPENMP</span></div>
 <div class="line"><span class="preprocessor"></span>        <span class="keywordtype">double</span> t1 = current_time();</div>
@@ -911,14 +911,14 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> iters = 0; iters &lt; 100; iters++) {</div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">            #pragma omp parallel for</span></div>
-<div class="line"><span class="preprocessor"></span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> yo = 0; yo &lt; (input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>() + 31)/32; yo++) {</div>
-<div class="line">                <span class="keywordtype">int</span> y_base = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940">std::min</a>(yo * 32, input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>() - 32);</div>
+<div class="line"><span class="preprocessor"></span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> yo = 0; yo &lt; (input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>() + 31)/32; yo++) {</div>
+<div class="line">                <span class="keywordtype">int</span> y_base = <a class="code" href="namespace_halide.html#a7fcf5168032f227aee3aec229b02c504">std::min</a>(yo * 32, input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>() - 32);</div>
 <div class="line"></div>
 <div class="line">                <span class="comment">// Compute clamped in a circular buffer of size 8</span></div>
 <div class="line">                <span class="comment">// (smallest power of two greater than 5). Each thread</span></div>
 <div class="line">                <span class="comment">// needs its own allocation, so it must occur here.</span></div>
 <div class="line"></div>
-<div class="line">                <span class="keywordtype">int</span> clamped_width = input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>() + 4;</div>
+<div class="line">                <span class="keywordtype">int</span> clamped_width = input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>() + 4;</div>
 <div class="line">                <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *clamped_storage = (<a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *)<a name="a28"></a><a class="code" href="runtime__internal_8h.html#a1c8580582aae58105f16108d4ec89e9a">malloc</a>(clamped_width * 8);</div>
 <div class="line"></div>
 <div class="line">                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> yi = 0; yi &lt; 32; yi++) {</div>
@@ -938,19 +938,19 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line"></div>
 <div class="line">                        <span class="comment">// Figure out which row of the input we&#39;re reading</span></div>
 <div class="line">                        <span class="comment">// from by clamping the y coordinate:</span></div>
-<div class="line">                        <span class="keywordtype">int</span> clamped_y = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940">std::min</a>(<a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec">std::max</a>(cy, 0), input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>()-1);</div>
+<div class="line">                        <span class="keywordtype">int</span> clamped_y = <a class="code" href="namespace_halide.html#a7fcf5168032f227aee3aec229b02c504">std::min</a>(<a class="code" href="namespace_halide.html#af35ec3cd58f7426ff2cc5d5f257ffa52">std::max</a>(cy, 0), input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>()-1);</div>
 <div class="line">                        <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> *input_row = &amp;input(0, clamped_y);</div>
 <div class="line"></div>
 <div class="line">                        <span class="comment">// Fill it in with the padding.</span></div>
-<div class="line">                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = -2; x &lt; input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>() + 2; x++) {</div>
-<div class="line">                            <span class="keywordtype">int</span> clamped_x = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940">std::min</a>(<a class="code" href="namespace_halide.html#a9a00cabb9f57b4cf5d101b2af338f5ec">std::max</a>(x, 0), input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>()-1);</div>
+<div class="line">                        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = -2; x &lt; input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>() + 2; x++) {</div>
+<div class="line">                            <span class="keywordtype">int</span> clamped_x = <a class="code" href="namespace_halide.html#a7fcf5168032f227aee3aec229b02c504">std::min</a>(<a class="code" href="namespace_halide.html#af35ec3cd58f7426ff2cc5d5f257ffa52">std::max</a>(x, 0), input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>()-1);</div>
 <div class="line">                            *clamped_row++ = input_row[clamped_x];</div>
 <div class="line">                        }</div>
 <div class="line">                    }</div>
 <div class="line"></div>
 <div class="line">                    <span class="comment">// Now iterate over vectors of x for the pure step of the output.</span></div>
-<div class="line">                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x_vec = 0; x_vec &lt; (input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>() + 15)/16; x_vec++) {</div>
-<div class="line">                        <span class="keywordtype">int</span> x_base = <a class="code" href="namespace_halide.html#a38b5db24ca379dda8241433c0014c940">std::min</a>(x_vec * 16, input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>() - 16);</div>
+<div class="line">                    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x_vec = 0; x_vec &lt; (input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>() + 15)/16; x_vec++) {</div>
+<div class="line">                        <span class="keywordtype">int</span> x_base = <a class="code" href="namespace_halide.html#a7fcf5168032f227aee3aec229b02c504">std::min</a>(x_vec * 16, input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>() - 16);</div>
 <div class="line"></div>
 <div class="line">                        <span class="comment">// Allocate storage for the minimum and maximum</span></div>
 <div class="line">                        <span class="comment">// helpers. One vector is enough.</span></div>
@@ -1024,8 +1024,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_09_update_definitions
 <div class="line"><span class="preprocessor">        #endif // _OPENMP</span></div>
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line">        <span class="comment">// Check the results match:</span></div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; input.<a class="code" href="class_halide_1_1_image_base.html#ab52766f182e51aed9f6782245d4372bc">height</a>(); y++) {</div>
-<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input.<a class="code" href="class_halide_1_1_image_base.html#a14e60734bf11cce6cf33ad37f3fd2916">width</a>(); x++) {</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; input.<a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>(); y++) {</div>
+<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; input.<a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>(); x++) {</div>
 <div class="line">                <span class="keywordflow">if</span> (halide_result(x, y) != c_result(x, y)) {</div>
 <div class="line">                    printf(<span class="stringliteral">&quot;halide_result(%d, %d) = %d instead of %d\n&quot;</span>,</div>
 <div class="line">                           x, y, halide_result(x, y), c_result(x, y));</div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kind',['Kind',['../struct_halide_1_1_argument.html#aee62e5cc903afddd64fcc689b7359659',1,'Halide::Argument::Kind()'],['../class_halide_1_1_internal_1_1_object_instance_registry.html#a0e2e38e50a26fb81ebc62963b8483377',1,'Halide::Internal::ObjectInstanceRegistry::Kind()']]]
+  ['irnodetype',['IRNodeType',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2',1,'Halide::Internal']]]
 ];

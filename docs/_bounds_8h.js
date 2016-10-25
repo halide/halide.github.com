@@ -1,11 +1,18 @@
 var _bounds_8h =
 [
-    [ "Interval", "struct_halide_1_1_internal_1_1_interval.html", "struct_halide_1_1_internal_1_1_interval" ],
     [ "Box", "struct_halide_1_1_internal_1_1_box.html", "struct_halide_1_1_internal_1_1_box" ],
     [ "FuncValueBounds", "_bounds_8h.html#aaa0611a86047e2c583dd061a620dcc6e", null ],
+    [ "Direction", "_bounds_8h.html#a8548315fd4d13ccebe45a8123369f7ca", [
+      [ "Upper", "_bounds_8h.html#a8548315fd4d13ccebe45a8123369f7caa19de5b94f7b83900d4b296d9fa491aec", null ],
+      [ "Lower", "_bounds_8h.html#a8548315fd4d13ccebe45a8123369f7caab75fcdd2d72d9e000beab48622402d93", null ]
+    ] ],
     [ "bounds_of_expr_in_scope", "_bounds_8h.html#ab7f7e59492cfa4804a6dece2d867a5db", null ],
+    [ "find_constant_bound", "_bounds_8h.html#a0f153e2f6ddfec8e6ca9d31b8d7acfc9", null ],
     [ "merge_boxes", "_bounds_8h.html#ac2f62c0ee3ace8de2be57a9db369a3e4", null ],
     [ "boxes_overlap", "_bounds_8h.html#ac9641dd947fdf6352ccd5e34548db35e", null ],
+    [ "box_union", "_bounds_8h.html#af86d8a9b260b097d115182e4b8488f09", null ],
+    [ "box_intersection", "_bounds_8h.html#a8c57c8cff1c0ff811a01724b58086bdc", null ],
+    [ "box_contains", "_bounds_8h.html#a9198438916c78b87c90e665d665a18cd", null ],
     [ "boxes_required", "_bounds_8h.html#ab68083f9769cbbf033176ba50f3709c9", null ],
     [ "boxes_required", "_bounds_8h.html#af1f12c0072dbbf9639829af1aedda4ea", null ],
     [ "boxes_provided", "_bounds_8h.html#aeaf945673dc90b8bdd2e79900b147954", null ],
@@ -19,5 +26,5 @@ var _bounds_8h =
     [ "box_touched", "_bounds_8h.html#aa211ee508998ef25191d04fa45eb16c7", null ],
     [ "box_touched", "_bounds_8h.html#a35a819815a3d7f37a441a22c06689689", null ],
     [ "compute_function_value_bounds", "_bounds_8h.html#a0b807d0d1524fb2f20b1533d05032c02", null ],
-    [ "bounds_test", "_bounds_8h.html#a439ef9127bf30f5e2a67963eb8db0323", null ]
+    [ "bounds_test", "_bounds_8h.html#abf0ac02fb219b5b3b77f2930b2ef63a2", null ]
 ];

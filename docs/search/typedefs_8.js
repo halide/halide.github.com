@@ -1,10 +1,18 @@
 var searchData=
 [
-  ['image',['Image',['../class_halide_1_1_names_interface.html#a778f71b6fbc18a1fe74fc46ca54c2973',1,'Halide::NamesInterface']]],
-  ['imageparam',['ImageParam',['../class_halide_1_1_names_interface.html#a2366b9dd61dea180f589a80e134142f0',1,'Halide::NamesInterface']]],
-  ['int16_5ft',['int16_t',['../runtime__internal_8h.html#ac124c451b40871e78c16cb36581022ae',1,'runtime_internal.h']]],
-  ['int32_5ft',['int32_t',['../runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b',1,'runtime_internal.h']]],
-  ['int64_5ft',['int64_t',['../runtime__internal_8h.html#a11cbdb02b138f338b174a78c683f85fc',1,'runtime_internal.h']]],
-  ['int8_5ft',['int8_t',['../runtime__internal_8h.html#acfd957407fbe865fe77f6fdf86818f5e',1,'runtime_internal.h']]],
-  ['invokeclosurecreatefnptr',['InvokeClosureCreateFnPtr',['../mini__renderscript_8h.html#a2dfe3ab521db68cc5e3ff1ded74d7d16',1,'mini_renderscript.h']]]
+  ['halide_5fcan_5fuse_5ftarget_5ffeatures_5ft',['halide_can_use_target_features_t',['../_halide_runtime_8h.html#a10019efe4ef71dc796a049f7c6afd2b9',1,'HalideRuntime.h']]],
+  ['halide_5fdo_5fpar_5ffor_5ft',['halide_do_par_for_t',['../_halide_runtime_8h.html#a67106643662219b875b6e69775955944',1,'HalideRuntime.h']]],
+  ['halide_5fdo_5ftask_5ft',['halide_do_task_t',['../_halide_runtime_8h.html#a4b38fa796412d8e1b26a38c2f8a37713',1,'HalideRuntime.h']]],
+  ['halide_5ferror_5fhandler_5ft',['halide_error_handler_t',['../_halide_runtime_8h.html#a48f5f1ebda2ee82c39cc1050aaa7cd8a',1,'HalideRuntime.h']]],
+  ['halide_5ffree_5ft',['halide_free_t',['../_halide_runtime_8h.html#a5ad708200fb55818d42238cb2457f797',1,'HalideRuntime.h']]],
+  ['halide_5fhexagon_5fhandle_5ft',['halide_hexagon_handle_t',['../_halide_runtime_hexagon_host_8h.html#a5cf692c425e6dd2a07c2351b0a2c675a',1,'HalideRuntimeHexagonHost.h']]],
+  ['halide_5fhexagon_5fremote_5fbuffer',['halide_hexagon_remote_buffer',['../halide__hexagon__remote_8h.html#a9501460b5755091a41765a2243374c62',1,'halide_hexagon_remote.h']]],
+  ['halide_5fhexagon_5fremote_5fhandle_5ft',['halide_hexagon_remote_handle_t',['../halide__hexagon__remote_8h.html#a723057e7b3dc5306e5fe291bd244b6ef',1,'halide_hexagon_remote.h']]],
+  ['halide_5fmalloc_5ft',['halide_malloc_t',['../_halide_runtime_8h.html#af1789361c8c7393c2efa66fc768f71f6',1,'HalideRuntime.h']]],
+  ['halide_5fprint_5ft',['halide_print_t',['../_halide_runtime_8h.html#a5c1fa162445be01b45cec2460ec2f00a',1,'HalideRuntime.h']]],
+  ['halide_5ftarget_5ffeature_5ft',['halide_target_feature_t',['../_halide_runtime_8h.html#a344de1f54ca97bc45193724bd7b3eaf3',1,'HalideRuntime.h']]],
+  ['halide_5ftask',['halide_task',['../namespace_halide_1_1_internal.html#a7db928fd19209689611a24deafa15b9c',1,'Halide::Internal']]],
+  ['halide_5ftask_5ft',['halide_task_t',['../_halide_runtime_8h.html#a6465a3a2522d24a2e83e56e263616dcb',1,'HalideRuntime.h']]],
+  ['halide_5ftrace_5ft',['halide_trace_t',['../_halide_runtime_8h.html#a779b8c7d979f9943b3d488a007c05ae0',1,'HalideRuntime.h']]],
+  ['halide_5ftype_5fcode_5ft',['halide_type_code_t',['../_halide_runtime_8h.html#abd8ef2cf42c925601df1b997c1b938bf',1,'HalideRuntime.h']]]
 ];

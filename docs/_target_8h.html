@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('_target_8h.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Defines the structure that describes a <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> target.  
+<p>Defines the structure that describes a <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> target.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br/>
 <code>#include &lt;bitset&gt;</code><br/>
@@ -120,6 +120,8 @@ $(document).ready(function(){initNavTree('_target_8h.html','');});
 <code>#include &quot;<a class="el" href="_error_8h_source.html">Error.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_type_8h_source.html">Type.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_util_8h_source.html">Util.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_expr_8h_source.html">Expr.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_halide_runtime_8h_source.html">runtime/HalideRuntime.h</a>&quot;</code><br/>
 </div>
 <p><a href="_target_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -132,7 +134,9 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_halide"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html">Halide</a></td></tr>
-<tr class="memdesc:namespace_halide"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines methods for solving equations. <br/></td></tr>
+<tr class="memdesc:namespace_halide"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines methods for manipulating and analyzing boolean expressions. <br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespace_halide_1_1_internal"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html">Halide::Internal</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -141,17 +145,19 @@ Functions</h2></td></tr>
 <tr class="memdesc:a4fb1734eaadb362e875519e6ab68158e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the target corresponding to the host machine.  <a href="#a4fb1734eaadb362e875519e6ab68158e">More...</a><br/></td></tr>
 <tr class="separator:a4fb1734eaadb362e875519e6ab68158e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d655bb0051fc525e3e5d73997f93cdd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Target&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a2d655bb0051fc525e3e5d73997f93cdd">Halide::get_target_from_environment</a> ()</td></tr>
-<tr class="memdesc:a2d655bb0051fc525e3e5d73997f93cdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the target that <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> will use.  <a href="#a2d655bb0051fc525e3e5d73997f93cdd">More...</a><br/></td></tr>
+<tr class="memdesc:a2d655bb0051fc525e3e5d73997f93cdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the target that <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> will use.  <a href="#a2d655bb0051fc525e3e5d73997f93cdd">More...</a><br/></td></tr>
 <tr class="separator:a2d655bb0051fc525e3e5d73997f93cdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdb2fdc9b09935c4f2825d425359da37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Target&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#afdb2fdc9b09935c4f2825d425359da37">Halide::get_jit_target_from_environment</a> ()</td></tr>
-<tr class="memdesc:afdb2fdc9b09935c4f2825d425359da37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the target that <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> will use for jit-compilation.  <a href="#afdb2fdc9b09935c4f2825d425359da37">More...</a><br/></td></tr>
+<tr class="memdesc:afdb2fdc9b09935c4f2825d425359da37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the target that <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> will use for jit-compilation.  <a href="#afdb2fdc9b09935c4f2825d425359da37">More...</a><br/></td></tr>
 <tr class="separator:afdb2fdc9b09935c4f2825d425359da37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41200d3966083bac5cfc95a0b4f06c26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Target&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a41200d3966083bac5cfc95a0b4f06c26">Halide::parse_target_string</a> (const std::string &amp;target)</td></tr>
-<tr class="memdesc:a41200d3966083bac5cfc95a0b4f06c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a string of the form used in HL_TARGET (e.g.  <a href="#a41200d3966083bac5cfc95a0b4f06c26">More...</a><br/></td></tr>
-<tr class="separator:a41200d3966083bac5cfc95a0b4f06c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c3b78bf207020ef9e7a91f0f12db471"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Target::Feature&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a1c3b78bf207020ef9e7a91f0f12db471">Halide::target_feature_for_device_api</a> (DeviceAPI api)</td></tr>
+<tr class="memdesc:a1c3b78bf207020ef9e7a91f0f12db471"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for. ">Target</a> feature corresponding to a DeviceAPI.  <a href="#a1c3b78bf207020ef9e7a91f0f12db471">More...</a><br/></td></tr>
+<tr class="separator:a1c3b78bf207020ef9e7a91f0f12db471"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75c39fdac13dbbf178d4ae1680c7dbf7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a75c39fdac13dbbf178d4ae1680c7dbf7">Halide::Internal::target_test</a> ()</td></tr>
+<tr class="separator:a75c39fdac13dbbf178d4ae1680c7dbf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Defines the structure that describes a <a class="el" href="namespace_halide.html" title="Defines methods for solving equations. ">Halide</a> target. </p>
+<div class="textblock"><p>Defines the structure that describes a <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> target. </p>
 
 <p>Definition in file <a class="el" href="_target_8h_source.html">Target.h</a>.</p>
 </div></div><!-- contents -->
@@ -159,7 +165,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_target_8h.html">Target.h</a></li>
+    <li class="navelem"><a class="el" href="dir_de4960fb9afd4052b9300248cfe3cde2.html">src</a></li><li class="navelem"><a class="el" href="_target_8h.html">Target.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

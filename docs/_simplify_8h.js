@@ -2,6 +2,7 @@ var _simplify_8h =
 [
     [ "simplify", "_simplify_8h.html#a4b077780a2dcb6ed633f6f5d111046c2", null ],
     [ "simplify", "_simplify_8h.html#a2006cf9a5d8bad4e7861a3a10168b1d6", null ],
+    [ "can_prove", "_simplify_8h.html#a9a9bb398349140947e359eb3b1abc24c", null ],
     [ "simplify_exprs", "_simplify_8h.html#a27d8c444c776976f822644dc995d10ca", null ],
     [ "mod_imp", "_simplify_8h.html#a6cd3908859c82249a2c7f10158883a97", null ],
     [ "div_imp", "_simplify_8h.html#a0442f9a0450f45683938a69ce0273974", null ],
