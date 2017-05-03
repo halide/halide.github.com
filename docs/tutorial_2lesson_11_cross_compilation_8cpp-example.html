@@ -44,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -198,15 +197,15 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line">                                      1,       <span class="comment">// 2&#39;s complement little-endian</span></div>
 <div class="line">                                      1};      <span class="comment">// Current version of elf</span></div>
 <div class="line"></div>
-<div class="line">    FILE *f = fopen(<span class="stringliteral">&quot;lesson_11_arm_32_android.o&quot;</span>, <span class="stringliteral">&quot;rb&quot;</span>);</div>
+<div class="line">    FILE *f = <a name="a20"></a><a class="code" href="runtime__internal_8h.html#aefd1ee807bda7dd650a020f5f2a05c42">fopen</a>(<span class="stringliteral">&quot;lesson_11_arm_32_android.o&quot;</span>, <span class="stringliteral">&quot;rb&quot;</span>);</div>
 <div class="line">    <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> header[32];</div>
 <div class="line">    <span class="keywordflow">if</span> (!f || fread(header, 32, 1, f) != 1) {</div>
 <div class="line">        printf(<span class="stringliteral">&quot;Object file not generated\n&quot;</span>);</div>
 <div class="line">        <span class="keywordflow">return</span> -1;</div>
 <div class="line">    }</div>
-<div class="line">    fclose(f);</div>
+<div class="line">    <a name="a21"></a><a class="code" href="runtime__internal_8h.html#a491539fc02aa1d9f7b115ac4dd3e9a8d">fclose</a>(f);</div>
 <div class="line"></div>
-<div class="line">    <span class="keywordflow">if</span> (<a name="a20"></a><a class="code" href="runtime__internal_8h.html#a9e6df54ee04e18a3772335580e2ed872">memcmp</a>(header, arm_32_android_magic, <span class="keyword">sizeof</span>(arm_32_android_magic))) {</div>
+<div class="line">    <span class="keywordflow">if</span> (<a name="a22"></a><a class="code" href="runtime__internal_8h.html#a9e6df54ee04e18a3772335580e2ed872">memcmp</a>(header, arm_32_android_magic, <span class="keyword">sizeof</span>(arm_32_android_magic))) {</div>
 <div class="line">        printf(<span class="stringliteral">&quot;Unexpected header bytes in 32-bit arm object file.\n&quot;</span>);</div>
 <div class="line">        <span class="keywordflow">return</span> -1;</div>
 <div class="line">    }</div>
@@ -215,12 +214,12 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line">    <span class="comment">// (presumably referring to x86-64)</span></div>
 <div class="line">    <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> win_64_magic[] = {0x64, 0x86};</div>
 <div class="line"></div>
-<div class="line">    f = fopen(<span class="stringliteral">&quot;lesson_11_x86_64_windows.obj&quot;</span>, <span class="stringliteral">&quot;rb&quot;</span>);</div>
+<div class="line">    f = <a class="code" href="runtime__internal_8h.html#aefd1ee807bda7dd650a020f5f2a05c42">fopen</a>(<span class="stringliteral">&quot;lesson_11_x86_64_windows.obj&quot;</span>, <span class="stringliteral">&quot;rb&quot;</span>);</div>
 <div class="line">    <span class="keywordflow">if</span> (!f || fread(header, 32, 1, f) != 1) {</div>
 <div class="line">        printf(<span class="stringliteral">&quot;Object file not generated\n&quot;</span>);</div>
 <div class="line">        <span class="keywordflow">return</span> -1;</div>
 <div class="line">    }</div>
-<div class="line">    fclose(f);</div>
+<div class="line">    <a class="code" href="runtime__internal_8h.html#a491539fc02aa1d9f7b115ac4dd3e9a8d">fclose</a>(f);</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">if</span> (<a class="code" href="runtime__internal_8h.html#a9e6df54ee04e18a3772335580e2ed872">memcmp</a>(header, win_64_magic, <span class="keyword">sizeof</span>(win_64_magic))) {</div>
 <div class="line">        printf(<span class="stringliteral">&quot;Unexpected header bytes in 64-bit windows object file.\n&quot;</span>);</div>
@@ -232,12 +231,12 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_11_cross_compilation_
 <div class="line">                                   12,  <span class="comment">// CPU type is ARM</span></div>
 <div class="line">                                   11,  <span class="comment">// CPU subtype is ARMv7s</span></div>
 <div class="line">                                   1};  <span class="comment">// It&#39;s a relocatable object file.</span></div>
-<div class="line">    f = fopen(<span class="stringliteral">&quot;lesson_11_arm_32_ios.o&quot;</span>, <span class="stringliteral">&quot;rb&quot;</span>);</div>
+<div class="line">    f = <a class="code" href="runtime__internal_8h.html#aefd1ee807bda7dd650a020f5f2a05c42">fopen</a>(<span class="stringliteral">&quot;lesson_11_arm_32_ios.o&quot;</span>, <span class="stringliteral">&quot;rb&quot;</span>);</div>
 <div class="line">    <span class="keywordflow">if</span> (!f || fread(header, 32, 1, f) != 1) {</div>
 <div class="line">        printf(<span class="stringliteral">&quot;Object file not generated\n&quot;</span>);</div>
 <div class="line">        <span class="keywordflow">return</span> -1;</div>
 <div class="line">    }</div>
-<div class="line">    fclose(f);</div>
+<div class="line">    <a class="code" href="runtime__internal_8h.html#a491539fc02aa1d9f7b115ac4dd3e9a8d">fclose</a>(f);</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">if</span> (<a class="code" href="runtime__internal_8h.html#a9e6df54ee04e18a3772335580e2ed872">memcmp</a>(header, arm_32_ios_magic, <span class="keyword">sizeof</span>(arm_32_ios_magic))) {</div>
 <div class="line">        printf(<span class="stringliteral">&quot;Unexpected header bytes in 32-bit arm ios object file.\n&quot;</span>);</div>

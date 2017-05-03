@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['devicecreatefnptr',['DeviceCreateFnPtr',['../mini__renderscript_8h.html#a8afdec7e7f55446f6f04dc2f5d51c603',1,'mini_renderscript.h']]],
-  ['devicedestroyfnptr',['DeviceDestroyFnPtr',['../mini__renderscript_8h.html#a82fd85864f0b2b2a9d052e75028805eb',1,'mini_renderscript.h']]],
-  ['devicesetconfigfnptr',['DeviceSetConfigFnPtr',['../mini__renderscript_8h.html#aeba1c385828f8a538666404e9c1addd0',1,'mini_renderscript.h']]]
+  ['elemtype',['ElemType',['../class_halide_1_1_buffer.html#a7043a1f4c304fe5f521a084bbc3cafdc',1,'Halide::Buffer::ElemType()'],['../class_halide_1_1_runtime_1_1_buffer.html#a897dbebfae1a242dbac4e509861266dd',1,'Halide::Runtime::Buffer::ElemType()']]],
+  ['expr',['Expr',['../class_halide_1_1_names_interface.html#a8d46151b07eba49f5812791609474cb5',1,'Halide::NamesInterface']]],
+  ['externfuncargument',['ExternFuncArgument',['../class_halide_1_1_names_interface.html#a3167fccb10c54f139d2be8a2b7c9b451',1,'Halide::NamesInterface']]],
+  ['externsmap',['ExternsMap',['../class_halide_1_1_generator_context.html#a07266b776d24a5939fd2cb57ce8f235e',1,'Halide::GeneratorContext']]]
 ];

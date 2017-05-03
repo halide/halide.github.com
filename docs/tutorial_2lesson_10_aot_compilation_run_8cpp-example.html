@@ -44,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -113,98 +112,44 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_10_aot_compilation_ru
 <div class="line"><span class="comment">// produced when we ran it:</span></div>
 <div class="line"><span class="preprocessor">#include &quot;lesson_10_halide.h&quot;</span></div>
 <div class="line"></div>
+<div class="line"><span class="comment">// We want to continue to use our Halide::Buffer with AOT-compiled</span></div>
+<div class="line"><span class="comment">// code, so we explicitly include it. It&#39;s a header-only class, and</span></div>
+<div class="line"><span class="comment">// doesn&#39;t require libHalide.</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_halide_buffer_8h.html">HalideBuffer.h</a>&quot;</span></div>
+<div class="line"></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
 <div class="line">    <span class="comment">// Have a look in the header file above (it won&#39;t exist until you&#39;ve run</span></div>
-<div class="line">    <span class="comment">// lesson_10_generate).</span></div>
+<div class="line">    <span class="comment">// lesson_10_generate). At the bottom is the signature of the function we generated:</span></div>
 <div class="line"></div>
-<div class="line">    <span class="comment">// It starts with a definition of a buffer_t:</span></div>
-<div class="line">    <span class="comment">//</span></div>
-<div class="line">    <span class="comment">// typedef struct buffer_t {</span></div>
-<div class="line">    <span class="comment">//     uint64_t dev;</span></div>
-<div class="line">    <span class="comment">//     uint8_t* host;</span></div>
-<div class="line">    <span class="comment">//     int32_t extent[4];</span></div>
-<div class="line">    <span class="comment">//     int32_t stride[4];</span></div>
-<div class="line">    <span class="comment">//     int32_t min[4];</span></div>
-<div class="line">    <span class="comment">//     int32_t elem_size;</span></div>
-<div class="line">    <span class="comment">//     bool host_dirty;</span></div>
-<div class="line">    <span class="comment">//     bool dev_dirty;</span></div>
-<div class="line">    <span class="comment">// } buffer_t;</span></div>
-<div class="line">    <span class="comment">//</span></div>
-<div class="line">    <span class="comment">// This is how Halide represents input and output images in</span></div>
-<div class="line">    <span class="comment">// pre-compiled pipelines. There&#39;s a &#39;host&#39; pointer that points to the</span></div>
-<div class="line">    <span class="comment">// start of the image data, some fields that describe how to access</span></div>
-<div class="line">    <span class="comment">// pixels, and some fields related to using the GPU that we&#39;ll ignore</span></div>
-<div class="line">    <span class="comment">// for now (dev, host_dirty, dev_dirty).</span></div>
+<div class="line">    <span class="comment">// int brighter(halide_buffer_t *_input_buffer, uint8_t _offset, halide_buffer_t *_brighter_buffer);</span></div>
 <div class="line"></div>
-<div class="line">    <span class="comment">// Let&#39;s make some input data to test with:</span></div>
-<div class="line">    <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> input[640 * 480];</div>
-<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; 480; y++) {</div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 640; x++) {</div>
-<div class="line">            input[y * 640 + x] = x ^ (y + 1);</div>
-<div class="line">        }</div>
-<div class="line">    }</div>
+<div class="line">    <span class="comment">// The ImageParam inputs have become pointers to &quot;halide_buffer_t&quot;</span></div>
+<div class="line">    <span class="comment">// structs. This is struct that Halide uses to represent arrays of</span></div>
+<div class="line">    <span class="comment">// data.  Unless you&#39;re calling the Halide pipeline from pure C</span></div>
+<div class="line">    <span class="comment">// code, you don&#39;t want to use it</span></div>
+<div class="line">    <span class="comment">// directly. Halide::Runtime::Buffer is a simple wrapper around</span></div>
+<div class="line">    <span class="comment">// halide_buffer_t that will implicitly convert to a</span></div>
+<div class="line">    <span class="comment">// halide_buffer_t *. We will pass Halide::Runtime::Buffer objects</span></div>
+<div class="line">    <span class="comment">// in those slots.</span></div>
 <div class="line"></div>
-<div class="line">    <span class="comment">// And the memory where we want to write our output:</span></div>
-<div class="line">    <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> output[640 * 480];</div>
+<div class="line">    <span class="comment">// The Halide::Buffer class we have been using in JIT code is in</span></div>
+<div class="line">    <span class="comment">// fact just a shared pointer to the simpler</span></div>
+<div class="line">    <span class="comment">// Halide::Runtime::Buffer class. They share the same API.</span></div>
 <div class="line"></div>
-<div class="line">    <span class="comment">// In AOT-compiled mode, Halide doesn&#39;t manage this memory for</span></div>
-<div class="line">    <span class="comment">// you. You should use whatever image data type makes sense for</span></div>
-<div class="line">    <span class="comment">// your application. Halide just needs pointers to it.</span></div>
+<div class="line">    <span class="comment">// Finally, the return value of &quot;brighter&quot; is an error code. It&#39;s</span></div>
+<div class="line">    <span class="comment">// zero on success.</span></div>
 <div class="line"></div>
-<div class="line">    <span class="comment">// Now we make a buffer_t to represent our input and output. It&#39;s</span></div>
-<div class="line">    <span class="comment">// important to zero-initialize them so you don&#39;t end up with</span></div>
-<div class="line">    <span class="comment">// garbage fields that confuse Halide.</span></div>
-<div class="line">    <a name="_a0"></a><a class="code" href="structbuffer__t.html">buffer_t</a> input_buf = {0}, output_buf = {0};</div>
+<div class="line">    <span class="comment">// Let&#39;s make a buffer for our input and output.</span></div>
+<div class="line">    <a name="_a0"></a><a class="code" href="class_halide_1_1_runtime_1_1_buffer.html">Halide::Runtime::Buffer&lt;uint8_t&gt;</a> input(640, 480), output(640, 480);</div>
 <div class="line"></div>
-<div class="line">    <span class="comment">// The host pointers point to the start of the image data:</span></div>
-<div class="line">    input_buf.<a name="a1"></a><a class="code" href="structbuffer__t.html#a45c053e375de7a895d9bb1373d6bacfb">host</a>  = &amp;input[0];</div>
-<div class="line">    output_buf.host = &amp;output[0];</div>
-<div class="line"></div>
-<div class="line">    <span class="comment">// To access pixel (x, y) in a two-dimensional buffer_t, Halide</span></div>
-<div class="line">    <span class="comment">// looks at memory address:</span></div>
-<div class="line"></div>
-<div class="line">    <span class="comment">// host + elem_size * ((x - min[0])*stride[0] + (y - min[1])*stride[1])</span></div>
-<div class="line"></div>
-<div class="line">    <span class="comment">// The stride in a dimension represents the number of elements in</span></div>
-<div class="line">    <span class="comment">// memory between adjacent entries in that dimension. We have a</span></div>
-<div class="line">    <span class="comment">// grayscale image stored in scanline order, so stride[0] is 1,</span></div>
-<div class="line">    <span class="comment">// because pixels that are adjacent in x are next to each other in</span></div>
-<div class="line">    <span class="comment">// memory.</span></div>
-<div class="line">    input_buf.<a name="a2"></a><a class="code" href="structbuffer__t.html#af60461463c076afe9dd5909e6daf4536">stride</a>[0] = output_buf.stride[0] = 1;</div>
-<div class="line"></div>
-<div class="line">    <span class="comment">// stride[1] is the width of the image, because pixels that are</span></div>
-<div class="line">    <span class="comment">// adjacent in y are separated by a scanline&#39;s worth of pixels in</span></div>
-<div class="line">    <span class="comment">// memory.</span></div>
-<div class="line">    input_buf.<a class="code" href="structbuffer__t.html#af60461463c076afe9dd5909e6daf4536">stride</a>[1] = output_buf.stride[1] = 640;</div>
-<div class="line"></div>
-<div class="line">    <span class="comment">// The extent tells us how large the image is in each dimension.</span></div>
-<div class="line">    input_buf.<a name="a3"></a><a class="code" href="structbuffer__t.html#a77103c45ba0ade51615d948c8cbe4c4a">extent</a>[0] = output_buf.extent[0] = 640;</div>
-<div class="line">    input_buf.<a class="code" href="structbuffer__t.html#a77103c45ba0ade51615d948c8cbe4c4a">extent</a>[1] = output_buf.extent[1] = 480;</div>
-<div class="line"></div>
-<div class="line">    <span class="comment">// We&#39;ll leave the mins as zero. This is what they typically</span></div>
-<div class="line">    <span class="comment">// are. The host pointer points to the memory location of the min</span></div>
-<div class="line">    <span class="comment">// coordinate (not the origin!).  See lesson 6 for more detail</span></div>
-<div class="line">    <span class="comment">// about the mins.</span></div>
-<div class="line"></div>
-<div class="line">    <span class="comment">// The elem_size field tells us how many bytes each element</span></div>
-<div class="line">    <span class="comment">// uses. For the 8-bit image we use in this test it&#39;s one.</span></div>
-<div class="line">    input_buf.<a name="a4"></a><a class="code" href="structbuffer__t.html#ae161a929ed7ed53425204ddcaf499c63">elem_size</a> = output_buf.elem_size = 1;</div>
-<div class="line"></div>
-<div class="line">    <span class="comment">// To avoid repeating all the boilerplate above, We recommend you</span></div>
-<div class="line">    <span class="comment">// make a helper function that populates a buffer_t given whatever</span></div>
-<div class="line">    <span class="comment">// image type you&#39;re using.</span></div>
-<div class="line"></div>
-<div class="line">    <span class="comment">// Now that we&#39;ve setup our input and output buffers, we can call</span></div>
-<div class="line">    <span class="comment">// our function. Looking in the header file, its signature is:</span></div>
-<div class="line"></div>
-<div class="line">    <span class="comment">// int brighter(buffer_t *_input_buffer, uint8_t _offset, buffer_t *_brighter_buffer);</span></div>
-<div class="line"></div>
-<div class="line">    <span class="comment">// The return value is an error code. It&#39;s zero on success.</span></div>
+<div class="line">    <span class="comment">// Halide::Runtime::Buffer also has constructors that wrap</span></div>
+<div class="line">    <span class="comment">// existing data instead of allocating new memory. Use these if</span></div>
+<div class="line">    <span class="comment">// you have your own Image type that you want to use.</span></div>
 <div class="line"></div>
 <div class="line">    <span class="keywordtype">int</span> offset = 5;</div>
-<div class="line">    <span class="keywordtype">int</span> error = brighter(&amp;input_buf, offset, &amp;output_buf);</div>
+<div class="line">    <span class="keywordtype">int</span> error = brighter(input, offset, output);</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">if</span> (error) {</div>
 <div class="line">        printf(<span class="stringliteral">&quot;Halide returned an error: %d\n&quot;</span>, error);</div>
@@ -215,8 +160,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_10_aot_compilation_ru
 <div class="line">    <span class="comment">// supposed to add the offset to every input pixel.</span></div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; 480; y++) {</div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; 640; x++) {</div>
-<div class="line">            <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> input_val = input[y * 640 + 480];</div>
-<div class="line">            <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> output_val = output[y * 640 + 480];</div>
+<div class="line">            <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> input_val = input(x, y);</div>
+<div class="line">            <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> output_val = output(x, y);</div>
 <div class="line">            <a class="code" href="runtime__internal_8h.html#a5f44f30d12f5ed554d1bdb9825df6137">uint8_t</a> correct_val = input_val + offset;</div>
 <div class="line">            <span class="keywordflow">if</span> (output_val != correct_val) {</div>
 <div class="line">                printf(<span class="stringliteral">&quot;output(%d, %d) was %d instead of %d\n&quot;</span>,</div>

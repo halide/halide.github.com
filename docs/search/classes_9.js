@@ -2,6 +2,8 @@ var searchData=
 [
   ['ifthenelse',['IfThenElse',['../struct_halide_1_1_internal_1_1_if_then_else.html',1,'Halide::Internal']]],
   ['imageparam',['ImageParam',['../class_halide_1_1_image_param.html',1,'Halide']]],
+  ['inferredargument',['InferredArgument',['../struct_halide_1_1_internal_1_1_inferred_argument.html',1,'Halide::Internal']]],
+  ['integer_5fsequence',['integer_sequence',['../struct_halide_1_1_internal_1_1integer__sequence.html',1,'Halide::Internal']]],
   ['internalerror',['InternalError',['../struct_halide_1_1_internal_error.html',1,'Halide']]],
   ['interval',['Interval',['../struct_halide_1_1_internal_1_1_interval.html',1,'Halide::Internal']]],
   ['intimm',['IntImm',['../struct_halide_1_1_internal_1_1_int_imm.html',1,'Halide::Internal']]],
@@ -11,6 +13,7 @@ var searchData=
   ['intrusiveptr_3c_20functioncontents_20_3e',['IntrusivePtr&lt; FunctionContents &gt;',['../struct_halide_1_1_internal_1_1_intrusive_ptr.html',1,'Halide::Internal']]],
   ['intrusiveptr_3c_20internal_3a_3abuffercontents_20_3e',['IntrusivePtr&lt; Internal::BufferContents &gt;',['../struct_halide_1_1_internal_1_1_intrusive_ptr.html',1,'Halide::Internal']]],
   ['intrusiveptr_3c_20internal_3a_3afunctioncontents_20_3e',['IntrusivePtr&lt; Internal::FunctionContents &gt;',['../struct_halide_1_1_internal_1_1_intrusive_ptr.html',1,'Halide::Internal']]],
+  ['intrusiveptr_3c_20internal_3a_3alooplevelcontents_20_3e',['IntrusivePtr&lt; Internal::LoopLevelContents &gt;',['../struct_halide_1_1_internal_1_1_intrusive_ptr.html',1,'Halide::Internal']]],
   ['intrusiveptr_3c_20internal_3a_3amodulecontents_20_3e',['IntrusivePtr&lt; Internal::ModuleContents &gt;',['../struct_halide_1_1_internal_1_1_intrusive_ptr.html',1,'Halide::Internal']]],
   ['intrusiveptr_3c_20jitmodulecontents_20_3e',['IntrusivePtr&lt; JITModuleContents &gt;',['../struct_halide_1_1_internal_1_1_intrusive_ptr.html',1,'Halide::Internal']]],
   ['intrusiveptr_3c_20parametercontents_20_3e',['IntrusivePtr&lt; ParameterContents &gt;',['../struct_halide_1_1_internal_1_1_intrusive_ptr.html',1,'Halide::Internal']]],
@@ -30,6 +33,6 @@ var searchData=
   ['irprinter',['IRPrinter',['../class_halide_1_1_internal_1_1_i_r_printer.html',1,'Halide::Internal']]],
   ['irvisitor',['IRVisitor',['../class_halide_1_1_internal_1_1_i_r_visitor.html',1,'Halide::Internal']]],
   ['iterator',['iterator',['../class_halide_1_1_internal_1_1_scope_1_1iterator.html',1,'Halide::Internal::Scope']]],
-  ['iterator',['iterator',['../struct_halide_1_1_realization_1_1iterator.html',1,'Halide::Realization']]],
-  ['iterator',['iterator',['../struct_halide_1_1_buffer_1_1_dimension_1_1iterator.html',1,'Halide::Buffer::Dimension']]]
+  ['iterator',['iterator',['../struct_halide_1_1_runtime_1_1_buffer_1_1_dimension_1_1iterator.html',1,'Halide::Runtime::Buffer::Dimension']]],
+  ['iterator_5frange',['iterator_range',['../class_halide_1_1_internal_1_1_elf_1_1iterator__range.html',1,'Halide::Internal::Elf']]]
 ];

@@ -9,5 +9,6 @@ var struct_halide_1_1_internal_1_1_generator_base_1_1_emit_options =
     [ "emit_stmt", "struct_halide_1_1_internal_1_1_generator_base_1_1_emit_options.html#a509900d6cd1f05201af3e10c3944da70", null ],
     [ "emit_stmt_html", "struct_halide_1_1_internal_1_1_generator_base_1_1_emit_options.html#a37969a1da14c70bb30d35c33ce4cd587", null ],
     [ "emit_static_library", "struct_halide_1_1_internal_1_1_generator_base_1_1_emit_options.html#a3117d64902e43615eab1de08a4616664", null ],
+    [ "emit_cpp_stub", "struct_halide_1_1_internal_1_1_generator_base_1_1_emit_options.html#adba15e186b0e4831a114c871c1de7b53", null ],
     [ "substitutions", "struct_halide_1_1_internal_1_1_generator_base_1_1_emit_options.html#af065b19b28c4b68c51e94727a580633e", null ]
 ];

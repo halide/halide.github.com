@@ -1,7 +1,6 @@
 var struct_halide_1_1_extern_signature =
 [
-    [ "ExternSignature", "struct_halide_1_1_extern_signature.html#af5ec4e980af1a754c673c33b3e039ead", null ],
-    [ "is_void_return", "struct_halide_1_1_extern_signature.html#a31ebdcb36514524f1d80bf22305f2323", null ],
-    [ "ret_type", "struct_halide_1_1_extern_signature.html#af63f3fc937352180989a91be57f17415", null ],
-    [ "arg_types", "struct_halide_1_1_extern_signature.html#a9be6068b9686c94ae77dbc356d17b710", null ]
+    [ "ExternSignature", "struct_halide_1_1_extern_signature.html#a55a2ffc8d2ac80e4c1f6dc80d10e0b7e", null ],
+    [ "ExternSignature", "struct_halide_1_1_extern_signature.html#ad6c63256bb20faa42b3760dd6ad2a62f", null ],
+    [ "ExternSignature", "struct_halide_1_1_extern_signature.html#a67a02e6d5f35e737ed9aa3fa995db0f1", null ]
 ];

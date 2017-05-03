@@ -11,7 +11,6 @@ var searchData=
   ['halideruntimeopengl_2eh',['HalideRuntimeOpenGL.h',['../_halide_runtime_open_g_l_8h.html',1,'']]],
   ['halideruntimeopenglcompute_2eh',['HalideRuntimeOpenGLCompute.h',['../_halide_runtime_open_g_l_compute_8h.html',1,'']]],
   ['halideruntimequrt_2eh',['HalideRuntimeQurt.h',['../_halide_runtime_qurt_8h.html',1,'']]],
-  ['halideruntimerenderscript_2eh',['HalideRuntimeRenderscript.h',['../_halide_runtime_renderscript_8h.html',1,'']]],
   ['hexagonoffload_2eh',['HexagonOffload.h',['../_hexagon_offload_8h.html',1,'']]],
   ['hexagonoptimize_2eh',['HexagonOptimize.h',['../_hexagon_optimize_8h.html',1,'']]]
 ];

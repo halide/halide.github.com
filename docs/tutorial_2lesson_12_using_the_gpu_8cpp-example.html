@@ -44,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -131,7 +130,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_12_using_the_gpu_8cpp
 <div class="line"><span class="preprocessor">#include &quot;clock.h&quot;</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// Define some Vars to use.</span></div>
-<div class="line"><a name="_a0"></a><a class="code" href="class_halide_1_1_var.html">Var</a> x, y, c, i;</div>
+<div class="line"><a name="_a0"></a><a class="code" href="class_halide_1_1_var.html">Var</a> x, y, c, i, ii, xo, yo, xi, yi;</div>
 <div class="line"></div>
 <div class="line"><span class="comment">// We&#39;re going to want to schedule a pipeline in several ways, so we</span></div>
 <div class="line"><span class="comment">// define the pipeline in a class so that we can recreate it several</span></div>
@@ -139,19 +138,19 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_12_using_the_gpu_8cpp
 <div class="line"><span class="keyword">class </span>MyPipeline {</div>
 <div class="line"><span class="keyword">public</span>:</div>
 <div class="line">    <a name="_a1"></a><a class="code" href="class_halide_1_1_func.html">Func</a> lut, padded, padded16, sharpen, curved;</div>
-<div class="line">    <a name="_a2"></a><a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> input;</div>
+<div class="line">    <a name="_a2"></a><a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;uint8_t&gt;</a> input;</div>
 <div class="line"></div>
-<div class="line">    MyPipeline(<a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> in) : input(in) {</div>
+<div class="line">    MyPipeline(<a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;uint8_t&gt;</a> in) : input(in) {</div>
 <div class="line">        <span class="comment">// For this lesson, we&#39;ll use a two-stage pipeline that sharpens</span></div>
 <div class="line">        <span class="comment">// and then applies a look-up-table (LUT).</span></div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// First we&#39;ll define the LUT. It will be a gamma curve.</span></div>
 <div class="line"></div>
-<div class="line">        lut(i) = cast&lt;uint8_t&gt;(<a name="a3"></a><a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa">clamp</a>(<a name="a4"></a><a class="code" href="namespace_halide.html#a4dd83996070aa3e4bc3a102a654176fa">pow</a>(i / 255.0f, 1.2f) * 255.0f, 0, 255));</div>
+<div class="line">        lut(i) = cast&lt;uint8_t&gt;(<a name="a3"></a><a class="code" href="namespace_halide.html#a7f4080260a6e5e58124584d4929e57f2">clamp</a>(<a name="a4"></a><a class="code" href="namespace_halide.html#a4dd83996070aa3e4bc3a102a654176fa">pow</a>(i / 255.0f, 1.2f) * 255.0f, 0, 255));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Augment the input with a boundary condition.</span></div>
-<div class="line">        padded(x, y, c) = input(<a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa">clamp</a>(x, 0, input.width()-1),</div>
-<div class="line">                                <a class="code" href="namespace_halide.html#a41fc11b69e1ae900cebae51c319a1caa">clamp</a>(y, 0, input.height()-1), c);</div>
+<div class="line">        padded(x, y, c) = input(<a class="code" href="namespace_halide.html#a7f4080260a6e5e58124584d4929e57f2">clamp</a>(x, 0, input.width()-1),</div>
+<div class="line">                                <a class="code" href="namespace_halide.html#a7f4080260a6e5e58124584d4929e57f2">clamp</a>(y, 0, input.height()-1), c);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Cast it to 16-bit to do the math.</span></div>
 <div class="line">        padded16(x, y, c) = cast&lt;uint16_t&gt;(padded(x, y, c));</div>
@@ -233,9 +232,9 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_12_using_the_gpu_8cpp
 <div class="line">        <span class="comment">// This is a very common scheduling pattern on the GPU, so</span></div>
 <div class="line">        <span class="comment">// there&#39;s a shorthand for it:</span></div>
 <div class="line"></div>
-<div class="line">        <span class="comment">// lut.gpu_tile(i, 16);</span></div>
+<div class="line">        <span class="comment">// lut.gpu_tile(i, block, thread, 16);</span></div>
 <div class="line"></div>
-<div class="line">        <span class="comment">// Func::gpu_tile method is similar to Func::tile, except that</span></div>
+<div class="line">        <span class="comment">// Func::gpu_tile behaves the same as Func::tile, except that</span></div>
 <div class="line">        <span class="comment">// it also specifies that the tile coordinates correspond to</span></div>
 <div class="line">        <span class="comment">// GPU blocks, and the coordinates within each tile correspond</span></div>
 <div class="line">        <span class="comment">// to GPU threads.</span></div>
@@ -247,7 +246,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_12_using_the_gpu_8cpp
 <div class="line">              .unroll(c);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Compute curved in 2D 8x8 tiles using the GPU.</span></div>
-<div class="line">        curved.gpu_tile(x, y, 8, 8);</div>
+<div class="line">        curved.gpu_tile(x, y, xo, yo, xi, yi, 8, 8);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// This is equivalent to:</span></div>
 <div class="line">        <span class="comment">// curved.tile(x, y, xo, yo, xi, yi, 8, 8)</span></div>
@@ -256,11 +255,10 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_12_using_the_gpu_8cpp
 <div class="line"></div>
 <div class="line">        <span class="comment">// We&#39;ll leave sharpen as inlined into curved.</span></div>
 <div class="line"></div>
-<div class="line">        <span class="comment">// Compute the padded input as needed per GPU block, storing the</span></div>
-<div class="line">        <span class="comment">// intermediate result in shared memory. Var::gpu_blocks, and</span></div>
-<div class="line">        <span class="comment">// Var::gpu_threads exist to help you schedule producers within</span></div>
-<div class="line">        <span class="comment">// GPU threads and blocks.</span></div>
-<div class="line">        padded.compute_at(curved, <a class="code" href="class_halide_1_1_var.html#aadce05f2366998e6ede48081d24caaae">Var::gpu_blocks</a>());</div>
+<div class="line">        <span class="comment">// Compute the padded input as needed per GPU block, storing</span></div>
+<div class="line">        <span class="comment">// the intermediate result in shared memory. In the schedule</span></div>
+<div class="line">        <span class="comment">// above xo corresponds to GPU blocks.</span></div>
+<div class="line">        padded.compute_at(curved, xo);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Use the GPU threads for the x and y coordinates of the</span></div>
 <div class="line">        <span class="comment">// padded input.</span></div>
@@ -304,13 +302,13 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_12_using_the_gpu_8cpp
 <div class="line">    <span class="keywordtype">void</span> test_performance() {</div>
 <div class="line">        <span class="comment">// Test the performance of the scheduled MyPipeline.</span></div>
 <div class="line"></div>
-<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> output(input.width(), input.height(), input.channels());</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;uint8_t&gt;</a> output(input.width(), input.height(), input.channels());</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Run the filter once to initialize any GPU runtime state.</span></div>
 <div class="line">        curved.realize(output);</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Now take the best of 3 runs for timing.</span></div>
-<div class="line">        <span class="keywordtype">double</span> best_time;</div>
+<div class="line">        <span class="keywordtype">double</span> best_time = 0.0;</div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; i++) {</div>
 <div class="line"></div>
 <div class="line">            <span class="keywordtype">double</span> t1 = current_time();</div>
@@ -334,8 +332,8 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_12_using_the_gpu_8cpp
 <div class="line">        printf(<span class="stringliteral">&quot;%1.4f milliseconds\n&quot;</span>, best_time);</div>
 <div class="line">    }</div>
 <div class="line"></div>
-<div class="line">    <span class="keywordtype">void</span> test_correctness(<a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> reference_output) {</div>
-<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> output =</div>
+<div class="line">    <span class="keywordtype">void</span> test_correctness(<a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;uint8_t&gt;</a> reference_output) {</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;uint8_t&gt;</a> output =</div>
 <div class="line">            curved.realize(input.width(), input.height(), input.channels());</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Check against the reference output.</span></div>
@@ -361,10 +359,10 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_12_using_the_gpu_8cpp
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {</div>
 <div class="line">    <span class="comment">// Load an input image.</span></div>
-<div class="line">    <a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
+<div class="line">    <a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;uint8_t&gt;</a> input = load_image(<span class="stringliteral">&quot;images/rgb.png&quot;</span>);</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Allocated an image that will store the correct output</span></div>
-<div class="line">    <a class="code" href="class_halide_1_1_buffer.html">Image&lt;uint8_t&gt;</a> reference_output(input.<a name="a15"></a><a class="code" href="class_halide_1_1_buffer.html#aa617822fc9ed907631306dab784d8ea1">width</a>(), input.<a name="a16"></a><a class="code" href="class_halide_1_1_buffer.html#abd3b230743401a274cdce661f4890614">height</a>(), input.<a name="a17"></a><a class="code" href="class_halide_1_1_buffer.html#ac55371dab681299cac52cc76de00e6f8">channels</a>());</div>
+<div class="line">    <a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;uint8_t&gt;</a> reference_output(input.width(), input.height(), input.channels());</div>
 <div class="line"></div>
 <div class="line">    printf(<span class="stringliteral">&quot;Testing performance on CPU:\n&quot;</span>);</div>
 <div class="line">    MyPipeline p1(input);</div>
@@ -397,7 +395,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_12_using_the_gpu_8cpp
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="keywordtype">bool</span> have_opencl_or_metal() {</div>
 <div class="line"><span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><span class="preprocessor"></span>    <span class="keywordflow">return</span> LoadLibrary(<span class="stringliteral">&quot;OpenCL.dll&quot;</span>) != <a name="a18"></a><a class="code" href="runtime__internal_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
+<div class="line"><span class="preprocessor"></span>    <span class="keywordflow">return</span> LoadLibrary(<span class="stringliteral">&quot;OpenCL.dll&quot;</span>) != <a name="a15"></a><a class="code" href="runtime__internal_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
 <div class="line"><span class="preprocessor">#elif __APPLE__</span></div>
 <div class="line"><span class="preprocessor"></span>    <span class="keywordflow">return</span> dlopen(<span class="stringliteral">&quot;/System/Library/Frameworks/Metal.framework/Versions/Current/Metal&quot;</span>, RTLD_LAZY) != <a class="code" href="runtime__internal_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>;</div>
 <div class="line"><span class="preprocessor">#else</span></div>

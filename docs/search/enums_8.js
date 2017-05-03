@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['modifier',['Modifier',['../structhalide__handle__cplusplus__type.html#ad45abe716942dafc7466e96337d04935',1,'halide_handle_cplusplus_type']]],
-  ['monotonic',['Monotonic',['../namespace_halide_1_1_internal.html#a7dc0c8c1adc38d2c5a80979948f0007c',1,'Halide::Internal']]]
+  ['linkagetype',['LinkageType',['../struct_halide_1_1_internal_1_1_lowered_func.html#a5048e4905f95550e02ea09cc5683025b',1,'Halide::Internal::LoweredFunc']]]
 ];

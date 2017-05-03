@@ -1,30 +1,5 @@
 var searchData=
 [
-  ['allocation1ddatafnptr',['Allocation1DDataFnPtr',['../mini__renderscript_8h.html#a0a2146ab1d6b7f9b088dbe9642ced621',1,'mini_renderscript.h']]],
-  ['allocation1delementdatafnptr',['Allocation1DElementDataFnPtr',['../mini__renderscript_8h.html#ac606d8e40762bfa60116bef9ad07f97c',1,'mini_renderscript.h']]],
-  ['allocation1dreadfnptr',['Allocation1DReadFnPtr',['../mini__renderscript_8h.html#a1a10c3922732a01f9225e66e518c9b52',1,'mini_renderscript.h']]],
-  ['allocation2ddatafnptr',['Allocation2DDataFnPtr',['../mini__renderscript_8h.html#a8f9e1768d670aecbc34261ad70c08243',1,'mini_renderscript.h']]],
-  ['allocation2dreadfnptr',['Allocation2DReadFnPtr',['../mini__renderscript_8h.html#a215228f8b5acf3d9fbe527ebb1c548bd',1,'mini_renderscript.h']]],
-  ['allocation3ddatafnptr',['Allocation3DDataFnPtr',['../mini__renderscript_8h.html#a7ebca12dd43ac4afb242f81cfd602930',1,'mini_renderscript.h']]],
-  ['allocation3dreadfnptr',['Allocation3DReadFnPtr',['../mini__renderscript_8h.html#a88045c95885f3983bf5c4a5aceb3890f',1,'mini_renderscript.h']]],
-  ['allocationcopy2drangefnptr',['AllocationCopy2DRangeFnPtr',['../mini__renderscript_8h.html#a9be92341c55ad2c44ebbafd01034e427',1,'mini_renderscript.h']]],
-  ['allocationcopy3drangefnptr',['AllocationCopy3DRangeFnPtr',['../mini__renderscript_8h.html#a134eddf3bc5a0bdf3035996877b9cba4',1,'mini_renderscript.h']]],
-  ['allocationcopytobitmapfnptr',['AllocationCopyToBitmapFnPtr',['../mini__renderscript_8h.html#a188e636906ef6175556838b39d6863e9',1,'mini_renderscript.h']]],
-  ['allocationcreatefrombitmapfnptr',['AllocationCreateFromBitmapFnPtr',['../mini__renderscript_8h.html#a4310f38d4f97795b61075aa61ad8afd6',1,'mini_renderscript.h']]],
-  ['allocationcreatetypedfnptr',['AllocationCreateTypedFnPtr',['../mini__renderscript_8h.html#a6efa3922e8f1ccb2b2ade62e9ff17f0f',1,'mini_renderscript.h']]],
-  ['allocationcubecreatefrombitmapfnptr',['AllocationCubeCreateFromBitmapFnPtr',['../mini__renderscript_8h.html#a83b316c9f74b2f74f1d6414d057f4e08',1,'mini_renderscript.h']]],
-  ['allocationelementdatafnptr',['AllocationElementDataFnPtr',['../mini__renderscript_8h.html#af5ce5a7cffde229c0839c746a98eb4e5',1,'mini_renderscript.h']]],
-  ['allocationelementreadfnptr',['AllocationElementReadFnPtr',['../mini__renderscript_8h.html#a6794078bfcb6f572b39d5f865586a7e2',1,'mini_renderscript.h']]],
-  ['allocationgeneratemipmapsfnptr',['AllocationGenerateMipmapsFnPtr',['../mini__renderscript_8h.html#aee1df54c2f8ff8964decab8a9d5b3a2a',1,'mini_renderscript.h']]],
-  ['allocationgetpointerfnptr',['AllocationGetPointerFnPtr',['../mini__renderscript_8h.html#adddf67a7a64642dcb21c793b70d71b65',1,'mini_renderscript.h']]],
-  ['allocationgetsurfacefnptr',['AllocationGetSurfaceFnPtr',['../mini__renderscript_8h.html#a1c794f8839b5f97cd73aef85f4cf81b1',1,'mini_renderscript.h']]],
-  ['allocationgettypefnptr',['AllocationGetTypeFnPtr',['../mini__renderscript_8h.html#af875254c682a09f91b89e1ea8a8aac51',1,'mini_renderscript.h']]],
-  ['allocationioreceivefnptr',['AllocationIoReceiveFnPtr',['../mini__renderscript_8h.html#a4c219610d462d6439ed0eaf684760c1e',1,'mini_renderscript.h']]],
-  ['allocationiosendfnptr',['AllocationIoSendFnPtr',['../mini__renderscript_8h.html#ad49694ba1627869e3b1f43c1d9a7817e',1,'mini_renderscript.h']]],
-  ['allocationreadfnptr',['AllocationReadFnPtr',['../mini__renderscript_8h.html#a5d622b0bb79e942c2e318d97b9e8ac4a',1,'mini_renderscript.h']]],
-  ['allocationresize1dfnptr',['AllocationResize1DFnPtr',['../mini__renderscript_8h.html#a14a7176010adb3750750cb1d0bc9ac21',1,'mini_renderscript.h']]],
-  ['allocationsetsurfacefnptr',['AllocationSetSurfaceFnPtr',['../mini__renderscript_8h.html#a6d54431ea055fc93476bfbc8a74e083b',1,'mini_renderscript.h']]],
-  ['allocationsyncallfnptr',['AllocationSyncAllFnPtr',['../mini__renderscript_8h.html#aed191b3aff54c72440797f6cad4f2b47',1,'mini_renderscript.h']]],
-  ['argv_5fwrapper',['argv_wrapper',['../struct_halide_1_1_internal_1_1_j_i_t_module.html#afb301213c98c699b52dd51128f6e7ac0',1,'Halide::Internal::JITModule']]],
-  ['assignnamefnptr',['AssignNameFnPtr',['../mini__renderscript_8h.html#a3b500abc191b110734edafd3c47c328e',1,'mini_renderscript.h']]]
+  ['add_5fconst_5fif_5ft_5fis_5fconst',['add_const_if_T_is_const',['../namespace_halide_1_1_internal.html#ae0c76d77a93240aaabd916abf0b10beb',1,'Halide::Internal']]],
+  ['argv_5fwrapper',['argv_wrapper',['../struct_halide_1_1_internal_1_1_j_i_t_module.html#afb301213c98c699b52dd51128f6e7ac0',1,'Halide::Internal::JITModule']]]
 ];

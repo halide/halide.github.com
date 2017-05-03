@@ -1,7 +1,7 @@
 var class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c =
 [
-    [ "CodeGen_OpenGLCompute_C", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html#a8d6f2f2e44cfd7469409b0a85214c4bf", null ],
-    [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html#a1cea0614344d5edee229a986a9aafd0d", null ],
+    [ "CodeGen_OpenGLCompute_C", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html#ac5f58280ad4c02a4ae49160a252a8efa", null ],
+    [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html#a215204b920a0bbd67bad3454877a4f12", null ],
     [ "print_type", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html#ad3faeabd4845dcd0584f13104aca0f0c", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html#a944d3b54abd7436b8db0ac17b2ed5e58", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html#aeea360226bd93ba9ece657e803cf14ff", null ],

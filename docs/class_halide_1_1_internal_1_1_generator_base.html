@@ -44,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -108,7 +107,9 @@ $(document).ready(function(){initNavTree('class_halide_1_1_internal_1_1_generato
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-types">Protected Types</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_halide_1_1_internal_1_1_generator_base-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Halide::Internal::GeneratorBase Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -117,7 +118,7 @@ $(document).ready(function(){initNavTree('class_halide_1_1_internal_1_1_generato
 
 <p><code>#include &lt;<a class="el" href="_generator_8h_source.html">Generator.h</a>&gt;</code></p>
 
-<p>Inherits <a class="el" href="class_halide_1_1_names_interface.html">Halide::NamesInterface</a>.</p>
+<p>Inherits <a class="el" href="class_halide_1_1_names_interface.html">Halide::NamesInterface</a>, and <a class="el" href="class_halide_1_1_generator_context.html">Halide::GeneratorContext</a>.</p>
 
 <p>Inherited by <a class="el" href="class_halide_1_1_generator.html">Halide::Generator&lt; T &gt;</a>.</p>
 <table class="memberdecls">
@@ -130,10 +131,18 @@ Classes</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab24cc02dd21071ed05e771ffac799cf0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#ab24cc02dd21071ed05e771ffac799cf0">~GeneratorBase</a> ()</td></tr>
 <tr class="separator:ab24cc02dd21071ed05e771ffac799cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae154b827db9321f6d28b1caad388ba10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_target.html">Target</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#ae154b827db9321f6d28b1caad388ba10">get_target</a> () const </td></tr>
-<tr class="separator:ae154b827db9321f6d28b1caad388ba10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a328fa1c6b27a5e1e9f186ae4f7c1e610"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a328fa1c6b27a5e1e9f186ae4f7c1e610">set_generator_param_values</a> (const std::map&lt; std::string, std::string &gt; &amp;params)</td></tr>
-<tr class="separator:a328fa1c6b27a5e1e9f186ae4f7c1e610"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94e7fe753f4091cbb950d08ac4a117d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_halide_1_1_target.html">Target</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a94e7fe753f4091cbb950d08ac4a117d3">get_target</a> () const override</td></tr>
+<tr class="separator:a94e7fe753f4091cbb950d08ac4a117d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a074a489862cf82d74755d2eb54fe0506"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a074a489862cf82d74755d2eb54fe0506">set_generator_param</a> (const std::string &amp;name, const std::string &amp;value)</td></tr>
+<tr class="separator:a074a489862cf82d74755d2eb54fe0506"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b4be6ff8998bd0042b5cb6b60ce8787"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a3b4be6ff8998bd0042b5cb6b60ce8787">set_generator_and_schedule_param_values</a> (const std::map&lt; std::string, std::string &gt; &amp;params)</td></tr>
+<tr class="separator:a3b4be6ff8998bd0042b5cb6b60ce8787"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d999068c6d3fa2e79de7f4ea32ce37e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a2d999068c6d3fa2e79de7f4ea32ce37e"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html">GeneratorBase</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a2d999068c6d3fa2e79de7f4ea32ce37e">set_generator_param</a> (const std::string &amp;name, const T &amp;value)</td></tr>
+<tr class="separator:a2d999068c6d3fa2e79de7f4ea32ce37e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1289d6355338b4b91e76d7b14345bb7b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a1289d6355338b4b91e76d7b14345bb7b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html">GeneratorBase</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a1289d6355338b4b91e76d7b14345bb7b">set_schedule_param</a> (const std::string &amp;name, const T &amp;value)</td></tr>
+<tr class="separator:a1289d6355338b4b91e76d7b14345bb7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1aaf080e981c47034a730b75aec182c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a1aaf080e981c47034a730b75aec182c9">natural_vector_size</a> (<a class="el" href="struct_halide_1_1_type.html">Halide::Type</a> t) const </td></tr>
 <tr class="memdesc:a1aaf080e981c47034a730b75aec182c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a data type, return an estimate of the "natural" vector size for that data type when compiling for the current target.  <a href="#a1aaf080e981c47034a730b75aec182c9">More...</a><br/></td></tr>
 <tr class="separator:a1aaf080e981c47034a730b75aec182c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,23 +150,53 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae6c13d4d76abadf701d3f1e5eb4ba42a"><td class="memTemplItemLeft" align="right" valign="top">int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#ae6c13d4d76abadf701d3f1e5eb4ba42a">natural_vector_size</a> () const </td></tr>
 <tr class="memdesc:ae6c13d4d76abadf701d3f1e5eb4ba42a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a data type, return an estimate of the "natural" vector size for that data type when compiling for the current target.  <a href="#ae6c13d4d76abadf701d3f1e5eb4ba42a">More...</a><br/></td></tr>
 <tr class="separator:ae6c13d4d76abadf701d3f1e5eb4ba42a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76f1d13c62fd0258d31bee634a63574f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_module.html">Module</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a76f1d13c62fd0258d31bee634a63574f">build_module</a> (const std::string &amp;function_name=&quot;&quot;, const <a class="el" href="struct_halide_1_1_internal_1_1_lowered_func.html#a5048e4905f95550e02ea09cc5683025b">LoweredFunc::LinkageType</a> linkage_type=<a class="el" href="struct_halide_1_1_internal_1_1_lowered_func.html#a5048e4905f95550e02ea09cc5683025baf21dc6cfd1774e1076330e32e1cea2e4">LoweredFunc::External</a>)</td></tr>
-<tr class="separator:a76f1d13c62fd0258d31bee634a63574f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37f848b6306d92a0effbf5c657c7dc9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a37f848b6306d92a0effbf5c657c7dc9e">emit_cpp_stub</a> (const std::string &amp;stub_file_path)</td></tr>
+<tr class="separator:a37f848b6306d92a0effbf5c657c7dc9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c4f1568f917e9563fa63d9dc3fc4d78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_module.html">Module</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a1c4f1568f917e9563fa63d9dc3fc4d78">build_module</a> (const std::string &amp;function_name=&quot;&quot;, const <a class="el" href="struct_halide_1_1_internal_1_1_lowered_func.html#a5048e4905f95550e02ea09cc5683025b">LoweredFunc::LinkageType</a> linkage_type=<a class="el" href="struct_halide_1_1_internal_1_1_lowered_func.html#a5048e4905f95550e02ea09cc5683025ba5121c0adf4c21b93e4561d1ffbac6036">LoweredFunc::ExternalPlusMetadata</a>)</td></tr>
+<tr class="separator:a1c4f1568f917e9563fa63d9dc3fc4d78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf0f56d22a4b05763cc98376f891240e"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:adf0f56d22a4b05763cc98376f891240e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#adf0f56d22a4b05763cc98376f891240e">set_inputs</a> (const Args &amp;...args)</td></tr>
+<tr class="memdesc:adf0f56d22a4b05763cc98376f891240e"><td class="mdescLeft">&#160;</td><td class="mdescRight">set_inputs is a variadic wrapper around set_inputs_vector, which makes usage much simpler in many cases, as it constructs the relevant entries for the vector for you, which is often a bit unintuitive at present.  <a href="#adf0f56d22a4b05763cc98376f891240e">More...</a><br/></td></tr>
+<tr class="separator:adf0f56d22a4b05763cc98376f891240e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84a48d81a43f0d1fe4d555775d98d157"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_halide_1_1_realization.html">Realization</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a84a48d81a43f0d1fe4d555775d98d157">realize</a> (std::vector&lt; <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> &gt; sizes)</td></tr>
+<tr class="separator:a84a48d81a43f0d1fe4d555775d98d157"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2da465a5054ac11f789717e1dfd87874"><td class="memTemplParams" colspan="2">template&lt;typename... Args, typename std::enable_if&lt; NoRealizations&lt; Args...&gt;::value &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:a2da465a5054ac11f789717e1dfd87874"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="class_halide_1_1_realization.html">Realization</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a2da465a5054ac11f789717e1dfd87874">realize</a> (Args &amp;&amp;...args)</td></tr>
+<tr class="separator:a2da465a5054ac11f789717e1dfd87874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c7c7819c97c93390c4037178e698f3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a6c7c7819c97c93390c4037178e698f3e">realize</a> (<a class="el" href="class_halide_1_1_realization.html">Realization</a> r)</td></tr>
+<tr class="separator:a6c7c7819c97c93390c4037178e698f3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9328080d175c082c1e04e9dbcb4ad59e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_names_interface.html#af771b96902e421c9b4424c563f62eb21">Pipeline</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a9328080d175c082c1e04e9dbcb4ad59e">get_pipeline</a> ()</td></tr>
+<tr class="separator:a9328080d175c082c1e04e9dbcb4ad59e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c23e54dca10d956e9227822c9e5cae8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::shared_ptr<br class="typebreak"/>
+&lt; <a class="el" href="class_halide_1_1_generator_context.html#a07266b776d24a5939fd2cb57ce8f235e">ExternsMap</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a2c23e54dca10d956e9227822c9e5cae8">get_externs_map</a> () const override</td></tr>
+<tr class="memdesc:a2c23e54dca10d956e9227822c9e5cae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generators can register <a class="el" href="class_halide_1_1_external_code.html">ExternalCode</a> objects onto themselves.  <a href="#a2c23e54dca10d956e9227822c9e5cae8">More...</a><br/></td></tr>
+<tr class="separator:a2c23e54dca10d956e9227822c9e5cae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_halide_1_1_generator_context"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_halide_1_1_generator_context')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_halide_1_1_generator_context.html">Halide::GeneratorContext</a></td></tr>
+<tr class="memitem:a2e614f2b104c498c0177fdca7002129e inherit pub_methods_class_halide_1_1_generator_context"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_generator_context.html#a2e614f2b104c498c0177fdca7002129e">~GeneratorContext</a> ()</td></tr>
+<tr class="separator:a2e614f2b104c498c0177fdca7002129e inherit pub_methods_class_halide_1_1_generator_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a1416e9f24c98fbf66f87b0b1ebcd8108"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_halide_1_1_names_interface.html#a14f50750abe61fe59248538697e689dc">GeneratorParam</a>&lt; <a class="el" href="struct_halide_1_1_target.html">Target</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a1416e9f24c98fbf66f87b0b1ebcd8108">target</a> { &quot;target&quot;, Halide::get_host_target() }</td></tr>
 <tr class="separator:a1416e9f24c98fbf66f87b0b1ebcd8108"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a72793eff94b61ee891a3a3cff53d2bad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a72793eff94b61ee891a3a3cff53d2bad">GeneratorBase</a> (<a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a> size, const void *introspection_helper)</td></tr>
-<tr class="separator:a72793eff94b61ee891a3a3cff53d2bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cf1046fdf2d81c078fd2929a1eb5aa0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_names_interface.html#af771b96902e421c9b4424c563f62eb21">Pipeline</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a4cf1046fdf2d81c078fd2929a1eb5aa0">build_pipeline</a> ()=0</td></tr>
-<tr class="separator:a4cf1046fdf2d81c078fd2929a1eb5aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-types"></a>
+Protected Types</h2></td></tr>
+<tr class="memitem:a841aa4c08b4aee3965f7e024e8eab521"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521">Phase</a> { <a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521a78e598b2df87aaee520f1136b5f5d855">Created</a>, 
+<a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521a5fd4d245a5c0d639d5df73cf2babbb53">InputsSet</a>, 
+<a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521a23771cdb0fa277826871305ec6dd08be">GenerateCalled</a>, 
+<a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521a816c58c55462f766b98897fe8b51d00d">ScheduleCalled</a>
+ }</td></tr>
+<tr class="separator:a841aa4c08b4aee3965f7e024e8eab521"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac44eff25880bf5f224a38184c02ca384"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ac44eff25880bf5f224a38184c02ca384"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#ac44eff25880bf5f224a38184c02ca384">Input</a> = <a class="el" href="class_halide_1_1_generator_input.html">GeneratorInput</a>&lt; T &gt;</td></tr>
+<tr class="separator:ac44eff25880bf5f224a38184c02ca384"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e7366298359e31a323da413883a3a75"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a4e7366298359e31a323da413883a3a75"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a4e7366298359e31a323da413883a3a75">Output</a> = <a class="el" href="class_halide_1_1_generator_output.html">GeneratorOutput</a>&lt; T &gt;</td></tr>
+<tr class="separator:a4e7366298359e31a323da413883a3a75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a693b7b3a7072ec2f9c0c55343e679cb5"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a693b7b3a7072ec2f9c0c55343e679cb5"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a693b7b3a7072ec2f9c0c55343e679cb5">ScheduleParam</a> = <a class="el" href="class_halide_1_1_names_interface.html#a1140731089111b40bf34f342766d5814">ScheduleParam</a>&lt; T &gt;</td></tr>
+<tr class="separator:a693b7b3a7072ec2f9c0c55343e679cb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_types_class_halide_1_1_names_interface"><td colspan="2" onclick="javascript:toggleInherit('pro_types_class_halide_1_1_names_interface')"><img src="closed.png" alt="-"/>&#160;Protected Types inherited from <a class="el" href="class_halide_1_1_names_interface.html">Halide::NamesInterface</a></td></tr>
 <tr class="memitem:a8d46151b07eba49f5812791609474cb5 inherit pro_types_class_halide_1_1_names_interface"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_names_interface.html#a8d46151b07eba49f5812791609474cb5">Expr</a> = <a class="el" href="struct_halide_1_1_expr.html">Halide::Expr</a></td></tr>
 <tr class="separator:a8d46151b07eba49f5812791609474cb5 inherit pro_types_class_halide_1_1_names_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,6 +204,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a3167fccb10c54f139d2be8a2b7c9b451 inherit pro_types_class_halide_1_1_names_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af01e85379c88e3d2312a53c99448fcfa inherit pro_types_class_halide_1_1_names_interface"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_names_interface.html#af01e85379c88e3d2312a53c99448fcfa">Func</a> = <a class="el" href="class_halide_1_1_func.html">Halide::Func</a></td></tr>
 <tr class="separator:af01e85379c88e3d2312a53c99448fcfa inherit pro_types_class_halide_1_1_names_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43da6fe90a54df3359d1616f3420a677 inherit pro_types_class_halide_1_1_names_interface"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_names_interface.html#a43da6fe90a54df3359d1616f3420a677">GeneratorContext</a> = <a class="el" href="class_halide_1_1_generator_context.html">Halide::GeneratorContext</a></td></tr>
+<tr class="separator:a43da6fe90a54df3359d1616f3420a677 inherit pro_types_class_halide_1_1_names_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2366b9dd61dea180f589a80e134142f0 inherit pro_types_class_halide_1_1_names_interface"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_names_interface.html#a2366b9dd61dea180f589a80e134142f0">ImageParam</a> = <a class="el" href="class_halide_1_1_image_param.html">Halide::ImageParam</a></td></tr>
 <tr class="separator:a2366b9dd61dea180f589a80e134142f0 inherit pro_types_class_halide_1_1_names_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa30a3948ef83fe444ea2886506bacca9 inherit pro_types_class_halide_1_1_names_interface"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_names_interface.html#aa30a3948ef83fe444ea2886506bacca9">LoopLevel</a> = <a class="el" href="class_halide_1_1_loop_level.html">Halide::LoopLevel</a></td></tr>
@@ -183,15 +224,67 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a368ad498e9703efbcb4e62cfc5b55f53 inherit pro_types_class_halide_1_1_names_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d47e51224cfc5564c25f9a1edd0644d inherit pro_types_class_halide_1_1_names_interface"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_names_interface.html#a7d47e51224cfc5564c25f9a1edd0644d">Var</a> = <a class="el" href="class_halide_1_1_var.html">Halide::Var</a></td></tr>
 <tr class="separator:a7d47e51224cfc5564c25f9a1edd0644d inherit pro_types_class_halide_1_1_names_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dc4e46318e4f30d614d0cf1fef896d4 inherit pro_types_class_halide_1_1_names_interface"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_names_interface.html#a4dc4e46318e4f30d614d0cf1fef896d4">NameMangling</a> = <a class="el" href="namespace_halide.html#a9a0a73a2b8a7322d8ac330adfce8d134">Halide::NameMangling</a></td></tr>
+<tr class="separator:a4dc4e46318e4f30d614d0cf1fef896d4 inherit pro_types_class_halide_1_1_names_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14f50750abe61fe59248538697e689dc inherit pro_types_class_halide_1_1_names_interface"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a14f50750abe61fe59248538697e689dc inherit pro_types_class_halide_1_1_names_interface"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_names_interface.html#a14f50750abe61fe59248538697e689dc">GeneratorParam</a> = <a class="el" href="class_halide_1_1_generator_param.html">Halide::GeneratorParam</a>&lt; T &gt;</td></tr>
 <tr class="separator:a14f50750abe61fe59248538697e689dc inherit pro_types_class_halide_1_1_names_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b4199528188c71b00a815b6a21d5893 inherit pro_types_class_halide_1_1_names_interface"><td class="memTemplParams" colspan="2">template&lt;typename T  = void, int D = 4&gt; </td></tr>
-<tr class="memitem:a9b4199528188c71b00a815b6a21d5893 inherit pro_types_class_halide_1_1_names_interface"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_names_interface.html#a9b4199528188c71b00a815b6a21d5893">Image</a> = <a class="el" href="namespace_halide.html#a3d8ecee5cb02fc41947b766a14fa1183">Halide::Image</a>&lt; T, D &gt;</td></tr>
-<tr class="separator:a9b4199528188c71b00a815b6a21d5893 inherit pro_types_class_halide_1_1_names_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1140731089111b40bf34f342766d5814 inherit pro_types_class_halide_1_1_names_interface"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a1140731089111b40bf34f342766d5814 inherit pro_types_class_halide_1_1_names_interface"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_names_interface.html#a1140731089111b40bf34f342766d5814">ScheduleParam</a> = <a class="el" href="class_halide_1_1_schedule_param.html">Halide::ScheduleParam</a>&lt; T &gt;</td></tr>
+<tr class="separator:a1140731089111b40bf34f342766d5814 inherit pro_types_class_halide_1_1_names_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3835c9b455a2b0065d2ab7a3779b5e3 inherit pro_types_class_halide_1_1_names_interface"><td class="memTemplParams" colspan="2">template&lt;typename T  = void&gt; </td></tr>
+<tr class="memitem:ac3835c9b455a2b0065d2ab7a3779b5e3 inherit pro_types_class_halide_1_1_names_interface"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_names_interface.html#ac3835c9b455a2b0065d2ab7a3779b5e3">Buffer</a> = <a class="el" href="class_halide_1_1_buffer.html">Halide::Buffer</a>&lt; T &gt;</td></tr>
+<tr class="separator:ac3835c9b455a2b0065d2ab7a3779b5e3 inherit pro_types_class_halide_1_1_names_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a058f26b5a4dfe05b1ec23bdb816755ad inherit pro_types_class_halide_1_1_names_interface"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a058f26b5a4dfe05b1ec23bdb816755ad inherit pro_types_class_halide_1_1_names_interface"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_names_interface.html#a058f26b5a4dfe05b1ec23bdb816755ad">Param</a> = <a class="el" href="class_halide_1_1_param.html">Halide::Param</a>&lt; T &gt;</td></tr>
 <tr class="separator:a058f26b5a4dfe05b1ec23bdb816755ad inherit pro_types_class_halide_1_1_names_interface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a72793eff94b61ee891a3a3cff53d2bad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a72793eff94b61ee891a3a3cff53d2bad">GeneratorBase</a> (<a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a> size, const void *introspection_helper)</td></tr>
+<tr class="separator:a72793eff94b61ee891a3a3cff53d2bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae16f88321660821c45f95046922bb197"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#ae16f88321660821c45f95046922bb197">init_from_context</a> (const <a class="el" href="class_halide_1_1_generator_context.html">Halide::GeneratorContext</a> &amp;context)</td></tr>
+<tr class="separator:ae16f88321660821c45f95046922bb197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cf1046fdf2d81c078fd2929a1eb5aa0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_names_interface.html#af771b96902e421c9b4424c563f62eb21">Pipeline</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a4cf1046fdf2d81c078fd2929a1eb5aa0">build_pipeline</a> ()=0</td></tr>
+<tr class="separator:a4cf1046fdf2d81c078fd2929a1eb5aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f52cdabf3de7fff6c50ccd2e46f3f14"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a5f52cdabf3de7fff6c50ccd2e46f3f14">call_generate</a> ()=0</td></tr>
+<tr class="separator:a5f52cdabf3de7fff6c50ccd2e46f3f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a178b08f7e2782275e5221dd39008d5a2"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a178b08f7e2782275e5221dd39008d5a2">call_schedule</a> ()=0</td></tr>
+<tr class="separator:a178b08f7e2782275e5221dd39008d5a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada99e0790f88add7f5ae815512fcc54e"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_halide_1_1_internal_1_1_value_tracker.html">ValueTracker</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#ada99e0790f88add7f5ae815512fcc54e">get_value_tracker</a> () const override</td></tr>
+<tr class="separator:ada99e0790f88add7f5ae815512fcc54e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cba97c35de2a98f7d9826fdb459e248"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a1cba97c35de2a98f7d9826fdb459e248">track_parameter_values</a> (bool include_outputs)</td></tr>
+<tr class="separator:a1cba97c35de2a98f7d9826fdb459e248"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7575cf4c91633a66f9df497ca72ec70f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a7575cf4c91633a66f9df497ca72ec70f">pre_build</a> ()</td></tr>
+<tr class="separator:a7575cf4c91633a66f9df497ca72ec70f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c3c840d0890e0d68cb014a65f102f90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a6c3c840d0890e0d68cb014a65f102f90">post_build</a> ()</td></tr>
+<tr class="separator:a6c3c840d0890e0d68cb014a65f102f90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60e3c5b80b1ac0e612007f52efedacb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a60e3c5b80b1ac0e612007f52efedacb5">pre_generate</a> ()</td></tr>
+<tr class="separator:a60e3c5b80b1ac0e612007f52efedacb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bbbfa1099998247b5602bd19e4037e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a4bbbfa1099998247b5602bd19e4037e6">post_generate</a> ()</td></tr>
+<tr class="separator:a4bbbfa1099998247b5602bd19e4037e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0a77b63f54e933dbe69834f868cae6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#ae0a77b63f54e933dbe69834f868cae6f">pre_schedule</a> ()</td></tr>
+<tr class="separator:ae0a77b63f54e933dbe69834f868cae6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40521b61a39422b068b3fa46f9ed5d4b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a40521b61a39422b068b3fa46f9ed5d4b">post_schedule</a> ()</td></tr>
+<tr class="separator:a40521b61a39422b068b3fa46f9ed5d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1778196ce691816daf5690c3f6a2b35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#ad1778196ce691816daf5690c3f6a2b35">check_exact_phase</a> (<a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521">Phase</a> expected_phase) const </td></tr>
+<tr class="separator:ad1778196ce691816daf5690c3f6a2b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b704e1f12fbf389c801d63193582ae0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a1b704e1f12fbf389c801d63193582ae0">check_min_phase</a> (<a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521">Phase</a> expected_phase) const </td></tr>
+<tr class="separator:a1b704e1f12fbf389c801d63193582ae0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed42582eb2244782c1759171e8458457"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#aed42582eb2244782c1759171e8458457">advance_phase</a> (<a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521">Phase</a> new_phase)</td></tr>
+<tr class="separator:aed42582eb2244782c1759171e8458457"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a74d7bc01b869ffa862a49ccab5a0a0ae"><td class="memItemLeft" align="right" valign="top">enum <br class="typebreak"/>
+<a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521">Halide::Internal::GeneratorBase::Phase</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a74d7bc01b869ffa862a49ccab5a0a0ae">Created</a></td></tr>
+<tr class="separator:a74d7bc01b869ffa862a49ccab5a0a0ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_types_class_halide_1_1_generator_context"><td colspan="2" onclick="javascript:toggleInherit('pub_types_class_halide_1_1_generator_context')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="class_halide_1_1_generator_context.html">Halide::GeneratorContext</a></td></tr>
+<tr class="memitem:a07266b776d24a5939fd2cb57ce8f235e inherit pub_types_class_halide_1_1_generator_context"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_generator_context.html#a07266b776d24a5939fd2cb57ce8f235e">ExternsMap</a> = std::map&lt; std::string, <a class="el" href="class_halide_1_1_external_code.html">ExternalCode</a> &gt;</td></tr>
+<tr class="separator:a07266b776d24a5939fd2cb57ce8f235e inherit pub_types_class_halide_1_1_generator_context"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_static_methods_class_halide_1_1_names_interface"><td colspan="2" onclick="javascript:toggleInherit('pro_static_methods_class_halide_1_1_names_interface')"><img src="closed.png" alt="-"/>&#160;Static Protected Member Functions inherited from <a class="el" href="class_halide_1_1_names_interface.html">Halide::NamesInterface</a></td></tr>
 <tr class="memitem:a2e0875e2627c7642fa4335a35e651872 inherit pro_static_methods_class_halide_1_1_names_interface"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a2e0875e2627c7642fa4335a35e651872 inherit pro_static_methods_class_halide_1_1_names_interface"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="class_halide_1_1_names_interface.html#a8d46151b07eba49f5812791609474cb5">Expr</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_names_interface.html#a2e0875e2627c7642fa4335a35e651872">cast</a> (<a class="el" href="class_halide_1_1_names_interface.html#a8d46151b07eba49f5812791609474cb5">Expr</a> e)</td></tr>
@@ -209,8 +302,114 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_generator_8h_source.html#l00538">538</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02226">2226</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="ac44eff25880bf5f224a38184c02ca384"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#ac44eff25880bf5f224a38184c02ca384">Halide::Internal::GeneratorBase::Input</a> =  <a class="el" href="class_halide_1_1_generator_input.html">GeneratorInput</a>&lt;T&gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02352">2352</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4e7366298359e31a323da413883a3a75"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a4e7366298359e31a323da413883a3a75">Halide::Internal::GeneratorBase::Output</a> =  <a class="el" href="class_halide_1_1_generator_output.html">GeneratorOutput</a>&lt;T&gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02355">2355</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a693b7b3a7072ec2f9c0c55343e679cb5"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a693b7b3a7072ec2f9c0c55343e679cb5">Halide::Internal::GeneratorBase::ScheduleParam</a> =  <a class="el" href="class_halide_1_1_names_interface.html#a1140731089111b40bf34f342766d5814">ScheduleParam</a>&lt;T&gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02358">2358</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Enumeration Documentation</h2>
+<a class="anchor" id="a841aa4c08b4aee3965f7e024e8eab521"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521">Halide::Internal::GeneratorBase::Phase</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a841aa4c08b4aee3965f7e024e8eab521a78e598b2df87aaee520f1136b5f5d855"></a>Created</em>&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a841aa4c08b4aee3965f7e024e8eab521a5fd4d245a5c0d639d5df73cf2babbb53"></a>InputsSet</em>&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a841aa4c08b4aee3965f7e024e8eab521a23771cdb0fa277826871305ec6dd08be"></a>GenerateCalled</em>&#160;</td><td class="fielddoc">
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a841aa4c08b4aee3965f7e024e8eab521a816c58c55462f766b98897fe8b51d00d"></a>ScheduleCalled</em>&#160;</td><td class="fielddoc">
+</td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02363">2363</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ab24cc02dd21071ed05e771ffac799cf0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -269,7 +468,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ae154b827db9321f6d28b1caad388ba10"></a>
+<a class="anchor" id="a94e7fe753f4091cbb950d08ac4a117d3"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -285,25 +484,51 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_generator_8h_source.html#l00558">558</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p>Implements <a class="el" href="class_halide_1_1_generator_context.html#afe1bed4b53453fe220905c9f03dd590c">Halide::GeneratorContext</a>.</p>
 
-<p>References <a class="el" href="_generator_8h_source.html#l00540">target</a>.</p>
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02246">2246</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_generator_8h_source.html#l00564">natural_vector_size()</a>.</p>
+<p>Referenced by <a class="el" href="_generator_8h_source.html#l02805">Halide::Internal::GeneratorStub::get_target()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a328fa1c6b27a5e1e9f186ae4f7c1e610"></a>
+<a class="anchor" id="a074a489862cf82d74755d2eb54fe0506"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::GeneratorBase::set_generator_param_values </td>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::GeneratorBase::set_generator_param </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3b4be6ff8998bd0042b5cb6b60ce8787"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::GeneratorBase::set_generator_and_schedule_param_values </td>
           <td>(</td>
           <td class="paramtype">const std::map&lt; std::string, std::string &gt; &amp;&#160;</td>
           <td class="paramname"><em>params</em></td><td>)</td>
@@ -311,6 +536,84 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2d999068c6d3fa2e79de7f4ea32ce37e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html">GeneratorBase</a>&amp; Halide::Internal::GeneratorBase::set_generator_param </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02252">2252</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1289d6355338b4b91e76d7b14345bb7b"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html">GeneratorBase</a>&amp; Halide::Internal::GeneratorBase::set_schedule_param </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02258">2258</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_generator_8h_source.html#l02808">Halide::Internal::GeneratorStub::set_schedule_param()</a>.</p>
 
 </div>
 </div>
@@ -338,9 +641,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Given a data type, return an estimate of the "natural" vector size for that data type when compiling for the current target. </p>
 
-<p>Definition at line <a class="el" href="_generator_8h_source.html#l00564">564</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
-
-<p>References <a class="el" href="_generator_8h_source.html#l00558">get_target()</a>, and <a class="el" href="_target_8h_source.html#l00219">Halide::Target::natural_vector_size()</a>.</p>
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02265">2265</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -369,13 +670,27 @@ template&lt;typename data_t &gt; </div>
 
 <p>Given a data type, return an estimate of the "natural" vector size for that data type when compiling for the current target. </p>
 
-<p>Definition at line <a class="el" href="_generator_8h_source.html#l00571">571</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
-
-<p>References <a class="el" href="_generator_8h_source.html#l00558">get_target()</a>, and <a class="el" href="_target_8h_source.html#l00219">Halide::Target::natural_vector_size()</a>.</p>
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02272">2272</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a76f1d13c62fd0258d31bee634a63574f"></a>
+<a class="anchor" id="a37f848b6306d92a0effbf5c657c7dc9e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::GeneratorBase::emit_cpp_stub </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>stub_file_path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1c4f1568f917e9563fa63d9dc3fc4d78"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -389,7 +704,7 @@ template&lt;typename data_t &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="struct_halide_1_1_internal_1_1_lowered_func.html#a5048e4905f95550e02ea09cc5683025b">LoweredFunc::LinkageType</a>&#160;</td>
-          <td class="paramname"><em>linkage_type</em> = <code><a class="el" href="struct_halide_1_1_internal_1_1_lowered_func.html#a5048e4905f95550e02ea09cc5683025baf21dc6cfd1774e1076330e32e1cea2e4">LoweredFunc::External</a></code>&#160;</td>
+          <td class="paramname"><em>linkage_type</em> = <code><a class="el" href="struct_halide_1_1_internal_1_1_lowered_func.html#a5048e4905f95550e02ea09cc5683025ba5121c0adf4c21b93e4561d1ffbac6036">LoweredFunc::ExternalPlusMetadata</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -397,6 +712,190 @@ template&lt;typename data_t &gt; </div>
           <td></td><td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adf0f56d22a4b05763cc98376f891240e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Halide::Internal::GeneratorBase::set_inputs </td>
+          <td>(</td>
+          <td class="paramtype">const Args &amp;...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>set_inputs is a variadic wrapper around set_inputs_vector, which makes usage much simpler in many cases, as it constructs the relevant entries for the vector for you, which is often a bit unintuitive at present. </p>
+<p>The arguments are passed in Input&lt;&gt;-declaration-order, and the types must be compatible. Array inputs are passed as std::vector&lt;&gt; of the relevant type.</p>
+<p>Note: at present, scalar input types must match <em>exactly</em>, i.e., for Input&lt;uint8_t&gt;, you must pass an argument that is actually uint8_t; an argument that is int-that-will-fit-in-uint8 will assert-fail at <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> compile time. </p>
+
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02294">2294</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+<p>References <a class="el" href="_error_8h_source.html#l00141">user_assert</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a84a48d81a43f0d1fe4d555775d98d157"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_halide_1_1_realization.html">Realization</a> Halide::Internal::GeneratorBase::realize </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="runtime__internal_8h.html#a5de3601dbc6acc46bb8a0d9bc84dff5b">int32_t</a> &gt;&#160;</td>
+          <td class="paramname"><em>sizes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02303">2303</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+<p>Referenced by <a class="el" href="_generator_8h_source.html#l02833">Halide::Internal::GeneratorStub::realize()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2da465a5054ac11f789717e1dfd87874"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args, typename std::enable_if&lt; NoRealizations&lt; Args...&gt;::value &gt;::type *  = nullptr&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_halide_1_1_realization.html">Realization</a> Halide::Internal::GeneratorBase::realize </td>
+          <td>(</td>
+          <td class="paramtype">Args &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02311">2311</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6c7c7819c97c93390c4037178e698f3e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Halide::Internal::GeneratorBase::realize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_halide_1_1_realization.html">Realization</a>&#160;</td>
+          <td class="paramname"><em>r</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02316">2316</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9328080d175c082c1e04e9dbcb4ad59e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> <a class="el" href="class_halide_1_1_names_interface.html#af771b96902e421c9b4424c563f62eb21">Pipeline</a> Halide::Internal::GeneratorBase::get_pipeline </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2c23e54dca10d956e9227822c9e5cae8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::shared_ptr&lt;<a class="el" href="class_halide_1_1_generator_context.html#a07266b776d24a5939fd2cb57ce8f235e">ExternsMap</a>&gt; Halide::Internal::GeneratorBase::get_externs_map </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Generators can register <a class="el" href="class_halide_1_1_external_code.html">ExternalCode</a> objects onto themselves. </p>
+<p>The <a class="el" href="class_halide_1_1_generator.html">Generator</a> infrastructure will arrange to have this <a class="el" href="class_halide_1_1_external_code.html">ExternalCode</a> appended to the <a class="el" href="class_halide_1_1_module.html" title="A halide module. ">Module</a> that is finally compiled using the <a class="el" href="class_halide_1_1_generator.html">Generator</a>. This allows encapsulating functionality that depends on external libraries or handwritten code for various targets. The name argument should match the name of the <a class="el" href="class_halide_1_1_external_code.html">ExternalCode</a> block and is used to ensure the same code block is not duplicated in the output. <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> does not do anything other than to compare names for equality. To guarantee uniqueness in public code, we suggest using a Java style inverted domain name followed by organization specific naming. E.g.: com.yoyodyne.overthruster.0719acd19b66df2a9d8d628a8fefba911a0ab2b7</p>
+<p>See test/generator/external_code_generator.cpp for example use. </p>
+
+<p>Implements <a class="el" href="class_halide_1_1_generator_context.html#a5dc733f24834d4d24963b749e3d57c9c">Halide::GeneratorContext</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae16f88321660821c45f95046922bb197"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::GeneratorBase::init_from_context </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_halide_1_1_generator_context.html">Halide::GeneratorContext</a> &amp;&#160;</td>
+          <td class="paramname"><em>context</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -426,6 +925,319 @@ template&lt;typename data_t &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a5f52cdabf3de7fff6c50ccd2e46f3f14"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::GeneratorBase::call_generate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_halide_1_1_generator.html#a00abb0c8f72fc067d3961df3f174cf78">Halide::Generator&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a178b08f7e2782275e5221dd39008d5a2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::GeneratorBase::call_schedule </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_halide_1_1_generator.html#a2f4f33e133b27f6acafa8178e5b7a9c4">Halide::Generator&lt; T &gt;</a>.</p>
+
+<p>Referenced by <a class="el" href="_generator_8h_source.html#l02813">Halide::Internal::GeneratorStub::schedule()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ada99e0790f88add7f5ae815512fcc54e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_halide_1_1_internal_1_1_value_tracker.html">ValueTracker</a>&gt; Halide::Internal::GeneratorBase::get_value_tracker </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="class_halide_1_1_generator_context.html#a687ee5f125778b80912fd28b509392a8">Halide::GeneratorContext</a>.</p>
+
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02340">2340</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1cba97c35de2a98f7d9826fdb459e248"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::GeneratorBase::track_parameter_values </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>include_outputs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7575cf4c91633a66f9df497ca72ec70f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::GeneratorBase::pre_build </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6c3c840d0890e0d68cb014a65f102f90"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::GeneratorBase::post_build </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a60e3c5b80b1ac0e612007f52efedacb5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::GeneratorBase::pre_generate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4bbbfa1099998247b5602bd19e4037e6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::GeneratorBase::post_generate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae0a77b63f54e933dbe69834f868cae6f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::GeneratorBase::pre_schedule </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a40521b61a39422b068b3fa46f9ed5d4b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::GeneratorBase::post_schedule </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad1778196ce691816daf5690c3f6a2b35"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Halide::Internal::GeneratorBase::check_exact_phase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521">Phase</a>&#160;</td>
+          <td class="paramname"><em>expected_phase</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1b704e1f12fbf389c801d63193582ae0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Halide::Internal::GeneratorBase::check_min_phase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521">Phase</a>&#160;</td>
+          <td class="paramname"><em>expected_phase</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aed42582eb2244782c1759171e8458457"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Halide::Internal::GeneratorBase::advance_phase </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521">Phase</a>&#160;</td>
+          <td class="paramname"><em>new_phase</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="a1416e9f24c98fbf66f87b0b1ebcd8108"></a>
 <div class="memitem">
@@ -437,9 +1249,27 @@ template&lt;typename data_t &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="_generator_8h_source.html#l00540">540</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02228">2228</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
-<p>Referenced by <a class="el" href="_generator_8h_source.html#l00558">get_target()</a>.</p>
+</div>
+</div>
+<a class="anchor" id="a74d7bc01b869ffa862a49ccab5a0a0ae"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521">Halide::Internal::GeneratorBase::Phase</a> Halide::Internal::GeneratorBase::Created</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

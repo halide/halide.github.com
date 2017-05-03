@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['tailstrategy',['TailStrategy',['../namespace_halide.html#a6c6557df562bd7850664e70fdb8fea0f',1,'Halide']]],
-  ['type',['Type',['../struct_halide_1_1_internal_1_1_dim.html#ad47b241469cb5c8f97b5ad27301f33eb',1,'Halide::Internal::Dim']]]
+  ['referencetype',['ReferenceType',['../structhalide__handle__cplusplus__type.html#a5aef5cc2d2d1194b93e036af106f86fc',1,'halide_handle_cplusplus_type']]],
+  ['roundingmode',['RoundingMode',['../namespace_halide.html#abff9f4f741ecf5b3b24bbe4efc4d0513',1,'Halide']]]
 ];

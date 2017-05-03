@@ -5,18 +5,21 @@ var files =
     [ "AlignLoads.h", "_align_loads_8h.html", "_align_loads_8h" ],
     [ "AllocationBoundsInference.h", "_allocation_bounds_inference_8h.html", "_allocation_bounds_inference_8h" ],
     [ "android_ioctl.h", "android__ioctl_8h.html", "android__ioctl_8h" ],
+    [ "ApplySplit.h", "_apply_split_8h.html", "_apply_split_8h" ],
     [ "Argument.h", "_argument_8h.html", [
       [ "Argument", "struct_halide_1_1_argument.html", "struct_halide_1_1_argument" ]
     ] ],
+    [ "AssociativeOpsTable.h", "_associative_ops_table_8h.html", "_associative_ops_table_8h" ],
     [ "Associativity.h", "_associativity_8h.html", "_associativity_8h" ],
     [ "BoundaryConditions.h", "_boundary_conditions_8h.html", "_boundary_conditions_8h" ],
     [ "Bounds.h", "_bounds_8h.html", "_bounds_8h" ],
     [ "BoundsInference.h", "_bounds_inference_8h.html", "_bounds_inference_8h" ],
-    [ "BufferPtr.h", "_buffer_ptr_8h.html", "_buffer_ptr_8h" ],
+    [ "Buffer.h", "_buffer_8h.html", "_buffer_8h" ],
+    [ "CanonicalizeGPUVars.h", "_canonicalize_g_p_u_vars_8h.html", "_canonicalize_g_p_u_vars_8h" ],
     [ "cl_functions.h", "cl__functions_8h.html", "cl__functions_8h" ],
     [ "Closure.h", "_closure_8h.html", [
       [ "Closure", "class_halide_1_1_internal_1_1_closure.html", "class_halide_1_1_internal_1_1_closure" ],
-      [ "BufferRef", "struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html", "struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref" ]
+      [ "Buffer", "struct_halide_1_1_internal_1_1_closure_1_1_buffer.html", "struct_halide_1_1_internal_1_1_closure_1_1_buffer" ]
     ] ],
     [ "CodeGen_ARM.h", "_code_gen___a_r_m_8h.html", [
       [ "CodeGen_ARM", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html", "class_halide_1_1_internal_1_1_code_gen___a_r_m" ],
@@ -57,9 +60,6 @@ var files =
       [ "CodeGen_OpenGLCompute_Dev", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev.html", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev" ],
       [ "CodeGen_OpenGLCompute_C", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c" ]
     ] ],
-    [ "CodeGen_PNaCl.h", "_code_gen___p_na_cl_8h.html", [
-      [ "CodeGen_PNaCl", "class_halide_1_1_internal_1_1_code_gen___p_na_cl.html", "class_halide_1_1_internal_1_1_code_gen___p_na_cl" ]
-    ] ],
     [ "CodeGen_Posix.h", "_code_gen___posix_8h.html", [
       [ "CodeGen_Posix", "class_halide_1_1_internal_1_1_code_gen___posix.html", "class_halide_1_1_internal_1_1_code_gen___posix" ],
       [ "Allocation", "struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html", "struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation" ]
@@ -70,9 +70,6 @@ var files =
     [ "CodeGen_PTX_Dev.h", "_code_gen___p_t_x___dev_8h.html", [
       [ "CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev" ]
     ] ],
-    [ "CodeGen_Renderscript_Dev.h", "_code_gen___renderscript___dev_8h.html", [
-      [ "CodeGen_Renderscript_Dev", "class_halide_1_1_internal_1_1_code_gen___renderscript___dev.html", "class_halide_1_1_internal_1_1_code_gen___renderscript___dev" ]
-    ] ],
     [ "CodeGen_X86.h", "_code_gen___x86_8h.html", [
       [ "CodeGen_X86", "class_halide_1_1_internal_1_1_code_gen___x86.html", "class_halide_1_1_internal_1_1_code_gen___x86" ]
     ] ],
@@ -81,6 +78,7 @@ var files =
     [ "CSE.h", "_c_s_e_8h.html", "_c_s_e_8h" ],
     [ "cuda_functions.h", "cuda__functions_8h.html", "cuda__functions_8h" ],
     [ "Debug.h", "_debug_8h.html", "_debug_8h" ],
+    [ "DebugArguments.h", "_debug_arguments_8h.html", "_debug_arguments_8h" ],
     [ "DebugToFile.h", "_debug_to_file_8h.html", "_debug_to_file_8h" ],
     [ "DeepCopy.h", "_deep_copy_8h.html", "_deep_copy_8h" ],
     [ "Definition.h", "_definition_8h.html", [
@@ -94,25 +92,30 @@ var files =
       [ "DeviceArgument", "struct_halide_1_1_internal_1_1_device_argument.html", "struct_halide_1_1_internal_1_1_device_argument" ],
       [ "HostClosure", "class_halide_1_1_internal_1_1_host_closure.html", "class_halide_1_1_internal_1_1_host_closure" ]
     ] ],
-    [ "DeviceInterface.h", "_device_interface_8h.html", null ],
+    [ "DeviceInterface.h", "_device_interface_8h.html", "_device_interface_8h" ],
+    [ "dlib.h", "dlib_8h.html", "dlib_8h" ],
     [ "EarlyFree.h", "_early_free_8h.html", "_early_free_8h" ],
-    [ "elf.h", "elf_8h.html", "elf_8h" ],
+    [ "Elf.h", "_elf_8h.html", [
+      [ "iterator_range", "class_halide_1_1_internal_1_1_elf_1_1iterator__range.html", "class_halide_1_1_internal_1_1_elf_1_1iterator__range" ],
+      [ "Symbol", "class_halide_1_1_internal_1_1_elf_1_1_symbol.html", "class_halide_1_1_internal_1_1_elf_1_1_symbol" ],
+      [ "Relocation", "class_halide_1_1_internal_1_1_elf_1_1_relocation.html", "class_halide_1_1_internal_1_1_elf_1_1_relocation" ],
+      [ "Section", "class_halide_1_1_internal_1_1_elf_1_1_section.html", "class_halide_1_1_internal_1_1_elf_1_1_section" ],
+      [ "Linker", "class_halide_1_1_internal_1_1_elf_1_1_linker.html", "class_halide_1_1_internal_1_1_elf_1_1_linker" ],
+      [ "Object", "class_halide_1_1_internal_1_1_elf_1_1_object.html", "class_halide_1_1_internal_1_1_elf_1_1_object" ]
+    ] ],
     [ "EliminateBoolVectors.h", "_eliminate_bool_vectors_8h.html", "_eliminate_bool_vectors_8h" ],
     [ "Error.h", "_error_8h.html", "_error_8h" ],
     [ "Expr.h", "_expr_8h.html", "_expr_8h" ],
     [ "ExprUsesVar.h", "_expr_uses_var_8h.html", "_expr_uses_var_8h" ],
     [ "Extern.h", "_extern_8h.html", "_extern_8h" ],
+    [ "ExternalCode.h", "_external_code_8h.html", [
+      [ "ExternalCode", "class_halide_1_1_external_code.html", "class_halide_1_1_external_code" ]
+    ] ],
     [ "FastIntegerDivide.h", "_fast_integer_divide_8h.html", "_fast_integer_divide_8h" ],
     [ "FindCalls.h", "_find_calls_8h.html", "_find_calls_8h" ],
-    [ "Float16.h", "_float16_8h.html", [
-      [ "float16_t", "struct_halide_1_1float16__t.html", "struct_halide_1_1float16__t" ]
-    ] ],
+    [ "Float16.h", "_float16_8h.html", "_float16_8h" ],
     [ "Func.h", "_func_8h.html", "_func_8h" ],
-    [ "Function.h", "_function_8h.html", [
-      [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html", "struct_halide_1_1_extern_func_argument" ],
-      [ "Function", "class_halide_1_1_internal_1_1_function.html", "class_halide_1_1_internal_1_1_function" ],
-      [ "Compare", "struct_halide_1_1_internal_1_1_function_1_1_compare.html", "struct_halide_1_1_internal_1_1_function_1_1_compare" ]
-    ] ],
+    [ "Function.h", "_function_8h.html", "_function_8h" ],
     [ "FuseGPUThreadLoops.h", "_fuse_g_p_u_thread_loops_8h.html", "_fuse_g_p_u_thread_loops_8h" ],
     [ "FuzzFloatStores.h", "_fuzz_float_stores_8h.html", "_fuzz_float_stores_8h" ],
     [ "Generator.h", "_generator_8h.html", "_generator_8h" ],
@@ -127,12 +130,12 @@ var files =
     [ "HalideRuntimeOpenGL.h", "_halide_runtime_open_g_l_8h.html", "_halide_runtime_open_g_l_8h" ],
     [ "HalideRuntimeOpenGLCompute.h", "_halide_runtime_open_g_l_compute_8h.html", "_halide_runtime_open_g_l_compute_8h" ],
     [ "HalideRuntimeQurt.h", "_halide_runtime_qurt_8h.html", "_halide_runtime_qurt_8h" ],
-    [ "HalideRuntimeRenderscript.h", "_halide_runtime_renderscript_8h.html", "_halide_runtime_renderscript_8h" ],
     [ "HexagonOffload.h", "_hexagon_offload_8h.html", "_hexagon_offload_8h" ],
     [ "HexagonOptimize.h", "_hexagon_optimize_8h.html", "_hexagon_optimize_8h" ],
     [ "ImageParam.h", "_image_param_8h.html", [
       [ "ImageParam", "class_halide_1_1_image_param.html", "class_halide_1_1_image_param" ]
     ] ],
+    [ "InferArguments.h", "_infer_arguments_8h.html", "_infer_arguments_8h" ],
     [ "InjectHostDevBufferCopies.h", "_inject_host_dev_buffer_copies_8h.html", "_inject_host_dev_buffer_copies_8h" ],
     [ "InjectImageIntrinsics.h", "_inject_image_intrinsics_8h.html", "_inject_image_intrinsics_8h" ],
     [ "InjectOpenGLIntrinsics.h", "_inject_open_g_l_intrinsics_8h.html", "_inject_open_g_l_intrinsics_8h" ],
@@ -157,7 +160,6 @@ var files =
     ] ],
     [ "JITModule.h", "_j_i_t_module_8h.html", "_j_i_t_module_8h" ],
     [ "Lambda.h", "_lambda_8h.html", "_lambda_8h" ],
-    [ "legacy_bitcode.h", "legacy__bitcode_8h.html", null ],
     [ "Lerp.h", "_lerp_8h.html", "_lerp_8h" ],
     [ "LLVM_Headers.h", "_l_l_v_m___headers_8h.html", "_l_l_v_m___headers_8h" ],
     [ "LLVM_Output.h", "_l_l_v_m___output_8h.html", "_l_l_v_m___output_8h" ],
@@ -174,7 +176,6 @@ var files =
     [ "mini_cuda.h", "mini__cuda_8h.html", "mini__cuda_8h" ],
     [ "mini_opengl.h", "mini__opengl_8h.html", "mini__opengl_8h" ],
     [ "mini_qurt.h", "mini__qurt_8h.html", "mini__qurt_8h" ],
-    [ "mini_renderscript.h", "mini__renderscript_8h.html", "mini__renderscript_8h" ],
     [ "Module.h", "_module_8h.html", "_module_8h" ],
     [ "ModulusRemainder.h", "_modulus_remainder_8h.html", "_modulus_remainder_8h" ],
     [ "Monotonic.h", "_monotonic_8h.html", "_monotonic_8h" ],
@@ -183,8 +184,7 @@ var files =
       [ "ObjectInstanceRegistry", "class_halide_1_1_internal_1_1_object_instance_registry.html", "class_halide_1_1_internal_1_1_object_instance_registry" ]
     ] ],
     [ "OutputImageParam.h", "_output_image_param_8h.html", [
-      [ "OutputImageParam", "class_halide_1_1_output_image_param.html", "class_halide_1_1_output_image_param" ],
-      [ "Dimension", "struct_halide_1_1_output_image_param_1_1_dimension.html", "struct_halide_1_1_output_image_param_1_1_dimension" ]
+      [ "OutputImageParam", "class_halide_1_1_output_image_param.html", "class_halide_1_1_output_image_param" ]
     ] ],
     [ "Outputs.h", "_outputs_8h.html", [
       [ "Outputs", "struct_halide_1_1_outputs.html", "struct_halide_1_1_outputs" ]
@@ -202,7 +202,6 @@ var files =
     [ "Qualify.h", "_qualify_8h.html", "_qualify_8h" ],
     [ "Random.h", "_random_8h.html", "_random_8h" ],
     [ "RDom.h", "_r_dom_8h.html", "_r_dom_8h" ],
-    [ "ReaderWriter_3_2.h", "_reader_writer__3__2_8h.html", "_reader_writer__3__2_8h" ],
     [ "RealizationOrder.h", "_realization_order_8h.html", "_realization_order_8h" ],
     [ "Reduction.h", "_reduction_8h.html", "_reduction_8h" ],
     [ "RemoveDeadAllocations.h", "_remove_dead_allocations_8h.html", "_remove_dead_allocations_8h" ],
@@ -212,6 +211,7 @@ var files =
     [ "runtime_internal.h", "runtime__internal_8h.html", "runtime__internal_8h" ],
     [ "Schedule.h", "_schedule_8h.html", "_schedule_8h" ],
     [ "ScheduleFunctions.h", "_schedule_functions_8h.html", "_schedule_functions_8h" ],
+    [ "ScheduleParam.h", "_schedule_param_8h.html", "_schedule_param_8h" ],
     [ "Scope.h", "_scope_8h.html", "_scope_8h" ],
     [ "scoped_mutex_lock.h", "scoped__mutex__lock_8h.html", [
       [ "ScopedMutexLock", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_mutex_lock.html", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_mutex_lock" ]
@@ -226,25 +226,28 @@ var files =
     [ "SkipStages.h", "_skip_stages_8h.html", "_skip_stages_8h" ],
     [ "SlidingWindow.h", "_sliding_window_8h.html", "_sliding_window_8h" ],
     [ "Solve.h", "_solve_8h.html", "_solve_8h" ],
+    [ "SplitTuples.h", "_split_tuples_8h.html", "_split_tuples_8h" ],
     [ "StmtToHtml.h", "_stmt_to_html_8h.html", "_stmt_to_html_8h" ],
     [ "StorageFlattening.h", "_storage_flattening_8h.html", "_storage_flattening_8h" ],
     [ "StorageFolding.h", "_storage_folding_8h.html", "_storage_folding_8h" ],
     [ "Substitute.h", "_substitute_8h.html", "_substitute_8h" ],
     [ "Target.h", "_target_8h.html", "_target_8h" ],
     [ "thread_pool_common.h", "thread__pool__common_8h.html", "thread__pool__common_8h" ],
+    [ "ThreadPool.h", "_thread_pool_8h.html", [
+      [ "ThreadPool", "class_halide_1_1_internal_1_1_thread_pool.html", "class_halide_1_1_internal_1_1_thread_pool" ]
+    ] ],
     [ "Tracing.h", "_tracing_8h.html", "_tracing_8h" ],
     [ "TrimNoOps.h", "_trim_no_ops_8h.html", "_trim_no_ops_8h" ],
     [ "Tuple.h", "_tuple_8h.html", "_tuple_8h" ],
     [ "Type.h", "_type_8h.html", "_type_8h" ],
     [ "UnifyDuplicateLets.h", "_unify_duplicate_lets_8h.html", "_unify_duplicate_lets_8h" ],
     [ "UniquifyVariableNames.h", "_uniquify_variable_names_8h.html", "_uniquify_variable_names_8h" ],
+    [ "UnpackBuffers.h", "_unpack_buffers_8h.html", "_unpack_buffers_8h" ],
     [ "UnrollLoops.h", "_unroll_loops_8h.html", "_unroll_loops_8h" ],
     [ "Util.h", "_util_8h.html", "_util_8h" ],
-    [ "ValueEnumerator.h", "_value_enumerator_8h.html", [
-      [ "ValueEnumerator", "classllvm__3__2_1_1_value_enumerator.html", "classllvm__3__2_1_1_value_enumerator" ]
-    ] ],
     [ "Var.h", "_var_8h.html", "_var_8h" ],
     [ "VaryingAttributes.h", "_varying_attributes_8h.html", "_varying_attributes_8h" ],
     [ "VectorizeLoops.h", "_vectorize_loops_8h.html", "_vectorize_loops_8h" ],
-    [ "WrapCalls.h", "_wrap_calls_8h.html", "_wrap_calls_8h" ]
+    [ "WrapCalls.h", "_wrap_calls_8h.html", "_wrap_calls_8h" ],
+    [ "WrapExternStages.h", "_wrap_extern_stages_8h.html", "_wrap_extern_stages_8h" ]
 ];

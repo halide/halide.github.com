@@ -44,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -230,7 +229,10 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2acbe1377636dc5dc95b68ff96203249cc">Halide::Internal::IRNodeType::Realize</a>, 
 <a class="el" href="namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2ae1e4c8c9ccd9fc39c391da4bcd093fb2">Halide::Internal::IRNodeType::Block</a>, 
 <a class="el" href="namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2aaff6933d8331eca27edc911467980c9c">Halide::Internal::IRNodeType::IfThenElse</a>, 
-<a class="el" href="namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2ab086843368d1c92d0a86cbee76b20b6f">Halide::Internal::IRNodeType::Evaluate</a>
+<a class="el" href="namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2ab086843368d1c92d0a86cbee76b20b6f">Halide::Internal::IRNodeType::Evaluate</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2ae8b4b40ec3622e371789b790caabc083">Halide::Internal::IRNodeType::Shuffle</a>, 
+<a class="el" href="namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2a18540d940813866480eaca8d3f32d18e">Halide::Internal::IRNodeType::Prefetch</a>
 <br/>
  }</td></tr>
 <tr class="memdesc:aee9e0b8e5376e2294d74ded8e7de9ef2"><td class="mdescLeft">&#160;</td><td class="mdescRight">All our IR node types get unique IDs for the purposes of RTTI.  <a href="namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2">More...</a><br/></td></tr>
@@ -243,19 +245,23 @@ Enumerations</h2></td></tr>
 <br/>
 &#160;&#160;<a class="el" href="namespace_halide.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea7982b09a852b37f2afb1227eaf552e47">Halide::DeviceAPI::OpenCL</a>, 
 <a class="el" href="namespace_halide.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea2a2c1392bcbaececf702b611e7d7df25">Halide::DeviceAPI::GLSL</a>, 
-<a class="el" href="namespace_halide.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eab79f9fcb64263765842486e340edd503">Halide::DeviceAPI::Renderscript</a>, 
 <a class="el" href="namespace_halide.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea3adf0945d2bbb4c868f37d38e02684d5">Halide::DeviceAPI::OpenGLCompute</a>, 
+<a class="el" href="namespace_halide.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eaeaa57a9b4248ce3968e718895e1c2f04">Halide::DeviceAPI::Metal</a>, 
 <br/>
-&#160;&#160;<a class="el" href="namespace_halide.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eaeaa57a9b4248ce3968e718895e1c2f04">Halide::DeviceAPI::Metal</a>, 
-<a class="el" href="namespace_halide.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea125e13c182697c5a282e4de6d7999eb0">Halide::DeviceAPI::Hexagon</a>
+&#160;&#160;<a class="el" href="namespace_halide.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea125e13c182697c5a282e4de6d7999eb0">Halide::DeviceAPI::Hexagon</a>
 <br/>
  }</td></tr>
 <tr class="memdesc:aa26c7f430d2b1c44ba3e1d3f6df2ba6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum describing a type of device API.  <a href="namespace_halide.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6e">More...</a><br/></td></tr>
 <tr class="separator:aa26c7f430d2b1c44ba3e1d3f6df2ba6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a8761f129e6554b9ea03de31bf066f1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a6a8761f129e6554b9ea03de31bf066f1">Halide::Internal::ForType</a> { <a class="el" href="namespace_halide_1_1_internal.html#a6a8761f129e6554b9ea03de31bf066f1a5255d3daaa0a6276b844d61401e6f493">Halide::Internal::ForType::Serial</a>, 
+<tr class="memitem:a6a8761f129e6554b9ea03de31bf066f1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a6a8761f129e6554b9ea03de31bf066f1">Halide::Internal::ForType</a> { <br/>
+&#160;&#160;<a class="el" href="namespace_halide_1_1_internal.html#a6a8761f129e6554b9ea03de31bf066f1a5255d3daaa0a6276b844d61401e6f493">Halide::Internal::ForType::Serial</a>, 
 <a class="el" href="namespace_halide_1_1_internal.html#a6a8761f129e6554b9ea03de31bf066f1a98402eecfbcefc336954458a01752131">Halide::Internal::ForType::Parallel</a>, 
 <a class="el" href="namespace_halide_1_1_internal.html#a6a8761f129e6554b9ea03de31bf066f1a138bc087eaaaf426b54f9a466f0cc725">Halide::Internal::ForType::Vectorized</a>, 
-<a class="el" href="namespace_halide_1_1_internal.html#a6a8761f129e6554b9ea03de31bf066f1ae53597647de81f4cc9e098fc119ba0ac">Halide::Internal::ForType::Unrolled</a>
+<a class="el" href="namespace_halide_1_1_internal.html#a6a8761f129e6554b9ea03de31bf066f1ae53597647de81f4cc9e098fc119ba0ac">Halide::Internal::ForType::Unrolled</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespace_halide_1_1_internal.html#a6a8761f129e6554b9ea03de31bf066f1a9ad52f412f8b405c833cd317db050a28">Halide::Internal::ForType::GPUBlock</a>, 
+<a class="el" href="namespace_halide_1_1_internal.html#a6a8761f129e6554b9ea03de31bf066f1a403672f982053243315d59e56d8a3b8d">Halide::Internal::ForType::GPUThread</a>
+<br/>
  }</td></tr>
 <tr class="memdesc:a6a8761f129e6554b9ea03de31bf066f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enum describing a type of loop traversal.  <a href="namespace_halide_1_1_internal.html#a6a8761f129e6554b9ea03de31bf066f1">More...</a><br/></td></tr>
 <tr class="separator:a6a8761f129e6554b9ea03de31bf066f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -284,7 +290,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_de4960fb9afd4052b9300248cfe3cde2.html">src</a></li><li class="navelem"><a class="el" href="_expr_8h.html">Expr.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_expr_8h.html">Expr.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

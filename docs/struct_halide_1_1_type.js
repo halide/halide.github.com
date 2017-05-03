@@ -1,7 +1,7 @@
 var struct_halide_1_1_type =
 [
     [ "Type", "struct_halide_1_1_type.html#a065e12f4f355efd0b8823f6c74d5d596", null ],
-    [ "Type", "struct_halide_1_1_type.html#a8c155ed10d8586f9900fd8d38d354059", null ],
+    [ "Type", "struct_halide_1_1_type.html#a0aa6c0ee0933b408c25e9459bacb729a", null ],
     [ "Type", "struct_halide_1_1_type.html#a68f55a473d4b5f15c34ea7dc5d270067", null ],
     [ "Type", "struct_halide_1_1_type.html#aeb36dfd684ded5b1736110dde837f2b3", null ],
     [ "bytes", "struct_halide_1_1_type.html#a51daf7af52265b0fc1508b6bafd2361a", null ],
@@ -10,8 +10,8 @@ var struct_halide_1_1_type =
     [ "bits", "struct_halide_1_1_type.html#a77dc9c9c9d7854fc7c5fb8c0b49d591b", null ],
     [ "lanes", "struct_halide_1_1_type.html#afc127aa42364639df0950405fff05915", null ],
     [ "with_code", "struct_halide_1_1_type.html#a9311d4c06daf7bb3cbf67917309c9f96", null ],
-    [ "with_bits", "struct_halide_1_1_type.html#a0c22494f7eb0c11abd97322442eb1b3f", null ],
-    [ "with_lanes", "struct_halide_1_1_type.html#a004bd44eb406bfa1664243bce04c5f04", null ],
+    [ "with_bits", "struct_halide_1_1_type.html#a0d47c5ab650c20ab8d02138d901b9edf", null ],
+    [ "with_lanes", "struct_halide_1_1_type.html#a90981312677c00ebca89fc3f67f21941", null ],
     [ "is_bool", "struct_halide_1_1_type.html#a27521675bba618c3605a1c8807831641", null ],
     [ "is_vector", "struct_halide_1_1_type.html#a4f495c8b3b8689f528f7adbad60ba8ac", null ],
     [ "is_scalar", "struct_halide_1_1_type.html#a521753edbda1aeb8c2d118a1395333d0", null ],

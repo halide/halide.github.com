@@ -1,6 +1,6 @@
 var class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base =
 [
-    [ "CodeGen_GLSLBase", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html#ad7de241e5bad70ab10bed22cd54d3f49", null ],
+    [ "CodeGen_GLSLBase", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html#acec8bd826d5cd1b51e18330f8f9a706a", null ],
     [ "print_name", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html#a324ccb54f709a481278d27ab05d83d0a", null ],
     [ "print_type", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html#ab9fff1729458a8a85dffbe7a35c85b49", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html#ac4fad54e328b15b9fdee63c1c1e3be1e", null ],
@@ -13,5 +13,6 @@ var class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base =
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html#a1cbadf8649635a7bfaac935ca46cfc10", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html#a399e4f507b1ca4aed3f77cbd486f88d4", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html#ab10c978d10feaa8871ca8c73460ebfd1", null ],
-    [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html#a5ce59c87806c7fdec03ca962d6ff1d57", null ]
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html#a5ce59c87806c7fdec03ca962d6ff1d57", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html#ac622373ae22efca2d7ccd98065f91917", null ]
 ];

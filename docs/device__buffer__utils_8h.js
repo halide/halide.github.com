@@ -2,7 +2,8 @@ var device__buffer__utils_8h =
 [
     [ "device_copy", "struct_halide_1_1_runtime_1_1_internal_1_1device__copy.html", "struct_halide_1_1_runtime_1_1_internal_1_1device__copy" ],
     [ "MAX_COPY_DIMS", "device__buffer__utils_8h.html#a16405f5522f2f31b2dd36aa0b808a176", null ],
-    [ "buf_size", "device__buffer__utils_8h.html#a8965f0e6ad7ed1e13c8e4f83333b0e3f", null ],
-    [ "make_host_to_device_copy", "device__buffer__utils_8h.html#a15cdb351d5537dbd9d0f615f85e1b54c", null ],
-    [ "make_device_to_host_copy", "device__buffer__utils_8h.html#aa5a76b90556f519e4aab8f9c92e85029", null ]
+    [ "copy_memory_helper", "device__buffer__utils_8h.html#ad1b3bd7f3a3332293d45e45bc2a479b6", null ],
+    [ "copy_memory", "device__buffer__utils_8h.html#a01c8dd2614e7af6d8179993445d22c67", null ],
+    [ "make_host_to_device_copy", "device__buffer__utils_8h.html#a031a2fad9ac17a0741de01685d5d5703", null ],
+    [ "make_device_to_host_copy", "device__buffer__utils_8h.html#a8cea2fa224d7778075d25f377956d41e", null ]
 ];

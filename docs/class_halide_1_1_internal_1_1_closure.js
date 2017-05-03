@@ -1,6 +1,6 @@
 var class_halide_1_1_internal_1_1_closure =
 [
-    [ "BufferRef", "struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html", "struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref" ],
+    [ "Buffer", "struct_halide_1_1_internal_1_1_closure_1_1_buffer.html", "struct_halide_1_1_internal_1_1_closure_1_1_buffer" ],
     [ "Closure", "class_halide_1_1_internal_1_1_closure.html#ada39ff310229eb44c1a7767cd7c4ab0e", null ],
     [ "Closure", "class_halide_1_1_internal_1_1_closure.html#a8129ba4440d04e93b9fbbce56fc6a4e7", null ],
     [ "visit", "class_halide_1_1_internal_1_1_closure.html#ab420882ae538b2c29862d8b7dc11032a", null ],
@@ -10,8 +10,8 @@ var class_halide_1_1_internal_1_1_closure =
     [ "visit", "class_halide_1_1_internal_1_1_closure.html#a933996f373fe2718be7273b7a4017956", null ],
     [ "visit", "class_halide_1_1_internal_1_1_closure.html#a166a3860240308297ed838805023b422", null ],
     [ "visit", "class_halide_1_1_internal_1_1_closure.html#a011c669268585b9f5ead6951b174e25c", null ],
-    [ "names", "class_halide_1_1_internal_1_1_closure.html#a6b481939eb8b0d1b07f07bae0e18bcf7", null ],
+    [ "found_buffer_ref", "class_halide_1_1_internal_1_1_closure.html#af7cabdfd8430f128ac5c58d9365adf10", null ],
     [ "ignore", "class_halide_1_1_internal_1_1_closure.html#ab7f87fdc56211ec7ad37df774b70c2b1", null ],
     [ "vars", "class_halide_1_1_internal_1_1_closure.html#a1e1df57b78fed89780df286f67068cb6", null ],
-    [ "buffers", "class_halide_1_1_internal_1_1_closure.html#a5f52aae2c00c9b8e77884ec3c0869707", null ]
+    [ "buffers", "class_halide_1_1_internal_1_1_closure.html#a419de63e03ebe53511daf5924c4f9254", null ]
 ];

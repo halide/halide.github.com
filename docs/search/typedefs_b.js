@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['moduleproducer',['ModuleProducer',['../namespace_halide.html#a5e8c9a31b7ae5ccff9ef3234a68fc95c',1,'Halide']]]
+  ['namemangling',['NameMangling',['../class_halide_1_1_names_interface.html#a4dc4e46318e4f30d614d0cf1fef896d4',1,'Halide::NamesInterface']]]
 ];

@@ -1,15 +1,12 @@
 var struct_halide_1_1_internal_1_1_error_report =
 [
-    [ "ErrorReport", "struct_halide_1_1_internal_1_1_error_report.html#acef1951b6b18af27f98939b618db032a", null ],
-    [ "~ErrorReport", "struct_halide_1_1_internal_1_1_error_report.html#a533420711c946ebe90cc5b8e5c6a2b8e", null ],
-    [ "operator<<", "struct_halide_1_1_internal_1_1_error_report.html#a155236e2ece37f75d1a324d4ac64d77b", null ],
-    [ "explode", "struct_halide_1_1_internal_1_1_error_report.html#aaebe3911cdae9c39d4ee6e2bc7dd8b66", null ],
-    [ "msg", "struct_halide_1_1_internal_1_1_error_report.html#a8bd20e53030f77c7ed87623ac31743bf", null ],
-    [ "file", "struct_halide_1_1_internal_1_1_error_report.html#ab058e8d2d24bb4f0bf097089e662303c", null ],
-    [ "condition_string", "struct_halide_1_1_internal_1_1_error_report.html#aa164640cdc8764693983290b33ac782e", null ],
-    [ "line", "struct_halide_1_1_internal_1_1_error_report.html#a350616fc55df9463b5f620b63fb7807f", null ],
-    [ "condition", "struct_halide_1_1_internal_1_1_error_report.html#a60ece3a6896fc573af574c271089fd24", null ],
-    [ "user", "struct_halide_1_1_internal_1_1_error_report.html#aa934653dc78df41555075092e9545f42", null ],
-    [ "warning", "struct_halide_1_1_internal_1_1_error_report.html#acc69b2238d5488fcc7e1c058149cf3a8", null ],
-    [ "runtime", "struct_halide_1_1_internal_1_1_error_report.html#a6a5e6ffd742c2a5e253e843d19ddee1a", null ]
+    [ "User", "struct_halide_1_1_internal_1_1_error_report.html#a940b8fb14f6f366215eeee05f7907327a091ecd4b55abfea741cceb19cc694d32", null ],
+    [ "Warning", "struct_halide_1_1_internal_1_1_error_report.html#a940b8fb14f6f366215eeee05f7907327ad9eafd3221efa65134ad11fe7882e3f7", null ],
+    [ "Runtime", "struct_halide_1_1_internal_1_1_error_report.html#a940b8fb14f6f366215eeee05f7907327ae5f5e8312933376aec46ef899cd1f114", null ],
+    [ "ErrorReport", "struct_halide_1_1_internal_1_1_error_report.html#a810c93dffd6e67b70bf89b1381aebf64", null ],
+    [ "~ErrorReport", "struct_halide_1_1_internal_1_1_error_report.html#a86c457c908e0e393e8064d89219e84c6", null ],
+    [ "ref", "struct_halide_1_1_internal_1_1_error_report.html#ae4807dd91d9f16623f1c2d6c90302d90", null ],
+    [ "operator<<", "struct_halide_1_1_internal_1_1_error_report.html#a90aa2274ac6e821a5c4b009b7bd26b3d", null ],
+    [ "msg", "struct_halide_1_1_internal_1_1_error_report.html#a47c47cc1ec6258acccf0046a1d3e72df", null ],
+    [ "flags", "struct_halide_1_1_internal_1_1_error_report.html#a45db11a7879f01a7f8406ea77d09116a", null ]
 ];

@@ -8,8 +8,7 @@ var struct_halide_1_1_extern_func_argument =
       [ "ImageParamArg", "struct_halide_1_1_extern_func_argument.html#acaf18f00d1d41e200ba8c7ac799a172ba8a178fab7553bc9085ac4cf23bdd65eb", null ]
     ] ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a2857a09b3c0fb8a149e4b7d901ee1ded", null ],
-    [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#aa530fff00190ac58271c5f3598d69251", null ],
-    [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a7afbcf23f05ef67b1d7bc263a220d51e", null ],
+    [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#ab3b42a497ddebd3e4ed6e61cb0620cdc", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#ac39965f88b76e3fe4d8206e4090372f5", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#af321dd81fbcf5ec5c8a638dfd839b506", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a36aa8c858f9dcc85ca23f41f9b2452d9", null ],
@@ -22,7 +21,7 @@ var struct_halide_1_1_extern_func_argument =
     [ "defined", "struct_halide_1_1_extern_func_argument.html#a87d6214e154711af418792fb3ed41e92", null ],
     [ "arg_type", "struct_halide_1_1_extern_func_argument.html#addf78c9d53f9e14e5dd8edf1d48a6389", null ],
     [ "func", "struct_halide_1_1_extern_func_argument.html#ab091d86a87f6ddb7aaa9b2ddda2e3f3a", null ],
-    [ "buffer", "struct_halide_1_1_extern_func_argument.html#a869ddccbe6ef76f34316c292eccf30ca", null ],
+    [ "buffer", "struct_halide_1_1_extern_func_argument.html#a2f5bf9e8e16dbfcba10c336530836340", null ],
     [ "expr", "struct_halide_1_1_extern_func_argument.html#af643011053e0a494f932c6af7a042b05", null ],
     [ "image_param", "struct_halide_1_1_extern_func_argument.html#a5bcf9064d71855a29e93600dbbcf1e29", null ]
 ];

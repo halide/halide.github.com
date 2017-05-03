@@ -1,7 +1,6 @@
 var NAVTREE =
 [
   [ "Halide", "index.html", [
-    [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -31,9 +30,9 @@ var NAVTREE =
         [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", "globals_func" ],
         [ "Variables", "globals_vars.html", null ],
-        [ "Typedefs", "globals_type.html", "globals_type" ],
+        [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", "globals_eval" ],
+        [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", "globals_defs" ]
       ] ]
     ] ],
@@ -44,29 +43,30 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_add_image_checks_8h.html",
-"_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2acbe1377636dc5dc95b68ff96203249cc",
-"_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca28e9d2c63f5933a4422b668b3f473867",
-"_i_r_operator_8h.html#a80881209a15ed749e168d6edbcb6f687",
-"_output_image_param_8h_source.html",
-"android__ioctl_8h.html#aac9326e045ee2b98b9e999076de6d006",
-"class_halide_1_1_func.html#aabbca0a4e813bd81f264c229a6eeb61d",
-"class_halide_1_1_internal_1_1_code_gen___g_l_s_l.html#a727f54656d112413b7a3736c0ef69bce",
-"class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#adf616481b12366a4fcdbf28bb5488f49",
-"class_halide_1_1_internal_1_1_definition.html#ad4875343613fadef83aeae524512fe5e",
-"class_halide_1_1_internal_1_1_i_r_printer.html#af3f28014287a3239a7de01852479ec38",
-"class_halide_1_1_param.html#a32d6366da61a68ece00facc24d7a44d4",
-"elf_8h.html#a3cab103b1cdc9025731a8fa4d6d1955c",
-"mini__cl_8h.html#a1e7a708f426cc4d081cbee824e896004",
-"mini__cl_8h.html#aa7b9320a4af8b877680d1243fb0458ea",
-"mini__cuda_8h.html#af19313e44c60ca273901b267a591bffaa8719e4547cebfb2655b7b486a79b7425",
-"mini__renderscript_8h.html#a02ec4d4448d180273e8d35baf641c618aa31a602144b121775366286ae286169d",
-"mini__renderscript_8h.html#aba7e47cf93028789af73b4b727a36cfc",
-"namespace_halide_1_1_integer_divide_table.html",
-"struct_halide_1_1_all_ints_3_4.html",
-"struct_halide_1_1_internal_1_1_file_stat.html#a9dddec0ce5aa64cd04550c202897c24f",
-"struct_halide_1_1_internal_1_1_storage_dim.html#a0157f5cf508314a37bfc48485e4cb9bc",
-"struct_halide_1_1_type.html#a4f495c8b3b8689f528f7adbad60ba8ac",
-"structelf__t.html#a8a5516f7d3ec33e725270de764ac12d2"
+"_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2a2dcbad7477fd40561e8b8198f173bd47",
+"_halide_runtime_8h.html#a320c79a12e6121c7468cb203373e6afca1b91e0ac0aba5891e4c7219878da7460",
+"_hexagon_optimize_8h.html#abfe3690b39dbad72494049eda6d89dcf",
+"_inline_reductions_8h.html#a185933a66a6d413535479a3c23de9496",
+"_storage_folding_8h_source.html",
+"class_halide_1_1_buffer.html#ad58158a09449b074666062ea33d43fa1",
+"class_halide_1_1_internal_1_1_closure.html#a1e1df57b78fed89780df286f67068cb6",
+"class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a487c1a563aebadc62437379d052916bf",
+"class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html#ad3faeabd4845dcd0584f13104aca0f0c",
+"class_halide_1_1_internal_1_1_elf_1_1_symbol.html#a57da792ab7c8da6558afefbf1db8f012a5d7669fc344c22b6f3fdb2629baba1eb",
+"class_halide_1_1_internal_1_1_generator_output_base.html#a32c4599bcf53cf400e0d76348deb16c0",
+"class_halide_1_1_internal_1_1_i_r_printer.html#a8ba45883c2d82452fd2cf90ae019e87a",
+"class_halide_1_1_internal_1_1_temporary_file.html#ae722481b00635212b6c9ba9fb876904e",
+"class_halide_1_1_runtime_1_1_buffer.html#a506c21bfc249b172536a5dfb59b16da4",
+"functions_vars_a.html",
+"mini__cl_8h.html#a47e4b90ff4ee9594e6dd51e562b7e46c",
+"mini__cl_8h.html#ad6878037fdcde21fcb796c2eb8acdbee",
+"mini__opengl_8h.html#a173a2b2453322dd8d613df6cf2e72480",
+"namespacemembers_t.html",
+"struct_halide_1_1_internal_1_1_and.html",
+"struct_halide_1_1_internal_1_1_i_r_handle.html",
+"struct_halide_1_1_internal_1_1_store.html#ab0910ecca29f289af6e5d277e3dec096",
+"struct_halide_1_1_type.html#a51daf7af52265b0fc1508b6bafd2361a",
+"thread__pool__common_8h.html#affb017c8f9fc9efdd0054393e2e51bde"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -44,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -101,8 +100,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_10_aot_compilation_ge
 <div class="title">tutorial/lesson_10_aot_compilation_generate.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"></div>
-<div class="line"><span class="comment">// Halide tutorial lesson 10: AOT compilation part 1</span></div>
+<div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 10: AOT compilation part 1</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// This lesson demonstrates how to use Halide as an more traditional</span></div>
 <div class="line"><span class="comment">// ahead-of-time (AOT) compiler.</span></div>
@@ -122,7 +120,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_10_aot_compilation_ge
 <div class="line"><span class="comment">// On os x:</span></div>
 <div class="line"><span class="comment">// g++ lesson_10*generate.cpp -g -std=c++11 -I ../include -L ../bin -lHalide -o lesson_10_generate</span></div>
 <div class="line"><span class="comment">// DYLD_LIBRARY_PATH=../bin ./lesson_10_generate</span></div>
-<div class="line"><span class="comment">// g++ lesson_10*run.cpp lesson_10_halide.a -o lesson_10_run</span></div>
+<div class="line"><span class="comment">// g++ lesson_10*run.cpp lesson_10_halide.a -o lesson_10_run -I ../include</span></div>
 <div class="line"><span class="comment">// ./lesson_10_run</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">// The benefits of this approach are that the final program:</span></div>
@@ -156,11 +154,11 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_10_aot_compilation_ge
 <div class="line">    <span class="comment">// inputs and outputs.</span></div>
 <div class="line">    <a name="_a3"></a><a class="code" href="class_halide_1_1_image_param.html">ImageParam</a> input(type_of&lt;uint8_t&gt;(), 2);</div>
 <div class="line"></div>
-<div class="line">    <span class="comment">// If we were jit-compiling, these would just be an int and an</span></div>
-<div class="line">    <span class="comment">// Image, but because we want to compile the pipeline once and</span></div>
+<div class="line">    <span class="comment">// If we were jit-compiling, these would just be an int and a</span></div>
+<div class="line">    <span class="comment">// Buffer, but because we want to compile the pipeline once and</span></div>
 <div class="line">    <span class="comment">// have it work for any value of the parameter, we need to make a</span></div>
 <div class="line">    <span class="comment">// Param object, which can be used like an Expr, and an ImageParam</span></div>
-<div class="line">    <span class="comment">// object, which can be used like an Image.</span></div>
+<div class="line">    <span class="comment">// object, which can be used like a Buffer.</span></div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// Define the Func.</span></div>
 <div class="line">    brighter(x, y) = input(x, y) + offset;</div>

@@ -1,6 +1,6 @@
 var class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c =
 [
-    [ "CodeGen_OpenCL_C", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a6a21123fb72f367d2c3c45cdbe72622b", null ],
+    [ "CodeGen_OpenCL_C", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a9ca22b5089d8a552c45d0335fddedb42", null ],
     [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#af9ea0add2ee34c9ea7ad30698e1a204c", null ],
     [ "print_type", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a46cf5a68d2ee66e187a0e62e7b436741", null ],
     [ "print_reinterpret", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a49f06db489fa71fe22fadc324d7337eb", null ],
@@ -21,5 +21,6 @@ var class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a5e8b30fd91a85c91243983a4b3f5be2e", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a19f11390738d31fdfa817ef2f889dcea", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a26ce8eed616f5f6e8347585fc964c69c", null ],
-    [ "visit", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a5fa406902caef98223ab57afde60563d", null ]
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a5fa406902caef98223ab57afde60563d", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#aa4b1b205058172fc228ba88d48fb2dc3", null ]
 ];

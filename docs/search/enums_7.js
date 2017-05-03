@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['linkagetype',['LinkageType',['../struct_halide_1_1_internal_1_1_lowered_func.html#a5048e4905f95550e02ea09cc5683025b',1,'Halide::Internal::LoweredFunc']]]
+  ['kind',['Kind',['../struct_halide_1_1_argument.html#aee62e5cc903afddd64fcc689b7359659',1,'Halide::Argument::Kind()'],['../class_halide_1_1_internal_1_1_object_instance_registry.html#a0e2e38e50a26fb81ebc62963b8483377',1,'Halide::Internal::ObjectInstanceRegistry::Kind()']]]
 ];

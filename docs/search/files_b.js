@@ -9,7 +9,6 @@ var searchData=
   ['mini_5fcuda_2eh',['mini_cuda.h',['../mini__cuda_8h.html',1,'']]],
   ['mini_5fopengl_2eh',['mini_opengl.h',['../mini__opengl_8h.html',1,'']]],
   ['mini_5fqurt_2eh',['mini_qurt.h',['../mini__qurt_8h.html',1,'']]],
-  ['mini_5frenderscript_2eh',['mini_renderscript.h',['../mini__renderscript_8h.html',1,'']]],
   ['module_2eh',['Module.h',['../_module_8h.html',1,'']]],
   ['modulusremainder_2eh',['ModulusRemainder.h',['../_modulus_remainder_8h.html',1,'']]],
   ['monotonic_2eh',['Monotonic.h',['../_monotonic_8h.html',1,'']]]

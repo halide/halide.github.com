@@ -17,6 +17,6 @@ var struct_halide_1_1_internal_1_1_call =
     [ "call_type", "struct_halide_1_1_internal_1_1_call.html#a76805c16c470e73827363769fdd91b53", null ],
     [ "func", "struct_halide_1_1_internal_1_1_call.html#a9c6f4f9c974d58fb2f31b20d9ab8d29c", null ],
     [ "value_index", "struct_halide_1_1_internal_1_1_call.html#adcb7e45845535171a44ba8c9dbcbed16", null ],
-    [ "image", "struct_halide_1_1_internal_1_1_call.html#a34c56155637a6d665c03e2eb05e2fdb5", null ],
+    [ "image", "struct_halide_1_1_internal_1_1_call.html#a85db8b4977d7378850e3e2394f5dfb1d", null ],
     [ "param", "struct_halide_1_1_internal_1_1_call.html#acf39af7c286ee827b405001347c2ebf7", null ]
 ];

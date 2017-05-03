@@ -4,7 +4,6 @@ var searchData=
   ['wakeup_5fa_5fteam',['wakeup_a_team',['../struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html#a0f85cfad1aa09310c6840fccac99ee09',1,'Halide::Runtime::Internal::work_queue_t']]],
   ['wakeup_5fb_5fteam',['wakeup_b_team',['../struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html#a7d760d0344ff0269ee3ee926eb17c0e2',1,'Halide::Runtime::Internal::work_queue_t']]],
   ['wakeup_5fowners',['wakeup_owners',['../struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html#a6eb6f145562f07451e2cdefeaab5f4fb',1,'Halide::Runtime::Internal::work_queue_t']]],
-  ['warning',['warning',['../struct_halide_1_1_internal_1_1_error_report.html#acc69b2238d5488fcc7e1c058149cf3a8',1,'Halide::Internal::ErrorReport']]],
   ['widthinbytes',['WidthInBytes',['../struct_halide_1_1_runtime_1_1_internal_1_1_cuda_1_1_c_u_d_a___m_e_m_c_p_y3_d__st.html#a018226aaad685f2c98785de4a4d4f31f',1,'Halide::Runtime::Internal::Cuda::CUDA_MEMCPY3D_st']]],
   ['wild_5ff32x2',['wild_f32x2',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a5c7b6be3a108061ac66246932dfe516b',1,'Halide::Internal::CodeGen_LLVM']]],
   ['wild_5ff32x4',['wild_f32x4',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#aefa03a601261ad74d845ba347358fcc5',1,'Halide::Internal::CodeGen_LLVM']]],
@@ -46,7 +45,5 @@ var searchData=
   ['wild_5fu8x_5f',['wild_u8x_',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a7eafcdfb329717fd4e8213d26cd8a71e',1,'Halide::Internal::CodeGen_LLVM']]],
   ['work_5fqueue',['work_queue',['../namespace_halide_1_1_runtime_1_1_internal.html#ac83753a60eb8a7c6ae34fad643e00401',1,'Halide::Runtime::Internal']]],
   ['workgroup_5fsize',['workgroup_size',['../class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html#a034b05f95547d25a8141e1d010e9dc3d',1,'Halide::Internal::CodeGen_OpenGLCompute_Dev::CodeGen_OpenGLCompute_C']]],
-  ['write',['write',['../struct_halide_1_1_internal_1_1_closure_1_1_buffer_ref.html#ab728f01010546a21410a93d4b747cfe4',1,'Halide::Internal::Closure::BufferRef::write()'],['../struct_halide_1_1_internal_1_1_device_argument.html#ac3227ae7da3113416811443cc45050b3',1,'Halide::Internal::DeviceArgument::write()']]],
-  ['writeable_5fbuf',['writeable_buf',['../structelf__t.html#abf85d0c26974cecd2bcdef16836fd1af',1,'elf_t']]],
-  ['writeable_5fsize',['writeable_size',['../structelf__t.html#a86b6341714ad4119a6bcb558592d25df',1,'elf_t']]]
+  ['write',['write',['../struct_halide_1_1_internal_1_1_closure_1_1_buffer.html#a061aa051b4a2080e8cb94d6d8362f009',1,'Halide::Internal::Closure::Buffer::write()'],['../struct_halide_1_1_internal_1_1_device_argument.html#ac3227ae7da3113416811443cc45050b3',1,'Halide::Internal::DeviceArgument::write()']]]
 ];

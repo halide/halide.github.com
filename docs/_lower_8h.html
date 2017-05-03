@@ -44,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -113,7 +112,10 @@ $(document).ready(function(){initNavTree('_lower_8h.html','');});
 
 <p>Defines the function that generates a statement that computes a <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> function using its schedule.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="_i_r_8h_source.html">IR.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &lt;iterator&gt;</code><br/>
+<code>#include &quot;<a class="el" href="_argument_8h_source.html">Argument.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_i_r_8h_source.html">IR.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_module_8h_source.html">Module.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_target_8h_source.html">Target.h</a>&quot;</code><br/>
 </div>
 <p><a href="_lower_8h_source.html">Go to the source code of this file.</a></p>
@@ -128,9 +130,12 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a78c16d0a33d7fdc862142297ce8f5134"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Stmt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a78c16d0a33d7fdc862142297ce8f5134">Halide::Internal::lower</a> (std::vector&lt; Function &gt; outputs, const std::string &amp;pipeline_name, const Target &amp;t, const std::vector&lt; IRMutator * &gt; &amp;custom_passes=std::vector&lt; IRMutator * &gt;())</td></tr>
-<tr class="memdesc:a78c16d0a33d7fdc862142297ce8f5134"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a halide function with a schedule, create a statement that evaluates it.  <a href="#a78c16d0a33d7fdc862142297ce8f5134">More...</a><br/></td></tr>
-<tr class="separator:a78c16d0a33d7fdc862142297ce8f5134"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa33f0f4936bafcfc8cbfeea954f741e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Module&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa33f0f4936bafcfc8cbfeea954f741e9">Halide::Internal::lower</a> (const std::vector&lt; Function &gt; &amp;output_funcs, const std::string &amp;pipeline_name, const Target &amp;t, std::vector&lt; Argument &gt; &amp;args, const Internal::LoweredFunc::LinkageType linkage_type, const std::vector&lt; IRMutator * &gt; &amp;custom_passes=std::vector&lt; IRMutator * &gt;())</td></tr>
+<tr class="memdesc:aa33f0f4936bafcfc8cbfeea954f741e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a vector of scheduled halide functions, create a <a class="el" href="class_halide_1_1_module.html" title="A halide module. ">Module</a> that evaluates it.  <a href="#aa33f0f4936bafcfc8cbfeea954f741e9">More...</a><br/></td></tr>
+<tr class="separator:aa33f0f4936bafcfc8cbfeea954f741e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66c490de4414ca6a8cf62a45009657b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> Stmt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a66c490de4414ca6a8cf62a45009657b8">Halide::Internal::lower_main_stmt</a> (const std::vector&lt; Function &gt; &amp;output_funcs, const std::string &amp;pipeline_name, const Target &amp;t, const std::vector&lt; IRMutator * &gt; &amp;custom_passes=std::vector&lt; IRMutator * &gt;())</td></tr>
+<tr class="memdesc:a66c490de4414ca6a8cf62a45009657b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a halide function with a schedule, create a statement that evaluates it.  <a href="#a66c490de4414ca6a8cf62a45009657b8">More...</a><br/></td></tr>
+<tr class="separator:a66c490de4414ca6a8cf62a45009657b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d3bfe43201bab68cf4820993fe1469b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a4d3bfe43201bab68cf4820993fe1469b">Halide::Internal::lower_test</a> ()</td></tr>
 <tr class="separator:a4d3bfe43201bab68cf4820993fe1469b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -143,7 +148,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_de4960fb9afd4052b9300248cfe3cde2.html">src</a></li><li class="navelem"><a class="el" href="_lower_8h.html">Lower.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_lower_8h.html">Lower.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

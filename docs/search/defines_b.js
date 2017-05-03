@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rs_5fversion',['RS_VERSION',['../mini__renderscript_8h.html#a785226795b8ec0079cda6554f70e9866',1,'mini_renderscript.h']]]
+  ['weak',['WEAK',['../runtime__internal_8h.html#ad1480e9557edcc543498ca259cee6c7d',1,'runtime_internal.h']]]
 ];

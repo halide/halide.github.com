@@ -44,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -106,7 +105,9 @@ $(document).ready(function(){initNavTree('_generator_8h.html','');});
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Generator.h File Reference</div>  </div>
@@ -116,6 +117,7 @@ $(document).ready(function(){initNavTree('_generator_8h.html','');});
 <p>Generator is a class used to encapsulate the building of Funcs in user pipelines.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;algorithm&gt;</code><br/>
+<code>#include &lt;iterator&gt;</code><br/>
 <code>#include &lt;limits&gt;</code><br/>
 <code>#include &lt;memory&gt;</code><br/>
 <code>#include &lt;mutex&gt;</code><br/>
@@ -124,14 +126,22 @@ $(document).ready(function(){initNavTree('_generator_8h.html','');});
 <code>#include &lt;type_traits&gt;</code><br/>
 <code>#include &lt;vector&gt;</code><br/>
 <code>#include &quot;<a class="el" href="_func_8h_source.html">Func.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="_object_instance_registry_8h_source.html">ObjectInstanceRegistry.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_external_code_8h_source.html">ExternalCode.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_introspection_8h_source.html">Introspection.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_object_instance_registry_8h_source.html">ObjectInstanceRegistry.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_schedule_param_8h_source.html">ScheduleParam.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_target_8h_source.html">Target.h</a>&quot;</code><br/>
 </div>
 <p><a href="_generator_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_buffer.html">Halide::Buffer&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="class_halide_1_1_buffer.html" title="A Halide::Buffer is a named shared reference to a Halide::Runtime::Buffer. ">Halide::Buffer</a> is a named shared reference to a <a class="el" href="class_halide_1_1_runtime_1_1_buffer.html" title="A templated Buffer class that wraps halide_buffer_t and adds functionality. ">Halide::Runtime::Buffer</a>.  <a href="class_halide_1_1_buffer.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_value_tracker.html">Halide::Internal::ValueTracker</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_halide_1_1_internal_1_1_value_tracker.html" title="ValueTracker is an internal utility class that attempts to track and flag certain obvious Stub-relate...">ValueTracker</a> is an internal utility class that attempts to track and flag certain obvious Stub-related errors at <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> compile time: it tracks the constraints set on any Parameter-based argument (i.e., Input&lt;Buffer&gt; and Output&lt;Buffer&gt;) to ensure that incompatible values aren't set.  <a href="class_halide_1_1_internal_1_1_value_tracker.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1cond.html">Halide::Internal::cond&lt; B, T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1select__type.html">Halide::Internal::select_type&lt; First, Rest &gt;</a></td></tr>
@@ -155,7 +165,70 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_generator_param.html">Halide::GeneratorParam&lt; T &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_halide_1_1_generator_param.html" title="GeneratorParam is a templated class that can be used to modify the behavior of the Generator at code-...">GeneratorParam</a> is a templated class that can be used to modify the behavior of the <a class="el" href="class_halide_1_1_generator.html">Generator</a> at code-generation time.  <a href="class_halide_1_1_generator_param.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_input___buffer.html">Halide::Internal::GeneratorInput_Buffer&lt; T2 &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_stub_input_buffer.html">Halide::Internal::StubInputBuffer&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_halide_1_1_internal_1_1_stub_input_buffer.html" title="StubInputBuffer is the placeholder that a Stub uses when it requires a Buffer for an input (rather th...">StubInputBuffer</a> is the placeholder that a Stub uses when it requires a <a class="el" href="class_halide_1_1_buffer.html" title="A Halide::Buffer is a named shared reference to a Halide::Runtime::Buffer. ">Buffer</a> for an input (rather than merely a <a class="el" href="class_halide_1_1_func.html" title="A halide function. ">Func</a> or <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax. ">Expr</a>).  <a href="class_halide_1_1_internal_1_1_stub_input_buffer.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_stub_output_buffer_base.html">Halide::Internal::StubOutputBufferBase</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_stub_output_buffer.html">Halide::Internal::StubOutputBuffer&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_halide_1_1_internal_1_1_stub_output_buffer.html" title="StubOutputBuffer is the placeholder that a Stub uses when it requires a Buffer for an output (rather ...">StubOutputBuffer</a> is the placeholder that a Stub uses when it requires a <a class="el" href="class_halide_1_1_buffer.html" title="A Halide::Buffer is a named shared reference to a Halide::Runtime::Buffer. ">Buffer</a> for an output (rather than merely a <a class="el" href="class_halide_1_1_func.html" title="A halide function. ">Func</a>).  <a href="class_halide_1_1_internal_1_1_stub_output_buffer.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_stub_input.html">Halide::Internal::StubInput</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_constrainable.html">Halide::Internal::Constrainable</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_g_i_o_base.html">Halide::Internal::GIOBase</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_halide_1_1_internal_1_1_g_i_o_base.html" title="GIOBase is the base class for all GeneratorInput&lt;&gt; and GeneratorOutput&lt;&gt; instantiations; it is not pa...">GIOBase</a> is the base class for all GeneratorInput&lt;&gt; and GeneratorOutput&lt;&gt; instantiations; it is not part of the public API and should never be used directly by user code.  <a href="class_halide_1_1_internal_1_1_g_i_o_base.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_input_base.html">Halide::Internal::GeneratorInputBase</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_input_impl.html">Halide::Internal::GeneratorInputImpl&lt; T, ValueType &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_input___buffer.html">Halide::Internal::GeneratorInput_Buffer&lt; T2 &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_input___func.html">Halide::Internal::GeneratorInput_Func&lt; T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_input___scalar.html">Halide::Internal::GeneratorInput_Scalar&lt; T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_input___arithmetic.html">Halide::Internal::GeneratorInput_Arithmetic&lt; T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1type__sink.html">Halide::Internal::type_sink&lt; typename &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1has__static__halide__type__method.html">Halide::Internal::has_static_halide_type_method&lt; T2, typename &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1has__static__halide__type__method_3_01_t2_00_01typename_01type__si902d603523cc7c0df71b135e75cbe224.html">Halide::Internal::has_static_halide_type_method&lt; T2, typename type_sink&lt; decltype(T2::static_halide_type())&gt;::type &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_generator_input.html">Halide::GeneratorInput&lt; T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_output_base.html">Halide::Internal::GeneratorOutputBase</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_output_impl.html">Halide::Internal::GeneratorOutputImpl&lt; T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_output___buffer.html">Halide::Internal::GeneratorOutput_Buffer&lt; T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_output___func.html">Halide::Internal::GeneratorOutput_Func&lt; T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_output___arithmetic.html">Halide::Internal::GeneratorOutput_Arithmetic&lt; T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_generator_output.html">Halide::GeneratorOutput&lt; T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_param___synthetic.html">Halide::Internal::GeneratorParam_Synthetic&lt; T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_generator_context.html">Halide::GeneratorContext</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_halide_1_1_generator_context.html" title="GeneratorContext is an abstract interface that is used when constructing a Generator Stub; it is used...">GeneratorContext</a> is an abstract interface that is used when constructing a <a class="el" href="class_halide_1_1_generator.html">Generator</a> Stub; it is used to allow the outer context (typically, either a <a class="el" href="class_halide_1_1_generator.html">Generator</a> or "top-level" code) to specify certain information to the inner context to ensure that inner and outer Generators are compiled in a compatible way; at present, this is used to propagate the outer <a class="el" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for. ">Target</a> to the inner <a class="el" href="class_halide_1_1_generator.html">Generator</a>.  <a href="class_halide_1_1_generator_context.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_j_i_t_generator_context.html">Halide::JITGeneratorContext</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_halide_1_1_j_i_t_generator_context.html" title="JITGeneratorContext is a utility implementation of GeneratorContext that is intended for use when usi...">JITGeneratorContext</a> is a utility implementation of <a class="el" href="class_halide_1_1_generator_context.html" title="GeneratorContext is an abstract interface that is used when constructing a Generator Stub; it is used...">GeneratorContext</a> that is intended for use when using <a class="el" href="class_halide_1_1_generator.html">Generator</a> Stubs with the JIT; it simply allows you to wrap a specific <a class="el" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for. ">Target</a> in a <a class="el" href="class_halide_1_1_generator_context.html" title="GeneratorContext is an abstract interface that is used when constructing a Generator Stub; it is used...">GeneratorContext</a> for use with a stub, often in conjunction with the <a class="el" href="namespace_halide.html#a2d655bb0051fc525e3e5d73997f93cdd" title="Return the target that Halide will use. ">Halide::get_target_from_environment()</a> call:  <a href="class_halide_1_1_j_i_t_generator_context.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_names_interface.html">Halide::NamesInterface</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_no_realizations.html">Halide::Internal::NoRealizations&lt; Args &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_no_realizations_3_4.html">Halide::Internal::NoRealizations&lt;&gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_no_realizations_3_01_t_00_01_args_8_8_8_4.html">Halide::Internal::NoRealizations&lt; T, Args...&gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_base.html">Halide::Internal::GeneratorBase</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,11 +236,15 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_factory.html">Halide::Internal::GeneratorFactory</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_simple_generator_factory.html">Halide::Internal::SimpleGeneratorFactory</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_registry.html">Halide::Internal::GeneratorRegistry</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_generator.html">Halide::Generator&lt; T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_register_generator.html">Halide::RegisterGenerator&lt; T &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_register_generator.html">Halide::RegisterGenerator&lt; GeneratorClass &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_stub.html">Halide::Internal::GeneratorStub</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -180,219 +257,447 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespace_halide_1_1_internal_1_1_generator_min_max"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal_1_1_generator_min_max.html">Halide::Internal::GeneratorMinMax</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a08dae13ee17f505472e95d3bcaec9984"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_generator_8h.html#a08dae13ee17f505472e95d3bcaec9984">HALIDE_GENERATOR_PARAM_TYPED_SETTER</a>(TYPE)&#160;&#160;&#160;virtual void set(const TYPE &amp;new_value) = 0;</td></tr>
+<tr class="separator:a08dae13ee17f505472e95d3bcaec9984"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08dae13ee17f505472e95d3bcaec9984"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_generator_8h.html#a08dae13ee17f505472e95d3bcaec9984">HALIDE_GENERATOR_PARAM_TYPED_SETTER</a>(TYPE)&#160;&#160;&#160;void set(const TYPE &amp;new_value) override { typed_setter_impl&lt;TYPE&gt;(new_value, #TYPE); }</td></tr>
+<tr class="separator:a08dae13ee17f505472e95d3bcaec9984"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af661b27787c9b17bcb12bcf5577b1c2c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_generator_8h.html#af661b27787c9b17bcb12bcf5577b1c2c">HALIDE_OUTPUT_FORWARD</a>(method)</td></tr>
+<tr class="separator:af661b27787c9b17bcb12bcf5577b1c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a555406167f75fa9f0061fae31ccc7084"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_generator_8h.html#a555406167f75fa9f0061fae31ccc7084">HALIDE_OUTPUT_FORWARD_CONST</a>(method)</td></tr>
+<tr class="separator:a555406167f75fa9f0061fae31ccc7084"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e1a953e8ce8010860b9ad3f1dbe38f5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_generator_8h.html#a4e1a953e8ce8010860b9ad3f1dbe38f5">HALIDE_REGISTER_GENERATOR</a>(GEN_CLASS_NAME, GEN_REGISTRY_NAME)&#160;&#160;&#160;namespace ns_reg_gen { static auto reg_##GEN_CLASS_NAME = <a class="el" href="class_halide_1_1_register_generator.html">Halide::RegisterGenerator</a>&lt;GEN_CLASS_NAME&gt;(GEN_REGISTRY_NAME); }</td></tr>
+<tr class="separator:a4e1a953e8ce8010860b9ad3f1dbe38f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:aecc03e0ba4be51afc995f76d6d309aca"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aecc03e0ba4be51afc995f76d6d309aca"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aecc03e0ba4be51afc995f76d6d309aca">Halide::Internal::GeneratorParamImplBase</a> = typename Internal::select_type&lt; Internal::cond&lt; std::is_same&lt; T, Target &gt;::value, Internal::GeneratorParam_Target&lt; T &gt;&gt;, Internal::cond&lt; std::is_same&lt; T, Type &gt;::value, Internal::GeneratorParam_Type&lt; T &gt;&gt;, Internal::cond&lt; std::is_same&lt; T, bool &gt;::value, Internal::GeneratorParam_Bool&lt; T &gt;&gt;, Internal::cond&lt; std::is_arithmetic&lt; T &gt;::value, Internal::GeneratorParam_Arithmetic&lt; T &gt;&gt;, Internal::cond&lt; std::is_enum&lt; T &gt;::value, Internal::GeneratorParam_Enum&lt; T &gt;&gt; &gt;::type</td></tr>
-<tr class="separator:aecc03e0ba4be51afc995f76d6d309aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a717e2a4d2d05d76c1039d58fef97cf7d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a717e2a4d2d05d76c1039d58fef97cf7d"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a717e2a4d2d05d76c1039d58fef97cf7d">Halide::Internal::GeneratorParamImplBase</a> = typename select_type&lt; cond&lt; std::is_same&lt; T, Target &gt;::value, GeneratorParam_Target&lt; T &gt;&gt;, cond&lt; std::is_same&lt; T, Type &gt;::value, GeneratorParam_Type&lt; T &gt;&gt;, cond&lt; std::is_same&lt; T, bool &gt;::value, GeneratorParam_Bool&lt; T &gt;&gt;, cond&lt; std::is_arithmetic&lt; T &gt;::value, GeneratorParam_Arithmetic&lt; T &gt;&gt;, cond&lt; std::is_enum&lt; T &gt;::value, GeneratorParam_Enum&lt; T &gt;&gt; &gt;::type</td></tr>
+<tr class="separator:a717e2a4d2d05d76c1039d58fef97cf7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4f2df17f3c13c09f5cbd2672f2a6902"><td class="memTemplParams" colspan="2">template&lt;typename T , typename TBase  = typename std::remove_all_extents&lt;T&gt;::type&gt; </td></tr>
+<tr class="memitem:aa4f2df17f3c13c09f5cbd2672f2a6902"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa4f2df17f3c13c09f5cbd2672f2a6902">Halide::Internal::GeneratorInputImplBase</a> = typename select_type&lt; cond&lt; has_static_halide_type_method&lt; TBase &gt;::value, GeneratorInput_Buffer&lt; T &gt;&gt;, cond&lt; std::is_same&lt; TBase, Func &gt;::value, GeneratorInput_Func&lt; T &gt;&gt;, cond&lt; std::is_arithmetic&lt; TBase &gt;::value, GeneratorInput_Arithmetic&lt; T &gt;&gt;, cond&lt; std::is_scalar&lt; TBase &gt;::value, GeneratorInput_Scalar&lt; T &gt;&gt; &gt;::type</td></tr>
+<tr class="separator:aa4f2df17f3c13c09f5cbd2672f2a6902"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65269e471e6b0c035abc3e3be6d3185b"><td class="memTemplParams" colspan="2">template&lt;typename T , typename TBase  = typename std::remove_all_extents&lt;T&gt;::type&gt; </td></tr>
+<tr class="memitem:a65269e471e6b0c035abc3e3be6d3185b"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a65269e471e6b0c035abc3e3be6d3185b">Halide::Internal::GeneratorOutputImplBase</a> = typename select_type&lt; cond&lt; has_static_halide_type_method&lt; TBase &gt;::value, GeneratorOutput_Buffer&lt; T &gt;&gt;, cond&lt; std::is_same&lt; TBase, Func &gt;::value, GeneratorOutput_Func&lt; T &gt;&gt;, cond&lt; std::is_arithmetic&lt; TBase &gt;::value, GeneratorOutput_Arithmetic&lt; T &gt;&gt; &gt;::type</td></tr>
+<tr class="separator:a65269e471e6b0c035abc3e3be6d3185b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6509f7f99aeb9dce689233d70fab9365"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a6509f7f99aeb9dce689233d70fab9365">Halide::Internal::GeneratorCreateFunc</a> = std::function&lt; std::unique_ptr&lt; Internal::GeneratorBase &gt;(const GeneratorContext &amp;context)&gt;</td></tr>
+<tr class="separator:a6509f7f99aeb9dce689233d70fab9365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ae02ee070dfadab621e55f3b3dd971e18"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ae02ee070dfadab621e55f3b3dd971e18">Halide::Internal::IOKind</a> { <a class="el" href="namespace_halide_1_1_internal.html#ae02ee070dfadab621e55f3b3dd971e18af60357a8d17e45793298323f1b372a74">Halide::Internal::IOKind::Scalar</a>, 
+<a class="el" href="namespace_halide_1_1_internal.html#ae02ee070dfadab621e55f3b3dd971e18a86408593c34af77fdd90df932f8b5261">Halide::Internal::IOKind::Function</a>, 
+<a class="el" href="namespace_halide_1_1_internal.html#ae02ee070dfadab621e55f3b3dd971e18a7e62bc342f41c946868f0ea6f0b712d8">Halide::Internal::IOKind::Buffer</a>
+ }</td></tr>
+<tr class="separator:ae02ee070dfadab621e55f3b3dd971e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a386a29f838250d0c3bccc9bf6c2b3706"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a386a29f838250d0c3bccc9bf6c2b3706">Halide::Internal::generator_test</a> ()</td></tr>
+<tr class="separator:a386a29f838250d0c3bccc9bf6c2b3706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03ab1950ed754cf1090d734940ad6ee9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::vector&lt; Expr &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a03ab1950ed754cf1090d734940ad6ee9">Halide::Internal::parameter_constraints</a> (const Parameter &amp;p)</td></tr>
+<tr class="separator:a03ab1950ed754cf1090d734940ad6ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa75ada54c5a74973e4d52adddf50ab9b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aa75ada54c5a74973e4d52adddf50ab9b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#ab5ce7bd7fe4169a9f709815f03f9870b">NO_INLINE</a> std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa75ada54c5a74973e4d52adddf50ab9b">Halide::Internal::enum_to_string</a> (const std::map&lt; std::string, T &gt; &amp;enum_map, const T &amp;t)</td></tr>
 <tr class="separator:aa75ada54c5a74973e4d52adddf50ab9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd2308d89d4a9b9eef0803e92c383b0c"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:afd2308d89d4a9b9eef0803e92c383b0c"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#afd2308d89d4a9b9eef0803e92c383b0c">Halide::Internal::enum_from_string</a> (const std::map&lt; std::string, T &gt; &amp;enum_map, const std::string &amp;s)</td></tr>
+<tr class="separator:afd2308d89d4a9b9eef0803e92c383b0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e667cda683fba6cce2660ff2ffa48ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> const std::map<br class="typebreak"/>
 &lt; std::string, <a class="el" href="struct_halide_1_1_type.html">Halide::Type</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a1e667cda683fba6cce2660ff2ffa48ab">Halide::Internal::get_halide_type_enum_map</a> ()</td></tr>
 <tr class="separator:a1e667cda683fba6cce2660ff2ffa48ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cc7c793b324e02e15a109f1e8af548c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a2cc7c793b324e02e15a109f1e8af548c">Halide::Internal::halide_type_to_enum_string</a> (const Type &amp;t)</td></tr>
+<tr class="separator:a2cc7c793b324e02e15a109f1e8af548c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ae6fa14c472f019f4c2db8bab62d285"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> const std::map<br class="typebreak"/>
+&lt; std::string, <br class="typebreak"/>
+<a class="el" href="class_halide_1_1_loop_level.html">Halide::LoopLevel</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a3ae6fa14c472f019f4c2db8bab62d285">Halide::Internal::get_halide_looplevel_enum_map</a> ()</td></tr>
+<tr class="separator:a3ae6fa14c472f019f4c2db8bab62d285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c983745226d590f368c9c22268a167e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a7c983745226d590f368c9c22268a167e">Halide::Internal::halide_looplevel_to_enum_string</a> (const LoopLevel &amp;loop_level)</td></tr>
+<tr class="separator:a7c983745226d590f368c9c22268a167e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1cee792dbc0475d49469d60a3dc89b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ac1cee792dbc0475d49469d60a3dc89b4">Halide::Internal::halide_type_to_c_source</a> (const Type &amp;t)</td></tr>
+<tr class="separator:ac1cee792dbc0475d49469d60a3dc89b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40e37f13dcead9c56caee1e4260293f8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a40e37f13dcead9c56caee1e4260293f8">Halide::Internal::halide_type_to_c_type</a> (const Type &amp;t)</td></tr>
+<tr class="separator:a40e37f13dcead9c56caee1e4260293f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fce0241753e0d1cf50b4615b3d00430"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a2fce0241753e0d1cf50b4615b3d00430">Halide::Internal::generate_filter_main</a> (int argc, char **argv, std::ostream &amp;cerr)</td></tr>
-<tr class="memdesc:a2fce0241753e0d1cf50b4615b3d00430"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_halide_1_1_internal.html#a2fce0241753e0d1cf50b4615b3d00430" title="generate_filter_main() is a convenient wrapper for GeneratorRegistry::create() + compile_to_files(); ...">generate_filter_main()</a> is a convenient wrapper for <a class="el" href="class_halide_1_1_internal_1_1_generator_registry.html#a387ce430f4c9f4366b6477d5625e12cb">GeneratorRegistry::create()</a> + compile_to_files(); it can be trivially wrapped by a "real" main() to produce a command-line utility for ahead-of-time filter compilation.  <a href="#a2fce0241753e0d1cf50b4615b3d00430">More...</a><br/></td></tr>
+<tr class="memdesc:a2fce0241753e0d1cf50b4615b3d00430"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="namespace_halide_1_1_internal.html#a2fce0241753e0d1cf50b4615b3d00430" title="generate_filter_main() is a convenient wrapper for GeneratorRegistry::create() + compile_to_files(); ...">generate_filter_main()</a> is a convenient wrapper for <a class="el" href="class_halide_1_1_internal_1_1_generator_registry.html#a6e7ee7fb7d868b2a185fe70055069c87">GeneratorRegistry::create()</a> + compile_to_files(); it can be trivially wrapped by a "real" main() to produce a command-line utility for ahead-of-time filter compilation.  <a href="#a2fce0241753e0d1cf50b4615b3d00430">More...</a><br/></td></tr>
 <tr class="separator:a2fce0241753e0d1cf50b4615b3d00430"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfee9dae77ba344f8d05a4de55f96bfb"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:adfee9dae77ba344f8d05a4de55f96bfb"><td class="memTemplItemLeft" align="right" valign="top">decltype(min((Other) 0,(T) 1))&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal_1_1_generator_min_max.html#adfee9dae77ba344f8d05a4de55f96bfb">Halide::Internal::GeneratorMinMax::min_forward</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="separator:adfee9dae77ba344f8d05a4de55f96bfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4fc1143112a9cafb41c8bcc41bcf11f"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:ad4fc1143112a9cafb41c8bcc41bcf11f"><td class="memTemplItemLeft" align="right" valign="top">decltype(min((T) 0,(Other) 1))&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal_1_1_generator_min_max.html#ad4fc1143112a9cafb41c8bcc41bcf11f">Halide::Internal::GeneratorMinMax::min_forward</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="separator:ad4fc1143112a9cafb41c8bcc41bcf11f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56a8e83752ff8a6f8d697779802c76cc"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a56a8e83752ff8a6f8d697779802c76cc"><td class="memTemplItemLeft" align="right" valign="top">decltype(max((Other) 0,(T) 1))&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal_1_1_generator_min_max.html#a56a8e83752ff8a6f8d697779802c76cc">Halide::Internal::GeneratorMinMax::max_forward</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="separator:a56a8e83752ff8a6f8d697779802c76cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab668a36ecd0ed456538c73c2edb6216e"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:ab668a36ecd0ed456538c73c2edb6216e"><td class="memTemplItemLeft" align="right" valign="top">decltype(max((T) 0,(Other) 1))&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal_1_1_generator_min_max.html#ab668a36ecd0ed456538c73c2edb6216e">Halide::Internal::GeneratorMinMax::max_forward</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="separator:ab668a36ecd0ed456538c73c2edb6216e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91893b4c3ec57d90e668854477250d50"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a91893b4c3ec57d90e668854477250d50"><td class="memTemplItemLeft" align="right" valign="top">decltype(min((Other) 0,(T) 1))&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal_1_1_generator_min_max.html#a91893b4c3ec57d90e668854477250d50">Halide::Internal::GeneratorMinMax::min_forward</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="separator:a91893b4c3ec57d90e668854477250d50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f682660f259f275035179ab7014ebfe"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a0f682660f259f275035179ab7014ebfe"><td class="memTemplItemLeft" align="right" valign="top">decltype(min((T) 0,(Other) 1))&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal_1_1_generator_min_max.html#a0f682660f259f275035179ab7014ebfe">Halide::Internal::GeneratorMinMax::min_forward</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="separator:a0f682660f259f275035179ab7014ebfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab92a708bbdb28540b997ef12e98dc341"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:ab92a708bbdb28540b997ef12e98dc341"><td class="memTemplItemLeft" align="right" valign="top">decltype(max((Other) 0,(T) 1))&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal_1_1_generator_min_max.html#ab92a708bbdb28540b997ef12e98dc341">Halide::Internal::GeneratorMinMax::max_forward</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="separator:ab92a708bbdb28540b997ef12e98dc341"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45a5a00f5a33530a20b8ee248e06cdd2"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a45a5a00f5a33530a20b8ee248e06cdd2"><td class="memTemplItemLeft" align="right" valign="top">decltype(max((T) 0,(Other) 1))&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal_1_1_generator_min_max.html#a45a5a00f5a33530a20b8ee248e06cdd2">Halide::Internal::GeneratorMinMax::max_forward</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="separator:a45a5a00f5a33530a20b8ee248e06cdd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4e608ca9c88b8c6a6df1d72c0cab1f3"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ac4e608ca9c88b8c6a6df1d72c0cab1f3"><td class="memTemplItemLeft" align="right" valign="top">decltype(!(T) 0)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#ac4e608ca9c88b8c6a6df1d72c0cab1f3">Halide::operator!</a> (const GeneratorParam&lt; T &gt; &amp;a)</td></tr>
 <tr class="memdesc:ac4e608ca9c88b8c6a6df1d72c0cab1f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Not operator for <a class="el" href="class_halide_1_1_generator_param.html" title="GeneratorParam is a templated class that can be used to modify the behavior of the Generator at code-...">GeneratorParam</a>.  <a href="#ac4e608ca9c88b8c6a6df1d72c0cab1f3">More...</a><br/></td></tr>
 <tr class="separator:ac4e608ca9c88b8c6a6df1d72c0cab1f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a386a29f838250d0c3bccc9bf6c2b3706"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a386a29f838250d0c3bccc9bf6c2b3706">Halide::Internal::generator_test</a> ()</td></tr>
-<tr class="separator:a386a29f838250d0c3bccc9bf6c2b3706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae47fa4b8f49636c214b214f5d0f4ed34"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:ae47fa4b8f49636c214b214f5d0f4ed34"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ae47fa4b8f49636c214b214f5d0f4ed34">Halide::Internal::parse_scalar</a> (const std::string &amp;value)</td></tr>
+<tr class="separator:ae47fa4b8f49636c214b214f5d0f4ed34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88c4c066131a01b8be777b98a13f61ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> std::vector&lt; Type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a88c4c066131a01b8be777b98a13f61ac">Halide::Internal::parse_halide_type_list</a> (const std::string &amp;types)</td></tr>
+<tr class="separator:a88c4c066131a01b8be777b98a13f61ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:ad45ccd6b0ed9b73366c88662c251c7cf"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:ad45ccd6b0ed9b73366c88662c251c7cf"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0+(T) 0)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#ad45ccd6b0ed9b73366c88662c251c7cf">Halide::operator+</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="memdesc:ad45ccd6b0ed9b73366c88662c251c7cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Addition between GeneratorParam&lt;T&gt; and any type that supports operator+ with T.  <a href="#ad45ccd6b0ed9b73366c88662c251c7cf">More...</a><br/></td></tr>
-<tr class="separator:ad45ccd6b0ed9b73366c88662c251c7cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46a7036ae3cb47a8c417d9312996ba85"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a46a7036ae3cb47a8c417d9312996ba85"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0+(Other) 0)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a46a7036ae3cb47a8c417d9312996ba85">Halide::operator+</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="memdesc:a46a7036ae3cb47a8c417d9312996ba85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Addition between GeneratorParam&lt;T&gt; and any type that supports operator+ with T.  <a href="#a46a7036ae3cb47a8c417d9312996ba85">More...</a><br/></td></tr>
-<tr class="separator:a46a7036ae3cb47a8c417d9312996ba85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e77a4dfba44b5d6bfeb7a7c0a47fc7a"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a9e77a4dfba44b5d6bfeb7a7c0a47fc7a"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0+(T) 0)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a9e77a4dfba44b5d6bfeb7a7c0a47fc7a">Halide::operator+</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="memdesc:a9e77a4dfba44b5d6bfeb7a7c0a47fc7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Addition between GeneratorParam&lt;T&gt; and any type that supports operator+ with T.  <a href="#a9e77a4dfba44b5d6bfeb7a7c0a47fc7a">More...</a><br/></td></tr>
+<tr class="separator:a9e77a4dfba44b5d6bfeb7a7c0a47fc7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b45e853b42263add0bcd37eaddaf48a"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a6b45e853b42263add0bcd37eaddaf48a"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0+(Other) 0)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a6b45e853b42263add0bcd37eaddaf48a">Halide::operator+</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="memdesc:a6b45e853b42263add0bcd37eaddaf48a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Addition between GeneratorParam&lt;T&gt; and any type that supports operator+ with T.  <a href="#a6b45e853b42263add0bcd37eaddaf48a">More...</a><br/></td></tr>
+<tr class="separator:a6b45e853b42263add0bcd37eaddaf48a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:aed5ff8199db6144f486ab59d1e98d4b9"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:aed5ff8199db6144f486ab59d1e98d4b9"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0-(T) 0)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#aed5ff8199db6144f486ab59d1e98d4b9">Halide::operator-</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="memdesc:aed5ff8199db6144f486ab59d1e98d4b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtraction between GeneratorParam&lt;T&gt; and any type that supports operator- with T.  <a href="#aed5ff8199db6144f486ab59d1e98d4b9">More...</a><br/></td></tr>
-<tr class="separator:aed5ff8199db6144f486ab59d1e98d4b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf13cd8416cd7fbb7ab49250bdf6fba7"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:abf13cd8416cd7fbb7ab49250bdf6fba7"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0-(Other) 0)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#abf13cd8416cd7fbb7ab49250bdf6fba7">Halide::operator-</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="memdesc:abf13cd8416cd7fbb7ab49250bdf6fba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtraction between GeneratorParam&lt;T&gt; and any type that supports operator- with T.  <a href="#abf13cd8416cd7fbb7ab49250bdf6fba7">More...</a><br/></td></tr>
-<tr class="separator:abf13cd8416cd7fbb7ab49250bdf6fba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68c1b29b4215913911a7081c853d8fbc"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a68c1b29b4215913911a7081c853d8fbc"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0-(T) 0)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a68c1b29b4215913911a7081c853d8fbc">Halide::operator-</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="memdesc:a68c1b29b4215913911a7081c853d8fbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtraction between GeneratorParam&lt;T&gt; and any type that supports operator- with T.  <a href="#a68c1b29b4215913911a7081c853d8fbc">More...</a><br/></td></tr>
+<tr class="separator:a68c1b29b4215913911a7081c853d8fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4d4c0ca284b3e088d4ab9971d560d0b"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:aa4d4c0ca284b3e088d4ab9971d560d0b"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0-(Other) 0)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#aa4d4c0ca284b3e088d4ab9971d560d0b">Halide::operator-</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="memdesc:aa4d4c0ca284b3e088d4ab9971d560d0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtraction between GeneratorParam&lt;T&gt; and any type that supports operator- with T.  <a href="#aa4d4c0ca284b3e088d4ab9971d560d0b">More...</a><br/></td></tr>
+<tr class="separator:aa4d4c0ca284b3e088d4ab9971d560d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:ab9ac81b11fc049daa650e4b764c8a44f"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:ab9ac81b11fc049daa650e4b764c8a44f"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0 *(T) 0)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#ab9ac81b11fc049daa650e4b764c8a44f">Halide::operator*</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="memdesc:ab9ac81b11fc049daa650e4b764c8a44f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication between GeneratorParam&lt;T&gt; and any type that supports operator* with T.  <a href="#ab9ac81b11fc049daa650e4b764c8a44f">More...</a><br/></td></tr>
-<tr class="separator:ab9ac81b11fc049daa650e4b764c8a44f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01ef1c95ebebcbd0ab5a531a8eca2902"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a01ef1c95ebebcbd0ab5a531a8eca2902"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0 *(T) 0)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a01ef1c95ebebcbd0ab5a531a8eca2902">Halide::operator*</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="memdesc:a01ef1c95ebebcbd0ab5a531a8eca2902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication between GeneratorParam&lt;T&gt; and any type that supports operator* with T.  <a href="#a01ef1c95ebebcbd0ab5a531a8eca2902">More...</a><br/></td></tr>
-<tr class="separator:a01ef1c95ebebcbd0ab5a531a8eca2902"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafd755be8d5f772b08c989ae30a0ae37"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:aafd755be8d5f772b08c989ae30a0ae37"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0 *(T) 0)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#aafd755be8d5f772b08c989ae30a0ae37">Halide::operator*</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="memdesc:aafd755be8d5f772b08c989ae30a0ae37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication between GeneratorParam&lt;T&gt; and any type that supports operator* with T.  <a href="#aafd755be8d5f772b08c989ae30a0ae37">More...</a><br/></td></tr>
+<tr class="separator:aafd755be8d5f772b08c989ae30a0ae37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf579b5a9e1d1453e6cf521704564c99"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:acf579b5a9e1d1453e6cf521704564c99"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0 *(T) 0)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#acf579b5a9e1d1453e6cf521704564c99">Halide::operator*</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="memdesc:acf579b5a9e1d1453e6cf521704564c99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplication between GeneratorParam&lt;T&gt; and any type that supports operator* with T.  <a href="#acf579b5a9e1d1453e6cf521704564c99">More...</a><br/></td></tr>
+<tr class="separator:acf579b5a9e1d1453e6cf521704564c99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:aaa950050e474037c318c308886ea71c3"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:aaa950050e474037c318c308886ea71c3"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0/(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#aaa950050e474037c318c308886ea71c3">Halide::operator/</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="memdesc:aaa950050e474037c318c308886ea71c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Division between GeneratorParam&lt;T&gt; and any type that supports operator/ with T.  <a href="#aaa950050e474037c318c308886ea71c3">More...</a><br/></td></tr>
-<tr class="separator:aaa950050e474037c318c308886ea71c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e0357589a05fac1454064f41317671d"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a0e0357589a05fac1454064f41317671d"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0/(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a0e0357589a05fac1454064f41317671d">Halide::operator/</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="memdesc:a0e0357589a05fac1454064f41317671d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Division between GeneratorParam&lt;T&gt; and any type that supports operator/ with T.  <a href="#a0e0357589a05fac1454064f41317671d">More...</a><br/></td></tr>
-<tr class="separator:a0e0357589a05fac1454064f41317671d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbf1ed5a8d2ad9f334fcb8a51676297f"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:adbf1ed5a8d2ad9f334fcb8a51676297f"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0/(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#adbf1ed5a8d2ad9f334fcb8a51676297f">Halide::operator/</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="memdesc:adbf1ed5a8d2ad9f334fcb8a51676297f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Division between GeneratorParam&lt;T&gt; and any type that supports operator/ with T.  <a href="#adbf1ed5a8d2ad9f334fcb8a51676297f">More...</a><br/></td></tr>
+<tr class="separator:adbf1ed5a8d2ad9f334fcb8a51676297f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6b2368f7d7e74dee2942704b631eec8"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:aa6b2368f7d7e74dee2942704b631eec8"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0/(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#aa6b2368f7d7e74dee2942704b631eec8">Halide::operator/</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="memdesc:aa6b2368f7d7e74dee2942704b631eec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Division between GeneratorParam&lt;T&gt; and any type that supports operator/ with T.  <a href="#aa6b2368f7d7e74dee2942704b631eec8">More...</a><br/></td></tr>
+<tr class="separator:aa6b2368f7d7e74dee2942704b631eec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:ae2ab76bf03a99da1f0a8169189b76a7e"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:ae2ab76bf03a99da1f0a8169189b76a7e"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0%(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#ae2ab76bf03a99da1f0a8169189b76a7e">Halide::operator%</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="memdesc:ae2ab76bf03a99da1f0a8169189b76a7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modulo between GeneratorParam&lt;T&gt; and any type that supports operator% with T.  <a href="#ae2ab76bf03a99da1f0a8169189b76a7e">More...</a><br/></td></tr>
-<tr class="separator:ae2ab76bf03a99da1f0a8169189b76a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf5ac1c1653772889ef2cbf98ed0ffff"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:adf5ac1c1653772889ef2cbf98ed0ffff"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0%(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#adf5ac1c1653772889ef2cbf98ed0ffff">Halide::operator%</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="memdesc:adf5ac1c1653772889ef2cbf98ed0ffff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modulo between GeneratorParam&lt;T&gt; and any type that supports operator% with T.  <a href="#adf5ac1c1653772889ef2cbf98ed0ffff">More...</a><br/></td></tr>
-<tr class="separator:adf5ac1c1653772889ef2cbf98ed0ffff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae275edc92141e1f35226f10f164be1f0"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:ae275edc92141e1f35226f10f164be1f0"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0%(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#ae275edc92141e1f35226f10f164be1f0">Halide::operator%</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="memdesc:ae275edc92141e1f35226f10f164be1f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modulo between GeneratorParam&lt;T&gt; and any type that supports operator% with T.  <a href="#ae275edc92141e1f35226f10f164be1f0">More...</a><br/></td></tr>
+<tr class="separator:ae275edc92141e1f35226f10f164be1f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2070b43776ce2ae68db9bf2bdb8e60fc"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a2070b43776ce2ae68db9bf2bdb8e60fc"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0%(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a2070b43776ce2ae68db9bf2bdb8e60fc">Halide::operator%</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="memdesc:a2070b43776ce2ae68db9bf2bdb8e60fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modulo between GeneratorParam&lt;T&gt; and any type that supports operator% with T.  <a href="#a2070b43776ce2ae68db9bf2bdb8e60fc">More...</a><br/></td></tr>
+<tr class="separator:a2070b43776ce2ae68db9bf2bdb8e60fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:a873de6491f7851772582b9245df49e5d"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a873de6491f7851772582b9245df49e5d"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0 &gt;(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a873de6491f7851772582b9245df49e5d">Halide::operator&gt;</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="memdesc:a873de6491f7851772582b9245df49e5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Greater than comparison between GeneratorParam&lt;T&gt; and any type that supports operator&gt; with T.  <a href="#a873de6491f7851772582b9245df49e5d">More...</a><br/></td></tr>
-<tr class="separator:a873de6491f7851772582b9245df49e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a251a1930f11a59efc212c7484f142dcc"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a251a1930f11a59efc212c7484f142dcc"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0 &gt;(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a251a1930f11a59efc212c7484f142dcc">Halide::operator&gt;</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="memdesc:a251a1930f11a59efc212c7484f142dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Greater than comparison between GeneratorParam&lt;T&gt; and any type that supports operator&gt; with T.  <a href="#a251a1930f11a59efc212c7484f142dcc">More...</a><br/></td></tr>
-<tr class="separator:a251a1930f11a59efc212c7484f142dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94ee6405ef88e086cd78753105fc6d01"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a94ee6405ef88e086cd78753105fc6d01"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0 &gt;(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a94ee6405ef88e086cd78753105fc6d01">Halide::operator&gt;</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="memdesc:a94ee6405ef88e086cd78753105fc6d01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Greater than comparison between GeneratorParam&lt;T&gt; and any type that supports operator&gt; with T.  <a href="#a94ee6405ef88e086cd78753105fc6d01">More...</a><br/></td></tr>
+<tr class="separator:a94ee6405ef88e086cd78753105fc6d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc47c46682253981ac3aee5ce05b5c42"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:adc47c46682253981ac3aee5ce05b5c42"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0 &gt;(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#adc47c46682253981ac3aee5ce05b5c42">Halide::operator&gt;</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="memdesc:adc47c46682253981ac3aee5ce05b5c42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Greater than comparison between GeneratorParam&lt;T&gt; and any type that supports operator&gt; with T.  <a href="#adc47c46682253981ac3aee5ce05b5c42">More...</a><br/></td></tr>
+<tr class="separator:adc47c46682253981ac3aee5ce05b5c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:a70edae14c12f5a456a27ae169cbfe60b"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a70edae14c12f5a456a27ae169cbfe60b"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0&lt; (T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a70edae14c12f5a456a27ae169cbfe60b">Halide::operator&lt;</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="memdesc:a70edae14c12f5a456a27ae169cbfe60b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Less than comparison between GeneratorParam&lt;T&gt; and any type that supports operator&lt; with T.  <a href="#a70edae14c12f5a456a27ae169cbfe60b">More...</a><br/></td></tr>
-<tr class="separator:a70edae14c12f5a456a27ae169cbfe60b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa77715867fdfb09e9c002558cb21002"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:aaa77715867fdfb09e9c002558cb21002"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0&lt; (Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#aaa77715867fdfb09e9c002558cb21002">Halide::operator&lt;</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="memdesc:aaa77715867fdfb09e9c002558cb21002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Less than comparison between GeneratorParam&lt;T&gt; and any type that supports operator&lt; with T.  <a href="#aaa77715867fdfb09e9c002558cb21002">More...</a><br/></td></tr>
-<tr class="separator:aaa77715867fdfb09e9c002558cb21002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b04cff8d200be5eaab590b2b8ebdc50"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a1b04cff8d200be5eaab590b2b8ebdc50"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0&lt; (T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a1b04cff8d200be5eaab590b2b8ebdc50">Halide::operator&lt;</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="memdesc:a1b04cff8d200be5eaab590b2b8ebdc50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Less than comparison between GeneratorParam&lt;T&gt; and any type that supports operator&lt; with T.  <a href="#a1b04cff8d200be5eaab590b2b8ebdc50">More...</a><br/></td></tr>
+<tr class="separator:a1b04cff8d200be5eaab590b2b8ebdc50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af61f2b8d13b2b7231deec9b2ff52a731"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:af61f2b8d13b2b7231deec9b2ff52a731"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0&lt; (Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#af61f2b8d13b2b7231deec9b2ff52a731">Halide::operator&lt;</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="memdesc:af61f2b8d13b2b7231deec9b2ff52a731"><td class="mdescLeft">&#160;</td><td class="mdescRight">Less than comparison between GeneratorParam&lt;T&gt; and any type that supports operator&lt; with T.  <a href="#af61f2b8d13b2b7231deec9b2ff52a731">More...</a><br/></td></tr>
+<tr class="separator:af61f2b8d13b2b7231deec9b2ff52a731"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:a80d0fbc33298f17e2eb62d54269627c1"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a80d0fbc33298f17e2eb62d54269627c1"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0 &gt;=(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a80d0fbc33298f17e2eb62d54269627c1">Halide::operator&gt;=</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="memdesc:a80d0fbc33298f17e2eb62d54269627c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Greater than or equal comparison between GeneratorParam&lt;T&gt; and any type that supports operator&gt;= with T.  <a href="#a80d0fbc33298f17e2eb62d54269627c1">More...</a><br/></td></tr>
-<tr class="separator:a80d0fbc33298f17e2eb62d54269627c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaceaa46d357b30e83675c7984b28546a"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:aaceaa46d357b30e83675c7984b28546a"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0 &gt;=(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#aaceaa46d357b30e83675c7984b28546a">Halide::operator&gt;=</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="memdesc:aaceaa46d357b30e83675c7984b28546a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Greater than or equal comparison between GeneratorParam&lt;T&gt; and any type that supports operator&gt;= with T.  <a href="#aaceaa46d357b30e83675c7984b28546a">More...</a><br/></td></tr>
-<tr class="separator:aaceaa46d357b30e83675c7984b28546a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56f9678403bf3c08439c7da1309b10bb"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a56f9678403bf3c08439c7da1309b10bb"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0 &gt;=(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a56f9678403bf3c08439c7da1309b10bb">Halide::operator&gt;=</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="memdesc:a56f9678403bf3c08439c7da1309b10bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Greater than or equal comparison between GeneratorParam&lt;T&gt; and any type that supports operator&gt;= with T.  <a href="#a56f9678403bf3c08439c7da1309b10bb">More...</a><br/></td></tr>
+<tr class="separator:a56f9678403bf3c08439c7da1309b10bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f2063a26eb1f8652d9aacae84a5c867"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a0f2063a26eb1f8652d9aacae84a5c867"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0 &gt;=(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a0f2063a26eb1f8652d9aacae84a5c867">Halide::operator&gt;=</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="memdesc:a0f2063a26eb1f8652d9aacae84a5c867"><td class="mdescLeft">&#160;</td><td class="mdescRight">Greater than or equal comparison between GeneratorParam&lt;T&gt; and any type that supports operator&gt;= with T.  <a href="#a0f2063a26eb1f8652d9aacae84a5c867">More...</a><br/></td></tr>
+<tr class="separator:a0f2063a26eb1f8652d9aacae84a5c867"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:ad44d56de22e6d981bdcd6e8cfa7a1820"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:ad44d56de22e6d981bdcd6e8cfa7a1820"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0&lt;=(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#ad44d56de22e6d981bdcd6e8cfa7a1820">Halide::operator&lt;=</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="memdesc:ad44d56de22e6d981bdcd6e8cfa7a1820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Less than or equal comparison between GeneratorParam&lt;T&gt; and any type that supports operator&lt;= with T.  <a href="#ad44d56de22e6d981bdcd6e8cfa7a1820">More...</a><br/></td></tr>
-<tr class="separator:ad44d56de22e6d981bdcd6e8cfa7a1820"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a94ea1eb4fddd0a1e0616e659e645bf87"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a94ea1eb4fddd0a1e0616e659e645bf87"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0&lt;=(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a94ea1eb4fddd0a1e0616e659e645bf87">Halide::operator&lt;=</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="memdesc:a94ea1eb4fddd0a1e0616e659e645bf87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Less than or equal comparison between GeneratorParam&lt;T&gt; and any type that supports operator&lt;= with T.  <a href="#a94ea1eb4fddd0a1e0616e659e645bf87">More...</a><br/></td></tr>
-<tr class="separator:a94ea1eb4fddd0a1e0616e659e645bf87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30f07509e647cb82534d43da018e2bfc"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a30f07509e647cb82534d43da018e2bfc"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0&lt;=(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a30f07509e647cb82534d43da018e2bfc">Halide::operator&lt;=</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="memdesc:a30f07509e647cb82534d43da018e2bfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Less than or equal comparison between GeneratorParam&lt;T&gt; and any type that supports operator&lt;= with T.  <a href="#a30f07509e647cb82534d43da018e2bfc">More...</a><br/></td></tr>
+<tr class="separator:a30f07509e647cb82534d43da018e2bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a302b97988e6cb60e3cc282ee33300237"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a302b97988e6cb60e3cc282ee33300237"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0&lt;=(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a302b97988e6cb60e3cc282ee33300237">Halide::operator&lt;=</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="memdesc:a302b97988e6cb60e3cc282ee33300237"><td class="mdescLeft">&#160;</td><td class="mdescRight">Less than or equal comparison between GeneratorParam&lt;T&gt; and any type that supports operator&lt;= with T.  <a href="#a302b97988e6cb60e3cc282ee33300237">More...</a><br/></td></tr>
+<tr class="separator:a302b97988e6cb60e3cc282ee33300237"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:a5094c050c1421af5cb1dbb9c66200ac6"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a5094c050c1421af5cb1dbb9c66200ac6"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0==(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a5094c050c1421af5cb1dbb9c66200ac6">Halide::operator==</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="memdesc:a5094c050c1421af5cb1dbb9c66200ac6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality comparison between GeneratorParam&lt;T&gt; and any type that supports operator== with T.  <a href="#a5094c050c1421af5cb1dbb9c66200ac6">More...</a><br/></td></tr>
-<tr class="separator:a5094c050c1421af5cb1dbb9c66200ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a323e44ac971f08da533899e87ff4fb66"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a323e44ac971f08da533899e87ff4fb66"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0==(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a323e44ac971f08da533899e87ff4fb66">Halide::operator==</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="memdesc:a323e44ac971f08da533899e87ff4fb66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality comparison between GeneratorParam&lt;T&gt; and any type that supports operator== with T.  <a href="#a323e44ac971f08da533899e87ff4fb66">More...</a><br/></td></tr>
-<tr class="separator:a323e44ac971f08da533899e87ff4fb66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad44ba053c7f60e17d09905f5871d08a5"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:ad44ba053c7f60e17d09905f5871d08a5"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0==(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#ad44ba053c7f60e17d09905f5871d08a5">Halide::operator==</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="memdesc:ad44ba053c7f60e17d09905f5871d08a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality comparison between GeneratorParam&lt;T&gt; and any type that supports operator== with T.  <a href="#ad44ba053c7f60e17d09905f5871d08a5">More...</a><br/></td></tr>
+<tr class="separator:ad44ba053c7f60e17d09905f5871d08a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c6d9ae08c78a7ad2d4eb23e9fcc0cc9"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a7c6d9ae08c78a7ad2d4eb23e9fcc0cc9"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0==(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a7c6d9ae08c78a7ad2d4eb23e9fcc0cc9">Halide::operator==</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="memdesc:a7c6d9ae08c78a7ad2d4eb23e9fcc0cc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality comparison between GeneratorParam&lt;T&gt; and any type that supports operator== with T.  <a href="#a7c6d9ae08c78a7ad2d4eb23e9fcc0cc9">More...</a><br/></td></tr>
+<tr class="separator:a7c6d9ae08c78a7ad2d4eb23e9fcc0cc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:a2fb300183fab80526c974616b8efb606"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a2fb300183fab80526c974616b8efb606"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0!=(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a2fb300183fab80526c974616b8efb606">Halide::operator!=</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="memdesc:a2fb300183fab80526c974616b8efb606"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inequality comparison between between GeneratorParam&lt;T&gt; and any type that supports operator!= with T.  <a href="#a2fb300183fab80526c974616b8efb606">More...</a><br/></td></tr>
-<tr class="separator:a2fb300183fab80526c974616b8efb606"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3727ed82542348367cefed54ca424cf"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:ab3727ed82542348367cefed54ca424cf"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0!=(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#ab3727ed82542348367cefed54ca424cf">Halide::operator!=</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="memdesc:ab3727ed82542348367cefed54ca424cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inequality comparison between between GeneratorParam&lt;T&gt; and any type that supports operator!= with T.  <a href="#ab3727ed82542348367cefed54ca424cf">More...</a><br/></td></tr>
-<tr class="separator:ab3727ed82542348367cefed54ca424cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a786a19c0549448bfc2a25918c989ed2e"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a786a19c0549448bfc2a25918c989ed2e"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0!=(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a786a19c0549448bfc2a25918c989ed2e">Halide::operator!=</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="memdesc:a786a19c0549448bfc2a25918c989ed2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inequality comparison between between GeneratorParam&lt;T&gt; and any type that supports operator!= with T.  <a href="#a786a19c0549448bfc2a25918c989ed2e">More...</a><br/></td></tr>
+<tr class="separator:a786a19c0549448bfc2a25918c989ed2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbec27dd0b84ba0960b8a3850fffcdd0"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:acbec27dd0b84ba0960b8a3850fffcdd0"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0!=(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#acbec27dd0b84ba0960b8a3850fffcdd0">Halide::operator!=</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="memdesc:acbec27dd0b84ba0960b8a3850fffcdd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inequality comparison between between GeneratorParam&lt;T&gt; and any type that supports operator!= with T.  <a href="#acbec27dd0b84ba0960b8a3850fffcdd0">More...</a><br/></td></tr>
+<tr class="separator:acbec27dd0b84ba0960b8a3850fffcdd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:a06f6bef618f9b1556ae4ce06d67294ad"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a06f6bef618f9b1556ae4ce06d67294ad"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0 &amp;&amp;(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a06f6bef618f9b1556ae4ce06d67294ad">Halide::operator&amp;&amp;</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="memdesc:a06f6bef618f9b1556ae4ce06d67294ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logical and between between GeneratorParam&lt;T&gt; and any type that supports operator&amp;&amp; with T.  <a href="#a06f6bef618f9b1556ae4ce06d67294ad">More...</a><br/></td></tr>
-<tr class="separator:a06f6bef618f9b1556ae4ce06d67294ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd718c24da72c094a9ccf7adb2c45b2f"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:acd718c24da72c094a9ccf7adb2c45b2f"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0 &amp;&amp;(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#acd718c24da72c094a9ccf7adb2c45b2f">Halide::operator&amp;&amp;</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="memdesc:acd718c24da72c094a9ccf7adb2c45b2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logical and between between GeneratorParam&lt;T&gt; and any type that supports operator&amp;&amp; with T.  <a href="#acd718c24da72c094a9ccf7adb2c45b2f">More...</a><br/></td></tr>
-<tr class="separator:acd718c24da72c094a9ccf7adb2c45b2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac85f228111f778ccb59015b78d443eca"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:ac85f228111f778ccb59015b78d443eca"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0 &amp;&amp;(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#ac85f228111f778ccb59015b78d443eca">Halide::operator&amp;&amp;</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="memdesc:ac85f228111f778ccb59015b78d443eca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logical and between between GeneratorParam&lt;T&gt; and any type that supports operator&amp;&amp; with T.  <a href="#ac85f228111f778ccb59015b78d443eca">More...</a><br/></td></tr>
+<tr class="separator:ac85f228111f778ccb59015b78d443eca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85dfd8024353b6e4f5a3d2d73f0650ae"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a85dfd8024353b6e4f5a3d2d73f0650ae"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0 &amp;&amp;(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a85dfd8024353b6e4f5a3d2d73f0650ae">Halide::operator&amp;&amp;</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="memdesc:a85dfd8024353b6e4f5a3d2d73f0650ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logical and between between GeneratorParam&lt;T&gt; and any type that supports operator&amp;&amp; with T.  <a href="#a85dfd8024353b6e4f5a3d2d73f0650ae">More...</a><br/></td></tr>
+<tr class="separator:a85dfd8024353b6e4f5a3d2d73f0650ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:a9ff494ac2a7c2755780521de843ce059"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a9ff494ac2a7c2755780521de843ce059"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0||(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a9ff494ac2a7c2755780521de843ce059">Halide::operator||</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
-<tr class="memdesc:a9ff494ac2a7c2755780521de843ce059"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logical or between between GeneratorParam&lt;T&gt; and any type that supports operator&amp;&amp; with T.  <a href="#a9ff494ac2a7c2755780521de843ce059">More...</a><br/></td></tr>
-<tr class="separator:a9ff494ac2a7c2755780521de843ce059"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a1d2f3c218e5c71412e7bb5e0f8a3eb"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a9a1d2f3c218e5c71412e7bb5e0f8a3eb"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0||(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a9a1d2f3c218e5c71412e7bb5e0f8a3eb">Halide::operator||</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b)</td></tr>
-<tr class="memdesc:a9a1d2f3c218e5c71412e7bb5e0f8a3eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logical or between between GeneratorParam&lt;T&gt; and any type that supports operator&amp;&amp; with T.  <a href="#a9a1d2f3c218e5c71412e7bb5e0f8a3eb">More...</a><br/></td></tr>
-<tr class="separator:a9a1d2f3c218e5c71412e7bb5e0f8a3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac71f04311b7df08826f26ba8dc656c52"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:ac71f04311b7df08826f26ba8dc656c52"><td class="memTemplItemLeft" align="right" valign="top">decltype((Other) 0||(T) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#ac71f04311b7df08826f26ba8dc656c52">Halide::operator||</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b)</td></tr>
+<tr class="memdesc:ac71f04311b7df08826f26ba8dc656c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logical or between between GeneratorParam&lt;T&gt; and any type that supports operator&amp;&amp; with T.  <a href="#ac71f04311b7df08826f26ba8dc656c52">More...</a><br/></td></tr>
+<tr class="separator:ac71f04311b7df08826f26ba8dc656c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8ad98421c3d15b68ed78c751a2ac683"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:ae8ad98421c3d15b68ed78c751a2ac683"><td class="memTemplItemLeft" align="right" valign="top">decltype((T) 0||(Other) 1)&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#ae8ad98421c3d15b68ed78c751a2ac683">Halide::operator||</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b)</td></tr>
+<tr class="memdesc:ae8ad98421c3d15b68ed78c751a2ac683"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logical or between between GeneratorParam&lt;T&gt; and any type that supports operator&amp;&amp; with T.  <a href="#ae8ad98421c3d15b68ed78c751a2ac683">More...</a><br/></td></tr>
+<tr class="separator:ae8ad98421c3d15b68ed78c751a2ac683"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:a7fcf5168032f227aee3aec229b02c504"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a7fcf5168032f227aee3aec229b02c504"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a7fcf5168032f227aee3aec229b02c504">Halide::min</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b) -&gt; decltype(Internal::GeneratorMinMax::min_forward(a, b))</td></tr>
-<tr class="memdesc:a7fcf5168032f227aee3aec229b02c504"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute minimum between GeneratorParam&lt;T&gt; and any type that supports min with T.  <a href="#a7fcf5168032f227aee3aec229b02c504">More...</a><br/></td></tr>
-<tr class="separator:a7fcf5168032f227aee3aec229b02c504"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c6db4f0f6eff006109ebf41024d7ec9"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:a7c6db4f0f6eff006109ebf41024d7ec9"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a7c6db4f0f6eff006109ebf41024d7ec9">Halide::min</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b) -&gt; decltype(Internal::GeneratorMinMax::min_forward(a, b))</td></tr>
-<tr class="memdesc:a7c6db4f0f6eff006109ebf41024d7ec9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute minimum between GeneratorParam&lt;T&gt; and any type that supports min with T.  <a href="#a7c6db4f0f6eff006109ebf41024d7ec9">More...</a><br/></td></tr>
-<tr class="separator:a7c6db4f0f6eff006109ebf41024d7ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fcc240a43e9bd59167b72a75ba39d3a"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a0fcc240a43e9bd59167b72a75ba39d3a"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a0fcc240a43e9bd59167b72a75ba39d3a">Halide::min</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b) -&gt; decltype(Internal::GeneratorMinMax::min_forward(a, b))</td></tr>
+<tr class="memdesc:a0fcc240a43e9bd59167b72a75ba39d3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute minimum between GeneratorParam&lt;T&gt; and any type that supports min with T.  <a href="#a0fcc240a43e9bd59167b72a75ba39d3a">More...</a><br/></td></tr>
+<tr class="separator:a0fcc240a43e9bd59167b72a75ba39d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38f0112267498bcda0747506b9d82af8"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:a38f0112267498bcda0747506b9d82af8"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a38f0112267498bcda0747506b9d82af8">Halide::min</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b) -&gt; decltype(Internal::GeneratorMinMax::min_forward(a, b))</td></tr>
+<tr class="memdesc:a38f0112267498bcda0747506b9d82af8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute minimum between GeneratorParam&lt;T&gt; and any type that supports min with T.  <a href="#a38f0112267498bcda0747506b9d82af8">More...</a><br/></td></tr>
+<tr class="separator:a38f0112267498bcda0747506b9d82af8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
-<tr class="memitem:af35ec3cd58f7426ff2cc5d5f257ffa52"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:af35ec3cd58f7426ff2cc5d5f257ffa52"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#af35ec3cd58f7426ff2cc5d5f257ffa52">Halide::max</a> (Other a, const GeneratorParam&lt; T &gt; &amp;b) -&gt; decltype(Internal::GeneratorMinMax::max_forward(a, b))</td></tr>
-<tr class="memdesc:af35ec3cd58f7426ff2cc5d5f257ffa52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the maximum value between GeneratorParam&lt;T&gt; and any type that supports max with T.  <a href="#af35ec3cd58f7426ff2cc5d5f257ffa52">More...</a><br/></td></tr>
-<tr class="separator:af35ec3cd58f7426ff2cc5d5f257ffa52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9f7e45503e666aecd0100a5571b4d5c"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
-<tr class="memitem:af9f7e45503e666aecd0100a5571b4d5c"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#af9f7e45503e666aecd0100a5571b4d5c">Halide::max</a> (const GeneratorParam&lt; T &gt; &amp;a, Other b) -&gt; decltype(Internal::GeneratorMinMax::max_forward(a, b))</td></tr>
-<tr class="memdesc:af9f7e45503e666aecd0100a5571b4d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the maximum value between GeneratorParam&lt;T&gt; and any type that supports max with T.  <a href="#af9f7e45503e666aecd0100a5571b4d5c">More...</a><br/></td></tr>
-<tr class="separator:af9f7e45503e666aecd0100a5571b4d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa350166ccd23cc6430356bb6833d3910"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:aa350166ccd23cc6430356bb6833d3910"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#aa350166ccd23cc6430356bb6833d3910">Halide::max</a> (const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b) -&gt; decltype(Internal::GeneratorMinMax::max_forward(a, b))</td></tr>
+<tr class="memdesc:aa350166ccd23cc6430356bb6833d3910"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the maximum value between GeneratorParam&lt;T&gt; and any type that supports max with T.  <a href="#aa350166ccd23cc6430356bb6833d3910">More...</a><br/></td></tr>
+<tr class="separator:aa350166ccd23cc6430356bb6833d3910"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb5a870f8517436e4720b50792f8fdd1"><td class="memTemplParams" colspan="2">template&lt;typename Other , typename T &gt; </td></tr>
+<tr class="memitem:aeb5a870f8517436e4720b50792f8fdd1"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide.html#aeb5a870f8517436e4720b50792f8fdd1">Halide::max</a> (const GeneratorParam&lt; T &gt; &amp;a, const Other &amp;b) -&gt; decltype(Internal::GeneratorMinMax::max_forward(a, b))</td></tr>
+<tr class="memdesc:aeb5a870f8517436e4720b50792f8fdd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the maximum value between GeneratorParam&lt;T&gt; and any type that supports max with T.  <a href="#aeb5a870f8517436e4720b50792f8fdd1">More...</a><br/></td></tr>
+<tr class="separator:aeb5a870f8517436e4720b50792f8fdd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Generator is a class used to encapsulate the building of Funcs in user pipelines. </p>
 <p>A Generator is agnostic to JIT vs AOT compilation; it can be used for either purpose, but is especially convenient to use for AOT compilation.</p>
-<p>A Generator automatically detects the run-time parameters (Param/ImageParams) associated with the Func and (for AOT code) produces a function signature with the correct params in the correct order.</p>
-<p>A Generator can also be customized via compile-time parameters (GeneratorParams), which affect code generation.</p>
-<p>GeneratorParams, ImageParams, and Params are (by convention) always public and always declared at the top of the Generator class, in the order</p>
-<p>GeneratorParam(s) ImageParam(s) Param(s)</p>
-<p>Preferred style is to use C++11 in-class initialization style, e.g. </p>
-<div class="fragment"><div class="line">GeneratorParam&lt;int&gt; magic{<span class="stringliteral">&quot;magic&quot;</span>, 42};</div>
-</div><!-- fragment --><p>Note that the ImageParams/Params will appear in the C function call in the order they are declared. (GeneratorParams are always referenced by name, not position, so their order is irrelevant.)</p>
-<p>All Param variants declared as Generator members must have explicit names, and all such names must match the regex [A-Za-z][A-Za-z_0-9]* (i.e., essentially a C/C++ variable name, with some extra restrictions on underscore use). By convention, the name should match the member-variable name.</p>
-<p>Generators are usually added to a global registry to simplify AOT build mechanics; this is done by simply defining an instance of RegisterGenerator at static scope: </p>
-<div class="fragment"><div class="line">RegisterGenerator&lt;ExampleGen&gt; register_jit_example{<span class="stringliteral">&quot;jit_example&quot;</span>};</div>
-</div><!-- fragment --><p>The registered name of the Generator is provided as an argument (which must match the same rules as Param names, above).</p>
-<p>(If you are jitting, you may not need to bother registering your Generator, but it's considered best practice to always do so anyway.)</p>
-<p>Most Generator classes will only need to provide a build() method that the base class will call, and perhaps declare a Param and/or GeneratorParam:</p>
-<div class="fragment"><div class="line"><span class="keyword">class </span>XorImage : <span class="keyword">public</span> Generator&lt;XorImage&gt; {</div>
+<p>A Generator explicitly declares the Inputs and Outputs associated for a given pipeline, and separates the code for constructing the outputs from the code from scheduling them. For instance:</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>Blur : <span class="keyword">public</span> Generator&lt;Blur&gt; {</div>
 <div class="line"><span class="keyword">public</span>:</div>
-<div class="line">    GeneratorParam&lt;int&gt; channels{<span class="stringliteral">&quot;channels&quot;</span>, 3};</div>
-<div class="line">    ImageParam input{<a class="code" href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">UInt</a>(8), 3, <span class="stringliteral">&quot;input&quot;</span>};</div>
-<div class="line">    Param&lt;uint8_t&gt; mask{<span class="stringliteral">&quot;mask&quot;</span>};</div>
-<div class="line"></div>
-<div class="line">    Func build() {</div>
-<div class="line">        Var x, y, c;</div>
-<div class="line">        Func f;</div>
-<div class="line">        f(x, y, c) = input(x, y, c) ^ mask;</div>
-<div class="line">        f.bound(c, 0, bound).reorder(c, x, y).unroll(c);</div>
-<div class="line">        <span class="keywordflow">return</span> f;</div>
+<div class="line">    Input&lt;Func&gt; input{<span class="stringliteral">&quot;input&quot;</span>, <a class="code" href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">UInt</a>(16), 2};</div>
+<div class="line">    Output&lt;Func&gt; output{<span class="stringliteral">&quot;output&quot;</span>, <a class="code" href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">UInt</a>(16), 2};</div>
+<div class="line">    <span class="keywordtype">void</span> generate() {</div>
+<div class="line">        blur_x(x, y) = (input(x, y) + input(x+1, y) + input(x+2, y))/3;</div>
+<div class="line">        blur_y(x, y) = (blur_x(x, y) + blur_x(x, y+1) + blur_x(x, y+2))/3;</div>
+<div class="line">        output(x, y) = blur(x, y);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordtype">void</span> schedule() {</div>
+<div class="line">        blur_y.split(y, y, yi, 8).parallel(y).vectorize(x, 8);</div>
+<div class="line">        blur_x.store_at(blur_y, y).compute_at(blur_y, yi).vectorize(x, 8);</div>
+<div class="line">    }</div>
+<div class="line"><span class="keyword">private</span>:</div>
+<div class="line">    Var x, y, xi, yi;</div>
+<div class="line">    Func blur_x, blur_y;</div>
+<div class="line">};</div>
+</div><!-- fragment --><p><a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> can compile a Generator into the correct pipeline by introspecting these values and constructing an appropriate signature based on them.</p>
+<p>A Generator must provide implementations of two methods:</p>
+<ul>
+<li>generate(), which must fill in all Output Func(s), but should not do any scheduling</li>
+<li>schedule(), which should do scheduling for any intermediate and output Funcs</li>
+</ul>
+<p>Inputs can be any C++ scalar type:</p>
+<div class="fragment"><div class="line">Input&lt;float&gt; radius{<span class="stringliteral">&quot;radius&quot;</span>};</div>
+<div class="line">Input&lt;int32_t&gt; increment{<span class="stringliteral">&quot;increment&quot;</span>};</div>
+</div><!-- fragment --><p>An Input&lt;Func&gt; is (essentially) like an ImageParam, except that it may (or may not) not be backed by an actual buffer, and thus has no defined extents.</p>
+<div class="fragment"><div class="line">Input&lt;Func&gt; input{<span class="stringliteral">&quot;input&quot;</span>, <a class="code" href="namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc">Float</a>(32), 2};</div>
+</div><!-- fragment --><p>You can optionally make the type and/or dimensions of Input&lt;Func&gt; unspecified, in which case the value is simply inferred from the actual Funcs passed to them. Of course, if you specify an explicit Type or Dimension, we still require the input Func to match, or a compilation error results.</p>
+<div class="fragment"><div class="line">Input&lt;Func&gt; input{ <span class="stringliteral">&quot;input&quot;</span>, 3 };  <span class="comment">// require 3-dimensional Func,</span></div>
+<div class="line">                                  <span class="comment">// but leave Type unspecified</span></div>
+</div><!-- fragment --><p>A Generator must explicitly list the output(s) it produces:</p>
+<div class="fragment"><div class="line">Output&lt;Func&gt; output{<span class="stringliteral">&quot;output&quot;</span>, <a class="code" href="namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc">Float</a>(32), 2};</div>
+</div><!-- fragment --><p>You can specify an output that returns a Tuple by specifying a list of Types:</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>Tupler : Generator&lt;Tupler&gt; {</div>
+<div class="line">  Input&lt;Func&gt; input{<span class="stringliteral">&quot;input&quot;</span>, <a class="code" href="namespace_halide.html#a70a0c034814a65d55bb848fe9c96653b">Int</a>(32), 2};</div>
+<div class="line">  Output&lt;Func&gt; output{<span class="stringliteral">&quot;output&quot;</span>, {<a class="code" href="namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc">Float</a>(32), <a class="code" href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">UInt</a>(8)}, 2};</div>
+<div class="line">  <span class="keywordtype">void</span> generate() {</div>
+<div class="line">    Var x, y;</div>
+<div class="line">    Expr <a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#a67dd017542dcaa40f1181f7806bd18af">a</a> = cast&lt;float&gt;(input(x, y));</div>
+<div class="line">    Expr <a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#a220e62865cb92ff423d312a69f2213e6">b</a> = cast&lt;uint8_t&gt;(input(x, y));</div>
+<div class="line">    output(x, y) = Tuple(a, b);</div>
+<div class="line">  }</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>You can also specify Output&lt;X&gt; for any scalar type (except for Handle types); this is merely syntactic sugar on top of a zero-dimensional Func, but can be quite handy, especially when used with multiple outputs:</p>
+<div class="fragment"><div class="line">Output&lt;float&gt; <a class="code" href="namespace_halide.html#a1cdc5fefb67660314f83e00869bb2d07">sum</a>{<span class="stringliteral">&quot;sum&quot;</span>};  <span class="comment">// equivalent to Output&lt;Func&gt; {&quot;sum&quot;, Float(32), 0}</span></div>
+</div><!-- fragment --><p>As with Input&lt;Func&gt;, you can optionally make the type and/or dimensions of an Output&lt;Func&gt; unspecified; any unspecified types must be resolved via an implicit GeneratorParam in order to use top-level compilation.</p>
+<p>You can also declare an <em>array</em> of Input or Output, by using an array type as the type parameter:</p>
+<div class="fragment"><div class="line"><span class="comment">// Takes exactly 3 images and outputs exactly 3 sums.</span></div>
+<div class="line"><span class="keyword">class </span>SumRowsAndColumns : Generator&lt;SumRowsAndColumns&gt; {</div>
+<div class="line">  Input&lt;Func[3]&gt; inputs{<span class="stringliteral">&quot;inputs&quot;</span>, <a class="code" href="namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc">Float</a>(32), 2};</div>
+<div class="line">  Input&lt;int32_t[2]&gt; extents{<span class="stringliteral">&quot;extents&quot;</span>};</div>
+<div class="line">  Output&lt;Func[3]&gt; sums{<span class="stringliteral">&quot;sums&quot;</span>, <a class="code" href="namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc">Float</a>(32), 1};</div>
+<div class="line">  <span class="keywordtype">void</span> generate() {</div>
+<div class="line">    assert(inputs.size() == sums.size());</div>
+<div class="line">    <span class="comment">// assume all inputs are same extent</span></div>
+<div class="line">    Expr width = extent[0];</div>
+<div class="line">    Expr height = extent[1];</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; inputs.size(); ++i) {</div>
+<div class="line">      RDom r(0, width, 0, height);</div>
+<div class="line">      sums[i]() = 0.f;</div>
+<div class="line">      sums[i]() += inputs[i](r.x, r.y);</div>
+<div class="line">     }</div>
+<div class="line">  }</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>You can also leave array size unspecified, in which case it will be inferred from the input vector, or (optionally) explicitly specified via a resize() method:</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span>Pyramid : <span class="keyword">public</span> Generator&lt;Pyramid&gt; {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    GeneratorParam&lt;int32_t&gt; levels{<span class="stringliteral">&quot;levels&quot;</span>, 10};</div>
+<div class="line">    Input&lt;Func&gt; input{ <span class="stringliteral">&quot;input&quot;</span>, <a class="code" href="namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc">Float</a>(32), 2 };</div>
+<div class="line">    Output&lt;Func[]&gt; pyramid{ <span class="stringliteral">&quot;pyramid&quot;</span>, <a class="code" href="namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc">Float</a>(32), 2 };</div>
+<div class="line">    <span class="keywordtype">void</span> generate() {</div>
+<div class="line">        pyramid.resize(levels);</div>
+<div class="line">        pyramid[0](x, y) = input(x, y);</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; pyramid.size(); i++) {</div>
+<div class="line">            pyramid[i](x, y) = (pyramid[i-1](2*x, 2*y) +</div>
+<div class="line">                               pyramid[i-1](2*x+1, 2*y) +</div>
+<div class="line">                               pyramid[i-1](2*x, 2*y+1) +</div>
+<div class="line">                               pyramid[i-1](2*x+1, 2*y+1))/4;</div>
+<div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">};</div>
-<div class="line">RegisterGenerator&lt;XorImage&gt; reg_xor{<span class="stringliteral">&quot;xor_image&quot;</span>};</div>
-</div><!-- fragment --><p>By default, this code schedules itself for 3-channel (RGB) images; by changing the value of the "channels" GeneratorParam before calling build() we can produce code suited for different channel counts.</p>
+</div><!-- fragment --><p>A Generator can also be customized via compile-time parameters (GeneratorParams or ScheduleParams), which affect code generation. While a GeneratorParam can be used from anywhere inside a Generator (either the generate() or schedule() method), ScheduleParam should be accessed only within the schedule() method. (This is not currently a compile-time error but may become one in the future.)</p>
+<p>GeneratorParams, ScheduleParams, Inputs, and Outputs are (by convention) always public and always declared at the top of the Generator class, in the order</p>
+<div class="fragment"><div class="line">GeneratorParam(s)</div>
+<div class="line">ScheduleParam(s)</div>
+<div class="line">Input&lt;Func&gt;(s)</div>
+<div class="line">Input&lt;non-Func&gt;(s)</div>
+<div class="line">Output&lt;Func&gt;(s)</div>
+</div><!-- fragment --><p>Note that the Inputs and Outputs will appear in the C function call in the order they are declared. All Input&lt;Func&gt; and Output&lt;Func&gt; are represented as <a class="el" href="structbuffer__t.html">buffer_t</a>; all other Input&lt;&gt; are the appropriate C++ scalar type. (GeneratorParams are always referenced by name, not position, so their order is irrelevant.)</p>
+<p>All Inputs and Outputs must have explicit names, and all such names must match the regex [A-Za-z][A-Za-z_0-9]* (i.e., essentially a C/C++ variable name, with some extra restrictions on underscore use). By convention, the name should match the member-variable name.</p>
+<p>Generators are added to a global registry to simplify AOT build mechanics; this is done by simply using the HALIDE_REGISTER_GENERATOR macro at global scope:</p>
+<div class="fragment"><div class="line"><a class="code" href="_generator_8h.html#a4e1a953e8ce8010860b9ad3f1dbe38f5">HALIDE_REGISTER_GENERATOR</a>(ExampleGen, <span class="stringliteral">&quot;jit_example&quot;</span>)</div>
+</div><!-- fragment --><p>The registered name of the Generator is provided must match the same rules as Input names, above.</p>
 <p>Note that a Generator is always executed with a specific Target assigned to it, that you can access via the get_target() method. (You should <em>not</em> use the global <a class="el" href="namespace_halide.html#a2d655bb0051fc525e3e5d73997f93cdd" title="Return the target that Halide will use. ">get_target_from_environment()</a>, etc. methods provided in <a class="el" href="_target_8h.html" title="Defines the structure that describes a Halide target. ">Target.h</a>)</p>
-<p>Your build() method will usually return a Func. If you have a pipeline that outputs multiple Funcs, you can also return a Pipeline object. </p>
+<p>(Note that there are older variations of Generator that differ from what's documented above; these are still supported but not described here. See <a href="https://github.com/halide/Halide/wiki/Old-Generator-Documentation">https://github.com/halide/Halide/wiki/Old-Generator-Documentation</a> for more information.) </p>
 
 <p>Definition in file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a08dae13ee17f505472e95d3bcaec9984"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HALIDE_GENERATOR_PARAM_TYPED_SETTER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">TYPE</td><td>)</td>
+          <td>&#160;&#160;&#160;virtual void set(const TYPE &amp;new_value) = 0;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l00425">425</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a08dae13ee17f505472e95d3bcaec9984"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HALIDE_GENERATOR_PARAM_TYPED_SETTER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">TYPE</td><td>)</td>
+          <td>&#160;&#160;&#160;void set(const TYPE &amp;new_value) override { typed_setter_impl&lt;TYPE&gt;(new_value, #TYPE); }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l00425">425</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af661b27787c9b17bcb12bcf5577b1c2c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HALIDE_OUTPUT_FORWARD</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">method</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> ...Args&gt;                                              \</div>
+<div class="line">    inline <span class="keyword">auto</span> method(Args&amp;&amp;... args) -&gt;                                   \</div>
+<div class="line">        decltype(std::declval&lt;Func&gt;().method(std::forward&lt;Args&gt;(args)...)) {\</div>
+<div class="line">        return get_func_ref().method(std::forward&lt;Args&gt;(args)...);          \</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l01595">1595</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a555406167f75fa9f0061fae31ccc7084"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HALIDE_OUTPUT_FORWARD_CONST</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">method</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> ...Args&gt;                                              \</div>
+<div class="line">    inline <span class="keyword">auto</span> method(Args&amp;&amp;... args) const -&gt;                             \</div>
+<div class="line">        decltype(std::declval&lt;Func&gt;().method(std::forward&lt;Args&gt;(args)...)) {\</div>
+<div class="line">        return get_func_ref().method(std::forward&lt;Args&gt;(args)...);          \</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l01602">1602</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4e1a953e8ce8010860b9ad3f1dbe38f5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HALIDE_REGISTER_GENERATOR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">GEN_CLASS_NAME, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">GEN_REGISTRY_NAME&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;namespace ns_reg_gen { static auto reg_##GEN_CLASS_NAME = <a class="el" href="class_halide_1_1_register_generator.html">Halide::RegisterGenerator</a>&lt;GEN_CLASS_NAME&gt;(GEN_REGISTRY_NAME); }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_generator_8h_source.html#l02931">2931</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_de4960fb9afd4052b9300248cfe3cde2.html">src</a></li><li class="navelem"><a class="el" href="_generator_8h.html">Generator.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_generator_8h.html">Generator.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

@@ -1,6 +1,6 @@
 var class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c =
 [
-    [ "CodeGen_Metal_C", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#ac3ca6e7b6aa71f019a0235b3b7e50d7e", null ],
+    [ "CodeGen_Metal_C", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a7537dd1daed9766ebbfc6e5b076784d5", null ],
     [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a0c1dbf9ca721180908f5a2e4f1f546ea", null ],
     [ "print_type", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a0c8dcc28cd180581e6d36adc0caf5d16", null ],
     [ "print_storage_type", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a1004df3cc56863bc962b332a345c5585", null ],

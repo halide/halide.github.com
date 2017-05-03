@@ -44,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
@@ -115,28 +114,31 @@ $(document).ready(function(){initNavTree('_vectorize_loops_8h_source.html','');}
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_i_r_8h.html">IR.h</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>Halide {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>Internal {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/** Take a statement with for loops marked for vectorization, and turn</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * them into single statements that operate on vectors. The loops in</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * question must have constant extent.</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;Stmt <a class="code" href="namespace_halide_1_1_internal.html#abe70c3a9d0ecd59908b1837a11d01de0">vectorize_loops</a>(Stmt);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_target_8h.html">Target.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>Halide {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>Internal {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/** Take a statement with for loops marked for vectorization, and turn</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * them into single statements that operate on vectors. The loops in</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * question must have constant extent.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;Stmt <a class="code" href="namespace_halide_1_1_internal.html#ae1d8d64a1298f1e0abd71fd0eeada10b">vectorize_loops</a>(Stmt s, <span class="keyword">const</span> Target &amp;<a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#ad78f0a5d48acb1b94e3d737b5409cc1d">t</a>);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="namespace_halide_1_1_internal_html_abe70c3a9d0ecd59908b1837a11d01de0"><div class="ttname"><a href="namespace_halide_1_1_internal.html#abe70c3a9d0ecd59908b1837a11d01de0">Halide::Internal::vectorize_loops</a></div><div class="ttdeci">Stmt vectorize_loops(Stmt)</div><div class="ttdoc">Take a statement with for loops marked for vectorization, and turn them into single statements that o...</div></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="_target_8h_html"><div class="ttname"><a href="_target_8h.html">Target.h</a></div><div class="ttdoc">Defines the structure that describes a Halide target. </div></div>
+<div class="ttc" id="namespace_halide_1_1_internal_html_ae1d8d64a1298f1e0abd71fd0eeada10b"><div class="ttname"><a href="namespace_halide_1_1_internal.html#ae1d8d64a1298f1e0abd71fd0eeada10b">Halide::Internal::vectorize_loops</a></div><div class="ttdeci">Stmt vectorize_loops(Stmt s, const Target &amp;t)</div><div class="ttdoc">Take a statement with for loops marked for vectorization, and turn them into single statements that o...</div></div>
+<div class="ttc" id="namespace_halide_1_1_runtime_1_1_internal_html_ad78f0a5d48acb1b94e3d737b5409cc1d"><div class="ttname"><a href="namespace_halide_1_1_runtime_1_1_internal.html#ad78f0a5d48acb1b94e3d737b5409cc1d">Halide::Runtime::Internal::t</a></div><div class="ttdeci">T &amp;b T t</div><div class="ttdef"><b>Definition:</b> <a href="runtime__internal_8h_source.html#l00198">runtime_internal.h:198</a></div></div>
 <div class="ttc" id="_i_r_8h_html"><div class="ttname"><a href="_i_r_8h.html">IR.h</a></div><div class="ttdoc">Subtypes for Halide expressions (Halide::Expr) and statements (Halide::Internal::Stmt) ...</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_de4960fb9afd4052b9300248cfe3cde2.html">src</a></li><li class="navelem"><a class="el" href="_vectorize_loops_8h.html">VectorizeLoops.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_vectorize_loops_8h.html">VectorizeLoops.h</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>

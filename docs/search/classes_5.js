@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['elf_5fheader_5ft',['elf_header_t',['../structelf__header__t.html',1,'']]],
-  ['elf_5ft',['elf_t',['../structelf__t.html',1,'']]],
   ['emitoptions',['EmitOptions',['../struct_halide_1_1_internal_1_1_generator_base_1_1_emit_options.html',1,'Halide::Internal::GeneratorBase']]],
   ['eq',['EQ',['../struct_halide_1_1_internal_1_1_e_q.html',1,'Halide::Internal']]],
   ['error',['Error',['../struct_halide_1_1_error.html',1,'Halide']]],
@@ -34,12 +32,15 @@ var searchData=
   ['exprnode_3c_20or_20_3e',['ExprNode&lt; Or &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprnode_3c_20ramp_20_3e',['ExprNode&lt; Ramp &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprnode_3c_20select_20_3e',['ExprNode&lt; Select &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
+  ['exprnode_3c_20shuffle_20_3e',['ExprNode&lt; Shuffle &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprnode_3c_20stringimm_20_3e',['ExprNode&lt; StringImm &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprnode_3c_20sub_20_3e',['ExprNode&lt; Sub &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprnode_3c_20uintimm_20_3e',['ExprNode&lt; UIntImm &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprnode_3c_20variable_20_3e',['ExprNode&lt; Variable &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprusesvars',['ExprUsesVars',['../class_halide_1_1_internal_1_1_expr_uses_vars.html',1,'Halide::Internal']]],
   ['exprwithcomparecache',['ExprWithCompareCache',['../struct_halide_1_1_internal_1_1_expr_with_compare_cache.html',1,'Halide::Internal']]],
+  ['externalcode',['ExternalCode',['../class_halide_1_1_external_code.html',1,'Halide']]],
+  ['externcfunction',['ExternCFunction',['../struct_halide_1_1_extern_c_function.html',1,'Halide']]],
   ['externfuncargument',['ExternFuncArgument',['../struct_halide_1_1_extern_func_argument.html',1,'Halide']]],
   ['externsignature',['ExternSignature',['../struct_halide_1_1_extern_signature.html',1,'Halide']]]
 ];

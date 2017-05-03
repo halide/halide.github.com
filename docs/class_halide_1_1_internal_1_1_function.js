@@ -29,10 +29,13 @@ var class_halide_1_1_internal_1_1_function =
     [ "updates", "class_halide_1_1_internal_1_1_function.html#a2ac7c2b1537585e2e1995a13d005de3d", null ],
     [ "has_update_definition", "class_halide_1_1_internal_1_1_function.html#ae5f618f66a38dfe081bc35d909281bc4", null ],
     [ "has_extern_definition", "class_halide_1_1_internal_1_1_function.html#a319df06bfc5a585894d16fa70ac9c4b5", null ],
-    [ "extern_definition_is_c_plus_plus", "class_halide_1_1_internal_1_1_function.html#a1e50cadfd9a2d79cd56d23d671663790", null ],
-    [ "define_extern", "class_halide_1_1_internal_1_1_function.html#a4802cdda298f97bff88c87d5ded2bd4f", null ],
+    [ "extern_definition_name_mangling", "class_halide_1_1_internal_1_1_function.html#a08596c953a4c645798d7c9ed62cb8d93", null ],
+    [ "make_call_to_extern_definition", "class_halide_1_1_internal_1_1_function.html#a4754bd234a1cfdd619c3b072416a40e5", null ],
+    [ "extern_definition_uses_old_buffer_t", "class_halide_1_1_internal_1_1_function.html#afa7f398efe0539d4822fd6077202034b", null ],
+    [ "define_extern", "class_halide_1_1_internal_1_1_function.html#a9d6777388cf4a81f36cfb148059cfc12", null ],
     [ "extern_arguments", "class_halide_1_1_internal_1_1_function.html#a073f63a7093d8825033a64d4c89c95e0", null ],
     [ "extern_function_name", "class_halide_1_1_internal_1_1_function.html#ad46fa31092d2e28047d5777740bfe69e", null ],
+    [ "extern_function_device_api", "class_halide_1_1_internal_1_1_function.html#a9bf987fe45e50e4328aaa2be8528bd0d", null ],
     [ "same_as", "class_halide_1_1_internal_1_1_function.html#acae930bd24f9bd8db57b2a0cbfcafe68", null ],
     [ "debug_file", "class_halide_1_1_internal_1_1_function.html#a08a676934557d451652849a58b5fffbd", null ],
     [ "debug_file", "class_halide_1_1_internal_1_1_function.html#a564a9a2a5e1872d49faccc6156426457", null ],
@@ -48,5 +51,6 @@ var class_halide_1_1_internal_1_1_function =
     [ "add_wrapper", "class_halide_1_1_internal_1_1_function.html#a9513e243144eb8c27b9e2ab13afe5c76", null ],
     [ "wrappers", "class_halide_1_1_internal_1_1_function.html#afd7e433c8537d55aca390dac47803701", null ],
     [ "substitute_calls", "class_halide_1_1_internal_1_1_function.html#aea76aacbf89dcb5571b75ad8101c45e8", null ],
-    [ "substitute_calls", "class_halide_1_1_internal_1_1_function.html#ad620ff0e73eaf797949e0b6492a863e3", null ]
+    [ "substitute_calls", "class_halide_1_1_internal_1_1_function.html#ad620ff0e73eaf797949e0b6492a863e3", null ],
+    [ "substitute_schedule_param_exprs", "class_halide_1_1_internal_1_1_function.html#ac776683599f785f9e09735d3129d0cb2", null ]
 ];

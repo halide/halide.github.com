@@ -1,5 +1,6 @@
 var struct_halide_1_1_internal_1_1_for =
 [
+    [ "is_parallel", "struct_halide_1_1_internal_1_1_for.html#a4a74109c9ecd5bcf7f0927662f4f40d0", null ],
     [ "name", "struct_halide_1_1_internal_1_1_for.html#a7d2a8a9fe5b29571c5d1f5d50a9be35a", null ],
     [ "min", "struct_halide_1_1_internal_1_1_for.html#a692fd7aff28884e863b0f889ad30d212", null ],
     [ "extent", "struct_halide_1_1_internal_1_1_for.html#ab26b6844845c6bf66f5a2f572007c9b9", null ],

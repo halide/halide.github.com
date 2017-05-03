@@ -1,27 +1,4 @@
 var searchData=
 [
-  ['lambda',['lambda',['../namespace_halide.html#a57190a14ea6851c5ce46eaedaa77d21a',1,'Halide::lambda(Expr e)'],['../namespace_halide.html#aa7305aa7d85b97f0900d7f035578ce41',1,'Halide::lambda(Var x, Expr e)'],['../namespace_halide.html#a53bcf8b4f9e47c294dc8eb7f3784fed2',1,'Halide::lambda(Var x, Var y, Expr e)'],['../namespace_halide.html#a938729e358e952cd3142850e6307adf4',1,'Halide::lambda(Var x, Var y, Var z, Expr e)'],['../namespace_halide.html#ae8e105f7398081a2353df028af3ca79a',1,'Halide::lambda(Var x, Var y, Var z, Var w, Expr e)'],['../namespace_halide.html#aafda8d7cc6c2d679bd829e6817f56a7a',1,'Halide::lambda(Var x, Var y, Var z, Var w, Var v, Expr e)']]],
-  ['lanes',['lanes',['../struct_halide_1_1_type.html#afc127aa42364639df0950405fff05915',1,'Halide::Type']]],
-  ['lcm',['lcm',['../namespace_halide_1_1_internal.html#acc78c709d77e443e9243cab48ed05929',1,'Halide::Internal']]],
-  ['left',['left',['../class_halide_1_1_output_image_param.html#a94722641700eb033359cd11ab16e5243',1,'Halide::OutputImageParam::left()'],['../class_halide_1_1_buffer.html#ae3f238bd19736ee200f717ca55f532e7',1,'Halide::Buffer::left()']]],
-  ['lerp',['lerp',['../namespace_halide.html#a55158f5f229510194c425dfae256d530',1,'Halide']]],
-  ['likely',['likely',['../namespace_halide.html#afbf18e1b8bab056f8f8e8f1af8cbd764',1,'Halide']]],
-  ['likely_5fif_5finnermost',['likely_if_innermost',['../namespace_halide.html#acc3a484f14e9bdf4c7b4e16d74fe11ab',1,'Halide']]],
-  ['link_5fmodules',['link_modules',['../namespace_halide.html#aa04503a9bc12b1befcfd19b0dce65d42',1,'Halide']]],
-  ['llvm_5fassembly',['llvm_assembly',['../struct_halide_1_1_outputs.html#ac1ee22903b7ebbb0c9bb13873e125c43',1,'Halide::Outputs']]],
-  ['llvm_5ftype_5fof',['llvm_type_of',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#aafbc1ae70ec2ce47d55c016555d77555',1,'Halide::Internal::CodeGen_LLVM::llvm_type_of()'],['../namespace_halide_1_1_internal.html#a71f10140e29131153c3be98d2899b090',1,'Halide::Internal::llvm_type_of()']]],
-  ['loadsymbols',['loadSymbols',['../mini__renderscript_8h.html#a0e97bb4cf20044f22b32b1c31f359938',1,'mini_renderscript.h']]],
-  ['log',['log',['../namespace_halide.html#a02f1c38239e6e977fea90b94217499ae',1,'Halide']]],
-  ['log_5fprintf',['log_printf',['../log_8h.html#a2473a4441580b27bdc14f48e2d2fff8e',1,'log.h']]],
-  ['loop_5fcarry',['loop_carry',['../namespace_halide_1_1_internal.html#a1fc91c3863b2f3b6afe3902a717ff68b',1,'Halide::Internal']]],
-  ['looplevel',['LoopLevel',['../class_halide_1_1_loop_level.html#a0bda869d3a348170aad3d99600b1c9eb',1,'Halide::LoopLevel::LoopLevel(Internal::Function f, VarOrRVar v)'],['../class_halide_1_1_loop_level.html#acb4f4f98ab59a683cab19fea7decf999',1,'Halide::LoopLevel::LoopLevel(Func f, VarOrRVar v)'],['../class_halide_1_1_loop_level.html#a7aac3473158f1d29bf918a99790cfe00',1,'Halide::LoopLevel::LoopLevel()']]],
-  ['lossless_5fcast',['lossless_cast',['../namespace_halide_1_1_internal.html#af2c1bdedbb2a1cfb7aef147bf26998cc',1,'Halide::Internal']]],
-  ['lower',['lower',['../namespace_halide_1_1_internal.html#a78c16d0a33d7fdc862142297ce8f5134',1,'Halide::Internal']]],
-  ['lower_5feuclidean_5fdiv',['lower_euclidean_div',['../namespace_halide_1_1_internal.html#ab7a4f18b650b23e1e6ed980d1feebcf5',1,'Halide::Internal']]],
-  ['lower_5feuclidean_5fmod',['lower_euclidean_mod',['../namespace_halide_1_1_internal.html#ae81d78fd7f3115750e17167ebf0fe920',1,'Halide::Internal']]],
-  ['lower_5flerp',['lower_lerp',['../namespace_halide_1_1_internal.html#a2c00a579c3d86ae40920d5fc4ffe64cf',1,'Halide::Internal']]],
-  ['lower_5frandom',['lower_random',['../namespace_halide_1_1_internal.html#a0f875bf4d528885d68581fbd198bf356',1,'Halide::Internal']]],
-  ['lower_5ftest',['lower_test',['../namespace_halide_1_1_internal.html#a4d3bfe43201bab68cf4820993fe1469b',1,'Halide::Internal']]],
-  ['loweredargument',['LoweredArgument',['../struct_halide_1_1_internal_1_1_lowered_argument.html#ade3165565866e57eb6ab01045f1e5637',1,'Halide::Internal::LoweredArgument::LoweredArgument()'],['../struct_halide_1_1_internal_1_1_lowered_argument.html#a16b57da21c399148fd5f8deb719de4e1',1,'Halide::Internal::LoweredArgument::LoweredArgument(const Argument &amp;arg)'],['../struct_halide_1_1_internal_1_1_lowered_argument.html#adfc35ba354ebd2e9ad02c12fd8f5936c',1,'Halide::Internal::LoweredArgument::LoweredArgument(const std::string &amp;_name, Kind _kind, const Type &amp;_type, uint8_t _dimensions, Expr _def=Expr(), Expr _min=Expr(), Expr _max=Expr())']]],
-  ['loweredfunc',['LoweredFunc',['../struct_halide_1_1_internal_1_1_lowered_func.html#a91334c8c648a7912a317c891e6439ec9',1,'Halide::Internal::LoweredFunc::LoweredFunc(const std::string &amp;name, const std::vector&lt; LoweredArgument &gt; &amp;args, Stmt body, LinkageType linkage)'],['../struct_halide_1_1_internal_1_1_lowered_func.html#a53ec0e0fc74bc41498e6be77052a4227',1,'Halide::Internal::LoweredFunc::LoweredFunc(const std::string &amp;name, const std::vector&lt; Argument &gt; &amp;args, Stmt body, LinkageType linkage)']]]
+  ['kind',['kind',['../class_halide_1_1_internal_1_1_g_i_o_base.html#aa1cbe502002e38adb0ccc3492525c285',1,'Halide::Internal::GIOBase']]]
 ];

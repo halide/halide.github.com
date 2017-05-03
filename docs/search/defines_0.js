@@ -8,6 +8,7 @@ var searchData=
   ['_5f_5fqaic_5fimpl_5fexport',['__QAIC_IMPL_EXPORT',['../halide__hexagon__remote_8h.html#a7ed1ca8d324b38e96afc4be6a62569d1',1,'halide_hexagon_remote.h']]],
   ['_5fhalide_5fcheck_5farg_5ftype',['_halide_check_arg_type',['../_extern_8h.html#adc22469ee831826d9431b2f7288ec709',1,'Extern.h']]],
   ['_5fhalide_5fexpand_5fand_5fstringify',['_halide_expand_and_stringify',['../runtime__internal_8h.html#a6d66990b99b43bffe8763db7c62d1448',1,'runtime_internal.h']]],
+  ['_5fhalide_5finternal_5fassertion',['_halide_internal_assertion',['../_error_8h.html#a32d1a8bfcbf2c4cec795364a206200f6',1,'Error.h']]],
   ['_5fhalide_5fstringify',['_halide_stringify',['../runtime__internal_8h.html#ac550f846b1acfd672478b588d8a485b7',1,'runtime_internal.h']]],
   ['_5fhalide_5fuser_5fassert',['_halide_user_assert',['../_error_8h.html#ac33c8660a2d35cb8cc69c510bb9c0a98',1,'Error.h']]],
   ['_5fio',['_IO',['../android__ioctl_8h.html#a840d10d2fed07b8a85f260031f2fa47b',1,'android_ioctl.h']]],

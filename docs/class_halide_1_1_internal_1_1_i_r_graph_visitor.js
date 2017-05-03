@@ -42,5 +42,7 @@ var class_halide_1_1_internal_1_1_i_r_graph_visitor =
     [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#a5633b5c60ef8dd1eaf157c9f7ad03acf", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#a57266101555c710e1a9c832ff69222d8", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#adb8d73787ebb33951072507938a881fc", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#ac5c1601eb1af6d4f3c9294f0c09d8691", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#a20580194aa0933a033397c3b228c694d", null ],
     [ "visited", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#a06f4a19300e49d9f7dd73ee89f1223d5", null ]
 ];

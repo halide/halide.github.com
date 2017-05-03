@@ -44,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -127,6 +126,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7a62847e463f8f22bff19a4ac71553ff"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2">IRNodeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_expr_node.html#a7a62847e463f8f22bff19a4ac71553ff">type_info</a> () const </td></tr>
 <tr class="memdesc:a7a62847e463f8f22bff19a4ac71553ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Each IR node subclass should return some unique pointer.  <a href="#a7a62847e463f8f22bff19a4ac71553ff">More...</a><br/></td></tr>
 <tr class="separator:a7a62847e463f8f22bff19a4ac71553ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af27dfc1e357be937c52fd390b61473f1"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_expr_node.html#af27dfc1e357be937c52fd390b61473f1">~ExprNode</a> ()</td></tr>
+<tr class="separator:af27dfc1e357be937c52fd390b61473f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_struct_halide_1_1_internal_1_1_i_r_node"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_struct_halide_1_1_internal_1_1_i_r_node')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="struct_halide_1_1_internal_1_1_i_r_node.html">Halide::Internal::IRNode</a></td></tr>
 <tr class="memitem:a1256a1d88022228b134ab0e5e21d3fc8 inherit pub_methods_struct_halide_1_1_internal_1_1_i_r_node"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_i_r_node.html#a1256a1d88022228b134ab0e5e21d3fc8">IRNode</a> ()</td></tr>
 <tr class="separator:a1256a1d88022228b134ab0e5e21d3fc8 inherit pub_methods_struct_halide_1_1_internal_1_1_i_r_node"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,8 +151,36 @@ struct Halide::Internal::ExprNode&lt; T &gt;</h3>
 <p>We use the "curiously recurring template pattern" to avoid duplicated code in the IR Nodes. </p>
 <p>These classes live between the abstract base classes and the actual IR Nodes in the inheritance hierarchy. It provides an implementation of the accept function necessary for the visitor pattern to work, and a concrete instantiation of a unique IRNodeType per class. </p>
 
-<p>Definition at line <a class="el" href="_expr_8h_source.html#l00123">123</a> of file <a class="el" href="_expr_8h_source.html">Expr.h</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<p>Definition at line <a class="el" href="_expr_8h_source.html#l00125">125</a> of file <a class="el" href="_expr_8h_source.html">Expr.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="af27dfc1e357be937c52fd390b61473f1"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="struct_halide_1_1_internal_1_1_expr_node.html">Halide::Internal::ExprNode</a>&lt; T &gt;::~<a class="el" href="struct_halide_1_1_internal_1_1_expr_node.html">ExprNode</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="_expr_8h_source.html#l00128">128</a> of file <a class="el" href="_expr_8h_source.html">Expr.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a0ce5d9b0e4f765a0f7bf7b16c8ff3333"></a>
 <div class="memitem">
 <div class="memproto">
@@ -210,7 +239,7 @@ template&lt;typename T&gt; </div>
 
 <p>Implements <a class="el" href="struct_halide_1_1_internal_1_1_i_r_node.html#a67cb5fdb07f0424856ebe84f7572baa8">Halide::Internal::IRNode</a>.</p>
 
-<p>Definition at line <a class="el" href="_expr_8h_source.html#l00125">125</a> of file <a class="el" href="_expr_8h_source.html">Expr.h</a>.</p>
+<p>Definition at line <a class="el" href="_expr_8h_source.html#l00127">127</a> of file <a class="el" href="_expr_8h_source.html">Expr.h</a>.</p>
 
 </div>
 </div>

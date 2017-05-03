@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['splittype',['SplitType',['../struct_halide_1_1_internal_1_1_split.html#a068a93a3cd662ac53acdfa1dab4f20fa',1,'Halide::Internal::Split']]],
-  ['stmtoutputformat',['StmtOutputFormat',['../namespace_halide.html#ad1953af304956bd6a5d0bd780b135f56',1,'Halide']]]
+  ['patterntype',['PatternType',['../struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html#afe390c40055d6c0777dc5b70c9d25bbb',1,'Halide::Internal::CodeGen_ARM::Pattern']]],
+  ['phase',['Phase',['../class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521',1,'Halide::Internal::GeneratorBase']]],
+  ['prefetchboundstrategy',['PrefetchBoundStrategy',['../namespace_halide.html#a36b78b48c1fe9126344a218d07348f4d',1,'Halide']]],
+  ['printertype',['PrinterType',['../namespace_halide_1_1_runtime_1_1_internal.html#a724298c91ed488cb70fd581fdfa9c190',1,'Halide::Runtime::Internal']]]
 ];

@@ -1,6 +1,7 @@
 var structhalide__dimension__t =
 [
-    [ "min", "structhalide__dimension__t.html#a2a0a007905a2b7b6c5fcc064241d88d8", null ],
-    [ "extent", "structhalide__dimension__t.html#af9ff0e4e5da81791893e3143f540f530", null ],
-    [ "stride", "structhalide__dimension__t.html#a8b38a1c35c237e3d12481581d7e5eb13", null ]
+    [ "min", "structhalide__dimension__t.html#a49c3d005ce7759e05105763f98112b87", null ],
+    [ "extent", "structhalide__dimension__t.html#a6c808a6b5accb9fc952917fa671fb9e8", null ],
+    [ "stride", "structhalide__dimension__t.html#a80516014224196a33fc560fa023c4363", null ],
+    [ "flags", "structhalide__dimension__t.html#a6a8348375b0afd8e981e712726ac212c", null ]
 ];

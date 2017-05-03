@@ -54,7 +54,9 @@ var _expr_8h =
       [ "Realize", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2acbe1377636dc5dc95b68ff96203249cc", null ],
       [ "Block", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2ae1e4c8c9ccd9fc39c391da4bcd093fb2", null ],
       [ "IfThenElse", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2aaff6933d8331eca27edc911467980c9c", null ],
-      [ "Evaluate", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2ab086843368d1c92d0a86cbee76b20b6f", null ]
+      [ "Evaluate", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2ab086843368d1c92d0a86cbee76b20b6f", null ],
+      [ "Shuffle", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2ae8b4b40ec3622e371789b790caabc083", null ],
+      [ "Prefetch", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2a18540d940813866480eaca8d3f32d18e", null ]
     ] ],
     [ "DeviceAPI", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6e", [
       [ "None", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea6adf97f83acf6453d4a6a4b1070f3754", null ],
@@ -63,7 +65,6 @@ var _expr_8h =
       [ "CUDA", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eaa33b7755e5f9b504d2d038eaca4ff28d", null ],
       [ "OpenCL", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea7982b09a852b37f2afb1227eaf552e47", null ],
       [ "GLSL", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea2a2c1392bcbaececf702b611e7d7df25", null ],
-      [ "Renderscript", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eab79f9fcb64263765842486e340edd503", null ],
       [ "OpenGLCompute", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea3adf0945d2bbb4c868f37d38e02684d5", null ],
       [ "Metal", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eaeaa57a9b4248ce3968e718895e1c2f04", null ],
       [ "Hexagon", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea125e13c182697c5a282e4de6d7999eb0", null ]
@@ -72,7 +73,9 @@ var _expr_8h =
       [ "Serial", "_expr_8h.html#a6a8761f129e6554b9ea03de31bf066f1a5255d3daaa0a6276b844d61401e6f493", null ],
       [ "Parallel", "_expr_8h.html#a6a8761f129e6554b9ea03de31bf066f1a98402eecfbcefc336954458a01752131", null ],
       [ "Vectorized", "_expr_8h.html#a6a8761f129e6554b9ea03de31bf066f1a138bc087eaaaf426b54f9a466f0cc725", null ],
-      [ "Unrolled", "_expr_8h.html#a6a8761f129e6554b9ea03de31bf066f1ae53597647de81f4cc9e098fc119ba0ac", null ]
+      [ "Unrolled", "_expr_8h.html#a6a8761f129e6554b9ea03de31bf066f1ae53597647de81f4cc9e098fc119ba0ac", null ],
+      [ "GPUBlock", "_expr_8h.html#a6a8761f129e6554b9ea03de31bf066f1a9ad52f412f8b405c833cd317db050a28", null ],
+      [ "GPUThread", "_expr_8h.html#a6a8761f129e6554b9ea03de31bf066f1a403672f982053243315d59e56d8a3b8d", null ]
     ] ],
     [ "ref_count< IRNode >", "_expr_8h.html#acc591095a8e56d4d6f6587c66239fdb3", null ],
     [ "destroy< IRNode >", "_expr_8h.html#a7e3867f02d52edd32b4cfe38e5ee55a1", null ],

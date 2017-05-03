@@ -44,7 +44,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -152,7 +151,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_14_types_8cpp-example
 <div class="line"></div>
 <div class="line">        <span class="comment">// You can also programmatically construct Types as a function of other Types.</span></div>
 <div class="line">        <a class="code" href="struct_halide_1_1_type.html">Type</a> <a name="a8"></a><a class="code" href="namespace_halide_1_1_runtime_1_1_internal.html#ad78f0a5d48acb1b94e3d737b5409cc1d">t</a> = <a class="code" href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">UInt</a>(8);</div>
-<div class="line">        t = t.<a name="a9"></a><a class="code" href="struct_halide_1_1_type.html#a0c22494f7eb0c11abd97322442eb1b3f">with_bits</a>(t.<a name="a10"></a><a class="code" href="struct_halide_1_1_type.html#a77dc9c9c9d7854fc7c5fb8c0b49d591b">bits</a>() * 2);</div>
+<div class="line">        t = t.<a name="a9"></a><a class="code" href="struct_halide_1_1_type.html#a0d47c5ab650c20ab8d02138d901b9edf">with_bits</a>(t.<a name="a10"></a><a class="code" href="struct_halide_1_1_type.html#a77dc9c9c9d7854fc7c5fb8c0b49d591b">bits</a>() * 2);</div>
 <div class="line">        assert(t == <a class="code" href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">UInt</a>(16));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// Or construct a Type from a C++ scalar type</span></div>
@@ -172,10 +171,10 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_14_types_8cpp-example
 <div class="line"></div>
 <div class="line">        <span class="comment">// Most transcendental functions in Halide cast their inputs to a</span></div>
 <div class="line">        <span class="comment">// Float(32) and return a Float(32):</span></div>
-<div class="line">        assert(<a name="a12"></a><a class="code" href="namespace_halide.html#a5e1fca22f79625765096133e39caee5e">sin</a>(x).type() == <a class="code" href="namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc">Float</a>(32));</div>
+<div class="line">        assert(<a name="a12"></a><a class="code" href="namespace_halide.html#a84c9606de2699bc3b86f5839ad28fcc3">sin</a>(x).type() == <a class="code" href="namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc">Float</a>(32));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// You can cast an Expr from one Type to another using the cast operator:</span></div>
-<div class="line">        assert(<a name="a13"></a><a class="code" href="namespace_halide.html#a51c6da1a731c0804063458b531e8a849">cast</a>(<a class="code" href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">UInt</a>(8), x).type() == <a class="code" href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">UInt</a>(8));</div>
+<div class="line">        assert(<a name="a13"></a><a class="code" href="namespace_halide.html#a32e0f9bc767a073b8d23a4e6e310743a">cast</a>(<a class="code" href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">UInt</a>(8), x).type() == <a class="code" href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">UInt</a>(8));</div>
 <div class="line"></div>
 <div class="line">        <span class="comment">// This also comes in a template form that takes a C++ type.</span></div>
 <div class="line">        assert(cast&lt;uint8_t&gt;(x).type() == <a class="code" href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">UInt</a>(8));</div>
@@ -186,7 +185,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_14_types_8cpp-example
 <div class="line">        assert(f1.<a name="a15"></a><a class="code" href="class_halide_1_1_func.html#a0622c8a11c948787eafbee82a0853030">output_types</a>()[0] == <a class="code" href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">UInt</a>(8));</div>
 <div class="line"></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> f2;</div>
-<div class="line">        f2(x) = {x, <a class="code" href="namespace_halide.html#a5e1fca22f79625765096133e39caee5e">sin</a>(x)};</div>
+<div class="line">        f2(x) = {x, <a class="code" href="namespace_halide.html#a84c9606de2699bc3b86f5839ad28fcc3">sin</a>(x)};</div>
 <div class="line">        assert(f2.output_types()[0] == <a class="code" href="namespace_halide.html#a70a0c034814a65d55bb848fe9c96653b">Int</a>(32) &amp;&amp;</div>
 <div class="line">               f2.output_types()[1] == <a class="code" href="namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc">Float</a>(32));</div>
 <div class="line">    }</div>
@@ -219,7 +218,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_14_types_8cpp-example
 <div class="line">        <span class="keywordflow">for</span> (<a class="code" href="struct_halide_1_1_type.html">Type</a> t : valid_halide_types) {</div>
 <div class="line">            <span class="comment">// Skip the handle type.</span></div>
 <div class="line">            <span class="keywordflow">if</span> (t.<a name="a22"></a><a class="code" href="struct_halide_1_1_type.html#a1de396e9e6d6776f4ab5b2e20a53c363">is_handle</a>()) <span class="keywordflow">continue</span>;</div>
-<div class="line">            <a class="code" href="struct_halide_1_1_expr.html">Expr</a> e = <a class="code" href="namespace_halide.html#a51c6da1a731c0804063458b531e8a849">cast</a>(t, x);</div>
+<div class="line">            <a class="code" href="struct_halide_1_1_expr.html">Expr</a> e = <a class="code" href="namespace_halide.html#a32e0f9bc767a073b8d23a4e6e310743a">cast</a>(t, x);</div>
 <div class="line">            assert((e + e).type() == e.<a name="a23"></a><a class="code" href="struct_halide_1_1_expr.html#a095f7fe04aa7c2a2acbc2dc4597a505c">type</a>());</div>
 <div class="line">        }</div>
 <div class="line"></div>
@@ -331,10 +330,10 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_14_types_8cpp-example
 <div class="line">    <span class="comment">// For integer types, we must compute the intermediate value in a</span></div>
 <div class="line">    <span class="comment">// wider type to avoid overflow.</span></div>
 <div class="line">    <a class="code" href="struct_halide_1_1_type.html">Type</a> narrow = a.<a class="code" href="struct_halide_1_1_expr.html#a095f7fe04aa7c2a2acbc2dc4597a505c">type</a>();</div>
-<div class="line">    <a class="code" href="struct_halide_1_1_type.html">Type</a> wider = narrow.<a class="code" href="struct_halide_1_1_type.html#a0c22494f7eb0c11abd97322442eb1b3f">with_bits</a>(narrow.<a class="code" href="struct_halide_1_1_type.html#a77dc9c9c9d7854fc7c5fb8c0b49d591b">bits</a>() * 2);</div>
-<div class="line">    a = <a class="code" href="namespace_halide.html#a51c6da1a731c0804063458b531e8a849">cast</a>(wider, a);</div>
-<div class="line">    b = <a class="code" href="namespace_halide.html#a51c6da1a731c0804063458b531e8a849">cast</a>(wider, b);</div>
-<div class="line">    <span class="keywordflow">return</span> <a class="code" href="namespace_halide.html#a51c6da1a731c0804063458b531e8a849">cast</a>(narrow, (a + b)/2);</div>
+<div class="line">    <a class="code" href="struct_halide_1_1_type.html">Type</a> wider = narrow.<a class="code" href="struct_halide_1_1_type.html#a0d47c5ab650c20ab8d02138d901b9edf">with_bits</a>(narrow.<a class="code" href="struct_halide_1_1_type.html#a77dc9c9c9d7854fc7c5fb8c0b49d591b">bits</a>() * 2);</div>
+<div class="line">    a = <a class="code" href="namespace_halide.html#a32e0f9bc767a073b8d23a4e6e310743a">cast</a>(wider, a);</div>
+<div class="line">    b = <a class="code" href="namespace_halide.html#a32e0f9bc767a073b8d23a4e6e310743a">cast</a>(wider, b);</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="namespace_halide.html#a32e0f9bc767a073b8d23a4e6e310743a">cast</a>(narrow, (a + b)/2);</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->

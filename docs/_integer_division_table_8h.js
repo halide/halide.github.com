@@ -1,15 +1,15 @@
 var _integer_division_table_8h =
 [
-    [ "table_u8", "_integer_division_table_8h.html#a6d3b2f001f3e884a46cd1677149bd3c1", null ],
-    [ "table_s8", "_integer_division_table_8h.html#a86dc2897fd185d8106f999842378716d", null ],
-    [ "table_u16", "_integer_division_table_8h.html#a6540d7aca556468809968b78f45ebd0c", null ],
-    [ "table_s16", "_integer_division_table_8h.html#a2fd62e17f226f89114a1ce4fbdcfe10a", null ],
-    [ "table_u32", "_integer_division_table_8h.html#a6c8b50a1e2e7796e611c69979f211029", null ],
-    [ "table_s32", "_integer_division_table_8h.html#aed7ab3b6441c7b348795e85d5600ac5d", null ],
-    [ "table_runtime_u8", "_integer_division_table_8h.html#ae50ce867ece5e93f6271c74dd3626822", null ],
-    [ "table_runtime_s8", "_integer_division_table_8h.html#a5ea09c88070dc854258c31aa313225b1", null ],
-    [ "table_runtime_u16", "_integer_division_table_8h.html#ae475ab51202542deb807048aa20b4f71", null ],
-    [ "table_runtime_s16", "_integer_division_table_8h.html#a4ff0b733ca7c4e236833b0297a6fbeec", null ],
-    [ "table_runtime_u32", "_integer_division_table_8h.html#a7bdc4b692140b99b098822da5291e049", null ],
-    [ "table_runtime_s32", "_integer_division_table_8h.html#a487236f9d7f8501f3e60f35d0d4d240b", null ]
+    [ "table_u8", "_integer_division_table_8h.html#a99facb3ec68a1eadbb143071dc4c9046", null ],
+    [ "table_s8", "_integer_division_table_8h.html#a9206d6b163b3efa3c6f3c51608f7f5dd", null ],
+    [ "table_u16", "_integer_division_table_8h.html#a96410a3bd0b344ef4e4b1df41d58b988", null ],
+    [ "table_s16", "_integer_division_table_8h.html#ac5f9bc0b8567ddc4db38c5eb35b781d7", null ],
+    [ "table_u32", "_integer_division_table_8h.html#ab70f2f1436ac0dd8e4a68f8bc215ec3f", null ],
+    [ "table_s32", "_integer_division_table_8h.html#ac50a694f153b4c334a30fcb11896f507", null ],
+    [ "table_runtime_u8", "_integer_division_table_8h.html#a6a8eb9eab933d564f752b966ec1230bb", null ],
+    [ "table_runtime_s8", "_integer_division_table_8h.html#a8156746a3925ef97a89198aaa98d1947", null ],
+    [ "table_runtime_u16", "_integer_division_table_8h.html#a7cc9ac800bb1b69da0aaca8e8e683f37", null ],
+    [ "table_runtime_s16", "_integer_division_table_8h.html#ad3e76e6447c170caf7c7a345fb55b91c", null ],
+    [ "table_runtime_u32", "_integer_division_table_8h.html#a3da9cf42a5c44f74534efc749a277984", null ],
+    [ "table_runtime_s32", "_integer_division_table_8h.html#aa6ee31c22aff7ca2fe03668bd73429d1", null ]
 ];

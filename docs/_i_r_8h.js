@@ -37,5 +37,7 @@ var _i_r_8h =
     [ "Call", "struct_halide_1_1_internal_1_1_call.html", "struct_halide_1_1_internal_1_1_call" ],
     [ "Variable", "struct_halide_1_1_internal_1_1_variable.html", "struct_halide_1_1_internal_1_1_variable" ],
     [ "For", "struct_halide_1_1_internal_1_1_for.html", "struct_halide_1_1_internal_1_1_for" ],
+    [ "Shuffle", "struct_halide_1_1_internal_1_1_shuffle.html", "struct_halide_1_1_internal_1_1_shuffle" ],
+    [ "Prefetch", "struct_halide_1_1_internal_1_1_prefetch.html", "struct_halide_1_1_internal_1_1_prefetch" ],
     [ "Region", "_i_r_8h.html#abd1b9521b6f1f513178f281d8f395335", null ]
 ];

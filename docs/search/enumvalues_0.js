@@ -1,20 +1,11 @@
 var searchData=
 [
   ['add',['Add',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2aec211f7c20af43e742bf2570c3cb84f9',1,'Halide::Internal']]],
-  ['alloc',['Alloc',['../namespace_message.html#a4f88ebc45e62f89e3a15fd8e55244d73a0c2a82cca7e71f36b1a167167706abc5',1,'Message']]],
+  ['alloc',['Alloc',['../namespace_message.html#a883ef70b60c2a0fc488efaa57d8514e0a0c2a82cca7e71f36b1a167167706abc5',1,'Message']]],
   ['allocate',['Allocate',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2ac9baacf6cca6c54626e594639081177f',1,'Halide::Internal']]],
   ['always',['Always',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a431585f4447c39d5639672baa5b1c5d2a65f0774ca71b47cdb4461248276337b3',1,'Halide::Internal::CodeGen_LLVM']]],
   ['and',['And',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2ac33315685a0cba3ce53be378b3c7874b',1,'Halide::Internal']]],
   ['android',['Android',['../struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a5c630f5107a5a01870143d6dc042ea8c',1,'Halide::Target']]],
-  ['android_5flog_5fdebug',['ANDROID_LOG_DEBUG',['../mini__renderscript_8h.html#adc29c2ff13d900c2f185ee95427fb06ca3357428f473998c530d5de9519a74d45',1,'mini_renderscript.h']]],
-  ['android_5flog_5fdefault',['ANDROID_LOG_DEFAULT',['../mini__renderscript_8h.html#adc29c2ff13d900c2f185ee95427fb06ca78eac1c0035b045de012f3a42660c1e0',1,'mini_renderscript.h']]],
-  ['android_5flog_5ferror',['ANDROID_LOG_ERROR',['../mini__renderscript_8h.html#adc29c2ff13d900c2f185ee95427fb06caf1067b5ff6e64a6ece3249c113d2d164',1,'mini_renderscript.h']]],
-  ['android_5flog_5ffatal',['ANDROID_LOG_FATAL',['../mini__renderscript_8h.html#adc29c2ff13d900c2f185ee95427fb06ca28ceb8fa306acd280b7b891214ec2de2',1,'mini_renderscript.h']]],
-  ['android_5flog_5finfo',['ANDROID_LOG_INFO',['../mini__renderscript_8h.html#adc29c2ff13d900c2f185ee95427fb06cad46329103f1e9bf318b889f331d1ea8b',1,'mini_renderscript.h']]],
-  ['android_5flog_5fsilent',['ANDROID_LOG_SILENT',['../mini__renderscript_8h.html#adc29c2ff13d900c2f185ee95427fb06ca8daee540c7d1fc04a9dfecc2db988f3b',1,'mini_renderscript.h']]],
-  ['android_5flog_5funknown',['ANDROID_LOG_UNKNOWN',['../mini__renderscript_8h.html#adc29c2ff13d900c2f185ee95427fb06ca6927fcfc48b12aa4c2495182c1a77abc',1,'mini_renderscript.h']]],
-  ['android_5flog_5fverbose',['ANDROID_LOG_VERBOSE',['../mini__renderscript_8h.html#adc29c2ff13d900c2f185ee95427fb06ca0adbaa5c45010323cfffffa93234578c',1,'mini_renderscript.h']]],
-  ['android_5flog_5fwarn',['ANDROID_LOG_WARN',['../mini__renderscript_8h.html#adc29c2ff13d900c2f185ee95427fb06ca14a2da1996b5063456ac916077f2597e',1,'mini_renderscript.h']]],
   ['appendspace',['AppendSpace',['../class_halide_1_1_internal_1_1_code_gen___c.html#aa9d423572079a0db3dc4210d0daf54b9aa68dce6c6dacd680e72c99f8285c45bf',1,'Halide::Internal::CodeGen_C']]],
   ['archunknown',['ArchUnknown',['../struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1ae6d33003db3020c4c578c645239f2973',1,'Halide::Target']]],
   ['arm',['ARM',['../struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1a1c5f188b9b8eb5ffd951917bbbdd85f2',1,'Halide::Target']]],
@@ -22,5 +13,9 @@ var searchData=
   ['assertstmt',['AssertStmt',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2a592a4f2501f4145b888a956d28448742',1,'Halide::Internal']]],
   ['auto',['Auto',['../namespace_halide.html#a6c6557df562bd7850664e70fdb8fea0fa06b9281e396db002010bde1de57262eb',1,'Halide']]],
   ['avx',['AVX',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa620c10914ea92a26c16878ab73933b2b',1,'Halide::Target']]],
-  ['avx2',['AVX2',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fad7b64a080d84e2145fd219e9f7a33547',1,'Halide::Target']]]
+  ['avx2',['AVX2',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fad7b64a080d84e2145fd219e9f7a33547',1,'Halide::Target']]],
+  ['avx512',['AVX512',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa59e40bba2ff121dd95ed2420eb89e17b',1,'Halide::Target']]],
+  ['avx512_5fcannonlake',['AVX512_Cannonlake',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa37434c314da6b640c8ac37e1b378225e',1,'Halide::Target']]],
+  ['avx512_5fknl',['AVX512_KNL',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa127077fe0f11b9909db6b366170d7dd4',1,'Halide::Target']]],
+  ['avx512_5fskylake',['AVX512_Skylake',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa7b522bc2d0021790ba47cb302bc4ca6f',1,'Halide::Target']]]
 ];

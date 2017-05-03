@@ -11,12 +11,9 @@ var struct_halide_1_1_internal_1_1_j_i_t_module =
     [ "argv_function", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a72354935665cc2d5d42e812904009b61", null ],
     [ "add_dependency", "struct_halide_1_1_internal_1_1_j_i_t_module.html#ac18c806c157cc54d860b093d9873b87e", null ],
     [ "add_symbol_for_export", "struct_halide_1_1_internal_1_1_j_i_t_module.html#aa4469b309aaa094c74e95a609742ed8f", null ],
-    [ "add_extern_for_export", "struct_halide_1_1_internal_1_1_j_i_t_module.html#adf2bb4a262902b115f95aeca80b4b6eb", null ],
+    [ "add_extern_for_export", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a4d455b1fcb8c61cdda4f3df7bd7e920f", null ],
     [ "find_symbol_by_name", "struct_halide_1_1_internal_1_1_j_i_t_module.html#acd7ee0a038d46382b63dcf55fbdbed48", null ],
     [ "compile_module", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a362a5b9fdf6fc9f1c7586897cf63976d", null ],
-    [ "copy_to_device", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a305570bc205756395b8294776d456db3", null ],
-    [ "copy_to_host", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a29110647ff5bd704ff73f88011969678", null ],
-    [ "device_free", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a9af72ba977f36a90cd543a263197b429", null ],
     [ "memoization_cache_set_size", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a663de93653f5070619b2f88bbeb7d025", null ],
     [ "compiled", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a17e8a0bed7797e4dd5ada916382c0cf6", null ],
     [ "jit_module", "struct_halide_1_1_internal_1_1_j_i_t_module.html#afb6a6e83a43ad4884830878b4b3d60f1", null ]

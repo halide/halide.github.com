@@ -2,7 +2,6 @@ var searchData=
 [
   ['random_2eh',['Random.h',['../_random_8h.html',1,'']]],
   ['rdom_2eh',['RDom.h',['../_r_dom_8h.html',1,'']]],
-  ['readerwriter_5f3_5f2_2eh',['ReaderWriter_3_2.h',['../_reader_writer__3__2_8h.html',1,'']]],
   ['realizationorder_2eh',['RealizationOrder.h',['../_realization_order_8h.html',1,'']]],
   ['reduction_2eh',['Reduction.h',['../_reduction_8h.html',1,'']]],
   ['removedeadallocations_2eh',['RemoveDeadAllocations.h',['../_remove_dead_allocations_8h.html',1,'']]],

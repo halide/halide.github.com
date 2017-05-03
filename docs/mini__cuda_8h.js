@@ -11,8 +11,22 @@ var mini__cuda_8h =
     [ "CUstream", "mini__cuda_8h.html#a82ce2dccb2daa98448ab61d5cd8ca41c", null ],
     [ "CUevent", "mini__cuda_8h.html#a2ce592089e72af9f72b0b19c76cc9f0e", null ],
     [ "CUarray", "mini__cuda_8h.html#a07bba771174e9b5fe466a7456890fccb", null ],
+    [ "CUjit_option", "mini__cuda_8h.html#a7009c07d243d043ff7db4563abef1d5d", null ],
     [ "CUmemorytype", "mini__cuda_8h.html#a66fad50868ed524aaf51bef86136c186", null ],
     [ "CUDA_MEMCPY3D", "mini__cuda_8h.html#a74a9a64a66bcce9aaf80b04e46b070f4", null ],
+    [ "CUjit_option_enum", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28", [
+      [ "CU_JIT_MAX_REGISTERS", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28a0ce0050f3f7f3440e106ab36c77f4c28", null ],
+      [ "CU_JIT_THREADS_PER_BLOCK", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28a54a62a63648d8a69170ea455a3b8a56f", null ],
+      [ "CU_JIT_WALL_TIME", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28afd776b714085554ef25db95c917a7c44", null ],
+      [ "CU_JIT_INFO_LOG_BUFFER", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28afc36be073f64d46e47408afee66f261f", null ],
+      [ "CU_JIT_INFO_LOG_BUFFER_SIZE_BYTES", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28a619bac68db201fec6324b41a411af5ca", null ],
+      [ "CU_JIT_ERROR_LOG_BUFFER", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28a3a9e643b883423a12ccc31c08cff45cc", null ],
+      [ "CU_JIT_ERROR_LOG_BUFFER_SIZE_BYTES", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28a207be55a1fe0b87b5c41585196bd706b", null ],
+      [ "CU_JIT_OPTIMIZATION_LEVEL", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28a9cb06605ed1e3290143ed6b6a72c83f1", null ],
+      [ "CU_JIT_TARGET_FROM_CUCONTEXT", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28a6e68d5ee070748af86f61df01a07b3bc", null ],
+      [ "CU_JIT_TARGET", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28a514cdca79a2f1ff457ef52180cb2912f", null ],
+      [ "CU_JIT_FALLBACK_STRATEGY", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28ae4b13f3939d6100b5d393eb297dde6b8", null ]
+    ] ],
     [ "CUresult", "mini__cuda_8h.html#a2f191c22706ed27f2c64f0e1ab3d4ab9", [
       [ "CUDA_SUCCESS", "mini__cuda_8h.html#a2f191c22706ed27f2c64f0e1ab3d4ab9aa6fa93601dd7dfd07ef04ff1d113aa46", null ],
       [ "CUDA_ERROR_INVALID_VALUE", "mini__cuda_8h.html#a2f191c22706ed27f2c64f0e1ab3d4ab9af055b0189c16937864783ff1838438c7", null ],
