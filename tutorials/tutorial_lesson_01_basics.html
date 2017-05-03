@@ -271,6 +271,36 @@ tutorial_lesson_16_rgb_run.html
 &nbsp</b>
  RGB images and memory layouts part 2
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_17_predicated_rdom.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+17
+&nbsp</b>
+ Reductions over non-rectangular domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_18_parallel_associative_reductions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+18
+&nbsp</b>
+ Factoring an associative reduction using rfactor
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_19_wrapper_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+19
+&nbsp</b>
+ Wrapper Funcs
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -351,7 +381,7 @@ tutorial_lesson_16_rgb_run.html
     <span class="hl slc">// resolution of the output image. Halide.h also provides a basic</span>
     <span class="hl slc">// templatized image type we can use. We'll make an 800 x 600</span>
     <span class="hl slc">// image.</span>
-    Halide<span class="hl opt">::</span>Image<span class="hl opt">&lt;</span><span class="hl kwb">int32_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">800</span><span class="hl opt">,</span> <span class="hl num">600</span><span class="hl opt">);</span>
+    Halide<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int32_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">800</span><span class="hl opt">,</span> <span class="hl num">600</span><span class="hl opt">);</span>
 
     <span class="hl slc">// Halide does type inference for you. Var objects represent</span>
     <span class="hl slc">// 32-bit integers, so the Expr object 'x + y' also represents a</span>
@@ -364,7 +394,7 @@ tutorial_lesson_16_rgb_run.html
     <span class="hl slc">// expecting:</span>
     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> j <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> j <span class="hl opt">&lt;</span> output<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">();</span> j<span class="hl opt">++) {</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> output<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">();</span> i<span class="hl opt">++) {</span>
-            <span class="hl slc">// We can access a pixel of an Image object using similar</span>
+            <span class="hl slc">// We can access a pixel of an Buffer object using similar</span>
             <span class="hl slc">// syntax to defining and using functions.</span>
             <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">output</span><span class="hl opt">(</span>i<span class="hl opt">,</span> j<span class="hl opt">) !=</span> i <span class="hl opt">+</span> j<span class="hl opt">) {</span>
                 <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Something went wrong!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span>
@@ -376,7 +406,7 @@ tutorial_lesson_16_rgb_run.html
     <span class="hl opt">}</span>
 
     <span class="hl slc">// Everything worked! We defined a Func, then called 'realize' on</span>
-    <span class="hl slc">// it to generate and run machine code that produced an Image.</span>
+    <span class="hl slc">// it to generate and run machine code that produced an Buffer.</span>
     <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
     <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>

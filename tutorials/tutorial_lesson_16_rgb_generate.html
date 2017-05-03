@@ -271,6 +271,36 @@ tutorial_lesson_16_rgb_run.html
 &nbsp</b>
  RGB images and memory layouts part 2
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_17_predicated_rdom.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+17
+&nbsp</b>
+ Reductions over non-rectangular domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_18_parallel_associative_reductions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+18
+&nbsp</b>
+ Factoring an associative reduction using rfactor
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_19_wrapper_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+19
+&nbsp</b>
+ Wrapper Funcs
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -399,12 +429,12 @@ tutorial_lesson_16_rgb_run.html
             <span class="hl slc">// that this is the case for the input and output like so:</span>
 
             input
-                <span class="hl opt">.</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">)</span> <span class="hl slc">// stride in dimension 0 (x) is three</span>
-                <span class="hl opt">.</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">);</span> <span class="hl slc">// stride in dimension 2 (c) is one</span>
+                <span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">3</span><span class="hl opt">)</span> <span class="hl slc">// stride in dimension 0 (x) is three</span>
+                <span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">);</span> <span class="hl slc">// stride in dimension 2 (c) is one</span>
 
             brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">()</span>
-                <span class="hl opt">.</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">)</span>
-                <span class="hl opt">.</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">);</span>
+                <span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">3</span><span class="hl opt">)</span>
+                <span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">);</span>
 
             <span class="hl slc">// For interleaved layout, you may want to use a different</span>
             <span class="hl slc">// schedule. We'll tell Halide to additionally assume and</span>
@@ -412,8 +442,8 @@ tutorial_lesson_16_rgb_run.html
             <span class="hl slc">// exploit this fact to make the loop over 'c' innermost</span>
             <span class="hl slc">// and unrolled.</span>
 
-            input<span class="hl opt">.</span><span class="hl kwd">set_bounds</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span> <span class="hl slc">// Dimension 2 (c) starts at 0 and has extent 3.</span>
-            brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">set_bounds</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+            input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">set_bounds</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span> <span class="hl slc">// Dimension 2 (c) starts at 0 and has extent 3.</span>
+            brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">set_bounds</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
 
             <span class="hl slc">// Move the loop over color channels innermost and unroll</span>
             <span class="hl slc">// it.</span>
@@ -429,42 +459,42 @@ tutorial_lesson_16_rgb_run.html
             <span class="hl slc">// pipeline that will work with any memory layout. It will</span>
             <span class="hl slc">// probably be slow, because all vector loads become</span>
             <span class="hl slc">// gathers, and all vector stores become scatters.</span>
-            input<span class="hl opt">.</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl kwd">Expr</span><span class="hl opt">());</span> <span class="hl slc">// Use a default-constructed</span>
-                                         <span class="hl slc">// undefined Expr to mean</span>
-                                         <span class="hl slc">// there is no constraint.</span>
+            input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl kwd">Expr</span><span class="hl opt">());</span> <span class="hl slc">// Use a default-constructed</span>
+                                             <span class="hl slc">// undefined Expr to mean</span>
+                                             <span class="hl slc">// there is no constraint.</span>
 
-            brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl kwd">Expr</span><span class="hl opt">());</span>
+            brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl kwd">Expr</span><span class="hl opt">());</span>
 
         <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> Layout<span class="hl opt">::</span>Specialized<span class="hl opt">) {</span>
             <span class="hl slc">// We can accept any memory layout with good performance</span>
             <span class="hl slc">// by telling Halide to inspect the memory layout at</span>
             <span class="hl slc">// runtime, and branch to different code depending on the</span>
             <span class="hl slc">// strides it find. First we relax the default constraint</span>
-            <span class="hl slc">// that stride(0) == 1:</span>
+            <span class="hl slc">// that dim(0).stride() == 1:</span>
 
-            input<span class="hl opt">.</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl kwd">Expr</span><span class="hl opt">());</span> <span class="hl slc">// Use an undefined Expr to</span>
-                                         <span class="hl slc">// mean there is no</span>
-                                         <span class="hl slc">// constraint.</span>
+            input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl kwd">Expr</span><span class="hl opt">());</span> <span class="hl slc">// Use an undefined Expr to</span>
+                                             <span class="hl slc">// mean there is no</span>
+                                             <span class="hl slc">// constraint.</span>
 
-            brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl kwd">Expr</span><span class="hl opt">());</span>
+            brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl kwd">Expr</span><span class="hl opt">());</span>
 
             <span class="hl slc">// The we construct boolean Exprs that detect at runtime</span>
             <span class="hl slc">// whether we're planar or interleaved. The conditions</span>
             <span class="hl slc">// should check for all the facts we want to exploit in</span>
             <span class="hl slc">// each case.</span>
             Expr input_is_planar <span class="hl opt">=</span>
-                <span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">) ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
+                <span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
             Expr input_is_interleaved <span class="hl opt">=</span>
-                <span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">) ==</span> <span class="hl num">3</span> <span class="hl opt">&amp;&amp;</span>
-                 input<span class="hl opt">.</span><span class="hl kwd">stride</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">) ==</span> <span class="hl num">1</span> <span class="hl opt">&amp;&amp;</span>
-                 input<span class="hl opt">.</span><span class="hl kwd">extent</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">) ==</span> <span class="hl num">3</span><span class="hl opt">);</span>
+                <span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">3</span> <span class="hl opt">&amp;&amp;</span>
+                 input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span> <span class="hl opt">&amp;&amp;</span>
+                 input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">extent</span><span class="hl opt">() ==</span> <span class="hl num">3</span><span class="hl opt">);</span>
 
             Expr output_is_planar <span class="hl opt">=</span>
-                <span class="hl opt">(</span>brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">) ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
+                <span class="hl opt">(</span>brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
             Expr output_is_interleaved <span class="hl opt">=</span>
-                <span class="hl opt">(</span>brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">stride</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">) ==</span> <span class="hl num">3</span> <span class="hl opt">&amp;&amp;</span>
-                 brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">stride</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">) ==</span> <span class="hl num">1</span> <span class="hl opt">&amp;&amp;</span>
-                 brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">extent</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">) ==</span> <span class="hl num">3</span><span class="hl opt">);</span>
+                <span class="hl opt">(</span>brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">3</span> <span class="hl opt">&amp;&amp;</span>
+                 brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span> <span class="hl opt">&amp;&amp;</span>
+                 brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">extent</span><span class="hl opt">() ==</span> <span class="hl num">3</span><span class="hl opt">);</span>
 
             <span class="hl slc">// We can then use Func::specialize to write a schedule</span>
             <span class="hl slc">// that switches at runtime to specialized code based on a</span>

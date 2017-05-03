@@ -271,6 +271,36 @@ tutorial_lesson_16_rgb_run.html
 &nbsp</b>
  RGB images and memory layouts part 2
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_17_predicated_rdom.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+17
+&nbsp</b>
+ Reductions over non-rectangular domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_18_parallel_associative_reductions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+18
+&nbsp</b>
+ Factoring an associative reduction using rfactor
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_19_wrapper_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+19
+&nbsp</b>
+ Wrapper Funcs
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -312,7 +342,7 @@ tutorial_lesson_16_rgb_run.html
     Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">);</span>
 
     <span class="hl slc">// Load a grayscale image to use as an input.</span>
-    Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> <span class="hl kwd">load_image</span><span class="hl opt">(</span><span class="hl str">&quot;images/gray.png&quot;</span><span class="hl opt">);</span>
+    Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> <span class="hl kwd">load_image</span><span class="hl opt">(</span><span class="hl str">&quot;images/gray.png&quot;</span><span class="hl opt">);</span>
 
     <span class="hl slc">// You can define a Func in multiple passes. Let's see a toy</span>
     <span class="hl slc">// example first.</span>
@@ -459,7 +489,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// domain&quot; and using it inside an update definition:</span>
         RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">50</span><span class="hl opt">);</span>
         <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> r<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> r<span class="hl opt">) *</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> r<span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">100</span><span class="hl opt">,</span> <span class="hl num">100</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">100</span><span class="hl opt">,</span> <span class="hl num">100</span><span class="hl opt">);</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 
@@ -515,7 +545,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// input image at that point.</span>
         <span class="hl kwd">histogram</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x<span class="hl opt">,</span> r<span class="hl opt">.</span>y<span class="hl opt">)) +=</span> <span class="hl num">1</span><span class="hl opt">;</span>
 
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">256</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">256</span><span class="hl opt">);</span>
 
         <span class="hl slc">// The equivalent C is:</span>
         <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">256</span><span class="hl opt">];</span>
@@ -573,7 +603,7 @@ tutorial_lesson_16_rgb_run.html
         Var yo<span class="hl opt">,</span> yi<span class="hl opt">;</span>
         f<span class="hl opt">.</span><span class="hl kwd">update</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">).</span><span class="hl kwd">split</span><span class="hl opt">(</span>y<span class="hl opt">,</span> yo<span class="hl opt">,</span> yi<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">).</span><span class="hl kwd">parallel</span><span class="hl opt">(</span>yo<span class="hl opt">);</span>
 
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">16</span><span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">16</span><span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">);</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 
@@ -636,7 +666,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> x<span class="hl opt">*</span><span class="hl num">2</span><span class="hl opt">;</span>
         <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">) +=</span> <span class="hl num">10</span><span class="hl opt">;</span>
         <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 
@@ -697,7 +727,7 @@ tutorial_lesson_16_rgb_run.html
 
             producer<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> x<span class="hl opt">);</span>
 
-            Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+            Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
 
             <span class="hl slc">// See below for a visualization.</span>
 
@@ -751,7 +781,7 @@ tutorial_lesson_16_rgb_run.html
             <span class="hl slc">// the Vars of a Func are shared across the pure and</span>
             <span class="hl slc">// update steps.</span>
 
-            Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+            Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
 
             <span class="hl slc">// See below for a visualization.</span>
 
@@ -797,7 +827,7 @@ tutorial_lesson_16_rgb_run.html
             <span class="hl slc">// redundant work occurs.</span>
             producer<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> x<span class="hl opt">);</span>
 
-            Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+            Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
 
             <span class="hl slc">// See below for a visualization.</span>
 
@@ -866,7 +896,7 @@ tutorial_lesson_16_rgb_run.html
             producer_1<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer_2<span class="hl opt">,</span> x<span class="hl opt">);</span>
             producer_2<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer_2<span class="hl opt">,</span> y<span class="hl opt">);</span>
 
-            Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer_2<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">,</span> <span class="hl num">10</span><span class="hl opt">);</span>
+            Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer_2<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">,</span> <span class="hl num">10</span><span class="hl opt">);</span>
 
             <span class="hl slc">// See below for a visualization.</span>
 
@@ -924,7 +954,7 @@ tutorial_lesson_16_rgb_run.html
 
             producer<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> r<span class="hl opt">);</span>
 
-            Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+            Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
 
             <span class="hl slc">// See below for a visualization.</span>
 
@@ -986,7 +1016,7 @@ tutorial_lesson_16_rgb_run.html
         Func blurry<span class="hl opt">;</span>
         <span class="hl kwd">blurry</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> cast<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span><span class="hl kwd">local_sum</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) /</span> <span class="hl num">25</span><span class="hl opt">);</span>
 
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> blurry<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> blurry<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
 
         <span class="hl slc">// The default schedule will inline 'clamped' into the update</span>
         <span class="hl slc">// step of 'local_sum', because clamped only has a pure</span>
@@ -995,7 +1025,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// because the default schedule for reductions is</span>
         <span class="hl slc">// compute-innermost. Here's the equivalent C:</span>
 
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">c_result</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">c_result</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">();</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">();</span> x<span class="hl opt">++) {</span>
                 <span class="hl kwb">int</span> local_sum<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
@@ -1048,8 +1078,8 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// pure function. The reduction domain has been swallowed to</span>
         <span class="hl slc">// define the inner anonymous reduction.</span>
 
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result_1 <span class="hl opt">=</span> f1<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result_2 <span class="hl opt">=</span> f2<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result_1 <span class="hl opt">=</span> f1<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result_2 <span class="hl opt">=</span> f2<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
 
         <span class="hl slc">// The equivalent C is:</span>
         <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">10</span><span class="hl opt">];</span>
@@ -1111,7 +1141,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// as we need it in a circular buffer (see lesson 08).</span>
         clamped<span class="hl opt">.</span><span class="hl kwd">store_at</span><span class="hl opt">(</span>spread<span class="hl opt">,</span> yo<span class="hl opt">).</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>spread<span class="hl opt">,</span> yi<span class="hl opt">);</span>
 
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> spread<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> spread<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
 
         <span class="hl slc">// The C equivalent is almost too horrible to contemplate (and</span>
         <span class="hl slc">// took me a long time to debug). This time I want to time</span>
@@ -1122,7 +1152,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl ppc">#ifdef __SSE2__</span>
 
         <span class="hl slc">// Don't include the time required to allocate the output buffer.</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">c_result</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">c_result</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
 
         <span class="hl ppc">#ifdef _OPENMP</span>
         <span class="hl kwb">double</span> t1 <span class="hl opt">=</span> <span class="hl kwd">current_time</span><span class="hl opt">();</span>

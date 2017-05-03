@@ -1,0 +1,541 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>
+ Reductions over non-rectangular domains
+</title>
+<link rel="stylesheet" type="text/css" href="../assets/css/highlight.css">
+<style>
+
+a:visited {
+color: #000000;
+}
+
+a:link {
+color: #000000;
+}
+
+a:hover {
+color: #aa0000;
+}
+
+</style>
+</head>
+<body class="hl" style="background-color: #444444; font-family: Helvetica, Arial, sans-serif;">
+<script>
+function toggle(id) {
+    e = document.getElementById(id);
+    show = document.getElementById(id + '-show');
+    if (e.style.display != 'none') {
+        e.style.display = 'none';
+        show.innerHTML = "// Click to show output ...";
+    } else {
+        e.style.display = 'block';
+        show.innerHTML = "// Click to hide output ...";
+    }
+    return false;
+}
+</script>
+<div>
+<style scoped>
+@import "../assets/css/bootstrap.css";
+</style>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/index.html">Halide</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><a href="/index.html#gettingstarted">Getting Started</a></li>
+          <li><a href="/tutorials/tutorial_introduction.html">Tutorials</a></li>
+          <li><a href="/index.html#publications">Publications</a></li>
+          <li><a href="/index.html#resources">Resources</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="http://github.com/halide/Halide/issues">Bugs</a></li>
+          <li><a href="http://github.com/halide/Halide/wiki">Wiki</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="http://stackoverflow.com/questions/tagged/halide"><i class="fa fa-stack-overflow"></i>/#halide</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
+<div style='position:relative; width:900pt; top:60px;'>
+<div style="width:200px; float:left; ">
+<a href="tutorial_introduction.html" style="text-decoration:none;" ><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px;
+background-color: #dddddd; 
+text-align: left; ">
+<b>
+00
+&nbsp</b>
+Introduction
+</div>
+</span>
+</a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_01_basics.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+01
+&nbsp</b>
+ Getting started with Funcs, Vars, and Exprs
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_02_input_image.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+02
+&nbsp</b>
+ Processing images
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_03_debugging_1.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+03
+&nbsp</b>
+ Inspecting the generated code
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_04_debugging_2.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+04
+&nbsp</b>
+ Debugging with tracing, print, and print_when
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_05_scheduling_1.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+05
+&nbsp</b>
+ Vectorize, parallelize, unroll and tile your code
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_06_realizing_over_shifted_domains.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+06
+&nbsp</b>
+ Realizing Funcs over arbitrary domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_07_multi_stage_pipelines.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+07
+&nbsp</b>
+ Multi-stage pipelines
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_08_scheduling_2.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+08
+&nbsp</b>
+ Scheduling multi-stage pipelines
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_09_update_definitions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+09
+&nbsp</b>
+ Multi-pass Funcs, update definitions, and reductions
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_10_aot_compilation_generate.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+10
+&nbsp</b>
+ AOT compilation part 1
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_10_aot_compilation_run.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+10
+&nbsp</b>
+ AOT compilation part 2
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_11_cross_compilation.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+11
+&nbsp</b>
+ Cross-compilation
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_12_using_the_gpu.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+12
+&nbsp</b>
+ Using the GPU
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_13_tuples.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+13
+&nbsp</b>
+ Tuples
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_14_types.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+14
+&nbsp</b>
+ The Halide type system
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_15_generators.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+15
+&nbsp</b>
+ Generators part 1
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_15_generators_usage.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+15
+&nbsp</b>
+ Generators part 2
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_16_rgb_generate.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+16
+&nbsp</b>
+ RGB images and memory layouts part 1
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_16_rgb_run.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+16
+&nbsp</b>
+ RGB images and memory layouts part 2
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_17_predicated_rdom.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; padding-right:40px; background-color: #ffffff; color: #000000; text-align: left; ">
+<b>
+17
+&nbsp</b>
+ Reductions over non-rectangular domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_18_parallel_associative_reductions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+18
+&nbsp</b>
+ Factoring an associative reduction using rfactor
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_19_wrapper_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+19
+&nbsp</b>
+ Wrapper Funcs
+</div></span></a>
+</div>
+<div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
+<pre class="hl">
+<span class="hl slc">// Halide tutorial lesson 17: Reductions over non-rectangular domains</span>
+
+<span class="hl slc">// This lesson demonstrates how to define updates that iterate over</span>
+<span class="hl slc">// subsets of a reduction domain using predicates.</span>
+
+<span class="hl slc">// On linux, you can compile and run it like so:</span>
+<span class="hl slc">// g++ lesson_17*.cpp -g -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_17 -std=c++11</span>
+<span class="hl slc">// LD_LIBRARY_PATH=../bin ./lesson_17</span>
+
+<span class="hl slc">// On os x:</span>
+<span class="hl slc">// g++ lesson_17*.cpp -g -I ../include -L ../bin -lHalide -o lesson_17 -std=c++11</span>
+<span class="hl slc">// DYLD_LIBRARY_PATH=../bin ./lesson_17</span>
+
+<span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
+<span class="hl slc">// running:</span>
+<span class="hl slc">//    make tutorial_lesson_17_predicated_rdom</span>
+<span class="hl slc">// in a shell with the current directory at the top of the halide</span>
+<span class="hl slc">// source tree.</span>
+
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include &lt;stdio.h&gt;</span>
+
+<span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
+
+<span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
+
+    <span class="hl slc">// In lesson 9, we learned how to use RDom to define a &quot;reduction</span>
+    <span class="hl slc">// domain&quot; to use in a Halide update definition. The domain</span>
+    <span class="hl slc">// defined by an RDom, however, is always rectangular, and the</span>
+    <span class="hl slc">// update occurs at every point in that rectangular domain. In</span>
+    <span class="hl slc">// some cases, we might want to iterate over some non-rectangular</span>
+    <span class="hl slc">// domain, e.g. a circle. We can achieve this behavior by using</span>
+    <span class="hl slc">// the RDom::where directive.</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// Starting with this pure definition:</span>
+        Func <span class="hl kwd">circle</span><span class="hl opt">(</span><span class="hl str">&quot;circle&quot;</span><span class="hl opt">);</span>
+        Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">circle</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+
+        <span class="hl slc">// Say we want an update that squares the values inside a</span>
+        <span class="hl slc">// circular region centered at (3, 3) with radius of 3. To do</span>
+        <span class="hl slc">// this, we first define the minimal bounding box over the</span>
+        <span class="hl slc">// circular region using an RDom.</span>
+        RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">7</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// The bounding box does not have to be minimal. In fact, the</span>
+        <span class="hl slc">// box can be of any size, as long it covers the region we'd</span>
+        <span class="hl slc">// like to update. However, the tighter the bounding box, the</span>
+        <span class="hl slc">// tighter the generated loop bounds will be. Halide will</span>
+        <span class="hl slc">// tighten the loop bounds automatically when possible, but in</span>
+        <span class="hl slc">// general, it is better to define a minimal bounding box.</span>
+
+        <span class="hl slc">// Then, we use RDom::where to define the predicate over that</span>
+        <span class="hl slc">// bounding box, such that the update is performed only if the</span>
+        <span class="hl slc">// given predicate evaluates to true, i.e. within the circular</span>
+        <span class="hl slc">// region.</span>
+        r<span class="hl opt">.</span><span class="hl kwd">where</span><span class="hl opt">((</span>r<span class="hl opt">.</span>x <span class="hl opt">-</span> <span class="hl num">3</span><span class="hl opt">)*(</span>r<span class="hl opt">.</span>x <span class="hl opt">-</span> <span class="hl num">3</span><span class="hl opt">) + (</span>r<span class="hl opt">.</span>y <span class="hl opt">-</span> <span class="hl num">3</span><span class="hl opt">)*(</span>r<span class="hl opt">.</span>y <span class="hl opt">-</span> <span class="hl num">3</span><span class="hl opt">) &lt;=</span> <span class="hl num">10</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// After defining the predicate, we then define the update.</span>
+        <span class="hl kwd">circle</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x<span class="hl opt">,</span> r<span class="hl opt">.</span>y<span class="hl opt">) *=</span> <span class="hl num">2</span><span class="hl opt">;</span>
+
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> circle<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">7</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// See below for a visualization of</span>
+        <span class="hl slc">// what this did.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_17_rdom_circular.mp4  />Your browser does not support the video tag :(</video></span>
+
+        <span class="hl slc">// The equivalent C is:</span>
+        <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">7</span><span class="hl opt">][</span><span class="hl num">7</span><span class="hl opt">];</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">7</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">7</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r_y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> r_y <span class="hl opt">&lt;</span> <span class="hl num">7</span><span class="hl opt">;</span> r_y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r_x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> r_x <span class="hl opt">&lt;</span> <span class="hl num">7</span><span class="hl opt">;</span> r_x<span class="hl opt">++) {</span>
+                <span class="hl slc">// Update is only performed if the predicate evaluates to true.</span>
+                <span class="hl kwa">if</span> <span class="hl opt">((</span>r_x <span class="hl opt">-</span> <span class="hl num">3</span><span class="hl opt">)*(</span>r_x <span class="hl opt">-</span> <span class="hl num">3</span><span class="hl opt">) + (</span>r_y <span class="hl opt">-</span> <span class="hl num">3</span><span class="hl opt">)*(</span>r_y <span class="hl opt">-</span> <span class="hl num">3</span><span class="hl opt">) &lt;=</span> <span class="hl num">10</span><span class="hl opt">) {</span>
+                    c_result<span class="hl opt">[</span>r_y<span class="hl opt">][</span>r_x<span class="hl opt">] *=</span> <span class="hl num">2</span><span class="hl opt">;</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl slc">// Check the results match:</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">7</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">7</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) !=</span> c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">]) {</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;halide_result(%d, %d) = %d instead of %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                           x<span class="hl opt">,</span> y<span class="hl opt">,</span> <span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">),</span> c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">]);</span>
+                    <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// We can also define multiple predicates over an RDom. Let's</span>
+        <span class="hl slc">// say now we want the update to happen within some triangular</span>
+        <span class="hl slc">// region. To do this we define three predicates, where each</span>
+        <span class="hl slc">// corresponds to one side of the triangle.</span>
+        Func <span class="hl kwd">triangle</span><span class="hl opt">(</span><span class="hl str">&quot;triangle&quot;</span><span class="hl opt">);</span>
+        Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">triangle</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        <span class="hl slc">// First, let's define the minimal bounding box over the triangular</span>
+        <span class="hl slc">// region.</span>
+        RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">10</span><span class="hl opt">);</span>
+        <span class="hl slc">// Next, let's add the three predicates to the RDom using</span>
+        <span class="hl slc">// multiple calls to RDom::where</span>
+        r<span class="hl opt">.</span><span class="hl kwd">where</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x <span class="hl opt">+</span> r<span class="hl opt">.</span>y <span class="hl opt">&gt;</span> <span class="hl num">5</span><span class="hl opt">);</span>
+        r<span class="hl opt">.</span><span class="hl kwd">where</span><span class="hl opt">(</span><span class="hl num">3</span><span class="hl opt">*</span>r<span class="hl opt">.</span>y <span class="hl opt">-</span> <span class="hl num">2</span><span class="hl opt">*</span>r<span class="hl opt">.</span>x <span class="hl opt">&lt;</span> <span class="hl num">15</span><span class="hl opt">);</span>
+        r<span class="hl opt">.</span><span class="hl kwd">where</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">*</span>r<span class="hl opt">.</span>x <span class="hl opt">-</span> r<span class="hl opt">.</span>y <span class="hl opt">&lt;</span> <span class="hl num">20</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// We can also pack the multiple predicates into one like so:</span>
+        <span class="hl slc">// r.where((r.x + r.y &gt; 5) &amp;&amp; (3*r.y - 2*r.x &lt; 15) &amp;&amp; (4*r.x - r.y &lt; 20));</span>
+
+        <span class="hl slc">// Then define the update.</span>
+        <span class="hl kwd">triangle</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x<span class="hl opt">,</span> r<span class="hl opt">.</span>y<span class="hl opt">) *=</span> <span class="hl num">2</span><span class="hl opt">;</span>
+
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> triangle<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">,</span> <span class="hl num">10</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// See below for a</span>
+        <span class="hl slc">// visualization of what this did.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_17_rdom_triangular.mp4  />Your browser does not support the video tag :(</video></span>
+
+        <span class="hl slc">// The equivalent C is:</span>
+        <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">10</span><span class="hl opt">][</span><span class="hl num">10</span><span class="hl opt">];</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">10</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">10</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r_y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> r_y <span class="hl opt">&lt;</span> <span class="hl num">10</span><span class="hl opt">;</span> r_y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r_x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> r_x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> r_x<span class="hl opt">++) {</span>
+                <span class="hl slc">// Update is only performed if the predicate evaluates to true.</span>
+                <span class="hl kwa">if</span> <span class="hl opt">((</span>r_x <span class="hl opt">+</span> r_y <span class="hl opt">&gt;</span> <span class="hl num">5</span><span class="hl opt">) &amp;&amp; (</span><span class="hl num">3</span><span class="hl opt">*</span>r_y <span class="hl opt">-</span> <span class="hl num">2</span><span class="hl opt">*</span>r_x <span class="hl opt">&lt;</span> <span class="hl num">15</span><span class="hl opt">) &amp;&amp; (</span><span class="hl num">4</span><span class="hl opt">*</span>r_x <span class="hl opt">-</span> r_y <span class="hl opt">&lt;</span> <span class="hl num">20</span><span class="hl opt">)) {</span>
+                    c_result<span class="hl opt">[</span>r_y<span class="hl opt">][</span>r_x<span class="hl opt">] *=</span> <span class="hl num">2</span><span class="hl opt">;</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl slc">// Check the results match:</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">10</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">10</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) !=</span> c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">]) {</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;halide_result(%d, %d) = %d instead of %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                           x<span class="hl opt">,</span> y<span class="hl opt">,</span> <span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">),</span> c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">]);</span>
+                    <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// The predicate is not limited to the RDom's variables only</span>
+        <span class="hl slc">// (r.x, r.y, ...).  It can also refer to free variables in</span>
+        <span class="hl slc">// the update definition, and even make calls to other Funcs,</span>
+        <span class="hl slc">// or make recursive calls to the same Func. For example:</span>
+        Func <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g&quot;</span><span class="hl opt">);</span>
+        Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+
+        <span class="hl slc">// This RDom's predicates depend on the initial value of 'f'.</span>
+        RDom <span class="hl kwd">r1</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">);</span>
+        r1<span class="hl opt">.</span><span class="hl kwd">where</span><span class="hl opt">(</span><span class="hl kwd">f</span><span class="hl opt">(</span>r1<span class="hl opt">.</span>x<span class="hl opt">,</span> r1<span class="hl opt">.</span>y<span class="hl opt">) &gt;=</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        r1<span class="hl opt">.</span><span class="hl kwd">where</span><span class="hl opt">(</span><span class="hl kwd">f</span><span class="hl opt">(</span>r1<span class="hl opt">.</span>x<span class="hl opt">,</span> r1<span class="hl opt">.</span>y<span class="hl opt">) &lt;=</span> <span class="hl num">7</span><span class="hl opt">);</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>r1<span class="hl opt">.</span>x<span class="hl opt">,</span> r1<span class="hl opt">.</span>y<span class="hl opt">) /=</span> <span class="hl num">10</span><span class="hl opt">;</span>
+
+        f<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// While this one involves calls to another Func.</span>
+        RDom <span class="hl kwd">r2</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+        r2<span class="hl opt">.</span><span class="hl kwd">where</span><span class="hl opt">(</span><span class="hl kwd">f</span><span class="hl opt">(</span>r2<span class="hl opt">.</span>x<span class="hl opt">,</span> r2<span class="hl opt">.</span>y<span class="hl opt">) &lt;</span> <span class="hl num">1</span><span class="hl opt">);</span>
+        <span class="hl kwd">g</span><span class="hl opt">(</span>r2<span class="hl opt">.</span>x<span class="hl opt">,</span> r2<span class="hl opt">.</span>y<span class="hl opt">) +=</span> <span class="hl num">17</span><span class="hl opt">;</span>
+
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result_g <span class="hl opt">=</span> g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// See below for a</span>
+        <span class="hl slc">// visualization of what this did.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_17_rdom_calls_in_predicate.mp4  />Your browser does not support the video tag :(</video></span>
+
+        <span class="hl slc">// The equivalent C for 'f' is:</span>
+        <span class="hl kwb">int</span> c_result_f<span class="hl opt">[</span><span class="hl num">5</span><span class="hl opt">][</span><span class="hl num">5</span><span class="hl opt">];</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                c_result_f<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] =</span> <span class="hl num">2</span> <span class="hl opt">*</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r1_y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> r1_y <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> r1_y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r1_x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> r1_x <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> r1_x<span class="hl opt">++) {</span>
+                <span class="hl slc">// Update is only performed if the predicate evaluates to true.</span>
+                <span class="hl kwa">if</span> <span class="hl opt">((</span>c_result_f<span class="hl opt">[</span>r1_y<span class="hl opt">][</span>r1_x<span class="hl opt">] &gt;=</span> <span class="hl num">4</span><span class="hl opt">) &amp;&amp; (</span>c_result_f<span class="hl opt">[</span>r1_y<span class="hl opt">][</span>r1_x<span class="hl opt">] &lt;=</span> <span class="hl num">7</span><span class="hl opt">)) {</span>
+                    c_result_f<span class="hl opt">[</span>r1_y<span class="hl opt">][</span>r1_x<span class="hl opt">] /=</span> <span class="hl num">10</span><span class="hl opt">;</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl slc">// And, the equivalent C for 'g' is:</span>
+        <span class="hl kwb">int</span> c_result_g<span class="hl opt">[</span><span class="hl num">5</span><span class="hl opt">][</span><span class="hl num">5</span><span class="hl opt">];</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                c_result_g<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r2_y <span class="hl opt">=</span> <span class="hl num">1</span><span class="hl opt">;</span> r2_y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> r2_y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r1_x <span class="hl opt">=</span> <span class="hl num">1</span><span class="hl opt">;</span> r1_x <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> r1_x<span class="hl opt">++) {</span>
+                <span class="hl slc">// Update is only performed if the predicate evaluates to true.</span>
+                <span class="hl kwa">if</span> <span class="hl opt">(</span>c_result_f<span class="hl opt">[</span>r2_y<span class="hl opt">][</span>r1_x<span class="hl opt">] &lt;</span> <span class="hl num">1</span><span class="hl opt">) {</span>
+                    c_result_g<span class="hl opt">[</span>r2_y<span class="hl opt">][</span>r1_x<span class="hl opt">] +=</span> <span class="hl num">17</span><span class="hl opt">;</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl slc">// Check the results match:</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">halide_result_g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) !=</span> c_result_g<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">]) {</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;halide_result_g(%d, %d) = %d instead of %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                           x<span class="hl opt">,</span> y<span class="hl opt">,</span> <span class="hl kwd">halide_result_g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">),</span> c_result_g<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">]);</span>
+                    <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+    <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
+</pre>
+</div></body></html>

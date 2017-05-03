@@ -271,6 +271,36 @@ tutorial_lesson_16_rgb_run.html
 &nbsp</b>
  RGB images and memory layouts part 2
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_17_predicated_rdom.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+17
+&nbsp</b>
+ Reductions over non-rectangular domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_18_parallel_associative_reductions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+18
+&nbsp</b>
+ Factoring an associative reduction using rfactor
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_19_wrapper_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+19
+&nbsp</b>
+ Wrapper Funcs
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -318,7 +348,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// slowly. x is the column and y is the row, so this is a</span>
         <span class="hl slc">// row-major traversal.</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient row-major</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
         <a onclick='return toggle("_45");'><b id=_45-show>// Click to show output ...</b></a><div id=_45 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient.0()
  > Store gradient.0(0, 0) = 0
@@ -394,7 +424,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// traversal.</span>
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient column-major</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
         <a onclick='return toggle("_91");'><b id=_91-show>// Click to show output ...</b></a><div id=_91 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient_col_major.0()
  > Store gradient_col_major.0(0, 0) = 0
@@ -466,7 +496,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// also added within the loops.</span>
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x split into x_outer and x_inner</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
         <a onclick='return toggle("_133");'><b id=_133-show>// Click to show output ...</b></a><div id=_133 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient_split.0()
  > Store gradient_split.0(0, 0) = 0
@@ -533,7 +563,7 @@ tutorial_lesson_16_rgb_run.html
         gradient<span class="hl opt">.</span><span class="hl kwd">fuse</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> fused<span class="hl opt">);</span>
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x and y fused</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> fused <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> fused <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">*</span><span class="hl num">4</span><span class="hl opt">;</span> fused<span class="hl opt">++) {</span>
@@ -561,7 +591,7 @@ tutorial_lesson_16_rgb_run.html
         gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
         <span class="hl slc">// Now that we can both split and reorder, we can do tiled</span>
-        <span class="hl slc">// evaluation. Let's split both x and y by a factor of two,</span>
+        <span class="hl slc">// evaluation. Let's split both x and y by a factor of four,</span>
         <span class="hl slc">// and then reorder the vars to express a tiled traversal.</span>
         <span class="hl slc">//</span>
         <span class="hl slc">// A tiled traversal splits the domain into small rectangular</span>
@@ -579,7 +609,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// gradient.tile(x, y, x_outer, y_outer, x_inner, y_inner, 4, 4);</span>
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient in 4x4 tiles</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
         <a onclick='return toggle("_211");'><b id=_211-show>// Click to show output ...</b></a><div id=_211 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient_tiled.0()
  > Store gradient_tiled.0(0, 0) = 0
@@ -718,7 +748,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// This time we'll evaluate over an 8x4 box, so that we have</span>
         <span class="hl slc">// more than one vector of work per scanline.</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x_inner vectorized</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
         <a onclick='return toggle("_270");'><b id=_270-show>// Click to show output ...</b></a><div id=_270 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient_in_vectors.0()
  > Store gradient_in_vectors.0(<0, 1, 2, 3>, <0, 0, 0, 0>) = <0, 1, 2, 3>
@@ -794,7 +824,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// gradient.unroll(x, 2);</span>
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient unrolled by a factor of two</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
         <a onclick='return toggle("_323");'><b id=_323-show>// Click to show output ...</b></a><div id=_323 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient_unroll.0()
  > Store gradient_unroll.0(0, 0) = 0
@@ -865,7 +895,7 @@ tutorial_lesson_16_rgb_run.html
         gradient<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>x<span class="hl opt">,</span> x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient over a 7x2 box with x split by three</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">);</span>
         <a onclick='return toggle("_365");'><b id=_365-show>// Click to show output ...</b></a><div id=_365 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient_split_7x2.0()
  > Store gradient_split_7x2.0(0, 0) = 0
@@ -985,7 +1015,7 @@ tutorial_lesson_16_rgb_run.html
 
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient tiles in parallel</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
         <a onclick='return toggle("_452");'><b id=_452-show>// Click to show output ...</b></a><div id=_452 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient_fused_tiles.0()
  > Store gradient_fused_tiles.0(0, 0) = 0
@@ -1064,9 +1094,9 @@ tutorial_lesson_16_rgb_run.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent (serial) C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl slc">// This outermost loop should be a parallel for loop, but that's hard in C.</span>
-        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> tile_index <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> tile_index <span class="hl opt">&lt;</span> <span class="hl num">16</span><span class="hl opt">;</span> tile_index<span class="hl opt">++) {</span>
-            <span class="hl kwb">int</span> y_outer <span class="hl opt">=</span> tile_index <span class="hl opt">/</span> <span class="hl num">4</span><span class="hl opt">;</span>
-            <span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> tile_index <span class="hl opt">%</span> <span class="hl num">4</span><span class="hl opt">;</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> tile_index <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> tile_index <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> tile_index<span class="hl opt">++) {</span>
+            <span class="hl kwb">int</span> y_outer <span class="hl opt">=</span> tile_index <span class="hl opt">/</span> <span class="hl num">2</span><span class="hl opt">;</span>
+            <span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> tile_index <span class="hl opt">%</span> <span class="hl num">2</span><span class="hl opt">;</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y_inner <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y_inner<span class="hl opt">++) {</span>
                 <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_inner <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x_inner<span class="hl opt">++) {</span>
                     <span class="hl kwb">int</span> y <span class="hl opt">=</span> y_outer <span class="hl opt">*</span> <span class="hl num">4</span> <span class="hl opt">+</span> y_inner<span class="hl opt">;</span>
@@ -1125,7 +1155,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// If you like you can turn on tracing, but it's going to</span>
         <span class="hl slc">// produce a lot of printfs. Instead we'll compute the answer</span>
         <span class="hl slc">// both in C and Halide and see if the answers match.</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> gradient_fast<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">350</span><span class="hl opt">,</span> <span class="hl num">250</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> gradient_fast<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">350</span><span class="hl opt">,</span> <span class="hl num">250</span><span class="hl opt">);</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 

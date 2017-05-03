@@ -271,6 +271,36 @@ tutorial_lesson_16_rgb_run.html
 &nbsp</b>
  RGB images and memory layouts part 2
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_17_predicated_rdom.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+17
+&nbsp</b>
+ Reductions over non-rectangular domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_18_parallel_associative_reductions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+18
+&nbsp</b>
+ Factoring an associative reduction using rfactor
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_19_wrapper_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+19
+&nbsp</b>
+ Wrapper Funcs
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -307,7 +337,7 @@ tutorial_lesson_16_rgb_run.html
     <span class="hl slc">// first horizontally, and then vertically.</span>
     <span class="hl opt">{</span>
         <span class="hl slc">// Take a color 8-bit input</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> <span class="hl kwd">load_image</span><span class="hl opt">(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> <span class="hl kwd">load_image</span><span class="hl opt">(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Upgrade it to 16-bit, so we can do math without it overflowing.</span>
         Func <span class="hl kwd">input_16</span><span class="hl opt">(</span><span class="hl str">&quot;input_16&quot;</span><span class="hl opt">);</span>
@@ -338,7 +368,7 @@ tutorial_lesson_16_rgb_run.html
 
         <span class="hl slc">// Now let's realize it...</span>
 
-        <span class="hl slc">// Image&lt;uint8_t&gt; result = output.realize(input.width(), input.height(), 3);</span>
+        <span class="hl slc">// Buffer&lt;uint8_t&gt; result = output.realize(input.width(), input.height(), 3);</span>
 
         <span class="hl slc">// Except that the line above is not going to work. Uncomment</span>
         <span class="hl slc">// it to see what happens.</span>
@@ -358,7 +388,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// over a domain shifted inwards by one pixel, we won't be</span>
         <span class="hl slc">// asking the Halide routine to read out of bounds. We saw how</span>
         <span class="hl slc">// to do this in the previous lesson:</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">result</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">()-</span><span class="hl num">2</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">()-</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">result</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">()-</span><span class="hl num">2</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">()-</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
         result<span class="hl opt">.</span><span class="hl kwd">set_min</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">);</span>
         output<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>result<span class="hl opt">);</span>
 
@@ -375,7 +405,7 @@ tutorial_lesson_16_rgb_run.html
     <span class="hl slc">// The same pipeline, with a boundary condition on the input.</span>
     <span class="hl opt">{</span>
         <span class="hl slc">// Take a color 8-bit input</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> <span class="hl kwd">load_image</span><span class="hl opt">(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> <span class="hl kwd">load_image</span><span class="hl opt">(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// This time, we'll wrap the input in a Func that prevents</span>
         <span class="hl slc">// reading out of bounds:</span>
@@ -433,7 +463,7 @@ tutorial_lesson_16_rgb_run.html
 
         <span class="hl slc">// This time it's safe to evaluate the output over the some</span>
         <span class="hl slc">// domain as the input, because we have a boundary condition.</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> output<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> <span class="hl num">3</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> output<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> <span class="hl num">3</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Save the result. It should look like a slightly blurry</span>
         <span class="hl slc">// parrot, but this time it will be the same size as the</span>

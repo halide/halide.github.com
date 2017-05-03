@@ -271,6 +271,36 @@ tutorial_lesson_16_rgb_run.html
 &nbsp</b>
  RGB images and memory layouts part 2
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_17_predicated_rdom.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+17
+&nbsp</b>
+ Reductions over non-rectangular domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_18_parallel_associative_reductions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+18
+&nbsp</b>
+ Factoring an associative reduction using rfactor
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_19_wrapper_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+19
+&nbsp</b>
+ Wrapper Funcs
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -286,98 +316,44 @@ tutorial_lesson_16_rgb_run.html
 <span class="hl slc">// produced when we ran it:</span>
 <span class="hl ppc">#include</span> <span class="hl pps">&quot;lesson_10_halide.h&quot;</span><span class="hl ppc"></span>
 
+<span class="hl slc">// We want to continue to use our Halide::Buffer with AOT-compiled</span>
+<span class="hl slc">// code, so we explicitly include it. It's a header-only class, and</span>
+<span class="hl slc">// doesn't require libHalide.</span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;HalideBuffer.h&quot;</span><span class="hl ppc"></span>
+
 <span class="hl ppc">#include &lt;stdio.h&gt;</span>
 
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
     <span class="hl slc">// Have a look in the header file above (it won't exist until you've run</span>
-    <span class="hl slc">// lesson_10_generate).</span>
+    <span class="hl slc">// lesson_10_generate). At the bottom is the signature of the function we generated:</span>
 
-    <span class="hl slc">// It starts with a definition of a buffer_t:</span>
-    <span class="hl slc">//</span>
-    <span class="hl slc">// typedef struct buffer_t {</span>
-    <span class="hl slc">//     uint64_t dev;</span>
-    <span class="hl slc">//     uint8_t* host;</span>
-    <span class="hl slc">//     int32_t extent[4];</span>
-    <span class="hl slc">//     int32_t stride[4];</span>
-    <span class="hl slc">//     int32_t min[4];</span>
-    <span class="hl slc">//     int32_t elem_size;</span>
-    <span class="hl slc">//     bool host_dirty;</span>
-    <span class="hl slc">//     bool dev_dirty;</span>
-    <span class="hl slc">// } buffer_t;</span>
-    <span class="hl slc">//</span>
-    <span class="hl slc">// This is how Halide represents input and output images in</span>
-    <span class="hl slc">// pre-compiled pipelines. There's a 'host' pointer that points to the</span>
-    <span class="hl slc">// start of the image data, some fields that describe how to access</span>
-    <span class="hl slc">// pixels, and some fields related to using the GPU that we'll ignore</span>
-    <span class="hl slc">// for now (dev, host_dirty, dev_dirty).</span>
+    <span class="hl slc">// int brighter(halide_buffer_t *_input_buffer, uint8_t _offset, halide_buffer_t *_brighter_buffer);</span>
 
-    <span class="hl slc">// Let's make some input data to test with:</span>
-    <span class="hl kwb">uint8_t</span> input<span class="hl opt">[</span><span class="hl num">640</span> <span class="hl opt">*</span> <span class="hl num">480</span><span class="hl opt">];</span>
-    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">480</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
-        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">640</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
-            input<span class="hl opt">[</span>y <span class="hl opt">*</span> <span class="hl num">640</span> <span class="hl opt">+</span> x<span class="hl opt">] =</span> x <span class="hl opt">^ (</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">);</span>
-        <span class="hl opt">}</span>
-    <span class="hl opt">}</span>
+    <span class="hl slc">// The ImageParam inputs have become pointers to &quot;halide_buffer_t&quot;</span>
+    <span class="hl slc">// structs. This is struct that Halide uses to represent arrays of</span>
+    <span class="hl slc">// data.  Unless you're calling the Halide pipeline from pure C</span>
+    <span class="hl slc">// code, you don't want to use it</span>
+    <span class="hl slc">// directly. Halide::Runtime::Buffer is a simple wrapper around</span>
+    <span class="hl slc">// halide_buffer_t that will implicitly convert to a</span>
+    <span class="hl slc">// halide_buffer_t *. We will pass Halide::Runtime::Buffer objects</span>
+    <span class="hl slc">// in those slots.</span>
 
-    <span class="hl slc">// And the memory where we want to write our output:</span>
-    <span class="hl kwb">uint8_t</span> output<span class="hl opt">[</span><span class="hl num">640</span> <span class="hl opt">*</span> <span class="hl num">480</span><span class="hl opt">];</span>
+    <span class="hl slc">// The Halide::Buffer class we have been using in JIT code is in</span>
+    <span class="hl slc">// fact just a shared pointer to the simpler</span>
+    <span class="hl slc">// Halide::Runtime::Buffer class. They share the same API.</span>
 
-    <span class="hl slc">// In AOT-compiled mode, Halide doesn't manage this memory for</span>
-    <span class="hl slc">// you. You should use whatever image data type makes sense for</span>
-    <span class="hl slc">// your application. Halide just needs pointers to it.</span>
+    <span class="hl slc">// Finally, the return value of &quot;brighter&quot; is an error code. It's</span>
+    <span class="hl slc">// zero on success.</span>
 
-    <span class="hl slc">// Now we make a buffer_t to represent our input and output. It's</span>
-    <span class="hl slc">// important to zero-initialize them so you don't end up with</span>
-    <span class="hl slc">// garbage fields that confuse Halide.</span>
-    buffer_t input_buf <span class="hl opt">= {</span><span class="hl num">0</span><span class="hl opt">},</span> output_buf <span class="hl opt">= {</span><span class="hl num">0</span><span class="hl opt">};</span>
+    <span class="hl slc">// Let's make a buffer for our input and output.</span>
+    Halide<span class="hl opt">::</span>Runtime<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">input</span><span class="hl opt">(</span><span class="hl num">640</span><span class="hl opt">,</span> <span class="hl num">480</span><span class="hl opt">),</span> <span class="hl kwd">output</span><span class="hl opt">(</span><span class="hl num">640</span><span class="hl opt">,</span> <span class="hl num">480</span><span class="hl opt">);</span>
 
-    <span class="hl slc">// The host pointers point to the start of the image data:</span>
-    input_buf<span class="hl opt">.</span>host  <span class="hl opt">= &amp;</span>input<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
-    output_buf<span class="hl opt">.</span>host <span class="hl opt">= &amp;</span>output<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
-
-    <span class="hl slc">// To access pixel (x, y) in a two-dimensional buffer_t, Halide</span>
-    <span class="hl slc">// looks at memory address:</span>
-
-    <span class="hl slc">// host + elem_size * ((x - min[0])*stride[0] + (y - min[1])*stride[1])</span>
-
-    <span class="hl slc">// The stride in a dimension represents the number of elements in</span>
-    <span class="hl slc">// memory between adjacent entries in that dimension. We have a</span>
-    <span class="hl slc">// grayscale image stored in scanline order, so stride[0] is 1,</span>
-    <span class="hl slc">// because pixels that are adjacent in x are next to each other in</span>
-    <span class="hl slc">// memory.</span>
-    input_buf<span class="hl opt">.</span>stride<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> output_buf<span class="hl opt">.</span>stride<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> <span class="hl num">1</span><span class="hl opt">;</span>
-
-    <span class="hl slc">// stride[1] is the width of the image, because pixels that are</span>
-    <span class="hl slc">// adjacent in y are separated by a scanline's worth of pixels in</span>
-    <span class="hl slc">// memory.</span>
-    input_buf<span class="hl opt">.</span>stride<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] =</span> output_buf<span class="hl opt">.</span>stride<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] =</span> <span class="hl num">640</span><span class="hl opt">;</span>
-
-    <span class="hl slc">// The extent tells us how large the image is in each dimension.</span>
-    input_buf<span class="hl opt">.</span>extent<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> output_buf<span class="hl opt">.</span>extent<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> <span class="hl num">640</span><span class="hl opt">;</span>
-    input_buf<span class="hl opt">.</span>extent<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] =</span> output_buf<span class="hl opt">.</span>extent<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] =</span> <span class="hl num">480</span><span class="hl opt">;</span>
-
-    <span class="hl slc">// We'll leave the mins as zero. This is what they typically</span>
-    <span class="hl slc">// are. The host pointer points to the memory location of the min</span>
-    <span class="hl slc">// coordinate (not the origin!).  See lesson 6 for more detail</span>
-    <span class="hl slc">// about the mins.</span>
-
-    <span class="hl slc">// The elem_size field tells us how many bytes each element</span>
-    <span class="hl slc">// uses. For the 8-bit image we use in this test it's one.</span>
-    input_buf<span class="hl opt">.</span>elem_size <span class="hl opt">=</span> output_buf<span class="hl opt">.</span>elem_size <span class="hl opt">=</span> <span class="hl num">1</span><span class="hl opt">;</span>
-
-    <span class="hl slc">// To avoid repeating all the boilerplate above, We recommend you</span>
-    <span class="hl slc">// make a helper function that populates a buffer_t given whatever</span>
-    <span class="hl slc">// image type you're using.</span>
-
-    <span class="hl slc">// Now that we've setup our input and output buffers, we can call</span>
-    <span class="hl slc">// our function. Looking in the header file, its signature is:</span>
-
-    <span class="hl slc">// int lesson_10_halide(buffer_t *_input_buffer, uint8_t _offset, buffer_t *_brighter_buffer);</span>
-
-    <span class="hl slc">// The return value is an error code. It's zero on success.</span>
+    <span class="hl slc">// Halide::Runtime::Buffer also has constructors that wrap</span>
+    <span class="hl slc">// existing data instead of allocating new memory. Use these if</span>
+    <span class="hl slc">// you have your own Image type that you want to use.</span>
 
     <span class="hl kwb">int</span> offset <span class="hl opt">=</span> <span class="hl num">5</span><span class="hl opt">;</span>
-    <span class="hl kwb">int</span> error <span class="hl opt">=</span> <span class="hl kwd">lesson_10_halide</span><span class="hl opt">(&amp;</span>input_buf<span class="hl opt">,</span> offset<span class="hl opt">, &amp;</span>output_buf<span class="hl opt">);</span>
+    <span class="hl kwb">int</span> error <span class="hl opt">=</span> <span class="hl kwd">brighter</span><span class="hl opt">(</span>input<span class="hl opt">,</span> offset<span class="hl opt">,</span> output<span class="hl opt">);</span>
 
     <span class="hl kwa">if</span> <span class="hl opt">(</span>error<span class="hl opt">) {</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Halide returned an error: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> error<span class="hl opt">);</span>
@@ -388,8 +364,8 @@ tutorial_lesson_16_rgb_run.html
     <span class="hl slc">// supposed to add the offset to every input pixel.</span>
     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">480</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">640</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
-            <span class="hl kwb">uint8_t</span> input_val <span class="hl opt">=</span> input<span class="hl opt">[</span>y <span class="hl opt">*</span> <span class="hl num">640</span> <span class="hl opt">+</span> <span class="hl num">480</span><span class="hl opt">];</span>
-            <span class="hl kwb">uint8_t</span> output_val <span class="hl opt">=</span> output<span class="hl opt">[</span>y <span class="hl opt">*</span> <span class="hl num">640</span> <span class="hl opt">+</span> <span class="hl num">480</span><span class="hl opt">];</span>
+            <span class="hl kwb">uint8_t</span> input_val <span class="hl opt">=</span> <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+            <span class="hl kwb">uint8_t</span> output_val <span class="hl opt">=</span> <span class="hl kwd">output</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
             <span class="hl kwb">uint8_t</span> correct_val <span class="hl opt">=</span> input_val <span class="hl opt">+</span> offset<span class="hl opt">;</span>
             <span class="hl kwa">if</span> <span class="hl opt">(</span>output_val <span class="hl opt">!=</span> correct_val<span class="hl opt">) {</span>
                 <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;output(%d, %d) was %d instead of %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>

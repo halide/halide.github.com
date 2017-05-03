@@ -271,6 +271,36 @@ tutorial_lesson_16_rgb_run.html
 &nbsp</b>
  RGB images and memory layouts part 2
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_17_predicated_rdom.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+17
+&nbsp</b>
+ Reductions over non-rectangular domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_18_parallel_associative_reductions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+18
+&nbsp</b>
+ Factoring an associative reduction using rfactor
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_19_wrapper_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+19
+&nbsp</b>
+ Wrapper Funcs
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -280,21 +310,21 @@ tutorial_lesson_16_rgb_run.html
 <span class="hl slc">// ahead-of-time (AOT) compiler.</span>
 
 <span class="hl slc">// This lesson is split across two files. The first (this one), builds</span>
-<span class="hl slc">// a Halide pipeline and compiles it to an object file and header. The</span>
-<span class="hl slc">// second (lesson_10_aot_compilation_run.cpp), uses that object file</span>
-<span class="hl slc">// to actually run the pipeline. This means that compiling this code</span>
-<span class="hl slc">// is a multi-step process.</span>
+<span class="hl slc">// a Halide pipeline and compiles it to a static library and</span>
+<span class="hl slc">// header. The second (lesson_10_aot_compilation_run.cpp), uses that</span>
+<span class="hl slc">// static library to actually run the pipeline. This means that</span>
+<span class="hl slc">// compiling this code is a multi-step process.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
 <span class="hl slc">// g++ lesson_10*generate.cpp -g -std=c++11 -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_10_generate</span>
 <span class="hl slc">// LD_LIBRARY_PATH=../bin ./lesson_10_generate</span>
-<span class="hl slc">// g++ lesson_10*run.cpp lesson_10_halide.o -lpthread -o lesson_10_run</span>
+<span class="hl slc">// g++ lesson_10*run.cpp lesson_10_halide.a -lpthread -ldl -o lesson_10_run</span>
 <span class="hl slc">// ./lesson_10_run</span>
 
 <span class="hl slc">// On os x:</span>
 <span class="hl slc">// g++ lesson_10*generate.cpp -g -std=c++11 -I ../include -L ../bin -lHalide -o lesson_10_generate</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=../bin ./lesson_10_generate</span>
-<span class="hl slc">// g++ lesson_10*run.cpp lesson_10_halide.o -o lesson_10_run</span>
+<span class="hl slc">// g++ lesson_10*run.cpp lesson_10_halide.a -o lesson_10_run -I ../include</span>
 <span class="hl slc">// ./lesson_10_run</span>
 
 <span class="hl slc">// The benefits of this approach are that the final program:</span>
@@ -328,11 +358,11 @@ tutorial_lesson_16_rgb_run.html
     <span class="hl slc">// inputs and outputs.</span>
     ImageParam <span class="hl kwd">input</span><span class="hl opt">(</span>type_of<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(),</span> <span class="hl num">2</span><span class="hl opt">);</span>
 
-    <span class="hl slc">// If we were jit-compiling, these would just be an int and an</span>
-    <span class="hl slc">// Image, but because we want to compile the pipeline once and</span>
+    <span class="hl slc">// If we were jit-compiling, these would just be an int and a</span>
+    <span class="hl slc">// Buffer, but because we want to compile the pipeline once and</span>
     <span class="hl slc">// have it work for any value of the parameter, we need to make a</span>
     <span class="hl slc">// Param object, which can be used like an Expr, and an ImageParam</span>
-    <span class="hl slc">// object, which can be used like an Image.</span>
+    <span class="hl slc">// object, which can be used like a Buffer.</span>
 
     <span class="hl slc">// Define the Func.</span>
     <span class="hl kwd">brighter</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> offset<span class="hl opt">;</span>
@@ -347,11 +377,7 @@ tutorial_lesson_16_rgb_run.html
     <span class="hl slc">// For AOT-compiled code, we need to explicitly declare the</span>
     <span class="hl slc">// arguments to the routine. This routine takes two. Arguments are</span>
     <span class="hl slc">// usually Params or ImageParams.</span>
-    std<span class="hl opt">::</span>vector<span class="hl opt">&lt;</span>Argument<span class="hl opt">&gt;</span> args <span class="hl opt">= {</span>input<span class="hl opt">,</span> offset<span class="hl opt">};</span>
-    brighter<span class="hl opt">.</span><span class="hl kwd">compile_to_static_library</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_10_halide&quot;</span><span class="hl opt">,</span> args<span class="hl opt">);</span>
-
-    <span class="hl slc">// If you're using C++11, you can just say:</span>
-    <span class="hl slc">// brighter.compile_to_static_library(&quot;lesson_10_halide&quot;, {input, offset});</span>
+    brighter<span class="hl opt">.</span><span class="hl kwd">compile_to_static_library</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_10_halide&quot;</span><span class="hl opt">, {</span>input<span class="hl opt">,</span> offset<span class="hl opt">},</span> <span class="hl str">&quot;brighter&quot;</span><span class="hl opt">);</span>
 
     <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Halide pipeline compiled, but not yet run.</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 

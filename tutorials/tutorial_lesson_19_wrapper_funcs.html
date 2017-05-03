@@ -179,7 +179,7 @@ tutorial_lesson_10_aot_compilation_generate.html
 <b>
 10
 &nbsp</b>
-
+ AOT compilation part 1
 </div></span></a>
 <div style="width:200px; height:20px;"></div>
 <a href=
@@ -243,6 +243,16 @@ tutorial_lesson_15_generators.html
 </div></span></a>
 <div style="width:200px; height:20px;"></div>
 <a href=
+tutorial_lesson_15_generators_usage.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+15
+&nbsp</b>
+ Generators part 2
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
 tutorial_lesson_16_rgb_generate.html
  style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
 <div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
@@ -297,8 +307,8 @@ tutorial_lesson_19_wrapper_funcs.html
 <span class="hl slc">// Halide tutorial lesson 19: Wrapper Funcs</span>
 
 <span class="hl slc">// This lesson demonstrates how to use Func::in and ImageParam::in to</span>
-<span class="hl slc">// schedule a Func differently in different places and to stage loads from</span>
-<span class="hl slc">// a Func or an ImageParam.</span>
+<span class="hl slc">// schedule a Func differently in different places, and to stage loads</span>
+<span class="hl slc">// from a Func or an ImageParam.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
 <span class="hl slc">// g++ lesson_19*.cpp -g -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_19 -std=c++11</span>
@@ -311,8 +321,7 @@ tutorial_lesson_19_wrapper_funcs.html
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
 <span class="hl slc">// running:</span>
 <span class="hl slc">//    make tutorial_lesson_19_staging_func_or_image_param</span>
-<span class="hl slc">// in a shell with the current directory at the top of the halide</span>
-<span class="hl slc">// source tree.</span>
+<span class="hl slc">// in a shell at the top of the halide source tree.</span>
 
 <span class="hl slc">// The only Halide header file you need is Halide.h. It includes all of Halide.</span>
 <span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
@@ -342,7 +351,7 @@ tutorial_lesson_19_wrapper_funcs.html
         <span class="hl slc">//     f(x, y) = x + y</span>
         <span class="hl slc">// for y:</span>
         <span class="hl slc">//   for x:</span>
-        <span class="hl slc">//     g(x, y) = 2 * f(x, y)</span>
+        <span class="hl slc">//     g(x, y) = 2 * f(x, y) + 3</span>
 
         <span class="hl slc">// Using Func::in, we can interpose a new Func in between f</span>
         <span class="hl slc">// and g using the schedule alone:</span>
@@ -361,12 +370,11 @@ tutorial_lesson_19_wrapper_funcs.html
         <span class="hl slc">//     f_in_g(x, y) = f(x, y)</span>
         <span class="hl slc">// for y:</span>
         <span class="hl slc">//   for x:</span>
-        <span class="hl slc">//     g(x, y) = 2 * f_in_g(x, y)</span>
+        <span class="hl slc">//     g(x, y) = 2 * f_in_g(x, y) + 3</span>
 
         g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">);</span>
 
-        <span class="hl slc">// See below for a</span>
-        <span class="hl slc">// visualization of what this did.</span>
+        <span class="hl slc">// See below for a visualization.</span>
 
          <span><video autoplay loop><source src= figures/lesson_19_wrapper_local.mp4  />Your browser does not support the video tag :(</video></span>
 
@@ -378,7 +386,7 @@ tutorial_lesson_19_wrapper_funcs.html
             Func <span class="hl kwd">f_in_g</span><span class="hl opt">(</span><span class="hl str">&quot;f_in_g&quot;</span><span class="hl opt">),</span> <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g&quot;</span><span class="hl opt">);</span>
             <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
             <span class="hl kwd">f_in_g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
-            <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">f_in_g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+            <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">f_in_g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl num">3</span><span class="hl opt">;</span>
 
             f<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
             f_in_g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
@@ -540,12 +548,11 @@ tutorial_lesson_19_wrapper_funcs.html
         Func f_tile <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>g<span class="hl opt">);</span>
 
         <span class="hl slc">// We now have a three stage pipeline:</span>
-        <span class="hl slc">// f -&gt; f_transpose -&gt; g</span>
+        <span class="hl slc">// f -&gt; f_tile -&gt; g</span>
 
-        <span class="hl slc">// f_tile will be responsible for loading from f into</span>
-        <span class="hl slc">// registers, f_tile_transpose will load vectors of f, and</span>
-        <span class="hl slc">// store them transposed. g will then write this data back to</span>
-        <span class="hl slc">// main memory.</span>
+        <span class="hl slc">// f_tile will load vectors of f, and store them transposed</span>
+        <span class="hl slc">// into registers. g will then write this data back to main</span>
+        <span class="hl slc">// memory.</span>
         g<span class="hl opt">.</span><span class="hl kwd">tile</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> xo<span class="hl opt">,</span> yo<span class="hl opt">,</span> xi<span class="hl opt">,</span> yi<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">)</span>
             <span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>xi<span class="hl opt">)</span>
             <span class="hl opt">.</span><span class="hl kwd">unroll</span><span class="hl opt">(</span>yi<span class="hl opt">);</span>
@@ -593,10 +600,10 @@ tutorial_lesson_19_wrapper_funcs.html
         <span class="hl slc">// _0 and _1 to gpu threads.</span>
         img<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>blur<span class="hl opt">).</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>blur<span class="hl opt">,</span> xo<span class="hl opt">).</span><span class="hl kwd">gpu_threads</span><span class="hl opt">(</span>_0<span class="hl opt">,</span> _1<span class="hl opt">);</span>
 
-        <span class="hl slc">// Without Func::in, an 8x8 tile of f would do 8x8x9 loads to</span>
-        <span class="hl slc">// global memory. With Func::in, the wrapper does 10x10 loads</span>
-        <span class="hl slc">// to global memory up front, and then f does 8x8x9 loads to</span>
-        <span class="hl slc">// shared/local memory.</span>
+        <span class="hl slc">// Without Func::in, computing an 8x8 tile of blur would do</span>
+        <span class="hl slc">// 8*8*9 loads to global memory. With Func::in, the wrapper</span>
+        <span class="hl slc">// does 10*10 loads to global memory up front, and then blur</span>
+        <span class="hl slc">// does 8*8*9 loads to shared/local memory.</span>
 
         <span class="hl slc">// Select an appropriate GPU API, as we did in lesson 12</span>
         Target target <span class="hl opt">=</span> <span class="hl kwd">get_host_target</span><span class="hl opt">();</span>
@@ -641,8 +648,11 @@ tutorial_lesson_19_wrapper_funcs.html
         <span class="hl slc">// pipeline, which computes a value per pixel, then sweeps</span>
         <span class="hl slc">// from left to right and back across each scanline.</span>
         Func <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f_group&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g_group&quot;</span><span class="hl opt">),</span> <span class="hl kwd">h</span><span class="hl opt">(</span><span class="hl str">&quot;h_group&quot;</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// Initialize f</span>
         <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">-</span> y<span class="hl opt">);</span>
         RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">7</span><span class="hl opt">);</span>
+
         <span class="hl slc">// Sweep from left to right</span>
         <span class="hl kwd">f</span><span class="hl opt">(</span>r<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">f</span><span class="hl opt">(</span>r<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl kwd">f</span><span class="hl opt">(</span>r <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">)) /</span> <span class="hl num">2</span><span class="hl opt">;</span>
 
@@ -659,7 +669,7 @@ tutorial_lesson_19_wrapper_funcs.html
 
         <span class="hl slc">// for y:</span>
         <span class="hl slc">//   for x:</span>
-        <span class="hl slc">//     f(x, y) = x + y</span>
+        <span class="hl slc">//     f(x, y) = sin(x - y)</span>
         <span class="hl slc">// for y:</span>
         <span class="hl slc">//   for r:</span>
         <span class="hl slc">//     f(r, y) = (f(r, y) + f(r - 1, y)) / 2</span>

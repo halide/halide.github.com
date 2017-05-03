@@ -271,6 +271,36 @@ tutorial_lesson_16_rgb_run.html
 &nbsp</b>
  RGB images and memory layouts part 2
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_17_predicated_rdom.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+17
+&nbsp</b>
+ Reductions over non-rectangular domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_18_parallel_associative_reductions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+18
+&nbsp</b>
+ Factoring an associative reduction using rfactor
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_19_wrapper_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+19
+&nbsp</b>
+ Wrapper Funcs
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -286,7 +316,7 @@ tutorial_lesson_16_rgb_run.html
 <span class="hl slc"># &quot;lesson_15_generate&quot;.</span>
 
 <span class="hl slc"># To run this script:</span>
-<span class="hl slc"># bash lesson_15_generators_build.sh</span>
+<span class="hl slc"># bash lesson_15_generators_usage.sh</span>
 
 <span class="hl slc"># First we define a helper function that checks that a file exists</span>
 check_file_exists<span class="hl opt">()</span>
@@ -305,7 +335,7 @@ check_symbol<span class="hl opt">()</span>
     SYM<span class="hl opt">=</span><span class="hl kwd">$2</span>
     <span class="hl kwa">if</span> <span class="hl opt">!(</span>nm <span class="hl kwd">$FILE</span> | <span class="hl kwc">grep</span> <span class="hl kwd">$SYM</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">);</span> <span class="hl kwa">then</span>
         <span class="hl kwb">echo</span> <span class="hl str">&quot;$SYM not found in $FILE&quot;</span>
-	<span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
+    <span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
     <span class="hl kwa">fi</span>
 <span class="hl opt">}</span>
 
@@ -431,14 +461,14 @@ check_symbol      my_second_generator_3.a my_second_generator_3
 <span class="hl slc"># files.</span>
 
 <span class="hl kwb">echo</span> <span class="hl str">&quot;The halide runtime:&quot;</span>
-nm my_second_generator_1.a | <span class="hl kwc">grep</span> <span class="hl str">&quot;[SW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span>
+nm my_second_generator_1.a | <span class="hl kwc">grep</span> <span class="hl str">&quot;[SWT] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span>
 
 <span class="hl slc"># Let's define some functions to check that the runtime exists in a file.</span>
 check_runtime<span class="hl opt">()</span>
 <span class="hl opt">{</span>
     <span class="hl kwa">if</span> <span class="hl opt">!(</span>nm <span class="hl kwd">$1</span> | <span class="hl kwc">grep</span> <span class="hl str">&quot;[TSW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">);</span> <span class="hl kwa">then</span>
         <span class="hl kwb">echo</span> <span class="hl str">&quot;Halide runtime not found in $1&quot;</span>
-	<span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
+    <span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
     <span class="hl kwa">fi</span>
 <span class="hl opt">}</span>
 
@@ -446,7 +476,7 @@ check_no_runtime<span class="hl opt">()</span>
 <span class="hl opt">{</span>
     <span class="hl kwa">if</span> nm <span class="hl kwd">$1</span> | <span class="hl kwc">grep</span> <span class="hl str">&quot;[TSW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">;</span> <span class="hl kwa">then</span>
         <span class="hl kwb">echo</span> <span class="hl str">&quot;Halide runtime found in $1&quot;</span>
-	<span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
+    <span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
     <span class="hl kwa">fi</span>
 <span class="hl opt">}</span>
 

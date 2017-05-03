@@ -271,6 +271,36 @@ tutorial_lesson_16_rgb_run.html
 &nbsp</b>
  RGB images and memory layouts part 2
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_17_predicated_rdom.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+17
+&nbsp</b>
+ Reductions over non-rectangular domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_18_parallel_associative_reductions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+18
+&nbsp</b>
+ Factoring an associative reduction using rfactor
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_19_wrapper_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+19
+&nbsp</b>
+ Wrapper Funcs
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -321,7 +351,7 @@ tutorial_lesson_16_rgb_run.html
     <span class="hl slc">// program on.  For example, if you compile and run this file on</span>
     <span class="hl slc">// 64-bit linux on an x86 cpu with sse4.1, then the generated code</span>
     <span class="hl slc">// will be suitable for 64-bit linux on x86 with sse4.1.</span>
-    brighter<span class="hl opt">.</span><span class="hl kwd">compile_to_file</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_11_host&quot;</span><span class="hl opt">,</span> args<span class="hl opt">);</span>
+    brighter<span class="hl opt">.</span><span class="hl kwd">compile_to_file</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_11_host&quot;</span><span class="hl opt">,</span> args<span class="hl opt">,</span> <span class="hl str">&quot;brighter&quot;</span><span class="hl opt">);</span>
 
     <span class="hl slc">// We can also compile object files suitable for other cpus and</span>
     <span class="hl slc">// operating systems. You do this with an optional third argument</span>
@@ -335,7 +365,7 @@ tutorial_lesson_16_rgb_run.html
     std<span class="hl opt">::</span>vector<span class="hl opt">&lt;</span>Target<span class="hl opt">::</span>Feature<span class="hl opt">&gt;</span> arm_features<span class="hl opt">;</span> <span class="hl slc">// A list of features to set</span>
     target<span class="hl opt">.</span><span class="hl kwd">set_features</span><span class="hl opt">(</span>arm_features<span class="hl opt">);</span>
     <span class="hl slc">// We then pass the target as the last argument to compile_to_file.</span>
-    brighter<span class="hl opt">.</span><span class="hl kwd">compile_to_file</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_11_arm_32_android&quot;</span><span class="hl opt">,</span> args<span class="hl opt">,</span> target<span class="hl opt">);</span>
+    brighter<span class="hl opt">.</span><span class="hl kwd">compile_to_file</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_11_arm_32_android&quot;</span><span class="hl opt">,</span> args<span class="hl opt">,</span> <span class="hl str">&quot;brighter&quot;</span><span class="hl opt">,</span> target<span class="hl opt">);</span>
 
     <span class="hl slc">// And now a Windows object file for 64-bit x86 with AVX and SSE 4.1:</span>
     target<span class="hl opt">.</span>os <span class="hl opt">=</span> Target<span class="hl opt">::</span>Windows<span class="hl opt">;</span>
@@ -345,7 +375,7 @@ tutorial_lesson_16_rgb_run.html
     x86_features<span class="hl opt">.</span><span class="hl kwd">push_back</span><span class="hl opt">(</span>Target<span class="hl opt">::</span>AVX<span class="hl opt">);</span>
     x86_features<span class="hl opt">.</span><span class="hl kwd">push_back</span><span class="hl opt">(</span>Target<span class="hl opt">::</span>SSE41<span class="hl opt">);</span>
     target<span class="hl opt">.</span><span class="hl kwd">set_features</span><span class="hl opt">(</span>x86_features<span class="hl opt">);</span>
-    brighter<span class="hl opt">.</span><span class="hl kwd">compile_to_file</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_11_x86_64_windows&quot;</span><span class="hl opt">,</span> args<span class="hl opt">,</span> target<span class="hl opt">);</span>
+    brighter<span class="hl opt">.</span><span class="hl kwd">compile_to_file</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_11_x86_64_windows&quot;</span><span class="hl opt">,</span> args<span class="hl opt">,</span> <span class="hl str">&quot;brighter&quot;</span><span class="hl opt">,</span> target<span class="hl opt">);</span>
 
     <span class="hl slc">// And finally an iOS mach-o object file for one of Apple's 32-bit</span>
     <span class="hl slc">// ARM processors - the A6. It's used in the iPhone 5. The A6 uses</span>
@@ -359,7 +389,7 @@ tutorial_lesson_16_rgb_run.html
     std<span class="hl opt">::</span>vector<span class="hl opt">&lt;</span>Target<span class="hl opt">::</span>Feature<span class="hl opt">&gt;</span> armv7s_features<span class="hl opt">;</span>
     armv7s_features<span class="hl opt">.</span><span class="hl kwd">push_back</span><span class="hl opt">(</span>Target<span class="hl opt">::</span>ARMv7s<span class="hl opt">);</span>
     target<span class="hl opt">.</span><span class="hl kwd">set_features</span><span class="hl opt">(</span>armv7s_features<span class="hl opt">);</span>
-    brighter<span class="hl opt">.</span><span class="hl kwd">compile_to_file</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_11_arm_32_ios&quot;</span><span class="hl opt">,</span> args<span class="hl opt">,</span> target<span class="hl opt">);</span>
+    brighter<span class="hl opt">.</span><span class="hl kwd">compile_to_file</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_11_arm_32_ios&quot;</span><span class="hl opt">,</span> args<span class="hl opt">,</span> <span class="hl str">&quot;brighter&quot;</span><span class="hl opt">,</span> target<span class="hl opt">);</span>
 
 
     <span class="hl slc">// Now let's check these files are what they claim, by examining</span>

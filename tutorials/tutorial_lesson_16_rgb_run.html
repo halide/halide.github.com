@@ -271,6 +271,36 @@ tutorial_lesson_16_rgb_run.html
 &nbsp</b>
  RGB images and memory layouts part 2
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_17_predicated_rdom.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+17
+&nbsp</b>
+ Reductions over non-rectangular domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_18_parallel_associative_reductions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+18
+&nbsp</b>
+ Factoring an associative reduction using rfactor
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_19_wrapper_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+19
+&nbsp</b>
+ Wrapper Funcs
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -288,64 +318,16 @@ tutorial_lesson_16_rgb_run.html
 <span class="hl ppc">#include</span> <span class="hl pps">&quot;brighten_either.h&quot;</span><span class="hl ppc"></span>
 <span class="hl ppc">#include</span> <span class="hl pps">&quot;brighten_specialized.h&quot;</span><span class="hl ppc"></span>
 
+<span class="hl slc">// We'll use the Halide::Runtime::Buffer class for passing data into and out of</span>
+<span class="hl slc">// the pipeline.</span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;HalideBuffer.h&quot;</span><span class="hl ppc"></span>
+
 <span class="hl ppc">#include &lt;stdio.h&gt;</span>
 <span class="hl ppc">#include &lt;stdlib.h&gt;</span>
 <span class="hl ppc">#include &lt;string.h&gt;</span>
 <span class="hl ppc">#include &lt;assert.h&gt;</span>
 
 <span class="hl ppc">#include</span> <span class="hl pps">&quot;clock.h&quot;</span><span class="hl ppc"></span>
-
-buffer_t <span class="hl kwd">make_planar_rgb_image</span><span class="hl opt">(</span><span class="hl kwb">int</span> width<span class="hl opt">,</span> <span class="hl kwb">int</span> height<span class="hl opt">) {</span>
-    buffer_t buf <span class="hl opt">= {</span><span class="hl num">0</span><span class="hl opt">};</span>
-    <span class="hl slc">// Allocate the memory required and clear it</span>
-    buf<span class="hl opt">.</span>host <span class="hl opt">= (</span><span class="hl kwb">uint8_t</span> <span class="hl opt">*)</span><span class="hl kwd">malloc</span><span class="hl opt">(</span>width <span class="hl opt">*</span> height <span class="hl opt">*</span> <span class="hl num">3</span><span class="hl opt">);</span>
-    <span class="hl kwd">memset</span><span class="hl opt">(</span>buf<span class="hl opt">.</span>host<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> width <span class="hl opt">*</span> height <span class="hl opt">*</span> <span class="hl num">3</span><span class="hl opt">);</span>
-    <span class="hl slc">// This will be an 8-bit image.</span>
-    buf<span class="hl opt">.</span>elem_size <span class="hl opt">=</span> <span class="hl num">1</span><span class="hl opt">;</span>
-
-    <span class="hl slc">// Set the sizes of each dimension</span>
-    buf<span class="hl opt">.</span>extent<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> width<span class="hl opt">;</span>
-    buf<span class="hl opt">.</span>extent<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] =</span> height<span class="hl opt">;</span>
-    <span class="hl slc">// There are three color channels</span>
-    buf<span class="hl opt">.</span>extent<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">] =</span> <span class="hl num">3</span><span class="hl opt">;</span>
-
-    <span class="hl slc">// Planar layout means that the stride in x is 1</span>
-    buf<span class="hl opt">.</span>stride<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> <span class="hl num">1</span><span class="hl opt">;</span>
-    <span class="hl slc">// The stride in y is the width of the image</span>
-    buf<span class="hl opt">.</span>stride<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] =</span> width<span class="hl opt">;</span>
-    <span class="hl slc">// And the stride in c is width times height. This means that to</span>
-    <span class="hl slc">// get to the next color channel, one should step forwards</span>
-    <span class="hl slc">// width*height elements in memory.</span>
-    buf<span class="hl opt">.</span>stride<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">] =</span> width<span class="hl opt">*</span>height<span class="hl opt">;</span>
-
-    <span class="hl kwa">return</span> buf<span class="hl opt">;</span>
-<span class="hl opt">}</span>
-
-buffer_t <span class="hl kwd">make_interleaved_rgb_image</span><span class="hl opt">(</span><span class="hl kwb">int</span> width<span class="hl opt">,</span> <span class="hl kwb">int</span> height<span class="hl opt">) {</span>
-    buffer_t buf <span class="hl opt">= {</span><span class="hl num">0</span><span class="hl opt">};</span>
-    <span class="hl slc">// This code will be the same as making a planar rgb image ...</span>
-    buf<span class="hl opt">.</span>host <span class="hl opt">= (</span><span class="hl kwb">uint8_t</span> <span class="hl opt">*)</span><span class="hl kwd">malloc</span><span class="hl opt">(</span>width <span class="hl opt">*</span> height <span class="hl opt">*</span> <span class="hl num">3</span><span class="hl opt">);</span>
-    <span class="hl kwd">memset</span><span class="hl opt">(</span>buf<span class="hl opt">.</span>host<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> width <span class="hl opt">*</span> height <span class="hl opt">*</span> <span class="hl num">3</span><span class="hl opt">);</span>
-    buf<span class="hl opt">.</span>elem_size <span class="hl opt">=</span> <span class="hl num">1</span><span class="hl opt">;</span>
-    buf<span class="hl opt">.</span>extent<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> width<span class="hl opt">;</span>
-    buf<span class="hl opt">.</span>extent<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] =</span> height<span class="hl opt">;</span>
-    buf<span class="hl opt">.</span>extent<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">] =</span> <span class="hl num">3</span><span class="hl opt">;</span>
-
-    <span class="hl slc">// ... except we'll set up the strides differently.</span>
-    <span class="hl slc">// Interleaved layout means that the stride in x is 3</span>
-    buf<span class="hl opt">.</span>stride<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] =</span> <span class="hl num">3</span><span class="hl opt">;</span>
-    <span class="hl slc">// The stride in y is three times the width of the image</span>
-    buf<span class="hl opt">.</span>stride<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] =</span> <span class="hl num">3</span><span class="hl opt">*</span>width<span class="hl opt">;</span>
-    <span class="hl slc">// And the stride in c is 1.</span>
-    buf<span class="hl opt">.</span>stride<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">] =</span> <span class="hl num">1</span><span class="hl opt">;</span>
-
-    <span class="hl kwa">return</span> buf<span class="hl opt">;</span>
-<span class="hl opt">}</span>
-
-<span class="hl kwb">void</span> <span class="hl kwd">destroy_image</span><span class="hl opt">(</span>buffer_t <span class="hl opt">*</span>b<span class="hl opt">) {</span>
-    <span class="hl kwd">free</span><span class="hl opt">(</span>b<span class="hl opt">-&gt;</span>host<span class="hl opt">);</span>
-    b<span class="hl opt">-&gt;</span>host <span class="hl opt">=</span> NULL<span class="hl opt">;</span>
-<span class="hl opt">}</span>
 
 <span class="hl slc">// A function to help us report runtimes of various things. Prints the</span>
 <span class="hl slc">// time elapsed since the last time you called this function.</span>
@@ -363,15 +345,25 @@ buffer_t <span class="hl kwd">make_interleaved_rgb_image</span><span class="hl o
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
 
     <span class="hl slc">// Let's make some images stored with interleaved and planar</span>
-    <span class="hl slc">// memory, and buffer_ts that describe them.</span>
-    buffer_t planar_input <span class="hl opt">=</span> <span class="hl kwd">make_planar_rgb_image</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">768</span><span class="hl opt">);</span>
-    buffer_t planar_output <span class="hl opt">=</span> <span class="hl kwd">make_planar_rgb_image</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">768</span><span class="hl opt">);</span>
-    buffer_t interleaved_input <span class="hl opt">=</span> <span class="hl kwd">make_interleaved_rgb_image</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">768</span><span class="hl opt">);</span>
-    buffer_t interleaved_output <span class="hl opt">=</span> <span class="hl kwd">make_interleaved_rgb_image</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">768</span><span class="hl opt">);</span>
+    <span class="hl slc">// memory. Halide::Runtime::Buffer is planar by default.</span>
+    Halide<span class="hl opt">::</span>Runtime<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">planar_input</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">768</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+    Halide<span class="hl opt">::</span>Runtime<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">planar_output</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">768</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+    Halide<span class="hl opt">::</span>Runtime<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> interleaved_input <span class="hl opt">=</span>
+        Halide<span class="hl opt">::</span>Runtime<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;::</span><span class="hl kwd">make_interleaved</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">768</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+    Halide<span class="hl opt">::</span>Runtime<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> interleaved_output <span class="hl opt">=</span>
+        Halide<span class="hl opt">::</span>Runtime<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;::</span><span class="hl kwd">make_interleaved</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">768</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+
+    <span class="hl slc">// Let's check the strides are what we expect, given the</span>
+    <span class="hl slc">// constraints we set up in the generator.</span>
+    <span class="hl kwa">assert</span><span class="hl opt">(</span>planar_input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
+    <span class="hl kwa">assert</span><span class="hl opt">(</span>planar_output<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
+    <span class="hl kwa">assert</span><span class="hl opt">(</span>interleaved_input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">3</span><span class="hl opt">);</span>
+    <span class="hl kwa">assert</span><span class="hl opt">(</span>interleaved_output<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">3</span><span class="hl opt">);</span>
+    <span class="hl kwa">assert</span><span class="hl opt">(</span>interleaved_input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
+    <span class="hl kwa">assert</span><span class="hl opt">(</span>interleaved_output<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
 
     <span class="hl slc">// We'll now call the various functions we compiled and check the</span>
     <span class="hl slc">// performance of each.</span>
-    <span class="hl kwb">uint8_t</span> offset <span class="hl opt">=</span> <span class="hl num">1</span><span class="hl opt">;</span>
 
     <span class="hl slc">// Start the clock</span>
     <span class="hl kwd">tick</span><span class="hl opt">(</span>NULL<span class="hl opt">);</span>
@@ -380,12 +372,12 @@ buffer_t <span class="hl kwd">make_interleaved_rgb_image</span><span class="hl o
     <span class="hl slc">// interleaved version of the code on the interleaved</span>
     <span class="hl slc">// images. We'll run each 1000 times for benchmarking.</span>
     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">1000</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
-        <span class="hl kwd">brighten_planar</span><span class="hl opt">(&amp;</span>planar_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">, &amp;</span>planar_output<span class="hl opt">);</span>
+        <span class="hl kwd">brighten_planar</span><span class="hl opt">(</span>planar_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> planar_output<span class="hl opt">);</span>
     <span class="hl opt">}</span>
     <span class="hl kwb">double</span> planar_time <span class="hl opt">=</span> <span class="hl kwd">tick</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_planar&quot;</span><span class="hl opt">);</span>
 
     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">1000</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
-        <span class="hl kwd">brighten_interleaved</span><span class="hl opt">(&amp;</span>interleaved_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">, &amp;</span>interleaved_output<span class="hl opt">);</span>
+        <span class="hl kwd">brighten_interleaved</span><span class="hl opt">(</span>interleaved_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> interleaved_output<span class="hl opt">);</span>
     <span class="hl opt">}</span>
     <span class="hl kwb">double</span> interleaved_time <span class="hl opt">=</span> <span class="hl kwd">tick</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_interleaved&quot;</span><span class="hl opt">);</span>
 
@@ -397,22 +389,22 @@ buffer_t <span class="hl kwd">make_interleaved_rgb_image</span><span class="hl o
     <span class="hl slc">// error, because the stride is not what we promised it would be</span>
     <span class="hl slc">// in the generator.</span>
 
-    <span class="hl slc">// brighten_planar(&amp;interleaved_input, 1, &amp;interleaved_output);</span>
+    <span class="hl slc">// brighten_planar(interleaved_input, 1, interleaved_output);</span>
     <span class="hl slc">// Error: Constraint violated: brighter.stride.0 (3) == 1 (1)</span>
 
-    <span class="hl slc">// brighten_interleaved(&amp;planar_input, 1, &amp;planar_output);</span>
+    <span class="hl slc">// brighten_interleaved(planar_input, 1, planar_output);</span>
     <span class="hl slc">// Error: Constraint violated: brighter.stride.0 (1) == 3 (3)</span>
 
     <span class="hl slc">// Run the flexible version of the code and check performance. It</span>
     <span class="hl slc">// should work, but it'll be slower than the versions above.</span>
     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">1000</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
-        <span class="hl kwd">brighten_either</span><span class="hl opt">(&amp;</span>planar_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">, &amp;</span>planar_output<span class="hl opt">);</span>
+        <span class="hl kwd">brighten_either</span><span class="hl opt">(</span>planar_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> planar_output<span class="hl opt">);</span>
     <span class="hl opt">}</span>
     <span class="hl kwb">double</span> either_planar_time <span class="hl opt">=</span> <span class="hl kwd">tick</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_either on planar images&quot;</span><span class="hl opt">);</span>
     <span class="hl kwa">assert</span><span class="hl opt">(</span>planar_time <span class="hl opt">&lt;</span> either_planar_time<span class="hl opt">);</span>
 
     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">1000</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
-        <span class="hl kwd">brighten_either</span><span class="hl opt">(&amp;</span>interleaved_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">, &amp;</span>interleaved_output<span class="hl opt">);</span>
+        <span class="hl kwd">brighten_either</span><span class="hl opt">(</span>interleaved_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> interleaved_output<span class="hl opt">);</span>
     <span class="hl opt">}</span>
     <span class="hl kwb">double</span> either_interleaved_time <span class="hl opt">=</span> <span class="hl kwd">tick</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_either on interleaved images&quot;</span><span class="hl opt">);</span>
     <span class="hl kwa">assert</span><span class="hl opt">(</span>interleaved_time <span class="hl opt">&lt;</span> either_interleaved_time<span class="hl opt">);</span>
@@ -422,7 +414,7 @@ buffer_t <span class="hl kwd">make_interleaved_rgb_image</span><span class="hl o
     <span class="hl slc">// for each case above by branching internally to equivalent</span>
     <span class="hl slc">// code.</span>
     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">1000</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
-        <span class="hl kwd">brighten_specialized</span><span class="hl opt">(&amp;</span>planar_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">, &amp;</span>planar_output<span class="hl opt">);</span>
+        <span class="hl kwd">brighten_specialized</span><span class="hl opt">(</span>planar_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> planar_output<span class="hl opt">);</span>
     <span class="hl opt">}</span>
     <span class="hl kwb">double</span> specialized_planar_time <span class="hl opt">=</span> <span class="hl kwd">tick</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_specialized on planar images&quot;</span><span class="hl opt">);</span>
 
@@ -432,16 +424,10 @@ buffer_t <span class="hl kwd">make_interleaved_rgb_image</span><span class="hl o
     <span class="hl kwa">assert</span><span class="hl opt">(</span>specialized_planar_time <span class="hl opt">&lt;</span> <span class="hl num">1.5</span> <span class="hl opt">*</span> planar_time<span class="hl opt">);</span>
 
     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">1000</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
-        <span class="hl kwd">brighten_specialized</span><span class="hl opt">(&amp;</span>interleaved_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">, &amp;</span>interleaved_output<span class="hl opt">);</span>
+        <span class="hl kwd">brighten_specialized</span><span class="hl opt">(</span>interleaved_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> interleaved_output<span class="hl opt">);</span>
     <span class="hl opt">}</span>
     <span class="hl kwb">double</span> specialized_interleaved_time <span class="hl opt">=</span> <span class="hl kwd">tick</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_specialized on interleaved images&quot;</span><span class="hl opt">);</span>
     <span class="hl kwa">assert</span><span class="hl opt">(</span>specialized_interleaved_time <span class="hl opt">&lt;</span> <span class="hl num">1.5</span> <span class="hl opt">*</span> interleaved_time<span class="hl opt">);</span>
-
-    <span class="hl slc">// Remember to free our allocated memory...</span>
-    <span class="hl kwd">destroy_image</span><span class="hl opt">(&amp;</span>planar_input<span class="hl opt">);</span>
-    <span class="hl kwd">destroy_image</span><span class="hl opt">(&amp;</span>planar_output<span class="hl opt">);</span>
-    <span class="hl kwd">destroy_image</span><span class="hl opt">(&amp;</span>interleaved_input<span class="hl opt">);</span>
-    <span class="hl kwd">destroy_image</span><span class="hl opt">(&amp;</span>interleaved_output<span class="hl opt">);</span>
 
     <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
 <span class="hl opt">}</span>

@@ -271,6 +271,36 @@ tutorial_lesson_16_rgb_run.html
 &nbsp</b>
  RGB images and memory layouts part 2
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_17_predicated_rdom.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+17
+&nbsp</b>
+ Reductions over non-rectangular domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_18_parallel_associative_reductions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+18
+&nbsp</b>
+ Factoring an associative reduction using rfactor
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_19_wrapper_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+19
+&nbsp</b>
+ Wrapper Funcs
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -360,12 +390,12 @@ tutorial_lesson_16_rgb_run.html
 
     <span class="hl slc">// Realizing a tuple-valued Func returns a collection of</span>
     <span class="hl slc">// Buffers. We call this a Realization. It's equivalent to a</span>
-    <span class="hl slc">// std::vector of Buffer/Image objects:</span>
+    <span class="hl slc">// std::vector of Buffer objects:</span>
     <span class="hl opt">{</span>
         Realization r <span class="hl opt">=</span> multi_valued<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">80</span><span class="hl opt">,</span> <span class="hl num">60</span><span class="hl opt">);</span>
         <span class="hl kwa">assert</span><span class="hl opt">(</span>r<span class="hl opt">.</span><span class="hl kwd">size</span><span class="hl opt">() ==</span> <span class="hl num">2</span><span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> im0 <span class="hl opt">=</span> r<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> im1 <span class="hl opt">=</span> r<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> im0 <span class="hl opt">=</span> r<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> im1 <span class="hl opt">=</span> r<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
         <span class="hl kwa">assert</span><span class="hl opt">(</span><span class="hl kwd">im0</span><span class="hl opt">(</span><span class="hl num">30</span><span class="hl opt">,</span> <span class="hl num">40</span><span class="hl opt">) ==</span> <span class="hl num">30</span> <span class="hl opt">+</span> <span class="hl num">40</span><span class="hl opt">);</span>
         <span class="hl kwa">assert</span><span class="hl opt">(</span><span class="hl kwd">im1</span><span class="hl opt">(</span><span class="hl num">30</span><span class="hl opt">,</span> <span class="hl num">40</span><span class="hl opt">) ==</span> <span class="hl kwd">sinf</span><span class="hl opt">(</span><span class="hl num">30</span> <span class="hl opt">*</span> <span class="hl num">40</span><span class="hl opt">));</span>
     <span class="hl opt">}</span>
@@ -415,10 +445,10 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// the reduction to maintain complex state as it walks along</span>
         <span class="hl slc">// its domain. The simplest example is an argmax.</span>
 
-        <span class="hl slc">// First we create an Image to take the argmax over.</span>
+        <span class="hl slc">// First we create a Buffer to take the argmax over.</span>
         Func input_func<span class="hl opt">;</span>
         <span class="hl kwd">input_func</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x<span class="hl opt">);</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> input_func<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">100</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> input_func<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">100</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Then we define a 2-valued Tuple which tracks the index of</span>
         <span class="hl slc">// the maximum value and the value itself.</span>
@@ -431,7 +461,7 @@ tutorial_lesson_16_rgb_run.html
         RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">99</span><span class="hl opt">);</span>
         Expr old_index <span class="hl opt">=</span> <span class="hl kwd">arg_max</span><span class="hl opt">()[</span><span class="hl num">0</span><span class="hl opt">];</span>
         Expr old_max   <span class="hl opt">=</span> <span class="hl kwd">arg_max</span><span class="hl opt">()[</span><span class="hl num">1</span><span class="hl opt">];</span>
-        Expr new_index <span class="hl opt">=</span> <span class="hl kwd">select</span><span class="hl opt">(</span>old_max <span class="hl opt">&gt;</span> <span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">),</span> r<span class="hl opt">,</span> old_index<span class="hl opt">);</span>
+        Expr new_index <span class="hl opt">=</span> <span class="hl kwd">select</span><span class="hl opt">(</span>old_max <span class="hl opt">&lt;</span> <span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">),</span> r<span class="hl opt">,</span> old_index<span class="hl opt">);</span>
         Expr new_max   <span class="hl opt">=</span> <span class="hl kwd">max</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">),</span> old_max<span class="hl opt">);</span>
         <span class="hl kwd">arg_max</span><span class="hl opt">() = {</span>new_index<span class="hl opt">,</span> new_max<span class="hl opt">};</span>
 
@@ -441,7 +471,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r <span class="hl opt">=</span> <span class="hl num">1</span><span class="hl opt">;</span> r <span class="hl opt">&lt;</span> <span class="hl num">100</span><span class="hl opt">;</span> r<span class="hl opt">++) {</span>
             <span class="hl kwb">int</span> old_index <span class="hl opt">=</span> arg_max_0<span class="hl opt">;</span>
             <span class="hl kwb">float</span> old_max <span class="hl opt">=</span> arg_max_1<span class="hl opt">;</span>
-            <span class="hl kwb">int</span> new_index <span class="hl opt">=</span> old_max <span class="hl opt">&gt;</span> <span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">)</span> ? r <span class="hl opt">:</span> old_index<span class="hl opt">;</span>
+            <span class="hl kwb">int</span> new_index <span class="hl opt">=</span> old_max <span class="hl opt">&lt;</span> <span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">)</span> ? r <span class="hl opt">:</span> old_index<span class="hl opt">;</span>
             <span class="hl kwb">float</span> new_max <span class="hl opt">=</span> std<span class="hl opt">::</span><span class="hl kwd">max</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">),</span> old_max<span class="hl opt">);</span>
             <span class="hl slc">// In a tuple update definition, all loads and computation</span>
             <span class="hl slc">// are done before any stores, so that all Tuple elements</span>
@@ -455,8 +485,8 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl slc">// value and index.</span>
         <span class="hl opt">{</span>
             Realization r <span class="hl opt">=</span> arg_max<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">();</span>
-            Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> r0 <span class="hl opt">=</span> r<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
-            Image<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> r1 <span class="hl opt">=</span> r<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
+            Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> r0 <span class="hl opt">=</span> r<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
+            Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> r1 <span class="hl opt">=</span> r<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
             <span class="hl kwa">assert</span><span class="hl opt">(</span>arg_max_0 <span class="hl opt">==</span> <span class="hl kwd">r0</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">));</span>
             <span class="hl kwa">assert</span><span class="hl opt">(</span>arg_max_1 <span class="hl opt">==</span> <span class="hl kwd">r1</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">));</span>
         <span class="hl opt">}</span>
@@ -549,7 +579,7 @@ tutorial_lesson_16_rgb_run.html
         <span class="hl kwd">escape</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> first_escape<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
 
         <span class="hl slc">// Realize the pipeline and print the result as ascii art.</span>
-        Image<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> escape<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">61</span><span class="hl opt">,</span> <span class="hl num">25</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> escape<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">61</span><span class="hl opt">,</span> <span class="hl num">25</span><span class="hl opt">);</span>
         <span class="hl kwb">const char</span> <span class="hl opt">*</span>code <span class="hl opt">=</span> <span class="hl str">&quot; .:-~*={}&amp;%#&#64;&quot;</span><span class="hl opt">;</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> result<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">();</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> result<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">();</span> x<span class="hl opt">++) {</span>
