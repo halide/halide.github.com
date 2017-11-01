@@ -1,9 +1,17 @@
 var searchData=
 [
-  ['target',['Target',['../struct_halide_1_1_target.html',1,'Halide']]],
-  ['temporaryfile',['TemporaryFile',['../class_halide_1_1_internal_1_1_temporary_file.html',1,'Halide::Internal']]],
-  ['threadpool',['ThreadPool',['../class_halide_1_1_internal_1_1_thread_pool.html',1,'Halide::Internal']]],
-  ['tuple',['Tuple',['../class_halide_1_1_tuple.html',1,'Halide']]],
-  ['type',['Type',['../struct_halide_1_1_type.html',1,'Halide']]],
-  ['type_5fsink',['type_sink',['../struct_halide_1_1_internal_1_1type__sink.html',1,'Halide::Internal']]]
+  ['ramp',['Ramp',['../struct_halide_1_1_internal_1_1_ramp.html',1,'Halide::Internal']]],
+  ['range',['Range',['../struct_halide_1_1_internal_1_1_range.html',1,'Halide::Internal']]],
+  ['rdom',['RDom',['../class_halide_1_1_r_dom.html',1,'Halide']]],
+  ['realization',['Realization',['../class_halide_1_1_realization.html',1,'Halide']]],
+  ['realize',['Realize',['../struct_halide_1_1_internal_1_1_realize.html',1,'Halide::Internal']]],
+  ['reductiondomain',['ReductionDomain',['../class_halide_1_1_internal_1_1_reduction_domain.html',1,'Halide::Internal']]],
+  ['reductionvariable',['ReductionVariable',['../struct_halide_1_1_internal_1_1_reduction_variable.html',1,'Halide::Internal']]],
+  ['refcount',['RefCount',['../class_halide_1_1_internal_1_1_ref_count.html',1,'Halide::Internal']]],
+  ['regioncosts',['RegionCosts',['../struct_halide_1_1_internal_1_1_region_costs.html',1,'Halide::Internal']]],
+  ['registergenerator',['RegisterGenerator',['../class_halide_1_1_internal_1_1_register_generator.html',1,'Halide::Internal']]],
+  ['relocation',['Relocation',['../class_halide_1_1_internal_1_1_elf_1_1_relocation.html',1,'Halide::Internal::Elf']]],
+  ['replacement',['Replacement',['../struct_halide_1_1_internal_1_1_associative_op_1_1_replacement.html',1,'Halide::Internal::AssociativeOp']]],
+  ['runtimeerror',['RuntimeError',['../struct_halide_1_1_runtime_error.html',1,'Halide']]],
+  ['rvar',['RVar',['../class_halide_1_1_r_var.html',1,'Halide']]]
 ];

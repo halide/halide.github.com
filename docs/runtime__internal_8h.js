@@ -81,9 +81,9 @@ var runtime__internal_8h =
     [ "halide_get_cpu_features", "runtime__internal_8h.html#a6d0495fb872e4ed1c7e28725f663263b", null ],
     [ "__attribute__", "runtime__internal_8h.html#a785d6233895941058ea2eeb7d9daf646", null ],
     [ "__attribute__", "runtime__internal_8h.html#a63c895fd963073f7b220efcccd3eaafe", null ],
+    [ "__attribute__", "runtime__internal_8h.html#a25541e36863ff3ffff17db71c9d88073", null ],
     [ "halide_set_custom_print", "runtime__internal_8h.html#a796f30bc9cb976181a401d04dddd0c86", null ],
     [ "halide_set_error_handler", "runtime__internal_8h.html#aeda5a0a60be9a348f698a19e5f021c2e", null ],
-    [ "t", "runtime__internal_8h.html#ad78f0a5d48acb1b94e3d737b5409cc1d", null ],
-    [ "a", "runtime__internal_8h.html#a67dd017542dcaa40f1181f7806bd18af", null ],
-    [ "b", "runtime__internal_8h.html#a220e62865cb92ff423d312a69f2213e6", null ]
+    [ "b", "runtime__internal_8h.html#a220e62865cb92ff423d312a69f2213e6", null ],
+    [ "a", "runtime__internal_8h.html#a67dd017542dcaa40f1181f7806bd18af", null ]
 ];

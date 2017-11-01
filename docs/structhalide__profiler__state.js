@@ -6,6 +6,6 @@ var structhalide__profiler__state =
     [ "current_func", "structhalide__profiler__state.html#a78dbd77217aa7631de46c62cc5b8ad5b", null ],
     [ "active_threads", "structhalide__profiler__state.html#aaac4e809fe83c85f1a2d17dfd1cab301", null ],
     [ "pipelines", "structhalide__profiler__state.html#a983b473fa5ef280d25d9a6ad867ba108", null ],
-    [ "get_remote_profiler_state", "structhalide__profiler__state.html#a6d4c861d196f906694c025dac0bae9b6", null ],
+    [ "get_remote_profiler_state", "structhalide__profiler__state.html#a03325edc85a804d9bd4ebfa202495643", null ],
     [ "started", "structhalide__profiler__state.html#aaba04d95aba3ff12533f06d33bb41bd3", null ]
 ];

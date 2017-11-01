@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['t',['t',['../namespace_halide_1_1_runtime_1_1_internal.html#ad78f0a5d48acb1b94e3d737b5409cc1d',1,'Halide::Runtime::Internal']]],
   ['table_5fruntime_5fs16',['table_runtime_s16',['../namespace_halide_1_1_internal_1_1_integer_division.html#ad3e76e6447c170caf7c7a345fb55b91c',1,'Halide::Internal::IntegerDivision']]],
   ['table_5fruntime_5fs32',['table_runtime_s32',['../namespace_halide_1_1_internal_1_1_integer_division.html#aa6ee31c22aff7ca2fe03668bd73429d1',1,'Halide::Internal::IntegerDivision']]],
   ['table_5fruntime_5fs8',['table_runtime_s8',['../namespace_halide_1_1_internal_1_1_integer_division.html#a8156746a3925ef97a89198aaa98d1947',1,'Halide::Internal::IntegerDivision']]],
@@ -14,10 +13,9 @@ var searchData=
   ['table_5fu32',['table_u32',['../namespace_halide_1_1_internal_1_1_integer_division.html#ab70f2f1436ac0dd8e4a68f8bc215ec3f',1,'Halide::Internal::IntegerDivision']]],
   ['table_5fu8',['table_u8',['../namespace_halide_1_1_internal_1_1_integer_division.html#a99facb3ec68a1eadbb143071dc4c9046',1,'Halide::Internal::IntegerDivision']]],
   ['tail',['tail',['../struct_halide_1_1_internal_1_1_split.html#a64e7f64f89df56797047bc08a49e021d',1,'Halide::Internal::Split']]],
-  ['target',['target',['../class_halide_1_1_internal_1_1_code_gen___c.html#a8847f446f028934a603361ca65cd1810',1,'Halide::Internal::CodeGen_C::target()'],['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a47c0da8b30234e39d27645a522e91a10',1,'Halide::Internal::CodeGen_LLVM::target()'],['../class_halide_1_1_internal_1_1_code_gen___metal___dev.html#af5d03af733555e89e7f4bbe1a1af18b7',1,'Halide::Internal::CodeGen_Metal_Dev::target()'],['../class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#ae08587de964388c652707cd333159f14',1,'Halide::Internal::CodeGen_OpenCL_Dev::target()'],['../class_halide_1_1_internal_1_1_generator_base.html#a1416e9f24c98fbf66f87b0b1ebcd8108',1,'Halide::Internal::GeneratorBase::target()'],['../structhalide__filter__metadata__t.html#ad4f5ee78760db61ead64bf31f6e83464',1,'halide_filter_metadata_t::target()']]],
+  ['target',['target',['../class_halide_1_1_internal_1_1_code_gen___c.html#a8847f446f028934a603361ca65cd1810',1,'Halide::Internal::CodeGen_C::target()'],['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a47c0da8b30234e39d27645a522e91a10',1,'Halide::Internal::CodeGen_LLVM::target()'],['../class_halide_1_1_generator_context.html#ad706feb105c50c22b82003b708b55e40',1,'Halide::GeneratorContext::target()'],['../structhalide__filter__metadata__t.html#ad4f5ee78760db61ead64bf31f6e83464',1,'halide_filter_metadata_t::target()']]],
   ['target_5fa_5fteam_5fsize',['target_a_team_size',['../struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html#a99fd9201524589217d5a5e80bbfd1dc1',1,'Halide::Runtime::Internal::work_queue_t']]],
   ['then_5fcase',['then_case',['../struct_halide_1_1_internal_1_1_if_then_else.html#afd7147872ed18ea25fbe121ce98a2230',1,'Halide::Internal::IfThenElse']]],
-  ['this',['this',['../class_halide_1_1_output_image_param.html#ab6902d6da5b32f4f3473538fa73448d2',1,'Halide::OutputImageParam']]],
   ['threads',['threads',['../struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html#a7518db5c3137bdbfa4b53807c6118f80',1,'Halide::Runtime::Internal::work_queue_t']]],
   ['threads_5fcreated',['threads_created',['../struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html#a687e8f909683144f2d97d2f85412c961',1,'Halide::Runtime::Internal::work_queue_t']]],
   ['time',['time',['../structhalide__profiler__func__stats.html#ac2695292343be0346225ddbcd838bc57',1,'halide_profiler_func_stats::time()'],['../structhalide__profiler__pipeline__stats.html#a0d262d049030dbc7b4f26e9f39f53347',1,'halide_profiler_pipeline_stats::time()']]],

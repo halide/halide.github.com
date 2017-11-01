@@ -1,4 +1,0 @@
-var struct_halide_1_1_internal_1_1next__integer__sequence_3_01integer__sequence_3_01_t_00_01_ints_8_8_8_4_01_4 =
-[
-    [ "type", "struct_halide_1_1_internal_1_1next__integer__sequence_3_01integer__sequence_3_01_t_00_01_ints_8_8_8_4_01_4.html#a83f815c665310182a07becbbbd76f86a", null ]
-];

@@ -1,5 +1,6 @@
 var class_halide_1_1_internal_1_1_i_r_printer =
 [
+    [ "~IRPrinter", "class_halide_1_1_internal_1_1_i_r_printer.html#a5798e2299f9f18e509199af035b5d182", null ],
     [ "IRPrinter", "class_halide_1_1_internal_1_1_i_r_printer.html#af3f28014287a3239a7de01852479ec38", null ],
     [ "print", "class_halide_1_1_internal_1_1_i_r_printer.html#abcd6d1b6fb7170137a25da335fbf9d32", null ],
     [ "print", "class_halide_1_1_internal_1_1_i_r_printer.html#a5bfbc17b1b814d66e38d29b0e7223e6d", null ],

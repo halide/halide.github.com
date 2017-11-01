@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['f',['f',['../class_halide_1_1_internal_1_1_stub_output_buffer_base.html#a2addb497ffb0ae72a39abf6c66007c15',1,'Halide::Internal::StubOutputBufferBase::f()'],['../struct_halide_1_1_runtime_1_1_internal_1_1work.html#acc4ea414b48d69b43374a75ca7f4604f',1,'Halide::Runtime::Internal::work::f()']]],
+  ['f',['f',['../class_halide_1_1_internal_1_1_stub_output_buffer_base.html#a2addb497ffb0ae72a39abf6c66007c15',1,'Halide::Internal::StubOutputBufferBase::f()'],['../struct_halide_1_1_runtime_1_1_internal_1_1work.html#aae876be3a17ff12cf5a7012f2a4f1321',1,'Halide::Runtime::Internal::work::f()']]],
   ['f16_5ft',['f16_t',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#afc523eba27ab6ec6d647f0a8039c0ea0',1,'Halide::Internal::CodeGen_LLVM']]],
   ['f32',['f32',['../structhalide__scalar__value__t.html#af4d868648add8e8dfee1fe167dd3fbab',1,'halide_scalar_value_t']]],
   ['f32_5ft',['f32_t',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a9371d250123944ce7cbd6917d1bcdc57',1,'Halide::Internal::CodeGen_LLVM']]],
@@ -24,11 +24,13 @@ var searchData=
   ['fold_5fforward',['fold_forward',['../struct_halide_1_1_internal_1_1_storage_dim.html#a0157f5cf508314a37bfc48485e4cb9bc',1,'Halide::Internal::StorageDim']]],
   ['for_5ftype',['for_type',['../struct_halide_1_1_internal_1_1_for.html#a8a1339b5bfcd4b2f31885f1b4af327f9',1,'Halide::Internal::For::for_type()'],['../struct_halide_1_1_internal_1_1_dim.html#a68a7f3bb3ad8c0d66f69be5d107b730e',1,'Halide::Internal::Dim::for_type()']]],
   ['forward_5fdeclared',['forward_declared',['../class_halide_1_1_internal_1_1_code_gen___c.html#a6eb9342d745e513656b3a28ebd96ee8e',1,'Halide::Internal::CodeGen_C']]],
-  ['free_5ffunction',['free_function',['../struct_halide_1_1_internal_1_1_code_gen___c_1_1_allocation.html#aadb22c067157f977877d2a4a0758f654',1,'Halide::Internal::CodeGen_C::Allocation::free_function()'],['../struct_halide_1_1_internal_1_1_allocate.html#ab9b3da4d9218084cdfce82d724725317',1,'Halide::Internal::Allocate::free_function()']]],
+  ['free_5ffunction',['free_function',['../struct_halide_1_1_internal_1_1_allocate.html#ab9b3da4d9218084cdfce82d724725317',1,'Halide::Internal::Allocate']]],
   ['fully_5fsolved',['fully_solved',['../struct_halide_1_1_internal_1_1_solver_result.html#a76da1edc211d80f3f389895b84b03169',1,'Halide::Internal::SolverResult']]],
-  ['func',['func',['../struct_halide_1_1_extern_func_argument.html#ab091d86a87f6ddb7aaa9b2ddda2e3f3a',1,'Halide::ExternFuncArgument::func()'],['../struct_halide_1_1_internal_1_1_call.html#a9c6f4f9c974d58fb2f31b20d9ab8d29c',1,'Halide::Internal::Call::func()'],['../structhalide__trace__event__t.html#a2940776dde97b9d46ba6ff074d2e0c3c',1,'halide_trace_event_t::func()']]],
+  ['func',['func',['../struct_halide_1_1_extern_func_argument.html#aae82509b54237845319ac9167eb6e2cd',1,'Halide::ExternFuncArgument::func()'],['../struct_halide_1_1_internal_1_1_call.html#a6e64b35c5f2649dcadb6f27519f7ee21',1,'Halide::Internal::Call::func()'],['../class_halide_1_1_output_image_param.html#acc6c775d6ca1336d2bec22c559c7025b',1,'Halide::OutputImageParam::func()'],['../structhalide__trace__event__t.html#a2940776dde97b9d46ba6ff074d2e0c3c',1,'halide_trace_event_t::func()']]],
+  ['func_5fcost',['func_cost',['../struct_halide_1_1_internal_1_1_region_costs.html#af9b1ec7eb6b18e2b3aad832ae04a05af',1,'Halide::Internal::RegionCosts']]],
   ['funcs',['funcs',['../structhalide__profiler__pipeline__stats.html#aaa296f58b6e3e06abb606bf8174c248a',1,'halide_profiler_pipeline_stats']]],
   ['funcs_5f',['funcs_',['../class_halide_1_1_internal_1_1_g_i_o_base.html#abf387dac4f7d1aaddc307920f8fc80e2',1,'Halide::Internal::GIOBase']]],
+  ['funcs_5fcalled',['funcs_called',['../class_halide_1_1_internal_1_1_find_all_calls.html#ac209ab44373d10706e7142fc77d16048',1,'Halide::Internal::FindAllCalls']]],
   ['function',['function',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a5910d641bc9fdd7a33feded6ae2b5232',1,'Halide::Internal::CodeGen_LLVM']]],
   ['function_5fname',['function_name',['../class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html#a234488d8acc3b6185d3ac6e1453a8013',1,'Halide::Internal::CodeGen_GPU_Host']]]
 ];

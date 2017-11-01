@@ -6,8 +6,8 @@ var _bounds_8h =
       [ "Upper", "_bounds_8h.html#a8548315fd4d13ccebe45a8123369f7caa19de5b94f7b83900d4b296d9fa491aec", null ],
       [ "Lower", "_bounds_8h.html#a8548315fd4d13ccebe45a8123369f7caab75fcdd2d72d9e000beab48622402d93", null ]
     ] ],
-    [ "bounds_of_expr_in_scope", "_bounds_8h.html#ab7f7e59492cfa4804a6dece2d867a5db", null ],
-    [ "find_constant_bound", "_bounds_8h.html#a0f153e2f6ddfec8e6ca9d31b8d7acfc9", null ],
+    [ "bounds_of_expr_in_scope", "_bounds_8h.html#a9191d3b3cba94302c0d08bf9f488d8c6", null ],
+    [ "find_constant_bound", "_bounds_8h.html#a8fa13926995971d75dc697536d803b4d", null ],
     [ "merge_boxes", "_bounds_8h.html#ac2f62c0ee3ace8de2be57a9db369a3e4", null ],
     [ "boxes_overlap", "_bounds_8h.html#ac9641dd947fdf6352ccd5e34548db35e", null ],
     [ "box_union", "_bounds_8h.html#af86d8a9b260b097d115182e4b8488f09", null ],

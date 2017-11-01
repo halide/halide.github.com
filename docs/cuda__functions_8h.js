@@ -1,6 +1,7 @@
 var cuda__functions_8h =
 [
     [ "CUDA_FN", "cuda__functions_8h.html#a8626573513b415ff8b854e43df312efa", null ],
+    [ "CUDA_FN_OPTIONAL", "cuda__functions_8h.html#af1d8bf23d43c0673907e128dbddc184c", null ],
     [ "CUDA_FN_3020", "cuda__functions_8h.html#a4be0a0edffb54a3a8e019df6337a4790", null ],
     [ "CUDA_FN_4000", "cuda__functions_8h.html#ab53403dc4497719f2347c73e3ef10081", null ],
     [ "CUDA_FN", "cuda__functions_8h.html#ad9b8a3aba2151f80f86cccb979e2f8da", null ],
@@ -21,10 +22,12 @@ var cuda__functions_8h =
     [ "CUDA_FN_3020", "cuda__functions_8h.html#a175566f73ba3748f55ffc7613b0ec3b8", null ],
     [ "CUDA_FN_3020", "cuda__functions_8h.html#a98fed59b913aea388f70c0a89ae53066", null ],
     [ "CUDA_FN_3020", "cuda__functions_8h.html#a1cbfcd6a203df021823e7e238427510a", null ],
+    [ "CUDA_FN_3020", "cuda__functions_8h.html#a16647fc7cf571d8b2338b049c67053d0", null ],
     [ "CUDA_FN_3020", "cuda__functions_8h.html#a07dc02aaef185d6b49cbc7000c9beb95", null ],
     [ "CUDA_FN", "cuda__functions_8h.html#acfe44d2a30f69a58724fc6c1f38894e6", null ],
     [ "CUDA_FN", "cuda__functions_8h.html#a2dcd9065977811a4f25a4985190bab41", null ],
     [ "CUDA_FN_4000", "cuda__functions_8h.html#a8a3d14220e0497f3945d7079a3449a92", null ],
     [ "CUDA_FN_4000", "cuda__functions_8h.html#a18c866a732a468a9f7bdddf4cf3e2531", null ],
-    [ "CUDA_FN", "cuda__functions_8h.html#a58a0ba0093f616d6b4d9237b67820bd4", null ]
+    [ "CUDA_FN", "cuda__functions_8h.html#a58a0ba0093f616d6b4d9237b67820bd4", null ],
+    [ "CUDA_FN_OPTIONAL", "cuda__functions_8h.html#ac026e343cbe14a225a057d3c823a775c", null ]
 ];

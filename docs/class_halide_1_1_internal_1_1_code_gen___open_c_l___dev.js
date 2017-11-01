@@ -11,6 +11,5 @@ var class_halide_1_1_internal_1_1_code_gen___open_c_l___dev =
     [ "api_unique_name", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#afa9074d552c90fde3f1d18ad878dab68", null ],
     [ "src_stream", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a7960fa0f05f06760163c8f6adf17c6c3", null ],
     [ "cur_kernel_name", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#a75f424594f0f6eb6d19ca85e3fc7287c", null ],
-    [ "clc", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#ac40dd507f26fbab7dfc6f3a2bf80c186", null ],
-    [ "target", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#ae08587de964388c652707cd333159f14", null ]
+    [ "clc", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html#ac40dd507f26fbab7dfc6f3a2bf80c186", null ]
 ];

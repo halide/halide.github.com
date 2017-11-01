@@ -4,6 +4,7 @@ var searchData=
   ['halide_5fc_5ftype_5fto_5fname',['halide_c_type_to_name',['../structhalide__c__type__to__name.html',1,'']]],
   ['halide_5fcond',['halide_cond',['../structhalide__cond.html',1,'']]],
   ['halide_5fcplusplus_5ftype_5fname',['halide_cplusplus_type_name',['../structhalide__cplusplus__type__name.html',1,'']]],
+  ['halide_5fdevice_5finterface_5fimpl_5ft',['halide_device_interface_impl_t',['../structhalide__device__interface__impl__t.html',1,'']]],
   ['halide_5fdevice_5finterface_5ft',['halide_device_interface_t',['../structhalide__device__interface__t.html',1,'']]],
   ['halide_5fdimension_5ft',['halide_dimension_t',['../structhalide__dimension__t.html',1,'']]],
   ['halide_5ffilter_5fargument_5ft',['halide_filter_argument_t',['../structhalide__filter__argument__t.html',1,'']]],

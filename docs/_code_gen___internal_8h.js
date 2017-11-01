@@ -1,8 +1,8 @@
 var _code_gen___internal_8h =
 [
     [ "build_closure_type", "_code_gen___internal_8h.html#a1a1e270066706802bc3903a17703f173", null ],
-    [ "pack_closure", "_code_gen___internal_8h.html#ac42a40da5ca5a9fac6139f803c316281", null ],
-    [ "unpack_closure", "_code_gen___internal_8h.html#ac6086f6245aac6c79e315fd52b5d78a9", null ],
+    [ "pack_closure", "_code_gen___internal_8h.html#a195a54f77baf0d245a97ac169173e868", null ],
+    [ "unpack_closure", "_code_gen___internal_8h.html#ab830f1d6cae9df73b420bb938a823061", null ],
     [ "llvm_type_of", "_code_gen___internal_8h.html#a71f10140e29131153c3be98d2899b090", null ],
     [ "function_takes_user_context", "_code_gen___internal_8h.html#adc60421b682a09ea4c4dcaaaa3e105e2", null ],
     [ "can_allocation_fit_on_stack", "_code_gen___internal_8h.html#a4abe6b887804e86f403f0af16d5a2ba1", null ],

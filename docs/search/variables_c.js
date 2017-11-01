@@ -1,6 +1,7 @@
 var searchData=
 [
   ['lanes',['lanes',['../struct_halide_1_1_internal_1_1_ramp.html#a69223cbc6aba28e93f4df72b37a0eb05',1,'Halide::Internal::Ramp::lanes()'],['../struct_halide_1_1_internal_1_1_broadcast.html#abba34b7759a7b31767f9795b03ae4c42',1,'Halide::Internal::Broadcast::lanes()']]],
+  ['last_5flevel_5fcache_5fsize',['last_level_cache_size',['../struct_halide_1_1_machine_params.html#ab4f91f78c4dd661806ab053cfeebc6d6',1,'Halide::MachineParams']]],
   ['latency',['latency',['../structhalide__hexagon__power__t.html#a81a80641ee6284cd3915f322bb439575',1,'halide_hexagon_power_t']]],
   ['left_5fshifts',['left_shifts',['../class_halide_1_1_internal_1_1_code_gen___a_r_m.html#af6514013e5a49ff8483b0d29194b17f6',1,'Halide::Internal::CodeGen_ARM']]],
   ['lerp',['lerp',['../struct_halide_1_1_internal_1_1_call.html#ac8ff35ccca0704f3549507de9ce280a2',1,'Halide::Internal::Call']]],

@@ -3,7 +3,9 @@ var class_halide_1_1_pipeline =
     [ "Pipeline", "class_halide_1_1_pipeline.html#ad3a73ba5260a331ebe69f1160565e216", null ],
     [ "Pipeline", "class_halide_1_1_pipeline.html#a27ebee365c875e14d359f43fe4b01201", null ],
     [ "Pipeline", "class_halide_1_1_pipeline.html#a6ba0264c7234cd6f93da4c2925a37f17", null ],
-    [ "outputs", "class_halide_1_1_pipeline.html#a13e473d24dc508719025b8371d029d55", null ],
+    [ "outputs", "class_halide_1_1_pipeline.html#a2d55ae7483642f56d120325402fb598b", null ],
+    [ "auto_schedule", "class_halide_1_1_pipeline.html#a2d929a5c351e68f36955040fb5d78b12", null ],
+    [ "get_func", "class_halide_1_1_pipeline.html#adb869422f0e14e18107f2cf387befc67", null ],
     [ "compile_to", "class_halide_1_1_pipeline.html#a843143791d80f6a5ed896997bf020956", null ],
     [ "compile_to_bitcode", "class_halide_1_1_pipeline.html#af4000b0a6f1379102cbdc653c1e248ac", null ],
     [ "compile_to_llvm_assembly", "class_halide_1_1_pipeline.html#ae635679a18a25db3198409263637eef0", null ],
@@ -28,7 +30,7 @@ var class_halide_1_1_pipeline =
     [ "get_jit_externs", "class_halide_1_1_pipeline.html#ad1b072e73bbcb9f0178f97f787d426ee", null ],
     [ "jit_handlers", "class_halide_1_1_pipeline.html#adc0b4ee338780db27d4bac4a1eeff64b", null ],
     [ "add_custom_lowering_pass", "class_halide_1_1_pipeline.html#af25d5deb7a3cebbbe45ca05044dabecd", null ],
-    [ "add_custom_lowering_pass", "class_halide_1_1_pipeline.html#a746005c1f3818923647c8089c920cf55", null ],
+    [ "add_custom_lowering_pass", "class_halide_1_1_pipeline.html#a717f9cdf6e2b193993e235a89de37d6d", null ],
     [ "clear_custom_lowering_passes", "class_halide_1_1_pipeline.html#a3088a7ff87602e19f354fc9a28c727c6", null ],
     [ "custom_lowering_passes", "class_halide_1_1_pipeline.html#a173fdaf866f329dbc29074a9fa7e28e3", null ],
     [ "realize", "class_halide_1_1_pipeline.html#a2f0131e4dce2dbf9932c9e406a747b3c", null ],
@@ -41,6 +43,6 @@ var class_halide_1_1_pipeline =
     [ "infer_input_bounds", "class_halide_1_1_pipeline.html#a55be371d5d44ca549cc1bc57ecb849a0", null ],
     [ "infer_input_bounds", "class_halide_1_1_pipeline.html#a78c8aa83dfbf7d2792d0893af8ecf712", null ],
     [ "infer_arguments", "class_halide_1_1_pipeline.html#ae5a50b42de4840d03e0dbb72ccc19302", null ],
-    [ "defined", "class_halide_1_1_pipeline.html#a71fbe5e7cb2cf3f9cf157b37c968ba61", null ],
+    [ "defined", "class_halide_1_1_pipeline.html#afb5431ce94060d9bc41bfeba02baf5ba", null ],
     [ "invalidate_cache", "class_halide_1_1_pipeline.html#a506dbff346dd064b927fbcf3af52725d", null ]
 ];

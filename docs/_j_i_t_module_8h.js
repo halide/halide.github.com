@@ -5,5 +5,5 @@ var _j_i_t_module_8h =
     [ "JITHandlers", "struct_halide_1_1_internal_1_1_j_i_t_handlers.html", "struct_halide_1_1_internal_1_1_j_i_t_handlers" ],
     [ "JITUserContext", "struct_halide_1_1_internal_1_1_j_i_t_user_context.html", "struct_halide_1_1_internal_1_1_j_i_t_user_context" ],
     [ "JITSharedRuntime", "class_halide_1_1_internal_1_1_j_i_t_shared_runtime.html", null ],
-    [ "halide_task", "_j_i_t_module_8h.html#a7db928fd19209689611a24deafa15b9c", null ]
+    [ "halide_task", "_j_i_t_module_8h.html#ab837f22cfa4bfe22dba01f4908e839ff", null ]
 ];

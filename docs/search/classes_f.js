@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['param',['Param',['../class_halide_1_1_param.html',1,'Halide']]],
-  ['parameter',['Parameter',['../class_halide_1_1_internal_1_1_parameter.html',1,'Halide::Internal']]],
-  ['pattern',['Pattern',['../struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html',1,'Halide::Internal::CodeGen_ARM']]],
-  ['pipeline',['Pipeline',['../class_halide_1_1_pipeline.html',1,'Halide']]],
-  ['pipelinecontext',['PipelineContext',['../class_pipeline_context.html',1,'']]],
-  ['prefetch',['Prefetch',['../struct_halide_1_1_internal_1_1_prefetch.html',1,'Halide::Internal']]],
-  ['prefetchdirective',['PrefetchDirective',['../struct_halide_1_1_internal_1_1_prefetch_directive.html',1,'Halide::Internal']]],
-  ['producerconsumer',['ProducerConsumer',['../struct_halide_1_1_internal_1_1_producer_consumer.html',1,'Halide::Internal']]],
-  ['provide',['Provide',['../struct_halide_1_1_internal_1_1_provide.html',1,'Halide::Internal']]]
+  ['object',['Object',['../class_halide_1_1_internal_1_1_elf_1_1_object.html',1,'Halide::Internal::Elf']]],
+  ['objectinstanceregistry',['ObjectInstanceRegistry',['../class_halide_1_1_internal_1_1_object_instance_registry.html',1,'Halide::Internal']]],
+  ['or',['Or',['../struct_halide_1_1_internal_1_1_or.html',1,'Halide::Internal']]],
+  ['outputimageparam',['OutputImageParam',['../class_halide_1_1_output_image_param.html',1,'Halide']]],
+  ['outputs',['Outputs',['../struct_halide_1_1_outputs.html',1,'Halide']]]
 ];
