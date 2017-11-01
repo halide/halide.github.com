@@ -37,6 +37,7 @@ var cl__functions_8h =
     [ "CL_FN", "cl__functions_8h.html#a4d588fb66b859de1e407ad6b3a19408b", null ],
     [ "CL_FN", "cl__functions_8h.html#ab6e18ff579274b8bd056af927a6eedad", null ],
     [ "CL_FN", "cl__functions_8h.html#a9f2ba767224a0d2cb094aa5ce5144999", null ],
+    [ "CL_FN", "cl__functions_8h.html#a28c37a21548f04d74cad88374a896705", null ],
     [ "CL_FN", "cl__functions_8h.html#a442d28d52c4e56cff57424913e8a08dd", null ],
     [ "CL_FN", "cl__functions_8h.html#a91f2c39518e2aeb50b57f313e5e94bd9", null ],
     [ "CL_FN", "cl__functions_8h.html#a1754b2568e5fbe64bd4f8e393443baad", null ],

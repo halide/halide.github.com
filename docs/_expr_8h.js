@@ -1,7 +1,7 @@
 var _expr_8h =
 [
     [ "IRNode", "struct_halide_1_1_internal_1_1_i_r_node.html", "struct_halide_1_1_internal_1_1_i_r_node" ],
-    [ "BaseStmtNode", "struct_halide_1_1_internal_1_1_base_stmt_node.html", null ],
+    [ "BaseStmtNode", "struct_halide_1_1_internal_1_1_base_stmt_node.html", "struct_halide_1_1_internal_1_1_base_stmt_node" ],
     [ "BaseExprNode", "struct_halide_1_1_internal_1_1_base_expr_node.html", "struct_halide_1_1_internal_1_1_base_expr_node" ],
     [ "ExprNode", "struct_halide_1_1_internal_1_1_expr_node.html", "struct_halide_1_1_internal_1_1_expr_node" ],
     [ "StmtNode", "struct_halide_1_1_internal_1_1_stmt_node.html", "struct_halide_1_1_internal_1_1_stmt_node" ],

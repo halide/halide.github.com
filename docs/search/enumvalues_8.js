@@ -5,7 +5,6 @@ var searchData=
   ['imageparamarg',['ImageParamArg',['../struct_halide_1_1_extern_func_argument.html#acaf18f00d1d41e200ba8c7ac799a172ba8a178fab7553bc9085ac4cf23bdd65eb',1,'Halide::ExternFuncArgument']]],
   ['impurervar',['ImpureRVar',['../struct_halide_1_1_internal_1_1_dim.html#ad47b241469cb5c8f97b5ad27301f33eba25859a8eb826d3f336cd602940c0865f',1,'Halide::Internal::Dim']]],
   ['increasing',['Increasing',['../namespace_halide_1_1_internal.html#a7dc0c8c1adc38d2c5a80979948f0007caf3ff61f20d0c8eedfa348b0298df5edd',1,'Halide::Internal']]],
-  ['initkernels',['InitKernels',['../namespace_message.html#a883ef70b60c2a0fc488efaa57d8514e0ad22c41bb20b49a2be663ade200664942',1,'Message']]],
   ['inputbuffer',['InputBuffer',['../struct_halide_1_1_argument.html#aee62e5cc903afddd64fcc689b7359659a533e032c2eb6f67f01fd919fd5a5340a',1,'Halide::Argument']]],
   ['inputscalar',['InputScalar',['../struct_halide_1_1_argument.html#aee62e5cc903afddd64fcc689b7359659a717a68cf7adb3d3a0a3edf7c965ddb3c',1,'Halide::Argument']]],
   ['inputsset',['InputsSet',['../class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521a5fd4d245a5c0d639d5df73cf2babbb53',1,'Halide::Internal::GeneratorBase']]],

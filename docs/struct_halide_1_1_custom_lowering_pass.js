@@ -1,5 +1,5 @@
 var struct_halide_1_1_custom_lowering_pass =
 [
-    [ "pass", "struct_halide_1_1_custom_lowering_pass.html#a3f3c6ca22b15330bd032d9f543972d21", null ],
-    [ "deleter", "struct_halide_1_1_custom_lowering_pass.html#a83e52d62fb8cefb71d26cd664332ff7a", null ]
+    [ "pass", "struct_halide_1_1_custom_lowering_pass.html#aa003cd5305b78471bb346bce207cab0c", null ],
+    [ "deleter", "struct_halide_1_1_custom_lowering_pass.html#ad1f13b71593406813dfd1ee202a81994", null ]
 ];

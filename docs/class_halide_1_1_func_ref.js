@@ -17,8 +17,8 @@ var class_halide_1_1_func_ref =
     [ "operator/=", "class_halide_1_1_func_ref.html#a5215524c3b8a4d85eec0a8294dbc4ffc", null ],
     [ "operator/=", "class_halide_1_1_func_ref.html#a86c45f3b2a3bdce2edbf45d54f676a1d", null ],
     [ "operator=", "class_halide_1_1_func_ref.html#a509269684218be803ffa3f3d7ed57702", null ],
-    [ "operator Expr", "class_halide_1_1_func_ref.html#af8c94be80417f7ea4617c5d1d02cd240", null ],
-    [ "operator[]", "class_halide_1_1_func_ref.html#a09d8741d50ddac6c4be0b924758e28e6", null ],
-    [ "size", "class_halide_1_1_func_ref.html#aab8cac485a64246fa6fec4084fa0a10a", null ],
-    [ "function", "class_halide_1_1_func_ref.html#ae61ae6439ac3a4a51e2d0a259dd634f9", null ]
+    [ "operator Expr", "class_halide_1_1_func_ref.html#a779116e006e17c4c32358eef5798d615", null ],
+    [ "operator[]", "class_halide_1_1_func_ref.html#ae3115ea42c7b144c219f7ff4d73b4a0a", null ],
+    [ "size", "class_halide_1_1_func_ref.html#a0dd5fd5ffa97961f1846870a5a0478ac", null ],
+    [ "function", "class_halide_1_1_func_ref.html#a4c85b740d46b9f4eaf71cdfe939ca094", null ]
 ];

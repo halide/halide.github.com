@@ -1,6 +1,6 @@
 var struct_halide_1_1_internal_1_1_buffer_builder =
 [
-    [ "build", "struct_halide_1_1_internal_1_1_buffer_builder.html#a5213e08f7385ec75f85e7e6a7976ccdf", null ],
+    [ "build", "struct_halide_1_1_internal_1_1_buffer_builder.html#a777167a0125969c5994be89673baab93", null ],
     [ "buffer_memory", "struct_halide_1_1_internal_1_1_buffer_builder.html#aff90dcc37afa4a74351d45f577d3f11a", null ],
     [ "shape_memory", "struct_halide_1_1_internal_1_1_buffer_builder.html#a82e866903b16994550e128a8237f4dec", null ],
     [ "host", "struct_halide_1_1_internal_1_1_buffer_builder.html#a6dca063af25d87aa94a8257798abae81", null ],

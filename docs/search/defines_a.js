@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['user_5fassert',['user_assert',['../_error_8h.html#af439940098bb932fbd7e5b42365d377c',1,'Error.h']]],
-  ['user_5ferror',['user_error',['../_error_8h.html#a78a5394c1943bdf1a612fa2287a0ad62',1,'Error.h']]],
-  ['user_5fwarning',['user_warning',['../_error_8h.html#a79e0ccc806e809fe4f6d3cc952dea89b',1,'Error.h']]]
+  ['stderr_5ffileno',['STDERR_FILENO',['../runtime__internal_8h.html#ae2fe1725bb5e9823d089c46b9ed5266e',1,'runtime_internal.h']]],
+  ['stdout_5ffileno',['STDOUT_FILENO',['../runtime__internal_8h.html#abd165ee6474b5b75bf075842fff13a04',1,'runtime_internal.h']]]
 ];

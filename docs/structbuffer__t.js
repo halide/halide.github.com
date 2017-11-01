@@ -2,7 +2,7 @@ var structbuffer__t =
 [
     [ "HALIDE_ATTRIBUTE_ALIGN", "structbuffer__t.html#a5d77b409eec614023a8d4af32db9fc7f", null ],
     [ "HALIDE_ATTRIBUTE_ALIGN", "structbuffer__t.html#a5ac810034d085cd2337bdccb7e719b00", null ],
-    [ "HALIDE_ATTRIBUTE_ALIGN", "structbuffer__t.html#a31e5e4c060d3818e23e4622158e7d317", null ],
+    [ "HALIDE_ATTRIBUTE_ALIGN", "structbuffer__t.html#ac9b1d385e330f3da0cde7a99611805b7", null ],
     [ "dev", "structbuffer__t.html#a6653bc34b20aa7c42bed9807d1111548", null ],
     [ "host", "structbuffer__t.html#a45c053e375de7a895d9bb1373d6bacfb", null ],
     [ "extent", "structbuffer__t.html#a77103c45ba0ade51615d948c8cbe4c4a", null ],

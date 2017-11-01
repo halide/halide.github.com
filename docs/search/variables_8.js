@@ -5,6 +5,7 @@ var searchData=
   ['handle',['handle',['../structhalide__scalar__value__t.html#affc083076d762cb311e1d0235b9c6547',1,'halide_scalar_value_t::handle()'],['../struct_halide_1_1_type.html#ac72fe2f6ec37b275058216848fb3ff73',1,'Halide::Type::Handle()']]],
   ['handle_5ftype',['handle_type',['../struct_halide_1_1_type.html#a8ac154735393f719bba57bd0d3712e41',1,'Halide::Type']]],
   ['handlers',['handlers',['../struct_halide_1_1_internal_1_1_j_i_t_user_context.html#a6b5fd8789881e30ee4ddb04ad4d03d12',1,'Halide::Internal::JITUserContext']]],
+  ['has_5fstatic_5fhalide_5ftype',['has_static_halide_type',['../class_halide_1_1_buffer.html#a978cfc2ee445777cdb7892fc17549b49',1,'Halide::Buffer::has_static_halide_type()'],['../class_halide_1_1_runtime_1_1_buffer.html#a6a0432e50ffc161961ae3af4d5a6c98a',1,'Halide::Runtime::Buffer::has_static_halide_type()']]],
   ['have_5fuser_5fcontext',['have_user_context',['../class_halide_1_1_internal_1_1_code_gen___c.html#abd679d9da0e82113f78358e8d0a75eb1',1,'Halide::Internal::CodeGen_C']]],
   ['heap_5fallocations',['heap_allocations',['../class_halide_1_1_internal_1_1_code_gen___c.html#a0d867f0e390182e00054eb629181516d',1,'Halide::Internal::CodeGen_C']]],
   ['height',['Height',['../struct_halide_1_1_runtime_1_1_internal_1_1_cuda_1_1_c_u_d_a___m_e_m_c_p_y3_d__st.html#a0b92e39c5619db9e7d32feb2d627ec2b',1,'Halide::Runtime::Internal::Cuda::CUDA_MEMCPY3D_st']]],

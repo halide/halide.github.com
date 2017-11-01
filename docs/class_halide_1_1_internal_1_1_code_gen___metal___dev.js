@@ -11,6 +11,5 @@ var class_halide_1_1_internal_1_1_code_gen___metal___dev =
     [ "api_unique_name", "class_halide_1_1_internal_1_1_code_gen___metal___dev.html#aab0bfcb474ca8a87059ebb8f5e29a29f", null ],
     [ "src_stream", "class_halide_1_1_internal_1_1_code_gen___metal___dev.html#a7372ea9ccb98789b35f3684cd8e0b058", null ],
     [ "cur_kernel_name", "class_halide_1_1_internal_1_1_code_gen___metal___dev.html#a88b47dc7eb56a4c99f690a0577c8b3c6", null ],
-    [ "metal_c", "class_halide_1_1_internal_1_1_code_gen___metal___dev.html#a9074ded2b057ed4a6884a01b75fee684", null ],
-    [ "target", "class_halide_1_1_internal_1_1_code_gen___metal___dev.html#af5d03af733555e89e7f4bbe1a1af18b7", null ]
+    [ "metal_c", "class_halide_1_1_internal_1_1_code_gen___metal___dev.html#a9074ded2b057ed4a6884a01b75fee684", null ]
 ];

@@ -377,5 +377,6 @@ var searchData=
   ['cuda_5ffn',['CUDA_FN',['../cuda__functions_8h.html#a8626573513b415ff8b854e43df312efa',1,'cuda_functions.h']]],
   ['cuda_5ffn_5f3020',['CUDA_FN_3020',['../cuda__functions_8h.html#a4be0a0edffb54a3a8e019df6337a4790',1,'cuda_functions.h']]],
   ['cuda_5ffn_5f4000',['CUDA_FN_4000',['../cuda__functions_8h.html#ab53403dc4497719f2347c73e3ef10081',1,'cuda_functions.h']]],
+  ['cuda_5ffn_5foptional',['CUDA_FN_OPTIONAL',['../cuda__functions_8h.html#af1d8bf23d43c0673907e128dbddc184c',1,'cuda_functions.h']]],
   ['cudaapi',['CUDAAPI',['../mini__cuda_8h.html#ab85967b2c9c337aa3174818a4e51d8ce',1,'mini_cuda.h']]]
 ];

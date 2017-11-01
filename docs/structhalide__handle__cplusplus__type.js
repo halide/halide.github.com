@@ -11,7 +11,7 @@ var structhalide__handle__cplusplus__type =
       [ "LValueReference", "structhalide__handle__cplusplus__type.html#a5aef5cc2d2d1194b93e036af106f86fcac0007ec0976f79e33b0164c61ed4b89c", null ],
       [ "RValueReference", "structhalide__handle__cplusplus__type.html#a5aef5cc2d2d1194b93e036af106f86fcaacc8351ab7b03257da8ce01a9a21d1e3", null ]
     ] ],
-    [ "halide_handle_cplusplus_type", "structhalide__handle__cplusplus__type.html#a835af3df5c4b68ba8cb0e31c0ff7e5e9", null ],
+    [ "halide_handle_cplusplus_type", "structhalide__handle__cplusplus__type.html#a29913a121e57b9853fc4eef1265f3ce9", null ],
     [ "inner_name", "structhalide__handle__cplusplus__type.html#a08b89959678fc0e1c7b4c0f397aed0e6", null ],
     [ "namespaces", "structhalide__handle__cplusplus__type.html#ab9c1595c934da4de0b2369a5a0450143", null ],
     [ "enclosing_types", "structhalide__handle__cplusplus__type.html#ac0e7e712133fcfce2168d6afa5dafcdf", null ],

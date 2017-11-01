@@ -8,7 +8,9 @@ var searchData=
   ['uid',['uid',['../struct_halide_1_1_internal_1_1_file_stat.html#af8be62eba423716352a047497d123823',1,'Halide::Internal::FileStat']]],
   ['uint',['UInt',['../struct_halide_1_1_type.html#a8502d6fd000d5894db6e320351ccf961',1,'Halide::Type']]],
   ['undef',['undef',['../struct_halide_1_1_internal_1_1_call.html#ac6c4dc3e2d8196c6c4c6c7ea47d6dc56',1,'Halide::Internal::Call']]],
-  ['use_5fmodule',['use_module',['../structhalide__device__interface__t.html#a238e02ed6570d5944e356822e89ac0bd',1,'halide_device_interface_t']]],
+  ['unknown',['unknown',['../namespace_halide_1_1_internal.html#ac4e8d52841afa71f1f7bac7ce9611159',1,'Halide::Internal']]],
+  ['use_5fmodule',['use_module',['../structhalide__device__interface__impl__t.html#a05ab3cd6ee82d82f221e04e5a457e9fe',1,'halide_device_interface_impl_t']]],
   ['used',['used',['../struct_halide_1_1_internal_1_1_box.html#a52623fd2e3c53451b55ef9cdfd0d4d64',1,'Halide::Internal::Box']]],
-  ['user_5fcontext',['user_context',['../struct_halide_1_1_internal_1_1_j_i_t_user_context.html#add447b515d5f1aef6c8d2fea7560944b',1,'Halide::Internal::JITUserContext::user_context()'],['../struct_halide_1_1_runtime_1_1_internal_1_1work.html#a172cc60441992225731312415505827c',1,'Halide::Runtime::Internal::work::user_context()'],['../printer_8h.html#a9a395374120db0d0280e16f53201d5cf',1,'user_context():&#160;printer.h']]]
+  ['user_5fcontext',['user_context',['../struct_halide_1_1_internal_1_1_j_i_t_user_context.html#add447b515d5f1aef6c8d2fea7560944b',1,'Halide::Internal::JITUserContext::user_context()'],['../struct_halide_1_1_runtime_1_1_internal_1_1work.html#a172cc60441992225731312415505827c',1,'Halide::Runtime::Internal::work::user_context()'],['../printer_8h.html#a9a395374120db0d0280e16f53201d5cf',1,'user_context():&#160;printer.h']]],
+  ['uses_5fgpu_5ffor_5floops',['uses_gpu_for_loops',['../class_halide_1_1_internal_1_1_code_gen___c.html#ae7f5e609a6242d77cf9d9824e053d546',1,'Halide::Internal::CodeGen_C']]]
 ];

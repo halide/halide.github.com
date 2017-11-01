@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['_5f_5f_5fhalide_5fregister_5fchooser',['___HALIDE_REGISTER_CHOOSER',['../_generator_8h.html#a3703de57adb30a5044367a8eccb822b0',1,'Generator.h']]],
+  ['_5f_5fhalide_5fregister_5fargcount_5fimpl',['__HALIDE_REGISTER_ARGCOUNT_IMPL',['../_generator_8h.html#a9569beb9a7e98718b004aee7c10f0467',1,'Generator.h']]],
+  ['_5f_5fhalide_5fregister_5fchooser',['__HALIDE_REGISTER_CHOOSER',['../_generator_8h.html#a247774bd287d01a3081de190905019c7',1,'Generator.h']]],
   ['_5f_5fqaic_5fheader',['__QAIC_HEADER',['../halide__hexagon__remote_8h.html#a616f10fa005a68628024fedc1c5cf25f',1,'halide_hexagon_remote.h']]],
   ['_5f_5fqaic_5fheader_5fattribute',['__QAIC_HEADER_ATTRIBUTE',['../halide__hexagon__remote_8h.html#a79ea5d723e5e1c9e79927b6940aba2f2',1,'halide_hexagon_remote.h']]],
   ['_5f_5fqaic_5fheader_5fexport',['__QAIC_HEADER_EXPORT',['../halide__hexagon__remote_8h.html#af1c6fd239bc86ec38c30046646bfd90f',1,'halide_hexagon_remote.h']]],
@@ -9,6 +12,13 @@ var searchData=
   ['_5fhalide_5fcheck_5farg_5ftype',['_halide_check_arg_type',['../_extern_8h.html#adc22469ee831826d9431b2f7288ec709',1,'Extern.h']]],
   ['_5fhalide_5fexpand_5fand_5fstringify',['_halide_expand_and_stringify',['../runtime__internal_8h.html#a6d66990b99b43bffe8763db7c62d1448',1,'runtime_internal.h']]],
   ['_5fhalide_5finternal_5fassertion',['_halide_internal_assertion',['../_error_8h.html#a32d1a8bfcbf2c4cec795364a206200f6',1,'Error.h']]],
+  ['_5fhalide_5fregister_5fargcount',['_HALIDE_REGISTER_ARGCOUNT',['../_generator_8h.html#ab1ebb701e7b5841c0e6202138cdb5dff',1,'Generator.h']]],
+  ['_5fhalide_5fregister_5fargcount_5fimpl',['_HALIDE_REGISTER_ARGCOUNT_IMPL',['../_generator_8h.html#a64059dca539cf5f3f7e4c642af576ae3',1,'Generator.h']]],
+  ['_5fhalide_5fregister_5fchooser',['_HALIDE_REGISTER_CHOOSER',['../_generator_8h.html#a33e49dea0ba50a51195521ede9c0b20c',1,'Generator.h']]],
+  ['_5fhalide_5fregister_5fgenerator2',['_HALIDE_REGISTER_GENERATOR2',['../_generator_8h.html#a9a745ace50c85e1e1086beda5bd7598d',1,'Generator.h']]],
+  ['_5fhalide_5fregister_5fgenerator3',['_HALIDE_REGISTER_GENERATOR3',['../_generator_8h.html#ad4b1d1e407c4804e430152a081194e99',1,'Generator.h']]],
+  ['_5fhalide_5fregister_5fgenerator_5fimpl',['_HALIDE_REGISTER_GENERATOR_IMPL',['../_generator_8h.html#a5856471e468d66102a7f7c3384e7bf3a',1,'Generator.h']]],
+  ['_5fhalide_5fregister_5fgenerator_5fpaste',['_HALIDE_REGISTER_GENERATOR_PASTE',['../_generator_8h.html#a940f7c9be73066885cb3a5d29e7cbd55',1,'Generator.h']]],
   ['_5fhalide_5fstringify',['_halide_stringify',['../runtime__internal_8h.html#ac550f846b1acfd672478b588d8a485b7',1,'runtime_internal.h']]],
   ['_5fhalide_5fuser_5fassert',['_halide_user_assert',['../_error_8h.html#ac33c8660a2d35cb8cc69c510bb9c0a98',1,'Error.h']]],
   ['_5fio',['_IO',['../android__ioctl_8h.html#a840d10d2fed07b8a85f260031f2fa47b',1,'android_ioctl.h']]],

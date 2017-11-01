@@ -3,6 +3,8 @@ var searchData=
   ['add',['Add',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2aec211f7c20af43e742bf2570c3cb84f9',1,'Halide::Internal']]],
   ['alloc',['Alloc',['../namespace_message.html#a883ef70b60c2a0fc488efaa57d8514e0a0c2a82cca7e71f36b1a167167706abc5',1,'Message']]],
   ['allocate',['Allocate',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2ac9baacf6cca6c54626e594639081177f',1,'Halide::Internal']]],
+  ['allocated',['Allocated',['../namespace_halide_1_1_runtime.html#a73f7124ef4cb605c30adbf8216681139a030218254584bb915dbaa23473bf1be7',1,'Halide::Runtime']]],
+  ['allocateddeviceandhost',['AllocatedDeviceAndHost',['../namespace_halide_1_1_runtime.html#a73f7124ef4cb605c30adbf8216681139a4bf6b0068f5403fac944342621d7e21d',1,'Halide::Runtime']]],
   ['always',['Always',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a431585f4447c39d5639672baa5b1c5d2a65f0774ca71b47cdb4461248276337b3',1,'Halide::Internal::CodeGen_LLVM']]],
   ['and',['And',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2ac33315685a0cba3ce53be378b3c7874b',1,'Halide::Internal']]],
   ['android',['Android',['../struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20a5c630f5107a5a01870143d6dc042ea8c',1,'Halide::Target']]],

@@ -11,6 +11,8 @@ var files =
     ] ],
     [ "AssociativeOpsTable.h", "_associative_ops_table_8h.html", "_associative_ops_table_8h" ],
     [ "Associativity.h", "_associativity_8h.html", "_associativity_8h" ],
+    [ "AutoSchedule.h", "_auto_schedule_8h.html", "_auto_schedule_8h" ],
+    [ "AutoScheduleUtils.h", "_auto_schedule_utils_8h.html", "_auto_schedule_utils_8h" ],
     [ "BoundaryConditions.h", "_boundary_conditions_8h.html", "_boundary_conditions_8h" ],
     [ "Bounds.h", "_bounds_8h.html", "_bounds_8h" ],
     [ "BoundsInference.h", "_bounds_inference_8h.html", "_bounds_inference_8h" ],
@@ -80,7 +82,6 @@ var files =
     [ "Debug.h", "_debug_8h.html", "_debug_8h" ],
     [ "DebugArguments.h", "_debug_arguments_8h.html", "_debug_arguments_8h" ],
     [ "DebugToFile.h", "_debug_to_file_8h.html", "_debug_to_file_8h" ],
-    [ "DeepCopy.h", "_deep_copy_8h.html", "_deep_copy_8h" ],
     [ "Definition.h", "_definition_8h.html", [
       [ "Definition", "class_halide_1_1_internal_1_1_definition.html", "class_halide_1_1_internal_1_1_definition" ],
       [ "Specialization", "struct_halide_1_1_internal_1_1_specialization.html", "struct_halide_1_1_internal_1_1_specialization" ]
@@ -93,6 +94,9 @@ var files =
       [ "HostClosure", "class_halide_1_1_internal_1_1_host_closure.html", "class_halide_1_1_internal_1_1_host_closure" ]
     ] ],
     [ "DeviceInterface.h", "_device_interface_8h.html", "_device_interface_8h" ],
+    [ "Dimension.h", "_dimension_8h.html", [
+      [ "Dimension", "class_halide_1_1_internal_1_1_dimension.html", "class_halide_1_1_internal_1_1_dimension" ]
+    ] ],
     [ "dlib.h", "dlib_8h.html", "dlib_8h" ],
     [ "EarlyFree.h", "_early_free_8h.html", "_early_free_8h" ],
     [ "Elf.h", "_elf_8h.html", [
@@ -116,6 +120,9 @@ var files =
     [ "Float16.h", "_float16_8h.html", "_float16_8h" ],
     [ "Func.h", "_func_8h.html", "_func_8h" ],
     [ "Function.h", "_function_8h.html", "_function_8h" ],
+    [ "FunctionPtr.h", "_function_ptr_8h.html", [
+      [ "FunctionPtr", "struct_halide_1_1_internal_1_1_function_ptr.html", "struct_halide_1_1_internal_1_1_function_ptr" ]
+    ] ],
     [ "FuseGPUThreadLoops.h", "_fuse_g_p_u_thread_loops_8h.html", "_fuse_g_p_u_thread_loops_8h" ],
     [ "FuzzFloatStores.h", "_fuzz_float_stores_8h.html", "_fuzz_float_stores_8h" ],
     [ "Generator.h", "_generator_8h.html", "_generator_8h" ],
@@ -133,11 +140,11 @@ var files =
     [ "HexagonOffload.h", "_hexagon_offload_8h.html", "_hexagon_offload_8h" ],
     [ "HexagonOptimize.h", "_hexagon_optimize_8h.html", "_hexagon_optimize_8h" ],
     [ "ImageParam.h", "_image_param_8h.html", [
+      [ "GeneratorInput_Buffer", "class_halide_1_1_internal_1_1_generator_input___buffer.html", "class_halide_1_1_internal_1_1_generator_input___buffer" ],
       [ "ImageParam", "class_halide_1_1_image_param.html", "class_halide_1_1_image_param" ]
     ] ],
     [ "InferArguments.h", "_infer_arguments_8h.html", "_infer_arguments_8h" ],
     [ "InjectHostDevBufferCopies.h", "_inject_host_dev_buffer_copies_8h.html", "_inject_host_dev_buffer_copies_8h" ],
-    [ "InjectImageIntrinsics.h", "_inject_image_intrinsics_8h.html", "_inject_image_intrinsics_8h" ],
     [ "InjectOpenGLIntrinsics.h", "_inject_open_g_l_intrinsics_8h.html", "_inject_open_g_l_intrinsics_8h" ],
     [ "Inline.h", "_inline_8h.html", "_inline_8h" ],
     [ "InlineReductions.h", "_inline_reductions_8h.html", "_inline_reductions_8h" ],
@@ -150,7 +157,9 @@ var files =
     [ "IRMatch.h", "_i_r_match_8h.html", "_i_r_match_8h" ],
     [ "IRMutator.h", "_i_r_mutator_8h.html", [
       [ "IRMutator", "class_halide_1_1_internal_1_1_i_r_mutator.html", "class_halide_1_1_internal_1_1_i_r_mutator" ],
-      [ "IRGraphMutator", "class_halide_1_1_internal_1_1_i_r_graph_mutator.html", "class_halide_1_1_internal_1_1_i_r_graph_mutator" ]
+      [ "IRGraphMutator", "class_halide_1_1_internal_1_1_i_r_graph_mutator.html", "class_halide_1_1_internal_1_1_i_r_graph_mutator" ],
+      [ "IRMutator2", "class_halide_1_1_internal_1_1_i_r_mutator2.html", "class_halide_1_1_internal_1_1_i_r_mutator2" ],
+      [ "IRGraphMutator2", "class_halide_1_1_internal_1_1_i_r_graph_mutator2.html", "class_halide_1_1_internal_1_1_i_r_graph_mutator2" ]
     ] ],
     [ "IROperator.h", "_i_r_operator_8h.html", "_i_r_operator_8h" ],
     [ "IRPrinter.h", "_i_r_printer_8h.html", "_i_r_printer_8h" ],
@@ -159,8 +168,10 @@ var files =
       [ "IRGraphVisitor", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html", "class_halide_1_1_internal_1_1_i_r_graph_visitor" ]
     ] ],
     [ "JITModule.h", "_j_i_t_module_8h.html", "_j_i_t_module_8h" ],
+    [ "known_symbols.h", "known__symbols_8h.html", "known__symbols_8h" ],
     [ "Lambda.h", "_lambda_8h.html", "_lambda_8h" ],
     [ "Lerp.h", "_lerp_8h.html", "_lerp_8h" ],
+    [ "LICM.h", "_l_i_c_m_8h.html", "_l_i_c_m_8h" ],
     [ "LLVM_Headers.h", "_l_l_v_m___headers_8h.html", "_l_l_v_m___headers_8h" ],
     [ "LLVM_Output.h", "_l_l_v_m___output_8h.html", "_l_l_v_m___output_8h" ],
     [ "LLVM_Runtime_Linker.h", "_l_l_v_m___runtime___linker_8h.html", "_l_l_v_m___runtime___linker_8h" ],
@@ -204,6 +215,7 @@ var files =
     [ "RDom.h", "_r_dom_8h.html", "_r_dom_8h" ],
     [ "RealizationOrder.h", "_realization_order_8h.html", "_realization_order_8h" ],
     [ "Reduction.h", "_reduction_8h.html", "_reduction_8h" ],
+    [ "RegionCosts.h", "_region_costs_8h.html", "_region_costs_8h" ],
     [ "RemoveDeadAllocations.h", "_remove_dead_allocations_8h.html", "_remove_dead_allocations_8h" ],
     [ "RemoveTrivialForLoops.h", "_remove_trivial_for_loops_8h.html", "_remove_trivial_for_loops_8h" ],
     [ "RemoveUndef.h", "_remove_undef_8h.html", "_remove_undef_8h" ],

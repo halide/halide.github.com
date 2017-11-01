@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['machine_5fparams',['machine_params',['../class_halide_1_1_generator_context.html#abb7f16b35873ebde0e85cfba4f36524f',1,'Halide::GeneratorContext']]],
   ['make_5fstruct',['make_struct',['../struct_halide_1_1_internal_1_1_call.html#abed116c7cecec7ad95972690c7342f53',1,'Halide::Internal::Call']]],
   ['max',['max',['../struct_halide_1_1_argument.html#ae80a3d552801941756cf03f16c15b950',1,'Halide::Argument::max()'],['../struct_halide_1_1_internal_1_1_interval.html#ae2f9f0e13f96b9e1397fcce1de560376',1,'Halide::Internal::Interval::max()'],['../structhalide__filter__argument__t.html#ab0dda6ee17f45105abe65e7d01e28d37',1,'halide_filter_argument_t::max()'],['../struct_halide_1_1_runtime_1_1_internal_1_1work.html#aeed51f4454166d34a590514fef57624c',1,'Halide::Runtime::Internal::work::max()']]],
   ['max_5f',['max_',['../class_halide_1_1_internal_1_1_generator_input___arithmetic.html#a549bd89835ded6f77482228e6339161f',1,'Halide::Internal::GeneratorInput_Arithmetic']]],
@@ -14,6 +15,7 @@ var searchData=
   ['max_5fu64',['max_u64',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a64362eea29db2744affd4e5fd8e0c84c',1,'Halide::Internal::CodeGen_LLVM']]],
   ['max_5fu8',['max_u8',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a600fe792a56a883b408f21c1effb242b',1,'Halide::Internal::CodeGen_LLVM']]],
   ['memoize_5fexpr',['memoize_expr',['../struct_halide_1_1_internal_1_1_call.html#a8e3f290af7066959cfe02ef586c88936',1,'Halide::Internal::Call']]],
+  ['memory',['memory',['../struct_halide_1_1_internal_1_1_cost.html#a054859a3463ebe1542f06bc1796e7b89',1,'Halide::Internal::Cost']]],
   ['memory_5fcurrent',['memory_current',['../structhalide__profiler__func__stats.html#ae5d54931d0b5cd9bc48b9da05b6a2cd7',1,'halide_profiler_func_stats::memory_current()'],['../structhalide__profiler__pipeline__stats.html#a4bc9592768609e03a1b20fba2f3c6b1e',1,'halide_profiler_pipeline_stats::memory_current()']]],
   ['memory_5fpeak',['memory_peak',['../structhalide__profiler__func__stats.html#a1df9be748d82290d8c1fd0d3550a4ae5',1,'halide_profiler_func_stats::memory_peak()'],['../structhalide__profiler__pipeline__stats.html#a80d7938f4e0b8182fb1e55c85aa97a6e',1,'halide_profiler_pipeline_stats::memory_peak()']]],
   ['memory_5ftotal',['memory_total',['../structhalide__profiler__func__stats.html#aac8b392e9d87d31e647749e95f950fd0',1,'halide_profiler_func_stats::memory_total()'],['../structhalide__profiler__pipeline__stats.html#ac87daef65f1c3e927e116ecf8b7326dc',1,'halide_profiler_pipeline_stats::memory_total()']]],
