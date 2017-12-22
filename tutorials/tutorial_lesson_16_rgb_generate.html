@@ -243,16 +243,6 @@ tutorial_lesson_15_generators.html
 </div></span></a>
 <div style="width:200px; height:20px;"></div>
 <a href=
-tutorial_lesson_15_generators_usage.html
- style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
-<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
-<b>
-15
-&nbsp</b>
- Generators part 2
-</div></span></a>
-<div style="width:200px; height:20px;"></div>
-<a href=
 tutorial_lesson_16_rgb_generate.html
  style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
 <div style="width:200px; padding:20px; padding-right:40px; background-color: #ffffff; color: #000000; text-align: left; ">
@@ -301,6 +291,46 @@ tutorial_lesson_19_wrapper_funcs.html
 &nbsp</b>
  Wrapper Funcs
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_20_cloning_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+20
+&nbsp</b>
+ Cloning Funcs
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_21_auto_scheduler_generate.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+21
+&nbsp</b>
+ Auto-Scheduler
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_21_auto_scheduler_run.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+21
+&nbsp</b>
+ Auto-Scheduler
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_15_generators_usage.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+15
+&nbsp</b>
+ Generators part 2
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -339,7 +369,7 @@ tutorial_lesson_19_wrapper_funcs.html
     <span class="hl slc">// We declare a three-dimensional input image. The first two</span>
     <span class="hl slc">// dimensions will be x, and y, and the third dimension will be</span>
     <span class="hl slc">// the color channel.</span>
-    ImageParam input<span class="hl opt">{</span><span class="hl kwd">UInt</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">),</span> <span class="hl num">3</span><span class="hl opt">,</span> <span class="hl str">&quot;input&quot;</span><span class="hl opt">};</span>
+    Input<span class="hl opt">&lt;</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;&gt;</span> input<span class="hl opt">{</span><span class="hl str">&quot;input&quot;</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">};</span>
 
     <span class="hl slc">// We will compile this generator in several ways to accept</span>
     <span class="hl slc">// several different memory layouts for the input and output. This</span>
@@ -354,16 +384,18 @@ tutorial_lesson_19_wrapper_funcs.html
                  <span class="hl opt">{</span> <span class="hl str">&quot;either&quot;</span><span class="hl opt">,</span>        Layout<span class="hl opt">::</span>Either <span class="hl opt">},</span>
                  <span class="hl opt">{</span> <span class="hl str">&quot;specialized&quot;</span><span class="hl opt">,</span>   Layout<span class="hl opt">::</span>Specialized <span class="hl opt">}}};</span>
 
-    <span class="hl slc">// We also declare a scalar parameter to control the amount of</span>
+    <span class="hl slc">// We also declare a scalar input to control the amount of</span>
     <span class="hl slc">// brightening.</span>
-    Param<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> offset<span class="hl opt">{</span><span class="hl str">&quot;offset&quot;</span><span class="hl opt">};</span>
+    Input<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> offset<span class="hl opt">{</span><span class="hl str">&quot;offset&quot;</span><span class="hl opt">};</span>
+
+    <span class="hl slc">// Declare our outputs</span>
+    Output<span class="hl opt">&lt;</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;&gt;</span> brighter<span class="hl opt">{</span><span class="hl str">&quot;brighter&quot;</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">};</span>
 
     <span class="hl slc">// Declare our Vars</span>
     Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">;</span>
 
-    Func <span class="hl kwd">build</span><span class="hl opt">() {</span>
+    <span class="hl kwb">void</span> <span class="hl kwd">generate</span><span class="hl opt">() {</span>
         <span class="hl slc">// Define the Func.</span>
-        Func <span class="hl kwd">brighter</span><span class="hl opt">(</span><span class="hl str">&quot;brighter&quot;</span><span class="hl opt">);</span>
         <span class="hl kwd">brighter</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) =</span> <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) +</span> offset<span class="hl opt">;</span>
 
         <span class="hl slc">// Schedule it.</span>
@@ -432,7 +464,7 @@ tutorial_lesson_19_wrapper_funcs.html
                 <span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">3</span><span class="hl opt">)</span> <span class="hl slc">// stride in dimension 0 (x) is three</span>
                 <span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">);</span> <span class="hl slc">// stride in dimension 2 (c) is one</span>
 
-            brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">()</span>
+            brighter
                 <span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">3</span><span class="hl opt">)</span>
                 <span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">);</span>
 
@@ -443,7 +475,7 @@ tutorial_lesson_19_wrapper_funcs.html
             <span class="hl slc">// and unrolled.</span>
 
             input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">set_bounds</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span> <span class="hl slc">// Dimension 2 (c) starts at 0 and has extent 3.</span>
-            brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">set_bounds</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+            brighter<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">set_bounds</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
 
             <span class="hl slc">// Move the loop over color channels innermost and unroll</span>
             <span class="hl slc">// it.</span>
@@ -463,7 +495,7 @@ tutorial_lesson_19_wrapper_funcs.html
                                              <span class="hl slc">// undefined Expr to mean</span>
                                              <span class="hl slc">// there is no constraint.</span>
 
-            brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl kwd">Expr</span><span class="hl opt">());</span>
+            brighter<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl kwd">Expr</span><span class="hl opt">());</span>
 
         <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> Layout<span class="hl opt">::</span>Specialized<span class="hl opt">) {</span>
             <span class="hl slc">// We can accept any memory layout with good performance</span>
@@ -476,7 +508,7 @@ tutorial_lesson_19_wrapper_funcs.html
                                              <span class="hl slc">// mean there is no</span>
                                              <span class="hl slc">// constraint.</span>
 
-            brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl kwd">Expr</span><span class="hl opt">());</span>
+            brighter<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl kwd">Expr</span><span class="hl opt">());</span>
 
             <span class="hl slc">// The we construct boolean Exprs that detect at runtime</span>
             <span class="hl slc">// whether we're planar or interleaved. The conditions</span>
@@ -490,11 +522,11 @@ tutorial_lesson_19_wrapper_funcs.html
                  input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">extent</span><span class="hl opt">() ==</span> <span class="hl num">3</span><span class="hl opt">);</span>
 
             Expr output_is_planar <span class="hl opt">=</span>
-                <span class="hl opt">(</span>brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
+                <span class="hl opt">(</span>brighter<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
             Expr output_is_interleaved <span class="hl opt">=</span>
-                <span class="hl opt">(</span>brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">3</span> <span class="hl opt">&amp;&amp;</span>
-                 brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span> <span class="hl opt">&amp;&amp;</span>
-                 brighter<span class="hl opt">.</span><span class="hl kwd">output_buffer</span><span class="hl opt">().</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">extent</span><span class="hl opt">() ==</span> <span class="hl num">3</span><span class="hl opt">);</span>
+                <span class="hl opt">(</span>brighter<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">3</span> <span class="hl opt">&amp;&amp;</span>
+                 brighter<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span> <span class="hl opt">&amp;&amp;</span>
+                 brighter<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">extent</span><span class="hl opt">() ==</span> <span class="hl num">3</span><span class="hl opt">);</span>
 
             <span class="hl slc">// We can then use Func::specialize to write a schedule</span>
             <span class="hl slc">// that switches at runtime to specialized code based on a</span>
@@ -525,14 +557,12 @@ tutorial_lesson_19_wrapper_funcs.html
             <span class="hl slc">// memory layouts are known, you probably want to use</span>
             <span class="hl slc">// set_stride and set_extent instead.</span>
         <span class="hl opt">}</span>
-
-        <span class="hl kwa">return</span> brighter<span class="hl opt">;</span>
     <span class="hl opt">}</span>
 <span class="hl opt">};</span>
 
 <span class="hl slc">// As in lesson 15, we register our generator and then compile this</span>
 <span class="hl slc">// file along with tools/GenGen.cpp.</span>
-RegisterGenerator<span class="hl opt">&lt;</span>Brighten<span class="hl opt">&gt;</span> my_first_generator<span class="hl opt">{</span><span class="hl str">&quot;brighten&quot;</span><span class="hl opt">};</span>
+<span class="hl kwd">HALIDE_REGISTER_GENERATOR</span><span class="hl opt">(</span>Brighten<span class="hl opt">,</span> brighten<span class="hl opt">)</span>
 
 <span class="hl slc">// After compiling this file, see how to use it in</span>
 <span class="hl slc">// lesson_16_rgb_run.cpp</span>

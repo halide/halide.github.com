@@ -1,4 +1,7 @@
 #!/bin/bash
+# invoke as: ./gen_tutorials ~/my_halide_dir/tutorial/*.{cpp,sh}
+# (running on OSX? you may need to 'brew install highlight',
+# but be aware that this may be an old, compatible version of highlight.)
 
 for f in tutorial_introduction_stub.html $@; do
 
@@ -227,3 +230,7 @@ EOF
         fi
     done
 done
+
+rm -f tmp.cpp
+rm -f tmp.html
+
