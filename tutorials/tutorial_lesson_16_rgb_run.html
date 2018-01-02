@@ -405,11 +405,21 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl kwd">brighten_planar</span><span class="hl opt">(</span>planar_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> planar_output<span class="hl opt">);</span>
     <span class="hl opt">}</span>
     <span class="hl kwb">double</span> planar_time <span class="hl opt">=</span> <span class="hl kwd">tick</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_planar&quot;</span><span class="hl opt">);</span>
+    
+    <a onclick='return toggle("_71");'><b id=_71-show>// Click to show output ...</b></a><div id=_71 style= "display:none; background:#333333; color:#ffffff"><b>
+ > brighten_planar: 175.595000
+
+</b></div>
 
     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">1000</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
         <span class="hl kwd">brighten_interleaved</span><span class="hl opt">(</span>interleaved_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> interleaved_output<span class="hl opt">);</span>
     <span class="hl opt">}</span>
     <span class="hl kwb">double</span> interleaved_time <span class="hl opt">=</span> <span class="hl kwd">tick</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_interleaved&quot;</span><span class="hl opt">);</span>
+    
+    <a onclick='return toggle("_76");'><b id=_76-show>// Click to show output ...</b></a><div id=_76 style= "display:none; background:#333333; color:#ffffff"><b>
+ > brighten_interleaved: 969.560000
+
+</b></div>
 
     <span class="hl slc">// Planar is generally faster than interleaved for most imaging</span>
     <span class="hl slc">// operations.</span>
@@ -431,13 +441,23 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl kwd">brighten_either</span><span class="hl opt">(</span>planar_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> planar_output<span class="hl opt">);</span>
     <span class="hl opt">}</span>
     <span class="hl kwb">double</span> either_planar_time <span class="hl opt">=</span> <span class="hl kwd">tick</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_either on planar images&quot;</span><span class="hl opt">);</span>
+    
     <span class="hl kwa">assert</span><span class="hl opt">(</span>planar_time <span class="hl opt">&lt;</span> either_planar_time<span class="hl opt">);</span>
+    <a onclick='return toggle("_97");'><b id=_97-show>// Click to show output ...</b></a><div id=_97 style= "display:none; background:#333333; color:#ffffff"><b>
+ > brighten_either on planar images: 1738.677000
+
+</b></div>
 
     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">1000</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
         <span class="hl kwd">brighten_either</span><span class="hl opt">(</span>interleaved_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> interleaved_output<span class="hl opt">);</span>
     <span class="hl opt">}</span>
     <span class="hl kwb">double</span> either_interleaved_time <span class="hl opt">=</span> <span class="hl kwd">tick</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_either on interleaved images&quot;</span><span class="hl opt">);</span>
+    
     <span class="hl kwa">assert</span><span class="hl opt">(</span>interleaved_time <span class="hl opt">&lt;</span> either_interleaved_time<span class="hl opt">);</span>
+    <a onclick='return toggle("_103");'><b id=_103-show>// Click to show output ...</b></a><div id=_103 style= "display:none; background:#333333; color:#ffffff"><b>
+ > brighten_either on interleaved images: 1772.652000
+
+</b></div>
 
     <span class="hl slc">// Run the specialized version of the code on each layout. It</span>
     <span class="hl slc">// should match the performance of the code compiled specifically</span>
@@ -447,6 +467,11 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl kwd">brighten_specialized</span><span class="hl opt">(</span>planar_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> planar_output<span class="hl opt">);</span>
     <span class="hl opt">}</span>
     <span class="hl kwb">double</span> specialized_planar_time <span class="hl opt">=</span> <span class="hl kwd">tick</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_specialized on planar images&quot;</span><span class="hl opt">);</span>
+    
+    <a onclick='return toggle("_113");'><b id=_113-show>// Click to show output ...</b></a><div id=_113 style= "display:none; background:#333333; color:#ffffff"><b>
+ > brighten_specialized on planar images: 115.913000
+
+</b></div>
 
     <span class="hl slc">// The cost of the if statement should be negligible, but we'll</span>
     <span class="hl slc">// allow a tolerance of 50% for this test to account for</span>
@@ -457,7 +482,12 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl kwd">brighten_specialized</span><span class="hl opt">(</span>interleaved_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> interleaved_output<span class="hl opt">);</span>
     <span class="hl opt">}</span>
     <span class="hl kwb">double</span> specialized_interleaved_time <span class="hl opt">=</span> <span class="hl kwd">tick</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_specialized on interleaved images&quot;</span><span class="hl opt">);</span>
+    
     <span class="hl kwa">assert</span><span class="hl opt">(</span>specialized_interleaved_time <span class="hl opt">&lt;</span> <span class="hl num">2.0</span> <span class="hl opt">*</span> interleaved_time<span class="hl opt">);</span>
+    <a onclick='return toggle("_123");'><b id=_123-show>// Click to show output ...</b></a><div id=_123 style= "display:none; background:#333333; color:#ffffff"><b>
+ > brighten_specialized on interleaved images: 919.707000
+
+</b></div>
 
     <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
 <span class="hl opt">}</span>

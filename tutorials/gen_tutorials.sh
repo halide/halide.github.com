@@ -1,7 +1,10 @@
 #!/bin/bash
 # invoke as: ./gen_tutorials ~/my_halide_dir/tutorial/*.{cpp,sh}
-# (running on OSX? you may need to 'brew install highlight',
-# but be aware that this may be an old, compatible version of highlight.)
+#
+# Note that you must run the ./generate_output_snippets.sh script
+# in ~/my_halide_dir/tutorial/figures prior to running this;
+# that script requires that gdb be installed, so running on a Linux
+# is much easier than OSX.
 
 for f in tutorial_introduction_stub.html $@; do
 
@@ -188,8 +191,7 @@ EOF
             NEXT_OUTPUT_SNIPPET=$(echo $LINE | sed "s/.*OUTPUT_SNIPPET //" | sed "s/<.*//")
             # Also remember the current indentation level
             SNIPPET_SPACES=$(echo $LINE | sed "s/^\( *\).*$/\1/")
-            echo FOO $LINE
-            #echo "$LINE" | sed "s/.span[^<]*OUTPUT_SNIPPET[^>]*span.//" >> $h
+            echo "$LINE" | sed "s/.span[^<]*OUTPUT_SNIPPET[^>]*span.//" >> $h
         elif [[ "$LINE" == *figures/lesson* ]]; then
             # Found a figure reference. Remember this figure and place
             # it on the next empty line
