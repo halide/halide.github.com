@@ -379,7 +379,6 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl slc">// row-major traversal.</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient row-major</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
-        
         <a onclick='return toggle("_45");'><b id=_45-show>// Click to show output ...</b></a><div id=_45 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient.0()
  > Store gradient.0(0, 0) = 0
@@ -421,7 +420,6 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl slc">// showing what loops Halide is generating:</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_63");'><b id=_63-show>// Click to show output ...</b></a><div id=_63 style= "display:none; background:#333333; color:#ffffff"><b>
  > produce gradient:
@@ -457,7 +455,6 @@ tutorial_lesson_15_generators_usage.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient column-major</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
-        
         <a onclick='return toggle("_91");'><b id=_91-show>// Click to show output ...</b></a><div id=_91 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient_col_major.0()
  > Store gradient_col_major.0(0, 0) = 0
@@ -497,7 +494,6 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl slc">// the loop over y is now inside the loop over x.</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_107");'><b id=_107-show>// Click to show output ...</b></a><div id=_107 style= "display:none; background:#333333; color:#ffffff"><b>
  > produce gradient_col_major:
@@ -531,7 +527,6 @@ tutorial_lesson_15_generators_usage.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x split into x_outer and x_inner</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
-        
         <a onclick='return toggle("_133");'><b id=_133-show>// Click to show output ...</b></a><div id=_133 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient_split.0()
  > Store gradient_split.0(0, 0) = 0
@@ -567,7 +562,6 @@ tutorial_lesson_15_generators_usage.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_147");'><b id=_147-show>// Click to show output ...</b></a><div id=_147 style= "display:none; background:#333333; color:#ffffff"><b>
  > produce gradient_split:
@@ -611,7 +605,6 @@ tutorial_lesson_15_generators_usage.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_182");'><b id=_182-show>// Click to show output ...</b></a><div id=_182 style= "display:none; background:#333333; color:#ffffff"><b>
  > produce gradient_fused:
@@ -647,7 +640,6 @@ tutorial_lesson_15_generators_usage.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient in 4x4 tiles</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
-        
         <a onclick='return toggle("_211");'><b id=_211-show>// Click to show output ...</b></a><div id=_211 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient_tiled.0()
  > Store gradient_tiled.0(0, 0) = 0
@@ -739,7 +731,6 @@ tutorial_lesson_15_generators_usage.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_231");'><b id=_231-show>// Click to show output ...</b></a><div id=_231 style= "display:none; background:#333333; color:#ffffff"><b>
  > produce gradient_tiled:
@@ -788,7 +779,6 @@ tutorial_lesson_15_generators_usage.html
         <span class="hl slc">// more than one vector of work per scanline.</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x_inner vectorized</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
-        
         <a onclick='return toggle("_270");'><b id=_270-show>// Click to show output ...</b></a><div id=_270 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient_in_vectors.0()
  > Store gradient_in_vectors.0(<0, 1, 2, 3>, <0, 0, 0, 0>) = <0, 1, 2, 3>
@@ -833,7 +823,6 @@ tutorial_lesson_15_generators_usage.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_299");'><b id=_299-show>// Click to show output ...</b></a><div id=_299 style= "display:none; background:#333333; color:#ffffff"><b>
  > produce gradient_in_vectors:
@@ -866,7 +855,6 @@ tutorial_lesson_15_generators_usage.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient unrolled by a factor of two</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
-        
         <a onclick='return toggle("_323");'><b id=_323-show>// Click to show output ...</b></a><div id=_323 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient_unroll.0()
  > Store gradient_unroll.0(0, 0) = 0
@@ -910,7 +898,6 @@ tutorial_lesson_15_generators_usage.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_345");'><b id=_345-show>// Click to show output ...</b></a><div id=_345 style= "display:none; background:#333333; color:#ffffff"><b>
  > produce gradient_unroll:
@@ -939,7 +926,6 @@ tutorial_lesson_15_generators_usage.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient over a 7x2 box with x split by three</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">);</span>
-        
         <a onclick='return toggle("_365");'><b id=_365-show>// Click to show output ...</b></a><div id=_365 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient_split_7x2.0()
  > Store gradient_split_7x2.0(0, 0) = 0
@@ -989,7 +975,6 @@ tutorial_lesson_15_generators_usage.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_389");'><b id=_389-show>// Click to show output ...</b></a><div id=_389 style= "display:none; background:#333333; color:#ffffff"><b>
  > produce gradient_split_7x2:
@@ -1061,7 +1046,6 @@ tutorial_lesson_15_generators_usage.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient tiles in parallel</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
-        
         <a onclick='return toggle("_452");'><b id=_452-show>// Click to show output ...</b></a><div id=_452 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient_fused_tiles.0()
  > Store gradient_fused_tiles.0(0, 0) = 0
@@ -1155,7 +1139,6 @@ tutorial_lesson_15_generators_usage.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_474");'><b id=_474-show>// Click to show output ...</b></a><div id=_474 style= "display:none; background:#333333; color:#ffffff"><b>
  > produce gradient_fused_tiles:
@@ -1266,7 +1249,6 @@ tutorial_lesson_15_generators_usage.html
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         gradient_fast<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
-        
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_574");'><b id=_574-show>// Click to show output ...</b></a><div id=_574 style= "display:none; background:#333333; color:#ffffff"><b>
  > produce gradient_fast:

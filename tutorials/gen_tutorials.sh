@@ -191,7 +191,8 @@ EOF
             NEXT_OUTPUT_SNIPPET=$(echo $LINE | sed "s/.*OUTPUT_SNIPPET //" | sed "s/<.*//")
             # Also remember the current indentation level
             SNIPPET_SPACES=$(echo $LINE | sed "s/^\( *\).*$/\1/")
-            echo "$LINE" | sed "s/.span[^<]*OUTPUT_SNIPPET[^>]*span.//" >> $h
+            echo FOO $LINE
+            #echo "$LINE" | sed "s/.span[^<]*OUTPUT_SNIPPET[^>]*span.//" >> $h
         elif [[ "$LINE" == *figures/lesson* ]]; then
             # Found a figure reference. Remember this figure and place
             # it on the next empty line
