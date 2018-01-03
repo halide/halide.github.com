@@ -1,0 +1,516 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>
+ Cloning Funcs
+</title>
+<link rel="stylesheet" type="text/css" href="../assets/css/highlight.css">
+<style>
+
+a:visited {
+color: #000000;
+}
+
+a:link {
+color: #000000;
+}
+
+a:hover {
+color: #aa0000;
+}
+
+</style>
+</head>
+<body class="hl" style="background-color: #444444; font-family: Helvetica, Arial, sans-serif;">
+<script>
+function toggle(id) {
+    e = document.getElementById(id);
+    show = document.getElementById(id + '-show');
+    if (e.style.display != 'none') {
+        e.style.display = 'none';
+        show.innerHTML = "// Click to show output ...";
+    } else {
+        e.style.display = 'block';
+        show.innerHTML = "// Click to hide output ...";
+    }
+    return false;
+}
+</script>
+<div>
+<style scoped>
+@import "../assets/css/bootstrap.css";
+</style>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/index.html">Halide</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><a href="/index.html#gettingstarted">Getting Started</a></li>
+          <li><a href="/tutorials/tutorial_introduction.html">Tutorials</a></li>
+          <li><a href="/index.html#publications">Publications</a></li>
+          <li><a href="/index.html#resources">Resources</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="http://github.com/halide/Halide/issues">Bugs</a></li>
+          <li><a href="http://github.com/halide/Halide/wiki">Wiki</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="http://stackoverflow.com/questions/tagged/halide"><i class="fa fa-stack-overflow"></i>/#halide</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
+
+<div style='position:relative; width:900pt; top:60px;'>
+<div style="width:200px; float:left; ">
+<a href="tutorial_introduction.html" style="text-decoration:none;" ><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px;
+background-color: #dddddd; 
+text-align: left; ">
+<b>
+00
+&nbsp</b>
+Introduction
+</div>
+</span>
+</a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_01_basics.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+01
+&nbsp</b>
+ Getting started with Funcs, Vars, and Exprs
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_02_input_image.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+02
+&nbsp</b>
+ Processing images
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_03_debugging_1.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+03
+&nbsp</b>
+ Inspecting the generated code
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_04_debugging_2.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+04
+&nbsp</b>
+ Debugging with tracing, print, and print_when
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_05_scheduling_1.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+05
+&nbsp</b>
+ Vectorize, parallelize, unroll and tile your code
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_06_realizing_over_shifted_domains.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+06
+&nbsp</b>
+ Realizing Funcs over arbitrary domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_07_multi_stage_pipelines.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+07
+&nbsp</b>
+ Multi-stage pipelines
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_08_scheduling_2.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+08
+&nbsp</b>
+ Scheduling multi-stage pipelines
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_09_update_definitions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+09
+&nbsp</b>
+ Multi-pass Funcs, update definitions, and reductions
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_10_aot_compilation_generate.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+10
+&nbsp</b>
+ AOT compilation part 1
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_10_aot_compilation_run.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+10
+&nbsp</b>
+ AOT compilation part 2
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_11_cross_compilation.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+11
+&nbsp</b>
+ Cross-compilation
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_12_using_the_gpu.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+12
+&nbsp</b>
+ Using the GPU
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_13_tuples.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+13
+&nbsp</b>
+ Tuples
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_14_types.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+14
+&nbsp</b>
+ The Halide type system
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_15_generators.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+15
+&nbsp</b>
+ Generators part 1
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_15_generators_usage.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+15
+&nbsp</b>
+ Generators part 2
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_16_rgb_generate.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+16
+&nbsp</b>
+ RGB images and memory layouts part 1
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_16_rgb_run.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+16
+&nbsp</b>
+ RGB images and memory layouts part 2
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_17_predicated_rdom.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+17
+&nbsp</b>
+ Reductions over non-rectangular domains
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_18_parallel_associative_reductions.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+18
+&nbsp</b>
+ Factoring an associative reduction using rfactor
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_19_wrapper_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+19
+&nbsp</b>
+ Wrapper Funcs
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_20_cloning_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; padding-right:40px; background-color: #ffffff; color: #000000; text-align: left; ">
+<b>
+20
+&nbsp</b>
+ Cloning Funcs
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_21_auto_scheduler_generate.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+21
+&nbsp</b>
+ Auto-Scheduler
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_21_auto_scheduler_run.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+21
+&nbsp</b>
+ Auto-Scheduler
+</div></span></a>
+</div>
+<div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
+<pre class="hl">
+<span class="hl slc">// Halide tutorial lesson 20: Cloning Funcs</span>
+
+<span class="hl slc">// This lesson demonstrates how to use Func::clone_in to create a clone of</span>
+<span class="hl slc">// a Func.</span>
+
+<span class="hl slc">// On linux, you can compile and run it like so:</span>
+<span class="hl slc">// g++ lesson_20*.cpp -g -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_20 -std=c++11</span>
+<span class="hl slc">// LD_LIBRARY_PATH=../bin ./lesson_20</span>
+
+<span class="hl slc">// On os x:</span>
+<span class="hl slc">// g++ lesson_20*.cpp -g -I ../include -L ../bin -lHalide -o lesson_20 -std=c++11</span>
+<span class="hl slc">// DYLD_LIBRARY_PATH=../bin ./lesson_20</span>
+
+<span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
+<span class="hl slc">// running:</span>
+<span class="hl slc">//    make tutorial_lesson_20_cloning_funcs</span>
+<span class="hl slc">// in a shell at the top of the halide source tree.</span>
+
+<span class="hl slc">// The only Halide header file you need is Halide.h. It includes all of Halide.</span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
+
+<span class="hl slc">// We'll also include stdio for printf.</span>
+<span class="hl ppc">#include &lt;stdio.h&gt;</span>
+
+<span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
+
+<span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
+    <span class="hl slc">// First we'll declare some Vars to use below.</span>
+    Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">),</span> <span class="hl kwd">xo</span><span class="hl opt">(</span><span class="hl str">&quot;xo&quot;</span><span class="hl opt">),</span> <span class="hl kwd">yo</span><span class="hl opt">(</span><span class="hl str">&quot;yo&quot;</span><span class="hl opt">),</span> <span class="hl kwd">xi</span><span class="hl opt">(</span><span class="hl str">&quot;xi&quot;</span><span class="hl opt">),</span> <span class="hl kwd">yi</span><span class="hl opt">(</span><span class="hl str">&quot;yi&quot;</span><span class="hl opt">);</span>
+
+    <span class="hl slc">// This lesson will be about cloning a Func using the Func::clone_in</span>
+    <span class="hl slc">// directive.</span>
+    <span class="hl opt">{</span>
+        <span class="hl slc">// Consider a simple two-stage pipeline:</span>
+        Func <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f_single&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g_single&quot;</span><span class="hl opt">),</span> <span class="hl kwd">h</span><span class="hl opt">(</span><span class="hl str">&quot;h_single&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl num">3</span><span class="hl opt">;</span>
+        <span class="hl kwd">h</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl num">10</span><span class="hl opt">;</span>
+
+        f<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+        g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+        h<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// This produces the following loop nests:</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f(x, y) = x + y</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     g(x, y) = 2 * f(x, y) + 3</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     h(x, y) = f(x, y) + g(x, y) + 10</span>
+
+        <span class="hl slc">// Using Func::clone_in, we can replace calls to 'f' inside 'g' with</span>
+        <span class="hl slc">// a clone of 'f' using the schedule alone:</span>
+        Func f_clone_in_g <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">clone_in</span><span class="hl opt">(</span>g<span class="hl opt">);</span>
+        f_clone_in_g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// Equivalently, we could also chain the schedules like so:</span>
+        <span class="hl slc">// f.clone_in(g).compute_root();</span>
+
+        <span class="hl slc">// This produces the following loop nests:</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f(x, y) = x + y</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f_clone_in_g(x, y) = x + y</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     g(x, y) = 2 * f_clone_in_g(x, y) + 3</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     h(x, y) = f(x, y) + g(x, y) + 10</span>
+
+        h<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// The schedule directive f.clone_in(g) replaces all calls to 'f'</span>
+        <span class="hl slc">// inside 'g' with a clone of 'f' and then returns that clone.</span>
+        <span class="hl slc">// Essentially, it rewrites the original pipeline above into the</span>
+        <span class="hl slc">// following:</span>
+        <span class="hl opt">{</span>
+            Func <span class="hl kwd">f_clone_in_g</span><span class="hl opt">(</span><span class="hl str">&quot;f_clone_in_g&quot;</span><span class="hl opt">),</span> <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g&quot;</span><span class="hl opt">),</span> <span class="hl kwd">h</span><span class="hl opt">(</span><span class="hl str">&quot;h&quot;</span><span class="hl opt">);</span>
+            <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+            <span class="hl kwd">f_clone_in_g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+            <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">f_clone_in_g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl num">3</span><span class="hl opt">;</span>
+            <span class="hl kwd">h</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl num">10</span><span class="hl opt">;</span>
+
+            f<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+            f_clone_in_g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+            g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+            h<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// In the schedule above, only the calls to 'f' made by 'g' are</span>
+        <span class="hl slc">// replaced. Other calls made to 'f' would still call 'f' directly</span>
+        <span class="hl slc">// (i.e. 'h' still calls 'f' and not the clone). If we wish to</span>
+        <span class="hl slc">// replace all calls to 'f' made by both 'g' and 'h' with a single</span>
+        <span class="hl slc">// clone, we simply say f.clone_in({g, h}).</span>
+
+        <span class="hl slc">// Consider a three stage pipeline, with two consumers of f:</span>
+        Func <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f_group&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g_group&quot;</span><span class="hl opt">),</span> <span class="hl kwd">h</span><span class="hl opt">(</span><span class="hl str">&quot;h_group&quot;</span><span class="hl opt">),</span> <span class="hl kwd">out</span><span class="hl opt">(</span><span class="hl str">&quot;out_group&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+        <span class="hl kwd">h</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl num">10</span><span class="hl opt">;</span>
+        <span class="hl kwd">out</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl kwd">h</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+
+        f<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+        g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+        h<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+        out<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// We will replace all calls to 'f' inside both 'g' and 'h'</span>
+        <span class="hl slc">// with calls to a single clone:</span>
+        f<span class="hl opt">.</span><span class="hl kwd">clone_in</span><span class="hl opt">({</span>g<span class="hl opt">,</span> h<span class="hl opt">}).</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// The equivalent loop nests are:</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f(x, y) = x + y</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f_clone(x, y) = x + y</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     g(x, y) = 2 * f_clone(x, y)</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     h(x, y) = f_clone(x, y) + 10</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     out(x, y) = f(x, y) + g(x, y) + h(x, y)</span>
+
+        out<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">);</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// One use case of Func::clone_in() is when two consumers of a producer</span>
+        <span class="hl slc">// consume regions of the producer that are very disjoint. Consider</span>
+        <span class="hl slc">// the following case for example:</span>
+        Func <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g&quot;</span><span class="hl opt">),</span> <span class="hl kwd">h</span><span class="hl opt">(</span><span class="hl str">&quot;h&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> x<span class="hl opt">;</span>
+        <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">);</span>
+        <span class="hl kwd">h</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl num">99</span><span class="hl opt">) +</span> <span class="hl num">10</span><span class="hl opt">;</span>
+
+        <span class="hl slc">// Let's schedule 'f' to be computed at root.</span>
+        f<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+        <span class="hl slc">// Since both 'g' and 'h' consume 'f', the region required of 'f'</span>
+        <span class="hl slc">// in the x-dimension is [0, 99]. The equivalent loop nests are:</span>
+        <span class="hl slc">// for x = 0 to 99</span>
+        <span class="hl slc">//   f(x) = x</span>
+        <span class="hl slc">// for x:</span>
+        <span class="hl slc">//   g(x) = 2 * f(0)</span>
+        <span class="hl slc">// for x:</span>
+        <span class="hl slc">//   h(x) = f(99) + 10</span>
+
+        <span class="hl slc">// If 'f' is very expensive to compute, we might be better off with</span>
+        <span class="hl slc">// having distinct copies of 'f' for each consumer, 'g' and 'h', to</span>
+        <span class="hl slc">// avoid unnecessary computations. To create separate copies of 'f'</span>
+        <span class="hl slc">// for each consumer, we can do the following:</span>
+        f<span class="hl opt">.</span><span class="hl kwd">clone_in</span><span class="hl opt">(</span>g<span class="hl opt">).</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// The equivalent loop nests are:</span>
+        <span class="hl slc">// f(0) = x</span>
+        <span class="hl slc">// f_clone(99) = x</span>
+        <span class="hl slc">// for x:</span>
+        <span class="hl slc">//   g(x) = 2 * f_clone(0)</span>
+        <span class="hl slc">// for x:</span>
+        <span class="hl slc">//   h(x) = f(99) + 10</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+    <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
+</pre>
+</div></body></html>

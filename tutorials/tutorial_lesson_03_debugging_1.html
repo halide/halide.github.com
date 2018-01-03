@@ -301,6 +301,36 @@ tutorial_lesson_19_wrapper_funcs.html
 &nbsp</b>
  Wrapper Funcs
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_20_cloning_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+20
+&nbsp</b>
+ Cloning Funcs
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_21_auto_scheduler_generate.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+21
+&nbsp</b>
+ Auto-Scheduler
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_21_auto_scheduler_run.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+21
+&nbsp</b>
+ Auto-Scheduler
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -351,9 +381,10 @@ tutorial_lesson_19_wrapper_funcs.html
     <span class="hl slc">// 1. It will print out the various stages of compilation, and a</span>
     <span class="hl slc">// pseudocode representation of the final pipeline.</span>
     <a onclick='return toggle("_44");'><b id=_44-show>// Click to show output ...</b></a><div id=_44 style= "display:none; background:#333333; color:#ffffff"><b>
- > Inferred argument: handle64 __user_context
+ > Inferred argument: (void *) __user_context
  > Creating initial loop nests...
  > Injecting realization of gradient
+ > Canonicalizing GPU var names...
  > Skipping injecting memoization...
  > Injecting tracing...
  > Adding checks for parameters
@@ -367,10 +398,14 @@ tutorial_lesson_19_wrapper_funcs.html
  > Performing storage folding optimization...
  > Injecting debug_to_file calls...
  > Simplifying...
+ > Injecting prefetches...
  > Dynamically skipping stages...
+ > Destructuring tuple-valued realizations...
  > Performing storage flattening...
+ > Unpacking buffer arguments...
  > Skipping rewriting memoized allocations...
  > Simplifying...
+ > Reduce prefetch dimension...
  > Unrolling...
  > Vectorizing...
  > Detecting vector interleavings...
@@ -379,40 +414,52 @@ tutorial_lesson_19_wrapper_funcs.html
  > Injecting early frees...
  > Simplifying...
  > Lowering after final simplification:
- > if (gradient.host_and_dev_are_null) {
- >   rewrite_buffer(gradient.buffer, 4, gradient.min.0, gradient.extent.0, 1, gradient.min.1, gradient.extent.1, gradient.extent.0)
+ > assert((reinterpret(uint64, gradient.buffer) != (uint64)0), halide_error_buffer_argument_is_null("gradient"))
+ > let gradient = _halide_buffer_get_host(gradient.buffer)
+ > let gradient.type.code = _halide_buffer_get_type_code(gradient.buffer)
+ > let gradient.type.bits = _halide_buffer_get_type_bits(gradient.buffer)
+ > let gradient.type.lanes = _halide_buffer_get_type_lanes(gradient.buffer)
+ > let gradient.min.0 = _halide_buffer_get_min(gradient.buffer, 0)
+ > let gradient.extent.0 = _halide_buffer_get_extent(gradient.buffer, 0)
+ > let gradient.stride.0 = _halide_buffer_get_stride(gradient.buffer, 0)
+ > let gradient.min.1 = _halide_buffer_get_min(gradient.buffer, 1)
+ > let gradient.extent.1 = _halide_buffer_get_extent(gradient.buffer, 1)
+ > let gradient.stride.1 = _halide_buffer_get_stride(gradient.buffer, 1)
+ > if (_halide_buffer_is_bounds_query(gradient.buffer)) {
+ >   _halide_buffer_init(gradient.buffer, _halide_buffer_get_shape(gradient.buffer), reinterpret((void *), (uint64)0), (uint64)0, reinterpret((halide_device_interface_t *), (uint64)0), 0, 32, 2, make_struct((halide_dimension_t *), gradient.min.0, gradient.extent.0, 1, 0, gradient.min.1, gradient.extent.1, gradient.extent.0, 0), (uint64)0)
  > }
- > if (!gradient.host_and_dev_are_null) {
- >   assert((gradient.elem_size == 4), halide_error_bad_elem_size("Output buffer gradient", "int32", gradient.elem_size, 4))
+ > if (!_halide_buffer_is_bounds_query(gradient.buffer)) {
+ >   assert((((gradient.type.code == (uint8)0) && (gradient.type.bits == (uint8)32)) && (gradient.type.lanes == (uint16)1)), halide_error_bad_type("Output buffer gradient", gradient.type.code, (uint8)0, gradient.type.bits, (uint8)32, gradient.type.lanes, (uint16)1))
+ >   assert((0 <= gradient.extent.0), halide_error_buffer_extents_negative("Output buffer gradient", 0, gradient.extent.0))
+ >   assert((0 <= gradient.extent.1), halide_error_buffer_extents_negative("Output buffer gradient", 1, gradient.extent.1))
  >   assert((gradient.stride.0 == 1), halide_error_constraint_violated("gradient.stride.0", gradient.stride.0, "1", 1))
  >   let gradient.total_extent.1 = (int64(gradient.extent.1)*int64(gradient.extent.0))
- >   assert((int64(gradient.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("gradient", int64(gradient.extent.0), (int64)2147483647))
- >   assert(((int64(gradient.extent.1)*int64(gradient.stride.1)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("gradient", (int64(gradient.extent.1)*int64(gradient.stride.1)), (int64)2147483647))
+ >   assert((abs(int64(gradient.extent.0)) <= (uint64)2147483647), halide_error_buffer_allocation_too_large("gradient", abs(int64(gradient.extent.0)), (uint64)2147483647))
+ >   assert((abs((int64(gradient.extent.1)*int64(gradient.stride.1))) <= (uint64)2147483647), halide_error_buffer_allocation_too_large("gradient", abs((int64(gradient.extent.1)*int64(gradient.stride.1))), (uint64)2147483647))
  >   assert((gradient.total_extent.1 <= (int64)2147483647), halide_error_buffer_extents_too_large("gradient", gradient.total_extent.1, (int64)2147483647))
+ >   assert((gradient != reinterpret((void *), (uint64)0)), halide_error_host_is_null("Output buffer gradient"))
  >   produce gradient {
+ >     let t17 = (gradient.min.0 + (gradient.min.1*gradient.stride.1))
  >     for (gradient.s0.y, gradient.min.1, gradient.extent.1) {
  >       for (gradient.s0.x, gradient.min.0, gradient.extent.0) {
- >         gradient[((gradient.s0.x + (gradient.s0.y*gradient.stride.1)) - (gradient.min.0 + (gradient.min.1*gradient.stride.1)))] = (gradient.s0.x + gradient.s0.y)
+ >         gradient[((gradient.s0.x + (gradient.s0.y*gradient.stride.1)) - t17)] = (gradient.s0.x + gradient.s0.y)
  >       }
  >     }
  >   }
- >   0
  > }
  > Splitting off Hexagon offload...
- > Inferred argument: handle64 __user_context
- > Inferred argument: handle64 __user_context
+ > Hexagon device code module: Target = hexagon-32-noos-no_runtime
  > Target triple of initial module: x86_64--linux-gnu
  > Generating llvm bitcode...
- > Generating llvm bitcode prolog for function __gradient...
- > Generating llvm bitcode for function __gradient...
  > Generating llvm bitcode prolog for function gradient...
  > Generating llvm bitcode for function gradient...
  > JIT compiling shared runtime
  > JIT compiling gradient
- > JIT input scalar argument __user_context @ 0x1742d38
- > JIT output buffer @ 0x170a1f0
+ > JIT input scalar argument __user_context @ 0x19d04f8
+ > JIT output buffer @ 0x1a84f40, 0x1b67100
  > Creating initial loop nests...
  > Injecting realization of gradient
+ > Canonicalizing GPU var names...
  > Skipping injecting memoization...
  > Injecting tracing...
  > Adding checks for parameters
@@ -426,10 +473,14 @@ tutorial_lesson_19_wrapper_funcs.html
  > Performing storage folding optimization...
  > Injecting debug_to_file calls...
  > Simplifying...
+ > Injecting prefetches...
  > Dynamically skipping stages...
+ > Destructuring tuple-valued realizations...
  > Performing storage flattening...
+ > Unpacking buffer arguments...
  > Skipping rewriting memoized allocations...
  > Simplifying...
+ > Reduce prefetch dimension...
  > Unrolling...
  > Vectorizing...
  > Detecting vector interleavings...
@@ -438,27 +489,41 @@ tutorial_lesson_19_wrapper_funcs.html
  > Injecting early frees...
  > Simplifying...
  > Lowering after final simplification:
- > if (gradient.host_and_dev_are_null) {
- >   rewrite_buffer(gradient.buffer, 4, gradient.min.0, gradient.extent.0, 1, gradient.min.1, gradient.extent.1, gradient.extent.0)
+ > assert((reinterpret(uint64, gradient.buffer) != (uint64)0), halide_error_buffer_argument_is_null("gradient"))
+ > let gradient = _halide_buffer_get_host(gradient.buffer)
+ > let gradient.type.code = _halide_buffer_get_type_code(gradient.buffer)
+ > let gradient.type.bits = _halide_buffer_get_type_bits(gradient.buffer)
+ > let gradient.type.lanes = _halide_buffer_get_type_lanes(gradient.buffer)
+ > let gradient.min.0 = _halide_buffer_get_min(gradient.buffer, 0)
+ > let gradient.extent.0 = _halide_buffer_get_extent(gradient.buffer, 0)
+ > let gradient.stride.0 = _halide_buffer_get_stride(gradient.buffer, 0)
+ > let gradient.min.1 = _halide_buffer_get_min(gradient.buffer, 1)
+ > let gradient.extent.1 = _halide_buffer_get_extent(gradient.buffer, 1)
+ > let gradient.stride.1 = _halide_buffer_get_stride(gradient.buffer, 1)
+ > if (_halide_buffer_is_bounds_query(gradient.buffer)) {
+ >   _halide_buffer_init(gradient.buffer, _halide_buffer_get_shape(gradient.buffer), reinterpret((void *), (uint64)0), (uint64)0, reinterpret((halide_device_interface_t *), (uint64)0), 0, 32, 2, make_struct((halide_dimension_t *), gradient.min.0, gradient.extent.0, 1, 0, gradient.min.1, gradient.extent.1, gradient.extent.0, 0), (uint64)0)
  > }
- > if (!gradient.host_and_dev_are_null) {
- >   assert((gradient.elem_size == 4), halide_error_bad_elem_size("Output buffer gradient", "int32", gradient.elem_size, 4))
+ > if (!_halide_buffer_is_bounds_query(gradient.buffer)) {
+ >   assert((((gradient.type.code == (uint8)0) && (gradient.type.bits == (uint8)32)) && (gradient.type.lanes == (uint16)1)), halide_error_bad_type("Output buffer gradient", gradient.type.code, (uint8)0, gradient.type.bits, (uint8)32, gradient.type.lanes, (uint16)1))
+ >   assert((0 <= gradient.extent.0), halide_error_buffer_extents_negative("Output buffer gradient", 0, gradient.extent.0))
+ >   assert((0 <= gradient.extent.1), halide_error_buffer_extents_negative("Output buffer gradient", 1, gradient.extent.1))
  >   assert((gradient.stride.0 == 1), halide_error_constraint_violated("gradient.stride.0", gradient.stride.0, "1", 1))
  >   let gradient.total_extent.1 = (int64(gradient.extent.1)*int64(gradient.extent.0))
- >   assert((int64(gradient.extent.0) <= (int64)2147483647), halide_error_buffer_allocation_too_large("gradient", int64(gradient.extent.0), (int64)2147483647))
- >   assert(((int64(gradient.extent.1)*int64(gradient.stride.1)) <= (int64)2147483647), halide_error_buffer_allocation_too_large("gradient", (int64(gradient.extent.1)*int64(gradient.stride.1)), (int64)2147483647))
+ >   assert((abs(int64(gradient.extent.0)) <= (uint64)2147483647), halide_error_buffer_allocation_too_large("gradient", abs(int64(gradient.extent.0)), (uint64)2147483647))
+ >   assert((abs((int64(gradient.extent.1)*int64(gradient.stride.1))) <= (uint64)2147483647), halide_error_buffer_allocation_too_large("gradient", abs((int64(gradient.extent.1)*int64(gradient.stride.1))), (uint64)2147483647))
  >   assert((gradient.total_extent.1 <= (int64)2147483647), halide_error_buffer_extents_too_large("gradient", gradient.total_extent.1, (int64)2147483647))
+ >   assert((gradient != reinterpret((void *), (uint64)0)), halide_error_host_is_null("Output buffer gradient"))
  >   produce gradient {
+ >     let t36 = (gradient.min.0 + (gradient.min.1*gradient.stride.1))
  >     for (gradient.s0.y, gradient.min.1, gradient.extent.1) {
  >       for (gradient.s0.x, gradient.min.0, gradient.extent.0) {
- >         gradient[((gradient.s0.x + (gradient.s0.y*gradient.stride.1)) - (gradient.min.0 + (gradient.min.1*gradient.stride.1)))] = (gradient.s0.x + gradient.s0.y)
+ >         gradient[((gradient.s0.x + (gradient.s0.y*gradient.stride.1)) - t36)] = (gradient.s0.x + gradient.s0.y)
  >       }
  >     }
  >   }
- >   0
  > }
  > Splitting off Hexagon offload...
- > Inferred argument: handle64 __user_context
+ > Hexagon device code module: Target = hexagon-32-noos-no_runtime
  > Module.compile(): stmt_html_name gradient.html
 
 </b></div>

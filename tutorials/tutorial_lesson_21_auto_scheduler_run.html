@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 <title>
- Getting started with Funcs, Vars, and Exprs
+ Auto-Scheduler
 </title>
 <link rel="stylesheet" type="text/css" href="../assets/css/highlight.css">
 <style>
@@ -85,7 +85,7 @@ Introduction
 <a href=
 tutorial_lesson_01_basics.html
  style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
-<div style="width:200px; padding:20px; padding-right:40px; background-color: #ffffff; color: #000000; text-align: left; ">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
 <b>
 01
 &nbsp</b>
@@ -325,7 +325,7 @@ tutorial_lesson_21_auto_scheduler_generate.html
 <a href=
 tutorial_lesson_21_auto_scheduler_run.html
  style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
-<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<div style="width:200px; padding:20px; padding-right:40px; background-color: #ffffff; color: #000000; text-align: left; ">
 <b>
 21
 &nbsp</b>
@@ -334,110 +334,57 @@ tutorial_lesson_21_auto_scheduler_run.html
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
-<span class="hl slc">// Halide tutorial lesson 1: Getting started with Funcs, Vars, and Exprs</span>
+<span class="hl slc">// Halide tutorial lesson 21: Auto-Scheduler</span>
 
-<span class="hl slc">// This lesson demonstrates basic usage of Halide as a JIT compiler for imaging.</span>
+<span class="hl slc">// Before reading this file, see lesson_21_auto_scheduler_generate.cpp</span>
 
-<span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_01*.cpp -g -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_01 -std=c++11</span>
-<span class="hl slc">// LD_LIBRARY_PATH=../bin ./lesson_01</span>
+<span class="hl slc">// This is the code that actually uses the Halide pipeline we've</span>
+<span class="hl slc">// compiled. It does not depend on libHalide, so we won't be including</span>
+<span class="hl slc">// Halide.h.</span>
+<span class="hl slc">//</span>
+<span class="hl slc">// Instead, it depends on the header files that lesson_21_auto_scheduler_generator produced.</span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;auto_schedule_false.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;auto_schedule_true.h&quot;</span><span class="hl ppc"></span>
 
-<span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_01*.cpp -g -I ../include -L ../bin -lHalide -o lesson_01 -std=c++11</span>
-<span class="hl slc">// DYLD_LIBRARY_PATH=../bin ./lesson_01</span>
+<span class="hl slc">// We'll use the Halide::Runtime::Buffer class for passing data into and out of</span>
+<span class="hl slc">// the pipeline.</span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;HalideBuffer.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;halide_benchmark.h&quot;</span><span class="hl ppc"></span>
 
-<span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
-<span class="hl slc">// running:</span>
-<span class="hl slc">//    make tutorial_lesson_01_basics</span>
-<span class="hl slc">// in a shell with the current directory at the top of the halide</span>
-<span class="hl slc">// source tree.</span>
-
-<span class="hl slc">// The only Halide header file you need is Halide.h. It includes all of Halide.</span>
-<span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
-
-<span class="hl slc">// We'll also include stdio for printf.</span>
 <span class="hl ppc">#include &lt;stdio.h&gt;</span>
+<span class="hl ppc">#include &lt;stdlib.h&gt;</span>
+<span class="hl ppc">#include &lt;string.h&gt;</span>
+<span class="hl ppc">#include &lt;assert.h&gt;</span>
 
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
+    <span class="hl slc">// Let's declare and initialize the input images</span>
+    Halide<span class="hl opt">::</span>Runtime<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> <span class="hl kwd">input</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
 
-    <span class="hl slc">// This program defines a single-stage imaging pipeline that</span>
-    <span class="hl slc">// outputs a grayscale diagonal gradient.</span>
-
-    <span class="hl slc">// A 'Func' object represents a pipeline stage. It's a pure</span>
-    <span class="hl slc">// function that defines what value each pixel should have. You</span>
-    <span class="hl slc">// can think of it as a computed image.</span>
-    Halide<span class="hl opt">::</span>Func gradient<span class="hl opt">;</span>
-
-    <span class="hl slc">// Var objects are names to use as variables in the definition of</span>
-    <span class="hl slc">// a Func. They have no meaning by themselves.</span>
-    Halide<span class="hl opt">::</span>Var x<span class="hl opt">,</span> y<span class="hl opt">;</span>
-
-    <span class="hl slc">// We typically use Vars named 'x' and 'y' to correspond to the x</span>
-    <span class="hl slc">// and y axes of an image, and we write them in that order. If</span>
-    <span class="hl slc">// you're used to thinking of images as having rows and columns,</span>
-    <span class="hl slc">// then x is the column index, and y is the row index.</span>
-
-    <span class="hl slc">// Funcs are defined at any integer coordinate of its variables as</span>
-    <span class="hl slc">// an Expr in terms of those variables and other functions.</span>
-    <span class="hl slc">// Here, we'll define an Expr which has the value x + y. Vars have</span>
-    <span class="hl slc">// appropriate operator overloading so that expressions like</span>
-    <span class="hl slc">// 'x + y' become 'Expr' objects.</span>
-    Halide<span class="hl opt">::</span>Expr e <span class="hl opt">=</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
-
-    <span class="hl slc">// Now we'll add a definition for the Func object. At pixel x, y,</span>
-    <span class="hl slc">// the image will have the value of the Expr e. On the left hand</span>
-    <span class="hl slc">// side we have the Func we're defining and some Vars. On the right</span>
-    <span class="hl slc">// hand side we have some Expr object that uses those same Vars.</span>
-    <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> e<span class="hl opt">;</span>
-
-    <span class="hl slc">// This is the same as writing:</span>
-    <span class="hl slc">//</span>
-    <span class="hl slc">//   gradient(x, y) = x + y;</span>
-    <span class="hl slc">//</span>
-    <span class="hl slc">// which is the more common form, but we are showing the</span>
-    <span class="hl slc">// intermediate Expr here for completeness.</span>
-
-    <span class="hl slc">// That line of code defined the Func, but it didn't actually</span>
-    <span class="hl slc">// compute the output image yet. At this stage it's just Funcs,</span>
-    <span class="hl slc">// Exprs, and Vars in memory, representing the structure of our</span>
-    <span class="hl slc">// imaging pipeline. We're meta-programming. This C++ program is</span>
-    <span class="hl slc">// constructing a Halide program in memory. Actually computing</span>
-    <span class="hl slc">// pixel data comes next.</span>
-
-    <span class="hl slc">// Now we 'realize' the Func, which JIT compiles some code that</span>
-    <span class="hl slc">// implements the pipeline we've defined, and then runs it.  We</span>
-    <span class="hl slc">// also need to tell Halide the domain over which to evaluate the</span>
-    <span class="hl slc">// Func, which determines the range of x and y above, and the</span>
-    <span class="hl slc">// resolution of the output image. Halide.h also provides a basic</span>
-    <span class="hl slc">// templatized image type we can use. We'll make an 800 x 600</span>
-    <span class="hl slc">// image.</span>
-    Halide<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int32_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">800</span><span class="hl opt">,</span> <span class="hl num">600</span><span class="hl opt">);</span>
-
-    <span class="hl slc">// Halide does type inference for you. Var objects represent</span>
-    <span class="hl slc">// 32-bit integers, so the Expr object 'x + y' also represents a</span>
-    <span class="hl slc">// 32-bit integer, and so 'gradient' defines a 32-bit image, and</span>
-    <span class="hl slc">// so we got a 32-bit signed integer image out when we call</span>
-    <span class="hl slc">// 'realize'. Halide types and type-casting rules are equivalent</span>
-    <span class="hl slc">// to C.</span>
-
-    <span class="hl slc">// Let's check everything worked, and we got the output we were</span>
-    <span class="hl slc">// expecting:</span>
-    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> j <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> j <span class="hl opt">&lt;</span> output<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">();</span> j<span class="hl opt">++) {</span>
-        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> output<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">();</span> i<span class="hl opt">++) {</span>
-            <span class="hl slc">// We can access a pixel of an Buffer object using similar</span>
-            <span class="hl slc">// syntax to defining and using functions.</span>
-            <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">output</span><span class="hl opt">(</span>i<span class="hl opt">,</span> j<span class="hl opt">) !=</span> i <span class="hl opt">+</span> j<span class="hl opt">) {</span>
-                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Something went wrong!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span>
-                       <span class="hl str">&quot;Pixel %d, %d was supposed to be %d, but instead it's %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
-                       i<span class="hl opt">,</span> j<span class="hl opt">,</span> i<span class="hl opt">+</span>j<span class="hl opt">,</span> <span class="hl kwd">output</span><span class="hl opt">(</span>i<span class="hl opt">,</span> j<span class="hl opt">));</span>
-                <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
+    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> c <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> c <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">(); ++</span>c<span class="hl opt">) {</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(); ++</span>y<span class="hl opt">) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(); ++</span>x<span class="hl opt">) {</span>
+                <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) =</span> <span class="hl kwd">rand</span><span class="hl opt">();</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
     <span class="hl opt">}</span>
 
-    <span class="hl slc">// Everything worked! We defined a Func, then called 'realize' on</span>
-    <span class="hl slc">// it to generate and run machine code that produced an Buffer.</span>
-    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+    Halide<span class="hl opt">::</span>Runtime<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> <span class="hl kwd">output1</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">1024</span><span class="hl opt">);</span>
+    Halide<span class="hl opt">::</span>Runtime<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> <span class="hl kwd">output2</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">1024</span><span class="hl opt">);</span>
+    <span class="hl slc">// Run each version of the codes (with no auto-schedule and with</span>
+    <span class="hl slc">// auto-schedule) multiple times for benchmarking.</span>
+    <span class="hl kwb">double</span> auto_schedule_off <span class="hl opt">=</span> Halide<span class="hl opt">::</span>Tools<span class="hl opt">::</span><span class="hl kwd">benchmark</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">, [&amp;]() {</span>
+        <span class="hl kwd">auto_schedule_false</span><span class="hl opt">(</span>input<span class="hl opt">,</span> <span class="hl num">2.0</span>f<span class="hl opt">,</span> output1<span class="hl opt">,</span> output2<span class="hl opt">);</span>
+    <span class="hl opt">});</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Manual schedule: %gms</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> auto_schedule_off <span class="hl opt">*</span> <span class="hl num">1</span>e3<span class="hl opt">);</span>
+
+    <span class="hl kwb">double</span> auto_schedule_on <span class="hl opt">=</span> Halide<span class="hl opt">::</span>Tools<span class="hl opt">::</span><span class="hl kwd">benchmark</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">, [&amp;]() {</span>
+        <span class="hl kwd">auto_schedule_true</span><span class="hl opt">(</span>input<span class="hl opt">,</span> <span class="hl num">2.0</span>f<span class="hl opt">,</span> output1<span class="hl opt">,</span> output2<span class="hl opt">);</span>
+    <span class="hl opt">});</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Auto schedule: %gms</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> auto_schedule_on <span class="hl opt">*</span> <span class="hl num">1</span>e3<span class="hl opt">);</span>
+
+    <span class="hl slc">// auto_schedule_on should be faster since in the auto_schedule_off version,</span>
+    <span class="hl slc">// the schedule is very simple.</span>
+    <span class="hl kwa">assert</span><span class="hl opt">(</span>auto_schedule_on <span class="hl opt">&lt;</span> auto_schedule_off<span class="hl opt">);</span>
 
     <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
 <span class="hl opt">}</span>

@@ -1,8 +1,15 @@
 #!/bin/bash
+#
+# invoke as: ./gen_tutorials `ls ~/my_halide_dir/tutorial/*.{cpp,sh}`
+#
+# (use `ls ... ` above to ensure that the .cpp and .sh files are pre-sorted)
+#
+# Note that you must run the ./generate_output_snippets.sh script
+# in ~/my_halide_dir/tutorial/figures prior to running this;
+# that script requires that gdb be installed, so running on a Linux
+# is much easier than OSX.
 
 for f in tutorial_introduction_stub.html $@; do
-
-    echo $f
 
     bf=$(basename $f)
     if [ $bf = tutorial_introduction_stub.html ]; then
@@ -11,6 +18,8 @@ for f in tutorial_introduction_stub.html $@; do
         h=tutorial_${bf/.cpp/.html}
         h=${h/.sh/.html}
     fi
+
+    echo Generating: $h
 
     cat >$h <<EOF
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
@@ -171,7 +180,7 @@ EOF
 
     echo '</div></body></html>' >> $h
 
-    cat $h
+    # cat $h
 
     # Inline the figures
     IFS=''
@@ -185,7 +194,7 @@ EOF
             NEXT_OUTPUT_SNIPPET=$(echo $LINE | sed "s/.*OUTPUT_SNIPPET //" | sed "s/<.*//")
             # Also remember the current indentation level
             SNIPPET_SPACES=$(echo $LINE | sed "s/^\( *\).*$/\1/")
-            echo FOO $LINE
+            #echo FOO $LINE
             #echo "$LINE" | sed "s/.span[^<]*OUTPUT_SNIPPET[^>]*span.//" >> $h
         elif [[ "$LINE" == *figures/lesson* ]]; then
             # Found a figure reference. Remember this figure and place
@@ -227,3 +236,7 @@ EOF
         fi
     done
 done
+
+rm -f tmp.cpp
+rm -f tmp.html
+

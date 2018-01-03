@@ -301,6 +301,36 @@ tutorial_lesson_19_wrapper_funcs.html
 &nbsp</b>
  Wrapper Funcs
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_20_cloning_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+20
+&nbsp</b>
+ Cloning Funcs
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_21_auto_scheduler_generate.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+21
+&nbsp</b>
+ Auto-Scheduler
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_21_auto_scheduler_run.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+21
+&nbsp</b>
+ Auto-Scheduler
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -334,12 +364,14 @@ tutorial_lesson_19_wrapper_funcs.html
 <span class="hl slc">// define a class that inherits from Halide::Generator.</span>
 <span class="hl kwc">class</span> MyFirstGenerator <span class="hl opt">:</span> <span class="hl kwc">public</span> Halide<span class="hl opt">::</span>Generator<span class="hl opt">&lt;</span>MyFirstGenerator<span class="hl opt">&gt; {</span>
 <span class="hl kwc">public</span><span class="hl opt">:</span>
-    <span class="hl slc">// We declare the parameters to the Halide pipeline as public</span>
-    <span class="hl slc">// member variables. We'll give the parameters explicit names this</span>
-    <span class="hl slc">// time. They'll appear in the signature of our generated function</span>
-    <span class="hl slc">// in the same order as we declare them.</span>
-    Param<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> offset<span class="hl opt">{</span><span class="hl str">&quot;offset&quot;</span><span class="hl opt">};</span>
-    ImageParam input<span class="hl opt">{</span><span class="hl kwd">UInt</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">),</span> <span class="hl num">2</span><span class="hl opt">,</span> <span class="hl str">&quot;input&quot;</span><span class="hl opt">};</span>
+    <span class="hl slc">// We declare the Inputs to the Halide pipeline as public</span>
+    <span class="hl slc">// member variables. They'll appear in the signature of our generated</span>
+    <span class="hl slc">// function in the same order as we declare them.</span>
+    Input<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> offset<span class="hl opt">{</span><span class="hl str">&quot;offset&quot;</span><span class="hl opt">};</span>
+    Input<span class="hl opt">&lt;</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;&gt;</span> input<span class="hl opt">{</span><span class="hl str">&quot;input&quot;</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">};</span>
+
+    <span class="hl slc">// We also declare the Outputs as public member variables.</span>
+    Output<span class="hl opt">&lt;</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;&gt;</span> brighter<span class="hl opt">{</span><span class="hl str">&quot;brighter&quot;</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">};</span>
 
     <span class="hl slc">// Typically you declare your Vars at this scope as well, so that</span>
     <span class="hl slc">// they can be used in any helper methods you add later.</span>
@@ -347,18 +379,14 @@ tutorial_lesson_19_wrapper_funcs.html
 
     <span class="hl slc">// We then define a method that constructs and return the Halide</span>
     <span class="hl slc">// pipeline:</span>
-    Func <span class="hl kwd">build</span><span class="hl opt">() {</span>
-        <span class="hl slc">// Define the Func.</span>
-        Func brighter<span class="hl opt">;</span>
+    <span class="hl kwb">void</span> <span class="hl kwd">generate</span><span class="hl opt">() {</span>
+        <span class="hl slc">// In lesson 10, here is where we called</span>
+        <span class="hl slc">// Func::compile_to_file. In a Generator, we just need to</span>
+        <span class="hl slc">// define the Output(s) representing the output of the pipeline.</span>
         <span class="hl kwd">brighter</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> offset<span class="hl opt">;</span>
 
         <span class="hl slc">// Schedule it.</span>
         brighter<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">).</span><span class="hl kwd">parallel</span><span class="hl opt">(</span>y<span class="hl opt">);</span>
-
-        <span class="hl slc">// In lesson 10, here is where we called</span>
-        <span class="hl slc">// Func::compile_to_file. In a Generator, we just need to</span>
-        <span class="hl slc">// return the Func representing the output of the pipeline.</span>
-        <span class="hl kwa">return</span> brighter<span class="hl opt">;</span>
     <span class="hl opt">}</span>
 <span class="hl opt">};</span>
 
@@ -366,7 +394,7 @@ tutorial_lesson_19_wrapper_funcs.html
 <span class="hl slc">// an &quot;int main(...)&quot; that provides the command-line interface to use</span>
 <span class="hl slc">// your generator class. We need to tell that code about our</span>
 <span class="hl slc">// generator. We do this like so:</span>
-RegisterGenerator<span class="hl opt">&lt;</span>MyFirstGenerator<span class="hl opt">&gt;</span> my_first_generator<span class="hl opt">{</span><span class="hl str">&quot;my_first_generator&quot;</span><span class="hl opt">};</span>
+<span class="hl kwd">HALIDE_REGISTER_GENERATOR</span><span class="hl opt">(</span>MyFirstGenerator<span class="hl opt">,</span> my_first_generator<span class="hl opt">)</span>
 
 <span class="hl slc">// If you like, you can put multiple Generators in the one file. This</span>
 <span class="hl slc">// could be a good idea if they share some common code. Let's define</span>
@@ -401,19 +429,19 @@ RegisterGenerator<span class="hl opt">&lt;</span>MyFirstGenerator<span class="hl
              <span class="hl opt">{</span> <span class="hl str">&quot;cw&quot;</span><span class="hl opt">,</span>   Rotation<span class="hl opt">::</span>Clockwise <span class="hl opt">},</span>
              <span class="hl opt">{</span> <span class="hl str">&quot;ccw&quot;</span><span class="hl opt">,</span>  Rotation<span class="hl opt">::</span>CounterClockwise <span class="hl opt">}}};</span>
 
-    <span class="hl slc">// Halide::Type is supported as though it was an enum. It's most</span>
-    <span class="hl slc">// useful for customizing the type of input or output image</span>
-    <span class="hl slc">// params.</span>
-    GeneratorParam<span class="hl opt">&lt;</span>Halide<span class="hl opt">::</span>Type<span class="hl opt">&gt;</span> output_type<span class="hl opt">{</span><span class="hl str">&quot;output_type&quot;</span><span class="hl opt">,</span> <span class="hl kwd">Int</span><span class="hl opt">(</span><span class="hl num">32</span><span class="hl opt">)};</span>
+    <span class="hl slc">// We'll use the same Inputs as before:</span>
+    Input<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> offset<span class="hl opt">{</span><span class="hl str">&quot;offset&quot;</span><span class="hl opt">};</span>
+    Input<span class="hl opt">&lt;</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;&gt;</span> input<span class="hl opt">{</span><span class="hl str">&quot;input&quot;</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">};</span>
 
-    <span class="hl slc">// We'll use the same Param and ImageParam as before:</span>
-    Param<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> offset<span class="hl opt">{</span><span class="hl str">&quot;offset&quot;</span><span class="hl opt">};</span>
-    ImageParam input<span class="hl opt">{</span><span class="hl kwd">UInt</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">),</span> <span class="hl num">2</span><span class="hl opt">,</span> <span class="hl str">&quot;input&quot;</span><span class="hl opt">};</span>
+    <span class="hl slc">// And a similar Output. Note that we don't specify a type for the Buffer:</span>
+    <span class="hl slc">// at compile-time, we must specify an explicit type via the &quot;output.type&quot;</span>
+    <span class="hl slc">// GeneratorParam (which is implicitly defined for this Output).</span>
+    Output<span class="hl opt">&lt;</span>Buffer<span class="hl opt">&lt;&gt;&gt;</span> output<span class="hl opt">{</span><span class="hl str">&quot;output&quot;</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">};</span>
 
     <span class="hl slc">// And we'll declare our Vars here as before.</span>
     Var x<span class="hl opt">,</span> y<span class="hl opt">;</span>
 
-    Func <span class="hl kwd">build</span><span class="hl opt">() {</span>
+    <span class="hl kwb">void</span> <span class="hl kwd">generate</span><span class="hl opt">() {</span>
         <span class="hl slc">// Define the Func. We'll use the compile-time scale factor as</span>
         <span class="hl slc">// well as the runtime offset param.</span>
         Func brighter<span class="hl opt">;</span>
@@ -438,8 +466,7 @@ RegisterGenerator<span class="hl opt">&lt;</span>MyFirstGenerator<span class="hl
         <span class="hl opt">}</span>
 
         <span class="hl slc">// We'll then cast to the desired output type.</span>
-        Func output<span class="hl opt">;</span>
-        <span class="hl kwd">output</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">cast</span><span class="hl opt">(</span>output_type<span class="hl opt">,</span> <span class="hl kwd">rotated</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">));</span>
+        <span class="hl kwd">output</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">cast</span><span class="hl opt">(</span>output<span class="hl opt">.</span><span class="hl kwd">type</span><span class="hl opt">(),</span> <span class="hl kwd">rotated</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">));</span>
 
         <span class="hl slc">// The structure of the pipeline depended on the generator</span>
         <span class="hl slc">// params. So will the schedule.</span>
@@ -449,7 +476,7 @@ RegisterGenerator<span class="hl opt">&lt;</span>MyFirstGenerator<span class="hl
         <span class="hl slc">// provide a helper called &quot;natural_vector_size&quot; which will</span>
         <span class="hl slc">// pick a reasonable factor for you given the type and the</span>
         <span class="hl slc">// target you're compiling to.</span>
-        output<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl kwd">natural_vector_size</span><span class="hl opt">(</span>output_type<span class="hl opt">));</span>
+        output<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl kwd">natural_vector_size</span><span class="hl opt">(</span>output<span class="hl opt">.</span><span class="hl kwd">type</span><span class="hl opt">()));</span>
 
         <span class="hl slc">// Now we'll possibly parallelize it:</span>
         <span class="hl kwa">if</span> <span class="hl opt">(</span>parallel<span class="hl opt">) {</span>
@@ -464,14 +491,12 @@ RegisterGenerator<span class="hl opt">&lt;</span>MyFirstGenerator<span class="hl
                 <span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>output<span class="hl opt">,</span> y<span class="hl opt">)</span>
                 <span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl kwd">natural_vector_size</span><span class="hl opt">(</span>rotated<span class="hl opt">.</span><span class="hl kwd">output_types</span><span class="hl opt">()[</span><span class="hl num">0</span><span class="hl opt">]));</span>
         <span class="hl opt">}</span>
-
-        <span class="hl kwa">return</span> output<span class="hl opt">;</span>
     <span class="hl opt">}</span>
 
 <span class="hl opt">};</span>
 
 <span class="hl slc">// Register our second generator:</span>
-RegisterGenerator<span class="hl opt">&lt;</span>MySecondGenerator<span class="hl opt">&gt;</span> my_second_generator<span class="hl opt">{</span><span class="hl str">&quot;my_second_generator&quot;</span><span class="hl opt">};</span>
+<span class="hl kwd">HALIDE_REGISTER_GENERATOR</span><span class="hl opt">(</span>MySecondGenerator<span class="hl opt">,</span> my_second_generator<span class="hl opt">)</span>
 
 <span class="hl slc">// After compiling this file, see how to use it in</span>
 <span class="hl slc">// lesson_15_generators_build.sh</span>

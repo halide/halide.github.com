@@ -301,6 +301,36 @@ tutorial_lesson_19_wrapper_funcs.html
 &nbsp</b>
  Wrapper Funcs
 </div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_20_cloning_funcs.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+20
+&nbsp</b>
+ Cloning Funcs
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_21_auto_scheduler_generate.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+21
+&nbsp</b>
+ Auto-Scheduler
+</div></span></a>
+<div style="width:200px; height:20px;"></div>
+<a href=
+tutorial_lesson_21_auto_scheduler_run.html
+ style="text-decoration:none;"><span style="width:100%; height:100%; top:0; left:0;">
+<div style="width:200px; padding:20px; background-color: #dddddd; text-align: left; ">
+<b>
+21
+&nbsp</b>
+ Auto-Scheduler
+</div></span></a>
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
@@ -383,7 +413,7 @@ tutorial_lesson_19_wrapper_funcs.html
         <span class="hl slc">// consumer(x, y) = (sin(x * y) +</span>
         <span class="hl slc">//                   sin(x * (y + 1)) +</span>
         <span class="hl slc">//                   sin((x + 1) * y) +</span>
-        <span class="hl slc">//                   sin((x + 1) * (y + 1)));</span>
+        <span class="hl slc">//                   sin((x + 1) * (y + 1))/4);</span>
 
         <span class="hl slc">// All calls to 'producer' have been replaced with the body of</span>
         <span class="hl slc">// 'producer', with the arguments substituted in for the</span>
@@ -407,7 +437,7 @@ tutorial_lesson_19_wrapper_funcs.html
         consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_80");'><b id=_80-show>// Click to show output ...</b></a><div id=_80 style= "display:none; background:#333333; color:#ffffff"><b>
- > compute consumer_default:
+ > produce consumer_default:
  >   for y:
  >     for x:
  >       consumer_default(...) = ...
@@ -531,14 +561,15 @@ tutorial_lesson_19_wrapper_funcs.html
         consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_149");'><b id=_149-show>// Click to show output ...</b></a><div id=_149 style= "display:none; background:#333333; color:#ffffff"><b>
- > compute producer_root:
+ > produce producer_root:
  >   for y:
  >     for x:
  >       producer_root(...) = ...
- > compute consumer_root:
- >   for y:
- >     for x:
- >       consumer_root(...) = ...
+ > consume producer_root:
+ >   produce consumer_root:
+ >     for y:
+ >       for x:
+ >         consumer_root(...) = ...
 
 </b></div>
     <span class="hl opt">}</span>
@@ -555,7 +586,7 @@ tutorial_lesson_19_wrapper_funcs.html
     <span class="hl slc">// producer.compute_root():</span>
     <span class="hl slc">// - Temporary memory allocated: 25 floats</span>
     <span class="hl slc">// - Loads: 64</span>
-    <span class="hl slc">// - Stores: 39</span>
+    <span class="hl slc">// - Stores: 41</span>
     <span class="hl slc">// - Calls to sin: 25</span>
 
     <span class="hl slc">// There's a trade-off here. Full inlining used minimal temporary</span>
@@ -703,14 +734,15 @@ tutorial_lesson_19_wrapper_funcs.html
         consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_247");'><b id=_247-show>// Click to show output ...</b></a><div id=_247 style= "display:none; background:#333333; color:#ffffff"><b>
- > compute consumer_y:
+ > produce consumer_y:
  >   for y:
- >     compute producer_y:
+ >     produce producer_y:
  >       for y:
  >         for x:
  >           producer_y(...) = ...
- >     for x:
- >       consumer_y(...) = ...
+ >     consume producer_y:
+ >       for x:
+ >         consumer_y(...) = ...
 
 </b></div>
 
@@ -853,14 +885,15 @@ tutorial_lesson_19_wrapper_funcs.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_337");'><b id=_337-show>// Click to show output ...</b></a><div id=_337 style= "display:none; background:#333333; color:#ffffff"><b>
  > store producer_root_y:
- >   compute consumer_root_y:
+ >   produce consumer_root_y:
  >     for y:
- >       compute producer_root_y:
+ >       produce producer_root_y:
  >         for y:
  >           for x:
  >             producer_root_y(...) = ...
- >       for x:
- >         consumer_root_y(...) = ...
+ >       consume producer_root_y:
+ >         for x:
+ >           consumer_root_y(...) = ...
 
 </b></div>
 
@@ -1014,14 +1047,15 @@ tutorial_lesson_19_wrapper_funcs.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_438");'><b id=_438-show>// Click to show output ...</b></a><div id=_438 style= "display:none; background:#333333; color:#ffffff"><b>
  > store producer_root_x:
- >   compute consumer_root_x:
+ >   produce consumer_root_x:
  >     for y:
  >       for x:
- >         compute producer_root_x:
+ >         produce producer_root_x:
  >           for y:
  >             for x:
  >               producer_root_x(...) = ...
- >         consumer_root_x(...) = ...
+ >         consume producer_root_x:
+ >           consumer_root_x(...) = ...
 
 </b></div>
 
@@ -1300,16 +1334,17 @@ tutorial_lesson_19_wrapper_funcs.html
         consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_542");'><b id=_542-show>// Click to show output ...</b></a><div id=_542 style= "display:none; background:#333333; color:#ffffff"><b>
- > compute consumer_tile:
+ > produce consumer_tile:
  >   for y.y_outer:
  >     for x.x_outer:
- >       compute producer_tile:
+ >       produce producer_tile:
  >         for y:
  >           for x:
  >             producer_tile(...) = ...
- >       for y.y_inner in [0, 3]:
- >         for x.x_inner in [0, 3]:
- >           consumer_tile(...) = ...
+ >       consume producer_tile:
+ >         for y.y_inner in [0, 3]:
+ >           for x.x_inner in [0, 3]:
+ >             consumer_tile(...) = ...
 
 </b></div>
 
@@ -1438,18 +1473,19 @@ tutorial_lesson_19_wrapper_funcs.html
         consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_665");'><b id=_665-show>// Click to show output ...</b></a><div id=_665 style= "display:none; background:#333333; color:#ffffff"><b>
- > compute consumer_mixed:
+ > produce consumer_mixed:
  >   parallel y.yo:
  >     store producer_mixed:
  >       for y.yi in [0, 15]:
- >         compute producer_mixed:
+ >         produce producer_mixed:
  >           for y:
  >             for x.x:
  >               vectorized x.v39 in [0, 3]:
  >                 producer_mixed(...) = ...
- >         for x.x:
- >           vectorized x.v36 in [0, 3]:
- >             consumer_mixed(...) = ...
+ >         consume producer_mixed:
+ >           for x.x:
+ >             vectorized x.v36 in [0, 3]:
+ >               consumer_mixed(...) = ...
 
 </b></div>
 
