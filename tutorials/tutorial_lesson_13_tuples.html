@@ -419,7 +419,7 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl kwd">multi_valued</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">Tuple</span><span class="hl opt">(</span>x <span class="hl opt">+</span> y<span class="hl opt">,</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">));</span>
 
     <span class="hl slc">// Realizing a tuple-valued Func returns a collection of</span>
-    <span class="hl slc">// Buffers. We call this a Realization. It's equivalent to a</span>
+    <span class="hl slc">// Buffers. We call this a Realization. It&apos;s equivalent to a</span>
     <span class="hl slc">// std::vector of Buffer objects:</span>
     <span class="hl opt">{</span>
         Realization r <span class="hl opt">=</span> multi_valued<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">80</span><span class="hl opt">,</span> <span class="hl num">60</span><span class="hl opt">);</span>
@@ -501,8 +501,8 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r <span class="hl opt">=</span> <span class="hl num">1</span><span class="hl opt">;</span> r <span class="hl opt">&lt;</span> <span class="hl num">100</span><span class="hl opt">;</span> r<span class="hl opt">++) {</span>
             <span class="hl kwb">int</span> old_index <span class="hl opt">=</span> arg_max_0<span class="hl opt">;</span>
             <span class="hl kwb">float</span> old_max <span class="hl opt">=</span> arg_max_1<span class="hl opt">;</span>
-            <span class="hl kwb">int</span> new_index <span class="hl opt">=</span> old_max <span class="hl opt">&lt;</span> <span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">)</span> ? r <span class="hl opt">:</span> old_index<span class="hl opt">;</span>
-            <span class="hl kwb">float</span> new_max <span class="hl opt">=</span> std<span class="hl opt">::</span><span class="hl kwd">max</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">),</span> old_max<span class="hl opt">);</span>
+            <span class="hl kwb">int</span> new_index <span class="hl opt">=</span> old_max <span class="hl opt">&lt;</span> <span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">) ?</span> r <span class="hl opt">:</span> old_index<span class="hl opt">;</span>
+            <span class="hl kwb">float</span> new_max <span class="hl opt">=</span> <span class="hl kwc">std</span><span class="hl opt">::</span><span class="hl kwd">max</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">),</span> old_max<span class="hl opt">);</span>
             <span class="hl slc">// In a tuple update definition, all loads and computation</span>
             <span class="hl slc">// are done before any stores, so that all Tuple elements</span>
             <span class="hl slc">// are updated atomically with respect to recursive calls</span>
@@ -511,7 +511,7 @@ tutorial_lesson_21_auto_scheduler_run.html
             arg_max_1 <span class="hl opt">=</span> new_max<span class="hl opt">;</span>
         <span class="hl opt">}</span>
 
-        <span class="hl slc">// Let's verify that the Halide and C++ found the same maximum</span>
+        <span class="hl slc">// Let&apos;s verify that the Halide and C++ found the same maximum</span>
         <span class="hl slc">// value and index.</span>
         <span class="hl opt">{</span>
             Realization r <span class="hl opt">=</span> arg_max<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">();</span>
@@ -525,7 +525,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// similar to sum, product, maximum, and minimum. They return</span>
         <span class="hl slc">// a Tuple consisting of the point in the reduction domain</span>
         <span class="hl slc">// corresponding to that value, and the value itself. In the</span>
-        <span class="hl slc">// case of ties they return the first value found. We'll use</span>
+        <span class="hl slc">// case of ties they return the first value found. We&apos;ll use</span>
         <span class="hl slc">// one of these in the following section.</span>
     <span class="hl opt">}</span>
 
@@ -534,7 +534,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// Tuples can also be a convenient way to represent compound</span>
         <span class="hl slc">// objects such as complex numbers. Defining an object that</span>
         <span class="hl slc">// can be converted to and from a Tuple is one way to extend</span>
-        <span class="hl slc">// Halide's type system with user-defined types.</span>
+        <span class="hl slc">// Halide&apos;s type system with user-defined types.</span>
         <span class="hl kwb">struct</span> Complex <span class="hl opt">{</span>
             Expr real<span class="hl opt">,</span> imag<span class="hl opt">;</span>
 
@@ -572,7 +572,7 @@ tutorial_lesson_21_auto_scheduler_run.html
             <span class="hl slc">// sufficient for this example.</span>
         <span class="hl opt">};</span>
 
-        <span class="hl slc">// Let's use the Complex struct to compute a Mandelbrot set.</span>
+        <span class="hl slc">// Let&apos;s use the Complex struct to compute a Mandelbrot set.</span>
         Func mandelbrot<span class="hl opt">;</span>
 
         <span class="hl slc">// The initial complex value corresponding to an x, y coordinate</span>
@@ -583,7 +583,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         Var t<span class="hl opt">;</span>
         <span class="hl kwd">mandelbrot</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> t<span class="hl opt">) =</span> <span class="hl kwd">Complex</span><span class="hl opt">(</span><span class="hl num">0.0</span>f<span class="hl opt">,</span> <span class="hl num">0.0</span>f<span class="hl opt">);</span>
 
-        <span class="hl slc">// We'll use an update definition to take 12 steps.</span>
+        <span class="hl slc">// We&apos;ll use an update definition to take 12 steps.</span>
         RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">12</span><span class="hl opt">);</span>
         Complex current <span class="hl opt">=</span> <span class="hl kwd">mandelbrot</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> r<span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">);</span>
 
@@ -591,7 +591,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// addition we defined above.</span>
         <span class="hl kwd">mandelbrot</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> r<span class="hl opt">) =</span> current<span class="hl opt">*</span>current <span class="hl opt">+</span> initial<span class="hl opt">;</span>
 
-        <span class="hl slc">// We'll use another tuple reduction to compute the iteration</span>
+        <span class="hl slc">// We&apos;ll use another tuple reduction to compute the iteration</span>
         <span class="hl slc">// number where the value first escapes a circle of radius 4.</span>
         <span class="hl slc">// This can be expressed as an argmin of a boolean - we want</span>
         <span class="hl slc">// the index of the first time the given boolean expression is</span>
@@ -603,7 +603,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         Tuple first_escape <span class="hl opt">=</span> <span class="hl kwd">argmin</span><span class="hl opt">(</span>escape_condition<span class="hl opt">);</span>
 
         <span class="hl slc">// We only want the index, not the value, but argmin returns</span>
-        <span class="hl slc">// both, so we'll index the argmin Tuple expression using</span>
+        <span class="hl slc">// both, so we&apos;ll index the argmin Tuple expression using</span>
         <span class="hl slc">// square brackets to get the Expr representing the index.</span>
         Func escape<span class="hl opt">;</span>
         <span class="hl kwd">escape</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> first_escape<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>

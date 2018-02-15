@@ -358,7 +358,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
 <span class="hl slc">// Include some support code for loading pngs.</span>
 <span class="hl ppc">#include</span> <span class="hl pps">&quot;halide_image_io.h&quot;</span><span class="hl ppc"></span>
-<span class="hl kwa">using namespace</span> Halide<span class="hl opt">::</span>Tools<span class="hl opt">;</span>
+<span class="hl kwa">using namespace</span> <span class="hl kwc">Halide</span><span class="hl opt">::</span>Tools<span class="hl opt">;</span>
 
 <span class="hl slc">// Include a clock to do performance testing.</span>
 <span class="hl ppc">#include</span> <span class="hl pps">&quot;clock.h&quot;</span><span class="hl ppc"></span>
@@ -366,7 +366,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// Define some Vars to use.</span>
 Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">,</span> i<span class="hl opt">,</span> ii<span class="hl opt">,</span> xo<span class="hl opt">,</span> yo<span class="hl opt">,</span> xi<span class="hl opt">,</span> yi<span class="hl opt">;</span>
 
-<span class="hl slc">// We're going to want to schedule a pipeline in several ways, so we</span>
+<span class="hl slc">// We&apos;re going to want to schedule a pipeline in several ways, so we</span>
 <span class="hl slc">// define the pipeline in a class so that we can recreate it several</span>
 <span class="hl slc">// times with different schedules.</span>
 <span class="hl kwc">class</span> MyPipeline <span class="hl opt">{</span>
@@ -375,10 +375,10 @@ Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="
     Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input<span class="hl opt">;</span>
 
     <span class="hl kwd">MyPipeline</span><span class="hl opt">(</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> in<span class="hl opt">) :</span> <span class="hl kwd">input</span><span class="hl opt">(</span>in<span class="hl opt">) {</span>
-        <span class="hl slc">// For this lesson, we'll use a two-stage pipeline that sharpens</span>
+        <span class="hl slc">// For this lesson, we&apos;ll use a two-stage pipeline that sharpens</span>
         <span class="hl slc">// and then applies a look-up-table (LUT).</span>
 
-        <span class="hl slc">// First we'll define the LUT. It will be a gamma curve.</span>
+        <span class="hl slc">// First we&apos;ll define the LUT. It will be a gamma curve.</span>
 
         <span class="hl kwd">lut</span><span class="hl opt">(</span>i<span class="hl opt">) =</span> cast<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span><span class="hl kwd">clamp</span><span class="hl opt">(</span><span class="hl kwd">pow</span><span class="hl opt">(</span>i <span class="hl opt">/</span> <span class="hl num">255.0</span>f<span class="hl opt">,</span> <span class="hl num">1.2</span>f<span class="hl opt">) *</span> <span class="hl num">255.0</span>f<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">255</span><span class="hl opt">));</span>
 
@@ -412,7 +412,7 @@ Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="
               <span class="hl opt">.</span><span class="hl kwd">bound</span><span class="hl opt">(</span>c<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">)</span>
               <span class="hl opt">.</span><span class="hl kwd">unroll</span><span class="hl opt">(</span>c<span class="hl opt">);</span>
 
-        <span class="hl slc">// Look-up-tables don't vectorize well, so just parallelize</span>
+        <span class="hl slc">// Look-up-tables don&apos;t vectorize well, so just parallelize</span>
         <span class="hl slc">// curved in slices of 16 scanlines.</span>
         Var yo<span class="hl opt">,</span> yi<span class="hl opt">;</span>
         curved<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>y<span class="hl opt">,</span> yo<span class="hl opt">,</span> yi<span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">)</span>
@@ -421,7 +421,7 @@ Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="
         <span class="hl slc">// Compute sharpen as needed per scanline of curved.</span>
         sharpen<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>curved<span class="hl opt">,</span> yi<span class="hl opt">);</span>
 
-        <span class="hl slc">// Vectorize the sharpen. It's 16-bit so we'll vectorize it 8-wide.</span>
+        <span class="hl slc">// Vectorize the sharpen. It&apos;s 16-bit so we&apos;ll vectorize it 8-wide.</span>
         sharpen<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Compute the padded input as needed per scanline of curved,</span>
@@ -430,7 +430,7 @@ Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="
         padded<span class="hl opt">.</span><span class="hl kwd">store_at</span><span class="hl opt">(</span>curved<span class="hl opt">,</span> yo<span class="hl opt">)</span>
               <span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>curved<span class="hl opt">,</span> yi<span class="hl opt">);</span>
 
-        <span class="hl slc">// Also vectorize the padding. It's 8-bit, so we'll vectorize</span>
+        <span class="hl slc">// Also vectorize the padding. It&apos;s 8-bit, so we&apos;ll vectorize</span>
         <span class="hl slc">// 16-wide.</span>
         padded<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">);</span>
 
@@ -443,28 +443,28 @@ Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="
         <span class="hl slc">// We make the decision about whether to use the GPU for each</span>
         <span class="hl slc">// Func independently. If you have one Func computed on the</span>
         <span class="hl slc">// CPU, and the next computed on the GPU, Halide will do the</span>
-        <span class="hl slc">// copy-to-gpu under the hood. For this pipeline, there's no</span>
+        <span class="hl slc">// copy-to-gpu under the hood. For this pipeline, there&apos;s no</span>
         <span class="hl slc">// reason to use the CPU for any of the stages. Halide will</span>
         <span class="hl slc">// copy the input image to the GPU the first time we run the</span>
         <span class="hl slc">// pipeline, and leave it there to reuse on subsequent runs.</span>
 
-        <span class="hl slc">// As before, we'll compute the LUT once at the start of the</span>
+        <span class="hl slc">// As before, we&apos;ll compute the LUT once at the start of the</span>
         <span class="hl slc">// pipeline.</span>
         lut<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
 
-        <span class="hl slc">// Let's compute the look-up-table using the GPU in 16-wide</span>
+        <span class="hl slc">// Let&apos;s compute the look-up-table using the GPU in 16-wide</span>
         <span class="hl slc">// one-dimensional thread blocks. First we split the index</span>
         <span class="hl slc">// into blocks of size 16:</span>
         Var block<span class="hl opt">,</span> thread<span class="hl opt">;</span>
         lut<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>i<span class="hl opt">,</span> block<span class="hl opt">,</span> thread<span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">);</span>
-        <span class="hl slc">// Then we tell cuda that our Vars 'block' and 'thread'</span>
-        <span class="hl slc">// correspond to CUDA's notions of blocks and threads, or</span>
-        <span class="hl slc">// OpenCL's notions of thread groups and threads.</span>
+        <span class="hl slc">// Then we tell cuda that our Vars &apos;block&apos; and &apos;thread&apos;</span>
+        <span class="hl slc">// correspond to CUDA&apos;s notions of blocks and threads, or</span>
+        <span class="hl slc">// OpenCL&apos;s notions of thread groups and threads.</span>
         lut<span class="hl opt">.</span><span class="hl kwd">gpu_blocks</span><span class="hl opt">(</span>block<span class="hl opt">)</span>
            <span class="hl opt">.</span><span class="hl kwd">gpu_threads</span><span class="hl opt">(</span>thread<span class="hl opt">);</span>
 
         <span class="hl slc">// This is a very common scheduling pattern on the GPU, so</span>
-        <span class="hl slc">// there's a shorthand for it:</span>
+        <span class="hl slc">// there&apos;s a shorthand for it:</span>
 
         <span class="hl slc">// lut.gpu_tile(i, block, thread, 16);</span>
 
@@ -487,7 +487,7 @@ Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="
         <span class="hl slc">//       .gpu_blocks(xo, yo)</span>
         <span class="hl slc">//       .gpu_threads(xi, yi);</span>
 
-        <span class="hl slc">// We'll leave sharpen as inlined into curved.</span>
+        <span class="hl slc">// We&apos;ll leave sharpen as inlined into curved.</span>
 
         <span class="hl slc">// Compute the padded input as needed per GPU block, storing</span>
         <span class="hl slc">// the intermediate result in shared memory. In the schedule</span>
@@ -502,21 +502,21 @@ Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="
         <span class="hl slc">// Metal are not enabled by default. We have to construct a</span>
         <span class="hl slc">// Target object, enable one of them, and then pass that</span>
         <span class="hl slc">// target object to compile_jit. Otherwise your CPU will very</span>
-        <span class="hl slc">// slowly pretend it's a GPU, and use one thread per output</span>
+        <span class="hl slc">// slowly pretend it&apos;s a GPU, and use one thread per output</span>
         <span class="hl slc">// pixel.</span>
 
-        <span class="hl slc">// Start with a target suitable for the machine you're running</span>
+        <span class="hl slc">// Start with a target suitable for the machine you&apos;re running</span>
         <span class="hl slc">// this on.</span>
         Target target <span class="hl opt">=</span> <span class="hl kwd">get_host_target</span><span class="hl opt">();</span>
 
         <span class="hl slc">// Then enable OpenCL or Metal, depending on which platform</span>
-        <span class="hl slc">// we're on. OS X doesn't update its OpenCL drivers, so they</span>
+        <span class="hl slc">// we&apos;re on. OS X doesn&apos;t update its OpenCL drivers, so they</span>
         <span class="hl slc">// tend to be broken. CUDA would also be a fine choice on</span>
         <span class="hl slc">// machines with NVidia GPUs.</span>
-        <span class="hl kwa">if</span> <span class="hl opt">(</span>target<span class="hl opt">.</span>os <span class="hl opt">==</span> Target<span class="hl opt">::</span>OSX<span class="hl opt">) {</span>
-            target<span class="hl opt">.</span><span class="hl kwd">set_feature</span><span class="hl opt">(</span>Target<span class="hl opt">::</span>Metal<span class="hl opt">);</span>
+        <span class="hl kwa">if</span> <span class="hl opt">(</span>target<span class="hl opt">.</span>os <span class="hl opt">==</span> <span class="hl kwc">Target</span><span class="hl opt">::</span>OSX<span class="hl opt">) {</span>
+            target<span class="hl opt">.</span><span class="hl kwd">set_feature</span><span class="hl opt">(</span><span class="hl kwc">Target</span><span class="hl opt">::</span>Metal<span class="hl opt">);</span>
         <span class="hl opt">}</span> <span class="hl kwa">else</span> <span class="hl opt">{</span>
-            target<span class="hl opt">.</span><span class="hl kwd">set_feature</span><span class="hl opt">(</span>Target<span class="hl opt">::</span>OpenCL<span class="hl opt">);</span>
+            target<span class="hl opt">.</span><span class="hl kwd">set_feature</span><span class="hl opt">(</span><span class="hl kwc">Target</span><span class="hl opt">::</span>OpenCL<span class="hl opt">);</span>
         <span class="hl opt">}</span>
 
         <span class="hl slc">// Uncomment the next line and comment out the lines above to</span>
@@ -527,7 +527,7 @@ Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="
         <span class="hl slc">// calls done by the pipeline, you can also enable the Debug</span>
         <span class="hl slc">// flag. This is helpful for figuring out which stages are</span>
         <span class="hl slc">// slow, or when CPU -&gt; GPU copies happen. It hurts</span>
-        <span class="hl slc">// performance though, so we'll leave it commented out.</span>
+        <span class="hl slc">// performance though, so we&apos;ll leave it commented out.</span>
         <span class="hl slc">// target.set_feature(Target::Debug);</span>
 
         curved<span class="hl opt">.</span><span class="hl kwd">compile_jit</span><span class="hl opt">(</span>target<span class="hl opt">);</span>
@@ -612,7 +612,7 @@ Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="
         p2<span class="hl opt">.</span><span class="hl kwd">test_correctness</span><span class="hl opt">(</span>reference_output<span class="hl opt">);</span>
     <span class="hl opt">}</span> <span class="hl kwa">else</span> <span class="hl opt">{</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Not testing performance on GPU, &quot;</span>
-               <span class="hl str">&quot;because I can't find the opencl library</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+               <span class="hl str">&quot;because I can&apos;t find the opencl library</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl opt">}</span>
 
     <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>

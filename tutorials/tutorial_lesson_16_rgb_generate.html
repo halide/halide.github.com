@@ -364,7 +364,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
 
 <span class="hl slc">// We will define a generator that brightens an RGB image.</span>
-<span class="hl kwc">class</span> Brighten <span class="hl opt">:</span> <span class="hl kwc">public</span> Halide<span class="hl opt">::</span>Generator<span class="hl opt">&lt;</span>Brighten<span class="hl opt">&gt; {</span>
+<span class="hl kwc">class</span> Brighten <span class="hl opt">:</span> <span class="hl kwc">public Halide</span><span class="hl opt">::</span>Generator<span class="hl opt">&lt;</span>Brighten<span class="hl opt">&gt; {</span>
 <span class="hl kwc">public</span><span class="hl opt">:</span>
     <span class="hl slc">// We declare a three-dimensional input image. The first two</span>
     <span class="hl slc">// dimensions will be x, and y, and the third dimension will be</span>
@@ -377,12 +377,12 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl kwb">enum</span> <span class="hl kwc">class</span> Layout <span class="hl opt">{</span> Planar<span class="hl opt">,</span> Interleaved<span class="hl opt">,</span> Either<span class="hl opt">,</span> Specialized <span class="hl opt">};</span>
     GeneratorParam<span class="hl opt">&lt;</span>Layout<span class="hl opt">&gt;</span> layout<span class="hl opt">{</span><span class="hl str">&quot;layout&quot;</span><span class="hl opt">,</span>
             <span class="hl slc">// default value</span>
-            Layout<span class="hl opt">::</span>Planar<span class="hl opt">,</span>
+            <span class="hl kwc">Layout</span><span class="hl opt">::</span>Planar<span class="hl opt">,</span>
             <span class="hl slc">// map from names to values</span>
-                <span class="hl opt">{{</span> <span class="hl str">&quot;planar&quot;</span><span class="hl opt">,</span>        Layout<span class="hl opt">::</span>Planar <span class="hl opt">},</span>
-                 <span class="hl opt">{</span> <span class="hl str">&quot;interleaved&quot;</span><span class="hl opt">,</span>   Layout<span class="hl opt">::</span>Interleaved <span class="hl opt">},</span>
-                 <span class="hl opt">{</span> <span class="hl str">&quot;either&quot;</span><span class="hl opt">,</span>        Layout<span class="hl opt">::</span>Either <span class="hl opt">},</span>
-                 <span class="hl opt">{</span> <span class="hl str">&quot;specialized&quot;</span><span class="hl opt">,</span>   Layout<span class="hl opt">::</span>Specialized <span class="hl opt">}}};</span>
+                <span class="hl opt">{{</span> <span class="hl str">&quot;planar&quot;</span><span class="hl opt">,</span>        <span class="hl kwc">Layout</span><span class="hl opt">::</span>Planar <span class="hl opt">},</span>
+                 <span class="hl opt">{</span> <span class="hl str">&quot;interleaved&quot;</span><span class="hl opt">,</span>   <span class="hl kwc">Layout</span><span class="hl opt">::</span>Interleaved <span class="hl opt">},</span>
+                 <span class="hl opt">{</span> <span class="hl str">&quot;either&quot;</span><span class="hl opt">,</span>        <span class="hl kwc">Layout</span><span class="hl opt">::</span>Either <span class="hl opt">},</span>
+                 <span class="hl opt">{</span> <span class="hl str">&quot;specialized&quot;</span><span class="hl opt">,</span>   <span class="hl kwc">Layout</span><span class="hl opt">::</span>Specialized <span class="hl opt">}}};</span>
 
     <span class="hl slc">// We also declare a scalar input to control the amount of</span>
     <span class="hl slc">// brightening.</span>
@@ -402,9 +402,9 @@ tutorial_lesson_21_auto_scheduler_run.html
         brighter<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">);</span>
 
         <span class="hl slc">// We will compile this pipeline to handle memory layouts in</span>
-        <span class="hl slc">// several different ways, depending on the 'layout' generator</span>
+        <span class="hl slc">// several different ways, depending on the &apos;layout&apos; generator</span>
         <span class="hl slc">// param.</span>
-        <span class="hl kwa">if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> Layout<span class="hl opt">::</span>Planar<span class="hl opt">) {</span>
+        <span class="hl kwa">if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> <span class="hl kwc">Layout</span><span class="hl opt">::</span>Planar<span class="hl opt">) {</span>
             <span class="hl slc">// This pipeline as written will only work with images in</span>
             <span class="hl slc">// which each scanline is densely-packed single color</span>
             <span class="hl slc">// channel. In terms of the strides described in lesson</span>
@@ -445,8 +445,8 @@ tutorial_lesson_21_auto_scheduler_run.html
             <span class="hl slc">// GGGGGGGG</span>
             <span class="hl slc">// BBBBBBBB</span>
 
-        <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> Layout<span class="hl opt">::</span>Interleaved<span class="hl opt">) {</span>
-            <span class="hl slc">// Another common format is 'interleaved', in which the</span>
+        <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> <span class="hl kwc">Layout</span><span class="hl opt">::</span>Interleaved<span class="hl opt">) {</span>
+            <span class="hl slc">// Another common format is &apos;interleaved&apos;, in which the</span>
             <span class="hl slc">// red, green, and blue values for each pixel occur next</span>
             <span class="hl slc">// to each other in memory:</span>
 
@@ -469,9 +469,9 @@ tutorial_lesson_21_auto_scheduler_run.html
                 <span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">);</span>
 
             <span class="hl slc">// For interleaved layout, you may want to use a different</span>
-            <span class="hl slc">// schedule. We'll tell Halide to additionally assume and</span>
+            <span class="hl slc">// schedule. We&apos;ll tell Halide to additionally assume and</span>
             <span class="hl slc">// assert that there are three color channels, then</span>
-            <span class="hl slc">// exploit this fact to make the loop over 'c' innermost</span>
+            <span class="hl slc">// exploit this fact to make the loop over &apos;c&apos; innermost</span>
             <span class="hl slc">// and unrolled.</span>
 
             input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">set_bounds</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span> <span class="hl slc">// Dimension 2 (c) starts at 0 and has extent 3.</span>
@@ -486,7 +486,7 @@ tutorial_lesson_21_auto_scheduler_run.html
             <span class="hl slc">// bounds of the channels dimension would both be four</span>
             <span class="hl slc">// instead of three.</span>
 
-        <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> Layout<span class="hl opt">::</span>Either<span class="hl opt">) {</span>
+        <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> <span class="hl kwc">Layout</span><span class="hl opt">::</span>Either<span class="hl opt">) {</span>
             <span class="hl slc">// We can also remove all constraints and compile a</span>
             <span class="hl slc">// pipeline that will work with any memory layout. It will</span>
             <span class="hl slc">// probably be slow, because all vector loads become</span>
@@ -497,7 +497,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
             brighter<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl kwd">Expr</span><span class="hl opt">());</span>
 
-        <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> Layout<span class="hl opt">::</span>Specialized<span class="hl opt">) {</span>
+        <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>layout <span class="hl opt">==</span> <span class="hl kwc">Layout</span><span class="hl opt">::</span>Specialized<span class="hl opt">) {</span>
             <span class="hl slc">// We can accept any memory layout with good performance</span>
             <span class="hl slc">// by telling Halide to inspect the memory layout at</span>
             <span class="hl slc">// runtime, and branch to different code depending on the</span>
@@ -511,7 +511,7 @@ tutorial_lesson_21_auto_scheduler_run.html
             brighter<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">set_stride</span><span class="hl opt">(</span><span class="hl kwd">Expr</span><span class="hl opt">());</span>
 
             <span class="hl slc">// The we construct boolean Exprs that detect at runtime</span>
-            <span class="hl slc">// whether we're planar or interleaved. The conditions</span>
+            <span class="hl slc">// whether we&apos;re planar or interleaved. The conditions</span>
             <span class="hl slc">// should check for all the facts we want to exploit in</span>
             <span class="hl slc">// each case.</span>
             Expr input_is_planar <span class="hl opt">=</span>
@@ -534,11 +534,11 @@ tutorial_lesson_21_auto_scheduler_run.html
             <span class="hl slc">// Expr is known to be true.</span>
             brighter<span class="hl opt">.</span><span class="hl kwd">specialize</span><span class="hl opt">(</span>input_is_planar <span class="hl opt">&amp;&amp;</span> output_is_planar<span class="hl opt">);</span>
 
-            <span class="hl slc">// We've already vectorized and parallelized brighter, and</span>
+            <span class="hl slc">// We&apos;ve already vectorized and parallelized brighter, and</span>
             <span class="hl slc">// our two specializations will inherit those scheduling</span>
             <span class="hl slc">// directives. We can also add additional scheduling</span>
             <span class="hl slc">// directives that apply to a single specialization</span>
-            <span class="hl slc">// only. We'll tell Halide to make a specialized version</span>
+            <span class="hl slc">// only. We&apos;ll tell Halide to make a specialized version</span>
             <span class="hl slc">// of the code for interleaved layouts, and to reorder and</span>
             <span class="hl slc">// unroll that specialized code.</span>
             brighter<span class="hl opt">.</span><span class="hl kwd">specialize</span><span class="hl opt">(</span>input_is_interleaved <span class="hl opt">&amp;&amp;</span> output_is_interleaved<span class="hl opt">)</span>

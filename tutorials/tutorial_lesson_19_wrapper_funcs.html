@@ -356,13 +356,13 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// The only Halide header file you need is Halide.h. It includes all of Halide.</span>
 <span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
 
-<span class="hl slc">// We'll also include stdio for printf.</span>
+<span class="hl slc">// We&apos;ll also include stdio for printf.</span>
 <span class="hl ppc">#include &lt;stdio.h&gt;</span>
 
 <span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
 
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
-    <span class="hl slc">// First we'll declare some Vars to use below.</span>
+    <span class="hl slc">// First we&apos;ll declare some Vars to use below.</span>
     Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">),</span> <span class="hl kwd">xo</span><span class="hl opt">(</span><span class="hl str">&quot;xo&quot;</span><span class="hl opt">),</span> <span class="hl kwd">yo</span><span class="hl opt">(</span><span class="hl str">&quot;yo&quot;</span><span class="hl opt">),</span> <span class="hl kwd">xi</span><span class="hl opt">(</span><span class="hl str">&quot;xi&quot;</span><span class="hl opt">),</span> <span class="hl kwd">yi</span><span class="hl opt">(</span><span class="hl str">&quot;yi&quot;</span><span class="hl opt">);</span>
 
     <span class="hl slc">// This lesson will be about &quot;wrapping&quot; a Func or an ImageParam using the</span>
@@ -408,8 +408,8 @@ tutorial_lesson_21_auto_scheduler_run.html
 
          <span><video autoplay loop><source src= figures/lesson_19_wrapper_local.mp4  />Your browser does not support the video tag :(</video></span>
 
-        <span class="hl slc">// The schedule directive f.in(g) replaces all calls to 'f'</span>
-        <span class="hl slc">// inside 'g' with a wrapper Func and then returns that</span>
+        <span class="hl slc">// The schedule directive f.in(g) replaces all calls to &apos;f&apos;</span>
+        <span class="hl slc">// inside &apos;g&apos; with a wrapper Func and then returns that</span>
         <span class="hl slc">// wrapper. Essentially, it rewrites the original pipeline</span>
         <span class="hl slc">// above into the following:</span>
         <span class="hl opt">{</span>
@@ -428,9 +428,9 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl opt">}</span>
 
     <span class="hl opt">{</span>
-        <span class="hl slc">// In the schedule above, only the calls to 'f' made by 'g'</span>
-        <span class="hl slc">// are replaced. Other calls made to f would still call 'f'</span>
-        <span class="hl slc">// directly. If we wish to globally replace all calls to 'f'</span>
+        <span class="hl slc">// In the schedule above, only the calls to &apos;f&apos; made by &apos;g&apos;</span>
+        <span class="hl slc">// are replaced. Other calls made to f would still call &apos;f&apos;</span>
+        <span class="hl slc">// directly. If we wish to globally replace all calls to &apos;f&apos;</span>
         <span class="hl slc">// with a single wrapper, we simply say f.in().</span>
 
         <span class="hl slc">// Consider a three stage pipeline, with two consumers of f:</span>
@@ -442,7 +442,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
         h<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
 
-        <span class="hl slc">// We will replace all calls to 'f' inside both 'g' and 'h'</span>
+        <span class="hl slc">// We will replace all calls to &apos;f&apos; inside both &apos;g&apos; and &apos;h&apos;</span>
         <span class="hl slc">// with calls to a single wrapper:</span>
         f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">().</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
 
@@ -470,7 +470,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
     <span class="hl opt">{</span>
         <span class="hl slc">// We could also give g and h their own unique wrappers of</span>
-        <span class="hl slc">// f. This time we'll schedule them each inside the loop nests</span>
+        <span class="hl slc">// f. This time we&apos;ll schedule them each inside the loop nests</span>
         <span class="hl slc">// of the consumer, which is not something we could do with a</span>
         <span class="hl slc">// single global wrapper.</span>
 
@@ -514,14 +514,14 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// examine is creating distinct realizations of a Func for</span>
         <span class="hl slc">// several consumers and scheduling each differently.</span>
 
-        <span class="hl slc">// We'll start with nearly the same pipeline.</span>
+        <span class="hl slc">// We&apos;ll start with nearly the same pipeline.</span>
         Func <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f_sched&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g_sched&quot;</span><span class="hl opt">),</span> <span class="hl kwd">h</span><span class="hl opt">(</span><span class="hl str">&quot;h_sched&quot;</span><span class="hl opt">);</span>
         <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
         <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
         <span class="hl slc">// h will use a far-away region of f</span>
         <span class="hl kwd">h</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">3</span> <span class="hl opt">+</span> <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) -</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">93</span><span class="hl opt">,</span> y <span class="hl opt">-</span> <span class="hl num">87</span><span class="hl opt">);</span>
 
-        <span class="hl slc">// This time we'll inline f.</span>
+        <span class="hl slc">// This time we&apos;ll inline f.</span>
         <span class="hl slc">// f.compute_root();</span>
         g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
         h<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
@@ -533,7 +533,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// scheduled, but f is not, which means that f is inlined into</span>
         <span class="hl slc">// its two wrappers. They will each independently compute the</span>
         <span class="hl slc">// region of f required by their consumer. If we had scheduled</span>
-        <span class="hl slc">// f compute_root, we'd be computing the bounding box of the</span>
+        <span class="hl slc">// f compute_root, we&apos;d be computing the bounding box of the</span>
         <span class="hl slc">// region required by g and the region required by h, which</span>
         <span class="hl slc">// would mostly be unused data.</span>
 
@@ -545,7 +545,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>h<span class="hl opt">).</span><span class="hl kwd">split</span><span class="hl opt">(</span>x<span class="hl opt">,</span> xo<span class="hl opt">,</span> xi<span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">reorder</span><span class="hl opt">(</span>xo<span class="hl opt">,</span> xi<span class="hl opt">);</span>
 
         <span class="hl slc">// Note that calling f.in(g) a second time returns the wrapper</span>
-        <span class="hl slc">// already created by the first call, it doesn't make a new one.</span>
+        <span class="hl slc">// already created by the first call, it doesn&apos;t make a new one.</span>
 
         h<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
         <span class="hl slc">// See below for a</span>
@@ -563,7 +563,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// smaller intermediate buffer, perhaps on the stack or in</span>
         <span class="hl slc">// shared GPU memory.</span>
 
-        <span class="hl slc">// Consider a pipeline that transposes some compute_root'd Func:</span>
+        <span class="hl slc">// Consider a pipeline that transposes some compute_root&apos;d Func:</span>
 
         Func <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f_transpose&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g_transpose&quot;</span><span class="hl opt">);</span>
         <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(((</span>x <span class="hl opt">+</span> y<span class="hl opt">) *</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>y<span class="hl opt">)) /</span> <span class="hl num">10</span><span class="hl opt">);</span>
@@ -611,7 +611,7 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl opt">{</span>
         <span class="hl slc">// ImageParam::in behaves the same way as Func::in, and you</span>
         <span class="hl slc">// can use it to stage loads in similar ways. Instead of</span>
-        <span class="hl slc">// transposing again, we'll use ImageParam::in to stage tiles</span>
+        <span class="hl slc">// transposing again, we&apos;ll use ImageParam::in to stage tiles</span>
         <span class="hl slc">// of an input image into GPU shared memory, effectively using</span>
         <span class="hl slc">// shared/local memory as an explicitly-managed cache.</span>
 
@@ -637,10 +637,10 @@ tutorial_lesson_21_auto_scheduler_run.html
 
         <span class="hl slc">// Select an appropriate GPU API, as we did in lesson 12</span>
         Target target <span class="hl opt">=</span> <span class="hl kwd">get_host_target</span><span class="hl opt">();</span>
-        <span class="hl kwa">if</span> <span class="hl opt">(</span>target<span class="hl opt">.</span>os <span class="hl opt">==</span> Target<span class="hl opt">::</span>OSX<span class="hl opt">) {</span>
-            target<span class="hl opt">.</span><span class="hl kwd">set_feature</span><span class="hl opt">(</span>Target<span class="hl opt">::</span>Metal<span class="hl opt">);</span>
+        <span class="hl kwa">if</span> <span class="hl opt">(</span>target<span class="hl opt">.</span>os <span class="hl opt">==</span> <span class="hl kwc">Target</span><span class="hl opt">::</span>OSX<span class="hl opt">) {</span>
+            target<span class="hl opt">.</span><span class="hl kwd">set_feature</span><span class="hl opt">(</span><span class="hl kwc">Target</span><span class="hl opt">::</span>Metal<span class="hl opt">);</span>
         <span class="hl opt">}</span> <span class="hl kwa">else</span> <span class="hl opt">{</span>
-            target<span class="hl opt">.</span><span class="hl kwd">set_feature</span><span class="hl opt">(</span>Target<span class="hl opt">::</span>OpenCL<span class="hl opt">);</span>
+            target<span class="hl opt">.</span><span class="hl kwd">set_feature</span><span class="hl opt">(</span><span class="hl kwc">Target</span><span class="hl opt">::</span>OpenCL<span class="hl opt">);</span>
         <span class="hl opt">}</span>
 
         <span class="hl slc">// Create an interesting input image to use.</span>
@@ -655,6 +655,10 @@ tutorial_lesson_21_auto_scheduler_run.html
         img<span class="hl opt">.</span><span class="hl kwd">set</span><span class="hl opt">(</span>input<span class="hl opt">);</span>
         blur<span class="hl opt">.</span><span class="hl kwd">compile_jit</span><span class="hl opt">(</span>target<span class="hl opt">);</span>
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> out <span class="hl opt">=</span> blur<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">256</span><span class="hl opt">,</span> <span class="hl num">256</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_311");'><b id=_311-show>// Click to show output ...</b></a><div id=_311 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Error: OpenCL API not found: clGetPlatformIDs
+
+</b></div>
 
         <span class="hl slc">// Check the output is what we expected</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> out<span class="hl opt">.</span><span class="hl kwd">top</span><span class="hl opt">();</span> y <span class="hl opt">&lt;=</span> out<span class="hl opt">.</span><span class="hl kwd">bottom</span><span class="hl opt">();</span> y<span class="hl opt">++) {</span>
@@ -736,7 +740,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">//   for x:</span>
         <span class="hl slc">//     g(x, y) = f_in_g((x + y) % 8, (x - y) % 8);</span>
 
-        <span class="hl slc">// We'll additionally vectorize the initialization of, and</span>
+        <span class="hl slc">// We&apos;ll additionally vectorize the initialization of, and</span>
         <span class="hl slc">// then transfer of pixel values from f into its wrapper:</span>
         f<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
         f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>g<span class="hl opt">).</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>

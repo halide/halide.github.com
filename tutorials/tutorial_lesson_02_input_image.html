@@ -358,15 +358,15 @@ tutorial_lesson_21_auto_scheduler_run.html
 
 <span class="hl slc">// Include some support code for loading pngs.</span>
 <span class="hl ppc">#include</span> <span class="hl pps">&quot;halide_image_io.h&quot;</span><span class="hl ppc"></span>
-<span class="hl kwa">using namespace</span> Halide<span class="hl opt">::</span>Tools<span class="hl opt">;</span>
+<span class="hl kwa">using namespace</span> <span class="hl kwc">Halide</span><span class="hl opt">::</span>Tools<span class="hl opt">;</span>
 
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
 
     <span class="hl slc">// This program defines a single-stage imaging pipeline that</span>
     <span class="hl slc">// brightens an image.</span>
 
-    <span class="hl slc">// First we'll load the input image we wish to brighten.</span>
-    Halide<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> <span class="hl kwd">load_image</span><span class="hl opt">(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
+    <span class="hl slc">// First we&apos;ll load the input image we wish to brighten.</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> <span class="hl kwd">load_image</span><span class="hl opt">(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
 
     <span class="hl slc">// See below for a smaller version.</span>
 
@@ -374,34 +374,34 @@ tutorial_lesson_21_auto_scheduler_run.html
 
     <span class="hl slc">// Next we define our Func object that represents our one pipeline</span>
     <span class="hl slc">// stage.</span>
-    Halide<span class="hl opt">::</span>Func brighter<span class="hl opt">;</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span>Func brighter<span class="hl opt">;</span>
 
     <span class="hl slc">// Our Func will have three arguments, representing the position</span>
     <span class="hl slc">// in the image and the color channel. Halide treats color</span>
     <span class="hl slc">// channels as an extra dimension of the image.</span>
-    Halide<span class="hl opt">::</span>Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">;</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span>Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">;</span>
 
-    <span class="hl slc">// Normally we'd probably write the whole function definition on</span>
-    <span class="hl slc">// one line. Here we'll break it apart so we can explain what</span>
-    <span class="hl slc">// we're doing at every step.</span>
+    <span class="hl slc">// Normally we&apos;d probably write the whole function definition on</span>
+    <span class="hl slc">// one line. Here we&apos;ll break it apart so we can explain what</span>
+    <span class="hl slc">// we&apos;re doing at every step.</span>
 
     <span class="hl slc">// For each pixel of the input image.</span>
-    Halide<span class="hl opt">::</span>Expr value <span class="hl opt">=</span> <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">);</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span>Expr value <span class="hl opt">=</span> <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">);</span>
 
     <span class="hl slc">// Cast it to a floating point value.</span>
-    value <span class="hl opt">=</span> Halide<span class="hl opt">::</span>cast<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;(</span>value<span class="hl opt">);</span>
+    value <span class="hl opt">=</span> <span class="hl kwc">Halide</span><span class="hl opt">::</span>cast<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;(</span>value<span class="hl opt">);</span>
 
     <span class="hl slc">// Multiply it by 1.5 to brighten it. Halide represents real</span>
-    <span class="hl slc">// numbers as floats, not doubles, so we stick an 'f' on the end</span>
+    <span class="hl slc">// numbers as floats, not doubles, so we stick an &apos;f&apos; on the end</span>
     <span class="hl slc">// of our constant.</span>
     value <span class="hl opt">=</span> value <span class="hl opt">*</span> <span class="hl num">1.5</span>f<span class="hl opt">;</span>
 
-    <span class="hl slc">// Clamp it to be less than 255, so we don't get overflow when we</span>
+    <span class="hl slc">// Clamp it to be less than 255, so we don&apos;t get overflow when we</span>
     <span class="hl slc">// cast it back to an 8-bit unsigned int.</span>
-    value <span class="hl opt">=</span> Halide<span class="hl opt">::</span><span class="hl kwd">min</span><span class="hl opt">(</span>value<span class="hl opt">,</span> <span class="hl num">255.0</span>f<span class="hl opt">);</span>
+    value <span class="hl opt">=</span> <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwd">min</span><span class="hl opt">(</span>value<span class="hl opt">,</span> <span class="hl num">255.0</span>f<span class="hl opt">);</span>
 
     <span class="hl slc">// Cast it back to an 8-bit unsigned integer.</span>
-    value <span class="hl opt">=</span> Halide<span class="hl opt">::</span>cast<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span>value<span class="hl opt">);</span>
+    value <span class="hl opt">=</span> <span class="hl kwc">Halide</span><span class="hl opt">::</span>cast<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span>value<span class="hl opt">);</span>
 
     <span class="hl slc">// Define the function.</span>
     <span class="hl kwd">brighter</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) =</span> value<span class="hl opt">;</span>
@@ -416,20 +416,20 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl slc">// - I also used an integer constant as the second argument in the</span>
     <span class="hl slc">//   call to min, because it gets cast to float to be compatible</span>
     <span class="hl slc">//   with the first argument.</span>
-    <span class="hl slc">// - I left the Halide:: off the call to min. It's unnecessary due</span>
+    <span class="hl slc">// - I left the Halide:: off the call to min. It&apos;s unnecessary due</span>
     <span class="hl slc">//   to Koenig lookup.</span>
 
-    <span class="hl slc">// Remember, all we've done so far is build a representation of a</span>
-    <span class="hl slc">// Halide program in memory. We haven't actually processed any</span>
-    <span class="hl slc">// pixels yet. We haven't even compiled that Halide program yet.</span>
+    <span class="hl slc">// Remember, all we&apos;ve done so far is build a representation of a</span>
+    <span class="hl slc">// Halide program in memory. We haven&apos;t actually processed any</span>
+    <span class="hl slc">// pixels yet. We haven&apos;t even compiled that Halide program yet.</span>
 
-    <span class="hl slc">// So now we'll realize the Func. The size of the output image</span>
+    <span class="hl slc">// So now we&apos;ll realize the Func. The size of the output image</span>
     <span class="hl slc">// should match the size of the input image. If we just wanted to</span>
     <span class="hl slc">// brighten a portion of the input image we could request a</span>
     <span class="hl slc">// smaller size. If we request a larger size Halide will throw an</span>
-    <span class="hl slc">// error at runtime telling us we're trying to read out of bounds</span>
+    <span class="hl slc">// error at runtime telling us we&apos;re trying to read out of bounds</span>
     <span class="hl slc">// on the input image.</span>
-    Halide<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span>
         brighter<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">());</span>
 
     <span class="hl slc">// Save the output for inspection. It should look like a bright parrot.</span>

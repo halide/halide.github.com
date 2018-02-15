@@ -358,8 +358,8 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// ./lesson_10_run</span>
 
 <span class="hl slc">// The benefits of this approach are that the final program:</span>
-<span class="hl slc">// - Doesn't do any jit compilation at runtime, so it's fast.</span>
-<span class="hl slc">// - Doesn't depend on libHalide at all, so it's a small, easy-to-deploy binary.</span>
+<span class="hl slc">// - Doesn&apos;t do any jit compilation at runtime, so it&apos;s fast.</span>
+<span class="hl slc">// - Doesn&apos;t depend on libHalide at all, so it&apos;s a small, easy-to-deploy binary.</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
 <span class="hl slc">// running:</span>
@@ -373,7 +373,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
 
-    <span class="hl slc">// We'll define a simple one-stage pipeline:</span>
+    <span class="hl slc">// We&apos;ll define a simple one-stage pipeline:</span>
     Func brighter<span class="hl opt">;</span>
     Var x<span class="hl opt">,</span> y<span class="hl opt">;</span>
 
@@ -384,7 +384,7 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl slc">// constructor argument gives the type of a pixel, and the second</span>
     <span class="hl slc">// specifies the number of dimensions (not the number of</span>
     <span class="hl slc">// channels!). For a grayscale image this is two; for a color</span>
-    <span class="hl slc">// image it's three. Currently, four dimensions is the maximum for</span>
+    <span class="hl slc">// image it&apos;s three. Currently, four dimensions is the maximum for</span>
     <span class="hl slc">// inputs and outputs.</span>
     ImageParam <span class="hl kwd">input</span><span class="hl opt">(</span>type_of<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(),</span> <span class="hl num">2</span><span class="hl opt">);</span>
 
@@ -401,7 +401,7 @@ tutorial_lesson_21_auto_scheduler_run.html
     brighter<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">).</span><span class="hl kwd">parallel</span><span class="hl opt">(</span>y<span class="hl opt">);</span>
 
     <span class="hl slc">// This time, instead of calling brighter.realize(...), which</span>
-    <span class="hl slc">// would compile and run the pipeline immediately, we'll call a</span>
+    <span class="hl slc">// would compile and run the pipeline immediately, we&apos;ll call a</span>
     <span class="hl slc">// method that compiles the pipeline to a static library and header.</span>
     <span class="hl slc">//</span>
     <span class="hl slc">// For AOT-compiled code, we need to explicitly declare the</span>
