@@ -355,13 +355,13 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// The only Halide header file you need is Halide.h. It includes all of Halide.</span>
 <span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
 
-<span class="hl slc">// We&apos;ll also include stdio for printf.</span>
+<span class="hl slc">// We'll also include stdio for printf.</span>
 <span class="hl ppc">#include &lt;stdio.h&gt;</span>
 
 <span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
 
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
-    <span class="hl slc">// First we&apos;ll declare some Vars to use below.</span>
+    <span class="hl slc">// First we'll declare some Vars to use below.</span>
     Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">),</span> <span class="hl kwd">xo</span><span class="hl opt">(</span><span class="hl str">&quot;xo&quot;</span><span class="hl opt">),</span> <span class="hl kwd">yo</span><span class="hl opt">(</span><span class="hl str">&quot;yo&quot;</span><span class="hl opt">),</span> <span class="hl kwd">xi</span><span class="hl opt">(</span><span class="hl str">&quot;xi&quot;</span><span class="hl opt">),</span> <span class="hl kwd">yi</span><span class="hl opt">(</span><span class="hl str">&quot;yi&quot;</span><span class="hl opt">);</span>
 
     <span class="hl slc">// This lesson will be about cloning a Func using the Func::clone_in</span>
@@ -388,8 +388,8 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">//   for x:</span>
         <span class="hl slc">//     h(x, y) = f(x, y) + g(x, y) + 10</span>
 
-        <span class="hl slc">// Using Func::clone_in, we can replace calls to &apos;f&apos; inside &apos;g&apos; with</span>
-        <span class="hl slc">// a clone of &apos;f&apos; using the schedule alone:</span>
+        <span class="hl slc">// Using Func::clone_in, we can replace calls to 'f' inside 'g' with</span>
+        <span class="hl slc">// a clone of 'f' using the schedule alone:</span>
         Func f_clone_in_g <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">clone_in</span><span class="hl opt">(</span>g<span class="hl opt">);</span>
         f_clone_in_g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
 
@@ -412,8 +412,8 @@ tutorial_lesson_21_auto_scheduler_run.html
 
         h<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">);</span>
 
-        <span class="hl slc">// The schedule directive f.clone_in(g) replaces all calls to &apos;f&apos;</span>
-        <span class="hl slc">// inside &apos;g&apos; with a clone of &apos;f&apos; and then returns that clone.</span>
+        <span class="hl slc">// The schedule directive f.clone_in(g) replaces all calls to 'f'</span>
+        <span class="hl slc">// inside 'g' with a clone of 'f' and then returns that clone.</span>
         <span class="hl slc">// Essentially, it rewrites the original pipeline above into the</span>
         <span class="hl slc">// following:</span>
         <span class="hl opt">{</span>
@@ -431,10 +431,10 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl opt">}</span>
 
     <span class="hl opt">{</span>
-        <span class="hl slc">// In the schedule above, only the calls to &apos;f&apos; made by &apos;g&apos; are</span>
-        <span class="hl slc">// replaced. Other calls made to &apos;f&apos; would still call &apos;f&apos; directly</span>
-        <span class="hl slc">// (i.e. &apos;h&apos; still calls &apos;f&apos; and not the clone). If we wish to</span>
-        <span class="hl slc">// replace all calls to &apos;f&apos; made by both &apos;g&apos; and &apos;h&apos; with a single</span>
+        <span class="hl slc">// In the schedule above, only the calls to 'f' made by 'g' are</span>
+        <span class="hl slc">// replaced. Other calls made to 'f' would still call 'f' directly</span>
+        <span class="hl slc">// (i.e. 'h' still calls 'f' and not the clone). If we wish to</span>
+        <span class="hl slc">// replace all calls to 'f' made by both 'g' and 'h' with a single</span>
         <span class="hl slc">// clone, we simply say f.clone_in({g, h}).</span>
 
         <span class="hl slc">// Consider a three stage pipeline, with two consumers of f:</span>
@@ -449,7 +449,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         h<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
         out<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
 
-        <span class="hl slc">// We will replace all calls to &apos;f&apos; inside both &apos;g&apos; and &apos;h&apos;</span>
+        <span class="hl slc">// We will replace all calls to 'f' inside both 'g' and 'h'</span>
         <span class="hl slc">// with calls to a single clone:</span>
         f<span class="hl opt">.</span><span class="hl kwd">clone_in</span><span class="hl opt">({</span>g<span class="hl opt">,</span> h<span class="hl opt">}).</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
 
@@ -482,9 +482,9 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">);</span>
         <span class="hl kwd">h</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl num">99</span><span class="hl opt">) +</span> <span class="hl num">10</span><span class="hl opt">;</span>
 
-        <span class="hl slc">// Let&apos;s schedule &apos;f&apos; to be computed at root.</span>
+        <span class="hl slc">// Let's schedule 'f' to be computed at root.</span>
         f<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
-        <span class="hl slc">// Since both &apos;g&apos; and &apos;h&apos; consume &apos;f&apos;, the region required of &apos;f&apos;</span>
+        <span class="hl slc">// Since both 'g' and 'h' consume 'f', the region required of 'f'</span>
         <span class="hl slc">// in the x-dimension is [0, 99]. The equivalent loop nests are:</span>
         <span class="hl slc">// for x = 0 to 99</span>
         <span class="hl slc">//   f(x) = x</span>
@@ -493,9 +493,9 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// for x:</span>
         <span class="hl slc">//   h(x) = f(99) + 10</span>
 
-        <span class="hl slc">// If &apos;f&apos; is very expensive to compute, we might be better off with</span>
-        <span class="hl slc">// having distinct copies of &apos;f&apos; for each consumer, &apos;g&apos; and &apos;h&apos;, to</span>
-        <span class="hl slc">// avoid unnecessary computations. To create separate copies of &apos;f&apos;</span>
+        <span class="hl slc">// If 'f' is very expensive to compute, we might be better off with</span>
+        <span class="hl slc">// having distinct copies of 'f' for each consumer, 'g' and 'h', to</span>
+        <span class="hl slc">// avoid unnecessary computations. To create separate copies of 'f'</span>
         <span class="hl slc">// for each consumer, we can do the following:</span>
         f<span class="hl opt">.</span><span class="hl kwd">clone_in</span><span class="hl opt">(</span>g<span class="hl opt">).</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
 

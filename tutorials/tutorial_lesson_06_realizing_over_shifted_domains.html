@@ -361,7 +361,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
 
     <span class="hl slc">// The last lesson was quite involved, and scheduling complex</span>
-    <span class="hl slc">// multi-stage pipelines is ahead of us. As an interlude, let&apos;s</span>
+    <span class="hl slc">// multi-stage pipelines is ahead of us. As an interlude, let's</span>
     <span class="hl slc">// consider something easy: evaluating funcs over rectangular</span>
     <span class="hl slc">// domains that do not start at the origin.</span>
 
@@ -373,7 +373,7 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl slc">// And turn on tracing so we can see how it is being evaluated.</span>
     gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
-    <span class="hl slc">// Previously we&apos;ve realized gradient like so:</span>
+    <span class="hl slc">// Previously we've realized gradient like so:</span>
     <span class="hl slc">//</span>
     <span class="hl slc">// gradient.realize(8, 8);</span>
     <span class="hl slc">//</span>
@@ -385,7 +385,7 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl slc">// from (0, 0) to (7, 7) and puts the result into the image.</span>
     <span class="hl slc">// 4) Returns the new image as the result of the realize call.</span>
 
-    <span class="hl slc">// What if we&apos;re managing memory carefully and don&apos;t want Halide</span>
+    <span class="hl slc">// What if we're managing memory carefully and don't want Halide</span>
     <span class="hl slc">// to allocate a new image for us? We can call realize another</span>
     <span class="hl slc">// way. We can pass it an image we would like it to fill in. The</span>
     <span class="hl slc">// following evaluates our Func into an existing image:</span>
@@ -462,7 +462,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
 </b></div>
 
-    <span class="hl slc">// Let&apos;s check it did what we expect:</span>
+    <span class="hl slc">// Let's check it did what we expect:</span>
     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
             <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">result</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) !=</span> x <span class="hl opt">+</span> y<span class="hl opt">) {</span>
@@ -472,7 +472,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl opt">}</span>
     <span class="hl opt">}</span>
 
-    <span class="hl slc">// Now let&apos;s evaluate gradient over a 5 x 7 rectangle that starts</span>
+    <span class="hl slc">// Now let's evaluate gradient over a 5 x 7 rectangle that starts</span>
     <span class="hl slc">// somewhere else -- at position (100, 50). So x and y will run</span>
     <span class="hl slc">// from (100, 50) to (104, 56) inclusive.</span>
 
@@ -482,7 +482,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
     <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient from (100, 50) to (104, 56)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
-    <span class="hl slc">// Note that this won&apos;t need to compile any new code, because when</span>
+    <span class="hl slc">// Note that this won't need to compile any new code, because when</span>
     <span class="hl slc">// we realized it the first time, we generated code capable of</span>
     <span class="hl slc">// evaluating gradient over an arbitrary rectangle.</span>
     gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>shifted<span class="hl opt">);</span>
@@ -537,12 +537,12 @@ tutorial_lesson_21_auto_scheduler_run.html
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
     <span class="hl opt">}</span>
-    <span class="hl slc">// The image &apos;shifted&apos; stores the value of our Func over a domain</span>
+    <span class="hl slc">// The image 'shifted' stores the value of our Func over a domain</span>
     <span class="hl slc">// that starts at (100, 50), so asking for shifted(0, 0) would in</span>
     <span class="hl slc">// fact read out-of-bounds and probably crash.</span>
 
     <span class="hl slc">// What if we want to evaluate our Func over some region that</span>
-    <span class="hl slc">// isn&apos;t rectangular? Too bad. Halide only does rectangles :)</span>
+    <span class="hl slc">// isn't rectangular? Too bad. Halide only does rectangles :)</span>
 
     <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
     <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>

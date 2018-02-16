@@ -336,7 +336,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 <pre class="hl">
 <span class="hl slc">// Halide tutorial lesson 14: The Halide type system</span>
 
-<span class="hl slc">// This lesson more precisely describes Halide&apos;s type system.</span>
+<span class="hl slc">// This lesson more precisely describes Halide's type system.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
 <span class="hl slc">// g++ lesson_14*.cpp -g -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_14 -std=c++11</span>
@@ -392,7 +392,7 @@ Expr <span class="hl kwd">average</span><span class="hl opt">(</span>Expr a<span
         <span class="hl kwa">assert</span><span class="hl opt">(</span>type_of<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;() ==</span> <span class="hl kwd">Float</span><span class="hl opt">(</span><span class="hl num">32</span><span class="hl opt">));</span>
 
         <span class="hl slc">// The Type struct is also capable of representing vector types,</span>
-        <span class="hl slc">// but this is reserved for Halide&apos;s internal use. You should</span>
+        <span class="hl slc">// but this is reserved for Halide's internal use. You should</span>
         <span class="hl slc">// vectorize code by using Func::vectorize, not by attempting to</span>
         <span class="hl slc">// construct vector expressions directly. You may encounter vector</span>
         <span class="hl slc">// types if you programmatically manipulate lowered Halide code,</span>
@@ -427,10 +427,10 @@ Expr <span class="hl kwd">average</span><span class="hl opt">(</span>Expr a<span
 
     <span class="hl slc">// Type promotion rules.</span>
     <span class="hl opt">{</span>
-        <span class="hl slc">// When you combine Exprs of different types (e.g. using &apos;+&apos;,</span>
-        <span class="hl slc">// &apos;*&apos;, etc), Halide uses a system of type promotion</span>
-        <span class="hl slc">// rules. These differ to C&apos;s rules. To demonstrate these</span>
-        <span class="hl slc">// we&apos;ll make some Exprs of each type.</span>
+        <span class="hl slc">// When you combine Exprs of different types (e.g. using '+',</span>
+        <span class="hl slc">// '*', etc), Halide uses a system of type promotion</span>
+        <span class="hl slc">// rules. These differ to C's rules. To demonstrate these</span>
+        <span class="hl slc">// we'll make some Exprs of each type.</span>
         Var x<span class="hl opt">;</span>
         Expr u8 <span class="hl opt">=</span> cast<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span>x<span class="hl opt">);</span>
         Expr u16 <span class="hl opt">=</span> cast<span class="hl opt">&lt;</span><span class="hl kwb">uint16_t</span><span class="hl opt">&gt;(</span>x<span class="hl opt">);</span>
@@ -534,8 +534,8 @@ Expr <span class="hl kwd">average</span><span class="hl opt">(</span>Expr a<span
     <span class="hl slc">// Generic code.</span>
     <span class="hl opt">{</span>
         <span class="hl slc">// The main explicit use of Type in Halide is to write Halide</span>
-        <span class="hl slc">// code parameterized by a Type. In C++ you&apos;d do this with</span>
-        <span class="hl slc">// templates. In Halide there&apos;s no need - you can inspect and</span>
+        <span class="hl slc">// code parameterized by a Type. In C++ you'd do this with</span>
+        <span class="hl slc">// templates. In Halide there's no need - you can inspect and</span>
         <span class="hl slc">// modify the types dynamically at C++ runtime instead. The</span>
         <span class="hl slc">// function defined below averages two expressions of any</span>
         <span class="hl slc">// equal numeric type.</span>
@@ -556,7 +556,7 @@ Expr <span class="hl kwd">average</span><span class="hl opt">(</span>Expr a<span
 
     <span class="hl slc">// For floating point types:</span>
     <span class="hl kwa">if</span> <span class="hl opt">(</span>a<span class="hl opt">.</span><span class="hl kwd">type</span><span class="hl opt">().</span><span class="hl kwd">is_float</span><span class="hl opt">()) {</span>
-        <span class="hl slc">// The &apos;2&apos; will be promoted to the floating point type due to</span>
+        <span class="hl slc">// The '2' will be promoted to the floating point type due to</span>
         <span class="hl slc">// rule 3 above.</span>
         <span class="hl kwa">return</span> <span class="hl opt">(</span>a <span class="hl opt">+</span> b<span class="hl opt">)/</span><span class="hl num">2</span><span class="hl opt">;</span>
     <span class="hl opt">}</span>

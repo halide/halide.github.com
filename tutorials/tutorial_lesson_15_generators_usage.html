@@ -337,11 +337,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc"># Halide tutorial lesson 15: Generators part 2</span>
 
 <span class="hl slc"># This shell script demonstrates how to use a binary containing</span>
-<span class="hl slc"># Generators from the command line. Normally you&apos;d call these binaries</span>
+<span class="hl slc"># Generators from the command line. Normally you'd call these binaries</span>
 <span class="hl slc"># from your build system of choice rather than running them manually</span>
 <span class="hl slc"># like we do here.</span>
 
-<span class="hl slc"># This script assumes that you&apos;re in the tutorials directory, and the</span>
+<span class="hl slc"># This script assumes that you're in the tutorials directory, and the</span>
 <span class="hl slc"># generator has been compiled for the current system and is called</span>
 <span class="hl slc"># &quot;lesson_15_generate&quot;.</span>
 
@@ -352,9 +352,9 @@ tutorial_lesson_21_auto_scheduler_run.html
 check_file_exists<span class="hl opt">()</span>
 <span class="hl opt">{</span>
     FILE<span class="hl opt">=</span><span class="hl kwd">$1</span>
-    <span class="hl kwa">if</span> <span class="hl opt">[ !</span> <span class="hl kwb">-f</span> <span class="hl kwd">$FILE</span> <span class="hl opt">];</span> <span class="hl kwa">then</span>
+    <span class="hl kwa">if</span> <span class="hl opt">[ ! -</span>f <span class="hl kwd">$FILE</span> <span class="hl opt">];</span> <span class="hl kwa">then</span>
         <span class="hl kwb">echo</span> <span class="hl kwd">$FILE</span> not found
-        <span class="hl kwb">exit -1</span>
+        <span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
     <span class="hl kwa">fi</span>
 <span class="hl opt">}</span>
 
@@ -365,7 +365,7 @@ check_symbol<span class="hl opt">()</span>
     SYM<span class="hl opt">=</span><span class="hl kwd">$2</span>
     <span class="hl kwa">if</span> <span class="hl opt">!(</span>nm <span class="hl kwd">$FILE</span> | <span class="hl kwc">grep</span> <span class="hl kwd">$SYM</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">);</span> <span class="hl kwa">then</span>
         <span class="hl kwb">echo</span> <span class="hl str">&quot;</span><span class="hl ipl">$SYM</span> <span class="hl str">not found in</span> <span class="hl ipl">$FILE</span><span class="hl str">&quot;</span>
-    <span class="hl kwb">exit -1</span>
+    <span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
     <span class="hl kwa">fi</span>
 <span class="hl opt">}</span>
 
@@ -380,8 +380,8 @@ check_symbol<span class="hl opt">()</span>
 <span class="hl slc"># Basic generator usage #</span>
 <span class="hl slc">#########################</span>
 
-<span class="hl slc"># First let&apos;s compile the first generator for the host system:</span>
-.<span class="hl opt">/</span>lesson_15_generate <span class="hl kwb">-g</span> my_first_generator <span class="hl kwb">-o</span> . target<span class="hl opt">=</span><span class="hl kwc">host</span>
+<span class="hl slc"># First let's compile the first generator for the host system:</span>
+.<span class="hl opt">/</span>lesson_15_generate <span class="hl opt">-</span>g my_first_generator <span class="hl opt">-</span>o . target<span class="hl opt">=</span><span class="hl kwc">host</span>
 
 <span class="hl slc"># That should create a pair of files in the current directory:</span>
 <span class="hl slc"># &quot;my_first_generator.a&quot;, and &quot;my_first_generator.h&quot;, which define a</span>
@@ -396,13 +396,13 @@ check_symbol my_first_generator.a my_first_generator
 <span class="hl slc">#####################</span>
 
 <span class="hl slc"># We can also use a generator to compile object files for some other</span>
-<span class="hl slc"># target. Let&apos;s cross-compile a windows 32-bit object file and header</span>
+<span class="hl slc"># target. Let's cross-compile a windows 32-bit object file and header</span>
 <span class="hl slc"># for the first generator:</span>
 
 .<span class="hl opt">/</span>lesson_15_generate \
-    <span class="hl kwb">-g</span> my_first_generator \
-    <span class="hl kwb">-f</span> my_first_generator_win32 \
-    <span class="hl kwb">-o</span> . \
+    <span class="hl opt">-</span>g my_first_generator \
+    <span class="hl opt">-</span>f my_first_generator_win32 \
+    <span class="hl opt">-</span>o . \
     target<span class="hl opt">=</span>x86-32-windows
 
 <span class="hl slc"># This generates a file called &quot;my_first_generator_win32.lib&quot; in the</span>
@@ -450,22 +450,22 @@ check_file_exists my_first_generator_win32.h
 
 <span class="hl slc"># my_generator_param=value : The value of your generator params.</span>
 
-<span class="hl slc"># Let&apos;s now generate some human-readable pseudocode for the first</span>
+<span class="hl slc"># Let's now generate some human-readable pseudocode for the first</span>
 <span class="hl slc"># generator:</span>
 
-.<span class="hl opt">/</span>lesson_15_generate <span class="hl kwb">-g</span> my_first_generator <span class="hl kwb">-e</span> stmt <span class="hl kwb">-o</span> . target<span class="hl opt">=</span><span class="hl kwc">host</span>
+.<span class="hl opt">/</span>lesson_15_generate <span class="hl opt">-</span>g my_first_generator <span class="hl opt">-</span>e stmt <span class="hl opt">-</span>o . target<span class="hl opt">=</span><span class="hl kwc">host</span>
 
 check_file_exists my_first_generator.stmt
 
 <span class="hl slc"># The second generator has generator params, which can be specified on</span>
-<span class="hl slc"># the command-line after the target. Let&apos;s compile a few different variants:</span>
-.<span class="hl opt">/</span>lesson_15_generate <span class="hl kwb">-g</span> my_second_generator <span class="hl kwb">-f</span> my_second_generator_1 <span class="hl kwb">-o</span> . \
+<span class="hl slc"># the command-line after the target. Let's compile a few different variants:</span>
+.<span class="hl opt">/</span>lesson_15_generate <span class="hl opt">-</span>g my_second_generator <span class="hl opt">-</span>f my_second_generator_1 <span class="hl opt">-</span>o . \
 target<span class="hl opt">=</span><span class="hl kwc">host</span> parallel<span class="hl opt">=</span>false scale<span class="hl opt">=</span><span class="hl num">3.0</span> rotation<span class="hl opt">=</span>ccw output.<span class="hl kwb">type</span><span class="hl opt">=</span>uint16
 
-.<span class="hl opt">/</span>lesson_15_generate <span class="hl kwb">-g</span> my_second_generator <span class="hl kwb">-f</span> my_second_generator_2 <span class="hl kwb">-o</span> . \
+.<span class="hl opt">/</span>lesson_15_generate <span class="hl opt">-</span>g my_second_generator <span class="hl opt">-</span>f my_second_generator_2 <span class="hl opt">-</span>o . \
 target<span class="hl opt">=</span><span class="hl kwc">host</span> scale<span class="hl opt">=</span><span class="hl num">9.0</span> rotation<span class="hl opt">=</span>ccw output.<span class="hl kwb">type</span><span class="hl opt">=</span>float32
 
-.<span class="hl opt">/</span>lesson_15_generate <span class="hl kwb">-g</span> my_second_generator <span class="hl kwb">-f</span> my_second_generator_3 <span class="hl kwb">-o</span> . \
+.<span class="hl opt">/</span>lesson_15_generate <span class="hl opt">-</span>g my_second_generator <span class="hl opt">-</span>f my_second_generator_3 <span class="hl opt">-</span>o . \
 target<span class="hl opt">=</span><span class="hl kwc">host</span> parallel<span class="hl opt">=</span>false output.<span class="hl kwb">type</span><span class="hl opt">=</span>float64
 
 check_file_exists my_second_generator_1.a
@@ -493,12 +493,12 @@ check_symbol      my_second_generator_3.a my_second_generator_3
 <span class="hl kwb">echo</span> <span class="hl str">&quot;The halide runtime:&quot;</span>
 nm my_second_generator_1.a | <span class="hl kwc">grep</span> <span class="hl str">&quot;[SWT] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span>
 
-<span class="hl slc"># Let&apos;s define some functions to check that the runtime exists in a file.</span>
+<span class="hl slc"># Let's define some functions to check that the runtime exists in a file.</span>
 check_runtime<span class="hl opt">()</span>
 <span class="hl opt">{</span>
     <span class="hl kwa">if</span> <span class="hl opt">!(</span>nm <span class="hl kwd">$1</span> | <span class="hl kwc">grep</span> <span class="hl str">&quot;[TSW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">);</span> <span class="hl kwa">then</span>
         <span class="hl kwb">echo</span> <span class="hl str">&quot;Halide runtime not found in</span> <span class="hl ipl">$1</span><span class="hl str">&quot;</span>
-    <span class="hl kwb">exit -1</span>
+    <span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
     <span class="hl kwa">fi</span>
 <span class="hl opt">}</span>
 
@@ -506,50 +506,50 @@ check_no_runtime<span class="hl opt">()</span>
 <span class="hl opt">{</span>
     <span class="hl kwa">if</span> nm <span class="hl kwd">$1</span> | <span class="hl kwc">grep</span> <span class="hl str">&quot;[TSW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">;</span> <span class="hl kwa">then</span>
         <span class="hl kwb">echo</span> <span class="hl str">&quot;Halide runtime found in</span> <span class="hl ipl">$1</span><span class="hl str">&quot;</span>
-    <span class="hl kwb">exit -1</span>
+    <span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
     <span class="hl kwa">fi</span>
 <span class="hl opt">}</span>
 
 <span class="hl slc"># Declarations and documentation for these runtime functions are in</span>
 <span class="hl slc"># HalideRuntime.h</span>
 
-<span class="hl slc"># If you&apos;re compiling and linking multiple Halide pipelines, then the</span>
+<span class="hl slc"># If you're compiling and linking multiple Halide pipelines, then the</span>
 <span class="hl slc"># multiple copies of the runtime should combine into a single copy</span>
-<span class="hl slc"># (via weak linkage). If you&apos;re compiling and linking for multiple</span>
+<span class="hl slc"># (via weak linkage). If you're compiling and linking for multiple</span>
 <span class="hl slc"># different targets (e.g. avx and non-avx), then the runtimes might be</span>
-<span class="hl slc"># different, and you can&apos;t control which copy of the runtime the</span>
+<span class="hl slc"># different, and you can't control which copy of the runtime the</span>
 <span class="hl slc"># linker selects.</span>
 
 <span class="hl slc"># You can control this behavior explicitly by compiling your pipelines</span>
-<span class="hl slc"># with the no_runtime target flag. Let&apos;s generate and link several</span>
+<span class="hl slc"># with the no_runtime target flag. Let's generate and link several</span>
 <span class="hl slc"># different versions of the first pipeline for different x86 variants:</span>
 
-<span class="hl slc"># (Note that we&apos;ll ask the generators to just give us object files (&quot;-e o&quot;), </span>
+<span class="hl slc"># (Note that we'll ask the generators to just give us object files (&quot;-e o&quot;), </span>
 <span class="hl slc"># instead of static libraries, so that we can easily link them all into a </span>
 <span class="hl slc"># single static library.)</span>
 
 .<span class="hl opt">/</span>lesson_15_generate \
-    <span class="hl kwb">-g</span> my_first_generator \
-    <span class="hl kwb">-f</span> my_first_generator_basic \
-    <span class="hl kwb">-e</span> o<span class="hl opt">,</span>h \
-    <span class="hl kwb">-o</span> . \
+    <span class="hl opt">-</span>g my_first_generator \
+    <span class="hl opt">-</span>f my_first_generator_basic \
+    <span class="hl opt">-</span>e o<span class="hl opt">,</span>h \
+    <span class="hl opt">-</span>o . \
     target<span class="hl opt">=</span>host-x86-64-no_runtime
 
 .<span class="hl opt">/</span>lesson_15_generate \
-    <span class="hl kwb">-g</span> my_first_generator \
-    <span class="hl kwb">-f</span> my_first_generator_sse41 \
-    <span class="hl kwb">-e</span> o<span class="hl opt">,</span>h \
-    <span class="hl kwb">-o</span> . \
+    <span class="hl opt">-</span>g my_first_generator \
+    <span class="hl opt">-</span>f my_first_generator_sse41 \
+    <span class="hl opt">-</span>e o<span class="hl opt">,</span>h \
+    <span class="hl opt">-</span>o . \
     target<span class="hl opt">=</span>host-x86-64-sse41-no_runtime
 
 .<span class="hl opt">/</span>lesson_15_generate \
-    <span class="hl kwb">-g</span> my_first_generator \
-    <span class="hl kwb">-f</span> my_first_generator_avx \
-    <span class="hl kwb">-e</span> o<span class="hl opt">,</span>h \
-    <span class="hl kwb">-o</span> . \
+    <span class="hl opt">-</span>g my_first_generator \
+    <span class="hl opt">-</span>f my_first_generator_avx \
+    <span class="hl opt">-</span>e o<span class="hl opt">,</span>h \
+    <span class="hl opt">-</span>o . \
     target<span class="hl opt">=</span>host-x86-64-avx-no_runtime
 
-<span class="hl slc"># These files don&apos;t contain the runtime</span>
+<span class="hl slc"># These files don't contain the runtime</span>
 check_no_runtime my_first_generator_basic.o
 check_symbol     my_first_generator_basic.o my_first_generator_basic
 check_no_runtime my_first_generator_sse41.o
@@ -559,9 +559,9 @@ check_symbol     my_first_generator_avx.o my_first_generator_avx
 
 <span class="hl slc"># We can then use the generator to emit just the runtime:</span>
 .<span class="hl opt">/</span>lesson_15_generate \
-    <span class="hl kwb">-r</span> halide_runtime_x86 \
-    <span class="hl kwb">-e</span> o<span class="hl opt">,</span>h \
-    <span class="hl kwb">-o</span> . \
+    <span class="hl opt">-</span>r halide_runtime_x86 \
+    <span class="hl opt">-</span>e o<span class="hl opt">,</span>h \
+    <span class="hl opt">-</span>o . \
     target<span class="hl opt">=</span>host-x86-64
 check_runtime halide_runtime_x86.o
 

@@ -381,7 +381,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">7</span><span class="hl opt">);</span>
 
         <span class="hl slc">// The bounding box does not have to be minimal. In fact, the</span>
-        <span class="hl slc">// box can be of any size, as long it covers the region we&apos;d</span>
+        <span class="hl slc">// box can be of any size, as long it covers the region we'd</span>
         <span class="hl slc">// like to update. However, the tighter the bounding box, the</span>
         <span class="hl slc">// tighter the generated loop bounds will be. Halide will</span>
         <span class="hl slc">// tighten the loop bounds automatically when possible, but in</span>
@@ -432,17 +432,17 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl opt">}</span>
 
     <span class="hl opt">{</span>
-        <span class="hl slc">// We can also define multiple predicates over an RDom. Let&apos;s</span>
+        <span class="hl slc">// We can also define multiple predicates over an RDom. Let's</span>
         <span class="hl slc">// say now we want the update to happen within some triangular</span>
         <span class="hl slc">// region. To do this we define three predicates, where each</span>
         <span class="hl slc">// corresponds to one side of the triangle.</span>
         Func <span class="hl kwd">triangle</span><span class="hl opt">(</span><span class="hl str">&quot;triangle&quot;</span><span class="hl opt">);</span>
         Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">);</span>
         <span class="hl kwd">triangle</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
-        <span class="hl slc">// First, let&apos;s define the minimal bounding box over the triangular</span>
+        <span class="hl slc">// First, let's define the minimal bounding box over the triangular</span>
         <span class="hl slc">// region.</span>
         RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">10</span><span class="hl opt">);</span>
-        <span class="hl slc">// Next, let&apos;s add the three predicates to the RDom using</span>
+        <span class="hl slc">// Next, let's add the three predicates to the RDom using</span>
         <span class="hl slc">// multiple calls to RDom::where</span>
         r<span class="hl opt">.</span><span class="hl kwd">where</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x <span class="hl opt">+</span> r<span class="hl opt">.</span>y <span class="hl opt">&gt;</span> <span class="hl num">5</span><span class="hl opt">);</span>
         r<span class="hl opt">.</span><span class="hl kwd">where</span><span class="hl opt">(</span><span class="hl num">3</span><span class="hl opt">*</span>r<span class="hl opt">.</span>y <span class="hl opt">-</span> <span class="hl num">2</span><span class="hl opt">*</span>r<span class="hl opt">.</span>x <span class="hl opt">&lt;</span> <span class="hl num">15</span><span class="hl opt">);</span>
@@ -490,7 +490,7 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl opt">}</span>
 
     <span class="hl opt">{</span>
-        <span class="hl slc">// The predicate is not limited to the RDom&apos;s variables only</span>
+        <span class="hl slc">// The predicate is not limited to the RDom's variables only</span>
         <span class="hl slc">// (r.x, r.y, ...).  It can also refer to free variables in</span>
         <span class="hl slc">// the update definition, and even make calls to other Funcs,</span>
         <span class="hl slc">// or make recursive calls to the same Func. For example:</span>
@@ -499,7 +499,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
         <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
 
-        <span class="hl slc">// This RDom&apos;s predicates depend on the initial value of &apos;f&apos;.</span>
+        <span class="hl slc">// This RDom's predicates depend on the initial value of 'f'.</span>
         RDom <span class="hl kwd">r1</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">);</span>
         r1<span class="hl opt">.</span><span class="hl kwd">where</span><span class="hl opt">(</span><span class="hl kwd">f</span><span class="hl opt">(</span>r1<span class="hl opt">.</span>x<span class="hl opt">,</span> r1<span class="hl opt">.</span>y<span class="hl opt">) &gt;=</span> <span class="hl num">4</span><span class="hl opt">);</span>
         r1<span class="hl opt">.</span><span class="hl kwd">where</span><span class="hl opt">(</span><span class="hl kwd">f</span><span class="hl opt">(</span>r1<span class="hl opt">.</span>x<span class="hl opt">,</span> r1<span class="hl opt">.</span>y<span class="hl opt">) &lt;=</span> <span class="hl num">7</span><span class="hl opt">);</span>
@@ -519,7 +519,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
          <span><video autoplay loop><source src= figures/lesson_17_rdom_calls_in_predicate.mp4  />Your browser does not support the video tag :(</video></span>
 
-        <span class="hl slc">// The equivalent C for &apos;f&apos; is:</span>
+        <span class="hl slc">// The equivalent C for 'f' is:</span>
         <span class="hl kwb">int</span> c_result_f<span class="hl opt">[</span><span class="hl num">5</span><span class="hl opt">][</span><span class="hl num">5</span><span class="hl opt">];</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
@@ -535,7 +535,7 @@ tutorial_lesson_21_auto_scheduler_run.html
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
 
-        <span class="hl slc">// And, the equivalent C for &apos;g&apos; is:</span>
+        <span class="hl slc">// And, the equivalent C for 'g' is:</span>
         <span class="hl kwb">int</span> c_result_g<span class="hl opt">[</span><span class="hl num">5</span><span class="hl opt">][</span><span class="hl num">5</span><span class="hl opt">];</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
