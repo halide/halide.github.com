@@ -412,6 +412,7 @@ tutorial_lesson_21_auto_scheduler_run.html
  > Partitioning loops to simplify boundary conditions...
  > Trimming loops to the region over which they do something...
  > Injecting early frees...
+ > Bounding small allocations...
  > Simplifying...
  > Lowering after final simplification:
  > assert((reinterpret(uint64, gradient.buffer) != (uint64)0), halide_error_buffer_argument_is_null("gradient"))
@@ -439,24 +440,24 @@ tutorial_lesson_21_auto_scheduler_run.html
  >   assert((gradient.total_extent.1 <= (int64)2147483647), halide_error_buffer_extents_too_large("gradient", gradient.total_extent.1, (int64)2147483647))
  >   assert((gradient != reinterpret((void *), (uint64)0)), halide_error_host_is_null("Output buffer gradient"))
  >   produce gradient {
- >     let t17 = (gradient.min.0 + (gradient.min.1*gradient.stride.1))
+ >     let t1 = (gradient.min.0 + (gradient.min.1*gradient.stride.1))
  >     for (gradient.s0.y, gradient.min.1, gradient.extent.1) {
+ >       let t2 = ((gradient.s0.y*gradient.stride.1) - t1)
  >       for (gradient.s0.x, gradient.min.0, gradient.extent.0) {
- >         gradient[((gradient.s0.x + (gradient.s0.y*gradient.stride.1)) - t17)] = (gradient.s0.x + gradient.s0.y)
+ >         gradient[(t2 + gradient.s0.x)] = (gradient.s0.y + gradient.s0.x)
  >       }
  >     }
  >   }
  > }
- > Splitting off Hexagon offload...
- > Hexagon device code module: Target = hexagon-32-noos-no_runtime
+ > Skipping Hexagon offload...
  > Target triple of initial module: x86_64--linux-gnu
  > Generating llvm bitcode...
  > Generating llvm bitcode prolog for function gradient...
  > Generating llvm bitcode for function gradient...
  > JIT compiling shared runtime
  > JIT compiling gradient
- > JIT input scalar argument __user_context @ 0x19d04f8
- > JIT output buffer @ 0x1a84f40, 0x1b67100
+ > JIT input scalar argument __user_context @ 0x21a2f50
+ > JIT output buffer @ 0x224a018, 0x2231080
  > Creating initial loop nests...
  > Injecting realization of gradient
  > Canonicalizing GPU var names...
@@ -487,6 +488,7 @@ tutorial_lesson_21_auto_scheduler_run.html
  > Partitioning loops to simplify boundary conditions...
  > Trimming loops to the region over which they do something...
  > Injecting early frees...
+ > Bounding small allocations...
  > Simplifying...
  > Lowering after final simplification:
  > assert((reinterpret(uint64, gradient.buffer) != (uint64)0), halide_error_buffer_argument_is_null("gradient"))
@@ -514,16 +516,16 @@ tutorial_lesson_21_auto_scheduler_run.html
  >   assert((gradient.total_extent.1 <= (int64)2147483647), halide_error_buffer_extents_too_large("gradient", gradient.total_extent.1, (int64)2147483647))
  >   assert((gradient != reinterpret((void *), (uint64)0)), halide_error_host_is_null("Output buffer gradient"))
  >   produce gradient {
- >     let t36 = (gradient.min.0 + (gradient.min.1*gradient.stride.1))
+ >     let t4 = (gradient.min.0 + (gradient.min.1*gradient.stride.1))
  >     for (gradient.s0.y, gradient.min.1, gradient.extent.1) {
+ >       let t5 = ((gradient.s0.y*gradient.stride.1) - t4)
  >       for (gradient.s0.x, gradient.min.0, gradient.extent.0) {
- >         gradient[((gradient.s0.x + (gradient.s0.y*gradient.stride.1)) - t36)] = (gradient.s0.x + gradient.s0.y)
+ >         gradient[(t5 + gradient.s0.x)] = (gradient.s0.y + gradient.s0.x)
  >       }
  >     }
  >   }
  > }
- > Splitting off Hexagon offload...
- > Hexagon device code module: Target = hexagon-32-noos-no_runtime
+ > Skipping Hexagon offload...
  > Module.compile(): stmt_html_name gradient.html
 
 </b></div>

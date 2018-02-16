@@ -364,7 +364,7 @@ check_symbol<span class="hl opt">()</span>
     FILE<span class="hl opt">=</span><span class="hl kwd">$1</span>
     SYM<span class="hl opt">=</span><span class="hl kwd">$2</span>
     <span class="hl kwa">if</span> <span class="hl opt">!(</span>nm <span class="hl kwd">$FILE</span> | <span class="hl kwc">grep</span> <span class="hl kwd">$SYM</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">);</span> <span class="hl kwa">then</span>
-        <span class="hl kwb">echo</span> <span class="hl str">&quot;$SYM not found in $FILE&quot;</span>
+        <span class="hl kwb">echo</span> <span class="hl str">&quot;</span><span class="hl ipl">$SYM</span> <span class="hl str">not found in</span> <span class="hl ipl">$FILE</span><span class="hl str">&quot;</span>
     <span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
     <span class="hl kwa">fi</span>
 <span class="hl opt">}</span>
@@ -403,7 +403,7 @@ check_symbol my_first_generator.a my_first_generator
     <span class="hl opt">-</span>g my_first_generator \
     <span class="hl opt">-</span>f my_first_generator_win32 \
     <span class="hl opt">-</span>o . \
-    target<span class="hl opt">=</span>x86<span class="hl opt">-</span><span class="hl num">32</span><span class="hl opt">-</span>windows
+    target<span class="hl opt">=</span>x86-32-windows
 
 <span class="hl slc"># This generates a file called &quot;my_first_generator_win32.lib&quot; in the</span>
 <span class="hl slc"># current directory, along with a matching header. The function</span>
@@ -497,7 +497,7 @@ nm my_second_generator_1.a | <span class="hl kwc">grep</span> <span class="hl st
 check_runtime<span class="hl opt">()</span>
 <span class="hl opt">{</span>
     <span class="hl kwa">if</span> <span class="hl opt">!(</span>nm <span class="hl kwd">$1</span> | <span class="hl kwc">grep</span> <span class="hl str">&quot;[TSW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">);</span> <span class="hl kwa">then</span>
-        <span class="hl kwb">echo</span> <span class="hl str">&quot;Halide runtime not found in $1&quot;</span>
+        <span class="hl kwb">echo</span> <span class="hl str">&quot;Halide runtime not found in</span> <span class="hl ipl">$1</span><span class="hl str">&quot;</span>
     <span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
     <span class="hl kwa">fi</span>
 <span class="hl opt">}</span>
@@ -505,7 +505,7 @@ check_runtime<span class="hl opt">()</span>
 check_no_runtime<span class="hl opt">()</span>
 <span class="hl opt">{</span>
     <span class="hl kwa">if</span> nm <span class="hl kwd">$1</span> | <span class="hl kwc">grep</span> <span class="hl str">&quot;[TSW] _</span><span class="hl esc">\?</span><span class="hl str">halide_&quot;</span> <span class="hl opt">&gt; /</span>dev<span class="hl opt">/</span>null<span class="hl opt">;</span> <span class="hl kwa">then</span>
-        <span class="hl kwb">echo</span> <span class="hl str">&quot;Halide runtime found in $1&quot;</span>
+        <span class="hl kwb">echo</span> <span class="hl str">&quot;Halide runtime found in</span> <span class="hl ipl">$1</span><span class="hl str">&quot;</span>
     <span class="hl kwb">exit</span> <span class="hl opt">-</span><span class="hl num">1</span>
     <span class="hl kwa">fi</span>
 <span class="hl opt">}</span>
@@ -533,21 +533,21 @@ check_no_runtime<span class="hl opt">()</span>
     <span class="hl opt">-</span>f my_first_generator_basic \
     <span class="hl opt">-</span>e o<span class="hl opt">,</span>h \
     <span class="hl opt">-</span>o . \
-    target<span class="hl opt">=</span><span class="hl kwc">host</span><span class="hl opt">-</span>x86<span class="hl opt">-</span><span class="hl num">64</span><span class="hl opt">-</span>no_runtime
+    target<span class="hl opt">=</span>host-x86-64-no_runtime
 
 .<span class="hl opt">/</span>lesson_15_generate \
     <span class="hl opt">-</span>g my_first_generator \
     <span class="hl opt">-</span>f my_first_generator_sse41 \
     <span class="hl opt">-</span>e o<span class="hl opt">,</span>h \
     <span class="hl opt">-</span>o . \
-    target<span class="hl opt">=</span><span class="hl kwc">host</span><span class="hl opt">-</span>x86<span class="hl opt">-</span><span class="hl num">64</span><span class="hl opt">-</span>sse41<span class="hl opt">-</span>no_runtime
+    target<span class="hl opt">=</span>host-x86-64-sse41-no_runtime
 
 .<span class="hl opt">/</span>lesson_15_generate \
     <span class="hl opt">-</span>g my_first_generator \
     <span class="hl opt">-</span>f my_first_generator_avx \
     <span class="hl opt">-</span>e o<span class="hl opt">,</span>h \
     <span class="hl opt">-</span>o . \
-    target<span class="hl opt">=</span><span class="hl kwc">host</span><span class="hl opt">-</span>x86<span class="hl opt">-</span><span class="hl num">64</span><span class="hl opt">-</span>avx<span class="hl opt">-</span>no_runtime
+    target<span class="hl opt">=</span>host-x86-64-avx-no_runtime
 
 <span class="hl slc"># These files don't contain the runtime</span>
 check_no_runtime my_first_generator_basic.o
@@ -562,7 +562,7 @@ check_symbol     my_first_generator_avx.o my_first_generator_avx
     <span class="hl opt">-</span>r halide_runtime_x86 \
     <span class="hl opt">-</span>e o<span class="hl opt">,</span>h \
     <span class="hl opt">-</span>o . \
-    target<span class="hl opt">=</span><span class="hl kwc">host</span><span class="hl opt">-</span>x86<span class="hl opt">-</span><span class="hl num">64</span>
+    target<span class="hl opt">=</span>host-x86-64
 check_runtime halide_runtime_x86.o
 
 <span class="hl slc"># Linking the standalone runtime with the three generated object files     </span>
