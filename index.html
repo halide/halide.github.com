@@ -58,6 +58,7 @@
               <li><a href="http://github.com/halide/Halide/issues">Bugs</a></li>
               <li><a href="http://github.com/halide/Halide/wiki">Wiki</a></li>
               <li class="divider-vertical"></li>
+              <li><a href="https://gitter.im/halide/Halide"><i class="fa fa-comments" aria-hidden="true"></i>Gitter</a></li>
               <li><a href="http://stackoverflow.com/questions/tagged/halide"><i class="fa fa-stack-overflow"></i>/#halide</a></li>
               <!--
               <li class="divider-vertical"></li>
@@ -74,7 +75,7 @@
     <header class="hero-unit">
       <div class="container">
         <h1>Halide</h1>
-        <p>a language for image processing and computational photography</p>
+        <p>a language for fast, portable computation on images and "<a href="https://twitter.com/jrk/status/837788386718994432">tensors</a>"</p>
       </div>
     </header>
 
@@ -83,7 +84,16 @@
         <div class="page-header">
           <h1>Overview</h1>
         </div>
-        <p>Halide is a new programming language designed to make it easier to write high-performance image processing code on modern machines. Its current front end is embedded in C++. Compiler targets include x86/SSE, ARM v7/NEON, CUDA, and OpenCL.</p>
+        <p>
+            Halide is a programming language designed to make it easier to write high-performance image processing code on modern machines. Halide currently targets:
+        </p>
+        <p>
+            CPU architectures: X86, ARM, MIPS, Hexagon, PowerPC <br/>
+            Operating systems: Linux, Windows, Mac OS X, Android, iOS, Qualcomm QuRT <br/>
+            GPU Compute APIs: CUDA, OpenCL, OpenGL, OpenGL Compute Shaders, Apple Metal, Microsoft Direct X 12         </p>
+        <p>
+            Rather than being a standalone programming language, Halide is embedded in C++. This means you write C++ code that builds an in-memory representation of a Halide pipeline using Halide's C++ API. You can then compile this representation to an object file, or JIT-compile it and run it in the same process.
+        </p>
 
         <!-- TODO big idea: separate schedule -->
 
@@ -146,16 +156,25 @@
           and its scheduling model. Halide syntax changes over time,
           so don't rely on them for correct syntax.
           The <a href="/tutorials/tutorial_introduction.html">tutorials</a>
-          are a better introduction to Halide's syntax. Two of the
-          papers describe algorithms that automatically determine
-          schedules, but neither of these algorithms are in trunk
-          Halide (yet).
+          are a better introduction to Halide's syntax.
         </p>
 
         <p>
+          <strong><a href="http://gradients.halide-lang.org/">Differentiable Programming for Image Processing and Deep Learning in Halide</a></strong>
+          <br/>
+          <a href="https://people.csail.mit.edu/tzumao">Tzu-Mao Li</a>,
+          <a href="http://mgharbi.com">Michaël Gharbi</a>,
+          <a href="http://people.csail.mit.edu/abadams">Andrew Adams</a>,
+          <a href="https://people.csail.mit.edu/fredo">Frédo Durand</a>,
+          <a href="http://people.csail.mit.edu/jrk">Jonathan Ragan-Kelley</a>.
+          <br/>
+          <em>SIGGRAPH 2018</em>
+        </p>
+        
+        <p>
           <strong><a href="http://graphics.cs.cmu.edu/projects/halidesched/">Automatically Scheduling Halide Image Processing Pipelines</a></strong>
           <br/>
-          <a href="http://rmullapudi.bitbucket.org/">Ravi Teja Mullapudi</a>
+          <a href="http://rmullapudi.bitbucket.org/">Ravi Teja Mullapudi</a>,
           <a href="http://people.csail.mit.edu/abadams">Andrew Adams</a>,
           <a href="http://www.dsharlet.com">Dillon Sharlet</a>,
           <a href="http://people.csail.mit.edu/jrk">Jonathan Ragan-Kelley</a>,
@@ -228,6 +247,11 @@
           <dd>
             <a href="https://lists.csail.mit.edu/mailman/listinfo/halide-dev">halide-dev</a>
             - technical discussion on the development and use of Halide. When in doubt, ask here for help.
+          </dd>
+
+          <dt><i class="fa fa-comments" aria-hidden="true"></i>Gitter Chat (née IRC)</dt>
+          <dd>
+              <a href="https://gitter.im/halide/Halide">halide/Halide</a>
           </dd>
 
           <dt><i class="fa fa-stack-overflow"></i> Stack Overflow</dt>
