@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['appendspaceifneeded',['AppendSpaceIfNeeded',['../class_halide_1_1_internal_1_1_code_gen___c.html#aa9d423572079a0db3dc4210d0daf54b9',1,'Halide::Internal::CodeGen_C']]],
-  ['arch',['Arch',['../struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1',1,'Halide::Target']]],
-  ['argtype',['ArgType',['../struct_halide_1_1_extern_func_argument.html#acaf18f00d1d41e200ba8c7ac799a172b',1,'Halide::ExternFuncArgument']]]
+  ['_5fd3d_5finclude_5ftype',['_D3D_INCLUDE_TYPE',['../mini__d3d12_8h.html#a18e5637d564027718abccd8ad4acb32f',1,'mini_d3d12.h']]]
 ];

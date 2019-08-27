@@ -32,11 +32,13 @@ var _i_r_8h =
     [ "Range", "struct_halide_1_1_internal_1_1_range.html", "struct_halide_1_1_internal_1_1_range" ],
     [ "Realize", "struct_halide_1_1_internal_1_1_realize.html", "struct_halide_1_1_internal_1_1_realize" ],
     [ "Block", "struct_halide_1_1_internal_1_1_block.html", "struct_halide_1_1_internal_1_1_block" ],
+    [ "Fork", "struct_halide_1_1_internal_1_1_fork.html", "struct_halide_1_1_internal_1_1_fork" ],
     [ "IfThenElse", "struct_halide_1_1_internal_1_1_if_then_else.html", "struct_halide_1_1_internal_1_1_if_then_else" ],
     [ "Evaluate", "struct_halide_1_1_internal_1_1_evaluate.html", "struct_halide_1_1_internal_1_1_evaluate" ],
     [ "Call", "struct_halide_1_1_internal_1_1_call.html", "struct_halide_1_1_internal_1_1_call" ],
     [ "Variable", "struct_halide_1_1_internal_1_1_variable.html", "struct_halide_1_1_internal_1_1_variable" ],
     [ "For", "struct_halide_1_1_internal_1_1_for.html", "struct_halide_1_1_internal_1_1_for" ],
+    [ "Acquire", "struct_halide_1_1_internal_1_1_acquire.html", "struct_halide_1_1_internal_1_1_acquire" ],
     [ "Shuffle", "struct_halide_1_1_internal_1_1_shuffle.html", "struct_halide_1_1_internal_1_1_shuffle" ],
     [ "Prefetch", "struct_halide_1_1_internal_1_1_prefetch.html", "struct_halide_1_1_internal_1_1_prefetch" ],
     [ "Region", "_i_r_8h.html#abd1b9521b6f1f513178f281d8f395335", null ]

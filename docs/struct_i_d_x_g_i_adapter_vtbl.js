@@ -1,0 +1,28 @@
+var struct_i_d_x_g_i_adapter_vtbl =
+[
+    [ "HRESULT", "struct_i_d_x_g_i_adapter_vtbl.html#ab89f66f61f8a06a472555fea51d1395d", null ],
+    [ "ULONG", "struct_i_d_x_g_i_adapter_vtbl.html#af3d124f36d6af8a76e334862b3c5804d", null ],
+    [ "ULONG", "struct_i_d_x_g_i_adapter_vtbl.html#a5580a766b805127cac862936c4bba63f", null ],
+    [ "HRESULT", "struct_i_d_x_g_i_adapter_vtbl.html#ac8418f82ec97ea14aabd72bdeec355fd", null ],
+    [ "_In_reads_bytes_", "struct_i_d_x_g_i_adapter_vtbl.html#a75b8960ff25d7f1a392c13c943e6c3ce", null ],
+    [ "HRESULT", "struct_i_d_x_g_i_adapter_vtbl.html#a1253adcd353b3ca37337cce891fb7f22", null ],
+    [ "HRESULT", "struct_i_d_x_g_i_adapter_vtbl.html#a311233d0af5a9b406b3a4e44af5eeeb4", null ],
+    [ "HRESULT", "struct_i_d_x_g_i_adapter_vtbl.html#a49120d4f9704b5c314131ff33c54bb67", null ],
+    [ "HRESULT", "struct_i_d_x_g_i_adapter_vtbl.html#a0f45b9b3989d82a9eb5d107dbb04e870", null ],
+    [ "HRESULT", "struct_i_d_x_g_i_adapter_vtbl.html#a02c0849a8d09efb351129268b442ace9", null ],
+    [ "HRESULT", "struct_i_d_x_g_i_adapter_vtbl.html#a576fa2e5f1616b1a0f591175e5abb38d", null ],
+    [ "riid", "struct_i_d_x_g_i_adapter_vtbl.html#aa0cb855f9fc44de6fbd3587280b69fef", null ],
+    [ "ppvObject", "struct_i_d_x_g_i_adapter_vtbl.html#af934b071874e8b68ebda85acf8080257", null ],
+    [ "Name", "struct_i_d_x_g_i_adapter_vtbl.html#adacb3c1602fd33694e7e20b3c6440f4e", null ],
+    [ "DataSize", "struct_i_d_x_g_i_adapter_vtbl.html#a2961373de774022a9d96702fcacee487", null ],
+    [ "pUnknown", "struct_i_d_x_g_i_adapter_vtbl.html#aa776efe554cee25e79b00f7e427e8462", null ],
+    [ "pDataSize", "struct_i_d_x_g_i_adapter_vtbl.html#ad36e495b2f3a31221dd179054350aae2", null ],
+    [ "pData", "struct_i_d_x_g_i_adapter_vtbl.html#ac888b3d19b434f5b5ac791a0cf62fdd2", null ],
+    [ "riid", "struct_i_d_x_g_i_adapter_vtbl.html#ac4f97b3338795f82440737108fe7532f", null ],
+    [ "ppParent", "struct_i_d_x_g_i_adapter_vtbl.html#a01df5ae5ba052f84ad6a642394c23ee8", null ],
+    [ "Output", "struct_i_d_x_g_i_adapter_vtbl.html#ae83a1c51ae9ce7623044bd929e76b3f2", null ],
+    [ "ppOutput", "struct_i_d_x_g_i_adapter_vtbl.html#a56f2c05f4e1bc920a5f7ce204859dbf1", null ],
+    [ "pDesc", "struct_i_d_x_g_i_adapter_vtbl.html#a638f54be4c93440d0d6455335c1be8b7", null ],
+    [ "InterfaceName", "struct_i_d_x_g_i_adapter_vtbl.html#ac0ad99f6e8b54c3e3ba8d3ea1a1940ed", null ],
+    [ "pUMDVersion", "struct_i_d_x_g_i_adapter_vtbl.html#af12129d3e20b3c903b64d3a28cc12ee1", null ]
+];

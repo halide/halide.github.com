@@ -10,8 +10,10 @@ var structhalide__device__interface__t =
     [ "device_and_host_free", "structhalide__device__interface__t.html#adfe1bff4d8a864c6450bfe10adbed304", null ],
     [ "buffer_copy", "structhalide__device__interface__t.html#af8cf3a57fb9d7b7e5906e5f5a5d87145", null ],
     [ "device_crop", "structhalide__device__interface__t.html#a8a091d3679d588771f88172b8a867bd2", null ],
+    [ "device_slice", "structhalide__device__interface__t.html#a0ad508e5d9ae32b08d9036085201e9e0", null ],
     [ "device_release_crop", "structhalide__device__interface__t.html#a3a61cbd45258f14821c95f9b62d38d29", null ],
     [ "wrap_native", "structhalide__device__interface__t.html#a165c8b301ca4f0013af7767a63afd753", null ],
     [ "detach_native", "structhalide__device__interface__t.html#ad22c6f186583b56c91652261e905038f", null ],
+    [ "compute_capability", "structhalide__device__interface__t.html#a3303601097fa0a6594c1f53101793b71", null ],
     [ "impl", "structhalide__device__interface__t.html#a0fd396e5aa336a352d86cff51e6099dd", null ]
 ];

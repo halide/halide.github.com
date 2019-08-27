@@ -1,6 +1,6 @@
 var class_halide_1_1_internal_1_1_small_stack =
 [
-    [ "SmallStack", "class_halide_1_1_internal_1_1_small_stack.html#ab4f1df9afc794706771f54b16d401199", null ],
+    [ "SmallStack", "class_halide_1_1_internal_1_1_small_stack.html#a4c07bb158cf05f2e1c5a540996b39aa8", null ],
     [ "pop", "class_halide_1_1_internal_1_1_small_stack.html#ad264c17b84f13f5b50024152774a2817", null ],
     [ "push", "class_halide_1_1_internal_1_1_small_stack.html#adad6f1c1aeb8ea4d787c8fa6baaf0fe6", null ],
     [ "top", "class_halide_1_1_internal_1_1_small_stack.html#af671b9a258b207751ad6ea57c0fdfeb0", null ],

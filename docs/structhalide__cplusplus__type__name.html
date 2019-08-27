@@ -131,9 +131,10 @@ Public Attributes</h2></td></tr>
 <p>This allows two things. First, proper prototypes can be provided for <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> generated functions, giving better compile time type checking. Second, C++ name mangling can be done to provide link time type checking for both <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> generated functions and calls from <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> to external functions.</p>
 <p>These are intended to be constexpr producable, but we don't depend on C++11 yet. In C++14, it is possible these will be replaced with introspection/reflection facilities.</p>
 <p><a class="el" href="structhalide__handle__traits.html" title="A type traits template to provide a halide_handle_cplusplus_type value from a C++ type...">halide_handle_traits</a> has to go outside the <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> namespace due to template resolution rules. TODO(zalman): Do all types need to be in global namespace? A structure to represent the (unscoped) name of a C++ composite type for use as a single argument (or return value) in a function signature.</p>
-<p>Currently does not support the restrict qualifier, references, or r-value references. These features cannot be used in extern function calls from <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> or in the generated function from <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a>, but their applicability seems limited anyway. </p>
+<p>Currently does not support the restrict qualifier, references, or r-value references. These features cannot be used in extern function calls from <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> or in the generated function from <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a>, but their applicability seems limited anyway.</p>
+<p>Although this is in the global namespace, it should be considered "Halide Internal" and subject to change; code outside <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> should avoid referencing it. </p>
 
-<p class="definition">Definition at line <a class="el" href="_type_8h_source.html#l00038">38</a> of file <a class="el" href="_type_8h_source.html">Type.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_type_8h_source.html#l00041">41</a> of file <a class="el" href="_type_8h_source.html">Type.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="ac0de2781630a5ffb19c07d6c70cbc568"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac0de2781630a5ffb19c07d6c70cbc568">&#9670;&nbsp;</a></span>CPPTypeType</h2>
@@ -161,7 +162,7 @@ Public Attributes</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="_type_8h_source.html#l00040">40</a> of file <a class="el" href="_type_8h_source.html">Type.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_type_8h_source.html#l00043">43</a> of file <a class="el" href="_type_8h_source.html">Type.h</a>.</p>
 
 </div>
 </div>
@@ -200,9 +201,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_type_8h_source.html#l00050">50</a> of file <a class="el" href="_type_8h_source.html">Type.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="_type_8h_source.html#l00267">halide_handle_traits&lt; const char * &gt;::type_info()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_type_8h_source.html#l00053">53</a> of file <a class="el" href="_type_8h_source.html">Type.h</a>.</p>
 
 </div>
 </div>
@@ -231,9 +230,9 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_type_8h_source.html#l00054">54</a> of file <a class="el" href="_type_8h_source.html">Type.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_type_8h_source.html#l00057">57</a> of file <a class="el" href="_type_8h_source.html">Type.h</a>.</p>
 
-<p class="reference">References <a class="el" href="structhalide__cplusplus__type__name.html#a6a08c20bbfc9d3e89aa98f3e2e2be368">cpp_type_type</a>, and <a class="el" href="_type_8h_source.html#l00048">name</a>.</p>
+<p class="reference">References <a class="el" href="structhalide__cplusplus__type__name.html#a6a08c20bbfc9d3e89aa98f3e2e2be368">cpp_type_type</a>, and <a class="el" href="_type_8h_source.html#l00051">name</a>.</p>
 
 </div>
 </div>
@@ -261,7 +260,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_type_8h_source.html#l00059">59</a> of file <a class="el" href="_type_8h_source.html">Type.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_type_8h_source.html#l00062">62</a> of file <a class="el" href="_type_8h_source.html">Type.h</a>.</p>
 
 </div>
 </div>
@@ -289,9 +288,9 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_type_8h_source.html#l00063">63</a> of file <a class="el" href="_type_8h_source.html">Type.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_type_8h_source.html#l00066">66</a> of file <a class="el" href="_type_8h_source.html">Type.h</a>.</p>
 
-<p class="reference">References <a class="el" href="structhalide__cplusplus__type__name.html#a6a08c20bbfc9d3e89aa98f3e2e2be368">cpp_type_type</a>, and <a class="el" href="_type_8h_source.html#l00048">name</a>.</p>
+<p class="reference">References <a class="el" href="structhalide__cplusplus__type__name.html#a6a08c20bbfc9d3e89aa98f3e2e2be368">cpp_type_type</a>, and <a class="el" href="_type_8h_source.html#l00051">name</a>.</p>
 
 </div>
 </div>
@@ -308,7 +307,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="_type_8h_source.html#l00063">operator&lt;()</a>, and <a class="el" href="_type_8h_source.html#l00054">operator==()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_type_8h_source.html#l00066">operator&lt;()</a>, and <a class="el" href="_type_8h_source.html#l00057">operator==()</a>.</p>
 
 </div>
 </div>
@@ -324,9 +323,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_type_8h_source.html#l00048">48</a> of file <a class="el" href="_type_8h_source.html">Type.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_type_8h_source.html#l00051">51</a> of file <a class="el" href="_type_8h_source.html">Type.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_type_8h_source.html#l00201">halide_internal_handle_traits&lt; T, true &gt;::make_info()</a>, <a class="el" href="_type_8h_source.html#l00063">operator&lt;()</a>, and <a class="el" href="_type_8h_source.html#l00054">operator==()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_type_8h_source.html#l00197">halide_handle_cplusplus_type::make()</a>, <a class="el" href="_type_8h_source.html#l00066">operator&lt;()</a>, and <a class="el" href="_type_8h_source.html#l00057">operator==()</a>.</p>
 
 </div>
 </div>

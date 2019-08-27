@@ -7,5 +7,7 @@ var class_halide_1_1_internal_1_1_generator_output___func =
     [ "operator=", "class_halide_1_1_internal_1_1_generator_output___func.html#ac00999c59dd13dc41b42b630dcd752ff", null ],
     [ "operator[]", "class_halide_1_1_internal_1_1_generator_output___func.html#a7527808a31d43119cbfdd16c2e220c0a", null ],
     [ "operator[]", "class_halide_1_1_internal_1_1_generator_output___func.html#aeadd620c0a1061ac3fc8dd3311e09de7", null ],
-    [ "estimate", "class_halide_1_1_internal_1_1_generator_output___func.html#a9707c224cb1634f018deca1de16f5905", null ]
+    [ "set_estimate", "class_halide_1_1_internal_1_1_generator_output___func.html#ac5972c92b84e3ebe6c9d1d868ffb1dbf", null ],
+    [ "estimate", "class_halide_1_1_internal_1_1_generator_output___func.html#a9707c224cb1634f018deca1de16f5905", null ],
+    [ "set_estimates", "class_halide_1_1_internal_1_1_generator_output___func.html#a15c7b69c5b0d2ab8ab11487bd5a166e4", null ]
 ];

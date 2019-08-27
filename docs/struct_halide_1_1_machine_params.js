@@ -1,9 +1,9 @@
 var struct_halide_1_1_machine_params =
 [
-    [ "MachineParams", "struct_halide_1_1_machine_params.html#a5eb57443801ade032a87c8e203b0e70f", null ],
-    [ "MachineParams", "struct_halide_1_1_machine_params.html#a47e41e991e86233d5af5b0663ac49489", null ],
-    [ "to_string", "struct_halide_1_1_machine_params.html#a509b206a14310bc7ee391aba7be8f2e1", null ],
-    [ "parallelism", "struct_halide_1_1_machine_params.html#a67a61bb28a7991963679db8887dcf185", null ],
-    [ "last_level_cache_size", "struct_halide_1_1_machine_params.html#ab4f91f78c4dd661806ab053cfeebc6d6", null ],
-    [ "balance", "struct_halide_1_1_machine_params.html#a60ca9347e36abb28275ae336f34ba3ef", null ]
+    [ "MachineParams", "struct_halide_1_1_machine_params.html#a60362d9ad3fba4c612f06a3bd5133c7a", null ],
+    [ "MachineParams", "struct_halide_1_1_machine_params.html#a832768a11052ed40e431aaf718ae68d3", null ],
+    [ "to_string", "struct_halide_1_1_machine_params.html#a2f44c4b04922b783bfc3bee3391c9d46", null ],
+    [ "parallelism", "struct_halide_1_1_machine_params.html#a20db2bcafd05f2e6ce4a3939adeac303", null ],
+    [ "last_level_cache_size", "struct_halide_1_1_machine_params.html#ad41ae49af1e8757d238bd4c59935dbc1", null ],
+    [ "balance", "struct_halide_1_1_machine_params.html#a22f7e4c0dacac710b7ec5dbde7138751", null ]
 ];

@@ -94,28 +94,28 @@ $(document).ready(function(){initNavTree('structhalide__mutex.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:adc90ec9b11eb459205c7786f60e9c993"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#a015141fcb741f5cbee8e65a30b61e1ce">uint64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhalide__mutex.html#adc90ec9b11eb459205c7786f60e9c993">_private</a> [8]</td></tr>
-<tr class="separator:adc90ec9b11eb459205c7786f60e9c993"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af65a018b48e3a66fd8775c9b3b9479ab"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhalide__mutex.html#af65a018b48e3a66fd8775c9b3b9479ab">_private</a> [1]</td></tr>
+<tr class="separator:af65a018b48e3a66fd8775c9b3b9479ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Cross-platform mutex. </p>
-<p>These are allocated statically inside the runtime, hence the fixed size. They must be initialized with zero. The first time halide_mutex_lock is called, the lock must be initialized in a thread safe manner. This incurs a small overhead for a once mechanism, but makes the lock reliably easy to setup and use without depending on e.g. C++ constructor logic. </p>
+<p>Must be initialized with zero and implementation must treat zero as an unlocked mutex with no waiters, etc. </p>
 
-<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00097">97</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00096">96</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="adc90ec9b11eb459205c7786f60e9c993"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc90ec9b11eb459205c7786f60e9c993">&#9670;&nbsp;</a></span>_private</h2>
+<a id="af65a018b48e3a66fd8775c9b3b9479ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af65a018b48e3a66fd8775c9b3b9479ab">&#9670;&nbsp;</a></span>_private</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="runtime__internal_8h.html#a015141fcb741f5cbee8e65a30b61e1ce">uint64_t</a> halide_mutex::_private[8]</td>
+          <td class="memname">uintptr_t halide_mutex::_private[1]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00098">98</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l00097">97</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>

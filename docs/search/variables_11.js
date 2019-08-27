@@ -1,21 +1,5 @@
 var searchData=
 [
-  ['random',['random',['../struct_halide_1_1_internal_1_1_call.html#ab373e1b9e416a3ddea9b660f094cf67d',1,'Halide::Internal::Call']]],
-  ['read',['read',['../struct_halide_1_1_internal_1_1_closure_1_1_buffer.html#a581401bcd8968496af127355ad591924',1,'Halide::Internal::Closure::Buffer::read()'],['../struct_halide_1_1_internal_1_1_device_argument.html#a2e047596694e573e21dd004ed2f71c01',1,'Halide::Internal::DeviceArgument::read()']]],
-  ['reduction_5fdomain',['reduction_domain',['../struct_halide_1_1_internal_1_1_variable.html#a917aa8c1001bfa514588a14ef8fee2b2',1,'Halide::Internal::Variable']]],
-  ['ref_5fcount',['ref_count',['../struct_halide_1_1_internal_1_1_buffer_contents.html#ad7baf4417cef998a9bd5895e344570eb',1,'Halide::Internal::BufferContents::ref_count()'],['../struct_halide_1_1_internal_1_1_i_r_node.html#acad22eae0a8ac16b9aa24d07bf54994d',1,'Halide::Internal::IRNode::ref_count()'],['../struct_halide_1_1_runtime_1_1_allocation_header.html#a03ae8066a8a58165a68cc0bb6c997a0a',1,'Halide::Runtime::AllocationHeader::ref_count()']]],
-  ['reference_5ftype',['reference_type',['../structhalide__handle__cplusplus__type.html#a05bea50bb53ef24ed60a1a1ed07b42e6',1,'halide_handle_cplusplus_type']]],
-  ['register_5fdestructor',['register_destructor',['../struct_halide_1_1_internal_1_1_call.html#a555c2f01367910d3c4472bc798ab94fb',1,'Halide::Internal::Call']]],
-  ['reinterpret',['reinterpret',['../struct_halide_1_1_internal_1_1_call.html#abeafbf9619a5677eb2b08b11257277dd',1,'Halide::Internal::Call']]],
-  ['release_5fmodule',['release_module',['../structhalide__device__interface__impl__t.html#a1c843a444d33b9ea56547aae5adcd294',1,'halide_device_interface_impl_t']]],
-  ['remainder',['remainder',['../struct_halide_1_1_internal_1_1_modulus_remainder.html#abc7042f8dbe17dbd44e186e11002aa2c',1,'Halide::Internal::ModulusRemainder::remainder()'],['../struct_halide_1_1_internal_1_1_bound.html#aadce04562663f03aa8f6cada21d51b76',1,'Halide::Internal::Bound::remainder()']]],
-  ['require',['require',['../struct_halide_1_1_internal_1_1_call.html#a30dc629461cf761bf024426a6d4227e5',1,'Halide::Internal::Call']]],
-  ['reserved0',['reserved0',['../struct_halide_1_1_runtime_1_1_internal_1_1_cuda_1_1_c_u_d_a___m_e_m_c_p_y3_d__st.html#ab0f968d11ddc90351735724489d29883',1,'Halide::Runtime::Internal::Cuda::CUDA_MEMCPY3D_st']]],
-  ['reserved1',['reserved1',['../struct_halide_1_1_runtime_1_1_internal_1_1_cuda_1_1_c_u_d_a___m_e_m_c_p_y3_d__st.html#ab5f2ae0be3f0bed7a85d1f1ab950dc32',1,'Halide::Runtime::Internal::Cuda::CUDA_MEMCPY3D_st']]],
-  ['rest',['rest',['../struct_halide_1_1_internal_1_1_block.html#a8f779340f8ec64554a0dc82ae8bbc4e0',1,'Halide::Internal::Block']]],
-  ['result',['result',['../class_halide_1_1_internal_1_1_expr_uses_vars.html#a482fe1415e245e98b465b801b8e2584d',1,'Halide::Internal::ExprUsesVars::result()'],['../struct_halide_1_1_internal_1_1_solver_result.html#ab584af3b6ecefae73c20cef1bdf66dc2',1,'Halide::Internal::SolverResult::result()']]],
-  ['return_5fsecond',['return_second',['../struct_halide_1_1_internal_1_1_call.html#ad1944d285f164a630c65ac2f4d87f269',1,'Halide::Internal::Call']]],
-  ['rewrite_5fbuffer',['rewrite_buffer',['../struct_halide_1_1_internal_1_1_call.html#a883e7e904bfbc981e448fc78c1a7fada',1,'Halide::Internal::Call']]],
-  ['runs',['runs',['../structhalide__profiler__pipeline__stats.html#ac46096b46eb43f950085165efcd5e5a7',1,'halide_profiler_pipeline_stats']]],
-  ['rvar',['rvar',['../struct_halide_1_1_var_or_r_var.html#aeca5de374c1b1ece92bb4763d88537dd',1,'Halide::VarOrRVar']]]
+  ['quadpart',['QuadPart',['../union___l_a_r_g_e___i_n_t_e_g_e_r.html#a34beb9c05c3a2982d57fc450cc934ae3',1,'_LARGE_INTEGER']]],
+  ['quality',['Quality',['../struct_d_x_g_i___s_a_m_p_l_e___d_e_s_c.html#a5801818269211925865000f66756dcb8',1,'DXGI_SAMPLE_DESC']]]
 ];

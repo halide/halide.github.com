@@ -22,7 +22,7 @@ var class_halide_1_1_internal_1_1_elf_1_1_symbol =
       [ "STV_HIDDEN", "class_halide_1_1_internal_1_1_elf_1_1_symbol.html#a57da792ab7c8da6558afefbf1db8f012a58c18fc501cc3d1e1277a2d26c8e9dca", null ],
       [ "STV_PROTECTED", "class_halide_1_1_internal_1_1_elf_1_1_symbol.html#a57da792ab7c8da6558afefbf1db8f012acdf6a9ca2c473794639fbbde304675f3", null ]
     ] ],
-    [ "Symbol", "class_halide_1_1_internal_1_1_elf_1_1_symbol.html#a7845512c0ff820833d490f991e27ea2d", null ],
+    [ "Symbol", "class_halide_1_1_internal_1_1_elf_1_1_symbol.html#a298b86dfb4e430268d784ba1544a264e", null ],
     [ "Symbol", "class_halide_1_1_internal_1_1_elf_1_1_symbol.html#a150b4d8e0f5fbb7f23703c4f974c761b", null ],
     [ "set_name", "class_halide_1_1_internal_1_1_elf_1_1_symbol.html#a0a2babab7cda15bbe9b1de5d37e2a67f", null ],
     [ "get_name", "class_halide_1_1_internal_1_1_elf_1_1_symbol.html#a98050f8b64eec1f9821f884fc95bf7d0", null ],

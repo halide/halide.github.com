@@ -6,7 +6,6 @@ var class_halide_1_1_internal_1_1_object_instance_registry =
       [ "GeneratorParam", "class_halide_1_1_internal_1_1_object_instance_registry.html#a0e2e38e50a26fb81ebc62963b8483377a3dfed1434363eae1eb2daf86befc734d", null ],
       [ "GeneratorInput", "class_halide_1_1_internal_1_1_object_instance_registry.html#a0e2e38e50a26fb81ebc62963b8483377ade10ef22408402f714c5b325c7b4e931", null ],
       [ "GeneratorOutput", "class_halide_1_1_internal_1_1_object_instance_registry.html#a0e2e38e50a26fb81ebc62963b8483377a502181824d6311e228e7e845f7cdca47", null ],
-      [ "FilterParam", "class_halide_1_1_internal_1_1_object_instance_registry.html#a0e2e38e50a26fb81ebc62963b8483377a2f3eeff102d9f2db67e311e45ecc3a8e", null ],
-      [ "ScheduleParam", "class_halide_1_1_internal_1_1_object_instance_registry.html#a0e2e38e50a26fb81ebc62963b8483377acb9b5e732f7204ab8b9444b47fb9801c", null ]
+      [ "FilterParam", "class_halide_1_1_internal_1_1_object_instance_registry.html#a0e2e38e50a26fb81ebc62963b8483377a2f3eeff102d9f2db67e311e45ecc3a8e", null ]
     ] ]
 ];

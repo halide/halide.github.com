@@ -19,6 +19,8 @@ var halide__hexagon__remote_8h =
     [ "halide_hexagon_remote_release_library", "halide__hexagon__remote_8h.html#ab9e5c4d687f54673a5b63797820327ea", null ],
     [ "halide_hexagon_remote_poll_log", "halide__hexagon__remote_8h.html#a320c93005afe4f1707737e88f2eb1b54", null ],
     [ "halide_hexagon_remote_poll_profiler_state", "halide__hexagon__remote_8h.html#a365c5097c544a8991b4be9017875ad3d", null ],
+    [ "halide_hexagon_remote_profiler_set_current_func", "halide__hexagon__remote_8h.html#acc8023382857421bfe965eb656bb0048", null ],
     [ "halide_hexagon_remote_set_performance_mode", "halide__hexagon__remote_8h.html#ae2012b04d94c2b237bca86dd8da64097", null ],
-    [ "halide_hexagon_remote_set_performance", "halide__hexagon__remote_8h.html#a9c766b2874e732d284ea2c79cafcb4d9", null ]
+    [ "halide_hexagon_remote_set_performance", "halide__hexagon__remote_8h.html#a9c766b2874e732d284ea2c79cafcb4d9", null ],
+    [ "halide_hexagon_remote_set_thread_priority", "halide__hexagon__remote_8h.html#a3d184d7d6361ed402f7b688844c19b9b", null ]
 ];

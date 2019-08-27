@@ -93,8 +93,8 @@ $(document).ready(function(){initNavTree('_bounds_8h.html','');});
 <p>Methods for computing the upper and lower bounds of an expression, and the regions of a function read or written by a statement.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_i_r_operator_8h_source.html">IROperator.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_scope_8h_source.html">Scope.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_interval_8h_source.html">Interval.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_scope_8h_source.html">Scope.h</a>&quot;</code><br />
 </div>
 <p><a href="_bounds_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -121,7 +121,8 @@ Typedefs</h2></td></tr>
 Enumerations</h2></td></tr>
 <tr class="memitem:a8548315fd4d13ccebe45a8123369f7ca"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a8548315fd4d13ccebe45a8123369f7ca">Halide::Internal::Direction</a> { <a class="el" href="namespace_halide_1_1_internal.html#a8548315fd4d13ccebe45a8123369f7caa19de5b94f7b83900d4b296d9fa491aec">Halide::Internal::Direction::Upper</a>, 
 <a class="el" href="namespace_halide_1_1_internal.html#a8548315fd4d13ccebe45a8123369f7caab75fcdd2d72d9e000beab48622402d93">Halide::Internal::Direction::Lower</a>
- }</td></tr>
+ }<tr class="memdesc:a8548315fd4d13ccebe45a8123369f7ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given a varying expression, try to find a constant that is either: An upper bound (always greater than or equal to the expression), or A lower bound (always less than or equal to the expression) If it fails, returns an undefined Expr.  <a href="namespace_halide_1_1_internal.html#a8548315fd4d13ccebe45a8123369f7ca">More...</a><br /></td></tr>
+</td></tr>
 <tr class="separator:a8548315fd4d13ccebe45a8123369f7ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -129,8 +130,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a9191d3b3cba94302c0d08bf9f488d8c6"><td class="memItemLeft" align="right" valign="top">Interval&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a9191d3b3cba94302c0d08bf9f488d8c6">Halide::Internal::bounds_of_expr_in_scope</a> (Expr expr, const Scope&lt; Interval &gt; &amp;scope, const FuncValueBounds &amp;func_bounds=FuncValueBounds(), bool const_bound=false)</td></tr>
 <tr class="memdesc:a9191d3b3cba94302c0d08bf9f488d8c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given an expression in some variables, and a map from those variables to their bounds (in the form of (minimum possible value, maximum possible value)), compute two expressions that give the minimum possible value and the maximum possible value of this expression.  <a href="namespace_halide_1_1_internal.html#a9191d3b3cba94302c0d08bf9f488d8c6">More...</a><br /></td></tr>
 <tr class="separator:a9191d3b3cba94302c0d08bf9f488d8c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fa13926995971d75dc697536d803b4d"><td class="memItemLeft" align="right" valign="top">Expr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a8fa13926995971d75dc697536d803b4d">Halide::Internal::find_constant_bound</a> (Expr e, Direction d, const Scope&lt; Interval &gt; &amp;scope=Scope&lt; Interval &gt;())</td></tr>
-<tr class="separator:a8fa13926995971d75dc697536d803b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69b9d67e1b22b876ec4e3f227557d835"><td class="memItemLeft" align="right" valign="top">Expr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a69b9d67e1b22b876ec4e3f227557d835">Halide::Internal::find_constant_bound</a> (const Expr &amp;e, Direction d, const Scope&lt; Interval &gt; &amp;scope=Scope&lt; Interval &gt;())</td></tr>
+<tr class="separator:a69b9d67e1b22b876ec4e3f227557d835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa34593e7612bf139260707200b6dacb3"><td class="memItemLeft" align="right" valign="top">Interval&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aa34593e7612bf139260707200b6dacb3">Halide::Internal::find_constant_bounds</a> (const Expr &amp;e, const Scope&lt; Interval &gt; &amp;scope)</td></tr>
+<tr class="memdesc:aa34593e7612bf139260707200b6dacb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find bounds for a varying expression that are either constants or +/-inf.  <a href="namespace_halide_1_1_internal.html#aa34593e7612bf139260707200b6dacb3">More...</a><br /></td></tr>
+<tr class="separator:aa34593e7612bf139260707200b6dacb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2f62c0ee3ace8de2be57a9db369a3e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ac2f62c0ee3ace8de2be57a9db369a3e4">Halide::Internal::merge_boxes</a> (Box &amp;a, const Box &amp;b)</td></tr>
 <tr class="memdesc:ac2f62c0ee3ace8de2be57a9db369a3e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Expand box a to encompass box b.  <a href="namespace_halide_1_1_internal.html#ac2f62c0ee3ace8de2be57a9db369a3e4">More...</a><br /></td></tr>
 <tr class="separator:ac2f62c0ee3ace8de2be57a9db369a3e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,8 +153,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a0b807d0d1524fb2f20b1533d05032c02"><td class="memItemLeft" align="right" valign="top">FuncValueBounds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a0b807d0d1524fb2f20b1533d05032c02">Halide::Internal::compute_function_value_bounds</a> (const std::vector&lt; std::string &gt; &amp;order, const std::map&lt; std::string, Function &gt; &amp;env)</td></tr>
 <tr class="memdesc:a0b807d0d1524fb2f20b1533d05032c02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the maximum and minimum possible value for each function in an environment.  <a href="namespace_halide_1_1_internal.html#a0b807d0d1524fb2f20b1533d05032c02">More...</a><br /></td></tr>
 <tr class="separator:a0b807d0d1524fb2f20b1533d05032c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf0ac02fb219b5b3b77f2930b2ef63a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#abf0ac02fb219b5b3b77f2930b2ef63a2">Halide::Internal::bounds_test</a> ()</td></tr>
-<tr class="separator:abf0ac02fb219b5b3b77f2930b2ef63a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a439ef9127bf30f5e2a67963eb8db0323"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a439ef9127bf30f5e2a67963eb8db0323">Halide::Internal::bounds_test</a> ()</td></tr>
+<tr class="separator:a439ef9127bf30f5e2a67963eb8db0323"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:ab68083f9769cbbf033176ba50f3709c9"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, Box &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ab68083f9769cbbf033176ba50f3709c9">Halide::Internal::boxes_required</a> (Expr e, const Scope&lt; Interval &gt; &amp;scope=Scope&lt; Interval &gt;::empty_scope(), const FuncValueBounds &amp;func_bounds=FuncValueBounds())</td></tr>
 <tr class="memdesc:ab68083f9769cbbf033176ba50f3709c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute rectangular domains large enough to cover all the '<a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call. ">Call</a>'s to each function that occurs within a given statement or expression.  <a href="namespace_halide_1_1_internal.html#ab68083f9769cbbf033176ba50f3709c9">More...</a><br /></td></tr>

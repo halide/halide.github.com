@@ -9,5 +9,6 @@ var struct_halide_1_1_internal_1_1_device_argument =
     [ "size", "struct_halide_1_1_internal_1_1_device_argument.html#a9831248c486a41ce480a5a09ac43d3d4", null ],
     [ "packed_index", "struct_halide_1_1_internal_1_1_device_argument.html#a19dbef92359656233b370601c2d703b2", null ],
     [ "read", "struct_halide_1_1_internal_1_1_device_argument.html#a2e047596694e573e21dd004ed2f71c01", null ],
-    [ "write", "struct_halide_1_1_internal_1_1_device_argument.html#ac3227ae7da3113416811443cc45050b3", null ]
+    [ "write", "struct_halide_1_1_internal_1_1_device_argument.html#ac3227ae7da3113416811443cc45050b3", null ],
+    [ "alignment", "struct_halide_1_1_internal_1_1_device_argument.html#acf1dbe7f39c8480142efe90a1191030b", null ]
 ];

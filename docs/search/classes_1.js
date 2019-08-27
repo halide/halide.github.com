@@ -1,6 +1,7 @@
 var searchData=
 [
   ['a',['A',['../struct_halide_introspection_canary_1_1_a.html',1,'HalideIntrospectionCanary']]],
+  ['acquire',['Acquire',['../struct_halide_1_1_internal_1_1_acquire.html',1,'Halide::Internal']]],
   ['add',['Add',['../struct_halide_1_1_internal_1_1_add.html',1,'Halide::Internal']]],
   ['all_5fare_5fconvertible',['all_are_convertible',['../struct_halide_1_1_internal_1_1all__are__convertible.html',1,'Halide::Internal']]],
   ['all_5fints_5fand_5foptional_5fname',['all_ints_and_optional_name',['../struct_halide_1_1_internal_1_1all__ints__and__optional__name.html',1,'Halide::Internal']]],
@@ -18,7 +19,9 @@ var searchData=
   ['and',['And',['../struct_halide_1_1_internal_1_1_and.html',1,'Halide::Internal']]],
   ['applysplitresult',['ApplySplitResult',['../struct_halide_1_1_internal_1_1_apply_split_result.html',1,'Halide::Internal']]],
   ['argument',['Argument',['../struct_halide_1_1_argument.html',1,'Halide']]],
+  ['argumentestimates',['ArgumentEstimates',['../struct_halide_1_1_argument_estimates.html',1,'Halide']]],
   ['assertstmt',['AssertStmt',['../struct_halide_1_1_internal_1_1_assert_stmt.html',1,'Halide::Internal']]],
   ['associativeop',['AssociativeOp',['../struct_halide_1_1_internal_1_1_associative_op.html',1,'Halide::Internal']]],
-  ['associativepattern',['AssociativePattern',['../struct_halide_1_1_internal_1_1_associative_pattern.html',1,'Halide::Internal']]]
+  ['associativepattern',['AssociativePattern',['../struct_halide_1_1_internal_1_1_associative_pattern.html',1,'Halide::Internal']]],
+  ['autoschedulerresults',['AutoSchedulerResults',['../struct_halide_1_1_auto_scheduler_results.html',1,'Halide']]]
 ];

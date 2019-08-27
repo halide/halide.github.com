@@ -80,6 +80,7 @@ $(document).ready(function(){initNavTree('_halide_runtime_metal_8h.html','');});
 
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">HalideRuntimeMetal.h File Reference</div>  </div>
@@ -92,6 +93,11 @@ $(document).ready(function(){initNavTree('_halide_runtime_metal_8h.html','');});
 </div>
 <p><a href="_halide_runtime_metal_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ab41b861fa7f2589cfcd8b80b1cfd712c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_metal_8h.html#ab41b861fa7f2589cfcd8b80b1cfd712c">HALIDE_RUNTIME_METAL</a></td></tr>
+<tr class="separator:ab41b861fa7f2589cfcd8b80b1cfd712c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a62ca08763338934a10718166656f802f"><td class="memItemLeft" align="right" valign="top">const struct <a class="el" href="structhalide__device__interface__t.html">halide_device_interface_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_metal_8h.html#a62ca08763338934a10718166656f802f">halide_metal_device_interface</a> ()</td></tr>
@@ -105,6 +111,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a760cd31440e97b819385d450ebe6904e"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_metal_8h.html#a760cd31440e97b819385d450ebe6904e">halide_metal_get_buffer</a> (void *<a class="el" href="printer_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, struct <a class="el" href="structhalide__buffer__t.html">halide_buffer_t</a> *<a class="el" href="printer_8h.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
 <tr class="memdesc:a760cd31440e97b819385d450ebe6904e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the underlying MTLBuffer for a <a class="el" href="structhalide__buffer__t.html" title="The raw representation of an image passed around by generated Halide code. ">halide_buffer_t</a>.  <a href="#a760cd31440e97b819385d450ebe6904e">More...</a><br /></td></tr>
 <tr class="separator:a760cd31440e97b819385d450ebe6904e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a557cec55b481a27bb176bc5be7d500c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#a015141fcb741f5cbee8e65a30b61e1ce">uint64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_metal_8h.html#a557cec55b481a27bb176bc5be7d500c2">halide_metal_get_crop_offset</a> (void *<a class="el" href="printer_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, struct <a class="el" href="structhalide__buffer__t.html">halide_buffer_t</a> *<a class="el" href="printer_8h.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>)</td></tr>
+<tr class="memdesc:a557cec55b481a27bb176bc5be7d500c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the offset associated with the Metal Buffer allocation via device_crop or device_slice.  <a href="#a557cec55b481a27bb176bc5be7d500c2">More...</a><br /></td></tr>
+<tr class="separator:a557cec55b481a27bb176bc5be7d500c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e8bf7e06d1d8b03f326af7c365b2e0d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_metal_8h.html#a3e8bf7e06d1d8b03f326af7c365b2e0d">halide_metal_acquire_context</a> (void *<a class="el" href="printer_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, struct halide_metal_device **device_ret, struct halide_metal_command_queue **queue_ret, bool create)</td></tr>
 <tr class="memdesc:a3e8bf7e06d1d8b03f326af7c365b2e0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This prototype is exported as applications will typically need to replace it to get <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> filters to execute on the same device and command queue used for other purposes.  <a href="#a3e8bf7e06d1d8b03f326af7c365b2e0d">More...</a><br /></td></tr>
 <tr class="separator:a3e8bf7e06d1d8b03f326af7c365b2e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,7 +132,24 @@ Functions</h2></td></tr>
 <div class="textblock"><p>Routines specific to the <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> Metal runtime. </p>
 
 <p class="definition">Definition in file <a class="el" href="_halide_runtime_metal_8h_source.html">HalideRuntimeMetal.h</a>.</p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ab41b861fa7f2589cfcd8b80b1cfd712c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab41b861fa7f2589cfcd8b80b1cfd712c">&#9670;&nbsp;</a></span>HALIDE_RUNTIME_METAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HALIDE_RUNTIME_METAL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_halide_runtime_metal_8h_source.html#l00014">14</a> of file <a class="el" href="_halide_runtime_metal_8h_source.html">HalideRuntimeMetal.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a62ca08763338934a10718166656f802f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a62ca08763338934a10718166656f802f">&#9670;&nbsp;</a></span>halide_metal_device_interface()</h2>
 
@@ -401,6 +427,36 @@ Functions</h2></td></tr>
 
 <p>Return the underlying MTLBuffer for a <a class="el" href="structhalide__buffer__t.html" title="The raw representation of an image passed around by generated Halide code. ">halide_buffer_t</a>. </p>
 <p>This buffer must be valid on an Metal device, or not have any associated device memory. If there is no device memory (dev field is NULL), this returns 0. </p>
+
+</div>
+</div>
+<a id="a557cec55b481a27bb176bc5be7d500c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a557cec55b481a27bb176bc5be7d500c2">&#9670;&nbsp;</a></span>halide_metal_get_crop_offset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="runtime__internal_8h.html#a015141fcb741f5cbee8e65a30b61e1ce">uint64_t</a> halide_metal_get_crop_offset </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structhalide__buffer__t.html">halide_buffer_t</a> *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the offset associated with the Metal Buffer allocation via device_crop or device_slice. </p>
 
 </div>
 </div>

@@ -9,7 +9,11 @@ var struct_halide_1_1_outputs =
     [ "stmt", "struct_halide_1_1_outputs.html#ad4b48d72e4b258a034134dabc12f39ec", null ],
     [ "stmt_html", "struct_halide_1_1_outputs.html#aa5449e27d0d180bfbac28008dd7f1b78", null ],
     [ "static_library", "struct_halide_1_1_outputs.html#a9efd784cb7a971fee85935e53c4dc190", null ],
+    [ "python_extension", "struct_halide_1_1_outputs.html#a57d039e507c7708b038e1440c1fda73b", null ],
     [ "schedule", "struct_halide_1_1_outputs.html#a2f3b0c8567ea84d0a34b123671741165", null ],
+    [ "pytorch_wrapper", "struct_halide_1_1_outputs.html#a959464cf4462894737d6c3135a1620eb", null ],
+    [ "featurization", "struct_halide_1_1_outputs.html#a6712d192adb0206631f60866447ef1c9", null ],
+    [ "registration", "struct_halide_1_1_outputs.html#abb84beed1f813170d37a1fb43ca948b7", null ],
     [ "object_name", "struct_halide_1_1_outputs.html#a7967602560a96194a4bd52cb72f1d23e", null ],
     [ "assembly_name", "struct_halide_1_1_outputs.html#aa0403fd8f9dc04df5eb946deb91dd3a1", null ],
     [ "bitcode_name", "struct_halide_1_1_outputs.html#a9d63a571294c58e4bfa16754802c1e96", null ],
@@ -19,5 +23,9 @@ var struct_halide_1_1_outputs =
     [ "stmt_name", "struct_halide_1_1_outputs.html#a0e9234dfa54b6c117da8a51e8ad5906d", null ],
     [ "stmt_html_name", "struct_halide_1_1_outputs.html#ac7b410ee41fd314cd2a43c2af9699295", null ],
     [ "static_library_name", "struct_halide_1_1_outputs.html#a166e61dd9f9c6c544fda393c3bc1599a", null ],
-    [ "schedule_name", "struct_halide_1_1_outputs.html#a47a64c94317009b52297e1f97514fa8b", null ]
+    [ "python_extension_name", "struct_halide_1_1_outputs.html#a0c3ff34a07a4e0b4fcc1d1d59e9be6c9", null ],
+    [ "schedule_name", "struct_halide_1_1_outputs.html#a47a64c94317009b52297e1f97514fa8b", null ],
+    [ "pytorch_wrapper_name", "struct_halide_1_1_outputs.html#afa8ad09895df8ecdcfe3368cb2731da3", null ],
+    [ "featurization_name", "struct_halide_1_1_outputs.html#afad81a2e0d709f0a58ba83ad93caf504", null ],
+    [ "registration_name", "struct_halide_1_1_outputs.html#a68b77414383560500439e62b4966673a", null ]
 ];

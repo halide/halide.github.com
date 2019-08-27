@@ -96,8 +96,9 @@ $(document).ready(function(){initNavTree('class_halide_1_1_generator_param.html'
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a99abf7e03f696777403cd5ffcd422f21"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_generator_param.html#a99abf7e03f696777403cd5ffcd422f21">GeneratorParam</a> (const std::string &amp;name, const T &amp;value)</td></tr>
-<tr class="separator:a99abf7e03f696777403cd5ffcd422f21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8c1c5d369aa9723f0cbf7ed5462738a"><td class="memTemplParams" colspan="2">template&lt;typename T2  = T, typename std::enable_if&lt;!std::is_same&lt; T2, std::string &gt;::value &gt;::type *  = nullptr&gt; </td></tr>
+<tr class="memitem:ad8c1c5d369aa9723f0cbf7ed5462738a"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_generator_param.html#ad8c1c5d369aa9723f0cbf7ed5462738a">GeneratorParam</a> (const std::string &amp;name, const T &amp;value)</td></tr>
+<tr class="separator:ad8c1c5d369aa9723f0cbf7ed5462738a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d563bb4c37b01e0535e14bdd3fd809f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_generator_param.html#a5d563bb4c37b01e0535e14bdd3fd809f">GeneratorParam</a> (const std::string &amp;name, const T &amp;value, const T &amp;<a class="el" href="namespace_halide.html#ab6f20de22e199a01ee4b40d61011ed69">min</a>, const T &amp;<a class="el" href="namespace_halide.html#a0f07668375609704f9b966efba746399">max</a>)</td></tr>
 <tr class="separator:a5d563bb4c37b01e0535e14bdd3fd809f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7bd2000238eccd30ed747704b48ef59"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_generator_param.html#ae7bd2000238eccd30ed747704b48ef59">GeneratorParam</a> (const std::string &amp;name, const T &amp;value, const std::map&lt; std::string, T &gt; &amp;enum_map)</td></tr>
@@ -115,22 +116,25 @@ class Halide::GeneratorParam&lt; T &gt;</h3>
 <li>bool</li>
 <li>enum</li>
 <li><a class="el" href="struct_halide_1_1_target.html" title="A struct representing a target machine and os to generate code for. ">Halide::Target</a></li>
-<li><a class="el" href="struct_halide_1_1_type.html" title="Types in the halide type system. ">Halide::Type</a> All GeneratorParams have a default value. Arithmetic types can also optionally specify min and max. Enum types must specify a string-to-value map.</li>
+<li><a class="el" href="struct_halide_1_1_type.html" title="Types in the halide type system. ">Halide::Type</a></li>
+<li>std::string Please don't use std::string unless there's no way to do what you want with some other type; in particular, don't use this if you can use enum instead. All GeneratorParams have a default value. Arithmetic types can also optionally specify min and max. Enum types must specify a string-to-value map.</li>
 </ul>
 <p><a class="el" href="struct_halide_1_1_type.html" title="Types in the halide type system. ">Halide::Type</a> is treated as though it were an enum, with the mappings:</p>
 <p>"int8" Halide::Int(8) "int16" Halide::Int(16) "int32" Halide::Int(32) "uint8" Halide::UInt(8) "uint16" Halide::UInt(16) "uint32" Halide::UInt(32) "float32" Halide::Float(32) "float64" Halide::Float(64)</p>
 <p>No vector Types are currently supported by this mapping. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_15_generators_8cpp-example.html#_a4">tutorial/lesson_15_generators.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="tutorial_2lesson_15_generators_8cpp-example.html#_a5">tutorial/lesson_15_generators.cpp</a>.</dd>
 </dl>
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00798">798</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00959">959</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a99abf7e03f696777403cd5ffcd422f21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99abf7e03f696777403cd5ffcd422f21">&#9670;&nbsp;</a></span>GeneratorParam() <span class="overload">[1/4]</span></h2>
+<a id="ad8c1c5d369aa9723f0cbf7ed5462738a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8c1c5d369aa9723f0cbf7ed5462738a">&#9670;&nbsp;</a></span>GeneratorParam() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;typename T&gt; </div>
+<div class="memtemplate">
+template&lt;typename T2  = T, typename std::enable_if&lt;!std::is_same&lt; T2, std::string &gt;::value &gt;::type *  = nullptr&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -160,7 +164,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00800">800</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00962">962</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -212,7 +216,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00803">803</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00965">965</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -258,7 +262,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00806">806</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00968">968</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -298,7 +302,7 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00809">809</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00971">971</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>

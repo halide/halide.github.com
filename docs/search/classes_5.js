@@ -1,12 +1,14 @@
 var searchData=
 [
   ['emitoptions',['EmitOptions',['../struct_halide_1_1_internal_1_1_generator_base_1_1_emit_options.html',1,'Halide::Internal::GeneratorBase']]],
+  ['enable_5fif_5fpattern',['enable_if_pattern',['../struct_halide_1_1_internal_1_1_i_r_matcher_1_1enable__if__pattern.html',1,'Halide::Internal::IRMatcher']]],
   ['eq',['EQ',['../struct_halide_1_1_internal_1_1_e_q.html',1,'Halide::Internal']]],
   ['error',['Error',['../struct_halide_1_1_error.html',1,'Halide']]],
   ['errorreport',['ErrorReport',['../struct_halide_1_1_internal_1_1_error_report.html',1,'Halide::Internal']]],
   ['evaluate',['Evaluate',['../struct_halide_1_1_internal_1_1_evaluate.html',1,'Halide::Internal']]],
   ['expr',['Expr',['../struct_halide_1_1_expr.html',1,'Halide']]],
   ['exprcompare',['ExprCompare',['../struct_halide_1_1_expr_compare.html',1,'Halide']]],
+  ['exprinfo',['ExprInfo',['../struct_halide_1_1_internal_1_1_simplify_1_1_expr_info.html',1,'Halide::Internal::Simplify']]],
   ['exprnode',['ExprNode',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprnode_3c_20add_20_3e',['ExprNode&lt; Add &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprnode_3c_20and_20_3e',['ExprNode&lt; And &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],

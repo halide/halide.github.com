@@ -15,6 +15,6 @@ var _error_8h =
     [ "internal_assert", "_error_8h.html#ac6b33d592fea72b20afd0039afd7360e", null ],
     [ "user_assert", "_error_8h.html#af439940098bb932fbd7e5b42365d377c", null ],
     [ "_halide_user_assert", "_error_8h.html#ac33c8660a2d35cb8cc69c510bb9c0a98", null ],
-    [ "exceptions_enabled", "_error_8h.html#ac6d27a04e65a9c083f68fc8c895f3205", null ],
-    [ "set_custom_compile_time_error_reporter", "_error_8h.html#af1c76d9a6be91f972dbeb1c46ce2f68b", null ]
+    [ "exceptions_enabled", "_error_8h.html#a5b356550ce5d4c3f8ab941cf3b474cb3", null ],
+    [ "set_custom_compile_time_error_reporter", "_error_8h.html#a64b2e4833f813a4e306f3407f663c393", null ]
 ];

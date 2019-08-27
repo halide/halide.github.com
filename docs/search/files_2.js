@@ -5,6 +5,7 @@ var searchData=
   ['closure_2eh',['Closure.h',['../_closure_8h.html',1,'']]],
   ['codegen_5farm_2eh',['CodeGen_ARM.h',['../_code_gen___a_r_m_8h.html',1,'']]],
   ['codegen_5fc_2eh',['CodeGen_C.h',['../_code_gen___c_8h.html',1,'']]],
+  ['codegen_5fd3d12compute_5fdev_2eh',['CodeGen_D3D12Compute_Dev.h',['../_code_gen___d3_d12_compute___dev_8h.html',1,'']]],
   ['codegen_5fgpu_5fdev_2eh',['CodeGen_GPU_Dev.h',['../_code_gen___g_p_u___dev_8h.html',1,'']]],
   ['codegen_5fgpu_5fhost_2eh',['CodeGen_GPU_Host.h',['../_code_gen___g_p_u___host_8h.html',1,'']]],
   ['codegen_5fhexagon_2eh',['CodeGen_Hexagon.h',['../_code_gen___hexagon_8h.html',1,'']]],
@@ -18,9 +19,13 @@ var searchData=
   ['codegen_5fposix_2eh',['CodeGen_Posix.h',['../_code_gen___posix_8h.html',1,'']]],
   ['codegen_5fpowerpc_2eh',['CodeGen_PowerPC.h',['../_code_gen___power_p_c_8h.html',1,'']]],
   ['codegen_5fptx_5fdev_2eh',['CodeGen_PTX_Dev.h',['../_code_gen___p_t_x___dev_8h.html',1,'']]],
+  ['codegen_5fpytorch_2eh',['CodeGen_PyTorch.h',['../_code_gen___py_torch_8h.html',1,'']]],
+  ['codegen_5friscv_2eh',['CodeGen_RISCV.h',['../_code_gen___r_i_s_c_v_8h.html',1,'']]],
+  ['codegen_5fwebassembly_2eh',['CodeGen_WebAssembly.h',['../_code_gen___web_assembly_8h.html',1,'']]],
   ['codegen_5fx86_2eh',['CodeGen_X86.h',['../_code_gen___x86_8h.html',1,'']]],
   ['concisecasts_2eh',['ConciseCasts.h',['../_concise_casts_8h.html',1,'']]],
   ['cplusplusmangle_2eh',['CPlusPlusMangle.h',['../_c_plus_plus_mangle_8h.html',1,'']]],
+  ['cpu_5ffeatures_2eh',['cpu_features.h',['../cpu__features_8h.html',1,'']]],
   ['cse_2eh',['CSE.h',['../_c_s_e_8h.html',1,'']]],
   ['cuda_5ffunctions_2eh',['cuda_functions.h',['../cuda__functions_8h.html',1,'']]]
 ];

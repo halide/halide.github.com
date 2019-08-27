@@ -10,8 +10,8 @@ var struct_halide_1_1_internal_1_1_interval =
     [ "has_lower_bound", "struct_halide_1_1_internal_1_1_interval.html#a380decef08069a083509c789d82012f5", null ],
     [ "is_bounded", "struct_halide_1_1_internal_1_1_interval.html#ac210594349579b2bea62bfaa4c74061e", null ],
     [ "same_as", "struct_halide_1_1_internal_1_1_interval.html#a5849bd33453ec9d7a602b036545cbfd9", null ],
-    [ "include", "struct_halide_1_1_internal_1_1_interval.html#a8cede47efc7526ceeb341d1bfe33dff1", null ],
-    [ "include", "struct_halide_1_1_internal_1_1_interval.html#a4bb589d3372696c7d8350949f93bac76", null ],
+    [ "include", "struct_halide_1_1_internal_1_1_interval.html#a058f61f3faa3b473fd661442e6c277cc", null ],
+    [ "include", "struct_halide_1_1_internal_1_1_interval.html#abc49ad10e7e9b8385fd4b682934ff289", null ],
     [ "operator==", "struct_halide_1_1_internal_1_1_interval.html#a0be0a889bdf10ac0a3a4f40cc4cc98ea", null ],
     [ "min", "struct_halide_1_1_internal_1_1_interval.html#a1ecac35096b9d52ac261229410375f49", null ],
     [ "max", "struct_halide_1_1_internal_1_1_interval.html#ae2f9f0e13f96b9e1397fcce1de560376", null ]

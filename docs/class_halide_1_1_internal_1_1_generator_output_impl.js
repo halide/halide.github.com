@@ -9,6 +9,7 @@ var class_halide_1_1_internal_1_1_generator_output_impl =
     [ "operator()", "class_halide_1_1_internal_1_1_generator_output_impl.html#aa7181c2407ec5020d6b873c06f90739a", null ],
     [ "operator()", "class_halide_1_1_internal_1_1_generator_output_impl.html#ad577ae3479eba8a6bb0338971c5705db", null ],
     [ "operator Func", "class_halide_1_1_internal_1_1_generator_output_impl.html#a1e315e3f8425a4a7ca60fa11bdf87dbf", null ],
+    [ "operator Stage", "class_halide_1_1_internal_1_1_generator_output_impl.html#a0bfdfcd172122977f8bf271b667bdca2", null ],
     [ "size", "class_halide_1_1_internal_1_1_generator_output_impl.html#a60e31c8d76cc7b9f1ce38f023fd6d50a", null ],
     [ "operator[]", "class_halide_1_1_internal_1_1_generator_output_impl.html#ac8e85340c0e765ed212aaf2cbd2878dd", null ],
     [ "at", "class_halide_1_1_internal_1_1_generator_output_impl.html#a5f13ec41fa1e32e3241ad0a034436743", null ],

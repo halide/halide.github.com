@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['char',['CHAR',['../mini__d3d12_8h.html#aebb9e13210d88d43e32e735ada43a425',1,'mini_d3d12.h']]],
   ['cl_5faddressing_5fmode',['cl_addressing_mode',['../mini__cl_8h.html#a8ef0a3e08dc6e296a4375689da776ebe',1,'mini_cl.h']]],
   ['cl_5fbitfield',['cl_bitfield',['../mini__cl_8h.html#a142c6bbedc3753b71d3d08d6caa18315',1,'mini_cl.h']]],
   ['cl_5fbool',['cl_bool',['../mini__cl_8h.html#a8706dd93aca3c4a117cac1e593a01feb',1,'mini_cl.h']]],
@@ -62,6 +63,7 @@ var searchData=
   ['const_5fsymbol_5fiterator',['const_symbol_iterator',['../class_halide_1_1_internal_1_1_elf_1_1_object.html#a439cd93d7934d5951d200a20cf33c299',1,'Halide::Internal::Elf::Object']]],
   ['conststring',['ConstString',['../struct_halide_1_1_internal_1_1_call.html#a22787aaecb4250350f640c07acc43305',1,'Halide::Internal::Call']]],
   ['contents_5fiterator',['contents_iterator',['../class_halide_1_1_internal_1_1_elf_1_1_section.html#a5fb3e99e33f0de1bbf5accfc2ba03bc6',1,'Halide::Internal::Elf::Section']]],
+  ['copy_5fvalue_5ffunc',['copy_value_func',['../namespace_halide_1_1_runtime_1_1_internal.html#a3c8ace74efaf655c9f4450c0f859224a',1,'Halide::Runtime::Internal']]],
   ['cuarray',['CUarray',['../namespace_halide_1_1_runtime_1_1_internal_1_1_cuda.html#a07bba771174e9b5fe466a7456890fccb',1,'Halide::Runtime::Internal::Cuda']]],
   ['cucontext',['CUcontext',['../namespace_halide_1_1_runtime_1_1_internal_1_1_cuda.html#a9ce98c478c9402906bf6b24ab8db6fab',1,'Halide::Runtime::Internal::Cuda']]],
   ['cuda_5fmemcpy3d',['CUDA_MEMCPY3D',['../namespace_halide_1_1_runtime_1_1_internal_1_1_cuda.html#a74a9a64a66bcce9aaf80b04e46b070f4',1,'Halide::Runtime::Internal::Cuda']]],

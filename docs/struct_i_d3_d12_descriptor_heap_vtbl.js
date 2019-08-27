@@ -1,0 +1,25 @@
+var struct_i_d3_d12_descriptor_heap_vtbl =
+[
+    [ "HRESULT", "struct_i_d3_d12_descriptor_heap_vtbl.html#a928336c865dc528fb9a27a1a05f8857e", null ],
+    [ "ULONG", "struct_i_d3_d12_descriptor_heap_vtbl.html#ade5130a280309c255d7c99dae771ce51", null ],
+    [ "ULONG", "struct_i_d3_d12_descriptor_heap_vtbl.html#ad6148f0defd766caba86427747f75504", null ],
+    [ "HRESULT", "struct_i_d3_d12_descriptor_heap_vtbl.html#ac2fd369d1d09e224a108cdb360116df0", null ],
+    [ "HRESULT", "struct_i_d3_d12_descriptor_heap_vtbl.html#a1e57d8ce3a31fb4c594d5da683f07071", null ],
+    [ "_In_reads_bytes_opt_", "struct_i_d3_d12_descriptor_heap_vtbl.html#a23e94e411cb2ae11894860dade7cad3f", null ],
+    [ "HRESULT", "struct_i_d3_d12_descriptor_heap_vtbl.html#a49c5d0f9acc02eb9afe536178021fdae", null ],
+    [ "HRESULT", "struct_i_d3_d12_descriptor_heap_vtbl.html#a06ad0a605706ae2c404db5962b5fe4f1", null ],
+    [ "HRESULT", "struct_i_d3_d12_descriptor_heap_vtbl.html#aea73d664a26fbe8c1f2156bf10626bbe", null ],
+    [ "D3D12_DESCRIPTOR_HEAP_DESC", "struct_i_d3_d12_descriptor_heap_vtbl.html#ac8089233d6e8e0a01c444e2b3c1c39b7", null ],
+    [ "D3D12_CPU_DESCRIPTOR_HANDLE", "struct_i_d3_d12_descriptor_heap_vtbl.html#af19ebb6096aa2e0f294314049d01146b", null ],
+    [ "D3D12_GPU_DESCRIPTOR_HANDLE", "struct_i_d3_d12_descriptor_heap_vtbl.html#a08f19a908c5a8a339c09148c5de91511", null ],
+    [ "riid", "struct_i_d3_d12_descriptor_heap_vtbl.html#a429af8d4a57da13c318057bdb0b69b98", null ],
+    [ "ppvObject", "struct_i_d3_d12_descriptor_heap_vtbl.html#ae3a470b8cd0d0f2cc13f2890cff33625", null ],
+    [ "guid", "struct_i_d3_d12_descriptor_heap_vtbl.html#a8a7063cd32a1339031cf3dd079158885", null ],
+    [ "pDataSize", "struct_i_d3_d12_descriptor_heap_vtbl.html#acebf79df838b1a62d5d50652b8f6fe65", null ],
+    [ "pData", "struct_i_d3_d12_descriptor_heap_vtbl.html#ae0d0a200b55182c44388fa4a538aefec", null ],
+    [ "DataSize", "struct_i_d3_d12_descriptor_heap_vtbl.html#a447bd9e8cc71a44745b0b18239a68b6f", null ],
+    [ "pData", "struct_i_d3_d12_descriptor_heap_vtbl.html#a00dbd6c6d46e76b7796c02dac10d9488", null ],
+    [ "Name", "struct_i_d3_d12_descriptor_heap_vtbl.html#a66f5ea9cd07e626ea133f843b43c3014", null ],
+    [ "riid", "struct_i_d3_d12_descriptor_heap_vtbl.html#a51e2e9f70362d1d0caea8d7b729b7b46", null ],
+    [ "ppvDevice", "struct_i_d3_d12_descriptor_heap_vtbl.html#a0bc28c31bfbe7d3d2be4c62241993c00", null ]
+];

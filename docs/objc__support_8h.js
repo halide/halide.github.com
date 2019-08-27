@@ -8,6 +8,7 @@ var objc__support_8h =
     [ "NSLog", "objc__support_8h.html#aac5cd8ea55fbbdbf9f2a137737ed69ba", null ],
     [ "create_autorelease_pool", "objc__support_8h.html#acff1dcac513f7da390976298fc04f61b", null ],
     [ "drain_autorelease_pool", "objc__support_8h.html#a7d82462dbfb4abe1a0fa7b9841e9575b", null ],
+    [ "retain_ns_object", "objc__support_8h.html#a2a9fc8f25ca2dc15df7fad00b605f456", null ],
     [ "release_ns_object", "objc__support_8h.html#a4dd60ab3d7e5e36553d6e8193d083fcc", null ],
     [ "wrap_string_as_ns_string", "objc__support_8h.html#a8df67d63d029372ffe087866e341a91a", null ],
     [ "strlen", "objc__support_8h.html#a409517cb37893ae5bb9165d413473a84", null ],

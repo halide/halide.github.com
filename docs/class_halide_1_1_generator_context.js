@@ -12,7 +12,7 @@ var class_halide_1_1_generator_context =
     [ "get_externs_map", "class_halide_1_1_generator_context.html#aa00df3369b8fd36239102af969bbe833", null ],
     [ "create", "class_halide_1_1_generator_context.html#a6e0bb00fcf9653ce797f90344af03394", null ],
     [ "apply", "class_halide_1_1_generator_context.html#a19ca0bddf0b10898c97e2053ee9f4b50", null ],
-    [ "init_from_context", "class_halide_1_1_generator_context.html#a6fc0060d56e0d5e321f9572da189b921", null ],
+    [ "init_from_context", "class_halide_1_1_generator_context.html#a6daa09202c3ef10c7b8c40958b710334", null ],
     [ "get_value_tracker", "class_halide_1_1_generator_context.html#a9f7dd9fa91c24e87158ec6b9cfa050ab", null ],
     [ "operator=", "class_halide_1_1_generator_context.html#adfb548b5afd789a904c2d68bce2204f2", null ],
     [ "operator=", "class_halide_1_1_generator_context.html#a70bb069abcabd10ae42695a89445356f", null ],

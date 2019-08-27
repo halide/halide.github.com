@@ -1,14 +1,24 @@
 var searchData=
 [
   ['object_5fname',['object_name',['../struct_halide_1_1_outputs.html#a7967602560a96194a4bd52cb72f1d23e',1,'Halide::Outputs']]],
-  ['offset',['offset',['../struct_halide_1_1_internal_1_1_prefetch_directive.html#ad07931ad49df214803bb298c24aea592',1,'Halide::Internal::PrefetchDirective']]],
+  ['offset',['offset',['../struct_halide_1_1_internal_1_1_prefetch_directive.html#ad07931ad49df214803bb298c24aea592',1,'Halide::Internal::PrefetchDirective::offset()'],['../struct_d3_d12___p_l_a_c_e_d___s_u_b_r_e_s_o_u_r_c_e___f_o_o_t_p_r_i_n_t.html#aa3e8e339cc7405db8de89c66a18451bd',1,'D3D12_PLACED_SUBRESOURCE_FOOTPRINT::Offset()'],['../namespace_halide_1_1_runtime_1_1_internal.html#ac8953e780df5ac52805725c46827a9e7',1,'Halide::Runtime::Internal::offset()']]],
+  ['offsetindescriptorsfromtablestart',['OffsetInDescriptorsFromTableStart',['../struct_d3_d12___d_e_s_c_r_i_p_t_o_r___r_a_n_g_e.html#a1993d3c0c525ea5972bacd5724a9c57a',1,'D3D12_DESCRIPTOR_RANGE::OffsetInDescriptorsFromTableStart()'],['../struct_d3_d12___d_e_s_c_r_i_p_t_o_r___r_a_n_g_e1.html#a46687e911839161c655dc30b49b5e22b',1,'D3D12_DESCRIPTOR_RANGE1::OffsetInDescriptorsFromTableStart()']]],
+  ['old_5fuses',['old_uses',['../struct_halide_1_1_internal_1_1_simplify_1_1_var_info.html#a9b5ac4ac0d9b3e47ba99d7895ab243d3',1,'Halide::Internal::Simplify::VarInfo']]],
   ['old_5fvalue',['old_value',['../struct_halide_1_1_internal_1_1_scoped_value.html#a7d7b5c59bb87a718d134974ff162efa9',1,'Halide::Internal::ScopedValue']]],
   ['old_5fvar',['old_var',['../struct_halide_1_1_internal_1_1_split.html#a689e63030a4370dfb6d74aa4778ceb94',1,'Halide::Internal::Split']]],
+  ['operation',['Operation',['../struct_i_d3_d12_graphics_command_list_vtbl.html#afc0d833504f06a47f036080911cd965e',1,'ID3D12GraphicsCommandListVtbl']]],
   ['ops',['ops',['../struct_halide_1_1_internal_1_1_associative_pattern.html#a99914e23524f6fd652a173ee4801228d',1,'Halide::Internal::AssociativePattern']]],
+  ['order',['order',['../struct_halide_1_1_internal_1_1_region_costs.html#a7f9bf5a8a1251f8331579464487dadc6',1,'Halide::Internal::RegionCosts']]],
   ['origin',['origin',['../struct__cl__buffer__region.html#ad3b41b7ad499abfc0d0621791af8a50c',1,'_cl_buffer_region']]],
   ['os',['os',['../struct_halide_1_1_target.html#aa2d0cedb02dc84eb7a9675df89f1d3ec',1,'Halide::Target']]],
   ['outer',['outer',['../struct_halide_1_1_internal_1_1_split.html#aecf934bbd86bd7fcc31667545d9ff610',1,'Halide::Internal::Split']]],
+  ['output',['Output',['../struct_i_d_x_g_i_adapter_vtbl.html#ae83a1c51ae9ce7623044bd929e76b3f2',1,'IDXGIAdapterVtbl::Output()'],['../struct_i_d_x_g_i_adapter1_vtbl.html#a6001df1be3ae085f0596e5bb16b0bb5e',1,'IDXGIAdapter1Vtbl::Output()']]],
   ['output_5fkind',['output_kind',['../class_halide_1_1_internal_1_1_code_gen___c.html#a4014409a66b1e25caaba62f90ec5a031',1,'Halide::Internal::CodeGen_C']]],
+  ['output_5ftype',['output_type',['../struct_halide_1_1_internal_1_1_i_r_matcher_1_1_rewriter.html#af226353027ed9fd56328bc46a5b06d12',1,'Halide::Internal::IRMatcher::Rewriter']]],
+  ['outputs',['outputs',['../struct_halide_1_1_internal_1_1_generator_stub_1_1_names.html#ac5d17fbc35f2e0bfc7f1c1bfd513e5fc',1,'Halide::Internal::GeneratorStub::Names']]],
+  ['outputslot',['OutputSlot',['../struct_d3_d12___s_o___d_e_c_l_a_r_a_t_i_o_n___e_n_t_r_y.html#a7dadffa7b0aba242c27d4dff08cb21d7',1,'D3D12_SO_DECLARATION_ENTRY']]],
   ['own_5fmem',['own_mem',['../printer_8h.html#ad597d7f7ec8d6235b631fc834a84f090',1,'printer.h']]],
+  ['owner_5fis_5fsleeping',['owner_is_sleeping',['../struct_halide_1_1_runtime_1_1_internal_1_1work.html#a5af1b5da9e15371d19aedd3c63d2c9b9',1,'Halide::Runtime::Internal::work']]],
+  ['owners_5fsleeping',['owners_sleeping',['../struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html#ab9a09f1a555a1914b0b5470654ffecc6',1,'Halide::Runtime::Internal::work_queue_t']]],
   ['ownership',['ownership',['../struct_halide_1_1_runtime_1_1_device_ref_count.html#a3981d16ec9be9c9a6e3fdb2a4d725030',1,'Halide::Runtime::DeviceRefCount']]]
 ];

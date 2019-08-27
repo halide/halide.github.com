@@ -7,7 +7,8 @@ var _bounds_8h =
       [ "Lower", "_bounds_8h.html#a8548315fd4d13ccebe45a8123369f7caab75fcdd2d72d9e000beab48622402d93", null ]
     ] ],
     [ "bounds_of_expr_in_scope", "_bounds_8h.html#a9191d3b3cba94302c0d08bf9f488d8c6", null ],
-    [ "find_constant_bound", "_bounds_8h.html#a8fa13926995971d75dc697536d803b4d", null ],
+    [ "find_constant_bound", "_bounds_8h.html#a69b9d67e1b22b876ec4e3f227557d835", null ],
+    [ "find_constant_bounds", "_bounds_8h.html#aa34593e7612bf139260707200b6dacb3", null ],
     [ "merge_boxes", "_bounds_8h.html#ac2f62c0ee3ace8de2be57a9db369a3e4", null ],
     [ "boxes_overlap", "_bounds_8h.html#ac9641dd947fdf6352ccd5e34548db35e", null ],
     [ "box_union", "_bounds_8h.html#af86d8a9b260b097d115182e4b8488f09", null ],
@@ -26,5 +27,5 @@ var _bounds_8h =
     [ "box_touched", "_bounds_8h.html#aa211ee508998ef25191d04fa45eb16c7", null ],
     [ "box_touched", "_bounds_8h.html#a35a819815a3d7f37a441a22c06689689", null ],
     [ "compute_function_value_bounds", "_bounds_8h.html#a0b807d0d1524fb2f20b1533d05032c02", null ],
-    [ "bounds_test", "_bounds_8h.html#abf0ac02fb219b5b3b77f2930b2ef63a2", null ]
+    [ "bounds_test", "_bounds_8h.html#a439ef9127bf30f5e2a67963eb8db0323", null ]
 ];
