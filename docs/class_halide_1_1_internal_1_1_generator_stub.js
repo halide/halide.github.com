@@ -1,25 +1,13 @@
 var class_halide_1_1_internal_1_1_generator_stub =
 [
-    [ "GeneratorStub", "class_halide_1_1_internal_1_1_generator_stub.html#a0f369a3dc55582ac56782e30b80c7ab6", null ],
-    [ "GeneratorStub", "class_halide_1_1_internal_1_1_generator_stub.html#a55ad29ab6a358e4b7219b800e72d1b98", null ],
-    [ "~GeneratorStub", "class_halide_1_1_internal_1_1_generator_stub.html#aecb36e75a71b14a9d7b9cabd8801d824", null ],
-    [ "GeneratorStub", "class_halide_1_1_internal_1_1_generator_stub.html#a96dcb0d41139032f9c3f6cfc72703ee2", null ],
-    [ "operator=", "class_halide_1_1_internal_1_1_generator_stub.html#aafcfd2563b6b89b19012a7e7a00ad516", null ],
-    [ "get_target", "class_halide_1_1_internal_1_1_generator_stub.html#af20548ecdea18fffd58797706fc4aed6", null ],
-    [ "set_schedule_param", "class_halide_1_1_internal_1_1_generator_stub.html#ad1f29ff6154731f83c2baf40c2f7f07f", null ],
-    [ "schedule", "class_halide_1_1_internal_1_1_generator_stub.html#a7891d04b454d66f1c2fc30007c202c7c", null ],
-    [ "operator Func", "class_halide_1_1_internal_1_1_generator_stub.html#a6c47c170856f9fc46a241476225e8722", null ],
-    [ "operator()", "class_halide_1_1_internal_1_1_generator_stub.html#a7bc04b8e473631363c0c2c571e4d3bc4", null ],
-    [ "operator()", "class_halide_1_1_internal_1_1_generator_stub.html#afea4a67b497c0a9a494732d8053856c9", null ],
-    [ "realize", "class_halide_1_1_internal_1_1_generator_stub.html#ad50efdc15f45b7bb67c1d18b8d611370", null ],
-    [ "realize", "class_halide_1_1_internal_1_1_generator_stub.html#a67dcd4adc86d8e3024f538b887888934", null ],
-    [ "realize", "class_halide_1_1_internal_1_1_generator_stub.html#a1e0195aa36d86595f2110dc3bc686d52", null ],
-    [ "get_schedule_param", "class_halide_1_1_internal_1_1_generator_stub.html#a5416262341358c653d26148e28e357c7", null ],
+    [ "Names", "struct_halide_1_1_internal_1_1_generator_stub_1_1_names.html", "struct_halide_1_1_internal_1_1_generator_stub_1_1_names" ],
+    [ "GeneratorStub", "class_halide_1_1_internal_1_1_generator_stub.html#a38398833fc7f7ec29d1ef5c547727a84", null ],
+    [ "GeneratorStub", "class_halide_1_1_internal_1_1_generator_stub.html#ad254632efa0e228e2c16009ced641dd8", null ],
+    [ "generate", "class_halide_1_1_internal_1_1_generator_stub.html#a19c58a3efe7bbaf53720cd19dda1b8e3", null ],
     [ "get_output", "class_halide_1_1_internal_1_1_generator_stub.html#a61411666c135d58364d0b6669a970388", null ],
     [ "get_output_buffer", "class_halide_1_1_internal_1_1_generator_stub.html#ac105c8a06c5c9a096058bdff3ee50cd4", null ],
-    [ "get_output_vector", "class_halide_1_1_internal_1_1_generator_stub.html#a67b3b7191ab722b325c018964ab9db06", null ],
-    [ "has_generator", "class_halide_1_1_internal_1_1_generator_stub.html#a065a25f6b6bf7b7b8659790f35d9ea3b", null ],
-    [ "verify_same_funcs", "class_halide_1_1_internal_1_1_generator_stub.html#a6171e30b119b0d67b728c1a6c14cc38c", null ],
-    [ "verify_same_funcs", "class_halide_1_1_internal_1_1_generator_stub.html#a36713d6a0d7e860d7be69cc09ebc0b30", null ],
-    [ "verify_same_funcs", "class_halide_1_1_internal_1_1_generator_stub.html#adc2738553e54d32d15a945086fc3ad51", null ]
+    [ "get_array_output_buffer", "class_halide_1_1_internal_1_1_generator_stub.html#a63fb42c2c43cbd9442e0ba8255af2fce", null ],
+    [ "get_array_output", "class_halide_1_1_internal_1_1_generator_stub.html#a6516f489b1ebf93e34d1ed721a06b856", null ],
+    [ "get_names", "class_halide_1_1_internal_1_1_generator_stub.html#a0819dd6ae17b864fb609abe586af08dd", null ],
+    [ "generator", "class_halide_1_1_internal_1_1_generator_stub.html#aa3ee91e2a156e5547f4f14b72ffd61c1", null ]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['modifier',['Modifier',['../structhalide__handle__cplusplus__type.html#ad45abe716942dafc7466e96337d04935',1,'halide_handle_cplusplus_type']]],
-  ['monotonic',['Monotonic',['../namespace_halide_1_1_internal.html#a7dc0c8c1adc38d2c5a80979948f0007c',1,'Halide::Internal']]]
+  ['linkagetype',['LinkageType',['../namespace_halide.html#a172db5c21e58bfed0793b7152657623c',1,'Halide']]],
+  ['loopalignstrategy',['LoopAlignStrategy',['../namespace_halide.html#a751041c9a6cffe776b613f4dd04c3354',1,'Halide']]]
 ];

@@ -115,14 +115,14 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a03325edc85a804d9bd4ebfa202495643"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhalide__profiler__state.html#a03325edc85a804d9bd4ebfa202495643">get_remote_profiler_state</a> )(int *func, int *active_workers)</td></tr>
 <tr class="memdesc:a03325edc85a804d9bd4ebfa202495643"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve remote profiler state.  <a href="#a03325edc85a804d9bd4ebfa202495643">More...</a><br /></td></tr>
 <tr class="separator:a03325edc85a804d9bd4ebfa202495643"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaba04d95aba3ff12533f06d33bb41bd3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhalide__profiler__state.html#aaba04d95aba3ff12533f06d33bb41bd3">started</a></td></tr>
-<tr class="memdesc:aaba04d95aba3ff12533f06d33bb41bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the profiler thread running.  <a href="#aaba04d95aba3ff12533f06d33bb41bd3">More...</a><br /></td></tr>
-<tr class="separator:aaba04d95aba3ff12533f06d33bb41bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a468bbaf228545bd37aa32632d46b5ccd"><td class="memItemLeft" align="right" valign="top">struct halide_thread *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhalide__profiler__state.html#a468bbaf228545bd37aa32632d46b5ccd">sampling_thread</a></td></tr>
+<tr class="memdesc:a468bbaf228545bd37aa32632d46b5ccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sampling thread reference to be joined at shutdown.  <a href="#a468bbaf228545bd37aa32632d46b5ccd">More...</a><br /></td></tr>
+<tr class="separator:a468bbaf228545bd37aa32632d46b5ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The global state of the profiler. </p>
 
-<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01488">1488</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01739">1739</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a9a28d985ea48ddff2c73e820b455d77b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9a28d985ea48ddff2c73e820b455d77b">&#9670;&nbsp;</a></span>lock</h2>
@@ -139,7 +139,7 @@ Public Attributes</h2></td></tr>
 <p>Guards access to the fields below. </p>
 <p>If not locked, the sampling profiler thread is free to modify things below (including reordering the linked list of pipeline stats). </p>
 
-<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01492">1492</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01743">1743</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -158,7 +158,7 @@ Public Attributes</h2></td></tr>
 <p>The amount of time the profiler thread sleeps between samples in milliseconds. </p>
 <p>Defaults to 1 </p>
 
-<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01496">1496</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01747">1747</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -176,7 +176,7 @@ Public Attributes</h2></td></tr>
 
 <p>An internal id used for bookkeeping. </p>
 
-<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01499">1499</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01750">1750</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -195,7 +195,7 @@ Public Attributes</h2></td></tr>
 <p>The id of the current running Func. </p>
 <p>Set by the pipeline, read periodically by the profiler thread. </p>
 
-<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01503">1503</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01754">1754</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -213,7 +213,7 @@ Public Attributes</h2></td></tr>
 
 <p>The number of threads currently doing work. </p>
 
-<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01506">1506</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01757">1757</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -231,7 +231,7 @@ Public Attributes</h2></td></tr>
 
 <p>A linked list of stats gathered for each pipeline. </p>
 
-<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01509">1509</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01760">1760</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
@@ -250,25 +250,25 @@ Public Attributes</h2></td></tr>
 <p>Retrieve remote profiler state. </p>
 <p>Used so that the sampling profiler can follow along with execution that occurs elsewhere, e.g. on a DSP. If null, it reads from the int above instead. </p>
 
-<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01514">1514</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01765">1765</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>
-<a id="aaba04d95aba3ff12533f06d33bb41bd3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaba04d95aba3ff12533f06d33bb41bd3">&#9670;&nbsp;</a></span>started</h2>
+<a id="a468bbaf228545bd37aa32632d46b5ccd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a468bbaf228545bd37aa32632d46b5ccd">&#9670;&nbsp;</a></span>sampling_thread</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool halide_profiler_state::started</td>
+          <td class="memname">struct halide_thread* halide_profiler_state::sampling_thread</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Is the profiler thread running. </p>
+<p>Sampling thread reference to be joined at shutdown. </p>
 
-<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01517">1517</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_halide_runtime_8h_source.html#l01768">1768</a> of file <a class="el" href="_halide_runtime_8h_source.html">HalideRuntime.h</a>.</p>
 
 </div>
 </div>

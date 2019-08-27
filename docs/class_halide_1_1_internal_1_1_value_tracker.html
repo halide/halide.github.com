@@ -96,8 +96,8 @@ $(document).ready(function(){initNavTree('class_halide_1_1_internal_1_1_value_tr
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abedda15edd669c0e5856abbae6d46804"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_value_tracker.html#abedda15edd669c0e5856abbae6d46804">ValueTracker</a> (<a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a> max_unique_values=2)</td></tr>
 <tr class="separator:abedda15edd669c0e5856abbae6d46804"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c298006efa90bcc3fc9b3d3d03a84c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_value_tracker.html#a8c298006efa90bcc3fc9b3d3d03a84c7">track_values</a> (const std::string &amp;name, const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;values)</td></tr>
-<tr class="separator:a8c298006efa90bcc3fc9b3d3d03a84c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36544a37036270631d333903610f5cc2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_value_tracker.html#a36544a37036270631d333903610f5cc2">track_values</a> (const std::string &amp;name, const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;values)</td></tr>
+<tr class="separator:a36544a37036270631d333903610f5cc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="class_halide_1_1_internal_1_1_value_tracker.html" title="ValueTracker is an internal utility class that attempts to track and flag certain obvious Stub-relate...">ValueTracker</a> is an internal utility class that attempts to track and flag certain obvious Stub-related errors at <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> compile time: it tracks the constraints set on any Parameter-based argument (i.e., Input&lt;Buffer&gt; and Output&lt;Buffer&gt;) to ensure that incompatible values aren't set. </p>
@@ -106,7 +106,7 @@ Public Member Functions</h2></td></tr>
 <p>Note that this won't catch all cases: &ndash; JIT compilation has no way to check for conflicts at the top-level &ndash; constraints that match the default value (e.g. if dim(0).set_stride(1) is the first value seen by the tracker) will be ignored, so an explicit requirement set this way can be missed</p>
 <p>Nevertheless, this is likely to be much better than nothing when composing multiple layers of Stubs in a single fused result. </p>
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00278">278</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00312">312</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="abedda15edd669c0e5856abbae6d46804"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abedda15edd669c0e5856abbae6d46804">&#9670;&nbsp;</a></span>ValueTracker()</h2>
@@ -132,21 +132,21 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00283">283</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00317">317</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
-<p class="reference">References <a class="el" href="_util_8h_source.html#l00030">EXPORT</a>, <a class="el" href="namespace_halide_1_1_internal.html#a03ab1950ed754cf1090d734940ad6ee9">Halide::Internal::parameter_constraints()</a>, and <a class="el" href="class_halide_1_1_internal_1_1_value_tracker.html#a8c298006efa90bcc3fc9b3d3d03a84c7">track_values()</a>.</p>
+<p class="reference">References <a class="el" href="namespace_halide_1_1_internal.html#aa2672948a0299d09a067ec4dbb862723">Halide::Internal::parameter_constraints()</a>, and <a class="el" href="class_halide_1_1_internal_1_1_value_tracker.html#a36544a37036270631d333903610f5cc2">track_values()</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8c298006efa90bcc3fc9b3d3d03a84c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c298006efa90bcc3fc9b3d3d03a84c7">&#9670;&nbsp;</a></span>track_values()</h2>
+<a id="a36544a37036270631d333903610f5cc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36544a37036270631d333903610f5cc2">&#9670;&nbsp;</a></span>track_values()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_util_8h.html#a3472d8cdbb788d5f1815b3522595bc49">EXPORT</a> void Halide::Internal::ValueTracker::track_values </td>
+          <td class="memname">void Halide::Internal::ValueTracker::track_values </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>name</em>, </td>
@@ -165,7 +165,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">Referenced by <a class="el" href="_generator_8h_source.html#l00283">ValueTracker()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_generator_8h_source.html#l00317">ValueTracker()</a>.</p>
 
 </div>
 </div>

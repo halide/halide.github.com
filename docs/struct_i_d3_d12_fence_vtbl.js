@@ -1,0 +1,27 @@
+var struct_i_d3_d12_fence_vtbl =
+[
+    [ "HRESULT", "struct_i_d3_d12_fence_vtbl.html#ab34a0ed430b104f769a1a5f4763bb75f", null ],
+    [ "ULONG", "struct_i_d3_d12_fence_vtbl.html#a074bfbbccd5e7b41d18a0c7e300e8cd0", null ],
+    [ "ULONG", "struct_i_d3_d12_fence_vtbl.html#a6a5c008ad8d4c90bbd5069e716c38418", null ],
+    [ "HRESULT", "struct_i_d3_d12_fence_vtbl.html#a0a12cc6ffc369c311cf8b8f263714f0b", null ],
+    [ "HRESULT", "struct_i_d3_d12_fence_vtbl.html#aab186d2b20e56ef1ef4485f93a0b2d4b", null ],
+    [ "_In_reads_bytes_opt_", "struct_i_d3_d12_fence_vtbl.html#a83b01f7e5649e53f98e97ee8ab959c8e", null ],
+    [ "HRESULT", "struct_i_d3_d12_fence_vtbl.html#ad4fca4d6a3f869292aff5e2ad4f35b06", null ],
+    [ "HRESULT", "struct_i_d3_d12_fence_vtbl.html#a0478417de4646da75a5b7308044adcfa", null ],
+    [ "HRESULT", "struct_i_d3_d12_fence_vtbl.html#a8f8e340bc6372b7b95f9fece6efa9c97", null ],
+    [ "UINT64", "struct_i_d3_d12_fence_vtbl.html#a62fb1e8acc6fd6fdc98b18b9c4f7bb19", null ],
+    [ "HRESULT", "struct_i_d3_d12_fence_vtbl.html#a0ce24e23fd8556d2172fe0e0015df36a", null ],
+    [ "HRESULT", "struct_i_d3_d12_fence_vtbl.html#a7402892a58533a7eda38299bfdf49f85", null ],
+    [ "riid", "struct_i_d3_d12_fence_vtbl.html#acb3371314cbcc759a2a88b43fb4242e0", null ],
+    [ "ppvObject", "struct_i_d3_d12_fence_vtbl.html#ae9b04da538d05e2a13c1c7c19b1dc5b4", null ],
+    [ "guid", "struct_i_d3_d12_fence_vtbl.html#ad70906986a92c9cfe22f321ca61d0541", null ],
+    [ "pDataSize", "struct_i_d3_d12_fence_vtbl.html#a8ad520d2d88b6d34b02b198d74bd28f6", null ],
+    [ "pData", "struct_i_d3_d12_fence_vtbl.html#ac1229cf15d1aefec2470879d80219f26", null ],
+    [ "DataSize", "struct_i_d3_d12_fence_vtbl.html#aa94f45c853fb7bc90662280d06f1f93a", null ],
+    [ "pData", "struct_i_d3_d12_fence_vtbl.html#a2de1310eab2e38650d12d21104cbb35b", null ],
+    [ "Name", "struct_i_d3_d12_fence_vtbl.html#af0c025cdcaa8ebc388ea85862dee4e64", null ],
+    [ "riid", "struct_i_d3_d12_fence_vtbl.html#a6c62066048600883d76908be84701ea8", null ],
+    [ "ppvDevice", "struct_i_d3_d12_fence_vtbl.html#a0146b5792c8846ad076766a184e76b91", null ],
+    [ "Value", "struct_i_d3_d12_fence_vtbl.html#a053187382f2021abe8dfb091ce47ceb1", null ],
+    [ "hEvent", "struct_i_d3_d12_fence_vtbl.html#a294416221091feecd9f1a37be1eb259f", null ]
+];

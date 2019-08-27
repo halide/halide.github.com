@@ -7,6 +7,9 @@ var searchData=
   ['towardpositiveinfinity',['TowardPositiveInfinity',['../namespace_halide.html#abff9f4f741ecf5b3b24bbe4efc4d0513ad81a1edda059bdb858a0ca851d27a212',1,'Halide']]],
   ['towardzero',['TowardZero',['../namespace_halide.html#abff9f4f741ecf5b3b24bbe4efc4d0513a2113e9520b32addb451df3b9fec51a96',1,'Halide']]],
   ['traceloads',['TraceLoads',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fafca30f177d1e4bdac6551c43119d7893',1,'Halide::Target']]],
+  ['tracepipeline',['TracePipeline',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faac0b2d5333a5282acb477066f14e9907',1,'Halide::Target']]],
   ['tracerealizations',['TraceRealizations',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa2bf7608dc0fbb54137134c1bcf91ffd8',1,'Halide::Target']]],
-  ['tracestores',['TraceStores',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fad9b234dbac225381e9e9ea50ed83c75d',1,'Halide::Target']]]
+  ['tracestores',['TraceStores',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fad9b234dbac225381e9e9ea50ed83c75d',1,'Halide::Target']]],
+  ['tsan',['TSAN',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa58d95b1dcba192fb5d4641ffff36432a',1,'Halide::Target']]],
+  ['type',['Type',['../namespace_halide_1_1_internal.html#a43770c59ec0f13935f4b33502ba7e817aa1fa27779242b4902f7ae3bdd5c6d508',1,'Halide::Internal']]]
 ];

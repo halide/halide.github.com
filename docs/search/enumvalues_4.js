@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['egl',['EGL',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa126ccb07c0612499b349ac4b622c84ea',1,'Halide::Target']]],
+  ['embedbitcode',['EmbedBitcode',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fad9abe4d72830168bd0e0ef8baa2910b7',1,'Halide::Target']]],
+  ['enablellvmloopopt',['EnableLLVMLoopOpt',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa28b51c8db700df63d4c0af413c6f86e5',1,'Halide::Target']]],
   ['enum',['Enum',['../structhalide__cplusplus__type__name.html#ac0de2781630a5ffb19c07d6c70cbc568a11f3c6713d87deb36f40fda406961aa9',1,'halide_cplusplus_type_name']]],
   ['eq',['EQ',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2a2dcbad7477fd40561e8b8198f173bd47',1,'Halide::Internal']]],
   ['errorprinter',['ErrorPrinter',['../namespace_halide_1_1_runtime_1_1_internal.html#a724298c91ed488cb70fd581fdfa9c190a191db8da2d202f067bcf55513c54a8f4',1,'Halide::Runtime::Internal']]],
@@ -12,8 +15,9 @@ var searchData=
   ['et_5frel',['ET_REL',['../class_halide_1_1_internal_1_1_elf_1_1_object.html#a0bf8c358278ba37229927743d841fe3ea554c09610be007b3d8dc6494849dca4e',1,'Halide::Internal::Elf::Object']]],
   ['evaluate',['Evaluate',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2ab086843368d1c92d0a86cbee76b20b6f',1,'Halide::Internal']]],
   ['exprarg',['ExprArg',['../struct_halide_1_1_extern_func_argument.html#acaf18f00d1d41e200ba8c7ac799a172baf2b30b30d6bb4a77d4b3b8d1d17350cc',1,'Halide::ExternFuncArgument']]],
-  ['extern',['Extern',['../struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393a0e9c32fc29933124d43d2463df3df57a',1,'Halide::Internal::Call']]],
-  ['external',['External',['../struct_halide_1_1_internal_1_1_lowered_func.html#a5048e4905f95550e02ea09cc5683025baf21dc6cfd1774e1076330e32e1cea2e4',1,'Halide::Internal::LoweredFunc']]],
-  ['externalplusmetadata',['ExternalPlusMetadata',['../struct_halide_1_1_internal_1_1_lowered_func.html#a5048e4905f95550e02ea09cc5683025ba5121c0adf4c21b93e4561d1ffbac6036',1,'Halide::Internal::LoweredFunc']]],
-  ['externcplusplus',['ExternCPlusPlus',['../struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393a428e3d9b26983afe2f1e821e9d5cd4dd',1,'Halide::Internal::Call']]]
+  ['extern',['Extern',['../struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393a0e9c32fc29933124d43d2463df3df57a',1,'Halide::Internal::Call::Extern()'],['../namespace_halide_1_1_internal.html#a6a8761f129e6554b9ea03de31bf066f1a498ab78ee0b25ce33c83714c1a453831',1,'Halide::Internal::Extern()']]],
+  ['external',['External',['../namespace_halide.html#a172db5c21e58bfed0793b7152657623cab206a1b4ea1097761f78e8876f6da779',1,'Halide']]],
+  ['externalplusmetadata',['ExternalPlusMetadata',['../namespace_halide.html#a172db5c21e58bfed0793b7152657623ca46a7ceaa07d4cf61082c34cbf8f6a95c',1,'Halide']]],
+  ['externcplusplus',['ExternCPlusPlus',['../struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393a428e3d9b26983afe2f1e821e9d5cd4dd',1,'Halide::Internal::Call']]],
+  ['extract_5fmask_5felement',['extract_mask_element',['../struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974ae9de7cdcac8b595f6eb4ac03da674cb2',1,'Halide::Internal::Call']]]
 ];

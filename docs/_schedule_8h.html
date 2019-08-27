@@ -91,19 +91,18 @@ $(document).ready(function(){initNavTree('_schedule_8h.html','');});
 <p>Defines the internal representation of the schedule for a function.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="_expr_8h_source.html">Expr.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_parameter_8h_source.html">Parameter.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_function_ptr_8h_source.html">FunctionPtr.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_parameter_8h_source.html">Parameter.h</a>&quot;</code><br />
 <code>#include &lt;map&gt;</code><br />
 </div>
 <p><a href="_schedule_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_schedule_param.html">Halide::ScheduleParam&lt; T &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="class_halide_1_1_schedule_param.html" title="A ScheduleParam is a &quot;Param&quot; that can contain a scalar Expr or a LoopLevel; unlike Param&lt;&gt;...">ScheduleParam</a> is a "Param" that can contain a scalar <a class="el" href="struct_halide_1_1_expr.html" title="A fragment of Halide syntax. ">Expr</a> or a <a class="el" href="class_halide_1_1_loop_level.html" title="A reference to a site in a Halide statement at the top of the body of a particular for loop...">LoopLevel</a>; unlike Param&lt;&gt;, its value cannot be set at runtime.  <a href="class_halide_1_1_schedule_param.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_loop_level.html">Halide::LoopLevel</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A reference to a site in a <a class="el" href="namespace_halide.html" title="Defines methods for manipulating and analyzing boolean expressions. ">Halide</a> statement at the top of the body of a particular for loop.  <a href="class_halide_1_1_loop_level.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_fuse_loop_level.html">Halide::FuseLoopLevel</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_split.html">Halide::Internal::Split</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,6 +111,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_bound.html">Halide::Internal::Bound</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_storage_dim.html">Halide::Internal::StorageDim</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_fused_pair.html">Halide::Internal::FusedPair</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This represents two stages with fused loop nests from outermost to a specific loop level.  <a href="struct_halide_1_1_internal_1_1_fused_pair.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_prefetch_directive.html">Halide::Internal::PrefetchDirective</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,6 +141,13 @@ Enumerations</h2></td></tr>
  }<tr class="memdesc:a6c6557df562bd7850664e70fdb8fea0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Different ways to handle a tail case in a split when the factor does not provably divide the extent.  <a href="namespace_halide.html#a6c6557df562bd7850664e70fdb8fea0f">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:a6c6557df562bd7850664e70fdb8fea0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a751041c9a6cffe776b613f4dd04c3354"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a751041c9a6cffe776b613f4dd04c3354">Halide::LoopAlignStrategy</a> { <a class="el" href="namespace_halide.html#a751041c9a6cffe776b613f4dd04c3354a7bdacdfaf12e9cd3af92850a628baf4b">Halide::LoopAlignStrategy::AlignStart</a>, 
+<a class="el" href="namespace_halide.html#a751041c9a6cffe776b613f4dd04c3354a58a4774b4ffb202dc1be23bfff77a3af">Halide::LoopAlignStrategy::AlignEnd</a>, 
+<a class="el" href="namespace_halide.html#a751041c9a6cffe776b613f4dd04c3354a0835c1623d085e407eba4f9310103309">Halide::LoopAlignStrategy::NoAlign</a>, 
+<a class="el" href="namespace_halide.html#a751041c9a6cffe776b613f4dd04c3354a06b9281e396db002010bde1de57262eb">Halide::LoopAlignStrategy::Auto</a>
+ }<tr class="memdesc:a751041c9a6cffe776b613f4dd04c3354"><td class="mdescLeft">&#160;</td><td class="mdescRight">Different ways to handle the case when the start/end of the loops of stages computed with (fused) are not aligned.  <a href="namespace_halide.html#a751041c9a6cffe776b613f4dd04c3354">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:a751041c9a6cffe776b613f4dd04c3354"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36b78b48c1fe9126344a218d07348f4d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a36b78b48c1fe9126344a218d07348f4d">Halide::PrefetchBoundStrategy</a> { <a class="el" href="namespace_halide.html#a36b78b48c1fe9126344a218d07348f4da08825280e3f8137556325061ba67ff8c">Halide::PrefetchBoundStrategy::Clamp</a>, 
 <a class="el" href="namespace_halide.html#a36b78b48c1fe9126344a218d07348f4da5b80e0001d7f4873a60bbded160c687d">Halide::PrefetchBoundStrategy::GuardWithIf</a>, 
 <a class="el" href="namespace_halide.html#a36b78b48c1fe9126344a218d07348f4da744c9ae316f75de6b586a6eb11f8df0b">Halide::PrefetchBoundStrategy::NonFaulting</a>

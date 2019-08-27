@@ -1,9 +1,11 @@
 var searchData=
 [
   ['halide_5fbuffer_5ft',['halide_buffer_t',['../_halide_runtime_8h.html#a5c8ab0b07dcaa0d81d9abadae30242b6',1,'HalideRuntime.h']]],
-  ['halide_5fcan_5fuse_5ftarget_5ffeatures_5ft',['halide_can_use_target_features_t',['../_halide_runtime_8h.html#a5e08b95bd6ce88d82c37eb1a3f52bccc',1,'HalideRuntime.h']]],
+  ['halide_5fcan_5fuse_5ftarget_5ffeatures_5ft',['halide_can_use_target_features_t',['../_halide_runtime_8h.html#a7756790d1df276babe85759aecb9214e',1,'HalideRuntime.h']]],
   ['halide_5fdimension_5ft',['halide_dimension_t',['../_halide_runtime_8h.html#a84da9f450b3335aeaf44fefb9be234e7',1,'HalideRuntime.h']]],
+  ['halide_5fdo_5floop_5ftask_5ft',['halide_do_loop_task_t',['../_halide_runtime_8h.html#a7e98cafa58d17ab564e0783acb88c8bc',1,'HalideRuntime.h']]],
   ['halide_5fdo_5fpar_5ffor_5ft',['halide_do_par_for_t',['../_halide_runtime_8h.html#a35e17d010d9d296d3133f1b34060cda6',1,'HalideRuntime.h']]],
+  ['halide_5fdo_5fparallel_5ftasks_5ft',['halide_do_parallel_tasks_t',['../_halide_runtime_8h.html#afd29e5ed7d54ed3d92cb745915ef8909',1,'HalideRuntime.h']]],
   ['halide_5fdo_5ftask_5ft',['halide_do_task_t',['../_halide_runtime_8h.html#acc89fad6bf8607479e7643d17c973bd9',1,'HalideRuntime.h']]],
   ['halide_5ferror_5fhandler_5ft',['halide_error_handler_t',['../_halide_runtime_8h.html#a51ba9ee9334354b8b260138b464bdaac',1,'HalideRuntime.h']]],
   ['halide_5ffree_5ft',['halide_free_t',['../_halide_runtime_8h.html#aa17654ef6deb96a3aef03126bd35221a',1,'HalideRuntime.h']]],
@@ -16,11 +18,19 @@ var searchData=
   ['halide_5fhexagon_5fremote_5fscalar_5ft',['halide_hexagon_remote_scalar_t',['../halide__hexagon__remote_8h.html#a2f92397f57f5ee5da6e86762d3594326',1,'halide_hexagon_remote.h']]],
   ['halide_5fhvx_5fpower_5fperf_5ft',['halide_hvx_power_perf_t',['../_halide_runtime_hexagon_host_8h.html#a8d25b198985bb8d1ba7c42c92dea8a79',1,'HalideRuntimeHexagonHost.h']]],
   ['halide_5fload_5flibrary_5ft',['halide_load_library_t',['../_halide_runtime_8h.html#a6c6871c1ccde5f62b468c82cdd4d4ec3',1,'HalideRuntime.h']]],
+  ['halide_5floop_5ftask_5ft',['halide_loop_task_t',['../_halide_runtime_8h.html#aa33673c0e9af6749f566f32386b168c4',1,'HalideRuntime.h']]],
   ['halide_5fmalloc_5ft',['halide_malloc_t',['../_halide_runtime_8h.html#a1099e969f331e1b585efd8fe49d6cc57',1,'HalideRuntime.h']]],
   ['halide_5fprint_5ft',['halide_print_t',['../_halide_runtime_8h.html#a95ff0cf917a42d9d94858d965f0cea70',1,'HalideRuntime.h']]],
+  ['halide_5fsemaphore_5finit_5ft',['halide_semaphore_init_t',['../_halide_runtime_8h.html#ae0af757a561193139295a85256e68135',1,'HalideRuntime.h']]],
+  ['halide_5fsemaphore_5frelease_5ft',['halide_semaphore_release_t',['../_halide_runtime_8h.html#a187d0100ae8d267bbcb6e840433c0f72',1,'HalideRuntime.h']]],
+  ['halide_5fsemaphore_5ftry_5facquire_5ft',['halide_semaphore_try_acquire_t',['../_halide_runtime_8h.html#a97edf37f8f01638b513e24f9173b489f',1,'HalideRuntime.h']]],
   ['halide_5ftarget_5ffeature_5ft',['halide_target_feature_t',['../_halide_runtime_8h.html#a344de1f54ca97bc45193724bd7b3eaf3',1,'HalideRuntime.h']]],
   ['halide_5ftask',['halide_task',['../namespace_halide_1_1_internal.html#ab837f22cfa4bfe22dba01f4908e839ff',1,'Halide::Internal']]],
   ['halide_5ftask_5ft',['halide_task_t',['../_halide_runtime_8h.html#a44ad38bc9436040001a7fa8806e9a1a4',1,'HalideRuntime.h']]],
   ['halide_5ftrace_5ft',['halide_trace_t',['../_halide_runtime_8h.html#acac84473600d9caee1f3ab634cb117ba',1,'HalideRuntime.h']]],
-  ['halide_5ftype_5fcode_5ft',['halide_type_code_t',['../_halide_runtime_8h.html#abd8ef2cf42c925601df1b997c1b938bf',1,'HalideRuntime.h']]]
+  ['halide_5ftype_5fcode_5ft',['halide_type_code_t',['../_halide_runtime_8h.html#abd8ef2cf42c925601df1b997c1b938bf',1,'HalideRuntime.h']]],
+  ['handle',['HANDLE',['../mini__d3d12_8h.html#aa8c0374618b33785ccb02f74bcfebc46',1,'mini_d3d12.h']]],
+  ['handle_5ft',['handle_t',['../mini__d3d12_8h.html#a9200a44bca035a95e02ef0d1021adc2c',1,'mini_d3d12.h']]],
+  ['hmodule',['HMODULE',['../mini__d3d12_8h.html#ae6568519e3fbe7c7bd031a80a2c61019',1,'mini_d3d12.h']]],
+  ['hresult',['HRESULT',['../mini__d3d12_8h.html#a21b561b34f53be59f8b102fe75de6fdd',1,'mini_d3d12.h']]]
 ];

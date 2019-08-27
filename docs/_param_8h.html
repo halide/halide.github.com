@@ -82,6 +82,7 @@ $(document).ready(function(){initNavTree('_param_8h.html','');});
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Param.h File Reference</div>  </div>
@@ -93,6 +94,7 @@ $(document).ready(function(){initNavTree('_param_8h.html','');});
 <div class="textblock"><code>#include &lt;type_traits&gt;</code><br />
 <code>#include &quot;<a class="el" href="_argument_8h_source.html">Argument.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_i_r_8h_source.html">IR.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_util_8h_source.html">Util.h</a>&quot;</code><br />
 </div>
 <p><a href="_param_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -108,6 +110,11 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespace_halide"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines methods for manipulating and analyzing boolean expressions. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a9f67c7a49f57f09b843f46fc354da8c1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_param_8h.html#a9f67c7a49f57f09b843f46fc354da8c1">HALIDE_HANDLE_TYPE_DISPATCH</a>(CODE,  BITS,  TYPE)</td></tr>
+<tr class="separator:a9f67c7a49f57f09b843f46fc354da8c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ada8877b8b863a6b16d6ff13e196ec457"><td class="memItemLeft" align="right" valign="top">Expr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#ada8877b8b863a6b16d6ff13e196ec457">Halide::user_context_value</a> ()</td></tr>
@@ -118,7 +125,46 @@ Functions</h2></td></tr>
 <div class="textblock"><p>Classes for declaring scalar parameters to halide pipelines. </p>
 
 <p class="definition">Definition in file <a class="el" href="_param_8h_source.html">Param.h</a>.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a9f67c7a49f57f09b843f46fc354da8c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f67c7a49f57f09b843f46fc354da8c1">&#9670;&nbsp;</a></span>HALIDE_HANDLE_TYPE_DISPATCH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HALIDE_HANDLE_TYPE_DISPATCH</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">CODE, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">BITS, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">TYPE&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">case</span> halide_type_code(CODE, BITS): \</div><div class="line">            <a class="code" href="_error_8h.html#af439940098bb932fbd7e5b42365d377c">user_assert</a>(<a class="code" href="namespace_halide.html#a172db5c21e58bfed0793b7152657623caafbf0897a5a83fdd873dfb032ec695d3">Internal</a>::IsRoundtrippable&lt;TYPE&gt;::value(val)) \</div><div class="line">                &lt;&lt; <span class="stringliteral">&quot;The value &quot;</span> &lt;&lt; val &lt;&lt; <span class="stringliteral">&quot; cannot be losslessly converted to type &quot;</span> &lt;&lt; type; \</div><div class="line">            param.set_scalar&lt;TYPE&gt;(Internal::StaticCast&lt;TYPE&gt;::value(val)); \</div><div class="line">            break;</div><div class="ttc" id="namespace_halide_html_a172db5c21e58bfed0793b7152657623caafbf0897a5a83fdd873dfb032ec695d3"><div class="ttname"><a href="namespace_halide.html#a172db5c21e58bfed0793b7152657623caafbf0897a5a83fdd873dfb032ec695d3">Halide::LinkageType::Internal</a></div><div class="ttdoc">Not visible externally, similar to &amp;#39;static&amp;#39; linkage in C. </div></div>
+<div class="ttc" id="_error_8h_html_af439940098bb932fbd7e5b42365d377c"><div class="ttname"><a href="_error_8h.html#af439940098bb932fbd7e5b42365d377c">user_assert</a></div><div class="ttdeci">#define user_assert(c)</div><div class="ttdef"><b>Definition:</b> <a href="_error_8h_source.html#l00141">Error.h:141</a></div></div>
+</div><!-- fragment -->
+<p class="reference">Referenced by <a class="el" href="_param_8h_source.html#l00187">Halide::Param&lt; T &gt;::set()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

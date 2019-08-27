@@ -20,7 +20,9 @@ var mini__qurt_8h =
     [ "qurt_thread_t", "mini__qurt_8h.html#aee47afd498b75df65c089f744befb2e8", null ],
     [ "qurt_thread_attr_t", "mini__qurt_8h.html#a3171add5c59da3005c88aa210e959176", null ],
     [ "qurt_mutex_t", "mini__qurt_8h.html#a9faff81acb47b0c119edcded0cd36aef", null ],
-    [ "QURT_EOK", "mini__qurt_8h.html#a4c4f88dd4166ef6790a113e890f3d932ab5e3da649795718484e57422b589322a", null ],
+    [ "qurt_size_t", "mini__qurt_8h.html#a7a8347f5611d503fb88f354d388745fa", null ],
+    [ "qurt_mem_pool_t", "mini__qurt_8h.html#a517a4b46a7468ed607c2aa282bd6d8b9", null ],
+    [ "QURT_EOK", "mini__qurt_8h.html#a569881f36abd8672ef5a10c5df144e9cab5e3da649795718484e57422b589322a", null ],
     [ "qurt_hvx_mode_t", "mini__qurt_8h.html#aadda49b6c7e9ab50c86af6f978839e74", [
       [ "QURT_HVX_MODE_64B", "mini__qurt_8h.html#aadda49b6c7e9ab50c86af6f978839e74a0edf57217d7f877544e07b138a9342ee", null ],
       [ "QURT_HVX_MODE_128B", "mini__qurt_8h.html#aadda49b6c7e9ab50c86af6f978839e74ac13526cab3a2fc1dc838c278308f6001", null ]
@@ -34,7 +36,7 @@ var mini__qurt_8h =
     [ "qurt_mutex_unlock", "mini__qurt_8h.html#a0e6810988d2ee908bc8c51ffdd9d22ca", null ],
     [ "qurt_cond_init", "mini__qurt_8h.html#a2e6dec95eec59ff032d63888f8da51c1", null ],
     [ "qurt_cond_destroy", "mini__qurt_8h.html#aa7cba173d8ac9e5d02061e8ca4650e44", null ],
-    [ "qurt_cond_broadcast", "mini__qurt_8h.html#adc8f540fb89e8deaa728474cec3a3710", null ],
+    [ "qurt_cond_signal", "mini__qurt_8h.html#a84e235b482a0fc9f88002679e38ef1d5", null ],
     [ "qurt_cond_wait", "mini__qurt_8h.html#a4adfa5201cf228a6f140208715563ccd", null ],
     [ "qurt_hvx_lock", "mini__qurt_8h.html#afe97ee1b6f259a77966c8d41c90c2e07", null ],
     [ "qurt_hvx_unlock", "mini__qurt_8h.html#ac56b09f5f52d454288ccc8930e0b909b", null ],

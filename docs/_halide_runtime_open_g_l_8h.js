@@ -1,5 +1,6 @@
 var _halide_runtime_open_g_l_8h =
 [
+    [ "HALIDE_RUNTIME_OPENGL", "_halide_runtime_open_g_l_8h.html#a9e8bb09d9db583282d5c3dc90ee3ff3d", null ],
     [ "halide_opengl_device_interface", "_halide_runtime_open_g_l_8h.html#a42330eef4fdf24962afaf8f06eed53df", null ],
     [ "halide_opengl_initialize_kernels", "_halide_runtime_open_g_l_8h.html#a3c6e4354247eb2b3fedfd581b96f4838", null ],
     [ "halide_opengl_run", "_halide_runtime_open_g_l_8h.html#a195b4e4e9f95b3d68abea35050e37902", null ],

@@ -43,6 +43,7 @@ var mini__opengl_8h =
     [ "GL_TEXTURE3", "mini__opengl_8h.html#a030cbee394ac326b01e35753a7fba1fd", null ],
     [ "GL_ACTIVE_TEXTURE", "mini__opengl_8h.html#a6fc1b36f39e5859ac72ebfaf3722a0c1", null ],
     [ "GL_TEXTURE_BINDING_2D", "mini__opengl_8h.html#ae5116368c78a4376ac1b6fbc714892a7", null ],
+    [ "GL_ACTIVE_UNIFORMS", "mini__opengl_8h.html#aeb14db2a9d0c7a5aaddec813bbdbfa22", null ],
     [ "GL_ARRAY_BUFFER", "mini__opengl_8h.html#a7180045dcb52b22af2cd0366026bc3ed", null ],
     [ "GL_ELEMENT_ARRAY_BUFFER", "mini__opengl_8h.html#ad26c63125c72cbf0347b589d51676e6a", null ],
     [ "GL_STATIC_DRAW", "mini__opengl_8h.html#ab7dffdc215fbbe75b6ccacfecfc14648", null ],
@@ -79,6 +80,7 @@ var mini__opengl_8h =
     [ "GL_READ_ONLY", "mini__opengl_8h.html#afe26dad29b9cb2620e815e5fecea71f9", null ],
     [ "GL_WRITE_ONLY", "mini__opengl_8h.html#ab43997c5949dffce6674a7bb8a3059da", null ],
     [ "GL_MAP_READ_BIT", "mini__opengl_8h.html#a0283bfa28a11691ac521c421d991720b", null ],
+    [ "GL_MAP_WRITE_BIT", "mini__opengl_8h.html#a9a2e24ae66c8468cdd50a04bb573d88b", null ],
     [ "GL_SHADER_STORAGE_BUFFER", "mini__opengl_8h.html#a63a83037ed186009b1c274b28c28463b", null ],
     [ "GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT", "mini__opengl_8h.html#ae6ee2d6b622429a631e02e7a05701dc0", null ],
     [ "GL_BUFFER_UPDATE_BARRIER_BIT", "mini__opengl_8h.html#ab8329b734b34dce1161c9b7bec3aee19", null ],
@@ -163,5 +165,7 @@ var mini__opengl_8h =
     [ "PFNGLMAPBUFFERRANGEPROC", "mini__opengl_8h.html#a0d03831db63125801110a79941d9039a", null ],
     [ "PFNGLDISPATCHCOMPUTEPROC", "mini__opengl_8h.html#a629583a507567a78355fe9803e30bd9e", null ],
     [ "PFNGLUNMAPBUFFERPROC", "mini__opengl_8h.html#a06591db1c4d8e1711e0117190bc74d74", null ],
-    [ "PFNGLBINDBUFFERBASEPROC", "mini__opengl_8h.html#a725c0c399039f452a057ff3d0cb7a82b", null ]
+    [ "PFNGLBINDBUFFERBASEPROC", "mini__opengl_8h.html#a725c0c399039f452a057ff3d0cb7a82b", null ],
+    [ "PFNGLGETACTIVEUNIFORM", "mini__opengl_8h.html#a177254328d21e650b7fcf369bd650aa1", null ],
+    [ "PFNGLGETUNIFORMLOCATION", "mini__opengl_8h.html#a28bfa15f462ec83bda8d160e4c483fab", null ]
 ];

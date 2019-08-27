@@ -15,7 +15,7 @@ var class_halide_1_1_internal_1_1_elf_1_1_object =
       [ "ET_LOPROC", "class_halide_1_1_internal_1_1_elf_1_1_object.html#a0bf8c358278ba37229927743d841fe3eaee27e2cdc8a7d82fb2872b72d7af2dc7", null ],
       [ "ET_HIPROC", "class_halide_1_1_internal_1_1_elf_1_1_object.html#a0bf8c358278ba37229927743d841fe3ead5047855ac8ab270aa814cb978f8c3f1", null ]
     ] ],
-    [ "Object", "class_halide_1_1_internal_1_1_elf_1_1_object.html#ac01e7e4ebf2718deed9df7d695263919", null ],
+    [ "Object", "class_halide_1_1_internal_1_1_elf_1_1_object.html#a8cf9c0b7f41c152ced288f44552f0f16", null ],
     [ "get_type", "class_halide_1_1_internal_1_1_elf_1_1_object.html#a87ead07b0efc1e59bcedada1727af910", null ],
     [ "get_machine", "class_halide_1_1_internal_1_1_elf_1_1_object.html#a0718fed60adcf353b33979686d1509a3", null ],
     [ "get_version", "class_halide_1_1_internal_1_1_elf_1_1_object.html#adda3f69656cb2bbf1a8e9e07809e1831", null ],

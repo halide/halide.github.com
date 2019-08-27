@@ -29,7 +29,7 @@ var class_halide_1_1_internal_1_1_elf_1_1_section =
       [ "SHF_EXECINSTR", "class_halide_1_1_internal_1_1_elf_1_1_section.html#a04266fcf978d01b22135dd1632cf8656a37b8df7564f99f5d9f0df57849424992", null ],
       [ "SHF_MASKPROC", "class_halide_1_1_internal_1_1_elf_1_1_section.html#a04266fcf978d01b22135dd1632cf8656a0707b536971b885828827823490ea43d", null ]
     ] ],
-    [ "Section", "class_halide_1_1_internal_1_1_elf_1_1_section.html#a03e41abd20407cda81d75cd4faa996a2", null ],
+    [ "Section", "class_halide_1_1_internal_1_1_elf_1_1_section.html#a2e70a2998aa188ec8a06f88b2bf918db", null ],
     [ "Section", "class_halide_1_1_internal_1_1_elf_1_1_section.html#aa7befdfe6b49ad155d137c076af74592", null ],
     [ "set_name", "class_halide_1_1_internal_1_1_elf_1_1_section.html#a0e60b50591399e8c053a2e4041216d82", null ],
     [ "get_name", "class_halide_1_1_internal_1_1_elf_1_1_section.html#a2a4f581cab31f62d5e38060596b53002", null ],

@@ -7,5 +7,5 @@ var structhalide__profiler__state =
     [ "active_threads", "structhalide__profiler__state.html#aaac4e809fe83c85f1a2d17dfd1cab301", null ],
     [ "pipelines", "structhalide__profiler__state.html#a983b473fa5ef280d25d9a6ad867ba108", null ],
     [ "get_remote_profiler_state", "structhalide__profiler__state.html#a03325edc85a804d9bd4ebfa202495643", null ],
-    [ "started", "structhalide__profiler__state.html#aaba04d95aba3ff12533f06d33bb41bd3", null ]
+    [ "sampling_thread", "structhalide__profiler__state.html#a468bbaf228545bd37aa32632d46b5ccd", null ]
 ];

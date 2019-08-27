@@ -14,6 +14,7 @@ var cuda__functions_8h =
     [ "CUDA_FN_4000", "cuda__functions_8h.html#afb9a632eceb592aa444ce7a59d198d92", null ],
     [ "CUDA_FN", "cuda__functions_8h.html#ac583b728b0e38d1dced723b78d7707ed", null ],
     [ "CUDA_FN", "cuda__functions_8h.html#ae6e0e6e559fbedfa4ba446e3226120db", null ],
+    [ "CUDA_FN", "cuda__functions_8h.html#a44fa0166af6be1a27d5e350bf26d6c8c", null ],
     [ "CUDA_FN", "cuda__functions_8h.html#aabae0ab219fec1fe98cac73429e5d6ef", null ],
     [ "CUDA_FN", "cuda__functions_8h.html#a2c99ad2735dc14790f317dcf17bbb855", null ],
     [ "CUDA_FN", "cuda__functions_8h.html#afc62c5ca39b72393911a08947ce7f959", null ],
