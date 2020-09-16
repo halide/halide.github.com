@@ -339,12 +339,12 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// This lesson demonstrates how to follow what Halide is doing at runtime.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_04*.cpp -g -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_04 -std=c++11</span>
-<span class="hl slc">// LD_LIBRARY_PATH=../bin ./lesson_04</span>
+<span class="hl slc">// g++ lesson_04*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_04 -std=c++11</span>
+<span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_04</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_04*.cpp -g -I ../include -L ../bin -lHalide -o lesson_04 -std=c++11</span>
-<span class="hl slc">// DYLD_LIBRARY_PATH=../bin ./lesson_04</span>
+<span class="hl slc">// g++ lesson_04*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_04 -std=c++11</span>
+<span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_04</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
 <span class="hl slc">// running:</span>
@@ -362,11 +362,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 
     <span class="hl slc">// Printing out the value of Funcs as they are computed.</span>
     <span class="hl opt">{</span>
-        <span class="hl slc">// We'll define our gradient function as before.</span>
+        <span class="hl slc">// We&apos;ll define our gradient function as before.</span>
         Func <span class="hl kwd">gradient</span><span class="hl opt">(</span><span class="hl str">&quot;gradient&quot;</span><span class="hl opt">);</span>
         <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
 
-        <span class="hl slc">// And tell Halide that we'd like to be notified of all</span>
+        <span class="hl slc">// And tell Halide that we&apos;d like to be notified of all</span>
         <span class="hl slc">// evaluations.</span>
         gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
@@ -375,6 +375,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
         <a onclick='return toggle("_39");'><b id=_39-show>// Click to show output ...</b></a><div id=_39 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline gradient.0()
+ > Tag gradient.0() tag = "func_type_and_dim: 1 0 32 1 2 0 8 0 8"
  > Store gradient.0(0, 0) = 0
  > Store gradient.0(1, 0) = 1
  > Store gradient.0(2, 0) = 2
@@ -446,18 +447,18 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// This will print out all the times gradient(x, y) gets</span>
         <span class="hl slc">// evaluated.</span>
 
-        <span class="hl slc">// Now that we can snoop on what Halide is doing, let's try our</span>
-        <span class="hl slc">// first scheduling primitive. We'll make a new version of</span>
+        <span class="hl slc">// Now that we can snoop on what Halide is doing, let&apos;s try our</span>
+        <span class="hl slc">// first scheduling primitive. We&apos;ll make a new version of</span>
         <span class="hl slc">// gradient that processes each scanline in parallel.</span>
         Func <span class="hl kwd">parallel_gradient</span><span class="hl opt">(</span><span class="hl str">&quot;parallel_gradient&quot;</span><span class="hl opt">);</span>
         <span class="hl kwd">parallel_gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
 
-        <span class="hl slc">// We'll also trace this function.</span>
+        <span class="hl slc">// We&apos;ll also trace this function.</span>
         parallel_gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
-        <span class="hl slc">// Things are the same so far. We've defined the algorithm, but</span>
-        <span class="hl slc">// haven't said anything about how to schedule it. In general,</span>
-        <span class="hl slc">// exploring different scheduling decisions doesn't change the code</span>
+        <span class="hl slc">// Things are the same so far. We&apos;ve defined the algorithm, but</span>
+        <span class="hl slc">// haven&apos;t said anything about how to schedule it. In general,</span>
+        <span class="hl slc">// exploring different scheduling decisions doesn&apos;t change the code</span>
         <span class="hl slc">// that describes the algorithm.</span>
 
         <span class="hl slc">// Now we tell Halide to use a parallel for loop over the y</span>
@@ -475,70 +476,71 @@ tutorial_lesson_21_auto_scheduler_run.html
         parallel_gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
         <a onclick='return toggle("_70");'><b id=_70-show>// Click to show output ...</b></a><div id=_70 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline parallel_gradient.0()
+ > Tag parallel_gradient.0() tag = "func_type_and_dim: 1 0 32 1 2 0 8 0 8"
  > Store parallel_gradient.0(0, 0) = 0
  > Store parallel_gradient.0(1, 0) = 1
- > Store parallel_gradient.0(2, 0) = 2
- > Store parallel_gradient.0(3, 0) = 3
- > Store parallel_gradient.0(4, 0) = 4
- > Store parallel_gradient.0(5, 0) = 5
- > Store parallel_gradient.0(6, 0) = 6
- > Store parallel_gradient.0(7, 0) = 7
  > Store parallel_gradient.0(0, 1) = 1
- > Store parallel_gradient.0(0, 3) = 3
  > Store parallel_gradient.0(0, 2) = 2
- > Store parallel_gradient.0(1, 3) = 4
- > Store parallel_gradient.0(1, 1) = 2
- > Store parallel_gradient.0(1, 2) = 3
- > Store parallel_gradient.0(2, 3) = 5
  > Store parallel_gradient.0(0, 4) = 4
- > Store parallel_gradient.0(2, 1) = 3
- > Store parallel_gradient.0(3, 3) = 6
- > Store parallel_gradient.0(2, 2) = 4
- > Store parallel_gradient.0(0, 5) = 5
  > Store parallel_gradient.0(0, 7) = 7
  > Store parallel_gradient.0(0, 6) = 6
- > Store parallel_gradient.0(1, 6) = 7
  > Store parallel_gradient.0(1, 7) = 8
- > Store parallel_gradient.0(3, 1) = 4
- > Store parallel_gradient.0(2, 6) = 8
+ > Store parallel_gradient.0(0, 3) = 3
+ > Store parallel_gradient.0(2, 0) = 2
+ > Store parallel_gradient.0(1, 1) = 2
+ > Store parallel_gradient.0(1, 3) = 4
+ > Store parallel_gradient.0(1, 2) = 3
+ > Store parallel_gradient.0(0, 5) = 5
+ > Store parallel_gradient.0(2, 1) = 3
  > Store parallel_gradient.0(2, 7) = 9
- > Store parallel_gradient.0(1, 4) = 5
+ > Store parallel_gradient.0(3, 0) = 3
+ > Store parallel_gradient.0(2, 3) = 5
+ > Store parallel_gradient.0(3, 1) = 4
  > Store parallel_gradient.0(3, 7) = 10
- > Store parallel_gradient.0(3, 6) = 9
- > Store parallel_gradient.0(4, 3) = 7
- > Store parallel_gradient.0(4, 6) = 10
- > Store parallel_gradient.0(4, 7) = 11
- > Store parallel_gradient.0(3, 2) = 5
+ > Store parallel_gradient.0(1, 4) = 5
  > Store parallel_gradient.0(1, 5) = 6
- > Store parallel_gradient.0(5, 7) = 12
- > Store parallel_gradient.0(5, 6) = 11
+ > Store parallel_gradient.0(4, 0) = 4
  > Store parallel_gradient.0(2, 4) = 6
- > Store parallel_gradient.0(6, 6) = 12
- > Store parallel_gradient.0(6, 7) = 13
- > Store parallel_gradient.0(7, 6) = 13
- > Store parallel_gradient.0(7, 7) = 14
- > Store parallel_gradient.0(4, 1) = 5
- > Store parallel_gradient.0(4, 2) = 6
+ > Store parallel_gradient.0(1, 6) = 7
+ > Store parallel_gradient.0(2, 2) = 4
  > Store parallel_gradient.0(2, 5) = 7
- > Store parallel_gradient.0(5, 1) = 6
+ > Store parallel_gradient.0(4, 7) = 11
  > Store parallel_gradient.0(3, 4) = 7
+ > Store parallel_gradient.0(3, 3) = 6
+ > Store parallel_gradient.0(4, 1) = 5
+ > Store parallel_gradient.0(3, 2) = 5
+ > Store parallel_gradient.0(2, 6) = 8
+ > Store parallel_gradient.0(3, 5) = 8
+ > Store parallel_gradient.0(5, 0) = 5
+ > Store parallel_gradient.0(4, 2) = 6
+ > Store parallel_gradient.0(5, 7) = 12
+ > Store parallel_gradient.0(4, 3) = 7
+ > Store parallel_gradient.0(4, 5) = 9
+ > Store parallel_gradient.0(3, 6) = 9
+ > Store parallel_gradient.0(6, 0) = 6
+ > Store parallel_gradient.0(5, 1) = 6
  > Store parallel_gradient.0(5, 3) = 8
  > Store parallel_gradient.0(5, 2) = 7
- > Store parallel_gradient.0(3, 5) = 8
- > Store parallel_gradient.0(6, 2) = 8
- > Store parallel_gradient.0(4, 5) = 9
- > Store parallel_gradient.0(7, 2) = 9
- > Store parallel_gradient.0(5, 5) = 10
+ > Store parallel_gradient.0(7, 0) = 7
  > Store parallel_gradient.0(6, 1) = 7
- > Store parallel_gradient.0(6, 3) = 9
- > Store parallel_gradient.0(6, 5) = 11
- > Store parallel_gradient.0(7, 3) = 10
- > Store parallel_gradient.0(7, 1) = 8
  > Store parallel_gradient.0(4, 4) = 8
- > Store parallel_gradient.0(7, 5) = 12
+ > Store parallel_gradient.0(5, 5) = 10
+ > Store parallel_gradient.0(6, 2) = 8
+ > Store parallel_gradient.0(4, 6) = 10
+ > Store parallel_gradient.0(6, 5) = 11
+ > Store parallel_gradient.0(7, 2) = 9
+ > Store parallel_gradient.0(6, 3) = 9
  > Store parallel_gradient.0(5, 4) = 9
+ > Store parallel_gradient.0(7, 5) = 12
+ > Store parallel_gradient.0(5, 6) = 11
+ > Store parallel_gradient.0(7, 1) = 8
  > Store parallel_gradient.0(6, 4) = 10
+ > Store parallel_gradient.0(6, 7) = 13
  > Store parallel_gradient.0(7, 4) = 11
+ > Store parallel_gradient.0(7, 3) = 10
+ > Store parallel_gradient.0(6, 6) = 12
+ > Store parallel_gradient.0(7, 7) = 14
+ > Store parallel_gradient.0(7, 6) = 13
  > End pipeline parallel_gradient.0()
 
 </b></div>
@@ -549,7 +551,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// trace_stores() can only print the value of a</span>
         <span class="hl slc">// Func. Sometimes you want to inspect the value of</span>
         <span class="hl slc">// sub-expressions rather than the entire Func. The built-in</span>
-        <span class="hl slc">// function 'print' can be wrapped around any Expr to print</span>
+        <span class="hl slc">// function &apos;print&apos; can be wrapped around any Expr to print</span>
         <span class="hl slc">// the value of that Expr every time it is evaluated.</span>
 
         <span class="hl slc">// For example, say we have some Func that is the sum of two terms:</span>
@@ -557,7 +559,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x<span class="hl opt">) +</span> <span class="hl kwd">cos</span><span class="hl opt">(</span>y<span class="hl opt">);</span>
 
         <span class="hl slc">// If we want to inspect just one of the terms, we can wrap</span>
-        <span class="hl slc">// 'print' around it like so:</span>
+        <span class="hl slc">// &apos;print&apos; around it like so:</span>
         Func g<span class="hl opt">;</span>
         <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x<span class="hl opt">) +</span> <span class="hl kwd">print</span><span class="hl opt">(</span><span class="hl kwd">cos</span><span class="hl opt">(</span>y<span class="hl opt">));</span>
 
@@ -629,7 +631,7 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl slc">// Conditional printing</span>
     <span class="hl opt">{</span>
         <span class="hl slc">// Both print and trace_stores can produce a lot of output. If</span>
-        <span class="hl slc">// you're looking for a rare event, or just want to see what</span>
+        <span class="hl slc">// you&apos;re looking for a rare event, or just want to see what</span>
         <span class="hl slc">// happens at a single pixel, this amount of output can be</span>
         <span class="hl slc">// difficult to dig through. Instead, the function print_when</span>
         <span class="hl slc">// can be used to conditionally print an Expr. The first</span>
@@ -649,7 +651,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
 </b></div>
 
-        <span class="hl slc">// print_when can also be used to check for values you're not expecting:</span>
+        <span class="hl slc">// print_when can also be used to check for values you&apos;re not expecting:</span>
         Func g<span class="hl opt">;</span>
         e <span class="hl opt">=</span> <span class="hl kwd">cos</span><span class="hl opt">(</span>y<span class="hl opt">);</span>
         e <span class="hl opt">=</span> <span class="hl kwd">print_when</span><span class="hl opt">(</span>e <span class="hl opt">&lt;</span> <span class="hl num">0</span><span class="hl opt">,</span> e<span class="hl opt">,</span> <span class="hl str">&quot;cos(y) &lt; 0 at y ==&quot;</span><span class="hl opt">,</span> y<span class="hl opt">);</span>
@@ -672,20 +674,25 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl slc">// Printing expressions at compile-time.</span>
     <span class="hl opt">{</span>
         <span class="hl slc">// The code above builds up a Halide Expr across several lines</span>
-        <span class="hl slc">// of code. If you're programmatically constructing a complex</span>
-        <span class="hl slc">// expression, and you want to check the Expr you've created</span>
+        <span class="hl slc">// of code. If you&apos;re programmatically constructing a complex</span>
+        <span class="hl slc">// expression, and you want to check the Expr you&apos;ve created</span>
         <span class="hl slc">// is what you think it is, you can also print out the</span>
         <span class="hl slc">// expression itself using C++ streams:</span>
         Var <span class="hl kwd">fizz</span><span class="hl opt">(</span><span class="hl str">&quot;fizz&quot;</span><span class="hl opt">),</span> <span class="hl kwd">buzz</span><span class="hl opt">(</span><span class="hl str">&quot;buzz&quot;</span><span class="hl opt">);</span>
         Expr e <span class="hl opt">=</span> <span class="hl num">1</span><span class="hl opt">;</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">2</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">100</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
-            <span class="hl kwa">if</span> <span class="hl opt">(</span>i <span class="hl opt">%</span> <span class="hl num">3</span> <span class="hl opt">==</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> i <span class="hl opt">%</span> <span class="hl num">5</span> <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">)</span> e <span class="hl opt">+=</span> fizz<span class="hl opt">*</span>buzz<span class="hl opt">;</span>
-            <span class="hl kwa">else if</span> <span class="hl opt">(</span>i <span class="hl opt">%</span> <span class="hl num">3</span> <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">)</span> e <span class="hl opt">+=</span> fizz<span class="hl opt">;</span>
-            <span class="hl kwa">else if</span> <span class="hl opt">(</span>i <span class="hl opt">%</span> <span class="hl num">5</span> <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">)</span> e <span class="hl opt">+=</span> buzz<span class="hl opt">;</span>
-            <span class="hl kwa">else</span> e <span class="hl opt">+=</span> i<span class="hl opt">;</span>
+            <span class="hl kwa">if</span> <span class="hl opt">(</span>i <span class="hl opt">%</span> <span class="hl num">3</span> <span class="hl opt">==</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> i <span class="hl opt">%</span> <span class="hl num">5</span> <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">) {</span>
+                e <span class="hl opt">+=</span> fizz <span class="hl opt">*</span> buzz<span class="hl opt">;</span>
+            <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>i <span class="hl opt">%</span> <span class="hl num">3</span> <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">) {</span>
+                e <span class="hl opt">+=</span> fizz<span class="hl opt">;</span>
+            <span class="hl opt">}</span> <span class="hl kwa">else if</span> <span class="hl opt">(</span>i <span class="hl opt">%</span> <span class="hl num">5</span> <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">) {</span>
+                e <span class="hl opt">+=</span> buzz<span class="hl opt">;</span>
+            <span class="hl opt">}</span> <span class="hl kwa">else</span> <span class="hl opt">{</span>
+                e <span class="hl opt">+=</span> i<span class="hl opt">;</span>
+            <span class="hl opt">}</span>
         <span class="hl opt">}</span>
-        std<span class="hl opt">::</span>cout <span class="hl opt">&lt;&lt;</span> <span class="hl str">&quot;Printing a complex Expr: &quot;</span> <span class="hl opt">&lt;&lt;</span> e <span class="hl opt">&lt;&lt;</span> <span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">;</span>
-        <a onclick='return toggle("_160");'><b id=_160-show>// Click to show output ...</b></a><div id=_160 style= "display:none; background:#333333; color:#ffffff"><b>
+        <span class="hl kwc">std</span><span class="hl opt">::</span>cout <span class="hl opt">&lt;&lt;</span> <span class="hl str">&quot;Printing a complex Expr: &quot;</span> <span class="hl opt">&lt;&lt;</span> e <span class="hl opt">&lt;&lt;</span> <span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">;</span>
+        <a onclick='return toggle("_165");'><b id=_165-show>// Click to show output ...</b></a><div id=_165 style= "display:none; background:#333333; color:#ffffff"><b>
  > Printing a complex Expr: ((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((1 + 2) + fizz) + 4) + buzz) + fizz) + 7) + 8) + fizz) + buzz) + 11) + fizz) + 13) + 14) + (fizz*buzz)) + 16) + 17) + fizz) + 19) + buzz) + fizz) + 22) + 23) + fizz) + buzz) + 26) + fizz) + 28) + 29) + (fizz*buzz)) + 31) + 32) + fizz) + 34) + buzz) + fizz) + 37) + 38) + fizz) + buzz) + 41) + fizz) + 43) + 44) + (fizz*buzz)) + 46) + 47) + fizz) + 49) + buzz) + fizz) + 52) + 53) + fizz) + buzz) + 56) + fizz) + 58) + 59) + (fizz*buzz)) + 61) + 62) + fizz) + 64) + buzz) + fizz) + 67) + 68) + fizz) + buzz) + 71) + fizz) + 73) + 74) + (fizz*buzz)) + 76) + 77) + fizz) + 79) + buzz) + fizz) + 82) + 83) + fizz) + buzz) + 86) + fizz) + 88) + 89) + (fizz*buzz)) + 91) + 92) + fizz) + 94) + buzz) + fizz) + 97) + 98) + fizz)
 
 </b></div>

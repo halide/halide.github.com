@@ -340,12 +340,12 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// values.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_13*.cpp -g -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_13 -std=c++11</span>
-<span class="hl slc">// LD_LIBRARY_PATH=../bin ./lesson_13</span>
+<span class="hl slc">// g++ lesson_13*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_13 -std=c++11</span>
+<span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_13</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_13*.cpp -g -I ../include -L ../bin -lHalide -o lesson_13 -std=c++11</span>
-<span class="hl slc">// DYLD_LIBRARY_PATH=../bin ./lesson_13</span>
+<span class="hl slc">// g++ lesson_13*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_13 -std=c++11</span>
+<span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_13</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
 <span class="hl slc">// running:</span>
@@ -354,8 +354,8 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// source tree.</span>
 
 <span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
-<span class="hl ppc">#include &lt;stdio.h&gt;</span>
 <span class="hl ppc">#include &lt;algorithm&gt;</span>
+<span class="hl ppc">#include &lt;stdio.h&gt;</span>
 <span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
 
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
@@ -373,9 +373,14 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl slc">// for every x, y coordinate indexed by c.</span>
     Func color_image<span class="hl opt">;</span>
     Var c<span class="hl opt">;</span>
-    <span class="hl kwd">color_image</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) =</span> <span class="hl kwd">select</span><span class="hl opt">(</span>c <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">245</span><span class="hl opt">,</span> <span class="hl slc">// Red value</span>
-                                  c <span class="hl opt">==</span> <span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">42</span><span class="hl opt">,</span>  <span class="hl slc">// Green value</span>
-                                  <span class="hl num">132</span><span class="hl opt">);</span>        <span class="hl slc">// Blue value</span>
+    <span class="hl kwd">color_image</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) =</span> <span class="hl kwd">select</span><span class="hl opt">(</span>c <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">245</span><span class="hl opt">,</span>  <span class="hl slc">// Red value</span>
+                                  c <span class="hl opt">==</span> <span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">42</span><span class="hl opt">,</span>   <span class="hl slc">// Green value</span>
+                                  <span class="hl num">132</span><span class="hl opt">);</span>         <span class="hl slc">// Blue value</span>
+
+    <span class="hl slc">// Since this pattern appears quite often, Halide provides a</span>
+    <span class="hl slc">// syntatic sugar to write the code above as the following,</span>
+    <span class="hl slc">// using the &quot;mux&quot; function.</span>
+    <span class="hl slc">// color_image(x, y, c) = mux(c, {245, 42, 132});</span>
 
     <span class="hl slc">// This method is often convenient because it makes it easy to</span>
     <span class="hl slc">// operate on this Func in a way that treats each item in the</span>
@@ -419,7 +424,7 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl kwd">multi_valued</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">Tuple</span><span class="hl opt">(</span>x <span class="hl opt">+</span> y<span class="hl opt">,</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">));</span>
 
     <span class="hl slc">// Realizing a tuple-valued Func returns a collection of</span>
-    <span class="hl slc">// Buffers. We call this a Realization. It's equivalent to a</span>
+    <span class="hl slc">// Buffers. We call this a Realization. It&apos;s equivalent to a</span>
     <span class="hl slc">// std::vector of Buffer objects:</span>
     <span class="hl opt">{</span>
         Realization r <span class="hl opt">=</span> multi_valued<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">80</span><span class="hl opt">,</span> <span class="hl num">60</span><span class="hl opt">);</span>
@@ -434,28 +439,28 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl slc">// in the same loop nest, but stored in distinct allocations. The</span>
     <span class="hl slc">// equivalent C++ code to the above is:</span>
     <span class="hl opt">{</span>
-        <span class="hl kwb">int</span> multi_valued_0<span class="hl opt">[</span><span class="hl num">80</span><span class="hl opt">*</span><span class="hl num">60</span><span class="hl opt">];</span>
-        <span class="hl kwb">float</span> multi_valued_1<span class="hl opt">[</span><span class="hl num">80</span><span class="hl opt">*</span><span class="hl num">60</span><span class="hl opt">];</span>
+        <span class="hl kwb">int</span> multi_valued_0<span class="hl opt">[</span><span class="hl num">80</span> <span class="hl opt">*</span> <span class="hl num">60</span><span class="hl opt">];</span>
+        <span class="hl kwb">float</span> multi_valued_1<span class="hl opt">[</span><span class="hl num">80</span> <span class="hl opt">*</span> <span class="hl num">60</span><span class="hl opt">];</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">80</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">60</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
-                multi_valued_0<span class="hl opt">[</span>x <span class="hl opt">+</span> <span class="hl num">60</span><span class="hl opt">*</span>y<span class="hl opt">] =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
-                multi_valued_1<span class="hl opt">[</span>x <span class="hl opt">+</span> <span class="hl num">60</span><span class="hl opt">*</span>y<span class="hl opt">] =</span> <span class="hl kwd">sinf</span><span class="hl opt">(</span>x<span class="hl opt">*</span>y<span class="hl opt">);</span>
+                multi_valued_0<span class="hl opt">[</span>x <span class="hl opt">+</span> <span class="hl num">60</span> <span class="hl opt">*</span> y<span class="hl opt">] =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+                multi_valued_1<span class="hl opt">[</span>x <span class="hl opt">+</span> <span class="hl num">60</span> <span class="hl opt">*</span> y<span class="hl opt">] =</span> <span class="hl kwd">sinf</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
     <span class="hl opt">}</span>
 
     <span class="hl slc">// When compiling ahead-of-time, a Tuple-valued Func evaluates</span>
-    <span class="hl slc">// into multiple distinct output buffer_t structs. These appear in</span>
+    <span class="hl slc">// into multiple distinct output halide_buffer_t structs. These appear in</span>
     <span class="hl slc">// order at the end of the function signature:</span>
     <span class="hl slc">// int multi_valued(...input buffers and params...,</span>
-    <span class="hl slc">//                  buffer_t *output_1, buffer_t *output_2);</span>
+    <span class="hl slc">//                  halide_buffer_t *output_1, halide_buffer_t *output_2);</span>
 
     <span class="hl slc">// You can construct a Tuple by passing multiple Exprs to the</span>
     <span class="hl slc">// Tuple constructor as we did above. Perhaps more elegantly, you</span>
     <span class="hl slc">// can also take advantage of C++11 initializer lists and just</span>
     <span class="hl slc">// enclose your Exprs in braces:</span>
     Func multi_valued_2<span class="hl opt">;</span>
-    <span class="hl kwd">multi_valued_2</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = {</span>x <span class="hl opt">+</span> y<span class="hl opt">,</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x<span class="hl opt">*</span>y<span class="hl opt">)};</span>
+    <span class="hl kwd">multi_valued_2</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = {</span>x <span class="hl opt">+</span> y<span class="hl opt">,</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">)};</span>
 
     <span class="hl slc">// Calls to a multi-valued Func cannot be treated as Exprs. The</span>
     <span class="hl slc">// following is a syntax error:</span>
@@ -490,9 +495,9 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// Update definition.</span>
         RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">99</span><span class="hl opt">);</span>
         Expr old_index <span class="hl opt">=</span> <span class="hl kwd">arg_max</span><span class="hl opt">()[</span><span class="hl num">0</span><span class="hl opt">];</span>
-        Expr old_max   <span class="hl opt">=</span> <span class="hl kwd">arg_max</span><span class="hl opt">()[</span><span class="hl num">1</span><span class="hl opt">];</span>
+        Expr old_max <span class="hl opt">=</span> <span class="hl kwd">arg_max</span><span class="hl opt">()[</span><span class="hl num">1</span><span class="hl opt">];</span>
         Expr new_index <span class="hl opt">=</span> <span class="hl kwd">select</span><span class="hl opt">(</span>old_max <span class="hl opt">&lt;</span> <span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">),</span> r<span class="hl opt">,</span> old_index<span class="hl opt">);</span>
-        Expr new_max   <span class="hl opt">=</span> <span class="hl kwd">max</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">),</span> old_max<span class="hl opt">);</span>
+        Expr new_max <span class="hl opt">=</span> <span class="hl kwd">max</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">),</span> old_max<span class="hl opt">);</span>
         <span class="hl kwd">arg_max</span><span class="hl opt">() = {</span>new_index<span class="hl opt">,</span> new_max<span class="hl opt">};</span>
 
         <span class="hl slc">// The equivalent C++ is:</span>
@@ -501,8 +506,8 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r <span class="hl opt">=</span> <span class="hl num">1</span><span class="hl opt">;</span> r <span class="hl opt">&lt;</span> <span class="hl num">100</span><span class="hl opt">;</span> r<span class="hl opt">++) {</span>
             <span class="hl kwb">int</span> old_index <span class="hl opt">=</span> arg_max_0<span class="hl opt">;</span>
             <span class="hl kwb">float</span> old_max <span class="hl opt">=</span> arg_max_1<span class="hl opt">;</span>
-            <span class="hl kwb">int</span> new_index <span class="hl opt">=</span> old_max <span class="hl opt">&lt;</span> <span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">)</span> ? r <span class="hl opt">:</span> old_index<span class="hl opt">;</span>
-            <span class="hl kwb">float</span> new_max <span class="hl opt">=</span> std<span class="hl opt">::</span><span class="hl kwd">max</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">),</span> old_max<span class="hl opt">);</span>
+            <span class="hl kwb">int</span> new_index <span class="hl opt">=</span> old_max <span class="hl opt">&lt;</span> <span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">) ?</span> r <span class="hl opt">:</span> old_index<span class="hl opt">;</span>
+            <span class="hl kwb">float</span> new_max <span class="hl opt">=</span> <span class="hl kwc">std</span><span class="hl opt">::</span><span class="hl kwd">max</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">),</span> old_max<span class="hl opt">);</span>
             <span class="hl slc">// In a tuple update definition, all loads and computation</span>
             <span class="hl slc">// are done before any stores, so that all Tuple elements</span>
             <span class="hl slc">// are updated atomically with respect to recursive calls</span>
@@ -511,7 +516,7 @@ tutorial_lesson_21_auto_scheduler_run.html
             arg_max_1 <span class="hl opt">=</span> new_max<span class="hl opt">;</span>
         <span class="hl opt">}</span>
 
-        <span class="hl slc">// Let's verify that the Halide and C++ found the same maximum</span>
+        <span class="hl slc">// Let&apos;s verify that the Halide and C++ found the same maximum</span>
         <span class="hl slc">// value and index.</span>
         <span class="hl opt">{</span>
             Realization r <span class="hl opt">=</span> arg_max<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">();</span>
@@ -525,7 +530,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// similar to sum, product, maximum, and minimum. They return</span>
         <span class="hl slc">// a Tuple consisting of the point in the reduction domain</span>
         <span class="hl slc">// corresponding to that value, and the value itself. In the</span>
-        <span class="hl slc">// case of ties they return the first value found. We'll use</span>
+        <span class="hl slc">// case of ties they return the first value found. We&apos;ll use</span>
         <span class="hl slc">// one of these in the following section.</span>
     <span class="hl opt">}</span>
 
@@ -534,18 +539,24 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// Tuples can also be a convenient way to represent compound</span>
         <span class="hl slc">// objects such as complex numbers. Defining an object that</span>
         <span class="hl slc">// can be converted to and from a Tuple is one way to extend</span>
-        <span class="hl slc">// Halide's type system with user-defined types.</span>
+        <span class="hl slc">// Halide&apos;s type system with user-defined types.</span>
         <span class="hl kwb">struct</span> Complex <span class="hl opt">{</span>
             Expr real<span class="hl opt">,</span> imag<span class="hl opt">;</span>
 
             <span class="hl slc">// Construct from a Tuple</span>
-            <span class="hl kwd">Complex</span><span class="hl opt">(</span>Tuple t<span class="hl opt">) :</span> <span class="hl kwd">real</span><span class="hl opt">(</span>t<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]),</span> <span class="hl kwd">imag</span><span class="hl opt">(</span>t<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]) {}</span>
+            <span class="hl kwd">Complex</span><span class="hl opt">(</span>Tuple t<span class="hl opt">)</span>
+                <span class="hl opt">:</span> <span class="hl kwd">real</span><span class="hl opt">(</span>t<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]),</span> <span class="hl kwd">imag</span><span class="hl opt">(</span>t<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]) {</span>
+            <span class="hl opt">}</span>
 
             <span class="hl slc">// Construct from a pair of Exprs</span>
-            <span class="hl kwd">Complex</span><span class="hl opt">(</span>Expr r<span class="hl opt">,</span> Expr i<span class="hl opt">) :</span> <span class="hl kwd">real</span><span class="hl opt">(</span>r<span class="hl opt">),</span> <span class="hl kwd">imag</span><span class="hl opt">(</span>i<span class="hl opt">) {}</span>
+            <span class="hl kwd">Complex</span><span class="hl opt">(</span>Expr r<span class="hl opt">,</span> Expr i<span class="hl opt">)</span>
+                <span class="hl opt">:</span> <span class="hl kwd">real</span><span class="hl opt">(</span>r<span class="hl opt">),</span> <span class="hl kwd">imag</span><span class="hl opt">(</span>i<span class="hl opt">) {</span>
+            <span class="hl opt">}</span>
 
             <span class="hl slc">// Construct from a call to a Func by treating it as a Tuple</span>
-            <span class="hl kwd">Complex</span><span class="hl opt">(</span>FuncRef t<span class="hl opt">) :</span> <span class="hl kwd">Complex</span><span class="hl opt">(</span><span class="hl kwd">Tuple</span><span class="hl opt">(</span>t<span class="hl opt">)) {}</span>
+            <span class="hl kwd">Complex</span><span class="hl opt">(</span>FuncRef t<span class="hl opt">)</span>
+                <span class="hl opt">:</span> <span class="hl kwd">Complex</span><span class="hl opt">(</span><span class="hl kwd">Tuple</span><span class="hl opt">(</span>t<span class="hl opt">)) {</span>
+            <span class="hl opt">}</span>
 
             <span class="hl slc">// Convert to a Tuple</span>
             <span class="hl kwc">operator</span> <span class="hl kwd">Tuple</span><span class="hl opt">()</span> <span class="hl kwb">const</span> <span class="hl opt">{</span>
@@ -572,26 +583,26 @@ tutorial_lesson_21_auto_scheduler_run.html
             <span class="hl slc">// sufficient for this example.</span>
         <span class="hl opt">};</span>
 
-        <span class="hl slc">// Let's use the Complex struct to compute a Mandelbrot set.</span>
+        <span class="hl slc">// Let&apos;s use the Complex struct to compute a Mandelbrot set.</span>
         Func mandelbrot<span class="hl opt">;</span>
 
         <span class="hl slc">// The initial complex value corresponding to an x, y coordinate</span>
         <span class="hl slc">// in our Func.</span>
-        Complex <span class="hl kwd">initial</span><span class="hl opt">(</span>x<span class="hl opt">/</span><span class="hl num">15.0</span>f <span class="hl opt">-</span> <span class="hl num">2.5</span>f<span class="hl opt">,</span> y<span class="hl opt">/</span><span class="hl num">6.0</span>f <span class="hl opt">-</span> <span class="hl num">2.0</span>f<span class="hl opt">);</span>
+        Complex <span class="hl kwd">initial</span><span class="hl opt">(</span>x <span class="hl opt">/</span> <span class="hl num">15.0</span>f <span class="hl opt">-</span> <span class="hl num">2.5</span>f<span class="hl opt">,</span> y <span class="hl opt">/</span> <span class="hl num">6.0</span>f <span class="hl opt">-</span> <span class="hl num">2.0</span>f<span class="hl opt">);</span>
 
         <span class="hl slc">// Pure definition.</span>
         Var t<span class="hl opt">;</span>
         <span class="hl kwd">mandelbrot</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> t<span class="hl opt">) =</span> <span class="hl kwd">Complex</span><span class="hl opt">(</span><span class="hl num">0.0</span>f<span class="hl opt">,</span> <span class="hl num">0.0</span>f<span class="hl opt">);</span>
 
-        <span class="hl slc">// We'll use an update definition to take 12 steps.</span>
+        <span class="hl slc">// We&apos;ll use an update definition to take 12 steps.</span>
         RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">12</span><span class="hl opt">);</span>
-        Complex current <span class="hl opt">=</span> <span class="hl kwd">mandelbrot</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> r<span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">);</span>
+        Complex current <span class="hl opt">=</span> <span class="hl kwd">mandelbrot</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> r <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">);</span>
 
         <span class="hl slc">// The following line uses the complex multiplication and</span>
         <span class="hl slc">// addition we defined above.</span>
-        <span class="hl kwd">mandelbrot</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> r<span class="hl opt">) =</span> current<span class="hl opt">*</span>current <span class="hl opt">+</span> initial<span class="hl opt">;</span>
+        <span class="hl kwd">mandelbrot</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> r<span class="hl opt">) =</span> current <span class="hl opt">*</span> current <span class="hl opt">+</span> initial<span class="hl opt">;</span>
 
-        <span class="hl slc">// We'll use another tuple reduction to compute the iteration</span>
+        <span class="hl slc">// We&apos;ll use another tuple reduction to compute the iteration</span>
         <span class="hl slc">// number where the value first escapes a circle of radius 4.</span>
         <span class="hl slc">// This can be expressed as an argmin of a boolean - we want</span>
         <span class="hl slc">// the index of the first time the given boolean expression is</span>
@@ -603,7 +614,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         Tuple first_escape <span class="hl opt">=</span> <span class="hl kwd">argmin</span><span class="hl opt">(</span>escape_condition<span class="hl opt">);</span>
 
         <span class="hl slc">// We only want the index, not the value, but argmin returns</span>
-        <span class="hl slc">// both, so we'll index the argmin Tuple expression using</span>
+        <span class="hl slc">// both, so we&apos;ll index the argmin Tuple expression using</span>
         <span class="hl slc">// square brackets to get the Expr representing the index.</span>
         Func escape<span class="hl opt">;</span>
         <span class="hl kwd">escape</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> first_escape<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
@@ -618,7 +629,6 @@ tutorial_lesson_21_auto_scheduler_run.html
             <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <span class="hl opt">}</span>
     <span class="hl opt">}</span>
-
 
     <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 

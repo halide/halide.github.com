@@ -337,12 +337,12 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// Halide tutorial lesson 7: Multi-stage pipelines</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_07*.cpp -g -std=c++11 -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -o lesson_07</span>
-<span class="hl slc">// LD_LIBRARY_PATH=../bin ./lesson_07</span>
+<span class="hl slc">// g++ lesson_07*.cpp -g -std=c++11 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -o lesson_07</span>
+<span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_07</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_07*.cpp -g -std=c++11 -I ../include -I ../tools -L ../bin -lHalide `libpng-config --cflags --ldflags` -ljpeg -o lesson_07</span>
-<span class="hl slc">// DYLD_LIBRARY_PATH=../bin ./lesson_07</span>
+<span class="hl slc">// g++ lesson_07*.cpp -g -std=c++11 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -o lesson_07</span>
+<span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_07</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
 <span class="hl slc">// running:</span>
@@ -357,13 +357,14 @@ tutorial_lesson_21_auto_scheduler_run.html
 
 <span class="hl slc">// Support code for loading pngs.</span>
 <span class="hl ppc">#include</span> <span class="hl pps">&quot;halide_image_io.h&quot;</span><span class="hl ppc"></span>
-<span class="hl kwa">using namespace</span> Halide<span class="hl opt">::</span>Tools<span class="hl opt">;</span>
+
+<span class="hl kwa">using namespace</span> <span class="hl kwc">Halide</span><span class="hl opt">::</span>Tools<span class="hl opt">;</span>
 
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
-    <span class="hl slc">// First we'll declare some Vars to use below.</span>
+    <span class="hl slc">// First we&apos;ll declare some Vars to use below.</span>
     Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">),</span> <span class="hl kwd">c</span><span class="hl opt">(</span><span class="hl str">&quot;c&quot;</span><span class="hl opt">);</span>
 
-    <span class="hl slc">// Now we'll express a multi-stage pipeline that blurs an image</span>
+    <span class="hl slc">// Now we&apos;ll express a multi-stage pipeline that blurs an image</span>
     <span class="hl slc">// first horizontally, and then vertically.</span>
     <span class="hl opt">{</span>
         <span class="hl slc">// Take a color 8-bit input</span>
@@ -375,28 +376,28 @@ tutorial_lesson_21_auto_scheduler_run.html
 
         <span class="hl slc">// Blur it horizontally:</span>
         Func <span class="hl kwd">blur_x</span><span class="hl opt">(</span><span class="hl str">&quot;blur_x&quot;</span><span class="hl opt">);</span>
-        <span class="hl kwd">blur_x</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) = (</span><span class="hl kwd">input_16</span><span class="hl opt">(</span>x<span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) +</span>
+        <span class="hl kwd">blur_x</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) = (</span><span class="hl kwd">input_16</span><span class="hl opt">(</span>x <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) +</span>
                            <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">input_16</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) +</span>
-                           <span class="hl kwd">input_16</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+                           <span class="hl kwd">input_16</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
 
         <span class="hl slc">// Blur it vertically:</span>
         Func <span class="hl kwd">blur_y</span><span class="hl opt">(</span><span class="hl str">&quot;blur_y&quot;</span><span class="hl opt">);</span>
-        <span class="hl kwd">blur_y</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) = (</span><span class="hl kwd">blur_x</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">,</span> c<span class="hl opt">) +</span>
+        <span class="hl kwd">blur_y</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) = (</span><span class="hl kwd">blur_x</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">,</span> c<span class="hl opt">) +</span>
                            <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">blur_x</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) +</span>
-                           <span class="hl kwd">blur_x</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> c<span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+                           <span class="hl kwd">blur_x</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> c<span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
 
         <span class="hl slc">// Convert back to 8-bit.</span>
         Func <span class="hl kwd">output</span><span class="hl opt">(</span><span class="hl str">&quot;output&quot;</span><span class="hl opt">);</span>
         <span class="hl kwd">output</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) =</span> cast<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span><span class="hl kwd">blur_y</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">));</span>
 
         <span class="hl slc">// Each Func in this pipeline calls a previous one using</span>
-        <span class="hl slc">// familiar function call syntax (we've overloaded operator()</span>
+        <span class="hl slc">// familiar function call syntax (we&apos;ve overloaded operator()</span>
         <span class="hl slc">// on Func objects). A Func may call any other Func that has</span>
         <span class="hl slc">// been given a definition. This restriction prevents</span>
         <span class="hl slc">// pipelines with loops in them. Halide pipelines are always</span>
         <span class="hl slc">// feed-forward graphs of Funcs.</span>
 
-        <span class="hl slc">// Now let's realize it...</span>
+        <span class="hl slc">// Now let&apos;s realize it...</span>
 
         <span class="hl slc">// Buffer&lt;uint8_t&gt; result = output.realize(input.width(), input.height(), 3);</span>
 
@@ -415,10 +416,10 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// occur in the inner loop; that would be slow.</span>
         <span class="hl slc">//</span>
         <span class="hl slc">// So what do we do? There are a few options. If we realize</span>
-        <span class="hl slc">// over a domain shifted inwards by one pixel, we won't be</span>
+        <span class="hl slc">// over a domain shifted inwards by one pixel, we won&apos;t be</span>
         <span class="hl slc">// asking the Halide routine to read out of bounds. We saw how</span>
         <span class="hl slc">// to do this in the previous lesson:</span>
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">result</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">()-</span><span class="hl num">2</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">()-</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">result</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">() -</span> <span class="hl num">2</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">() -</span> <span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
         result<span class="hl opt">.</span><span class="hl kwd">set_min</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">);</span>
         output<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>result<span class="hl opt">);</span>
 
@@ -428,7 +429,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwd">save_image</span><span class="hl opt">(</span>result<span class="hl opt">,</span> <span class="hl str">&quot;blurry_parrot_1.png&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// This is usually the fastest way to deal with boundaries:</span>
-        <span class="hl slc">// don't write code that reads out of bounds :) The more</span>
+        <span class="hl slc">// don&apos;t write code that reads out of bounds :) The more</span>
         <span class="hl slc">// general solution is our next example.</span>
     <span class="hl opt">}</span>
 
@@ -437,25 +438,25 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// Take a color 8-bit input</span>
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> <span class="hl kwd">load_image</span><span class="hl opt">(</span><span class="hl str">&quot;images/rgb.png&quot;</span><span class="hl opt">);</span>
 
-        <span class="hl slc">// This time, we'll wrap the input in a Func that prevents</span>
+        <span class="hl slc">// This time, we&apos;ll wrap the input in a Func that prevents</span>
         <span class="hl slc">// reading out of bounds:</span>
         Func <span class="hl kwd">clamped</span><span class="hl opt">(</span><span class="hl str">&quot;clamped&quot;</span><span class="hl opt">);</span>
 
         <span class="hl slc">// Define an expression that clamps x to lie within the</span>
         <span class="hl slc">// range [0, input.width()-1].</span>
-        Expr clamped_x <span class="hl opt">=</span> <span class="hl kwd">clamp</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">()-</span><span class="hl num">1</span><span class="hl opt">);</span>
+        Expr clamped_x <span class="hl opt">=</span> <span class="hl kwd">clamp</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">() -</span> <span class="hl num">1</span><span class="hl opt">);</span>
         <span class="hl slc">// clamp(x, a, b) is equivalent to max(min(x, b), a).</span>
 
         <span class="hl slc">// Similarly clamp y.</span>
-        Expr clamped_y <span class="hl opt">=</span> <span class="hl kwd">clamp</span><span class="hl opt">(</span>y<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">()-</span><span class="hl num">1</span><span class="hl opt">);</span>
+        Expr clamped_y <span class="hl opt">=</span> <span class="hl kwd">clamp</span><span class="hl opt">(</span>y<span class="hl opt">,</span> <span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">() -</span> <span class="hl num">1</span><span class="hl opt">);</span>
         <span class="hl slc">// Load from input at the clamped coordinates. This means that</span>
-        <span class="hl slc">// no matter how we evaluated the Func 'clamped', we'll never</span>
+        <span class="hl slc">// no matter how we evaluated the Func &apos;clamped&apos;, we&apos;ll never</span>
         <span class="hl slc">// read out of bounds on the input. This is a clamp-to-edge</span>
         <span class="hl slc">// style boundary condition, and is the simplest boundary</span>
         <span class="hl slc">// condition to express in Halide.</span>
         <span class="hl kwd">clamped</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) =</span> <span class="hl kwd">input</span><span class="hl opt">(</span>clamped_x<span class="hl opt">,</span> clamped_y<span class="hl opt">,</span> c<span class="hl opt">);</span>
 
-        <span class="hl slc">// Defining 'clamped' in that way can be done more concisely</span>
+        <span class="hl slc">// Defining &apos;clamped&apos; in that way can be done more concisely</span>
         <span class="hl slc">// using a helper function from the BoundaryConditions</span>
         <span class="hl slc">// namespace like so:</span>
         <span class="hl slc">//</span>
@@ -467,8 +468,8 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// cheap as having no boundary condition at all.</span>
 
         <span class="hl slc">// Upgrade it to 16-bit, so we can do math without it</span>
-        <span class="hl slc">// overflowing. This time we'll refer to our new Func</span>
-        <span class="hl slc">// 'clamped', instead of referring to the input image</span>
+        <span class="hl slc">// overflowing. This time we&apos;ll refer to our new Func</span>
+        <span class="hl slc">// &apos;clamped&apos;, instead of referring to the input image</span>
         <span class="hl slc">// directly.</span>
         Func <span class="hl kwd">input_16</span><span class="hl opt">(</span><span class="hl str">&quot;input_16&quot;</span><span class="hl opt">);</span>
         <span class="hl kwd">input_16</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) =</span> cast<span class="hl opt">&lt;</span><span class="hl kwb">uint16_t</span><span class="hl opt">&gt;(</span><span class="hl kwd">clamped</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">));</span>
@@ -477,21 +478,21 @@ tutorial_lesson_21_auto_scheduler_run.html
 
         <span class="hl slc">// Blur it horizontally:</span>
         Func <span class="hl kwd">blur_x</span><span class="hl opt">(</span><span class="hl str">&quot;blur_x&quot;</span><span class="hl opt">);</span>
-        <span class="hl kwd">blur_x</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) = (</span><span class="hl kwd">input_16</span><span class="hl opt">(</span>x<span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) +</span>
+        <span class="hl kwd">blur_x</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) = (</span><span class="hl kwd">input_16</span><span class="hl opt">(</span>x <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) +</span>
                            <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">input_16</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) +</span>
-                           <span class="hl kwd">input_16</span><span class="hl opt">(</span>x<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+                           <span class="hl kwd">input_16</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
 
         <span class="hl slc">// Blur it vertically:</span>
         Func <span class="hl kwd">blur_y</span><span class="hl opt">(</span><span class="hl str">&quot;blur_y&quot;</span><span class="hl opt">);</span>
-        <span class="hl kwd">blur_y</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) = (</span><span class="hl kwd">blur_x</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">,</span> c<span class="hl opt">) +</span>
+        <span class="hl kwd">blur_y</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) = (</span><span class="hl kwd">blur_x</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">,</span> c<span class="hl opt">) +</span>
                            <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">blur_x</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) +</span>
-                           <span class="hl kwd">blur_x</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">+</span><span class="hl num">1</span><span class="hl opt">,</span> c<span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+                           <span class="hl kwd">blur_x</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> c<span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
 
         <span class="hl slc">// Convert back to 8-bit.</span>
         Func <span class="hl kwd">output</span><span class="hl opt">(</span><span class="hl str">&quot;output&quot;</span><span class="hl opt">);</span>
         <span class="hl kwd">output</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) =</span> cast<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span><span class="hl kwd">blur_y</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">));</span>
 
-        <span class="hl slc">// This time it's safe to evaluate the output over the some</span>
+        <span class="hl slc">// This time it&apos;s safe to evaluate the output over the same</span>
         <span class="hl slc">// domain as the input, because we have a boundary condition.</span>
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> output<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> <span class="hl num">3</span><span class="hl opt">);</span>
 

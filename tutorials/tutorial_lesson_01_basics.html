@@ -339,12 +339,12 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// This lesson demonstrates basic usage of Halide as a JIT compiler for imaging.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_01*.cpp -g -I ../include -L ../bin -lHalide -lpthread -ldl -o lesson_01 -std=c++11</span>
-<span class="hl slc">// LD_LIBRARY_PATH=../bin ./lesson_01</span>
+<span class="hl slc">// g++ lesson_01*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_01 -std=c++11</span>
+<span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_01</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_01*.cpp -g -I ../include -L ../bin -lHalide -o lesson_01 -std=c++11</span>
-<span class="hl slc">// DYLD_LIBRARY_PATH=../bin ./lesson_01</span>
+<span class="hl slc">// g++ lesson_01*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_01 -std=c++11</span>
+<span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_01</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
 <span class="hl slc">// running:</span>
@@ -355,7 +355,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// The only Halide header file you need is Halide.h. It includes all of Halide.</span>
 <span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
 
-<span class="hl slc">// We'll also include stdio for printf.</span>
+<span class="hl slc">// We&apos;ll also include stdio for printf.</span>
 <span class="hl ppc">#include &lt;stdio.h&gt;</span>
 
 <span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
@@ -363,30 +363,30 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl slc">// This program defines a single-stage imaging pipeline that</span>
     <span class="hl slc">// outputs a grayscale diagonal gradient.</span>
 
-    <span class="hl slc">// A 'Func' object represents a pipeline stage. It's a pure</span>
+    <span class="hl slc">// A &apos;Func&apos; object represents a pipeline stage. It&apos;s a pure</span>
     <span class="hl slc">// function that defines what value each pixel should have. You</span>
     <span class="hl slc">// can think of it as a computed image.</span>
-    Halide<span class="hl opt">::</span>Func gradient<span class="hl opt">;</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span>Func gradient<span class="hl opt">;</span>
 
     <span class="hl slc">// Var objects are names to use as variables in the definition of</span>
     <span class="hl slc">// a Func. They have no meaning by themselves.</span>
-    Halide<span class="hl opt">::</span>Var x<span class="hl opt">,</span> y<span class="hl opt">;</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span>Var x<span class="hl opt">,</span> y<span class="hl opt">;</span>
 
-    <span class="hl slc">// We typically use Vars named 'x' and 'y' to correspond to the x</span>
+    <span class="hl slc">// We typically use Vars named &apos;x&apos; and &apos;y&apos; to correspond to the x</span>
     <span class="hl slc">// and y axes of an image, and we write them in that order. If</span>
-    <span class="hl slc">// you're used to thinking of images as having rows and columns,</span>
+    <span class="hl slc">// you&apos;re used to thinking of images as having rows and columns,</span>
     <span class="hl slc">// then x is the column index, and y is the row index.</span>
 
     <span class="hl slc">// Funcs are defined at any integer coordinate of its variables as</span>
     <span class="hl slc">// an Expr in terms of those variables and other functions.</span>
-    <span class="hl slc">// Here, we'll define an Expr which has the value x + y. Vars have</span>
+    <span class="hl slc">// Here, we&apos;ll define an Expr which has the value x + y. Vars have</span>
     <span class="hl slc">// appropriate operator overloading so that expressions like</span>
-    <span class="hl slc">// 'x + y' become 'Expr' objects.</span>
-    Halide<span class="hl opt">::</span>Expr e <span class="hl opt">=</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+    <span class="hl slc">// &apos;x + y&apos; become &apos;Expr&apos; objects.</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span>Expr e <span class="hl opt">=</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
 
-    <span class="hl slc">// Now we'll add a definition for the Func object. At pixel x, y,</span>
+    <span class="hl slc">// Now we&apos;ll add a definition for the Func object. At pixel x, y,</span>
     <span class="hl slc">// the image will have the value of the Expr e. On the left hand</span>
-    <span class="hl slc">// side we have the Func we're defining and some Vars. On the right</span>
+    <span class="hl slc">// side we have the Func we&apos;re defining and some Vars. On the right</span>
     <span class="hl slc">// hand side we have some Expr object that uses those same Vars.</span>
     <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> e<span class="hl opt">;</span>
 
@@ -397,30 +397,30 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl slc">// which is the more common form, but we are showing the</span>
     <span class="hl slc">// intermediate Expr here for completeness.</span>
 
-    <span class="hl slc">// That line of code defined the Func, but it didn't actually</span>
-    <span class="hl slc">// compute the output image yet. At this stage it's just Funcs,</span>
+    <span class="hl slc">// That line of code defined the Func, but it didn&apos;t actually</span>
+    <span class="hl slc">// compute the output image yet. At this stage it&apos;s just Funcs,</span>
     <span class="hl slc">// Exprs, and Vars in memory, representing the structure of our</span>
-    <span class="hl slc">// imaging pipeline. We're meta-programming. This C++ program is</span>
+    <span class="hl slc">// imaging pipeline. We&apos;re meta-programming. This C++ program is</span>
     <span class="hl slc">// constructing a Halide program in memory. Actually computing</span>
     <span class="hl slc">// pixel data comes next.</span>
 
-    <span class="hl slc">// Now we 'realize' the Func, which JIT compiles some code that</span>
-    <span class="hl slc">// implements the pipeline we've defined, and then runs it.  We</span>
+    <span class="hl slc">// Now we &apos;realize&apos; the Func, which JIT compiles some code that</span>
+    <span class="hl slc">// implements the pipeline we&apos;ve defined, and then runs it.  We</span>
     <span class="hl slc">// also need to tell Halide the domain over which to evaluate the</span>
     <span class="hl slc">// Func, which determines the range of x and y above, and the</span>
     <span class="hl slc">// resolution of the output image. Halide.h also provides a basic</span>
-    <span class="hl slc">// templatized image type we can use. We'll make an 800 x 600</span>
+    <span class="hl slc">// templatized image type we can use. We&apos;ll make an 800 x 600</span>
     <span class="hl slc">// image.</span>
-    Halide<span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int32_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">800</span><span class="hl opt">,</span> <span class="hl num">600</span><span class="hl opt">);</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int32_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">800</span><span class="hl opt">,</span> <span class="hl num">600</span><span class="hl opt">);</span>
 
     <span class="hl slc">// Halide does type inference for you. Var objects represent</span>
-    <span class="hl slc">// 32-bit integers, so the Expr object 'x + y' also represents a</span>
-    <span class="hl slc">// 32-bit integer, and so 'gradient' defines a 32-bit image, and</span>
+    <span class="hl slc">// 32-bit integers, so the Expr object &apos;x + y&apos; also represents a</span>
+    <span class="hl slc">// 32-bit integer, and so &apos;gradient&apos; defines a 32-bit image, and</span>
     <span class="hl slc">// so we got a 32-bit signed integer image out when we call</span>
-    <span class="hl slc">// 'realize'. Halide types and type-casting rules are equivalent</span>
+    <span class="hl slc">// &apos;realize&apos;. Halide types and type-casting rules are equivalent</span>
     <span class="hl slc">// to C.</span>
 
-    <span class="hl slc">// Let's check everything worked, and we got the output we were</span>
+    <span class="hl slc">// Let&apos;s check everything worked, and we got the output we were</span>
     <span class="hl slc">// expecting:</span>
     <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> j <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> j <span class="hl opt">&lt;</span> output<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">();</span> j<span class="hl opt">++) {</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> output<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">();</span> i<span class="hl opt">++) {</span>
@@ -428,14 +428,14 @@ tutorial_lesson_21_auto_scheduler_run.html
             <span class="hl slc">// syntax to defining and using functions.</span>
             <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">output</span><span class="hl opt">(</span>i<span class="hl opt">,</span> j<span class="hl opt">) !=</span> i <span class="hl opt">+</span> j<span class="hl opt">) {</span>
                 <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Something went wrong!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span>
-                       <span class="hl str">&quot;Pixel %d, %d was supposed to be %d, but instead it's %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
-                       i<span class="hl opt">,</span> j<span class="hl opt">,</span> i<span class="hl opt">+</span>j<span class="hl opt">,</span> <span class="hl kwd">output</span><span class="hl opt">(</span>i<span class="hl opt">,</span> j<span class="hl opt">));</span>
+                       <span class="hl str">&quot;Pixel %d, %d was supposed to be %d, but instead it&apos;s %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                       i<span class="hl opt">,</span> j<span class="hl opt">,</span> i <span class="hl opt">+</span> j<span class="hl opt">,</span> <span class="hl kwd">output</span><span class="hl opt">(</span>i<span class="hl opt">,</span> j<span class="hl opt">));</span>
                 <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
             <span class="hl opt">}</span>
         <span class="hl opt">}</span>
     <span class="hl opt">}</span>
 
-    <span class="hl slc">// Everything worked! We defined a Func, then called 'realize' on</span>
+    <span class="hl slc">// Everything worked! We defined a Func, then called &apos;realize&apos; on</span>
     <span class="hl slc">// it to generate and run machine code that produced an Buffer.</span>
     <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
 
