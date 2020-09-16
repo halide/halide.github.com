@@ -1,11 +1,11 @@
 var class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c =
 [
     [ "CodeGen_Metal_C", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a7537dd1daed9766ebbfc6e5b076784d5", null ],
-    [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a0c1dbf9ca721180908f5a2e4f1f546ea", null ],
+    [ "add_kernel", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a9ca8136b96a93f04d8ccef23a78d95a7", null ],
     [ "print_type", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a825d833f5a6c5da66dcb0579811e1cb8", null ],
     [ "print_storage_type", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a1004df3cc56863bc962b332a345c5585", null ],
     [ "print_type_maybe_storage", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#ab591703938ae032ba3ea0b328923c4f5", null ],
-    [ "print_reinterpret", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a7a96f388b13021dea5e3fc0614ba1092", null ],
+    [ "print_reinterpret", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#afa7a5a4fbaeee270fb6c6674a524f715", null ],
     [ "print_extern_call", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#aa696ba7257028458fe42de93c5b29003", null ],
     [ "get_memory_space", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a2fd9a5af79aab54a4739bde5dc52d555", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a886fb91fd80c249339b8a41b0a9a669b", null ],
@@ -21,5 +21,7 @@ var class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a06ed436d46a13ca5f6eab860cf32cd55", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a9f7e92812f2b61094c811d25c281b2ce", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a82a00c523a5d87291447317bb2ce76b8", null ],
-    [ "visit", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a65642bde4ba2fa10d8302a5ecdcf6f81", null ]
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a65642bde4ba2fa10d8302a5ecdcf6f81", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#a9ae55248707a3472934633789f8993dd", null ],
+    [ "shared_name", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#af8d6f4b8978ae932b2bd9adf6a535d88", null ]
 ];

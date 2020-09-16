@@ -12,8 +12,10 @@ var _expr_8h =
     [ "StringImm", "struct_halide_1_1_internal_1_1_string_imm.html", "struct_halide_1_1_internal_1_1_string_imm" ],
     [ "Expr", "struct_halide_1_1_expr.html", "struct_halide_1_1_expr" ],
     [ "ExprCompare", "struct_halide_1_1_expr_compare.html", "struct_halide_1_1_expr_compare" ],
+    [ "Range", "struct_halide_1_1_range.html", "struct_halide_1_1_range" ],
     [ "Stmt", "struct_halide_1_1_internal_1_1_stmt.html", "struct_halide_1_1_internal_1_1_stmt" ],
     [ "Compare", "struct_halide_1_1_internal_1_1_stmt_1_1_compare.html", "struct_halide_1_1_internal_1_1_stmt_1_1_compare" ],
+    [ "Region", "_expr_8h.html#adac6d1605235bf518c12a05ed6850d43", null ],
     [ "IRNodeType", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2", [
       [ "IntImm", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2ad90896d6a515230ad67dfc865553e417", null ],
       [ "UIntImm", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2a180c72f0a469e718cd8c2d23fb87ffb8", null ],
@@ -44,6 +46,7 @@ var _expr_8h =
       [ "Call", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2ac3755e61202abd74da5885d2e9c9160e", null ],
       [ "Let", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2acae6404c4aecf46684930fe2a86676a6", null ],
       [ "Shuffle", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2ae8b4b40ec3622e371789b790caabc083", null ],
+      [ "VectorReduce", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2a17335c02c86e7a0a2b46540df1e45eb5", null ],
       [ "LetStmt", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2aa7312a9d08c50e9dbc7043efe7b54df2", null ],
       [ "AssertStmt", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2a592a4f2501f4145b888a956d28448742", null ],
       [ "ProducerConsumer", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2a2c20d259c8ce0541078629d15be803a0", null ],
@@ -58,20 +61,8 @@ var _expr_8h =
       [ "Fork", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2a36c81967df3424f919e89b09ed34c90d", null ],
       [ "IfThenElse", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2aaff6933d8331eca27edc911467980c9c", null ],
       [ "Evaluate", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2ab086843368d1c92d0a86cbee76b20b6f", null ],
-      [ "Prefetch", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2a18540d940813866480eaca8d3f32d18e", null ]
-    ] ],
-    [ "DeviceAPI", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6e", [
-      [ "None", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea6adf97f83acf6453d4a6a4b1070f3754", null ],
-      [ "Host", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eac2ca16d048ec66e04bca283eab048ec2", null ],
-      [ "Default_GPU", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eaee977b69833eed1db30528c41d839ef8", null ],
-      [ "CUDA", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eaa33b7755e5f9b504d2d038eaca4ff28d", null ],
-      [ "OpenCL", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea7982b09a852b37f2afb1227eaf552e47", null ],
-      [ "GLSL", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea2a2c1392bcbaececf702b611e7d7df25", null ],
-      [ "OpenGLCompute", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea3adf0945d2bbb4c868f37d38e02684d5", null ],
-      [ "Metal", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eaeaa57a9b4248ce3968e718895e1c2f04", null ],
-      [ "Hexagon", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea125e13c182697c5a282e4de6d7999eb0", null ],
-      [ "HexagonDma", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea4b2626a6b8b94341748b21e603039989", null ],
-      [ "D3D12Compute", "_expr_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eaac083508369e66fdeb744a9dbf917bee", null ]
+      [ "Prefetch", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2a18540d940813866480eaca8d3f32d18e", null ],
+      [ "Atomic", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2a557eccd321b7f10f5127c1ef27aaac7d", null ]
     ] ],
     [ "MemoryType", "_expr_8h.html#af28f02315017283b26196866c92d4da9", [
       [ "Auto", "_expr_8h.html#af28f02315017283b26196866c92d4da9a06b9281e396db002010bde1de57262eb", null ],
@@ -96,5 +87,5 @@ var _expr_8h =
     [ "destroy< IRNode >", "_expr_8h.html#ad3d80243a2f3de47f613df12b48475c3", null ],
     [ "is_unordered_parallel", "_expr_8h.html#a89b46f80479d5e41ff7ebf80ced31267", null ],
     [ "is_parallel", "_expr_8h.html#aa25b9bc3a80bac033c05e5178ab5a4c7", null ],
-    [ "all_device_apis", "_expr_8h.html#abeae4f594180635f1a0a60c0dac5fe72", null ]
+    [ "StrongestExprNodeType", "_expr_8h.html#a4bf1a96be9fadff5521559de5f72935c", null ]
 ];

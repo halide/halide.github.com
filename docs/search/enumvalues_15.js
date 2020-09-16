@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['warning',['Warning',['../struct_halide_1_1_internal_1_1_error_report.html#a940b8fb14f6f366215eeee05f7907327ad9eafd3221efa65134ad11fe7882e3f7',1,'Halide::Internal::ErrorReport']]],
+  ['warning',['Warning',['../struct_halide_1_1_internal_1_1_error_report.html#a0d0995b2caa9f1838f8a91fd22759430ad9eafd3221efa65134ad11fe7882e3f7',1,'Halide::Internal::ErrorReport']]],
+  ['wasmsatfloattoint',['WasmSatFloatToInt',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa5844b91ea7f9eb256f4d86451bb8b3b7',1,'Halide::Target']]],
   ['wasmsignext',['WasmSignExt',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fad95c59042a85b7145e903bcff2da6386',1,'Halide::Target']]],
   ['wasmsimd128',['WasmSimd128',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa64ad3f5f11c8c24afe565c156afe4d52',1,'Halide::Target']]],
   ['webassembly',['WebAssembly',['../struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1a6532c751e5ed692a3697b42e16245103',1,'Halide::Target']]],

@@ -1,5 +1,6 @@
 var annotated_dup =
 [
+    [ "cmdline", "namespacecmdline.html", "namespacecmdline" ],
     [ "Halide", "namespace_halide.html", "namespace_halide" ],
     [ "HalideIntrospectionCanary", "namespace_halide_introspection_canary.html", "namespace_halide_introspection_canary" ],
     [ "llvm", "namespacellvm.html", "namespacellvm" ],
@@ -16,7 +17,7 @@ var annotated_dup =
     [ "_RPC_SYNTAX_IDENTIFIER", "struct___r_p_c___s_y_n_t_a_x___i_d_e_n_t_i_f_i_e_r.html", "struct___r_p_c___s_y_n_t_a_x___i_d_e_n_t_i_f_i_e_r" ],
     [ "_RPC_VERSION", "struct___r_p_c___v_e_r_s_i_o_n.html", "struct___r_p_c___v_e_r_s_i_o_n" ],
     [ "_SECURITY_ATTRIBUTES", "struct___s_e_c_u_r_i_t_y___a_t_t_r_i_b_u_t_e_s.html", "struct___s_e_c_u_r_i_t_y___a_t_t_r_i_b_u_t_e_s" ],
-    [ "buffer_t", "structbuffer__t.html", "structbuffer__t" ],
+    [ "CheckCalls", "class_check_calls.html", "class_check_calls" ],
     [ "D3D12_BLEND_DESC", "struct_d3_d12___b_l_e_n_d___d_e_s_c.html", "struct_d3_d12___b_l_e_n_d___d_e_s_c" ],
     [ "D3D12_BOX", "struct_d3_d12___b_o_x.html", "struct_d3_d12___b_o_x" ],
     [ "D3D12_BUFFER_RTV", "struct_d3_d12___b_u_f_f_e_r___r_t_v.html", "struct_d3_d12___b_u_f_f_e_r___r_t_v" ],
@@ -129,6 +130,7 @@ var annotated_dup =
     [ "halide_handle_traits", "structhalide__handle__traits.html", null ],
     [ "halide_hexagon_power_t", "structhalide__hexagon__power__t.html", "structhalide__hexagon__power__t" ],
     [ "halide_mutex", "structhalide__mutex.html", "structhalide__mutex" ],
+    [ "halide_mutex_array", "structhalide__mutex__array.html", "structhalide__mutex__array" ],
     [ "halide_parallel_task_t", "structhalide__parallel__task__t.html", "structhalide__parallel__task__t" ],
     [ "halide_profiler_func_stats", "structhalide__profiler__func__stats.html", "structhalide__profiler__func__stats" ],
     [ "halide_profiler_pipeline_stats", "structhalide__profiler__pipeline__stats.html", "structhalide__profiler__pipeline__stats" ],
@@ -164,7 +166,8 @@ var annotated_dup =
     [ "IDXGIObjectVtbl", "struct_i_d_x_g_i_object_vtbl.html", "struct_i_d_x_g_i_object_vtbl" ],
     [ "IUnknownVtbl", "struct_i_unknown_vtbl.html", "struct_i_unknown_vtbl" ],
     [ "known_symbol", "structknown__symbol.html", "structknown__symbol" ],
-    [ "PipelineContext", "class_pipeline_context.html", "class_pipeline_context" ],
+    [ "PerfectHashMap", "class_perfect_hash_map.html", "class_perfect_hash_map" ],
+    [ "PerfectHashMapAsserter", "struct_perfect_hash_map_asserter.html", "struct_perfect_hash_map_asserter" ],
     [ "qurt_cond_t", "unionqurt__cond__t.html", null ],
     [ "qurt_mutex_aligned8", "unionqurt__mutex__aligned8.html", null ],
     [ "stDmaWrapper_DmaTransferSetup", "structst_dma_wrapper___dma_transfer_setup.html", "structst_dma_wrapper___dma_transfer_setup" ],

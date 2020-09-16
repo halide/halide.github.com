@@ -8,6 +8,8 @@ var _halide_runtime_open_c_l_8h =
     [ "halide_opencl_get_platform_name", "_halide_runtime_open_c_l_8h.html#a49bcf6bb5cba26ded25b7cb26cbb6aee", null ],
     [ "halide_opencl_set_device_type", "_halide_runtime_open_c_l_8h.html#aa1fda51b521497a81175e9677ad7f608", null ],
     [ "halide_opencl_get_device_type", "_halide_runtime_open_c_l_8h.html#a2fbd80b76ed348b8c8bff6099e703dac", null ],
+    [ "halide_opencl_set_build_options", "_halide_runtime_open_c_l_8h.html#aa44b6a59afd0c3b17e25794db4d01986", null ],
+    [ "halide_opencl_get_build_options", "_halide_runtime_open_c_l_8h.html#afa8f1064a34e17fec76d6ebf26007af0", null ],
     [ "halide_opencl_wrap_cl_mem", "_halide_runtime_open_c_l_8h.html#a3d4c505ecbcf31bbac5a33a75700b3fd", null ],
     [ "halide_opencl_detach_cl_mem", "_halide_runtime_open_c_l_8h.html#a9701a524761b98f8fc80f81ff517582b", null ],
     [ "halide_opencl_get_cl_mem", "_halide_runtime_open_c_l_8h.html#a231c2547d4c5686803d06b0df063cec5", null ],

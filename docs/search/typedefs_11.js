@@ -7,6 +7,8 @@ var searchData=
   ['short',['SHORT',['../mini__d3d12_8h.html#a9909bd3cf05f0906045f2ee85be4eeac',1,'mini_d3d12.h']]],
   ['size_5ft',['size_t',['../runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e',1,'size_t():&#160;runtime_internal.h'],['../mini__d3d12_8h.html#af8429def935ee9a571d3e6dfffc3e790',1,'SIZE_T():&#160;mini_d3d12.h']]],
   ['ssize_5ft',['SSIZE_T',['../mini__d3d12_8h.html#a1be81fe0ee3837d6ad08fc9c67544bb1',1,'SSIZE_T():&#160;mini_d3d12.h'],['../runtime__internal_8h.html#ab65ed42d67e6c517c746ff2a6a187016',1,'ssize_t():&#160;runtime_internal.h']]],
+  ['stagemap',['StageMap',['../namespace_halide_1_1_internal_1_1_autoscheduler.html#a83659d904a4b98e259be8ae3c19ad2d8',1,'Halide::Internal::Autoscheduler']]],
+  ['stagemapofschedulefeatures',['StageMapOfScheduleFeatures',['../namespace_halide_1_1_internal_1_1_autoscheduler.html#ad942b8861f139a911d249d48f18cdc5b',1,'Halide::Internal::Autoscheduler']]],
   ['symbol_5fiterator',['symbol_iterator',['../class_halide_1_1_internal_1_1_elf_1_1_object.html#a8183a6da917074a167547e7e8c3957a5',1,'Halide::Internal::Elf::Object']]],
   ['symbollist',['SymbolList',['../class_halide_1_1_internal_1_1_elf_1_1_object.html#ad16bd82cbceff1656a99e183ccba2831',1,'Halide::Internal::Elf::Object']]]
 ];

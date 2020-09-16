@@ -1,7 +1,7 @@
 var struct_halide_1_1_runtime_1_1_internal_1_1work =
 [
-    [ "make_runnable", "struct_halide_1_1_runtime_1_1_internal_1_1work.html#a5f2239259becc84d13c05800e2237ed8", null ],
-    [ "running", "struct_halide_1_1_runtime_1_1_internal_1_1work.html#a66238d86eb984d953057c5e0373385ca", null ],
+    [ "make_runnable", "struct_halide_1_1_runtime_1_1_internal_1_1work.html#a51f5000c2d7ae9eb4f5326386895da1a", null ],
+    [ "running", "struct_halide_1_1_runtime_1_1_internal_1_1work.html#a1c8a8e348f53f8c74c16d8d32878778c", null ],
     [ "task", "struct_halide_1_1_runtime_1_1_internal_1_1work.html#a57170dc6895a8bcd6548bc299e60ca86", null ],
     [ "task_fn", "struct_halide_1_1_runtime_1_1_internal_1_1work.html#a12c39b0dba492514c802f0c1a6526538", null ],
     [ "next_job", "struct_halide_1_1_runtime_1_1_internal_1_1work.html#afb73c1e0881a4408d5fc9e1a514f352c", null ],

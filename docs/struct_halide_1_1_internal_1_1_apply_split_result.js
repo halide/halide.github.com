@@ -7,9 +7,9 @@ var struct_halide_1_1_internal_1_1_apply_split_result =
     ] ],
     [ "ApplySplitResult", "struct_halide_1_1_internal_1_1_apply_split_result.html#aad899c8128730d4589c58bf2a8394f9f", null ],
     [ "ApplySplitResult", "struct_halide_1_1_internal_1_1_apply_split_result.html#a1e357879d12e9d094ea6efdf51b9c505", null ],
-    [ "is_substitution", "struct_halide_1_1_internal_1_1_apply_split_result.html#a316de70e3767672b7ad3a5839e24919e", null ],
-    [ "is_let", "struct_halide_1_1_internal_1_1_apply_split_result.html#ac8ffa7e27d38afc80080099278ee3cf3", null ],
-    [ "is_predicate", "struct_halide_1_1_internal_1_1_apply_split_result.html#aeaaaaeeebcc29adea10fa5786bde7a4f", null ],
+    [ "is_substitution", "struct_halide_1_1_internal_1_1_apply_split_result.html#afc20d2fa64a5691807fd4a967490f8b5", null ],
+    [ "is_let", "struct_halide_1_1_internal_1_1_apply_split_result.html#a2a48c8e557d79776257ce1846d76204c", null ],
+    [ "is_predicate", "struct_halide_1_1_internal_1_1_apply_split_result.html#a35297f833bde4c319d9c9d99820a2422", null ],
     [ "name", "struct_halide_1_1_internal_1_1_apply_split_result.html#a3878024db52d3b64e33b57101121230e", null ],
     [ "value", "struct_halide_1_1_internal_1_1_apply_split_result.html#ad0a581db029f63ac8500bc8a299990e9", null ],
     [ "type", "struct_halide_1_1_internal_1_1_apply_split_result.html#aa3c407dd2b1a5a48e697d07aa7402b6f", null ]

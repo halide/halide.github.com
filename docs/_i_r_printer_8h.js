@@ -1,5 +1,6 @@
 var _i_r_printer_8h =
 [
+    [ "Indentation", "struct_halide_1_1_internal_1_1_indentation.html", "struct_halide_1_1_internal_1_1_indentation" ],
     [ "IRPrinter", "class_halide_1_1_internal_1_1_i_r_printer.html", "class_halide_1_1_internal_1_1_i_r_printer" ],
     [ "operator<<", "_i_r_printer_8h.html#a7082de94433ce36f34d486a0bddbc200", null ],
     [ "operator<<", "_i_r_printer_8h.html#af00a873047edcc26c57685fd8f0b1e2e", null ],
@@ -13,7 +14,10 @@ var _i_r_printer_8h =
     [ "operator<<", "_i_r_printer_8h.html#a4e3b530e690cbe977d889e0931f8933d", null ],
     [ "operator<<", "_i_r_printer_8h.html#ab98f0a702bd775e67baed5bcd986ae27", null ],
     [ "operator<<", "_i_r_printer_8h.html#a10cfea8acb4f311a9365e26a8f7de08f", null ],
+    [ "operator<<", "_i_r_printer_8h.html#aa0ff27763f50a990f499b422efc0c98b", null ],
     [ "operator<<", "_i_r_printer_8h.html#a6e1f893faca900eef051b7c0c182fde5", null ],
     [ "operator<<", "_i_r_printer_8h.html#a029791644c90ea7a194d58fc87ab41bf", null ],
-    [ "operator<<", "_i_r_printer_8h.html#a6f77f82c9290637ca0b5497f73a8f555", null ]
+    [ "operator<<", "_i_r_printer_8h.html#a6f77f82c9290637ca0b5497f73a8f555", null ],
+    [ "operator<<", "_i_r_printer_8h.html#a479bae94ae224d9d9180902627032a1b", null ],
+    [ "operator<<", "_i_r_printer_8h.html#a5168ee834a75949ecfb1f42d9cf54237", null ]
 ];

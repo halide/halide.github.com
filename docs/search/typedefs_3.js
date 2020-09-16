@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['callgraphs',['CallGraphs',['../check__call__graphs_8h.html#ad71e526865e3f330867b6676cd33eaf9',1,'check_call_graphs.h']]],
   ['char',['CHAR',['../mini__d3d12_8h.html#aebb9e13210d88d43e32e735ada43a425',1,'mini_d3d12.h']]],
   ['cl_5faddressing_5fmode',['cl_addressing_mode',['../mini__cl_8h.html#a8ef0a3e08dc6e296a4375689da776ebe',1,'mini_cl.h']]],
   ['cl_5fbitfield',['cl_bitfield',['../mini__cl_8h.html#a142c6bbedc3753b71d3d08d6caa18315',1,'mini_cl.h']]],
@@ -57,6 +58,7 @@ var searchData=
   ['cl_5fsampler_5finfo',['cl_sampler_info',['../mini__cl_8h.html#a1e7a708f426cc4d081cbee824e896004',1,'mini_cl.h']]],
   ['cl_5fuint',['cl_uint',['../mini__cl_8h.html#a427cf720a5a2d671d308d999efe7f4da',1,'mini_cl.h']]],
   ['cl_5fulong',['cl_ulong',['../mini__cl_8h.html#afa6c39e2bb9558276538908e6af47d29',1,'mini_cl.h']]],
+  ['compilerloggerfactory',['CompilerLoggerFactory',['../namespace_halide.html#a6e2a7a400cd68d41f2868eebb762c32e',1,'Halide']]],
   ['const_5fcontents_5fiterator',['const_contents_iterator',['../class_halide_1_1_internal_1_1_elf_1_1_section.html#a96440ff0a4b0d657f4d299ea17f342e6',1,'Halide::Internal::Elf::Section']]],
   ['const_5frelocation_5fiterator',['const_relocation_iterator',['../class_halide_1_1_internal_1_1_elf_1_1_section.html#a741deda7d10aba7d6d8b63d9ecd0610c',1,'Halide::Internal::Elf::Section']]],
   ['const_5fsection_5fiterator',['const_section_iterator',['../class_halide_1_1_internal_1_1_elf_1_1_object.html#a9808e6887b4d79f6f3f1c0e3261d6734',1,'Halide::Internal::Elf::Object']]],

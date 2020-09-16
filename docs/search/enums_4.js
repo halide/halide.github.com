@@ -61,6 +61,7 @@ var searchData=
   ['d3d_5froot_5fsignature_5fversion',['D3D_ROOT_SIGNATURE_VERSION',['../mini__d3d12_8h.html#a25204ebbbf90620e59b6efbf6dd03b48',1,'mini_d3d12.h']]],
   ['destructortype',['DestructorType',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a431585f4447c39d5639672baa5b1c5d2',1,'Halide::Internal::CodeGen_LLVM']]],
   ['deviceapi',['DeviceAPI',['../namespace_halide.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6e',1,'Halide']]],
+  ['dimtype',['DimType',['../namespace_halide_1_1_internal.html#a5b8c72fcb8800b47e313c62f5416a4fe',1,'Halide::Internal']]],
   ['direction',['Direction',['../namespace_halide_1_1_internal.html#a8548315fd4d13ccebe45a8123369f7ca',1,'Halide::Internal']]],
   ['dxgi_5fadapter_5fflag',['DXGI_ADAPTER_FLAG',['../mini__d3d12_8h.html#aa4c0d300a04539a71b773a154c4f2c47',1,'mini_d3d12.h']]],
   ['dxgi_5fformat',['DXGI_FORMAT',['../mini__d3d12_8h.html#a6a9cbc7eff00c7ec769e4e6c3b2cb3bc',1,'mini_d3d12.h']]]

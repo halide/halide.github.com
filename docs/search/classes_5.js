@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['emitoptions',['EmitOptions',['../struct_halide_1_1_internal_1_1_generator_base_1_1_emit_options.html',1,'Halide::Internal::GeneratorBase']]],
+  ['edge',['Edge',['../struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_edge.html',1,'Halide::Internal::Autoscheduler::FunctionDAG']]],
   ['enable_5fif_5fpattern',['enable_if_pattern',['../struct_halide_1_1_internal_1_1_i_r_matcher_1_1enable__if__pattern.html',1,'Halide::Internal::IRMatcher']]],
   ['eq',['EQ',['../struct_halide_1_1_internal_1_1_e_q.html',1,'Halide::Internal']]],
   ['error',['Error',['../struct_halide_1_1_error.html',1,'Halide']]],
@@ -39,6 +39,7 @@ var searchData=
   ['exprnode_3c_20sub_20_3e',['ExprNode&lt; Sub &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprnode_3c_20uintimm_20_3e',['ExprNode&lt; UIntImm &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprnode_3c_20variable_20_3e',['ExprNode&lt; Variable &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
+  ['exprnode_3c_20vectorreduce_20_3e',['ExprNode&lt; VectorReduce &gt;',['../struct_halide_1_1_internal_1_1_expr_node.html',1,'Halide::Internal']]],
   ['exprusesvars',['ExprUsesVars',['../class_halide_1_1_internal_1_1_expr_uses_vars.html',1,'Halide::Internal']]],
   ['exprwithcomparecache',['ExprWithCompareCache',['../struct_halide_1_1_internal_1_1_expr_with_compare_cache.html',1,'Halide::Internal']]],
   ['externalcode',['ExternalCode',['../class_halide_1_1_external_code.html',1,'Halide']]],

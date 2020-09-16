@@ -1,7 +1,9 @@
 var searchData=
 [
   ['halide_5fhexagon_5fremote_2eh',['halide_hexagon_remote.h',['../halide__hexagon__remote_8h.html',1,'']]],
+  ['halide_5ftest_5fdirs_2eh',['halide_test_dirs.h',['../halide__test__dirs_8h.html',1,'']]],
   ['halidebuffer_2eh',['HalideBuffer.h',['../_halide_buffer_8h.html',1,'']]],
+  ['halideplugin_2eh',['HalidePlugin.h',['../_halide_plugin_8h.html',1,'']]],
   ['halidepytorchcudahelpers_2eh',['HalidePyTorchCudaHelpers.h',['../_halide_py_torch_cuda_helpers_8h.html',1,'']]],
   ['halidepytorchhelpers_2eh',['HalidePyTorchHelpers.h',['../_halide_py_torch_helpers_8h.html',1,'']]],
   ['halideruntime_2eh',['HalideRuntime.h',['../_halide_runtime_8h.html',1,'']]],

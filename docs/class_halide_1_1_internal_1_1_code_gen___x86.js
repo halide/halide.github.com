@@ -5,8 +5,8 @@ var class_halide_1_1_internal_1_1_code_gen___x86 =
     [ "mattrs", "class_halide_1_1_internal_1_1_code_gen___x86.html#abca58a33dd5a82450acb8b199c5d86b1", null ],
     [ "use_soft_float_abi", "class_halide_1_1_internal_1_1_code_gen___x86.html#a71efbb786dff01ad60965446fd6e1cdd", null ],
     [ "native_vector_bits", "class_halide_1_1_internal_1_1_code_gen___x86.html#ada697f9825323748628dc8908b1ac0a2", null ],
-    [ "vector_lanes_for_slice", "class_halide_1_1_internal_1_1_code_gen___x86.html#af37250a3c9ae1ee8af64964c34ff4da8", null ],
-    [ "llvm_type_of", "class_halide_1_1_internal_1_1_code_gen___x86.html#a1e5d1be2100fa08e60cc5bb96fc13939", null ],
+    [ "vector_lanes_for_slice", "class_halide_1_1_internal_1_1_code_gen___x86.html#ad4f170d333fe27f9de6c8ea661e6d6e5", null ],
+    [ "llvm_type_of", "class_halide_1_1_internal_1_1_code_gen___x86.html#a937e707cc329d9b9b5677c48d5cd451b", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#aa974991df135852035f939faaba82972", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#ae100cffee4578cfcc5fdb1786749c023", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#ac657a138d09c4aeff95fea8d61614a8d", null ],
@@ -17,5 +17,7 @@ var class_halide_1_1_internal_1_1_code_gen___x86 =
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#aae3784a528d13f740c3bf704a2247452", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#a48cdd07e4bf15d136186e956da3020a7", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#ab28be768807d291372013d683cfb36fd", null ],
-    [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#ab7a38c426c91bf6ce402f9d3779d0906", null ]
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#ab7a38c426c91bf6ce402f9d3779d0906", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#a0de3c34a3b76ba457ef4933d7b6d60e7", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___x86.html#aa1dcc48ca784b4cc89f5a57b8f9b181d", null ]
 ];

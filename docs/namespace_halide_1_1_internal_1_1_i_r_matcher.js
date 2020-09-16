@@ -11,7 +11,6 @@ var namespace_halide_1_1_internal_1_1_i_r_matcher =
       [ "type", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1enable__if__pattern_1_1type.html", null ]
     ] ],
     [ "Fold", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_fold.html", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_fold" ],
-    [ "Indeterminate", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_indeterminate.html", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_indeterminate" ],
     [ "Intrin", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_intrin.html", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_intrin" ],
     [ "IsConst", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_const.html", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_const" ],
     [ "IsFloat", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_float.html", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_float" ],
@@ -24,6 +23,7 @@ var namespace_halide_1_1_internal_1_1_i_r_matcher =
     [ "Rewriter", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_rewriter.html", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_rewriter" ],
     [ "SelectOp", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_select_op.html", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_select_op" ],
     [ "SpecificExpr", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_specific_expr.html", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_specific_expr" ],
+    [ "VectorReduceOp", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_vector_reduce_op.html", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_vector_reduce_op" ],
     [ "Wild", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild" ],
     [ "WildConst", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const" ],
     [ "WildConstFloat", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const_float.html", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const_float" ],

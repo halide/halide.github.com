@@ -2,7 +2,8 @@ var searchData=
 [
   ['ramp',['Ramp',['../struct_halide_1_1_internal_1_1_ramp.html',1,'Halide::Internal']]],
   ['rampop',['RampOp',['../struct_halide_1_1_internal_1_1_i_r_matcher_1_1_ramp_op.html',1,'Halide::Internal::IRMatcher']]],
-  ['range',['Range',['../struct_halide_1_1_internal_1_1_range.html',1,'Halide::Internal']]],
+  ['range',['Range',['../struct_halide_1_1_range.html',1,'Halide']]],
+  ['range_5freader',['range_reader',['../structcmdline_1_1range__reader.html',1,'cmdline']]],
   ['rdom',['RDom',['../class_halide_1_1_r_dom.html',1,'Halide']]],
   ['realization',['Realization',['../class_halide_1_1_realization.html',1,'Halide']]],
   ['realizationarg',['RealizationArg',['../struct_halide_1_1_pipeline_1_1_realization_arg.html',1,'Halide::Pipeline']]],
@@ -11,6 +12,7 @@ var searchData=
   ['reductionvariable',['ReductionVariable',['../struct_halide_1_1_internal_1_1_reduction_variable.html',1,'Halide::Internal']]],
   ['reductionvariableinfo',['ReductionVariableInfo',['../struct_halide_1_1_internal_1_1_reduction_variable_info.html',1,'Halide::Internal']]],
   ['refcount',['RefCount',['../class_halide_1_1_internal_1_1_ref_count.html',1,'Halide::Internal']]],
+  ['regioncomputedinfo',['RegionComputedInfo',['../struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_node_1_1_region_computed_info.html',1,'Halide::Internal::Autoscheduler::FunctionDAG::Node']]],
   ['regioncosts',['RegionCosts',['../struct_halide_1_1_internal_1_1_region_costs.html',1,'Halide::Internal']]],
   ['registergenerator',['RegisterGenerator',['../class_halide_1_1_internal_1_1_register_generator.html',1,'Halide::Internal']]],
   ['relocation',['Relocation',['../class_halide_1_1_internal_1_1_elf_1_1_relocation.html',1,'Halide::Internal::Elf']]],

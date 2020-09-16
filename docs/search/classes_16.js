@@ -8,5 +8,7 @@ var searchData=
   ['variadicvisitor_3c_20simplify_2c_20expr_2c_20stmt_20_3e',['VariadicVisitor&lt; Simplify, Expr, Stmt &gt;',['../class_halide_1_1_internal_1_1_variadic_visitor.html',1,'Halide::Internal']]],
   ['varinfo',['VarInfo',['../struct_halide_1_1_internal_1_1_simplify_1_1_var_info.html',1,'Halide::Internal::Simplify']]],
   ['varorrvar',['VarOrRVar',['../struct_halide_1_1_var_or_r_var.html',1,'Halide']]],
+  ['vectorreduce',['VectorReduce',['../struct_halide_1_1_internal_1_1_vector_reduce.html',1,'Halide::Internal']]],
+  ['vectorreduceop',['VectorReduceOp',['../struct_halide_1_1_internal_1_1_i_r_matcher_1_1_vector_reduce_op.html',1,'Halide::Internal::IRMatcher']]],
   ['voidifier',['Voidifier',['../class_halide_1_1_internal_1_1_voidifier.html',1,'Halide::Internal']]]
 ];

@@ -39,5 +39,6 @@ var searchData=
   ['generatorregistry',['GeneratorRegistry',['../class_halide_1_1_internal_1_1_generator_registry.html',1,'Halide::Internal']]],
   ['generatorstub',['GeneratorStub',['../class_halide_1_1_internal_1_1_generator_stub.html',1,'Halide::Internal']]],
   ['giobase',['GIOBase',['../class_halide_1_1_internal_1_1_g_i_o_base.html',1,'Halide::Internal']]],
+  ['gpuobjectlifetimetracker',['GpuObjectLifetimeTracker',['../class_halide_1_1_internal_1_1_gpu_object_lifetime_tracker.html',1,'Halide::Internal']]],
   ['gt',['GT',['../struct_halide_1_1_internal_1_1_g_t.html',1,'Halide::Internal']]]
 ];

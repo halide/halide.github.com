@@ -1,6 +1,7 @@
 var struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock =
 [
-    [ "ScopedSpinLock", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html#ac163436325bf584241592179a4eb5a0b", null ],
-    [ "~ScopedSpinLock", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html#a5f994750f194c5ae7bb5ed32e07e2b1e", null ],
-    [ "lock", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html#adc0ee9b48dcc82287d3a69548a061207", null ]
+    [ "AtomicFlag", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html#a996194091247ce38ed97cf2298dee525", null ],
+    [ "ScopedSpinLock", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html#ab102d4002f6d91fe1e2b718ababac6d2", null ],
+    [ "~ScopedSpinLock", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html#a4154c3432595759a6f72006d6c6a78cf", null ],
+    [ "flag", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html#ae024220f9bf555865a0067ac1345ba57", null ]
 ];

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['uint',['UINT',['../mini__d3d12_8h.html#a36cb3b01d81ffd844bbbfb54003e06ec',1,'mini_d3d12.h']]],
-  ['uint16',['uint16',['../mini__hexagon__dma_8h.html#ac2a9e79eb120216f855626495b7bd18a',1,'uint16():&#160;mini_hexagon_dma.h'],['../mini__d3d12_8h.html#a30fabd2145b658b77cdfeb2db2852dda',1,'UINT16():&#160;mini_d3d12.h']]],
+  ['uint16',['UINT16',['../mini__d3d12_8h.html#a30fabd2145b658b77cdfeb2db2852dda',1,'UINT16():&#160;mini_d3d12.h'],['../mini__hexagon__dma_8h.html#ac2a9e79eb120216f855626495b7bd18a',1,'uint16():&#160;mini_hexagon_dma.h']]],
   ['uint16_5ft',['uint16_t',['../runtime__internal_8h.html#a84a4932f569742629ef4f07564b74de9',1,'runtime_internal.h']]],
   ['uint32',['uint32',['../mini__hexagon__dma_8h.html#acbd4acd0d29e2d6c43104827f77d9cd2',1,'uint32():&#160;mini_hexagon_dma.h'],['../mini__d3d12_8h.html#ad97a5af2c5f97b34a6c3f987443f11b0',1,'UINT32():&#160;mini_d3d12.h']]],
   ['uint32_5ft',['uint32_t',['../runtime__internal_8h.html#ab422cc94a75a12c4e5646c5065674172',1,'runtime_internal.h']]],

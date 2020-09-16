@@ -1,8 +1,10 @@
 var searchData=
 [
   ['canonicalizegpuvars_2eh',['CanonicalizeGPUVars.h',['../_canonicalize_g_p_u_vars_8h.html',1,'']]],
+  ['check_5fcall_5fgraphs_2eh',['check_call_graphs.h',['../check__call__graphs_8h.html',1,'']]],
   ['cl_5ffunctions_2eh',['cl_functions.h',['../cl__functions_8h.html',1,'']]],
   ['closure_2eh',['Closure.h',['../_closure_8h.html',1,'']]],
+  ['cmdline_2eh',['cmdline.h',['../cmdline_8h.html',1,'']]],
   ['codegen_5farm_2eh',['CodeGen_ARM.h',['../_code_gen___a_r_m_8h.html',1,'']]],
   ['codegen_5fc_2eh',['CodeGen_C.h',['../_code_gen___c_8h.html',1,'']]],
   ['codegen_5fd3d12compute_5fdev_2eh',['CodeGen_D3D12Compute_Dev.h',['../_code_gen___d3_d12_compute___dev_8h.html',1,'']]],
@@ -23,7 +25,10 @@ var searchData=
   ['codegen_5friscv_2eh',['CodeGen_RISCV.h',['../_code_gen___r_i_s_c_v_8h.html',1,'']]],
   ['codegen_5fwebassembly_2eh',['CodeGen_WebAssembly.h',['../_code_gen___web_assembly_8h.html',1,'']]],
   ['codegen_5fx86_2eh',['CodeGen_X86.h',['../_code_gen___x86_8h.html',1,'']]],
+  ['compilerlogger_2eh',['CompilerLogger.h',['../_compiler_logger_8h.html',1,'']]],
   ['concisecasts_2eh',['ConciseCasts.h',['../_concise_casts_8h.html',1,'']]],
+  ['cost_5fmodel_5fschedule_2eh',['cost_model_schedule.h',['../cost__model__schedule_8h.html',1,'']]],
+  ['costmodel_2eh',['CostModel.h',['../_cost_model_8h.html',1,'']]],
   ['cplusplusmangle_2eh',['CPlusPlusMangle.h',['../_c_plus_plus_mangle_8h.html',1,'']]],
   ['cpu_5ffeatures_2eh',['cpu_features.h',['../cpu__features_8h.html',1,'']]],
   ['cse_2eh',['CSE.h',['../_c_s_e_8h.html',1,'']]],

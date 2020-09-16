@@ -1,10 +1,10 @@
 var _expr_uses_var_8h =
 [
     [ "ExprUsesVars", "class_halide_1_1_internal_1_1_expr_uses_vars.html", "class_halide_1_1_internal_1_1_expr_uses_vars" ],
-    [ "stmt_or_expr_uses_vars", "_expr_uses_var_8h.html#af29840c52385c687d17608300c94a0ab", null ],
-    [ "stmt_or_expr_uses_var", "_expr_uses_var_8h.html#aaade6cc73ce3cd9902f445c135a0226d", null ],
-    [ "expr_uses_var", "_expr_uses_var_8h.html#aa5f21194a1d0e54add9a15a79eb889dd", null ],
-    [ "stmt_uses_var", "_expr_uses_var_8h.html#ac7f70cf57af5925647346a8e1f3a8268", null ],
-    [ "expr_uses_vars", "_expr_uses_var_8h.html#af9bc2cef7dff2305a29dc5512a7542da", null ],
-    [ "stmt_uses_vars", "_expr_uses_var_8h.html#a69aa39cfbbd5a1aead3e742c4fc0048a", null ]
+    [ "stmt_or_expr_uses_vars", "_expr_uses_var_8h.html#a16792c0d67cebb47fe0a30377c3e7212", null ],
+    [ "stmt_or_expr_uses_var", "_expr_uses_var_8h.html#a5d94fcb5a93f4d4ddc839dc3f7631e5e", null ],
+    [ "expr_uses_var", "_expr_uses_var_8h.html#af734ee6c4861fe4be70badd557199d84", null ],
+    [ "stmt_uses_var", "_expr_uses_var_8h.html#a0fdd19ef6ec57aee5d5bea413bed3452", null ],
+    [ "expr_uses_vars", "_expr_uses_var_8h.html#ae31bec6d9fdbb014d4e6b82549452065", null ],
+    [ "stmt_uses_vars", "_expr_uses_var_8h.html#a3d8bcd8e6cf2ad8368c7f106f5852f1e", null ]
 ];

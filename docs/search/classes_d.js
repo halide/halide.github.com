@@ -13,7 +13,6 @@ var searchData=
   ['meta_5for_3c_20std_3a_3ais_5fconvertible_3c_20t_2c_20std_3a_3astring_20_3e_2c_20std_3a_3ais_5fconvertible_3c_20t_2c_20int_20_3e_20_3e',['meta_or&lt; std::is_convertible&lt; T, std::string &gt;, std::is_convertible&lt; T, int &gt; &gt;',['../struct_halide_1_1_internal_1_1meta__or.html',1,'Halide::Internal']]],
   ['meta_5for_3c_20t1_2c_20args_2e_2e_2e_20_3e',['meta_or&lt; T1, Args... &gt;',['../struct_halide_1_1_internal_1_1meta__or_3_01_t1_00_01_args_8_8_8_01_4.html',1,'Halide::Internal']]],
   ['min',['Min',['../struct_halide_1_1_internal_1_1_min.html',1,'Halide::Internal']]],
-  ['minandextent',['MinAndExtent',['../struct_halide_1_1_argument_estimates_1_1_min_and_extent.html',1,'Halide::ArgumentEstimates']]],
   ['mod',['Mod',['../struct_halide_1_1_internal_1_1_mod.html',1,'Halide::Internal']]],
   ['module',['Module',['../class_halide_1_1_module.html',1,'Halide']]],
   ['modulusremainder',['ModulusRemainder',['../struct_halide_1_1_internal_1_1_modulus_remainder.html',1,'Halide::Internal']]],

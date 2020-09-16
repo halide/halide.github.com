@@ -15,6 +15,7 @@ var searchData=
   ['halide_5fhandle_5ftraits',['halide_handle_traits',['../structhalide__handle__traits.html',1,'']]],
   ['halide_5fhexagon_5fpower_5ft',['halide_hexagon_power_t',['../structhalide__hexagon__power__t.html',1,'']]],
   ['halide_5fmutex',['halide_mutex',['../structhalide__mutex.html',1,'']]],
+  ['halide_5fmutex_5farray',['halide_mutex_array',['../structhalide__mutex__array.html',1,'']]],
   ['halide_5fparallel_5ftask_5ft',['halide_parallel_task_t',['../structhalide__parallel__task__t.html',1,'']]],
   ['halide_5fprofiler_5ffunc_5fstats',['halide_profiler_func_stats',['../structhalide__profiler__func__stats.html',1,'']]],
   ['halide_5fprofiler_5fpipeline_5fstats',['halide_profiler_pipeline_stats',['../structhalide__profiler__pipeline__stats.html',1,'']]],

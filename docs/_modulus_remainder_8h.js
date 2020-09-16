@@ -1,5 +1,6 @@
 var _modulus_remainder_8h =
 [
+    [ "Scope", "class_halide_1_1_internal_1_1_scope.html", "class_halide_1_1_internal_1_1_scope" ],
     [ "ModulusRemainder", "struct_halide_1_1_internal_1_1_modulus_remainder.html", "struct_halide_1_1_internal_1_1_modulus_remainder" ],
     [ "operator+", "_modulus_remainder_8h.html#a4287e047c221ec0bd503eca610e59cd1", null ],
     [ "operator-", "_modulus_remainder_8h.html#ade4ed3e58311ee5699c067d4a6c53c2d", null ],
@@ -11,10 +12,10 @@ var _modulus_remainder_8h =
     [ "operator*", "_modulus_remainder_8h.html#a7e40311152e94d1bf520fa0a8eadafa9", null ],
     [ "operator/", "_modulus_remainder_8h.html#a5ad30409f49c922a7b536de49b50abfa", null ],
     [ "operator%", "_modulus_remainder_8h.html#abe5bf538dd23287f4a506afbe601b4a2", null ],
-    [ "modulus_remainder", "_modulus_remainder_8h.html#a552b2c330fdb1275badc27cc1e92cd6a", null ],
-    [ "modulus_remainder", "_modulus_remainder_8h.html#a8489fb5b4449835f26313a57e856c4b3", null ],
-    [ "reduce_expr_modulo", "_modulus_remainder_8h.html#a975219f4c1d36296155ae55ffbdbc4c4", null ],
-    [ "reduce_expr_modulo", "_modulus_remainder_8h.html#a3d786ce8785df8a8828727ff800a346d", null ],
+    [ "modulus_remainder", "_modulus_remainder_8h.html#a1b0244f4d3e877af92bb3326b5ba74d2", null ],
+    [ "modulus_remainder", "_modulus_remainder_8h.html#aef9e014546d86033dd6c81f699891267", null ],
+    [ "reduce_expr_modulo", "_modulus_remainder_8h.html#a560a698db966dbc2d5edcb7896e56d4d", null ],
+    [ "reduce_expr_modulo", "_modulus_remainder_8h.html#a99da5cb047c88b9a411ce79ca672059a", null ],
     [ "modulus_remainder_test", "_modulus_remainder_8h.html#a789149daec96e933f8758f71f8474dd6", null ],
     [ "gcd", "_modulus_remainder_8h.html#a3383c51a3621854507bf149283901fd8", null ],
     [ "lcm", "_modulus_remainder_8h.html#aea6d5d650979fec41ce02d02ac0b7c20", null ]

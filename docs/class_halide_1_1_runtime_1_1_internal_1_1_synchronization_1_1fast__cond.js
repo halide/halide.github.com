@@ -1,7 +1,7 @@
 var class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__cond =
 [
-    [ "__attribute__", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__cond.html#aeffd0996d0769f2280567cbfca5d0f4a", null ],
-    [ "__attribute__", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__cond.html#a21fe3a83cf0c46136145dfad032f2ee3", null ],
-    [ "__attribute__", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__cond.html#a76a1d067ce53e657a41158b1838ca1e4", null ],
-    [ "__attribute__", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__cond.html#a4cd284bfb741f5744132c5c5646cf534", null ]
+    [ "fast_cond", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__cond.html#ad2a3bc83fe56ccff7dddc7f7afb3afe8", null ],
+    [ "signal", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__cond.html#a4a72b6a32ab7bbb04273a7ac2632e996", null ],
+    [ "broadcast", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__cond.html#a674325537bba9b1363d11b56d53c31e1", null ],
+    [ "wait", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__cond.html#aa34401fea01088e4efe4b3a2eb438235", null ]
 ];

@@ -15,6 +15,7 @@ var synchronization__common_8h =
     [ "broadcast_parking_control", "struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1broadcast__parking__control.html", "struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1broadcast__parking__control" ],
     [ "wait_parking_control", "struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1wait__parking__control.html", "struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1wait__parking__control" ],
     [ "fast_cond", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__cond.html", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__cond" ],
+    [ "halide_mutex_array", "structhalide__mutex__array.html", "structhalide__mutex__array" ],
     [ "TSAN_ANNOTATIONS", "synchronization__common_8h.html#a23e2070baabcbeef59b119a2f0e07160", null ],
     [ "lock_bit", "synchronization__common_8h.html#a5f90eadc6df8c4df0252db2068d0dab0", null ],
     [ "queue_lock_bit", "synchronization__common_8h.html#a10706725b9a340873da72f78243e11d4", null ],
@@ -22,7 +23,7 @@ var synchronization__common_8h =
     [ "LOAD_FACTOR", "synchronization__common_8h.html#a846f78d98a30c431ef3a4d570e657913", null ],
     [ "HASH_TABLE_BITS", "synchronization__common_8h.html#a6ccdb91010c5ecd7dec4a08b74a7b57d", null ],
     [ "table", "synchronization__common_8h.html#a5703a0eddc658df60e6a6b1bebcd301d", null ],
-    [ "check_hash", "synchronization__common_8h.html#afd3caf92e00098654d2c2a88217b42bc", null ],
+    [ "check_hash", "synchronization__common_8h.html#a6a358b47721b85c399098f26e3049864", null ],
     [ "lock_bucket", "synchronization__common_8h.html#aa34f9c30b17340e98ae3e420ad2599ad", null ],
     [ "lock_bucket_pair", "synchronization__common_8h.html#ae156501800656df7c1993743b43145d4", null ],
     [ "unlock_bucket_pair", "synchronization__common_8h.html#a3916d9a07e4c7301bf4c31a774303957", null ],
@@ -47,5 +48,9 @@ var synchronization__common_8h =
     [ "halide_cond_broadcast", "synchronization__common_8h.html#ab2c4d6ba930105ad50607232ba0f4083", null ],
     [ "halide_cond_signal", "synchronization__common_8h.html#a55cb33c9729bcd4a7e083810830f9250", null ],
     [ "halide_cond_wait", "synchronization__common_8h.html#a9f8cb84813eb10f69e506c2c82376c5e", null ],
+    [ "halide_mutex_array_create", "synchronization__common_8h.html#a348e9f0f517062741ad2d2f294fbc908", null ],
+    [ "halide_mutex_array_destroy", "synchronization__common_8h.html#a2f25df47fd905578d7539cf8a92c5b31", null ],
+    [ "halide_mutex_array_lock", "synchronization__common_8h.html#a193d5ca67c06fe50d7a49965f80a74b2", null ],
+    [ "halide_mutex_array_unlock", "synchronization__common_8h.html#a652f951ed25bdac0244043e439f9e2c5", null ],
     [ "table_storage", "synchronization__common_8h.html#a3b9696e1af1512e375466264617a0ac5", null ]
 ];

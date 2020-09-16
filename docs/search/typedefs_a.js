@@ -20,5 +20,5 @@ var searchData=
   ['lpstr',['LPSTR',['../mini__d3d12_8h.html#a57c99ec7a5cc12da09ad56f238da9e5f',1,'mini_d3d12.h']]],
   ['lpunknown',['LPUNKNOWN',['../mini__d3d12_8h.html#a972b366bb125606b028958811ec76a5b',1,'mini_d3d12.h']]],
   ['lpvoid',['LPVOID',['../mini__d3d12_8h.html#a0b08b48703a7fd44bb06310932309c85',1,'mini_d3d12.h']]],
-  ['luid',['LUID',['../mini__d3d12_8h.html#af4ed89f5fd25f2d963554a666ea93d4f',1,'mini_d3d12.h']]]
+  ['luid',['LUID',['../mini__d3d12_8h.html#a4f570943ef9548754fe2f221d59cbabe',1,'mini_d3d12.h']]]
 ];

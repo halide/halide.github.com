@@ -1,5 +1,5 @@
 var _auto_schedule_8h =
 [
-    [ "MachineParams", "struct_halide_1_1_machine_params.html", "struct_halide_1_1_machine_params" ],
-    [ "generate_schedules", "_auto_schedule_8h.html#a5840b87d513cf20f47e74eaf5b519d06", null ]
+    [ "StageMapOfScheduleFeatures", "_auto_schedule_8h.html#ad942b8861f139a911d249d48f18cdc5b", null ],
+    [ "find_and_apply_schedule", "_auto_schedule_8h.html#ab8ffe70e2a855e2016053f46388ea4e9", null ]
 ];

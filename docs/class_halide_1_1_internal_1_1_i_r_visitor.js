@@ -43,9 +43,11 @@ var class_halide_1_1_internal_1_1_i_r_visitor =
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a60111e17b4a20d687331555bd9a93421", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#accb8d772e0c943e2f2e99b4808cb73ef", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#ac6f4c0977cc05e692cb964ea55293e58", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a4cb320bd50652611ad4e26abd0811d94", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a66d43ff91a52aa89bb8f9896f20c2c5c", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a2e03d7ecc708ceb97015b15cfe526ad9", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a81a4420cc8b07c9e3a199639b79802b4", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a8ae28ed61752aa323cf8012db1097c64", null ],
     [ "ExprNode", "class_halide_1_1_internal_1_1_i_r_visitor.html#af7e3f1ed0868f4d2440570b19f98fb0a", null ],
     [ "StmtNode", "class_halide_1_1_internal_1_1_i_r_visitor.html#a625be57400f7915fd48284b67dade612", null ]
 ];

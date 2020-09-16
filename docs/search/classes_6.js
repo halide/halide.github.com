@@ -14,8 +14,10 @@ var searchData=
   ['funcref',['FuncRef',['../class_halide_1_1_func_ref.html',1,'Halide']]],
   ['funcschedule',['FuncSchedule',['../class_halide_1_1_internal_1_1_func_schedule.html',1,'Halide::Internal']]],
   ['function',['Function',['../class_halide_1_1_internal_1_1_function.html',1,'Halide::Internal']]],
+  ['functiondag',['FunctionDAG',['../struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g.html',1,'Halide::Internal::Autoscheduler']]],
   ['functionptr',['FunctionPtr',['../struct_halide_1_1_internal_1_1_function_ptr.html',1,'Halide::Internal']]],
   ['functupleelementref',['FuncTupleElementRef',['../class_halide_1_1_func_tuple_element_ref.html',1,'Halide']]],
+  ['funcvar',['FuncVar',['../struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var.html',1,'Halide::Internal::Autoscheduler::LoopNest::StageScheduleState']]],
   ['fusedpair',['FusedPair',['../struct_halide_1_1_internal_1_1_fused_pair.html',1,'Halide::Internal']]],
   ['fuselooplevel',['FuseLoopLevel',['../struct_halide_1_1_fuse_loop_level.html',1,'Halide']]]
 ];

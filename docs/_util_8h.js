@@ -22,6 +22,7 @@ var _util_8h =
     [ "make_integer_sequence", "_util_8h.html#af7acd6f64d4adf2c1b53c8931c3d0b87", null ],
     [ "index_sequence", "_util_8h.html#ac5d7a7bcb6b4a7de95e27c3234a36c68", null ],
     [ "make_index_sequence", "_util_8h.html#a77432e592449f569978b6aabd58831f0", null ],
+    [ "load_plugin", "_util_8h.html#abdb3bac86d5020a2fc5c0fad5eba8592", null ],
     [ "safe_numeric_cast", "_util_8h.html#ab7501900efa7660edf445ed1b14c020c", null ],
     [ "reinterpret_bits", "_util_8h.html#a94816d6979fdadb6e206a5d0a668e008", null ],
     [ "make_entity_name", "_util_8h.html#a18d7dfc983d7a320ea1510c24bc55625", null ],
@@ -35,8 +36,6 @@ var _util_8h =
     [ "split_string", "_util_8h.html#a403191721c99e2a88864db3bafbf7b0e", null ],
     [ "fold_left", "_util_8h.html#aaaee1bb2b0dc659851899df7c12437ba", null ],
     [ "fold_right", "_util_8h.html#afedfcf82469516f0f05eb5a4699f480a", null ],
-    [ "collect_paired_args", "_util_8h.html#ada89faf6db79c27c47db4f29e18dea92", null ],
-    [ "collect_paired_args", "_util_8h.html#aea03529ce7e83c913b3e4a874238e74c", null ],
     [ "extract_namespaces", "_util_8h.html#a93192a2ea0afe58664e69232595ae08e", null ],
     [ "file_make_temp", "_util_8h.html#a4f8aad349dd3bfc69483b792fcab0f96", null ],
     [ "dir_make_temp", "_util_8h.html#abaf8a5ee39d2b222d8a0be57894a2f75", null ],
@@ -55,5 +54,6 @@ var _util_8h =
     [ "mul_would_overflow", "_util_8h.html#a9aaa735c9ff93372dce25222fb551b67", null ],
     [ "halide_tic_impl", "_util_8h.html#ae342a753f8441a0b29418b0d22cbda86", null ],
     [ "halide_toc_impl", "_util_8h.html#a7c23694d45bd4c42ec1dc97a17bb78f6", null ],
-    [ "c_print_name", "_util_8h.html#ad2a455f3f5fbe779f6de0acbec1bfa44", null ]
+    [ "c_print_name", "_util_8h.html#ad2a455f3f5fbe779f6de0acbec1bfa44", null ],
+    [ "get_llvm_version", "_util_8h.html#a591746c6ae0cd3e8d24c2c2420772d8a", null ]
 ];

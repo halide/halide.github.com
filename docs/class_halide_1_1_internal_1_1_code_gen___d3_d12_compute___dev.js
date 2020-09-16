@@ -7,8 +7,9 @@ var class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev =
     [ "compile_to_src", "class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev.html#a58527283ab37a6a1c53be5e138f983f6", null ],
     [ "get_current_kernel_name", "class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev.html#a37b87175b1659b41cfece96507ab5b76", null ],
     [ "dump", "class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev.html#acda42237f1039669401c6097db439dad", null ],
-    [ "print_gpu_name", "class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev.html#ac65ed41eb5e8632869ab0e9485e7d22a", null ],
+    [ "print_gpu_name", "class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev.html#a92ee1780d19f82f9714c1c14bc0a3e89", null ],
     [ "api_unique_name", "class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev.html#a4f7f9ece73cb2fc4b2feb54b249a0669", null ],
+    [ "StoragePackUnpack", "class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev.html#afe278e58e9f00c21c99698da235e854c", null ],
     [ "src_stream", "class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev.html#af9f189f7ceb5024a3ce8e9285aa4096d", null ],
     [ "cur_kernel_name", "class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev.html#ac066abb7003b005df07faf9d4c7c8a04", null ],
     [ "d3d12compute_c", "class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev.html#ac1fc657a07c1666e9453290aac5124f3", null ]

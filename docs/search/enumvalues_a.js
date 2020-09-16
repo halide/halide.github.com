@@ -1,19 +1,23 @@
 var searchData=
 [
   ['largebuffers',['LargeBuffers',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faeb06f21cee3c57b4dc3dcaa54b9704aa',1,'Halide::Target']]],
-  ['le',['LE',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2acfe6055d2e0503be378bb63449ec7ba6',1,'Halide::Internal']]],
+  ['le',['LE',['../struct_halide_1_1_internal_1_1_pipeline_features.html#a24dd570f5cbc57c750aca4c0d82f418dacfe6055d2e0503be378bb63449ec7ba6',1,'Halide::Internal::PipelineFeatures::LE()'],['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2acfe6055d2e0503be378bb63449ec7ba6',1,'Halide::Internal::LE()']]],
   ['leftshift',['LeftShift',['../struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html#afe390c40055d6c0777dc5b70c9d25bbba296347a5a06e8a7fdac1ca8da6c5049e',1,'Halide::Internal::CodeGen_ARM::Pattern']]],
-  ['legacybufferwrappers',['LegacyBufferWrappers',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf18a1b4103ff11ae08f6fe2e5f4d7d3a',1,'Halide::Target']]],
   ['lerp',['lerp',['../struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974ac86c776ca07b43f83f13624a5a78f2b8',1,'Halide::Internal::Call']]],
-  ['let',['Let',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2acae6404c4aecf46684930fe2a86676a6',1,'Halide::Internal']]],
+  ['let',['Let',['../struct_halide_1_1_internal_1_1_pipeline_features.html#a24dd570f5cbc57c750aca4c0d82f418dacae6404c4aecf46684930fe2a86676a6',1,'Halide::Internal::PipelineFeatures::Let()'],['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2acae6404c4aecf46684930fe2a86676a6',1,'Halide::Internal::Let()']]],
   ['letstmt',['LetStmt',['../struct_halide_1_1_internal_1_1_apply_split_result.html#a1cedbee50207991145ebb44db8953acea347be996c207391a60ef113dcff6e669',1,'Halide::Internal::ApplySplitResult::LetStmt()'],['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2aa7312a9d08c50e9dbc7043efe7b54df2',1,'Halide::Internal::LetStmt()']]],
   ['likely',['likely',['../struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a992d255a8f59a9cfbc6587b63358a431',1,'Halide::Internal::Call']]],
   ['likely_5fif_5finnermost',['likely_if_innermost',['../struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974aed7a66df24822a29c613ed774912fbdd',1,'Halide::Internal::Call']]],
   ['linux',['Linux',['../struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20af58b4735f0d8e76502ef70fe11d548d4',1,'Halide::Target']]],
+  ['llvm',['LLVM',['../class_halide_1_1_internal_1_1_compiler_logger.html#a3f39d9b3f91b90317a66be28338c7db7a66a0128ad08b2053e4809e07fe05728c',1,'Halide::Internal::CompilerLogger']]],
+  ['llvm_5fassembly',['llvm_assembly',['../namespace_halide.html#afdb8b92dac95804211c0a875302da5f4a58be17eec9473900cc830f456fac020a',1,'Halide']]],
   ['load',['Load',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2af19dbf2edb3a0bd74b0524d960ff21eb',1,'Halide::Internal']]],
-  ['loadlibrary',['LoadLibrary',['../namespace_message.html#a883ef70b60c2a0fc488efaa57d8514e0a1bd0cc6591d0975bdc3f3610ee42b904',1,'Message']]],
+  ['loadfunc',['LoadFunc',['../struct_halide_1_1_internal_1_1_pipeline_features.html#adaa87ad3f6bc6304773b00e5b5be438cac28eb804c1bb6de33ee8510cd5a5452f',1,'Halide::Internal::PipelineFeatures']]],
+  ['loadimage',['LoadImage',['../struct_halide_1_1_internal_1_1_pipeline_features.html#adaa87ad3f6bc6304773b00e5b5be438ca269278f4403891cc893bf77acb12759b',1,'Halide::Internal::PipelineFeatures']]],
+  ['loadlibrary',['LoadLibrary',['../namespace_message.html#ac596fe2a096add77b8b174a80c897b51a1bd0cc6591d0975bdc3f3610ee42b904',1,'Message']]],
+  ['loadself',['LoadSelf',['../struct_halide_1_1_internal_1_1_pipeline_features.html#adaa87ad3f6bc6304773b00e5b5be438ca9d797166a1996fc6429bda99420eb1cf',1,'Halide::Internal::PipelineFeatures']]],
   ['lockedcache',['LockedCache',['../namespace_halide.html#af28f02315017283b26196866c92d4da9a54ef2e772f864e79d6ac27325edd9f0e',1,'Halide']]],
   ['lower',['Lower',['../namespace_halide_1_1_internal.html#a8548315fd4d13ccebe45a8123369f7caab75fcdd2d72d9e000beab48622402d93',1,'Halide::Internal']]],
-  ['lt',['LT',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2ac562607189d77eb9dfb707464c1e7b0b',1,'Halide::Internal']]],
+  ['lt',['LT',['../struct_halide_1_1_internal_1_1_pipeline_features.html#a24dd570f5cbc57c750aca4c0d82f418dac562607189d77eb9dfb707464c1e7b0b',1,'Halide::Internal::PipelineFeatures::LT()'],['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2ac562607189d77eb9dfb707464c1e7b0b',1,'Halide::Internal::LT()']]],
   ['lvaluereference',['LValueReference',['../structhalide__handle__cplusplus__type.html#a5aef5cc2d2d1194b93e036af106f86fcac0007ec0976f79e33b0164c61ed4b89c',1,'halide_handle_cplusplus_type']]]
 ];

@@ -14,14 +14,17 @@ var searchData=
   ['allints_3c_20t_2c_20args_2e_2e_2e_20_3e',['AllInts&lt; T, Args... &gt;',['../struct_halide_1_1_runtime_1_1_all_ints_3_01_t_00_01_args_8_8_8_01_4.html',1,'Halide::Runtime']]],
   ['allints_3c_3e',['AllInts&lt;&gt;',['../struct_halide_1_1_runtime_1_1_all_ints_3_4.html',1,'Halide::Runtime']]],
   ['allocate',['Allocate',['../struct_halide_1_1_internal_1_1_allocate.html',1,'Halide::Internal']]],
-  ['allocation',['Allocation',['../struct_halide_1_1_internal_1_1_code_gen___c_1_1_allocation.html',1,'Halide::Internal::CodeGen_C::Allocation'],['../struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html',1,'Halide::Internal::CodeGen_Posix::Allocation']]],
+  ['allocation',['Allocation',['../struct_halide_1_1_internal_1_1_code_gen___c_1_1_allocation.html',1,'Halide::Internal::CodeGen_C']]],
+  ['allocation',['Allocation',['../struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html',1,'Halide::Internal::CodeGen_Posix']]],
   ['allocationheader',['AllocationHeader',['../struct_halide_1_1_runtime_1_1_allocation_header.html',1,'Halide::Runtime']]],
   ['and',['And',['../struct_halide_1_1_internal_1_1_and.html',1,'Halide::Internal']]],
   ['applysplitresult',['ApplySplitResult',['../struct_halide_1_1_internal_1_1_apply_split_result.html',1,'Halide::Internal']]],
   ['argument',['Argument',['../struct_halide_1_1_argument.html',1,'Halide']]],
   ['argumentestimates',['ArgumentEstimates',['../struct_halide_1_1_argument_estimates.html',1,'Halide']]],
+  ['aslog',['aslog',['../class_halide_1_1_internal_1_1aslog.html',1,'Halide::Internal']]],
   ['assertstmt',['AssertStmt',['../struct_halide_1_1_internal_1_1_assert_stmt.html',1,'Halide::Internal']]],
   ['associativeop',['AssociativeOp',['../struct_halide_1_1_internal_1_1_associative_op.html',1,'Halide::Internal']]],
   ['associativepattern',['AssociativePattern',['../struct_halide_1_1_internal_1_1_associative_pattern.html',1,'Halide::Internal']]],
+  ['atomic',['Atomic',['../struct_halide_1_1_internal_1_1_atomic.html',1,'Halide::Internal']]],
   ['autoschedulerresults',['AutoSchedulerResults',['../struct_halide_1_1_auto_scheduler_results.html',1,'Halide']]]
 ];

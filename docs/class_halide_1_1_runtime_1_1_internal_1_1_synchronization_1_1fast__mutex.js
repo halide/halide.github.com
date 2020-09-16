@@ -1,7 +1,7 @@
 var class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__mutex =
 [
-    [ "__attribute__", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__mutex.html#aba247c6de34e3a7b9b4c8142bab1a4b1", null ],
-    [ "__attribute__", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__mutex.html#a94a345058ee16e8da863cec5f068d8f5", null ],
-    [ "make_parked_if_locked", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__mutex.html#ac9ce0c20f41f8c0ac9f4145e9577e0f1", null ],
-    [ "make_parked", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__mutex.html#a462cc4ad8a5a922e7ce9d317d02bbed8", null ]
+    [ "lock", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__mutex.html#a274cae34fb1694ab1bdf22f4aa34d94b", null ],
+    [ "unlock", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__mutex.html#a7d7ed400a2a88c4aa7f72fc65c85e088", null ],
+    [ "make_parked_if_locked", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__mutex.html#ac3ddc76cb223b2848319e9d7e99edb09", null ],
+    [ "make_parked", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1fast__mutex.html#a0bdbf9558860ea15ca2a27fe2a9b4da8", null ]
 ];

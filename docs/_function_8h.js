@@ -1,6 +1,5 @@
 var _function_8h =
 [
-    [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html", "struct_halide_1_1_extern_func_argument" ],
     [ "Function", "class_halide_1_1_internal_1_1_function.html", "class_halide_1_1_internal_1_1_function" ],
     [ "Compare", "struct_halide_1_1_internal_1_1_function_1_1_compare.html", "struct_halide_1_1_internal_1_1_function_1_1_compare" ],
     [ "NameMangling", "_function_8h.html#a9a0a73a2b8a7322d8ac330adfce8d134", [

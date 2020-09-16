@@ -24,7 +24,6 @@ var _type_8h =
     [ "HALIDE_DECLARE_EXTERN_SIMPLE_TYPE", "_type_8h.html#ab3b922e270f97e9ed811f772dd968bd6", null ],
     [ "HALIDE_DECLARE_EXTERN_SIMPLE_TYPE", "_type_8h.html#aef0159cd20113cc70c4c5f1a0ef0bc16", null ],
     [ "HALIDE_DECLARE_EXTERN_SIMPLE_TYPE", "_type_8h.html#af9b3c3a56d27646bb4dc30bae1c1bf1b", null ],
-    [ "HALIDE_DECLARE_EXTERN_STRUCT_TYPE", "_type_8h.html#ada61e6af7fae93f355f042431ed5eca9", null ],
     [ "HALIDE_DECLARE_EXTERN_STRUCT_TYPE", "_type_8h.html#a4130ae3f99ad1962c488a3fd981bdca6", null ],
     [ "HALIDE_DECLARE_EXTERN_STRUCT_TYPE", "_type_8h.html#aaf4460630a0d09890a8b4eaeedd6a73c", null ],
     [ "HALIDE_DECLARE_EXTERN_STRUCT_TYPE", "_type_8h.html#a51beee54abac09bc2b52bbbece1be46c", null ],

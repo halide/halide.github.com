@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['qualify',['qualify',['../namespace_halide_1_1_internal.html#add0c1d3ac79fd83cb609d37831253957',1,'Halide::Internal']]],
-  ['queue_5fdata',['queue_data',['../struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1queue__data.html#ae615c7a2a7a5a8f75b7699d1827e08ca',1,'Halide::Runtime::Internal::Synchronization::queue_data']]],
+  ['qualify',['qualify',['../namespace_halide_1_1_internal.html#aac0f12f161a6ba2a7b3476dbb1dbf809',1,'Halide::Internal']]],
+  ['queue_5fdata',['queue_data',['../struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1queue__data.html#aa5f00c7fdfd5546924c73167456a8361',1,'Halide::Runtime::Internal::Synchronization::queue_data']]],
   ['qurt_5fcond_5fdestroy',['qurt_cond_destroy',['../mini__qurt_8h.html#aa7cba173d8ac9e5d02061e8ca4650e44',1,'mini_qurt.h']]],
   ['qurt_5fcond_5finit',['qurt_cond_init',['../mini__qurt_8h.html#a2e6dec95eec59ff032d63888f8da51c1',1,'mini_qurt.h']]],
   ['qurt_5fcond_5fsignal',['qurt_cond_signal',['../mini__qurt_8h.html#a84e235b482a0fc9f88002679e38ef1d5',1,'mini_qurt.h']]],

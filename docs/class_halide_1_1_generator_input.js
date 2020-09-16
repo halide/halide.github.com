@@ -1,7 +1,7 @@
 var class_halide_1_1_generator_input =
 [
     [ "TBase", "class_halide_1_1_generator_input.html#a7c9e5827702c8262f2ee90d1d5bae462", null ],
-    [ "IntIfNonScalar", "class_halide_1_1_generator_input.html#a25e7ee2c6bd74a1a64f7aed8179e5b0e", null ],
+    [ "IntIfNonScalar", "class_halide_1_1_generator_input.html#a3ba7424d6fcf77716c23feb485cfbffc", null ],
     [ "GeneratorInput", "class_halide_1_1_generator_input.html#aa9fd6a3674ce4e64d6ea1410fa5c6622", null ],
     [ "GeneratorInput", "class_halide_1_1_generator_input.html#a4db240977236b318da6a2fb3f9158fd6", null ],
     [ "GeneratorInput", "class_halide_1_1_generator_input.html#ae5de101b64d75c92f327213046121526", null ],

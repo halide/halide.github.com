@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['w',['w',['../class_halide_1_1_r_dom.html#a6111104a192cc83a1fa7d58d9202b8fc',1,'Halide::RDom::w()'],['../class_halide_1_1_internal_1_1_simplify.html#a87ca0593c7692c48b5d414cac567c3c3',1,'Halide::Internal::Simplify::w()']]],
+  ['w',['w',['../class_halide_1_1_r_dom.html#a6111104a192cc83a1fa7d58d9202b8fc',1,'Halide::RDom::w()'],['../class_halide_1_1_internal_1_1_simplify.html#a87ca0593c7692c48b5d414cac567c3c3',1,'Halide::Internal::Simplify::w()'],['../class_halide_1_1_simd_op_check_test.html#a4ee21b81deeb8be7ce77b6e8301c2a6a',1,'Halide::SimdOpCheckTest::W()']]],
   ['wake_5fa_5fteam',['wake_a_team',['../struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html#ac8dbce99e11b867eda9917ed8087a5f3',1,'Halide::Runtime::Internal::work_queue_t']]],
   ['wake_5fb_5fteam',['wake_b_team',['../struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html#afb9c7dbe9a3fc9991d037bf7918112fa',1,'Halide::Runtime::Internal::work_queue_t']]],
   ['wake_5fowners',['wake_owners',['../struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html#a26a1e68d620c2b5ec25bcea096f45bbe',1,'Halide::Runtime::Internal::work_queue_t']]],
@@ -48,10 +48,15 @@ var searchData=
   ['wild_5fu8x8',['wild_u8x8',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#ab5ebf91e1c52b4283670c9cfbd2711d1',1,'Halide::Internal::CodeGen_LLVM']]],
   ['wild_5fu8x_5f',['wild_u8x_',['../class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a7eafcdfb329717fd4e8213d26cd8a71e',1,'Halide::Internal::CodeGen_LLVM']]],
   ['wildcard_5ftype',['wildcard_type',['../struct_halide_1_1_internal_1_1_i_r_matcher_1_1_rewriter.html#ae373e50c986272c80437dead124f8325',1,'Halide::Internal::IRMatcher::Rewriter']]],
-  ['windowhandle',['WindowHandle',['../struct_i_d_x_g_i_factory_vtbl.html#a49f1687f84056a797f4ba48a980f4981',1,'IDXGIFactoryVtbl::WindowHandle()'],['../struct_i_d_x_g_i_factory1_vtbl.html#adeec035d9006394c5769ddf37127bef1',1,'IDXGIFactory1Vtbl::WindowHandle()']]],
+  ['windowhandle',['WindowHandle',['../struct_i_d_x_g_i_factory_vtbl.html#a57279a5de6c8434880b214e1ba3c369b',1,'IDXGIFactoryVtbl::WindowHandle()'],['../struct_i_d_x_g_i_factory1_vtbl.html#a05c4bf3bbf320e69a8ac24a55e356fd4',1,'IDXGIFactory1Vtbl::WindowHandle()']]],
   ['work_5fqueue',['work_queue',['../namespace_halide_1_1_runtime_1_1_internal.html#ac83753a60eb8a7c6ae34fad643e00401',1,'Halide::Runtime::Internal']]],
   ['workers_5fsleeping',['workers_sleeping',['../struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html#ab660692744433f55ddbc6ac38fb281bf',1,'Halide::Runtime::Internal::work_queue_t']]],
   ['workgroup_5fsize',['workgroup_size',['../class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html#a034b05f95547d25a8141e1d010e9dc3d',1,'Halide::Internal::CodeGen_OpenGLCompute_Dev::CodeGen_OpenGLCompute_C']]],
+  ['working_5fset',['working_set',['../struct_halide_1_1_internal_1_1_schedule_features.html#a28d775fad017a134e6c29b2d80c47efc',1,'Halide::Internal::ScheduleFeatures']]],
+  ['working_5fset_5fat_5fproduction',['working_set_at_production',['../struct_halide_1_1_internal_1_1_schedule_features.html#a04d619811347848bfab5146887b703d2',1,'Halide::Internal::ScheduleFeatures']]],
+  ['working_5fset_5fat_5frealization',['working_set_at_realization',['../struct_halide_1_1_internal_1_1_schedule_features.html#a51da5d9497bf7207d1eedd79bf0718f1',1,'Halide::Internal::ScheduleFeatures']]],
+  ['working_5fset_5fat_5froot',['working_set_at_root',['../struct_halide_1_1_internal_1_1_schedule_features.html#ad85dc15929d6ad3f7019cc2164124902',1,'Halide::Internal::ScheduleFeatures']]],
+  ['working_5fset_5fat_5ftask',['working_set_at_task',['../struct_halide_1_1_internal_1_1_schedule_features.html#a65a610ea3c6c7bd7acf199a178e213e3',1,'Halide::Internal::ScheduleFeatures']]],
   ['wrap_5fnative',['wrap_native',['../structhalide__device__interface__impl__t.html#a2d535a33cc25ddc37f787b5f01237e3c',1,'halide_device_interface_impl_t::wrap_native()'],['../structhalide__device__interface__t.html#a165c8b301ca4f0013af7767a63afd753',1,'halide_device_interface_t::wrap_native()']]],
   ['write',['write',['../struct_halide_1_1_internal_1_1_closure_1_1_buffer.html#a061aa051b4a2080e8cb94d6d8362f009',1,'Halide::Internal::Closure::Buffer::write()'],['../struct_halide_1_1_internal_1_1_device_argument.html#ac3227ae7da3113416811443cc45050b3',1,'Halide::Internal::DeviceArgument::write()']]],
   ['wsize',['WSize',['../struct_d3_d12___t_e_x3_d___u_a_v.html#a7b166b008ee28595c7bef40e867e6380',1,'D3D12_TEX3D_UAV::WSize()'],['../struct_d3_d12___t_e_x3_d___r_t_v.html#ae578c3a8dd10634bf2cd152768d8e93b',1,'D3D12_TEX3D_RTV::WSize()']]]

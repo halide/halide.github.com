@@ -43,7 +43,9 @@ var class_halide_1_1_internal_1_1_i_r_graph_visitor =
     [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#a59f51a624543fcbce0b06c351fb58784", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#ae8e84d2f1ad44158307a932b5ab34888", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#a16525648c56d50f0c4650174d7e75201", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#a66d6a5bd0bc53c2f6e7893a60a87c06d", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#accd8809012f8204abeeae4619c00bd58", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#a4bd182ea29241e53632bbdc99620244a", null ],
-    [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#adbbf3b5f24ceb45ada20a33805cdd5e0", null ]
+    [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#adbbf3b5f24ceb45ada20a33805cdd5e0", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#a6f620383033128b6d483cd8bea8868da", null ]
 ];

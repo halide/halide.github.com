@@ -6,6 +6,7 @@ var _monotonic_8h =
       [ "Decreasing", "_monotonic_8h.html#a7dc0c8c1adc38d2c5a80979948f0007ca2e6a9b0375c021e8f650a5eb22012b5b", null ],
       [ "Unknown", "_monotonic_8h.html#a7dc0c8c1adc38d2c5a80979948f0007ca88183b946cc5f0e8c96b2e66e1c74a7e", null ]
     ] ],
-    [ "is_monotonic", "_monotonic_8h.html#a2de0dbb0026a5e7891c3edab9358b7cb", null ],
+    [ "is_monotonic", "_monotonic_8h.html#ae2a191d0d4abe4a4d1019cad5cff62ca", null ],
+    [ "operator<<", "_monotonic_8h.html#a283407774a5c9a29ab30e9223dcb3580", null ],
     [ "is_monotonic_test", "_monotonic_8h.html#af6de4b237eafb498206aa2eb0c94b4ad", null ]
 ];

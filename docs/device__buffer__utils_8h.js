@@ -7,10 +7,6 @@ var device__buffer__utils_8h =
     [ "make_buffer_copy", "device__buffer__utils_8h.html#afaf6cfa51854796516bb508fc0ae78e6", null ],
     [ "make_host_to_device_copy", "device__buffer__utils_8h.html#a031a2fad9ac17a0741de01685d5d5703", null ],
     [ "make_device_to_host_copy", "device__buffer__utils_8h.html#a8cea2fa224d7778075d25f377956d41e", null ],
-    [ "__attribute__", "device__buffer__utils_8h.html#a8c837cfd9d0bb5bb01c5139182a41a2b", null ],
-    [ "for", "device__buffer__utils_8h.html#ac9e6acd463442b00ea84bb0dbb9801c0", null ],
-    [ "dst", "device__buffer__utils_8h.html#ae62de510a8c7ae29589359deda0ae536", null ],
-    [ "offset", "device__buffer__utils_8h.html#ac8953e780df5ac52805725c46827a9e7", null ],
-    [ "slice_dim", "device__buffer__utils_8h.html#a0319d60f905af0cbca792a847a71b9d7", null ],
-    [ "slice_pos", "device__buffer__utils_8h.html#a37a6a6cb3f449eb316749ee866f91782", null ]
+    [ "calc_device_crop_byte_offset", "device__buffer__utils_8h.html#ae78c6d410397a3ddccfd60fdc11fc2f8", null ],
+    [ "calc_device_slice_byte_offset", "device__buffer__utils_8h.html#aca5a67a79e75a1aff4ff53e54ff26746", null ]
 ];
