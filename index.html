@@ -88,9 +88,9 @@
             Halide is a programming language designed to make it easier to write high-performance image and array processing code on modern machines. Halide currently targets:
         </p>
         <ul>
-            <li>CPU architectures: X86, ARM, MIPS, Hexagon, PowerPC</li>
+            <li>CPU architectures: X86, ARM, MIPS, Hexagon, PowerPC, RISC-V</li>
             <li>Operating systems: Linux, Windows, macOS, Android, iOS, Qualcomm QuRT</li>
-            <li>GPU Compute APIs: CUDA, OpenCL, OpenGL, OpenGL Compute Shaders, Apple Metal, Microsoft Direct X 12</li>
+            <li>GPU Compute APIs: CUDA, OpenCL, OpenGL Compute Shaders, Apple Metal, Microsoft Direct X 12</li>
         </ul>
         <p>
             Rather than being a standalone programming language, Halide is embedded in C++. This means you write C++ code that builds an in-memory representation of a Halide pipeline using Halide's C++ API. You can then compile this representation to an object file, or JIT-compile it and run it in the same process.
@@ -122,7 +122,7 @@
           <h1>Getting Started</h1>
         </div>
 
-        <p><a href="https://github.com/halide/Halide/releases">Download a binary release of Halide</a>. You probably want the version starting with halide_Linux_64_trunk, halide_Darwin_64_trunk, or halide_Windows_64_trunk for Linux, OS X, and Windows respectively.</p>
+        <p>First, download a <a href="https://github.com/halide/Halide/releases">binary release of Halide</a>.</p>
 
         <p>For the freshest builds, see the <a href="https://buildbot.halide-lang.org/">continuous build server</a>. The status of the build on each platform is <a href="https://buildbot.halide-lang.org/master/#/builders?tags=%2Bmaster">here</a>. If it's green, then it has passed all of our internal tests.</p>
 
@@ -130,9 +130,22 @@
 
         <p>To get started writing code, look through the <a href="/tutorials/tutorial_introduction.html">tutorials</a>, and the <a href="https://github.com/halide/Halide/tree/master/apps">example apps</a>. The <a href="https://github.com/halide/Halide/tree/master/test">tests</a> are small self-contained programs that cover all corners of the language, so they can also be instructive. However they're not designed to teach, so you may find them cryptic.</p>
 
+        <p>If you have a question, stop by our <a href="https://gitter.im/halide/Halide">gitter channel</a>, or post on the <a href="https://github.com/halide/Halide/discussions">discussion board</a> on github.</p>
+
         <!-- TODO explain main data types, usage -->
         <!-- TODO explain, show JIT vs. static compilation -->
 
+        <h2>Videos</h2>
+
+        <p>We gave a talk on Halide at CppCon 2020 that serves as a good overview of what the language is all about.</p>
+          <iframe width="800" height="450" src="https://www.youtube.com/embed/1ir_nEfKQ7A?start=15" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <br/>        
+        
+        <p>To go deeper, here's how an expert actually uses Halide, scheduling the same algorithm described in the talk above.</p>
+
+          <iframe width="800" height="450" src="https://www.youtube.com/embed/UeyWo42_PS8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <br/>
+        
         <h2>Course Notes</h2>
 
         <p>We taught a <a href="cvpr2015.html">course on Halide</a> at CVPR 2015. The course notes are a useful introduction to Halide.</p>
@@ -158,14 +171,32 @@
           so don't rely on them for correct syntax.
           The <a href="/tutorials/tutorial_introduction.html">tutorials</a>
           are a better introduction to Halide's syntax.
-        </p>
-
+        </p>        
+        
+        <p>
+          <strong><a href="papers/autoscheduler2019.html">Learning to Optimize Halide with Tree Search and Random Programs</a></strong>
+          <br/>
+          <a href="https://andrew.adams.pub/">Andrew Adams</a>,
+          <a href="http://github.com/karimama/">Karima Ma</a>,
+          <a href="https://people.csail.mit.edu/lukea/">Luke Anderson</a>,
+          <a href="https://people.csail.mit.edu/baghdadi/">Riyadh Baghdadi</a>,
+          <a href="https://people.csail.mit.edu/tzumao">Tzu-Mao Li</a>,
+          <a href="http://mgharbi.com">Michaël Gharbi</a>,
+          <a href="http://bsteiner.info/">Benoit Steiner</a>,
+          <a href="http://github.com/steven-johnson/">Steven Johnson</a>,
+          <a href="http://graphics.stanford.edu/~kayvonf/">Kayvon Fatahalian</a>,
+          <a href="https://people.csail.mit.edu/fredo">Frédo Durand</a>,
+          <a href="http://people.csail.mit.edu/jrk">Jonathan Ragan-Kelley</a>.
+          <br/>
+          <em>SIGGRAPH 2019</em>
+        </p>        
+        
         <p>
           <strong><a href="http://gradients.halide-lang.org/">Differentiable Programming for Image Processing and Deep Learning in Halide</a></strong>
           <br/>
           <a href="https://people.csail.mit.edu/tzumao">Tzu-Mao Li</a>,
           <a href="http://mgharbi.com">Michaël Gharbi</a>,
-          <a href="http://people.csail.mit.edu/abadams">Andrew Adams</a>,
+          <a href="https://andrew.adams.pub/">Andrew Adams</a>,
           <a href="https://people.csail.mit.edu/fredo">Frédo Durand</a>,
           <a href="http://people.csail.mit.edu/jrk">Jonathan Ragan-Kelley</a>.
           <br/>
@@ -176,7 +207,7 @@
           <strong><a href="http://graphics.cs.cmu.edu/projects/halidesched/">Automatically Scheduling Halide Image Processing Pipelines</a></strong>
           <br/>
           <a href="http://rmullapudi.bitbucket.org/">Ravi Teja Mullapudi</a>,
-          <a href="http://people.csail.mit.edu/abadams">Andrew Adams</a>,
+          <a href="https://andrew.adams.pub/">Andrew Adams</a>,
           <a href="http://www.dsharlet.com">Dillon Sharlet</a>,
           <a href="http://people.csail.mit.edu/jrk">Jonathan Ragan-Kelley</a>,
           <a href="http://www.cs.cmu.edu/~kayvonf/">Kayvon Fatahalian</a>.
@@ -196,7 +227,7 @@
           <br/>
           <a href="http://people.csail.mit.edu/jrk">Jonathan Ragan-Kelley</a>,
           <a href="http://www.connellybarnes.com/work/">Connelly Barnes</a>,
-          <a href="http://people.csail.mit.edu/abadams">Andrew Adams</a>,
+          <a href="https://andrew.adams.pub/">Andrew Adams</a>,
           <a href="http://people.csail.mit.edu/sparis">Sylvain Paris</a>,
           <a href="http://people.csail.mit.edu/fredo">Fr&eacute;do Durand</a>,
           <a href="http://people.csail.mit.edu/saman">Saman Amarasinghe</a>.
@@ -208,7 +239,7 @@
           <strong><a href="http://people.csail.mit.edu/jrk/halide12">Decoupling Algorithms from Schedules for Easy Optimization of Image Processing Pipelines</a></strong>
           <br/>
           <a href="http://people.csail.mit.edu/jrk">Jonathan Ragan-Kelley</a>,
-          <a href="http://people.csail.mit.edu/abadams">Andrew Adams</a>,
+          <a href="https://andrew.adams.pub/">Andrew Adams</a>,
           <a href="http://people.csail.mit.edu/sparis">Sylvain Paris</a>,
           <a href="http://graphics.stanford.edu/~levoy">Marc Levoy</a>,
           <a href="http://people.csail.mit.edu/saman">Saman Amarasinghe</a>,
@@ -219,9 +250,9 @@
 
         <p>
 
-          <iframe width="640" height="390" src="https://www.youtube.com/embed/3uiEyEKji0M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="800" height="450" src="https://www.youtube.com/embed/3uiEyEKji0M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <br/>
-          This talk is a companion to the papers. It describes the
+          This older talk is a companion to the papers. It describes the
           philosophy of Halide, and the ideas behind the scheduling
           model.
 
