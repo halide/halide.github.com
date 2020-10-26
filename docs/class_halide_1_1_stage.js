@@ -1,9 +1,9 @@
 var class_halide_1_1_stage =
 [
     [ "Stage", "class_halide_1_1_stage.html#a91222724ee6ff9f4d01dcb4f836d7627", null ],
-    [ "get_schedule", "class_halide_1_1_stage.html#a12fac36d26cc63258c0ce044d496dcac", null ],
-    [ "dump_argument_list", "class_halide_1_1_stage.html#a878aaaf2da313fe89c565a3ce1c300ec", null ],
-    [ "name", "class_halide_1_1_stage.html#a2f16685c07b47efb54cf15b31949e25c", null ],
+    [ "get_schedule", "class_halide_1_1_stage.html#aac3c9b2dcfcf060e53c38a6c99196312", null ],
+    [ "dump_argument_list", "class_halide_1_1_stage.html#aeae73b461d876d4d921474d5042dad65", null ],
+    [ "name", "class_halide_1_1_stage.html#a075401098fc0eb3fa260bbb93a21e80b", null ],
     [ "rfactor", "class_halide_1_1_stage.html#a9a7936287327b4627008fc723cb42565", null ],
     [ "rfactor", "class_halide_1_1_stage.html#a2ad5f03630fb3fd72a3ab0b0563502cc", null ],
     [ "compute_with", "class_halide_1_1_stage.html#a82a2ae25a009d6a2d52cb407a25f0a5b", null ],
@@ -25,7 +25,7 @@ var class_halide_1_1_stage =
     [ "tile", "class_halide_1_1_stage.html#a144dcc2a136f8710a63deb2ec450fcbd", null ],
     [ "tile", "class_halide_1_1_stage.html#ab999ec25e6ecff8b5baac901e8a2ef6e", null ],
     [ "reorder", "class_halide_1_1_stage.html#ab5287af97a9cc189e2c4b0ee902664df", null ],
-    [ "reorder", "class_halide_1_1_stage.html#a17b2b511c53ee05f1dad5880e9705837", null ],
+    [ "reorder", "class_halide_1_1_stage.html#a31d67821c732f02b49cc93b0a5d198e5", null ],
     [ "rename", "class_halide_1_1_stage.html#a0a14b3cbe0ee18c49ce592ed42c5ef42", null ],
     [ "specialize", "class_halide_1_1_stage.html#a7d8e12da382c2be8cfd512de0b5ddb36", null ],
     [ "specialize_fail", "class_halide_1_1_stage.html#ab99d85e44a0ea26a885216a6d722019c", null ],
@@ -52,5 +52,5 @@ var class_halide_1_1_stage =
     [ "prefetch", "class_halide_1_1_stage.html#ad22728a4575073953687d1441518baa0", null ],
     [ "prefetch", "class_halide_1_1_stage.html#af2fc4ea55a0bd81adda930bac5789264", null ],
     [ "prefetch", "class_halide_1_1_stage.html#a6064d90f15d906fa1f7e0ac85fb80acc", null ],
-    [ "source_location", "class_halide_1_1_stage.html#a3ee95c3824304eb9854a759d853c757e", null ]
+    [ "source_location", "class_halide_1_1_stage.html#ad8b47b05cd107a0fbc4f1b2991771fb6", null ]
 ];

@@ -222,6 +222,7 @@ var hierarchy =
     [ "Halide::Internal::Function::Compare", "struct_halide_1_1_internal_1_1_function_1_1_compare.html", null ],
     [ "Halide::Internal::FunctionPtr", "struct_halide_1_1_internal_1_1_function_ptr.html", null ],
     [ "Halide::Internal::FusedPair", "struct_halide_1_1_internal_1_1_fused_pair.html", null ],
+    [ "Halide::Internal::GeneratorInput_Buffer< T >", "class_halide_1_1_internal_1_1_generator_input___buffer.html", null ],
     [ "Halide::Internal::GeneratorParamBase", "class_halide_1_1_internal_1_1_generator_param_base.html", [
       [ "Halide::Internal::GeneratorParamImpl< LoopLevel >", "class_halide_1_1_internal_1_1_generator_param_impl.html", [
         [ "Halide::Internal::GeneratorParam_LoopLevel", "class_halide_1_1_internal_1_1_generator_param___loop_level.html", null ]
@@ -250,7 +251,6 @@ var hierarchy =
           ] ]
         ] ],
         [ "Halide::Internal::GeneratorInputImpl< T, Func >", "class_halide_1_1_internal_1_1_generator_input_impl.html", [
-          [ "Halide::Internal::GeneratorInput_Buffer< T >", "class_halide_1_1_internal_1_1_generator_input___buffer.html", null ],
           [ "Halide::Internal::GeneratorInput_Func< T >", "class_halide_1_1_internal_1_1_generator_input___func.html", null ]
         ] ],
         [ "Halide::Internal::GeneratorInputImpl< T, ValueType >", "class_halide_1_1_internal_1_1_generator_input_impl.html", null ]
@@ -701,7 +701,7 @@ var hierarchy =
     [ "Halide::Internal::IntrusivePtr< DefinitionContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
     [ "Halide::Internal::IntrusivePtr< FuncScheduleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
     [ "Halide::Internal::IntrusivePtr< FunctionGroup >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< Internal::BufferContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< Halide::Internal::BufferContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
     [ "Halide::Internal::IntrusivePtr< Internal::LoopLevelContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
     [ "Halide::Internal::IntrusivePtr< Internal::ModuleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
     [ "Halide::Internal::IntrusivePtr< JITModuleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
@@ -730,6 +730,7 @@ var hierarchy =
     [ "Halide::Internal::Scope< Halide::Internal::Simplify::VarInfo >", "class_halide_1_1_internal_1_1_scope.html", null ],
     [ "Halide::Internal::Scope< int >", "class_halide_1_1_internal_1_1_scope.html", null ],
     [ "Halide::Internal::Scope< llvm::Value * >", "class_halide_1_1_internal_1_1_scope.html", null ],
+    [ "Halide::Internal::Scope< void >", "class_halide_1_1_internal_1_1_scope.html", null ],
     [ "Halide::Internal::SmallStack< Halide::Expr >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
     [ "Halide::Internal::SmallStack< Halide::Internal::CodeGen_C::Allocation >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
     [ "Halide::Internal::SmallStack< Halide::Internal::CodeGen_Posix::Allocation >", "class_halide_1_1_internal_1_1_small_stack.html", null ],

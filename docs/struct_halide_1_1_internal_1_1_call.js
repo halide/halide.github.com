@@ -1,6 +1,5 @@
 var struct_halide_1_1_internal_1_1_call =
 [
-    [ "ConstString", "struct_halide_1_1_internal_1_1_call.html#a22787aaecb4250350f640c07acc43305", null ],
     [ "CallType", "struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393", [
       [ "Image", "struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393a627c8b7bd4ab3817dc8132e69c5194b4", null ],
       [ "Extern", "struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393a0e9c32fc29933124d43d2463df3df57a", null ],
@@ -71,10 +70,11 @@ var struct_halide_1_1_internal_1_1_call =
       [ "unsafe_promise_clamped", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a399abee23f7a8e5f544ff16d0d64af2f", null ],
       [ "IntrinsicOpCount", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974ad9e3aef0bd0339951b08d7136ae4113f", null ]
     ] ],
-    [ "is_pure", "struct_halide_1_1_internal_1_1_call.html#af581d1c99cebfe0a601087202d935c45", null ],
-    [ "is_intrinsic", "struct_halide_1_1_internal_1_1_call.html#af94b2b460887551f44aac310c50858b3", null ],
-    [ "is_intrinsic", "struct_halide_1_1_internal_1_1_call.html#af274e93722299aa587c1e88f83357ab0", null ],
-    [ "is_extern", "struct_halide_1_1_internal_1_1_call.html#a0c23998164ce21e830f25ee126e16c56", null ],
+    [ "is_pure", "struct_halide_1_1_internal_1_1_call.html#a860417632fef6c502fe0c222a9fa4c9e", null ],
+    [ "is_intrinsic", "struct_halide_1_1_internal_1_1_call.html#a515346c5f60d4a7cc91442b28ce9f899", null ],
+    [ "is_intrinsic", "struct_halide_1_1_internal_1_1_call.html#aab93bf16243a36a0af4b4598bcf07379", null ],
+    [ "is_extern", "struct_halide_1_1_internal_1_1_call.html#a3ca5446b42e9854971a9869a9098b07d", null ],
+    [ "ConstString", "struct_halide_1_1_internal_1_1_call.html#ad4250e793d75c7b064d9a0e328e28f93", null ],
     [ "name", "struct_halide_1_1_internal_1_1_call.html#a4c30e353af50e357882ba9b02f6d3aa0", null ],
     [ "args", "struct_halide_1_1_internal_1_1_call.html#acb75ca0f33dbf170e1fcdf59c9bdf48e", null ],
     [ "call_type", "struct_halide_1_1_internal_1_1_call.html#a76805c16c470e73827363769fdd91b53", null ],

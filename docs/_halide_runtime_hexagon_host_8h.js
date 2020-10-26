@@ -3,7 +3,7 @@ var _halide_runtime_hexagon_host_8h =
     [ "halide_hexagon_power_t", "structhalide__hexagon__power__t.html", "structhalide__hexagon__power__t" ],
     [ "HALIDE_RUNTIME_HEXAGON", "_halide_runtime_hexagon_host_8h.html#a8ecef434d16d426325a6e580b43acaa7", null ],
     [ "halide_hexagon_handle_t", "_halide_runtime_hexagon_host_8h.html#a5cf692c425e6dd2a07c2351b0a2c675a", null ],
-    [ "halide_hexagon_power_mode_t", "_halide_runtime_hexagon_host_8h.html#a249d1f4fc86cd91fde556397e39270e6", null ],
+    [ "halide_hexagon_power_mode_t", "_halide_runtime_hexagon_host_8h.html#acdcb129365f1ad6dac0219f0acca5a96", null ],
     [ "halide_hvx_power_perf_t", "_halide_runtime_hexagon_host_8h.html#a8d25b198985bb8d1ba7c42c92dea8a79", null ],
     [ "halide_hexagon_power_mode_t", "_halide_runtime_hexagon_host_8h.html#ab7c31a827e7099a27c042d53135486c5", [
       [ "halide_hexagon_power_low", "_halide_runtime_hexagon_host_8h.html#ab7c31a827e7099a27c042d53135486c5abbaaed0024f4b276ca11c1006d57792c", null ],

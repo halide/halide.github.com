@@ -5,7 +5,7 @@ var struct_i_d_x_g_i_adapter1_vtbl =
     [ "This", "struct_i_d_x_g_i_adapter1_vtbl.html#ab2e2f5a6c7ae4084588c85d61bc47666", null ],
     [ "Name", "struct_i_d_x_g_i_adapter1_vtbl.html#a1b77d02d5a72304f17f60a74f663a8c8", null ],
     [ "DataSize", "struct_i_d_x_g_i_adapter1_vtbl.html#af460569c5d5eaa250c19f93ec1d56c4a", null ],
-    [ "pUnknown", "struct_i_d_x_g_i_adapter1_vtbl.html#a83fe780bc2d3a2518f32137ee824c8b6", null ],
+    [ "pUnknown", "struct_i_d_x_g_i_adapter1_vtbl.html#aa883eba6bc4fab722348f355ff7a9d4f", null ],
     [ "pDataSize", "struct_i_d_x_g_i_adapter1_vtbl.html#a957fb075d3ef5efe1597690697bc734f", null ],
     [ "pData", "struct_i_d_x_g_i_adapter1_vtbl.html#aa22d4d5da2205f940048481bfc271d17", null ],
     [ "riid", "struct_i_d_x_g_i_adapter1_vtbl.html#ac910cf6ad9ae41d828237b9dbffed804", null ],

@@ -1,7 +1,7 @@
 var struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_node_1_1_stage =
 [
     [ "Stage", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_node_1_1_stage.html#a1ead4c57b0d4493a34baaa24f0057d6d", null ],
-    [ "downstream_of", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_node_1_1_stage.html#aa37fc3c55822a5c5030cc457a12845be", null ],
+    [ "downstream_of", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_node_1_1_stage.html#a6acd594e511300819205486263ec6840", null ],
     [ "node", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_node_1_1_stage.html#ae8cae9e32fe72264a5d4eed37b64becc", null ],
     [ "index", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_node_1_1_stage.html#a1a0721bded040b919a201335d1823309", null ],
     [ "loop", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_node_1_1_stage.html#acbf81f15d99337fc3287d7c702f4a038", null ],

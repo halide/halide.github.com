@@ -1,9 +1,31 @@
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this file.
+
+Copyright (C) 1997-2019 by Dimitri van Heesch
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of version 2 of the GNU General Public License as published by
+the Free Software Foundation
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+@licend  The above is the entire license notice
+for the JavaScript code in this file
+*/
 var NAVTREE =
 [
   [ "Halide", "index.html", [
     [ "Modules", "modules.html", "modules" ],
-    [ "Namespaces", null, [
-      [ "Namespace List", "namespaces.html", "namespaces" ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", "namespacemembers_dup" ],
         [ "Functions", "namespacemembers_func.html", "namespacemembers_func" ],
@@ -26,8 +48,8 @@ var NAVTREE =
         [ "Related Functions", "functions_rela.html", null ]
       ] ]
     ] ],
-    [ "Files", null, [
-      [ "File List", "files.html", "files" ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", "globals_func" ],
@@ -49,46 +71,51 @@ var NAVTREEINDEX =
 "_function_d_a_g_8h.html",
 "_halide_runtime_8h.html#a485130f12eb8bb5fa5a9478eeb6b0dfaad8657c19f6b2b9cc79fa3a438f39687b",
 "_halide_runtime_open_c_l_8h.html#afa8f1064a34e17fec76d6ebf26007af0",
-"_i_r_operator_8h.html#a0eb4bb1c7164222794e270f58c428eb7",
+"_i_r_operator_8h.html#a0f13f0a9e97bf7673ca5a8e04b1bd9a9",
 "_inline_reductions_8h.html#a1f171f43c7cce3a17b60ac9127c63b12",
 "_region_costs_8h_source.html",
 "android__ioctl_8h.html#adccc5f4dd429c563afa6072545b38df6",
 "class_halide_1_1_func.html#a9b60b0ed6da27e654e4d6e1debbb3e6b",
-"class_halide_1_1_internal_1_1_code_gen___a_r_m.html#ad7add2cd4f94e153596c0811c9871948",
-"class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a26a3750b6a0929020ebc2295d6afc32a",
-"class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html#a3be7152ceae1523db99f29cc4d1605b9",
-"class_halide_1_1_internal_1_1_elf_1_1_object.html#ad5335d68a32ccb44c3f1902575e5e4d9",
-"class_halide_1_1_internal_1_1_g_i_o_base.html#ac7e2fea71778a9aa376c80e53cd0a365",
-"class_halide_1_1_internal_1_1_generator_param___loop_level.html#a6437f00b7abbf7f25f9e84c4928cd023",
-"class_halide_1_1_internal_1_1_i_r_printer.html#ab71a8fc3425175a785f9cad21305e0fc",
-"class_halide_1_1_internal_1_1_simplify.html#ab12af9feb811668c431dd68007496ed8",
-"class_halide_1_1_pipeline.html#a11e3b9cadab691fe1d428112f18caf34",
-"class_halide_1_1_simd_op_check_test.html#aa6478debb2af7a4779db13b462a0687b",
-"functions_eval_t.html",
-"group__rt__hexagon__dma.html#gga1a33f3687461b193961a69dafbd7fa12aee654b987b1daa2e15eb46ae14b7a005",
-"mini__cl_8h.html#a6a16900bc0ee7499ddc2a2695d300137",
-"mini__cl_8h.html#af7cec203871808500d586ba93a707166",
-"mini__d3d12_8h.html#a18e5637d564027718abccd8ad4acb32fae28b8e8b473937fe559459fb5d4885e9",
-"mini__d3d12_8h.html#a5d0a4d23a22bd77c6f1b561f24a5129a",
-"mini__d3d12_8h.html#a7f69d308c22f703b480ac8f459073062",
-"mini__d3d12_8h.html#aaed4de2fd4cdaa7adc78cb018d4d3806a48c8495c985bdb2fb2cfaf63af5b5cfe",
-"mini__d3d12_8h.html#af236239721f56975ffa5d8970ffc186fa0ac13f1085895a934d77fb142c7e8322",
-"mini__opengl_8h.html#a5ec11ddfc4685d748eb5aa0f2ae6b8c7",
-"pages.html",
-"struct_d3_d12___d_e_s_c_r_i_p_t_o_r___r_a_n_g_e.html#a4526978167c6e8a492244b17ef187ec8",
-"struct_d3_d12___s_t_r_e_a_m___o_u_t_p_u_t___d_e_s_c.html#a101fda45269b23f4ac2183bf1a761973",
-"struct_halide_1_1_extern_func_argument.html#a389f0bf5e6e8c6dabe3d8637f37f16ee",
-"struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var.html#a00b60cde9c9ddb461886e50f099c0d08",
-"struct_halide_1_1_internal_1_1_div.html",
-"struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html#a66d0748ecac233c5d7643753821d3961",
-"struct_halide_1_1_internal_1_1_ramp.html#a69223cbc6aba28e93f4df72b37a0eb05",
-"struct_halide_1_1_internal_1_1_weights.html#abfeb1f029e343acca89fb611bac37bdc",
-"struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html#a687e8f909683144f2d97d2f85412c961",
-"struct_halide_1_1float16__t.html#af02f9268701958136f1a2610f4cfe4b3",
-"struct_i_d3_d12_fence_vtbl.html#a2b48d2e229114c0630110fa6b72a3e26",
-"struct_i_d3_d12_resource_vtbl.html#a980bab0d94ed34857542131896a79d34",
-"structhalide__handle__cplusplus__type.html#ad45abe716942dafc7466e96337d04935a24f6c8fa59ef929162776cff9e1793ac",
-"union___l_a_r_g_e___i_n_t_e_g_e_r.html#af50fab340c8f9f668e98762698e6ca81"
+"class_halide_1_1_internal_1_1_closure.html#a99cba737c2c6785a1c7f3bba65bb1a6a",
+"class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev_1_1_code_gen___d3_d12_compute___c.html#a5bb014c55cb594e2761615258ccbd3e0",
+"class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html#a7faacedc75410cf942cd10946bd28665",
+"class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a90d173e261d6bc18f86be2897d7fb540",
+"class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html#afb0fba1b210aaf7d6d29165deb5f8a7b",
+"class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html#ac68a34bc09969f0e56f84be5ae52b7cd",
+"class_halide_1_1_internal_1_1_code_gen___posix.html#afcb726e59fd040c8a3759e775b430c23",
+"class_halide_1_1_internal_1_1_code_gen___web_assembly.html#a708ada901519a2c1fee25e6cf388b780",
+"class_halide_1_1_internal_1_1_elf_1_1_object.html#a2335affd90749099680c327f3c820cb6",
+"class_halide_1_1_internal_1_1_g_i_o_base.html",
+"class_halide_1_1_internal_1_1_generator_output_impl.html#acdc9fa9af202c6f8536f8c33d3b9d524",
+"class_halide_1_1_internal_1_1_i_r_printer.html#a398708bbe65ca0e445063d8a679ead4e",
+"class_halide_1_1_internal_1_1_simplify.html#a517330a4c3aa52a201d01193b050916a",
+"class_halide_1_1_param.html#ab35c44f303fbcd10ddb3dffea8061190",
+"class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1spin__control.html",
+"functions_a.html",
+"group__rt__hexagon__dma.html#gae4cb8c1cf51edd1b611958ddd50293c2",
+"mini__cl_8h.html#a5aeadc55ca06548e9ee78747fa153e06",
+"mini__cl_8h.html#ae03cee35dc497187895d6f897210bf6e",
+"mini__d3d12_8h.html#a0e10a1822969018a2fa82c67e728ccd5",
+"mini__d3d12_8h.html#a577e87445a8dc841417635406c1e2190",
+"mini__d3d12_8h.html#a7437c289136983e44aba1d1fdcc06695",
+"mini__d3d12_8h.html#aa8c0374618b33785ccb02f74bcfebc46",
+"mini__d3d12_8h.html#ae72956f5480f6ff0253f2bf65234419bad4bf87790ff2de2610710fb37c0613d8",
+"mini__opengl_8h.html#a1a0294662b50921555cae95fb20740d4",
+"namespacemembers_g.html",
+"struct_d3_d12___c_p_u___d_e_s_c_r_i_p_t_o_r___h_a_n_d_l_e.html#a15d2c59bd37db5cdb89378c2e8008bb2",
+"struct_d3_d12___s_h_a_d_e_r___r_e_s_o_u_r_c_e___v_i_e_w___d_e_s_c.html#a2365e100ff13b291bcbf9d4b5ca80853",
+"struct_halide_1_1_compile_error.html",
+"struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a6006fced11249a63ebf64feb92f93ed7",
+"struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html#a4b40d0d4c310a87800d75d5fd128e481",
+"struct_halide_1_1_internal_1_1_i_r_matcher_1_1_rewriter.html#ab122a1772b4c8e946017d0c21e950f8b",
+"struct_halide_1_1_internal_1_1_pipeline_features.html#adaa87ad3f6bc6304773b00e5b5be438cac28eb804c1bb6de33ee8510cd5a5452f",
+"struct_halide_1_1_internal_1_1_string_or_loop_level.html#ae6513b251340fd0b844b658dbeb5a6d6",
+"struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1word__lock__queue__data.html#a93846c30fc773c9024872a958267a48a",
+"struct_halide_1_1bfloat16__t.html#aa0be8845c39716e2fc62f776c8a78ef5",
+"struct_i_d3_d12_device_vtbl.html#abb5ce41c0a4fb890615429007d47c94a",
+"struct_i_d3_d12_pipeline_state_vtbl.html#ac082183a5f434b71df1d001a2da19cda",
+"structhalide__filter__argument__t.html",
+"thread__pool__common_8h.html#ab9fb066fb0abd9ae5548ade9d7968623"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

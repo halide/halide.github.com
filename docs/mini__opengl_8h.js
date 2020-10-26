@@ -104,7 +104,6 @@ var mini__opengl_8h =
     [ "PFNGLDRAWELEMENTSPROC", "mini__opengl_8h.html#ae8f2bc7ca3fb4a6ca463fd1a4b347c30", null ],
     [ "PFNGLGENTEXTURESPROC", "mini__opengl_8h.html#a62648c454c7d61d0e0419eff20543943", null ],
     [ "PFNGLGETERRORPROC", "mini__opengl_8h.html#a378558439801ed8ecd4899550f036703", null ],
-    [ "PFNGLGETSTRINGPROC", "mini__opengl_8h.html#a7ec5e3ba92df469cb2f6b3a8dd1e54a1", null ],
     [ "PFNGLGETTEXIMAGEPROC", "mini__opengl_8h.html#a629c52cacc59c4962f0ed6ad72d63567", null ],
     [ "PFNGLLOADIDENTITYPROC", "mini__opengl_8h.html#abeb269364b98b92781d06447d6744c1f", null ],
     [ "PFNGLMATRIXMODEPROC", "mini__opengl_8h.html#a3425568581298ff0bd3628acbfc1e70f", null ],
@@ -155,7 +154,6 @@ var mini__opengl_8h =
     [ "PFNGLGENVERTEXARRAYS", "mini__opengl_8h.html#a0c9a8592b329c4cc220c65f54b64ef59", null ],
     [ "PFNGLBINDVERTEXARRAY", "mini__opengl_8h.html#abab6df6a31dc21714062529c3be403b5", null ],
     [ "PFNGLDELETEVERTEXARRAYS", "mini__opengl_8h.html#a786c39d08e44100e281a790438b6d707", null ],
-    [ "PFNGLGETSTRINGI", "mini__opengl_8h.html#a7c8e09b2fa9d03f792f25c04f26e2756", null ],
     [ "PFNDRAWBUFFERS", "mini__opengl_8h.html#a74c925b3de1d0c6923116afe4547aedb", null ],
     [ "GLbitfield", "mini__opengl_8h.html#a0fb936f29008789fb46b434319f68cc9", null ],
     [ "GLintptr", "mini__opengl_8h.html#a0374caf1f25a139da21f84d81f637c23", null ],
@@ -167,5 +165,7 @@ var mini__opengl_8h =
     [ "PFNGLUNMAPBUFFERPROC", "mini__opengl_8h.html#a06591db1c4d8e1711e0117190bc74d74", null ],
     [ "PFNGLBINDBUFFERBASEPROC", "mini__opengl_8h.html#a725c0c399039f452a057ff3d0cb7a82b", null ],
     [ "PFNGLGETACTIVEUNIFORM", "mini__opengl_8h.html#a177254328d21e650b7fcf369bd650aa1", null ],
-    [ "PFNGLGETUNIFORMLOCATION", "mini__opengl_8h.html#a28bfa15f462ec83bda8d160e4c483fab", null ]
+    [ "PFNGLGETUNIFORMLOCATION", "mini__opengl_8h.html#a28bfa15f462ec83bda8d160e4c483fab", null ],
+    [ "PFNGLGETSTRINGPROC", "mini__opengl_8h.html#a36930c03859f61c474487f9ade2829a4", null ],
+    [ "PFNGLGETSTRINGI", "mini__opengl_8h.html#ab2c5bdadd54b1e579c3afb9bd5d2cd35", null ]
 ];

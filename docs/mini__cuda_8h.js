@@ -11,9 +11,9 @@ var mini__cuda_8h =
     [ "CUstream", "mini__cuda_8h.html#a82ce2dccb2daa98448ab61d5cd8ca41c", null ],
     [ "CUevent", "mini__cuda_8h.html#a2ce592089e72af9f72b0b19c76cc9f0e", null ],
     [ "CUarray", "mini__cuda_8h.html#a07bba771174e9b5fe466a7456890fccb", null ],
-    [ "CUjit_option", "mini__cuda_8h.html#a7009c07d243d043ff7db4563abef1d5d", null ],
-    [ "CUmemorytype", "mini__cuda_8h.html#a66fad50868ed524aaf51bef86136c186", null ],
-    [ "CUDA_MEMCPY3D", "mini__cuda_8h.html#a74a9a64a66bcce9aaf80b04e46b070f4", null ],
+    [ "CUjit_option", "mini__cuda_8h.html#abd93304de29fbf085477642bd9b4fc71", null ],
+    [ "CUmemorytype", "mini__cuda_8h.html#a4515b67f288947faf9385d315b5025b5", null ],
+    [ "CUDA_MEMCPY3D", "mini__cuda_8h.html#aa84b749decef61c558aaafb60314259a", null ],
     [ "CUjit_option_enum", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28", [
       [ "CU_JIT_MAX_REGISTERS", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28a0ce0050f3f7f3440e106ab36c77f4c28", null ],
       [ "CU_JIT_THREADS_PER_BLOCK", "mini__cuda_8h.html#a9b468712bc0a39da779cd199a3d31c28a54a62a63648d8a69170ea455a3b8a56f", null ],

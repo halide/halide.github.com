@@ -1,6 +1,6 @@
 var struct_halide_1_1_internal_1_1_allocate =
 [
-    [ "constant_allocation_size", "struct_halide_1_1_internal_1_1_allocate.html#a7f56413974305e351a61874e979ccb84", null ],
+    [ "constant_allocation_size", "struct_halide_1_1_internal_1_1_allocate.html#a9662448eedb1792a9e2c132c4e3d5085", null ],
     [ "name", "struct_halide_1_1_internal_1_1_allocate.html#a08f6d709461e4a8cf1f94d2e1cd3a33c", null ],
     [ "type", "struct_halide_1_1_internal_1_1_allocate.html#a016f5daa1cd3d6eb957214989e9ece22", null ],
     [ "memory_type", "struct_halide_1_1_internal_1_1_allocate.html#a9fb7bc5be71dc9c9b3bfe99bfc4930b2", null ],

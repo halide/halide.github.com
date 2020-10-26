@@ -1,4 +1,4 @@
-var namespaces =
+var namespaces_dup =
 [
     [ "cmdline", "namespacecmdline.html", "namespacecmdline" ],
     [ "Halide", "namespace_halide.html", "namespace_halide" ],

@@ -13,5 +13,5 @@ var struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev =
     [ "dump", "struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a803b952d35a4fea02cc8fb0461ea85bb", null ],
     [ "api_unique_name", "struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#ae6225d8b7c6967b9efd757ba1c8a0c7b", null ],
     [ "print_gpu_name", "struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a97090ee3ba4891b50d6c79adc9928335", null ],
-    [ "kernel_run_takes_types", "struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#a7e1f14f3c715fdcfd1ac440b07b7f1dd", null ]
+    [ "kernel_run_takes_types", "struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html#ab6a59101f156ac5e6e4787c2efcccc25", null ]
 ];

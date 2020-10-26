@@ -428,7 +428,7 @@ var mini__cl_8h =
     [ "cl_event_info", "mini__cl_8h.html#adf3b32f81a29db136c743333835125a4", null ],
     [ "cl_command_type", "mini__cl_8h.html#a829ea04f8e9159587d7921934e243cb8", null ],
     [ "cl_profiling_info", "mini__cl_8h.html#a92c1fdfb721a0a552e302605cfb5cbd4", null ],
-    [ "cl_image_format", "mini__cl_8h.html#a3c8c32c7c09ced6b75b43205426fd161", null ],
-    [ "cl_image_desc", "mini__cl_8h.html#ad15efddb47f2b2108d3b53bfe19d1e8d", null ],
-    [ "cl_buffer_region", "mini__cl_8h.html#a362bfe1902a225ddd7fc37a9d081bc1a", null ]
+    [ "cl_image_format", "mini__cl_8h.html#a0c86ec5111016239f41ed7bb1e4c6206", null ],
+    [ "cl_image_desc", "mini__cl_8h.html#aba2018c4e72b754b5c00c54b6575b043", null ],
+    [ "cl_buffer_region", "mini__cl_8h.html#ad003483bb98a4cae085bb2b00d14decd", null ]
 ];

@@ -6,7 +6,7 @@ var class_halide_1_1_internal_1_1_simplify =
     [ "Simplify", "class_halide_1_1_internal_1_1_simplify.html#a3b39331da7133f300c9932b2b29a7438", null ],
     [ "mutate", "class_halide_1_1_internal_1_1_simplify.html#a076ca4bc24a6fa3e27764d7df22557cd", null ],
     [ "mutate", "class_halide_1_1_internal_1_1_simplify.html#a26d2d010aa0bad8a0f196191e7d0fd12", null ],
-    [ "may_simplify", "class_halide_1_1_internal_1_1_simplify.html#a7af15f1e1de7cc4d2a7a51fb6f945f75", null ],
+    [ "may_simplify", "class_halide_1_1_internal_1_1_simplify.html#a8d4bbb88811d391e6dea0b2669c555c1", null ],
     [ "no_overflow_int", "class_halide_1_1_internal_1_1_simplify.html#ac406df8ae4a7ac10fbe6adc1122af5f5", null ],
     [ "no_overflow_scalar_int", "class_halide_1_1_internal_1_1_simplify.html#ae0b47ad9d15775ad71d7c80389503627", null ],
     [ "no_overflow", "class_halide_1_1_internal_1_1_simplify.html#a42a10e7294d3506b73eebc8e737be7a9", null ],

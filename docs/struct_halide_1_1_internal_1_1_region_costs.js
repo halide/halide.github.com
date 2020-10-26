@@ -5,7 +5,7 @@ var struct_halide_1_1_internal_1_1_region_costs =
     [ "stage_region_cost", "struct_halide_1_1_internal_1_1_region_costs.html#ae535060f3a7178ab5953e84874858644", null ],
     [ "region_cost", "struct_halide_1_1_internal_1_1_region_costs.html#a10ede127822f51f198097cdd2c45471c", null ],
     [ "region_cost", "struct_halide_1_1_internal_1_1_region_costs.html#a3dbd96709b73186ff98b2ff32ceebf15", null ],
-    [ "get_func_stage_cost", "struct_halide_1_1_internal_1_1_region_costs.html#ab2feaf674125e5e42d5bf85042613500", null ],
+    [ "get_func_stage_cost", "struct_halide_1_1_internal_1_1_region_costs.html#aeb30dad32b525cc5c0e6582d4d60d638", null ],
     [ "get_func_cost", "struct_halide_1_1_internal_1_1_region_costs.html#a79c770594be2a0c4117322e4670c52dc", null ],
     [ "stage_detailed_load_costs", "struct_halide_1_1_internal_1_1_region_costs.html#ac4b49deb2a040405129901d49c1707b2", null ],
     [ "stage_detailed_load_costs", "struct_halide_1_1_internal_1_1_region_costs.html#a251f6550bd54e8469cd6760a6a117fc7", null ],

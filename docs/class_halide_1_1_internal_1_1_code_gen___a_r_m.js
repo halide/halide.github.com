@@ -21,6 +21,8 @@ var class_halide_1_1_internal_1_1_code_gen___a_r_m =
     [ "use_soft_float_abi", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a4dfbb51a22731fbf00da06648e366dab", null ],
     [ "native_vector_bits", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a7ec02b2bde8958396d404b8b469d18bd", null ],
     [ "neon_intrinsics_disabled", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a70f00fa56c972c9d85cbf57a1add50b3", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a7297d8a0efe1a67253aed9a48b31544a", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a8fe8aad546099b808903741f3ff6888c", null ],
     [ "casts", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#a4cd8857b3cc36447d334a3cab7a0d601", null ],
     [ "averagings", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#ab59a094b35b6cd65f644fc36c88ba78b", null ],
     [ "negations", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html#abb2909a9428ed608ea190d5cafc5a895", null ],

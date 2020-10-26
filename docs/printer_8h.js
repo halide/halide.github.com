@@ -10,5 +10,5 @@ var printer_8h =
     [ "end", "printer_8h.html#ad7df3e66f0d081eb6a27998bd1e681e7", null ],
     [ "user_context", "printer_8h.html#a9a395374120db0d0280e16f53201d5cf", null ],
     [ "own_mem", "printer_8h.html#ad597d7f7ec8d6235b631fc834a84f090", null ],
-    [ "scratch", "printer_8h.html#a3b0b21f57c9f32a4d402d089c63e831d", null ]
+    [ "scratch", "printer_8h.html#ab5ade64872b12e7a9a17e528d3c7d826", null ]
 ];

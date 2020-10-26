@@ -8,7 +8,7 @@ var class_halide_1_1_internal_1_1_code_gen___hexagon =
     [ "use_soft_float_abi", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#a5f832af1297e11abf38545ad7dd3f181", null ],
     [ "native_vector_bits", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#a80163eb5afdef239a6ee7e7fd977b85c", null ],
     [ "define_hvx_intrinsic", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#a6bafda1c47d7efcd7601f8fba6b81fe4", null ],
-    [ "is_hvx_v65_or_later", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#ad887f7149562df07b4e7cb4efcc4e38a", null ],
+    [ "is_hvx_v65_or_later", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#a6e3a457ac004290ef21ea4e081fe6d2a", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#ac3d22b1eb602b4afb6f399621fb042ff", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#a43166f43a0d53ff29660bc6d92938213", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#ae1c77e5d947a264010392bc795f46dd0", null ],
@@ -26,5 +26,9 @@ var class_halide_1_1_internal_1_1_code_gen___hexagon =
     [ "vlut", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#a9777ea0d9281b0e35ffadfd5bca5689e", null ],
     [ "vdelta", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#ad97928a33325261cca05c1c8c96a6bfc", null ],
     [ "create_bitcast", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#acbf725e5f390e658ee35ecb60dce0e97", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#a7297d8a0efe1a67253aed9a48b31544a", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#a8fe8aad546099b808903741f3ff6888c", null ],
+    [ "call_intrin", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#a3037552b4751b40a48c7ee4327f550a3", null ],
+    [ "call_intrin", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#a4b871a174cfbe2f58f2b4029ecb90104", null ],
     [ "isa_version", "class_halide_1_1_internal_1_1_code_gen___hexagon.html#a619950354d8f3c8be1271649a5df0812", null ]
 ];

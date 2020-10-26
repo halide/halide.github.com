@@ -5,7 +5,7 @@ var class_halide_1_1_pipeline =
     [ "Pipeline", "class_halide_1_1_pipeline.html#aec4324d0555b9b94aedcb5816037af25", null ],
     [ "Pipeline", "class_halide_1_1_pipeline.html#a755a57f47d829c03bae34a99ac1ef929", null ],
     [ "infer_arguments", "class_halide_1_1_pipeline.html#a7af743680cbcb31619cd975b294bda74", null ],
-    [ "outputs", "class_halide_1_1_pipeline.html#a2eb2cef760666c9e5c9057174544c3ed", null ],
+    [ "outputs", "class_halide_1_1_pipeline.html#ad204d2a7f07e7c0f7e4db8869568dec8", null ],
     [ "auto_schedule", "class_halide_1_1_pipeline.html#a73f7fbe1d29c61255d2b06164a51c235", null ],
     [ "auto_schedule", "class_halide_1_1_pipeline.html#a11e3b9cadab691fe1d428112f18caf34", null ],
     [ "get_func", "class_halide_1_1_pipeline.html#a4235126f6c36eedb13ac75ed9b54da5c", null ],
@@ -49,9 +49,9 @@ var class_halide_1_1_pipeline =
     [ "infer_input_bounds", "class_halide_1_1_pipeline.html#a84ecec5b90217c87a20f047dde72a74f", null ],
     [ "infer_input_bounds", "class_halide_1_1_pipeline.html#aacb620f55d2935d87c986ecac74b050c", null ],
     [ "infer_arguments", "class_halide_1_1_pipeline.html#a02e86246b425f814a13ab363cc8debdd", null ],
-    [ "defined", "class_halide_1_1_pipeline.html#a4a802553d7258df94f18333cd834031a", null ],
+    [ "defined", "class_halide_1_1_pipeline.html#ae507204486906e6d3241b0d1fd6e5f56", null ],
     [ "invalidate_cache", "class_halide_1_1_pipeline.html#aa4f039acc17c2bab7aea8e472976455d", null ],
     [ "add_requirement", "class_halide_1_1_pipeline.html#a0274aac38f28a5e214cc63336cb656e7", null ],
     [ "trace_pipeline", "class_halide_1_1_pipeline.html#a1ab98cdea8f3b11de99fda7b1206acf1", null ],
-    [ "add_requirement", "class_halide_1_1_pipeline.html#afde8d04cc23dee505a3bf118fd348d0b", null ]
+    [ "add_requirement", "class_halide_1_1_pipeline.html#aee41006ce181d1b5d96545af239dc80c", null ]
 ];
