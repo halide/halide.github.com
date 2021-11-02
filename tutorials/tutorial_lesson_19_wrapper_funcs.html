@@ -341,11 +341,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// from a Func or an ImageParam.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_19*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_19 -std=c++11</span>
+<span class="hl slc">// g++ lesson_19*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_19 -std=c++17</span>
 <span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_19</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_19*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_19 -std=c++11</span>
+<span class="hl slc">// g++ lesson_19*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_19 -std=c++17</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_19</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -402,7 +402,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">//   for x:</span>
         <span class="hl slc">//     g(x, y) = 2 * f_in_g(x, y) + 3</span>
 
-        g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">);</span>
+        g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 
@@ -460,7 +460,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">//   for x:</span>
         <span class="hl slc">//     h(x, y) = 3 + g(x, y) - f_in(x, y)</span>
 
-        h<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">);</span>
+        h<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below and for a</span>
         <span class="hl slc">// visualization of what this did.</span>
@@ -501,7 +501,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">//   for x:</span>
         <span class="hl slc">//     h(x, y) = 3 + g(x, y) - f_in_h(x, y)</span>
 
-        h<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">);</span>
+        h<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">});</span>
         <span class="hl slc">// See below for a visualization.</span>
 
          <span><video autoplay loop><source src= figures/lesson_19_wrapper_unique.mp4  />Your browser does not support the video tag :(</video></span>
@@ -547,7 +547,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// Note that calling f.in(g) a second time returns the wrapper</span>
         <span class="hl slc">// already created by the first call, it doesn&apos;t make a new one.</span>
 
-        h<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+        h<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">});</span>
         <span class="hl slc">// See below for a</span>
         <span class="hl slc">// visualization.</span>
 
@@ -602,7 +602,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// effect. Allocations that are only ever accessed at constant</span>
         <span class="hl slc">// indices can be promoted into registers.</span>
 
-        g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">16</span><span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">);</span>
+        g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">16</span><span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">});</span>
         <span class="hl slc">// See below for a visualization</span>
 
          <span><video autoplay loop><source src= figures/lesson_19_transpose.mp4  />Your browser does not support the video tag :(</video></span>
@@ -662,7 +662,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
         img<span class="hl opt">.</span><span class="hl kwd">set</span><span class="hl opt">(</span>input<span class="hl opt">);</span>
         blur<span class="hl opt">.</span><span class="hl kwd">compile_jit</span><span class="hl opt">(</span>target<span class="hl opt">);</span>
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> out <span class="hl opt">=</span> blur<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">256</span><span class="hl opt">,</span> <span class="hl num">256</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> out <span class="hl opt">=</span> blur<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">256</span><span class="hl opt">,</span> <span class="hl num">256</span><span class="hl opt">});</span>
 
         <span class="hl slc">// Check the output is what we expected</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> out<span class="hl opt">.</span><span class="hl kwd">top</span><span class="hl opt">();</span> y <span class="hl opt">&lt;=</span> out<span class="hl opt">.</span><span class="hl kwd">bottom</span><span class="hl opt">();</span> y<span class="hl opt">++) {</span>
@@ -749,7 +749,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         f<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
         f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>g<span class="hl opt">).</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
 
-        g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+        g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">});</span>
         <span class="hl slc">// See below for a visualization.</span>
 
          <span><video autoplay loop><source src= figures/lesson_19_group_updates.mp4  />Your browser does not support the video tag :(</video></span>

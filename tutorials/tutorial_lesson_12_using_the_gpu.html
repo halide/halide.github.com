@@ -339,11 +339,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// This lesson demonstrates how to use Halide to run code on a GPU using OpenCL.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_12*.cpp -g -std=c++11 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -o lesson_12</span>
+<span class="hl slc">// g++ lesson_12*.cpp -g -std=c++17 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -o lesson_12</span>
 <span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_12</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_12*.cpp -g -std=c++11 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -o lesson_12</span>
+<span class="hl slc">// g++ lesson_12*.cpp -g -std=c++17 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -o lesson_12</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_12</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -564,7 +564,7 @@ Var x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="
 
     <span class="hl kwb">void</span> <span class="hl kwd">test_correctness</span><span class="hl opt">(</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> reference_output<span class="hl opt">) {</span>
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span>
-            curved<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">());</span>
+            curved<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">()});</span>
 
         <span class="hl slc">// Check against the reference output.</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> c <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> c <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">();</span> c<span class="hl opt">++) {</span>

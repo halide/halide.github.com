@@ -340,11 +340,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// values.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_13*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_13 -std=c++11</span>
+<span class="hl slc">// g++ lesson_13*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_13 -std=c++17</span>
 <span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_13</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_13*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_13 -std=c++11</span>
+<span class="hl slc">// g++ lesson_13*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_13 -std=c++17</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_13</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -427,7 +427,7 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl slc">// Buffers. We call this a Realization. It&apos;s equivalent to a</span>
     <span class="hl slc">// std::vector of Buffer objects:</span>
     <span class="hl opt">{</span>
-        Realization r <span class="hl opt">=</span> multi_valued<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">80</span><span class="hl opt">,</span> <span class="hl num">60</span><span class="hl opt">);</span>
+        Realization r <span class="hl opt">=</span> multi_valued<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">80</span><span class="hl opt">,</span> <span class="hl num">60</span><span class="hl opt">});</span>
         <span class="hl kwa">assert</span><span class="hl opt">(</span>r<span class="hl opt">.</span><span class="hl kwd">size</span><span class="hl opt">() ==</span> <span class="hl num">2</span><span class="hl opt">);</span>
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> im0 <span class="hl opt">=</span> r<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
         Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> im1 <span class="hl opt">=</span> r<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
@@ -457,7 +457,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
     <span class="hl slc">// You can construct a Tuple by passing multiple Exprs to the</span>
     <span class="hl slc">// Tuple constructor as we did above. Perhaps more elegantly, you</span>
-    <span class="hl slc">// can also take advantage of C++11 initializer lists and just</span>
+    <span class="hl slc">// can also take advantage of initializer lists and just</span>
     <span class="hl slc">// enclose your Exprs in braces:</span>
     Func multi_valued_2<span class="hl opt">;</span>
     <span class="hl kwd">multi_valued_2</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = {</span>x <span class="hl opt">+</span> y<span class="hl opt">,</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">)};</span>
@@ -483,7 +483,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// First we create a Buffer to take the argmax over.</span>
         Func input_func<span class="hl opt">;</span>
         <span class="hl kwd">input_func</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x<span class="hl opt">);</span>
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> input_func<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">100</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> input <span class="hl opt">=</span> input_func<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">100</span><span class="hl opt">});</span>
 
         <span class="hl slc">// Then we define a 2-valued Tuple which tracks the index of</span>
         <span class="hl slc">// the maximum value and the value itself.</span>
@@ -620,7 +620,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwd">escape</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> first_escape<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
 
         <span class="hl slc">// Realize the pipeline and print the result as ascii art.</span>
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> escape<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">61</span><span class="hl opt">,</span> <span class="hl num">25</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> escape<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">61</span><span class="hl opt">,</span> <span class="hl num">25</span><span class="hl opt">});</span>
         <span class="hl kwb">const char</span> <span class="hl opt">*</span>code <span class="hl opt">=</span> <span class="hl str">&quot; .:-~*={}&amp;%#&#64;&quot;</span><span class="hl opt">;</span>
         <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> result<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">();</span> y<span class="hl opt">++) {</span>
             <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> result<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">();</span> x<span class="hl opt">++) {</span>

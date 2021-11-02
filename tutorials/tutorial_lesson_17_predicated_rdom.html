@@ -340,11 +340,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// subsets of a reduction domain using predicates.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_17*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_17 -std=c++11</span>
+<span class="hl slc">// g++ lesson_17*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_17 -std=c++17</span>
 <span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_17</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_17*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_17 -std=c++11</span>
+<span class="hl slc">// g++ lesson_17*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_17 -std=c++17</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_17</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -396,7 +396,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// After defining the predicate, we then define the update.</span>
         <span class="hl kwd">circle</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x<span class="hl opt">,</span> r<span class="hl opt">.</span>y<span class="hl opt">) *=</span> <span class="hl num">2</span><span class="hl opt">;</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> circle<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">7</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> circle<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">7</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a visualization of</span>
         <span class="hl slc">// what this did.</span>
@@ -454,7 +454,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// Then define the update.</span>
         <span class="hl kwd">triangle</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x<span class="hl opt">,</span> r<span class="hl opt">.</span>y<span class="hl opt">) *=</span> <span class="hl num">2</span><span class="hl opt">;</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> triangle<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">,</span> <span class="hl num">10</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> triangle<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">10</span><span class="hl opt">,</span> <span class="hl num">10</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a</span>
         <span class="hl slc">// visualization of what this did.</span>
@@ -512,7 +512,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         r2<span class="hl opt">.</span><span class="hl kwd">where</span><span class="hl opt">(</span><span class="hl kwd">f</span><span class="hl opt">(</span>r2<span class="hl opt">.</span>x<span class="hl opt">,</span> r2<span class="hl opt">.</span>y<span class="hl opt">) &lt;</span> <span class="hl num">1</span><span class="hl opt">);</span>
         <span class="hl kwd">g</span><span class="hl opt">(</span>r2<span class="hl opt">.</span>x<span class="hl opt">,</span> r2<span class="hl opt">.</span>y<span class="hl opt">) +=</span> <span class="hl num">17</span><span class="hl opt">;</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result_g <span class="hl opt">=</span> g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result_g <span class="hl opt">=</span> g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a</span>
         <span class="hl slc">// visualization of what this did.</span>

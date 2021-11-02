@@ -340,11 +340,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// them.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_02*.cpp -g -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -o lesson_02 -std=c++11</span>
+<span class="hl slc">// g++ lesson_02*.cpp -g -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -o lesson_02 -std=c++17</span>
 <span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_02</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_02*.cpp -g -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -o lesson_02 -std=c++11</span>
+<span class="hl slc">// g++ lesson_02*.cpp -g -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -o lesson_02 -std=c++17</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_02</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -430,7 +430,7 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl slc">// error at runtime telling us we&apos;re trying to read out of bounds</span>
     <span class="hl slc">// on the input image.</span>
     <span class="hl kwc">Halide</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span>
-        brighter<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">());</span>
+        brighter<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">()});</span>
 
     <span class="hl slc">// Save the output for inspection. It should look like a bright parrot.</span>
     <span class="hl kwd">save_image</span><span class="hl opt">(</span>output<span class="hl opt">,</span> <span class="hl str">&quot;brighter.png&quot;</span><span class="hl opt">);</span>
