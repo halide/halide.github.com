@@ -70,6 +70,7 @@ var _expr_8h =
       [ "Stack", "_expr_8h.html#af28f02315017283b26196866c92d4da9a2187e1021a911b3807cc1bea2eb1a9ca", null ],
       [ "Register", "_expr_8h.html#af28f02315017283b26196866c92d4da9a0ba7583639a274c434bbe6ef797115a4", null ],
       [ "GPUShared", "_expr_8h.html#af28f02315017283b26196866c92d4da9ae70f90d745f5615e5bccbf337fcf74b7", null ],
+      [ "GPUTexture", "_expr_8h.html#af28f02315017283b26196866c92d4da9adca9ac9e90136a545f57ebe550531dbb", null ],
       [ "LockedCache", "_expr_8h.html#af28f02315017283b26196866c92d4da9a54ef2e772f864e79d6ac27325edd9f0e", null ],
       [ "VTCM", "_expr_8h.html#af28f02315017283b26196866c92d4da9a4838ea37d7bdc9f7edf4a6185f0496e2", null ]
     ] ],

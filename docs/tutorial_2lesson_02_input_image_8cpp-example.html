@@ -91,11 +91,11 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_02_input_image_8cpp-e
 <div class="line"><span class="comment">// them.</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// On linux, you can compile and run it like so:</span></div>
-<div class="line"><span class="comment">// g++ lesson_02*.cpp -g -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -o lesson_02 -std=c++11</span></div>
+<div class="line"><span class="comment">// g++ lesson_02*.cpp -g -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -o lesson_02 -std=c++17</span></div>
 <div class="line"><span class="comment">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_02</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// On os x:</span></div>
-<div class="line"><span class="comment">// g++ lesson_02*.cpp -g -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -o lesson_02 -std=c++11</span></div>
+<div class="line"><span class="comment">// g++ lesson_02*.cpp -g -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -o lesson_02 -std=c++17</span></div>
 <div class="line"><span class="comment">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_02</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// If you have the entire Halide source tree, you can also build it by</span></div>
@@ -179,7 +179,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_02_input_image_8cpp-e
 <div class="line">    <span class="comment">// error at runtime telling us we&#39;re trying to read out of bounds</span></div>
 <div class="line">    <span class="comment">// on the input image.</span></div>
 <div class="line">    <a class="code" href="class_halide_1_1_buffer.html">Halide::Buffer&lt;uint8_t&gt;</a> output =</div>
-<div class="line">        brighter.<a name="a5"></a><a class="code" href="class_halide_1_1_func.html#aa78a6b0077862657b57a31af0d1e5f83">realize</a>(input.width(), input.height(), input.channels());</div>
+<div class="line">        brighter.<a name="a5"></a><a class="code" href="class_halide_1_1_func.html#a8ab12935949cc586b9c0a731551e8175">realize</a>({input.width(), input.height(), input.channels()});</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Save the output for inspection. It should look like a bright parrot.</span></div>
 <div class="line">    save_image(output, <span class="stringliteral">&quot;brighter.png&quot;</span>);</div>
@@ -191,11 +191,11 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_02_input_image_8cpp-e
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_halide_1_1_func_html_aa78a6b0077862657b57a31af0d1e5f83"><div class="ttname"><a href="class_halide_1_1_func.html#aa78a6b0077862657b57a31af0d1e5f83">Halide::Func::realize</a></div><div class="ttdeci">Realization realize(std::vector&lt; int32_t &gt; sizes, const Target &amp;target=Target(), const ParamMap &amp;param_map=ParamMap::empty_map())</div><div class="ttdoc">Evaluate this function over some rectangular domain and return the resulting buffer or buffers.</div></div>
 <div class="ttc" id="aclass_halide_1_1_var_html"><div class="ttname"><a href="class_halide_1_1_var.html">Halide::Var</a></div><div class="ttdoc">A Halide variable, to be used when defining functions.</div><div class="ttdef"><b>Definition:</b> <a href="_var_8h_source.html#l00019">Var.h:19</a></div></div>
-<div class="ttc" id="anamespace_halide_html_a842daf6fbd0f87ec9ea8336cb0cdd23e"><div class="ttname"><a href="namespace_halide.html#a842daf6fbd0f87ec9ea8336cb0cdd23e">Halide::min</a></div><div class="ttdeci">Expr min(const FuncRef &amp;a, const FuncRef &amp;b)</div><div class="ttdoc">Explicit overloads of min and max for FuncRef.</div><div class="ttdef"><b>Definition:</b> <a href="_func_8h_source.html#l00577">Func.h:577</a></div></div>
+<div class="ttc" id="anamespace_halide_html_a842daf6fbd0f87ec9ea8336cb0cdd23e"><div class="ttname"><a href="namespace_halide.html#a842daf6fbd0f87ec9ea8336cb0cdd23e">Halide::min</a></div><div class="ttdeci">Expr min(const FuncRef &amp;a, const FuncRef &amp;b)</div><div class="ttdoc">Explicit overloads of min and max for FuncRef.</div><div class="ttdef"><b>Definition:</b> <a href="_func_8h_source.html#l00595">Func.h:595</a></div></div>
+<div class="ttc" id="aclass_halide_1_1_func_html_a8ab12935949cc586b9c0a731551e8175"><div class="ttname"><a href="class_halide_1_1_func.html#a8ab12935949cc586b9c0a731551e8175">Halide::Func::realize</a></div><div class="ttdeci">Realization realize(std::vector&lt; int32_t &gt; sizes={}, const Target &amp;target=Target(), const ParamMap &amp;param_map=ParamMap::empty_map())</div><div class="ttdoc">Evaluate this function over some rectangular domain and return the resulting buffer or buffers.</div></div>
 <div class="ttc" id="aclass_halide_1_1_buffer_html"><div class="ttname"><a href="class_halide_1_1_buffer.html">Halide::Buffer</a></div><div class="ttdoc">A Halide::Buffer is a named shared reference to a Halide::Runtime::Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="_argument_8h_source.html#l00016">Argument.h:16</a></div></div>
-<div class="ttc" id="aclass_halide_1_1_func_html"><div class="ttname"><a href="class_halide_1_1_func.html">Halide::Func</a></div><div class="ttdoc">A halide function.</div><div class="ttdef"><b>Definition:</b> <a href="_func_8h_source.html#l00667">Func.h:667</a></div></div>
+<div class="ttc" id="aclass_halide_1_1_func_html"><div class="ttname"><a href="class_halide_1_1_func.html">Halide::Func</a></div><div class="ttdoc">A halide function.</div><div class="ttdef"><b>Definition:</b> <a href="_func_8h_source.html#l00698">Func.h:698</a></div></div>
 <div class="ttc" id="astruct_halide_1_1_expr_html"><div class="ttname"><a href="struct_halide_1_1_expr.html">Halide::Expr</a></div><div class="ttdoc">A fragment of Halide syntax.</div><div class="ttdef"><b>Definition:</b> <a href="_expr_8h_source.html#l00256">Expr.h:256</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

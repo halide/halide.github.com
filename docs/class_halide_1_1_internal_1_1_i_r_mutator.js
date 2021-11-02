@@ -1,9 +1,11 @@
 var class_halide_1_1_internal_1_1_i_r_mutator =
 [
-    [ "IRMutator", "class_halide_1_1_internal_1_1_i_r_mutator.html#a297c297b81c564bd9545fe965cf4696e", null ],
-    [ "~IRMutator", "class_halide_1_1_internal_1_1_i_r_mutator.html#a5a1aba538839586ff145a176b992e9b9", null ],
+    [ "IRMutator", "class_halide_1_1_internal_1_1_i_r_mutator.html#a92bcc351e19b586040ce6037ce7ba4da", null ],
+    [ "~IRMutator", "class_halide_1_1_internal_1_1_i_r_mutator.html#aab97304970048477588a171f3c3d8743", null ],
     [ "mutate", "class_halide_1_1_internal_1_1_i_r_mutator.html#ae8a1c8198f337175132f06eafcaa553c", null ],
     [ "mutate", "class_halide_1_1_internal_1_1_i_r_mutator.html#a4e6ae843f10dcc4eea27e0c60ea8623f", null ],
+    [ "mutate_with_changes", "class_halide_1_1_internal_1_1_i_r_mutator.html#a63aab4a72d8715622f2d7b1a0b2c75f7", null ],
+    [ "mutate", "class_halide_1_1_internal_1_1_i_r_mutator.html#a3b61f73910968126dfc1a2cb04b74008", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_mutator.html#ae7bdee63e1fab3313ab3d04fcd587f75", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_mutator.html#aea4e965e11968cc7044fe166ba6149dc", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_mutator.html#af16f1f1ad1cbb7bad6e82d256488714e", null ],

@@ -25,7 +25,7 @@ var class_halide_1_1_stage =
     [ "tile", "class_halide_1_1_stage.html#a144dcc2a136f8710a63deb2ec450fcbd", null ],
     [ "tile", "class_halide_1_1_stage.html#ab999ec25e6ecff8b5baac901e8a2ef6e", null ],
     [ "reorder", "class_halide_1_1_stage.html#ab5287af97a9cc189e2c4b0ee902664df", null ],
-    [ "reorder", "class_halide_1_1_stage.html#a31d67821c732f02b49cc93b0a5d198e5", null ],
+    [ "reorder", "class_halide_1_1_stage.html#a17b2b511c53ee05f1dad5880e9705837", null ],
     [ "rename", "class_halide_1_1_stage.html#a0a14b3cbe0ee18c49ce592ed42c5ef42", null ],
     [ "specialize", "class_halide_1_1_stage.html#a7d8e12da382c2be8cfd512de0b5ddb36", null ],
     [ "specialize_fail", "class_halide_1_1_stage.html#ab99d85e44a0ea26a885216a6d722019c", null ],
@@ -49,8 +49,11 @@ var class_halide_1_1_stage =
     [ "allow_race_conditions", "class_halide_1_1_stage.html#a5809902416dd168d87cca1a14dd63e24", null ],
     [ "atomic", "class_halide_1_1_stage.html#ad3fe5da134e1b247c8006bf952fb4a4c", null ],
     [ "hexagon", "class_halide_1_1_stage.html#a27d8ad28c191b7f55aa3c42c4564cfff", null ],
-    [ "prefetch", "class_halide_1_1_stage.html#ad22728a4575073953687d1441518baa0", null ],
-    [ "prefetch", "class_halide_1_1_stage.html#af2fc4ea55a0bd81adda930bac5789264", null ],
-    [ "prefetch", "class_halide_1_1_stage.html#a6064d90f15d906fa1f7e0ac85fb80acc", null ],
+    [ "prefetch", "class_halide_1_1_stage.html#a40e91b6b159b561c5b2896549d8aaa0c", null ],
+    [ "prefetch", "class_halide_1_1_stage.html#af0c0cfff75d6895f1b9618145464589e", null ],
+    [ "prefetch", "class_halide_1_1_stage.html#a8021d343b30ec65b9c5896f233b24d35", null ],
+    [ "prefetch", "class_halide_1_1_stage.html#a1303eb7f8b8b289c6d168d004c3516a3", null ],
+    [ "prefetch", "class_halide_1_1_stage.html#a4dffe819d6833d91998f0cc6bff0bcf3", null ],
+    [ "prefetch", "class_halide_1_1_stage.html#a020c03608d3b84b3228e11e87cd8ffa5", null ],
     [ "source_location", "class_halide_1_1_stage.html#ad8b47b05cd107a0fbc4f1b2991771fb6", null ]
 ];

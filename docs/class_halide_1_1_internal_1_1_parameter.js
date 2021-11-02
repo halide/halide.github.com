@@ -39,7 +39,11 @@ var class_halide_1_1_internal_1_1_parameter =
     [ "max_value", "class_halide_1_1_internal_1_1_parameter.html#a803e5f6547a9b83ddb5f4a43acb444f7", null ],
     [ "set_estimate", "class_halide_1_1_internal_1_1_parameter.html#a1a5ab585b9cd05c0ab099f271db8119c", null ],
     [ "estimate", "class_halide_1_1_internal_1_1_parameter.html#aeb84415a2dfe9390e8a238b4f97e3ba9", null ],
+    [ "set_default_value", "class_halide_1_1_internal_1_1_parameter.html#a46f234b169b66845c498d48ba9334a5d", null ],
+    [ "default_value", "class_halide_1_1_internal_1_1_parameter.html#a04d293b7bb132ce4845411b53d28a492", null ],
     [ "operator<", "class_halide_1_1_internal_1_1_parameter.html#ae1d237ba67b9fcd0a336cf7a45738133", null ],
     [ "get_argument_estimates", "class_halide_1_1_internal_1_1_parameter.html#a0b511cd67afafdf6394f2aa03221273e", null ],
+    [ "store_in", "class_halide_1_1_internal_1_1_parameter.html#a7b04fbac2ed0d2db8471c93440437476", null ],
+    [ "memory_type", "class_halide_1_1_internal_1_1_parameter.html#a265e3de1101ec8637d8563df9023194c", null ],
     [ "contents", "class_halide_1_1_internal_1_1_parameter.html#a9e79dcde7b50473a17999c249060e590", null ]
 ];

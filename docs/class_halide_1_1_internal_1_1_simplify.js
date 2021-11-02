@@ -4,6 +4,7 @@ var class_halide_1_1_internal_1_1_simplify =
     [ "ScopedFact", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact" ],
     [ "VarInfo", "struct_halide_1_1_internal_1_1_simplify_1_1_var_info.html", "struct_halide_1_1_internal_1_1_simplify_1_1_var_info" ],
     [ "Simplify", "class_halide_1_1_internal_1_1_simplify.html#a3b39331da7133f300c9932b2b29a7438", null ],
+    [ "clear_bounds_info", "class_halide_1_1_internal_1_1_simplify.html#a2b816117c87aaea3cc2b7acade4fc862", null ],
     [ "mutate", "class_halide_1_1_internal_1_1_simplify.html#a076ca4bc24a6fa3e27764d7df22557cd", null ],
     [ "mutate", "class_halide_1_1_internal_1_1_simplify.html#a26d2d010aa0bad8a0f196191e7d0fd12", null ],
     [ "may_simplify", "class_halide_1_1_internal_1_1_simplify.html#a8d4bbb88811d391e6dea0b2669c555c1", null ],
@@ -67,7 +68,8 @@ var class_halide_1_1_internal_1_1_simplify =
     [ "visit", "class_halide_1_1_internal_1_1_simplify.html#abfa5e9e0423e9399dda9e28f4f0e787d", null ],
     [ "visit", "class_halide_1_1_internal_1_1_simplify.html#ac38c87abf77236544ba4dbe02ce1d8cd", null ],
     [ "visit", "class_halide_1_1_internal_1_1_simplify.html#a929de66381fd8bd6c1b852eccbab2cba", null ],
-    [ "remove_dead_lets", "class_halide_1_1_internal_1_1_simplify.html#a9698fcfaee024e6b291ba8087764c20b", null ],
+    [ "mutate_with_changes", "class_halide_1_1_internal_1_1_simplify.html#af12c70d116848a1ddf36ca9602fff7dd", null ],
+    [ "remove_dead_code", "class_halide_1_1_internal_1_1_simplify.html#a612a30e75d8961aa7d6b4691807e1659", null ],
     [ "no_float_simplify", "class_halide_1_1_internal_1_1_simplify.html#a076b8a047434f52605a48331d5b9ef24", null ],
     [ "var_info", "class_halide_1_1_internal_1_1_simplify.html#a72743ee44c9c45d12ba79741fde82230", null ],
     [ "bounds_and_alignment_info", "class_halide_1_1_internal_1_1_simplify.html#a0a77a4d469768a94d6f8b1028f7fd451", null ],
@@ -81,7 +83,10 @@ var class_halide_1_1_internal_1_1_simplify =
     [ "c1", "class_halide_1_1_internal_1_1_simplify.html#a45b43cb117aebc443c2518e6a47b9124", null ],
     [ "c2", "class_halide_1_1_internal_1_1_simplify.html#a6da16be80f77bdbd7ef709db42018af9", null ],
     [ "c3", "class_halide_1_1_internal_1_1_simplify.html#a653c125e18872c6bb97686abffb1503c", null ],
+    [ "c4", "class_halide_1_1_internal_1_1_simplify.html#ae7937c5c43c22421412b823e486caa7d", null ],
+    [ "c5", "class_halide_1_1_internal_1_1_simplify.html#a104eb1e0dae77e9c5e712c373976d98b", null ],
     [ "in_vector_loop", "class_halide_1_1_internal_1_1_simplify.html#a709d68e8f352ae4cdd6c734a1e61f75f", null ],
+    [ "in_unreachable", "class_halide_1_1_internal_1_1_simplify.html#a6010b853e7f3265f90c19971f32b78cf", null ],
     [ "truths", "class_halide_1_1_internal_1_1_simplify.html#aca382bdde92b9c7cae2b796e9695af66", null ],
     [ "falsehoods", "class_halide_1_1_internal_1_1_simplify.html#af76a6d83fca5da7c90e34462de810a4f", null ]
 ];

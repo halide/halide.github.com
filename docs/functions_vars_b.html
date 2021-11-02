@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('functions_vars_b.html',''); initResiza
 , <a class="el" href="struct_halide_1_1_internal_1_1_g_t.html#a67f1a7b6da182e1da2086f0d8899f16e">Halide::Internal::GT</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_bin_op.html#a78a94ab1ff46cfd383ec2a73d5ee9510">Halide::Internal::IRMatcher::BinOp&lt; Op, A, B &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_cmp_op.html#aa713d9ad4914560b9fb3ded64fd98c05">Halide::Internal::IRMatcher::CmpOp&lt; Op, A, B &gt;</a>
-, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_ramp_op.html#a1ef85fdf19b60e23b1afa7c8801224a6">Halide::Internal::IRMatcher::RampOp&lt; A, B, known_lanes &gt;</a>
+, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_ramp_op.html#a7c8d53821078dbf9dec079b298fb2161">Halide::Internal::IRMatcher::RampOp&lt; A, B, C &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_l_e.html#a1d3310901ee77604c95d631a9ec4f66f">Halide::Internal::LE</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_l_t.html#a8a8393840a0e5439686bbde55cd95e43">Halide::Internal::LT</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_max.html#aaedd2bb10d035b889abcd4820a41a89d">Halide::Internal::Max</a>
@@ -130,9 +130,6 @@ $(document).ready(function(){initNavTree('functions_vars_b.html',''); initResiza
 <li>BaseVertexLocation
 : <a class="el" href="struct_i_d3_d12_graphics_command_list_vtbl.html#a2ae524ecdeac0508e3ff104cae509829">ID3D12GraphicsCommandListVtbl</a>
 </li>
-<li>before_sleep
-: <a class="el" href="struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1parking__control.html#a09d6bad43a283b938c773781dbde746c">Halide::Runtime::Internal::Synchronization::parking_control</a>
-</li>
 <li>Begin
 : <a class="el" href="struct_d3_d12___r_a_n_g_e.html#af4c39a9b623ded4104011044408424e2">D3D12_RANGE</a>
 </li>
@@ -144,23 +141,28 @@ $(document).ready(function(){initNavTree('functions_vars_b.html',''); initResiza
 </li>
 <li>binds
 : <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_bin_op.html#a1e99bb0c81b5a4a2b502d3849e9da6ea">Halide::Internal::IRMatcher::BinOp&lt; Op, A, B &gt;</a>
-, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_broadcast_op.html#a7c0c6183deb147165050a30d80371ef8">Halide::Internal::IRMatcher::BroadcastOp&lt; A, known_lanes &gt;</a>
+, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_broadcast_op.html#ab7fae7e595d78a1ef28bfc6e9f821718">Halide::Internal::IRMatcher::BroadcastOp&lt; A, B &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_can_prove.html#ac317ccc1438d303dc2207aa16025aa73">Halide::Internal::IRMatcher::CanProve&lt; A, Prover &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_cast_op.html#a96ba64a914297fd84302f42fc2c95ab8">Halide::Internal::IRMatcher::CastOp&lt; A &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_cmp_op.html#a91b2399f60e4f85909a5c17a648adce9">Halide::Internal::IRMatcher::CmpOp&lt; Op, A, B &gt;</a>
-, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_const.html#abaaaecaa301019c2e0f2341175f53c55">Halide::Internal::IRMatcher::Const</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_fold.html#a7f0711ce62c8f3a4b025e517e1c84f46">Halide::Internal::IRMatcher::Fold&lt; A &gt;</a>
+, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_int_literal.html#a1b76f0f71dca6e36708ad5208c9ed92b">Halide::Internal::IRMatcher::IntLiteral</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_intrin.html#a6d8e2673690636f8e084b3e433dbba95">Halide::Internal::IRMatcher::Intrin&lt; Args &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_const.html#ad95f07e032920da1ea97f4d6bd7e47ad">Halide::Internal::IRMatcher::IsConst&lt; A &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_float.html#aa9dbb515796c402b001c239b755d31fa">Halide::Internal::IRMatcher::IsFloat&lt; A &gt;</a>
+, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_int.html#a292010303360fcdbf3a0cce67c2292da">Halide::Internal::IRMatcher::IsInt&lt; A &gt;</a>
+, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_max_value.html#a695a7c8487d34270c94642d50089c22f">Halide::Internal::IRMatcher::IsMaxValue&lt; A &gt;</a>
+, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_min_value.html#af88ac9446d69a3df6391ab4eb9ef20c8">Halide::Internal::IRMatcher::IsMinValue&lt; A &gt;</a>
+, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_scalar.html#aed541a5172ad5a3c8657b11ef1870773">Halide::Internal::IRMatcher::IsScalar&lt; A &gt;</a>
+, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_u_int.html#a902ad8d2af40e192becfc1905b74f330">Halide::Internal::IRMatcher::IsUInt&lt; A &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_negate_op.html#a3fb24ad69de2d1f8f9775273f7cdc617">Halide::Internal::IRMatcher::NegateOp&lt; A &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_not_op.html#a8ae4d52277d84bb621b0bcd84f3c9bd6">Halide::Internal::IRMatcher::NotOp&lt; A &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_overflow.html#a9c4d4d4b8626d477149ba6b1e41a2682">Halide::Internal::IRMatcher::Overflow</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_overflows.html#a7b606304a33ea7509e29ad61c9e2ce21">Halide::Internal::IRMatcher::Overflows&lt; A &gt;</a>
-, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_ramp_op.html#a615c157feeb8a400c85958a2fe95e747">Halide::Internal::IRMatcher::RampOp&lt; A, B, known_lanes &gt;</a>
+, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_ramp_op.html#ab8b432ebca4d43b0fdcebeccb16ac14d">Halide::Internal::IRMatcher::RampOp&lt; A, B, C &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_select_op.html#a5a4fd61e498b98e54db9518b457a7d5f">Halide::Internal::IRMatcher::SelectOp&lt; C, T, F &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_specific_expr.html#a652d4b88333d95cc3e08c2658661effe">Halide::Internal::IRMatcher::SpecificExpr</a>
-, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_vector_reduce_op.html#a68b2cb8e7643f5d9a86d8d7241594274">Halide::Internal::IRMatcher::VectorReduceOp&lt; A, known_lanes, reduce_op &gt;</a>
+, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_vector_reduce_op.html#a333126bca162ab23da5ed8a056816c49">Halide::Internal::IRMatcher::VectorReduceOp&lt; A, B, reduce_op &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html#af66982640e8fbdce75d180b65c0c8a0e">Halide::Internal::IRMatcher::Wild&lt; i &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html#a0477ce3c72558e65625ec87b084ea78d">Halide::Internal::IRMatcher::WildConst&lt; i &gt;</a>
 , <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const_float.html#a71d1b682659af3ca614cb4291af7b3e9">Halide::Internal::IRMatcher::WildConstFloat&lt; i &gt;</a>
@@ -174,7 +176,9 @@ $(document).ready(function(){initNavTree('functions_vars_b.html',''); initResiza
 : <a class="el" href="structst_dma_wrapper___dma_transfer_setup.html#ab0dcb052fb8774036eae8c7f10df4b95">stDmaWrapper_DmaTransferSetup</a>
 </li>
 <li>bits
-: <a class="el" href="struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32">Halide::Target</a>
+: <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_int.html#a5dbd37dd501fee71a3ae538118c670b4">Halide::Internal::IRMatcher::IsInt&lt; A &gt;</a>
+, <a class="el" href="struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_u_int.html#a1634222f1bea7fe12e2a3055e07c2606">Halide::Internal::IRMatcher::IsUInt&lt; A &gt;</a>
+, <a class="el" href="struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32">Halide::Target</a>
 , <a class="el" href="structhalide__type__t.html#a921a62f5e68c18e4a33bcb4fc7185437">halide_type_t</a>
 </li>
 <li>BlendEnable
@@ -245,7 +249,7 @@ $(document).ready(function(){initNavTree('functions_vars_b.html',''); initResiza
 : <a class="el" href="struct_halide_1_1_internal_1_1_pipeline_features.html#a19db1bb22a687587a7f9bcc76530cd3a">Halide::Internal::PipelineFeatures</a>
 </li>
 <li>buckets
-: <a class="el" href="struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1hash__table.html#ae6e05b4e756d17ea93ca2d71b341bdf0">Halide::Runtime::Internal::Synchronization::hash_table</a>
+: <a class="el" href="struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1hash__table.html#af3ee18595026715d1e3d53b3699abad7">Halide::Runtime::Internal::Synchronization::hash_table</a>
 </li>
 <li>buf
 : <a class="el" href="struct_halide_1_1_internal_1_1_buffer_contents.html#ab54b207749c45fe9e388e34ee0a5eee2">Halide::Internal::BufferContents</a>
@@ -360,9 +364,6 @@ $(document).ready(function(){initNavTree('functions_vars_b.html',''); initResiza
 </li>
 <li>builder
 : <a class="el" href="class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a792c1fc68368be36417d217b4f6165a2">Halide::Internal::CodeGen_LLVM</a>
-</li>
-<li>builtin
-: <a class="el" href="class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html#a9f00e824f2d1f4b1c97195685a788127">Halide::Internal::CodeGen_GLSLBase</a>
 </li>
 <li>busbwUsagePercentage
 : <a class="el" href="structhalide__hexagon__power__t.html#aada0e163da986c151a3caaed5c028b67">halide_hexagon_power_t</a>

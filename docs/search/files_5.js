@@ -1,13 +1,15 @@
 var searchData=
 [
-  ['fastintegerdivide_2eh_7093',['FastIntegerDivide.h',['../_fast_integer_divide_8h.html',1,'']]],
-  ['featurization_2eh_7094',['Featurization.h',['../_featurization_8h.html',1,'']]],
-  ['findcalls_2eh_7095',['FindCalls.h',['../_find_calls_8h.html',1,'']]],
-  ['float16_2eh_7096',['Float16.h',['../_float16_8h.html',1,'']]],
-  ['func_2eh_7097',['Func.h',['../_func_8h.html',1,'']]],
-  ['function_2eh_7098',['Function.h',['../_function_8h.html',1,'']]],
-  ['functiondag_2eh_7099',['FunctionDAG.h',['../_function_d_a_g_8h.html',1,'']]],
-  ['functionptr_2eh_7100',['FunctionPtr.h',['../_function_ptr_8h.html',1,'']]],
-  ['fusegputhreadloops_2eh_7101',['FuseGPUThreadLoops.h',['../_fuse_g_p_u_thread_loops_8h.html',1,'']]],
-  ['fuzzfloatstores_2eh_7102',['FuzzFloatStores.h',['../_fuzz_float_stores_8h.html',1,'']]]
+  ['fastintegerdivide_2eh_7118',['FastIntegerDivide.h',['../_fast_integer_divide_8h.html',1,'']]],
+  ['featurization_2eh_7119',['Featurization.h',['../_featurization_8h.html',1,'']]],
+  ['findcalls_2eh_7120',['FindCalls.h',['../_find_calls_8h.html',1,'']]],
+  ['findintrinsics_2eh_7121',['FindIntrinsics.h',['../_find_intrinsics_8h.html',1,'']]],
+  ['flattennestedramps_2eh_7122',['FlattenNestedRamps.h',['../_flatten_nested_ramps_8h.html',1,'']]],
+  ['float16_2eh_7123',['Float16.h',['../_float16_8h.html',1,'']]],
+  ['func_2eh_7124',['Func.h',['../_func_8h.html',1,'']]],
+  ['function_2eh_7125',['Function.h',['../_function_8h.html',1,'']]],
+  ['functiondag_2eh_7126',['FunctionDAG.h',['../_function_d_a_g_8h.html',1,'']]],
+  ['functionptr_2eh_7127',['FunctionPtr.h',['../_function_ptr_8h.html',1,'']]],
+  ['fusegputhreadloops_2eh_7128',['FuseGPUThreadLoops.h',['../_fuse_g_p_u_thread_loops_8h.html',1,'']]],
+  ['fuzzfloatstores_2eh_7129',['FuzzFloatStores.h',['../_fuzz_float_stores_8h.html',1,'']]]
 ];

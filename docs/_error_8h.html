@@ -129,7 +129,7 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a32d1a8bfcbf2c4cec795364a206200f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_error_8h.html#a32d1a8bfcbf2c4cec795364a206200f6">_halide_internal_assertion</a>(condition,  flags)&#160;&#160;&#160;(condition) ? (void)0 : ::<a class="el" href="class_halide_1_1_internal_1_1_voidifier.html">Halide::Internal::Voidifier</a>() &amp; ::<a class="el" href="struct_halide_1_1_internal_1_1_error_report.html">Halide::Internal::ErrorReport</a>(__FILE__, __LINE__, #condition, flags).ref()</td></tr>
+<tr class="memitem:a32d1a8bfcbf2c4cec795364a206200f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_error_8h.html#a32d1a8bfcbf2c4cec795364a206200f6">_halide_internal_assertion</a>(condition,  flags)</td></tr>
 <tr class="memdesc:a32d1a8bfcbf2c4cec795364a206200f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">_halide_internal_assertion is used to implement our assertion macros in such a way that the messages output for the assertion are only evaluated if the assertion's value is false.  <a href="_error_8h.html#a32d1a8bfcbf2c4cec795364a206200f6">More...</a><br /></td></tr>
 <tr class="separator:a32d1a8bfcbf2c4cec795364a206200f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a462c17e7e8b2753700f2d369b361cb68"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_error_8h.html#a462c17e7e8b2753700f2d369b361cb68">internal_error</a>&#160;&#160;&#160;<a class="el" href="struct_halide_1_1_internal_1_1_error_report.html">Halide::Internal::ErrorReport</a>(__FILE__, __LINE__, nullptr, 0)</td></tr>
@@ -178,17 +178,19 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;(condition) ? (void)0 : ::<a class="el" href="class_halide_1_1_internal_1_1_voidifier.html">Halide::Internal::Voidifier</a>() &amp; ::<a class="el" href="struct_halide_1_1_internal_1_1_error_report.html">Halide::Internal::ErrorReport</a>(__FILE__, __LINE__, #condition, flags).ref()</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Value:</b><div class="fragment"><div class="line">    <span class="comment">/* NOLINTNEXTLINE(bugprone-macro-parentheses) */</span> \</div>
+<div class="line">    (condition) ? (<span class="keywordtype">void</span>)0 : <a class="code" href="class_halide_1_1_internal_1_1_voidifier.html">::Halide::Internal::Voidifier</a>() &amp; <a class="code" href="struct_halide_1_1_internal_1_1_error_report.html">::Halide::Internal::ErrorReport</a>(__FILE__, __LINE__, #condition, flags).<a class="code" href="struct_halide_1_1_internal_1_1_error_report.html#ae4807dd91d9f16623f1c2d6c90302d90">ref</a>()</div>
+</div><!-- fragment -->
 <p>_halide_internal_assertion is used to implement our assertion macros in such a way that the messages output for the assertion are only evaluated if the assertion's value is false. </p>
 <p>Note that this macro intentionally has no parens internally; in actual use, the implicit grouping will end up being</p>
 <p>condition ? (void) : (Voidifier() &amp; (ErrorReport &lt;&lt; arg1 &lt;&lt; arg2 ... &lt;&lt; argN))</p>
 <p>This (regrettably) requires a macro to work, but has the highly desirable effect that all assertion parameters are totally skipped (not ever evaluated) when the assertion is true. </p>
 
-<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00130">130</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00126">126</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
 
 </div>
 </div>
@@ -204,7 +206,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00133">133</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00130">130</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
 
 </div>
 </div>
@@ -220,7 +222,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00134">134</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00131">131</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
 
 </div>
 </div>
@@ -236,7 +238,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00135">135</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00132">132</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
 
 </div>
 </div>
@@ -252,7 +254,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00136">136</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00133">133</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
 
 </div>
 </div>
@@ -272,7 +274,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00138">138</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00135">135</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
 
 </div>
 </div>
@@ -292,7 +294,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00139">139</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00136">136</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
 
 </div>
 </div>
@@ -312,12 +314,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00145">145</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_error_8h_source.html#l00142">142</a> of file <a class="el" href="_error_8h_source.html">Error.h</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclass_halide_1_1_internal_1_1_voidifier_html"><div class="ttname"><a href="class_halide_1_1_internal_1_1_voidifier.html">Halide::Internal::Voidifier</a></div><div class="ttdef"><b>Definition:</b> <a href="_error_8h_source.html#l00103">Error.h:103</a></div></div>
+<div class="ttc" id="astruct_halide_1_1_internal_1_1_error_report_html_ae4807dd91d9f16623f1c2d6c90302d90"><div class="ttname"><a href="struct_halide_1_1_internal_1_1_error_report.html#ae4807dd91d9f16623f1c2d6c90302d90">Halide::Internal::ErrorReport::ref</a></div><div class="ttdeci">HALIDE_ALWAYS_INLINE ErrorReport &amp; ref()</div><div class="ttdef"><b>Definition:</b> <a href="_error_8h_source.html#l00078">Error.h:78</a></div></div>
+<div class="ttc" id="astruct_halide_1_1_internal_1_1_error_report_html"><div class="ttname"><a href="struct_halide_1_1_internal_1_1_error_report.html">Halide::Internal::ErrorReport</a></div><div class="ttdef"><b>Definition:</b> <a href="_error_8h_source.html#l00065">Error.h:65</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

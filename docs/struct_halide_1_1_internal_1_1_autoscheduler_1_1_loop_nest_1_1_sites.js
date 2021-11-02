@@ -5,5 +5,6 @@ var struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_sites =
     [ "produce", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_sites.html#a1969e9990027de0730b4480eb543f970", null ],
     [ "innermost", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_sites.html#a2f34572b1060b78930651ef8607d08ad", null ],
     [ "task", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_sites.html#ac77d91075dfdce5fb6be8e5edad37850", null ],
-    [ "inlined", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_sites.html#ac06d6ee01c48f90f41deffa97c418b01", null ]
+    [ "inlined", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_sites.html#ac06d6ee01c48f90f41deffa97c418b01", null ],
+    [ "hash_of_producers_stored_at_root", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_sites.html#a318b1a494c0dca922f240b0ac2b2f951", null ]
 ];

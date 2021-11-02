@@ -91,11 +91,11 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line"><span class="comment">// values.</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// On linux, you can compile and run it like so:</span></div>
-<div class="line"><span class="comment">// g++ lesson_13*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_13 -std=c++11</span></div>
+<div class="line"><span class="comment">// g++ lesson_13*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_13 -std=c++17</span></div>
 <div class="line"><span class="comment">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_13</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// On os x:</span></div>
-<div class="line"><span class="comment">// g++ lesson_13*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_13 -std=c++11</span></div>
+<div class="line"><span class="comment">// g++ lesson_13*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_13 -std=c++17</span></div>
 <div class="line"><span class="comment">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_13</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// If you have the entire Halide source tree, you can also build it by</span></div>
@@ -178,7 +178,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">    <span class="comment">// Buffers. We call this a Realization. It&#39;s equivalent to a</span></div>
 <div class="line">    <span class="comment">// std::vector of Buffer objects:</span></div>
 <div class="line">    {</div>
-<div class="line">        <a name="_a6"></a><a class="code" href="class_halide_1_1_realization.html">Realization</a> r = multi_valued.<a name="a7"></a><a class="code" href="class_halide_1_1_func.html#aa78a6b0077862657b57a31af0d1e5f83">realize</a>(80, 60);</div>
+<div class="line">        <a name="_a6"></a><a class="code" href="class_halide_1_1_realization.html">Realization</a> r = multi_valued.<a name="a7"></a><a class="code" href="class_halide_1_1_func.html#a8ab12935949cc586b9c0a731551e8175">realize</a>({80, 60});</div>
 <div class="line">        assert(r.<a name="a8"></a><a class="code" href="class_halide_1_1_realization.html#a4914ec7c3cfa9063ab4f4497e098f4e2">size</a>() == 2);</div>
 <div class="line">        <a name="_a9"></a><a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;int&gt;</a> im0 = r[0];</div>
 <div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;float&gt;</a> im1 = r[1];</div>
@@ -208,7 +208,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line"> </div>
 <div class="line">    <span class="comment">// You can construct a Tuple by passing multiple Exprs to the</span></div>
 <div class="line">    <span class="comment">// Tuple constructor as we did above. Perhaps more elegantly, you</span></div>
-<div class="line">    <span class="comment">// can also take advantage of C++11 initializer lists and just</span></div>
+<div class="line">    <span class="comment">// can also take advantage of initializer lists and just</span></div>
 <div class="line">    <span class="comment">// enclose your Exprs in braces:</span></div>
 <div class="line">    <a class="code" href="class_halide_1_1_func.html">Func</a> multi_valued_2;</div>
 <div class="line">    multi_valued_2(x, y) = {x + y, <a class="code" href="namespace_halide.html#a5e1fca22f79625765096133e39caee5e">sin</a>(x * y)};</div>
@@ -234,7 +234,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">        <span class="comment">// First we create a Buffer to take the argmax over.</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_func.html">Func</a> input_func;</div>
 <div class="line">        input_func(x) = <a class="code" href="namespace_halide.html#a5e1fca22f79625765096133e39caee5e">sin</a>(x);</div>
-<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;float&gt;</a> input = input_func.<a class="code" href="class_halide_1_1_func.html#aa78a6b0077862657b57a31af0d1e5f83">realize</a>(100);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;float&gt;</a> input = input_func.<a class="code" href="class_halide_1_1_func.html#a8ab12935949cc586b9c0a731551e8175">realize</a>({100});</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Then we define a 2-valued Tuple which tracks the index of</span></div>
 <div class="line">        <span class="comment">// the maximum value and the value itself.</span></div>
@@ -270,7 +270,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">        <span class="comment">// Let&#39;s verify that the Halide and C++ found the same maximum</span></div>
 <div class="line">        <span class="comment">// value and index.</span></div>
 <div class="line">        {</div>
-<div class="line">            <a class="code" href="class_halide_1_1_realization.html">Realization</a> r = arg_max.<a class="code" href="class_halide_1_1_func.html#aa78a6b0077862657b57a31af0d1e5f83">realize</a>();</div>
+<div class="line">            <a class="code" href="class_halide_1_1_realization.html">Realization</a> r = arg_max.<a class="code" href="class_halide_1_1_func.html#a8ab12935949cc586b9c0a731551e8175">realize</a>();</div>
 <div class="line">            <a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;int&gt;</a> r0 = r[0];</div>
 <div class="line">            <a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;float&gt;</a> r1 = r[1];</div>
 <div class="line">            assert(arg_max_0 == r0(0));</div>
@@ -371,7 +371,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">        escape(x, y) = first_escape[0];</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Realize the pipeline and print the result as ascii art.</span></div>
-<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;int&gt;</a> result = escape.<a class="code" href="class_halide_1_1_func.html#aa78a6b0077862657b57a31af0d1e5f83">realize</a>(61, 25);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;int&gt;</a> result = escape.<a class="code" href="class_halide_1_1_func.html#a8ab12935949cc586b9c0a731551e8175">realize</a>({61, 25});</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">char</span> *code = <span class="stringliteral">&quot; .:-~*={}&amp;%#@&quot;</span>;</div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = 0; y &lt; result.height(); y++) {</div>
 <div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = 0; x &lt; result.width(); x++) {</div>
@@ -387,24 +387,24 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_13_tuples_8cpp-exampl
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_halide_1_1_func_html_aa78a6b0077862657b57a31af0d1e5f83"><div class="ttname"><a href="class_halide_1_1_func.html#aa78a6b0077862657b57a31af0d1e5f83">Halide::Func::realize</a></div><div class="ttdeci">Realization realize(std::vector&lt; int32_t &gt; sizes, const Target &amp;target=Target(), const ParamMap &amp;param_map=ParamMap::empty_map())</div><div class="ttdoc">Evaluate this function over some rectangular domain and return the resulting buffer or buffers.</div></div>
 <div class="ttc" id="aclass_halide_1_1_var_html"><div class="ttname"><a href="class_halide_1_1_var.html">Halide::Var</a></div><div class="ttdoc">A Halide variable, to be used when defining functions.</div><div class="ttdef"><b>Definition:</b> <a href="_var_8h_source.html#l00019">Var.h:19</a></div></div>
 <div class="ttc" id="anamespace_halide_html_a5e1fca22f79625765096133e39caee5e"><div class="ttname"><a href="namespace_halide.html#a5e1fca22f79625765096133e39caee5e">Halide::sin</a></div><div class="ttdeci">Expr sin(Expr x)</div><div class="ttdoc">Return the sine of a floating-point expression.</div></div>
-<div class="ttc" id="anamespace_halide_html_a24aabc3f5a598cb3c662e05b01243ebb"><div class="ttname"><a href="namespace_halide.html#a24aabc3f5a598cb3c662e05b01243ebb">Halide::operator*</a></div><div class="ttdeci">auto operator*(const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b) -&gt; decltype(a *(T) b)</div><div class="ttdoc">Multiplication between GeneratorParam&lt;T&gt; and any type that supports operator* with T.</div><div class="ttdef"><b>Definition:</b> <a href="_generator_8h_source.html#l01042">Generator.h:1042</a></div></div>
+<div class="ttc" id="aclass_halide_1_1_func_html_a8ab12935949cc586b9c0a731551e8175"><div class="ttname"><a href="class_halide_1_1_func.html#a8ab12935949cc586b9c0a731551e8175">Halide::Func::realize</a></div><div class="ttdeci">Realization realize(std::vector&lt; int32_t &gt; sizes={}, const Target &amp;target=Target(), const ParamMap &amp;param_map=ParamMap::empty_map())</div><div class="ttdoc">Evaluate this function over some rectangular domain and return the resulting buffer or buffers.</div></div>
+<div class="ttc" id="anamespace_halide_html_a24aabc3f5a598cb3c662e05b01243ebb"><div class="ttname"><a href="namespace_halide.html#a24aabc3f5a598cb3c662e05b01243ebb">Halide::operator*</a></div><div class="ttdeci">auto operator*(const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b) -&gt; decltype(a *(T) b)</div><div class="ttdoc">Multiplication between GeneratorParam&lt;T&gt; and any type that supports operator* with T.</div><div class="ttdef"><b>Definition:</b> <a href="_generator_8h_source.html#l01051">Generator.h:1051</a></div></div>
 <div class="ttc" id="anamespace_halide_html"><div class="ttname"><a href="namespace_halide.html">Halide</a></div><div class="ttdoc">This file defines the class FunctionDAG, which is our representation of a Halide pipeline,...</div><div class="ttdef"><b>Definition:</b> <a href="_add_atomic_mutex_8h_source.html#l00021">AddAtomicMutex.h:21</a></div></div>
 <div class="ttc" id="anamespace_halide_html_a9d6371892ae38e7eb681fd3f23945b06"><div class="ttname"><a href="namespace_halide.html#a9d6371892ae38e7eb681fd3f23945b06">Halide::select</a></div><div class="ttdeci">Expr select(Expr condition, Expr true_value, Expr false_value)</div><div class="ttdoc">Returns an expression similar to the ternary operator in C, except that it always evaluates all argum...</div></div>
 <div class="ttc" id="anamespace_halide_html_a7e1ef33189b99c7b8bc73b5e10121834"><div class="ttname"><a href="namespace_halide.html#a7e1ef33189b99c7b8bc73b5e10121834">Halide::cos</a></div><div class="ttdeci">Expr cos(Expr x)</div><div class="ttdoc">Return the cosine of a floating-point expression.</div></div>
 <div class="ttc" id="aclass_halide_1_1_buffer_html"><div class="ttname"><a href="class_halide_1_1_buffer.html">Halide::Buffer</a></div><div class="ttdoc">A Halide::Buffer is a named shared reference to a Halide::Runtime::Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="_argument_8h_source.html#l00016">Argument.h:16</a></div></div>
 <div class="ttc" id="anamespace_halide_html_a1f171f43c7cce3a17b60ac9127c63b12"><div class="ttname"><a href="namespace_halide.html#a1f171f43c7cce3a17b60ac9127c63b12">Halide::argmin</a></div><div class="ttdeci">Tuple argmin(Expr, const std::string &amp;s=&quot;argmin&quot;)</div></div>
-<div class="ttc" id="anamespace_halide_html_a7ffe416c9264a301f4dbee5088cd4212"><div class="ttname"><a href="namespace_halide.html#a7ffe416c9264a301f4dbee5088cd4212">Halide::operator+</a></div><div class="ttdeci">auto operator+(const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b) -&gt; decltype(a+(T) b)</div><div class="ttdoc">Addition between GeneratorParam&lt;T&gt; and any type that supports operator+ with T.</div><div class="ttdef"><b>Definition:</b> <a href="_generator_8h_source.html#l01016">Generator.h:1016</a></div></div>
-<div class="ttc" id="aclass_halide_1_1_func_html"><div class="ttname"><a href="class_halide_1_1_func.html">Halide::Func</a></div><div class="ttdoc">A halide function.</div><div class="ttdef"><b>Definition:</b> <a href="_func_8h_source.html#l00667">Func.h:667</a></div></div>
-<div class="ttc" id="aclass_halide_1_1_r_dom_html"><div class="ttname"><a href="class_halide_1_1_r_dom.html">Halide::RDom</a></div><div class="ttdoc">A multi-dimensional domain over which to iterate.</div><div class="ttdef"><b>Definition:</b> <a href="_r_dom_8h_source.html#l00191">RDom.h:191</a></div></div>
+<div class="ttc" id="anamespace_halide_html_a7ffe416c9264a301f4dbee5088cd4212"><div class="ttname"><a href="namespace_halide.html#a7ffe416c9264a301f4dbee5088cd4212">Halide::operator+</a></div><div class="ttdeci">auto operator+(const Other &amp;a, const GeneratorParam&lt; T &gt; &amp;b) -&gt; decltype(a+(T) b)</div><div class="ttdoc">Addition between GeneratorParam&lt;T&gt; and any type that supports operator+ with T.</div><div class="ttdef"><b>Definition:</b> <a href="_generator_8h_source.html#l01025">Generator.h:1025</a></div></div>
+<div class="ttc" id="aclass_halide_1_1_func_html"><div class="ttname"><a href="class_halide_1_1_func.html">Halide::Func</a></div><div class="ttdoc">A halide function.</div><div class="ttdef"><b>Definition:</b> <a href="_func_8h_source.html#l00698">Func.h:698</a></div></div>
+<div class="ttc" id="aclass_halide_1_1_r_dom_html"><div class="ttname"><a href="class_halide_1_1_r_dom.html">Halide::RDom</a></div><div class="ttdoc">A multi-dimensional domain over which to iterate.</div><div class="ttdef"><b>Definition:</b> <a href="_r_dom_8h_source.html#l00193">RDom.h:193</a></div></div>
 <div class="ttc" id="aclass_halide_1_1_realization_html_a4914ec7c3cfa9063ab4f4497e098f4e2"><div class="ttname"><a href="class_halide_1_1_realization.html#a4914ec7c3cfa9063ab4f4497e098f4e2">Halide::Realization::size</a></div><div class="ttdeci">size_t size() const</div><div class="ttdoc">The number of images in the Realization.</div></div>
 <div class="ttc" id="astruct_halide_1_1_expr_html"><div class="ttname"><a href="struct_halide_1_1_expr.html">Halide::Expr</a></div><div class="ttdoc">A fragment of Halide syntax.</div><div class="ttdef"><b>Definition:</b> <a href="_expr_8h_source.html#l00256">Expr.h:256</a></div></div>
 <div class="ttc" id="aclass_halide_1_1_realization_html"><div class="ttname"><a href="class_halide_1_1_realization.html">Halide::Realization</a></div><div class="ttdoc">A Realization is a vector of references to existing Buffer objects.</div><div class="ttdef"><b>Definition:</b> <a href="_realization_8h_source.html#l00021">Realization.h:21</a></div></div>
-<div class="ttc" id="anamespace_halide_html_aea2c7f5fe6c79a49dcbb28951cf8405d"><div class="ttname"><a href="namespace_halide.html#aea2c7f5fe6c79a49dcbb28951cf8405d">Halide::max</a></div><div class="ttdeci">Expr max(const FuncRef &amp;a, const FuncRef &amp;b)</div><div class="ttdef"><b>Definition:</b> <a href="_func_8h_source.html#l00580">Func.h:580</a></div></div>
+<div class="ttc" id="anamespace_halide_html_aea2c7f5fe6c79a49dcbb28951cf8405d"><div class="ttname"><a href="namespace_halide.html#aea2c7f5fe6c79a49dcbb28951cf8405d">Halide::max</a></div><div class="ttdeci">Expr max(const FuncRef &amp;a, const FuncRef &amp;b)</div><div class="ttdef"><b>Definition:</b> <a href="_func_8h_source.html#l00598">Func.h:598</a></div></div>
 <div class="ttc" id="aclass_halide_1_1_tuple_html"><div class="ttname"><a href="class_halide_1_1_tuple.html">Halide::Tuple</a></div><div class="ttdoc">Create a small array of Exprs for defining and calling functions with multiple outputs.</div><div class="ttdef"><b>Definition:</b> <a href="_tuple_8h_source.html#l00018">Tuple.h:18</a></div></div>
-<div class="ttc" id="aclass_halide_1_1_func_ref_html"><div class="ttname"><a href="class_halide_1_1_func_ref.html">Halide::FuncRef</a></div><div class="ttdoc">A fragment of front-end syntax of the form f(x, y, z), where x, y, z are Vars or Exprs.</div><div class="ttdef"><b>Definition:</b> <a href="_func_8h_source.html#l00471">Func.h:471</a></div></div>
+<div class="ttc" id="aclass_halide_1_1_func_ref_html"><div class="ttname"><a href="class_halide_1_1_func_ref.html">Halide::FuncRef</a></div><div class="ttdoc">A fragment of front-end syntax of the form f(x, y, z), where x, y, z are Vars or Exprs.</div><div class="ttdef"><b>Definition:</b> <a href="_func_8h_source.html#l00489">Func.h:489</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

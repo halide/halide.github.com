@@ -1,11 +1,13 @@
 var class_halide_1_1_internal_1_1_func_schedule =
 [
     [ "FuncSchedule", "class_halide_1_1_internal_1_1_func_schedule.html#a9f88742e52bfaba46d5db79bbc7fed39", null ],
-    [ "FuncSchedule", "class_halide_1_1_internal_1_1_func_schedule.html#a2434fd9500e3a99c89b71675a1bcc39d", null ],
+    [ "FuncSchedule", "class_halide_1_1_internal_1_1_func_schedule.html#a960da7a642b1a48e44a83aca8d653394", null ],
     [ "FuncSchedule", "class_halide_1_1_internal_1_1_func_schedule.html#a62a69c8563c530d12051bb78b438c03f", null ],
     [ "deep_copy", "class_halide_1_1_internal_1_1_func_schedule.html#ac0815cb93456a583eba4e14b096595fe", null ],
     [ "memoized", "class_halide_1_1_internal_1_1_func_schedule.html#af32d9467a99864404333c5577da450a0", null ],
     [ "memoized", "class_halide_1_1_internal_1_1_func_schedule.html#ac697b4f8d1cc64d8c56a426187c58e71", null ],
+    [ "memoize_eviction_key", "class_halide_1_1_internal_1_1_func_schedule.html#a9e8063cc2e0c40ed0f340ad25fefc316", null ],
+    [ "memoize_eviction_key", "class_halide_1_1_internal_1_1_func_schedule.html#a2fc8d895860be23b29d1aa0ad7354437", null ],
     [ "async", "class_halide_1_1_internal_1_1_func_schedule.html#aa1cb31e814f686909d3a43d84e04ee4f", null ],
     [ "async", "class_halide_1_1_internal_1_1_func_schedule.html#a83b1b7b08ded60857e501cf90195168a", null ],
     [ "storage_dims", "class_halide_1_1_internal_1_1_func_schedule.html#a34aca78345f8f8ab26c9e4b7f48c8f6a", null ],

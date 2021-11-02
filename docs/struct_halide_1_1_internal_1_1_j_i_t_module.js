@@ -15,6 +15,7 @@ var struct_halide_1_1_internal_1_1_j_i_t_module =
     [ "find_symbol_by_name", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a8cb64148e951758de32cc8652ab090cc", null ],
     [ "compile_module", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a268ddc29054c61e4302d603bf531c114", null ],
     [ "memoization_cache_set_size", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a19cabec4a83bbb36a49219b14e52d1f2", null ],
+    [ "memoization_cache_evict", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a0b05adec9db5b0b33b7e6434c349ba87", null ],
     [ "reuse_device_allocations", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a7bda013e7d2e0394e8f3d35f287564ac", null ],
     [ "compiled", "struct_halide_1_1_internal_1_1_j_i_t_module.html#aa2d0b8556e7f72dd95a7c5479ecdc03f", null ],
     [ "jit_module", "struct_halide_1_1_internal_1_1_j_i_t_module.html#afb6a6e83a43ad4884830878b4b3d60f1", null ]

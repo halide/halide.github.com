@@ -94,29 +94,30 @@ $(document).ready(function(){initNavTree('_vectorize_loops_8h_source.html',''); 
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_expr_8h.html">Expr.h</a>&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_function_8h.html">Function.h</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_target_8h.html">Target.h</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_halide.html">Halide</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_halide.html#a172db5c21e58bfed0793b7152657623caafbf0897a5a83fdd873dfb032ec695d3">Internal</a> {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/** Take a statement with for loops marked for vectorization, and turn</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * them into single statements that operate on vectors. The loops in</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * question must have constant extent.</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;Stmt <a class="code" href="namespace_halide_1_1_internal.html#af67bb97b08ab82cba4e520c1f48a0821">vectorize_loops</a>(<span class="keyword">const</span> Stmt &amp;s, <span class="keyword">const</span> std::map&lt;std::string, Function&gt; &amp;env, <span class="keyword">const</span> Target &amp;t);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}  <span class="comment">// namespace Internal</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}  <span class="comment">// namespace Halide</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_halide.html">Halide</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">struct </span>Target;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_halide.html#a172db5c21e58bfed0793b7152657623caafbf0897a5a83fdd873dfb032ec695d3">Internal</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/** Take a statement with for loops marked for vectorization, and turn</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * them into single statements that operate on vectors. The loops in</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> * question must have constant extent.</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;Stmt <a class="code" href="namespace_halide_1_1_internal.html#a44132e8c163a34a201c29a8e525038a4">vectorize_loops</a>(<span class="keyword">const</span> Stmt &amp;s, <span class="keyword">const</span> std::map&lt;std::string, Function&gt; &amp;env);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}  <span class="comment">// namespace Internal</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}  <span class="comment">// namespace Halide</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="a_target_8h_html"><div class="ttname"><a href="_target_8h.html">Target.h</a></div></div>
+<div class="ttc" id="anamespace_halide_1_1_internal_html_a44132e8c163a34a201c29a8e525038a4"><div class="ttname"><a href="namespace_halide_1_1_internal.html#a44132e8c163a34a201c29a8e525038a4">Halide::Internal::vectorize_loops</a></div><div class="ttdeci">Stmt vectorize_loops(const Stmt &amp;s, const std::map&lt; std::string, Function &gt; &amp;env)</div><div class="ttdoc">Take a statement with for loops marked for vectorization, and turn them into single statements that o...</div></div>
 <div class="ttc" id="anamespace_halide_html"><div class="ttname"><a href="namespace_halide.html">Halide</a></div><div class="ttdoc">This file defines the class FunctionDAG, which is our representation of a Halide pipeline,...</div><div class="ttdef"><b>Definition:</b> <a href="_add_atomic_mutex_8h_source.html#l00021">AddAtomicMutex.h:21</a></div></div>
 <div class="ttc" id="anamespace_halide_html_a172db5c21e58bfed0793b7152657623caafbf0897a5a83fdd873dfb032ec695d3"><div class="ttname"><a href="namespace_halide.html#a172db5c21e58bfed0793b7152657623caafbf0897a5a83fdd873dfb032ec695d3">Halide::LinkageType::Internal</a></div><div class="ttdeci">@ Internal</div><div class="ttdoc">Not visible externally, similar to 'static' linkage in C.</div></div>
-<div class="ttc" id="anamespace_halide_1_1_internal_html_af67bb97b08ab82cba4e520c1f48a0821"><div class="ttname"><a href="namespace_halide_1_1_internal.html#af67bb97b08ab82cba4e520c1f48a0821">Halide::Internal::vectorize_loops</a></div><div class="ttdeci">Stmt vectorize_loops(const Stmt &amp;s, const std::map&lt; std::string, Function &gt; &amp;env, const Target &amp;t)</div><div class="ttdoc">Take a statement with for loops marked for vectorization, and turn them into single statements that o...</div></div>
 <div class="ttc" id="a_expr_8h_html"><div class="ttname"><a href="_expr_8h.html">Expr.h</a></div></div>
 <div class="ttc" id="a_function_8h_html"><div class="ttname"><a href="_function_8h.html">Function.h</a></div></div>
 <!-- start footer part -->

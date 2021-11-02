@@ -6,7 +6,7 @@ var class_halide_1_1_image_param =
     [ "set", "class_halide_1_1_image_param.html#a8bb49795a7aaf132d7bafdda1e8f8be5", null ],
     [ "get", "class_halide_1_1_image_param.html#af49a28e546f6f2b55f225fa2470d2826", null ],
     [ "reset", "class_halide_1_1_image_param.html#ada433f6e0a8912fc435aecbc53c64174", null ],
-    [ "operator()", "class_halide_1_1_image_param.html#a7f457606bb81460842ed745db6199277", null ],
+    [ "operator()", "class_halide_1_1_image_param.html#aa2d8ee3d265e16b0c283562fbf01b21b", null ],
     [ "operator()", "class_halide_1_1_image_param.html#a4b58f432ebfc22c7146daa836ae65dfa", null ],
     [ "operator()", "class_halide_1_1_image_param.html#a683c4ddd9e888f43b8c401bb69ea2729", null ],
     [ "operator Func", "class_halide_1_1_image_param.html#a9507c79b1c48e263132eb848abcd8d16", null ],

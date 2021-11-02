@@ -637,7 +637,7 @@ var mini__d3d12_8h =
     [ "IDXGIFactory1Vtbl", "mini__d3d12_8h.html#ab1d1589a0de90e53ce6a1490f4e93744", null ],
     [ "IDXGIAdapter1Vtbl", "mini__d3d12_8h.html#ab56e90e78b96944331c43a8caa57ac15", null ],
     [ "ppFactory", "mini__d3d12_8h.html#a52e4ae6a69545cac34297ae9dce3295e", null ],
-    [ "PFN_D3DCOMPILE", "mini__d3d12_8h.html#ae6b294dfbe4bf03be93d61a9da1e4c78", null ],
+    [ "PFN_D3DCOMPILE", "mini__d3d12_8h.html#aaa26bd6c1b95d4e5f0984d5d8b236a4c", null ],
     [ "D3D_FEATURE_LEVEL", "mini__d3d12_8h.html#a74b1e10094785a4189380ac766d5f298", [
       [ "D3D_FEATURE_LEVEL_9_1", "mini__d3d12_8h.html#a74b1e10094785a4189380ac766d5f298a335b90fc3cce21f36681f59a6858ebf6", null ],
       [ "D3D_FEATURE_LEVEL_9_2", "mini__d3d12_8h.html#a74b1e10094785a4189380ac766d5f298aa9def1dc3c941131dc11a0fb2a0472b1", null ],

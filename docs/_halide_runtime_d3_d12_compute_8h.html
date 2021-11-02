@@ -98,8 +98,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a96e72f1e76c8c53e363f4d409324e6aa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_d3_d12_compute_8h.html#a96e72f1e76c8c53e363f4d409324e6aa">halide_d3d12compute_initialize_kernels</a> (void *<a class="el" href="printer_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, void **state_ptr, const char *src, int size)</td></tr>
 <tr class="memdesc:a96e72f1e76c8c53e363f4d409324e6aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">These are forward declared here to allow clients to override the <a class="el" href="namespace_halide.html" title="This file defines the class FunctionDAG, which is our representation of a Halide pipeline,...">Halide</a> Direct3D 12 Compute runtime.  <a href="_halide_runtime_d3_d12_compute_8h.html#a96e72f1e76c8c53e363f4d409324e6aa">More...</a><br /></td></tr>
 <tr class="separator:a96e72f1e76c8c53e363f4d409324e6aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4e0c8b9cf8ee37c6ac544e7f35ebb40"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_d3_d12_compute_8h.html#ad4e0c8b9cf8ee37c6ac544e7f35ebb40">halide_d3d12compute_run</a> (void *<a class="el" href="printer_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, void *state_ptr, const char *entry_name, int blocksX, int blocksY, int blocksZ, int threadsX, int threadsY, int threadsZ, int shared_mem_bytes, <a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a> arg_sizes[], void *args[], <a class="el" href="runtime__internal_8h.html#acfd957407fbe865fe77f6fdf86818f5e">int8_t</a> arg_is_buffer[], int num_attributes, float *vertex_buffer, int num_coords_dim0, int num_coords_dim1)</td></tr>
-<tr class="separator:ad4e0c8b9cf8ee37c6ac544e7f35ebb40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c2c1591f2aa4584effced74a471d92b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_d3_d12_compute_8h.html#a3c2c1591f2aa4584effced74a471d92b">halide_d3d12compute_run</a> (void *<a class="el" href="printer_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, void *state_ptr, const char *entry_name, int blocksX, int blocksY, int blocksZ, int threadsX, int threadsY, int threadsZ, int shared_mem_bytes, struct <a class="el" href="structhalide__type__t.html">halide_type_t</a> arg_types[], void *args[], <a class="el" href="runtime__internal_8h.html#acfd957407fbe865fe77f6fdf86818f5e">int8_t</a> arg_is_buffer[])</td></tr>
+<tr class="separator:a3c2c1591f2aa4584effced74a471d92b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83bdc42873d8bf0dafa4a54329cd34c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_d3_d12_compute_8h.html#a83bdc42873d8bf0dafa4a54329cd34c0">halide_d3d12compute_finalize_kernels</a> (void *<a class="el" href="printer_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, void *state_ptr)</td></tr>
+<tr class="separator:a83bdc42873d8bf0dafa4a54329cd34c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88313600779c1d6daa4a05a16ed3b976"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_d3_d12_compute_8h.html#a88313600779c1d6daa4a05a16ed3b976">halide_d3d12compute_wrap_buffer</a> (void *<a class="el" href="printer_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, struct <a class="el" href="structhalide__buffer__t.html">halide_buffer_t</a> *<a class="el" href="printer_8h.html#a1fe855c208bc17a51a4d34fefdb2d5b1">buf</a>, <a class="el" href="runtime__internal_8h.html#a015141fcb741f5cbee8e65a30b61e1ce">uint64_t</a> d3d12_resource)</td></tr>
 <tr class="memdesc:a88313600779c1d6daa4a05a16ed3b976"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the underlying ID3D12Resource for a <a class="el" href="structhalide__buffer__t.html" title="The raw representation of an image passed around by generated Halide code.">halide_buffer_t</a>.  <a href="_halide_runtime_d3_d12_compute_8h.html#a88313600779c1d6daa4a05a16ed3b976">More...</a><br /></td></tr>
 <tr class="separator:a88313600779c1d6daa4a05a16ed3b976"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,7 +115,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a217d1cc85472e27de2f7a03e0f37cd36"><td class="mdescLeft">&#160;</td><td class="mdescRight">This prototype is exported as applications will typically need to replace it to get <a class="el" href="namespace_halide.html" title="This file defines the class FunctionDAG, which is our representation of a Halide pipeline,...">Halide</a> filters to execute on the same device and command queue used for other purposes.  <a href="_halide_runtime_d3_d12_compute_8h.html#a217d1cc85472e27de2f7a03e0f37cd36">More...</a><br /></td></tr>
 <tr class="separator:a217d1cc85472e27de2f7a03e0f37cd36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac46c55d99425054b35999f60815a0624"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_halide_runtime_d3_d12_compute_8h.html#ac46c55d99425054b35999f60815a0624">halide_d3d12compute_release_context</a> (void *<a class="el" href="printer_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>)</td></tr>
-<tr class="memdesc:ac46c55d99425054b35999f60815a0624"><td class="mdescLeft">&#160;</td><td class="mdescRight">This call balances each successfull halide_d3d12compute_acquire_context call.  <a href="_halide_runtime_d3_d12_compute_8h.html#ac46c55d99425054b35999f60815a0624">More...</a><br /></td></tr>
+<tr class="memdesc:ac46c55d99425054b35999f60815a0624"><td class="mdescLeft">&#160;</td><td class="mdescRight">This call balances each successful halide_d3d12compute_acquire_context call.  <a href="_halide_runtime_d3_d12_compute_8h.html#ac46c55d99425054b35999f60815a0624">More...</a><br /></td></tr>
 <tr class="separator:ac46c55d99425054b35999f60815a0624"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -181,8 +183,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad4e0c8b9cf8ee37c6ac544e7f35ebb40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4e0c8b9cf8ee37c6ac544e7f35ebb40">&#9670;&nbsp;</a></span>halide_d3d12compute_run()</h2>
+<a id="a3c2c1591f2aa4584effced74a471d92b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c2c1591f2aa4584effced74a471d92b">&#9670;&nbsp;</a></span>halide_d3d12compute_run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -250,8 +252,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a>&#160;</td>
-          <td class="paramname"><em>arg_sizes</em>[], </td>
+          <td class="paramtype">struct <a class="el" href="structhalide__type__t.html">halide_type_t</a>&#160;</td>
+          <td class="paramname"><em>arg_types</em>[], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -263,31 +265,35 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="runtime__internal_8h.html#acfd957407fbe865fe77f6fdf86818f5e">int8_t</a>&#160;</td>
-          <td class="paramname"><em>arg_is_buffer</em>[], </td>
+          <td class="paramname"><em>arg_is_buffer</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a83bdc42873d8bf0dafa4a54329cd34c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83bdc42873d8bf0dafa4a54329cd34c0">&#9670;&nbsp;</a></span>halide_d3d12compute_finalize_kernels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void halide_d3d12compute_finalize_kernels </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>user_context</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>num_attributes</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float *&#160;</td>
-          <td class="paramname"><em>vertex_buffer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>num_coords_dim0</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>num_coords_dim1</em>&#160;</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>state_ptr</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -462,7 +468,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This call balances each successfull halide_d3d12compute_acquire_context call. </p>
+<p>This call balances each successful halide_d3d12compute_acquire_context call. </p>
 <p>If halide_d3d12compute_acquire_context is replaced, this routine must be replaced as well. </p>
 
 </div>

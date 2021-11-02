@@ -88,11 +88,11 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="fragment"><div class="line"><span class="comment">// Halide tutorial lesson 7: Multi-stage pipelines</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// On linux, you can compile and run it like so:</span></div>
-<div class="line"><span class="comment">// g++ lesson_07*.cpp -g -std=c++11 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -o lesson_07</span></div>
+<div class="line"><span class="comment">// g++ lesson_07*.cpp -g -std=c++17 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -o lesson_07</span></div>
 <div class="line"><span class="comment">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_07</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// On os x:</span></div>
-<div class="line"><span class="comment">// g++ lesson_07*.cpp -g -std=c++11 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -o lesson_07</span></div>
+<div class="line"><span class="comment">// g++ lesson_07*.cpp -g -std=c++17 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -o lesson_07</span></div>
 <div class="line"><span class="comment">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_07</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// If you have the entire Halide source tree, you can also build it by</span></div>
@@ -150,7 +150,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Now let&#39;s realize it...</span></div>
 <div class="line"> </div>
-<div class="line">        <span class="comment">// Buffer&lt;uint8_t&gt; result = output.realize(input.width(), input.height(), 3);</span></div>
+<div class="line">        <span class="comment">// Buffer&lt;uint8_t&gt; result = output.realize({input.width(), input.height(), 3});</span></div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Except that the line above is not going to work. Uncomment</span></div>
 <div class="line">        <span class="comment">// it to see what happens.</span></div>
@@ -172,7 +172,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line">        <span class="comment">// to do this in the previous lesson:</span></div>
 <div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;uint8_t&gt;</a> result(input.width() - 2, input.height() - 2, 3);</div>
 <div class="line">        result.set_min(1, 1);</div>
-<div class="line">        output.<a name="a3"></a><a class="code" href="class_halide_1_1_func.html#aa78a6b0077862657b57a31af0d1e5f83">realize</a>(result);</div>
+<div class="line">        output.<a name="a3"></a><a class="code" href="class_halide_1_1_func.html#a8ab12935949cc586b9c0a731551e8175">realize</a>(result);</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Save the result. It should look like a slightly blurry</span></div>
 <div class="line">        <span class="comment">// parrot, and it should be two pixels narrower and two pixels</span></div>
@@ -245,7 +245,7 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line"> </div>
 <div class="line">        <span class="comment">// This time it&#39;s safe to evaluate the output over the same</span></div>
 <div class="line">        <span class="comment">// domain as the input, because we have a boundary condition.</span></div>
-<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;uint8_t&gt;</a> result = output.<a class="code" href="class_halide_1_1_func.html#aa78a6b0077862657b57a31af0d1e5f83">realize</a>(input.width(), input.height(), 3);</div>
+<div class="line">        <a class="code" href="class_halide_1_1_buffer.html">Buffer&lt;uint8_t&gt;</a> result = output.<a class="code" href="class_halide_1_1_func.html#a8ab12935949cc586b9c0a731551e8175">realize</a>({input.width(), input.height(), 3});</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Save the result. It should look like a slightly blurry</span></div>
 <div class="line">        <span class="comment">// parrot, but this time it will be the same size as the</span></div>
@@ -258,12 +258,12 @@ $(document).ready(function(){initNavTree('tutorial_2lesson_07_multi_stage_pipeli
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_halide_1_1_func_html_aa78a6b0077862657b57a31af0d1e5f83"><div class="ttname"><a href="class_halide_1_1_func.html#aa78a6b0077862657b57a31af0d1e5f83">Halide::Func::realize</a></div><div class="ttdeci">Realization realize(std::vector&lt; int32_t &gt; sizes, const Target &amp;target=Target(), const ParamMap &amp;param_map=ParamMap::empty_map())</div><div class="ttdoc">Evaluate this function over some rectangular domain and return the resulting buffer or buffers.</div></div>
 <div class="ttc" id="aclass_halide_1_1_var_html"><div class="ttname"><a href="class_halide_1_1_var.html">Halide::Var</a></div><div class="ttdoc">A Halide variable, to be used when defining functions.</div><div class="ttdef"><b>Definition:</b> <a href="_var_8h_source.html#l00019">Var.h:19</a></div></div>
 <div class="ttc" id="anamespace_halide_html_a40b1c066344e4816e822a467522bb1f1"><div class="ttname"><a href="namespace_halide.html#a40b1c066344e4816e822a467522bb1f1">Halide::clamp</a></div><div class="ttdeci">Expr clamp(Expr a, const Expr &amp;min_val, const Expr &amp;max_val)</div><div class="ttdoc">Clamps an expression to lie within the given bounds.</div></div>
+<div class="ttc" id="aclass_halide_1_1_func_html_a8ab12935949cc586b9c0a731551e8175"><div class="ttname"><a href="class_halide_1_1_func.html#a8ab12935949cc586b9c0a731551e8175">Halide::Func::realize</a></div><div class="ttdeci">Realization realize(std::vector&lt; int32_t &gt; sizes={}, const Target &amp;target=Target(), const ParamMap &amp;param_map=ParamMap::empty_map())</div><div class="ttdoc">Evaluate this function over some rectangular domain and return the resulting buffer or buffers.</div></div>
 <div class="ttc" id="anamespace_halide_html"><div class="ttname"><a href="namespace_halide.html">Halide</a></div><div class="ttdoc">This file defines the class FunctionDAG, which is our representation of a Halide pipeline,...</div><div class="ttdef"><b>Definition:</b> <a href="_add_atomic_mutex_8h_source.html#l00021">AddAtomicMutex.h:21</a></div></div>
 <div class="ttc" id="aclass_halide_1_1_buffer_html"><div class="ttname"><a href="class_halide_1_1_buffer.html">Halide::Buffer</a></div><div class="ttdoc">A Halide::Buffer is a named shared reference to a Halide::Runtime::Buffer.</div><div class="ttdef"><b>Definition:</b> <a href="_argument_8h_source.html#l00016">Argument.h:16</a></div></div>
-<div class="ttc" id="aclass_halide_1_1_func_html"><div class="ttname"><a href="class_halide_1_1_func.html">Halide::Func</a></div><div class="ttdoc">A halide function.</div><div class="ttdef"><b>Definition:</b> <a href="_func_8h_source.html#l00667">Func.h:667</a></div></div>
+<div class="ttc" id="aclass_halide_1_1_func_html"><div class="ttname"><a href="class_halide_1_1_func.html">Halide::Func</a></div><div class="ttdoc">A halide function.</div><div class="ttdef"><b>Definition:</b> <a href="_func_8h_source.html#l00698">Func.h:698</a></div></div>
 <div class="ttc" id="astruct_halide_1_1_expr_html"><div class="ttname"><a href="struct_halide_1_1_expr.html">Halide::Expr</a></div><div class="ttdoc">A fragment of Halide syntax.</div><div class="ttdef"><b>Definition:</b> <a href="_expr_8h_source.html#l00256">Expr.h:256</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

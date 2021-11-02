@@ -12,6 +12,9 @@ var _schedule_8h =
     [ "TailStrategy", "_schedule_8h.html#a6c6557df562bd7850664e70fdb8fea0f", [
       [ "RoundUp", "_schedule_8h.html#a6c6557df562bd7850664e70fdb8fea0fa16b999f69f07356ae94c65a20b832926", null ],
       [ "GuardWithIf", "_schedule_8h.html#a6c6557df562bd7850664e70fdb8fea0fa5b80e0001d7f4873a60bbded160c687d", null ],
+      [ "Predicate", "_schedule_8h.html#a6c6557df562bd7850664e70fdb8fea0fa3b1b1a93a9b97ec3c8f2636fc6d54d0f", null ],
+      [ "PredicateLoads", "_schedule_8h.html#a6c6557df562bd7850664e70fdb8fea0fad24ce5bd9d1bb698b5d07f66a8747bd9", null ],
+      [ "PredicateStores", "_schedule_8h.html#a6c6557df562bd7850664e70fdb8fea0fa7919fd9f9c90a3e5e70faa88528bae8b", null ],
       [ "ShiftInwards", "_schedule_8h.html#a6c6557df562bd7850664e70fdb8fea0faa3c9898dfb77c232e7dbbcb95cadaa16", null ],
       [ "Auto", "_schedule_8h.html#a6c6557df562bd7850664e70fdb8fea0fa06b9281e396db002010bde1de57262eb", null ]
     ] ],

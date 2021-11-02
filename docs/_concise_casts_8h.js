@@ -2,6 +2,8 @@ var _concise_casts_8h =
 [
     [ "f64", "_concise_casts_8h.html#aa489e644d91200dac34c620f1c4a1261", null ],
     [ "f32", "_concise_casts_8h.html#ad3a00bcd562633db7df8241bb4a97dcf", null ],
+    [ "f16", "_concise_casts_8h.html#aaafd1baeff31b7d0293b95f041e0d116", null ],
+    [ "bf16", "_concise_casts_8h.html#a8e2154ce76c37412e7d74c0c7fe5fecb", null ],
     [ "i64", "_concise_casts_8h.html#ae4681dce6418db5a9dfa174f5143e41e", null ],
     [ "i32", "_concise_casts_8h.html#a7531284c41bfa896b67f0e836bc3fe36", null ],
     [ "i16", "_concise_casts_8h.html#aeb8fa10f0e42d0a65aff8376d705a629", null ],

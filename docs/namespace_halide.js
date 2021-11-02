@@ -2,6 +2,7 @@ var namespace_halide =
 [
     [ "BoundaryConditions", "namespace_halide_1_1_boundary_conditions.html", null ],
     [ "Internal", "namespace_halide_1_1_internal.html", "namespace_halide_1_1_internal" ],
+    [ "PyTorch", "namespace_halide_1_1_py_torch.html", "namespace_halide_1_1_py_torch" ],
     [ "Runtime", "namespace_halide_1_1_runtime.html", "namespace_halide_1_1_runtime" ],
     [ "Argument", "struct_halide_1_1_argument.html", "struct_halide_1_1_argument" ],
     [ "ArgumentEstimates", "struct_halide_1_1_argument_estimates.html", "struct_halide_1_1_argument_estimates" ],
@@ -15,6 +16,7 @@ var namespace_halide =
     [ "DefaultCostModel", "class_halide_1_1_default_cost_model.html", "class_halide_1_1_default_cost_model" ],
     [ "Derivative", "class_halide_1_1_derivative.html", "class_halide_1_1_derivative" ],
     [ "Error", "struct_halide_1_1_error.html", "struct_halide_1_1_error" ],
+    [ "EvictionKey", "class_halide_1_1_eviction_key.html", "class_halide_1_1_eviction_key" ],
     [ "Expr", "struct_halide_1_1_expr.html", "struct_halide_1_1_expr" ],
     [ "ExprCompare", "struct_halide_1_1_expr_compare.html", "struct_halide_1_1_expr_compare" ],
     [ "ExternalCode", "class_halide_1_1_external_code.html", "class_halide_1_1_external_code" ],

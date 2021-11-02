@@ -103,9 +103,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6c0bf61061a972b499ae71c8a6d7e64f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a53da0047a6b6ce91b46f76c018d63931">HALIDE_NO_USER_CODE_INLINE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_r_dom.html#a6c0bf61061a972b499ae71c8a6d7e64f">RDom</a> (const <a class="el" href="namespace_halide.html#adac6d1605235bf518c12a05ed6850d43">Region</a> &amp;region, std::string name=&quot;&quot;)</td></tr>
 <tr class="memdesc:a6c0bf61061a972b499ae71c8a6d7e64f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a multi-dimensional reduction domain with the given name.  <a href="class_halide_1_1_r_dom.html#a6c0bf61061a972b499ae71c8a6d7e64f">More...</a><br /></td></tr>
 <tr class="separator:a6c0bf61061a972b499ae71c8a6d7e64f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0a37b24d7025c8ee1522501cc21c63a"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
-<tr class="memitem:af0a37b24d7025c8ee1522501cc21c63a"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a53da0047a6b6ce91b46f76c018d63931">HALIDE_NO_USER_CODE_INLINE</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_r_dom.html#af0a37b24d7025c8ee1522501cc21c63a">RDom</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="namespace_halide.html#a842daf6fbd0f87ec9ea8336cb0cdd23e">min</a>, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> extent, Args &amp;&amp;... args)</td></tr>
-<tr class="separator:af0a37b24d7025c8ee1522501cc21c63a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accc639933013d9a900733ae060c7058c"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:accc639933013d9a900733ae060c7058c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="_util_8h.html#a53da0047a6b6ce91b46f76c018d63931">HALIDE_NO_USER_CODE_INLINE</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_halide_1_1_r_dom.html#accc639933013d9a900733ae060c7058c">RDom</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> <a class="el" href="namespace_halide.html#a842daf6fbd0f87ec9ea8336cb0cdd23e">min</a>, <a class="el" href="struct_halide_1_1_expr.html">Expr</a> extent, Args &amp;&amp;...args)</td></tr>
+<tr class="separator:accc639933013d9a900733ae060c7058c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d7d0c93a2fd47fb32631c2f30fe4973"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_r_dom.html#a8d7d0c93a2fd47fb32631c2f30fe4973">RDom</a> (const <a class="el" href="class_halide_1_1_buffer.html">Buffer</a>&lt; void &gt; &amp;)</td></tr>
 <tr class="memdesc:a8d7d0c93a2fd47fb32631c2f30fe4973"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a reduction domain that iterates over all points in a given <a class="el" href="class_halide_1_1_buffer.html" title="A Halide::Buffer is a named shared reference to a Halide::Runtime::Buffer.">Buffer</a> or <a class="el" href="class_halide_1_1_image_param.html" title="An Image parameter to a halide pipeline.">ImageParam</a>.  <a href="class_halide_1_1_r_dom.html#a8d7d0c93a2fd47fb32631c2f30fe4973">More...</a><br /></td></tr>
 <tr class="separator:a8d7d0c93a2fd47fb32631c2f30fe4973"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,7 +163,7 @@ Public Attributes</h2></td></tr>
 <div class="line"><a class="code" href="class_halide_1_1_r_dom.html#a67f1c2b2c0c169dfa82f9698b302d659">RDom</a> r(0, 10);</div>
 <div class="line">f(<a class="code" href="class_halide_1_1_r_dom.html#a9c41992ecccbe2eea2430a65a1dc7614">x</a>) = <a class="code" href="class_halide_1_1_r_dom.html#a9c41992ecccbe2eea2430a65a1dc7614">x</a>; <span class="comment">// the initial value</span></div>
 <div class="line">f(r) = f(r) * 2;</div>
-<div class="line">Buffer&lt;int&gt; result = f.realize(10);</div>
+<div class="line">Buffer&lt;int&gt; result = f.realize({10});</div>
 </div><!-- fragment --><p>This function creates a single-dimensional buffer of size 10, in which element x contains the value x*2. Internally, first the initialization rule fills in x at every site, and then the update definition doubles every site.</p>
 <p>One use of reductions is to build a function recursively (pure functions in halide cannot be recursive). For example, this function fills in an array with the first 20 fibonacci numbers:</p>
 <div class="fragment"><div class="line">Func f;</div>
@@ -206,7 +206,7 @@ Public Attributes</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#_a6">tutorial/lesson_09_update_definitions.cpp</a>, and <a class="el" href="tutorial_2lesson_13_tuples_8cpp-example.html#_a11">tutorial/lesson_13_tuples.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00191">191</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00193">193</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a67f1c2b2c0c169dfa82f9698b302d659"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a67f1c2b2c0c169dfa82f9698b302d659">&#9670;&nbsp;</a></span>RDom() <span class="overload">[1/7]</span></h2>
@@ -272,12 +272,12 @@ Public Attributes</h2></td></tr>
 <p>Construct a multi-dimensional reduction domain with the given name. </p>
 <p>If the name is left blank, a unique one is auto-generated. </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00211">211</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00213">213</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 </div>
 </div>
-<a id="af0a37b24d7025c8ee1522501cc21c63a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0a37b24d7025c8ee1522501cc21c63a">&#9670;&nbsp;</a></span>RDom() <span class="overload">[3/7]</span></h2>
+<a id="accc639933013d9a900733ae060c7058c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accc639933013d9a900733ae060c7058c">&#9670;&nbsp;</a></span>RDom() <span class="overload">[3/7]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -318,9 +318,9 @@ template&lt;typename... Args&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00216">216</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00218">218</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
-<p class="reference">References <a class="el" href="_func_8h_source.html#l00577">Halide::min()</a>.</p>
+<p class="reference">References <a class="el" href="_func_8h_source.html#l00595">Halide::min()</a>.</p>
 
 </div>
 </div>
@@ -389,7 +389,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00231">231</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00233">233</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 </div>
 </div>
@@ -439,7 +439,7 @@ template&lt;typename T &gt; </div>
 
 <p>Get at the internal reduction domain object that this wraps. </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00240">240</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00242">242</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 </div>
 </div>
@@ -468,7 +468,7 @@ template&lt;typename T &gt; </div>
 
 <p>Check if this reduction domain is non-null. </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00245">245</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00247">247</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 <p class="reference">References <a class="el" href="_reduction_8h_source.html#l00061">Halide::Internal::ReductionDomain::defined()</a>.</p>
 
@@ -500,7 +500,7 @@ template&lt;typename T &gt; </div>
 
 <p>Compare two reduction domains for equality of reference. </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00250">250</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00252">252</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 <p class="reference">References <a class="el" href="_reduction_8h_source.html#l00068">Halide::Internal::ReductionDomain::same_as()</a>.</p>
 
@@ -620,7 +620,7 @@ template&lt;typename T &gt; </div>
 <div class="line">}</div>
 </div><!-- fragment --><p>Where possible <a class="el" href="namespace_halide.html" title="This file defines the class FunctionDAG, which is our representation of a Halide pipeline,...">Halide</a> restricts the range of the containing for loops to avoid the cases where the predicate is false so that the if statement can be removed entirely. The case above would be further simplified into:</p>
 <div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> r.y = 14; r.y &lt; 20; r.y++) {</div>
-<div class="line">  f[r.x, r.y] += 1;</div>
+<div class="line">  f[10, r.y] += 1;</div>
 <div class="line">}</div>
 </div><!-- fragment --><p>In general, the predicates that we can simplify away by restricting loop ranges are inequalities that compare an inner <a class="el" href="class_halide_1_1_var.html" title="A Halide variable, to be used when defining functions.">Var</a> or <a class="el" href="class_halide_1_1_r_var.html" title="A reduction variable represents a single dimension of a reduction domain (RDom).">RVar</a> to some expression in outer Vars or RVars.</p>
 <p>You can also pack multiple conditions into one predicate like so:</p>
@@ -648,9 +648,9 @@ template&lt;typename T &gt; </div>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a7">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00335">335</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00337">337</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="simd__op__check_8h_source.html#l00130">Halide::SimdOpCheckTest::check_one()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="simd__op__check_8h_source.html#l00174">Halide::SimdOpCheckTest::check_one()</a>.</p>
 
 </div>
 </div>
@@ -668,9 +668,9 @@ template&lt;typename T &gt; </div>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="tutorial_2lesson_09_update_definitions_8cpp-example.html#a8">tutorial/lesson_09_update_definitions.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00335">335</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00337">337</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="simd__op__check_8h_source.html#l00130">Halide::SimdOpCheckTest::check_one()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="simd__op__check_8h_source.html#l00174">Halide::SimdOpCheckTest::check_one()</a>.</p>
 
 </div>
 </div>
@@ -686,7 +686,7 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00335">335</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00337">337</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 </div>
 </div>
@@ -702,7 +702,7 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00335">335</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_dom_8h_source.html#l00337">337</a> of file <a class="el" href="_r_dom_8h_source.html">RDom.h</a>.</p>
 
 </div>
 </div>
@@ -711,11 +711,11 @@ template&lt;typename T &gt; </div>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespace_halide_html_a11df91175e8ac20ce33379c178e8c7bc"><div class="ttname"><a href="namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc">Halide::Float</a></div><div class="ttdeci">Type Float(int bits, int lanes=1)</div><div class="ttdoc">Construct a floating-point type.</div><div class="ttdef"><b>Definition:</b> <a href="_type_8h_source.html#l00482">Type.h:482</a></div></div>
-<div class="ttc" id="aclass_halide_1_1_r_dom_html_ab9ec82ccc25c587c18ea174a9c7a46ff"><div class="ttname"><a href="class_halide_1_1_r_dom.html#ab9ec82ccc25c587c18ea174a9c7a46ff">Halide::RDom::y</a></div><div class="ttdeci">RVar y</div><div class="ttdef"><b>Definition:</b> <a href="_r_dom_8h_source.html#l00335">RDom.h:335</a></div></div>
+<div class="ttc" id="anamespace_halide_html_a11df91175e8ac20ce33379c178e8c7bc"><div class="ttname"><a href="namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc">Halide::Float</a></div><div class="ttdeci">Type Float(int bits, int lanes=1)</div><div class="ttdoc">Construct a floating-point type.</div><div class="ttdef"><b>Definition:</b> <a href="_type_8h_source.html#l00504">Type.h:504</a></div></div>
+<div class="ttc" id="aclass_halide_1_1_r_dom_html_ab9ec82ccc25c587c18ea174a9c7a46ff"><div class="ttname"><a href="class_halide_1_1_r_dom.html#ab9ec82ccc25c587c18ea174a9c7a46ff">Halide::RDom::y</a></div><div class="ttdeci">RVar y</div><div class="ttdef"><b>Definition:</b> <a href="_r_dom_8h_source.html#l00337">RDom.h:337</a></div></div>
 <div class="ttc" id="aclass_halide_1_1_r_dom_html_a67f1c2b2c0c169dfa82f9698b302d659"><div class="ttname"><a href="class_halide_1_1_r_dom.html#a67f1c2b2c0c169dfa82f9698b302d659">Halide::RDom::RDom</a></div><div class="ttdeci">RDom()=default</div><div class="ttdoc">Construct an undefined reduction domain.</div></div>
-<div class="ttc" id="anamespace_halide_html_a0eb5f455b5c4bce0c54575bc67bf9599"><div class="ttname"><a href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">Halide::UInt</a></div><div class="ttdeci">Type UInt(int bits, int lanes=1)</div><div class="ttdoc">Constructing an unsigned integer type.</div><div class="ttdef"><b>Definition:</b> <a href="_type_8h_source.html#l00477">Type.h:477</a></div></div>
-<div class="ttc" id="aclass_halide_1_1_r_dom_html_a9c41992ecccbe2eea2430a65a1dc7614"><div class="ttname"><a href="class_halide_1_1_r_dom.html#a9c41992ecccbe2eea2430a65a1dc7614">Halide::RDom::x</a></div><div class="ttdeci">RVar x</div><div class="ttdoc">Direct access to the first four dimensions of the reduction domain.</div><div class="ttdef"><b>Definition:</b> <a href="_r_dom_8h_source.html#l00335">RDom.h:335</a></div></div>
+<div class="ttc" id="anamespace_halide_html_a0eb5f455b5c4bce0c54575bc67bf9599"><div class="ttname"><a href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">Halide::UInt</a></div><div class="ttdeci">Type UInt(int bits, int lanes=1)</div><div class="ttdoc">Constructing an unsigned integer type.</div><div class="ttdef"><b>Definition:</b> <a href="_type_8h_source.html#l00499">Type.h:499</a></div></div>
+<div class="ttc" id="aclass_halide_1_1_r_dom_html_a9c41992ecccbe2eea2430a65a1dc7614"><div class="ttname"><a href="class_halide_1_1_r_dom.html#a9c41992ecccbe2eea2430a65a1dc7614">Halide::RDom::x</a></div><div class="ttdeci">RVar x</div><div class="ttdoc">Direct access to the first four dimensions of the reduction domain.</div><div class="ttdef"><b>Definition:</b> <a href="_r_dom_8h_source.html#l00337">RDom.h:337</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

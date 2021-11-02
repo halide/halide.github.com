@@ -1,10 +1,14 @@
 var cl__functions_8h =
 [
     [ "CL_FN", "cl__functions_8h.html#ae7aa194f25d593c30155ba530d43947f", null ],
+    [ "CL_12_FN", "cl__functions_8h.html#aff79e534da26ccc2cf32b5a872fa5e37", null ],
     [ "CL_FN", "cl__functions_8h.html#afad265c3d8314abda623d135cd60397e", null ],
     [ "CL_FN", "cl__functions_8h.html#afd3c37b810a18c128bb892ae958c675b", null ],
     [ "CL_FN", "cl__functions_8h.html#a734f4d8513454a5c54bd38f4f211788b", null ],
     [ "CL_FN", "cl__functions_8h.html#a012f777f367bbc1cf0d8f038e600b880", null ],
+    [ "CL_12_FN", "cl__functions_8h.html#a4803a2b7f3ad593c976e438a5b896f2a", null ],
+    [ "CL_12_FN", "cl__functions_8h.html#ae0127cab4eec9ed2b17bbd35c797a917", null ],
+    [ "CL_12_FN", "cl__functions_8h.html#ad6814521686185b036b2c66c3ea17721", null ],
     [ "CL_FN", "cl__functions_8h.html#a4e14a200977606f704a8fb23c837bc1f", null ],
     [ "CL_FN", "cl__functions_8h.html#a059505ba227fa3869cce09bdd9f02cd9", null ],
     [ "CL_FN", "cl__functions_8h.html#a818b573d94db5e4ef58632483c6fc7af", null ],
@@ -16,6 +20,7 @@ var cl__functions_8h =
     [ "CL_FN", "cl__functions_8h.html#a5573abfc2d6127fb35cab78be23b8556", null ],
     [ "CL_FN", "cl__functions_8h.html#a00d9b2ea9056310ad2679828d848d347", null ],
     [ "CL_FN", "cl__functions_8h.html#afeddff3724f17dea225f5db7d8693e33", null ],
+    [ "CL_12_FN", "cl__functions_8h.html#aef31b20beecc47478b765fc599b07bcb", null ],
     [ "CL_FN", "cl__functions_8h.html#aabcc0de7f9f704ee180f421b953515db", null ],
     [ "CL_FN", "cl__functions_8h.html#a24afc68cb3d5ef71de0abd8479ca5e24", null ],
     [ "CL_FN", "cl__functions_8h.html#a95fe41502b5b02ea0d88c6b81c4d4713", null ],

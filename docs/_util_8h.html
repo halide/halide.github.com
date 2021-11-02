@@ -85,15 +85,16 @@ $(document).ready(function(){initNavTree('_util_8h.html',''); initResizable(); }
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Util.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;assert.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;cassert&gt;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;cstring&gt;</code><br />
+<code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;limits&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;utility&gt;</code><br />
@@ -122,16 +123,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_scoped_value.html">Halide::Internal::ScopedValue&lt; T &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper class for saving/restoring variable values on the stack, to allow for early-exit that preserves correctness.  <a href="struct_halide_1_1_internal_1_1_scoped_value.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1integer__sequence.html">Halide::Internal::integer_sequence&lt; T, Ints &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1next__integer__sequence.html">Halide::Internal::next_integer_sequence&lt; T &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1next__integer__sequence_3_01integer__sequence_3_01_t_00_01_ints_8_8_8_01_4_01_4.html">Halide::Internal::next_integer_sequence&lt; integer_sequence&lt; T, Ints... &gt; &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1make__integer__sequence__helper.html">Halide::Internal::make_integer_sequence_helper&lt; T, I, N &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1make__integer__sequence__helper_3_01_t_00_01_n_00_01_n_01_4.html">Halide::Internal::make_integer_sequence_helper&lt; T, N, N &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_static_cast.html">Halide::Internal::StaticCast&lt; TO &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_is_roundtrippable.html">Halide::Internal::IsRoundtrippable&lt; TO &gt;</a></td></tr>
@@ -155,18 +146,6 @@ Macros</h2></td></tr>
 <tr class="separator:a682b56d8790910625ab95dda91d682de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad22c5f724721f543aaec81962555b6fd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_util_8h.html#ad22c5f724721f543aaec81962555b6fd">HALIDE_TOC</a>&#160;&#160;&#160;<a class="el" href="namespace_halide_1_1_internal.html#a7c23694d45bd4c42ec1dc97a17bb78f6">Halide::Internal::halide_toc_impl</a>(__FILE__, __LINE__)</td></tr>
 <tr class="separator:ad22c5f724721f543aaec81962555b6fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:af7acd6f64d4adf2c1b53c8931c3d0b87"><td class="memTemplParams" colspan="2">template&lt;typename T , T N&gt; </td></tr>
-<tr class="memitem:af7acd6f64d4adf2c1b53c8931c3d0b87"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#af7acd6f64d4adf2c1b53c8931c3d0b87">Halide::Internal::make_integer_sequence</a> = typename make_integer_sequence_helper&lt; T, 0, N &gt;::type</td></tr>
-<tr class="separator:af7acd6f64d4adf2c1b53c8931c3d0b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5d7a7bcb6b4a7de95e27c3234a36c68"><td class="memTemplParams" colspan="2">template&lt;size_t... Ints&gt; </td></tr>
-<tr class="memitem:ac5d7a7bcb6b4a7de95e27c3234a36c68"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ac5d7a7bcb6b4a7de95e27c3234a36c68">Halide::Internal::index_sequence</a> = integer_sequence&lt; <a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a>, Ints... &gt;</td></tr>
-<tr class="separator:ac5d7a7bcb6b4a7de95e27c3234a36c68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77432e592449f569978b6aabd58831f0"><td class="memTemplParams" colspan="2">template&lt;size_t N&gt; </td></tr>
-<tr class="memitem:a77432e592449f569978b6aabd58831f0"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a77432e592449f569978b6aabd58831f0">Halide::Internal::make_index_sequence</a> = make_integer_sequence&lt; <a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a>, N &gt;</td></tr>
-<tr class="separator:a77432e592449f569978b6aabd58831f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -218,6 +197,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a93192a2ea0afe58664e69232595ae08e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a93192a2ea0afe58664e69232595ae08e">Halide::Internal::extract_namespaces</a> (const std::string &amp;name, std::vector&lt; std::string &gt; &amp;namespaces)</td></tr>
 <tr class="memdesc:a93192a2ea0afe58664e69232595ae08e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns base name and fills in namespaces, outermost one first in vector.  <a href="namespace_halide_1_1_internal.html#a93192a2ea0afe58664e69232595ae08e">More...</a><br /></td></tr>
 <tr class="separator:a93192a2ea0afe58664e69232595ae08e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27b05f444b8a4573157857fe4918d2ab"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a27b05f444b8a4573157857fe4918d2ab">Halide::Internal::extract_namespaces</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a27b05f444b8a4573157857fe4918d2ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload that returns base name only.  <a href="namespace_halide_1_1_internal.html#a27b05f444b8a4573157857fe4918d2ab">More...</a><br /></td></tr>
+<tr class="separator:a27b05f444b8a4573157857fe4918d2ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f8aad349dd3bfc69483b792fcab0f96"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a4f8aad349dd3bfc69483b792fcab0f96">Halide::Internal::file_make_temp</a> (const std::string &amp;prefix, const std::string &amp;suffix)</td></tr>
 <tr class="memdesc:a4f8aad349dd3bfc69483b792fcab0f96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a unique file with a name of the form prefixXXXXXsuffix in an arbitrary (but writable) directory; this is typically /tmp, but the specific location is not guaranteed.  <a href="namespace_halide_1_1_internal.html#a4f8aad349dd3bfc69483b792fcab0f96">More...</a><br /></td></tr>
 <tr class="separator:a4f8aad349dd3bfc69483b792fcab0f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -270,6 +252,21 @@ Functions</h2></td></tr>
 <tr class="memitem:a591746c6ae0cd3e8d24c2c2420772d8a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a591746c6ae0cd3e8d24c2c2420772d8a">Halide::Internal::get_llvm_version</a> ()</td></tr>
 <tr class="memdesc:a591746c6ae0cd3e8d24c2c2420772d8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the LLVM_VERSION against which this libHalide is compiled.  <a href="namespace_halide_1_1_internal.html#a591746c6ae0cd3e8d24c2c2420772d8a">More...</a><br /></td></tr>
 <tr class="separator:a591746c6ae0cd3e8d24c2c2420772d8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb3376a79a765ed443399cf7cb2bcd9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#acb3376a79a765ed443399cf7cb2bcd9b">Halide::set_compiler_stack_size</a> (<a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a>)</td></tr>
+<tr class="memdesc:acb3376a79a765ed443399cf7cb2bcd9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set how much stack the compiler should use for compilation in bytes.  <a href="namespace_halide.html#acb3376a79a765ed443399cf7cb2bcd9b">More...</a><br /></td></tr>
+<tr class="separator:acb3376a79a765ed443399cf7cb2bcd9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78e5b5cea7a51cb753cb55994d160bc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a78e5b5cea7a51cb753cb55994d160bc1">Halide::get_compiler_stack_size</a> ()</td></tr>
+<tr class="memdesc:a78e5b5cea7a51cb753cb55994d160bc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return how much stack size the compiler should use for calls that go through run_with_large_stack below.  <a href="namespace_halide.html#a78e5b5cea7a51cb753cb55994d160bc1">More...</a><br /></td></tr>
+<tr class="separator:a78e5b5cea7a51cb753cb55994d160bc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45fe57f2ce9ba5592659449fccd5c1c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a45fe57f2ce9ba5592659449fccd5c1c6">Halide::Internal::run_with_large_stack</a> (const std::function&lt; void()&gt; &amp;action)</td></tr>
+<tr class="memdesc:a45fe57f2ce9ba5592659449fccd5c1c6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_halide_1_1_internal_1_1_call.html" title="A function call.">Call</a> the given action in a platform-specific context that provides at least the stack space returned by get_compiler_stack_size.  <a href="namespace_halide_1_1_internal.html#a45fe57f2ce9ba5592659449fccd5c1c6">More...</a><br /></td></tr>
+<tr class="separator:a45fe57f2ce9ba5592659449fccd5c1c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a36cab614624e4a021138635c794fd8c4"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide.html#a36cab614624e4a021138635c794fd8c4">Halide::default_compiler_stack_size</a> = 32 * 1024 * 1024</td></tr>
+<tr class="memdesc:a36cab614624e4a021138635c794fd8c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default amount of stack used for lowering and codegen.  <a href="namespace_halide.html#a36cab614624e4a021138635c794fd8c4">More...</a><br /></td></tr>
+<tr class="separator:a36cab614624e4a021138635c794fd8c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Various utility functions used internally <a class="el" href="namespace_halide.html" title="This file defines the class FunctionDAG, which is our representation of a Halide pipeline,...">Halide</a>. </p>
@@ -288,7 +285,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_util_8h_source.html#l00036">36</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_util_8h_source.html#l00037">37</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
 
 </div>
 </div>
@@ -304,7 +301,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_util_8h_source.html#l00044">44</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_util_8h_source.html#l00045">45</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
 
 </div>
 </div>
@@ -320,7 +317,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_util_8h_source.html#l00413">413</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_util_8h_source.html#l00361">361</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
 
 </div>
 </div>
@@ -336,7 +333,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_util_8h_source.html#l00414">414</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_util_8h_source.html#l00362">362</a> of file <a class="el" href="_util_8h_source.html">Util.h</a>.</p>
 
 </div>
 </div>
