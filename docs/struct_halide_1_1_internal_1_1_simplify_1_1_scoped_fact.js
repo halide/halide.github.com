@@ -8,6 +8,8 @@ var struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact =
     [ "learn_true", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#a14c0b9ea86da29b86b25fdb607f91e6f", null ],
     [ "learn_upper_bound", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#afacb4d7e900c0aad45d6334f3d94cc03", null ],
     [ "learn_lower_bound", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#a841b1ccb8c140fb79fad4ab877026676", null ],
+    [ "substitute_facts", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#aa3a727bd2851bbb8897c66cdf494ea9f", null ],
+    [ "substitute_facts", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#addf2f9e4fcf621f33f45f78e77ecc4bd", null ],
     [ "simplify", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#ad9bbf1a61d5f3cb05dfe76c5ca5e1ddb", null ],
     [ "pop_list", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#a6df32adf6db7e53c0065e1a8809a20f1", null ],
     [ "bounds_pop_list", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#a54048d621b2d621442e655ecb59dc0da", null ],

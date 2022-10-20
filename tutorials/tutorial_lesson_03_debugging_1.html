@@ -339,11 +339,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// This lesson demonstrates how to inspect what the Halide compiler is producing.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_03*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_03 -std=c++11</span>
+<span class="hl slc">// g++ lesson_03*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_03 -std=c++17</span>
 <span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_03</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_03*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_03 -std=c++11</span>
+<span class="hl slc">// g++ lesson_03*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_03 -std=c++17</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_03</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -374,7 +374,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
     <span class="hl slc">// Realize the function to produce an output image. We&apos;ll keep it</span>
     <span class="hl slc">// very small for this lesson.</span>
-    Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+    Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">});</span>
 
     <span class="hl slc">// That line compiled and ran the pipeline. Try running this</span>
     <span class="hl slc">// lesson with the environment variable HL_DEBUG_CODEGEN set to</span>
@@ -387,6 +387,7 @@ tutorial_lesson_21_auto_scheduler_run.html
  > Injecting tracing...
  > Adding checks for parameters
  > Computing bounds of each function's value
+ > Clamping unsafe data-dependent accesses
  > Performing computation bounds inference...
  > Removing extern loops...
  > Performing sliding window optimization...
@@ -416,12 +417,17 @@ tutorial_lesson_21_auto_scheduler_run.html
  > Detecting vector interleavings...
  > Partitioning loops to simplify boundary conditions...
  > Trimming loops to the region over which they do something...
+ > Rebasing loops to zero...
  > Hoisting loop invariant if statements...
  > Injecting early frees...
  > Simplifying correlated differences...
  > Bounding small allocations...
  > Simplifying...
  > Lowering unsafe promises...
+ > Flattening nested ramps...
+ > Removing dead allocations and moving loop invariant code...
+ > Finding intrinsics...
+ > Hoisting prefetches...
  > Lowering after final simplification:
  > assert((uint64)reinterpret((halide_buffer_t *)gradient.buffer) != (uint64)0, halide_error_buffer_argument_is_null("gradient"))
  > let gradient = (void *)_halide_buffer_get_host((halide_buffer_t *)gradient.buffer)
@@ -444,22 +450,25 @@ tutorial_lesson_21_auto_scheduler_run.html
  >  assert(0 <= gradient.extent.1, halide_error_buffer_extents_negative("Output buffer gradient", 1, gradient.extent.1))
  >  assert(gradient.stride.0 == 1, halide_error_constraint_violated("gradient.stride.0", gradient.stride.0, "1", 1))
  >  let gradient.total_extent.1 = int64(gradient.extent.1)*int64(gradient.extent.0)
- >  assert((uint64)abs(int64(gradient.extent.0)) <= (uint64)2147483647, halide_error_buffer_allocation_too_large("gradient", (uint64)abs(int64(gradient.extent.0)), (uint64)2147483647))
+ >  assert(uint64(gradient.extent.0) <= (uint64)2147483647, halide_error_buffer_allocation_too_large("gradient", uint64(gradient.extent.0), (uint64)2147483647))
  >  assert((uint64)abs(int64(gradient.extent.1)*int64(gradient.stride.1)) <= (uint64)2147483647, halide_error_buffer_allocation_too_large("gradient", (uint64)abs(int64(gradient.extent.1)*int64(gradient.stride.1)), (uint64)2147483647))
  >  assert(gradient.total_extent.1 <= (int64)2147483647, halide_error_buffer_extents_too_large("gradient", gradient.total_extent.1, (int64)2147483647))
  >  assert(!gradient.device_dirty, halide_error_device_dirty_with_no_device_support("Output buffer gradient"))
- >  assert((void *)reinterpret((uint64)0) != gradient, halide_error_host_is_null("Output buffer gradient"))
+ >  assert(gradient != (void *)reinterpret((uint64)0), halide_error_host_is_null("Output buffer gradient"))
  >  produce gradient {
- >   let t1 = (gradient.min.1*gradient.stride.1) + gradient.min.0
- >   for (gradient.s0.y, gradient.min.1, gradient.extent.1) {
- >    let t2 = (gradient.s0.y*gradient.stride.1) - t1
- >    for (gradient.s0.x, gradient.min.0, gradient.extent.0) {
- >     gradient[gradient.s0.x + t2] = gradient.s0.x + gradient.s0.y
+ >   let t2 = 0 - (gradient.min.1*gradient.stride.1)
+ >   let t1 = gradient.min.0 + gradient.min.1
+ >   for (gradient.s0.y.rebased, 0, gradient.extent.1) {
+ >    let t4 = ((gradient.min.1 + gradient.s0.y.rebased)*gradient.stride.1) + t2
+ >    let t3 = gradient.s0.y.rebased + t1
+ >    for (gradient.s0.x.rebased, 0, gradient.extent.0) {
+ >     gradient[gradient.s0.x.rebased + t4] = gradient.s0.x.rebased + t3
  >    }
  >   }
  >  }
  > }
  > Skipping Hexagon offload...
+ > Skipping GPU offload...
  > Target triple of initial module: x86_64--linux-gnu
  > Generating llvm bitcode...
  > Generating llvm bitcode prolog for function gradient...
@@ -472,6 +481,7 @@ tutorial_lesson_21_auto_scheduler_run.html
  > Injecting tracing...
  > Adding checks for parameters
  > Computing bounds of each function's value
+ > Clamping unsafe data-dependent accesses
  > Performing computation bounds inference...
  > Removing extern loops...
  > Performing sliding window optimization...
@@ -501,12 +511,17 @@ tutorial_lesson_21_auto_scheduler_run.html
  > Detecting vector interleavings...
  > Partitioning loops to simplify boundary conditions...
  > Trimming loops to the region over which they do something...
+ > Rebasing loops to zero...
  > Hoisting loop invariant if statements...
  > Injecting early frees...
  > Simplifying correlated differences...
  > Bounding small allocations...
  > Simplifying...
  > Lowering unsafe promises...
+ > Flattening nested ramps...
+ > Removing dead allocations and moving loop invariant code...
+ > Finding intrinsics...
+ > Hoisting prefetches...
  > Lowering after final simplification:
  > assert((uint64)reinterpret((halide_buffer_t *)gradient.buffer) != (uint64)0, halide_error_buffer_argument_is_null("gradient"))
  > let gradient = (void *)_halide_buffer_get_host((halide_buffer_t *)gradient.buffer)
@@ -529,22 +544,25 @@ tutorial_lesson_21_auto_scheduler_run.html
  >  assert(0 <= gradient.extent.1, halide_error_buffer_extents_negative("Output buffer gradient", 1, gradient.extent.1))
  >  assert(gradient.stride.0 == 1, halide_error_constraint_violated("gradient.stride.0", gradient.stride.0, "1", 1))
  >  let gradient.total_extent.1 = int64(gradient.extent.1)*int64(gradient.extent.0)
- >  assert((uint64)abs(int64(gradient.extent.0)) <= (uint64)2147483647, halide_error_buffer_allocation_too_large("gradient", (uint64)abs(int64(gradient.extent.0)), (uint64)2147483647))
+ >  assert(uint64(gradient.extent.0) <= (uint64)2147483647, halide_error_buffer_allocation_too_large("gradient", uint64(gradient.extent.0), (uint64)2147483647))
  >  assert((uint64)abs(int64(gradient.extent.1)*int64(gradient.stride.1)) <= (uint64)2147483647, halide_error_buffer_allocation_too_large("gradient", (uint64)abs(int64(gradient.extent.1)*int64(gradient.stride.1)), (uint64)2147483647))
  >  assert(gradient.total_extent.1 <= (int64)2147483647, halide_error_buffer_extents_too_large("gradient", gradient.total_extent.1, (int64)2147483647))
  >  assert(!gradient.device_dirty, halide_error_device_dirty_with_no_device_support("Output buffer gradient"))
- >  assert((void *)reinterpret((uint64)0) != gradient, halide_error_host_is_null("Output buffer gradient"))
+ >  assert(gradient != (void *)reinterpret((uint64)0), halide_error_host_is_null("Output buffer gradient"))
  >  produce gradient {
- >   let t4 = (gradient.min.1*gradient.stride.1) + gradient.min.0
- >   for (gradient.s0.y, gradient.min.1, gradient.extent.1) {
- >    let t5 = (gradient.s0.y*gradient.stride.1) - t4
- >    for (gradient.s0.x, gradient.min.0, gradient.extent.0) {
- >     gradient[gradient.s0.x + t5] = gradient.s0.x + gradient.s0.y
+ >   let t7 = 0 - (gradient.min.1*gradient.stride.1)
+ >   let t6 = gradient.min.0 + gradient.min.1
+ >   for (gradient.s0.y.rebased, 0, gradient.extent.1) {
+ >    let t9 = ((gradient.min.1 + gradient.s0.y.rebased)*gradient.stride.1) + t7
+ >    let t8 = gradient.s0.y.rebased + t6
+ >    for (gradient.s0.x.rebased, 0, gradient.extent.0) {
+ >     gradient[gradient.s0.x.rebased + t9] = gradient.s0.x.rebased + t8
  >    }
  >   }
  >  }
  > }
  > Skipping Hexagon offload...
+ > Skipping GPU offload...
  > Module.compile(): stmt_html gradient.html
 
 </b></div>

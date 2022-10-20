@@ -1,6 +1,7 @@
 var class_halide_1_1_names_interface =
 [
     [ "Expr", "class_halide_1_1_names_interface.html#a8d46151b07eba49f5812791609474cb5", null ],
+    [ "EvictionKey", "class_halide_1_1_names_interface.html#aab96016cda0992fbeb7f1320cdc48dac", null ],
     [ "ExternFuncArgument", "class_halide_1_1_names_interface.html#a3167fccb10c54f139d2be8a2b7c9b451", null ],
     [ "Func", "class_halide_1_1_names_interface.html#af01e85379c88e3d2312a53c99448fcfa", null ],
     [ "GeneratorContext", "class_halide_1_1_names_interface.html#a43da6fe90a54df3359d1616f3420a677", null ],

@@ -7,7 +7,7 @@ var struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest =
     [ "funcs_realized_or_inlined", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#ae4ae3127de5ab1b893c399ddf68ef9f7", null ],
     [ "get_sites", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a63e06d8f6a7a7d2d2edaec1b72997410", null ],
     [ "set_working_set_at_task_feature", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a96f033062ae5c95a80d26f38dc32ae46", null ],
-    [ "compute_features", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a29761bcdc24eea665aead16a4fe99101", null ],
+    [ "compute_features", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#abd73f6ad0aaae8673d61fead735ceafb", null ],
     [ "is_root", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a10a223dd58020296550794c6bf129da9", null ],
     [ "set_bounds", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a48e20c75a4248298dfdf646a38aed5a2", null ],
     [ "get_bounds", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#ad900f5c78c3f0463ca47b15fc068e3ea", null ],
@@ -21,6 +21,14 @@ var struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest =
     [ "parallelize_in_tiles", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a61f404aff37eba30f071ab24236a657b", null ],
     [ "compute_in_tiles", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a58cf92b44a5dff0ed63847cc77041e24", null ],
     [ "apply", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a14c44debf50dcd635595befee452f1b5", null ],
+    [ "copy_from_including_features", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#ad643decc0e25f098daef58f5e0c9b31f", null ],
+    [ "memoize_points_computed_minimum", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a9f31b0d91691a9cc84494d1f936b57fb", null ],
+    [ "memoize_features", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a6ae2ed076d3fc9c9d5eff1a8d41fb76d", null ],
+    [ "compute_working_set_from_features", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#afd1db0a086a53162594fdd921f6bd089", null ],
+    [ "recompute_inlined_features", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a317ccf53146ba48b5e0b182d3bbbc335", null ],
+    [ "compute_hash_of_producers_stored_at_root", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#ac2409ae36da8ad0bdda29923e879886c", null ],
+    [ "collect_producers", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#ad168ae6255dd9ca106872f3713e2483c", null ],
+    [ "collect_stages", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a5c413022bf18c1383c94f236d77dff6a", null ],
     [ "ref_count", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#ab9a1e0d893e5f721cb35e6bc347d74ae", null ],
     [ "size", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a60ab63803a47071cb7d0bead75019ff6", null ],
     [ "children", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a95a1081e0362927e821532d09c492ffc", null ],
@@ -33,5 +41,7 @@ var struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest =
     [ "tileable", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a8f782ad834ede04dac6a52a66517c8bd", null ],
     [ "parallel", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#ace6549b94773e60c3d2e61a7b925a24a", null ],
     [ "vector_dim", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a77d5faa6e442d6e06b9d6a8af3ca9b90", null ],
-    [ "vectorized_loop_index", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a0aed41f28aca14d26b722edd02d6be7a", null ]
+    [ "vectorized_loop_index", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a0aed41f28aca14d26b722edd02d6be7a", null ],
+    [ "feature_intermediates_cache", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#af14ca27d131bf6cec47ac8677f294f1f", null ],
+    [ "features_cache", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a877515df2909b8ce495cf7109cc1afcf", null ]
 ];

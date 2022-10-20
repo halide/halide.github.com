@@ -4,6 +4,7 @@ var dir_ad21885e1d1075761544063495bb27a1 =
       [ "aslog", "class_halide_1_1_internal_1_1aslog.html", "class_halide_1_1_internal_1_1aslog" ]
     ] ],
     [ "AutoSchedule.h", "_auto_schedule_8h.html", "_auto_schedule_8h" ],
+    [ "Cache.h", "_cache_8h.html", "_cache_8h" ],
     [ "cost_model_schedule.h", "cost__model__schedule_8h.html", "cost__model__schedule_8h" ],
     [ "CostModel.h", "_cost_model_8h.html", [
       [ "CostModel", "class_halide_1_1_cost_model.html", "class_halide_1_1_cost_model" ]
@@ -11,7 +12,8 @@ var dir_ad21885e1d1075761544063495bb27a1 =
     [ "DefaultCostModel.h", "_default_cost_model_8h.html", "_default_cost_model_8h" ],
     [ "Featurization.h", "_featurization_8h.html", [
       [ "PipelineFeatures", "struct_halide_1_1_internal_1_1_pipeline_features.html", "struct_halide_1_1_internal_1_1_pipeline_features" ],
-      [ "ScheduleFeatures", "struct_halide_1_1_internal_1_1_schedule_features.html", "struct_halide_1_1_internal_1_1_schedule_features" ]
+      [ "ScheduleFeatures", "struct_halide_1_1_internal_1_1_schedule_features.html", "struct_halide_1_1_internal_1_1_schedule_features" ],
+      [ "FeatureIntermediates", "struct_halide_1_1_internal_1_1_feature_intermediates.html", "struct_halide_1_1_internal_1_1_feature_intermediates" ]
     ] ],
     [ "FunctionDAG.h", "_function_d_a_g_8h.html", "_function_d_a_g_8h" ],
     [ "included_schedule_file.schedule.h", "included__schedule__file_8schedule_8h.html", "included__schedule__file_8schedule_8h" ],
@@ -23,6 +25,10 @@ var dir_ad21885e1d1075761544063495bb27a1 =
       [ "iterator", "struct_perfect_hash_map_1_1iterator.html", "struct_perfect_hash_map_1_1iterator" ],
       [ "const_iterator", "struct_perfect_hash_map_1_1const__iterator.html", "struct_perfect_hash_map_1_1const__iterator" ]
     ] ],
+    [ "State.h", "_state_8h.html", [
+      [ "State", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_state.html", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_state" ]
+    ] ],
+    [ "Timer.h", "_timer_8h.html", "_timer_8h" ],
     [ "Weights.h", "_weights_8h.html", [
       [ "Weights", "struct_halide_1_1_internal_1_1_weights.html", "struct_halide_1_1_internal_1_1_weights" ]
     ] ]

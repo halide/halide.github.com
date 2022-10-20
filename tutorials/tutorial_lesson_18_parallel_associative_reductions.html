@@ -340,11 +340,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// reduction using the scheduling directive &apos;rfactor&apos;.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_18*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_18 -std=c++11</span>
+<span class="hl slc">// g++ lesson_18*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_18 -std=c++17</span>
 <span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_18</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_18*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_18 -std=c++11</span>
+<span class="hl slc">// g++ lesson_18*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_18 -std=c++17</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_18</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -382,7 +382,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwd">histogram</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x<span class="hl opt">,</span> r<span class="hl opt">.</span>y<span class="hl opt">) /</span> <span class="hl num">32</span><span class="hl opt">) +=</span> <span class="hl num">1</span><span class="hl opt">;</span>
 
         histogram<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>i<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
-        histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">);</span>
+        histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a visualization of</span>
         <span class="hl slc">// what this does.</span>
@@ -430,7 +430,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         intermediate<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>i<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
         histogram<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>i<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
 
-        histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">);</span>
+        histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a visualization of</span>
         <span class="hl slc">// what this does.</span>
@@ -496,7 +496,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// can&apos;t prove the associativity of a reduction, it will throw</span>
         <span class="hl slc">// an error.</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a</span>
         <span class="hl slc">// visualization of what this does.</span>
@@ -565,7 +565,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         intermediate<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
         histogram<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a</span>
         <span class="hl slc">// visualization of what this does.</span>
@@ -638,7 +638,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         intermediate<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
         histogram<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a visualization of</span>
         <span class="hl slc">// what this does.</span>

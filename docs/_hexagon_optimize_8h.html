@@ -89,7 +89,6 @@ $(document).ready(function(){initNavTree('_hexagon_optimize_8h.html',''); initRe
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="_expr_8h_source.html">Expr.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_target_8h_source.html">Target.h</a>&quot;</code><br />
 </div>
 <p><a href="_hexagon_optimize_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -106,14 +105,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a9944b3d2cbfb0262a46b72ec515ab130"><td class="memItemLeft" align="right" valign="top">Stmt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a9944b3d2cbfb0262a46b72ec515ab130">Halide::Internal::optimize_hexagon_shuffles</a> (const Stmt &amp;s, int lut_alignment)</td></tr>
 <tr class="memdesc:a9944b3d2cbfb0262a46b72ec515ab130"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace indirect and other loads with simple loads + vlut calls.  <a href="namespace_halide_1_1_internal.html#a9944b3d2cbfb0262a46b72ec515ab130">More...</a><br /></td></tr>
 <tr class="separator:a9944b3d2cbfb0262a46b72ec515ab130"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a253a99e9c356e4f91110a986d33cea"><td class="memItemLeft" align="right" valign="top">Stmt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a7a253a99e9c356e4f91110a986d33cea">Halide::Internal::vtmpy_generator</a> (Stmt s)</td></tr>
-<tr class="memdesc:a7a253a99e9c356e4f91110a986d33cea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate vtmpy instruction if possible.  <a href="namespace_halide_1_1_internal.html#a7a253a99e9c356e4f91110a986d33cea">More...</a><br /></td></tr>
-<tr class="separator:a7a253a99e9c356e4f91110a986d33cea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad61e99863aa9fd2833e535440b632093"><td class="memItemLeft" align="right" valign="top">Stmt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ad61e99863aa9fd2833e535440b632093">Halide::Internal::scatter_gather_generator</a> (Stmt s)</td></tr>
 <tr class="separator:ad61e99863aa9fd2833e535440b632093"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47d68f71d529b091ca5a3eb149d18196"><td class="memItemLeft" align="right" valign="top">Stmt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a47d68f71d529b091ca5a3eb149d18196">Halide::Internal::optimize_hexagon_instructions</a> (Stmt s, Target t)</td></tr>
-<tr class="memdesc:a47d68f71d529b091ca5a3eb149d18196"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hexagon deinterleaves when performing widening operations, and interleaves when performing narrowing operations.  <a href="namespace_halide_1_1_internal.html#a47d68f71d529b091ca5a3eb149d18196">More...</a><br /></td></tr>
-<tr class="separator:a47d68f71d529b091ca5a3eb149d18196"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2278e803f98fc7b6e2b382ace8052975"><td class="memItemLeft" align="right" valign="top">Stmt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a2278e803f98fc7b6e2b382ace8052975">Halide::Internal::optimize_hexagon_instructions</a> (Stmt s, const Target &amp;t)</td></tr>
+<tr class="memdesc:a2278e803f98fc7b6e2b382ace8052975"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hexagon deinterleaves when performing widening operations, and interleaves when performing narrowing operations.  <a href="namespace_halide_1_1_internal.html#a2278e803f98fc7b6e2b382ace8052975">More...</a><br /></td></tr>
+<tr class="separator:a2278e803f98fc7b6e2b382ace8052975"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33a62ca468e067e12843e66cfa0fb33d"><td class="memItemLeft" align="right" valign="top">Expr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a33a62ca468e067e12843e66cfa0fb33d">Halide::Internal::native_deinterleave</a> (const Expr &amp;x)</td></tr>
 <tr class="memdesc:a33a62ca468e067e12843e66cfa0fb33d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate deinterleave or interleave operations, operating on groups of vectors at a time.  <a href="namespace_halide_1_1_internal.html#a33a62ca468e067e12843e66cfa0fb33d">More...</a><br /></td></tr>
 <tr class="separator:a33a62ca468e067e12843e66cfa0fb33d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,6 +119,14 @@ Functions</h2></td></tr>
 <tr class="separator:aaf5ab59246b78ff782aceed334637e4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa264f8cbd16a2062c62a731ef88a261"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aaa264f8cbd16a2062c62a731ef88a261">Halide::Internal::is_native_interleave</a> (const Expr &amp;x)</td></tr>
 <tr class="separator:aaa264f8cbd16a2062c62a731ef88a261"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada5b91e32017e38df05ae28f39a8b78c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ada5b91e32017e38df05ae28f39a8b78c">Halide::Internal::type_suffix</a> (Type type, bool signed_variants=true)</td></tr>
+<tr class="separator:ada5b91e32017e38df05ae28f39a8b78c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6edb350d77a097d5b1dce8ba2a9890cf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a6edb350d77a097d5b1dce8ba2a9890cf">Halide::Internal::type_suffix</a> (const Expr &amp;a, bool signed_variants=true)</td></tr>
+<tr class="separator:a6edb350d77a097d5b1dce8ba2a9890cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6b52d96bb5a9b758cbaf557e35f4695"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#af6b52d96bb5a9b758cbaf557e35f4695">Halide::Internal::type_suffix</a> (const Expr &amp;a, const Expr &amp;b, bool signed_variants=true)</td></tr>
+<tr class="separator:af6b52d96bb5a9b758cbaf557e35f4695"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93d49ddfaea99d3ddf07425940e67dd0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a93d49ddfaea99d3ddf07425940e67dd0">Halide::Internal::type_suffix</a> (const std::vector&lt; Expr &gt; &amp;ops, bool signed_variants=true)</td></tr>
+<tr class="separator:a93d49ddfaea99d3ddf07425940e67dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Tools for optimizing IR for Hexagon. </p>

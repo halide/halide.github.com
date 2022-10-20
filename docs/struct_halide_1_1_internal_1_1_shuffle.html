@@ -104,6 +104,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1e8b46311f722e6a4969f69228301e9d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_shuffle.html#a1e8b46311f722e6a4969f69228301e9d">is_interleave</a> () const</td></tr>
 <tr class="memdesc:a1e8b46311f722e6a4969f69228301e9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this shuffle is an interleaving of the vector arguments.  <a href="struct_halide_1_1_internal_1_1_shuffle.html#a1e8b46311f722e6a4969f69228301e9d">More...</a><br /></td></tr>
 <tr class="separator:a1e8b46311f722e6a4969f69228301e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ec3c81512f91382d5b54e54318a60bd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_shuffle.html#a8ec3c81512f91382d5b54e54318a60bd">is_broadcast</a> () const</td></tr>
+<tr class="memdesc:a8ec3c81512f91382d5b54e54318a60bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this shuffle can be represented as a broadcast.  <a href="struct_halide_1_1_internal_1_1_shuffle.html#a8ec3c81512f91382d5b54e54318a60bd">More...</a><br /></td></tr>
+<tr class="separator:a8ec3c81512f91382d5b54e54318a60bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab74d19261de16a0dc25e0cab29b33a18"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_shuffle.html#ab74d19261de16a0dc25e0cab29b33a18">broadcast_factor</a> () const</td></tr>
+<tr class="separator:ab74d19261de16a0dc25e0cab29b33a18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc971d7a3ba231ee38a73e567cd6d3ce"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_shuffle.html#acc971d7a3ba231ee38a73e567cd6d3ce">is_concat</a> () const</td></tr>
 <tr class="memdesc:acc971d7a3ba231ee38a73e567cd6d3ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this shuffle is a concatenation of the vector arguments.  <a href="struct_halide_1_1_internal_1_1_shuffle.html#acc971d7a3ba231ee38a73e567cd6d3ce">More...</a><br /></td></tr>
 <tr class="separator:acc971d7a3ba231ee38a73e567cd6d3ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,6 +154,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a91186388788940105da53d3191de98cb"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_shuffle.html#a91186388788940105da53d3191de98cb">make_concat</a> (const std::vector&lt; <a class="el" href="struct_halide_1_1_expr.html">Expr</a> &gt; &amp;<a class="el" href="struct_halide_1_1_internal_1_1_shuffle.html#ac5f5991b4d92ef09df519426a4ee8aa5">vectors</a>)</td></tr>
 <tr class="memdesc:a91186388788940105da53d3191de98cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience constructor for making a shuffle representing a concatenation of the vectors.  <a href="struct_halide_1_1_internal_1_1_shuffle.html#a91186388788940105da53d3191de98cb">More...</a><br /></td></tr>
 <tr class="separator:a91186388788940105da53d3191de98cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2c7f23216fd83e39b0b91d013ab9cfa"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_shuffle.html#ac2c7f23216fd83e39b0b91d013ab9cfa">make_broadcast</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> vector, int factor)</td></tr>
+<tr class="memdesc:ac2c7f23216fd83e39b0b91d013ab9cfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience constructor for making a shuffle representing a broadcast of a vector.  <a href="struct_halide_1_1_internal_1_1_shuffle.html#ac2c7f23216fd83e39b0b91d013ab9cfa">More...</a><br /></td></tr>
+<tr class="separator:ac2c7f23216fd83e39b0b91d013ab9cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a138328c15429b02b3be848b7ac1b40a2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_internal_1_1_shuffle.html#a138328c15429b02b3be848b7ac1b40a2">make_slice</a> (<a class="el" href="struct_halide_1_1_expr.html">Expr</a> vector, int begin, int stride, int size)</td></tr>
 <tr class="memdesc:a138328c15429b02b3be848b7ac1b40a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience constructor for making a shuffle representing a contiguous subset of a vector.  <a href="struct_halide_1_1_internal_1_1_shuffle.html#a138328c15429b02b3be848b7ac1b40a2">More...</a><br /></td></tr>
 <tr class="separator:a138328c15429b02b3be848b7ac1b40a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,7 +190,7 @@ Static Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Construct a new vector by taking elements from another sequence of vectors. </p>
 
-<p class="definition">Definition at line <a class="el" href="_i_r_8h_source.html#l00729">729</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_r_8h_source.html#l00775">775</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a98a0892891a426cc9457d206d8c2e158"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a98a0892891a426cc9457d206d8c2e158">&#9670;&nbsp;</a></span>make()</h2>
@@ -273,6 +281,44 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Convenience constructor for making a shuffle representing a concatenation of the vectors. </p>
+
+</div>
+</div>
+<a id="ac2c7f23216fd83e39b0b91d013ab9cfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2c7f23216fd83e39b0b91d013ab9cfa">&#9670;&nbsp;</a></span>make_broadcast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="struct_halide_1_1_expr.html">Expr</a> Halide::Internal::Shuffle::make_broadcast </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_halide_1_1_expr.html">Expr</a>&#160;</td>
+          <td class="paramname"><em>vector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>factor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convenience constructor for making a shuffle representing a broadcast of a vector. </p>
 
 </div>
 </div>
@@ -383,6 +429,43 @@ Static Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a8ec3c81512f91382d5b54e54318a60bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ec3c81512f91382d5b54e54318a60bd">&#9670;&nbsp;</a></span>is_broadcast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Halide::Internal::Shuffle::is_broadcast </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if this shuffle can be represented as a broadcast. </p>
+<p><a class="el" href="struct_halide_1_1_internal_1_1_for.html" title="A for loop.">For</a> example: A uint8 shuffle of with 4*n lanes and indices: 0, 1, 2, 3, 0, 1, 2, 3, ....., 0, 1, 2, 3 can be represented as a uint32 broadcast with n lanes (factor = 4). </p>
+
+</div>
+</div>
+<a id="ab74d19261de16a0dc25e0cab29b33a18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab74d19261de16a0dc25e0cab29b33a18">&#9670;&nbsp;</a></span>broadcast_factor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Halide::Internal::Shuffle::broadcast_factor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="acc971d7a3ba231ee38a73e567cd6d3ce"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc971d7a3ba231ee38a73e567cd6d3ce">&#9670;&nbsp;</a></span>is_concat()</h2>
 
@@ -446,9 +529,9 @@ Static Public Attributes</h2></td></tr>
 
 <p>Check if this shuffle is a contiguous strict subset of the vector arguments, and if so, the offset and stride of the slice. </p>
 
-<p class="definition">Definition at line <a class="el" href="_i_r_8h_source.html#l00769">769</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_r_8h_source.html#l00827">827</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
 
-<p class="reference">References <a class="el" href="_i_r_8h_source.html#l00735">indices</a>.</p>
+<p class="reference">References <a class="el" href="_i_r_8h_source.html#l00781">indices</a>.</p>
 
 </div>
 </div>
@@ -477,9 +560,9 @@ Static Public Attributes</h2></td></tr>
 
 <p>Check if this shuffle is a contiguous strict subset of the vector arguments, and if so, the offset and stride of the slice. </p>
 
-<p class="definition">Definition at line <a class="el" href="_i_r_8h_source.html#l00772">772</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_r_8h_source.html#l00830">830</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
 
-<p class="reference">References <a class="el" href="_i_r_8h_source.html#l00735">indices</a>.</p>
+<p class="reference">References <a class="el" href="_i_r_8h_source.html#l00781">indices</a>.</p>
 
 </div>
 </div>
@@ -515,7 +598,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_i_r_8h_source.html#l00730">730</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_r_8h_source.html#l00776">776</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
 
 </div>
 </div>
@@ -532,11 +615,11 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Indices indicating which vector element to place into the result. </p>
-<p>The elements are numbered by their position in the concatenation of the vector argumentss. </p>
+<p>The elements are numbered by their position in the concatenation of the vector arguments. </p>
 
-<p class="definition">Definition at line <a class="el" href="_i_r_8h_source.html#l00735">735</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_r_8h_source.html#l00781">781</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_i_r_8h_source.html#l00769">slice_begin()</a>, and <a class="el" href="_i_r_8h_source.html#l00772">slice_stride()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_i_r_8h_source.html#l00827">slice_begin()</a>, and <a class="el" href="_i_r_8h_source.html#l00830">slice_stride()</a>.</p>
 
 </div>
 </div>
@@ -560,7 +643,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_i_r_8h_source.html#l00781">781</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_i_r_8h_source.html#l00839">839</a> of file <a class="el" href="_i_r_8h_source.html">IR.h</a>.</p>
 
 </div>
 </div>

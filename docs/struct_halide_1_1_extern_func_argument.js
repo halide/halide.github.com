@@ -13,7 +13,7 @@ var struct_halide_1_1_extern_func_argument =
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#af321dd81fbcf5ec5c8a638dfd839b506", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a36aa8c858f9dcc85ca23f41f9b2452d9", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a94769677e5a00a055955a4b41292ae79", null ],
-    [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a389f0bf5e6e8c6dabe3d8637f37f16ee", null ],
+    [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a769a6a88bd97e6c5365b069260af54a2", null ],
     [ "is_func", "struct_halide_1_1_extern_func_argument.html#ae66e1a08978f4e4b539c37fd3728b190", null ],
     [ "is_expr", "struct_halide_1_1_extern_func_argument.html#afc155b3534234fe126e34660737cbbb3", null ],
     [ "is_buffer", "struct_halide_1_1_extern_func_argument.html#aacc75a13e2b2280df350627d8d5c057e", null ],

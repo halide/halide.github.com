@@ -32,7 +32,7 @@ var _module_8h =
     ] ],
     [ "get_output_info", "_module_8h.html#a484b5563138a3637d88adc3942494a99", null ],
     [ "link_modules", "_module_8h.html#af69f589a059692f84a1a3d1fe8056df5", null ],
-    [ "compile_standalone_runtime", "_module_8h.html#abfc7d9da0f787624463c2ce807133657", null ],
-    [ "compile_standalone_runtime", "_module_8h.html#a5967c47c8d63e09bd3d7e2f02ce831e0", null ],
+    [ "compile_standalone_runtime", "_module_8h.html#aa4b41a54a453737dcdd34e6d1058353f", null ],
+    [ "compile_standalone_runtime", "_module_8h.html#a04de7316843ac7c1a0a0126228caab32", null ],
     [ "compile_multitarget", "_module_8h.html#a7c901cdbf0e9c7ffac2226b078a579ae", null ]
 ];

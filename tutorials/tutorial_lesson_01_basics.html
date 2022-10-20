@@ -339,11 +339,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// This lesson demonstrates basic usage of Halide as a JIT compiler for imaging.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_01*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_01 -std=c++11</span>
+<span class="hl slc">// g++ lesson_01*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_01 -std=c++17</span>
 <span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_01</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_01*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_01 -std=c++11</span>
+<span class="hl slc">// g++ lesson_01*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_01 -std=c++17</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_01</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -411,7 +411,7 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl slc">// resolution of the output image. Halide.h also provides a basic</span>
     <span class="hl slc">// templatized image type we can use. We&apos;ll make an 800 x 600</span>
     <span class="hl slc">// image.</span>
-    <span class="hl kwc">Halide</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int32_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">800</span><span class="hl opt">,</span> <span class="hl num">600</span><span class="hl opt">);</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int32_t</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">800</span><span class="hl opt">,</span> <span class="hl num">600</span><span class="hl opt">});</span>
 
     <span class="hl slc">// Halide does type inference for you. Var objects represent</span>
     <span class="hl slc">// 32-bit integers, so the Expr object &apos;x + y&apos; also represents a</span>

@@ -1,7 +1,7 @@
 var class_halide_1_1_internal_1_1_i_r_visitor =
 [
-    [ "IRVisitor", "class_halide_1_1_internal_1_1_i_r_visitor.html#a1c5c75bd6405d934f895d8ef4be50079", null ],
-    [ "~IRVisitor", "class_halide_1_1_internal_1_1_i_r_visitor.html#aafee77ab54634b7607250b908f300b90", null ],
+    [ "IRVisitor", "class_halide_1_1_internal_1_1_i_r_visitor.html#ab54da35467fd78e42f63a6536c93cf16", null ],
+    [ "~IRVisitor", "class_halide_1_1_internal_1_1_i_r_visitor.html#a3aa29ab9cd5d2dd7797b53e0782a4c9a", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a93f91cea5a783c0319c73fb7e6246167", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a706a1e8fa36baf8629429a065134d55a", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a7485f3d7c5d57a253baa9853ca80bcac", null ],

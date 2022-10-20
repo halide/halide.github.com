@@ -5,7 +5,6 @@ var class_halide_1_1_internal_1_1_generator_input___scalar =
     [ "GeneratorInput_Scalar", "class_halide_1_1_internal_1_1_generator_input___scalar.html#aabef9f414092e7e853498e078fd6b6c9", null ],
     [ "GeneratorInput_Scalar", "class_halide_1_1_internal_1_1_generator_input___scalar.html#a028e8bcdedaf97bb16dca037d8de55b1", null ],
     [ "GeneratorInput_Scalar", "class_halide_1_1_internal_1_1_generator_input___scalar.html#a59848ac7a8d80023c592f203e6f9d46d", null ],
-    [ "get_def_expr", "class_halide_1_1_internal_1_1_generator_input___scalar.html#ab0904f47858a248ff5979d8ab223160f", null ],
     [ "set_def_min_max", "class_halide_1_1_internal_1_1_generator_input___scalar.html#a4c2712a2217f8426b69e8e402c039571", null ],
     [ "get_c_type", "class_halide_1_1_internal_1_1_generator_input___scalar.html#ac73233d0a4b20bcb1b2430447414a81a", null ],
     [ "operator Expr", "class_halide_1_1_internal_1_1_generator_input___scalar.html#a435089e6daa034bca9d1c21caa5c7181", null ],

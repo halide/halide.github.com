@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('_generator_8h.html',''); initResizable
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;iterator&gt;</code><br />
 <code>#include &lt;limits&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
@@ -173,6 +174,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_input___buffer.html">Halide::Internal::GeneratorInput_Buffer&lt; T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_input___func.html">Halide::Internal::GeneratorInput_Func&lt; T &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_input___dynamic_scalar.html">Halide::Internal::GeneratorInput_DynamicScalar&lt; T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_halide_1_1_internal_1_1_generator_input___scalar.html">Halide::Internal::GeneratorInput_Scalar&lt; T &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -280,9 +283,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a40a4f8fc5c4fcce2e0b5656bd6c831bb"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a40a4f8fc5c4fcce2e0b5656bd6c831bb"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#a40a4f8fc5c4fcce2e0b5656bd6c831bb">Halide::Internal::GeneratorParamImplBase</a> = typename select_type&lt; cond&lt; std::is_same&lt; T, Target &gt;::value, GeneratorParam_Target&lt; T &gt; &gt;, cond&lt; std::is_same&lt; T, MachineParams &gt;::value, GeneratorParam_MachineParams&lt; T &gt; &gt;, cond&lt; std::is_same&lt; T, LoopLevel &gt;::value, GeneratorParam_LoopLevel &gt;, cond&lt; std::is_same&lt; T, std::string &gt;::value, GeneratorParam_String&lt; T &gt; &gt;, cond&lt; std::is_same&lt; T, Type &gt;::value, GeneratorParam_Type&lt; T &gt; &gt;, cond&lt; std::is_same&lt; T, bool &gt;::value, GeneratorParam_Bool&lt; T &gt; &gt;, cond&lt; std::is_arithmetic&lt; T &gt;::value, GeneratorParam_Arithmetic&lt; T &gt; &gt;, cond&lt; std::is_enum&lt; T &gt;::value, GeneratorParam_Enum&lt; T &gt; &gt;&gt;::type</td></tr>
 <tr class="separator:a40a4f8fc5c4fcce2e0b5656bd6c831bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaebc4e1b658e316d9738ac723778525e"><td class="memTemplParams" colspan="2">template&lt;typename T , typename TBase  = typename std::remove_all_extents&lt;T&gt;::type&gt; </td></tr>
-<tr class="memitem:aaebc4e1b658e316d9738ac723778525e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#aaebc4e1b658e316d9738ac723778525e">Halide::Internal::GeneratorInputImplBase</a> = typename select_type&lt; cond&lt; has_static_halide_type_method&lt; TBase &gt;::value, GeneratorInput_Buffer&lt; T &gt; &gt;, cond&lt; std::is_same&lt; TBase, Func &gt;::value, GeneratorInput_Func&lt; T &gt; &gt;, cond&lt; std::is_arithmetic&lt; TBase &gt;::value, GeneratorInput_Arithmetic&lt; T &gt; &gt;, cond&lt; std::is_scalar&lt; TBase &gt;::value, GeneratorInput_Scalar&lt; T &gt; &gt;&gt;::type</td></tr>
-<tr class="separator:aaebc4e1b658e316d9738ac723778525e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab45bf0eb88ef1c62fc086d71eeca0f32"><td class="memTemplParams" colspan="2">template&lt;typename T , typename TBase  = typename std::remove_all_extents&lt;T&gt;::type&gt; </td></tr>
+<tr class="memitem:ab45bf0eb88ef1c62fc086d71eeca0f32"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ab45bf0eb88ef1c62fc086d71eeca0f32">Halide::Internal::GeneratorInputImplBase</a> = typename select_type&lt; cond&lt; has_static_halide_type_method&lt; TBase &gt;::value, GeneratorInput_Buffer&lt; T &gt; &gt;, cond&lt; std::is_same&lt; TBase, Func &gt;::value, GeneratorInput_Func&lt; T &gt; &gt;, cond&lt; std::is_arithmetic&lt; TBase &gt;::value, GeneratorInput_Arithmetic&lt; T &gt; &gt;, cond&lt; std::is_scalar&lt; TBase &gt;::value, GeneratorInput_Scalar&lt; T &gt; &gt;, cond&lt; std::is_same&lt; TBase, Expr &gt;::value, GeneratorInput_DynamicScalar&lt; T &gt; &gt;&gt;::type</td></tr>
+<tr class="separator:ab45bf0eb88ef1c62fc086d71eeca0f32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3efc8f40050501582a4dc9dafcd18a9"><td class="memTemplParams" colspan="2">template&lt;typename T , typename TBase  = typename std::remove_all_extents&lt;T&gt;::type&gt; </td></tr>
 <tr class="memitem:ab3efc8f40050501582a4dc9dafcd18a9"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_halide_1_1_internal.html#ab3efc8f40050501582a4dc9dafcd18a9">Halide::Internal::GeneratorOutputImplBase</a> = typename select_type&lt; cond&lt; has_static_halide_type_method&lt; TBase &gt;::value, GeneratorOutput_Buffer&lt; T &gt; &gt;, cond&lt; std::is_same&lt; TBase, Func &gt;::value, GeneratorOutput_Func&lt; T &gt; &gt;, cond&lt; std::is_arithmetic&lt; TBase &gt;::value, GeneratorOutput_Arithmetic&lt; T &gt; &gt;&gt;::type</td></tr>
 <tr class="separator:ab3efc8f40050501582a4dc9dafcd18a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -557,7 +560,7 @@ Functions</h2></td></tr>
 <div class="line">Output&lt;Func&gt;(s)</div>
 </div><!-- fragment --><p>Note that the Inputs and Outputs will appear in the C function call in the order they are declared. All Input&lt;Func&gt; and Output&lt;Func&gt; are represented as <a class="el" href="structhalide__buffer__t.html" title="The raw representation of an image passed around by generated Halide code.">halide_buffer_t</a>; all other Input&lt;&gt; are the appropriate C++ scalar type. (GeneratorParams are always referenced by name, not position, so their order is irrelevant.)</p>
 <p>All Inputs and Outputs must have explicit names, and all such names must match the regex [A-Za-z][A-Za-z_0-9]* (i.e., essentially a C/C++ variable name, with some extra restrictions on underscore use). By convention, the name should match the member-variable name.</p>
-<p>You can dynamically add Inputs and Outputs to your Generator via adding a configure() method; if present, it will be called before generate(). It can examine GeneratorParams but it may not examine predeclared Inputs or Outputs; the only thing it should do is call add_input&lt;&gt;() and/or add_output&lt;&gt;(). Added inputs will be appended (in order) after predeclared Inputs but before any Outputs; added outputs will be appended after predeclared Outputs.</p>
+<p>You can dynamically add Inputs and Outputs to your Generator via adding a configure() method; if present, it will be called before generate(). It can examine GeneratorParams but it may not examine predeclared Inputs or Outputs; the only thing it should do is call add_input&lt;&gt;() and/or add_output&lt;&gt;(), or call set_type()/set_dimensions()/set_array_size() on an Input or Output with an unspecified type. Added inputs will be appended (in order) after predeclared Inputs but before any Outputs; added outputs will be appended after predeclared Outputs.</p>
 <p>Note that the pointers returned by add_input() and add_output() are owned by the Generator and will remain valid for the Generator's lifetime; user code should not attempt to delete or free them.</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>MultiSum : <span class="keyword">public</span> Generator&lt;MultiSum&gt; {</div>
 <div class="line"><span class="keyword">public</span>:</div>
@@ -619,7 +622,7 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00519">519</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00528">528</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -642,7 +645,7 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
 <div class="line">        typed_setter_impl&lt;TYPE&gt;(new_value, #TYPE); \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00519">519</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l00528">528</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -671,12 +674,12 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;                                                                                                                       \</div>
-<div class="line">    inline <span class="keyword">auto</span> Method(Args &amp;&amp;... args)-&gt;typename std::remove_reference&lt;decltype(std::declval&lt;Class&gt;().Method(std::forward&lt;Args&gt;(args)...))&gt;::type { \</div>
-<div class="line">        return this-&gt;<span class="keyword">template</span> as&lt;Class&gt;().Method(std::forward&lt;Args&gt;(args)...);                                                                       \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;                                                                                                                      \</div>
+<div class="line">    inline <span class="keyword">auto</span> Method(Args &amp;&amp;...args)-&gt;typename std::remove_reference&lt;decltype(std::declval&lt;Class&gt;().Method(std::forward&lt;Args&gt;(args)...))&gt;::type { \</div>
+<div class="line">        return this-&gt;<span class="keyword">template</span> as&lt;Class&gt;().Method(std::forward&lt;Args&gt;(args)...);                                                                      \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l01631">1631</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l01638">1638</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -706,13 +709,13 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;                                                                                      \</div>
-<div class="line">    inline <span class="keyword">auto</span> Method(Args &amp;&amp;... args) <span class="keyword">const</span>-&gt;                                                                     \</div>
+<div class="line">    inline <span class="keyword">auto</span> Method(Args &amp;&amp;...args) <span class="keyword">const</span>-&gt;                                                                      \</div>
 <div class="line">        typename std::remove_reference&lt;decltype(std::declval&lt;Class&gt;().Method(std::forward&lt;Args&gt;(args)...))&gt;::type { \</div>
 <div class="line">        this-&gt;check_gio_access();                                                                                   \</div>
 <div class="line">        return this-&gt;<span class="keyword">template</span> as&lt;Class&gt;().Method(std::forward&lt;Args&gt;(args)...);                                      \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l01637">1637</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l01644">1644</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -760,7 +763,7 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
 <div class="line">    static_assert(std::is_same&lt;::halide_register_generator::halide_global_ns, halide_register_generator::halide_global_ns&gt;::value,  \</div>
 <div class="line">                  <span class="stringliteral">&quot;HALIDE_REGISTER_GENERATOR must be used at global scope&quot;</span>);</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03773">3773</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03799">3799</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -790,7 +793,7 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03787">3787</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03813">3813</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -826,7 +829,7 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03790">3790</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03816">3816</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -874,7 +877,7 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03796">3796</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03822">3822</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -894,7 +897,7 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03799">3799</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03825">3825</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -914,7 +917,7 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03802">3802</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03828">3828</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -934,7 +937,7 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03805">3805</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03831">3831</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -954,7 +957,7 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03808">3808</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03834">3834</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -974,7 +977,7 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03811">3811</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03837">3837</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -1004,7 +1007,7 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03814">3814</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03840">3840</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -1026,7 +1029,7 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="tutorial_2lesson_15_generators_8cpp-example.html#a2">tutorial/lesson_15_generators.cpp</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03817">3817</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03843">3843</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
@@ -1079,21 +1082,21 @@ GeneratorParam&lt;MachineParams&gt; machine_params{"machine_params", MachinePara
 <div class="line">    static_assert(std::is_same&lt;::halide_register_generator::halide_global_ns, halide_register_generator::halide_global_ns&gt;::value,  \</div>
 <div class="line">                  <span class="stringliteral">&quot;HALIDE_REGISTER_GENERATOR_ALIAS must be used at global scope&quot;</span>);</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03834">3834</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_generator_8h_source.html#l03860">3860</a> of file <a class="el" href="_generator_8h_source.html">Generator.h</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespace_halide_html_a41aa8982b04d0b5faf76de0fd4c0cc33"><div class="ttname"><a href="namespace_halide.html#a41aa8982b04d0b5faf76de0fd4c0cc33">Halide::sum</a></div><div class="ttdeci">Expr sum(Expr, const std::string &amp;s=&quot;sum&quot;)</div><div class="ttdoc">An inline reduction.</div></div>
-<div class="ttc" id="anamespace_halide_html_a11df91175e8ac20ce33379c178e8c7bc"><div class="ttname"><a href="namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc">Halide::Float</a></div><div class="ttdeci">Type Float(int bits, int lanes=1)</div><div class="ttdoc">Construct a floating-point type.</div><div class="ttdef"><b>Definition:</b> <a href="_type_8h_source.html#l00482">Type.h:482</a></div></div>
-<div class="ttc" id="anamespace_halide_html_a0eb5f455b5c4bce0c54575bc67bf9599"><div class="ttname"><a href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">Halide::UInt</a></div><div class="ttdeci">Type UInt(int bits, int lanes=1)</div><div class="ttdoc">Constructing an unsigned integer type.</div><div class="ttdef"><b>Definition:</b> <a href="_type_8h_source.html#l00477">Type.h:477</a></div></div>
-<div class="ttc" id="aclass_halide_1_1_generator_context_html"><div class="ttname"><a href="class_halide_1_1_generator_context.html">Halide::GeneratorContext</a></div><div class="ttdoc">GeneratorContext is a base class that is used when using Generators (or Stubs) directly; it is used t...</div><div class="ttdef"><b>Definition:</b> <a href="_generator_8h_source.html#l02856">Generator.h:2856</a></div></div>
-<div class="ttc" id="anamespacehalide__register__generator_html"><div class="ttname"><a href="namespacehalide__register__generator.html">halide_register_generator</a></div><div class="ttdef"><b>Definition:</b> <a href="_generator_8h_source.html#l03769">Generator.h:3769</a></div></div>
+<div class="ttc" id="anamespace_halide_html_a11df91175e8ac20ce33379c178e8c7bc"><div class="ttname"><a href="namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc">Halide::Float</a></div><div class="ttdeci">Type Float(int bits, int lanes=1)</div><div class="ttdoc">Construct a floating-point type.</div><div class="ttdef"><b>Definition:</b> <a href="_type_8h_source.html#l00504">Type.h:504</a></div></div>
+<div class="ttc" id="anamespace_halide_html_a0eb5f455b5c4bce0c54575bc67bf9599"><div class="ttname"><a href="namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599">Halide::UInt</a></div><div class="ttdeci">Type UInt(int bits, int lanes=1)</div><div class="ttdoc">Constructing an unsigned integer type.</div><div class="ttdef"><b>Definition:</b> <a href="_type_8h_source.html#l00499">Type.h:499</a></div></div>
+<div class="ttc" id="aclass_halide_1_1_generator_context_html"><div class="ttname"><a href="class_halide_1_1_generator_context.html">Halide::GeneratorContext</a></div><div class="ttdoc">GeneratorContext is a base class that is used when using Generators (or Stubs) directly; it is used t...</div><div class="ttdef"><b>Definition:</b> <a href="_generator_8h_source.html#l02881">Generator.h:2881</a></div></div>
+<div class="ttc" id="anamespacehalide__register__generator_html"><div class="ttname"><a href="namespacehalide__register__generator.html">halide_register_generator</a></div><div class="ttdef"><b>Definition:</b> <a href="_generator_8h_source.html#l03795">Generator.h:3795</a></div></div>
 <div class="ttc" id="anamespace_halide_html_afdb8b92dac95804211c0a875302da5f4a799855594adc0f2bd7302c69d3234b5a"><div class="ttname"><a href="namespace_halide.html#afdb8b92dac95804211c0a875302da5f4a799855594adc0f2bd7302c69d3234b5a">Halide::Output::schedule</a></div><div class="ttdeci">@ schedule</div></div>
-<div class="ttc" id="aclass_halide_1_1_internal_1_1_register_generator_html"><div class="ttname"><a href="class_halide_1_1_internal_1_1_register_generator.html">Halide::Internal::RegisterGenerator</a></div><div class="ttdef"><b>Definition:</b> <a href="_generator_8h_source.html#l03690">Generator.h:3690</a></div></div>
-<div class="ttc" id="a_generator_8h_html_a76205e384e3152f5eda423c56accbc54"><div class="ttname"><a href="_generator_8h.html#a76205e384e3152f5eda423c56accbc54">HALIDE_REGISTER_GENERATOR</a></div><div class="ttdeci">#define HALIDE_REGISTER_GENERATOR(...)</div><div class="ttdef"><b>Definition:</b> <a href="_generator_8h_source.html#l03817">Generator.h:3817</a></div></div>
-<div class="ttc" id="anamespace_halide_html_a70a0c034814a65d55bb848fe9c96653b"><div class="ttname"><a href="namespace_halide.html#a70a0c034814a65d55bb848fe9c96653b">Halide::Int</a></div><div class="ttdeci">Type Int(int bits, int lanes=1)</div><div class="ttdoc">Constructing a signed integer type.</div><div class="ttdef"><b>Definition:</b> <a href="_type_8h_source.html#l00472">Type.h:472</a></div></div>
+<div class="ttc" id="aclass_halide_1_1_internal_1_1_register_generator_html"><div class="ttname"><a href="class_halide_1_1_internal_1_1_register_generator.html">Halide::Internal::RegisterGenerator</a></div><div class="ttdef"><b>Definition:</b> <a href="_generator_8h_source.html#l03728">Generator.h:3728</a></div></div>
+<div class="ttc" id="a_generator_8h_html_a76205e384e3152f5eda423c56accbc54"><div class="ttname"><a href="_generator_8h.html#a76205e384e3152f5eda423c56accbc54">HALIDE_REGISTER_GENERATOR</a></div><div class="ttdeci">#define HALIDE_REGISTER_GENERATOR(...)</div><div class="ttdef"><b>Definition:</b> <a href="_generator_8h_source.html#l03843">Generator.h:3843</a></div></div>
+<div class="ttc" id="anamespace_halide_html_a70a0c034814a65d55bb848fe9c96653b"><div class="ttname"><a href="namespace_halide.html#a70a0c034814a65d55bb848fe9c96653b">Halide::Int</a></div><div class="ttdeci">Type Int(int bits, int lanes=1)</div><div class="ttdoc">Constructing a signed integer type.</div><div class="ttdef"><b>Definition:</b> <a href="_type_8h_source.html#l00494">Type.h:494</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

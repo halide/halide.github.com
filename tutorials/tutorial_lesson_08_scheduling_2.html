@@ -337,11 +337,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// Halide tutorial lesson 8: Scheduling multi-stage pipelines</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_08*.cpp -g -std=c++11 -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_08</span>
+<span class="hl slc">// g++ lesson_08*.cpp -g -std=c++17 -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_08</span>
 <span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_08</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_08*.cpp -g -std=c++11 -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_08</span>
+<span class="hl slc">// g++ lesson_08*.cpp -g -std=c++17 -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_08</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_08</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -382,7 +382,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
         <span class="hl slc">// And evaluate it over a 4x4 box.</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer-consumer pipeline with default schedule</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
         <a onclick='return toggle("_49");'><b id=_49-show>// Click to show output ...</b></a><div id=_49 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline consumer_default.0()
  > Tag consumer_default.0() tag = "func_type_and_dim: 1 2 32 1 2 0 4 0 4"
@@ -467,7 +467,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
         <span class="hl slc">// Compile and run.</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.compute_root()</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
         <a onclick='return toggle("_105");'><b id=_105-show>// Click to show output ...</b></a><div id=_105 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline consumer_root.0()
  > Tag producer_root.0() tag = "func_type_and_dim: 1 2 32 1 2 0 5 0 5"
@@ -636,7 +636,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
         <span class="hl slc">// Compile and run.</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.compute_at(consumer, y)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
         <a onclick='return toggle("_212");'><b id=_212-show>// Click to show output ...</b></a><div id=_212 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline consumer_y.0()
  > Tag producer_y.0() tag = "func_type_and_dim: 1 2 32 1 2 0 5 0 5"
@@ -789,7 +789,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         consumer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.store_root().compute_at(consumer, y)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
         <a onclick='return toggle("_288");'><b id=_288-show>// Click to show output ...</b></a><div id=_288 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline consumer_root_y.0()
  > Tag producer_root_y.0() tag = "func_type_and_dim: 1 2 32 1 2 0 5 0 5"
@@ -892,11 +892,10 @@ tutorial_lesson_21_auto_scheduler_run.html
         <a onclick='return toggle("_336");'><b id=_336-show>// Click to show output ...</b></a><div id=_336 style= "display:none; background:#333333; color:#ffffff"><b>
  > store producer_root_y:
  >   produce consumer_root_y:
- >     for y:
+ >     for y.:
  >       produce producer_root_y:
- >         for y:
- >           for x:
- >             producer_root_y(...) = ...
+ >         for x:
+ >           producer_root_y(...) = ...
  >       consume producer_root_y:
  >         for x:
  >           consumer_root_y(...) = ...
@@ -912,7 +911,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// producer.store_root().compute_at(consumer, y):</span>
         <span class="hl slc">// - Temporary memory allocated: 10 floats</span>
         <span class="hl slc">// - Loads: 64</span>
-        <span class="hl slc">// - Stores: 39</span>
+        <span class="hl slc">// - Stores: 41</span>
         <span class="hl slc">// - Calls to sin: 25</span>
 
         <span class="hl slc">// Note that my claimed amount of memory allocated doesn&apos;t</span>
@@ -962,23 +961,23 @@ tutorial_lesson_21_auto_scheduler_run.html
         consumer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.store_root().compute_at(consumer, x)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
         <a onclick='return toggle("_398");'><b id=_398-show>// Click to show output ...</b></a><div id=_398 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline consumer_root_x.0()
  > Tag producer_root_x.0() tag = "func_type_and_dim: 1 2 32 1 2 0 5 0 5"
  > Tag consumer_root_x.0() tag = "func_type_and_dim: 1 2 32 1 2 0 4 0 4"
  > Store producer_root_x.0(0, 0) = 0.000000
  > Store producer_root_x.0(1, 0) = 0.000000
+ > Store producer_root_x.0(2, 0) = 0.000000
+ > Store producer_root_x.0(3, 0) = 0.000000
+ > Store producer_root_x.0(4, 0) = 0.000000
  > Store producer_root_x.0(0, 1) = 0.000000
  > Store producer_root_x.0(1, 1) = 0.841471
  > Store consumer_root_x.0(0, 0) = 0.210368
- > Store producer_root_x.0(2, 0) = 0.000000
  > Store producer_root_x.0(2, 1) = 0.909297
  > Store consumer_root_x.0(1, 0) = 0.437692
- > Store producer_root_x.0(3, 0) = 0.000000
  > Store producer_root_x.0(3, 1) = 0.141120
  > Store consumer_root_x.0(2, 0) = 0.262604
- > Store producer_root_x.0(4, 0) = 0.000000
  > Store producer_root_x.0(4, 1) = -0.756802
  > Store consumer_root_x.0(3, 0) = -0.153921
  > Store producer_root_x.0(0, 2) = 0.000000
@@ -1058,12 +1057,10 @@ tutorial_lesson_21_auto_scheduler_run.html
         <a onclick='return toggle("_439");'><b id=_439-show>// Click to show output ...</b></a><div id=_439 style= "display:none; background:#333333; color:#ffffff"><b>
  > store producer_root_x:
  >   produce consumer_root_x:
- >     for y:
- >       for x:
+ >     for y.:
+ >       for x.:
  >         produce producer_root_x:
- >           for y:
- >             for x:
- >               producer_root_x(...) = ...
+ >           producer_root_x(...) = ...
  >         consume producer_root_x:
  >           consumer_root_x(...) = ...
 
@@ -1076,7 +1073,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// producer.store_root().compute_at(consumer, x):</span>
         <span class="hl slc">// - Temporary memory allocated: 10 floats</span>
         <span class="hl slc">// - Loads: 48</span>
-        <span class="hl slc">// - Stores: 56</span>
+        <span class="hl slc">// - Stores: 41</span>
         <span class="hl slc">// - Calls to sin: 25</span>
     <span class="hl opt">}</span>
 
@@ -1128,7 +1125,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span>
                <span class="hl str">&quot;consumer.tile(x, y, x_outer, y_outer, x_inner, y_inner, 4, 4);</span><span class="hl esc">\n</span><span class="hl str">&quot;</span>
                <span class="hl str">&quot;producer.compute_at(consumer, x_outer);</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">});</span>
         <a onclick='return toggle("_501");'><b id=_501-show>// Click to show output ...</b></a><div id=_501 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline consumer_tile.0()
  > Tag producer_tile.0() tag = "func_type_and_dim: 1 2 32 1 2 0 9 0 9"
@@ -1403,7 +1400,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// consumer.trace_stores();</span>
         <span class="hl slc">// producer.trace_stores();</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">160</span><span class="hl opt">,</span> <span class="hl num">160</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">160</span><span class="hl opt">,</span> <span class="hl num">160</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 
@@ -1491,12 +1488,11 @@ tutorial_lesson_21_auto_scheduler_run.html
  > produce consumer_mixed:
  >   parallel y.yo:
  >     store producer_mixed:
- >       for y.yi in [0, 15]:
+ >       for y.yi. in [-1, 15]:
  >         produce producer_mixed:
- >           for y:
- >             for x.x:
- >               vectorized x.v1 in [0, 3]:
- >                 producer_mixed(...) = ...
+ >           for x.x:
+ >             vectorized x.v1 in [0, 3]:
+ >               producer_mixed(...) = ...
  >         consume producer_mixed:
  >           for x.x:
  >             vectorized x.v0 in [0, 3]:

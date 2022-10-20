@@ -1,7 +1,6 @@
 var runtime__internal_8h =
 [
     [ "halide_pseudostack_slot_t", "structhalide__pseudostack__slot__t.html", "structhalide__pseudostack__slot__t" ],
-    [ "NULL", "runtime__internal_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4", null ],
     [ "WEAK", "runtime__internal_8h.html#ad1480e9557edcc543498ca259cee6c7d", null ],
     [ "ALWAYS_INLINE", "runtime__internal_8h.html#aa1dec568e79152c892dcf63f445cbd7a", null ],
     [ "WEAK_INLINE", "runtime__internal_8h.html#a213c7d500933c009e0f531df51176878", null ],
@@ -47,6 +46,7 @@ var runtime__internal_8h =
     [ "remove", "runtime__internal_8h.html#a02b13b56a188401119ea4da43c184913", null ],
     [ "ioctl", "runtime__internal_8h.html#a1487536105f7a596481bf6bfa8de99f6", null ],
     [ "strncpy", "runtime__internal_8h.html#ad8d7a2363df37e5256d54ff6a60acfcc", null ],
+    [ "abort", "runtime__internal_8h.html#ac54f53dc342019e8db34f4aa581a5792", null ],
     [ "halide_string_to_string", "runtime__internal_8h.html#a6bf6d6b8dda19574f88c0b035aecfb75", null ],
     [ "halide_double_to_string", "runtime__internal_8h.html#a4794b2c186d6201707d707ac14f32d40", null ],
     [ "halide_int64_to_string", "runtime__internal_8h.html#af7df07d9a6aa970b5d926cd7986847d6", null ],
@@ -74,7 +74,6 @@ var runtime__internal_8h =
     [ "halide_use_jit_module", "runtime__internal_8h.html#ac221fb0f110e94ae16556918316c3988", null ],
     [ "halide_release_jit_module", "runtime__internal_8h.html#a5b479ad6185fe895fbd903cc5d576a19", null ],
     [ "halide_malloc_alignment", "runtime__internal_8h.html#a77d694fdd28de50f18ac754bf3236342", null ],
-    [ "halide_abort", "runtime__internal_8h.html#ade8fc6070ffa4c70f7059fd3c7e09916", null ],
     [ "halide_thread_yield", "runtime__internal_8h.html#a7deb2d9ef3ed8adfa4d0992e20aa156e", null ],
     [ "halide_set_custom_print", "runtime__internal_8h.html#a796f30bc9cb976181a401d04dddd0c86", null ],
     [ "halide_set_error_handler", "runtime__internal_8h.html#aeda5a0a60be9a348f698a19e5f021c2e", null ]

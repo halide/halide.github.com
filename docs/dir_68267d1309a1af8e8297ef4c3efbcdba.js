@@ -23,76 +23,34 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "BoundSmallAllocations.h", "_bound_small_allocations_8h.html", "_bound_small_allocations_8h" ],
     [ "Buffer.h", "_buffer_8h.html", "_buffer_8h" ],
     [ "CanonicalizeGPUVars.h", "_canonicalize_g_p_u_vars_8h.html", "_canonicalize_g_p_u_vars_8h" ],
+    [ "ClampUnsafeAccesses.h", "_clamp_unsafe_accesses_8h.html", "_clamp_unsafe_accesses_8h" ],
     [ "Closure.h", "_closure_8h.html", [
       [ "Buffer", "class_halide_1_1_buffer.html", "class_halide_1_1_buffer" ],
       [ "Closure", "class_halide_1_1_internal_1_1_closure.html", "class_halide_1_1_internal_1_1_closure" ],
       [ "Buffer", "struct_halide_1_1_internal_1_1_closure_1_1_buffer.html", "struct_halide_1_1_internal_1_1_closure_1_1_buffer" ]
     ] ],
-    [ "CodeGen_ARM.h", "_code_gen___a_r_m_8h.html", [
-      [ "CodeGen_ARM", "class_halide_1_1_internal_1_1_code_gen___a_r_m.html", "class_halide_1_1_internal_1_1_code_gen___a_r_m" ],
-      [ "Pattern", "struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern.html", "struct_halide_1_1_internal_1_1_code_gen___a_r_m_1_1_pattern" ]
-    ] ],
     [ "CodeGen_C.h", "_code_gen___c_8h.html", [
       [ "CodeGen_C", "class_halide_1_1_internal_1_1_code_gen___c.html", "class_halide_1_1_internal_1_1_code_gen___c" ],
       [ "Allocation", "struct_halide_1_1_internal_1_1_code_gen___c_1_1_allocation.html", "struct_halide_1_1_internal_1_1_code_gen___c_1_1_allocation" ]
     ] ],
-    [ "CodeGen_D3D12Compute_Dev.h", "_code_gen___d3_d12_compute___dev_8h.html", [
-      [ "CodeGen_D3D12Compute_Dev", "class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev.html", "class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev" ],
-      [ "CodeGen_D3D12Compute_C", "class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev_1_1_code_gen___d3_d12_compute___c.html", "class_halide_1_1_internal_1_1_code_gen___d3_d12_compute___dev_1_1_code_gen___d3_d12_compute___c" ]
-    ] ],
+    [ "CodeGen_D3D12Compute_Dev.h", "_code_gen___d3_d12_compute___dev_8h.html", "_code_gen___d3_d12_compute___dev_8h" ],
     [ "CodeGen_GPU_Dev.h", "_code_gen___g_p_u___dev_8h.html", [
       [ "CodeGen_GPU_Dev", "struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev.html", "struct_halide_1_1_internal_1_1_code_gen___g_p_u___dev" ]
     ] ],
-    [ "CodeGen_GPU_Host.h", "_code_gen___g_p_u___host_8h.html", [
-      [ "CodeGen_GPU_Host", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host.html", "class_halide_1_1_internal_1_1_code_gen___g_p_u___host" ]
-    ] ],
-    [ "CodeGen_Hexagon.h", "_code_gen___hexagon_8h.html", [
-      [ "CodeGen_Hexagon", "class_halide_1_1_internal_1_1_code_gen___hexagon.html", "class_halide_1_1_internal_1_1_code_gen___hexagon" ]
-    ] ],
     [ "CodeGen_Internal.h", "_code_gen___internal_8h.html", "_code_gen___internal_8h" ],
     [ "CodeGen_LLVM.h", "_code_gen___l_l_v_m_8h.html", "_code_gen___l_l_v_m_8h" ],
-    [ "CodeGen_Metal_Dev.h", "_code_gen___metal___dev_8h.html", [
-      [ "CodeGen_Metal_Dev", "class_halide_1_1_internal_1_1_code_gen___metal___dev.html", "class_halide_1_1_internal_1_1_code_gen___metal___dev" ],
-      [ "CodeGen_Metal_C", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c.html", "class_halide_1_1_internal_1_1_code_gen___metal___dev_1_1_code_gen___metal___c" ]
-    ] ],
-    [ "CodeGen_MIPS.h", "_code_gen___m_i_p_s_8h.html", [
-      [ "CodeGen_MIPS", "class_halide_1_1_internal_1_1_code_gen___m_i_p_s.html", "class_halide_1_1_internal_1_1_code_gen___m_i_p_s" ]
-    ] ],
-    [ "CodeGen_OpenCL_Dev.h", "_code_gen___open_c_l___dev_8h.html", [
-      [ "CodeGen_OpenCL_Dev", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev.html", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev" ],
-      [ "CodeGen_OpenCL_C", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c.html", "class_halide_1_1_internal_1_1_code_gen___open_c_l___dev_1_1_code_gen___open_c_l___c" ]
-    ] ],
-    [ "CodeGen_OpenGL_Dev.h", "_code_gen___open_g_l___dev_8h.html", [
-      [ "CodeGen_OpenGL_Dev", "class_halide_1_1_internal_1_1_code_gen___open_g_l___dev.html", "class_halide_1_1_internal_1_1_code_gen___open_g_l___dev" ],
-      [ "CodeGen_GLSLBase", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base.html", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l_base" ],
-      [ "CodeGen_GLSL", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l.html", "class_halide_1_1_internal_1_1_code_gen___g_l_s_l" ]
-    ] ],
-    [ "CodeGen_OpenGLCompute_Dev.h", "_code_gen___open_g_l_compute___dev_8h.html", [
-      [ "CodeGen_OpenGLCompute_Dev", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev.html", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev" ],
-      [ "CodeGen_OpenGLCompute_C", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c.html", "class_halide_1_1_internal_1_1_code_gen___open_g_l_compute___dev_1_1_code_gen___open_g_l_compute___c" ]
-    ] ],
+    [ "CodeGen_Metal_Dev.h", "_code_gen___metal___dev_8h.html", "_code_gen___metal___dev_8h" ],
+    [ "CodeGen_OpenCL_Dev.h", "_code_gen___open_c_l___dev_8h.html", "_code_gen___open_c_l___dev_8h" ],
+    [ "CodeGen_OpenGLCompute_Dev.h", "_code_gen___open_g_l_compute___dev_8h.html", "_code_gen___open_g_l_compute___dev_8h" ],
     [ "CodeGen_Posix.h", "_code_gen___posix_8h.html", [
       [ "CodeGen_Posix", "class_halide_1_1_internal_1_1_code_gen___posix.html", "class_halide_1_1_internal_1_1_code_gen___posix" ],
       [ "Allocation", "struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation.html", "struct_halide_1_1_internal_1_1_code_gen___posix_1_1_allocation" ]
     ] ],
-    [ "CodeGen_PowerPC.h", "_code_gen___power_p_c_8h.html", [
-      [ "CodeGen_PowerPC", "class_halide_1_1_internal_1_1_code_gen___power_p_c.html", "class_halide_1_1_internal_1_1_code_gen___power_p_c" ]
-    ] ],
-    [ "CodeGen_PTX_Dev.h", "_code_gen___p_t_x___dev_8h.html", [
-      [ "CodeGen_PTX_Dev", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev.html", "class_halide_1_1_internal_1_1_code_gen___p_t_x___dev" ]
-    ] ],
+    [ "CodeGen_PTX_Dev.h", "_code_gen___p_t_x___dev_8h.html", "_code_gen___p_t_x___dev_8h" ],
     [ "CodeGen_PyTorch.h", "_code_gen___py_torch_8h.html", [
       [ "CodeGen_PyTorch", "class_halide_1_1_internal_1_1_code_gen___py_torch.html", "class_halide_1_1_internal_1_1_code_gen___py_torch" ]
     ] ],
-    [ "CodeGen_RISCV.h", "_code_gen___r_i_s_c_v_8h.html", [
-      [ "CodeGen_RISCV", "class_halide_1_1_internal_1_1_code_gen___r_i_s_c_v.html", "class_halide_1_1_internal_1_1_code_gen___r_i_s_c_v" ]
-    ] ],
-    [ "CodeGen_WebAssembly.h", "_code_gen___web_assembly_8h.html", [
-      [ "CodeGen_WebAssembly", "class_halide_1_1_internal_1_1_code_gen___web_assembly.html", "class_halide_1_1_internal_1_1_code_gen___web_assembly" ]
-    ] ],
-    [ "CodeGen_X86.h", "_code_gen___x86_8h.html", [
-      [ "CodeGen_X86", "class_halide_1_1_internal_1_1_code_gen___x86.html", "class_halide_1_1_internal_1_1_code_gen___x86" ]
-    ] ],
+    [ "CodeGen_Targets.h", "_code_gen___targets_8h.html", "_code_gen___targets_8h" ],
     [ "CompilerLogger.h", "_compiler_logger_8h.html", "_compiler_logger_8h" ],
     [ "ConciseCasts.h", "_concise_casts_8h.html", "_concise_casts_8h" ],
     [ "CPlusPlusMangle.h", "_c_plus_plus_mangle_8h.html", "_c_plus_plus_mangle_8h" ],
@@ -139,6 +97,8 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     ] ],
     [ "FastIntegerDivide.h", "_fast_integer_divide_8h.html", "_fast_integer_divide_8h" ],
     [ "FindCalls.h", "_find_calls_8h.html", "_find_calls_8h" ],
+    [ "FindIntrinsics.h", "_find_intrinsics_8h.html", "_find_intrinsics_8h" ],
+    [ "FlattenNestedRamps.h", "_flatten_nested_ramps_8h.html", "_flatten_nested_ramps_8h" ],
     [ "Float16.h", "_float16_8h.html", "_float16_8h" ],
     [ "Func.h", "_func_8h.html", "_func_8h" ],
     [ "Function.h", "_function_8h.html", "_function_8h" ],
@@ -159,12 +119,12 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     ] ],
     [ "InferArguments.h", "_infer_arguments_8h.html", "_infer_arguments_8h" ],
     [ "InjectHostDevBufferCopies.h", "_inject_host_dev_buffer_copies_8h.html", "_inject_host_dev_buffer_copies_8h" ],
-    [ "InjectOpenGLIntrinsics.h", "_inject_open_g_l_intrinsics_8h.html", "_inject_open_g_l_intrinsics_8h" ],
     [ "Inline.h", "_inline_8h.html", "_inline_8h" ],
     [ "InlineReductions.h", "_inline_reductions_8h.html", "_inline_reductions_8h" ],
     [ "IntegerDivisionTable.h", "_integer_division_table_8h.html", "_integer_division_table_8h" ],
     [ "Interval.h", "_interval_8h.html", [
-      [ "Interval", "struct_halide_1_1_internal_1_1_interval.html", "struct_halide_1_1_internal_1_1_interval" ]
+      [ "Interval", "struct_halide_1_1_internal_1_1_interval.html", "struct_halide_1_1_internal_1_1_interval" ],
+      [ "ConstantInterval", "struct_halide_1_1_internal_1_1_constant_interval.html", "struct_halide_1_1_internal_1_1_constant_interval" ]
     ] ],
     [ "Introspection.h", "_introspection_8h.html", "_introspection_8h" ],
     [ "IntrusivePtr.h", "_intrusive_ptr_8h.html", "_intrusive_ptr_8h" ],
@@ -241,6 +201,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "ObjectInstanceRegistry.h", "_object_instance_registry_8h.html", [
       [ "ObjectInstanceRegistry", "class_halide_1_1_internal_1_1_object_instance_registry.html", "class_halide_1_1_internal_1_1_object_instance_registry" ]
     ] ],
+    [ "OffloadGPULoops.h", "_offload_g_p_u_loops_8h.html", "_offload_g_p_u_loops_8h" ],
     [ "OutputImageParam.h", "_output_image_param_8h.html", [
       [ "OutputImageParam", "class_halide_1_1_output_image_param.html", "class_halide_1_1_output_image_param" ]
     ] ],
@@ -269,6 +230,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
       [ "Realization", "class_halide_1_1_realization.html", "class_halide_1_1_realization" ]
     ] ],
     [ "RealizationOrder.h", "_realization_order_8h.html", "_realization_order_8h" ],
+    [ "RebaseLoopsToZero.h", "_rebase_loops_to_zero_8h.html", "_rebase_loops_to_zero_8h" ],
     [ "Reduction.h", "_reduction_8h.html", "_reduction_8h" ],
     [ "RegionCosts.h", "_region_costs_8h.html", "_region_costs_8h" ],
     [ "RemoveDeadAllocations.h", "_remove_dead_allocations_8h.html", "_remove_dead_allocations_8h" ],
@@ -308,7 +270,6 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "UnsafePromises.h", "_unsafe_promises_8h.html", "_unsafe_promises_8h" ],
     [ "Util.h", "_util_8h.html", "_util_8h" ],
     [ "Var.h", "_var_8h.html", "_var_8h" ],
-    [ "VaryingAttributes.h", "_varying_attributes_8h.html", "_varying_attributes_8h" ],
     [ "VectorizeLoops.h", "_vectorize_loops_8h.html", "_vectorize_loops_8h" ],
     [ "WasmExecutor.h", "_wasm_executor_8h.html", [
       [ "WasmModule", "struct_halide_1_1_internal_1_1_wasm_module.html", "struct_halide_1_1_internal_1_1_wasm_module" ]

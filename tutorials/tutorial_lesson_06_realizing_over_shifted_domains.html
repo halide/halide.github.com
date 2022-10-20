@@ -340,11 +340,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// does not start at (0, 0).</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_06*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_06 -std=c++11</span>
+<span class="hl slc">// g++ lesson_06*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_06 -std=c++17</span>
 <span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_06</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_06*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_06 -std=c++11</span>
+<span class="hl slc">// g++ lesson_06*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_06 -std=c++17</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_06</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -375,10 +375,10 @@ tutorial_lesson_21_auto_scheduler_run.html
 
     <span class="hl slc">// Previously we&apos;ve realized gradient like so:</span>
     <span class="hl slc">//</span>
-    <span class="hl slc">// gradient.realize(8, 8);</span>
+    <span class="hl slc">// gradient.realize({8, 8});</span>
     <span class="hl slc">//</span>
     <span class="hl slc">// This does three things internally:</span>
-    <span class="hl slc">// 1) Generates code than can evaluate gradient over an arbitrary</span>
+    <span class="hl slc">// 1) Generates code that can evaluate gradient over an arbitrary</span>
     <span class="hl slc">// rectangle.</span>
     <span class="hl slc">// 2) Allocates a new 8 x 8 image.</span>
     <span class="hl slc">// 3) Runs the generated code to evaluate gradient for all x, y</span>

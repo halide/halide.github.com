@@ -340,11 +340,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// a Func.</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_20*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_20 -std=c++11</span>
+<span class="hl slc">// g++ lesson_20*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_20 -std=c++17</span>
 <span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_20</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_20*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_20 -std=c++11</span>
+<span class="hl slc">// g++ lesson_20*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_20 -std=c++17</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_20</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -410,7 +410,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">//   for x:</span>
         <span class="hl slc">//     h(x, y) = f(x, y) + g(x, y) + 10</span>
 
-        h<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">);</span>
+        h<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">});</span>
 
         <span class="hl slc">// The schedule directive f.clone_in(g) replaces all calls to &apos;f&apos;</span>
         <span class="hl slc">// inside &apos;g&apos; with a clone of &apos;f&apos; and then returns that clone.</span>
@@ -470,7 +470,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">//   for x:</span>
         <span class="hl slc">//     out(x, y) = f(x, y) + g(x, y) + h(x, y)</span>
 
-        out<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">);</span>
+        out<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">});</span>
     <span class="hl opt">}</span>
 
     <span class="hl opt">{</span>

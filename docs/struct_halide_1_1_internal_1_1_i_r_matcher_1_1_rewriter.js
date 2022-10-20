@@ -1,6 +1,6 @@
 var struct_halide_1_1_internal_1_1_i_r_matcher_1_1_rewriter =
 [
-    [ "Rewriter", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_rewriter.html#a49387bd546b5cd3dcad3ad428f5c77c5", null ],
+    [ "Rewriter", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_rewriter.html#a72aefecb30911e72c7b4485a9bf1d5fb", null ],
     [ "build_replacement", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_rewriter.html#a08fd58db9bc24255e3cc7f55577d7d75", null ],
     [ "operator()", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_rewriter.html#ad7b98e6c8e02405e8f3de72915e46253", null ],
     [ "operator()", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_rewriter.html#abd7a9f8d5f3b4711eea5152105b7ac29", null ],

@@ -1,6 +1,8 @@
 var struct_halide_1_1_internal_1_1_shuffle =
 [
     [ "is_interleave", "struct_halide_1_1_internal_1_1_shuffle.html#a1e8b46311f722e6a4969f69228301e9d", null ],
+    [ "is_broadcast", "struct_halide_1_1_internal_1_1_shuffle.html#a8ec3c81512f91382d5b54e54318a60bd", null ],
+    [ "broadcast_factor", "struct_halide_1_1_internal_1_1_shuffle.html#ab74d19261de16a0dc25e0cab29b33a18", null ],
     [ "is_concat", "struct_halide_1_1_internal_1_1_shuffle.html#acc971d7a3ba231ee38a73e567cd6d3ce", null ],
     [ "is_slice", "struct_halide_1_1_internal_1_1_shuffle.html#ad47fa903e829a3d4fc00418acb97b377", null ],
     [ "slice_begin", "struct_halide_1_1_internal_1_1_shuffle.html#af3a97bed0df4463e6fd23fbef6de10fb", null ],

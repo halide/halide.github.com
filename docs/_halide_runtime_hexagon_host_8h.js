@@ -32,5 +32,6 @@ var _halide_runtime_hexagon_host_8h =
     [ "halide_hexagon_set_thread_priority", "_halide_runtime_hexagon_host_8h.html#ad103acb373fd801eecd86f3ec64a9bef", null ],
     [ "halide_hexagon_initialize_kernels", "_halide_runtime_hexagon_host_8h.html#aee4c1fba0a7bdb087c53ac7aaf033684", null ],
     [ "halide_hexagon_run", "_halide_runtime_hexagon_host_8h.html#a2d8261f8a43972fe451637d3c9cde18c", null ],
+    [ "halide_hexagon_finalize_kernels", "_halide_runtime_hexagon_host_8h.html#ae12da55531177c24365569e63dad0e56", null ],
     [ "halide_hexagon_device_release", "_halide_runtime_hexagon_host_8h.html#a2e43b7e668ca55a3a053a6101658926a", null ]
 ];

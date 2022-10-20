@@ -7,7 +7,6 @@ var class_halide_1_1_internal_1_1_generator_input_base =
     [ "init_internals", "class_halide_1_1_internal_1_1_generator_input_base.html#a7bc0833b36fbcb8576a80ef9b99afcb9", null ],
     [ "set_inputs", "class_halide_1_1_internal_1_1_generator_input_base.html#a25be1d751ae5de4d28b60c400d465185", null ],
     [ "set_def_min_max", "class_halide_1_1_internal_1_1_generator_input_base.html#add7fe520b3524b34be4587553cb2b71c", null ],
-    [ "get_def_expr", "class_halide_1_1_internal_1_1_generator_input_base.html#a982c315665704f4de3487167b26c2c5d", null ],
     [ "verify_internals", "class_halide_1_1_internal_1_1_generator_input_base.html#a1af9c04ee0c4180ab64afc80a501c7fc", null ],
     [ "get_c_type", "class_halide_1_1_internal_1_1_generator_input_base.html#a3f6e6db83df3f8e0662b012d69399c1a", null ],
     [ "check_value_writable", "class_halide_1_1_internal_1_1_generator_input_base.html#ac92cedefd73ccb46519fce85b9b678d5", null ],

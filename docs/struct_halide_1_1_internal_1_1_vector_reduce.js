@@ -2,6 +2,7 @@ var struct_halide_1_1_internal_1_1_vector_reduce =
 [
     [ "Operator", "struct_halide_1_1_internal_1_1_vector_reduce.html#ac69e8c35807dae662432c7964ae77f27", [
       [ "Add", "struct_halide_1_1_internal_1_1_vector_reduce.html#ac69e8c35807dae662432c7964ae77f27a16ec0621eb057662b7f7d001dbd0da01", null ],
+      [ "SaturatingAdd", "struct_halide_1_1_internal_1_1_vector_reduce.html#ac69e8c35807dae662432c7964ae77f27af81bd61060790ced72441acea8cda22e", null ],
       [ "Mul", "struct_halide_1_1_internal_1_1_vector_reduce.html#ac69e8c35807dae662432c7964ae77f27a3cc2f0751254b8e4c2a929a8c567d0f9", null ],
       [ "Min", "struct_halide_1_1_internal_1_1_vector_reduce.html#ac69e8c35807dae662432c7964ae77f27a0abcd93c020ca8bae3babbfc837e8f02", null ],
       [ "Max", "struct_halide_1_1_internal_1_1_vector_reduce.html#ac69e8c35807dae662432c7964ae77f27af60bd97c582326c966cc33190093b82d", null ],

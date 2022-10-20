@@ -337,11 +337,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// Halide tutorial lesson 7: Multi-stage pipelines</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_07*.cpp -g -std=c++11 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -o lesson_07</span>
+<span class="hl slc">// g++ lesson_07*.cpp -g -std=c++17 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -o lesson_07</span>
 <span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_07</span>
 
 <span class="hl slc">// On os x:</span>
-<span class="hl slc">// g++ lesson_07*.cpp -g -std=c++11 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -o lesson_07</span>
+<span class="hl slc">// g++ lesson_07*.cpp -g -std=c++17 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -o lesson_07</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_07</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -399,7 +399,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
         <span class="hl slc">// Now let&apos;s realize it...</span>
 
-        <span class="hl slc">// Buffer&lt;uint8_t&gt; result = output.realize(input.width(), input.height(), 3);</span>
+        <span class="hl slc">// Buffer&lt;uint8_t&gt; result = output.realize({input.width(), input.height(), 3});</span>
 
         <span class="hl slc">// Except that the line above is not going to work. Uncomment</span>
         <span class="hl slc">// it to see what happens.</span>
@@ -494,7 +494,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
         <span class="hl slc">// This time it&apos;s safe to evaluate the output over the same</span>
         <span class="hl slc">// domain as the input, because we have a boundary condition.</span>
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> output<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> <span class="hl num">3</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> output<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(),</span> <span class="hl num">3</span><span class="hl opt">});</span>
 
         <span class="hl slc">// Save the result. It should look like a slightly blurry</span>
         <span class="hl slc">// parrot, but this time it will be the same size as the</span>

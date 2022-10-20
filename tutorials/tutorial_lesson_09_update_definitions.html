@@ -337,11 +337,11 @@ tutorial_lesson_21_auto_scheduler_run.html
 <span class="hl slc">// Halide tutorial lesson 9: Multi-pass Funcs, update definitions, and reductions</span>
 
 <span class="hl slc">// On linux, you can compile and run it like so:</span>
-<span class="hl slc">// g++ lesson_09*.cpp -g -std=c++11 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -fopenmp -o lesson_09</span>
+<span class="hl slc">// g++ lesson_09*.cpp -g -std=c++17 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -lpthread -ldl -fopenmp -o lesson_09</span>
 <span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_09</span>
 
 <span class="hl slc">// On os x (will only work if you actually have g++, not Apple&apos;s pretend g++ which is actually clang):</span>
-<span class="hl slc">// g++ lesson_09*.cpp -g -std=c++11 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -fopenmp -o lesson_09</span>
+<span class="hl slc">// g++ lesson_09*.cpp -g -std=c++17 -I &lt;path/to/Halide.h&gt; -I &lt;path/to/tools/halide_image_io.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide `libpng-config --cflags --ldflags` -ljpeg -fopenmp -o lesson_09</span>
 <span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_09</span>
 
 <span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
@@ -428,7 +428,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// We&apos;ll realize this one just to make sure it compiles. The</span>
         <span class="hl slc">// second-to-last definition forces us to realize over a</span>
         <span class="hl slc">// domain that is taller than it is wide.</span>
-        f<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">100</span><span class="hl opt">,</span> <span class="hl num">101</span><span class="hl opt">);</span>
+        f<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">100</span><span class="hl opt">,</span> <span class="hl num">101</span><span class="hl opt">});</span>
 
         <span class="hl slc">// For each realization of f, each step runs in its entirety</span>
         <span class="hl slc">// before the next one begins. Let&apos;s trace the loads and</span>
@@ -441,7 +441,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         g<span class="hl opt">.</span><span class="hl kwd">trace_loads</span><span class="hl opt">();</span>
         g<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
 
-        g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
         <a onclick='return toggle("_108");'><b id=_108-show>// Click to show output ...</b></a><div id=_108 style= "display:none; background:#333333; color:#ffffff"><b>
  > Begin pipeline g.0()
  > Tag g.0() tag = "func_type_and_dim: 1 0 32 1 2 0 4 0 4"
@@ -520,7 +520,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// domain&quot; and using it inside an update definition:</span>
         RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> <span class="hl num">50</span><span class="hl opt">);</span>
         <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> r<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> r<span class="hl opt">) *</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> r<span class="hl opt">);</span>
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">100</span><span class="hl opt">,</span> <span class="hl num">100</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">100</span><span class="hl opt">,</span> <span class="hl num">100</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 
@@ -576,7 +576,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// input image at that point.</span>
         <span class="hl kwd">histogram</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x<span class="hl opt">,</span> r<span class="hl opt">.</span>y<span class="hl opt">)) +=</span> <span class="hl num">1</span><span class="hl opt">;</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">256</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">256</span><span class="hl opt">});</span>
 
         <span class="hl slc">// The equivalent C is:</span>
         <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">256</span><span class="hl opt">];</span>
@@ -634,7 +634,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         Var yo<span class="hl opt">,</span> yi<span class="hl opt">;</span>
         f<span class="hl opt">.</span><span class="hl kwd">update</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">).</span><span class="hl kwd">split</span><span class="hl opt">(</span>y<span class="hl opt">,</span> yo<span class="hl opt">,</span> yi<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">).</span><span class="hl kwd">parallel</span><span class="hl opt">(</span>yo<span class="hl opt">);</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">16</span><span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">16</span><span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 
@@ -697,7 +697,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> x <span class="hl opt">*</span> <span class="hl num">2</span><span class="hl opt">;</span>
         <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">) +=</span> <span class="hl num">10</span><span class="hl opt">;</span>
         <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">);</span>
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">10</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 
@@ -758,7 +758,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
         producer<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> x<span class="hl opt">);</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">10</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 
@@ -812,7 +812,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// the Vars of a Func are shared across the pure and</span>
         <span class="hl slc">// update steps.</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">10</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 
@@ -857,7 +857,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// redundant work occurs.</span>
         producer<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> x<span class="hl opt">);</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">10</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 
@@ -926,7 +926,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         producer_1<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer_2<span class="hl opt">,</span> x<span class="hl opt">);</span>
         producer_2<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer_2<span class="hl opt">,</span> y<span class="hl opt">);</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer_2<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">,</span> <span class="hl num">10</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer_2<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">10</span><span class="hl opt">,</span> <span class="hl num">10</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 
@@ -984,7 +984,7 @@ tutorial_lesson_21_auto_scheduler_run.html
 
         producer<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> r<span class="hl opt">);</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">10</span><span class="hl opt">});</span>
 
         <span class="hl slc">// See below for a visualization.</span>
 
@@ -1043,7 +1043,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         Func blurry<span class="hl opt">;</span>
         <span class="hl kwd">blurry</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> cast<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span><span class="hl kwd">local_sum</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) /</span> <span class="hl num">25</span><span class="hl opt">);</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> blurry<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> blurry<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">()});</span>
 
         <span class="hl slc">// The default schedule will inline &apos;clamped&apos; into the update</span>
         <span class="hl slc">// step of &apos;local_sum&apos;, because clamped only has a pure</span>
@@ -1105,8 +1105,8 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// pure function. The reduction domain has been swallowed to</span>
         <span class="hl slc">// define the inner anonymous reduction.</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result_1 <span class="hl opt">=</span> f1<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result_2 <span class="hl opt">=</span> f2<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span><span class="hl num">10</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result_1 <span class="hl opt">=</span> f1<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">10</span><span class="hl opt">});</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result_2 <span class="hl opt">=</span> f2<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">10</span><span class="hl opt">});</span>
 
         <span class="hl slc">// The equivalent C is:</span>
         <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">10</span><span class="hl opt">];</span>
@@ -1168,7 +1168,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl slc">// as we need it in a circular buffer (see lesson 08).</span>
         clamped<span class="hl opt">.</span><span class="hl kwd">store_at</span><span class="hl opt">(</span>spread<span class="hl opt">,</span> yo<span class="hl opt">).</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>spread<span class="hl opt">,</span> yi<span class="hl opt">);</span>
 
-        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> spread<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">(</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> spread<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span>input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">()});</span>
 
 <span class="hl slc">// The C equivalent is almost too horrible to contemplate (and</span>
 <span class="hl slc">// took me a long time to debug). This time I want to time</span>

@@ -1,7 +1,7 @@
 var class_halide_1_1_internal_1_1_function =
 [
     [ "Compare", "struct_halide_1_1_internal_1_1_function_1_1_compare.html", "struct_halide_1_1_internal_1_1_function_1_1_compare" ],
-    [ "Function", "class_halide_1_1_internal_1_1_function.html#ace834f982cc07e50a7a4ad4cdd9e4625", null ],
+    [ "Function", "class_halide_1_1_internal_1_1_function.html#a554e59f1182c49834e0f6e1da0291c0d", null ],
     [ "Function", "class_halide_1_1_internal_1_1_function.html#a0f8109a2b3f78087f68cadb33765af88", null ],
     [ "Function", "class_halide_1_1_internal_1_1_function.html#ae13f728a73fcf2f407d45ecee30be83e", null ],
     [ "get_contents", "class_halide_1_1_internal_1_1_function.html#a028ab7f6aaa47fc731c029c6d2c419b4", null ],

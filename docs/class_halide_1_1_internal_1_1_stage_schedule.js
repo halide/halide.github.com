@@ -1,7 +1,7 @@
 var class_halide_1_1_internal_1_1_stage_schedule =
 [
     [ "StageSchedule", "class_halide_1_1_internal_1_1_stage_schedule.html#a066b29df9ea4b1b065265fec15db1d71", null ],
-    [ "StageSchedule", "class_halide_1_1_internal_1_1_stage_schedule.html#a7dbcd5ad2fea75417c9cf6a0e5ffd261", null ],
+    [ "StageSchedule", "class_halide_1_1_internal_1_1_stage_schedule.html#af9302763f6eb24574552d4e73747d6fe", null ],
     [ "StageSchedule", "class_halide_1_1_internal_1_1_stage_schedule.html#a34499fd20f22c8f7c2e3fc6e694fd6e4", null ],
     [ "get_copy", "class_halide_1_1_internal_1_1_stage_schedule.html#a244a8cb75852048f48b12a39b35c49a5", null ],
     [ "touched", "class_halide_1_1_internal_1_1_stage_schedule.html#a3133aa6819fb3fc6d2a0091f18814f80", null ],
