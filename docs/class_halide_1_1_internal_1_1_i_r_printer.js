@@ -14,6 +14,7 @@ var class_halide_1_1_internal_1_1_i_r_printer =
     [ "visit", "class_halide_1_1_internal_1_1_i_r_printer.html#aaf85bcd31b07f45d3e8f1dc64d846176", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_printer.html#a98135b807b78c3b94ee5a7d11d3bc60c", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_printer.html#a8502edca257580f51ff20a7011f3e058", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_i_r_printer.html#a4e6601678a29da851bae81fb79590238", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_printer.html#a3b9b09a2af508453672b4f7d25fa719a", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_printer.html#a5508d50dc3594fdb87d3dec65951f403", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_printer.html#a0141e7b1f879564d03fd296828165c74", null ],

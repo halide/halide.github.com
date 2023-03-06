@@ -1,10 +1,9 @@
 var class_halide_1_1_simd_op_check_test =
 [
+    [ "Sharder", "class_halide_1_1_simd_op_check_test.html#a4ef1afede0e96fc7d498d59b2adf545c", null ],
     [ "SimdOpCheckTest", "class_halide_1_1_simd_op_check_test.html#aa6478debb2af7a4779db13b462a0687b", null ],
     [ "~SimdOpCheckTest", "class_halide_1_1_simd_op_check_test.html#aa3a49939bd12f835a978422fd9439863", null ],
     [ "set_seed", "class_halide_1_1_simd_op_check_test.html#a441ed9154eccad9f73e1238cb5c57093", null ],
-    [ "get_num_threads", "class_halide_1_1_simd_op_check_test.html#a0856efea61d6a90e1b9804a5a11e2042", null ],
-    [ "set_num_threads", "class_halide_1_1_simd_op_check_test.html#ae65e8b5996eb5cdfd5ab9a4b791cd7ba", null ],
     [ "can_run_code", "class_halide_1_1_simd_op_check_test.html#aef21947b814ee5c777b02a5a5fe0334b", null ],
     [ "compile_and_check", "class_halide_1_1_simd_op_check_test.html#a095b9c1ad885268725215a9ca55d43a9", null ],
     [ "wildcard_match", "class_halide_1_1_simd_op_check_test.html#a8f64a8dc098abad4bf3095181da33676", null ],

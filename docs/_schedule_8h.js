@@ -1,14 +1,14 @@
 var _schedule_8h =
 [
-    [ "LoopLevel", "class_halide_1_1_loop_level.html", "class_halide_1_1_loop_level" ],
-    [ "FuseLoopLevel", "struct_halide_1_1_fuse_loop_level.html", "struct_halide_1_1_fuse_loop_level" ],
-    [ "Split", "struct_halide_1_1_internal_1_1_split.html", "struct_halide_1_1_internal_1_1_split" ],
-    [ "Dim", "struct_halide_1_1_internal_1_1_dim.html", "struct_halide_1_1_internal_1_1_dim" ],
-    [ "Bound", "struct_halide_1_1_internal_1_1_bound.html", "struct_halide_1_1_internal_1_1_bound" ],
-    [ "StorageDim", "struct_halide_1_1_internal_1_1_storage_dim.html", "struct_halide_1_1_internal_1_1_storage_dim" ],
-    [ "FusedPair", "struct_halide_1_1_internal_1_1_fused_pair.html", "struct_halide_1_1_internal_1_1_fused_pair" ],
-    [ "FuncSchedule", "class_halide_1_1_internal_1_1_func_schedule.html", "class_halide_1_1_internal_1_1_func_schedule" ],
-    [ "StageSchedule", "class_halide_1_1_internal_1_1_stage_schedule.html", "class_halide_1_1_internal_1_1_stage_schedule" ],
+    [ "Halide::LoopLevel", "class_halide_1_1_loop_level.html", "class_halide_1_1_loop_level" ],
+    [ "Halide::FuseLoopLevel", "struct_halide_1_1_fuse_loop_level.html", "struct_halide_1_1_fuse_loop_level" ],
+    [ "Halide::Internal::Split", "struct_halide_1_1_internal_1_1_split.html", "struct_halide_1_1_internal_1_1_split" ],
+    [ "Halide::Internal::Dim", "struct_halide_1_1_internal_1_1_dim.html", "struct_halide_1_1_internal_1_1_dim" ],
+    [ "Halide::Internal::Bound", "struct_halide_1_1_internal_1_1_bound.html", "struct_halide_1_1_internal_1_1_bound" ],
+    [ "Halide::Internal::StorageDim", "struct_halide_1_1_internal_1_1_storage_dim.html", "struct_halide_1_1_internal_1_1_storage_dim" ],
+    [ "Halide::Internal::FusedPair", "struct_halide_1_1_internal_1_1_fused_pair.html", "struct_halide_1_1_internal_1_1_fused_pair" ],
+    [ "Halide::Internal::FuncSchedule", "class_halide_1_1_internal_1_1_func_schedule.html", "class_halide_1_1_internal_1_1_func_schedule" ],
+    [ "Halide::Internal::StageSchedule", "class_halide_1_1_internal_1_1_stage_schedule.html", "class_halide_1_1_internal_1_1_stage_schedule" ],
     [ "TailStrategy", "_schedule_8h.html#a6c6557df562bd7850664e70fdb8fea0f", [
       [ "RoundUp", "_schedule_8h.html#a6c6557df562bd7850664e70fdb8fea0fa16b999f69f07356ae94c65a20b832926", null ],
       [ "GuardWithIf", "_schedule_8h.html#a6c6557df562bd7850664e70fdb8fea0fa5b80e0001d7f4873a60bbded160c687d", null ],

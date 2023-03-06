@@ -19,6 +19,6 @@ var class_halide_1_1_names_interface =
     [ "Type", "class_halide_1_1_names_interface.html#a368ad498e9703efbcb4e62cfc5b55f53", null ],
     [ "Var", "class_halide_1_1_names_interface.html#a7d47e51224cfc5564c25f9a1edd0644d", null ],
     [ "GeneratorParam", "class_halide_1_1_names_interface.html#a14f50750abe61fe59248538697e689dc", null ],
-    [ "Buffer", "class_halide_1_1_names_interface.html#ac3835c9b455a2b0065d2ab7a3779b5e3", null ],
+    [ "Buffer", "class_halide_1_1_names_interface.html#ade9a550037d6c8d913b15710b1641030", null ],
     [ "Param", "class_halide_1_1_names_interface.html#a058f26b5a4dfe05b1ec23bdb816755ad", null ]
 ];

@@ -22,6 +22,21 @@ var struct_halide_1_1_target =
       [ "WebAssembly", "struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1a6532c751e5ed692a3697b42e16245103", null ],
       [ "RISCV", "struct_halide_1_1_target.html#af17585cfd5ec92952fd361117d89d4b1a17a3e9018141a1ee808bca53786e973a", null ]
     ] ],
+    [ "Processor", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9", [
+      [ "ProcessorGeneric", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9af715320efdaa1ab6fb47427a7f028377", null ],
+      [ "K8", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a779822b0c8e9aec93f766da9d6d2fc57", null ],
+      [ "K8_SSE3", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a43001640f83e0cf2a0edbcd81724253c", null ],
+      [ "AMDFam10", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a1d5ed7868ce634ff6b2130cababa39ee", null ],
+      [ "BtVer1", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a7f5e36036905f49d0323a1bcf562c2a6", null ],
+      [ "BdVer1", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a5a491acaf41ae9c28c750a1bd563eb8c", null ],
+      [ "BdVer2", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9aa7bd187eb4a76462917a8c2c6f9eda42", null ],
+      [ "BdVer3", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a043e72cc37a9120053acaa57c394cb05", null ],
+      [ "BdVer4", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9aa361c4aed1add39db444a78f6ccde133", null ],
+      [ "BtVer2", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9ace79549807e5bd6187ee8eb0befad67e", null ],
+      [ "ZnVer1", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a51e4f08f0114bc979b3c50785592007e", null ],
+      [ "ZnVer2", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a961c78e7ba27911af6e07a7ee14abbb3", null ],
+      [ "ZnVer3", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a28746ca502040b3cbd5d30519b898060", null ]
+    ] ],
     [ "Feature", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f", [
       [ "JIT", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fac04af3ed2dc70791a8ba8f793a746b30", null ],
       [ "Debug", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf3cc1f2941a6b4df016ac08e68b9c660", null ],
@@ -46,6 +61,7 @@ var struct_halide_1_1_target =
       [ "CUDACapability70", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa0d74ff49399ae262e113c2835141ab01", null ],
       [ "CUDACapability75", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fae7cbec868d975c4aa7b322fa76bb7c92", null ],
       [ "CUDACapability80", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fabd7d2e15b3b2ea52d792c39fad72ae70", null ],
+      [ "CUDACapability86", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa015832c39580b06b521043f0eaa14a3d", null ],
       [ "OpenCL", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa84c6211e4fb941603f6104e98427d7e5", null ],
       [ "CLDoubles", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faa371c9fa5610dc3a9efbb3fde547a719", null ],
       [ "CLHalf", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa83b38d45d65d541678d96fc9ca78ce48", null ],
@@ -53,7 +69,6 @@ var struct_halide_1_1_target =
       [ "OpenGLCompute", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa17e80def356dcd03337ef044ccee459a", null ],
       [ "EGL", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa126ccb07c0612499b349ac4b622c84ea", null ],
       [ "UserContext", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fab7dbd399d2a833d37bd52451f99c50c1", null ],
-      [ "Matlab", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf1da45381c688687c95e97987fcc67cb", null ],
       [ "Profile", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faec9457be1a9efa835825706a62551cd7", null ],
       [ "NoRuntime", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa90bf2d575c86cf9ca5a2302afbfb9f6b", null ],
       [ "Metal", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa6e7f7184a2b03865bf82159648bd5993", null ],
@@ -98,9 +113,13 @@ var struct_halide_1_1_target =
       [ "LLVMLargeCodeModel", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa9973752caf748ff2e1a87cedcdbffdfb", null ],
       [ "RVV", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fabdc14a9791fd72acb6cc6f3d2adbbd10", null ],
       [ "ARMv81a", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa46cce213617f374e7e9f425223211c7c", null ],
+      [ "SanitizerCoverage", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa844ea3257e00f37f09abcea69ce482ee", null ],
+      [ "ProfileByTimer", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa7be9ee9c7dd46d7e9e54c75fe1474c71", null ],
+      [ "SPIRV", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43face3aff836b3f7172171d00b4964b120e", null ],
       [ "FeatureEnd", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa17b9cbfef8d1e84e32c8aaa7b2936dbc", null ]
     ] ],
     [ "Target", "struct_halide_1_1_target.html#a6b25060c5ad61641d4f89d4501e2dbf9", null ],
+    [ "Target", "struct_halide_1_1_target.html#a773b44e9f7de22b94c562c7d307a008a", null ],
     [ "Target", "struct_halide_1_1_target.html#a2ff20ad58e15b48104f0261f22592496", null ],
     [ "Target", "struct_halide_1_1_target.html#a6ea1860548b9d8e26939d29e92faef31", null ],
     [ "Target", "struct_halide_1_1_target.html#aff0dbc7af1d5379912254df2914af759", null ],
@@ -128,8 +147,10 @@ var struct_halide_1_1_target =
     [ "maximum_buffer_size", "struct_halide_1_1_target.html#a47394e5e8a2e06f5e5dbbbb4aea5d6e9", null ],
     [ "get_cuda_capability_lower_bound", "struct_halide_1_1_target.html#adef77d6374f8104db27bb0568689d99e", null ],
     [ "supported", "struct_halide_1_1_target.html#aa6166b62232fe54774171b4333d88494", null ],
-    [ "get_features_bitset", "struct_halide_1_1_target.html#abf45cdffd681253127564402ba03904d", null ],
+    [ "get_features_bitset", "struct_halide_1_1_target.html#a8eaefa280388ad4813a83fd60a2702b1", null ],
     [ "os", "struct_halide_1_1_target.html#a8394ab88fb236f51ea92c6d7e44f87af", null ],
     [ "arch", "struct_halide_1_1_target.html#a41fb39bfe6ada60505dbc8956386c2c6", null ],
-    [ "bits", "struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32", null ]
+    [ "bits", "struct_halide_1_1_target.html#a72366c6d01ef023ff3b2801017779e32", null ],
+    [ "vector_bits", "struct_halide_1_1_target.html#af9e590c61204b89a3cfcd6ddd1d5d34d", null ],
+    [ "processor_tune", "struct_halide_1_1_target.html#a72116c89662ce9ff709ab7fc50ced3ce", null ]
 ];

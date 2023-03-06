@@ -12,6 +12,7 @@ var class_halide_1_1_internal_1_1_generator_input___scalar =
     [ "set_estimate", "class_halide_1_1_internal_1_1_generator_input___scalar.html#a27001bfa72de54fb75717d2f3ccd5f68", null ],
     [ "set_estimate", "class_halide_1_1_internal_1_1_generator_input___scalar.html#a27001bfa72de54fb75717d2f3ccd5f68", null ],
     [ "set_estimate", "class_halide_1_1_internal_1_1_generator_input___scalar.html#a4eb77f4eb6e861b483e4a07332e3c3f3", null ],
+    [ "type", "class_halide_1_1_internal_1_1_generator_input___scalar.html#a498a426fadaf99f74e651c20343d519a", null ],
     [ "def_", "class_halide_1_1_internal_1_1_generator_input___scalar.html#af30233619a9754242db13610d3128bb8", null ],
     [ "def_expr_", "class_halide_1_1_internal_1_1_generator_input___scalar.html#ab98b77195166271a3fe503ce42ea8575", null ]
 ];

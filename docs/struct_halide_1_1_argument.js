@@ -7,7 +7,7 @@ var struct_halide_1_1_argument =
     ] ],
     [ "Argument", "struct_halide_1_1_argument.html#a5c1b54b48ea303938d7e55f492483cb1", null ],
     [ "Argument", "struct_halide_1_1_argument.html#a473219a781a7a48455b3d2d4dcf1cc70", null ],
-    [ "Argument", "struct_halide_1_1_argument.html#a44757827810fba1f65d02b5075104854", null ],
+    [ "Argument", "struct_halide_1_1_argument.html#a2b12dcdd0000cfbced8c6ed24384773a", null ],
     [ "is_buffer", "struct_halide_1_1_argument.html#a184ab90bf547af451457272dbec9cb9f", null ],
     [ "is_scalar", "struct_halide_1_1_argument.html#a19465e45c44f1ba93484662d09706107", null ],
     [ "is_input", "struct_halide_1_1_argument.html#a0d3e2ca9588acfe9f920cc1729eba7d3", null ],

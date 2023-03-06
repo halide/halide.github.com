@@ -2,7 +2,7 @@ var class_halide_1_1_default_cost_model =
 [
     [ "DefaultCostModel", "class_halide_1_1_default_cost_model.html#a398045e37ea951e9f8daa8601a3380b6", null ],
     [ "~DefaultCostModel", "class_halide_1_1_default_cost_model.html#ab4355abb68a63b67f0dd44ae7cc19299", null ],
-    [ "set_pipeline_features", "class_halide_1_1_default_cost_model.html#af8bdb60165bb8480359d67ee302edd7d", null ],
+    [ "set_pipeline_features", "class_halide_1_1_default_cost_model.html#a6eb210f0d61d1523461f099e0e170b76", null ],
     [ "set_pipeline_features", "class_halide_1_1_default_cost_model.html#a7e1e8276960aefbacf55c13990372195", null ],
     [ "enqueue", "class_halide_1_1_default_cost_model.html#a8935988c2d55b2dca6366098d7436462", null ],
     [ "enqueue", "class_halide_1_1_default_cost_model.html#ad6cfbb2f6de40c7a9aa02949d9a4687f", null ],

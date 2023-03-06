@@ -15,7 +15,7 @@ var group__rt__hexagon__dma =
       [ "halide_hexagon_fmt_NV124R_Y", "group__rt__hexagon__dma.html#gga1a33f3687461b193961a69dafbd7fa12a13c1156dd68625ae1b4ea86d2243d900", null ],
       [ "halide_hexagon_fmt_NV124R_UV", "group__rt__hexagon__dma.html#gga1a33f3687461b193961a69dafbd7fa12a358e942f8b8833eb15f334de0d63cf3f", null ]
     ] ],
-    [ "halide_hexagon_dma_device_interface", "group__rt__hexagon__dma.html#ga193ae5c186e0d24aa23702dc475347f7", null ],
+    [ "halide_hexagon_dma_device_interface", "group__rt__hexagon__dma.html#ga3a321c64629bff98213baef04b94439f", null ],
     [ "halide_hexagon_dma_device_wrap_native", "group__rt__hexagon__dma.html#ga4a63fa6115bbec1400a47787bcb6c509", null ],
     [ "halide_hexagon_dma_device_detach_native", "group__rt__hexagon__dma.html#ga2ec56802b49e8d2b4dbb9ecf8fb28fef", null ],
     [ "halide_hexagon_dma_allocate_engine", "group__rt__hexagon__dma.html#ga7b5e2cd788f98d0c8eef30bc7b322937", null ],

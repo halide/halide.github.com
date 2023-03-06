@@ -7,7 +7,7 @@ var struct_i_d3_d12_root_signature_vtbl =
     [ "pDataSize", "struct_i_d3_d12_root_signature_vtbl.html#ad5ea1f31beec1a6769eea5ac6bf247cf", null ],
     [ "pData", "struct_i_d3_d12_root_signature_vtbl.html#abb5dc91ff6b825c73215bf7d12f62388", null ],
     [ "DataSize", "struct_i_d3_d12_root_signature_vtbl.html#ac85615d18b5ffc51b7708c3980c61946", null ],
-    [ "pData", "struct_i_d3_d12_root_signature_vtbl.html#a46ead185a803fc6e639c650ea439d82b", null ],
+    [ "pData", "struct_i_d3_d12_root_signature_vtbl.html#a7caf6d708b7b33e97f068aa540775739", null ],
     [ "Name", "struct_i_d3_d12_root_signature_vtbl.html#a63d499a2ccd3981f8bcbc6f9a21019c5", null ],
     [ "riid", "struct_i_d3_d12_root_signature_vtbl.html#ad1027eb5ee50a7798fcfd0c241b5f087", null ],
     [ "ppvDevice", "struct_i_d3_d12_root_signature_vtbl.html#a77da2cdf5ebae349c55969656966e7f4", null ]

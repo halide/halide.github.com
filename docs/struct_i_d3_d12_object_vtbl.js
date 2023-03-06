@@ -7,6 +7,6 @@ var struct_i_d3_d12_object_vtbl =
     [ "pDataSize", "struct_i_d3_d12_object_vtbl.html#a666456aa407331a71c167bcdd3260d80", null ],
     [ "pData", "struct_i_d3_d12_object_vtbl.html#aabd87defaed3020a396a5125deb39fa4", null ],
     [ "DataSize", "struct_i_d3_d12_object_vtbl.html#a5ef96a1368d9df8166b5840cf415291c", null ],
-    [ "pData", "struct_i_d3_d12_object_vtbl.html#af8113a0aa0b31ab5223af497eb2160a6", null ],
+    [ "pData", "struct_i_d3_d12_object_vtbl.html#a8b7e15709ee9de35f16508949114826c", null ],
     [ "Name", "struct_i_d3_d12_object_vtbl.html#a9bef8bc3253df32fd6719e6ee0d55829", null ]
 ];

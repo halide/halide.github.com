@@ -8,7 +8,7 @@ var struct_halide_1_1_extern_func_argument =
       [ "ImageParamArg", "struct_halide_1_1_extern_func_argument.html#acaf18f00d1d41e200ba8c7ac799a172ba8a178fab7553bc9085ac4cf23bdd65eb", null ]
     ] ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a3e747736a8b9e41f80ac80f2bf71f3ea", null ],
-    [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#ab3b42a497ddebd3e4ed6e61cb0620cdc", null ],
+    [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a424f19fa65682c930c4867cbdaf73629", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#ac39965f88b76e3fe4d8206e4090372f5", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#af321dd81fbcf5ec5c8a638dfd839b506", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a36aa8c858f9dcc85ca23f41f9b2452d9", null ],

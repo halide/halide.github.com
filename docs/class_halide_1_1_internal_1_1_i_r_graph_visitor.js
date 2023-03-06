@@ -7,6 +7,7 @@ var class_halide_1_1_internal_1_1_i_r_graph_visitor =
     [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#ad7428c1e2ba7f348e0e16e4988f8d0ed", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#a244491d1f12549b9b9053f3d4d6657e7", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#af5068f300740a4e88519628a5f4046da", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#ade2d71b8f9637cf2a167b889e7f0694b", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#ae121388f688b01937b89e75bab58ab55", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#a497fa9e95b08a61556cbc495989f8eb8", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_graph_visitor.html#a71c81efbfa03948001d8c332d89c89ed", null ],

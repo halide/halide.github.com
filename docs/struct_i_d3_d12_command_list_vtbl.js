@@ -7,7 +7,7 @@ var struct_i_d3_d12_command_list_vtbl =
     [ "pDataSize", "struct_i_d3_d12_command_list_vtbl.html#a9b695dae1a2bb2c2fbeb41fc07dd562d", null ],
     [ "pData", "struct_i_d3_d12_command_list_vtbl.html#a05f9981b79bf9632c939d2c9fca6f299", null ],
     [ "DataSize", "struct_i_d3_d12_command_list_vtbl.html#adfdb36c7658e2da0175c75e313280603", null ],
-    [ "pData", "struct_i_d3_d12_command_list_vtbl.html#a55cfc920a22497c94c7b637cfa0f78d3", null ],
+    [ "pData", "struct_i_d3_d12_command_list_vtbl.html#a38a57d3e95e74a13fedcf11332c62117", null ],
     [ "Name", "struct_i_d3_d12_command_list_vtbl.html#a40efdf4f70f9bc01955b158c53f846b1", null ],
     [ "riid", "struct_i_d3_d12_command_list_vtbl.html#a02c8e7a7e166f2877eac272c74da77eb", null ],
     [ "ppvDevice", "struct_i_d3_d12_command_list_vtbl.html#a5180504bb185da10adcb4aa231794672", null ]

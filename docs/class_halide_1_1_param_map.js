@@ -6,6 +6,6 @@ var class_halide_1_1_param_map =
     [ "set", "class_halide_1_1_param_map.html#a1d39030895ae2e52388ff90fb2400901", null ],
     [ "set", "class_halide_1_1_param_map.html#a97f1aad1f0559176d7b93d4ef98f2838", null ],
     [ "size", "class_halide_1_1_param_map.html#a50afc7607c035bf51c2109230b683984", null ],
-    [ "map", "class_halide_1_1_param_map.html#a1a949307e582a4712b11ad8e1293e8af", null ],
-    [ "map", "class_halide_1_1_param_map.html#a8c9fde99f1c9b7f4e38e065a6b6c31d6", null ]
+    [ "map", "class_halide_1_1_param_map.html#aef6c75523039bc1e3f1793e1d55446c4", null ],
+    [ "map", "class_halide_1_1_param_map.html#ac411bd15b7b2fde6dd946092d9896f59", null ]
 ];

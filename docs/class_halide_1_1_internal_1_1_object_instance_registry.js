@@ -10,6 +10,6 @@ var class_halide_1_1_internal_1_1_object_instance_registry =
     ] ],
     [ "ObjectInstanceRegistry", "class_halide_1_1_internal_1_1_object_instance_registry.html#a3503a4037a970458ee1452c64c885aaa", null ],
     [ "ObjectInstanceRegistry", "class_halide_1_1_internal_1_1_object_instance_registry.html#ad1e522f82523c34c397824f155d46487", null ],
-    [ "operator=", "class_halide_1_1_internal_1_1_object_instance_registry.html#a79e412809b7c7911bdf401fa9a84d891", null ],
-    [ "operator=", "class_halide_1_1_internal_1_1_object_instance_registry.html#a1ff645d73e6e441a7f2deba99f12626f", null ]
+    [ "operator=", "class_halide_1_1_internal_1_1_object_instance_registry.html#a7b46432be45ba299cf8e057a6f3e355f", null ],
+    [ "operator=", "class_halide_1_1_internal_1_1_object_instance_registry.html#aa3b19c31b79c34ba1f0c4cd6daa384d2", null ]
 ];

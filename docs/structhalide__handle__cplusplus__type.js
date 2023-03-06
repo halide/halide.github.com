@@ -4,7 +4,8 @@ var structhalide__handle__cplusplus__type =
       [ "Const", "structhalide__handle__cplusplus__type.html#ad45abe716942dafc7466e96337d04935a156be81fd4ecb723eb18e28e0f713f96", null ],
       [ "Volatile", "structhalide__handle__cplusplus__type.html#ad45abe716942dafc7466e96337d04935a49cf94edff10da379dc83017691d6d7f", null ],
       [ "Restrict", "structhalide__handle__cplusplus__type.html#ad45abe716942dafc7466e96337d04935a24f6c8fa59ef929162776cff9e1793ac", null ],
-      [ "Pointer", "structhalide__handle__cplusplus__type.html#ad45abe716942dafc7466e96337d04935ad348493086ffaf1a8a489b3cddf99805", null ]
+      [ "Pointer", "structhalide__handle__cplusplus__type.html#ad45abe716942dafc7466e96337d04935ad348493086ffaf1a8a489b3cddf99805", null ],
+      [ "FunctionTypedef", "structhalide__handle__cplusplus__type.html#ad45abe716942dafc7466e96337d04935a35a0496ef68adaf689df1e0b2f752be5", null ]
     ] ],
     [ "ReferenceType", "structhalide__handle__cplusplus__type.html#a5aef5cc2d2d1194b93e036af106f86fc", [
       [ "NotReference", "structhalide__handle__cplusplus__type.html#a5aef5cc2d2d1194b93e036af106f86fca1d02db2370e1f78da196c7564ecbea87", null ],

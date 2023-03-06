@@ -1,7 +1,7 @@
 var _halide_runtime_metal_8h =
 [
     [ "HALIDE_RUNTIME_METAL", "_halide_runtime_metal_8h.html#ab41b861fa7f2589cfcd8b80b1cfd712c", null ],
-    [ "halide_metal_device_interface", "_halide_runtime_metal_8h.html#a62ca08763338934a10718166656f802f", null ],
+    [ "halide_metal_device_interface", "_halide_runtime_metal_8h.html#a6d895a87f8e066debbc6ba4b2c759590", null ],
     [ "halide_metal_initialize_kernels", "_halide_runtime_metal_8h.html#a4521858d8a01477b467a73fb1b8fb4c8", null ],
     [ "halide_metal_finalize_kernels", "_halide_runtime_metal_8h.html#a33c52a33b22c8c6bfa024eacbdcb4ee0", null ],
     [ "halide_metal_run", "_halide_runtime_metal_8h.html#ac5a3934d1958627ee83adb55094883b4", null ],

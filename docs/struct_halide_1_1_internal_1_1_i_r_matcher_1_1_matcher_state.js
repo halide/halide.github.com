@@ -2,7 +2,7 @@ var struct_halide_1_1_internal_1_1_i_r_matcher_1_1_matcher_state =
 [
     [ "MatcherState", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_matcher_state.html#a650b50c849f386afe33d060071d2a8b6", null ],
     [ "set_binding", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_matcher_state.html#a629e72c7e7d24f884b8dedbc2f2bb2e3", null ],
-    [ "get_binding", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_matcher_state.html#a476bd254b8b6f7a5b952ec301f7b65fc", null ],
+    [ "get_binding", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_matcher_state.html#a8feb3ebb2946aa3e77076f7acd596ed3", null ],
     [ "set_bound_const", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_matcher_state.html#a0f804a1871a23b81f99f4709dc07e9d9", null ],
     [ "set_bound_const", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_matcher_state.html#abf797c0d4a73465da665f019ca092fe4", null ],
     [ "set_bound_const", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_matcher_state.html#a0fde5cece02ddc6035032e2023c4838d", null ],

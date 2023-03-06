@@ -1,12 +1,12 @@
 var _error_8h =
 [
-    [ "Error", "struct_halide_1_1_error.html", "struct_halide_1_1_error" ],
-    [ "RuntimeError", "struct_halide_1_1_runtime_error.html", "struct_halide_1_1_runtime_error" ],
-    [ "CompileError", "struct_halide_1_1_compile_error.html", "struct_halide_1_1_compile_error" ],
-    [ "InternalError", "struct_halide_1_1_internal_error.html", "struct_halide_1_1_internal_error" ],
-    [ "CompileTimeErrorReporter", "class_halide_1_1_compile_time_error_reporter.html", "class_halide_1_1_compile_time_error_reporter" ],
-    [ "ErrorReport", "struct_halide_1_1_internal_1_1_error_report.html", "struct_halide_1_1_internal_1_1_error_report" ],
-    [ "Voidifier", "class_halide_1_1_internal_1_1_voidifier.html", "class_halide_1_1_internal_1_1_voidifier" ],
+    [ "Halide::Error", "struct_halide_1_1_error.html", "struct_halide_1_1_error" ],
+    [ "Halide::RuntimeError", "struct_halide_1_1_runtime_error.html", "struct_halide_1_1_runtime_error" ],
+    [ "Halide::CompileError", "struct_halide_1_1_compile_error.html", "struct_halide_1_1_compile_error" ],
+    [ "Halide::InternalError", "struct_halide_1_1_internal_error.html", "struct_halide_1_1_internal_error" ],
+    [ "Halide::CompileTimeErrorReporter", "class_halide_1_1_compile_time_error_reporter.html", "class_halide_1_1_compile_time_error_reporter" ],
+    [ "Halide::Internal::ErrorReport", "struct_halide_1_1_internal_1_1_error_report.html", "struct_halide_1_1_internal_1_1_error_report" ],
+    [ "Halide::Internal::Voidifier", "class_halide_1_1_internal_1_1_voidifier.html", "class_halide_1_1_internal_1_1_voidifier" ],
     [ "_halide_internal_assertion", "_error_8h.html#a32d1a8bfcbf2c4cec795364a206200f6", null ],
     [ "internal_error", "_error_8h.html#a462c17e7e8b2753700f2d369b361cb68", null ],
     [ "user_error", "_error_8h.html#a78a5394c1943bdf1a612fa2287a0ad62", null ],
@@ -16,5 +16,6 @@ var _error_8h =
     [ "user_assert", "_error_8h.html#af439940098bb932fbd7e5b42365d377c", null ],
     [ "_halide_user_assert", "_error_8h.html#ac33c8660a2d35cb8cc69c510bb9c0a98", null ],
     [ "exceptions_enabled", "_error_8h.html#a5b356550ce5d4c3f8ab941cf3b474cb3", null ],
-    [ "set_custom_compile_time_error_reporter", "_error_8h.html#a64b2e4833f813a4e306f3407f663c393", null ]
+    [ "set_custom_compile_time_error_reporter", "_error_8h.html#a64b2e4833f813a4e306f3407f663c393", null ],
+    [ "unhandled_exception_handler", "_error_8h.html#aac2b07cc26c89acd41e49cdbacfd9a9f", null ]
 ];

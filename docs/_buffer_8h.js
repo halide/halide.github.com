@@ -1,12 +1,11 @@
 var _buffer_8h =
 [
-    [ "Buffer", "class_halide_1_1_buffer.html", "class_halide_1_1_buffer" ],
-    [ "BufferContents", "struct_halide_1_1_internal_1_1_buffer_contents.html", "struct_halide_1_1_internal_1_1_buffer_contents" ],
-    [ "all_ints_and_optional_name", "struct_halide_1_1_internal_1_1all__ints__and__optional__name.html", null ],
-    [ "all_ints_and_optional_name< First, Rest... >", "struct_halide_1_1_internal_1_1all__ints__and__optional__name_3_01_first_00_01_rest_8_8_8_01_4.html", null ],
-    [ "all_ints_and_optional_name< T >", "struct_halide_1_1_internal_1_1all__ints__and__optional__name_3_01_t_01_4.html", null ],
-    [ "all_ints_and_optional_name<>", "struct_halide_1_1_internal_1_1all__ints__and__optional__name_3_4.html", null ],
-    [ "Buffer", "class_halide_1_1_buffer.html", "class_halide_1_1_buffer" ],
+    [ "Halide::Internal::BufferContents", "struct_halide_1_1_internal_1_1_buffer_contents.html", "struct_halide_1_1_internal_1_1_buffer_contents" ],
+    [ "Halide::Internal::all_ints_and_optional_name< Args >", "struct_halide_1_1_internal_1_1all__ints__and__optional__name.html", null ],
+    [ "Halide::Internal::all_ints_and_optional_name< First, Rest... >", "struct_halide_1_1_internal_1_1all__ints__and__optional__name_3_01_first_00_01_rest_8_8_8_01_4.html", null ],
+    [ "Halide::Internal::all_ints_and_optional_name< T >", "struct_halide_1_1_internal_1_1all__ints__and__optional__name_3_01_t_01_4.html", null ],
+    [ "Halide::Internal::all_ints_and_optional_name<>", "struct_halide_1_1_internal_1_1all__ints__and__optional__name_3_4.html", null ],
+    [ "Halide::Buffer< T, Dims >", "class_halide_1_1_buffer.html", "class_halide_1_1_buffer" ],
     [ "HALIDE_BUFFER_FORWARD_CONST", "_buffer_8h.html#ac39f84decc1af6475dadc75bfe758ce1", null ],
     [ "HALIDE_BUFFER_FORWARD", "_buffer_8h.html#a7ba4e3f20cfebc8a4a09d12a3f79780a", null ],
     [ "HALIDE_BUFFER_FORWARD_INITIALIZER_LIST", "_buffer_8h.html#ac0c844f8e5ebc49a58668b7f5526e80c", null ],
@@ -19,8 +18,9 @@ var _buffer_8h =
     [ "get_shape_from_start_of_parameter_pack_helper", "_buffer_8h.html#ab882d8987fcdb737d28066db1130b509", null ],
     [ "get_shape_from_start_of_parameter_pack_helper", "_buffer_8h.html#a352d23994d86bd76a8167c6144f3a3dc", null ],
     [ "get_shape_from_start_of_parameter_pack_helper", "_buffer_8h.html#afc82b2d635d098a40d4b87018edd0a73", null ],
-    [ "get_shape_from_start_of_parameter_pack", "_buffer_8h.html#ae7ed87b50654371fbd0e1415c8d52e4e", null ],
+    [ "get_shape_from_start_of_parameter_pack", "_buffer_8h.html#a274816d577057576634316a33e721fa6", null ],
     [ "buffer_type_name_non_const", "_buffer_8h.html#a844f5db8861adba47dc2dc0e38666407", null ],
     [ "buffer_type_name_non_const< void >", "_buffer_8h.html#a7f55fb27359093d52c4c4447db053edc", null ],
-    [ "buffer_type_name", "_buffer_8h.html#ab14638fa4f1475b6b6acb22a9419afea", null ]
+    [ "buffer_type_name", "_buffer_8h.html#ab14638fa4f1475b6b6acb22a9419afea", null ],
+    [ "AnyDims", "_buffer_8h.html#ab8dc474abd04c4f1b8dd2dcb4d2442e3", null ]
 ];

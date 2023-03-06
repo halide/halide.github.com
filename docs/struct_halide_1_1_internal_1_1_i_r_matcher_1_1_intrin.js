@@ -9,6 +9,8 @@ var struct_halide_1_1_internal_1_1_i_r_matcher_1_1_intrin =
     [ "print_args", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_intrin.html#aaab4883563914a3d505ae63740f7c464", null ],
     [ "print_args", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_intrin.html#a5c851f38daa10dd04c92a67cb1fdacda", null ],
     [ "make", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_intrin.html#a512e3d184460f7cc21afdd365339c401", null ],
+    [ "make_folded_const", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_intrin.html#a6b33697e3c66eda972c77de74849b04f", null ],
     [ "intrin", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_intrin.html#ae9cd8c418097d10e24edd3a84bf7d3e4", null ],
-    [ "args", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_intrin.html#aa379d665ff4b029dc9488f9b501b9b62", null ]
+    [ "args", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_intrin.html#aa379d665ff4b029dc9488f9b501b9b62", null ],
+    [ "optional_type_hint", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_intrin.html#a5635c18e3331bdcfd2b7b5f689d7897f", null ]
 ];

@@ -1,9 +1,8 @@
 var struct_halide_1_1_internal_1_1_schedule_features =
 [
-    [ "operator[]", "struct_halide_1_1_internal_1_1_schedule_features.html#a10d1b470f2374b9dedae6bb04f80b0a0", null ],
+    [ "operator[]", "struct_halide_1_1_internal_1_1_schedule_features.html#ad5613df29e3de8e55601fb274f86a595", null ],
     [ "operator[]", "struct_halide_1_1_internal_1_1_schedule_features.html#a5096ac4fa1b98427abb23fe0f99e8306", null ],
-    [ "dump", "struct_halide_1_1_internal_1_1_schedule_features.html#a404346d9d2b28588be16d96377f8d2dc", null ],
-    [ "dump", "struct_halide_1_1_internal_1_1_schedule_features.html#a258c0971008a1e1c4f3c31596725b0b4", null ],
+    [ "dump", "struct_halide_1_1_internal_1_1_schedule_features.html#a58553005d23693dc99dc214a5657581a", null ],
     [ "equal", "struct_halide_1_1_internal_1_1_schedule_features.html#a0ee535b03eb18ab6270d83ba5f3e5958", null ],
     [ "num_realizations", "struct_halide_1_1_internal_1_1_schedule_features.html#ab47baabaf054e54f80b086a713736695", null ],
     [ "num_productions", "struct_halide_1_1_internal_1_1_schedule_features.html#abc342babc6c1f5c24f4e0594028a10ec", null ],
