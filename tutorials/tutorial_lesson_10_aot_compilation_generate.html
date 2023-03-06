@@ -334,5 +334,86 @@ tutorial_lesson_21_auto_scheduler_run.html
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
+<span class="hl slc">// Halide tutorial lesson 10: AOT compilation part 1</span>
+
+<span class="hl slc">// This lesson demonstrates how to use Halide as an more traditional</span>
+<span class="hl slc">// ahead-of-time (AOT) compiler.</span>
+
+<span class="hl slc">// This lesson is split across two files. The first (this one), builds</span>
+<span class="hl slc">// a Halide pipeline and compiles it to a static library and</span>
+<span class="hl slc">// header. The second (lesson_10_aot_compilation_run.cpp), uses that</span>
+<span class="hl slc">// static library to actually run the pipeline. This means that</span>
+<span class="hl slc">// compiling this code is a multi-step process.</span>
+
+<span class="hl slc">// On linux, you can compile and run it like so:</span>
+<span class="hl slc">// g++ lesson_10*generate.cpp -g -std=c++17 -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_10_generate</span>
+<span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_10_generate</span>
+<span class="hl slc">// g++ lesson_10*run.cpp lesson_10_halide.a -std=c++17 -I &lt;path/to/Halide.h&gt; -lpthread -ldl -o lesson_10_run</span>
+<span class="hl slc">// ./lesson_10_run</span>
+
+<span class="hl slc">// On os x:</span>
+<span class="hl slc">// g++ lesson_10*generate.cpp -g -std=c++17 -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_10_generate</span>
+<span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_10_generate</span>
+<span class="hl slc">// g++ lesson_10*run.cpp lesson_10_halide.a -o lesson_10_run -I &lt;path/to/Halide.h&gt;</span>
+<span class="hl slc">// ./lesson_10_run</span>
+
+<span class="hl slc">// The benefits of this approach are that the final program:</span>
+<span class="hl slc">// - Doesn&apos;t do any jit compilation at runtime, so it&apos;s fast.</span>
+<span class="hl slc">// - Doesn&apos;t depend on libHalide at all, so it&apos;s a small, easy-to-deploy binary.</span>
+
+<span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
+<span class="hl slc">// running:</span>
+<span class="hl slc">//    make tutorial_lesson_10_aot_compilation_run</span>
+<span class="hl slc">// in a shell with the current directory at the top of the halide</span>
+<span class="hl slc">// source tree.</span>
+
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include &lt;stdio.h&gt;</span>
+<span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
+
+<span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
+
+    <span class="hl slc">// We&apos;ll define a simple one-stage pipeline:</span>
+    Func brighter<span class="hl opt">;</span>
+    Var x<span class="hl opt">,</span> y<span class="hl opt">;</span>
+
+    <span class="hl slc">// The pipeline will depend on one scalar parameter.</span>
+    Param<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> offset<span class="hl opt">;</span>
+
+    <span class="hl slc">// And take one grayscale 8-bit input buffer. The first</span>
+    <span class="hl slc">// constructor argument gives the type of a pixel, and the second</span>
+    <span class="hl slc">// specifies the number of dimensions (not the number of</span>
+    <span class="hl slc">// channels!). For a grayscale image this is two; for a color</span>
+    <span class="hl slc">// image it&apos;s three. Currently, four dimensions is the maximum for</span>
+    <span class="hl slc">// inputs and outputs.</span>
+    ImageParam <span class="hl kwd">input</span><span class="hl opt">(</span>type_of<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(),</span> <span class="hl num">2</span><span class="hl opt">);</span>
+
+    <span class="hl slc">// If we were jit-compiling, these would just be an int and a</span>
+    <span class="hl slc">// Buffer, but because we want to compile the pipeline once and</span>
+    <span class="hl slc">// have it work for any value of the parameter, we need to make a</span>
+    <span class="hl slc">// Param object, which can be used like an Expr, and an ImageParam</span>
+    <span class="hl slc">// object, which can be used like a Buffer.</span>
+
+    <span class="hl slc">// Define the Func.</span>
+    <span class="hl kwd">brighter</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> offset<span class="hl opt">;</span>
+
+    <span class="hl slc">// Schedule it.</span>
+    brighter<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">).</span><span class="hl kwd">parallel</span><span class="hl opt">(</span>y<span class="hl opt">);</span>
+
+    <span class="hl slc">// This time, instead of calling brighter.realize(...), which</span>
+    <span class="hl slc">// would compile and run the pipeline immediately, we&apos;ll call a</span>
+    <span class="hl slc">// method that compiles the pipeline to a static library and header.</span>
+    <span class="hl slc">//</span>
+    <span class="hl slc">// For AOT-compiled code, we need to explicitly declare the</span>
+    <span class="hl slc">// arguments to the routine. This routine takes two. Arguments are</span>
+    <span class="hl slc">// usually Params or ImageParams.</span>
+    brighter<span class="hl opt">.</span><span class="hl kwd">compile_to_static_library</span><span class="hl opt">(</span><span class="hl str">&quot;lesson_10_halide&quot;</span><span class="hl opt">, {</span>input<span class="hl opt">,</span> offset<span class="hl opt">},</span> <span class="hl str">&quot;brighter&quot;</span><span class="hl opt">);</span>
+
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Halide pipeline compiled, but not yet run.</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+    <span class="hl slc">// To continue this lesson, look in the file lesson_10_aot_compilation_run.cpp</span>
+
+    <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
 </pre>
 </div></body></html>

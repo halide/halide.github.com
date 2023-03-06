@@ -334,5 +334,953 @@ tutorial_lesson_21_auto_scheduler_run.html
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
+<span class="hl slc">// Halide tutorial lesson 5: Vectorize, parallelize, unroll and tile your code</span>
+
+<span class="hl slc">// This lesson demonstrates how to manipulate the order in which you</span>
+<span class="hl slc">// evaluate pixels in a Func, including vectorization,</span>
+<span class="hl slc">// parallelization, unrolling, and tiling.</span>
+
+<span class="hl slc">// On linux, you can compile and run it like so:</span>
+<span class="hl slc">// g++ lesson_05*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_05 -std=c++17</span>
+<span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_05</span>
+
+<span class="hl slc">// On os x:</span>
+<span class="hl slc">// g++ lesson_05*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_05 -std=c++17</span>
+<span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_05</span>
+
+<span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
+<span class="hl slc">// running:</span>
+<span class="hl slc">//    make tutorial_lesson_05_scheduling_1</span>
+<span class="hl slc">// in a shell with the current directory at the top of the halide</span>
+<span class="hl slc">// source tree.</span>
+
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include &lt;algorithm&gt;</span>
+<span class="hl ppc">#include &lt;stdio.h&gt;</span>
+<span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
+
+<span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
+
+    <span class="hl slc">// We&apos;re going to define and schedule our gradient function in</span>
+    <span class="hl slc">// several different ways, and see what order pixels are computed</span>
+    <span class="hl slc">// in.</span>
+
+    Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">);</span>
+
+    <span class="hl slc">// First we observe the default ordering.</span>
+    <span class="hl opt">{</span>
+        Func <span class="hl kwd">gradient</span><span class="hl opt">(</span><span class="hl str">&quot;gradient&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// By default we walk along the rows and then down the</span>
+        <span class="hl slc">// columns. This means x varies quickly, and y varies</span>
+        <span class="hl slc">// slowly. x is the column and y is the row, so this is a</span>
+        <span class="hl slc">// row-major traversal.</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient row-major</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
+        <a onclick='return toggle("_45");'><b id=_45-show>// Click to show output ...</b></a><div id=_45 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline gradient.0()
+ > Tag gradient.0() tag = "func_type_and_dim: 1 0 32 1 2 0 4 0 4"
+ > Store gradient.0(0, 0) = 0
+ > Store gradient.0(1, 0) = 1
+ > Store gradient.0(2, 0) = 2
+ > Store gradient.0(3, 0) = 3
+ > Store gradient.0(0, 1) = 1
+ > Store gradient.0(1, 1) = 2
+ > Store gradient.0(2, 1) = 3
+ > Store gradient.0(3, 1) = 4
+ > Store gradient.0(0, 2) = 2
+ > Store gradient.0(1, 2) = 3
+ > Store gradient.0(2, 2) = 4
+ > Store gradient.0(3, 2) = 5
+ > Store gradient.0(0, 3) = 3
+ > Store gradient.0(1, 3) = 4
+ > Store gradient.0(2, 3) = 5
+ > Store gradient.0(3, 3) = 6
+ > End pipeline gradient.0()
+
+</b></div>
+
+        <span class="hl slc">// See below for a visualization of</span>
+        <span class="hl slc">// what this did.</span>
+
+         <span><img src= figures/lesson_05_row_major.gif ></span>
+
+        <span class="hl slc">// The equivalent C is:</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// Tracing is one useful way to understand what a schedule is</span>
+        <span class="hl slc">// doing. You can also ask Halide to print out pseudocode</span>
+        <span class="hl slc">// showing what loops Halide is generating:</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_63");'><b id=_63-show>// Click to show output ...</b></a><div id=_63 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce gradient:
+ >   for y:
+ >     for x:
+ >       gradient(...) = ...
+
+</b></div>
+
+        <span class="hl slc">// Because we&apos;re using the default ordering, it should print:</span>
+        <span class="hl slc">// compute gradient:</span>
+        <span class="hl slc">//   for y:</span>
+        <span class="hl slc">//     for x:</span>
+        <span class="hl slc">//       gradient(...) = ...</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Reorder variables.</span>
+    <span class="hl opt">{</span>
+        Func <span class="hl kwd">gradient</span><span class="hl opt">(</span><span class="hl str">&quot;gradient_col_major&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// If we reorder x and y, we can walk down the columns</span>
+        <span class="hl slc">// instead. The reorder call takes the arguments of the func,</span>
+        <span class="hl slc">// and sets a new nesting order for the for loops that are</span>
+        <span class="hl slc">// generated. The arguments are specified from the innermost</span>
+        <span class="hl slc">// loop out, so the following call puts y in the inner loop:</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">reorder</span><span class="hl opt">(</span>y<span class="hl opt">,</span> x<span class="hl opt">);</span>
+
+        <span class="hl slc">// This means y (the row) will vary quickly, and x (the</span>
+        <span class="hl slc">// column) will vary slowly, so this is a column-major</span>
+        <span class="hl slc">// traversal.</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient column-major</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
+        <a onclick='return toggle("_91");'><b id=_91-show>// Click to show output ...</b></a><div id=_91 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline gradient_col_major.0()
+ > Tag gradient_col_major.0() tag = "func_type_and_dim: 1 0 32 1 2 0 4 0 4"
+ > Store gradient_col_major.0(0, 0) = 0
+ > Store gradient_col_major.0(0, 1) = 1
+ > Store gradient_col_major.0(0, 2) = 2
+ > Store gradient_col_major.0(0, 3) = 3
+ > Store gradient_col_major.0(1, 0) = 1
+ > Store gradient_col_major.0(1, 1) = 2
+ > Store gradient_col_major.0(1, 2) = 3
+ > Store gradient_col_major.0(1, 3) = 4
+ > Store gradient_col_major.0(2, 0) = 2
+ > Store gradient_col_major.0(2, 1) = 3
+ > Store gradient_col_major.0(2, 2) = 4
+ > Store gradient_col_major.0(2, 3) = 5
+ > Store gradient_col_major.0(3, 0) = 3
+ > Store gradient_col_major.0(3, 1) = 4
+ > Store gradient_col_major.0(3, 2) = 5
+ > Store gradient_col_major.0(3, 3) = 6
+ > End pipeline gradient_col_major.0()
+
+</b></div>
+
+        <span class="hl slc">// See below for a visualization of</span>
+        <span class="hl slc">// what this did.</span>
+
+         <span><img src= figures/lesson_05_col_major.gif ></span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// If we print pseudo-code for this schedule, we&apos;ll see that</span>
+        <span class="hl slc">// the loop over y is now inside the loop over x.</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_107");'><b id=_107-show>// Click to show output ...</b></a><div id=_107 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce gradient_col_major:
+ >   for x:
+ >     for y:
+ >       gradient_col_major(...) = ...
+
+</b></div>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Split a variable into two.</span>
+    <span class="hl opt">{</span>
+        Func <span class="hl kwd">gradient</span><span class="hl opt">(</span><span class="hl str">&quot;gradient_split&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// The most powerful primitive scheduling operation you can do</span>
+        <span class="hl slc">// to a var is to split it into inner and outer sub-variables:</span>
+        Var x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>x<span class="hl opt">,</span> x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// This breaks the loop over x into two nested loops: an outer</span>
+        <span class="hl slc">// one over x_outer, and an inner one over x_inner. The last</span>
+        <span class="hl slc">// argument to split was the &quot;split factor&quot;. The inner loop</span>
+        <span class="hl slc">// runs from zero to the split factor. The outer loop runs</span>
+        <span class="hl slc">// from zero to the extent required of x (4 in this case)</span>
+        <span class="hl slc">// divided by the split factor. Within the loops, the old</span>
+        <span class="hl slc">// variable is defined to be outer * factor + inner. If the</span>
+        <span class="hl slc">// old loop started at a value other than zero, then that is</span>
+        <span class="hl slc">// also added within the loops.</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x split into x_outer and x_inner</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
+        <a onclick='return toggle("_133");'><b id=_133-show>// Click to show output ...</b></a><div id=_133 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline gradient_split.0()
+ > Tag gradient_split.0() tag = "func_type_and_dim: 1 0 32 1 2 0 4 0 4"
+ > Store gradient_split.0(0, 0) = 0
+ > Store gradient_split.0(1, 0) = 1
+ > Store gradient_split.0(2, 0) = 2
+ > Store gradient_split.0(3, 0) = 3
+ > Store gradient_split.0(0, 1) = 1
+ > Store gradient_split.0(1, 1) = 2
+ > Store gradient_split.0(2, 1) = 3
+ > Store gradient_split.0(3, 1) = 4
+ > Store gradient_split.0(0, 2) = 2
+ > Store gradient_split.0(1, 2) = 3
+ > Store gradient_split.0(2, 2) = 4
+ > Store gradient_split.0(3, 2) = 5
+ > Store gradient_split.0(0, 3) = 3
+ > Store gradient_split.0(1, 3) = 4
+ > Store gradient_split.0(2, 3) = 5
+ > Store gradient_split.0(3, 3) = 6
+ > End pipeline gradient_split.0()
+
+</b></div>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_outer <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> x_outer<span class="hl opt">++) {</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_inner <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> x_inner<span class="hl opt">++) {</span>
+                    <span class="hl kwb">int</span> x <span class="hl opt">=</span> x_outer <span class="hl opt">*</span> <span class="hl num">2</span> <span class="hl opt">+</span> x_inner<span class="hl opt">;</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_147");'><b id=_147-show>// Click to show output ...</b></a><div id=_147 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce gradient_split:
+ >   for y:
+ >     for x.x_outer:
+ >       for x.x_inner in [0, 1]:
+ >         gradient_split(...) = ...
+
+</b></div>
+
+        <span class="hl slc">// Note that the order of evaluation of pixels didn&apos;t actually</span>
+        <span class="hl slc">// change! Splitting by itself does nothing, but it does open</span>
+        <span class="hl slc">// up all of the scheduling possibilities that we will explore</span>
+        <span class="hl slc">// below.</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Fuse two variables into one.</span>
+    <span class="hl opt">{</span>
+        Func <span class="hl kwd">gradient</span><span class="hl opt">(</span><span class="hl str">&quot;gradient_fused&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+
+        <span class="hl slc">// The opposite of splitting is &apos;fusing&apos;. Fusing two variables</span>
+        <span class="hl slc">// merges the two loops into a single for loop over the</span>
+        <span class="hl slc">// product of the extents. Fusing is less important than</span>
+        <span class="hl slc">// splitting, but it also sees use (as we&apos;ll see later in this</span>
+        <span class="hl slc">// lesson). Like splitting, fusing by itself doesn&apos;t change</span>
+        <span class="hl slc">// the order of evaluation.</span>
+        Var fused<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">fuse</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> fused<span class="hl opt">);</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x and y fused</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> fused <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> fused <span class="hl opt">&lt;</span> <span class="hl num">4</span> <span class="hl opt">*</span> <span class="hl num">4</span><span class="hl opt">;</span> fused<span class="hl opt">++) {</span>
+            <span class="hl kwb">int</span> y <span class="hl opt">=</span> fused <span class="hl opt">/</span> <span class="hl num">4</span><span class="hl opt">;</span>
+            <span class="hl kwb">int</span> x <span class="hl opt">=</span> fused <span class="hl opt">%</span> <span class="hl num">4</span><span class="hl opt">;</span>
+            <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_182");'><b id=_182-show>// Click to show output ...</b></a><div id=_182 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce gradient_fused:
+ >   for x.fused:
+ >     gradient_fused(...) = ...
+
+</b></div>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Evaluating in tiles.</span>
+    <span class="hl opt">{</span>
+        Func <span class="hl kwd">gradient</span><span class="hl opt">(</span><span class="hl str">&quot;gradient_tiled&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// Now that we can both split and reorder, we can do tiled</span>
+        <span class="hl slc">// evaluation. Let&apos;s split both x and y by a factor of four,</span>
+        <span class="hl slc">// and then reorder the vars to express a tiled traversal.</span>
+        <span class="hl slc">//</span>
+        <span class="hl slc">// A tiled traversal splits the domain into small rectangular</span>
+        <span class="hl slc">// tiles, and outermost iterates over the tiles, and within</span>
+        <span class="hl slc">// that iterates over the points within each tile. It can be</span>
+        <span class="hl slc">// good for performance if neighboring pixels use overlapping</span>
+        <span class="hl slc">// input data, for example in a blur. We can express a tiled</span>
+        <span class="hl slc">// traversal like so:</span>
+        Var x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> y_outer<span class="hl opt">,</span> y_inner<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>x<span class="hl opt">,</span> x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>y<span class="hl opt">,</span> y_outer<span class="hl opt">,</span> y_inner<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">reorder</span><span class="hl opt">(</span>x_inner<span class="hl opt">,</span> y_inner<span class="hl opt">,</span> x_outer<span class="hl opt">,</span> y_outer<span class="hl opt">);</span>
+
+        <span class="hl slc">// This pattern is common enough that there&apos;s a shorthand for it:</span>
+        <span class="hl slc">// gradient.tile(x, y, x_outer, y_outer, x_inner, y_inner, 4, 4);</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient in 4x4 tiles</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">});</span>
+        <a onclick='return toggle("_211");'><b id=_211-show>// Click to show output ...</b></a><div id=_211 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline gradient_tiled.0()
+ > Tag gradient_tiled.0() tag = "func_type_and_dim: 1 0 32 1 2 0 8 0 8"
+ > Store gradient_tiled.0(0, 0) = 0
+ > Store gradient_tiled.0(1, 0) = 1
+ > Store gradient_tiled.0(2, 0) = 2
+ > Store gradient_tiled.0(3, 0) = 3
+ > Store gradient_tiled.0(0, 1) = 1
+ > Store gradient_tiled.0(1, 1) = 2
+ > Store gradient_tiled.0(2, 1) = 3
+ > Store gradient_tiled.0(3, 1) = 4
+ > Store gradient_tiled.0(0, 2) = 2
+ > Store gradient_tiled.0(1, 2) = 3
+ > Store gradient_tiled.0(2, 2) = 4
+ > Store gradient_tiled.0(3, 2) = 5
+ > Store gradient_tiled.0(0, 3) = 3
+ > Store gradient_tiled.0(1, 3) = 4
+ > Store gradient_tiled.0(2, 3) = 5
+ > Store gradient_tiled.0(3, 3) = 6
+ > Store gradient_tiled.0(4, 0) = 4
+ > Store gradient_tiled.0(5, 0) = 5
+ > Store gradient_tiled.0(6, 0) = 6
+ > Store gradient_tiled.0(7, 0) = 7
+ > Store gradient_tiled.0(4, 1) = 5
+ > Store gradient_tiled.0(5, 1) = 6
+ > Store gradient_tiled.0(6, 1) = 7
+ > Store gradient_tiled.0(7, 1) = 8
+ > Store gradient_tiled.0(4, 2) = 6
+ > Store gradient_tiled.0(5, 2) = 7
+ > Store gradient_tiled.0(6, 2) = 8
+ > Store gradient_tiled.0(7, 2) = 9
+ > Store gradient_tiled.0(4, 3) = 7
+ > Store gradient_tiled.0(5, 3) = 8
+ > Store gradient_tiled.0(6, 3) = 9
+ > Store gradient_tiled.0(7, 3) = 10
+ > Store gradient_tiled.0(0, 4) = 4
+ > Store gradient_tiled.0(1, 4) = 5
+ > Store gradient_tiled.0(2, 4) = 6
+ > Store gradient_tiled.0(3, 4) = 7
+ > Store gradient_tiled.0(0, 5) = 5
+ > Store gradient_tiled.0(1, 5) = 6
+ > Store gradient_tiled.0(2, 5) = 7
+ > Store gradient_tiled.0(3, 5) = 8
+ > Store gradient_tiled.0(0, 6) = 6
+ > Store gradient_tiled.0(1, 6) = 7
+ > Store gradient_tiled.0(2, 6) = 8
+ > Store gradient_tiled.0(3, 6) = 9
+ > Store gradient_tiled.0(0, 7) = 7
+ > Store gradient_tiled.0(1, 7) = 8
+ > Store gradient_tiled.0(2, 7) = 9
+ > Store gradient_tiled.0(3, 7) = 10
+ > Store gradient_tiled.0(4, 4) = 8
+ > Store gradient_tiled.0(5, 4) = 9
+ > Store gradient_tiled.0(6, 4) = 10
+ > Store gradient_tiled.0(7, 4) = 11
+ > Store gradient_tiled.0(4, 5) = 9
+ > Store gradient_tiled.0(5, 5) = 10
+ > Store gradient_tiled.0(6, 5) = 11
+ > Store gradient_tiled.0(7, 5) = 12
+ > Store gradient_tiled.0(4, 6) = 10
+ > Store gradient_tiled.0(5, 6) = 11
+ > Store gradient_tiled.0(6, 6) = 12
+ > Store gradient_tiled.0(7, 6) = 13
+ > Store gradient_tiled.0(4, 7) = 11
+ > Store gradient_tiled.0(5, 7) = 12
+ > Store gradient_tiled.0(6, 7) = 13
+ > Store gradient_tiled.0(7, 7) = 14
+ > End pipeline gradient_tiled.0()
+
+</b></div>
+
+        <span class="hl slc">// See below for a visualization of this</span>
+        <span class="hl slc">// schedule.</span>
+
+         <span><img src= figures/lesson_05_tiled.gif ></span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y_outer <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> y_outer<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_outer <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> x_outer<span class="hl opt">++) {</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y_inner <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y_inner<span class="hl opt">++) {</span>
+                    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_inner <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x_inner<span class="hl opt">++) {</span>
+                        <span class="hl kwb">int</span> x <span class="hl opt">=</span> x_outer <span class="hl opt">*</span> <span class="hl num">4</span> <span class="hl opt">+</span> x_inner<span class="hl opt">;</span>
+                        <span class="hl kwb">int</span> y <span class="hl opt">=</span> y_outer <span class="hl opt">*</span> <span class="hl num">4</span> <span class="hl opt">+</span> y_inner<span class="hl opt">;</span>
+                        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+                    <span class="hl opt">}</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_231");'><b id=_231-show>// Click to show output ...</b></a><div id=_231 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce gradient_tiled:
+ >   for y.y_outer:
+ >     for x.x_outer:
+ >       for y.y_inner in [0, 3]:
+ >         for x.x_inner in [0, 3]:
+ >           gradient_tiled(...) = ...
+
+</b></div>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Evaluating in vectors.</span>
+    <span class="hl opt">{</span>
+        Func <span class="hl kwd">gradient</span><span class="hl opt">(</span><span class="hl str">&quot;gradient_in_vectors&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// The nice thing about splitting is that it guarantees the</span>
+        <span class="hl slc">// inner variable runs from zero to the split factor. Most of</span>
+        <span class="hl slc">// the time the split-factor will be a compile-time constant,</span>
+        <span class="hl slc">// so we can replace the loop over the inner variable with a</span>
+        <span class="hl slc">// single vectorized computation. This time we&apos;ll split by a</span>
+        <span class="hl slc">// factor of four, because on X86 we can use SSE to compute in</span>
+        <span class="hl slc">// 4-wide vectors.</span>
+        Var x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>x<span class="hl opt">,</span> x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x_inner<span class="hl opt">);</span>
+
+        <span class="hl slc">// Splitting and then vectorizing the inner variable is common</span>
+        <span class="hl slc">// enough that there&apos;s a short-hand for it. We could have also</span>
+        <span class="hl slc">// said:</span>
+        <span class="hl slc">//</span>
+        <span class="hl slc">// gradient.vectorize(x, 4);</span>
+        <span class="hl slc">//</span>
+        <span class="hl slc">// which is equivalent to:</span>
+        <span class="hl slc">//</span>
+        <span class="hl slc">// gradient.split(x, x, x_inner, 4);</span>
+        <span class="hl slc">// gradient.vectorize(x_inner);</span>
+        <span class="hl slc">//</span>
+        <span class="hl slc">// Note that in this case we reused the name &apos;x&apos; as the new</span>
+        <span class="hl slc">// outer variable. Later scheduling calls that refer to x</span>
+        <span class="hl slc">// will refer to this new outer variable named x.</span>
+
+        <span class="hl slc">// This time we&apos;ll evaluate over an 8x4 box, so that we have</span>
+        <span class="hl slc">// more than one vector of work per scanline.</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient with x_inner vectorized</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
+        <a onclick='return toggle("_270");'><b id=_270-show>// Click to show output ...</b></a><div id=_270 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline gradient_in_vectors.0()
+ > Tag gradient_in_vectors.0() tag = "func_type_and_dim: 1 0 32 1 2 0 8 0 4"
+ > Store gradient_in_vectors.0(<0, 1, 2, 3>, <0, 0, 0, 0>) = <0, 1, 2, 3>
+ > Store gradient_in_vectors.0(<4, 5, 6, 7>, <0, 0, 0, 0>) = <4, 5, 6, 7>
+ > Store gradient_in_vectors.0(<0, 1, 2, 3>, <1, 1, 1, 1>) = <1, 2, 3, 4>
+ > Store gradient_in_vectors.0(<4, 5, 6, 7>, <1, 1, 1, 1>) = <5, 6, 7, 8>
+ > Store gradient_in_vectors.0(<0, 1, 2, 3>, <2, 2, 2, 2>) = <2, 3, 4, 5>
+ > Store gradient_in_vectors.0(<4, 5, 6, 7>, <2, 2, 2, 2>) = <6, 7, 8, 9>
+ > Store gradient_in_vectors.0(<0, 1, 2, 3>, <3, 3, 3, 3>) = <3, 4, 5, 6>
+ > Store gradient_in_vectors.0(<4, 5, 6, 7>, <3, 3, 3, 3>) = <7, 8, 9, 10>
+ > End pipeline gradient_in_vectors.0()
+
+</b></div>
+
+        <span class="hl slc">// See below for a visualization.</span>
+
+         <span><img src= figures/lesson_05_vectors.gif ></span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_outer <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> x_outer<span class="hl opt">++) {</span>
+                <span class="hl slc">// The loop over x_inner has gone away, and has been</span>
+                <span class="hl slc">// replaced by a vectorized version of the</span>
+                <span class="hl slc">// expression. On x86 processors, Halide generates SSE</span>
+                <span class="hl slc">// for all of this.</span>
+                <span class="hl kwb">int</span> x_vec<span class="hl opt">[] = {</span>x_outer <span class="hl opt">*</span> <span class="hl num">4</span> <span class="hl opt">+</span> <span class="hl num">0</span><span class="hl opt">,</span>
+                               x_outer <span class="hl opt">*</span> <span class="hl num">4</span> <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span>
+                               x_outer <span class="hl opt">*</span> <span class="hl num">4</span> <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">,</span>
+                               x_outer <span class="hl opt">*</span> <span class="hl num">4</span> <span class="hl opt">+</span> <span class="hl num">3</span><span class="hl opt">};</span>
+                <span class="hl kwb">int</span> val<span class="hl opt">[] = {</span>x_vec<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] +</span> y<span class="hl opt">,</span>
+                             x_vec<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] +</span> y<span class="hl opt">,</span>
+                             x_vec<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">] +</span> y<span class="hl opt">,</span>
+                             x_vec<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">] +</span> y<span class="hl opt">};</span>
+                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at &lt;%d, %d, %d, %d&gt;, &lt;%d, %d, %d, %d&gt;:&quot;</span>
+                       <span class="hl str">&quot; &lt;%d, %d, %d, %d&gt;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                       x_vec<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">],</span> x_vec<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">],</span> x_vec<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">],</span> x_vec<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">],</span>
+                       y<span class="hl opt">,</span> y<span class="hl opt">,</span> y<span class="hl opt">,</span> y<span class="hl opt">,</span>
+                       val<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">],</span> val<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">],</span> val<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">],</span> val<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]);</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_299");'><b id=_299-show>// Click to show output ...</b></a><div id=_299 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce gradient_in_vectors:
+ >   for y:
+ >     for x.x_outer:
+ >       vectorized x.x_inner in [0, 3]:
+ >         gradient_in_vectors(...) = ...
+
+</b></div>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Unrolling a loop.</span>
+    <span class="hl opt">{</span>
+        Func <span class="hl kwd">gradient</span><span class="hl opt">(</span><span class="hl str">&quot;gradient_unroll&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// If multiple pixels share overlapping data, it can make</span>
+        <span class="hl slc">// sense to unroll a computation so that shared values are</span>
+        <span class="hl slc">// only computed or loaded once. We do this similarly to how</span>
+        <span class="hl slc">// we expressed vectorizing. We split a dimension and then</span>
+        <span class="hl slc">// fully unroll the loop of the inner variable. Unrolling</span>
+        <span class="hl slc">// doesn&apos;t change the order in which things are evaluated.</span>
+        Var x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>x<span class="hl opt">,</span> x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">unroll</span><span class="hl opt">(</span>x_inner<span class="hl opt">);</span>
+
+        <span class="hl slc">// The shorthand for this is:</span>
+        <span class="hl slc">// gradient.unroll(x, 2);</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient unrolled by a factor of two</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
+        <a onclick='return toggle("_323");'><b id=_323-show>// Click to show output ...</b></a><div id=_323 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline gradient_unroll.0()
+ > Tag gradient_unroll.0() tag = "func_type_and_dim: 1 0 32 1 2 0 4 0 4"
+ > Store gradient_unroll.0(0, 0) = 0
+ > Store gradient_unroll.0(1, 0) = 1
+ > Store gradient_unroll.0(2, 0) = 2
+ > Store gradient_unroll.0(3, 0) = 3
+ > Store gradient_unroll.0(0, 1) = 1
+ > Store gradient_unroll.0(1, 1) = 2
+ > Store gradient_unroll.0(2, 1) = 3
+ > Store gradient_unroll.0(3, 1) = 4
+ > Store gradient_unroll.0(0, 2) = 2
+ > Store gradient_unroll.0(1, 2) = 3
+ > Store gradient_unroll.0(2, 2) = 4
+ > Store gradient_unroll.0(3, 2) = 5
+ > Store gradient_unroll.0(0, 3) = 3
+ > Store gradient_unroll.0(1, 3) = 4
+ > Store gradient_unroll.0(2, 3) = 5
+ > Store gradient_unroll.0(3, 3) = 6
+ > End pipeline gradient_unroll.0()
+
+</b></div>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_outer <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> x_outer<span class="hl opt">++) {</span>
+                <span class="hl slc">// Instead of a for loop over x_inner, we get two</span>
+                <span class="hl slc">// copies of the innermost statement.</span>
+                <span class="hl opt">{</span>
+                    <span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span>
+                    <span class="hl kwb">int</span> x <span class="hl opt">=</span> x_outer <span class="hl opt">*</span> <span class="hl num">2</span> <span class="hl opt">+</span> x_inner<span class="hl opt">;</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+                <span class="hl opt">}</span>
+                <span class="hl opt">{</span>
+                    <span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">1</span><span class="hl opt">;</span>
+                    <span class="hl kwb">int</span> x <span class="hl opt">=</span> x_outer <span class="hl opt">*</span> <span class="hl num">2</span> <span class="hl opt">+</span> x_inner<span class="hl opt">;</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_345");'><b id=_345-show>// Click to show output ...</b></a><div id=_345 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce gradient_unroll:
+ >   for y:
+ >     for x.x_outer:
+ >       unrolled x.x_inner in [0, 1]:
+ >         gradient_unroll(...) = ...
+
+</b></div>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Splitting by factors that don&apos;t divide the extent.</span>
+    <span class="hl opt">{</span>
+        Func <span class="hl kwd">gradient</span><span class="hl opt">(</span><span class="hl str">&quot;gradient_split_7x2&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// Splitting guarantees that the inner loop runs from zero to</span>
+        <span class="hl slc">// the split factor, which is important for the uses we saw</span>
+        <span class="hl slc">// above. So what happens when the total extent we wish to</span>
+        <span class="hl slc">// evaluate x over isn&apos;t a multiple of the split factor? We&apos;ll</span>
+        <span class="hl slc">// split by a factor three, and we&apos;ll evaluate gradient over a</span>
+        <span class="hl slc">// 7x2 box instead of the 4x4 box we&apos;ve been using.</span>
+        Var x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>x<span class="hl opt">,</span> x_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient over a 7x2 box with x split by three</span> <span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">7</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">});</span>
+        <a onclick='return toggle("_365");'><b id=_365-show>// Click to show output ...</b></a><div id=_365 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline gradient_split_7x2.0()
+ > Tag gradient_split_7x2.0() tag = "func_type_and_dim: 1 0 32 1 2 0 7 0 2"
+ > Store gradient_split_7x2.0(0, 0) = 0
+ > Store gradient_split_7x2.0(1, 0) = 1
+ > Store gradient_split_7x2.0(2, 0) = 2
+ > Store gradient_split_7x2.0(3, 0) = 3
+ > Store gradient_split_7x2.0(4, 0) = 4
+ > Store gradient_split_7x2.0(5, 0) = 5
+ > Store gradient_split_7x2.0(4, 0) = 4
+ > Store gradient_split_7x2.0(5, 0) = 5
+ > Store gradient_split_7x2.0(6, 0) = 6
+ > Store gradient_split_7x2.0(0, 1) = 1
+ > Store gradient_split_7x2.0(1, 1) = 2
+ > Store gradient_split_7x2.0(2, 1) = 3
+ > Store gradient_split_7x2.0(3, 1) = 4
+ > Store gradient_split_7x2.0(4, 1) = 5
+ > Store gradient_split_7x2.0(5, 1) = 6
+ > Store gradient_split_7x2.0(4, 1) = 5
+ > Store gradient_split_7x2.0(5, 1) = 6
+ > Store gradient_split_7x2.0(6, 1) = 7
+ > End pipeline gradient_split_7x2.0()
+
+</b></div>
+
+        <span class="hl slc">// See below for a visualization</span>
+        <span class="hl slc">// of what happened. Note that some points get evaluated more</span>
+        <span class="hl slc">// than once!</span>
+
+         <span><img src= figures/lesson_05_split_7_by_3.gif ></span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_outer <span class="hl opt">&lt;</span> <span class="hl num">3</span><span class="hl opt">;</span> x_outer<span class="hl opt">++) {</span>  <span class="hl slc">// Now runs from 0 to 2</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_inner <span class="hl opt">&lt;</span> <span class="hl num">3</span><span class="hl opt">;</span> x_inner<span class="hl opt">++) {</span>
+                    <span class="hl kwb">int</span> x <span class="hl opt">=</span> x_outer <span class="hl opt">*</span> <span class="hl num">3</span><span class="hl opt">;</span>
+                    <span class="hl slc">// Before we add x_inner, make sure we don&apos;t</span>
+                    <span class="hl slc">// evaluate points outside of the 7x2 box. We&apos;ll</span>
+                    <span class="hl slc">// clamp x to be at most 4 (7 minus the split</span>
+                    <span class="hl slc">// factor).</span>
+                    <span class="hl kwa">if</span> <span class="hl opt">(</span>x <span class="hl opt">&gt;</span> <span class="hl num">4</span><span class="hl opt">)</span> x <span class="hl opt">=</span> <span class="hl num">4</span><span class="hl opt">;</span>
+                    x <span class="hl opt">+=</span> x_inner<span class="hl opt">;</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_389");'><b id=_389-show>// Click to show output ...</b></a><div id=_389 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce gradient_split_7x2:
+ >   for y:
+ >     for x.x_outer:
+ >       for x.x_inner in [0, 2]:
+ >         gradient_split_7x2(...) = ...
+
+</b></div>
+
+        <span class="hl slc">// If you read the output, you&apos;ll see that some coordinates</span>
+        <span class="hl slc">// were evaluated more than once. That&apos;s generally OK, because</span>
+        <span class="hl slc">// pure Halide functions have no side-effects, so it&apos;s safe to</span>
+        <span class="hl slc">// evaluate the same point multiple times. If you&apos;re calling</span>
+        <span class="hl slc">// out to C functions like we are, it&apos;s your responsibility to</span>
+        <span class="hl slc">// make sure you can handle the same point being evaluated</span>
+        <span class="hl slc">// multiple times.</span>
+
+        <span class="hl slc">// The general rule is: If we require x from x_min to x_min + x_extent, and</span>
+        <span class="hl slc">// we split by a factor &apos;factor&apos;, then:</span>
+        <span class="hl slc">//</span>
+        <span class="hl slc">// x_outer runs from 0 to (x_extent + factor - 1)/factor</span>
+        <span class="hl slc">// x_inner runs from 0 to factor</span>
+        <span class="hl slc">// x = min(x_outer * factor, x_extent - factor) + x_inner + x_min</span>
+        <span class="hl slc">//</span>
+        <span class="hl slc">// In our example, x_min was 0, x_extent was 7, and factor was 3.</span>
+
+        <span class="hl slc">// However, if you write a Halide function with an update</span>
+        <span class="hl slc">// definition (see lesson 9), then it is not safe to evaluate</span>
+        <span class="hl slc">// the same point multiple times, so we won&apos;t apply this</span>
+        <span class="hl slc">// trick. Instead the range of values computed will be rounded</span>
+        <span class="hl slc">// up to the next multiple of the split factor.</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Fusing, tiling, and parallelizing.</span>
+    <span class="hl opt">{</span>
+        <span class="hl slc">// We saw in the previous lesson that we can parallelize</span>
+        <span class="hl slc">// across a variable. Here we combine it with fusing and</span>
+        <span class="hl slc">// tiling to express a useful pattern - processing tiles in</span>
+        <span class="hl slc">// parallel.</span>
+
+        <span class="hl slc">// This is where fusing shines. Fusing helps when you want to</span>
+        <span class="hl slc">// parallelize across multiple dimensions without introducing</span>
+        <span class="hl slc">// nested parallelism. Nested parallelism (parallel for loops</span>
+        <span class="hl slc">// within parallel for loops) is supported by Halide, but</span>
+        <span class="hl slc">// often gives poor performance compared to fusing the</span>
+        <span class="hl slc">// parallel variables into a single parallel for loop.</span>
+
+        Func <span class="hl kwd">gradient</span><span class="hl opt">(</span><span class="hl str">&quot;gradient_fused_tiles&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">gradient</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// First we&apos;ll tile, then we&apos;ll fuse the tile indices and</span>
+        <span class="hl slc">// parallelize across the combination.</span>
+        Var x_outer<span class="hl opt">,</span> y_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> y_inner<span class="hl opt">,</span> tile_index<span class="hl opt">;</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">tile</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> x_outer<span class="hl opt">,</span> y_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> y_inner<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">fuse</span><span class="hl opt">(</span>x_outer<span class="hl opt">,</span> y_outer<span class="hl opt">,</span> tile_index<span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">parallel</span><span class="hl opt">(</span>tile_index<span class="hl opt">);</span>
+
+        <span class="hl slc">// The scheduling calls all return a reference to the Func, so</span>
+        <span class="hl slc">// you can also chain them together into a single statement to</span>
+        <span class="hl slc">// make things slightly clearer:</span>
+        <span class="hl slc">//</span>
+        <span class="hl slc">// gradient</span>
+        <span class="hl slc">//     .tile(x, y, x_outer, y_outer, x_inner, y_inner, 4, 4)</span>
+        <span class="hl slc">//     .fuse(x_outer, y_outer, tile_index)</span>
+        <span class="hl slc">//     .parallel(tile_index);</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating gradient tiles in parallel</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> output <span class="hl opt">=</span> gradient<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">});</span>
+        <a onclick='return toggle("_451");'><b id=_451-show>// Click to show output ...</b></a><div id=_451 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline gradient_fused_tiles.0()
+ > Tag gradient_fused_tiles.0() tag = "func_type_and_dim: 1 0 32 1 2 0 8 0 8"
+ > Store gradient_fused_tiles.0(0, 0) = 0
+ > Store gradient_fused_tiles.0(0, 4) = 4
+ > Store gradient_fused_tiles.0(1, 0) = 1
+ > Store gradient_fused_tiles.0(4, 0) = 4
+ > Store gradient_fused_tiles.0(1, 4) = 5
+ > Store gradient_fused_tiles.0(2, 0) = 2
+ > Store gradient_fused_tiles.0(5, 0) = 5
+ > Store gradient_fused_tiles.0(4, 4) = 8
+ > Store gradient_fused_tiles.0(2, 4) = 6
+ > Store gradient_fused_tiles.0(6, 0) = 6
+ > Store gradient_fused_tiles.0(3, 0) = 3
+ > Store gradient_fused_tiles.0(3, 4) = 7
+ > Store gradient_fused_tiles.0(0, 1) = 1
+ > Store gradient_fused_tiles.0(7, 0) = 7
+ > Store gradient_fused_tiles.0(0, 5) = 5
+ > Store gradient_fused_tiles.0(1, 1) = 2
+ > Store gradient_fused_tiles.0(5, 4) = 9
+ > Store gradient_fused_tiles.0(1, 5) = 6
+ > Store gradient_fused_tiles.0(4, 1) = 5
+ > Store gradient_fused_tiles.0(2, 1) = 3
+ > Store gradient_fused_tiles.0(2, 5) = 7
+ > Store gradient_fused_tiles.0(6, 4) = 10
+ > Store gradient_fused_tiles.0(3, 5) = 8
+ > Store gradient_fused_tiles.0(3, 1) = 4
+ > Store gradient_fused_tiles.0(5, 1) = 6
+ > Store gradient_fused_tiles.0(0, 6) = 6
+ > Store gradient_fused_tiles.0(0, 2) = 2
+ > Store gradient_fused_tiles.0(6, 1) = 7
+ > Store gradient_fused_tiles.0(7, 4) = 11
+ > Store gradient_fused_tiles.0(1, 6) = 7
+ > Store gradient_fused_tiles.0(2, 6) = 8
+ > Store gradient_fused_tiles.0(7, 1) = 8
+ > Store gradient_fused_tiles.0(4, 5) = 9
+ > Store gradient_fused_tiles.0(1, 2) = 3
+ > Store gradient_fused_tiles.0(3, 6) = 9
+ > Store gradient_fused_tiles.0(5, 5) = 10
+ > Store gradient_fused_tiles.0(2, 2) = 4
+ > Store gradient_fused_tiles.0(0, 7) = 7
+ > Store gradient_fused_tiles.0(6, 5) = 11
+ > Store gradient_fused_tiles.0(1, 7) = 8
+ > Store gradient_fused_tiles.0(4, 2) = 6
+ > Store gradient_fused_tiles.0(3, 2) = 5
+ > Store gradient_fused_tiles.0(7, 5) = 12
+ > Store gradient_fused_tiles.0(2, 7) = 9
+ > Store gradient_fused_tiles.0(5, 2) = 7
+ > Store gradient_fused_tiles.0(4, 6) = 10
+ > Store gradient_fused_tiles.0(0, 3) = 3
+ > Store gradient_fused_tiles.0(3, 7) = 10
+ > Store gradient_fused_tiles.0(6, 2) = 8
+ > Store gradient_fused_tiles.0(1, 3) = 4
+ > Store gradient_fused_tiles.0(5, 6) = 11
+ > Store gradient_fused_tiles.0(7, 2) = 9
+ > Store gradient_fused_tiles.0(6, 6) = 12
+ > Store gradient_fused_tiles.0(2, 3) = 5
+ > Store gradient_fused_tiles.0(4, 3) = 7
+ > Store gradient_fused_tiles.0(7, 6) = 13
+ > Store gradient_fused_tiles.0(3, 3) = 6
+ > Store gradient_fused_tiles.0(4, 7) = 11
+ > Store gradient_fused_tiles.0(5, 3) = 8
+ > Store gradient_fused_tiles.0(5, 7) = 12
+ > Store gradient_fused_tiles.0(6, 3) = 9
+ > Store gradient_fused_tiles.0(6, 7) = 13
+ > Store gradient_fused_tiles.0(7, 3) = 10
+ > Store gradient_fused_tiles.0(7, 7) = 14
+ > End pipeline gradient_fused_tiles.0()
+
+</b></div>
+
+        <span class="hl slc">// The tiles should occur in arbitrary order, but within each</span>
+        <span class="hl slc">// tile the pixels will be traversed in row-major order. See</span>
+        <span class="hl slc">// below for a visualization.</span>
+
+         <span><img src= figures/lesson_05_parallel_tiles.gif ></span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Equivalent (serial) C:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl slc">// This outermost loop should be a parallel for loop, but that&apos;s hard in C.</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> tile_index <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> tile_index <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> tile_index<span class="hl opt">++) {</span>
+            <span class="hl kwb">int</span> y_outer <span class="hl opt">=</span> tile_index <span class="hl opt">/</span> <span class="hl num">2</span><span class="hl opt">;</span>
+            <span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> tile_index <span class="hl opt">%</span> <span class="hl num">2</span><span class="hl opt">;</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y_inner <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y_inner<span class="hl opt">++) {</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_inner <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x_inner<span class="hl opt">++) {</span>
+                    <span class="hl kwb">int</span> y <span class="hl opt">=</span> y_outer <span class="hl opt">*</span> <span class="hl num">4</span> <span class="hl opt">+</span> y_inner<span class="hl opt">;</span>
+                    <span class="hl kwb">int</span> x <span class="hl opt">=</span> x_outer <span class="hl opt">*</span> <span class="hl num">4</span> <span class="hl opt">+</span> x_inner<span class="hl opt">;</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Evaluating at x = %d, y = %d: %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> x<span class="hl opt">,</span> y<span class="hl opt">,</span> x <span class="hl opt">+</span> y<span class="hl opt">);</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        gradient<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_473");'><b id=_473-show>// Click to show output ...</b></a><div id=_473 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce gradient_fused_tiles:
+ >   parallel x.x_outer.tile_index:
+ >     for y.y_inner in [0, 3]:
+ >       for x.x_inner in [0, 3]:
+ >         gradient_fused_tiles(...) = ...
+
+</b></div>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Putting it all together.</span>
+    <span class="hl opt">{</span>
+        <span class="hl slc">// Are you ready? We&apos;re going to use all of the features above now.</span>
+        Func <span class="hl kwd">gradient_fast</span><span class="hl opt">(</span><span class="hl str">&quot;gradient_fast&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">gradient_fast</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+
+        <span class="hl slc">// We&apos;ll process 64x64 tiles in parallel.</span>
+        Var x_outer<span class="hl opt">,</span> y_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> y_inner<span class="hl opt">,</span> tile_index<span class="hl opt">;</span>
+        gradient_fast
+            <span class="hl opt">.</span><span class="hl kwd">tile</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> x_outer<span class="hl opt">,</span> y_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> y_inner<span class="hl opt">,</span> <span class="hl num">64</span><span class="hl opt">,</span> <span class="hl num">64</span><span class="hl opt">)</span>
+            <span class="hl opt">.</span><span class="hl kwd">fuse</span><span class="hl opt">(</span>x_outer<span class="hl opt">,</span> y_outer<span class="hl opt">,</span> tile_index<span class="hl opt">)</span>
+            <span class="hl opt">.</span><span class="hl kwd">parallel</span><span class="hl opt">(</span>tile_index<span class="hl opt">);</span>
+
+        <span class="hl slc">// We&apos;ll compute two scanlines at once while we walk across</span>
+        <span class="hl slc">// each tile. We&apos;ll also vectorize in x. The easiest way to</span>
+        <span class="hl slc">// express this is to recursively tile again within each tile</span>
+        <span class="hl slc">// into 4x2 subtiles, then vectorize the subtiles across x and</span>
+        <span class="hl slc">// unroll them across y:</span>
+        Var x_inner_outer<span class="hl opt">,</span> y_inner_outer<span class="hl opt">,</span> x_vectors<span class="hl opt">,</span> y_pairs<span class="hl opt">;</span>
+        gradient_fast
+            <span class="hl opt">.</span><span class="hl kwd">tile</span><span class="hl opt">(</span>x_inner<span class="hl opt">,</span> y_inner<span class="hl opt">,</span> x_inner_outer<span class="hl opt">,</span> y_inner_outer<span class="hl opt">,</span> x_vectors<span class="hl opt">,</span> y_pairs<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">)</span>
+            <span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x_vectors<span class="hl opt">)</span>
+            <span class="hl opt">.</span><span class="hl kwd">unroll</span><span class="hl opt">(</span>y_pairs<span class="hl opt">);</span>
+
+        <span class="hl slc">// Note that we didn&apos;t do any explicit splitting or</span>
+        <span class="hl slc">// reordering. Those are the most important primitive</span>
+        <span class="hl slc">// operations, but mostly they are buried underneath tiling,</span>
+        <span class="hl slc">// vectorizing, or unrolling calls.</span>
+
+        <span class="hl slc">// Now let&apos;s evaluate this over a range which is not a</span>
+        <span class="hl slc">// multiple of the tile size.</span>
+
+        <span class="hl slc">// If you like you can turn on tracing, but it&apos;s going to</span>
+        <span class="hl slc">// produce a lot of printfs. Instead we&apos;ll compute the answer</span>
+        <span class="hl slc">// both in C and Halide and see if the answers match.</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> result <span class="hl opt">=</span> gradient_fast<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">350</span><span class="hl opt">,</span> <span class="hl num">250</span><span class="hl opt">});</span>
+
+        <span class="hl slc">// See below for a visualization.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_05_fast.mp4  />Your browser does not support the video tag :(</video></span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Checking Halide result against equivalent C...</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> tile_index <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> tile_index <span class="hl opt">&lt;</span> <span class="hl num">6</span> <span class="hl opt">*</span> <span class="hl num">4</span><span class="hl opt">;</span> tile_index<span class="hl opt">++) {</span>
+            <span class="hl kwb">int</span> y_outer <span class="hl opt">=</span> tile_index <span class="hl opt">/</span> <span class="hl num">4</span><span class="hl opt">;</span>
+            <span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> tile_index <span class="hl opt">%</span> <span class="hl num">4</span><span class="hl opt">;</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y_inner_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y_inner_outer <span class="hl opt">&lt;</span> <span class="hl num">64</span> <span class="hl opt">/</span> <span class="hl num">2</span><span class="hl opt">;</span> y_inner_outer<span class="hl opt">++) {</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_inner_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_inner_outer <span class="hl opt">&lt;</span> <span class="hl num">64</span> <span class="hl opt">/</span> <span class="hl num">4</span><span class="hl opt">;</span> x_inner_outer<span class="hl opt">++) {</span>
+                    <span class="hl slc">// We&apos;re vectorized across x</span>
+                    <span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl kwc">std</span><span class="hl opt">::</span><span class="hl kwd">min</span><span class="hl opt">(</span>x_outer <span class="hl opt">*</span> <span class="hl num">64</span><span class="hl opt">,</span> <span class="hl num">350</span> <span class="hl opt">-</span> <span class="hl num">64</span><span class="hl opt">) +</span> x_inner_outer <span class="hl opt">*</span> <span class="hl num">4</span><span class="hl opt">;</span>
+                    <span class="hl kwb">int</span> x_vec<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">] = {</span>x <span class="hl opt">+</span> <span class="hl num">0</span><span class="hl opt">,</span>
+                                    x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span>
+                                    x <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">,</span>
+                                    x <span class="hl opt">+</span> <span class="hl num">3</span><span class="hl opt">};</span>
+
+                    <span class="hl slc">// And we unrolled across y</span>
+                    <span class="hl kwb">int</span> y_base <span class="hl opt">=</span> <span class="hl kwc">std</span><span class="hl opt">::</span><span class="hl kwd">min</span><span class="hl opt">(</span>y_outer <span class="hl opt">*</span> <span class="hl num">64</span><span class="hl opt">,</span> <span class="hl num">250</span> <span class="hl opt">-</span> <span class="hl num">64</span><span class="hl opt">) +</span> y_inner_outer <span class="hl opt">*</span> <span class="hl num">2</span><span class="hl opt">;</span>
+                    <span class="hl opt">{</span>
+                        <span class="hl slc">// y_pairs = 0</span>
+                        <span class="hl kwb">int</span> y <span class="hl opt">=</span> y_base <span class="hl opt">+</span> <span class="hl num">0</span><span class="hl opt">;</span>
+                        <span class="hl kwb">int</span> y_vec<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">] = {</span>y<span class="hl opt">,</span> y<span class="hl opt">,</span> y<span class="hl opt">,</span> y<span class="hl opt">};</span>
+                        <span class="hl kwb">int</span> val<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">] = {</span>x_vec<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] +</span> y_vec<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">],</span>
+                                      x_vec<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] +</span> y_vec<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">],</span>
+                                      x_vec<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">] +</span> y_vec<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">],</span>
+                                      x_vec<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">] +</span> y_vec<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]};</span>
+
+                        <span class="hl slc">// Check the result.</span>
+                        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
+                            <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">result</span><span class="hl opt">(</span>x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]) !=</span> val<span class="hl opt">[</span>i<span class="hl opt">]) {</span>
+                                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;There was an error at %d %d!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                                       x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]);</span>
+                                <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
+                            <span class="hl opt">}</span>
+                        <span class="hl opt">}</span>
+                    <span class="hl opt">}</span>
+                    <span class="hl opt">{</span>
+                        <span class="hl slc">// y_pairs = 1</span>
+                        <span class="hl kwb">int</span> y <span class="hl opt">=</span> y_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">;</span>
+                        <span class="hl kwb">int</span> y_vec<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">] = {</span>y<span class="hl opt">,</span> y<span class="hl opt">,</span> y<span class="hl opt">,</span> y<span class="hl opt">};</span>
+                        <span class="hl kwb">int</span> val<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">] = {</span>x_vec<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] +</span> y_vec<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">],</span>
+                                      x_vec<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] +</span> y_vec<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">],</span>
+                                      x_vec<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">] +</span> y_vec<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">],</span>
+                                      x_vec<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">] +</span> y_vec<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]};</span>
+
+                        <span class="hl slc">// Check the result.</span>
+                        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> i <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> i<span class="hl opt">++) {</span>
+                            <span class="hl kwa">if</span> <span class="hl opt">(</span><span class="hl kwd">result</span><span class="hl opt">(</span>x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]) !=</span> val<span class="hl opt">[</span>i<span class="hl opt">]) {</span>
+                                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;There was an error at %d %d!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                                       x_vec<span class="hl opt">[</span>i<span class="hl opt">],</span> y_vec<span class="hl opt">[</span>i<span class="hl opt">]);</span>
+                                <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
+                            <span class="hl opt">}</span>
+                        <span class="hl opt">}</span>
+                    <span class="hl opt">}</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        gradient_fast<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_573");'><b id=_573-show>// Click to show output ...</b></a><div id=_573 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce gradient_fast:
+ >   parallel x.x_outer.tile_index:
+ >     for y.y_inner.y_inner_outer in [0, 31]:
+ >       for x.x_inner.x_inner_outer in [0, 15]:
+ >         unrolled y.y_inner.y_pairs in [0, 1]:
+ >           vectorized x.x_inner.x_vectors in [0, 3]:
+ >             gradient_fast(...) = ...
+
+</b></div>
+
+        <span class="hl slc">// Note that in the Halide version, the algorithm is specified</span>
+        <span class="hl slc">// once at the top, separately from the optimizations, and there</span>
+        <span class="hl slc">// aren&apos;t that many lines of code total. Compare this to the C</span>
+        <span class="hl slc">// version. There&apos;s more code (and it isn&apos;t even parallelized or</span>
+        <span class="hl slc">// vectorized properly). More annoyingly, the statement of the</span>
+        <span class="hl slc">// algorithm (the result is x plus y) is buried in multiple places</span>
+        <span class="hl slc">// within the mess. This C code is hard to write, hard to read,</span>
+        <span class="hl slc">// hard to debug, and hard to optimize further. This is why Halide</span>
+        <span class="hl slc">// exists.</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+    <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
 </pre>
 </div></body></html>

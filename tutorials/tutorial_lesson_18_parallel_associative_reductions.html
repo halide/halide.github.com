@@ -334,5 +334,361 @@ tutorial_lesson_21_auto_scheduler_run.html
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
+<span class="hl slc">// Halide tutorial lesson 18: Factoring an associative reduction using rfactor</span>
+
+<span class="hl slc">// This lesson demonstrates how to parallelize or vectorize an associative</span>
+<span class="hl slc">// reduction using the scheduling directive &apos;rfactor&apos;.</span>
+
+<span class="hl slc">// On linux, you can compile and run it like so:</span>
+<span class="hl slc">// g++ lesson_18*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_18 -std=c++17</span>
+<span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_18</span>
+
+<span class="hl slc">// On os x:</span>
+<span class="hl slc">// g++ lesson_18*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_18 -std=c++17</span>
+<span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_18</span>
+
+<span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
+<span class="hl slc">// running:</span>
+<span class="hl slc">//    make tutorial_lesson_18_parallel_associative_reductions</span>
+<span class="hl slc">// in a shell with the current directory at the top of the halide</span>
+<span class="hl slc">// source tree.</span>
+
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include &lt;stdio.h&gt;</span>
+
+<span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
+
+<span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
+    <span class="hl slc">// Declare some Vars to use below.</span>
+    Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">),</span> <span class="hl kwd">i</span><span class="hl opt">(</span><span class="hl str">&quot;i&quot;</span><span class="hl opt">),</span> <span class="hl kwd">u</span><span class="hl opt">(</span><span class="hl str">&quot;u&quot;</span><span class="hl opt">),</span> <span class="hl kwd">v</span><span class="hl opt">(</span><span class="hl str">&quot;v&quot;</span><span class="hl opt">);</span>
+
+    <span class="hl slc">// Create an input with random values.</span>
+    Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">input</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">,</span> <span class="hl str">&quot;input&quot;</span><span class="hl opt">);</span>
+    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">; ++</span>y<span class="hl opt">) {</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">; ++</span>x<span class="hl opt">) {</span>
+            <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">rand</span><span class="hl opt">() %</span> <span class="hl num">256</span><span class="hl opt">);</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// As mentioned previously in lesson 9, parallelizing variables that</span>
+        <span class="hl slc">// are part of a reduction domain is tricky, since there may be data</span>
+        <span class="hl slc">// dependencies across those variables.</span>
+
+        <span class="hl slc">// Consider the histogram example in lesson 9:</span>
+        Func <span class="hl kwd">histogram</span><span class="hl opt">(</span><span class="hl str">&quot;hist_serial&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">histogram</span><span class="hl opt">(</span>i<span class="hl opt">) =</span> <span class="hl num">0</span><span class="hl opt">;</span>
+        RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> <span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
+        <span class="hl kwd">histogram</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x<span class="hl opt">,</span> r<span class="hl opt">.</span>y<span class="hl opt">) /</span> <span class="hl num">32</span><span class="hl opt">) +=</span> <span class="hl num">1</span><span class="hl opt">;</span>
+
+        histogram<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>i<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+        histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">});</span>
+
+        <span class="hl slc">// See below for a visualization of</span>
+        <span class="hl slc">// what this does.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_18_hist_serial.mp4  />Your browser does not support the video tag :(</video></span>
+
+        <span class="hl slc">// We can vectorize the initialization of the histogram</span>
+        <span class="hl slc">// buckets, but since there are data dependencies across r.x</span>
+        <span class="hl slc">// and r.y in the update definition (i.e. the update refers to</span>
+        <span class="hl slc">// value computed in the previous iteration), we can&apos;t</span>
+        <span class="hl slc">// parallelize or vectorize r.x or r.y without introducing a</span>
+        <span class="hl slc">// race condition. The following code would produce an error:</span>
+        <span class="hl slc">// histogram.update().parallel(r.y);</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// Note, however, that the histogram operation (which is a</span>
+        <span class="hl slc">// kind of sum reduction) is associative. A common trick to</span>
+        <span class="hl slc">// speed-up associative reductions is to slice up the</span>
+        <span class="hl slc">// reduction domain into smaller slices, compute a partial</span>
+        <span class="hl slc">// result over each slice, and then merge the results. Since</span>
+        <span class="hl slc">// the computation of each slice is independent, we can</span>
+        <span class="hl slc">// parallelize over slices.</span>
+
+        <span class="hl slc">// Going back to the histogram example, we slice the reduction</span>
+        <span class="hl slc">// domain into rows by defining an intermediate function that</span>
+        <span class="hl slc">// computes the histogram of each row independently:</span>
+        Func <span class="hl kwd">intermediate</span><span class="hl opt">(</span><span class="hl str">&quot;intm_par_manual&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">intermediate</span><span class="hl opt">(</span>i<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">0</span><span class="hl opt">;</span>
+        RDom <span class="hl kwd">rx</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">());</span>
+        <span class="hl kwd">intermediate</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>rx<span class="hl opt">,</span> y<span class="hl opt">) /</span> <span class="hl num">32</span><span class="hl opt">,</span> y<span class="hl opt">) +=</span> <span class="hl num">1</span><span class="hl opt">;</span>
+
+        <span class="hl slc">// We then define a second stage which sums those partial</span>
+        <span class="hl slc">// results:</span>
+        Func <span class="hl kwd">histogram</span><span class="hl opt">(</span><span class="hl str">&quot;merge_par_manual&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">histogram</span><span class="hl opt">(</span>i<span class="hl opt">) =</span> <span class="hl num">0</span><span class="hl opt">;</span>
+        RDom <span class="hl kwd">ry</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
+        <span class="hl kwd">histogram</span><span class="hl opt">(</span>i<span class="hl opt">) +=</span> <span class="hl kwd">intermediate</span><span class="hl opt">(</span>i<span class="hl opt">,</span> ry<span class="hl opt">);</span>
+
+        <span class="hl slc">// Since the intermediate no longer has data dependencies</span>
+        <span class="hl slc">// across the y dimension, we can parallelize it over y:</span>
+        intermediate<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">().</span><span class="hl kwd">update</span><span class="hl opt">().</span><span class="hl kwd">parallel</span><span class="hl opt">(</span>y<span class="hl opt">);</span>
+
+        <span class="hl slc">// We can also vectorize the initializations.</span>
+        intermediate<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>i<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+        histogram<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>i<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+
+        histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">});</span>
+
+        <span class="hl slc">// See below for a visualization of</span>
+        <span class="hl slc">// what this does.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_18_hist_manual_par.mp4  />Your browser does not support the video tag :(</video></span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// This manual factorization of an associative reduction can</span>
+        <span class="hl slc">// be tedious and bug-prone. Although it&apos;s fairly easy to do</span>
+        <span class="hl slc">// manually for the histogram, it can get complex pretty fast,</span>
+        <span class="hl slc">// especially if the RDom may has a predicate (RDom::where),</span>
+        <span class="hl slc">// or when the function reduces onto a multi-dimensional</span>
+        <span class="hl slc">// tuple.</span>
+
+        <span class="hl slc">// Halide provides a way to do this type of factorization</span>
+        <span class="hl slc">// through the scheduling directive &apos;rfactor&apos;. rfactor splits</span>
+        <span class="hl slc">// an associative update definition into an intermediate which</span>
+        <span class="hl slc">// computes the partial results over slices of a reduction</span>
+        <span class="hl slc">// domain and replaces the current update definition with a</span>
+        <span class="hl slc">// new definition which merges those partial results.</span>
+
+        <span class="hl slc">// Using rfactor, we don&apos;t need to change the algorithm at all:</span>
+        Func <span class="hl kwd">histogram</span><span class="hl opt">(</span><span class="hl str">&quot;hist_rfactor_par&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">histogram</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl num">0</span><span class="hl opt">;</span>
+        RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> <span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
+        <span class="hl kwd">histogram</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x<span class="hl opt">,</span> r<span class="hl opt">.</span>y<span class="hl opt">) /</span> <span class="hl num">32</span><span class="hl opt">) +=</span> <span class="hl num">1</span><span class="hl opt">;</span>
+
+        <span class="hl slc">// The task of factoring of associative reduction is moved</span>
+        <span class="hl slc">// into the schedule, via rfactor. rfactor takes as input a</span>
+        <span class="hl slc">// list of &lt;RVar, Var&gt; pairs, which contains list of reduction</span>
+        <span class="hl slc">// variables (RVars) to be made &quot;parallelizable&quot;. In the</span>
+        <span class="hl slc">// generated intermediate Func, all references to this</span>
+        <span class="hl slc">// reduction variables are replaced with references to &quot;pure&quot;</span>
+        <span class="hl slc">// variables (the Vars). Since, by construction, Vars are</span>
+        <span class="hl slc">// race-condition free, the intermediate reduction is now</span>
+        <span class="hl slc">// parallelizable across those dimensions. All reduction</span>
+        <span class="hl slc">// variables not in the list are removed from the original</span>
+        <span class="hl slc">// function and &quot;lifted&quot; to the intermediate.</span>
+
+        <span class="hl slc">// To generate the same code as the manually-factored version,</span>
+        <span class="hl slc">// we do the following:</span>
+        Func intermediate <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">update</span><span class="hl opt">().</span><span class="hl kwd">rfactor</span><span class="hl opt">({{</span>r<span class="hl opt">.</span>y<span class="hl opt">,</span> y<span class="hl opt">}});</span>
+        <span class="hl slc">// We pass {r.y, y} as the argument to rfactor to make the</span>
+        <span class="hl slc">// histogram parallelizable across the y dimension, similar to</span>
+        <span class="hl slc">// the manually-factored version.</span>
+        intermediate<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">().</span><span class="hl kwd">update</span><span class="hl opt">().</span><span class="hl kwd">parallel</span><span class="hl opt">(</span>y<span class="hl opt">);</span>
+
+        <span class="hl slc">// In the case where you are only slicing up the domain across</span>
+        <span class="hl slc">// a single variable, you can actually drop the braces and</span>
+        <span class="hl slc">// write the rfactor the following way.</span>
+        <span class="hl slc">// Func intermediate = histogram.update().rfactor(r.y, y);</span>
+
+        <span class="hl slc">// Vectorize the initializations, as we did above.</span>
+        intermediate<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+        histogram<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// It is important to note that rfactor (or reduction</span>
+        <span class="hl slc">// factorization in general) only works for associative</span>
+        <span class="hl slc">// reductions. Associative reductions have the nice property</span>
+        <span class="hl slc">// that their results are the same no matter how the</span>
+        <span class="hl slc">// computation is grouped (i.e. split into chunks). If rfactor</span>
+        <span class="hl slc">// can&apos;t prove the associativity of a reduction, it will throw</span>
+        <span class="hl slc">// an error.</span>
+
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">});</span>
+
+        <span class="hl slc">// See below for a</span>
+        <span class="hl slc">// visualization of what this does.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_18_hist_rfactor_par.mp4  />Your browser does not support the video tag :(</video></span>
+
+        <span class="hl slc">// The equivalent C is:</span>
+        <span class="hl kwb">int</span> c_intm<span class="hl opt">[</span><span class="hl num">8</span><span class="hl opt">][</span><span class="hl num">8</span><span class="hl opt">];</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">();</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                c_intm<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] =</span> <span class="hl num">0</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl com">/* parallel */</span> <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">();</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r_x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> r_x <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">();</span> r_x<span class="hl opt">++) {</span>
+                c_intm<span class="hl opt">[</span>y<span class="hl opt">][</span><span class="hl kwd">input</span><span class="hl opt">(</span>r_x<span class="hl opt">,</span> y<span class="hl opt">) /</span> <span class="hl num">32</span><span class="hl opt">] +=</span> <span class="hl num">1</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">8</span><span class="hl opt">];</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+            c_result<span class="hl opt">[</span>x<span class="hl opt">] =</span> <span class="hl num">0</span><span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r_y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> r_y <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">();</span> r_y<span class="hl opt">++) {</span>
+                c_result<span class="hl opt">[</span>x<span class="hl opt">] +=</span> c_intm<span class="hl opt">[</span>r_y<span class="hl opt">][</span>x<span class="hl opt">];</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl slc">// Check the answers agree:</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+            <span class="hl kwa">if</span> <span class="hl opt">(</span>c_result<span class="hl opt">[</span>x<span class="hl opt">] !=</span> <span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">)) {</span>
+                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;halide_result(%d) = %d instead of %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                       x<span class="hl opt">,</span> <span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">),</span> c_result<span class="hl opt">[</span>x<span class="hl opt">]);</span>
+                <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// Now that we can factor associative reductions with the</span>
+        <span class="hl slc">// scheduling directive &apos;rfactor&apos;, we can explore various</span>
+        <span class="hl slc">// factorization strategies using the schedule alone. Given</span>
+        <span class="hl slc">// the same serial histogram code:</span>
+        Func <span class="hl kwd">histogram</span><span class="hl opt">(</span><span class="hl str">&quot;hist_rfactor_vec&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">histogram</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl num">0</span><span class="hl opt">;</span>
+        RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> <span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
+        <span class="hl kwd">histogram</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x<span class="hl opt">,</span> r<span class="hl opt">.</span>y<span class="hl opt">) /</span> <span class="hl num">32</span><span class="hl opt">) +=</span> <span class="hl num">1</span><span class="hl opt">;</span>
+
+        <span class="hl slc">// Instead of r.y, we rfactor on r.x this time to slice the</span>
+        <span class="hl slc">// domain into columns.</span>
+        Func intermediate <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">update</span><span class="hl opt">().</span><span class="hl kwd">rfactor</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x<span class="hl opt">,</span> u<span class="hl opt">);</span>
+
+        <span class="hl slc">// Now that we&apos;re computing an independent histogram</span>
+        <span class="hl slc">// per-column, we can vectorize over columns.</span>
+        intermediate<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">().</span><span class="hl kwd">update</span><span class="hl opt">().</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>u<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// Note that since vectorizing the inner dimension changes the</span>
+        <span class="hl slc">// order in which values are added to the final histogram</span>
+        <span class="hl slc">// buckets computations, so this trick only works if the</span>
+        <span class="hl slc">// associative reduction is associative *and*</span>
+        <span class="hl slc">// commutative. rfactor will attempt to prove these properties</span>
+        <span class="hl slc">// hold and will throw an error if it can&apos;t.</span>
+
+        <span class="hl slc">// Vectorize the initializations.</span>
+        intermediate<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+        histogram<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">});</span>
+
+        <span class="hl slc">// See below for a</span>
+        <span class="hl slc">// visualization of what this does.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_18_hist_rfactor_vec.mp4  />Your browser does not support the video tag :(</video></span>
+
+        <span class="hl slc">// The equivalent C is:</span>
+        <span class="hl kwb">int</span> c_intm<span class="hl opt">[</span><span class="hl num">8</span><span class="hl opt">][</span><span class="hl num">8</span><span class="hl opt">];</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> u <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> u <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">();</span> u<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                c_intm<span class="hl opt">[</span>u<span class="hl opt">][</span>x<span class="hl opt">] =</span> <span class="hl num">0</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r_y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> r_y <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">();</span> r_y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> u <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> u <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">() /</span> <span class="hl num">8</span><span class="hl opt">;</span> u<span class="hl opt">++) {</span>
+                <span class="hl com">/* vectorize */</span> <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> u_i <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> u_i <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> u_i<span class="hl opt">++) {</span>
+                    c_intm<span class="hl opt">[</span>u <span class="hl opt">*</span> <span class="hl num">8</span> <span class="hl opt">+</span> u_i<span class="hl opt">][</span><span class="hl kwd">input</span><span class="hl opt">(</span>u <span class="hl opt">*</span> <span class="hl num">8</span> <span class="hl opt">+</span> u_i<span class="hl opt">,</span> r_y<span class="hl opt">) /</span> <span class="hl num">32</span><span class="hl opt">] +=</span> <span class="hl num">1</span><span class="hl opt">;</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">8</span><span class="hl opt">];</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+            c_result<span class="hl opt">[</span>x<span class="hl opt">] =</span> <span class="hl num">0</span><span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> r_x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> r_x <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">();</span> r_x<span class="hl opt">++) {</span>
+                c_result<span class="hl opt">[</span>x<span class="hl opt">] +=</span> c_intm<span class="hl opt">[</span>r_x<span class="hl opt">][</span>x<span class="hl opt">];</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl slc">// Check the answers agree:</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+            <span class="hl kwa">if</span> <span class="hl opt">(</span>c_result<span class="hl opt">[</span>x<span class="hl opt">] !=</span> <span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">)) {</span>
+                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;halide_result(%d) = %d instead of %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                       x<span class="hl opt">,</span> <span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">),</span> c_result<span class="hl opt">[</span>x<span class="hl opt">]);</span>
+                <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// We can also slice a reduction domain up over multiple</span>
+        <span class="hl slc">// dimensions at once. This time, we&apos;ll compute partial</span>
+        <span class="hl slc">// histograms over tiles of the domain.</span>
+        Func <span class="hl kwd">histogram</span><span class="hl opt">(</span><span class="hl str">&quot;hist_rfactor_tile&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">histogram</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> <span class="hl num">0</span><span class="hl opt">;</span>
+        RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(),</span> <span class="hl num">0</span><span class="hl opt">,</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">());</span>
+        <span class="hl kwd">histogram</span><span class="hl opt">(</span><span class="hl kwd">input</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x<span class="hl opt">,</span> r<span class="hl opt">.</span>y<span class="hl opt">) /</span> <span class="hl num">32</span><span class="hl opt">) +=</span> <span class="hl num">1</span><span class="hl opt">;</span>
+
+        <span class="hl slc">// We first split both r.x and r.y by a factor of four.</span>
+        RVar <span class="hl kwd">rx_outer</span><span class="hl opt">(</span><span class="hl str">&quot;rx_outer&quot;</span><span class="hl opt">),</span> <span class="hl kwd">rx_inner</span><span class="hl opt">(</span><span class="hl str">&quot;rx_inner&quot;</span><span class="hl opt">);</span>
+        RVar <span class="hl kwd">ry_outer</span><span class="hl opt">(</span><span class="hl str">&quot;ry_outer&quot;</span><span class="hl opt">),</span> <span class="hl kwd">ry_inner</span><span class="hl opt">(</span><span class="hl str">&quot;ry_inner&quot;</span><span class="hl opt">);</span>
+        histogram<span class="hl opt">.</span><span class="hl kwd">update</span><span class="hl opt">()</span>
+            <span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>r<span class="hl opt">.</span>x<span class="hl opt">,</span> rx_outer<span class="hl opt">,</span> rx_inner<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">)</span>
+            <span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>r<span class="hl opt">.</span>y<span class="hl opt">,</span> ry_outer<span class="hl opt">,</span> ry_inner<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// We now call rfactor to make an intermediate function that</span>
+        <span class="hl slc">// independently computes a histogram of each tile.</span>
+        Func intermediate <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">update</span><span class="hl opt">().</span><span class="hl kwd">rfactor</span><span class="hl opt">({{</span>rx_outer<span class="hl opt">,</span> u<span class="hl opt">}, {</span>ry_outer<span class="hl opt">,</span> v<span class="hl opt">}});</span>
+
+        <span class="hl slc">// We can now parallelize the intermediate over tiles.</span>
+        intermediate<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">().</span><span class="hl kwd">update</span><span class="hl opt">().</span><span class="hl kwd">parallel</span><span class="hl opt">(</span>u<span class="hl opt">).</span><span class="hl kwd">parallel</span><span class="hl opt">(</span>v<span class="hl opt">);</span>
+
+        <span class="hl slc">// We also reorder the tile indices outermost to give the</span>
+        <span class="hl slc">// classic tiled traversal.</span>
+        intermediate<span class="hl opt">.</span><span class="hl kwd">update</span><span class="hl opt">().</span><span class="hl kwd">reorder</span><span class="hl opt">(</span>rx_inner<span class="hl opt">,</span> ry_inner<span class="hl opt">,</span> u<span class="hl opt">,</span> v<span class="hl opt">);</span>
+
+        <span class="hl slc">// Vectorize the initializations.</span>
+        intermediate<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+        histogram<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> histogram<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">});</span>
+
+        <span class="hl slc">// See below for a visualization of</span>
+        <span class="hl slc">// what this does.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_18_hist_rfactor_tile.mp4  />Your browser does not support the video tag :(</video></span>
+
+        <span class="hl slc">// The equivalent C is:</span>
+        <span class="hl kwb">int</span> c_intm<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">][</span><span class="hl num">4</span><span class="hl opt">][</span><span class="hl num">8</span><span class="hl opt">];</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> v <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> v <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">() /</span> <span class="hl num">2</span><span class="hl opt">;</span> v<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> u <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> u <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">() /</span> <span class="hl num">2</span><span class="hl opt">;</span> u<span class="hl opt">++) {</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                    c_intm<span class="hl opt">[</span>v<span class="hl opt">][</span>u<span class="hl opt">][</span>x<span class="hl opt">] =</span> <span class="hl num">0</span><span class="hl opt">;</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl com">/* parallel */</span> <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> v <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> v <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">() /</span> <span class="hl num">2</span><span class="hl opt">;</span> v<span class="hl opt">++) {</span>
+            <span class="hl com">/* parallel */</span> <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> u <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> u <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">() /</span> <span class="hl num">2</span><span class="hl opt">;</span> u<span class="hl opt">++) {</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> ry_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> ry_inner <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> ry_inner<span class="hl opt">++) {</span>
+                    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> rx_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> rx_inner <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> rx_inner<span class="hl opt">++) {</span>
+                        c_intm<span class="hl opt">[</span>v<span class="hl opt">][</span>u<span class="hl opt">][</span><span class="hl kwd">input</span><span class="hl opt">(</span>u <span class="hl opt">*</span> <span class="hl num">2</span> <span class="hl opt">+</span> rx_inner<span class="hl opt">,</span> v <span class="hl opt">*</span> <span class="hl num">2</span> <span class="hl opt">+</span> ry_inner<span class="hl opt">) /</span> <span class="hl num">32</span><span class="hl opt">] +=</span> <span class="hl num">1</span><span class="hl opt">;</span>
+                    <span class="hl opt">}</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwb">int</span> c_result<span class="hl opt">[</span><span class="hl num">8</span><span class="hl opt">];</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+            c_result<span class="hl opt">[</span>x<span class="hl opt">] =</span> <span class="hl num">0</span><span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> ry_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> ry_outer <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">() /</span> <span class="hl num">2</span><span class="hl opt">;</span> ry_outer<span class="hl opt">++) {</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> rx_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> rx_outer <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">() /</span> <span class="hl num">2</span><span class="hl opt">;</span> rx_outer<span class="hl opt">++) {</span>
+                    c_result<span class="hl opt">[</span>x<span class="hl opt">] +=</span> c_intm<span class="hl opt">[</span>ry_outer<span class="hl opt">][</span>rx_outer<span class="hl opt">][</span>x<span class="hl opt">];</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl slc">// Check the answers agree:</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">8</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+            <span class="hl kwa">if</span> <span class="hl opt">(</span>c_result<span class="hl opt">[</span>x<span class="hl opt">] !=</span> <span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">)) {</span>
+                <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;halide_result(%d) = %d instead of %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                       x<span class="hl opt">,</span> <span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">),</span> c_result<span class="hl opt">[</span>x<span class="hl opt">]);</span>
+                <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+    <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
 </pre>
 </div></body></html>

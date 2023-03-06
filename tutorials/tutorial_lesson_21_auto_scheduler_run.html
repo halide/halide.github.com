@@ -334,5 +334,62 @@ tutorial_lesson_21_auto_scheduler_run.html
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
+<span class="hl slc">// Halide tutorial lesson 21: Auto-Scheduler</span>
+
+<span class="hl slc">// Before reading this file, see lesson_21_auto_scheduler_generate.cpp</span>
+
+<span class="hl slc">// This is the code that actually uses the Halide pipeline we&apos;ve</span>
+<span class="hl slc">// compiled. It does not depend on libHalide, so we won&apos;t be including</span>
+<span class="hl slc">// Halide.h.</span>
+<span class="hl slc">//</span>
+<span class="hl slc">// Instead, it depends on the header files that lesson_21_auto_scheduler_generator produced.</span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;auto_schedule_false.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;auto_schedule_true.h&quot;</span><span class="hl ppc"></span>
+
+<span class="hl slc">// We&apos;ll use the Halide::Runtime::Buffer class for passing data into and out of</span>
+<span class="hl slc">// the pipeline.</span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;HalideBuffer.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;halide_benchmark.h&quot;</span><span class="hl ppc"></span>
+
+<span class="hl ppc">#include &lt;assert.h&gt;</span>
+<span class="hl ppc">#include &lt;stdio.h&gt;</span>
+<span class="hl ppc">#include &lt;stdlib.h&gt;</span>
+<span class="hl ppc">#include &lt;string.h&gt;</span>
+
+<span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
+    <span class="hl slc">// Let&apos;s declare and initialize the input images</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Runtime</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> <span class="hl kwd">input</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+
+    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> c <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> c <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">channels</span><span class="hl opt">(); ++</span>c<span class="hl opt">) {</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">height</span><span class="hl opt">(); ++</span>y<span class="hl opt">) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> input<span class="hl opt">.</span><span class="hl kwd">width</span><span class="hl opt">(); ++</span>x<span class="hl opt">) {</span>
+                <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> c<span class="hl opt">) =</span> <span class="hl kwd">rand</span><span class="hl opt">();</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Runtime</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> <span class="hl kwd">output1</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">1024</span><span class="hl opt">);</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Runtime</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> <span class="hl kwd">output2</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">1024</span><span class="hl opt">);</span>
+    <span class="hl slc">// Run each version of the codes (with no auto-schedule and with</span>
+    <span class="hl slc">// auto-schedule) multiple times for benchmarking.</span>
+    <span class="hl kwb">double</span> auto_schedule_off <span class="hl opt">=</span> <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Tools</span><span class="hl opt">::</span><span class="hl kwd">benchmark</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">, [&amp;]() {</span>
+        <span class="hl kwd">auto_schedule_false</span><span class="hl opt">(</span>input<span class="hl opt">,</span> <span class="hl num">2.0</span>f<span class="hl opt">,</span> output1<span class="hl opt">,</span> output2<span class="hl opt">);</span>
+    <span class="hl opt">});</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Manual schedule: %gms</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> auto_schedule_off <span class="hl opt">*</span> <span class="hl num">1</span>e3<span class="hl opt">);</span>
+
+    <span class="hl kwb">double</span> auto_schedule_on <span class="hl opt">=</span> <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Tools</span><span class="hl opt">::</span><span class="hl kwd">benchmark</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">, [&amp;]() {</span>
+        <span class="hl kwd">auto_schedule_true</span><span class="hl opt">(</span>input<span class="hl opt">,</span> <span class="hl num">2.0</span>f<span class="hl opt">,</span> output1<span class="hl opt">,</span> output2<span class="hl opt">);</span>
+    <span class="hl opt">});</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Auto schedule: %gms</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> auto_schedule_on <span class="hl opt">*</span> <span class="hl num">1</span>e3<span class="hl opt">);</span>
+
+    <span class="hl slc">// auto_schedule_on should be faster since in the auto_schedule_off version,</span>
+    <span class="hl slc">// the schedule is very simple.</span>
+    <span class="hl kwa">if</span> <span class="hl opt">(!(</span>auto_schedule_on <span class="hl opt">&lt;</span> auto_schedule_off<span class="hl opt">)) {</span>
+        <span class="hl kwd">fprintf</span><span class="hl opt">(</span>stderr<span class="hl opt">,</span> <span class="hl str">&quot;Warning: expected auto_schedule_on &lt; auto_schedule_off , &quot;</span>
+                        <span class="hl str">&quot;saw auto_schedule_on=%f auto_schedule_off=%f</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> auto_schedule_on<span class="hl opt">,</span> auto_schedule_off<span class="hl opt">);</span> \
+    <span class="hl opt">}</span>
+
+    <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
 </pre>
 </div></body></html>

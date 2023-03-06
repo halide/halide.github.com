@@ -334,5 +334,130 @@ tutorial_lesson_21_auto_scheduler_run.html
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
+<span class="hl slc">// Halide tutorial lesson 16: RGB images and memory layouts part 2</span>
+
+<span class="hl slc">// Before reading this file, see lesson_16_rgb_generate.cpp</span>
+
+<span class="hl slc">// This is the code that actually uses the Halide pipeline we&apos;ve</span>
+<span class="hl slc">// compiled. It does not depend on libHalide, so we won&apos;t be including</span>
+<span class="hl slc">// Halide.h.</span>
+<span class="hl slc">//</span>
+<span class="hl slc">// Instead, it depends on the header files that lesson_16_rgb_generator produced.</span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;brighten_either.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;brighten_interleaved.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;brighten_planar.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;brighten_specialized.h&quot;</span><span class="hl ppc"></span>
+
+<span class="hl slc">// We&apos;ll use the Halide::Runtime::Buffer class for passing data into and out of</span>
+<span class="hl slc">// the pipeline.</span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;HalideBuffer.h&quot;</span><span class="hl ppc"></span>
+
+<span class="hl ppc">#include &lt;assert.h&gt;</span>
+<span class="hl ppc">#include &lt;stdio.h&gt;</span>
+<span class="hl ppc">#include &lt;stdlib.h&gt;</span>
+<span class="hl ppc">#include &lt;string.h&gt;</span>
+
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;halide_benchmark.h&quot;</span><span class="hl ppc"></span>
+
+<span class="hl kwb">void</span> <span class="hl kwd">check_timing</span><span class="hl opt">(</span><span class="hl kwb">double</span> faster<span class="hl opt">,</span> <span class="hl kwb">double</span> slower<span class="hl opt">) {</span>
+    <span class="hl kwa">if</span> <span class="hl opt">(</span>faster <span class="hl opt">&gt;</span> slower<span class="hl opt">) {</span>
+        <span class="hl kwd">fprintf</span><span class="hl opt">(</span>stderr<span class="hl opt">,</span> <span class="hl str">&quot;Warning: performance was worse than expected. %f should be less than %f</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> faster<span class="hl opt">,</span> slower<span class="hl opt">);</span>
+    <span class="hl opt">}</span>
+<span class="hl opt">}</span>
+
+<span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
+
+    <span class="hl slc">// Let&apos;s make some images stored with interleaved and planar</span>
+    <span class="hl slc">// memory. Halide::Runtime::Buffer is planar by default.</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Runtime</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">planar_input</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">768</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Runtime</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> <span class="hl kwd">planar_output</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">768</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Runtime</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> interleaved_input <span class="hl opt">=</span>
+        <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Runtime</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;::</span><span class="hl kwd">make_interleaved</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">768</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+    <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Runtime</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> interleaved_output <span class="hl opt">=</span>
+        <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Runtime</span><span class="hl opt">::</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;::</span><span class="hl kwd">make_interleaved</span><span class="hl opt">(</span><span class="hl num">1024</span><span class="hl opt">,</span> <span class="hl num">768</span><span class="hl opt">,</span> <span class="hl num">3</span><span class="hl opt">);</span>
+
+    <span class="hl slc">// Let&apos;s check the strides are what we expect, given the</span>
+    <span class="hl slc">// constraints we set up in the generator.</span>
+    <span class="hl kwa">assert</span><span class="hl opt">(</span>planar_input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
+    <span class="hl kwa">assert</span><span class="hl opt">(</span>planar_output<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
+    <span class="hl kwa">assert</span><span class="hl opt">(</span>interleaved_input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">3</span><span class="hl opt">);</span>
+    <span class="hl kwa">assert</span><span class="hl opt">(</span>interleaved_output<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">0</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">3</span><span class="hl opt">);</span>
+    <span class="hl kwa">assert</span><span class="hl opt">(</span>interleaved_input<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
+    <span class="hl kwa">assert</span><span class="hl opt">(</span>interleaved_output<span class="hl opt">.</span><span class="hl kwd">dim</span><span class="hl opt">(</span><span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">stride</span><span class="hl opt">() ==</span> <span class="hl num">1</span><span class="hl opt">);</span>
+
+    <span class="hl slc">// We&apos;ll now call the various functions we compiled and check the</span>
+    <span class="hl slc">// performance of each.</span>
+
+    <span class="hl kwc">constexpr</span> <span class="hl kwb">int</span> samples <span class="hl opt">=</span> <span class="hl num">1</span><span class="hl opt">;</span>
+    <span class="hl kwc">constexpr</span> <span class="hl kwb">int</span> iterations <span class="hl opt">=</span> <span class="hl num">1000</span><span class="hl opt">;</span>
+
+    <span class="hl slc">// Run the planar version of the code on the planar images and the</span>
+    <span class="hl slc">// interleaved version of the code on the interleaved</span>
+    <span class="hl slc">// images. We&apos;ll use Halide&apos;s benchmarking utility, which takes a function</span>
+    <span class="hl slc">// to run, the number of batches to run (1 in this case), and the number</span>
+    <span class="hl slc">// of iterations per batch (1000 in this case). It returns the best</span>
+    <span class="hl slc">// average-iteration time, in seconds. (See halide_benchmark.h for more</span>
+    <span class="hl slc">// information.)</span>
+
+    <span class="hl kwb">double</span> planar_time <span class="hl opt">=</span> <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Tools</span><span class="hl opt">::</span><span class="hl kwd">benchmark</span><span class="hl opt">(</span>samples<span class="hl opt">,</span> iterations<span class="hl opt">, [&amp;]() {</span>
+        <span class="hl kwd">brighten_planar</span><span class="hl opt">(</span>planar_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> planar_output<span class="hl opt">);</span>
+    <span class="hl opt">});</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_planar: %f msec</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> planar_time <span class="hl opt">*</span> <span class="hl num">1000</span><span class="hl opt">.</span>f<span class="hl opt">);</span>
+
+    <span class="hl kwb">double</span> interleaved_time <span class="hl opt">=</span> <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Tools</span><span class="hl opt">::</span><span class="hl kwd">benchmark</span><span class="hl opt">(</span>samples<span class="hl opt">,</span> iterations<span class="hl opt">, [&amp;]() {</span>
+        <span class="hl kwd">brighten_interleaved</span><span class="hl opt">(</span>interleaved_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> interleaved_output<span class="hl opt">);</span>
+    <span class="hl opt">});</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_interleaved: %f msec</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> interleaved_time <span class="hl opt">*</span> <span class="hl num">1000</span><span class="hl opt">.</span>f<span class="hl opt">);</span>
+
+    <span class="hl slc">// Planar is generally faster than interleaved for most imaging</span>
+    <span class="hl slc">// operations.</span>
+    <span class="hl kwd">check_timing</span><span class="hl opt">(</span>planar_time<span class="hl opt">,</span> interleaved_time<span class="hl opt">);</span>
+
+    <span class="hl slc">// Either of these next two commented-out calls would throw an</span>
+    <span class="hl slc">// error, because the stride is not what we promised it would be</span>
+    <span class="hl slc">// in the generator.</span>
+
+    <span class="hl slc">// brighten_planar(interleaved_input, 1, interleaved_output);</span>
+    <span class="hl slc">// Error: Constraint violated: brighter.stride.0 (3) == 1 (1)</span>
+
+    <span class="hl slc">// brighten_interleaved(planar_input, 1, planar_output);</span>
+    <span class="hl slc">// Error: Constraint violated: brighter.stride.0 (1) == 3 (3)</span>
+
+    <span class="hl slc">// Run the flexible version of the code and check performance. It</span>
+    <span class="hl slc">// should work, but it&apos;ll be slower than the versions above.</span>
+    <span class="hl kwb">double</span> either_planar_time <span class="hl opt">=</span> <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Tools</span><span class="hl opt">::</span><span class="hl kwd">benchmark</span><span class="hl opt">(</span>samples<span class="hl opt">,</span> iterations<span class="hl opt">, [&amp;]() {</span>
+        <span class="hl kwd">brighten_either</span><span class="hl opt">(</span>planar_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> planar_output<span class="hl opt">);</span>
+    <span class="hl opt">});</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_either on planar images: %f msec</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> either_planar_time <span class="hl opt">*</span> <span class="hl num">1000</span><span class="hl opt">.</span>f<span class="hl opt">);</span>
+    <span class="hl kwd">check_timing</span><span class="hl opt">(</span>planar_time<span class="hl opt">,</span> either_planar_time<span class="hl opt">);</span>
+
+    <span class="hl kwb">double</span> either_interleaved_time <span class="hl opt">=</span> <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Tools</span><span class="hl opt">::</span><span class="hl kwd">benchmark</span><span class="hl opt">(</span>samples<span class="hl opt">,</span> iterations<span class="hl opt">, [&amp;]() {</span>
+        <span class="hl kwd">brighten_either</span><span class="hl opt">(</span>interleaved_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> interleaved_output<span class="hl opt">);</span>
+    <span class="hl opt">});</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_either on interleaved images: %f msec</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> either_interleaved_time <span class="hl opt">*</span> <span class="hl num">1000</span><span class="hl opt">.</span>f<span class="hl opt">);</span>
+    <span class="hl kwd">check_timing</span><span class="hl opt">(</span>interleaved_time<span class="hl opt">,</span> either_interleaved_time<span class="hl opt">);</span>
+
+    <span class="hl slc">// Run the specialized version of the code on each layout. It</span>
+    <span class="hl slc">// should match the performance of the code compiled specifically</span>
+    <span class="hl slc">// for each case above by branching internally to equivalent</span>
+    <span class="hl slc">// code.</span>
+    <span class="hl kwb">double</span> specialized_planar_time <span class="hl opt">=</span> <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Tools</span><span class="hl opt">::</span><span class="hl kwd">benchmark</span><span class="hl opt">(</span>samples<span class="hl opt">,</span> iterations<span class="hl opt">, [&amp;]() {</span>
+        <span class="hl kwd">brighten_specialized</span><span class="hl opt">(</span>planar_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> planar_output<span class="hl opt">);</span>
+    <span class="hl opt">});</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_specialized on planar images: %f msec</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> specialized_planar_time <span class="hl opt">*</span> <span class="hl num">1000</span><span class="hl opt">.</span>f<span class="hl opt">);</span>
+
+    <span class="hl slc">// The cost of the if statement should be negligible, but we&apos;ll</span>
+    <span class="hl slc">// allow a tolerance of 50% for this test to account for</span>
+    <span class="hl slc">// measurement noise.</span>
+    <span class="hl kwd">check_timing</span><span class="hl opt">(</span>specialized_planar_time<span class="hl opt">,</span> <span class="hl num">1.5</span> <span class="hl opt">*</span> planar_time<span class="hl opt">);</span>
+
+    <span class="hl kwb">double</span> specialized_interleaved_time <span class="hl opt">=</span> <span class="hl kwc">Halide</span><span class="hl opt">::</span><span class="hl kwc">Tools</span><span class="hl opt">::</span><span class="hl kwd">benchmark</span><span class="hl opt">(</span>samples<span class="hl opt">,</span> iterations<span class="hl opt">, [&amp;]() {</span>
+        <span class="hl kwd">brighten_specialized</span><span class="hl opt">(</span>interleaved_input<span class="hl opt">,</span> <span class="hl num">1</span><span class="hl opt">,</span> interleaved_output<span class="hl opt">);</span>
+    <span class="hl opt">});</span>
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;brighten_specialized on interleaved images: %f msec</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span> specialized_interleaved_time <span class="hl opt">*</span> <span class="hl num">1000</span><span class="hl opt">.</span>f<span class="hl opt">);</span>
+    <span class="hl kwd">check_timing</span><span class="hl opt">(</span>specialized_interleaved_time<span class="hl opt">,</span> <span class="hl num">2.0</span> <span class="hl opt">*</span> interleaved_time<span class="hl opt">);</span>
+
+    <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
 </pre>
 </div></body></html>

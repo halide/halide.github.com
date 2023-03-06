@@ -334,5 +334,430 @@ tutorial_lesson_21_auto_scheduler_run.html
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
+<span class="hl slc">// Halide tutorial lesson 19: Wrapper Funcs</span>
+
+<span class="hl slc">// This lesson demonstrates how to use Func::in and ImageParam::in to</span>
+<span class="hl slc">// schedule a Func differently in different places, and to stage loads</span>
+<span class="hl slc">// from a Func or an ImageParam.</span>
+
+<span class="hl slc">// On linux, you can compile and run it like so:</span>
+<span class="hl slc">// g++ lesson_19*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_19 -std=c++17</span>
+<span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_19</span>
+
+<span class="hl slc">// On os x:</span>
+<span class="hl slc">// g++ lesson_19*.cpp -g -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_19 -std=c++17</span>
+<span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_19</span>
+
+<span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
+<span class="hl slc">// running:</span>
+<span class="hl slc">//    make tutorial_lesson_19_wrapper_funcs</span>
+<span class="hl slc">// in a shell at the top of the halide source tree.</span>
+
+<span class="hl slc">// The only Halide header file you need is Halide.h. It includes all of Halide.</span>
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
+
+<span class="hl slc">// We&apos;ll also include stdio for printf.</span>
+<span class="hl ppc">#include &lt;stdio.h&gt;</span>
+
+<span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
+
+<span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
+    <span class="hl slc">// First we&apos;ll declare some Vars to use below.</span>
+    Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">),</span> <span class="hl kwd">xo</span><span class="hl opt">(</span><span class="hl str">&quot;xo&quot;</span><span class="hl opt">),</span> <span class="hl kwd">yo</span><span class="hl opt">(</span><span class="hl str">&quot;yo&quot;</span><span class="hl opt">),</span> <span class="hl kwd">xi</span><span class="hl opt">(</span><span class="hl str">&quot;xi&quot;</span><span class="hl opt">),</span> <span class="hl kwd">yi</span><span class="hl opt">(</span><span class="hl str">&quot;yi&quot;</span><span class="hl opt">);</span>
+
+    <span class="hl slc">// This lesson will be about &quot;wrapping&quot; a Func or an ImageParam using the</span>
+    <span class="hl slc">// Func::in and ImageParam::in directives</span>
+    <span class="hl opt">{</span>
+        <span class="hl slc">// Consider a simple two-stage pipeline:</span>
+        Func <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f_local&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g_local&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl num">3</span><span class="hl opt">;</span>
+
+        f<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// This produces the following loop nests:</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f(x, y) = x + y</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     g(x, y) = 2 * f(x, y) + 3</span>
+
+        <span class="hl slc">// Using Func::in, we can interpose a new Func in between f</span>
+        <span class="hl slc">// and g using the schedule alone:</span>
+        Func f_in_g <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>g<span class="hl opt">);</span>
+        f_in_g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// Equivalently, we could also chain the schedules like so:</span>
+        <span class="hl slc">// f.in(g).compute_root();</span>
+
+        <span class="hl slc">// This produces the following three loop nests:</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f(x, y) = x + y</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f_in_g(x, y) = f(x, y)</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     g(x, y) = 2 * f_in_g(x, y) + 3</span>
+
+        g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">});</span>
+
+        <span class="hl slc">// See below for a visualization.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_19_wrapper_local.mp4  />Your browser does not support the video tag :(</video></span>
+
+        <span class="hl slc">// The schedule directive f.in(g) replaces all calls to &apos;f&apos;</span>
+        <span class="hl slc">// inside &apos;g&apos; with a wrapper Func and then returns that</span>
+        <span class="hl slc">// wrapper. Essentially, it rewrites the original pipeline</span>
+        <span class="hl slc">// above into the following:</span>
+        <span class="hl opt">{</span>
+            Func <span class="hl kwd">f_in_g</span><span class="hl opt">(</span><span class="hl str">&quot;f_in_g&quot;</span><span class="hl opt">),</span> <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g&quot;</span><span class="hl opt">);</span>
+            <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+            <span class="hl kwd">f_in_g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+            <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">f_in_g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl num">3</span><span class="hl opt">;</span>
+
+            f<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+            f_in_g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+            g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl slc">// In isolation, such a transformation seems pointless, but it</span>
+        <span class="hl slc">// can be used for a variety of scheduling tricks.</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// In the schedule above, only the calls to &apos;f&apos; made by &apos;g&apos;</span>
+        <span class="hl slc">// are replaced. Other calls made to f would still call &apos;f&apos;</span>
+        <span class="hl slc">// directly. If we wish to globally replace all calls to &apos;f&apos;</span>
+        <span class="hl slc">// with a single wrapper, we simply say f.in().</span>
+
+        <span class="hl slc">// Consider a three stage pipeline, with two consumers of f:</span>
+        Func <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f_global&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g_global&quot;</span><span class="hl opt">),</span> <span class="hl kwd">h</span><span class="hl opt">(</span><span class="hl str">&quot;h_global&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+        <span class="hl kwd">h</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">3</span> <span class="hl opt">+</span> <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) -</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+        f<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+        g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+        h<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// We will replace all calls to &apos;f&apos; inside both &apos;g&apos; and &apos;h&apos;</span>
+        <span class="hl slc">// with calls to a single wrapper:</span>
+        f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">().</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// The equivalent loop nests are:</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f(x, y) = x + y</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f_in(x, y) = f(x, y)</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     g(x, y) = 2 * f_in(x, y)</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     h(x, y) = 3 + g(x, y) - f_in(x, y)</span>
+
+        h<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">});</span>
+
+        <span class="hl slc">// See below and for a</span>
+        <span class="hl slc">// visualization of what this did.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_19_wrapper_global.mp4  />Your browser does not support the video tag :(</video></span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// We could also give g and h their own unique wrappers of</span>
+        <span class="hl slc">// f. This time we&apos;ll schedule them each inside the loop nests</span>
+        <span class="hl slc">// of the consumer, which is not something we could do with a</span>
+        <span class="hl slc">// single global wrapper.</span>
+
+        Func <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f_unique&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g_unique&quot;</span><span class="hl opt">),</span> <span class="hl kwd">h</span><span class="hl opt">(</span><span class="hl str">&quot;h_unique&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+        <span class="hl kwd">h</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">3</span> <span class="hl opt">+</span> <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) -</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+
+        f<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+        g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+        h<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>g<span class="hl opt">).</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>g<span class="hl opt">,</span> y<span class="hl opt">);</span>
+        f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>h<span class="hl opt">).</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>h<span class="hl opt">,</span> y<span class="hl opt">);</span>
+
+        <span class="hl slc">// This creates the loop nests:</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f(x, y) = x + y</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f_in_g(x, y) = f(x, y)</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     g(x, y) = 2 * f_in_g(x, y)</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f_in_h(x, y) = f(x, y)</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     h(x, y) = 3 + g(x, y) - f_in_h(x, y)</span>
+
+        h<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">5</span><span class="hl opt">,</span> <span class="hl num">5</span><span class="hl opt">});</span>
+        <span class="hl slc">// See below for a visualization.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_19_wrapper_unique.mp4  />Your browser does not support the video tag :(</video></span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// So far this may seem like a lot of pointless copying of</span>
+        <span class="hl slc">// memory. Func::in can be combined with other scheduling</span>
+        <span class="hl slc">// directives for a variety of purposes. The first we will</span>
+        <span class="hl slc">// examine is creating distinct realizations of a Func for</span>
+        <span class="hl slc">// several consumers and scheduling each differently.</span>
+
+        <span class="hl slc">// We&apos;ll start with nearly the same pipeline.</span>
+        Func <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f_sched&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g_sched&quot;</span><span class="hl opt">),</span> <span class="hl kwd">h</span><span class="hl opt">(</span><span class="hl str">&quot;h_sched&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">+</span> y<span class="hl opt">;</span>
+        <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">2</span> <span class="hl opt">*</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+        <span class="hl slc">// h will use a far-away region of f</span>
+        <span class="hl kwd">h</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl num">3</span> <span class="hl opt">+</span> <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) -</span> <span class="hl kwd">f</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">93</span><span class="hl opt">,</span> y <span class="hl opt">-</span> <span class="hl num">87</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// This time we&apos;ll inline f.</span>
+        <span class="hl slc">// f.compute_root();</span>
+        g<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+        h<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>g<span class="hl opt">).</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>g<span class="hl opt">,</span> y<span class="hl opt">);</span>
+        f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>h<span class="hl opt">).</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>h<span class="hl opt">,</span> y<span class="hl opt">);</span>
+
+        <span class="hl slc">// g and h now call f via distinct wrappers. The wrappers are</span>
+        <span class="hl slc">// scheduled, but f is not, which means that f is inlined into</span>
+        <span class="hl slc">// its two wrappers. They will each independently compute the</span>
+        <span class="hl slc">// region of f required by their consumer. If we had scheduled</span>
+        <span class="hl slc">// f compute_root, we&apos;d be computing the bounding box of the</span>
+        <span class="hl slc">// region required by g and the region required by h, which</span>
+        <span class="hl slc">// would mostly be unused data.</span>
+
+        <span class="hl slc">// We can also schedule each of these wrappers</span>
+        <span class="hl slc">// differently. For scheduling purposes, wrappers inherit the</span>
+        <span class="hl slc">// pure vars of the Func they wrap, so we use the same x and y</span>
+        <span class="hl slc">// that we used when defining f:</span>
+        f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>g<span class="hl opt">).</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>h<span class="hl opt">).</span><span class="hl kwd">split</span><span class="hl opt">(</span>x<span class="hl opt">,</span> xo<span class="hl opt">,</span> xi<span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">).</span><span class="hl kwd">reorder</span><span class="hl opt">(</span>xo<span class="hl opt">,</span> xi<span class="hl opt">);</span>
+
+        <span class="hl slc">// Note that calling f.in(g) a second time returns the wrapper</span>
+        <span class="hl slc">// already created by the first call, it doesn&apos;t make a new one.</span>
+
+        h<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">});</span>
+        <span class="hl slc">// See below for a</span>
+        <span class="hl slc">// visualization.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_19_wrapper_vary_schedule.mp4  />Your browser does not support the video tag :(</video></span>
+
+        <span class="hl slc">// Note that because f is inlined into its two wrappers, it is</span>
+        <span class="hl slc">// the wrappers that do the work of computing f, rather than</span>
+        <span class="hl slc">// just loading from an existing computed realization.</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// Func::in is useful to stage loads from a Func via some</span>
+        <span class="hl slc">// smaller intermediate buffer, perhaps on the stack or in</span>
+        <span class="hl slc">// shared GPU memory.</span>
+
+        <span class="hl slc">// Consider a pipeline that transposes some compute_root&apos;d Func:</span>
+
+        Func <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f_transpose&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g_transpose&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(((</span>x <span class="hl opt">+</span> y<span class="hl opt">) *</span> <span class="hl kwd">sqrt</span><span class="hl opt">(</span>y<span class="hl opt">)) /</span> <span class="hl num">10</span><span class="hl opt">);</span>
+        f<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">(</span>y<span class="hl opt">,</span> x<span class="hl opt">);</span>
+
+        <span class="hl slc">// The execution strategy we want is to load an 4x4 tile of f</span>
+        <span class="hl slc">// into registers, transpose it in-register, and then write it</span>
+        <span class="hl slc">// out as an 4x4 tile of g. We will use Func::in to express this:</span>
+
+        Func f_tile <span class="hl opt">=</span> f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>g<span class="hl opt">);</span>
+
+        <span class="hl slc">// We now have a three stage pipeline:</span>
+        <span class="hl slc">// f -&gt; f_tile -&gt; g</span>
+
+        <span class="hl slc">// f_tile will load vectors of f, and store them transposed</span>
+        <span class="hl slc">// into registers. g will then write this data back to main</span>
+        <span class="hl slc">// memory.</span>
+        g<span class="hl opt">.</span><span class="hl kwd">tile</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> xo<span class="hl opt">,</span> yo<span class="hl opt">,</span> xi<span class="hl opt">,</span> yi<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">)</span>
+            <span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>xi<span class="hl opt">)</span>
+            <span class="hl opt">.</span><span class="hl kwd">unroll</span><span class="hl opt">(</span>yi<span class="hl opt">);</span>
+
+        <span class="hl slc">// We will compute f_transpose at tiles of g, and use</span>
+        <span class="hl slc">// Func::reorder_storage to state that f_transpose should be</span>
+        <span class="hl slc">// stored column-major, so that the loads to it done by g can</span>
+        <span class="hl slc">// be dense vector loads.</span>
+        f_tile<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>g<span class="hl opt">,</span> xo<span class="hl opt">)</span>
+            <span class="hl opt">.</span><span class="hl kwd">reorder_storage</span><span class="hl opt">(</span>y<span class="hl opt">,</span> x<span class="hl opt">)</span>
+            <span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">)</span>
+            <span class="hl opt">.</span><span class="hl kwd">unroll</span><span class="hl opt">(</span>y<span class="hl opt">);</span>
+
+        <span class="hl slc">// We take care to make sure f_transpose is only ever accessed</span>
+        <span class="hl slc">// at constant indicies. The full unrolling/vectorization of</span>
+        <span class="hl slc">// all loops that exist inside its compute_at level has this</span>
+        <span class="hl slc">// effect. Allocations that are only ever accessed at constant</span>
+        <span class="hl slc">// indices can be promoted into registers.</span>
+
+        g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">16</span><span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">});</span>
+        <span class="hl slc">// See below for a visualization</span>
+
+         <span><video autoplay loop><source src= figures/lesson_19_transpose.mp4  />Your browser does not support the video tag :(</video></span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// ImageParam::in behaves the same way as Func::in, and you</span>
+        <span class="hl slc">// can use it to stage loads in similar ways. Instead of</span>
+        <span class="hl slc">// transposing again, we&apos;ll use ImageParam::in to stage tiles</span>
+        <span class="hl slc">// of an input image into GPU shared memory, effectively using</span>
+        <span class="hl slc">// shared/local memory as an explicitly-managed cache.</span>
+
+        ImageParam <span class="hl kwd">img</span><span class="hl opt">(</span><span class="hl kwd">Int</span><span class="hl opt">(</span><span class="hl num">32</span><span class="hl opt">),</span> <span class="hl num">2</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// We will compute a small blur of the input.</span>
+        Func <span class="hl kwd">blur</span><span class="hl opt">(</span><span class="hl str">&quot;blur&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">blur</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">img</span><span class="hl opt">(</span>x <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">) +</span> <span class="hl kwd">img</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">) +</span> <span class="hl kwd">img</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">) +</span>
+                      <span class="hl kwd">img</span><span class="hl opt">(</span>x <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl kwd">img</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl kwd">img</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                      <span class="hl kwd">img</span><span class="hl opt">(</span>x <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) +</span> <span class="hl kwd">img</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) +</span> <span class="hl kwd">img</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">));</span>
+
+        blur<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">().</span><span class="hl kwd">gpu_tile</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> xo<span class="hl opt">,</span> yo<span class="hl opt">,</span> xi<span class="hl opt">,</span> yi<span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// The wrapper Func created by ImageParam::in has pure vars</span>
+        <span class="hl slc">// named _0, _1, etc. Schedule it per tile of &quot;blur&quot;, and map</span>
+        <span class="hl slc">// _0 and _1 to gpu threads.</span>
+        img<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>blur<span class="hl opt">).</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>blur<span class="hl opt">,</span> xo<span class="hl opt">).</span><span class="hl kwd">gpu_threads</span><span class="hl opt">(</span>_0<span class="hl opt">,</span> _1<span class="hl opt">);</span>
+
+        <span class="hl slc">// Without Func::in, computing an 8x8 tile of blur would do</span>
+        <span class="hl slc">// 8*8*9 loads to global memory. With Func::in, the wrapper</span>
+        <span class="hl slc">// does 10*10 loads to global memory up front, and then blur</span>
+        <span class="hl slc">// does 8*8*9 loads to shared/local memory.</span>
+
+        <span class="hl slc">// Select an appropriate GPU API, as we did in lesson 12</span>
+        Target target <span class="hl opt">=</span> <span class="hl kwd">get_host_target</span><span class="hl opt">();</span>
+        <span class="hl kwa">if</span> <span class="hl opt">(</span>target<span class="hl opt">.</span>os <span class="hl opt">==</span> <span class="hl kwc">Target</span><span class="hl opt">::</span>OSX<span class="hl opt">) {</span>
+            target<span class="hl opt">.</span><span class="hl kwd">set_feature</span><span class="hl opt">(</span><span class="hl kwc">Target</span><span class="hl opt">::</span>Metal<span class="hl opt">);</span>
+        <span class="hl opt">}</span> <span class="hl kwa">else</span> <span class="hl opt">{</span>
+            target<span class="hl opt">.</span><span class="hl kwd">set_feature</span><span class="hl opt">(</span><span class="hl kwc">Target</span><span class="hl opt">::</span>OpenCL<span class="hl opt">);</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl slc">// This check isn&apos;t strictly necessary, but it allows a more graceful</span>
+        <span class="hl slc">// exit if running on a system that doesn&apos;t have the expected drivers</span>
+        <span class="hl slc">// and/or hardware present.</span>
+        <span class="hl kwa">if</span> <span class="hl opt">(!</span><span class="hl kwd">host_supports_target_device</span><span class="hl opt">(</span>target<span class="hl opt">)) {</span>
+            <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Requested GPU is not supported; skipping this test. (Do you have the proper hardware and/or driver installed?)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+            <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl slc">// Create an interesting input image to use.</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> <span class="hl kwd">input</span><span class="hl opt">(</span><span class="hl num">258</span><span class="hl opt">,</span> <span class="hl num">258</span><span class="hl opt">);</span>
+        input<span class="hl opt">.</span><span class="hl kwd">set_min</span><span class="hl opt">(-</span><span class="hl num">1</span><span class="hl opt">, -</span><span class="hl num">1</span><span class="hl opt">);</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> input<span class="hl opt">.</span><span class="hl kwd">top</span><span class="hl opt">();</span> y <span class="hl opt">&lt;=</span> input<span class="hl opt">.</span><span class="hl kwd">bottom</span><span class="hl opt">();</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> input<span class="hl opt">.</span><span class="hl kwd">left</span><span class="hl opt">();</span> x <span class="hl opt">&lt;=</span> input<span class="hl opt">.</span><span class="hl kwd">right</span><span class="hl opt">();</span> x<span class="hl opt">++) {</span>
+                <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> x <span class="hl opt">*</span> <span class="hl num">17</span> <span class="hl opt">+</span> y <span class="hl opt">%</span> <span class="hl num">4</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        img<span class="hl opt">.</span><span class="hl kwd">set</span><span class="hl opt">(</span>input<span class="hl opt">);</span>
+        blur<span class="hl opt">.</span><span class="hl kwd">compile_jit</span><span class="hl opt">(</span>target<span class="hl opt">);</span>
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">int</span><span class="hl opt">&gt;</span> out <span class="hl opt">=</span> blur<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">256</span><span class="hl opt">,</span> <span class="hl num">256</span><span class="hl opt">});</span>
+
+        <span class="hl slc">// Check the output is what we expected</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> out<span class="hl opt">.</span><span class="hl kwd">top</span><span class="hl opt">();</span> y <span class="hl opt">&lt;=</span> out<span class="hl opt">.</span><span class="hl kwd">bottom</span><span class="hl opt">();</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> out<span class="hl opt">.</span><span class="hl kwd">left</span><span class="hl opt">();</span> x <span class="hl opt">&lt;=</span> out<span class="hl opt">.</span><span class="hl kwd">right</span><span class="hl opt">();</span> x<span class="hl opt">++) {</span>
+                <span class="hl kwb">int</span> val <span class="hl opt">=</span> <span class="hl kwd">out</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">);</span>
+                <span class="hl kwb">int</span> expected <span class="hl opt">= (</span><span class="hl kwd">input</span><span class="hl opt">(</span>x <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">) +</span> <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">) +</span> <span class="hl kwd">input</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">) +</span>
+                                <span class="hl kwd">input</span><span class="hl opt">(</span>x <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl kwd">input</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                                <span class="hl kwd">input</span><span class="hl opt">(</span>x <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) +</span> <span class="hl kwd">input</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) +</span> <span class="hl kwd">input</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">));</span>
+                <span class="hl kwa">if</span> <span class="hl opt">(</span>val <span class="hl opt">!=</span> expected<span class="hl opt">) {</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;out(%d, %d) = %d instead of %d</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                           x<span class="hl opt">,</span> y<span class="hl opt">,</span> val<span class="hl opt">,</span> expected<span class="hl opt">);</span>
+                    <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl opt">{</span>
+        <span class="hl slc">// Func::in can also be used to group multiple stages of a</span>
+        <span class="hl slc">// Func into the same loop nest. Consider the following</span>
+        <span class="hl slc">// pipeline, which computes a value per pixel, then sweeps</span>
+        <span class="hl slc">// from left to right and back across each scanline.</span>
+        Func <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl str">&quot;f_group&quot;</span><span class="hl opt">),</span> <span class="hl kwd">g</span><span class="hl opt">(</span><span class="hl str">&quot;g_group&quot;</span><span class="hl opt">),</span> <span class="hl kwd">h</span><span class="hl opt">(</span><span class="hl str">&quot;h_group&quot;</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// Initialize f</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">-</span> y<span class="hl opt">);</span>
+        RDom <span class="hl kwd">r</span><span class="hl opt">(</span><span class="hl num">1</span><span class="hl opt">,</span> <span class="hl num">7</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// Sweep from left to right</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span>r<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">f</span><span class="hl opt">(</span>r<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl kwd">f</span><span class="hl opt">(</span>r <span class="hl opt">-</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">)) /</span> <span class="hl num">2</span><span class="hl opt">;</span>
+
+        <span class="hl slc">// Sweep from right to left</span>
+        <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl num">7</span> <span class="hl opt">-</span> r<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl num">7</span> <span class="hl opt">-</span> r<span class="hl opt">,</span> y<span class="hl opt">) +</span> <span class="hl kwd">f</span><span class="hl opt">(</span><span class="hl num">8</span> <span class="hl opt">-</span> r<span class="hl opt">,</span> y<span class="hl opt">)) /</span> <span class="hl num">2</span><span class="hl opt">;</span>
+
+        <span class="hl slc">// Then we do something with a complicated access pattern: A</span>
+        <span class="hl slc">// 45 degree rotation with wrap-around</span>
+        <span class="hl kwd">g</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">f</span><span class="hl opt">((</span>x <span class="hl opt">+</span> y<span class="hl opt">) %</span> <span class="hl num">8</span><span class="hl opt">, (</span>x <span class="hl opt">-</span> y<span class="hl opt">) %</span> <span class="hl num">8</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// f should be scheduled compute_root, because its consumer</span>
+        <span class="hl slc">// accesses it in a complicated way. But that means all stages</span>
+        <span class="hl slc">// of f are computed in separate loop nests:</span>
+
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f(x, y) = sin(x - y)</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for r:</span>
+        <span class="hl slc">//     f(r, y) = (f(r, y) + f(r - 1, y)) / 2</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for r:</span>
+        <span class="hl slc">//     f(7 - r, y) = (f(7 - r, y) + f(8 - r, y)) / 2</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     g(x, y) = f((x + y) % 8, (x - y) % 8);</span>
+
+        <span class="hl slc">// We can get better locality if we schedule the work done by</span>
+        <span class="hl slc">// f to share a common loop over y. We can do this by</span>
+        <span class="hl slc">// computing f at scanlines of a wrapper like so:</span>
+
+        f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>g<span class="hl opt">).</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+        f<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>g<span class="hl opt">),</span> y<span class="hl opt">);</span>
+
+        <span class="hl slc">// f has the default schedule for a Func with update stages,</span>
+        <span class="hl slc">// which is to be computed at the innermost loop of its</span>
+        <span class="hl slc">// consumer, which is now the wrapper f.in(g). This therefore</span>
+        <span class="hl slc">// generates the following loop nest, which has better</span>
+        <span class="hl slc">// locality:</span>
+
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f(x, y) = sin(x - y)</span>
+        <span class="hl slc">//   for r:</span>
+        <span class="hl slc">//     f(r, y) = (f(r, y) + f(r - 1, y)) / 2</span>
+        <span class="hl slc">//   for r:</span>
+        <span class="hl slc">//     f(7 - r, y) = (f(7 - r, y) + f(8 - r, y)) / 2</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     f_in_g(x, y) = f(x, y)</span>
+        <span class="hl slc">// for y:</span>
+        <span class="hl slc">//   for x:</span>
+        <span class="hl slc">//     g(x, y) = f_in_g((x + y) % 8, (x - y) % 8);</span>
+
+        <span class="hl slc">// We&apos;ll additionally vectorize the initialization of, and</span>
+        <span class="hl slc">// then transfer of pixel values from f into its wrapper:</span>
+        f<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+        f<span class="hl opt">.</span><span class="hl kwd">in</span><span class="hl opt">(</span>g<span class="hl opt">).</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+
+        g<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">});</span>
+        <span class="hl slc">// See below for a visualization.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_19_group_updates.mp4  />Your browser does not support the video tag :(</video></span>
+    <span class="hl opt">}</span>
+
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+    <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
 </pre>
 </div></body></html>

@@ -334,5 +334,1221 @@ tutorial_lesson_21_auto_scheduler_run.html
 </div>
 <div style="position:relative; margin-left:260px; padding:20px; background-color: #ffffff;">
 <pre class="hl">
+<span class="hl slc">// Halide tutorial lesson 8: Scheduling multi-stage pipelines</span>
+
+<span class="hl slc">// On linux, you can compile and run it like so:</span>
+<span class="hl slc">// g++ lesson_08*.cpp -g -std=c++17 -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -lpthread -ldl -o lesson_08</span>
+<span class="hl slc">// LD_LIBRARY_PATH=&lt;path/to/libHalide.so&gt; ./lesson_08</span>
+
+<span class="hl slc">// On os x:</span>
+<span class="hl slc">// g++ lesson_08*.cpp -g -std=c++17 -I &lt;path/to/Halide.h&gt; -L &lt;path/to/libHalide.so&gt; -lHalide -o lesson_08</span>
+<span class="hl slc">// DYLD_LIBRARY_PATH=&lt;path/to/libHalide.dylib&gt; ./lesson_08</span>
+
+<span class="hl slc">// If you have the entire Halide source tree, you can also build it by</span>
+<span class="hl slc">// running:</span>
+<span class="hl slc">//    make tutorial_lesson_08_scheduling_2</span>
+<span class="hl slc">// in a shell with the current directory at the top of the halide</span>
+<span class="hl slc">// source tree.</span>
+
+<span class="hl ppc">#include</span> <span class="hl pps">&quot;Halide.h&quot;</span><span class="hl ppc"></span>
+<span class="hl ppc">#include &lt;stdio.h&gt;</span>
+
+<span class="hl kwa">using namespace</span> Halide<span class="hl opt">;</span>
+
+<span class="hl kwb">int</span> <span class="hl kwd">main</span><span class="hl opt">(</span><span class="hl kwb">int</span> argc<span class="hl opt">,</span> <span class="hl kwb">char</span> <span class="hl opt">**</span>argv<span class="hl opt">) {</span>
+    <span class="hl slc">// First we&apos;ll declare some Vars to use below.</span>
+    Var <span class="hl kwd">x</span><span class="hl opt">(</span><span class="hl str">&quot;x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">y</span><span class="hl opt">(</span><span class="hl str">&quot;y&quot;</span><span class="hl opt">);</span>
+
+    <span class="hl slc">// Let&apos;s examine various scheduling options for a simple two stage</span>
+    <span class="hl slc">// pipeline. We&apos;ll start with the default schedule:</span>
+    <span class="hl opt">{</span>
+        Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_default&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_default&quot;</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// The first stage will be some simple pointwise math similar</span>
+        <span class="hl slc">// to our familiar gradient function. The value at position x,</span>
+        <span class="hl slc">// y is the sin of product of x and y.</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+
+        <span class="hl slc">// Now we&apos;ll add a second stage which averages together multiple</span>
+        <span class="hl slc">// points in the first stage.</span>
+        <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+
+        <span class="hl slc">// We&apos;ll turn on tracing for both functions.</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+        producer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// And evaluate it over a 4x4 box.</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer-consumer pipeline with default schedule</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
+        <a onclick='return toggle("_49");'><b id=_49-show>// Click to show output ...</b></a><div id=_49 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline consumer_default.0()
+ > Tag consumer_default.0() tag = "func_type_and_dim: 1 2 32 1 2 0 4 0 4"
+ > Store consumer_default.0(0, 0) = 0.210368
+ > Store consumer_default.0(1, 0) = 0.437692
+ > Store consumer_default.0(2, 0) = 0.262604
+ > Store consumer_default.0(3, 0) = -0.153921
+ > Store consumer_default.0(0, 1) = 0.437692
+ > Store consumer_default.0(1, 1) = 0.475816
+ > Store consumer_default.0(2, 1) = 0.003550
+ > Store consumer_default.0(3, 1) = 0.023565
+ > Store consumer_default.0(0, 2) = 0.262604
+ > Store consumer_default.0(1, 2) = 0.003550
+ > Store consumer_default.0(2, 2) = -0.225879
+ > Store consumer_default.0(3, 2) = 0.146372
+ > Store consumer_default.0(0, 3) = -0.153921
+ > Store consumer_default.0(1, 3) = 0.023565
+ > Store consumer_default.0(2, 3) = 0.146372
+ > Store consumer_default.0(3, 3) = -0.237233
+ > End pipeline consumer_default.0()
+
+</b></div>
+
+        <span class="hl slc">// There were no messages about computing values of the</span>
+        <span class="hl slc">// producer. This is because the default schedule fully</span>
+        <span class="hl slc">// inlines &apos;producer&apos; into &apos;consumer&apos;. It is as if we had</span>
+        <span class="hl slc">// written the following code instead:</span>
+
+        <span class="hl slc">// consumer(x, y) = (sin(x * y) +</span>
+        <span class="hl slc">//                   sin(x * (y + 1)) +</span>
+        <span class="hl slc">//                   sin((x + 1) * y) +</span>
+        <span class="hl slc">//                   sin((x + 1) * (y + 1))/4);</span>
+
+        <span class="hl slc">// All calls to &apos;producer&apos; have been replaced with the body of</span>
+        <span class="hl slc">// &apos;producer&apos;, with the arguments substituted in for the</span>
+        <span class="hl slc">// variables.</span>
+
+        <span class="hl slc">// The equivalent C code is:</span>
+        <span class="hl kwb">float</span> result<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">][</span><span class="hl num">4</span><span class="hl opt">];</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span><span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">) +</span>
+                                <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">* (</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">)) +</span>
+                                <span class="hl kwd">sin</span><span class="hl opt">((</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) *</span> y<span class="hl opt">) +</span>
+                                <span class="hl kwd">sin</span><span class="hl opt">((</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) * (</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">))) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// If we look at the loop nest, the producer doesn&apos;t appear</span>
+        <span class="hl slc">// at all. It has been inlined into the consumer.</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_80");'><b id=_80-show>// Click to show output ...</b></a><div id=_80 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce consumer_default:
+ >   for y:
+ >     for x:
+ >       consumer_default(...) = ...
+
+</b></div>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Next we&apos;ll examine the next simplest option - computing all</span>
+    <span class="hl slc">// values required in the producer before computing any of the</span>
+    <span class="hl slc">// consumer. We call this schedule &quot;root&quot;.</span>
+    <span class="hl opt">{</span>
+        <span class="hl slc">// Start with the same function definitions:</span>
+        Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_root&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_root&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+        <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+
+        <span class="hl slc">// Tell Halide to evaluate all of producer before any of consumer.</span>
+        producer<span class="hl opt">.</span><span class="hl kwd">compute_root</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// Turn on tracing.</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+        producer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// Compile and run.</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.compute_root()</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
+        <a onclick='return toggle("_105");'><b id=_105-show>// Click to show output ...</b></a><div id=_105 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline consumer_root.0()
+ > Tag producer_root.0() tag = "func_type_and_dim: 1 2 32 1 2 0 5 0 5"
+ > Tag consumer_root.0() tag = "func_type_and_dim: 1 2 32 1 2 0 4 0 4"
+ > Store producer_root.0(0, 0) = 0.000000
+ > Store producer_root.0(1, 0) = 0.000000
+ > Store producer_root.0(2, 0) = 0.000000
+ > Store producer_root.0(3, 0) = 0.000000
+ > Store producer_root.0(4, 0) = 0.000000
+ > Store producer_root.0(0, 1) = 0.000000
+ > Store producer_root.0(1, 1) = 0.841471
+ > Store producer_root.0(2, 1) = 0.909297
+ > Store producer_root.0(3, 1) = 0.141120
+ > Store producer_root.0(4, 1) = -0.756802
+ > Store producer_root.0(0, 2) = 0.000000
+ > Store producer_root.0(1, 2) = 0.909297
+ > Store producer_root.0(2, 2) = -0.756802
+ > Store producer_root.0(3, 2) = -0.279415
+ > Store producer_root.0(4, 2) = 0.989358
+ > Store producer_root.0(0, 3) = 0.000000
+ > Store producer_root.0(1, 3) = 0.141120
+ > Store producer_root.0(2, 3) = -0.279415
+ > Store producer_root.0(3, 3) = 0.412118
+ > Store producer_root.0(4, 3) = -0.536573
+ > Store producer_root.0(0, 4) = 0.000000
+ > Store producer_root.0(1, 4) = -0.756802
+ > Store producer_root.0(2, 4) = 0.989358
+ > Store producer_root.0(3, 4) = -0.536573
+ > Store producer_root.0(4, 4) = -0.287903
+ > Store consumer_root.0(0, 0) = 0.210368
+ > Store consumer_root.0(1, 0) = 0.437692
+ > Store consumer_root.0(2, 0) = 0.262604
+ > Store consumer_root.0(3, 0) = -0.153921
+ > Store consumer_root.0(0, 1) = 0.437692
+ > Store consumer_root.0(1, 1) = 0.475816
+ > Store consumer_root.0(2, 1) = 0.003550
+ > Store consumer_root.0(3, 1) = 0.023565
+ > Store consumer_root.0(0, 2) = 0.262604
+ > Store consumer_root.0(1, 2) = 0.003550
+ > Store consumer_root.0(2, 2) = -0.225879
+ > Store consumer_root.0(3, 2) = 0.146372
+ > Store consumer_root.0(0, 3) = -0.153921
+ > Store consumer_root.0(1, 3) = 0.023565
+ > Store consumer_root.0(2, 3) = 0.146372
+ > Store consumer_root.0(3, 3) = -0.237233
+ > End pipeline consumer_root.0()
+
+</b></div>
+
+        <span class="hl slc">// Reading the output we can see that:</span>
+        <span class="hl slc">// A) There were stores to producer.</span>
+        <span class="hl slc">// B) They all happened before any stores to consumer.</span>
+
+        <span class="hl slc">// See below for a visualization.</span>
+        <span class="hl slc">// The producer is on the left and the consumer is on the</span>
+        <span class="hl slc">// right. Stores are marked in orange and loads are marked in</span>
+        <span class="hl slc">// blue.</span>
+
+         <span><img src= figures/lesson_08_compute_root.gif ></span>
+
+        <span class="hl slc">// Equivalent C:</span>
+
+        <span class="hl kwb">float</span> result<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">][</span><span class="hl num">4</span><span class="hl opt">];</span>
+
+        <span class="hl slc">// Allocate some temporary storage for the producer.</span>
+        <span class="hl kwb">float</span> producer_storage<span class="hl opt">[</span><span class="hl num">5</span><span class="hl opt">][</span><span class="hl num">5</span><span class="hl opt">];</span>
+
+        <span class="hl slc">// Compute the producer.</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                producer_storage<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl slc">// Compute the consumer. Skip the prints this time.</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span>producer_storage<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] +</span>
+                                producer_storage<span class="hl opt">[</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
+                                producer_storage<span class="hl opt">[</span>y<span class="hl opt">][</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">] +</span>
+                                producer_storage<span class="hl opt">[</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">][</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">]) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl slc">// Note that consumer was evaluated over a 4x4 box, so Halide</span>
+        <span class="hl slc">// automatically inferred that producer was needed over a 5x5</span>
+        <span class="hl slc">// box. This is the same &apos;bounds inference&apos; logic we saw in</span>
+        <span class="hl slc">// the previous lesson, where it was used to detect and avoid</span>
+        <span class="hl slc">// out-of-bounds reads from an input image.</span>
+
+        <span class="hl slc">// If we print the loop nest, we&apos;ll see something very</span>
+        <span class="hl slc">// similar to the C above.</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_149");'><b id=_149-show>// Click to show output ...</b></a><div id=_149 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce producer_root:
+ >   for y:
+ >     for x:
+ >       producer_root(...) = ...
+ > consume producer_root:
+ >   produce consumer_root:
+ >     for y:
+ >       for x:
+ >         consumer_root(...) = ...
+
+</b></div>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Let&apos;s compare the two approaches above from a performance</span>
+    <span class="hl slc">// perspective.</span>
+
+    <span class="hl slc">// Full inlining (the default schedule):</span>
+    <span class="hl slc">// - Temporary memory allocated: 0</span>
+    <span class="hl slc">// - Loads: 0</span>
+    <span class="hl slc">// - Stores: 16</span>
+    <span class="hl slc">// - Calls to sin: 64</span>
+
+    <span class="hl slc">// producer.compute_root():</span>
+    <span class="hl slc">// - Temporary memory allocated: 25 floats</span>
+    <span class="hl slc">// - Loads: 64</span>
+    <span class="hl slc">// - Stores: 41</span>
+    <span class="hl slc">// - Calls to sin: 25</span>
+
+    <span class="hl slc">// There&apos;s a trade-off here. Full inlining used minimal temporary</span>
+    <span class="hl slc">// memory and memory bandwidth, but did a whole bunch of redundant</span>
+    <span class="hl slc">// expensive math (calling sin). It evaluated most points in</span>
+    <span class="hl slc">// &apos;producer&apos; four times. The second schedule,</span>
+    <span class="hl slc">// producer.compute_root(), did the mimimum number of calls to</span>
+    <span class="hl slc">// sin, but used more temporary memory and more memory bandwidth.</span>
+
+    <span class="hl slc">// In any given situation the correct choice can be difficult to</span>
+    <span class="hl slc">// make. If you&apos;re memory-bandwidth limited, or don&apos;t have much</span>
+    <span class="hl slc">// memory (e.g. because you&apos;re running on an old cell-phone), then</span>
+    <span class="hl slc">// it can make sense to do redundant math. On the other hand, sin</span>
+    <span class="hl slc">// is expensive, so if you&apos;re compute-limited then fewer calls to</span>
+    <span class="hl slc">// sin will make your program faster. Adding vectorization or</span>
+    <span class="hl slc">// multi-core parallelism tilts the scales in favor of doing</span>
+    <span class="hl slc">// redundant work, because firing up multiple cpu cores increases</span>
+    <span class="hl slc">// the amount of math you can do per second, but doesn&apos;t increase</span>
+    <span class="hl slc">// your system memory bandwidth or capacity.</span>
+
+    <span class="hl slc">// We can make choices in between full inlining and</span>
+    <span class="hl slc">// compute_root. Next we&apos;ll alternate between computing the</span>
+    <span class="hl slc">// producer and consumer on a per-scanline basis:</span>
+    <span class="hl opt">{</span>
+        <span class="hl slc">// Start with the same function definitions:</span>
+        Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_y&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_y&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+        <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+
+        <span class="hl slc">// Tell Halide to evaluate producer as needed per y coordinate</span>
+        <span class="hl slc">// of the consumer:</span>
+        producer<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> y<span class="hl opt">);</span>
+
+        <span class="hl slc">// This places the code that computes the producer just</span>
+        <span class="hl slc">// *inside* the consumer&apos;s for loop over y, as in the</span>
+        <span class="hl slc">// equivalent C below.</span>
+
+        <span class="hl slc">// Turn on tracing.</span>
+        producer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+        <span class="hl slc">// Compile and run.</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.compute_at(consumer, y)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
+        <a onclick='return toggle("_212");'><b id=_212-show>// Click to show output ...</b></a><div id=_212 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline consumer_y.0()
+ > Tag producer_y.0() tag = "func_type_and_dim: 1 2 32 1 2 0 5 0 5"
+ > Tag consumer_y.0() tag = "func_type_and_dim: 1 2 32 1 2 0 4 0 4"
+ > Store producer_y.0(0, 0) = 0.000000
+ > Store producer_y.0(1, 0) = 0.000000
+ > Store producer_y.0(2, 0) = 0.000000
+ > Store producer_y.0(3, 0) = 0.000000
+ > Store producer_y.0(4, 0) = 0.000000
+ > Store producer_y.0(0, 1) = 0.000000
+ > Store producer_y.0(1, 1) = 0.841471
+ > Store producer_y.0(2, 1) = 0.909297
+ > Store producer_y.0(3, 1) = 0.141120
+ > Store producer_y.0(4, 1) = -0.756802
+ > Store consumer_y.0(0, 0) = 0.210368
+ > Store consumer_y.0(1, 0) = 0.437692
+ > Store consumer_y.0(2, 0) = 0.262604
+ > Store consumer_y.0(3, 0) = -0.153921
+ > Store producer_y.0(0, 1) = 0.000000
+ > Store producer_y.0(1, 1) = 0.841471
+ > Store producer_y.0(2, 1) = 0.909297
+ > Store producer_y.0(3, 1) = 0.141120
+ > Store producer_y.0(4, 1) = -0.756802
+ > Store producer_y.0(0, 2) = 0.000000
+ > Store producer_y.0(1, 2) = 0.909297
+ > Store producer_y.0(2, 2) = -0.756802
+ > Store producer_y.0(3, 2) = -0.279415
+ > Store producer_y.0(4, 2) = 0.989358
+ > Store consumer_y.0(0, 1) = 0.437692
+ > Store consumer_y.0(1, 1) = 0.475816
+ > Store consumer_y.0(2, 1) = 0.003550
+ > Store consumer_y.0(3, 1) = 0.023565
+ > Store producer_y.0(0, 2) = 0.000000
+ > Store producer_y.0(1, 2) = 0.909297
+ > Store producer_y.0(2, 2) = -0.756802
+ > Store producer_y.0(3, 2) = -0.279415
+ > Store producer_y.0(4, 2) = 0.989358
+ > Store producer_y.0(0, 3) = 0.000000
+ > Store producer_y.0(1, 3) = 0.141120
+ > Store producer_y.0(2, 3) = -0.279415
+ > Store producer_y.0(3, 3) = 0.412118
+ > Store producer_y.0(4, 3) = -0.536573
+ > Store consumer_y.0(0, 2) = 0.262604
+ > Store consumer_y.0(1, 2) = 0.003550
+ > Store consumer_y.0(2, 2) = -0.225879
+ > Store consumer_y.0(3, 2) = 0.146372
+ > Store producer_y.0(0, 3) = 0.000000
+ > Store producer_y.0(1, 3) = 0.141120
+ > Store producer_y.0(2, 3) = -0.279415
+ > Store producer_y.0(3, 3) = 0.412118
+ > Store producer_y.0(4, 3) = -0.536573
+ > Store producer_y.0(0, 4) = 0.000000
+ > Store producer_y.0(1, 4) = -0.756802
+ > Store producer_y.0(2, 4) = 0.989358
+ > Store producer_y.0(3, 4) = -0.536573
+ > Store producer_y.0(4, 4) = -0.287903
+ > Store consumer_y.0(0, 3) = -0.153921
+ > Store consumer_y.0(1, 3) = 0.023565
+ > Store consumer_y.0(2, 3) = 0.146372
+ > Store consumer_y.0(3, 3) = -0.237233
+ > End pipeline consumer_y.0()
+
+</b></div>
+
+        <span class="hl slc">// See below for a visualization.</span>
+
+         <span><img src= figures/lesson_08_compute_y.gif ></span>
+
+        <span class="hl slc">// Reading the log or looking at the figure you should see</span>
+        <span class="hl slc">// that producer and consumer alternate on a per-scanline</span>
+        <span class="hl slc">// basis. Let&apos;s look at the equivalent C:</span>
+
+        <span class="hl kwb">float</span> result<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">][</span><span class="hl num">4</span><span class="hl opt">];</span>
+
+        <span class="hl slc">// There&apos;s an outer loop over scanlines of consumer:</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+
+            <span class="hl slc">// Allocate space and compute enough of the producer to</span>
+            <span class="hl slc">// satisfy this single scanline of the consumer. This</span>
+            <span class="hl slc">// means a 5x2 box of the producer.</span>
+            <span class="hl kwb">float</span> producer_storage<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">][</span><span class="hl num">5</span><span class="hl opt">];</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> py <span class="hl opt">=</span> y<span class="hl opt">;</span> py <span class="hl opt">&lt;</span> y <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">;</span> py<span class="hl opt">++) {</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> px <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> px <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> px<span class="hl opt">++) {</span>
+                    producer_storage<span class="hl opt">[</span>py <span class="hl opt">-</span> y<span class="hl opt">][</span>px<span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>px <span class="hl opt">*</span> py<span class="hl opt">);</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+
+            <span class="hl slc">// Compute a scanline of the consumer.</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span>producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
+                                producer_storage<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
+                                producer_storage<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">][</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">] +</span>
+                                producer_storage<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">][</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">]) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl slc">// Again, if we print the loop nest, we&apos;ll see something very</span>
+        <span class="hl slc">// similar to the C above.</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_247");'><b id=_247-show>// Click to show output ...</b></a><div id=_247 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce consumer_y:
+ >   for y:
+ >     produce producer_y:
+ >       for y:
+ >         for x:
+ >           producer_y(...) = ...
+ >     consume producer_y:
+ >       for x:
+ >         consumer_y(...) = ...
+
+</b></div>
+
+        <span class="hl slc">// The performance characteristics of this strategy are in</span>
+        <span class="hl slc">// between inlining and compute root. We still allocate some</span>
+        <span class="hl slc">// temporary memory, but less than compute_root, and with</span>
+        <span class="hl slc">// better locality (we load from it soon after writing to it,</span>
+        <span class="hl slc">// so for larger images, values should still be in cache). We</span>
+        <span class="hl slc">// still do some redundant work, but less than full inlining:</span>
+
+        <span class="hl slc">// producer.compute_at(consumer, y):</span>
+        <span class="hl slc">// - Temporary memory allocated: 10 floats</span>
+        <span class="hl slc">// - Loads: 64</span>
+        <span class="hl slc">// - Stores: 56</span>
+        <span class="hl slc">// - Calls to sin: 40</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// We could also say producer.compute_at(consumer, x), but this</span>
+    <span class="hl slc">// would be very similar to full inlining (the default</span>
+    <span class="hl slc">// schedule). Instead let&apos;s distinguish between the loop level at</span>
+    <span class="hl slc">// which we allocate storage for producer, and the loop level at</span>
+    <span class="hl slc">// which we actually compute it. This unlocks a few optimizations.</span>
+    <span class="hl opt">{</span>
+        Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_root_y&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_root_y&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+        <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+
+        <span class="hl slc">// Tell Halide to make a buffer to store all of producer at</span>
+        <span class="hl slc">// the outermost level:</span>
+        producer<span class="hl opt">.</span><span class="hl kwd">store_root</span><span class="hl opt">();</span>
+        <span class="hl slc">// ... but compute it as needed per y coordinate of the</span>
+        <span class="hl slc">// consumer.</span>
+        producer<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> y<span class="hl opt">);</span>
+
+        producer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.store_root().compute_at(consumer, y)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
+        <a onclick='return toggle("_288");'><b id=_288-show>// Click to show output ...</b></a><div id=_288 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline consumer_root_y.0()
+ > Tag producer_root_y.0() tag = "func_type_and_dim: 1 2 32 1 2 0 5 0 5"
+ > Tag consumer_root_y.0() tag = "func_type_and_dim: 1 2 32 1 2 0 4 0 4"
+ > Store producer_root_y.0(0, 0) = 0.000000
+ > Store producer_root_y.0(1, 0) = 0.000000
+ > Store producer_root_y.0(2, 0) = 0.000000
+ > Store producer_root_y.0(3, 0) = 0.000000
+ > Store producer_root_y.0(4, 0) = 0.000000
+ > Store producer_root_y.0(0, 1) = 0.000000
+ > Store producer_root_y.0(1, 1) = 0.841471
+ > Store producer_root_y.0(2, 1) = 0.909297
+ > Store producer_root_y.0(3, 1) = 0.141120
+ > Store producer_root_y.0(4, 1) = -0.756802
+ > Store consumer_root_y.0(0, 0) = 0.210368
+ > Store consumer_root_y.0(1, 0) = 0.437692
+ > Store consumer_root_y.0(2, 0) = 0.262604
+ > Store consumer_root_y.0(3, 0) = -0.153921
+ > Store producer_root_y.0(0, 2) = 0.000000
+ > Store producer_root_y.0(1, 2) = 0.909297
+ > Store producer_root_y.0(2, 2) = -0.756802
+ > Store producer_root_y.0(3, 2) = -0.279415
+ > Store producer_root_y.0(4, 2) = 0.989358
+ > Store consumer_root_y.0(0, 1) = 0.437692
+ > Store consumer_root_y.0(1, 1) = 0.475816
+ > Store consumer_root_y.0(2, 1) = 0.003550
+ > Store consumer_root_y.0(3, 1) = 0.023565
+ > Store producer_root_y.0(0, 3) = 0.000000
+ > Store producer_root_y.0(1, 3) = 0.141120
+ > Store producer_root_y.0(2, 3) = -0.279415
+ > Store producer_root_y.0(3, 3) = 0.412118
+ > Store producer_root_y.0(4, 3) = -0.536573
+ > Store consumer_root_y.0(0, 2) = 0.262604
+ > Store consumer_root_y.0(1, 2) = 0.003550
+ > Store consumer_root_y.0(2, 2) = -0.225879
+ > Store consumer_root_y.0(3, 2) = 0.146372
+ > Store producer_root_y.0(0, 4) = 0.000000
+ > Store producer_root_y.0(1, 4) = -0.756802
+ > Store producer_root_y.0(2, 4) = 0.989358
+ > Store producer_root_y.0(3, 4) = -0.536573
+ > Store producer_root_y.0(4, 4) = -0.287903
+ > Store consumer_root_y.0(0, 3) = -0.153921
+ > Store consumer_root_y.0(1, 3) = 0.023565
+ > Store consumer_root_y.0(2, 3) = 0.146372
+ > Store consumer_root_y.0(3, 3) = -0.237233
+ > End pipeline consumer_root_y.0()
+
+</b></div>
+
+        <span class="hl slc">// See below for a</span>
+        <span class="hl slc">// visualization.</span>
+
+         <span><img src= figures/lesson_08_store_root_compute_y.gif ></span>
+
+        <span class="hl slc">// Reading the log or looking at the figure you should see</span>
+        <span class="hl slc">// that producer and consumer again alternate on a</span>
+        <span class="hl slc">// per-scanline basis. It computes a 5x2 box of the producer</span>
+        <span class="hl slc">// to satisfy the first scanline of the consumer, but after</span>
+        <span class="hl slc">// that it only computes a 5x1 box of the output for each new</span>
+        <span class="hl slc">// scanline of the consumer!</span>
+        <span class="hl slc">//</span>
+        <span class="hl slc">// Halide has detected that for all scanlines except for the</span>
+        <span class="hl slc">// first, it can reuse the values already sitting in the</span>
+        <span class="hl slc">// buffer we&apos;ve allocated for producer. Let&apos;s look at the</span>
+        <span class="hl slc">// equivalent C:</span>
+
+        <span class="hl kwb">float</span> result<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">][</span><span class="hl num">4</span><span class="hl opt">];</span>
+
+        <span class="hl slc">// producer.store_root() implies that storage goes here:</span>
+        <span class="hl kwb">float</span> producer_storage<span class="hl opt">[</span><span class="hl num">5</span><span class="hl opt">][</span><span class="hl num">5</span><span class="hl opt">];</span>
+
+        <span class="hl slc">// There&apos;s an outer loop over scanlines of consumer:</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+
+            <span class="hl slc">// Compute enough of the producer to satisfy this scanline</span>
+            <span class="hl slc">// of the consumer.</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> py <span class="hl opt">=</span> y<span class="hl opt">;</span> py <span class="hl opt">&lt;</span> y <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">;</span> py<span class="hl opt">++) {</span>
+
+                <span class="hl slc">// Skip over rows of producer that we&apos;ve already</span>
+                <span class="hl slc">// computed in a previous iteration.</span>
+                <span class="hl kwa">if</span> <span class="hl opt">(</span>y <span class="hl opt">&gt;</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> py <span class="hl opt">==</span> y<span class="hl opt">)</span> <span class="hl kwa">continue</span><span class="hl opt">;</span>
+
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> px <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> px <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> px<span class="hl opt">++) {</span>
+                    producer_storage<span class="hl opt">[</span>py<span class="hl opt">][</span>px<span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>px <span class="hl opt">*</span> py<span class="hl opt">);</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+
+            <span class="hl slc">// Compute a scanline of the consumer.</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span>producer_storage<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] +</span>
+                                producer_storage<span class="hl opt">[</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
+                                producer_storage<span class="hl opt">[</span>y<span class="hl opt">][</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">] +</span>
+                                producer_storage<span class="hl opt">[</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">][</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">]) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_336");'><b id=_336-show>// Click to show output ...</b></a><div id=_336 style= "display:none; background:#333333; color:#ffffff"><b>
+ > store producer_root_y:
+ >   produce consumer_root_y:
+ >     for y.:
+ >       produce producer_root_y:
+ >         for x:
+ >           producer_root_y(...) = ...
+ >       consume producer_root_y:
+ >         for x:
+ >           consumer_root_y(...) = ...
+
+</b></div>
+
+        <span class="hl slc">// The performance characteristics of this strategy are pretty</span>
+        <span class="hl slc">// good! The numbers are similar to compute_root, except locality</span>
+        <span class="hl slc">// is better. We&apos;re doing the minimum number of sin calls,</span>
+        <span class="hl slc">// and we load values soon after they are stored, so we&apos;re</span>
+        <span class="hl slc">// probably making good use of the cache:</span>
+
+        <span class="hl slc">// producer.store_root().compute_at(consumer, y):</span>
+        <span class="hl slc">// - Temporary memory allocated: 10 floats</span>
+        <span class="hl slc">// - Loads: 64</span>
+        <span class="hl slc">// - Stores: 41</span>
+        <span class="hl slc">// - Calls to sin: 25</span>
+
+        <span class="hl slc">// Note that my claimed amount of memory allocated doesn&apos;t</span>
+        <span class="hl slc">// match the reference C code. Halide is performing one more</span>
+        <span class="hl slc">// optimization under the hood. It folds the storage for the</span>
+        <span class="hl slc">// producer down into a circular buffer of two</span>
+        <span class="hl slc">// scanlines. Equivalent C would actually look like this:</span>
+
+        <span class="hl opt">{</span>
+            <span class="hl slc">// Actually store 2 scanlines instead of 5</span>
+            <span class="hl kwb">float</span> producer_storage<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">][</span><span class="hl num">5</span><span class="hl opt">];</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> py <span class="hl opt">=</span> y<span class="hl opt">;</span> py <span class="hl opt">&lt;</span> y <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">;</span> py<span class="hl opt">++) {</span>
+                    <span class="hl kwa">if</span> <span class="hl opt">(</span>y <span class="hl opt">&gt;</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> py <span class="hl opt">==</span> y<span class="hl opt">)</span> <span class="hl kwa">continue</span><span class="hl opt">;</span>
+                    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> px <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> px <span class="hl opt">&lt;</span> <span class="hl num">5</span><span class="hl opt">;</span> px<span class="hl opt">++) {</span>
+                        <span class="hl slc">// Stores to producer_storage have their y coordinate bit-masked.</span>
+                        producer_storage<span class="hl opt">[</span>py <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>px<span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>px <span class="hl opt">*</span> py<span class="hl opt">);</span>
+                    <span class="hl opt">}</span>
+                <span class="hl opt">}</span>
+
+                <span class="hl slc">// Compute a scanline of the consumer.</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                    <span class="hl slc">// Loads from producer_storage have their y coordinate bit-masked.</span>
+                    result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span>producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
+                                    producer_storage<span class="hl opt">[(</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
+                                    producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">] +</span>
+                                    producer_storage<span class="hl opt">[(</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">]) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// We can do even better, by leaving the storage in the outermost</span>
+    <span class="hl slc">// loop, but moving the computation into the innermost loop:</span>
+    <span class="hl opt">{</span>
+        Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_root_x&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_root_x&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+        <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+
+        <span class="hl slc">// Store outermost, compute innermost.</span>
+        producer<span class="hl opt">.</span><span class="hl kwd">store_root</span><span class="hl opt">().</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> x<span class="hl opt">);</span>
+
+        producer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating producer.store_root().compute_at(consumer, x)</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">});</span>
+        <a onclick='return toggle("_398");'><b id=_398-show>// Click to show output ...</b></a><div id=_398 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline consumer_root_x.0()
+ > Tag producer_root_x.0() tag = "func_type_and_dim: 1 2 32 1 2 0 5 0 5"
+ > Tag consumer_root_x.0() tag = "func_type_and_dim: 1 2 32 1 2 0 4 0 4"
+ > Store producer_root_x.0(0, 0) = 0.000000
+ > Store producer_root_x.0(1, 0) = 0.000000
+ > Store producer_root_x.0(2, 0) = 0.000000
+ > Store producer_root_x.0(3, 0) = 0.000000
+ > Store producer_root_x.0(4, 0) = 0.000000
+ > Store producer_root_x.0(0, 1) = 0.000000
+ > Store producer_root_x.0(1, 1) = 0.841471
+ > Store consumer_root_x.0(0, 0) = 0.210368
+ > Store producer_root_x.0(2, 1) = 0.909297
+ > Store consumer_root_x.0(1, 0) = 0.437692
+ > Store producer_root_x.0(3, 1) = 0.141120
+ > Store consumer_root_x.0(2, 0) = 0.262604
+ > Store producer_root_x.0(4, 1) = -0.756802
+ > Store consumer_root_x.0(3, 0) = -0.153921
+ > Store producer_root_x.0(0, 2) = 0.000000
+ > Store producer_root_x.0(1, 2) = 0.909297
+ > Store consumer_root_x.0(0, 1) = 0.437692
+ > Store producer_root_x.0(2, 2) = -0.756802
+ > Store consumer_root_x.0(1, 1) = 0.475816
+ > Store producer_root_x.0(3, 2) = -0.279415
+ > Store consumer_root_x.0(2, 1) = 0.003550
+ > Store producer_root_x.0(4, 2) = 0.989358
+ > Store consumer_root_x.0(3, 1) = 0.023565
+ > Store producer_root_x.0(0, 3) = 0.000000
+ > Store producer_root_x.0(1, 3) = 0.141120
+ > Store consumer_root_x.0(0, 2) = 0.262604
+ > Store producer_root_x.0(2, 3) = -0.279415
+ > Store consumer_root_x.0(1, 2) = 0.003550
+ > Store producer_root_x.0(3, 3) = 0.412118
+ > Store consumer_root_x.0(2, 2) = -0.225879
+ > Store producer_root_x.0(4, 3) = -0.536573
+ > Store consumer_root_x.0(3, 2) = 0.146372
+ > Store producer_root_x.0(0, 4) = 0.000000
+ > Store producer_root_x.0(1, 4) = -0.756802
+ > Store consumer_root_x.0(0, 3) = -0.153921
+ > Store producer_root_x.0(2, 4) = 0.989358
+ > Store consumer_root_x.0(1, 3) = 0.023565
+ > Store producer_root_x.0(3, 4) = -0.536573
+ > Store consumer_root_x.0(2, 3) = 0.146372
+ > Store producer_root_x.0(4, 4) = -0.287903
+ > Store consumer_root_x.0(3, 3) = -0.237233
+ > End pipeline consumer_root_x.0()
+
+</b></div>
+
+        <span class="hl slc">// See below for a</span>
+        <span class="hl slc">// visualization.</span>
+
+         <span><img src= figures/lesson_08_store_root_compute_x.gif ></span>
+
+        <span class="hl slc">// You should see that producer and consumer now alternate on</span>
+        <span class="hl slc">// a per-pixel basis. Here&apos;s the equivalent C:</span>
+
+        <span class="hl kwb">float</span> result<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">][</span><span class="hl num">4</span><span class="hl opt">];</span>
+
+        <span class="hl slc">// producer.store_root() implies that storage goes here, but</span>
+        <span class="hl slc">// we can fold it down into a circular buffer of two</span>
+        <span class="hl slc">// scanlines:</span>
+        <span class="hl kwb">float</span> producer_storage<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">][</span><span class="hl num">5</span><span class="hl opt">];</span>
+
+        <span class="hl slc">// For every pixel of the consumer:</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+
+                <span class="hl slc">// Compute enough of the producer to satisfy this</span>
+                <span class="hl slc">// pixel of the consumer, but skip values that we&apos;ve</span>
+                <span class="hl slc">// already computed:</span>
+                <span class="hl kwa">if</span> <span class="hl opt">(</span>y <span class="hl opt">==</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> x <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">) {</span>
+                    producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+                <span class="hl opt">}</span>
+                <span class="hl kwa">if</span> <span class="hl opt">(</span>y <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">) {</span>
+                    producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">((</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) *</span> y<span class="hl opt">);</span>
+                <span class="hl opt">}</span>
+                <span class="hl kwa">if</span> <span class="hl opt">(</span>x <span class="hl opt">==</span> <span class="hl num">0</span><span class="hl opt">) {</span>
+                    producer_storage<span class="hl opt">[(</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">* (</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">));</span>
+                <span class="hl opt">}</span>
+                producer_storage<span class="hl opt">[(</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">((</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) * (</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">));</span>
+
+                result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] = (</span>producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
+                                producer_storage<span class="hl opt">[(</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">] +</span>
+                                producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">] +</span>
+                                producer_storage<span class="hl opt">[(</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">]) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_439");'><b id=_439-show>// Click to show output ...</b></a><div id=_439 style= "display:none; background:#333333; color:#ffffff"><b>
+ > store producer_root_x:
+ >   produce consumer_root_x:
+ >     for y.:
+ >       for x.:
+ >         produce producer_root_x:
+ >           producer_root_x(...) = ...
+ >         consume producer_root_x:
+ >           consumer_root_x(...) = ...
+
+</b></div>
+
+        <span class="hl slc">// The performance characteristics of this strategy are the</span>
+        <span class="hl slc">// best so far. One of the four values of the producer we need</span>
+        <span class="hl slc">// is probably still sitting in a register, so I won&apos;t count</span>
+        <span class="hl slc">// it as a load:</span>
+        <span class="hl slc">// producer.store_root().compute_at(consumer, x):</span>
+        <span class="hl slc">// - Temporary memory allocated: 10 floats</span>
+        <span class="hl slc">// - Loads: 48</span>
+        <span class="hl slc">// - Stores: 41</span>
+        <span class="hl slc">// - Calls to sin: 25</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// So what&apos;s the catch? Why not always do</span>
+    <span class="hl slc">// producer.store_root().compute_at(consumer, x) for this type of</span>
+    <span class="hl slc">// code?</span>
+    <span class="hl slc">//</span>
+    <span class="hl slc">// The answer is parallelism. In both of the previous two</span>
+    <span class="hl slc">// strategies we&apos;ve assumed that values computed in previous</span>
+    <span class="hl slc">// iterations are lying around for us to reuse. This assumes that</span>
+    <span class="hl slc">// previous values of x or y happened earlier in time and have</span>
+    <span class="hl slc">// finished. This is not true if you parallelize or vectorize</span>
+    <span class="hl slc">// either loop. Darn. If you parallelize, Halide won&apos;t inject the</span>
+    <span class="hl slc">// optimizations that skip work already done if there&apos;s a parallel</span>
+    <span class="hl slc">// loop in between the store_at level and the compute_at level,</span>
+    <span class="hl slc">// and won&apos;t fold the storage down into a circular buffer either,</span>
+    <span class="hl slc">// which makes our store_root pointless.</span>
+
+    <span class="hl slc">// We&apos;re running out of options. We can make new ones by</span>
+    <span class="hl slc">// splitting. We can store_at or compute_at at the natural</span>
+    <span class="hl slc">// variables of the consumer (x and y), or we can split x or y</span>
+    <span class="hl slc">// into new inner and outer sub-variables and then schedule with</span>
+    <span class="hl slc">// respect to those. We&apos;ll use this to express fusion in tiles:</span>
+    <span class="hl opt">{</span>
+        Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_tile&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_tile&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+        <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+
+        <span class="hl slc">// We&apos;ll compute 8x8 of the consumer, in 4x4 tiles.</span>
+        Var x_outer<span class="hl opt">,</span> y_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> y_inner<span class="hl opt">;</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">tile</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">,</span> x_outer<span class="hl opt">,</span> y_outer<span class="hl opt">,</span> x_inner<span class="hl opt">,</span> y_inner<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// Compute the producer per tile of the consumer</span>
+        producer<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> x_outer<span class="hl opt">);</span>
+
+        <span class="hl slc">// Notice that I wrote my schedule starting from the end of</span>
+        <span class="hl slc">// the pipeline (the consumer). This is because the schedule</span>
+        <span class="hl slc">// for the producer refers to x_outer, which we introduced</span>
+        <span class="hl slc">// when we tiled the consumer. You can write it in the other</span>
+        <span class="hl slc">// order, but it tends to be harder to read.</span>
+
+        <span class="hl slc">// Turn on tracing.</span>
+        producer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">trace_stores</span><span class="hl opt">();</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">Evaluating:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span>
+               <span class="hl str">&quot;consumer.tile(x, y, x_outer, y_outer, x_inner, y_inner, 4, 4);</span><span class="hl esc">\n</span><span class="hl str">&quot;</span>
+               <span class="hl str">&quot;producer.compute_at(consumer, x_outer);</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">8</span><span class="hl opt">,</span> <span class="hl num">8</span><span class="hl opt">});</span>
+        <a onclick='return toggle("_501");'><b id=_501-show>// Click to show output ...</b></a><div id=_501 style= "display:none; background:#333333; color:#ffffff"><b>
+ > Begin pipeline consumer_tile.0()
+ > Tag producer_tile.0() tag = "func_type_and_dim: 1 2 32 1 2 0 9 0 9"
+ > Tag consumer_tile.0() tag = "func_type_and_dim: 1 2 32 1 2 0 8 0 8"
+ > Store producer_tile.0(0, 0) = 0.000000
+ > Store producer_tile.0(1, 0) = 0.000000
+ > Store producer_tile.0(2, 0) = 0.000000
+ > Store producer_tile.0(3, 0) = 0.000000
+ > Store producer_tile.0(4, 0) = 0.000000
+ > Store producer_tile.0(0, 1) = 0.000000
+ > Store producer_tile.0(1, 1) = 0.841471
+ > Store producer_tile.0(2, 1) = 0.909297
+ > Store producer_tile.0(3, 1) = 0.141120
+ > Store producer_tile.0(4, 1) = -0.756802
+ > Store producer_tile.0(0, 2) = 0.000000
+ > Store producer_tile.0(1, 2) = 0.909297
+ > Store producer_tile.0(2, 2) = -0.756802
+ > Store producer_tile.0(3, 2) = -0.279415
+ > Store producer_tile.0(4, 2) = 0.989358
+ > Store producer_tile.0(0, 3) = 0.000000
+ > Store producer_tile.0(1, 3) = 0.141120
+ > Store producer_tile.0(2, 3) = -0.279415
+ > Store producer_tile.0(3, 3) = 0.412118
+ > Store producer_tile.0(4, 3) = -0.536573
+ > Store producer_tile.0(0, 4) = 0.000000
+ > Store producer_tile.0(1, 4) = -0.756802
+ > Store producer_tile.0(2, 4) = 0.989358
+ > Store producer_tile.0(3, 4) = -0.536573
+ > Store producer_tile.0(4, 4) = -0.287903
+ > Store consumer_tile.0(0, 0) = 0.210368
+ > Store consumer_tile.0(1, 0) = 0.437692
+ > Store consumer_tile.0(2, 0) = 0.262604
+ > Store consumer_tile.0(3, 0) = -0.153921
+ > Store consumer_tile.0(0, 1) = 0.437692
+ > Store consumer_tile.0(1, 1) = 0.475816
+ > Store consumer_tile.0(2, 1) = 0.003550
+ > Store consumer_tile.0(3, 1) = 0.023565
+ > Store consumer_tile.0(0, 2) = 0.262604
+ > Store consumer_tile.0(1, 2) = 0.003550
+ > Store consumer_tile.0(2, 2) = -0.225879
+ > Store consumer_tile.0(3, 2) = 0.146372
+ > Store consumer_tile.0(0, 3) = -0.153921
+ > Store consumer_tile.0(1, 3) = 0.023565
+ > Store consumer_tile.0(2, 3) = 0.146372
+ > Store consumer_tile.0(3, 3) = -0.237233
+ > Store producer_tile.0(4, 0) = 0.000000
+ > Store producer_tile.0(5, 0) = 0.000000
+ > Store producer_tile.0(6, 0) = 0.000000
+ > Store producer_tile.0(7, 0) = 0.000000
+ > Store producer_tile.0(8, 0) = 0.000000
+ > Store producer_tile.0(4, 1) = -0.756802
+ > Store producer_tile.0(5, 1) = -0.958924
+ > Store producer_tile.0(6, 1) = -0.279415
+ > Store producer_tile.0(7, 1) = 0.656987
+ > Store producer_tile.0(8, 1) = 0.989358
+ > Store producer_tile.0(4, 2) = 0.989358
+ > Store producer_tile.0(5, 2) = -0.544021
+ > Store producer_tile.0(6, 2) = -0.536573
+ > Store producer_tile.0(7, 2) = 0.990607
+ > Store producer_tile.0(8, 2) = -0.287903
+ > Store producer_tile.0(4, 3) = -0.536573
+ > Store producer_tile.0(5, 3) = 0.650288
+ > Store producer_tile.0(6, 3) = -0.750987
+ > Store producer_tile.0(7, 3) = 0.836656
+ > Store producer_tile.0(8, 3) = -0.905578
+ > Store producer_tile.0(4, 4) = -0.287903
+ > Store producer_tile.0(5, 4) = 0.912945
+ > Store producer_tile.0(6, 4) = -0.905578
+ > Store producer_tile.0(7, 4) = 0.270906
+ > Store producer_tile.0(8, 4) = 0.551427
+ > Store consumer_tile.0(4, 0) = -0.428932
+ > Store consumer_tile.0(5, 0) = -0.309585
+ > Store consumer_tile.0(6, 0) = 0.094393
+ > Store consumer_tile.0(7, 0) = 0.411586
+ > Store consumer_tile.0(4, 1) = -0.317597
+ > Store consumer_tile.0(5, 1) = -0.579733
+ > Store consumer_tile.0(6, 1) = 0.207901
+ > Store consumer_tile.0(7, 1) = 0.587262
+ > Store consumer_tile.0(4, 2) = 0.139763
+ > Store consumer_tile.0(5, 2) = -0.295323
+ > Store consumer_tile.0(6, 2) = 0.134926
+ > Store consumer_tile.0(7, 2) = 0.158445
+ > Store consumer_tile.0(4, 3) = 0.184689
+ > Store consumer_tile.0(5, 3) = -0.023333
+ > Store consumer_tile.0(6, 3) = -0.137251
+ > Store consumer_tile.0(7, 3) = 0.188352
+ > Store producer_tile.0(0, 4) = 0.000000
+ > Store producer_tile.0(1, 4) = -0.756802
+ > Store producer_tile.0(2, 4) = 0.989358
+ > Store producer_tile.0(3, 4) = -0.536573
+ > Store producer_tile.0(4, 4) = -0.287903
+ > Store producer_tile.0(0, 5) = 0.000000
+ > Store producer_tile.0(1, 5) = -0.958924
+ > Store producer_tile.0(2, 5) = -0.544021
+ > Store producer_tile.0(3, 5) = 0.650288
+ > Store producer_tile.0(4, 5) = 0.912945
+ > Store producer_tile.0(0, 6) = 0.000000
+ > Store producer_tile.0(1, 6) = -0.279415
+ > Store producer_tile.0(2, 6) = -0.536573
+ > Store producer_tile.0(3, 6) = -0.750987
+ > Store producer_tile.0(4, 6) = -0.905578
+ > Store producer_tile.0(0, 7) = 0.000000
+ > Store producer_tile.0(1, 7) = 0.656987
+ > Store producer_tile.0(2, 7) = 0.990607
+ > Store producer_tile.0(3, 7) = 0.836656
+ > Store producer_tile.0(4, 7) = 0.270906
+ > Store producer_tile.0(0, 8) = 0.000000
+ > Store producer_tile.0(1, 8) = 0.989358
+ > Store producer_tile.0(2, 8) = -0.287903
+ > Store producer_tile.0(3, 8) = -0.905578
+ > Store producer_tile.0(4, 8) = 0.551427
+ > Store consumer_tile.0(0, 4) = -0.428932
+ > Store consumer_tile.0(1, 4) = -0.317597
+ > Store consumer_tile.0(2, 4) = 0.139763
+ > Store consumer_tile.0(3, 4) = 0.184689
+ > Store consumer_tile.0(0, 5) = -0.309585
+ > Store consumer_tile.0(1, 5) = -0.579733
+ > Store consumer_tile.0(2, 5) = -0.295323
+ > Store consumer_tile.0(3, 5) = -0.023333
+ > Store consumer_tile.0(0, 6) = 0.094393
+ > Store consumer_tile.0(1, 6) = 0.207901
+ > Store consumer_tile.0(2, 6) = 0.134926
+ > Store consumer_tile.0(3, 6) = -0.137251
+ > Store consumer_tile.0(0, 7) = 0.411586
+ > Store consumer_tile.0(1, 7) = 0.587262
+ > Store consumer_tile.0(2, 7) = 0.158445
+ > Store consumer_tile.0(3, 7) = 0.188352
+ > Store producer_tile.0(4, 4) = -0.287903
+ > Store producer_tile.0(5, 4) = 0.912945
+ > Store producer_tile.0(6, 4) = -0.905578
+ > Store producer_tile.0(7, 4) = 0.270906
+ > Store producer_tile.0(8, 4) = 0.551427
+ > Store producer_tile.0(4, 5) = 0.912945
+ > Store producer_tile.0(5, 5) = -0.132352
+ > Store producer_tile.0(6, 5) = -0.988032
+ > Store producer_tile.0(7, 5) = -0.428183
+ > Store producer_tile.0(8, 5) = 0.745113
+ > Store producer_tile.0(4, 6) = -0.905578
+ > Store producer_tile.0(5, 6) = -0.988032
+ > Store producer_tile.0(6, 6) = -0.991779
+ > Store producer_tile.0(7, 6) = -0.916522
+ > Store producer_tile.0(8, 6) = -0.768255
+ > Store producer_tile.0(4, 7) = 0.270906
+ > Store producer_tile.0(5, 7) = -0.428183
+ > Store producer_tile.0(6, 7) = -0.916522
+ > Store producer_tile.0(7, 7) = -0.953753
+ > Store producer_tile.0(8, 7) = -0.521551
+ > Store producer_tile.0(4, 8) = 0.551427
+ > Store producer_tile.0(5, 8) = 0.745113
+ > Store producer_tile.0(6, 8) = -0.768255
+ > Store producer_tile.0(7, 8) = -0.521551
+ > Store producer_tile.0(8, 8) = 0.920026
+ > Store consumer_tile.0(4, 4) = 0.351409
+ > Store consumer_tile.0(5, 4) = -0.278254
+ > Store consumer_tile.0(6, 4) = -0.512722
+ > Store consumer_tile.0(7, 4) = 0.284816
+ > Store consumer_tile.0(4, 5) = -0.278254
+ > Store consumer_tile.0(5, 5) = -0.775048
+ > Store consumer_tile.0(6, 5) = -0.831129
+ > Store consumer_tile.0(7, 5) = -0.341961
+ > Store consumer_tile.0(4, 6) = -0.512722
+ > Store consumer_tile.0(5, 6) = -0.831129
+ > Store consumer_tile.0(6, 6) = -0.944644
+ > Store consumer_tile.0(7, 6) = -0.790020
+ > Store consumer_tile.0(4, 7) = 0.284816
+ > Store consumer_tile.0(5, 7) = -0.341961
+ > Store consumer_tile.0(6, 7) = -0.790020
+ > Store consumer_tile.0(7, 7) = -0.269207
+ > End pipeline consumer_tile.0()
+
+</b></div>
+
+        <span class="hl slc">// See below for a visualization.</span>
+
+         <span><img src= figures/lesson_08_tile.gif ></span>
+
+        <span class="hl slc">// The producer and consumer now alternate on a per-tile</span>
+        <span class="hl slc">// basis. Here&apos;s the equivalent C:</span>
+
+        <span class="hl kwb">float</span> result<span class="hl opt">[</span><span class="hl num">8</span><span class="hl opt">][</span><span class="hl num">8</span><span class="hl opt">];</span>
+
+        <span class="hl slc">// For every tile of the consumer:</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y_outer <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> y_outer<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_outer <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_outer <span class="hl opt">&lt;</span> <span class="hl num">2</span><span class="hl opt">;</span> x_outer<span class="hl opt">++) {</span>
+                <span class="hl slc">// Compute the x and y coords of the start of this tile.</span>
+                <span class="hl kwb">int</span> x_base <span class="hl opt">=</span> x_outer <span class="hl opt">*</span> <span class="hl num">4</span><span class="hl opt">;</span>
+                <span class="hl kwb">int</span> y_base <span class="hl opt">=</span> y_outer <span class="hl opt">*</span> <span class="hl num">4</span><span class="hl opt">;</span>
+
+                <span class="hl slc">// Compute enough of producer to satisfy this tile. A</span>
+                <span class="hl slc">// 4x4 tile of the consumer requires a 5x5 tile of the</span>
+                <span class="hl slc">// producer.</span>
+                <span class="hl kwb">float</span> producer_storage<span class="hl opt">[</span><span class="hl num">5</span><span class="hl opt">][</span><span class="hl num">5</span><span class="hl opt">];</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> py <span class="hl opt">=</span> y_base<span class="hl opt">;</span> py <span class="hl opt">&lt;</span> y_base <span class="hl opt">+</span> <span class="hl num">5</span><span class="hl opt">;</span> py<span class="hl opt">++) {</span>
+                    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> px <span class="hl opt">=</span> x_base<span class="hl opt">;</span> px <span class="hl opt">&lt;</span> x_base <span class="hl opt">+</span> <span class="hl num">5</span><span class="hl opt">;</span> px<span class="hl opt">++) {</span>
+                        producer_storage<span class="hl opt">[</span>py <span class="hl opt">-</span> y_base<span class="hl opt">][</span>px <span class="hl opt">-</span> x_base<span class="hl opt">] =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>px <span class="hl opt">*</span> py<span class="hl opt">);</span>
+                    <span class="hl opt">}</span>
+                <span class="hl opt">}</span>
+
+                <span class="hl slc">// Compute this tile of the consumer</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y_inner <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> y_inner<span class="hl opt">++) {</span>
+                    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_inner <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_inner <span class="hl opt">&lt;</span> <span class="hl num">4</span><span class="hl opt">;</span> x_inner<span class="hl opt">++) {</span>
+                        <span class="hl kwb">int</span> x <span class="hl opt">=</span> x_base <span class="hl opt">+</span> x_inner<span class="hl opt">;</span>
+                        <span class="hl kwb">int</span> y <span class="hl opt">=</span> y_base <span class="hl opt">+</span> y_inner<span class="hl opt">;</span>
+                        result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">] =</span>
+                            <span class="hl opt">(</span>producer_storage<span class="hl opt">[</span>y <span class="hl opt">-</span> y_base<span class="hl opt">][</span>x <span class="hl opt">-</span> x_base<span class="hl opt">] +</span>
+                             producer_storage<span class="hl opt">[</span>y <span class="hl opt">-</span> y_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">][</span>x <span class="hl opt">-</span> x_base<span class="hl opt">] +</span>
+                             producer_storage<span class="hl opt">[</span>y <span class="hl opt">-</span> y_base<span class="hl opt">][</span>x <span class="hl opt">-</span> x_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">] +</span>
+                             producer_storage<span class="hl opt">[</span>y <span class="hl opt">-</span> y_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">][</span>x <span class="hl opt">-</span> x_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">]) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+                    <span class="hl opt">}</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_543");'><b id=_543-show>// Click to show output ...</b></a><div id=_543 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce consumer_tile:
+ >   for y.y_outer:
+ >     for x.x_outer:
+ >       produce producer_tile:
+ >         for y:
+ >           for x:
+ >             producer_tile(...) = ...
+ >       consume producer_tile:
+ >         for y.y_inner in [0, 3]:
+ >           for x.x_inner in [0, 3]:
+ >             consumer_tile(...) = ...
+
+</b></div>
+
+        <span class="hl slc">// Tiling can make sense for problems like this one with</span>
+        <span class="hl slc">// stencils that reach outwards in x and y. Each tile can be</span>
+        <span class="hl slc">// computed independently in parallel, and the redundant work</span>
+        <span class="hl slc">// done by each tile isn&apos;t so bad once the tiles get large</span>
+        <span class="hl slc">// enough.</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// Let&apos;s try a mixed strategy that combines what we have done with</span>
+    <span class="hl slc">// splitting, parallelizing, and vectorizing. This is one that</span>
+    <span class="hl slc">// often works well in practice for large images. If you</span>
+    <span class="hl slc">// understand this schedule, then you understand 95% of scheduling</span>
+    <span class="hl slc">// in Halide.</span>
+    <span class="hl opt">{</span>
+        Func <span class="hl kwd">producer</span><span class="hl opt">(</span><span class="hl str">&quot;producer_mixed&quot;</span><span class="hl opt">),</span> <span class="hl kwd">consumer</span><span class="hl opt">(</span><span class="hl str">&quot;consumer_mixed&quot;</span><span class="hl opt">);</span>
+        <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) =</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x <span class="hl opt">*</span> y<span class="hl opt">);</span>
+        <span class="hl kwd">consumer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) = (</span><span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y<span class="hl opt">) +</span>
+                          <span class="hl kwd">producer</span><span class="hl opt">(</span>x <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">)) /</span> <span class="hl num">4</span><span class="hl opt">;</span>
+
+        <span class="hl slc">// Split the y coordinate of the consumer into strips of 16 scanlines:</span>
+        Var yo<span class="hl opt">,</span> yi<span class="hl opt">;</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">split</span><span class="hl opt">(</span>y<span class="hl opt">,</span> yo<span class="hl opt">,</span> yi<span class="hl opt">,</span> <span class="hl num">16</span><span class="hl opt">);</span>
+        <span class="hl slc">// Compute the strips using a thread pool and a task queue.</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">parallel</span><span class="hl opt">(</span>yo<span class="hl opt">);</span>
+        <span class="hl slc">// Vectorize across x by a factor of four.</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// Now store the producer per-strip. This will be 17 scanlines</span>
+        <span class="hl slc">// of the producer (16+1), but hopefully it will fold down</span>
+        <span class="hl slc">// into a circular buffer of two scanlines:</span>
+        producer<span class="hl opt">.</span><span class="hl kwd">store_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> yo<span class="hl opt">);</span>
+        <span class="hl slc">// Within each strip, compute the producer per scanline of the</span>
+        <span class="hl slc">// consumer, skipping work done on previous scanlines.</span>
+        producer<span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>consumer<span class="hl opt">,</span> yi<span class="hl opt">);</span>
+        <span class="hl slc">// Also vectorize the producer (because sin is vectorizable on x86 using SSE).</span>
+        producer<span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl num">4</span><span class="hl opt">);</span>
+
+        <span class="hl slc">// Let&apos;s leave tracing off this time, because we&apos;re going to</span>
+        <span class="hl slc">// evaluate over a larger image.</span>
+        <span class="hl slc">// consumer.trace_stores();</span>
+        <span class="hl slc">// producer.trace_stores();</span>
+
+        Buffer<span class="hl opt">&lt;</span><span class="hl kwb">float</span><span class="hl opt">&gt;</span> halide_result <span class="hl opt">=</span> consumer<span class="hl opt">.</span><span class="hl kwd">realize</span><span class="hl opt">({</span><span class="hl num">160</span><span class="hl opt">,</span> <span class="hl num">160</span><span class="hl opt">});</span>
+
+        <span class="hl slc">// See below for a visualization.</span>
+
+         <span><video autoplay loop><source src= figures/lesson_08_mixed.mp4  />Your browser does not support the video tag :(</video></span>
+
+        <span class="hl slc">// Here&apos;s the equivalent (serial) C:</span>
+
+        <span class="hl kwb">float</span> c_result<span class="hl opt">[</span><span class="hl num">160</span><span class="hl opt">][</span><span class="hl num">160</span><span class="hl opt">];</span>
+
+        <span class="hl slc">// For every strip of 16 scanlines (this loop is parallel in</span>
+        <span class="hl slc">// the Halide version)</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> yo <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> yo <span class="hl opt">&lt;</span> <span class="hl num">160</span> <span class="hl opt">/</span> <span class="hl num">16</span> <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">;</span> yo<span class="hl opt">++) {</span>
+
+            <span class="hl slc">// 16 doesn&apos;t divide 160, so push the last slice upwards</span>
+            <span class="hl slc">// to fit within [0, 159] (see lesson 05).</span>
+            <span class="hl kwb">int</span> y_base <span class="hl opt">=</span> yo <span class="hl opt">*</span> <span class="hl num">16</span><span class="hl opt">;</span>
+            <span class="hl kwa">if</span> <span class="hl opt">(</span>y_base <span class="hl opt">&gt;</span> <span class="hl num">160</span> <span class="hl opt">-</span> <span class="hl num">16</span><span class="hl opt">)</span> y_base <span class="hl opt">=</span> <span class="hl num">160</span> <span class="hl opt">-</span> <span class="hl num">16</span><span class="hl opt">;</span>
+
+            <span class="hl slc">// Allocate a two-scanline circular buffer for the producer</span>
+            <span class="hl kwb">float</span> producer_storage<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">][</span><span class="hl num">161</span><span class="hl opt">];</span>
+
+            <span class="hl slc">// For every scanline in the strip of 16:</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> yi <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> yi <span class="hl opt">&lt;</span> <span class="hl num">16</span><span class="hl opt">;</span> yi<span class="hl opt">++) {</span>
+                <span class="hl kwb">int</span> y <span class="hl opt">=</span> y_base <span class="hl opt">+</span> yi<span class="hl opt">;</span>
+
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> py <span class="hl opt">=</span> y<span class="hl opt">;</span> py <span class="hl opt">&lt;</span> y <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">;</span> py<span class="hl opt">++) {</span>
+                    <span class="hl slc">// Skip scanlines already computed *within this task*</span>
+                    <span class="hl kwa">if</span> <span class="hl opt">(</span>yi <span class="hl opt">&gt;</span> <span class="hl num">0</span> <span class="hl opt">&amp;&amp;</span> py <span class="hl opt">==</span> y<span class="hl opt">)</span> <span class="hl kwa">continue</span><span class="hl opt">;</span>
+
+                    <span class="hl slc">// Compute this scanline of the producer in 4-wide vectors</span>
+                    <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_vec <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_vec <span class="hl opt">&lt;</span> <span class="hl num">160</span> <span class="hl opt">/</span> <span class="hl num">4</span> <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">;</span> x_vec<span class="hl opt">++) {</span>
+                        <span class="hl kwb">int</span> x_base <span class="hl opt">=</span> x_vec <span class="hl opt">*</span> <span class="hl num">4</span><span class="hl opt">;</span>
+                        <span class="hl slc">// 4 doesn&apos;t divide 161, so push the last vector left</span>
+                        <span class="hl slc">// (see lesson 05).</span>
+                        <span class="hl kwa">if</span> <span class="hl opt">(</span>x_base <span class="hl opt">&gt;</span> <span class="hl num">161</span> <span class="hl opt">-</span> <span class="hl num">4</span><span class="hl opt">)</span> x_base <span class="hl opt">=</span> <span class="hl num">161</span> <span class="hl opt">-</span> <span class="hl num">4</span><span class="hl opt">;</span>
+                        <span class="hl slc">// If you&apos;re on x86, Halide generates SSE code for this part:</span>
+                        <span class="hl kwb">int</span> x<span class="hl opt">[] = {</span>x_base<span class="hl opt">,</span> x_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> x_base <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">,</span> x_base <span class="hl opt">+</span> <span class="hl num">3</span><span class="hl opt">};</span>
+                        <span class="hl kwb">float</span> vec<span class="hl opt">[</span><span class="hl num">4</span><span class="hl opt">] = {</span><span class="hl kwd">sinf</span><span class="hl opt">(</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] *</span> py<span class="hl opt">),</span> <span class="hl kwd">sinf</span><span class="hl opt">(</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] *</span> py<span class="hl opt">),</span>
+                                        <span class="hl kwd">sinf</span><span class="hl opt">(</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">] *</span> py<span class="hl opt">),</span> <span class="hl kwd">sinf</span><span class="hl opt">(</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">] *</span> py<span class="hl opt">)};</span>
+                        producer_storage<span class="hl opt">[</span>py <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]] =</span> vec<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
+                        producer_storage<span class="hl opt">[</span>py <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]] =</span> vec<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
+                        producer_storage<span class="hl opt">[</span>py <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]] =</span> vec<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">];</span>
+                        producer_storage<span class="hl opt">[</span>py <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]] =</span> vec<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">];</span>
+                    <span class="hl opt">}</span>
+                <span class="hl opt">}</span>
+
+                <span class="hl slc">// Now compute consumer for this scanline:</span>
+                <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x_vec <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x_vec <span class="hl opt">&lt;</span> <span class="hl num">160</span> <span class="hl opt">/</span> <span class="hl num">4</span><span class="hl opt">;</span> x_vec<span class="hl opt">++) {</span>
+                    <span class="hl kwb">int</span> x_base <span class="hl opt">=</span> x_vec <span class="hl opt">*</span> <span class="hl num">4</span><span class="hl opt">;</span>
+                    <span class="hl slc">// Again, Halide&apos;s equivalent here uses SSE.</span>
+                    <span class="hl kwb">int</span> x<span class="hl opt">[] = {</span>x_base<span class="hl opt">,</span> x_base <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">,</span> x_base <span class="hl opt">+</span> <span class="hl num">2</span><span class="hl opt">,</span> x_base <span class="hl opt">+</span> <span class="hl num">3</span><span class="hl opt">};</span>
+                    <span class="hl kwb">float</span> vec<span class="hl opt">[] = {</span>
+                        <span class="hl opt">(</span>producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]] +</span>
+                         producer_storage<span class="hl opt">[(</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]] +</span>
+                         producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] +</span> <span class="hl num">1</span><span class="hl opt">] +</span>
+                         producer_storage<span class="hl opt">[(</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">] +</span> <span class="hl num">1</span><span class="hl opt">]) /</span>
+                            <span class="hl num">4</span><span class="hl opt">,</span>
+                        <span class="hl opt">(</span>producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]] +</span>
+                         producer_storage<span class="hl opt">[(</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]] +</span>
+                         producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] +</span> <span class="hl num">1</span><span class="hl opt">] +</span>
+                         producer_storage<span class="hl opt">[(</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">] +</span> <span class="hl num">1</span><span class="hl opt">]) /</span>
+                            <span class="hl num">4</span><span class="hl opt">,</span>
+                        <span class="hl opt">(</span>producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]] +</span>
+                         producer_storage<span class="hl opt">[(</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]] +</span>
+                         producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">] +</span> <span class="hl num">1</span><span class="hl opt">] +</span>
+                         producer_storage<span class="hl opt">[(</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">] +</span> <span class="hl num">1</span><span class="hl opt">]) /</span>
+                            <span class="hl num">4</span><span class="hl opt">,</span>
+                        <span class="hl opt">(</span>producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]] +</span>
+                         producer_storage<span class="hl opt">[(</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]] +</span>
+                         producer_storage<span class="hl opt">[</span>y <span class="hl opt">&amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">] +</span> <span class="hl num">1</span><span class="hl opt">] +</span>
+                         producer_storage<span class="hl opt">[(</span>y <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">) &amp;</span> <span class="hl num">1</span><span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">] +</span> <span class="hl num">1</span><span class="hl opt">]) /</span>
+                            <span class="hl num">4</span><span class="hl opt">};</span>
+
+                    c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">]] =</span> vec<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">];</span>
+                    c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">]] =</span> vec<span class="hl opt">[</span><span class="hl num">1</span><span class="hl opt">];</span>
+                    c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">]] =</span> vec<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">];</span>
+                    c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">]] =</span> vec<span class="hl opt">[</span><span class="hl num">3</span><span class="hl opt">];</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
+        <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+        <a onclick='return toggle("_669");'><b id=_669-show>// Click to show output ...</b></a><div id=_669 style= "display:none; background:#333333; color:#ffffff"><b>
+ > produce consumer_mixed:
+ >   parallel y.yo:
+ >     store producer_mixed:
+ >       for y.yi. in [-1, 15]:
+ >         produce producer_mixed:
+ >           for x.x:
+ >             vectorized x.v1 in [0, 3]:
+ >               producer_mixed(...) = ...
+ >         consume producer_mixed:
+ >           for x.x:
+ >             vectorized x.v0 in [0, 3]:
+ >               consumer_mixed(...) = ...
+
+</b></div>
+
+        <span class="hl slc">// Look on my code, ye mighty, and despair!</span>
+
+        <span class="hl slc">// Let&apos;s check the C result against the Halide result. Doing</span>
+        <span class="hl slc">// this I found several bugs in my C implementation, which</span>
+        <span class="hl slc">// should tell you something.</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> y <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> y <span class="hl opt">&lt;</span> <span class="hl num">160</span><span class="hl opt">;</span> y<span class="hl opt">++) {</span>
+            <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> x <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> x <span class="hl opt">&lt;</span> <span class="hl num">160</span><span class="hl opt">;</span> x<span class="hl opt">++) {</span>
+                <span class="hl kwb">float</span> error <span class="hl opt">=</span> <span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">) -</span> c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">];</span>
+                <span class="hl slc">// It&apos;s floating-point math, so we&apos;ll allow some slop:</span>
+                <span class="hl kwa">if</span> <span class="hl opt">(</span>error <span class="hl opt">&lt; -</span><span class="hl num">0.001</span>f <span class="hl opt">||</span> error <span class="hl opt">&gt;</span> <span class="hl num">0.001</span>f<span class="hl opt">) {</span>
+                    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;halide_result(%d, %d) = %f instead of %f</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">,</span>
+                           x<span class="hl opt">,</span> y<span class="hl opt">,</span> <span class="hl kwd">halide_result</span><span class="hl opt">(</span>x<span class="hl opt">,</span> y<span class="hl opt">),</span> c_result<span class="hl opt">[</span>y<span class="hl opt">][</span>x<span class="hl opt">]);</span>
+                    <span class="hl kwa">return</span> <span class="hl opt">-</span><span class="hl num">1</span><span class="hl opt">;</span>
+                <span class="hl opt">}</span>
+            <span class="hl opt">}</span>
+        <span class="hl opt">}</span>
+    <span class="hl opt">}</span>
+
+    <span class="hl slc">// This stuff is hard. We ended up in a three-way trade-off</span>
+    <span class="hl slc">// between memory bandwidth, redundant work, and</span>
+    <span class="hl slc">// parallelism. Halide can&apos;t make the correct choice for you</span>
+    <span class="hl slc">// automatically (sorry). Instead it tries to make it easier for</span>
+    <span class="hl slc">// you to explore various options, without messing up your</span>
+    <span class="hl slc">// program. In fact, Halide promises that scheduling calls like</span>
+    <span class="hl slc">// compute_root won&apos;t change the meaning of your algorithm -- you</span>
+    <span class="hl slc">// should get the same bits back no matter how you schedule</span>
+    <span class="hl slc">// things.</span>
+
+    <span class="hl slc">// So be empirical! Experiment with various schedules and keep a</span>
+    <span class="hl slc">// log of performance. Form hypotheses and then try to prove</span>
+    <span class="hl slc">// yourself wrong. Don&apos;t assume that you just need to vectorize</span>
+    <span class="hl slc">// your code by a factor of four and run it on eight cores and</span>
+    <span class="hl slc">// you&apos;ll get 32x faster. This almost never works. Modern systems</span>
+    <span class="hl slc">// are complex enough that you can&apos;t predict performance reliably</span>
+    <span class="hl slc">// without running your code.</span>
+
+    <span class="hl slc">// We suggest you start by scheduling all of your non-trivial</span>
+    <span class="hl slc">// stages compute_root, and then work from the end of the pipeline</span>
+    <span class="hl slc">// upwards, inlining, parallelizing, and vectorizing each stage in</span>
+    <span class="hl slc">// turn until you reach the top.</span>
+
+    <span class="hl slc">// Halide is not just about vectorizing and parallelizing your</span>
+    <span class="hl slc">// code. That&apos;s not enough to get you very far. Halide is about</span>
+    <span class="hl slc">// giving you tools that help you quickly explore different</span>
+    <span class="hl slc">// trade-offs between locality, redundant work, and parallelism,</span>
+    <span class="hl slc">// without messing up the actual result you&apos;re trying to compute.</span>
+
+    <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Success!</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
+    <span class="hl kwa">return</span> <span class="hl num">0</span><span class="hl opt">;</span>
+<span class="hl opt">}</span>
 </pre>
 </div></body></html>
