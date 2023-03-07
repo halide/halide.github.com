@@ -429,7 +429,7 @@ tutorial_lesson_21_auto_scheduler_run.html
  > Finding intrinsics...
  > Hoisting prefetches...
  > Lowering after final simplification:
- > assert((uint64)reinterpret((halide_buffer_t *)gradient.buffer) != (uint64)0, halide_error_buffer_argument_is_null("gradient"))
+ > assert(reinterpret<uint64>((halide_buffer_t *)gradient.buffer) != (uint64)0, halide_error_buffer_argument_is_null("gradient"))
  > let gradient = (void *)_halide_buffer_get_host((halide_buffer_t *)gradient.buffer)
  > let gradient.type = (uint32)_halide_buffer_get_type((halide_buffer_t *)gradient.buffer)
  > let gradient.device_dirty = (uint1)_halide_buffer_get_device_dirty((halide_buffer_t *)gradient.buffer)
@@ -441,7 +441,7 @@ tutorial_lesson_21_auto_scheduler_run.html
  > let gradient.extent.1 = _halide_buffer_get_extent((halide_buffer_t *)gradient.buffer, 1)
  > let gradient.stride.1 = _halide_buffer_get_stride((halide_buffer_t *)gradient.buffer, 1)
  > if ((uint1)_halide_buffer_is_bounds_query((halide_buffer_t *)gradient.buffer)) {
- >  (halide_buffer_t *)_halide_buffer_init((halide_buffer_t *)gradient.buffer, (halide_dimension_t *)_halide_buffer_get_shape((halide_buffer_t *)gradient.buffer), (void *)reinterpret((uint64)0), (uint64)0, (halide_device_interface_t *)reinterpret((uint64)0), 0, 32, 2, (halide_dimension_t *)make_struct(gradient.min.0, gradient.extent.0, 1, 0, gradient.min.1, gradient.extent.1, gradient.extent.0, 0), (uint64)0)
+ >  (halide_buffer_t *)_halide_buffer_init((halide_buffer_t *)gradient.buffer, (halide_dimension_t *)_halide_buffer_get_shape((halide_buffer_t *)gradient.buffer), reinterpret<(void *)>((uint64)0), (uint64)0, reinterpret<(halide_device_interface_t *)>((uint64)0), 0, 32, 2, (halide_dimension_t *)make_struct(gradient.min.0, gradient.extent.0, 1, 0, gradient.min.1, gradient.extent.1, gradient.extent.0, 0), (uint64)0)
  > }
  > if (!(uint1)_halide_buffer_is_bounds_query((halide_buffer_t *)gradient.buffer)) {
  >  assert(gradient.type == (uint32)73728, halide_error_bad_type("Output buffer gradient", gradient.type, (uint32)73728))
@@ -454,7 +454,7 @@ tutorial_lesson_21_auto_scheduler_run.html
  >  assert((uint64)abs(int64(gradient.extent.1)*int64(gradient.stride.1)) <= (uint64)2147483647, halide_error_buffer_allocation_too_large("gradient", (uint64)abs(int64(gradient.extent.1)*int64(gradient.stride.1)), (uint64)2147483647))
  >  assert(gradient.total_extent.1 <= (int64)2147483647, halide_error_buffer_extents_too_large("gradient", gradient.total_extent.1, (int64)2147483647))
  >  assert(!gradient.device_dirty, halide_error_device_dirty_with_no_device_support("Output buffer gradient"))
- >  assert(gradient != (void *)reinterpret((uint64)0), halide_error_host_is_null("Output buffer gradient"))
+ >  assert(gradient != reinterpret<(void *)>((uint64)0), halide_error_host_is_null("Output buffer gradient"))
  >  produce gradient {
  >   let t2 = 0 - (gradient.min.1*gradient.stride.1)
  >   let t1 = gradient.min.0 + gradient.min.1
@@ -469,6 +469,7 @@ tutorial_lesson_21_auto_scheduler_run.html
  > }
  > Skipping Hexagon offload...
  > Skipping GPU offload...
+ > Lowering Parallel Tasks...
  > Target triple of initial module: x86_64--linux-gnu
  > Generating llvm bitcode...
  > Generating llvm bitcode prolog for function gradient...
@@ -523,7 +524,7 @@ tutorial_lesson_21_auto_scheduler_run.html
  > Finding intrinsics...
  > Hoisting prefetches...
  > Lowering after final simplification:
- > assert((uint64)reinterpret((halide_buffer_t *)gradient.buffer) != (uint64)0, halide_error_buffer_argument_is_null("gradient"))
+ > assert(reinterpret<uint64>((halide_buffer_t *)gradient.buffer) != (uint64)0, halide_error_buffer_argument_is_null("gradient"))
  > let gradient = (void *)_halide_buffer_get_host((halide_buffer_t *)gradient.buffer)
  > let gradient.type = (uint32)_halide_buffer_get_type((halide_buffer_t *)gradient.buffer)
  > let gradient.device_dirty = (uint1)_halide_buffer_get_device_dirty((halide_buffer_t *)gradient.buffer)
@@ -535,7 +536,7 @@ tutorial_lesson_21_auto_scheduler_run.html
  > let gradient.extent.1 = _halide_buffer_get_extent((halide_buffer_t *)gradient.buffer, 1)
  > let gradient.stride.1 = _halide_buffer_get_stride((halide_buffer_t *)gradient.buffer, 1)
  > if ((uint1)_halide_buffer_is_bounds_query((halide_buffer_t *)gradient.buffer)) {
- >  (halide_buffer_t *)_halide_buffer_init((halide_buffer_t *)gradient.buffer, (halide_dimension_t *)_halide_buffer_get_shape((halide_buffer_t *)gradient.buffer), (void *)reinterpret((uint64)0), (uint64)0, (halide_device_interface_t *)reinterpret((uint64)0), 0, 32, 2, (halide_dimension_t *)make_struct(gradient.min.0, gradient.extent.0, 1, 0, gradient.min.1, gradient.extent.1, gradient.extent.0, 0), (uint64)0)
+ >  (halide_buffer_t *)_halide_buffer_init((halide_buffer_t *)gradient.buffer, (halide_dimension_t *)_halide_buffer_get_shape((halide_buffer_t *)gradient.buffer), reinterpret<(void *)>((uint64)0), (uint64)0, reinterpret<(halide_device_interface_t *)>((uint64)0), 0, 32, 2, (halide_dimension_t *)make_struct(gradient.min.0, gradient.extent.0, 1, 0, gradient.min.1, gradient.extent.1, gradient.extent.0, 0), (uint64)0)
  > }
  > if (!(uint1)_halide_buffer_is_bounds_query((halide_buffer_t *)gradient.buffer)) {
  >  assert(gradient.type == (uint32)73728, halide_error_bad_type("Output buffer gradient", gradient.type, (uint32)73728))
@@ -548,7 +549,7 @@ tutorial_lesson_21_auto_scheduler_run.html
  >  assert((uint64)abs(int64(gradient.extent.1)*int64(gradient.stride.1)) <= (uint64)2147483647, halide_error_buffer_allocation_too_large("gradient", (uint64)abs(int64(gradient.extent.1)*int64(gradient.stride.1)), (uint64)2147483647))
  >  assert(gradient.total_extent.1 <= (int64)2147483647, halide_error_buffer_extents_too_large("gradient", gradient.total_extent.1, (int64)2147483647))
  >  assert(!gradient.device_dirty, halide_error_device_dirty_with_no_device_support("Output buffer gradient"))
- >  assert(gradient != (void *)reinterpret((uint64)0), halide_error_host_is_null("Output buffer gradient"))
+ >  assert(gradient != reinterpret<(void *)>((uint64)0), halide_error_host_is_null("Output buffer gradient"))
  >  produce gradient {
  >   let t7 = 0 - (gradient.min.1*gradient.stride.1)
  >   let t6 = gradient.min.0 + gradient.min.1
@@ -563,6 +564,7 @@ tutorial_lesson_21_auto_scheduler_run.html
  > }
  > Skipping Hexagon offload...
  > Skipping GPU offload...
+ > Lowering Parallel Tasks...
  > Module.compile(): stmt_html gradient.html
 
 </b></div>

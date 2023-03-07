@@ -1344,15 +1344,15 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_543");'><b id=_543-show>// Click to show output ...</b></a><div id=_543 style= "display:none; background:#333333; color:#ffffff"><b>
  > produce consumer_tile:
- >   for y.y_outer:
- >     for x.x_outer:
+ >   for y.v1:
+ >     for x.v0:
  >       produce producer_tile:
  >         for y:
  >           for x:
  >             producer_tile(...) = ...
  >       consume producer_tile:
- >         for y.y_inner in [0, 3]:
- >           for x.x_inner in [0, 3]:
+ >         for y.v3 in [0, 3]:
+ >           for x.v2 in [0, 3]:
  >             consumer_tile(...) = ...
 
 </b></div>
@@ -1412,12 +1412,8 @@ tutorial_lesson_21_auto_scheduler_run.html
 
         <span class="hl slc">// For every strip of 16 scanlines (this loop is parallel in</span>
         <span class="hl slc">// the Halide version)</span>
-        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> yo <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> yo <span class="hl opt">&lt;</span> <span class="hl num">160</span> <span class="hl opt">/</span> <span class="hl num">16</span> <span class="hl opt">+</span> <span class="hl num">1</span><span class="hl opt">;</span> yo<span class="hl opt">++) {</span>
-
-            <span class="hl slc">// 16 doesn&apos;t divide 160, so push the last slice upwards</span>
-            <span class="hl slc">// to fit within [0, 159] (see lesson 05).</span>
+        <span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwb">int</span> yo <span class="hl opt">=</span> <span class="hl num">0</span><span class="hl opt">;</span> yo <span class="hl opt">&lt;</span> <span class="hl num">160</span> <span class="hl opt">/</span> <span class="hl num">16</span><span class="hl opt">;</span> yo<span class="hl opt">++) {</span>
             <span class="hl kwb">int</span> y_base <span class="hl opt">=</span> yo <span class="hl opt">*</span> <span class="hl num">16</span><span class="hl opt">;</span>
-            <span class="hl kwa">if</span> <span class="hl opt">(</span>y_base <span class="hl opt">&gt;</span> <span class="hl num">160</span> <span class="hl opt">-</span> <span class="hl num">16</span><span class="hl opt">)</span> y_base <span class="hl opt">=</span> <span class="hl num">160</span> <span class="hl opt">-</span> <span class="hl num">16</span><span class="hl opt">;</span>
 
             <span class="hl slc">// Allocate a two-scanline circular buffer for the producer</span>
             <span class="hl kwb">float</span> producer_storage<span class="hl opt">[</span><span class="hl num">2</span><span class="hl opt">][</span><span class="hl num">161</span><span class="hl opt">];</span>
@@ -1484,18 +1480,18 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;Pseudo-code for the schedule:</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         consumer<span class="hl opt">.</span><span class="hl kwd">print_loop_nest</span><span class="hl opt">();</span>
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
-        <a onclick='return toggle("_669");'><b id=_669-show>// Click to show output ...</b></a><div id=_669 style= "display:none; background:#333333; color:#ffffff"><b>
+        <a onclick='return toggle("_665");'><b id=_665-show>// Click to show output ...</b></a><div id=_665 style= "display:none; background:#333333; color:#ffffff"><b>
  > produce consumer_mixed:
- >   parallel y.yo:
+ >   parallel y.v4:
  >     store producer_mixed:
- >       for y.yi. in [-1, 15]:
+ >       for y.v5. in [-1, 15]:
  >         produce producer_mixed:
  >           for x.x:
- >             vectorized x.v1 in [0, 3]:
+ >             vectorized x.v7 in [0, 3]:
  >               producer_mixed(...) = ...
  >         consume producer_mixed:
  >           for x.x:
- >             vectorized x.v0 in [0, 3]:
+ >             vectorized x.v6 in [0, 3]:
  >               consumer_mixed(...) = ...
 
 </b></div>

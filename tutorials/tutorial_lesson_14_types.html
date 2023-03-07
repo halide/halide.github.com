@@ -415,12 +415,12 @@ Expr <span class="hl kwd">average</span><span class="hl opt">(</span>Expr a<span
         <span class="hl slc">// You can also query any defined Func for the types it produces.</span>
         Func f1<span class="hl opt">;</span>
         <span class="hl kwd">f1</span><span class="hl opt">(</span>x<span class="hl opt">) =</span> cast<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;(</span>x<span class="hl opt">);</span>
-        <span class="hl kwa">assert</span><span class="hl opt">(</span>f1<span class="hl opt">.</span><span class="hl kwd">output_types</span><span class="hl opt">()[</span><span class="hl num">0</span><span class="hl opt">] ==</span> <span class="hl kwd">UInt</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">));</span>
+        <span class="hl kwa">assert</span><span class="hl opt">(</span>f1<span class="hl opt">.</span><span class="hl kwd">types</span><span class="hl opt">()[</span><span class="hl num">0</span><span class="hl opt">] ==</span> <span class="hl kwd">UInt</span><span class="hl opt">(</span><span class="hl num">8</span><span class="hl opt">));</span>
 
         Func f2<span class="hl opt">;</span>
         <span class="hl kwd">f2</span><span class="hl opt">(</span>x<span class="hl opt">) = {</span>x<span class="hl opt">,</span> <span class="hl kwd">sin</span><span class="hl opt">(</span>x<span class="hl opt">)};</span>
-        <span class="hl kwa">assert</span><span class="hl opt">(</span>f2<span class="hl opt">.</span><span class="hl kwd">output_types</span><span class="hl opt">()[</span><span class="hl num">0</span><span class="hl opt">] ==</span> <span class="hl kwd">Int</span><span class="hl opt">(</span><span class="hl num">32</span><span class="hl opt">) &amp;&amp;</span>
-               f2<span class="hl opt">.</span><span class="hl kwd">output_types</span><span class="hl opt">()[</span><span class="hl num">1</span><span class="hl opt">] ==</span> <span class="hl kwd">Float</span><span class="hl opt">(</span><span class="hl num">32</span><span class="hl opt">));</span>
+        <span class="hl kwa">assert</span><span class="hl opt">(</span>f2<span class="hl opt">.</span><span class="hl kwd">types</span><span class="hl opt">()[</span><span class="hl num">0</span><span class="hl opt">] ==</span> <span class="hl kwd">Int</span><span class="hl opt">(</span><span class="hl num">32</span><span class="hl opt">) &amp;&amp;</span>
+               f2<span class="hl opt">.</span><span class="hl kwd">types</span><span class="hl opt">()[</span><span class="hl num">1</span><span class="hl opt">] ==</span> <span class="hl kwd">Float</span><span class="hl opt">(</span><span class="hl num">32</span><span class="hl opt">));</span>
     <span class="hl opt">}</span>
 
     <span class="hl slc">// Type promotion rules.</span>

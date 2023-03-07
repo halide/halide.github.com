@@ -368,10 +368,10 @@ tutorial_lesson_21_auto_scheduler_run.html
     <span class="hl slc">// member variables. They&apos;ll appear in the signature of our generated</span>
     <span class="hl slc">// function in the same order as we declare them.</span>
     Input<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> offset<span class="hl opt">{</span><span class="hl str">&quot;offset&quot;</span><span class="hl opt">};</span>
-    Input<span class="hl opt">&lt;</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;&gt;</span> input<span class="hl opt">{</span><span class="hl str">&quot;input&quot;</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">};</span>
+    Input<span class="hl opt">&lt;</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">&gt;&gt;</span> input<span class="hl opt">{</span><span class="hl str">&quot;input&quot;</span><span class="hl opt">};</span>
 
     <span class="hl slc">// We also declare the Outputs as public member variables.</span>
-    Output<span class="hl opt">&lt;</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;&gt;</span> brighter<span class="hl opt">{</span><span class="hl str">&quot;brighter&quot;</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">};</span>
+    Output<span class="hl opt">&lt;</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">&gt;&gt;</span> brighter<span class="hl opt">{</span><span class="hl str">&quot;brighter&quot;</span><span class="hl opt">};</span>
 
     <span class="hl slc">// Typically you declare your Vars at this scope as well, so that</span>
     <span class="hl slc">// they can be used in any helper methods you add later.</span>
@@ -433,12 +433,12 @@ tutorial_lesson_21_auto_scheduler_run.html
 
     <span class="hl slc">// We&apos;ll use the same Inputs as before:</span>
     Input<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;</span> offset<span class="hl opt">{</span><span class="hl str">&quot;offset&quot;</span><span class="hl opt">};</span>
-    Input<span class="hl opt">&lt;</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">&gt;&gt;</span> input<span class="hl opt">{</span><span class="hl str">&quot;input&quot;</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">};</span>
+    Input<span class="hl opt">&lt;</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">uint8_t</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">&gt;&gt;</span> input<span class="hl opt">{</span><span class="hl str">&quot;input&quot;</span><span class="hl opt">};</span>
 
     <span class="hl slc">// And a similar Output. Note that we don&apos;t specify a type for the Buffer:</span>
     <span class="hl slc">// at compile-time, we must specify an explicit type via the &quot;output.type&quot;</span>
     <span class="hl slc">// GeneratorParam (which is implicitly defined for this Output).</span>
-    Output<span class="hl opt">&lt;</span>Buffer<span class="hl opt">&lt;&gt;&gt;</span> output<span class="hl opt">{</span><span class="hl str">&quot;output&quot;</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">};</span>
+    Output<span class="hl opt">&lt;</span>Buffer<span class="hl opt">&lt;</span><span class="hl kwb">void</span><span class="hl opt">,</span> <span class="hl num">2</span><span class="hl opt">&gt;&gt;</span> output<span class="hl opt">{</span><span class="hl str">&quot;output&quot;</span><span class="hl opt">};</span>
 
     <span class="hl slc">// And we&apos;ll declare our Vars here as before.</span>
     Var x<span class="hl opt">,</span> y<span class="hl opt">;</span>
@@ -491,7 +491,7 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwa">if</span> <span class="hl opt">(</span>rotation <span class="hl opt">!=</span> <span class="hl kwc">Rotation</span><span class="hl opt">::</span>None<span class="hl opt">) {</span>
             rotated
                 <span class="hl opt">.</span><span class="hl kwd">compute_at</span><span class="hl opt">(</span>output<span class="hl opt">,</span> y<span class="hl opt">)</span>
-                <span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl kwd">natural_vector_size</span><span class="hl opt">(</span>rotated<span class="hl opt">.</span><span class="hl kwd">output_types</span><span class="hl opt">()[</span><span class="hl num">0</span><span class="hl opt">]));</span>
+                <span class="hl opt">.</span><span class="hl kwd">vectorize</span><span class="hl opt">(</span>x<span class="hl opt">,</span> <span class="hl kwd">natural_vector_size</span><span class="hl opt">(</span>rotated<span class="hl opt">.</span><span class="hl kwd">types</span><span class="hl opt">()[</span><span class="hl num">0</span><span class="hl opt">]));</span>
         <span class="hl opt">}</span>
     <span class="hl opt">}</span>
 <span class="hl opt">};</span>
