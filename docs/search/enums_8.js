@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['kind_0',['Kind',['../struct_halide_1_1_argument.html#aee62e5cc903afddd64fcc689b7359659',1,'Halide::Argument::Kind()'],['../class_halide_1_1_internal_1_1_object_instance_registry.html#a0e2e38e50a26fb81ebc62963b8483377',1,'Halide::Internal::ObjectInstanceRegistry::Kind()']]]
+  ['integersuffixstyle_19941',['IntegerSuffixStyle',['../class_halide_1_1_internal_1_1_code_gen___c.html#a2d46584095101ab992e5b49202127d4a',1,'Halide::Internal::CodeGen_C']]],
+  ['intrinsicop_19942',['IntrinsicOp',['../struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974',1,'Halide::Internal::Call']]],
+  ['irnodetype_19943',['IRNodeType',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2',1,'Halide::Internal']]]
 ];

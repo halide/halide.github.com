@@ -1,6 +1,6 @@
 var _target_8h =
 [
-    [ "Halide::Target", "struct_halide_1_1_target.html", "struct_halide_1_1_target" ],
+    [ "Target", "struct_halide_1_1_target.html", "struct_halide_1_1_target" ],
     [ "get_host_target", "_target_8h.html#a0ae94266acfeba1bce3298e333ba4b8c", null ],
     [ "get_target_from_environment", "_target_8h.html#ab25236e75d4d73bee045028da680215d", null ],
     [ "get_jit_target_from_environment", "_target_8h.html#a9d2cf046902155db63e83374f23a47b5", null ],

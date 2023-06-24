@@ -1,6 +1,7 @@
 var struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var =
 [
     [ "FuncVar", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var.html#a00b60cde9c9ddb461886e50f099c0d08", null ],
+    [ "FuncVar", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var.html#a00b60cde9c9ddb461886e50f099c0d08", null ],
     [ "orig", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var.html#a3340102bb3f015740b962d98e75f1f38", null ],
     [ "var", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var.html#a9df868628c6ae9da9c6186d494a59256", null ],
     [ "accessor", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var.html#ac32d4bcf7cb650bf047bd605212e12dc", null ],
@@ -11,5 +12,7 @@ var struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedul
     [ "parallel", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var.html#a3aa14296f6651e08faad27fc745d6de5", null ],
     [ "exists", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var.html#a3e24fce91949eed6a1ea515137bf026f", null ],
     [ "pure", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var.html#a2e33947be214122d4c5894b43a671eb9", null ],
-    [ "constant_extent", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var.html#a3346ef66b51693b09d1b0014233c2824", null ]
+    [ "constant_extent", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var.html#a3346ef66b51693b09d1b0014233c2824", null ],
+    [ "vectorized", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var.html#ab1fffe913f2b78e69a35e58f53ddcf12", null ],
+    [ "gpu_threads", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_stage_schedule_state_1_1_func_var.html#a67bae8d2437cb88262ff1c596b2085b4", null ]
 ];

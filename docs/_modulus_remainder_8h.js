@@ -1,6 +1,7 @@
 var _modulus_remainder_8h =
 [
-    [ "Halide::Internal::ModulusRemainder", "struct_halide_1_1_internal_1_1_modulus_remainder.html", "struct_halide_1_1_internal_1_1_modulus_remainder" ],
+    [ "Scope", "class_halide_1_1_internal_1_1_scope.html", "class_halide_1_1_internal_1_1_scope" ],
+    [ "ModulusRemainder", "struct_halide_1_1_internal_1_1_modulus_remainder.html", "struct_halide_1_1_internal_1_1_modulus_remainder" ],
     [ "operator+", "_modulus_remainder_8h.html#a4287e047c221ec0bd503eca610e59cd1", null ],
     [ "operator-", "_modulus_remainder_8h.html#ade4ed3e58311ee5699c067d4a6c53c2d", null ],
     [ "operator*", "_modulus_remainder_8h.html#a4fc51636317f397ae70e341f81805f8e", null ],

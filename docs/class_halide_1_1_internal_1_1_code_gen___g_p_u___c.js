@@ -2,7 +2,8 @@ var class_halide_1_1_internal_1_1_code_gen___g_p_u___c =
 [
     [ "VectorDeclarationStyle", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a53525a60843b0de22b88c83238c51bc0", [
       [ "CLikeSyntax", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a53525a60843b0de22b88c83238c51bc0a04f41a104976e22d96fca55fcf2525ee", null ],
-      [ "OpenCLSyntax", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a53525a60843b0de22b88c83238c51bc0aa42fa9bdb16015c93c4584cde76e7f19", null ]
+      [ "OpenCLSyntax", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a53525a60843b0de22b88c83238c51bc0aa42fa9bdb16015c93c4584cde76e7f19", null ],
+      [ "WGSLSyntax", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a53525a60843b0de22b88c83238c51bc0a0229d2efb306bc13e94d1f0d652d74c0", null ]
     ] ],
     [ "CodeGen_GPU_C", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a5fc9700d37516ecac29b4beb104de5a3", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a7028e01449df6510a7ca4e9a1fe8f2d6", null ],

@@ -1,6 +1,6 @@
 var mini__cuda_8h =
 [
-    [ "Halide::Runtime::Internal::Cuda::CUDA_MEMCPY3D_st", "struct_halide_1_1_runtime_1_1_internal_1_1_cuda_1_1_c_u_d_a___m_e_m_c_p_y3_d__st.html", "struct_halide_1_1_runtime_1_1_internal_1_1_cuda_1_1_c_u_d_a___m_e_m_c_p_y3_d__st" ],
+    [ "CUDA_MEMCPY3D_st", "struct_halide_1_1_runtime_1_1_internal_1_1_cuda_1_1_c_u_d_a___m_e_m_c_p_y3_d__st.html", "struct_halide_1_1_runtime_1_1_internal_1_1_cuda_1_1_c_u_d_a___m_e_m_c_p_y3_d__st" ],
     [ "CUDAAPI", "mini__cuda_8h.html#ab85967b2c9c337aa3174818a4e51d8ce", null ],
     [ "CU_POINTER_ATTRIBUTE_CONTEXT", "mini__cuda_8h.html#abe8cdd317f9352b14726bb7ff9f19f33", null ],
     [ "CUdeviceptr", "mini__cuda_8h.html#a39f755dadfe9d84a4499bc3e03db76be", null ],

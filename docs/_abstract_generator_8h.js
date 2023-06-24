@@ -1,7 +1,7 @@
 var _abstract_generator_8h =
 [
-    [ "Halide::Internal::AbstractGenerator", "class_halide_1_1_internal_1_1_abstract_generator.html", "class_halide_1_1_internal_1_1_abstract_generator" ],
-    [ "Halide::Internal::AbstractGenerator::ArgInfo", "struct_halide_1_1_internal_1_1_abstract_generator_1_1_arg_info.html", "struct_halide_1_1_internal_1_1_abstract_generator_1_1_arg_info" ],
+    [ "AbstractGenerator", "class_halide_1_1_internal_1_1_abstract_generator.html", "class_halide_1_1_internal_1_1_abstract_generator" ],
+    [ "ArgInfo", "struct_halide_1_1_internal_1_1_abstract_generator_1_1_arg_info.html", "struct_halide_1_1_internal_1_1_abstract_generator_1_1_arg_info" ],
     [ "GeneratorParamsMap", "_abstract_generator_8h.html#a21f90ebbb3e77c7ef7cd181827c939e6", null ],
     [ "AbstractGeneratorPtr", "_abstract_generator_8h.html#abe4d31467b793cfffa246dd75f7e43ec", null ],
     [ "ArgInfoKind", "_abstract_generator_8h.html#a0396411abf88410baf6a6e6e41ea1419", [

@@ -11,5 +11,5 @@ var class_halide_1_1_internal_1_1_compiler_logger =
     [ "record_failed_to_prove", "class_halide_1_1_internal_1_1_compiler_logger.html#a9dae7897fde81ede93405ceafe7cbc19", null ],
     [ "record_object_code_size", "class_halide_1_1_internal_1_1_compiler_logger.html#a7205d8e4608e92e39ffd3fed75a2338b", null ],
     [ "record_compilation_time", "class_halide_1_1_internal_1_1_compiler_logger.html#ae8f0b19350634506066a03276808527b", null ],
-    [ "emit_to_stream", "class_halide_1_1_internal_1_1_compiler_logger.html#a356ed0235820efd8f322b3c1b9272d5d", null ]
+    [ "emit_to_stream", "class_halide_1_1_internal_1_1_compiler_logger.html#ab03cc7708c1a9280b92300cb8bec8c6e", null ]
 ];

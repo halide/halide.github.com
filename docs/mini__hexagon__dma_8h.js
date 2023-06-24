@@ -25,7 +25,7 @@ var mini__hexagon__dma_8h =
     [ "t_StDmaWrapper_RoiAlignInfo", "mini__hexagon__dma_8h.html#a1d0f2a42c74f0f3233d037d0a437106a", null ],
     [ "t_StDmaWrapper_DmaTransferSetup", "mini__hexagon__dma_8h.html#a6cb6f00e153200365aa229b702af5d4a", null ],
     [ "t_DmaWrapper_DmaEngineHandle", "mini__hexagon__dma_8h.html#a755ab36ea689b4a40eba91c22a1a1088", null ],
-    [ "HAP_cache_lock", "mini__hexagon__dma_8h.html#a832f78740556ad19f07dbb6bba48d482", null ],
+    [ "HAP_cache_lock", "mini__hexagon__dma_8h.html#a7e6302520f9867025eadd607591f3b80", null ],
     [ "HAP_cache_unlock", "mini__hexagon__dma_8h.html#afbf7c165d73d64ffbea62deda2ea4953", null ],
     [ "hDmaWrapper_AllocDma", "mini__hexagon__dma_8h.html#a8720805b716eb6883d5d38f560b172d8", null ],
     [ "nDmaWrapper_FreeDma", "mini__hexagon__dma_8h.html#a6c90e92f086a49600415364a66a35356", null ],

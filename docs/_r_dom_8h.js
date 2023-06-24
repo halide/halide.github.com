@@ -1,7 +1,8 @@
 var _r_dom_8h =
 [
-    [ "Halide::RVar", "class_halide_1_1_r_var.html", "class_halide_1_1_r_var" ],
-    [ "Halide::RDom", "class_halide_1_1_r_dom.html", "class_halide_1_1_r_dom" ],
-    [ "operator<<", "_r_dom_8h.html#a1308b3af26bff80b25e11227c7acbff8", null ],
-    [ "operator<<", "_r_dom_8h.html#a4b9059b1ce21bb4f6049d62bc6db1f69", null ]
+    [ "Buffer", "class_halide_1_1_buffer.html", "class_halide_1_1_buffer" ],
+    [ "RVar", "class_halide_1_1_r_var.html", "class_halide_1_1_r_var" ],
+    [ "RDom", "class_halide_1_1_r_dom.html", "class_halide_1_1_r_dom" ],
+    [ "operator<<", "_r_dom_8h.html#a4a59ae3e07905e1b92d87a1ec835b77f", null ],
+    [ "operator<<", "_r_dom_8h.html#a190e59daf23cf2899dd676749a8742cc", null ]
 ];

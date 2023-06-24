@@ -22,6 +22,7 @@ var mini__qurt_8h =
     [ "qurt_mutex_t", "mini__qurt_8h.html#aa5f3c37b281bff4be02457de1e07250e", null ],
     [ "qurt_size_t", "mini__qurt_8h.html#a7a8347f5611d503fb88f354d388745fa", null ],
     [ "qurt_mem_pool_t", "mini__qurt_8h.html#a517a4b46a7468ed607c2aa282bd6d8b9", null ],
+    [ "QURT_EOK", "mini__qurt_8h.html#a01f5219b9d06470ae977af153efcda1eab5e3da649795718484e57422b589322a", null ],
     [ "qurt_hvx_mode_t", "mini__qurt_8h.html#aadda49b6c7e9ab50c86af6f978839e74", [
       [ "QURT_HVX_MODE_64B", "mini__qurt_8h.html#aadda49b6c7e9ab50c86af6f978839e74a0edf57217d7f877544e07b138a9342ee", null ],
       [ "QURT_HVX_MODE_128B", "mini__qurt_8h.html#aadda49b6c7e9ab50c86af6f978839e74ac13526cab3a2fc1dc838c278308f6001", null ]

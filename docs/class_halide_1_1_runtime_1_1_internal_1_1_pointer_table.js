@@ -29,8 +29,8 @@ var class_halide_1_1_runtime_1_1_internal_1_1_pointer_table =
     [ "size", "class_halide_1_1_runtime_1_1_internal_1_1_pointer_table.html#a3213ed64e4384b73750fac20497a8664", null ],
     [ "operator[]", "class_halide_1_1_runtime_1_1_internal_1_1_pointer_table.html#ab770f2da23e4da74bf0b9dca24a1eb64", null ],
     [ "operator[]", "class_halide_1_1_runtime_1_1_internal_1_1_pointer_table.html#a6d5ea21dd23a570111e69a738997fc4a", null ],
-    [ "data", "class_halide_1_1_runtime_1_1_internal_1_1_pointer_table.html#acf316c53a1895138181fc8d7889d693f", null ],
-    [ "data", "class_halide_1_1_runtime_1_1_internal_1_1_pointer_table.html#a8936aeb38ad3a3356af508c5132404f4", null ],
+    [ "data", "class_halide_1_1_runtime_1_1_internal_1_1_pointer_table.html#a513054d01f71bfd5bc3394a8c83a31c3", null ],
+    [ "data", "class_halide_1_1_runtime_1_1_internal_1_1_pointer_table.html#a3788933d61be022e26461609d2ffe201", null ],
     [ "front", "class_halide_1_1_runtime_1_1_internal_1_1_pointer_table.html#a99d6c7a1a65bcd64c1ea910e5d3eb5d5", null ],
     [ "back", "class_halide_1_1_runtime_1_1_internal_1_1_pointer_table.html#adcfb72ee4b97dadc3c83c2891b1aed4a", null ],
     [ "current_allocator", "class_halide_1_1_runtime_1_1_internal_1_1_pointer_table.html#a0f488676dd3524fd6b036631a70f3cc4", null ]

@@ -5,7 +5,7 @@ var class_halide_1_1_loop_level =
     [ "LoopLevel", "class_halide_1_1_loop_level.html#a7aac3473158f1d29bf918a99790cfe00", null ],
     [ "stage_index", "class_halide_1_1_loop_level.html#a6e45672871dc6075858de7bf7a6f81a7", null ],
     [ "set", "class_halide_1_1_loop_level.html#a8b9ac48c7d169e903cf441055747f056", null ],
-    [ "lock", "class_halide_1_1_loop_level.html#af60d4834b510307ab9215bfb94ea02b5", null ],
+    [ "lock", "class_halide_1_1_loop_level.html#ab2fd64929d0d940549403ce3be8a576c", null ],
     [ "func", "class_halide_1_1_loop_level.html#a62ec62d4fe488a8633119d87fa19fb11", null ],
     [ "var", "class_halide_1_1_loop_level.html#a0b24fb3e4cb74b128ff19b91f7898592", null ],
     [ "defined", "class_halide_1_1_loop_level.html#ad15268edafb06fea3e43a86bbbbbf025", null ],
