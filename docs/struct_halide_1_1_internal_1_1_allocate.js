@@ -8,5 +8,6 @@ var struct_halide_1_1_internal_1_1_allocate =
     [ "condition", "struct_halide_1_1_internal_1_1_allocate.html#a32c726bdbb662a97281795138ee018c2", null ],
     [ "new_expr", "struct_halide_1_1_internal_1_1_allocate.html#a365336852b41d7a56bc5e9fb328bbf53", null ],
     [ "free_function", "struct_halide_1_1_internal_1_1_allocate.html#ab9b3da4d9218084cdfce82d724725317", null ],
+    [ "padding", "struct_halide_1_1_internal_1_1_allocate.html#ac1f34612daf0307498bdc04852bfd3cb", null ],
     [ "body", "struct_halide_1_1_internal_1_1_allocate.html#aac46648608a72fdd36f902e209797eb7", null ]
 ];

@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['phase_0',['Phase',['../class_halide_1_1_internal_1_1_compiler_logger.html#a3f39d9b3f91b90317a66be28338c7db7',1,'Halide::Internal::CompilerLogger::Phase()'],['../class_halide_1_1_internal_1_1_generator_base.html#a841aa4c08b4aee3965f7e024e8eab521',1,'Halide::Internal::GeneratorBase::Phase()']]],
-  ['prefetchboundstrategy_1',['PrefetchBoundStrategy',['../namespace_halide.html#a36b78b48c1fe9126344a218d07348f4d',1,'Halide']]],
-  ['printertype_2',['PrinterType',['../namespace_halide_1_1_runtime_1_1_internal.html#a724298c91ed488cb70fd581fdfa9c190',1,'Halide::Runtime::Internal']]],
-  ['processor_3',['Processor',['../struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9',1,'Halide::Target']]]
+  ['operator_19955',['Operator',['../struct_halide_1_1_internal_1_1_vector_reduce.html#ac69e8c35807dae662432c7964ae77f27',1,'Halide::Internal::VectorReduce']]],
+  ['optype_19956',['OpType',['../struct_halide_1_1_internal_1_1_pipeline_features.html#a24dd570f5cbc57c750aca4c0d82f418d',1,'Halide::Internal::PipelineFeatures::OpType()'],['../struct_halide_1_1_internal_1_1_pipeline_features.html#a24dd570f5cbc57c750aca4c0d82f418d',1,'Halide::Internal::PipelineFeatures::OpType()']]],
+  ['os_19957',['OS',['../struct_halide_1_1_target.html#af2b0caf9e5badd6a8ebe22493752df20',1,'Halide::Target']]],
+  ['outputfiletype_19958',['OutputFileType',['../namespace_halide.html#a789944ad1a1864bd2b4580e52d66b2af',1,'Halide']]],
+  ['outputkind_19959',['OutputKind',['../class_halide_1_1_internal_1_1_code_gen___c.html#a00541f7eab8b36568c7a6f9cb5c5f88d',1,'Halide::Internal::CodeGen_C']]]
 ];

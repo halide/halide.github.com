@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['referencetype_0',['ReferenceType',['../structhalide__handle__cplusplus__type.html#a5aef5cc2d2d1194b93e036af106f86fc',1,'halide_handle_cplusplus_type']]]
+  ['qurt_5fhvx_5fmode_5ft_19964',['qurt_hvx_mode_t',['../mini__qurt_8h.html#aadda49b6c7e9ab50c86af6f978839e74',1,'mini_qurt.h']]]
 ];

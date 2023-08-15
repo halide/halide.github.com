@@ -1344,15 +1344,15 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_543");'><b id=_543-show>// Click to show output ...</b></a><div id=_543 style= "display:none; background:#333333; color:#ffffff"><b>
  > produce consumer_tile:
- >   for y.v1:
- >     for x.v0:
+ >   for y.y_outer:
+ >     for x.x_outer:
  >       produce producer_tile:
  >         for y:
  >           for x:
  >             producer_tile(...) = ...
  >       consume producer_tile:
- >         for y.v3 in [0, 3]:
- >           for x.v2 in [0, 3]:
+ >         for y.y_inner in [0, 3]:
+ >           for x.x_inner in [0, 3]:
  >             consumer_tile(...) = ...
 
 </b></div>
@@ -1482,16 +1482,16 @@ tutorial_lesson_21_auto_scheduler_run.html
         <span class="hl kwd">printf</span><span class="hl opt">(</span><span class="hl str">&quot;</span><span class="hl esc">\n</span><span class="hl str">&quot;</span><span class="hl opt">);</span>
         <a onclick='return toggle("_665");'><b id=_665-show>// Click to show output ...</b></a><div id=_665 style= "display:none; background:#333333; color:#ffffff"><b>
  > produce consumer_mixed:
- >   parallel y.v4:
+ >   parallel y.yo:
  >     store producer_mixed:
- >       for y.v5. in [-1, 15]:
+ >       for y.yi. in [-1, 15]:
  >         produce producer_mixed:
  >           for x.x:
- >             vectorized x.v7 in [0, 3]:
+ >             vectorized x.v1 in [0, 3]:
  >               producer_mixed(...) = ...
  >         consume producer_mixed:
  >           for x.x:
- >             vectorized x.v6 in [0, 3]:
+ >             vectorized x.v0 in [0, 3]:
  >               consumer_mixed(...) = ...
 
 </b></div>

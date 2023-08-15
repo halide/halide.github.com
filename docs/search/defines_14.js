@@ -1,10 +1,19 @@
 var searchData=
 [
-  ['wait_5fobject_5f0_0',['WAIT_OBJECT_0',['../mini__d3d12_8h.html#abb2c63c1933cab709a4fd4aef2012bbb',1,'mini_d3d12.h']]],
-  ['weak_1',['WEAK',['../runtime__internal_8h.html#ad1480e9557edcc543498ca259cee6c7d',1,'runtime_internal.h']]],
-  ['weak_5finline_2',['WEAK_INLINE',['../runtime__internal_8h.html#a213c7d500933c009e0f531df51176878',1,'runtime_internal.h']]],
-  ['winapi_3',['WINAPI',['../mini__d3d12_8h.html#a9aa60e1ead64be77ad551e745cbfd4d3',1,'mini_d3d12.h']]],
-  ['winbaseapi_4',['WINBASEAPI',['../mini__d3d12_8h.html#a9d9302da7806da77e58c9e400feb32c5',1,'mini_d3d12.h']]],
-  ['winoleapi_5',['WINOLEAPI',['../mini__d3d12_8h.html#af0f5edbca9801ba4b149ab149ab13f64',1,'mini_d3d12.h']]],
-  ['winoleapi_5f_6',['WINOLEAPI_',['../mini__d3d12_8h.html#a03c6c6602043e81eaf43cc45eacde404',1,'mini_d3d12.h']]]
+  ['wait_5fobject_5f0_24323',['WAIT_OBJECT_0',['../mini__d3d12_8h.html#abb2c63c1933cab709a4fd4aef2012bbb',1,'mini_d3d12.h']]],
+  ['weak_24324',['WEAK',['../runtime__internal_8h.html#ad1480e9557edcc543498ca259cee6c7d',1,'runtime_internal.h']]],
+  ['weak_5finline_24325',['WEAK_INLINE',['../runtime__internal_8h.html#a213c7d500933c009e0f531df51176878',1,'runtime_internal.h']]],
+  ['wgpu_5farray_5flayer_5fcount_5fundefined_24326',['WGPU_ARRAY_LAYER_COUNT_UNDEFINED',['../mini__webgpu_8h.html#ab4b6cb44e94f36bbf0ebd8e3d364a016',1,'mini_webgpu.h']]],
+  ['wgpu_5fcopy_5fstride_5fundefined_24327',['WGPU_COPY_STRIDE_UNDEFINED',['../mini__webgpu_8h.html#ae0c0c71e406b77ed2f737a13399589e5',1,'mini_webgpu.h']]],
+  ['wgpu_5fexport_24328',['WGPU_EXPORT',['../mini__webgpu_8h.html#a24ee94541615001cdddabf0f4e456ad7',1,'mini_webgpu.h']]],
+  ['wgpu_5flimit_5fu32_5fundefined_24329',['WGPU_LIMIT_U32_UNDEFINED',['../mini__webgpu_8h.html#a4080c82d00024753b89ae426b4f1eff4',1,'mini_webgpu.h']]],
+  ['wgpu_5flimit_5fu64_5fundefined_24330',['WGPU_LIMIT_U64_UNDEFINED',['../mini__webgpu_8h.html#a7ade0547a5e45dcbe345388edd1e0188',1,'mini_webgpu.h']]],
+  ['wgpu_5fmip_5flevel_5fcount_5fundefined_24331',['WGPU_MIP_LEVEL_COUNT_UNDEFINED',['../mini__webgpu_8h.html#a22d59f2a2916bbe7115701a7ed8b358a',1,'mini_webgpu.h']]],
+  ['wgpu_5fstride_5fundefined_24332',['WGPU_STRIDE_UNDEFINED',['../mini__webgpu_8h.html#a28edf3e5e254407ed9d022022a4f6de3',1,'mini_webgpu.h']]],
+  ['wgpu_5fwhole_5fmap_5fsize_24333',['WGPU_WHOLE_MAP_SIZE',['../mini__webgpu_8h.html#a6aee227e315b23b428c67c52bc9cf0fb',1,'mini_webgpu.h']]],
+  ['wgpu_5fwhole_5fsize_24334',['WGPU_WHOLE_SIZE',['../mini__webgpu_8h.html#a00c009a1830f0dac7f189a3c9cd20518',1,'mini_webgpu.h']]],
+  ['winapi_24335',['WINAPI',['../mini__d3d12_8h.html#a9aa60e1ead64be77ad551e745cbfd4d3',1,'mini_d3d12.h']]],
+  ['winbaseapi_24336',['WINBASEAPI',['../mini__d3d12_8h.html#a9d9302da7806da77e58c9e400feb32c5',1,'mini_d3d12.h']]],
+  ['winoleapi_24337',['WINOLEAPI',['../mini__d3d12_8h.html#af0f5edbca9801ba4b149ab149ab13f64',1,'mini_d3d12.h']]],
+  ['winoleapi_5f_24338',['WINOLEAPI_',['../mini__d3d12_8h.html#a03c6c6602043e81eaf43cc45eacde404',1,'mini_d3d12.h']]]
 ];

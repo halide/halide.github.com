@@ -14,12 +14,5 @@ var namespace_halide_1_1_runtime_1_1_internal_1_1_synchronization =
     [ "validate_action", "struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1validate__action.html", "struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1validate__action" ],
     [ "wait_parking_control", "struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1wait__parking__control.html", "struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1wait__parking__control" ],
     [ "word_lock", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1word__lock.html", "class_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1word__lock" ],
-    [ "word_lock_queue_data", "struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1word__lock__queue__data.html", "struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1word__lock__queue__data" ],
-    [ "lock_bucket", "namespace_halide_1_1_runtime_1_1_internal_1_1_synchronization.html#a16237536eaf703c2efaae27474187051", null ],
-    [ "lock_bucket_pair", "namespace_halide_1_1_runtime_1_1_internal_1_1_synchronization.html#ae156501800656df7c1993743b43145d4", null ],
-    [ "unlock_bucket_pair", "namespace_halide_1_1_runtime_1_1_internal_1_1_synchronization.html#a3916d9a07e4c7301bf4c31a774303957", null ],
-    [ "LOAD_FACTOR", "namespace_halide_1_1_runtime_1_1_internal_1_1_synchronization.html#af9d3ba4d8b23ebc290de0947e742f456", null ],
-    [ "HASH_TABLE_SIZE", "namespace_halide_1_1_runtime_1_1_internal_1_1_synchronization.html#a52ec8521e1d4f381439ced84af765118", null ],
-    [ "table", "namespace_halide_1_1_runtime_1_1_internal_1_1_synchronization.html#a937f6afaffa456c76f94e983c4b9801f", null ],
-    [ "HASH_TABLE_BITS", "namespace_halide_1_1_runtime_1_1_internal_1_1_synchronization.html#a6f570509e0472d78fb39d37397dda253", null ]
+    [ "word_lock_queue_data", "struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1word__lock__queue__data.html", "struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1word__lock__queue__data" ]
 ];

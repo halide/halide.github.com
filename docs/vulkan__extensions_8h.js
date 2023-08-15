@@ -1,0 +1,28 @@
+var vulkan__extensions_8h =
+[
+    [ "halide_vulkan_set_layer_names", "vulkan__extensions_8h.html#a00830c5efbf7752175d5c33914f50a89", null ],
+    [ "halide_vulkan_get_layer_names", "vulkan__extensions_8h.html#a8631e58e973e360f10784366d696cae7", null ],
+    [ "halide_vulkan_set_extension_names", "vulkan__extensions_8h.html#a5787ed5e8c7329572e8fe7d25435c5d0", null ],
+    [ "halide_vulkan_get_extension_names", "vulkan__extensions_8h.html#a9a0d36c19203c536d86834073bbd8ec7", null ],
+    [ "halide_vulkan_set_device_type", "vulkan__extensions_8h.html#a839cbd360c6a413b4e4c0f878426a3b0", null ],
+    [ "halide_vulkan_get_device_type", "vulkan__extensions_8h.html#acad51278f807dc2dc0150e3feda83575", null ],
+    [ "halide_vulkan_set_build_options", "vulkan__extensions_8h.html#a46102ec3be83bfb57855a7f7f26123c0", null ],
+    [ "halide_vulkan_get_build_options", "vulkan__extensions_8h.html#aec9d357acb2f5dc0da809656522c06ab", null ],
+    [ "halide_vulkan_set_alloc_config", "vulkan__extensions_8h.html#ad6e369050cdf0c4bab5ecbcb4993d434", null ],
+    [ "halide_vulkan_get_alloc_config", "vulkan__extensions_8h.html#a5351dd77d583e10cf3927935290acc31", null ],
+    [ "layer_names", "vulkan__extensions_8h.html#a2467e01ca2d3c12da36d291dceca84a0", null ],
+    [ "layer_names_lock", "vulkan__extensions_8h.html#a53aa732b517145010f0e0f24c0b9dba8", null ],
+    [ "layer_names_initialized", "vulkan__extensions_8h.html#a0046fb8dfbf7e5fd088c143efc9b5c60", null ],
+    [ "extension_names", "vulkan__extensions_8h.html#af41aca8da825d8c23490732ba1feda08", null ],
+    [ "extension_names_lock", "vulkan__extensions_8h.html#a37981406b59432170e9cdd058b60f3c0", null ],
+    [ "extension_names_initialized", "vulkan__extensions_8h.html#ae09f99a0e37c848c1edf1095db6c78c4", null ],
+    [ "device_type", "vulkan__extensions_8h.html#abeb1cc10a2fdc68c954c737152921146", null ],
+    [ "device_type_lock", "vulkan__extensions_8h.html#ae7a6d7465eeae21b8672f78426c5eb13", null ],
+    [ "device_type_initialized", "vulkan__extensions_8h.html#a3bb58d39c175df0a223440cfd87f7874", null ],
+    [ "build_options", "vulkan__extensions_8h.html#a226f9b8aec358fba19341bc70ef4d9b3", null ],
+    [ "build_options_lock", "vulkan__extensions_8h.html#a64f30259c86bd334193162b660954430", null ],
+    [ "build_options_initialized", "vulkan__extensions_8h.html#a2bf2cf8eb217eb7367fc6e4ae2a02fb9", null ],
+    [ "alloc_config", "vulkan__extensions_8h.html#a96e293fbb45f89de1498dbd26e65aaf5", null ],
+    [ "alloc_config_lock", "vulkan__extensions_8h.html#a029b74c6925f6b34e722dd5e7f029ecc", null ],
+    [ "alloc_config_initialized", "vulkan__extensions_8h.html#a3f0bc3e2133291f968fcf746b3863ff1", null ]
+];

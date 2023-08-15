@@ -11,11 +11,11 @@ var class_halide_1_1_internal_1_1_generator_output___buffer =
     [ "GeneratorOutput_Buffer", "class_halide_1_1_internal_1_1_generator_output___buffer.html#a9d356d42f85f2bd1f737cdf7426e9c3c", null ],
     [ "get_c_type", "class_halide_1_1_internal_1_1_generator_output___buffer.html#a3ac495c1dd31bd00aa4efafe321e9172", null ],
     [ "as", "class_halide_1_1_internal_1_1_generator_output___buffer.html#a7f47fbb9fc1e1d065bd03826bb622c63", null ],
-    [ "operator=", "class_halide_1_1_internal_1_1_generator_output___buffer.html#aa15d2ac6a162abdbc975a3a75ef84166", null ],
-    [ "operator=", "class_halide_1_1_internal_1_1_generator_output___buffer.html#a1f1fefa19bb8f2a6c11eb8aab5609b02", null ],
-    [ "operator=", "class_halide_1_1_internal_1_1_generator_output___buffer.html#a9e9b4ad26d165941abdf4d67f25fccb8", null ],
+    [ "operator=", "class_halide_1_1_internal_1_1_generator_output___buffer.html#aaaf4a55c56fc8cf7d0d7fb0b70d281c8", null ],
+    [ "operator=", "class_halide_1_1_internal_1_1_generator_output___buffer.html#a3e02a85988d4543b72698f5bd63db630", null ],
+    [ "operator=", "class_halide_1_1_internal_1_1_generator_output___buffer.html#a3a9da70bdd2d4d92dd09b915fcca8357", null ],
     [ "operator OutputImageParam", "class_halide_1_1_internal_1_1_generator_output___buffer.html#a5f3e6341f140267d0ed90d004afebd01", null ],
-    [ "set_estimates", "class_halide_1_1_internal_1_1_generator_output___buffer.html#a616ccf34409ee663b5fc9be7e8c29623", null ],
-    [ "operator[]", "class_halide_1_1_internal_1_1_generator_output___buffer.html#abd8a608e5b6686d17bd1f593fe7a2672", null ],
+    [ "set_estimates", "class_halide_1_1_internal_1_1_generator_output___buffer.html#a2dea8fba904b4ea64012d18680b8f934", null ],
+    [ "operator[]", "class_halide_1_1_internal_1_1_generator_output___buffer.html#a6c4089c547ad6661045d14b25139c804", null ],
     [ "operator[]", "class_halide_1_1_internal_1_1_generator_output___buffer.html#af7cf1bcf1c314357ececcc784f5d317e", null ]
 ];

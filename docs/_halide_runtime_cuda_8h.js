@@ -4,7 +4,7 @@ var _halide_runtime_cuda_8h =
     [ "halide_cuda_acquire_context_t", "_halide_runtime_cuda_8h.html#ab2adf366a9428d9402ad2a5e2aed49f4", null ],
     [ "halide_cuda_release_context_t", "_halide_runtime_cuda_8h.html#ab2455368e5747f840cbb279a32c7c704", null ],
     [ "halide_cuda_get_stream_t", "_halide_runtime_cuda_8h.html#a3bb0d64f1f1432f06299d10b97c13f20", null ],
-    [ "halide_cuda_device_interface", "_halide_runtime_cuda_8h.html#ad5a7d765aeb6a7f266d5782cbd5d96e7", null ],
+    [ "halide_cuda_device_interface", "_halide_runtime_cuda_8h.html#a5f05898deab5c495a5dda1bcd676abc6", null ],
     [ "halide_cuda_initialize_kernels", "_halide_runtime_cuda_8h.html#a73669b08f4d2ae469d9315a9455cf920", null ],
     [ "halide_cuda_run", "_halide_runtime_cuda_8h.html#a533d3dbf983acb36df1a1d7c18ba2dad", null ],
     [ "halide_cuda_finalize_kernels", "_halide_runtime_cuda_8h.html#a84e61551ad1af9691fce571b6a368dfb", null ],

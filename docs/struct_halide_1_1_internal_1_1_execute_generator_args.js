@@ -16,5 +16,6 @@ var struct_halide_1_1_internal_1_1_execute_generator_args =
     [ "build_mode", "struct_halide_1_1_internal_1_1_execute_generator_args.html#a44ab8ba3bd5188a527702200912c0cf4", null ],
     [ "create_generator", "struct_halide_1_1_internal_1_1_execute_generator_args.html#a69d26f908b983efcebdcbae96571135c", null ],
     [ "generator_params", "struct_halide_1_1_internal_1_1_execute_generator_args.html#abc7a4eb606a9ba2fb7906c18b3c3d5d9", null ],
-    [ "compiler_logger_factory", "struct_halide_1_1_internal_1_1_execute_generator_args.html#a045a30b5efb8955e0e629c298759af65", null ]
+    [ "compiler_logger_factory", "struct_halide_1_1_internal_1_1_execute_generator_args.html#a045a30b5efb8955e0e629c298759af65", null ],
+    [ "log_outputs", "struct_halide_1_1_internal_1_1_execute_generator_args.html#adda91c116ced638c453d69b849d6193a", null ]
 ];

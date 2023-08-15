@@ -7,7 +7,7 @@ var struct_i_d3_d12_device_child_vtbl =
     [ "pDataSize", "struct_i_d3_d12_device_child_vtbl.html#a19345dd27c0d3a8176a6cb98f2b3a0de", null ],
     [ "pData", "struct_i_d3_d12_device_child_vtbl.html#a4fdeabd68369a357229d5e01996708aa", null ],
     [ "DataSize", "struct_i_d3_d12_device_child_vtbl.html#af5fcc79bc4748097beac3899f22cc3de", null ],
-    [ "pData", "struct_i_d3_d12_device_child_vtbl.html#a821f905c79de5c5190062062c20292cf", null ],
+    [ "pData", "struct_i_d3_d12_device_child_vtbl.html#a5404ba0f9b8a157e4f2f60527f9c7527", null ],
     [ "Name", "struct_i_d3_d12_device_child_vtbl.html#ac7d0a5dbcbe20930041c48d9a433326d", null ],
     [ "riid", "struct_i_d3_d12_device_child_vtbl.html#aa60a01e1b4198d713cc5798c0c9c580a", null ],
     [ "ppvDevice", "struct_i_d3_d12_device_child_vtbl.html#aaa1f07fabc5812296876223887a1b705", null ]

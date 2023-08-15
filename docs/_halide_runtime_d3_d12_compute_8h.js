@@ -1,6 +1,6 @@
 var _halide_runtime_d3_d12_compute_8h =
 [
-    [ "halide_d3d12compute_device_interface", "_halide_runtime_d3_d12_compute_8h.html#a6d67c43e1791eab8998711b2a6f5fbb1", null ],
+    [ "halide_d3d12compute_device_interface", "_halide_runtime_d3_d12_compute_8h.html#ae3428b555c0a0a7ff2fa92a6e2be6cb7", null ],
     [ "halide_d3d12compute_initialize_kernels", "_halide_runtime_d3_d12_compute_8h.html#a96e72f1e76c8c53e363f4d409324e6aa", null ],
     [ "halide_d3d12compute_run", "_halide_runtime_d3_d12_compute_8h.html#a3c2c1591f2aa4584effced74a471d92b", null ],
     [ "halide_d3d12compute_finalize_kernels", "_halide_runtime_d3_d12_compute_8h.html#a83bdc42873d8bf0dafa4a54329cd34c0", null ],

@@ -10,7 +10,9 @@ var _device_a_p_i_8h =
       [ "Metal", "_device_a_p_i_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eaeaa57a9b4248ce3968e718895e1c2f04", null ],
       [ "Hexagon", "_device_a_p_i_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea125e13c182697c5a282e4de6d7999eb0", null ],
       [ "HexagonDma", "_device_a_p_i_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea4b2626a6b8b94341748b21e603039989", null ],
-      [ "D3D12Compute", "_device_a_p_i_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eaac083508369e66fdeb744a9dbf917bee", null ]
+      [ "D3D12Compute", "_device_a_p_i_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eaac083508369e66fdeb744a9dbf917bee", null ],
+      [ "Vulkan", "_device_a_p_i_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea38625270231b647116c80bcbc4f9d1d8", null ],
+      [ "WebGPU", "_device_a_p_i_8h.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6eae2a7a4783927803caada246db9748628", null ]
     ] ],
     [ "all_device_apis", "_device_a_p_i_8h.html#abeae4f594180635f1a0a60c0dac5fe72", null ]
 ];

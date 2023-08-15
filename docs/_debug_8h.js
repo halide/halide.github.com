@@ -1,6 +1,6 @@
 var _debug_8h =
 [
-    [ "Halide::Internal::debug", "class_halide_1_1_internal_1_1debug.html", "class_halide_1_1_internal_1_1debug" ],
+    [ "debug", "class_halide_1_1_internal_1_1debug.html", "class_halide_1_1_internal_1_1debug" ],
     [ "operator<<", "_debug_8h.html#a7082de94433ce36f34d486a0bddbc200", null ],
     [ "operator<<", "_debug_8h.html#af00a873047edcc26c57685fd8f0b1e2e", null ],
     [ "operator<<", "_debug_8h.html#a80e793e1d0e898cdd6003272ad051668", null ],
