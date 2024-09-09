@@ -1,7 +1,7 @@
 var thread__pool__common_8h =
 [
-    [ "work", "struct_halide_1_1_runtime_1_1_internal_1_1work.html", "struct_halide_1_1_runtime_1_1_internal_1_1work" ],
-    [ "work_queue_t", "struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html", "struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t" ],
+    [ "Halide::Runtime::Internal::work", "struct_halide_1_1_runtime_1_1_internal_1_1work.html", "struct_halide_1_1_runtime_1_1_internal_1_1work" ],
+    [ "Halide::Runtime::Internal::work_queue_t", "struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html", "struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t" ],
     [ "halide_semaphore_impl_t", "structhalide__semaphore__impl__t.html", "structhalide__semaphore__impl__t" ],
     [ "EXTENDED_DEBUG", "thread__pool__common_8h.html#aceccc9a5c837168b0c2dacfc5423eb8c", null ],
     [ "log_message", "thread__pool__common_8h.html#aaa7ee5abf823c085f30d615653140635", null ],

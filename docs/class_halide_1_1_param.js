@@ -11,9 +11,9 @@ var class_halide_1_1_param =
     [ "Param", "class_halide_1_1_param.html#aeeafb9b39673860bae9be9035559a549", null ],
     [ "Param", "class_halide_1_1_param.html#a3326bfe5d035d20acfff7c5110be6dfd", null ],
     [ "Param", "class_halide_1_1_param.html#a3326bfe5d035d20acfff7c5110be6dfd", null ],
-    [ "operator=", "class_halide_1_1_param.html#accadf1646ae089bef9dc1b63ff5d4b17", null ],
-    [ "operator=", "class_halide_1_1_param.html#accadf1646ae089bef9dc1b63ff5d4b17", null ],
-    [ "name", "class_halide_1_1_param.html#a0acc040ebfab885e7bebeaeeee3a8d08", null ],
+    [ "operator=", "class_halide_1_1_param.html#af0b133bb5dc5f6578f1af0e51616f7e3", null ],
+    [ "operator=", "class_halide_1_1_param.html#af0b133bb5dc5f6578f1af0e51616f7e3", null ],
+    [ "name", "class_halide_1_1_param.html#a0fad5ff90d634f9b4cfa4d55cac9d800", null ],
     [ "get", "class_halide_1_1_param.html#af559bfc1f3cd5cbd00c2dda4f3e1b75d", null ],
     [ "set", "class_halide_1_1_param.html#a6f49a8c6a2efe0839e64ef5b0d9ed4ac", null ],
     [ "type", "class_halide_1_1_param.html#ab35c44f303fbcd10ddb3dffea8061190", null ],
@@ -26,7 +26,7 @@ var class_halide_1_1_param =
     [ "operator Expr", "class_halide_1_1_param.html#a991f676ab769b4cfd1cf4a890d05aa2f", null ],
     [ "operator ExternFuncArgument", "class_halide_1_1_param.html#a86d63299b59fe09868a8a882cf5e5501", null ],
     [ "operator Argument", "class_halide_1_1_param.html#a322c2a0e1c86664d2b157b91753d4a8c", null ],
-    [ "parameter", "class_halide_1_1_param.html#aa21ed085d7a182447e9837d707c1ab57", null ],
-    [ "parameter", "class_halide_1_1_param.html#a548178be0d1af7f29aad2c3044a966bb", null ],
+    [ "parameter", "class_halide_1_1_param.html#ab0b2ea7fb473f2aa276b3d7b6f618066", null ],
+    [ "parameter", "class_halide_1_1_param.html#afa981c5060afff2e0829723b8ffa0a28", null ],
     [ "Param", "class_halide_1_1_param.html#ad1bd2c7cf72b6a2e2ddd77f39ec6d212", null ]
 ];

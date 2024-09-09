@@ -1,5 +1,6 @@
 var struct_halide_1_1_internal_1_1_call =
 [
+    [ "ConstString", "struct_halide_1_1_internal_1_1_call.html#a335d5a9dca5de720c96a7c0f09dfcca4", null ],
     [ "CallType", "struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393", [
       [ "Image", "struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393a627c8b7bd4ab3817dc8132e69c5194b4", null ],
       [ "Extern", "struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393a0e9c32fc29933124d43d2463df3df57a", null ],
@@ -54,6 +55,7 @@ var struct_halide_1_1_internal_1_1_call =
       [ "mux", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a472257ab306bb27832883d66f8751d7a", null ],
       [ "popcount", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a86b86a8824be3db34f70c4c2c48279d5", null ],
       [ "prefetch", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a43c5568e92e2b22bde64d2a0c2d9869a", null ],
+      [ "profiling_enable_instance_marker", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974aeeb104c47ca39595aafe30caf4ce1633", null ],
       [ "promise_clamped", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a5b52a3994be50c32c7036d4702ccf40c", null ],
       [ "random", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a742d8a86e645910b0f22f5ef90d64f7e", null ],
       [ "register_destructor", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a37a7890522457e6b005a32373b7efc36", null ],
@@ -75,9 +77,16 @@ var struct_halide_1_1_internal_1_1_call =
       [ "shift_right", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a833d8a45bc9413df1e4d735b76709361", null ],
       [ "signed_integer_overflow", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a1842f5e39950cb6dd154a51f391eecb0", null ],
       [ "size_of_halide_buffer_t", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974afe8597f52be77dda4a3e206e3929e255", null ],
+      [ "skip_stages_marker", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a2f566ae7d198b96d32b731afd9c55005", null ],
+      [ "sliding_window_marker", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a6d0541486a99d61df8652f85990c32c2", null ],
       [ "sorted_avg", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974adc8c2f2440e5b6ed4d7aa0cddb864b92", null ],
       [ "strict_float", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a981d4dd9a68560ab9ef9ef591a782532", null ],
       [ "stringify", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a1e391311e798ed85648cf4f70c7c444a", null ],
+      [ "target_arch_is", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974aeee5749b3e6a2cf843fca2c6ea79cb03", null ],
+      [ "target_bits", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974abe18c4e02db9d3dad9910c1304763fef", null ],
+      [ "target_has_feature", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974ad50911d69a5290c17860b123163b30fb", null ],
+      [ "target_natural_vector_size", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974aef3949453b061d18a131004a3257db1d", null ],
+      [ "target_os_is", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a881e755e96c0692fd0f84c5110fb1514", null ],
       [ "undef", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974af579100fd330056df1b98083a317235a", null ],
       [ "unreachable", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a64de4477e880b4e3a75e864f153a6c84", null ],
       [ "unsafe_promise_clamped", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a399abee23f7a8e5f544ff16d0d64af2f", null ],
@@ -89,6 +98,7 @@ var struct_halide_1_1_internal_1_1_call =
       [ "widening_shift_left", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974ab02d0a16e2a1862fe2fe1a04e911c765", null ],
       [ "widening_shift_right", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974ad6c840298d1a55928f9d3f387a5a5d47", null ],
       [ "widening_sub", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a624977461f16ac8b1dc4ccac64aa2dce", null ],
+      [ "get_runtime_vscale", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974afe012bec445e74f0d702ad308bfae3ba", null ],
       [ "IntrinsicOpCount", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974ad9e3aef0bd0339951b08d7136ae4113f", null ]
     ] ],
     [ "is_pure", "struct_halide_1_1_internal_1_1_call.html#a860417632fef6c502fe0c222a9fa4c9e", null ],
@@ -97,7 +107,6 @@ var struct_halide_1_1_internal_1_1_call =
     [ "is_intrinsic", "struct_halide_1_1_internal_1_1_call.html#aa10267aa98e99893dd54182187ac68b4", null ],
     [ "is_tag", "struct_halide_1_1_internal_1_1_call.html#a235852b9c8b65e9a6e014571c4fd3d44", null ],
     [ "is_extern", "struct_halide_1_1_internal_1_1_call.html#a3ca5446b42e9854971a9869a9098b07d", null ],
-    [ "ConstString", "struct_halide_1_1_internal_1_1_call.html#ad4250e793d75c7b064d9a0e328e28f93", null ],
     [ "name", "struct_halide_1_1_internal_1_1_call.html#a4c30e353af50e357882ba9b02f6d3aa0", null ],
     [ "args", "struct_halide_1_1_internal_1_1_call.html#acb75ca0f33dbf170e1fcdf59c9bdf48e", null ],
     [ "call_type", "struct_halide_1_1_internal_1_1_call.html#a76805c16c470e73827363769fdd91b53", null ],

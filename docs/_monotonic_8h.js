@@ -9,6 +9,6 @@ var _monotonic_8h =
     [ "derivative_bounds", "_monotonic_8h.html#a0301c6ab3540d1ce4c678d7f625d23b0", null ],
     [ "is_monotonic", "_monotonic_8h.html#a51a4b2947237a60faeb58784f49818c7", null ],
     [ "is_monotonic", "_monotonic_8h.html#a86052cc97eb7a7774977da430b03274b", null ],
-    [ "operator<<", "_monotonic_8h.html#a283407774a5c9a29ab30e9223dcb3580", null ],
+    [ "operator<<", "_monotonic_8h.html#aecd75538cec762a0ec020c81708260b6", null ],
     [ "is_monotonic_test", "_monotonic_8h.html#af6de4b237eafb498206aa2eb0c94b4ad", null ]
 ];

@@ -7,5 +7,6 @@ var struct_halide_1_1_internal_1_1_for =
     [ "extent", "struct_halide_1_1_internal_1_1_for.html#ab26b6844845c6bf66f5a2f572007c9b9", null ],
     [ "for_type", "struct_halide_1_1_internal_1_1_for.html#a8a1339b5bfcd4b2f31885f1b4af327f9", null ],
     [ "device_api", "struct_halide_1_1_internal_1_1_for.html#a85fa473df0f19474e84863a7ca175668", null ],
-    [ "body", "struct_halide_1_1_internal_1_1_for.html#ade469ba0fb0fecf220f2f1bdb2f6401a", null ]
+    [ "body", "struct_halide_1_1_internal_1_1_for.html#ade469ba0fb0fecf220f2f1bdb2f6401a", null ],
+    [ "partition_policy", "struct_halide_1_1_internal_1_1_for.html#a15d5944a00e63f10d53ee157abf39817", null ]
 ];

@@ -1,5 +1,5 @@
 var struct_w_g_p_u_surface_descriptor =
 [
-    [ "nextInChain", "struct_w_g_p_u_surface_descriptor.html#a430420b3837dabca73769dba3b2c1be0", null ],
-    [ "label", "struct_w_g_p_u_surface_descriptor.html#ae9ae31a0202702c0a1b21f06c7f1b566", null ]
+    [ "nextInChain", "struct_w_g_p_u_surface_descriptor.html#ace00ff37e953c887d5f656fd25e8d0da", null ],
+    [ "label", "struct_w_g_p_u_surface_descriptor.html#aaeb7a3c26e91ed0850b6ab72d762debc", null ]
 ];

@@ -1,9 +1,9 @@
 var _abstract_generator_8h =
 [
-    [ "AbstractGenerator", "class_halide_1_1_internal_1_1_abstract_generator.html", "class_halide_1_1_internal_1_1_abstract_generator" ],
-    [ "ArgInfo", "struct_halide_1_1_internal_1_1_abstract_generator_1_1_arg_info.html", "struct_halide_1_1_internal_1_1_abstract_generator_1_1_arg_info" ],
-    [ "GeneratorParamsMap", "_abstract_generator_8h.html#a21f90ebbb3e77c7ef7cd181827c939e6", null ],
-    [ "AbstractGeneratorPtr", "_abstract_generator_8h.html#abe4d31467b793cfffa246dd75f7e43ec", null ],
+    [ "Halide::Internal::AbstractGenerator", "class_halide_1_1_internal_1_1_abstract_generator.html", "class_halide_1_1_internal_1_1_abstract_generator" ],
+    [ "Halide::Internal::AbstractGenerator::ArgInfo", "struct_halide_1_1_internal_1_1_abstract_generator_1_1_arg_info.html", "struct_halide_1_1_internal_1_1_abstract_generator_1_1_arg_info" ],
+    [ "GeneratorParamsMap", "_abstract_generator_8h.html#aa015a5ed55a45b2cb32641c0e3049d76", null ],
+    [ "AbstractGeneratorPtr", "_abstract_generator_8h.html#acc8e4407368c814081b11769fa150132", null ],
     [ "ArgInfoKind", "_abstract_generator_8h.html#a0396411abf88410baf6a6e6e41ea1419", [
       [ "Scalar", "_abstract_generator_8h.html#a0396411abf88410baf6a6e6e41ea1419af60357a8d17e45793298323f1b372a74", null ],
       [ "Function", "_abstract_generator_8h.html#a0396411abf88410baf6a6e6e41ea1419a86408593c34af77fdd90df932f8b5261", null ],

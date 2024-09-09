@@ -14,7 +14,7 @@ var class_halide_1_1_generator_output =
     [ "GeneratorOutput", "class_halide_1_1_generator_output.html#ae0e1845466f1f50838e14af90a570b31", null ],
     [ "GeneratorOutput", "class_halide_1_1_generator_output.html#aa5b362afc266d4b51ce759c9a8ae86b0", null ],
     [ "GeneratorOutput", "class_halide_1_1_generator_output.html#abcc7d77feb69ea62b29ac12a00a750ac", null ],
-    [ "operator=", "class_halide_1_1_generator_output.html#a0de0c39a7f41c425e6bf009ff454ffc4", null ],
-    [ "operator=", "class_halide_1_1_generator_output.html#ab96928c864ae9afdd75025c850c3a0b1", null ],
-    [ "operator=", "class_halide_1_1_generator_output.html#af361538ef6050b9ca2667bf423e2eace", null ]
+    [ "operator=", "class_halide_1_1_generator_output.html#ab7340f30fefcb0738fdfdb1c831909d0", null ],
+    [ "operator=", "class_halide_1_1_generator_output.html#a44a77ebe675739106af89aebd6063640", null ],
+    [ "operator=", "class_halide_1_1_generator_output.html#aef682ee99509753ebb454f0f3b5d3230", null ]
 ];

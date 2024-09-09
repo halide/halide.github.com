@@ -15,8 +15,8 @@ var class_halide_1_1_internal_1_1_generator_input___func =
     [ "operator()", "class_halide_1_1_internal_1_1_generator_input___func.html#a8e203b83b63739487563d8a2a4638b8f", null ],
     [ "operator Func", "class_halide_1_1_internal_1_1_generator_input___func.html#acef660ebf24c5cba48b2b23bd7ec98ef", null ],
     [ "operator ExternFuncArgument", "class_halide_1_1_internal_1_1_generator_input___func.html#a0e81eb33436227d23d26c590c1358741", null ],
-    [ "set_estimate", "class_halide_1_1_internal_1_1_generator_input___func.html#a53378604babae711feac9083a4ff0a03", null ],
-    [ "set_estimates", "class_halide_1_1_internal_1_1_generator_input___func.html#a61b058a8eaa7c5c0b692ae4f9528acf4", null ],
+    [ "set_estimate", "class_halide_1_1_internal_1_1_generator_input___func.html#a283ca61e3b537b674ebc775429f00fba", null ],
+    [ "set_estimates", "class_halide_1_1_internal_1_1_generator_input___func.html#a257bb3125884f8918e3a02015aec92ec", null ],
     [ "in", "class_halide_1_1_internal_1_1_generator_input___func.html#ab2e8bc6f2e006e3d195ee9e0de884e36", null ],
     [ "in", "class_halide_1_1_internal_1_1_generator_input___func.html#a8eff8085956b39101fe4fe967da72d04", null ],
     [ "in", "class_halide_1_1_internal_1_1_generator_input___func.html#a24f3aaeaf909218860fef0d576032877", null ]

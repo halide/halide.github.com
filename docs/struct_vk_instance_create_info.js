@@ -5,7 +5,7 @@ var struct_vk_instance_create_info =
     [ "flags", "struct_vk_instance_create_info.html#af8c1523531bfb4909a928584bcc7040b", null ],
     [ "pApplicationInfo", "struct_vk_instance_create_info.html#adfc9746fc9e915c11cbdd89be702cf78", null ],
     [ "enabledLayerCount", "struct_vk_instance_create_info.html#ae7ba84112efc8039646834b64feafd4c", null ],
-    [ "ppEnabledLayerNames", "struct_vk_instance_create_info.html#abebe9dddf7ce0929ed78080bf9110b7c", null ],
+    [ "ppEnabledLayerNames", "struct_vk_instance_create_info.html#ae093e607a277431b0b2b051eeef30113", null ],
     [ "enabledExtensionCount", "struct_vk_instance_create_info.html#a61acf255c166d205d753238b7ec2374a", null ],
-    [ "ppEnabledExtensionNames", "struct_vk_instance_create_info.html#a3a09adf63f8b6f881f0e12adf81e06fc", null ]
+    [ "ppEnabledExtensionNames", "struct_vk_instance_create_info.html#a0646363d6acede786f5c0df7b07c9d6a", null ]
 ];

@@ -14,6 +14,6 @@ var class_halide_1_1_image_param =
     [ "in", "class_halide_1_1_image_param.html#a7f162491ddb6a58bcbb737cebbf8bc54", null ],
     [ "in", "class_halide_1_1_image_param.html#a241e6b2b1e79f6862c2961c27ab6760f", null ],
     [ "trace_loads", "class_halide_1_1_image_param.html#adc7cd272caa38c7a538acc6b8f215dce", null ],
-    [ "add_trace_tag", "class_halide_1_1_image_param.html#a66eab68f01b754e86bfc717e9f88c179", null ],
+    [ "add_trace_tag", "class_halide_1_1_image_param.html#adaa54c65f0dea3afb102d79ada9752c2", null ],
     [ "::Halide::Internal::GeneratorInput_Buffer", "class_halide_1_1_image_param.html#a846b9cb381e4269d82ef206a98539344", null ]
 ];

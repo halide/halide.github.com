@@ -13,6 +13,6 @@ var struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact =
     [ "simplify", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#ad9bbf1a61d5f3cb05dfe76c5ca5e1ddb", null ],
     [ "pop_list", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#a6df32adf6db7e53c0065e1a8809a20f1", null ],
     [ "bounds_pop_list", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#a54048d621b2d621442e655ecb59dc0da", null ],
-    [ "truths", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#a6c6b0abee8fc1167e142f249bf265c2f", null ],
-    [ "falsehoods", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#aa9ce64e24c3b205b537664b39877f464", null ]
+    [ "truths", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#a642ccfb25d8fe8813b1895ee9b3bccee", null ],
+    [ "falsehoods", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html#a936569d87330ab8c691674b83e443954", null ]
 ];

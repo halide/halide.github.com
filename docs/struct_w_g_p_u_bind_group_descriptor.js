@@ -1,8 +1,8 @@
 var struct_w_g_p_u_bind_group_descriptor =
 [
-    [ "nextInChain", "struct_w_g_p_u_bind_group_descriptor.html#a000d2f5b7c41eecff6abea903b917569", null ],
-    [ "label", "struct_w_g_p_u_bind_group_descriptor.html#adbbfb6afddbe04fbba216a5f312dc2e5", null ],
+    [ "nextInChain", "struct_w_g_p_u_bind_group_descriptor.html#a06b5c3370bcbd8a52c5ece875247afe2", null ],
+    [ "label", "struct_w_g_p_u_bind_group_descriptor.html#a78a2536c43d8347c7f5f5159234a85ce", null ],
     [ "layout", "struct_w_g_p_u_bind_group_descriptor.html#ae2a54bd9513d7dbd6eccebe27823b691", null ],
-    [ "entryCount", "struct_w_g_p_u_bind_group_descriptor.html#a2b39d51902fcd89438d1ddaa1847aacb", null ],
-    [ "entries", "struct_w_g_p_u_bind_group_descriptor.html#af9b84b9112121c2a517ecf193a317912", null ]
+    [ "entryCount", "struct_w_g_p_u_bind_group_descriptor.html#a9dfc8b6712de2b18c9dab10e77fb17ea", null ],
+    [ "entries", "struct_w_g_p_u_bind_group_descriptor.html#aff9bc78b4b7480c70f6820618a70b689", null ]
 ];

@@ -49,6 +49,7 @@ var class_halide_1_1_internal_1_1_i_r_visitor =
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a2e03d7ecc708ceb97015b15cfe526ad9", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a81a4420cc8b07c9e3a199639b79802b4", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a8ae28ed61752aa323cf8012db1097c64", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_i_r_visitor.html#a742fd9bc6624a1a3500ea96b7cf4531e", null ],
     [ "ExprNode", "class_halide_1_1_internal_1_1_i_r_visitor.html#af7e3f1ed0868f4d2440570b19f98fb0a", null ],
     [ "StmtNode", "class_halide_1_1_internal_1_1_i_r_visitor.html#a625be57400f7915fd48284b67dade612", null ]
 ];

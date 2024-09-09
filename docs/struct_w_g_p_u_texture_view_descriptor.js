@@ -1,7 +1,7 @@
 var struct_w_g_p_u_texture_view_descriptor =
 [
-    [ "nextInChain", "struct_w_g_p_u_texture_view_descriptor.html#a521686f559d78afa77178fc08960274b", null ],
-    [ "label", "struct_w_g_p_u_texture_view_descriptor.html#ad7910aa03da32ebeca63969e7a3e657a", null ],
+    [ "nextInChain", "struct_w_g_p_u_texture_view_descriptor.html#a141f909b19a066945d306460a87f536a", null ],
+    [ "label", "struct_w_g_p_u_texture_view_descriptor.html#afaa7e6c0c6b1aa0ef17e350ccf1f6441", null ],
     [ "format", "struct_w_g_p_u_texture_view_descriptor.html#a47a17a98337c330cda37dc1f85478b1d", null ],
     [ "dimension", "struct_w_g_p_u_texture_view_descriptor.html#aa691bced8f9548979ce4865b753021e9", null ],
     [ "baseMipLevel", "struct_w_g_p_u_texture_view_descriptor.html#a64624df5a09433bb183cb94525110e93", null ],

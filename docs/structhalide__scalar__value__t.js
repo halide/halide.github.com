@@ -12,5 +12,5 @@ var structhalide__scalar__value__t =
     [ "f32", "structhalide__scalar__value__t.html#af4d868648add8e8dfee1fe167dd3fbab", null ],
     [ "f64", "structhalide__scalar__value__t.html#ab6e55bd50daf1acdb29a2a7b7adb3407", null ],
     [ "handle", "structhalide__scalar__value__t.html#affc083076d762cb311e1d0235b9c6547", null ],
-    [ "u", "structhalide__scalar__value__t.html#a5d68e7b15cc912994293915d1ddb0636", null ]
+    [ "u", "structhalide__scalar__value__t.html#a9c0e03e5918800866c4d2e31e467105b", null ]
 ];

@@ -5,6 +5,7 @@ var struct_w_g_p_u_limits =
     [ "maxTextureDimension3D", "struct_w_g_p_u_limits.html#a477eed3022b7b39040fc83d4a0937f54", null ],
     [ "maxTextureArrayLayers", "struct_w_g_p_u_limits.html#ae33053c0fcd2a3d7f8031a4f9626742d", null ],
     [ "maxBindGroups", "struct_w_g_p_u_limits.html#af6fc9065082ba7912cd05a1fc36d1e67", null ],
+    [ "maxBindGroupsPlusVertexBuffers", "struct_w_g_p_u_limits.html#a09f67e66610c8f1bcfcb23bc5e11c7ac", null ],
     [ "maxBindingsPerBindGroup", "struct_w_g_p_u_limits.html#a5b015866bf50f0ec277cdc7e74a65494", null ],
     [ "maxDynamicUniformBuffersPerPipelineLayout", "struct_w_g_p_u_limits.html#ab6335b61d5de5dfd324648cb995259c4", null ],
     [ "maxDynamicStorageBuffersPerPipelineLayout", "struct_w_g_p_u_limits.html#a667c3b99dbd3ac812c961a4254941422", null ],
@@ -30,6 +31,5 @@ var struct_w_g_p_u_limits =
     [ "maxComputeWorkgroupSizeX", "struct_w_g_p_u_limits.html#adee2fa787eeae4631f30d002770bfdc7", null ],
     [ "maxComputeWorkgroupSizeY", "struct_w_g_p_u_limits.html#a740f4677eccf82bd78d590aafd69ab1e", null ],
     [ "maxComputeWorkgroupSizeZ", "struct_w_g_p_u_limits.html#aaa2877751e7cd10ec4e7299d292b81e1", null ],
-    [ "maxComputeWorkgroupsPerDimension", "struct_w_g_p_u_limits.html#a61afde6458c25030d97be22c19da6d93", null ],
-    [ "maxFragmentCombinedOutputResources", "struct_w_g_p_u_limits.html#afbde3aa28e0c54ab3e40f9988f3d539d", null ]
+    [ "maxComputeWorkgroupsPerDimension", "struct_w_g_p_u_limits.html#a61afde6458c25030d97be22c19da6d93", null ]
 ];

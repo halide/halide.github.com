@@ -13,10 +13,6 @@ var hierarchy =
     [ "_RPC_SYNTAX_IDENTIFIER", "struct___r_p_c___s_y_n_t_a_x___i_d_e_n_t_i_f_i_e_r.html", null ],
     [ "_RPC_VERSION", "struct___r_p_c___v_e_r_s_i_o_n.html", null ],
     [ "_SECURITY_ATTRIBUTES", "struct___s_e_c_u_r_i_t_y___a_t_t_r_i_b_u_t_e_s.html", null ],
-    [ "Halide::Runtime::Buffer< double * >", "class_halide_1_1_runtime_1_1_buffer.html", null ],
-    [ "Halide::Runtime::Buffer< float >", "class_halide_1_1_runtime_1_1_buffer.html", null ],
-    [ "Halide::Buffer< void >", "class_halide_1_1_buffer.html", null ],
-    [ "Halide::Buffer<>", "class_halide_1_1_buffer.html", null ],
     [ "cmdline::default_reader< T >", "structcmdline_1_1default__reader.html", null ],
     [ "cmdline::detail::is_same< T1, T2 >", "structcmdline_1_1detail_1_1is__same.html", null ],
     [ "cmdline::detail::is_same< T, T >", "structcmdline_1_1detail_1_1is__same_3_01_t_00_01_t_01_4.html", null ],
@@ -132,9 +128,13 @@ var hierarchy =
     [ "Halide::AutoSchedulerResults", "struct_halide_1_1_auto_scheduler_results.html", null ],
     [ "Halide::bfloat16_t", "struct_halide_1_1bfloat16__t.html", null ],
     [ "Halide::Buffer< T, Dims >", "class_halide_1_1_buffer.html", null ],
+    [ "Halide::Buffer< void >", "class_halide_1_1_buffer.html", null ],
+    [ "Halide::Buffer<>", "class_halide_1_1_buffer.html", null ],
+    [ "Halide::BufferConstraint", "struct_halide_1_1_buffer_constraint.html", null ],
     [ "Halide::Callable", "class_halide_1_1_callable.html", null ],
     [ "Halide::CompileTimeErrorReporter", "class_halide_1_1_compile_time_error_reporter.html", null ],
     [ "Halide::CostModel", "class_halide_1_1_cost_model.html", [
+      [ "Halide::DefaultCostModel", "class_halide_1_1_default_cost_model.html", null ],
       [ "Halide::DefaultCostModel", "class_halide_1_1_default_cost_model.html", null ]
     ] ],
     [ "Halide::CustomLoweringPass", "struct_halide_1_1_custom_lowering_pass.html", null ],
@@ -249,7 +249,6 @@ var hierarchy =
     [ "Halide::Internal::Elf::Symbol", "class_halide_1_1_internal_1_1_elf_1_1_symbol.html", null ],
     [ "Halide::Internal::ErrorReport", "struct_halide_1_1_internal_1_1_error_report.html", null ],
     [ "Halide::Internal::ExecuteGeneratorArgs", "struct_halide_1_1_internal_1_1_execute_generator_args.html", null ],
-    [ "Halide::Internal::ExprWithCompareCache", "struct_halide_1_1_internal_1_1_expr_with_compare_cache.html", null ],
     [ "Halide::Internal::FeatureIntermediates", "struct_halide_1_1_internal_1_1_feature_intermediates.html", null ],
     [ "Halide::Internal::FileStat", "struct_halide_1_1_internal_1_1_file_stat.html", null ],
     [ "Halide::Internal::FuncSchedule", "class_halide_1_1_internal_1_1_func_schedule.html", null ],
@@ -258,7 +257,6 @@ var hierarchy =
     [ "Halide::Internal::FunctionPtr", "struct_halide_1_1_internal_1_1_function_ptr.html", null ],
     [ "Halide::Internal::FusedPair", "struct_halide_1_1_internal_1_1_fused_pair.html", null ],
     [ "Halide::Internal::GeneratorFactoryProvider", "class_halide_1_1_internal_1_1_generator_factory_provider.html", null ],
-    [ "Halide::Internal::GeneratorInput_Buffer< T >", "class_halide_1_1_internal_1_1_generator_input___buffer.html", null ],
     [ "Halide::Internal::GeneratorParamBase", "class_halide_1_1_internal_1_1_generator_param_base.html", [
       [ "Halide::Internal::GeneratorParamImpl< AutoschedulerParams >", "class_halide_1_1_internal_1_1_generator_param_impl.html", [
         [ "Halide::Internal::GeneratorParam_AutoSchedulerParams", "class_halide_1_1_internal_1_1_generator_param___auto_scheduler_params.html", null ]
@@ -282,14 +280,15 @@ var hierarchy =
     [ "Halide::Internal::GeneratorRegistry", "class_halide_1_1_internal_1_1_generator_registry.html", null ],
     [ "Halide::Internal::GIOBase", "class_halide_1_1_internal_1_1_g_i_o_base.html", [
       [ "Halide::Internal::GeneratorInputBase", "class_halide_1_1_internal_1_1_generator_input_base.html", [
+        [ "Halide::Internal::GeneratorInputImpl< T, Func >", "class_halide_1_1_internal_1_1_generator_input_impl.html", [
+          [ "Halide::Internal::GeneratorInput_Buffer< T2 >", "class_halide_1_1_internal_1_1_generator_input___buffer.html", null ],
+          [ "Halide::Internal::GeneratorInput_Func< T >", "class_halide_1_1_internal_1_1_generator_input___func.html", null ]
+        ] ],
         [ "Halide::Internal::GeneratorInputImpl< T, Expr >", "class_halide_1_1_internal_1_1_generator_input_impl.html", [
           [ "Halide::Internal::GeneratorInput_DynamicScalar< T >", "class_halide_1_1_internal_1_1_generator_input___dynamic_scalar.html", null ],
           [ "Halide::Internal::GeneratorInput_Scalar< T >", "class_halide_1_1_internal_1_1_generator_input___scalar.html", [
             [ "Halide::Internal::GeneratorInput_Arithmetic< T >", "class_halide_1_1_internal_1_1_generator_input___arithmetic.html", null ]
           ] ]
-        ] ],
-        [ "Halide::Internal::GeneratorInputImpl< T, Func >", "class_halide_1_1_internal_1_1_generator_input_impl.html", [
-          [ "Halide::Internal::GeneratorInput_Func< T >", "class_halide_1_1_internal_1_1_generator_input___func.html", null ]
         ] ],
         [ "Halide::Internal::GeneratorInputImpl< T, ValueType >", "class_halide_1_1_internal_1_1_generator_input_impl.html", null ]
       ] ],
@@ -311,8 +310,30 @@ var hierarchy =
     [ "Halide::Internal::InferredArgument", "struct_halide_1_1_internal_1_1_inferred_argument.html", null ],
     [ "Halide::Internal::Interval", "struct_halide_1_1_internal_1_1_interval.html", null ],
     [ "Halide::Internal::IntrusivePtr< T >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IRCompareCache", "class_halide_1_1_internal_1_1_i_r_compare_cache.html", null ],
+    [ "Halide::Internal::IntrusivePtr< CallableContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< const Halide::Internal::Autoscheduler::LoopNest >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< const Halide::Internal::Autoscheduler::State >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< const IRNode >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", [
+      [ "Halide::Internal::IRHandle", "struct_halide_1_1_internal_1_1_i_r_handle.html", [
+        [ "Halide::Expr", "struct_halide_1_1_expr.html", null ],
+        [ "Halide::Internal::Stmt", "struct_halide_1_1_internal_1_1_stmt.html", null ]
+      ] ]
+    ] ],
+    [ "Halide::Internal::IntrusivePtr< DefinitionContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< FuncScheduleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< FunctionGroup >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< Halide::Internal::Autoscheduler::State >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< Halide::Internal::BufferContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< Internal::LoopLevelContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< Internal::ModuleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< Internal::ParameterContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< JITModuleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< PipelineContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< ReductionDomainContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< StageScheduleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
+    [ "Halide::Internal::IntrusivePtr< WasmModuleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
     [ "Halide::Internal::IRDeepCompare", "struct_halide_1_1_internal_1_1_i_r_deep_compare.html", null ],
+    [ "Halide::Internal::IRGraphDeepCompare", "struct_halide_1_1_internal_1_1_i_r_graph_deep_compare.html", null ],
     [ "Halide::Internal::IRMatcher::bindings< T >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1bindings.html", null ],
     [ "Halide::Internal::IRMatcher::BinOp< Op, A, B >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_bin_op.html", null ],
     [ "Halide::Internal::IRMatcher::BinOp< Op, A, B >::pattern_tag", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_bin_op_1_1pattern__tag.html", null ],
@@ -368,10 +389,24 @@ var hierarchy =
     [ "Halide::Internal::IRMatcher::SpecificExpr::pattern_tag", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_specific_expr_1_1pattern__tag.html", null ],
     [ "Halide::Internal::IRMatcher::VectorReduceOp< A, B, reduce_op >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_vector_reduce_op.html", null ],
     [ "Halide::Internal::IRMatcher::VectorReduceOp< A, B, reduce_op >::pattern_tag", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_vector_reduce_op_1_1pattern__tag.html", null ],
+    [ "Halide::Internal::IRMatcher::WidenOp< A >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_widen_op.html", null ],
+    [ "Halide::Internal::IRMatcher::WidenOp< A >::pattern_tag", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_widen_op_1_1pattern__tag.html", null ],
     [ "Halide::Internal::IRMatcher::Wild< i >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html", null ],
     [ "Halide::Internal::IRMatcher::Wild< i >::pattern_tag", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_1_1pattern__tag.html", null ],
+    [ "Halide::Internal::IRMatcher::Wild< 0 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html", null ],
+    [ "Halide::Internal::IRMatcher::Wild< 1 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html", null ],
+    [ "Halide::Internal::IRMatcher::Wild< 2 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html", null ],
+    [ "Halide::Internal::IRMatcher::Wild< 3 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html", null ],
+    [ "Halide::Internal::IRMatcher::Wild< 4 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html", null ],
+    [ "Halide::Internal::IRMatcher::Wild< 5 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html", null ],
     [ "Halide::Internal::IRMatcher::WildConst< i >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html", null ],
     [ "Halide::Internal::IRMatcher::WildConst< i >::pattern_tag", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const_1_1pattern__tag.html", null ],
+    [ "Halide::Internal::IRMatcher::WildConst< 0 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html", null ],
+    [ "Halide::Internal::IRMatcher::WildConst< 1 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html", null ],
+    [ "Halide::Internal::IRMatcher::WildConst< 2 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html", null ],
+    [ "Halide::Internal::IRMatcher::WildConst< 3 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html", null ],
+    [ "Halide::Internal::IRMatcher::WildConst< 4 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html", null ],
+    [ "Halide::Internal::IRMatcher::WildConst< 5 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html", null ],
     [ "Halide::Internal::IRMatcher::WildConstFloat< i >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const_float.html", null ],
     [ "Halide::Internal::IRMatcher::WildConstFloat< i >::pattern_tag", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const_float_1_1pattern__tag.html", null ],
     [ "Halide::Internal::IRMatcher::WildConstInt< i >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const_int.html", null ],
@@ -420,14 +455,14 @@ var hierarchy =
         [ "Halide::Internal::ExprNode< LE >", "struct_halide_1_1_internal_1_1_expr_node.html", [
           [ "Halide::Internal::LE", "struct_halide_1_1_internal_1_1_l_e.html", null ]
         ] ],
+        [ "Halide::Internal::ExprNode< LT >", "struct_halide_1_1_internal_1_1_expr_node.html", [
+          [ "Halide::Internal::LT", "struct_halide_1_1_internal_1_1_l_t.html", null ]
+        ] ],
         [ "Halide::Internal::ExprNode< Let >", "struct_halide_1_1_internal_1_1_expr_node.html", [
           [ "Halide::Internal::Let", "struct_halide_1_1_internal_1_1_let.html", null ]
         ] ],
         [ "Halide::Internal::ExprNode< Load >", "struct_halide_1_1_internal_1_1_expr_node.html", [
           [ "Halide::Internal::Load", "struct_halide_1_1_internal_1_1_load.html", null ]
-        ] ],
-        [ "Halide::Internal::ExprNode< LT >", "struct_halide_1_1_internal_1_1_expr_node.html", [
-          [ "Halide::Internal::LT", "struct_halide_1_1_internal_1_1_l_t.html", null ]
         ] ],
         [ "Halide::Internal::ExprNode< Max >", "struct_halide_1_1_internal_1_1_expr_node.html", [
           [ "Halide::Internal::Max", "struct_halide_1_1_internal_1_1_max.html", null ]
@@ -480,7 +515,6 @@ var hierarchy =
         [ "Halide::Internal::ExprNode< T >", "struct_halide_1_1_internal_1_1_expr_node.html", null ]
       ] ],
       [ "Halide::Internal::BaseStmtNode", "struct_halide_1_1_internal_1_1_base_stmt_node.html", [
-        [ "Halide::Internal::StmtNode< T >", "struct_halide_1_1_internal_1_1_stmt_node.html", null ],
         [ "Halide::Internal::StmtNode< Acquire >", "struct_halide_1_1_internal_1_1_stmt_node.html", [
           [ "Halide::Internal::Acquire", "struct_halide_1_1_internal_1_1_acquire.html", null ]
         ] ],
@@ -508,6 +542,9 @@ var hierarchy =
         [ "Halide::Internal::StmtNode< Free >", "struct_halide_1_1_internal_1_1_stmt_node.html", [
           [ "Halide::Internal::Free", "struct_halide_1_1_internal_1_1_free.html", null ]
         ] ],
+        [ "Halide::Internal::StmtNode< HoistedStorage >", "struct_halide_1_1_internal_1_1_stmt_node.html", [
+          [ "Halide::Internal::HoistedStorage", "struct_halide_1_1_internal_1_1_hoisted_storage.html", null ]
+        ] ],
         [ "Halide::Internal::StmtNode< IfThenElse >", "struct_halide_1_1_internal_1_1_stmt_node.html", [
           [ "Halide::Internal::IfThenElse", "struct_halide_1_1_internal_1_1_if_then_else.html", null ]
         ] ],
@@ -528,7 +565,8 @@ var hierarchy =
         ] ],
         [ "Halide::Internal::StmtNode< Store >", "struct_halide_1_1_internal_1_1_stmt_node.html", [
           [ "Halide::Internal::Store", "struct_halide_1_1_internal_1_1_store.html", null ]
-        ] ]
+        ] ],
+        [ "Halide::Internal::StmtNode< T >", "struct_halide_1_1_internal_1_1_stmt_node.html", null ]
       ] ]
     ] ],
     [ "Halide::Internal::IRVisitor", "class_halide_1_1_internal_1_1_i_r_visitor.html", [
@@ -562,9 +600,10 @@ var hierarchy =
     [ "Halide::Internal::NoRealizations< T, Args... >", "struct_halide_1_1_internal_1_1_no_realizations_3_01_t_00_01_args_8_8_8_01_4.html", null ],
     [ "Halide::Internal::ObjectInstanceRegistry", "class_halide_1_1_internal_1_1_object_instance_registry.html", null ],
     [ "Halide::Internal::OutputInfo", "struct_halide_1_1_internal_1_1_output_info.html", null ],
-    [ "Halide::Internal::Parameter", "class_halide_1_1_internal_1_1_parameter.html", null ],
     [ "Halide::Internal::PipelineFeatures", "struct_halide_1_1_internal_1_1_pipeline_features.html", null ],
     [ "Halide::Internal::PrefetchDirective", "struct_halide_1_1_internal_1_1_prefetch_directive.html", null ],
+    [ "Halide::Internal::PrintSpan< T >", "struct_halide_1_1_internal_1_1_print_span.html", null ],
+    [ "Halide::Internal::PrintSpanLn< T >", "struct_halide_1_1_internal_1_1_print_span_ln.html", null ],
     [ "Halide::Internal::PythonExtensionGen", "class_halide_1_1_internal_1_1_python_extension_gen.html", null ],
     [ "Halide::Internal::ReductionDomain", "class_halide_1_1_internal_1_1_reduction_domain.html", null ],
     [ "Halide::Internal::ReductionDomain::Compare", "struct_halide_1_1_internal_1_1_reduction_domain_1_1_compare.html", null ],
@@ -577,6 +616,15 @@ var hierarchy =
     [ "Halide::Internal::ScheduleFeatures", "struct_halide_1_1_internal_1_1_schedule_features.html", null ],
     [ "Halide::Internal::Scope< T >", "class_halide_1_1_internal_1_1_scope.html", null ],
     [ "Halide::Internal::Scope< T >::const_iterator", "class_halide_1_1_internal_1_1_scope_1_1const__iterator.html", null ],
+    [ "Halide::Internal::Scope< T >::PushToken", "struct_halide_1_1_internal_1_1_scope_1_1_push_token.html", null ],
+    [ "Halide::Internal::Scope< Halide::Expr >", "class_halide_1_1_internal_1_1_scope.html", null ],
+    [ "Halide::Internal::Scope< Halide::Internal::CodeGen_C::Allocation >", "class_halide_1_1_internal_1_1_scope.html", null ],
+    [ "Halide::Internal::Scope< Halide::Internal::CodeGen_Posix::Allocation >", "class_halide_1_1_internal_1_1_scope.html", null ],
+    [ "Halide::Internal::Scope< Halide::Internal::Interval >", "class_halide_1_1_internal_1_1_scope.html", null ],
+    [ "Halide::Internal::Scope< Halide::Internal::Simplify::ExprInfo >", "class_halide_1_1_internal_1_1_scope.html", null ],
+    [ "Halide::Internal::Scope< Halide::Internal::Simplify::VarInfo >", "class_halide_1_1_internal_1_1_scope.html", null ],
+    [ "Halide::Internal::Scope< llvm::Value * >", "class_halide_1_1_internal_1_1_scope.html", null ],
+    [ "Halide::Internal::Scope< void >", "class_halide_1_1_internal_1_1_scope.html", null ],
     [ "Halide::Internal::ScopedBinding< T >", "struct_halide_1_1_internal_1_1_scoped_binding.html", null ],
     [ "Halide::Internal::ScopedBinding< void >", "struct_halide_1_1_internal_1_1_scoped_binding_3_01void_01_4.html", null ],
     [ "Halide::Internal::ScopedValue< T >", "struct_halide_1_1_internal_1_1_scoped_value.html", null ],
@@ -585,6 +633,13 @@ var hierarchy =
     [ "Halide::Internal::Simplify::ScopedFact", "struct_halide_1_1_internal_1_1_simplify_1_1_scoped_fact.html", null ],
     [ "Halide::Internal::Simplify::VarInfo", "struct_halide_1_1_internal_1_1_simplify_1_1_var_info.html", null ],
     [ "Halide::Internal::SmallStack< T >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
+    [ "Halide::Internal::SmallStack< Halide::Expr >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
+    [ "Halide::Internal::SmallStack< Halide::Internal::CodeGen_C::Allocation >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
+    [ "Halide::Internal::SmallStack< Halide::Internal::CodeGen_Posix::Allocation >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
+    [ "Halide::Internal::SmallStack< Halide::Internal::Interval >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
+    [ "Halide::Internal::SmallStack< Halide::Internal::Simplify::ExprInfo >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
+    [ "Halide::Internal::SmallStack< Halide::Internal::Simplify::VarInfo >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
+    [ "Halide::Internal::SmallStack< llvm::Value * >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
     [ "Halide::Internal::SmallStack< void >", "class_halide_1_1_internal_1_1_small_stack_3_01void_01_4.html", null ],
     [ "Halide::Internal::SolverResult", "struct_halide_1_1_internal_1_1_solver_result.html", null ],
     [ "Halide::Internal::Specialization", "struct_halide_1_1_internal_1_1_specialization.html", null ],
@@ -602,6 +657,12 @@ var hierarchy =
     [ "Halide::Internal::Test::Sharder", "class_halide_1_1_internal_1_1_test_1_1_sharder.html", null ],
     [ "Halide::Internal::type_sink< typename >", "struct_halide_1_1_internal_1_1type__sink.html", null ],
     [ "Halide::Internal::VariadicVisitor< T, ExprRet, StmtRet >", "class_halide_1_1_internal_1_1_variadic_visitor.html", null ],
+    [ "Halide::Internal::VariadicVisitor< ExprBranching, int, int >", "class_halide_1_1_internal_1_1_variadic_visitor.html", [
+      [ "Halide::Internal::Autoscheduler::ExprBranching", "class_halide_1_1_internal_1_1_autoscheduler_1_1_expr_branching.html", null ]
+    ] ],
+    [ "Halide::Internal::VariadicVisitor< Simplify, Expr, Stmt >", "class_halide_1_1_internal_1_1_variadic_visitor.html", [
+      [ "Halide::Internal::Simplify", "class_halide_1_1_internal_1_1_simplify.html", null ]
+    ] ],
     [ "Halide::Internal::Voidifier", "class_halide_1_1_internal_1_1_voidifier.html", null ],
     [ "Halide::Internal::WasmModule", "struct_halide_1_1_internal_1_1_wasm_module.html", null ],
     [ "Halide::Internal::Weights", "struct_halide_1_1_internal_1_1_weights.html", null ],
@@ -617,8 +678,7 @@ var hierarchy =
       [ "Halide::ImageParam", "class_halide_1_1_image_param.html", null ]
     ] ],
     [ "Halide::Param< T >", "class_halide_1_1_param.html", null ],
-    [ "Halide::ParamMap", "class_halide_1_1_param_map.html", null ],
-    [ "Halide::ParamMap::ParamMapping", "struct_halide_1_1_param_map_1_1_param_mapping.html", null ],
+    [ "Halide::Parameter", "class_halide_1_1_parameter.html", null ],
     [ "Halide::Pipeline", "class_halide_1_1_pipeline.html", null ],
     [ "Halide::Pipeline::RealizationArg", "struct_halide_1_1_pipeline_1_1_realization_arg.html", null ],
     [ "Halide::PyTorch::UserContext", "struct_halide_1_1_py_torch_1_1_user_context.html", null ],
@@ -630,6 +690,10 @@ var hierarchy =
     [ "Halide::Runtime::Buffer< T, Dims, InClassDimStorage >", "class_halide_1_1_runtime_1_1_buffer.html", null ],
     [ "Halide::Runtime::Buffer< T, Dims, InClassDimStorage >::Dimension", "class_halide_1_1_runtime_1_1_buffer_1_1_dimension.html", null ],
     [ "Halide::Runtime::Buffer< T, Dims, InClassDimStorage >::Dimension::iterator", "struct_halide_1_1_runtime_1_1_buffer_1_1_dimension_1_1iterator.html", null ],
+    [ "Halide::Runtime::Buffer< double * >", "class_halide_1_1_runtime_1_1_buffer.html", null ],
+    [ "Halide::Runtime::Buffer< float >", "class_halide_1_1_runtime_1_1_buffer.html", null ],
+    [ "Halide::Runtime::Buffer< T, AnyDims >", "class_halide_1_1_runtime_1_1_buffer.html", null ],
+    [ "Halide::Runtime::Buffer< T, Dims, InClassDimStorage >", "class_halide_1_1_runtime_1_1_buffer.html", null ],
     [ "Halide::Runtime::DeviceRefCount", "struct_halide_1_1_runtime_1_1_device_ref_count.html", null ],
     [ "Halide::Runtime::Internal::BlockAllocator", "class_halide_1_1_runtime_1_1_internal_1_1_block_allocator.html", null ],
     [ "Halide::Runtime::Internal::BlockAllocator::Config", "struct_halide_1_1_runtime_1_1_internal_1_1_block_allocator_1_1_config.html", null ],
@@ -641,6 +705,7 @@ var hierarchy =
     [ "Halide::Runtime::Internal::CacheEntry", "struct_halide_1_1_runtime_1_1_internal_1_1_cache_entry.html", null ],
     [ "Halide::Runtime::Internal::CpuFeatures", "struct_halide_1_1_runtime_1_1_internal_1_1_cpu_features.html", null ],
     [ "Halide::Runtime::Internal::Cuda::CUDA_MEMCPY3D_st", "struct_halide_1_1_runtime_1_1_internal_1_1_cuda_1_1_c_u_d_a___m_e_m_c_p_y3_d__st.html", null ],
+    [ "Halide::Runtime::Internal::DefaultAllocatorFns", "struct_halide_1_1_runtime_1_1_internal_1_1_default_allocator_fns.html", null ],
     [ "Halide::Runtime::Internal::device_copy", "struct_halide_1_1_runtime_1_1_internal_1_1device__copy.html", null ],
     [ "Halide::Runtime::Internal::HalideSystemAllocatorFns", "struct_halide_1_1_runtime_1_1_internal_1_1_halide_system_allocator_fns.html", null ],
     [ "Halide::Runtime::Internal::HashMap", "struct_halide_1_1_runtime_1_1_internal_1_1_hash_map.html", [
@@ -658,11 +723,12 @@ var hierarchy =
     [ "Halide::Runtime::Internal::MemoryRegionAllocatorFns", "struct_halide_1_1_runtime_1_1_internal_1_1_memory_region_allocator_fns.html", null ],
     [ "Halide::Runtime::Internal::MemoryRequest", "struct_halide_1_1_runtime_1_1_internal_1_1_memory_request.html", null ],
     [ "Halide::Runtime::Internal::PointerTable", "class_halide_1_1_runtime_1_1_internal_1_1_pointer_table.html", null ],
+    [ "Halide::Runtime::Internal::PrinterBase", "class_halide_1_1_runtime_1_1_internal_1_1_printer_base.html", null ],
+    [ "Halide::Runtime::Internal::PrinterBase::Float16Bits", "struct_halide_1_1_runtime_1_1_internal_1_1_printer_base_1_1_float16_bits.html", null ],
     [ "Halide::Runtime::Internal::RegionAllocator", "class_halide_1_1_runtime_1_1_internal_1_1_region_allocator.html", null ],
     [ "Halide::Runtime::Internal::RegionAllocator::MemoryAllocators", "struct_halide_1_1_runtime_1_1_internal_1_1_region_allocator_1_1_memory_allocators.html", null ],
     [ "Halide::Runtime::Internal::ScopedMutexLock", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_mutex_lock.html", null ],
     [ "Halide::Runtime::Internal::ScopedSpinLock", "struct_halide_1_1_runtime_1_1_internal_1_1_scoped_spin_lock.html", null ],
-    [ "Halide::Runtime::Internal::StackPrinter< printer_type, buffer_length >", "class_halide_1_1_runtime_1_1_internal_1_1_stack_printer.html", null ],
     [ "Halide::Runtime::Internal::StringStorage", "class_halide_1_1_runtime_1_1_internal_1_1_string_storage.html", null ],
     [ "Halide::Runtime::Internal::StringTable", "class_halide_1_1_runtime_1_1_internal_1_1_string_table.html", null ],
     [ "Halide::Runtime::Internal::StringUtils", "struct_halide_1_1_runtime_1_1_internal_1_1_string_utils.html", null ],
@@ -730,8 +796,6 @@ var hierarchy =
     [ "halide_trace_event_t", "structhalide__trace__event__t.html", null ],
     [ "halide_trace_packet_t", "structhalide__trace__packet__t.html", null ],
     [ "halide_type_t", "structhalide__type__t.html", null ],
-    [ "HalideIntrospectionCanary::A", "struct_halide_introspection_canary_1_1_a.html", null ],
-    [ "HalideIntrospectionCanary::A::B", "class_halide_introspection_canary_1_1_a_1_1_b.html", null ],
     [ "ID3D10BlobVtbl", "struct_i_d3_d10_blob_vtbl.html", null ],
     [ "ID3D12CommandAllocatorVtbl", "struct_i_d3_d12_command_allocator_vtbl.html", null ],
     [ "ID3D12CommandListVtbl", "struct_i_d3_d12_command_list_vtbl.html", null ],
@@ -753,42 +817,20 @@ var hierarchy =
     [ "IDXGIFactory1Vtbl", "struct_i_d_x_g_i_factory1_vtbl.html", null ],
     [ "IDXGIFactoryVtbl", "struct_i_d_x_g_i_factory_vtbl.html", null ],
     [ "IDXGIObjectVtbl", "struct_i_d_x_g_i_object_vtbl.html", null ],
-    [ "GeneratorInputImplBase", null, [
+    [ "Internal::GeneratorInputImplBase", null, [
       [ "Halide::GeneratorInput< T >", "class_halide_1_1_generator_input.html", null ]
     ] ],
-    [ "GeneratorOutputImplBase", null, [
+    [ "Internal::GeneratorOutputImplBase", null, [
       [ "Halide::GeneratorOutput< T >", "class_halide_1_1_generator_output.html", null ]
     ] ],
-    [ "GeneratorParamImplBase", null, [
+    [ "Internal::GeneratorParamImplBase", null, [
       [ "Halide::GeneratorParam< Halide::Target >", "class_halide_1_1_generator_param.html", null ],
       [ "Halide::GeneratorParam< T >", "class_halide_1_1_generator_param.html", null ]
     ] ],
-    [ "Halide::Internal::IntrusivePtr< CallableContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< const Halide::Internal::Autoscheduler::LoopNest >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< const Halide::Internal::Autoscheduler::State >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< const IRNode >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", [
-      [ "Halide::Internal::IRHandle", "struct_halide_1_1_internal_1_1_i_r_handle.html", [
-        [ "Halide::Expr", "struct_halide_1_1_expr.html", null ],
-        [ "Halide::Internal::Stmt", "struct_halide_1_1_internal_1_1_stmt.html", null ]
-      ] ]
-    ] ],
-    [ "Halide::Internal::IntrusivePtr< DefinitionContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< FuncScheduleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< FunctionGroup >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< Halide::Internal::Autoscheduler::State >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< Halide::Internal::BufferContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< Internal::LoopLevelContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< Internal::ModuleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< JITModuleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< ParameterContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< PipelineContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< ReductionDomainContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< StageScheduleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "Halide::Internal::IntrusivePtr< WasmModuleContents >", "struct_halide_1_1_internal_1_1_intrusive_ptr.html", null ],
-    [ "llvm::IRBuilder< llvm::ConstantFolder, llvm::IRBuilderDefaultInserter >", "classllvm_1_1_i_r_builder.html", null ],
     [ "IUnknownVtbl", "struct_i_unknown_vtbl.html", null ],
     [ "known_symbol", "structknown__symbol.html", null ],
     [ "llvm::IRBuilder< typename, typename >", "classllvm_1_1_i_r_builder.html", null ],
+    [ "llvm::IRBuilder< llvm::ConstantFolder, llvm::IRBuilderDefaultInserter >", "classllvm_1_1_i_r_builder.html", null ],
     [ "PerfectHashMap< K, T, max_small_size, phm_assert >", "class_perfect_hash_map.html", null ],
     [ "PerfectHashMap< K, T, max_small_size, phm_assert >::const_iterator", "struct_perfect_hash_map_1_1const__iterator.html", null ],
     [ "PerfectHashMap< K, T, max_small_size, phm_assert >::iterator", "struct_perfect_hash_map_1_1iterator.html", null ],
@@ -798,65 +840,51 @@ var hierarchy =
     [ "PerfectHashMap< int64_t >", "class_perfect_hash_map.html", null ],
     [ "PerfectHashMap< PerfectHashMap< Halide::Internal::Autoscheduler::LoopNest::FeatureIntermediates > >", "class_perfect_hash_map.html", null ],
     [ "PerfectHashMap< std::map< int, std::vector< Halide::Internal::IntrusivePtr< const Halide::Internal::Autoscheduler::LoopNest > > > >", "class_perfect_hash_map.html", null ],
+    [ "PerfectHashMap< std::map< int, std::vector< IntrusivePtr< const LoopNest > > > >", "class_perfect_hash_map.html", null ],
     [ "PerfectHashMap< std::vector< Halide::Internal::IntrusivePtr< const Halide::Internal::Autoscheduler::LoopNest > > >", "class_perfect_hash_map.html", null ],
     [ "PerfectHashMap< std::vector< std::pair< const Halide::Internal::Autoscheduler::LoopNest *, std::vector< const Halide::Internal::Autoscheduler::FunctionDAG::Edge * > > > >", "class_perfect_hash_map.html", null ],
     [ "PerfectHashMapAsserter", "struct_perfect_hash_map_asserter.html", null ],
     [ "qurt_cond_t", "unionqurt__cond__t.html", null ],
     [ "qurt_mutex_aligned8", "unionqurt__mutex__aligned8.html", null ],
-    [ "Halide::Internal::Scope< Halide::Expr >", "class_halide_1_1_internal_1_1_scope.html", null ],
-    [ "Halide::Internal::Scope< Halide::Internal::CodeGen_C::Allocation >", "class_halide_1_1_internal_1_1_scope.html", null ],
-    [ "Halide::Internal::Scope< Halide::Internal::CodeGen_Posix::Allocation >", "class_halide_1_1_internal_1_1_scope.html", null ],
-    [ "Halide::Internal::Scope< Halide::Internal::Interval >", "class_halide_1_1_internal_1_1_scope.html", null ],
-    [ "Halide::Internal::Scope< Halide::Internal::Simplify::ExprInfo >", "class_halide_1_1_internal_1_1_scope.html", null ],
-    [ "Halide::Internal::Scope< Halide::Internal::Simplify::VarInfo >", "class_halide_1_1_internal_1_1_scope.html", null ],
-    [ "Halide::Internal::Scope< llvm::Value * >", "class_halide_1_1_internal_1_1_scope.html", null ],
-    [ "Halide::Internal::Scope< void >", "class_halide_1_1_internal_1_1_scope.html", null ],
-    [ "Halide::Internal::SmallStack< Halide::Expr >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
-    [ "Halide::Internal::SmallStack< Halide::Internal::CodeGen_C::Allocation >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
-    [ "Halide::Internal::SmallStack< Halide::Internal::CodeGen_Posix::Allocation >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
-    [ "Halide::Internal::SmallStack< Halide::Internal::Interval >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
-    [ "Halide::Internal::SmallStack< Halide::Internal::Simplify::ExprInfo >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
-    [ "Halide::Internal::SmallStack< Halide::Internal::Simplify::VarInfo >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
-    [ "Halide::Internal::SmallStack< llvm::Value * >", "class_halide_1_1_internal_1_1_small_stack.html", null ],
-    [ "conditional", null, [
+    [ "std::conditional", null, [
       [ "Halide::Internal::select_type< First, Rest >", "struct_halide_1_1_internal_1_1select__type.html", null ]
     ] ],
-    [ "false_type", null, [
-      [ "Halide::Internal::all_ints_and_optional_name< Args >", "struct_halide_1_1_internal_1_1all__ints__and__optional__name.html", null ],
-      [ "Halide::Internal::has_static_halide_type_method< T2, typename >", "struct_halide_1_1_internal_1_1has__static__halide__type__method.html", null ],
-      [ "Halide::Internal::IsHalideBuffer< typename >", "struct_halide_1_1_internal_1_1_is_halide_buffer.html", null ],
-      [ "Halide::Internal::meta_or< T >", "struct_halide_1_1_internal_1_1meta__or.html", null ],
-      [ "Halide::Internal::NoRealizations< Args >", "struct_halide_1_1_internal_1_1_no_realizations.html", null ],
-      [ "Halide::Runtime::AllInts< Args >", "struct_halide_1_1_runtime_1_1_all_ints.html", null ],
-      [ "Halide::Runtime::AllInts< double, Args... >", "struct_halide_1_1_runtime_1_1_all_ints_3_01double_00_01_args_8_8_8_01_4.html", null ],
-      [ "Halide::Runtime::AllInts< float, Args... >", "struct_halide_1_1_runtime_1_1_all_ints_3_01float_00_01_args_8_8_8_01_4.html", null ],
+    [ "std::false_type", null, [
       [ "Halide::Internal::meta_or< std::is_convertible< T, std::string >, std::is_convertible< T, int > >", "struct_halide_1_1_internal_1_1meta__or.html", [
         [ "Halide::Internal::all_ints_and_optional_name< T >", "struct_halide_1_1_internal_1_1all__ints__and__optional__name_3_01_t_01_4.html", null ]
-      ] ]
+      ] ],
+      [ "Halide::Internal::IsHalideBuffer< typename >", "struct_halide_1_1_internal_1_1_is_halide_buffer.html", null ],
+      [ "Halide::Internal::NoRealizations< Args >", "struct_halide_1_1_internal_1_1_no_realizations.html", null ],
+      [ "Halide::Internal::all_ints_and_optional_name< Args >", "struct_halide_1_1_internal_1_1all__ints__and__optional__name.html", null ],
+      [ "Halide::Internal::has_static_halide_type_method< T2, typename >", "struct_halide_1_1_internal_1_1has__static__halide__type__method.html", null ],
+      [ "Halide::Internal::meta_or< T >", "struct_halide_1_1_internal_1_1meta__or.html", null ],
+      [ "Halide::Runtime::AllInts< Args >", "struct_halide_1_1_runtime_1_1_all_ints.html", null ],
+      [ "Halide::Runtime::AllInts< double, Args... >", "struct_halide_1_1_runtime_1_1_all_ints_3_01double_00_01_args_8_8_8_01_4.html", null ],
+      [ "Halide::Runtime::AllInts< float, Args... >", "struct_halide_1_1_runtime_1_1_all_ints_3_01float_00_01_args_8_8_8_01_4.html", null ]
     ] ],
-    [ "integral_constant", null, [
+    [ "std::integral_constant", null, [
       [ "Halide::Internal::meta_and< T1, Args... >", "struct_halide_1_1_internal_1_1meta__and_3_01_t1_00_01_args_8_8_8_01_4.html", null ],
       [ "Halide::Internal::meta_or< T1, Args... >", "struct_halide_1_1_internal_1_1meta__or_3_01_t1_00_01_args_8_8_8_01_4.html", null ]
     ] ],
-    [ "true_type", null, [
-      [ "Halide::Internal::all_ints_and_optional_name<>", "struct_halide_1_1_internal_1_1all__ints__and__optional__name_3_4.html", null ],
-      [ "Halide::Internal::has_static_halide_type_method< T2, typename type_sink< decltype(T2::static_halide_type())>::type >", "struct_halide_1_1_internal_1_1has__static__halide__type__method_3_01_t2_00_01typename_01type__si902d603523cc7c0df71b135e75cbe224.html", null ],
+    [ "std::true_type", null, [
+      [ "Halide::Internal::meta_and< std::is_convertible< Args, To >... >", "struct_halide_1_1_internal_1_1meta__and.html", [
+        [ "Halide::Internal::all_are_convertible< To, Args >", "struct_halide_1_1_internal_1_1all__are__convertible.html", null ]
+      ] ],
+      [ "Halide::Internal::meta_and< is_printable_arg< Args >... >", "struct_halide_1_1_internal_1_1meta__and.html", [
+        [ "Halide::Internal::all_are_printable_args< Args >", "struct_halide_1_1_internal_1_1all__are__printable__args.html", null ]
+      ] ],
+      [ "Halide::Internal::meta_and< std::is_convertible< First, int >, all_ints_and_optional_name< Rest... > >", "struct_halide_1_1_internal_1_1meta__and.html", [
+        [ "Halide::Internal::all_ints_and_optional_name< First, Rest... >", "struct_halide_1_1_internal_1_1all__ints__and__optional__name_3_01_first_00_01_rest_8_8_8_01_4.html", null ]
+      ] ],
       [ "Halide::Internal::IsHalideBuffer< const halide_buffer_t * >", "struct_halide_1_1_internal_1_1_is_halide_buffer_3_01const_01halide__buffer__t_01_5_01_4.html", null ],
       [ "Halide::Internal::IsHalideBuffer< halide_buffer_t * >", "struct_halide_1_1_internal_1_1_is_halide_buffer_3_01halide__buffer__t_01_5_01_4.html", null ],
       [ "Halide::Internal::IsHalideBuffer<::Halide::Buffer< T, Dims > >", "struct_halide_1_1_internal_1_1_is_halide_buffer_3_1_1_halide_1_1_buffer_3_01_t_00_01_dims_01_4_01_4.html", null ],
       [ "Halide::Internal::IsHalideBuffer<::Halide::Runtime::Buffer< T, Dims > >", "struct_halide_1_1_internal_1_1_is_halide_buffer_3_1_1_halide_1_1_runtime_1_1_buffer_3_01_t_00_01_dims_01_4_01_4.html", null ],
-      [ "Halide::Internal::meta_and< T >", "struct_halide_1_1_internal_1_1meta__and.html", null ],
       [ "Halide::Internal::NoRealizations<>", "struct_halide_1_1_internal_1_1_no_realizations_3_4.html", null ],
-      [ "Halide::Runtime::AllInts<>", "struct_halide_1_1_runtime_1_1_all_ints_3_4.html", null ],
-      [ "Halide::Internal::meta_and< is_printable_arg< Args >... >", "struct_halide_1_1_internal_1_1meta__and.html", [
-        [ "Halide::Internal::all_are_printable_args< Args >", "struct_halide_1_1_internal_1_1all__are__printable__args.html", null ]
-      ] ],
-      [ "Halide::Internal::meta_and< std::is_convertible< Args, To >... >", "struct_halide_1_1_internal_1_1meta__and.html", [
-        [ "Halide::Internal::all_are_convertible< To, Args >", "struct_halide_1_1_internal_1_1all__are__convertible.html", null ]
-      ] ],
-      [ "Halide::Internal::meta_and< std::is_convertible< First, int >, all_ints_and_optional_name< Rest... > >", "struct_halide_1_1_internal_1_1meta__and.html", [
-        [ "Halide::Internal::all_ints_and_optional_name< First, Rest... >", "struct_halide_1_1_internal_1_1all__ints__and__optional__name_3_01_first_00_01_rest_8_8_8_01_4.html", null ]
-      ] ]
+      [ "Halide::Internal::all_ints_and_optional_name<>", "struct_halide_1_1_internal_1_1all__ints__and__optional__name_3_4.html", null ],
+      [ "Halide::Internal::has_static_halide_type_method< T2, typename type_sink< decltype(T2::static_halide_type())>::type >", "struct_halide_1_1_internal_1_1has__static__halide__type__method_3_01_t2_00_01typename_01type__si902d603523cc7c0df71b135e75cbe224.html", null ],
+      [ "Halide::Internal::meta_and< T >", "struct_halide_1_1_internal_1_1meta__and.html", null ],
+      [ "Halide::Runtime::AllInts<>", "struct_halide_1_1_runtime_1_1_all_ints_3_4.html", null ]
     ] ],
     [ "stDmaWrapper_DmaTransferSetup", "structst_dma_wrapper___dma_transfer_setup.html", null ],
     [ "stDmaWrapper_FrameProp", "structst_dma_wrapper___frame_prop.html", null ],
@@ -864,12 +892,6 @@ var hierarchy =
     [ "stDmaWrapper_RoiAlignInfo", "structst_dma_wrapper___roi_align_info.html", null ],
     [ "tagRECT", "structtag_r_e_c_t.html", null ],
     [ "timeval", "structtimeval.html", null ],
-    [ "Halide::Internal::VariadicVisitor< ExprBranching, int, int >", "class_halide_1_1_internal_1_1_variadic_visitor.html", [
-      [ "Halide::Internal::Autoscheduler::ExprBranching", "class_halide_1_1_internal_1_1_autoscheduler_1_1_expr_branching.html", null ]
-    ] ],
-    [ "Halide::Internal::VariadicVisitor< Simplify, Expr, Stmt >", "class_halide_1_1_internal_1_1_variadic_visitor.html", [
-      [ "Halide::Internal::Simplify", "class_halide_1_1_internal_1_1_simplify.html", null ]
-    ] ],
     [ "VkAcquireNextImageInfoKHX", "struct_vk_acquire_next_image_info_k_h_x.html", null ],
     [ "VkAllocationCallbacks", "struct_vk_allocation_callbacks.html", null ],
     [ "VkApplicationInfo", "struct_vk_application_info.html", null ],
@@ -1122,6 +1144,8 @@ var hierarchy =
     [ "VkWriteDescriptorSet", "struct_vk_write_descriptor_set.html", null ],
     [ "VkXYColorEXT", "struct_vk_x_y_color_e_x_t.html", null ],
     [ "WGPUAdapterProperties", "struct_w_g_p_u_adapter_properties.html", null ],
+    [ "WGPUAdapterPropertiesD3D", "struct_w_g_p_u_adapter_properties_d3_d.html", null ],
+    [ "WGPUAdapterPropertiesMemoryHeaps", "struct_w_g_p_u_adapter_properties_memory_heaps.html", null ],
     [ "WGPUBindGroupDescriptor", "struct_w_g_p_u_bind_group_descriptor.html", null ],
     [ "WGPUBindGroupEntry", "struct_w_g_p_u_bind_group_entry.html", null ],
     [ "WGPUBindGroupLayoutDescriptor", "struct_w_g_p_u_bind_group_layout_descriptor.html", null ],
@@ -1130,6 +1154,8 @@ var hierarchy =
     [ "WGPUBlendState", "struct_w_g_p_u_blend_state.html", null ],
     [ "WGPUBufferBindingLayout", "struct_w_g_p_u_buffer_binding_layout.html", null ],
     [ "WGPUBufferDescriptor", "struct_w_g_p_u_buffer_descriptor.html", null ],
+    [ "WGPUBufferHostMappedPointer", "struct_w_g_p_u_buffer_host_mapped_pointer.html", null ],
+    [ "WGPUBufferMapCallbackInfo", "struct_w_g_p_u_buffer_map_callback_info.html", null ],
     [ "WGPUChainedStruct", "struct_w_g_p_u_chained_struct.html", null ],
     [ "WGPUChainedStructOut", "struct_w_g_p_u_chained_struct_out.html", null ],
     [ "WGPUColor", "struct_w_g_p_u_color.html", null ],
@@ -1139,20 +1165,27 @@ var hierarchy =
     [ "WGPUCompilationInfo", "struct_w_g_p_u_compilation_info.html", null ],
     [ "WGPUCompilationMessage", "struct_w_g_p_u_compilation_message.html", null ],
     [ "WGPUComputePassDescriptor", "struct_w_g_p_u_compute_pass_descriptor.html", null ],
-    [ "WGPUComputePassTimestampWrite", "struct_w_g_p_u_compute_pass_timestamp_write.html", null ],
+    [ "WGPUComputePassTimestampWrites", "struct_w_g_p_u_compute_pass_timestamp_writes.html", null ],
     [ "WGPUComputePipelineDescriptor", "struct_w_g_p_u_compute_pipeline_descriptor.html", null ],
     [ "WGPUConstantEntry", "struct_w_g_p_u_constant_entry.html", null ],
     [ "WGPUCopyTextureForBrowserOptions", "struct_w_g_p_u_copy_texture_for_browser_options.html", null ],
+    [ "WGPUCreateComputePipelineAsyncCallbackInfo", "struct_w_g_p_u_create_compute_pipeline_async_callback_info.html", null ],
+    [ "WGPUCreateRenderPipelineAsyncCallbackInfo", "struct_w_g_p_u_create_render_pipeline_async_callback_info.html", null ],
     [ "WGPUDawnAdapterPropertiesPowerPreference", "struct_w_g_p_u_dawn_adapter_properties_power_preference.html", null ],
     [ "WGPUDawnBufferDescriptorErrorInfoFromWireClient", "struct_w_g_p_u_dawn_buffer_descriptor_error_info_from_wire_client.html", null ],
     [ "WGPUDawnCacheDeviceDescriptor", "struct_w_g_p_u_dawn_cache_device_descriptor.html", null ],
+    [ "WGPUDawnComputePipelineFullSubgroups", "struct_w_g_p_u_dawn_compute_pipeline_full_subgroups.html", null ],
     [ "WGPUDawnEncoderInternalUsageDescriptor", "struct_w_g_p_u_dawn_encoder_internal_usage_descriptor.html", null ],
-    [ "WGPUDawnInstanceDescriptor", "struct_w_g_p_u_dawn_instance_descriptor.html", null ],
+    [ "WGPUDawnExperimentalSubgroupLimits", "struct_w_g_p_u_dawn_experimental_subgroup_limits.html", null ],
+    [ "WGPUDawnMultisampleStateRenderToSingleSampled", "struct_w_g_p_u_dawn_multisample_state_render_to_single_sampled.html", null ],
+    [ "WGPUDawnRenderPassColorAttachmentRenderToSingleSampled", "struct_w_g_p_u_dawn_render_pass_color_attachment_render_to_single_sampled.html", null ],
     [ "WGPUDawnShaderModuleSPIRVOptionsDescriptor", "struct_w_g_p_u_dawn_shader_module_s_p_i_r_v_options_descriptor.html", null ],
     [ "WGPUDawnTextureInternalUsageDescriptor", "struct_w_g_p_u_dawn_texture_internal_usage_descriptor.html", null ],
     [ "WGPUDawnTogglesDescriptor", "struct_w_g_p_u_dawn_toggles_descriptor.html", null ],
-    [ "WGPUDawnTogglesDeviceDescriptor", "struct_w_g_p_u_dawn_toggles_device_descriptor.html", null ],
+    [ "WGPUDawnWGSLBlocklist", "struct_w_g_p_u_dawn_w_g_s_l_blocklist.html", null ],
+    [ "WGPUDawnWireWGSLControl", "struct_w_g_p_u_dawn_wire_w_g_s_l_control.html", null ],
     [ "WGPUDepthStencilState", "struct_w_g_p_u_depth_stencil_state.html", null ],
+    [ "WGPUDepthStencilStateDepthWriteDefinedDawn", "struct_w_g_p_u_depth_stencil_state_depth_write_defined_dawn.html", null ],
     [ "WGPUDeviceDescriptor", "struct_w_g_p_u_device_descriptor.html", null ],
     [ "WGPUExtent2D", "struct_w_g_p_u_extent2_d.html", null ],
     [ "WGPUExtent3D", "struct_w_g_p_u_extent3_d.html", null ],
@@ -1160,35 +1193,74 @@ var hierarchy =
     [ "WGPUExternalTextureBindingLayout", "struct_w_g_p_u_external_texture_binding_layout.html", null ],
     [ "WGPUExternalTextureDescriptor", "struct_w_g_p_u_external_texture_descriptor.html", null ],
     [ "WGPUFragmentState", "struct_w_g_p_u_fragment_state.html", null ],
+    [ "WGPUFuture", "struct_w_g_p_u_future.html", null ],
+    [ "WGPUFutureWaitInfo", "struct_w_g_p_u_future_wait_info.html", null ],
     [ "WGPUImageCopyBuffer", "struct_w_g_p_u_image_copy_buffer.html", null ],
     [ "WGPUImageCopyExternalTexture", "struct_w_g_p_u_image_copy_external_texture.html", null ],
     [ "WGPUImageCopyTexture", "struct_w_g_p_u_image_copy_texture.html", null ],
     [ "WGPUInstanceDescriptor", "struct_w_g_p_u_instance_descriptor.html", null ],
+    [ "WGPUInstanceFeatures", "struct_w_g_p_u_instance_features.html", null ],
     [ "WGPULimits", "struct_w_g_p_u_limits.html", null ],
+    [ "WGPUMemoryHeapInfo", "struct_w_g_p_u_memory_heap_info.html", null ],
     [ "WGPUMultisampleState", "struct_w_g_p_u_multisample_state.html", null ],
     [ "WGPUOrigin2D", "struct_w_g_p_u_origin2_d.html", null ],
     [ "WGPUOrigin3D", "struct_w_g_p_u_origin3_d.html", null ],
     [ "WGPUPipelineLayoutDescriptor", "struct_w_g_p_u_pipeline_layout_descriptor.html", null ],
+    [ "WGPUPipelineLayoutPixelLocalStorage", "struct_w_g_p_u_pipeline_layout_pixel_local_storage.html", null ],
+    [ "WGPUPipelineLayoutStorageAttachment", "struct_w_g_p_u_pipeline_layout_storage_attachment.html", null ],
     [ "WGPUPrimitiveDepthClipControl", "struct_w_g_p_u_primitive_depth_clip_control.html", null ],
     [ "WGPUPrimitiveState", "struct_w_g_p_u_primitive_state.html", null ],
     [ "WGPUProgrammableStageDescriptor", "struct_w_g_p_u_programmable_stage_descriptor.html", null ],
     [ "WGPUQuerySetDescriptor", "struct_w_g_p_u_query_set_descriptor.html", null ],
     [ "WGPUQueueDescriptor", "struct_w_g_p_u_queue_descriptor.html", null ],
+    [ "WGPUQueueWorkDoneCallbackInfo", "struct_w_g_p_u_queue_work_done_callback_info.html", null ],
     [ "WGPURenderBundleDescriptor", "struct_w_g_p_u_render_bundle_descriptor.html", null ],
     [ "WGPURenderBundleEncoderDescriptor", "struct_w_g_p_u_render_bundle_encoder_descriptor.html", null ],
     [ "WGPURenderPassColorAttachment", "struct_w_g_p_u_render_pass_color_attachment.html", null ],
     [ "WGPURenderPassDepthStencilAttachment", "struct_w_g_p_u_render_pass_depth_stencil_attachment.html", null ],
     [ "WGPURenderPassDescriptor", "struct_w_g_p_u_render_pass_descriptor.html", null ],
     [ "WGPURenderPassDescriptorMaxDrawCount", "struct_w_g_p_u_render_pass_descriptor_max_draw_count.html", null ],
-    [ "WGPURenderPassTimestampWrite", "struct_w_g_p_u_render_pass_timestamp_write.html", null ],
+    [ "WGPURenderPassPixelLocalStorage", "struct_w_g_p_u_render_pass_pixel_local_storage.html", null ],
+    [ "WGPURenderPassStorageAttachment", "struct_w_g_p_u_render_pass_storage_attachment.html", null ],
+    [ "WGPURenderPassTimestampWrites", "struct_w_g_p_u_render_pass_timestamp_writes.html", null ],
     [ "WGPURenderPipelineDescriptor", "struct_w_g_p_u_render_pipeline_descriptor.html", null ],
+    [ "WGPURequestAdapterCallbackInfo", "struct_w_g_p_u_request_adapter_callback_info.html", null ],
     [ "WGPURequestAdapterOptions", "struct_w_g_p_u_request_adapter_options.html", null ],
+    [ "WGPURequestDeviceCallbackInfo", "struct_w_g_p_u_request_device_callback_info.html", null ],
     [ "WGPURequiredLimits", "struct_w_g_p_u_required_limits.html", null ],
     [ "WGPUSamplerBindingLayout", "struct_w_g_p_u_sampler_binding_layout.html", null ],
     [ "WGPUSamplerDescriptor", "struct_w_g_p_u_sampler_descriptor.html", null ],
     [ "WGPUShaderModuleDescriptor", "struct_w_g_p_u_shader_module_descriptor.html", null ],
     [ "WGPUShaderModuleSPIRVDescriptor", "struct_w_g_p_u_shader_module_s_p_i_r_v_descriptor.html", null ],
     [ "WGPUShaderModuleWGSLDescriptor", "struct_w_g_p_u_shader_module_w_g_s_l_descriptor.html", null ],
+    [ "WGPUSharedFenceDescriptor", "struct_w_g_p_u_shared_fence_descriptor.html", null ],
+    [ "WGPUSharedFenceDXGISharedHandleDescriptor", "struct_w_g_p_u_shared_fence_d_x_g_i_shared_handle_descriptor.html", null ],
+    [ "WGPUSharedFenceDXGISharedHandleExportInfo", "struct_w_g_p_u_shared_fence_d_x_g_i_shared_handle_export_info.html", null ],
+    [ "WGPUSharedFenceExportInfo", "struct_w_g_p_u_shared_fence_export_info.html", null ],
+    [ "WGPUSharedFenceMTLSharedEventDescriptor", "struct_w_g_p_u_shared_fence_m_t_l_shared_event_descriptor.html", null ],
+    [ "WGPUSharedFenceMTLSharedEventExportInfo", "struct_w_g_p_u_shared_fence_m_t_l_shared_event_export_info.html", null ],
+    [ "WGPUSharedFenceVkSemaphoreOpaqueFDDescriptor", "struct_w_g_p_u_shared_fence_vk_semaphore_opaque_f_d_descriptor.html", null ],
+    [ "WGPUSharedFenceVkSemaphoreOpaqueFDExportInfo", "struct_w_g_p_u_shared_fence_vk_semaphore_opaque_f_d_export_info.html", null ],
+    [ "WGPUSharedFenceVkSemaphoreSyncFDDescriptor", "struct_w_g_p_u_shared_fence_vk_semaphore_sync_f_d_descriptor.html", null ],
+    [ "WGPUSharedFenceVkSemaphoreSyncFDExportInfo", "struct_w_g_p_u_shared_fence_vk_semaphore_sync_f_d_export_info.html", null ],
+    [ "WGPUSharedFenceVkSemaphoreZirconHandleDescriptor", "struct_w_g_p_u_shared_fence_vk_semaphore_zircon_handle_descriptor.html", null ],
+    [ "WGPUSharedFenceVkSemaphoreZirconHandleExportInfo", "struct_w_g_p_u_shared_fence_vk_semaphore_zircon_handle_export_info.html", null ],
+    [ "WGPUSharedTextureMemoryAHardwareBufferDescriptor", "struct_w_g_p_u_shared_texture_memory_a_hardware_buffer_descriptor.html", null ],
+    [ "WGPUSharedTextureMemoryBeginAccessDescriptor", "struct_w_g_p_u_shared_texture_memory_begin_access_descriptor.html", null ],
+    [ "WGPUSharedTextureMemoryDescriptor", "struct_w_g_p_u_shared_texture_memory_descriptor.html", null ],
+    [ "WGPUSharedTextureMemoryDmaBufDescriptor", "struct_w_g_p_u_shared_texture_memory_dma_buf_descriptor.html", null ],
+    [ "WGPUSharedTextureMemoryDmaBufPlane", "struct_w_g_p_u_shared_texture_memory_dma_buf_plane.html", null ],
+    [ "WGPUSharedTextureMemoryDXGISharedHandleDescriptor", "struct_w_g_p_u_shared_texture_memory_d_x_g_i_shared_handle_descriptor.html", null ],
+    [ "WGPUSharedTextureMemoryEGLImageDescriptor", "struct_w_g_p_u_shared_texture_memory_e_g_l_image_descriptor.html", null ],
+    [ "WGPUSharedTextureMemoryEndAccessState", "struct_w_g_p_u_shared_texture_memory_end_access_state.html", null ],
+    [ "WGPUSharedTextureMemoryIOSurfaceDescriptor", "struct_w_g_p_u_shared_texture_memory_i_o_surface_descriptor.html", null ],
+    [ "WGPUSharedTextureMemoryOpaqueFDDescriptor", "struct_w_g_p_u_shared_texture_memory_opaque_f_d_descriptor.html", null ],
+    [ "WGPUSharedTextureMemoryProperties", "struct_w_g_p_u_shared_texture_memory_properties.html", null ],
+    [ "WGPUSharedTextureMemoryVkDedicatedAllocationDescriptor", "struct_w_g_p_u_shared_texture_memory_vk_dedicated_allocation_descriptor.html", null ],
+    [ "WGPUSharedTextureMemoryVkImageDescriptor", "struct_w_g_p_u_shared_texture_memory_vk_image_descriptor.html", null ],
+    [ "WGPUSharedTextureMemoryVkImageLayoutBeginState", "struct_w_g_p_u_shared_texture_memory_vk_image_layout_begin_state.html", null ],
+    [ "WGPUSharedTextureMemoryVkImageLayoutEndState", "struct_w_g_p_u_shared_texture_memory_vk_image_layout_end_state.html", null ],
+    [ "WGPUSharedTextureMemoryZirconHandleDescriptor", "struct_w_g_p_u_shared_texture_memory_zircon_handle_descriptor.html", null ],
     [ "WGPUStencilFaceState", "struct_w_g_p_u_stencil_face_state.html", null ],
     [ "WGPUStorageTextureBindingLayout", "struct_w_g_p_u_storage_texture_binding_layout.html", null ],
     [ "WGPUSupportedLimits", "struct_w_g_p_u_supported_limits.html", null ],
@@ -1203,22 +1275,11 @@ var hierarchy =
     [ "WGPUSurfaceDescriptorFromXlibWindow", "struct_w_g_p_u_surface_descriptor_from_xlib_window.html", null ],
     [ "WGPUSwapChainDescriptor", "struct_w_g_p_u_swap_chain_descriptor.html", null ],
     [ "WGPUTextureBindingLayout", "struct_w_g_p_u_texture_binding_layout.html", null ],
+    [ "WGPUTextureBindingViewDimensionDescriptor", "struct_w_g_p_u_texture_binding_view_dimension_descriptor.html", null ],
     [ "WGPUTextureDataLayout", "struct_w_g_p_u_texture_data_layout.html", null ],
     [ "WGPUTextureDescriptor", "struct_w_g_p_u_texture_descriptor.html", null ],
     [ "WGPUTextureViewDescriptor", "struct_w_g_p_u_texture_view_descriptor.html", null ],
     [ "WGPUVertexAttribute", "struct_w_g_p_u_vertex_attribute.html", null ],
     [ "WGPUVertexBufferLayout", "struct_w_g_p_u_vertex_buffer_layout.html", null ],
-    [ "WGPUVertexState", "struct_w_g_p_u_vertex_state.html", null ],
-    [ "Halide::Internal::IRMatcher::Wild< 0 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html", null ],
-    [ "Halide::Internal::IRMatcher::Wild< 1 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html", null ],
-    [ "Halide::Internal::IRMatcher::Wild< 2 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html", null ],
-    [ "Halide::Internal::IRMatcher::Wild< 3 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html", null ],
-    [ "Halide::Internal::IRMatcher::Wild< 4 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html", null ],
-    [ "Halide::Internal::IRMatcher::Wild< 5 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild.html", null ],
-    [ "Halide::Internal::IRMatcher::WildConst< 0 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html", null ],
-    [ "Halide::Internal::IRMatcher::WildConst< 1 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html", null ],
-    [ "Halide::Internal::IRMatcher::WildConst< 2 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html", null ],
-    [ "Halide::Internal::IRMatcher::WildConst< 3 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html", null ],
-    [ "Halide::Internal::IRMatcher::WildConst< 4 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html", null ],
-    [ "Halide::Internal::IRMatcher::WildConst< 5 >", "struct_halide_1_1_internal_1_1_i_r_matcher_1_1_wild_const.html", null ]
+    [ "WGPUVertexState", "struct_w_g_p_u_vertex_state.html", null ]
 ];

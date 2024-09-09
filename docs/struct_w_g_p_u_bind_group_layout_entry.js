@@ -1,6 +1,6 @@
 var struct_w_g_p_u_bind_group_layout_entry =
 [
-    [ "nextInChain", "struct_w_g_p_u_bind_group_layout_entry.html#a37131d9c24c870ecb3fd6dc1979e7c63", null ],
+    [ "nextInChain", "struct_w_g_p_u_bind_group_layout_entry.html#ace5dc6d52c596f2eeab4900dfe8b8bdf", null ],
     [ "binding", "struct_w_g_p_u_bind_group_layout_entry.html#a934a54541f4e89b9bdcc6c611638c3db", null ],
     [ "visibility", "struct_w_g_p_u_bind_group_layout_entry.html#aad16c72b5b8bb5959e6f88ae6999240b", null ],
     [ "buffer", "struct_w_g_p_u_bind_group_layout_entry.html#a91d441e12eb705818b5cc3b95b75a686", null ],

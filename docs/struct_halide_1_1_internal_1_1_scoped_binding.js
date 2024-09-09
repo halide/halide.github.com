@@ -10,5 +10,5 @@ var struct_halide_1_1_internal_1_1_scoped_binding =
     [ "operator=", "struct_halide_1_1_internal_1_1_scoped_binding.html#a0245294213541633e23464d1f9dccce7", null ],
     [ "operator=", "struct_halide_1_1_internal_1_1_scoped_binding.html#ad4df1155697f3210179abb69dafd2afb", null ],
     [ "scope", "struct_halide_1_1_internal_1_1_scoped_binding.html#a8ed72149f714a36f562721e55a2336a9", null ],
-    [ "name", "struct_halide_1_1_internal_1_1_scoped_binding.html#a45ac91da1a68515fcfe5f77fc59fa453", null ]
+    [ "token", "struct_halide_1_1_internal_1_1_scoped_binding.html#a6e3bce6b8d769062ce7ed120ea20d9de", null ]
 ];

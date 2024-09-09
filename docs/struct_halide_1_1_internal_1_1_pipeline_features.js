@@ -164,10 +164,10 @@ var struct_halide_1_1_internal_1_1_pipeline_features =
       [ "Store", "struct_halide_1_1_internal_1_1_pipeline_features.html#adaa87ad3f6bc6304773b00e5b5be438cafdb0c388de01d545017cdf9ccf00eb72", null ],
       [ "NumAccessTypes", "struct_halide_1_1_internal_1_1_pipeline_features.html#adaa87ad3f6bc6304773b00e5b5be438caf48bc18cc087ea1ceeab29e93ede07af", null ]
     ] ],
-    [ "operator[]", "struct_halide_1_1_internal_1_1_pipeline_features.html#aee04ec2606950da3034119bb072b4fae", null ],
+    [ "operator[]", "struct_halide_1_1_internal_1_1_pipeline_features.html#a6148de8de76fb2db5f507e38bdb6909e", null ],
     [ "operator[]", "struct_halide_1_1_internal_1_1_pipeline_features.html#abf233ef07a1da0aef0fa58094a9f6fc3", null ],
     [ "dump", "struct_halide_1_1_internal_1_1_pipeline_features.html#a1b0eecb9e50255bda7ff20daeac2b316", null ],
-    [ "operator[]", "struct_halide_1_1_internal_1_1_pipeline_features.html#aee04ec2606950da3034119bb072b4fae", null ],
+    [ "operator[]", "struct_halide_1_1_internal_1_1_pipeline_features.html#a6148de8de76fb2db5f507e38bdb6909e", null ],
     [ "operator[]", "struct_halide_1_1_internal_1_1_pipeline_features.html#abf233ef07a1da0aef0fa58094a9f6fc3", null ],
     [ "dump", "struct_halide_1_1_internal_1_1_pipeline_features.html#abb7c3c20e2a2966cdc2192c67c1ed2d5", null ],
     [ "dump", "struct_halide_1_1_internal_1_1_pipeline_features.html#ac42340c1b998eed641c4785cab5e48a8", null ],

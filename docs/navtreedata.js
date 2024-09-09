@@ -1,29 +1,31 @@
 /*
-@licstart  The following is the entire license notice for the
-JavaScript code in this file.
+ @licstart  The following is the entire license notice for the JavaScript code in this file.
 
-Copyright (C) 1997-2019 by Dimitri van Heesch
+ The MIT License (MIT)
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of version 2 of the GNU General Public License as published by
-the Free Software Foundation
+ Copyright (C) 1997-2020 by Dimitri van Heesch
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ and associated documentation files (the "Software"), to deal in the Software without restriction,
+ including without limitation the rights to use, copy, modify, merge, publish, distribute,
+ sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
 
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ The above copyright notice and this permission notice shall be included in all copies or
+ substantial portions of the Software.
 
-@licend  The above is the entire license notice
-for the JavaScript code in this file
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+ @licend  The above is the entire license notice for the JavaScript code in this file
 */
 var NAVTREE =
 [
   [ "Halide", "index.html", [
-    [ "Modules", "modules.html", "modules" ],
+    [ "Topics", "topics.html", "topics" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -45,7 +47,7 @@ var NAVTREE =
         [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
         [ "Enumerator", "functions_eval.html", "functions_eval" ],
-        [ "Related Functions", "functions_rela.html", null ]
+        [ "Related Symbols", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -67,80 +69,111 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_s_log_8h.html",
-"_concise_casts_8h.html#ad3a00bcd562633db7df8241bb4a97dcf",
-"_find_intrinsics_8h.html#ab09931c2014b2d9371646a16e8f70040",
-"_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa79533b07197f576db25b29532086ec11",
-"_halide_runtime_8h.html#aff56d38727ba3516acefd55e00efe927",
-"_i_r_match_8h.html#a616b22be350851606a059a0b62423e0c",
-"_i_r_operator_8h.html#a69ce0e6da961a52ace4b8fa8444fac20",
-"_introspection_8h.html",
-"_schedule_8h.html#a6c6557df562bd7850664e70fdb8fea0fad24ce5bd9d1bb698b5d07f66a8747bd9",
-"adams2019_2_loop_nest_8h.html#a4c02952ccdc17ac7fd0fb210c29e5705",
-"class_halide_1_1_compile_time_error_reporter.html#a2c0661870a3576a83777efdec5fc9cc6",
-"class_halide_1_1_generator.html#ac36b48b6743b7fddfb75a8e59585667f",
-"class_halide_1_1_internal_1_1_closure.html#a94abb37814ff3a700a594a3050fbc1b3",
-"class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a9c71de4e97f2fe3d56157b22c259a821",
-"class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#ae17954f48a82e3eaf8eda197b2a0e54e",
-"class_halide_1_1_internal_1_1_elf_1_1_relocation.html#a4f4a1422a64f9707e0333f7f135fd197",
-"class_halide_1_1_internal_1_1_g_i_o_base.html#abe068a7b707538265704ab854ebc6458",
-"class_halide_1_1_internal_1_1_generator_output___func.html#ac00999c59dd13dc41b42b630dcd752ff",
-"class_halide_1_1_internal_1_1_i_r_mutator.html#ac55cebab26a115565acccfb6421738b5",
-"class_halide_1_1_internal_1_1_scope.html#ade3887b485b18903655b675ec19fb5a4",
-"class_halide_1_1_names_interface.html#ad2b289c9da702ac656c5e0ab73b2ec09",
-"class_halide_1_1_runtime_1_1_buffer.html#ab6efcee8dac8c40006cf9c7e697725b3",
-"class_halide_1_1_runtime_1_1_internal_1_1_vulkan_1_1_vulkan_context.html#a3f95f80623d2298676f17a120091f2c4",
-"cuda__functions_8h.html#afb9a632eceb592aa444ce7a59d198d92",
-"globals_type_t.html",
-"mini__cl_8h.html#a238549850b80561907c52fdd21119d37",
-"mini__cl_8h.html#aaa273c20c3a8713b772a9a2294705886",
-"mini__cuda_8h.html#af19313e44c60ca273901b267a591bffaa6566a10b3109e81d954c89bd33646ecd",
-"mini__d3d12_8h.html#a37d21fb1314732bdea8c640c6299d0f9",
-"mini__d3d12_8h.html#a6a9cbc7eff00c7ec769e4e6c3b2cb3bca7cfe2917583798513551fde8872d159c",
-"mini__d3d12_8h.html#a9c007d573575b04587801b0b49342df7a1c479fc86bbbf94d27bef67a8d88a73e",
-"mini__d3d12_8h.html#ad0c85f667db78dc2a5a1a987d1ed3267",
-"mini__d3d12_8h.html#af9a317a3923ed7c1dc10ecc94d2a18a1",
-"mini__qurt_8h.html#a7a8347f5611d503fb88f354d388745fa",
-"mini__vulkan_8h.html#a17fc8dc314799d256e9c35494b3ba17a",
-"mini__vulkan_8h.html#a3f7b8477b03081f563142a83e4232a06",
-"mini__vulkan_8h.html#a63559c02329fb33833883a598c071742a6019324a0e2d87c9df8e2532e9159ba9",
-"mini__vulkan_8h.html#a810be57b1710ddc9b18450af7f23c0a7",
-"mini__vulkan_8h.html#a9b82b18f668dbe9643682a79cd01d2e0a0834c4c927886b914b60da3c8abd25b2",
-"mini__vulkan_8h.html#ab959698810c5dfe8adc55bd36a1fa8b2ac05e158990744ed4bd58712907ef7b6a",
-"mini__vulkan_8h.html#acfe074f0be1b52a106d074c7ac6851c9a7a9629d64b7c5114bfbdb54826a37bfe",
-"mini__vulkan_8h.html#ad61b5b94a526d0f9ae0db97072cf6b3faef438160dbce039129d2eeee55935859",
-"mini__vulkan_8h.html#aec24ddeab85a91ddaa59598ea07664a7a5aa5f3f47655377135b76cc6f9de7855",
-"mini__vulkan_8h.html#aff9f2b99398eb80a2b5a146bc5534ce8a96047ff3549b65379d53f8569bcf35b8",
-"mini__webgpu_8h.html#a17e913982e19753580a1554a753ea7ae",
-"mini__webgpu_8h.html#a57a04e266142c3e6f3fd131481b2ec3fa2230d8cccf5ce66678d70a066ff25187",
-"mini__webgpu_8h.html#a7fa2c2627783fe742a84ebb6c3618726abd9478bf6c0649b9ed5bbc1e6986f7a0",
-"mini__webgpu_8h.html#acfd7abefd577f4f20a1f1e003bca39ed",
-"namespacemembers_func_n.html",
-"struct_d3_d12___b_u_f_f_e_r___u_a_v.html",
-"struct_d3_d12___r_o_o_t___p_a_r_a_m_e_t_e_r1.html#aa4cf90dd4fda492ebb78ddd28dd69c83",
-"struct_d_x_g_i___s_a_m_p_l_e___d_e_s_c.html#a5801818269211925865000f66756dcb8",
-"struct_halide_1_1_internal_1_1_autoscheduler_1_1_bound_contents.html#ac9d69edf8f6896e8e6f2b34b1236920d",
-"struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#ac432ada24cc10cd43063f60d1efea0a4",
-"struct_halide_1_1_internal_1_1_autoscheduler_1_1_state.html#a88bf5e237b76ea441d12703ee2560dc3",
-"struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393af5ac0d2d7b4563871f1f01446658df82",
-"struct_halide_1_1_internal_1_1_i_r_matcher_1_1_cast_op.html",
-"struct_halide_1_1_internal_1_1_is_halide_buffer_3_01halide__buffer__t_01_5_01_4.html",
-"struct_halide_1_1_internal_1_1_pipeline_features.html#adaa87ad3f6bc6304773b00e5b5be438cafdb0c388de01d545017cdf9ccf00eb72",
-"struct_halide_1_1_internal_1_1_shuffle.html#adbf30a1fd66ac91271c5e97658e5153b",
-"struct_halide_1_1_runtime_1_1_internal_1_1_block_resource.html#aba77665706a69c87308cfdf03ae7dabf",
-"struct_halide_1_1_runtime_1_1_internal_1_1work.html#ace82e9a0f9b84b6740454cc55d0f857c",
-"struct_halide_1_1bfloat16__t.html",
-"struct_i_d3_d12_device_vtbl.html#aa4f83f6965f208a84b3140dcd4959bd0",
-"struct_i_d3_d12_pageable_vtbl.html#a5239cea63974a4aeb2ec4ffa6026e2e1",
-"struct_vk_bind_image_memory_swapchain_info_k_h_x.html#a9e4ba7a8e4694791af7b9e1d7315bd8b",
-"struct_vk_device_generated_commands_limits_n_v_x.html#a6fc3f90e6a1975209227989df14409a7",
-"struct_vk_hdr_metadata_e_x_t.html#a77e31d816142ca59adf8b085502f98b2",
-"struct_vk_past_presentation_timing_g_o_o_g_l_e.html#a2d5013046ecc2f274376250b0251f7a0",
-"struct_vk_physical_device_multiview_features_k_h_x.html",
-"struct_vk_present_time_g_o_o_g_l_e.html#a24947f0421702a220074067646c45c06",
-"struct_vk_surface_capabilities_k_h_r.html#ab33d6c92f3c0469122405f699cb44b7f",
-"struct_w_g_p_u_depth_stencil_state.html#ad0474e98e351bba9df1d71c1ed56f75b",
-"struct_w_g_p_u_surface_descriptor_from_wayland_surface.html#a71c9b7e11bf98ff00bbacda66bf1b43b",
-"structhalide__trace__event__t.html#a1973508f89f60366f2a8d9375826d4a2"
+"_concise_casts_8h.html#aa489e644d91200dac34c620f1c4a1261",
+"_expr_8h.html#af28f02315017283b26196866c92d4da9a2187e1021a911b3807cc1bea2eb1a9ca",
+"_halide_runtime_8h.html#a187d0100ae8d267bbcb6e840433c0f72",
+"_halide_runtime_8h.html#aba16e170cc9aa30b78ff703e101a448ca180c55e696deec0e26fc4b82fadefd4c",
+"_i_r_match_8h.html",
+"_i_r_operator_8h.html#a203d6d8d57fa495db5d63a2824ea4dd8",
+"_i_r_printer_8h.html#ac5c84fe3f99dd05b0ffa69af2f042ff5",
+"_pipeline_8h_source.html",
+"_unpack_buffers_8h_source.html",
+"cl__functions_8h.html#a9f2ba767224a0d2cb094aa5ce5144999",
+"class_halide_1_1_eviction_key.html#ad83974bd52593010ab5eec6fa010da3d",
+"class_halide_1_1_func.html#ac5834ded586e70e65b93850d7cafed54",
+"class_halide_1_1_generator_output.html#a3d3194701d5cd88ca6483b2758c2d7bd",
+"class_halide_1_1_internal_1_1_autoscheduler_1_1_load_jacobian.html#a912c5ab21fd58378e73bdfb91115b070",
+"class_halide_1_1_internal_1_1_code_gen___c.html#a09c5cc33473aecea84deb02ec30d810e",
+"class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a5fc9700d37516ecac29b4beb104de5a3",
+"class_halide_1_1_internal_1_1_code_gen___l_l_v_m.html#a7b7e186e1aee1d0a313f7a7c89a58909",
+"class_halide_1_1_internal_1_1_code_gen___posix.html#a59e33f468f9c83e0a845621d42489450",
+"class_halide_1_1_internal_1_1_elf_1_1_object.html#a724776a3c8734308a6437ab6797addcb",
+"class_halide_1_1_internal_1_1_elf_1_1_symbol.html#ab46a93b26ecbf369181520356d6b5c21a32e10dccf7938aa3a04e1f8191474013",
+"class_halide_1_1_internal_1_1_function.html#ad9cb19bf847e2900fc7c6157f62933a4",
+"class_halide_1_1_internal_1_1_generator_base.html#ad861b877f89b923bf599767fddd09354",
+"class_halide_1_1_internal_1_1_generator_input_impl.html#a704fe855aac26e30718887de98c56852",
+"class_halide_1_1_internal_1_1_generator_param___target.html#ac9b0e9d3cef9d3108035b993332e6581",
+"class_halide_1_1_internal_1_1_i_r_mutator.html#a0f1f3709cce02f99cd856645254a8181",
+"class_halide_1_1_internal_1_1_i_r_visitor.html#a3aa29ab9cd5d2dd7797b53e0782a4c9a",
+"class_halide_1_1_internal_1_1_scope.html#aeb8d5b8da9c47a636f9255dc72aeef5d",
+"class_halide_1_1_internal_1_1_stage_schedule.html#a8a8047739e46cbff633d5eb48a99e207",
+"class_halide_1_1_names_interface.html#a4bdf4f285a5393a9845414f82fa5e4c3",
+"class_halide_1_1_parameter.html#aff66f9385a60410e1e7f1a8c0b7a11e2",
+"class_halide_1_1_runtime_1_1_buffer.html#a39ded27b11bc20297176a52832f14180",
+"class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#a3e5416e04b02f6920f67950b694362e7",
+"class_halide_1_1_runtime_1_1_internal_1_1_printer_base.html#a9c38e0c4e7863bc2afdd2521d2926e8f",
+"class_halide_1_1_simd_op_check_test.html#a4ef1afede0e96fc7d498d59b2adf545c",
+"classcmdline_1_1parser.html#afdf4cb8deaead2d735c7803ede5b6b6a",
+"globals_defs_r.html",
+"mini__cl_8h.html#a0a45b759c0037372a4e361e65f4bf84f",
+"mini__cl_8h.html#a9a2110903f2cc7f66eb3206c13252b5e",
+"mini__cuda_8h.html#aa84b749decef61c558aaafb60314259a",
+"mini__d3d12_8h.html#a2846a11518682bfc1bc038021450f2dd",
+"mini__d3d12_8h.html#a6a9cbc7eff00c7ec769e4e6c3b2cb3bca12fcd46b7b8cd6cda64cbbb9138d0c68",
+"mini__d3d12_8h.html#a979d13ad0c09d7915d61d6df7842ae27",
+"mini__d3d12_8h.html#ac6a23396840c8ef48c16ba9ee79ba134ae674ead59fe67978655be30a2572b442",
+"mini__d3d12_8h.html#af236239721f56975ffa5d8970ffc186faed4c38b8d8f79b792c68c7258db77377",
+"mini__vulkan_8h.html#a0e920ef57d42ce874985c209961b8755aee76ece9c42435e633e7484045f9ee02",
+"mini__vulkan_8h.html#a2ce413b24e6cf891d5a80896e989876e",
+"mini__vulkan_8h.html#a52df64ab6384818ca6446ffe0a276511add9816a641d14fa8662c9852c01e64e2",
+"mini__vulkan_8h.html#a7348f0b046963e193bc51103733c33baa1ea18946d347da3c24314156dc4d8ea6",
+"mini__vulkan_8h.html#a8defc86f6deee6b7840ba498625290b9a8bd29b98bbae7d4ed51f28c62982b887",
+"mini__vulkan_8h.html#ab047100852c25f7e4d8b054dba4de957a19d811e2e94becaa62789886a8e4fe88",
+"mini__vulkan_8h.html#ac16f10305c9061df3f2545d1884d8fd1",
+"mini__vulkan_8h.html#ad61b5b94a526d0f9ae0db97072cf6b3fa59e91e1e33af01c1766fb7ee9c9db5c8",
+"mini__vulkan_8h.html#ae0cf094b5f4b3bdd33a6efe73ece6e7ea25a938f6fd28bfdf13b62ce36793e06e",
+"mini__vulkan_8h.html#aff9f2b99398eb80a2b5a146bc5534ce8a008689534843418b619f303c5d6e920e",
+"mini__webgpu_8h.html#a08b8efc7f493bf1b03c63d075a749834a88e516e1189b20c23d9393b172179410",
+"mini__webgpu_8h.html#a2915e123c1d128556570d02c5568f211",
+"mini__webgpu_8h.html#a57a04e266142c3e6f3fd131481b2ec3faf07988f9300a37f6c7d7dc1be328fef1",
+"mini__webgpu_8h.html#a9f9c3b9d672621a448724ba31392c325",
+"mini__webgpu_8h.html#aece3462f1a38fd985a825adf6c6b07e9a2aca09376b510eabb7ee17604f87ce3b",
+"namespace_halide.html#a6c6557df562bd7850664e70fdb8fea0fa5b80e0001d7f4873a60bbded160c687d",
+"namespace_halide.html#af5048e52b474e6d6733ffa66f800b881a06b9281e396db002010bde1de57262eb",
+"namespace_halide_1_1_internal.html#a5231b80b8e1a7904cdd4fcac7b89a98d",
+"namespace_halide_1_1_internal.html#ab882d8987fcdb737d28066db1130b509",
+"namespace_halide_1_1_internal_1_1_autoscheduler.html#acc39d142f0727a4676f66e7f73be00a6a509820290d57f333403f490dde7316f4",
+"namespace_halide_1_1_runtime.html",
+"namespace_halide_1_1_runtime_1_1_internal_1_1_cuda.html#af19313e44c60ca273901b267a591bffaaaebfa2ffbfac5d420d85bd58289137ac",
+"runtime__internal_8h.html#abd46e9b8a420dc539a61249118e7e963",
+"struct_d3_d12___i_n_p_u_t___l_a_y_o_u_t___d_e_s_c.html#a8af2d2f2b68d0cc1d6d2412406ad958f",
+"struct_d3_d12___t_e_x2_d___s_r_v.html#acb2ef6ac323d1ed82cf0eb980e285d43",
+"struct_halide_1_1_expr.html#aa083894ce1df642ee544835201b96ae6",
+"struct_halide_1_1_internal_1_1_associative_op_1_1_replacement.html#a73c208b02aaf978928263a91cfef1f63",
+"struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_node.html#a13b8cd4e4112c33efdd7debab502beaf",
+"struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a54e320dc1f0154f77d144e5308baeb57",
+"struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_sites.html#ab07a07b541ab39b94df3899e675f8819",
+"struct_halide_1_1_internal_1_1_autoscheduler_1_1_search_space_1_1_parallel_tile_option.html#a412f3244ba872978e0e471cedd7b14cd",
+"struct_halide_1_1_internal_1_1_autoscheduler_1_1_strides.html#ac9643c0021d30ffb156022b8d8870e4b",
+"struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a52fc0c99e599b37597d4adf83bfbb024",
+"struct_halide_1_1_internal_1_1_code_gen___l_l_v_m_1_1_v_p_result_type.html#ac307477fa5c4c3d9142ddd6769dece35",
+"struct_halide_1_1_internal_1_1_for.html#a692fd7aff28884e863b0f889ad30d212",
+"struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_const.html#a0c26a73b3b8f09eff729fa7768b2378b",
+"struct_halide_1_1_internal_1_1_i_r_matcher_1_1_widen_op.html",
+"struct_halide_1_1_internal_1_1_j_i_t_module.html#a8cb64148e951758de32cc8652ab090cc",
+"struct_halide_1_1_internal_1_1_pipeline_features.html#a24dd570f5cbc57c750aca4c0d82f418da78d811e98514cd165dda532286610fd2",
+"struct_halide_1_1_internal_1_1_pipeline_features.html#afcad8a71f7f7b804670b8edca7d8ae50ae7956ed7be1c5025a27ed3cb42a396bd",
+"struct_halide_1_1_internal_1_1_schedule_features.html#a7e1b68f5b96205179f07716bccb74187",
+"struct_halide_1_1_internal_1_1_solver_result.html#a76da1edc211d80f3f389895b84b03169",
+"struct_halide_1_1_j_i_t_extern.html#a624883be57938be2703d43de08747d28",
+"struct_halide_1_1_runtime_1_1_internal_1_1_cuda_1_1_c_u_d_a___m_e_m_c_p_y3_d__st.html#ab0f968d11ddc90351735724489d29883",
+"struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1signal__parking__control.html",
+"struct_halide_1_1_target.html#a41fb39bfe6ada60505dbc8956386c2c6",
+"struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf885980a07cc5c31e20924f61dc303d7",
+"struct_halide_1_1bfloat16__t.html#ae608088fefb65c4104290aa95a5c251c",
+"struct_i_d3_d12_device_vtbl.html#a9e8565701dc8b065161f030626aa52c8",
+"struct_i_d3_d12_pageable_vtbl.html#a13d0096e33a1bb886431049181f0b563",
+"struct_vk_bind_image_memory_swapchain_info_k_h_x.html#a1e3a2a12c263aa228df997ce27e4b67d",
+"struct_vk_device_generated_commands_limits_n_v_x.html#a395c49dac4a394cacf1107e9408f5a0f",
+"struct_vk_hdr_metadata_e_x_t.html#a1fd628dace871f78d71064a53dbbf08e",
+"struct_vk_past_presentation_timing_g_o_o_g_l_e.html",
+"struct_vk_physical_device_memory_properties2_k_h_r.html#a4fff3703c89d7836a86fe2cc32b6b747",
+"struct_vk_present_regions_k_h_r.html#aede8a0bbdba7b60dda85c97c0c98e968",
+"struct_vk_surface_capabilities_k_h_r.html#a98f4b65dcc588a4e6f9ffe3048bab2ad",
+"struct_w_g_p_u_dawn_encoder_internal_usage_descriptor.html",
+"struct_w_g_p_u_render_pass_descriptor_max_draw_count.html#aebb7b4267cca6fd2648f3f1f2a7cbd48",
+"struct_w_g_p_u_texture_descriptor.html#a5894057d0a6f44440aa8055cf025dcbf",
+"structst_dma_wrapper___dma_transfer_setup.html#aa76eb4225e24dc461de69447df2b06ef"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

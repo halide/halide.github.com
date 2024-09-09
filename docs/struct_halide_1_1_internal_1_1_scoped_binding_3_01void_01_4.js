@@ -8,5 +8,5 @@ var struct_halide_1_1_internal_1_1_scoped_binding_3_01void_01_4 =
     [ "operator=", "struct_halide_1_1_internal_1_1_scoped_binding_3_01void_01_4.html#a5553afbc017b6cc466194cee1cf45e52", null ],
     [ "operator=", "struct_halide_1_1_internal_1_1_scoped_binding_3_01void_01_4.html#ad45659006691d40cc2af08abbe67dd3d", null ],
     [ "scope", "struct_halide_1_1_internal_1_1_scoped_binding_3_01void_01_4.html#ad0e9defcd24c170bd19965e8cabfda8d", null ],
-    [ "name", "struct_halide_1_1_internal_1_1_scoped_binding_3_01void_01_4.html#a6a2cf268a97578ec60873b10574c4aab", null ]
+    [ "token", "struct_halide_1_1_internal_1_1_scoped_binding_3_01void_01_4.html#a32b202b5a86c090df4adc2016a2d30bc", null ]
 ];

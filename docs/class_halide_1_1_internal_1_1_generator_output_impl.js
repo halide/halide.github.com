@@ -11,9 +11,9 @@ var class_halide_1_1_internal_1_1_generator_output_impl =
     [ "operator Func", "class_halide_1_1_internal_1_1_generator_output_impl.html#a1e315e3f8425a4a7ca60fa11bdf87dbf", null ],
     [ "operator Stage", "class_halide_1_1_internal_1_1_generator_output_impl.html#a0bfdfcd172122977f8bf271b667bdca2", null ],
     [ "size", "class_halide_1_1_internal_1_1_generator_output_impl.html#a60e31c8d76cc7b9f1ce38f023fd6d50a", null ],
-    [ "operator[]", "class_halide_1_1_internal_1_1_generator_output_impl.html#ac8e85340c0e765ed212aaf2cbd2878dd", null ],
-    [ "at", "class_halide_1_1_internal_1_1_generator_output_impl.html#a5f13ec41fa1e32e3241ad0a034436743", null ],
-    [ "begin", "class_halide_1_1_internal_1_1_generator_output_impl.html#a584006dca8b77cf4a614567b307dac84", null ],
-    [ "end", "class_halide_1_1_internal_1_1_generator_output_impl.html#ad434f2d1c486a63eb2245a4dbea27a05", null ],
+    [ "operator[]", "class_halide_1_1_internal_1_1_generator_output_impl.html#a3e1e5ed55c5afd2e4ed9342c874a29e5", null ],
+    [ "at", "class_halide_1_1_internal_1_1_generator_output_impl.html#a91101d3d55b582e06cdf89d6cfcd9202", null ],
+    [ "begin", "class_halide_1_1_internal_1_1_generator_output_impl.html#a9269c16f87b0685b07e0601a0582a6fb", null ],
+    [ "end", "class_halide_1_1_internal_1_1_generator_output_impl.html#a0ca9cea54e432b29a598bd836af460cc", null ],
     [ "resize", "class_halide_1_1_internal_1_1_generator_output_impl.html#acdc9fa9af202c6f8536f8c33d3b9d524", null ]
 ];

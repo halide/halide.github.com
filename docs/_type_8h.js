@@ -2,9 +2,9 @@ var _type_8h =
 [
     [ "halide_cplusplus_type_name", "structhalide__cplusplus__type__name.html", "structhalide__cplusplus__type__name" ],
     [ "halide_handle_cplusplus_type", "structhalide__handle__cplusplus__type.html", "structhalide__handle__cplusplus__type" ],
-    [ "halide_c_type_to_name", "structhalide__c__type__to__name.html", null ],
-    [ "halide_handle_traits", "structhalide__handle__traits.html", null ],
-    [ "Type", "struct_halide_1_1_type.html", "struct_halide_1_1_type" ],
+    [ "halide_c_type_to_name< T >", "structhalide__c__type__to__name.html", null ],
+    [ "halide_handle_traits< T >", "structhalide__handle__traits.html", null ],
+    [ "Halide::Type", "struct_halide_1_1_type.html", "struct_halide_1_1_type" ],
     [ "HALIDE_DECLARE_EXTERN_TYPE", "_type_8h.html#a41bc65ebe3cd15d39da52a2b154a9881", null ],
     [ "HALIDE_DECLARE_EXTERN_SIMPLE_TYPE", "_type_8h.html#aef61f5ddf41c045dc57dc985bc5727ce", null ],
     [ "HALIDE_DECLARE_EXTERN_STRUCT_TYPE", "_type_8h.html#a38427fa290c3e23f0a522c4f7d6b2166", null ],

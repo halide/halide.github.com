@@ -56,6 +56,7 @@ var class_halide_1_1_internal_1_1_i_r_printer =
     [ "visit", "class_halide_1_1_internal_1_1_i_r_printer.html#a8d6ff9f20aa4254c26468808314245d8", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_printer.html#a7ede92169691e6d122b83b34ed03d6c2", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_printer.html#a8246324270541e1ddb02a898e1b4d206", null ],
+    [ "visit", "class_halide_1_1_internal_1_1_i_r_printer.html#acdf8cb4d943e67fc28cfe55a08da6df4", null ],
     [ "stream", "class_halide_1_1_internal_1_1_i_r_printer.html#aa3b8ebf12ced24cd0696db736478bee4", null ],
     [ "indent", "class_halide_1_1_internal_1_1_i_r_printer.html#a2023abc07c7c54f7b9fdf8d4a8139255", null ],
     [ "implicit_parens", "class_halide_1_1_internal_1_1_i_r_printer.html#a849a5f27b4c21c5cda041f8807d9f69f", null ],

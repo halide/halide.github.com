@@ -16,6 +16,7 @@ var _find_intrinsics_8h =
     [ "lower_halving_add", "_find_intrinsics_8h.html#a3cb06df309ffae62a414ff80f298064c", null ],
     [ "lower_halving_sub", "_find_intrinsics_8h.html#a3ab3fa4ef1d631a29d7440487960a6e1", null ],
     [ "lower_rounding_halving_add", "_find_intrinsics_8h.html#a433d347c813cf72a9fff938583a277f0", null ],
+    [ "lower_sorted_avg", "_find_intrinsics_8h.html#a0cb394d68a7ad936ee9c6653aa493d4e", null ],
     [ "lower_mul_shift_right", "_find_intrinsics_8h.html#a34b142cb92430ccaabc491be73e179f1", null ],
     [ "lower_rounding_mul_shift_right", "_find_intrinsics_8h.html#ab576461c931a66fd08808afe8c9c4eb8", null ],
     [ "lower_intrinsic", "_find_intrinsics_8h.html#ab4767c0dccb944d87678d84e2eae8c7a", null ],

@@ -9,6 +9,7 @@ var class_halide_1_1_names_interface =
     [ "LoopLevel", "class_halide_1_1_names_interface.html#aa30a3948ef83fe444ea2886506bacca9", null ],
     [ "MemoryType", "class_halide_1_1_names_interface.html#a15c32b568be03d18c44b57262e9e4502", null ],
     [ "NameMangling", "class_halide_1_1_names_interface.html#a4dc4e46318e4f30d614d0cf1fef896d4", null ],
+    [ "Partition", "class_halide_1_1_names_interface.html#aafd7c59d5533e58be75ae4a72be8cbe7", null ],
     [ "Pipeline", "class_halide_1_1_names_interface.html#af771b96902e421c9b4424c563f62eb21", null ],
     [ "PrefetchBoundStrategy", "class_halide_1_1_names_interface.html#ad2b289c9da702ac656c5e0ab73b2ec09", null ],
     [ "RDom", "class_halide_1_1_names_interface.html#abfa71550f66b8e863164847082684cf9", null ],

@@ -7,7 +7,7 @@ var class_halide_1_1_internal_1_1_j_s_o_n_compiler_logger =
     [ "record_failed_to_prove", "class_halide_1_1_internal_1_1_j_s_o_n_compiler_logger.html#aba92273af0e518e5b2c643e45cb134cf", null ],
     [ "record_object_code_size", "class_halide_1_1_internal_1_1_j_s_o_n_compiler_logger.html#a18cca26896e3989dd82f9cd6c0f52189", null ],
     [ "record_compilation_time", "class_halide_1_1_internal_1_1_j_s_o_n_compiler_logger.html#acf541621999040c3ab5d56026c456c0e", null ],
-    [ "emit_to_stream", "class_halide_1_1_internal_1_1_j_s_o_n_compiler_logger.html#acae75903027e56d5b48e15a90826a4ec", null ],
+    [ "emit_to_stream", "class_halide_1_1_internal_1_1_j_s_o_n_compiler_logger.html#aaf493487a64b0a1f2b40e7d273ed96cd", null ],
     [ "obfuscate", "class_halide_1_1_internal_1_1_j_s_o_n_compiler_logger.html#a187d82ec0ce6430bf2ab28f499faf08f", null ],
     [ "emit", "class_halide_1_1_internal_1_1_j_s_o_n_compiler_logger.html#a3fa7322088e680e3a46fd2f9544c4de2", null ],
     [ "generator_name", "class_halide_1_1_internal_1_1_j_s_o_n_compiler_logger.html#aec6c236adf9f01bc4d2595428eb0584d", null ],

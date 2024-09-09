@@ -12,7 +12,7 @@ var struct_halide_1_1_extern_func_argument =
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#ac39965f88b76e3fe4d8206e4090372f5", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#af321dd81fbcf5ec5c8a638dfd839b506", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a36aa8c858f9dcc85ca23f41f9b2452d9", null ],
-    [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a94769677e5a00a055955a4b41292ae79", null ],
+    [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a06ae9ffded6165a7cc24a863cbffd528", null ],
     [ "ExternFuncArgument", "struct_halide_1_1_extern_func_argument.html#a769a6a88bd97e6c5365b069260af54a2", null ],
     [ "is_func", "struct_halide_1_1_extern_func_argument.html#ae66e1a08978f4e4b539c37fd3728b190", null ],
     [ "is_expr", "struct_halide_1_1_extern_func_argument.html#afc155b3534234fe126e34660737cbbb3", null ],
@@ -23,5 +23,5 @@ var struct_halide_1_1_extern_func_argument =
     [ "func", "struct_halide_1_1_extern_func_argument.html#aae82509b54237845319ac9167eb6e2cd", null ],
     [ "buffer", "struct_halide_1_1_extern_func_argument.html#a2f5bf9e8e16dbfcba10c336530836340", null ],
     [ "expr", "struct_halide_1_1_extern_func_argument.html#af643011053e0a494f932c6af7a042b05", null ],
-    [ "image_param", "struct_halide_1_1_extern_func_argument.html#a5bcf9064d71855a29e93600dbbcf1e29", null ]
+    [ "image_param", "struct_halide_1_1_extern_func_argument.html#a43fed6d2b712f1e116060da96e0ad4d4", null ]
 ];

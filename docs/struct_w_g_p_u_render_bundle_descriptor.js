@@ -1,5 +1,5 @@
 var struct_w_g_p_u_render_bundle_descriptor =
 [
-    [ "nextInChain", "struct_w_g_p_u_render_bundle_descriptor.html#a965ccc0eb25cedc17d4365995e8fca7f", null ],
-    [ "label", "struct_w_g_p_u_render_bundle_descriptor.html#a4d3a8d9a98cdfb7d6bc92c315d53b8b8", null ]
+    [ "nextInChain", "struct_w_g_p_u_render_bundle_descriptor.html#ad698fc733066a1618927836285d71858", null ],
+    [ "label", "struct_w_g_p_u_render_bundle_descriptor.html#ab6a7da777d364b2e2f3424b77ce7988c", null ]
 ];

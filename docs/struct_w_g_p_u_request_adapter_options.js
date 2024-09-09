@@ -1,7 +1,9 @@
 var struct_w_g_p_u_request_adapter_options =
 [
-    [ "nextInChain", "struct_w_g_p_u_request_adapter_options.html#a4e336339a48246c0b1d8ff6e010ebfe5", null ],
-    [ "compatibleSurface", "struct_w_g_p_u_request_adapter_options.html#a84c0c9e8edcb3dcc5892562a8eb34dd7", null ],
+    [ "nextInChain", "struct_w_g_p_u_request_adapter_options.html#a9aae4a86d702086e5dfbe3d3e69b2ba2", null ],
+    [ "compatibleSurface", "struct_w_g_p_u_request_adapter_options.html#a4a4e0f31beaeb16e588bbf6a6d8971d2", null ],
     [ "powerPreference", "struct_w_g_p_u_request_adapter_options.html#ac05f3f66c0245bf4573d69ec3cb2686a", null ],
-    [ "forceFallbackAdapter", "struct_w_g_p_u_request_adapter_options.html#a172fbe185859f92ff47bf24e6fde2864", null ]
+    [ "backendType", "struct_w_g_p_u_request_adapter_options.html#a916bf84afc00d29c00c2c8303d5ec8f3", null ],
+    [ "forceFallbackAdapter", "struct_w_g_p_u_request_adapter_options.html#a370bea3ede60c85cf1be26475c595c36", null ],
+    [ "compatibilityMode", "struct_w_g_p_u_request_adapter_options.html#abc41ba19c8efc3e04d8cca0884595eac", null ]
 ];

@@ -1,6 +1,7 @@
 var _find_calls_8h =
 [
-    [ "find_direct_calls", "_find_calls_8h.html#aa4579049a6b955283e7b8f6c55c1d0c6", null ],
-    [ "find_transitive_calls", "_find_calls_8h.html#a52978667cb3f371b00090b9447aa716f", null ],
-    [ "build_environment", "_find_calls_8h.html#a3e29a7708b303ae63d3ecde23ba6aa20", null ]
+    [ "find_direct_calls", "_find_calls_8h.html#afc3ba4ff8fc8b6574e63c0457e396d97", null ],
+    [ "find_transitive_calls", "_find_calls_8h.html#a994c8afe69a4c81e58c463fc1f5836f9", null ],
+    [ "build_environment", "_find_calls_8h.html#ac3f5192ac624544dd004e7e9b58baeed", null ],
+    [ "called_funcs_in_order_found", "_find_calls_8h.html#ad2db5263e219c293da13bb1ccbddfbcc", null ]
 ];

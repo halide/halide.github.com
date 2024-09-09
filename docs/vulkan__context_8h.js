@@ -1,6 +1,6 @@
 var vulkan__context_8h =
 [
-    [ "VulkanContext", "class_halide_1_1_runtime_1_1_internal_1_1_vulkan_1_1_vulkan_context.html", "class_halide_1_1_runtime_1_1_internal_1_1_vulkan_1_1_vulkan_context" ],
+    [ "Halide::Runtime::Internal::Vulkan::VulkanContext", "class_halide_1_1_runtime_1_1_internal_1_1_vulkan_1_1_vulkan_context.html", "class_halide_1_1_runtime_1_1_internal_1_1_vulkan_1_1_vulkan_context" ],
     [ "cached_allocator", "vulkan__context_8h.html#ab6f38321bd50179153d1dbbb618476a7", null ],
     [ "cached_instance", "vulkan__context_8h.html#aa0252059d82b6fa11ecb69995ef27e1c", null ],
     [ "cached_device", "vulkan__context_8h.html#ac09910e3594debd5bdf7207044a5bdd1", null ],

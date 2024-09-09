@@ -33,12 +33,12 @@ var class_halide_1_1_runtime_1_1_internal_1_1_block_storage =
     [ "size", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#a5e6bec659fa4bebe75a5b397c6e798fd", null ],
     [ "operator[]", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#a27c0f573b875d814ffc7de26f29d79d9", null ],
     [ "operator[]", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#a19f41dd0c8b8b992ba5b05e2c4a4fc76", null ],
-    [ "data", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#a5d20d12356747ebf9ffe25a39a613f75", null ],
-    [ "front", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#a3b2acdf259604edd1201b364d5587843", null ],
-    [ "back", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#a6940e0b10d45b2bdc0567e66ccc46802", null ],
-    [ "data", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#ab43a5a57f996c48302eb2716ac6f8149", null ],
-    [ "front", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#ae427d709eb6efd7249d35b0189c039f4", null ],
-    [ "back", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#a52cfe22964178ae2c95d1e5dc18388a2", null ],
+    [ "data", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#a9563a521e32f7a824c25a91f8c93d4dc", null ],
+    [ "front", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#a2c678b8214abd6c61d499a6a5f71cc4b", null ],
+    [ "back", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#a615a6d6d7b2384574d017b3a7418421a", null ],
+    [ "data", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#ab4bd3c7ef698557edbef4f5b085a6e1e", null ],
+    [ "front", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#a97f4d264808ceb77c472cffb30392101", null ],
+    [ "back", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#aef6af3ef738a7f0ed08572601aac0aa9", null ],
     [ "current_config", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#a1123294087d800b0984686f121248268", null ],
     [ "current_allocator", "class_halide_1_1_runtime_1_1_internal_1_1_block_storage.html#ab770584765c2442c0995df4cc1938003", null ]
 ];

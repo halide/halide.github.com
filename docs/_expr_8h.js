@@ -1,20 +1,20 @@
 var _expr_8h =
 [
-    [ "IRNode", "struct_halide_1_1_internal_1_1_i_r_node.html", "struct_halide_1_1_internal_1_1_i_r_node" ],
-    [ "BaseStmtNode", "struct_halide_1_1_internal_1_1_base_stmt_node.html", "struct_halide_1_1_internal_1_1_base_stmt_node" ],
-    [ "BaseExprNode", "struct_halide_1_1_internal_1_1_base_expr_node.html", "struct_halide_1_1_internal_1_1_base_expr_node" ],
-    [ "ExprNode", "struct_halide_1_1_internal_1_1_expr_node.html", "struct_halide_1_1_internal_1_1_expr_node" ],
-    [ "StmtNode", "struct_halide_1_1_internal_1_1_stmt_node.html", "struct_halide_1_1_internal_1_1_stmt_node" ],
-    [ "IRHandle", "struct_halide_1_1_internal_1_1_i_r_handle.html", "struct_halide_1_1_internal_1_1_i_r_handle" ],
-    [ "IntImm", "struct_halide_1_1_internal_1_1_int_imm.html", "struct_halide_1_1_internal_1_1_int_imm" ],
-    [ "UIntImm", "struct_halide_1_1_internal_1_1_u_int_imm.html", "struct_halide_1_1_internal_1_1_u_int_imm" ],
-    [ "FloatImm", "struct_halide_1_1_internal_1_1_float_imm.html", "struct_halide_1_1_internal_1_1_float_imm" ],
-    [ "StringImm", "struct_halide_1_1_internal_1_1_string_imm.html", "struct_halide_1_1_internal_1_1_string_imm" ],
-    [ "Expr", "struct_halide_1_1_expr.html", "struct_halide_1_1_expr" ],
-    [ "ExprCompare", "struct_halide_1_1_expr_compare.html", "struct_halide_1_1_expr_compare" ],
-    [ "Range", "struct_halide_1_1_range.html", "struct_halide_1_1_range" ],
-    [ "Stmt", "struct_halide_1_1_internal_1_1_stmt.html", "struct_halide_1_1_internal_1_1_stmt" ],
-    [ "Compare", "struct_halide_1_1_internal_1_1_stmt_1_1_compare.html", "struct_halide_1_1_internal_1_1_stmt_1_1_compare" ],
+    [ "Halide::Internal::IRNode", "struct_halide_1_1_internal_1_1_i_r_node.html", "struct_halide_1_1_internal_1_1_i_r_node" ],
+    [ "Halide::Internal::BaseStmtNode", "struct_halide_1_1_internal_1_1_base_stmt_node.html", "struct_halide_1_1_internal_1_1_base_stmt_node" ],
+    [ "Halide::Internal::BaseExprNode", "struct_halide_1_1_internal_1_1_base_expr_node.html", "struct_halide_1_1_internal_1_1_base_expr_node" ],
+    [ "Halide::Internal::ExprNode< T >", "struct_halide_1_1_internal_1_1_expr_node.html", "struct_halide_1_1_internal_1_1_expr_node" ],
+    [ "Halide::Internal::StmtNode< T >", "struct_halide_1_1_internal_1_1_stmt_node.html", "struct_halide_1_1_internal_1_1_stmt_node" ],
+    [ "Halide::Internal::IRHandle", "struct_halide_1_1_internal_1_1_i_r_handle.html", "struct_halide_1_1_internal_1_1_i_r_handle" ],
+    [ "Halide::Internal::IntImm", "struct_halide_1_1_internal_1_1_int_imm.html", "struct_halide_1_1_internal_1_1_int_imm" ],
+    [ "Halide::Internal::UIntImm", "struct_halide_1_1_internal_1_1_u_int_imm.html", "struct_halide_1_1_internal_1_1_u_int_imm" ],
+    [ "Halide::Internal::FloatImm", "struct_halide_1_1_internal_1_1_float_imm.html", "struct_halide_1_1_internal_1_1_float_imm" ],
+    [ "Halide::Internal::StringImm", "struct_halide_1_1_internal_1_1_string_imm.html", "struct_halide_1_1_internal_1_1_string_imm" ],
+    [ "Halide::Expr", "struct_halide_1_1_expr.html", "struct_halide_1_1_expr" ],
+    [ "Halide::ExprCompare", "struct_halide_1_1_expr_compare.html", "struct_halide_1_1_expr_compare" ],
+    [ "Halide::Range", "struct_halide_1_1_range.html", "struct_halide_1_1_range" ],
+    [ "Halide::Internal::Stmt", "struct_halide_1_1_internal_1_1_stmt.html", "struct_halide_1_1_internal_1_1_stmt" ],
+    [ "Halide::Internal::Stmt::Compare", "struct_halide_1_1_internal_1_1_stmt_1_1_compare.html", "struct_halide_1_1_internal_1_1_stmt_1_1_compare" ],
     [ "Region", "_expr_8h.html#adac6d1605235bf518c12a05ed6850d43", null ],
     [ "IRNodeType", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2", [
       [ "IntImm", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2ad90896d6a515230ad67dfc865553e417", null ],
@@ -63,7 +63,8 @@ var _expr_8h =
       [ "IfThenElse", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2aaff6933d8331eca27edc911467980c9c", null ],
       [ "Evaluate", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2ab086843368d1c92d0a86cbee76b20b6f", null ],
       [ "Prefetch", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2a18540d940813866480eaca8d3f32d18e", null ],
-      [ "Atomic", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2a557eccd321b7f10f5127c1ef27aaac7d", null ]
+      [ "Atomic", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2a557eccd321b7f10f5127c1ef27aaac7d", null ],
+      [ "HoistedStorage", "_expr_8h.html#aee9e0b8e5376e2294d74ded8e7de9ef2ab8b1a8074f151efb78b9b1c0010a23c2", null ]
     ] ],
     [ "MemoryType", "_expr_8h.html#af28f02315017283b26196866c92d4da9", [
       [ "Auto", "_expr_8h.html#af28f02315017283b26196866c92d4da9a06b9281e396db002010bde1de57262eb", null ],
@@ -86,9 +87,10 @@ var _expr_8h =
       [ "GPUThread", "_expr_8h.html#a6a8761f129e6554b9ea03de31bf066f1a403672f982053243315d59e56d8a3b8d", null ],
       [ "GPULane", "_expr_8h.html#a6a8761f129e6554b9ea03de31bf066f1ab6f9478bd3fd1adac23a5802d786d642", null ]
     ] ],
-    [ "ref_count< IRNode >", "_expr_8h.html#a63523f83489f292e9ac11d247dba7718", null ],
+    [ "ref_count< IRNode >", "_expr_8h.html#a7a2683940f0565aba5f12746c727dc9c", null ],
     [ "destroy< IRNode >", "_expr_8h.html#ad3d80243a2f3de47f613df12b48475c3", null ],
     [ "is_unordered_parallel", "_expr_8h.html#a89b46f80479d5e41ff7ebf80ced31267", null ],
     [ "is_parallel", "_expr_8h.html#aa25b9bc3a80bac033c05e5178ab5a4c7", null ],
+    [ "is_gpu", "_expr_8h.html#a7d2c029124d1533110e9f330f8e54918", null ],
     [ "StrongestExprNodeType", "_expr_8h.html#a4bf1a96be9fadff5521559de5f72935c", null ]
 ];

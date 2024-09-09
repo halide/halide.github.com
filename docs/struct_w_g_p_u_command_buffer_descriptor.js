@@ -1,5 +1,5 @@
 var struct_w_g_p_u_command_buffer_descriptor =
 [
-    [ "nextInChain", "struct_w_g_p_u_command_buffer_descriptor.html#a9e7d7eaa4bf2e8922206caf8d3b47aad", null ],
-    [ "label", "struct_w_g_p_u_command_buffer_descriptor.html#a382b577864577981e1c5bf2ef91859db", null ]
+    [ "nextInChain", "struct_w_g_p_u_command_buffer_descriptor.html#a81ed6858c040b77104298c86a356192a", null ],
+    [ "label", "struct_w_g_p_u_command_buffer_descriptor.html#abc9ae05d5a2f47a7c2d90d2d1030f617", null ]
 ];

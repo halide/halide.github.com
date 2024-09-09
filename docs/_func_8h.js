@@ -1,11 +1,11 @@
 var _func_8h =
 [
-    [ "VarOrRVar", "struct_halide_1_1_var_or_r_var.html", "struct_halide_1_1_var_or_r_var" ],
-    [ "Stage", "class_halide_1_1_stage.html", "class_halide_1_1_stage" ],
-    [ "FuncRef", "class_halide_1_1_func_ref.html", "class_halide_1_1_func_ref" ],
-    [ "FuncTupleElementRef", "class_halide_1_1_func_tuple_element_ref.html", "class_halide_1_1_func_tuple_element_ref" ],
-    [ "EvictionKey", "class_halide_1_1_eviction_key.html", "class_halide_1_1_eviction_key" ],
-    [ "Func", "class_halide_1_1_func.html", "class_halide_1_1_func" ],
+    [ "Halide::VarOrRVar", "struct_halide_1_1_var_or_r_var.html", "struct_halide_1_1_var_or_r_var" ],
+    [ "Halide::Stage", "class_halide_1_1_stage.html", "class_halide_1_1_stage" ],
+    [ "Halide::FuncRef", "class_halide_1_1_func_ref.html", "class_halide_1_1_func_ref" ],
+    [ "Halide::FuncTupleElementRef", "class_halide_1_1_func_tuple_element_ref.html", "class_halide_1_1_func_tuple_element_ref" ],
+    [ "Halide::EvictionKey", "class_halide_1_1_eviction_key.html", "class_halide_1_1_eviction_key" ],
+    [ "Halide::Func", "class_halide_1_1_func.html", "class_halide_1_1_func" ],
     [ "ScheduleHandle", "_func_8h.html#ad7b585cf844dcb14fa12386d743cbb24", null ],
     [ "min", "_func_8h.html#a842daf6fbd0f87ec9ea8336cb0cdd23e", null ],
     [ "max", "_func_8h.html#aea2c7f5fe6c79a49dcbb28951cf8405d", null ],

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['max_5fcopy_5fdims_24001',['MAX_COPY_DIMS',['../device__buffer__utils_8h.html#a16405f5522f2f31b2dd36aa0b808a176',1,'device_buffer_utils.h']]],
-  ['midl_5finterface_24002',['MIDL_INTERFACE',['../mini__d3d12_8h.html#a2765859de161f9a644015923376a9bfd',1,'mini_d3d12.h']]]
+  ['near_0',['NEAR',['../mini__d3d12_8h.html#a8d0baede67fec569c56e8394694570b4',1,'mini_d3d12.h']]],
+  ['near_1',['near',['../mini__d3d12_8h.html#a5f8c71de251bfd53efeee45aaf0a8470',1,'mini_d3d12.h']]],
+  ['never_5finline_2',['NEVER_INLINE',['../runtime__internal_8h.html#a5251990c23668b067a282c9c3a8ef84a',1,'runtime_internal.h']]]
 ];

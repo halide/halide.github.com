@@ -6,7 +6,7 @@ var struct_halide_1_1_error =
     [ "Error", "struct_halide_1_1_error.html#aa9c5e1214b360e5847a68d51b5faf584", null ],
     [ "Error", "struct_halide_1_1_error.html#a2ef8cd3a4e020951ea02067e3f41c285", null ],
     [ "~Error", "struct_halide_1_1_error.html#afa8278079a1659cec89e42bcd361d3dd", null ],
-    [ "operator=", "struct_halide_1_1_error.html#a91417e671f27a735dc086ce7f3029348", null ],
-    [ "operator=", "struct_halide_1_1_error.html#a9403501d7d3386eb44137d87cdc63956", null ],
-    [ "what", "struct_halide_1_1_error.html#a7a5cf03c0a97dabeea57e5772dcabe5f", null ]
+    [ "operator=", "struct_halide_1_1_error.html#a90fdd8c2ba05a8b240aec2cfd37beed0", null ],
+    [ "operator=", "struct_halide_1_1_error.html#acfdcaa151c814a9ad7258f494dd92f80", null ],
+    [ "what", "struct_halide_1_1_error.html#adc1330d3b808afe025550d5a4ae56805", null ]
 ];
