@@ -25,6 +25,164 @@
 var NAVTREE =
 [
   [ "Halide", "index.html", [
+    [ "Building Halide with CMake", "md_doc_2_building_halide_with_c_make.html", [
+      [ "Installing CMake", "md_doc_2_building_halide_with_c_make.html#installing-cmake", [
+        [ "Cross-platform", "md_doc_2_building_halide_with_c_make.html#cross-platform", null ],
+        [ "Windows", "md_doc_2_building_halide_with_c_make.html#windows", null ],
+        [ "macOS", "md_doc_2_building_halide_with_c_make.html#macos", null ],
+        [ "Ubuntu Linux", "md_doc_2_building_halide_with_c_make.html#ubuntu-linux", null ],
+        [ "Optional: Install Ninja", "md_doc_2_building_halide_with_c_make.html#optional-install-ninja", null ]
+      ] ],
+      [ "Dependencies", "md_doc_2_building_halide_with_c_make.html#dependencies", [
+        [ "Summary", "md_doc_2_building_halide_with_c_make.html#summary", null ],
+        [ "Installing dependencies", "md_doc_2_building_halide_with_c_make.html#installing-dependencies", [
+          [ "vcpkg", "md_doc_2_building_halide_with_c_make.html#vcpkg", null ],
+          [ "Windows", "md_doc_2_building_halide_with_c_make.html#windows-1", null ],
+          [ "Homebrew", "md_doc_2_building_halide_with_c_make.html#homebrew", null ],
+          [ "Ubuntu / Debian", "md_doc_2_building_halide_with_c_make.html#ubuntu--debian", null ],
+          [ "Python", "md_doc_2_building_halide_with_c_make.html#python", null ]
+        ] ]
+      ] ],
+      [ "Building Halide", "md_doc_2_building_halide_with_c_make.html#building-halide", [
+        [ "Basic build", "md_doc_2_building_halide_with_c_make.html#basic-build", [
+          [ "Windows", "md_doc_2_building_halide_with_c_make.html#windows-2", null ],
+          [ "macOS and Linux", "md_doc_2_building_halide_with_c_make.html#macos-and-linux", null ]
+        ] ],
+        [ "CMake Presets", "md_doc_2_building_halide_with_c_make.html#cmake-presets", [
+          [ "Common presets", "md_doc_2_building_halide_with_c_make.html#common-presets", null ],
+          [ "Vcpkg presets", "md_doc_2_building_halide_with_c_make.html#vcpkg-presets", null ],
+          [ "Sanitizer presets", "md_doc_2_building_halide_with_c_make.html#sanitizer-presets", null ]
+        ] ],
+        [ "Build options", "md_doc_2_building_halide_with_c_make.html#build-options", null ],
+        [ "Installing", "md_doc_2_building_halide_with_c_make.html#installing", null ]
+      ] ],
+      [ "Building Halide with pip", "md_doc_2_building_halide_with_c_make.html#building-halide-with-pip", null ]
+    ] ],
+    [ "Contributing CMake code to Halide", "md_doc_2_code_style_c_make.html", [
+      [ "General guidelines and best practices", "md_doc_2_code_style_c_make.html#general-guidelines-and-best-practices", [
+        [ "Prohibited commands list", "md_doc_2_code_style_c_make.html#prohibited-commands-list", null ],
+        [ "Prohibited variables list", "md_doc_2_code_style_c_make.html#prohibited-variables-list", null ]
+      ] ],
+      [ "Adding tests", "md_doc_2_code_style_c_make.html#adding-tests", null ],
+      [ "Adding apps", "md_doc_2_code_style_c_make.html#adding-apps", null ]
+    ] ],
+    [ "Fuzz testing", "md_doc_2_fuzz_testing.html", [
+      [ "Building fuzz tests", "md_doc_2_fuzz_testing.html#building-fuzz-tests", null ],
+      [ "Using the fuzz-harnesses", "md_doc_2_fuzz_testing.html#using-the-fuzz-harnesses", null ],
+      [ "Reproducing crashes", "md_doc_2_fuzz_testing.html#reproducing-crashes", null ],
+      [ "Adding new fuzz tests", "md_doc_2_fuzz_testing.html#adding-new-fuzz-tests", null ],
+      [ "Other useful materials", "md_doc_2_fuzz_testing.html#other-useful-materials", null ]
+    ] ],
+    [ "Using Halide from your CMake build", "md_doc_2_halide_c_make_package.html", [
+      [ "A basic CMake project", "md_doc_2_halide_c_make_package.html#a-basic-cmake-project", [
+        [ "JIT mode", "md_doc_2_halide_c_make_package.html#jit-mode", null ],
+        [ "AOT mode", "md_doc_2_halide_c_make_package.html#aot-mode", [
+          [ "Autoschedulers", "md_doc_2_halide_c_make_package.html#autoschedulers", null ],
+          [ "RunGenMain", "md_doc_2_halide_c_make_package.html#rungenmain", null ]
+        ] ]
+      ] ],
+      [ "Halide package documentation", "md_doc_2_halide_c_make_package.html#halide-package-documentation", [
+        [ "Components", "md_doc_2_halide_c_make_package.html#components", null ],
+        [ "Variables", "md_doc_2_halide_c_make_package.html#variables", null ],
+        [ "Imported targets", "md_doc_2_halide_c_make_package.html#imported-targets", null ],
+        [ "Functions", "md_doc_2_halide_c_make_package.html#functions", [
+          [ "add_halide_generator", "md_doc_2_halide_c_make_package.html#add_halide_generator", null ],
+          [ "add_halide_library", "md_doc_2_halide_c_make_package.html#add_halide_library", null ],
+          [ "add_halide_python_extension_library", "md_doc_2_halide_c_make_package.html#add_halide_python_extension_library", null ],
+          [ "add_halide_runtime", "md_doc_2_halide_c_make_package.html#add_halide_runtime", null ]
+        ] ]
+      ] ],
+      [ "Cross compiling", "md_doc_2_halide_c_make_package.html#cross-compiling", [
+        [ "Use add_halide_generator", "md_doc_2_halide_c_make_package.html#use-add_halide_generator", null ],
+        [ "Use a super-build", "md_doc_2_halide_c_make_package.html#use-a-super-build", null ],
+        [ "Use ExternalProject directly", "md_doc_2_halide_c_make_package.html#use-externalproject-directly", null ],
+        [ "Use an emulator or run on device", "md_doc_2_halide_c_make_package.html#use-an-emulator-or-run-on-device", null ],
+        [ "Bypass CMake", "md_doc_2_halide_c_make_package.html#bypass-cmake", null ]
+      ] ]
+    ] ],
+    [ "Halide for Hexagon HVX", "md_doc_2_hexagon.html", [
+      [ "Obtain and build trunk LLVM and Clang", "md_doc_2_hexagon.html#autotoc_md1-obtain-and-build-trunk-llvm-and-clang", null ],
+      [ "Download and install the Hexagon SDK and Hexagon Tools", "md_doc_2_hexagon.html#autotoc_md2-download-and-install-the-hexagon-sdk-and-hexagon-tools", null ],
+      [ "Build and run an example for Hexagon HVX", "md_doc_2_hexagon.html#autotoc_md3-build-and-run-an-example-for-hexagon-hvx", null ],
+      [ "To build and run the blur example in Halide/apps/blur on Android:", "md_doc_2_hexagon.html#to-build-and-run-the-blur-example-in-halideappsblur-on-android", null ]
+    ] ],
+    [ "Halide Bindings for Python", "md_doc_2_python.html", [
+      [ "Acquiring the Python bindings", "md_doc_2_python.html#acquiring-the-python-bindings", null ],
+      [ "Building the Python bindings", "md_doc_2_python.html#building-the-python-bindings", [
+        [ "Using CMake directly", "md_doc_2_python.html#using-cmake-directly", null ],
+        [ "Using wheel infrastructure", "md_doc_2_python.html#using-wheel-infrastructure", null ]
+      ] ],
+      [ "Documentation and Examples", "md_doc_2_python.html#documentation-and-examples", null ],
+      [ "Differences from C++ API", "md_doc_2_python.html#differences-from-c-api", null ],
+      [ "Example of Simple Usage", "md_doc_2_python.html#example-of-simple-usage", null ],
+      [ "Halide Generators In Python", "md_doc_2_python.html#halide-generators-in-python", [
+        [ "Writing a Generator in Python", "md_doc_2_python.html#writing-a-generator-in-python", [
+          [ "hl.generator(\"name\")", "md_doc_2_python.html#hlgeneratorname", null ],
+          [ "hl.GeneratorParam", "md_doc_2_python.html#hlgeneratorparam", null ],
+          [ "hl.InputBuffer, hl.InputScalar", "md_doc_2_python.html#hlinputbuffer-hlinputscalar", null ],
+          [ "hl.OutputBuffer, hl.OutputScalar", "md_doc_2_python.html#hloutputbuffer-hloutputscalar", null ],
+          [ "Names", "md_doc_2_python.html#names", null ],
+          [ "generate() method", "md_doc_2_python.html#generate-method", null ],
+          [ "Types for Inputs and Outputs", "md_doc_2_python.html#types-for-inputs-and-outputs", null ]
+        ] ],
+        [ "Using a Generator for JIT compilation", "md_doc_2_python.html#using-a-generator-for-jit-compilation", null ],
+        [ "Using a Generator for AOT compilation", "md_doc_2_python.html#using-a-generator-for-aot-compilation", null ],
+        [ "Calling Generator-Produced code from Python", "md_doc_2_python.html#calling-generator-produced-code-from-python", null ],
+        [ "Advanced Generator-Related Topics", "md_doc_2_python.html#advanced-generator-related-topics", [
+          [ "Generator Aliases", "md_doc_2_python.html#generator-aliases", null ],
+          [ "Dynamic Inputs and Outputs", "md_doc_2_python.html#dynamic-inputs-and-outputs", null ],
+          [ "Calling a Generator Directly", "md_doc_2_python.html#calling-a-generator-directly", null ],
+          [ "The Lifecycle Of A Generator", "md_doc_2_python.html#the-lifecycle-of-a-generator", null ],
+          [ "Notable Differences Between C++ and Python Generators", "md_doc_2_python.html#notable-differences-between-c-and-python-generators", null ]
+        ] ]
+      ] ],
+      [ "Keeping Up To Date", "md_doc_2_python.html#keeping-up-to-date", null ],
+      [ "License", "md_doc_2_python.html#license", null ]
+    ] ],
+    [ "Running and Benchmarking Halide Generators", "md_doc_2_run_gen.html", [
+      [ "Overview", "md_doc_2_run_gen.html#overview", null ],
+      [ "Benchmarking", "md_doc_2_run_gen.html#benchmarking", null ],
+      [ "Measuring Memory Usage", "md_doc_2_run_gen.html#measuring-memory-usage", null ],
+      [ "Using RunGen in Make", "md_doc_2_run_gen.html#using-rungen-in-make", null ],
+      [ "Known Issues & Caveats", "md_doc_2_run_gen.html#known-issues--caveats", null ]
+    ] ],
+    [ "Vulkan Support for Halide", "md_doc_2_vulkan.html", [
+      [ "Compiling Halide w/Vulkan Support", "md_doc_2_vulkan.html#compiling-halide-wvulkan-support", null ],
+      [ "Vulkan Runtime Environment:", "md_doc_2_vulkan.html#vulkan-runtime-environment", [
+        [ "Windows", "md_doc_2_vulkan.html#windows-3", null ],
+        [ "Linux", "md_doc_2_vulkan.html#linux", null ],
+        [ "Mac", "md_doc_2_vulkan.html#mac", null ]
+      ] ],
+      [ "Testing Your Vulkan Environment", "md_doc_2_vulkan.html#testing-your-vulkan-environment", null ],
+      [ "Targetting Vulkan", "md_doc_2_vulkan.html#targetting-vulkan", null ],
+      [ "Useful Runtime Environment Variables", "md_doc_2_vulkan.html#useful-runtime-environment-variables", null ],
+      [ "Debug Environment Variables", "md_doc_2_vulkan.html#debug-environment-variables", null ],
+      [ "Current Status", "md_doc_2_vulkan.html#current-status", null ],
+      [ "Caveats:", "md_doc_2_vulkan.html#caveats", null ],
+      [ "Known TODO:", "md_doc_2_vulkan.html#known-todo", null ]
+    ] ],
+    [ "WebAssembly Support for Halide", "md_doc_2_web_assembly.html", [
+      [ "Additional Tooling Requirements:", "md_doc_2_web_assembly.html#additional-tooling-requirements", null ],
+      [ "AOT Limitations", "md_doc_2_web_assembly.html#aot-limitations", null ],
+      [ "JIT Limitations", "md_doc_2_web_assembly.html#jit-limitations", [
+        [ "Using V8 as the interpreter", "md_doc_2_web_assembly.html#using-v8-as-the-interpreter", null ]
+      ] ],
+      [ "To Use Halide For WebAssembly:", "md_doc_2_web_assembly.html#to-use-halide-for-webassembly", [
+        [ "Enabling wasm JIT", "md_doc_2_web_assembly.html#enabling-wasm-jit", null ],
+        [ "Enabling wasm AOT", "md_doc_2_web_assembly.html#enabling-wasm-aot", null ]
+      ] ],
+      [ "Running benchmarks", "md_doc_2_web_assembly.html#running-benchmarks", null ],
+      [ "Using Threads", "md_doc_2_web_assembly.html#using-threads", null ],
+      [ "Known Limitations And Caveats", "md_doc_2_web_assembly.html#known-limitations-and-caveats", null ],
+      [ "Known TODO:", "md_doc_2_web_assembly.html#known-todo-1", null ]
+    ] ],
+    [ "WebGPU support for Halide", "md_doc_2_web_g_p_u.html", [
+      [ "Known limitations", "md_doc_2_web_g_p_u.html#known-limitations", null ],
+      [ "Running with WebAssembly via Emscripten: HL_TARGET=wasm-32-wasmrt-webgpu", "md_doc_2_web_g_p_u.html#running-with-webassembly-via-emscripten-hl_targetwasm-32-wasmrt-webgpu", null ],
+      [ "Running natively: HL_TARGET=host-webgpu", "md_doc_2_web_g_p_u.html#running-natively-hl_targethost-webgpu", null ],
+      [ "Setting up Dawn", "md_doc_2_web_g_p_u.html#setting-up-dawn", null ],
+      [ "Updating mini_webgpu.h", "md_doc_2_web_g_p_u.html#updating-mini_webgpuh", null ]
+    ] ],
     [ "Topics", "topics.html", "topics" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -104,76 +262,77 @@ var NAVTREEINDEX =
 "class_halide_1_1_runtime_1_1_internal_1_1_printer_base.html#a9c38e0c4e7863bc2afdd2521d2926e8f",
 "class_halide_1_1_simd_op_check_test.html#a4ef1afede0e96fc7d498d59b2adf545c",
 "classcmdline_1_1parser.html#afdf4cb8deaead2d735c7803ede5b6b6a",
-"globals_defs_r.html",
-"mini__cl_8h.html#a0a45b759c0037372a4e361e65f4bf84f",
-"mini__cl_8h.html#a9a2110903f2cc7f66eb3206c13252b5e",
-"mini__cuda_8h.html#aa84b749decef61c558aaafb60314259a",
-"mini__d3d12_8h.html#a2846a11518682bfc1bc038021450f2dd",
-"mini__d3d12_8h.html#a6a9cbc7eff00c7ec769e4e6c3b2cb3bca12fcd46b7b8cd6cda64cbbb9138d0c68",
-"mini__d3d12_8h.html#a979d13ad0c09d7915d61d6df7842ae27",
-"mini__d3d12_8h.html#ac6a23396840c8ef48c16ba9ee79ba134ae674ead59fe67978655be30a2572b442",
-"mini__d3d12_8h.html#af236239721f56975ffa5d8970ffc186faed4c38b8d8f79b792c68c7258db77377",
-"mini__vulkan_8h.html#a0e920ef57d42ce874985c209961b8755aee76ece9c42435e633e7484045f9ee02",
-"mini__vulkan_8h.html#a2ce413b24e6cf891d5a80896e989876e",
-"mini__vulkan_8h.html#a52df64ab6384818ca6446ffe0a276511add9816a641d14fa8662c9852c01e64e2",
-"mini__vulkan_8h.html#a7348f0b046963e193bc51103733c33baa1ea18946d347da3c24314156dc4d8ea6",
-"mini__vulkan_8h.html#a8defc86f6deee6b7840ba498625290b9a8bd29b98bbae7d4ed51f28c62982b887",
-"mini__vulkan_8h.html#ab047100852c25f7e4d8b054dba4de957a19d811e2e94becaa62789886a8e4fe88",
-"mini__vulkan_8h.html#ac16f10305c9061df3f2545d1884d8fd1",
-"mini__vulkan_8h.html#ad61b5b94a526d0f9ae0db97072cf6b3fa59e91e1e33af01c1766fb7ee9c9db5c8",
-"mini__vulkan_8h.html#ae0cf094b5f4b3bdd33a6efe73ece6e7ea25a938f6fd28bfdf13b62ce36793e06e",
-"mini__vulkan_8h.html#aff9f2b99398eb80a2b5a146bc5534ce8a008689534843418b619f303c5d6e920e",
-"mini__webgpu_8h.html#a08b8efc7f493bf1b03c63d075a749834a88e516e1189b20c23d9393b172179410",
-"mini__webgpu_8h.html#a2915e123c1d128556570d02c5568f211",
-"mini__webgpu_8h.html#a57a04e266142c3e6f3fd131481b2ec3faf07988f9300a37f6c7d7dc1be328fef1",
-"mini__webgpu_8h.html#a9f9c3b9d672621a448724ba31392c325",
-"mini__webgpu_8h.html#aece3462f1a38fd985a825adf6c6b07e9a2aca09376b510eabb7ee17604f87ce3b",
-"namespace_halide.html#a6c6557df562bd7850664e70fdb8fea0fa5b80e0001d7f4873a60bbded160c687d",
-"namespace_halide.html#af5048e52b474e6d6733ffa66f800b881a06b9281e396db002010bde1de57262eb",
-"namespace_halide_1_1_internal.html#a5231b80b8e1a7904cdd4fcac7b89a98d",
-"namespace_halide_1_1_internal.html#ab882d8987fcdb737d28066db1130b509",
-"namespace_halide_1_1_internal_1_1_autoscheduler.html#acc39d142f0727a4676f66e7f73be00a6a509820290d57f333403f490dde7316f4",
-"namespace_halide_1_1_runtime.html",
-"namespace_halide_1_1_runtime_1_1_internal_1_1_cuda.html#af19313e44c60ca273901b267a591bffaaaebfa2ffbfac5d420d85bd58289137ac",
-"runtime__internal_8h.html#abd46e9b8a420dc539a61249118e7e963",
-"struct_d3_d12___i_n_p_u_t___l_a_y_o_u_t___d_e_s_c.html#a8af2d2f2b68d0cc1d6d2412406ad958f",
-"struct_d3_d12___t_e_x2_d___s_r_v.html#acb2ef6ac323d1ed82cf0eb980e285d43",
-"struct_halide_1_1_expr.html#aa083894ce1df642ee544835201b96ae6",
-"struct_halide_1_1_internal_1_1_associative_op_1_1_replacement.html#a73c208b02aaf978928263a91cfef1f63",
-"struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_node.html#a13b8cd4e4112c33efdd7debab502beaf",
-"struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#a54e320dc1f0154f77d144e5308baeb57",
-"struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest_1_1_sites.html#ab07a07b541ab39b94df3899e675f8819",
-"struct_halide_1_1_internal_1_1_autoscheduler_1_1_search_space_1_1_parallel_tile_option.html#a412f3244ba872978e0e471cedd7b14cd",
-"struct_halide_1_1_internal_1_1_autoscheduler_1_1_strides.html#ac9643c0021d30ffb156022b8d8870e4b",
-"struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a52fc0c99e599b37597d4adf83bfbb024",
-"struct_halide_1_1_internal_1_1_code_gen___l_l_v_m_1_1_v_p_result_type.html#ac307477fa5c4c3d9142ddd6769dece35",
-"struct_halide_1_1_internal_1_1_for.html#a692fd7aff28884e863b0f889ad30d212",
-"struct_halide_1_1_internal_1_1_i_r_matcher_1_1_is_const.html#a0c26a73b3b8f09eff729fa7768b2378b",
-"struct_halide_1_1_internal_1_1_i_r_matcher_1_1_widen_op.html",
-"struct_halide_1_1_internal_1_1_j_i_t_module.html#a8cb64148e951758de32cc8652ab090cc",
-"struct_halide_1_1_internal_1_1_pipeline_features.html#a24dd570f5cbc57c750aca4c0d82f418da78d811e98514cd165dda532286610fd2",
-"struct_halide_1_1_internal_1_1_pipeline_features.html#afcad8a71f7f7b804670b8edca7d8ae50ae7956ed7be1c5025a27ed3cb42a396bd",
-"struct_halide_1_1_internal_1_1_schedule_features.html#a7e1b68f5b96205179f07716bccb74187",
-"struct_halide_1_1_internal_1_1_solver_result.html#a76da1edc211d80f3f389895b84b03169",
-"struct_halide_1_1_j_i_t_extern.html#a624883be57938be2703d43de08747d28",
-"struct_halide_1_1_runtime_1_1_internal_1_1_cuda_1_1_c_u_d_a___m_e_m_c_p_y3_d__st.html#ab0f968d11ddc90351735724489d29883",
-"struct_halide_1_1_runtime_1_1_internal_1_1_synchronization_1_1signal__parking__control.html",
-"struct_halide_1_1_target.html#a41fb39bfe6ada60505dbc8956386c2c6",
-"struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf885980a07cc5c31e20924f61dc303d7",
-"struct_halide_1_1bfloat16__t.html#ae608088fefb65c4104290aa95a5c251c",
-"struct_i_d3_d12_device_vtbl.html#a9e8565701dc8b065161f030626aa52c8",
-"struct_i_d3_d12_pageable_vtbl.html#a13d0096e33a1bb886431049181f0b563",
-"struct_vk_bind_image_memory_swapchain_info_k_h_x.html#a1e3a2a12c263aa228df997ce27e4b67d",
-"struct_vk_device_generated_commands_limits_n_v_x.html#a395c49dac4a394cacf1107e9408f5a0f",
-"struct_vk_hdr_metadata_e_x_t.html#a1fd628dace871f78d71064a53dbbf08e",
-"struct_vk_past_presentation_timing_g_o_o_g_l_e.html",
-"struct_vk_physical_device_memory_properties2_k_h_r.html#a4fff3703c89d7836a86fe2cc32b6b747",
-"struct_vk_present_regions_k_h_r.html#aede8a0bbdba7b60dda85c97c0c98e968",
-"struct_vk_surface_capabilities_k_h_r.html#a98f4b65dcc588a4e6f9ffe3048bab2ad",
-"struct_w_g_p_u_dawn_encoder_internal_usage_descriptor.html",
-"struct_w_g_p_u_render_pass_descriptor_max_draw_count.html#aebb7b4267cca6fd2648f3f1f2a7cbd48",
-"struct_w_g_p_u_texture_descriptor.html#a5894057d0a6f44440aa8055cf025dcbf",
-"structst_dma_wrapper___dma_transfer_setup.html#aa76eb4225e24dc461de69447df2b06ef"
+"globals_defs_q.html",
+"md_doc_2_python.html#calling-generator-produced-code-from-python",
+"mini__cl_8h.html#a555cdd8caca76d4efa8de84a8b59e716",
+"mini__cl_8h.html#add4bf6cc38c83c9952fdd7ea721546b9",
+"mini__d3d12_8h.html#a0a9e8e2a312666310309916b14134bfb",
+"mini__d3d12_8h.html#a513a291100449ffb8d68dde9c8baafaface325d7c5d454c4ca9050d62813dcf93",
+"mini__d3d12_8h.html#a6db32ce9dff006a69f4e24a2ddb1949a",
+"mini__d3d12_8h.html#aa734844b1a12873e554e3f946afe8424",
+"mini__d3d12_8h.html#ae72956f5480f6ff0253f2bf65234419ba73279241812889645a308685204fc652",
+"mini__qurt_8h.html#afe97ee1b6f259a77966c8d41c90c2e07",
+"mini__vulkan_8h.html#a18f2b8de8e276d300e9f7640d2fc1722",
+"mini__vulkan_8h.html#a41b1640525e44e808d126944426fa161",
+"mini__vulkan_8h.html#a64615847e85afcc5e5377f2b3edce47a",
+"mini__vulkan_8h.html#a8266c3bdfbd3bf1dbbdc2d4f2890d1d7a9a77dbbdc5c0441e0ae324b3093dcf13",
+"mini__vulkan_8h.html#a9c70cc3a3bf67c5c54dac8fe91bde6f5",
+"mini__vulkan_8h.html#abb4939c51565e9dba4cb237c36884ddaa1757d6848af4827c4f904fa06417e20a",
+"mini__vulkan_8h.html#acffce36f3b174efff8c8824edb840ea0ae2276b9fffaf4e3c77cc7c6de8fd283b",
+"mini__vulkan_8h.html#ad61b5b94a526d0f9ae0db97072cf6b3fafc5882804245e5b3a1f4031723d32f9a",
+"mini__vulkan_8h.html#aedd73c8a5d7a0db799484e02d9d717b2",
+"mini__vulkan_8h.html#aff9f2b99398eb80a2b5a146bc5534ce8aa5bf7303466a9fa86feef9cdc4a191d9",
+"mini__webgpu_8h.html#a0e3a2414a79225161636aabf85871035ae639555f3e77c77d6f5659d811653eb7",
+"mini__webgpu_8h.html#a4c0bd182269c9bd26b823e5f457f3103",
+"mini__webgpu_8h.html#a7c5ac537e7058c87c8f572028680a2a6aea1dcef915ad35c2288319e5e5f6cec7",
+"mini__webgpu_8h.html#ac80893d203a4776cdc2bd1838de255f0",
+"namespace_halide.html#a172db5c21e58bfed0793b7152657623c",
+"namespace_halide.html#aa26c7f430d2b1c44ba3e1d3f6df2ba6ea7982b09a852b37f2afb1227eaf552e47",
+"namespace_halide_1_1_internal.html#a120045d61aae3bbe15e3da7b81bbb821",
+"namespace_halide_1_1_internal.html#a82c64641e261b5596a2ab6d7da7f8ef8",
+"namespace_halide_1_1_internal.html#aecd75538cec762a0ec020c81708260b6",
+"namespace_halide_1_1_internal_1_1_i_r_matcher.html#a7110bb296528fe0b4cd90b8a969fbf9c",
+"namespace_halide_1_1_runtime_1_1_internal_1_1_cuda.html#a2f191c22706ed27f2c64f0e1ab3d4ab9a69b8a6421d0e6dd9ca267689128820b2",
+"namespacemembers_func_q.html",
+"struct_d3_d12___c_o_m_m_a_n_d___q_u_e_u_e___d_e_s_c.html",
+"struct_d3_d12___r_o_o_t___s_i_g_n_a_t_u_r_e___d_e_s_c1.html#a87aeef9c2d0942d1436f2c72bc0c66a7",
+"struct_halide_1_1_argument.html#a473219a781a7a48455b3d2d4dcf1cc70",
+"struct_halide_1_1_internal_1_1_abstract_generator_1_1_arg_info.html#ae8886015c0a3ba68413833674241371e",
+"struct_halide_1_1_internal_1_1_autoscheduler_1_1_bound_contents.html#ac1bb856704cbdf7a99e38c25a6e59a6c",
+"struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_node_1_1_stage.html#acf58fc5bfd47eff879f4484bf5d9526e",
+"struct_halide_1_1_internal_1_1_autoscheduler_1_1_loop_nest.html#ac14b1dcccf2d067391be02f4306b2c97",
+"struct_halide_1_1_internal_1_1_autoscheduler_1_1_optional_rational.html#a0230f7968d6755797c16a3ed1e85f70b",
+"struct_halide_1_1_internal_1_1_autoscheduler_1_1_state.html#a84330edcf8e22b418e8e1391c6b998e4",
+"struct_halide_1_1_internal_1_1_box.html#a2d4179fbfa55a6c2e5722d54c9a72dc5",
+"struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974af579100fd330056df1b98083a317235a",
+"struct_halide_1_1_internal_1_1_device_argument.html#ae922a109d18f000be9ca74e4a9f9eb01",
+"struct_halide_1_1_internal_1_1_i_r_matcher_1_1_bin_op.html",
+"struct_halide_1_1_internal_1_1_i_r_matcher_1_1_not_op.html#a9ad766f48215b2b9101a446a1fb94b27",
+"struct_halide_1_1_internal_1_1_interval.html#a5eaddf8b2109493b95e6e05696961702",
+"struct_halide_1_1_internal_1_1_modulus_remainder.html#a7d1fab01314790c22f5cd6944cedd9c3",
+"struct_halide_1_1_internal_1_1_pipeline_features.html#a6148de8de76fb2db5f507e38bdb6909e",
+"struct_halide_1_1_internal_1_1_region_costs.html#a571d98c41d112ce4f638f68350762827",
+"struct_halide_1_1_internal_1_1_scoped_binding.html#a9b0aee6160d0ec440a02eea60e17c7d1",
+"struct_halide_1_1_internal_1_1_vector_reduce.html",
+"struct_halide_1_1_runtime_1_1_internal_1_1_block_allocator_1_1_config.html",
+"struct_halide_1_1_runtime_1_1_internal_1_1_memory_region.html#a3adbafb46a4465bd4cc59eded66b3fa2",
+"struct_halide_1_1_runtime_1_1_internal_1_1_vulkan_1_1_vulkan_shared_memory_allocation.html#aa34478d2251d3c6f32d4c64a4f72e357",
+"struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa58d95b1dcba192fb5d4641ffff36432a",
+"struct_halide_1_1_type.html#a41043f858a928335631d9b178b937625",
+"struct_i_d3_d12_command_queue_vtbl.html#aae35402c3d82f873e08eb367d70466f1",
+"struct_i_d3_d12_graphics_command_list_vtbl.html#a638d9eecb7a94d1c25dc789f405438b7",
+"struct_i_d_x_g_i_factory1_vtbl.html#a733070f5680c4f522fbba4dd740d7d36",
+"struct_vk_compute_pipeline_create_info.html#a4771703e46235156a47c1b3388b9a384",
+"struct_vk_draw_indexed_indirect_command.html#a701fd8e0db993fda253c11b8bfb39dab",
+"struct_vk_indirect_commands_layout_create_info_n_v_x.html#a5d9b79511cec5f7632af49acf36729d1",
+"struct_vk_physical_device_i_d_properties_k_h_r.html",
+"struct_vk_pipeline_depth_stencil_state_create_info.html",
+"struct_vk_shader_module_validation_cache_create_info_e_x_t.html",
+"struct_w_g_p_u_bind_group_layout_descriptor.html",
+"struct_w_g_p_u_limits.html",
+"struct_w_g_p_u_shared_texture_memory_d_x_g_i_shared_handle_descriptor.html#aab523c805c977c3acff7cdc0de8416e0",
+"structhalide__filter__argument__t.html#a1ab0a970c371d6754af432a31378f46a",
+"union_vk_clear_color_value.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

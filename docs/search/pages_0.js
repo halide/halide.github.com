@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['halide_0',['Halide',['../index.html',1,'']]]
+  ['and_20benchmarking_20halide_20generators_0',['Running and Benchmarking Halide Generators',['../md_doc_2_run_gen.html',1,'']]]
 ];

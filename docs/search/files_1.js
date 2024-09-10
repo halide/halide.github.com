@@ -7,5 +7,6 @@ var searchData=
   ['bounds_2eh_4',['Bounds.h',['../_bounds_8h.html',1,'']]],
   ['boundsinference_2eh_5',['BoundsInference.h',['../_bounds_inference_8h.html',1,'']]],
   ['boundsmallallocations_2eh_6',['BoundSmallAllocations.h',['../_bound_small_allocations_8h.html',1,'']]],
-  ['buffer_2eh_7',['Buffer.h',['../_buffer_8h.html',1,'']]]
+  ['buffer_2eh_7',['Buffer.h',['../_buffer_8h.html',1,'']]],
+  ['buildinghalidewithcmake_2emd_8',['BuildingHalideWithCMake.md',['../_building_halide_with_c_make_8md.html',1,'']]]
 ];
