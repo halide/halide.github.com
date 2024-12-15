@@ -1,5 +1,6 @@
 var thread__pool__common_8h =
 [
+    [ "Halide::Runtime::Internal::halide_cond_with_spinning", "struct_halide_1_1_runtime_1_1_internal_1_1halide__cond__with__spinning.html", "struct_halide_1_1_runtime_1_1_internal_1_1halide__cond__with__spinning" ],
     [ "Halide::Runtime::Internal::work", "struct_halide_1_1_runtime_1_1_internal_1_1work.html", "struct_halide_1_1_runtime_1_1_internal_1_1work" ],
     [ "Halide::Runtime::Internal::work_queue_t", "struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t.html", "struct_halide_1_1_runtime_1_1_internal_1_1work__queue__t" ],
     [ "halide_semaphore_impl_t", "structhalide__semaphore__impl__t.html", "structhalide__semaphore__impl__t" ],
@@ -17,6 +18,7 @@ var thread__pool__common_8h =
     [ "halide_default_do_par_for", "thread__pool__common_8h.html#ae1452660919bcea2c7e22fe0a67e8c80", null ],
     [ "halide_default_do_parallel_tasks", "thread__pool__common_8h.html#a23381d08119ec2ad0aa3b09c1be1da16", null ],
     [ "halide_set_num_threads", "thread__pool__common_8h.html#affb017c8f9fc9efdd0054393e2e51bde", null ],
+    [ "halide_get_num_threads", "thread__pool__common_8h.html#a301aa2e9364ca36c82d47921a8b1f683", null ],
     [ "halide_shutdown_thread_pool", "thread__pool__common_8h.html#abf9e29e9c1a0e796b2f021e08f598ca0", null ],
     [ "halide_default_semaphore_init", "thread__pool__common_8h.html#acb5b057d9dcc1eebf7533a3f669e50d2", null ],
     [ "halide_default_semaphore_release", "thread__pool__common_8h.html#a17210ca9e560ec7f8ace4104e83548eb", null ],

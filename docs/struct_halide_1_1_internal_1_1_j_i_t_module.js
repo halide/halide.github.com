@@ -17,6 +17,8 @@ var struct_halide_1_1_internal_1_1_j_i_t_module =
     [ "memoization_cache_set_size", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a19cabec4a83bbb36a49219b14e52d1f2", null ],
     [ "memoization_cache_evict", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a0b05adec9db5b0b33b7e6434c349ba87", null ],
     [ "reuse_device_allocations", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a7bda013e7d2e0394e8f3d35f287564ac", null ],
+    [ "get_num_threads", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a41edeab8c1fa987f162f11ba86432fc6", null ],
+    [ "set_num_threads", "struct_halide_1_1_internal_1_1_j_i_t_module.html#a0fa8d5c0a6140f6716f781dfec1a2aa0", null ],
     [ "compiled", "struct_halide_1_1_internal_1_1_j_i_t_module.html#aa2d0b8556e7f72dd95a7c5479ecdc03f", null ],
     [ "jit_module", "struct_halide_1_1_internal_1_1_j_i_t_module.html#afb6a6e83a43ad4884830878b4b3d60f1", null ]
 ];

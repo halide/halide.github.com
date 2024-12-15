@@ -25,5 +25,8 @@ var _i_r_printer_8h =
     [ "operator<<", "_i_r_printer_8h.html#a523ae8336558d8709f4510731bd2a298", null ],
     [ "operator<<", "_i_r_printer_8h.html#a79ed3ae16af25caf69d9a03ec9aaf9c3", null ],
     [ "operator<<", "_i_r_printer_8h.html#a819144ed78ee773e7fbcd5271c9d1253", null ],
-    [ "operator<<", "_i_r_printer_8h.html#aba8a7f7d4b6a6e27fcd31efcce988328", null ]
+    [ "operator<<", "_i_r_printer_8h.html#aba8a7f7d4b6a6e27fcd31efcce988328", null ],
+    [ "lldb_string", "_i_r_printer_8h.html#aa99b1b712f2a914dfbcabeb1f7777857", null ],
+    [ "lldb_string", "_i_r_printer_8h.html#a0538675339647d35ffaadca9ad09283f", null ],
+    [ "lldb_string", "_i_r_printer_8h.html#aefe53c86fe52500bdca596f46e8fb0d0", null ]
 ];

@@ -3,7 +3,7 @@ var _code_gen___internal_8h =
     [ "get_vector_element_type", "_code_gen___internal_8h.html#a979a66a6c1d81f22528e9b996970568c", null ],
     [ "function_takes_user_context", "_code_gen___internal_8h.html#adc60421b682a09ea4c4dcaaaa3e105e2", null ],
     [ "can_allocation_fit_on_stack", "_code_gen___internal_8h.html#a4abe6b887804e86f403f0af16d5a2ba1", null ],
-    [ "long_div_mod_round_to_zero", "_code_gen___internal_8h.html#a567f2d105bf3758e039e8c9243b0eaa0", null ],
+    [ "long_div_mod_round_to_zero", "_code_gen___internal_8h.html#a234c39a0f1f0d90412f454dca60cddc0", null ],
     [ "lower_int_uint_div", "_code_gen___internal_8h.html#a25b077cb4a97dbf2fc64bb665826b512", null ],
     [ "lower_int_uint_mod", "_code_gen___internal_8h.html#a3b44815561924377a690cf1d967bd19f", null ],
     [ "lower_euclidean_div", "_code_gen___internal_8h.html#ab7a4f18b650b23e1e6ed980d1feebcf5", null ],

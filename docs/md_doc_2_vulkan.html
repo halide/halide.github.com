@@ -144,7 +144,7 @@ Linux</h2>
 <div class="line">$ sudo apt update</div>
 <div class="line">$ sudo apt upgrade</div>
 <div class="line"># - replace ### with latest driver release (e.g. 515)</div>
-<div class="line">$ sudo apt install nvidia-driver-### nvidia-settings vulkan vulkan-tools</div>
+<div class="line">$ sudo apt install nvidia-driver-### nvidia-settings libvulkan1 vulkan-tools</div>
 </div><!-- fragment --><p>Note that only valid drivers for your system should be installed since there are reports of the Vulkan loader segfaulting just by having a non-supported driver present. Specifically, the seemingly generic <code>mesa-vulkan-drivers</code> actually includes the AMD graphics driver, which can cause problems if installed on an NVIDIA-only system.</p>
 <h2><a class="anchor" id="mac"></a>
 Mac</h2>
@@ -232,7 +232,12 @@ Debug Environment Variables</h1>
 <p><code>HL_DEBUG_CODEGEN=3</code> will print out debug info that includees the SPIR-V code generator used for Vulkan while it is compiling.</p>
 <p><code>HL_SPIRV_DUMP_FILE=...</code> specifies a file to dump the binary SPIR-V generated during compilation. Useful for debugging CodeGen issues. Can be inspected, validated and disassembled via the SPIR-V tools:</p>
 <p><a href="https://github.com/KhronosGroup/SPIRV-Tools">https://github.com/KhronosGroup/SPIRV-Tools</a></p>
-<h1><a class="anchor" id="current-status"></a>
+<p>In addition to the SPIR-V Tools, you may also wish to install the Khronos Validation Layers which provide an exhaustive suite of runtime checks that can be injected by adding <code>VK_LAYER_KHRONOS_validation</code> to the <code>VK_INSTANCE_LAYERS=</code> environment variable.</p>
+<p>To install the validation layers and the SPIR-V tools on Ubuntu v22.04:</p>
+<div class="fragment"><div class="line">$ sudo apt install vulkan-validationlayers vulkan-validationlayers-dev spirv-tools</div>
+</div><!-- fragment --><p>To test the validation layer, you can prepend your shell command for any Vulkan enabled binary with the appropriate environment settings. For example, you can run one of the JIT-enabled correctness tests w/debug output and validation layers enabled like so:</p>
+<div class="fragment"><div class="line">$ VK_INSTANCE_LAYERS=VK_LAYER_KHRONOS_validation HL_JIT_TARGET=host-vulkan-vk_int8-vk_int16-vk_int64-vk_float16-vk_float64-vk_v13-debug ./build/test/correctness/correctness_hello_gpu</div>
+</div><!-- fragment --><h1><a class="anchor" id="current-status"></a>
 Current Status</h1>
 <p>All correctness tests are now passing on tested configs for Linux &amp; Windows using the target <code>host-vulkan-vk_int8-vk_int16-vk_int64-vk_float16-vk_float64-vk_v13</code> on LLVM v14.x.</p>
 <p>MacOS passes most tests but encounters internal MoltenVK code translation issues for wide vectors, and ambiguous function calls.</p>

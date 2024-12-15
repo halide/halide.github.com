@@ -265,6 +265,7 @@ var _halide_runtime_8h =
     [ "halide_default_semaphore_try_acquire", "_halide_runtime_8h.html#a333094ead7caa2b27e1cd6c92e2367c7", null ],
     [ "halide_spawn_thread", "_halide_runtime_8h.html#a6c90ae80fd6658eaf1754c85fd732ab2", null ],
     [ "halide_join_thread", "_halide_runtime_8h.html#aba03c92519ed6b3df69caf08e8278720", null ],
+    [ "halide_get_num_threads", "_halide_runtime_8h.html#ab231e2901a32f4e358b2628bf92a6a06", null ],
     [ "halide_set_num_threads", "_halide_runtime_8h.html#a36d93e0796319cf64432c511affba1a5", null ],
     [ "halide_malloc", "_halide_runtime_8h.html#a26f08f75e6692df61c62b3a7a9e02fe4", null ],
     [ "halide_free", "_halide_runtime_8h.html#a2fa49d775b9a20fab152a0650c4c936b", null ],

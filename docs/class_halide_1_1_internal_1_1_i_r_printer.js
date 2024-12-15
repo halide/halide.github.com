@@ -4,11 +4,13 @@ var class_halide_1_1_internal_1_1_i_r_printer =
     [ "print", "class_halide_1_1_internal_1_1_i_r_printer.html#a30d08d3f22ec170ffe863884f0959fcc", null ],
     [ "print_no_parens", "class_halide_1_1_internal_1_1_i_r_printer.html#a36c2ae9745886834809ff320c19f64c3", null ],
     [ "print", "class_halide_1_1_internal_1_1_i_r_printer.html#ae2a84479e05eb357d09364c0c9799a67", null ],
+    [ "print_summary", "class_halide_1_1_internal_1_1_i_r_printer.html#a7b363c06d97e75bca7cf2512e0953008", null ],
     [ "print_list", "class_halide_1_1_internal_1_1_i_r_printer.html#a634eebd68194faf1947c28d29861b2f0", null ],
     [ "get_indent", "class_halide_1_1_internal_1_1_i_r_printer.html#a705293a55d869080c0cc45a211a98965", null ],
     [ "open", "class_halide_1_1_internal_1_1_i_r_printer.html#ae839038cc3d1e261ffeada2a9bf19337", null ],
     [ "close", "class_halide_1_1_internal_1_1_i_r_printer.html#aca134384244af888a53bb81f588d4c1c", null ],
     [ "print_lets", "class_halide_1_1_internal_1_1_i_r_printer.html#a398708bbe65ca0e445063d8a679ead4e", null ],
+    [ "print_braced_stmt", "class_halide_1_1_internal_1_1_i_r_printer.html#ac43ea01ebc7c1a5fb331c0ac57f1678d", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_printer.html#ab05994d9434b5f3cbd59fbe0b91682ce", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_printer.html#a322607eb31c5f7f5cdc9486587e37401", null ],
     [ "visit", "class_halide_1_1_internal_1_1_i_r_printer.html#aaf85bcd31b07f45d3e8f1dc64d846176", null ],
@@ -60,5 +62,6 @@ var class_halide_1_1_internal_1_1_i_r_printer =
     [ "stream", "class_halide_1_1_internal_1_1_i_r_printer.html#aa3b8ebf12ced24cd0696db736478bee4", null ],
     [ "indent", "class_halide_1_1_internal_1_1_i_r_printer.html#a2023abc07c7c54f7b9fdf8d4a8139255", null ],
     [ "implicit_parens", "class_halide_1_1_internal_1_1_i_r_printer.html#a849a5f27b4c21c5cda041f8807d9f69f", null ],
+    [ "is_summary", "class_halide_1_1_internal_1_1_i_r_printer.html#ab02cc396a8a14c2b73ccf4a21f9f2172", null ],
     [ "known_type", "class_halide_1_1_internal_1_1_i_r_printer.html#a09cd63af4a64c4ac510d5b510b86b85e", null ]
 ];

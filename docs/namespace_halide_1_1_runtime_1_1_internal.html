@@ -142,6 +142,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_runtime_1_1_internal_1_1device__copy.html">device_copy</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_runtime_1_1_internal_1_1halide__cond__with__spinning.html">halide_cond_with_spinning</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_runtime_1_1_internal_1_1_halide_system_allocator_fns.html">HalideSystemAllocatorFns</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_halide_1_1_runtime_1_1_internal_1_1_hash_map.html">HashMap</a></td></tr>
@@ -272,7 +274,7 @@ Functions</h2></td></tr>
 <tr class="separator:a6d0495fb872e4ed1c7e28725f663263b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6268af645c9663f23d475140df818455" id="r_a6268af645c9663f23d475140df818455"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#ad1480e9557edcc543498ca259cee6c7d">WEAK</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6268af645c9663f23d475140df818455">copy_memory_helper</a> (const <a class="el" href="struct_halide_1_1_runtime_1_1_internal_1_1device__copy.html">device_copy</a> &amp;copy, int d, <a class="el" href="runtime__internal_8h.html#a11cbdb02b138f338b174a78c683f85fc">int64_t</a> src_off, <a class="el" href="runtime__internal_8h.html#a11cbdb02b138f338b174a78c683f85fc">int64_t</a> dst_off)</td></tr>
 <tr class="separator:a6268af645c9663f23d475140df818455"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01c8dd2614e7af6d8179993445d22c67" id="r_a01c8dd2614e7af6d8179993445d22c67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#ad1480e9557edcc543498ca259cee6c7d">WEAK</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01c8dd2614e7af6d8179993445d22c67">copy_memory</a> (const <a class="el" href="struct_halide_1_1_runtime_1_1_internal_1_1device__copy.html">device_copy</a> &amp;copy, void *user_context)</td></tr>
+<tr class="memitem:a01c8dd2614e7af6d8179993445d22c67" id="r_a01c8dd2614e7af6d8179993445d22c67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#ad1480e9557edcc543498ca259cee6c7d">WEAK</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01c8dd2614e7af6d8179993445d22c67">copy_memory</a> (const <a class="el" href="struct_halide_1_1_runtime_1_1_internal_1_1device__copy.html">device_copy</a> &amp;copy, void *<a class="el" href="vulkan__resources_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>)</td></tr>
 <tr class="separator:a01c8dd2614e7af6d8179993445d22c67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afaf6cfa51854796516bb508fc0ae78e6" id="r_afaf6cfa51854796516bb508fc0ae78e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#ad1480e9557edcc543498ca259cee6c7d">WEAK</a> <a class="el" href="struct_halide_1_1_runtime_1_1_internal_1_1device__copy.html">device_copy</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaf6cfa51854796516bb508fc0ae78e6">make_buffer_copy</a> (const <a class="el" href="structhalide__buffer__t.html">halide_buffer_t</a> *src, bool src_host, const <a class="el" href="structhalide__buffer__t.html">halide_buffer_t</a> *dst, bool dst_host)</td></tr>
 <tr class="separator:afaf6cfa51854796516bb508fc0ae78e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -307,9 +309,9 @@ Functions</h2></td></tr>
 <tr class="separator:acc33d877ee0a5ad9766483e0e97e267a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fa6b99a4ffbf7db3b3e8516caa63692" id="r_a0fa6b99a4ffbf7db3b3e8516caa63692"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#aa1dec568e79152c892dcf63f445cbd7a">ALWAYS_INLINE</a> void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fa6b99a4ffbf7db3b3e8516caa63692">offset_address</a> (void *address, <a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a> byte_offset)</td></tr>
 <tr class="separator:a0fa6b99a4ffbf7db3b3e8516caa63692"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19405925f6b55b6b7ec78089420a73c2" id="r_a19405925f6b55b6b7ec78089420a73c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#aa1dec568e79152c892dcf63f445cbd7a">ALWAYS_INLINE</a> void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19405925f6b55b6b7ec78089420a73c2">native_system_malloc</a> (void *user_context, <a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a> bytes)</td></tr>
+<tr class="memitem:a19405925f6b55b6b7ec78089420a73c2" id="r_a19405925f6b55b6b7ec78089420a73c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#aa1dec568e79152c892dcf63f445cbd7a">ALWAYS_INLINE</a> void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19405925f6b55b6b7ec78089420a73c2">native_system_malloc</a> (void *<a class="el" href="vulkan__resources_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, <a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a> bytes)</td></tr>
 <tr class="separator:a19405925f6b55b6b7ec78089420a73c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a703c16dbbbb355cba8cc3c94f4f11c7d" id="r_a703c16dbbbb355cba8cc3c94f4f11c7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#aa1dec568e79152c892dcf63f445cbd7a">ALWAYS_INLINE</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a703c16dbbbb355cba8cc3c94f4f11c7d">native_system_free</a> (void *user_context, void *ptr)</td></tr>
+<tr class="memitem:a703c16dbbbb355cba8cc3c94f4f11c7d" id="r_a703c16dbbbb355cba8cc3c94f4f11c7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#aa1dec568e79152c892dcf63f445cbd7a">ALWAYS_INLINE</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a703c16dbbbb355cba8cc3c94f4f11c7d">native_system_free</a> (void *<a class="el" href="vulkan__resources_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, void *ptr)</td></tr>
 <tr class="separator:a703c16dbbbb355cba8cc3c94f4f11c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acff1dcac513f7da390976298fc04f61b" id="r_acff1dcac513f7da390976298fc04f61b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#ad1480e9557edcc543498ca259cee6c7d">WEAK</a> <a class="el" href="objc__support_8h.html#a992dd9176fb4b9f8800a2a2ce9d612f3">objc_id</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acff1dcac513f7da390976298fc04f61b">create_autorelease_pool</a> ()</td></tr>
 <tr class="separator:acff1dcac513f7da390976298fc04f61b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -339,9 +341,9 @@ Functions</h2></td></tr>
 <tr class="separator:a7e2d637c625aa1c367a121d54518266d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad13c01e6d15fda1be2eee0ca4dcae9a8" id="r_ad13c01e6d15fda1be2eee0ca4dcae9a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad13c01e6d15fda1be2eee0ca4dcae9a8">get_allocated_system_memory</a> ()</td></tr>
 <tr class="separator:ad13c01e6d15fda1be2eee0ca4dcae9a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a934ab87dccf2001d60ceed3143e56552" id="r_a934ab87dccf2001d60ceed3143e56552"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a934ab87dccf2001d60ceed3143e56552">allocate_system</a> (void *user_context, <a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a> bytes)</td></tr>
+<tr class="memitem:a934ab87dccf2001d60ceed3143e56552" id="r_a934ab87dccf2001d60ceed3143e56552"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a934ab87dccf2001d60ceed3143e56552">allocate_system</a> (void *<a class="el" href="vulkan__resources_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, <a class="el" href="runtime__internal_8h.html#aa9d55e2f20e580b7445617d0d12fff6e">size_t</a> bytes)</td></tr>
 <tr class="separator:a934ab87dccf2001d60ceed3143e56552"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7d813c6592925186079ac03ef6ac72b" id="r_ae7d813c6592925186079ac03ef6ac72b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7d813c6592925186079ac03ef6ac72b">deallocate_system</a> (void *user_context, void *aligned_ptr)</td></tr>
+<tr class="memitem:ae7d813c6592925186079ac03ef6ac72b" id="r_ae7d813c6592925186079ac03ef6ac72b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7d813c6592925186079ac03ef6ac72b">deallocate_system</a> (void *<a class="el" href="vulkan__resources_8h.html#a9a395374120db0d0280e16f53201d5cf">user_context</a>, void *aligned_ptr)</td></tr>
 <tr class="separator:ae7d813c6592925186079ac03ef6ac72b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -761,7 +763,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="device__buffer__utils_8h_source.html#l00070">70</a> of file <a class="el" href="device__buffer__utils_8h_source.html">device_buffer_utils.h</a>.</p>
 
-<p class="reference">References <a class="el" href="device__buffer__utils_8h_source.html#l00047">copy_memory_helper()</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00035">Halide::Runtime::Internal::device_copy::dst</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00032">MAX_COPY_DIMS</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00035">Halide::Runtime::Internal::device_copy::src</a>, and <a class="el" href="device__buffer__utils_8h_source.html#l00037">Halide::Runtime::Internal::device_copy::src_begin</a>.</p>
+<p class="reference">References <a class="el" href="device__buffer__utils_8h_source.html#l00047">copy_memory_helper()</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00035">Halide::Runtime::Internal::device_copy::dst</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00032">MAX_COPY_DIMS</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00035">Halide::Runtime::Internal::device_copy::src</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00037">Halide::Runtime::Internal::device_copy::src_begin</a>, and <a class="el" href="vulkan__resources_8h_source.html#l00178">user_context</a>.</p>
 
 </div>
 </div>
@@ -796,7 +798,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="device__buffer__utils_8h_source.html#l00080">80</a> of file <a class="el" href="device__buffer__utils_8h_source.html">device_buffer_utils.h</a>.</p>
 
-<p class="reference">References <a class="el" href="device__buffer__utils_8h_source.html#l00044">Halide::Runtime::Internal::device_copy::chunk_size</a>, <a class="el" href="_halide_runtime_8h_source.html#l01548">halide_buffer_t::device</a>, <a class="el" href="_halide_runtime_8h_source.html#l01569">halide_buffer_t::dim</a>, <a class="el" href="_halide_runtime_8h_source.html#l01565">halide_buffer_t::dimensions</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00035">Halide::Runtime::Internal::device_copy::dst</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00042">Halide::Runtime::Internal::device_copy::dst_stride_bytes</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00039">Halide::Runtime::Internal::device_copy::extent</a>, <a class="el" href="_halide_runtime_8h_source.html#l01527">halide_dimension_t::extent</a>, <a class="el" href="_halide_runtime_8h_source.html#l01556">halide_buffer_t::host</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00032">MAX_COPY_DIMS</a>, <a class="el" href="_halide_runtime_8h_source.html#l01527">halide_dimension_t::min</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00035">Halide::Runtime::Internal::device_copy::src</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00037">Halide::Runtime::Internal::device_copy::src_begin</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00041">Halide::Runtime::Internal::device_copy::src_stride_bytes</a>, <a class="el" href="_halide_runtime_8h_source.html#l01527">halide_dimension_t::stride</a>, and <a class="el" href="_halide_runtime_8h_source.html#l01562">halide_buffer_t::type</a>.</p>
+<p class="reference">References <a class="el" href="device__buffer__utils_8h_source.html#l00044">Halide::Runtime::Internal::device_copy::chunk_size</a>, <a class="el" href="_halide_runtime_8h_source.html#l01552">halide_buffer_t::device</a>, <a class="el" href="_halide_runtime_8h_source.html#l01573">halide_buffer_t::dim</a>, <a class="el" href="_halide_runtime_8h_source.html#l01569">halide_buffer_t::dimensions</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00035">Halide::Runtime::Internal::device_copy::dst</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00042">Halide::Runtime::Internal::device_copy::dst_stride_bytes</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00039">Halide::Runtime::Internal::device_copy::extent</a>, <a class="el" href="_halide_runtime_8h_source.html#l01531">halide_dimension_t::extent</a>, <a class="el" href="_halide_runtime_8h_source.html#l01560">halide_buffer_t::host</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00032">MAX_COPY_DIMS</a>, <a class="el" href="_halide_runtime_8h_source.html#l01531">halide_dimension_t::min</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00035">Halide::Runtime::Internal::device_copy::src</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00037">Halide::Runtime::Internal::device_copy::src_begin</a>, <a class="el" href="device__buffer__utils_8h_source.html#l00041">Halide::Runtime::Internal::device_copy::src_stride_bytes</a>, <a class="el" href="_halide_runtime_8h_source.html#l01531">halide_dimension_t::stride</a>, and <a class="el" href="_halide_runtime_8h_source.html#l01566">halide_buffer_t::type</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="device__buffer__utils_8h_source.html#l00172">make_device_to_host_copy()</a>, and <a class="el" href="device__buffer__utils_8h_source.html#l00168">make_host_to_device_copy()</a>.</p>
 
@@ -865,7 +867,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="device__buffer__utils_8h_source.html#l00177">177</a> of file <a class="el" href="device__buffer__utils_8h_source.html">device_buffer_utils.h</a>.</p>
 
-<p class="reference">References <a class="el" href="_halide_runtime_8h_source.html#l01569">halide_buffer_t::dim</a>, <a class="el" href="_halide_runtime_8h_source.html#l01565">halide_buffer_t::dimensions</a>, <a class="el" href="_halide_runtime_8h_source.html#l01527">halide_dimension_t::min</a>, <a class="el" href="_halide_runtime_8h_source.html#l01527">halide_dimension_t::stride</a>, and <a class="el" href="_halide_runtime_8h_source.html#l01562">halide_buffer_t::type</a>.</p>
+<p class="reference">References <a class="el" href="_halide_runtime_8h_source.html#l01573">halide_buffer_t::dim</a>, <a class="el" href="_halide_runtime_8h_source.html#l01569">halide_buffer_t::dimensions</a>, <a class="el" href="_halide_runtime_8h_source.html#l01531">halide_dimension_t::min</a>, <a class="el" href="_halide_runtime_8h_source.html#l01531">halide_dimension_t::stride</a>, and <a class="el" href="_halide_runtime_8h_source.html#l01566">halide_buffer_t::type</a>.</p>
 
 </div>
 </div>
@@ -895,7 +897,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="device__buffer__utils_8h_source.html#l00188">188</a> of file <a class="el" href="device__buffer__utils_8h_source.html">device_buffer_utils.h</a>.</p>
 
-<p class="reference">References <a class="el" href="_halide_runtime_8h_source.html#l01569">halide_buffer_t::dim</a>, <a class="el" href="_halide_runtime_8h_source.html#l01527">halide_dimension_t::min</a>, <a class="el" href="_halide_runtime_8h_source.html#l01527">halide_dimension_t::stride</a>, and <a class="el" href="_halide_runtime_8h_source.html#l01562">halide_buffer_t::type</a>.</p>
+<p class="reference">References <a class="el" href="_halide_runtime_8h_source.html#l01573">halide_buffer_t::dim</a>, <a class="el" href="_halide_runtime_8h_source.html#l01531">halide_dimension_t::min</a>, <a class="el" href="_halide_runtime_8h_source.html#l01531">halide_dimension_t::stride</a>, and <a class="el" href="_halide_runtime_8h_source.html#l01566">halide_buffer_t::type</a>.</p>
 
 </div>
 </div>
@@ -916,9 +918,9 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_halide_buffer_8h_source.html#l00148">148</a> of file <a class="el" href="_halide_buffer_8h_source.html">HalideBuffer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_halide_buffer_8h_source.html#l00149">149</a> of file <a class="el" href="_halide_buffer_8h_source.html">HalideBuffer.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_halide_buffer_8h_source.html#l01028">Halide::Runtime::Buffer&lt; T, Dims, InClassDimStorage &gt;::Buffer()</a>, <a class="el" href="_halide_buffer_8h_source.html#l00975">Halide::Runtime::Buffer&lt; T, Dims, InClassDimStorage &gt;::Buffer()</a>, and <a class="el" href="_halide_buffer_8h_source.html#l01012">Halide::Runtime::Buffer&lt; T, Dims, InClassDimStorage &gt;::Buffer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_halide_buffer_8h_source.html#l01029">Halide::Runtime::Buffer&lt; T, Dims, InClassDimStorage &gt;::Buffer()</a>, <a class="el" href="_halide_buffer_8h_source.html#l00976">Halide::Runtime::Buffer&lt; T, Dims, InClassDimStorage &gt;::Buffer()</a>, and <a class="el" href="_halide_buffer_8h_source.html#l01013">Halide::Runtime::Buffer&lt; T, Dims, InClassDimStorage &gt;::Buffer()</a>.</p>
 
 </div>
 </div>
@@ -1039,7 +1041,7 @@ template&lt;typename Container &gt; </div>
 
 <p class="reference">References <a class="el" href="runtime__internal_8h_source.html#l00271">halide_abort_if_false</a>, and <a class="el" href="memory__resources_8h_source.html#l00122">is_power_of_two_alignment()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="memory__resources_8h_source.html#l00142">aligned_size()</a>, <a class="el" href="region__allocator_8h_source.html#l00152">Halide::Runtime::Internal::RegionAllocator::conform()</a>, and <a class="el" href="vulkan__memory_8h_source.html#l00852">Halide::Runtime::Internal::Vulkan::VulkanMemoryAllocator::conform()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="memory__resources_8h_source.html#l00142">aligned_size()</a>, <a class="el" href="region__allocator_8h_source.html#l00152">Halide::Runtime::Internal::RegionAllocator::conform()</a>, and <a class="el" href="vulkan__memory_8h_source.html#l00983">Halide::Runtime::Internal::Vulkan::VulkanMemoryAllocator::conform()</a>.</p>
 
 </div>
 </div>
@@ -1066,7 +1068,7 @@ template&lt;typename Container &gt; </div>
 
 <p class="reference">References <a class="el" href="_func_8h_source.html#l00600">Halide::max()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="region__allocator_8h_source.html#l00152">Halide::Runtime::Internal::RegionAllocator::conform()</a>, and <a class="el" href="vulkan__memory_8h_source.html#l00852">Halide::Runtime::Internal::Vulkan::VulkanMemoryAllocator::conform()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="region__allocator_8h_source.html#l00152">Halide::Runtime::Internal::RegionAllocator::conform()</a>, and <a class="el" href="vulkan__memory_8h_source.html#l00983">Halide::Runtime::Internal::Vulkan::VulkanMemoryAllocator::conform()</a>.</p>
 
 </div>
 </div>
@@ -1135,7 +1137,7 @@ template&lt;typename Container &gt; </div>
 
 <p class="reference">References <a class="el" href="memory__resources_8h_source.html#l00142">aligned_size()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="region__allocator_8h_source.html#l00152">Halide::Runtime::Internal::RegionAllocator::conform()</a>, and <a class="el" href="vulkan__memory_8h_source.html#l00852">Halide::Runtime::Internal::Vulkan::VulkanMemoryAllocator::conform()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="region__allocator_8h_source.html#l00152">Halide::Runtime::Internal::RegionAllocator::conform()</a>, and <a class="el" href="vulkan__memory_8h_source.html#l00983">Halide::Runtime::Internal::Vulkan::VulkanMemoryAllocator::conform()</a>.</p>
 
 </div>
 </div>
@@ -1458,9 +1460,9 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00074">74</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00125">125</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00446">enqueue_work_already_locked()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00679">halide_set_num_threads()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00480">enqueue_work_already_locked()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00713">halide_set_num_threads()</a>.</p>
 
 </div>
 </div>
@@ -1479,11 +1481,11 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00084">84</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00135">135</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
 
 <p class="reference">References <a class="el" href="runtime__internal_8h.html#a4e157d18591ba54c92e4da99a3d1ccae">atoi()</a>, <a class="el" href="runtime__internal_8h.html#af7a35798497c81c66a20d35ad74c19e6">getenv()</a>, and <a class="el" href="runtime__internal_8h.html#a1329692a527c3368385668e18e846618">halide_host_cpu_count()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00446">enqueue_work_already_locked()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00679">halide_set_num_threads()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00480">enqueue_work_already_locked()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00713">halide_set_num_threads()</a>.</p>
 
 </div>
 </div>
@@ -1502,11 +1504,11 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00440">440</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00474">474</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
 
-<p class="reference">References <a class="el" href="synchronization__common_8h_source.html#l00874">halide_mutex_lock()</a>, <a class="el" href="synchronization__common_8h_source.html#l00880">halide_mutex_unlock()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00098">Halide::Runtime::Internal::work_queue_t::mutex</a>, <a class="el" href="thread__pool__common_8h_source.html#l00168">work_queue</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00205">worker_thread_already_locked()</a>.</p>
+<p class="reference">References <a class="el" href="synchronization__common_8h_source.html#l00876">halide_mutex_lock()</a>, <a class="el" href="synchronization__common_8h_source.html#l00882">halide_mutex_unlock()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00149">Halide::Runtime::Internal::work_queue_t::mutex</a>, <a class="el" href="thread__pool__common_8h_source.html#l00219">work_queue</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00256">worker_thread_already_locked()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00446">enqueue_work_already_locked()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00480">enqueue_work_already_locked()</a>.</p>
 
 </div>
 </div>
@@ -1525,11 +1527,11 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00205">205</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00256">256</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
 
-<p class="reference">References <a class="el" href="thread__pool__common_8h_source.html#l00118">Halide::Runtime::Internal::work_queue_t::a_team_size</a>, <a class="el" href="thread__pool__common_8h_source.html#l00047">Halide::Runtime::Internal::work::active_workers</a>, <a class="el" href="_halide_runtime_8h_source.html#l00278">halide_parallel_task_t::closure</a>, <a class="el" href="thread__pool__common_8h_source.html#l00198">dump_job_state</a>, <a class="el" href="thread__pool__common_8h_source.html#l00048">Halide::Runtime::Internal::work::exit_status</a>, <a class="el" href="_halide_runtime_8h_source.html#l00290">halide_parallel_task_t::extent</a>, <a class="el" href="_halide_runtime_8h_source.html#l00275">halide_parallel_task_t::fn</a>, <a class="el" href="synchronization__common_8h_source.html#l00886">halide_cond_broadcast()</a>, <a class="el" href="synchronization__common_8h_source.html#l00898">halide_cond_wait()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00804">halide_do_loop_task()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00794">halide_do_task()</a>, <a class="el" href="_halide_runtime_8h_source.html#l01072">halide_error_code_success</a>, <a class="el" href="synchronization__common_8h_source.html#l00874">halide_mutex_lock()</a>, <a class="el" href="synchronization__common_8h_source.html#l00880">halide_mutex_unlock()</a>, <a class="el" href="runtime__internal_8h.html#a7deb2d9ef3ed8adfa4d0992e20aa156e">halide_thread_yield()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00108">Halide::Runtime::Internal::work_queue_t::jobs</a>, <a class="el" href="thread__pool__common_8h_source.html#l00024">log_message</a>, <a class="el" href="thread__pool__common_8h_source.html#l00053">Halide::Runtime::Internal::work::make_runnable()</a>, <a class="el" href="_halide_runtime_8h_source.html#l00290">halide_parallel_task_t::min</a>, <a class="el" href="_halide_runtime_8h_source.html#l00309">halide_parallel_task_t::min_threads</a>, <a class="el" href="thread__pool__common_8h_source.html#l00098">Halide::Runtime::Internal::work_queue_t::mutex</a>, <a class="el" href="_halide_runtime_8h_source.html#l00281">halide_parallel_task_t::name</a>, <a class="el" href="thread__pool__common_8h_source.html#l00040">Halide::Runtime::Internal::work::next_job</a>, <a class="el" href="thread__pool__common_8h_source.html#l00051">Halide::Runtime::Internal::work::owner_is_sleeping</a>, <a class="el" href="thread__pool__common_8h_source.html#l00128">Halide::Runtime::Internal::work_queue_t::owners_sleeping</a>, <a class="el" href="thread__pool__common_8h_source.html#l00043">Halide::Runtime::Internal::work::parent_job</a>, <a class="el" href="thread__pool__common_8h_source.html#l00197">print_job</a>, <a class="el" href="thread__pool__common_8h_source.html#l00069">Halide::Runtime::Internal::work::running()</a>, <a class="el" href="_halide_runtime_8h_source.html#l00314">halide_parallel_task_t::serial</a>, <a class="el" href="thread__pool__common_8h_source.html#l00135">Halide::Runtime::Internal::work_queue_t::shutdown</a>, <a class="el" href="thread__pool__common_8h_source.html#l00042">Halide::Runtime::Internal::work::sibling_count</a>, <a class="el" href="thread__pool__common_8h_source.html#l00041">Halide::Runtime::Internal::work::siblings</a>, <a class="el" href="thread__pool__common_8h_source.html#l00118">Halide::Runtime::Internal::work_queue_t::target_a_team_size</a>, <a class="el" href="thread__pool__common_8h_source.html#l00034">Halide::Runtime::Internal::work::task</a>, <a class="el" href="thread__pool__common_8h_source.html#l00038">Halide::Runtime::Internal::work::task_fn</a>, <a class="el" href="thread__pool__common_8h_source.html#l00111">Halide::Runtime::Internal::work_queue_t::threads_created</a>, <a class="el" href="thread__pool__common_8h_source.html#l00044">Halide::Runtime::Internal::work::threads_reserved</a>, <a class="el" href="thread__pool__common_8h_source.html#l00141">Halide::Runtime::Internal::work_queue_t::threads_reserved</a>, <a class="el" href="thread__pool__common_8h_source.html#l00046">Halide::Runtime::Internal::work::user_context</a>, <a class="el" href="thread__pool__common_8h_source.html#l00124">Halide::Runtime::Internal::work_queue_t::wake_a_team</a>, <a class="el" href="thread__pool__common_8h_source.html#l00124">Halide::Runtime::Internal::work_queue_t::wake_b_team</a>, <a class="el" href="thread__pool__common_8h_source.html#l00124">Halide::Runtime::Internal::work_queue_t::wake_owners</a>, <a class="el" href="thread__pool__common_8h_source.html#l00168">work_queue</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00128">Halide::Runtime::Internal::work_queue_t::workers_sleeping</a>.</p>
+<p class="reference">References <a class="el" href="thread__pool__common_8h_source.html#l00169">Halide::Runtime::Internal::work_queue_t::a_team_size</a>, <a class="el" href="thread__pool__common_8h_source.html#l00098">Halide::Runtime::Internal::work::active_workers</a>, <a class="el" href="thread__pool__common_8h_source.html#l00072">Halide::Runtime::Internal::halide_cond_with_spinning::broadcast()</a>, <a class="el" href="_halide_runtime_8h_source.html#l00278">halide_parallel_task_t::closure</a>, <a class="el" href="thread__pool__common_8h_source.html#l00249">dump_job_state</a>, <a class="el" href="thread__pool__common_8h_source.html#l00099">Halide::Runtime::Internal::work::exit_status</a>, <a class="el" href="_halide_runtime_8h_source.html#l00290">halide_parallel_task_t::extent</a>, <a class="el" href="_halide_runtime_8h_source.html#l00275">halide_parallel_task_t::fn</a>, <a class="el" href="thread__pool__common_8h_source.html#l00845">halide_do_loop_task()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00835">halide_do_task()</a>, <a class="el" href="_halide_runtime_8h_source.html#l01076">halide_error_code_success</a>, <a class="el" href="synchronization__common_8h_source.html#l00876">halide_mutex_lock()</a>, <a class="el" href="synchronization__common_8h_source.html#l00882">halide_mutex_unlock()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00159">Halide::Runtime::Internal::work_queue_t::jobs</a>, <a class="el" href="thread__pool__common_8h_source.html#l00024">log_message</a>, <a class="el" href="thread__pool__common_8h_source.html#l00104">Halide::Runtime::Internal::work::make_runnable()</a>, <a class="el" href="_halide_runtime_8h_source.html#l00290">halide_parallel_task_t::min</a>, <a class="el" href="_halide_runtime_8h_source.html#l00309">halide_parallel_task_t::min_threads</a>, <a class="el" href="thread__pool__common_8h_source.html#l00149">Halide::Runtime::Internal::work_queue_t::mutex</a>, <a class="el" href="_halide_runtime_8h_source.html#l00281">halide_parallel_task_t::name</a>, <a class="el" href="thread__pool__common_8h_source.html#l00091">Halide::Runtime::Internal::work::next_job</a>, <a class="el" href="thread__pool__common_8h_source.html#l00102">Halide::Runtime::Internal::work::owner_is_sleeping</a>, <a class="el" href="thread__pool__common_8h_source.html#l00179">Halide::Runtime::Internal::work_queue_t::owners_sleeping</a>, <a class="el" href="thread__pool__common_8h_source.html#l00094">Halide::Runtime::Internal::work::parent_job</a>, <a class="el" href="thread__pool__common_8h_source.html#l00248">print_job</a>, <a class="el" href="thread__pool__common_8h_source.html#l00120">Halide::Runtime::Internal::work::running()</a>, <a class="el" href="_halide_runtime_8h_source.html#l00314">halide_parallel_task_t::serial</a>, <a class="el" href="thread__pool__common_8h_source.html#l00186">Halide::Runtime::Internal::work_queue_t::shutdown</a>, <a class="el" href="thread__pool__common_8h_source.html#l00093">Halide::Runtime::Internal::work::sibling_count</a>, <a class="el" href="thread__pool__common_8h_source.html#l00092">Halide::Runtime::Internal::work::siblings</a>, <a class="el" href="thread__pool__common_8h_source.html#l00169">Halide::Runtime::Internal::work_queue_t::target_a_team_size</a>, <a class="el" href="thread__pool__common_8h_source.html#l00085">Halide::Runtime::Internal::work::task</a>, <a class="el" href="thread__pool__common_8h_source.html#l00089">Halide::Runtime::Internal::work::task_fn</a>, <a class="el" href="thread__pool__common_8h_source.html#l00162">Halide::Runtime::Internal::work_queue_t::threads_created</a>, <a class="el" href="thread__pool__common_8h_source.html#l00095">Halide::Runtime::Internal::work::threads_reserved</a>, <a class="el" href="thread__pool__common_8h_source.html#l00192">Halide::Runtime::Internal::work_queue_t::threads_reserved</a>, <a class="el" href="thread__pool__common_8h_source.html#l00097">Halide::Runtime::Internal::work::user_context</a>, <a class="el" href="thread__pool__common_8h_source.html#l00041">Halide::Runtime::Internal::halide_cond_with_spinning::wait()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00175">Halide::Runtime::Internal::work_queue_t::wake_a_team</a>, <a class="el" href="thread__pool__common_8h_source.html#l00175">Halide::Runtime::Internal::work_queue_t::wake_b_team</a>, <a class="el" href="thread__pool__common_8h_source.html#l00175">Halide::Runtime::Internal::work_queue_t::wake_owners</a>, <a class="el" href="thread__pool__common_8h_source.html#l00219">work_queue</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00179">Halide::Runtime::Internal::work_queue_t::workers_sleeping</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00607">halide_default_do_par_for()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00639">halide_default_do_parallel_tasks()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00440">worker_thread()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00641">halide_default_do_par_for()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00673">halide_default_do_parallel_tasks()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00474">worker_thread()</a>.</p>
 
 </div>
 </div>
@@ -1557,11 +1559,11 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00446">446</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00480">480</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
 
-<p class="reference">References <a class="el" href="thread__pool__common_8h_source.html#l00118">Halide::Runtime::Internal::work_queue_t::a_team_size</a>, <a class="el" href="thread__pool__common_8h_source.html#l00047">Halide::Runtime::Internal::work::active_workers</a>, <a class="el" href="thread__pool__common_8h_source.html#l00148">Halide::Runtime::Internal::work_queue_t::assert_zeroed()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00074">clamp_num_threads()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00084">default_desired_num_threads()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00101">Halide::Runtime::Internal::work_queue_t::desired_threads_working</a>, <a class="el" href="_halide_runtime_8h_source.html#l00290">halide_parallel_task_t::extent</a>, <a class="el" href="runtime__internal_8h_source.html#l00271">halide_abort_if_false</a>, <a class="el" href="synchronization__common_8h_source.html#l00886">halide_cond_broadcast()</a>, <a class="el" href="_halide_runtime_8h.html#a6c90ae80fd6658eaf1754c85fd732ab2">halide_spawn_thread()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00135">Halide::Runtime::Internal::work_queue_t::initialized</a>, <a class="el" href="thread__pool__common_8h_source.html#l00108">Halide::Runtime::Internal::work_queue_t::jobs</a>, <a class="el" href="thread__pool__common_8h_source.html#l00024">log_message</a>, <a class="el" href="_halide_runtime_8h_source.html#l00309">halide_parallel_task_t::min_threads</a>, <a class="el" href="_halide_runtime_8h_source.html#l00281">halide_parallel_task_t::name</a>, <a class="el" href="thread__pool__common_8h_source.html#l00040">Halide::Runtime::Internal::work::next_job</a>, <a class="el" href="thread__pool__common_8h_source.html#l00128">Halide::Runtime::Internal::work_queue_t::owners_sleeping</a>, <a class="el" href="thread__pool__common_8h_source.html#l00042">Halide::Runtime::Internal::work::sibling_count</a>, <a class="el" href="thread__pool__common_8h_source.html#l00041">Halide::Runtime::Internal::work::siblings</a>, <a class="el" href="thread__pool__common_8h_source.html#l00118">Halide::Runtime::Internal::work_queue_t::target_a_team_size</a>, <a class="el" href="thread__pool__common_8h_source.html#l00034">Halide::Runtime::Internal::work::task</a>, <a class="el" href="thread__pool__common_8h_source.html#l00131">Halide::Runtime::Internal::work_queue_t::threads</a>, <a class="el" href="thread__pool__common_8h_source.html#l00111">Halide::Runtime::Internal::work_queue_t::threads_created</a>, <a class="el" href="thread__pool__common_8h_source.html#l00044">Halide::Runtime::Internal::work::threads_reserved</a>, <a class="el" href="thread__pool__common_8h_source.html#l00141">Halide::Runtime::Internal::work_queue_t::threads_reserved</a>, <a class="el" href="thread__pool__common_8h_source.html#l00124">Halide::Runtime::Internal::work_queue_t::wake_a_team</a>, <a class="el" href="thread__pool__common_8h_source.html#l00124">Halide::Runtime::Internal::work_queue_t::wake_b_team</a>, <a class="el" href="thread__pool__common_8h_source.html#l00124">Halide::Runtime::Internal::work_queue_t::wake_owners</a>, <a class="el" href="thread__pool__common_8h_source.html#l00168">work_queue</a>, <a class="el" href="thread__pool__common_8h_source.html#l00440">worker_thread()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00128">Halide::Runtime::Internal::work_queue_t::workers_sleeping</a>.</p>
+<p class="reference">References <a class="el" href="thread__pool__common_8h_source.html#l00169">Halide::Runtime::Internal::work_queue_t::a_team_size</a>, <a class="el" href="thread__pool__common_8h_source.html#l00098">Halide::Runtime::Internal::work::active_workers</a>, <a class="el" href="thread__pool__common_8h_source.html#l00199">Halide::Runtime::Internal::work_queue_t::assert_zeroed()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00072">Halide::Runtime::Internal::halide_cond_with_spinning::broadcast()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00125">clamp_num_threads()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00135">default_desired_num_threads()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00152">Halide::Runtime::Internal::work_queue_t::desired_threads_working</a>, <a class="el" href="_halide_runtime_8h_source.html#l00290">halide_parallel_task_t::extent</a>, <a class="el" href="runtime__internal_8h_source.html#l00271">halide_abort_if_false</a>, <a class="el" href="_halide_runtime_8h.html#a6c90ae80fd6658eaf1754c85fd732ab2">halide_spawn_thread()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00186">Halide::Runtime::Internal::work_queue_t::initialized</a>, <a class="el" href="thread__pool__common_8h_source.html#l00159">Halide::Runtime::Internal::work_queue_t::jobs</a>, <a class="el" href="thread__pool__common_8h_source.html#l00024">log_message</a>, <a class="el" href="_halide_runtime_8h_source.html#l00309">halide_parallel_task_t::min_threads</a>, <a class="el" href="_halide_runtime_8h_source.html#l00281">halide_parallel_task_t::name</a>, <a class="el" href="thread__pool__common_8h_source.html#l00091">Halide::Runtime::Internal::work::next_job</a>, <a class="el" href="thread__pool__common_8h_source.html#l00179">Halide::Runtime::Internal::work_queue_t::owners_sleeping</a>, <a class="el" href="thread__pool__common_8h_source.html#l00093">Halide::Runtime::Internal::work::sibling_count</a>, <a class="el" href="thread__pool__common_8h_source.html#l00092">Halide::Runtime::Internal::work::siblings</a>, <a class="el" href="thread__pool__common_8h_source.html#l00169">Halide::Runtime::Internal::work_queue_t::target_a_team_size</a>, <a class="el" href="thread__pool__common_8h_source.html#l00085">Halide::Runtime::Internal::work::task</a>, <a class="el" href="thread__pool__common_8h_source.html#l00182">Halide::Runtime::Internal::work_queue_t::threads</a>, <a class="el" href="thread__pool__common_8h_source.html#l00162">Halide::Runtime::Internal::work_queue_t::threads_created</a>, <a class="el" href="thread__pool__common_8h_source.html#l00095">Halide::Runtime::Internal::work::threads_reserved</a>, <a class="el" href="thread__pool__common_8h_source.html#l00192">Halide::Runtime::Internal::work_queue_t::threads_reserved</a>, <a class="el" href="thread__pool__common_8h_source.html#l00175">Halide::Runtime::Internal::work_queue_t::wake_a_team</a>, <a class="el" href="thread__pool__common_8h_source.html#l00175">Halide::Runtime::Internal::work_queue_t::wake_b_team</a>, <a class="el" href="thread__pool__common_8h_source.html#l00175">Halide::Runtime::Internal::work_queue_t::wake_owners</a>, <a class="el" href="thread__pool__common_8h_source.html#l00219">work_queue</a>, <a class="el" href="thread__pool__common_8h_source.html#l00474">worker_thread()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00179">Halide::Runtime::Internal::work_queue_t::workers_sleeping</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00607">halide_default_do_par_for()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00639">halide_default_do_parallel_tasks()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00641">halide_default_do_par_for()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00673">halide_default_do_parallel_tasks()</a>.</p>
 
 </div>
 </div>
@@ -1661,9 +1663,9 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00168">168</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00219">219</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00446">enqueue_work_already_locked()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00607">halide_default_do_par_for()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00639">halide_default_do_parallel_tasks()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00728">halide_default_semaphore_release()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00679">halide_set_num_threads()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00696">halide_shutdown_thread_pool()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00440">worker_thread()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00205">worker_thread_already_locked()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00480">enqueue_work_already_locked()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00641">halide_default_do_par_for()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00673">halide_default_do_parallel_tasks()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00769">halide_default_semaphore_release()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00730">halide_get_num_threads()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00713">halide_set_num_threads()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00737">halide_shutdown_thread_pool()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00474">worker_thread()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00256">worker_thread_already_locked()</a>.</p>
 
 </div>
 </div>
@@ -1679,9 +1681,9 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00574">574</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00608">608</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00794">halide_do_task()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00758">halide_set_custom_do_task()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00776">halide_set_custom_parallel_runtime()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00835">halide_do_task()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00799">halide_set_custom_do_task()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00817">halide_set_custom_parallel_runtime()</a>.</p>
 
 </div>
 </div>
@@ -1697,9 +1699,9 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00575">575</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00609">609</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00804">halide_do_loop_task()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00764">halide_set_custom_do_loop_task()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00776">halide_set_custom_parallel_runtime()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00845">halide_do_loop_task()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00805">halide_set_custom_do_loop_task()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00817">halide_set_custom_parallel_runtime()</a>.</p>
 
 </div>
 </div>
@@ -1715,9 +1717,9 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00576">576</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00610">610</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00799">halide_do_par_for()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00770">halide_set_custom_do_par_for()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00776">halide_set_custom_parallel_runtime()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00840">halide_do_par_for()</a>, <a class="el" href="thread__pool__common_8h_source.html#l00811">halide_set_custom_do_par_for()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00817">halide_set_custom_parallel_runtime()</a>.</p>
 
 </div>
 </div>
@@ -1733,9 +1735,9 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00577">577</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00611">611</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00809">halide_do_parallel_tasks()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00776">halide_set_custom_parallel_runtime()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00850">halide_do_parallel_tasks()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00817">halide_set_custom_parallel_runtime()</a>.</p>
 
 </div>
 </div>
@@ -1751,9 +1753,9 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00578">578</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00612">612</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00815">halide_semaphore_init()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00776">halide_set_custom_parallel_runtime()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00856">halide_semaphore_init()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00817">halide_set_custom_parallel_runtime()</a>.</p>
 
 </div>
 </div>
@@ -1769,9 +1771,9 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00579">579</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00613">613</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00823">halide_semaphore_try_acquire()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00776">halide_set_custom_parallel_runtime()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00864">halide_semaphore_try_acquire()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00817">halide_set_custom_parallel_runtime()</a>.</p>
 
 </div>
 </div>
@@ -1787,9 +1789,9 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00580">580</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thread__pool__common_8h_source.html#l00614">614</a> of file <a class="el" href="thread__pool__common_8h_source.html">thread_pool_common.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00819">halide_semaphore_release()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00776">halide_set_custom_parallel_runtime()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="thread__pool__common_8h_source.html#l00860">halide_semaphore_release()</a>, and <a class="el" href="thread__pool__common_8h_source.html#l00817">halide_set_custom_parallel_runtime()</a>.</p>
 
 </div>
 </div>

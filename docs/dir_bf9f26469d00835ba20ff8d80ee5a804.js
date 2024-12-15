@@ -32,7 +32,6 @@ var dir_bf9f26469d00835ba20ff8d80ee5a804 =
     [ "mini_hexagon_dma.h", "mini__hexagon__dma_8h.html", "mini__hexagon__dma_8h" ],
     [ "mini_qurt.h", "mini__qurt_8h.html", "mini__qurt_8h" ],
     [ "mini_qurt_vtcm.h", "mini__qurt__vtcm_8h.html", "mini__qurt__vtcm_8h" ],
-    [ "mini_vulkan.h", "mini__vulkan_8h.html", "mini__vulkan_8h" ],
     [ "mini_webgpu.h", "mini__webgpu_8h.html", "mini__webgpu_8h" ],
     [ "objc_support.h", "objc__support_8h.html", "objc__support_8h" ],
     [ "posix_timeval.h", "posix__timeval_8h.html", "posix__timeval_8h" ],

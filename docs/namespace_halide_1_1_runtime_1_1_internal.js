@@ -16,6 +16,7 @@ var namespace_halide_1_1_runtime_1_1_internal =
     [ "CpuFeatures", "struct_halide_1_1_runtime_1_1_internal_1_1_cpu_features.html", "struct_halide_1_1_runtime_1_1_internal_1_1_cpu_features" ],
     [ "DefaultAllocatorFns", "struct_halide_1_1_runtime_1_1_internal_1_1_default_allocator_fns.html", null ],
     [ "device_copy", "struct_halide_1_1_runtime_1_1_internal_1_1device__copy.html", "struct_halide_1_1_runtime_1_1_internal_1_1device__copy" ],
+    [ "halide_cond_with_spinning", "struct_halide_1_1_runtime_1_1_internal_1_1halide__cond__with__spinning.html", "struct_halide_1_1_runtime_1_1_internal_1_1halide__cond__with__spinning" ],
     [ "HalideSystemAllocatorFns", "struct_halide_1_1_runtime_1_1_internal_1_1_halide_system_allocator_fns.html", "struct_halide_1_1_runtime_1_1_internal_1_1_halide_system_allocator_fns" ],
     [ "HashMap", "struct_halide_1_1_runtime_1_1_internal_1_1_hash_map.html", "struct_halide_1_1_runtime_1_1_internal_1_1_hash_map" ],
     [ "LinkedList", "class_halide_1_1_runtime_1_1_internal_1_1_linked_list.html", "class_halide_1_1_runtime_1_1_internal_1_1_linked_list" ],

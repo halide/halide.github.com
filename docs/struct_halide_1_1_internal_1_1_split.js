@@ -6,10 +6,6 @@ var struct_halide_1_1_internal_1_1_split =
       [ "FuseVars", "struct_halide_1_1_internal_1_1_split.html#a068a93a3cd662ac53acdfa1dab4f20faa050431b3ad071416263d26156c31c94a", null ],
       [ "PurifyRVar", "struct_halide_1_1_internal_1_1_split.html#a068a93a3cd662ac53acdfa1dab4f20faa829c0d1c2640386cc24994f103f7bbce", null ]
     ] ],
-    [ "is_rename", "struct_halide_1_1_internal_1_1_split.html#a24b5bbb5b9a33e28427b7ac0a323e77b", null ],
-    [ "is_split", "struct_halide_1_1_internal_1_1_split.html#a25437b15b845ed400b9f747fac6897a6", null ],
-    [ "is_fuse", "struct_halide_1_1_internal_1_1_split.html#a235a927c011db892285bd14501418797", null ],
-    [ "is_purify", "struct_halide_1_1_internal_1_1_split.html#aa97ac31fb3183b168e84c13909da80f6", null ],
     [ "old_var", "struct_halide_1_1_internal_1_1_split.html#a689e63030a4370dfb6d74aa4778ceb94", null ],
     [ "outer", "struct_halide_1_1_internal_1_1_split.html#aecf934bbd86bd7fcc31667545d9ff610", null ],
     [ "inner", "struct_halide_1_1_internal_1_1_split.html#addcc9ba56f72ca2c790f948c27f46207", null ],
