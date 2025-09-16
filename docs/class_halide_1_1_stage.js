@@ -4,7 +4,7 @@ var class_halide_1_1_stage =
     [ "get_schedule", "class_halide_1_1_stage.html#aa2f2793f8e9e9fead538e2cde9239d96", null ],
     [ "dump_argument_list", "class_halide_1_1_stage.html#aeae73b461d876d4d921474d5042dad65", null ],
     [ "name", "class_halide_1_1_stage.html#a075401098fc0eb3fa260bbb93a21e80b", null ],
-    [ "rfactor", "class_halide_1_1_stage.html#a51279e6a9e09a72445846f28387b0abb", null ],
+    [ "rfactor", "class_halide_1_1_stage.html#adf0d368ce824028616e88ddd36c51140", null ],
     [ "rfactor", "class_halide_1_1_stage.html#a2ad5f03630fb3fd72a3ab0b0563502cc", null ],
     [ "compute_with", "class_halide_1_1_stage.html#a3fd245c66c941885f339c824afd4532e", null ],
     [ "compute_with", "class_halide_1_1_stage.html#a98e81c2dafddd51a486071ad927df0b8", null ],

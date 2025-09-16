@@ -1,6 +1,6 @@
 var class_halide_1_1_buffer =
 [
-    [ "ElemType", "class_halide_1_1_buffer.html#ae074cf499649d43de9001c7565e47c8b", null ],
+    [ "ElemType", "class_halide_1_1_buffer.html#acf4e6b166f265f2e3eea64ea74b23fb8", null ],
     [ "~Buffer", "class_halide_1_1_buffer.html#a463dc5d63eaf96a6d3889141c5d9c3d0", null ],
     [ "Buffer", "class_halide_1_1_buffer.html#aa535cb61ac08ce89274f19a085223f0e", null ],
     [ "Buffer", "class_halide_1_1_buffer.html#a47c169bae44acc553a6a130209a5ba10", null ],
@@ -9,7 +9,7 @@ var class_halide_1_1_buffer =
     [ "Buffer", "class_halide_1_1_buffer.html#a25cd77196e0816ebec250d4879a36524", null ],
     [ "Buffer", "class_halide_1_1_buffer.html#a4859ff5d89bd8f862eb23677fe21cb3e", null ],
     [ "Buffer", "class_halide_1_1_buffer.html#ae846db7d63adc276ff35aa7cc3db1704", null ],
-    [ "Buffer", "class_halide_1_1_buffer.html#aaf7d7ecfd2ab49c65f9702265df1ef0a", null ],
+    [ "Buffer", "class_halide_1_1_buffer.html#ac3b7a465e67b031fec8bcc066af82ede", null ],
     [ "Buffer", "class_halide_1_1_buffer.html#a1897e3fc93dc1e54118193b1a3e9a617", null ],
     [ "Buffer", "class_halide_1_1_buffer.html#ac57550c101ff517f29ba4a3cb2fa538b", null ],
     [ "Buffer", "class_halide_1_1_buffer.html#ad823e720061287a1f1de103affc5073c", null ],

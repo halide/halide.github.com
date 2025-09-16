@@ -17,6 +17,5 @@ var searchData=
   ['unrolled_14',['Unrolled',['../namespace_halide_1_1_internal.html#a6a8761f129e6554b9ea03de31bf066f1ae53597647de81f4cc9e098fc119ba0ac',1,'Halide::Internal']]],
   ['unsafe_5fpromise_5fclamped_15',['unsafe_promise_clamped',['../struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a399abee23f7a8e5f544ff16d0d64af2f',1,'Halide::Internal::Call']]],
   ['upper_16',['Upper',['../namespace_halide_1_1_internal.html#a8548315fd4d13ccebe45a8123369f7caa19de5b94f7b83900d4b296d9fa491aec',1,'Halide::Internal']]],
-  ['user_17',['User',['../struct_halide_1_1_internal_1_1_error_report.html#a0d0995b2caa9f1838f8a91fd22759430a091ecd4b55abfea741cceb19cc694d32',1,'Halide::Internal::ErrorReport']]],
-  ['usercontext_18',['UserContext',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fab7dbd399d2a833d37bd52451f99c50c1',1,'Halide::Target']]]
+  ['usercontext_17',['UserContext',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fab7dbd399d2a833d37bd52451f99c50c1',1,'Halide::Target']]]
 ];

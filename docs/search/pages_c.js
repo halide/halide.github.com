@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['webassembly_20support_20for_20halide_0',['WebAssembly Support for Halide',['../md_doc_2_web_assembly.html',1,'']]],
-  ['webgpu_20support_20for_20halide_1',['WebGPU support for Halide',['../md_doc_2_web_g_p_u.html',1,'']]],
-  ['with_20cmake_2',['Building Halide with CMake',['../md_doc_2_building_halide_with_c_make.html',1,'']]]
+  ['jit_0',['Enabling wasm JIT',['../md_doc_2_web_assembly.html#enabling-wasm-jit',1,'']]],
+  ['jit_20compilation_1',['Using a Generator for JIT compilation',['../md_doc_2_python.html#using-a-generator-for-jit-compilation',1,'']]],
+  ['jit_20limitations_2',['JIT Limitations',['../md_doc_2_web_assembly.html#jit-limitations',1,'']]],
+  ['jit_20mode_3',['JIT mode',['../md_doc_2_halide_c_make_package.html#jit-mode',1,'']]]
 ];

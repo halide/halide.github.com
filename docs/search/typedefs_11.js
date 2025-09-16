@@ -1,8 +1,8 @@
 var searchData=
 [
   ['schedulehandle_0',['ScheduleHandle',['../namespace_halide.html#ad7b585cf844dcb14fa12386d743cbb24',1,'Halide']]],
-  ['section_5fiterator_1',['section_iterator',['../class_halide_1_1_internal_1_1_elf_1_1_object.html#af34796ef2e35d8b91e80603dba7eb66b',1,'Halide::Internal::Elf::Object']]],
-  ['sectionlist_2',['SectionList',['../class_halide_1_1_internal_1_1_elf_1_1_object.html#a574fff5fcbf8704b82b0b1e36f15d76b',1,'Halide::Internal::Elf::Object']]],
+  ['section_5fiterator_1',['section_iterator',['../class_halide_1_1_internal_1_1_elf_1_1_object.html#aedad9b4c01137ea5cd8e10e071900233',1,'Halide::Internal::Elf::Object']]],
+  ['sectionlist_2',['SectionList',['../class_halide_1_1_internal_1_1_elf_1_1_object.html#af52ca279fbb6ad38b7017208bf79ee31',1,'Halide::Internal::Elf::Object']]],
   ['security_5fattributes_3',['SECURITY_ATTRIBUTES',['../mini__d3d12_8h.html#a3cda359e32cea29097571bcf911dfccf',1,'mini_d3d12.h']]],
   ['sharder_4',['Sharder',['../class_halide_1_1_simd_op_check_test.html#a4ef1afede0e96fc7d498d59b2adf545c',1,'Halide::SimdOpCheckTest']]],
   ['sharedmeminfo_5',['SharedMemInfo',['../namespace_halide_1_1_internal_1_1_autoscheduler.html#a0dee49c8d37a03171b297c441a5d9be4',1,'Halide::Internal::Autoscheduler']]],
@@ -14,6 +14,6 @@ var searchData=
   ['stagemap_11',['StageMap',['../namespace_halide_1_1_internal_1_1_autoscheduler.html#a1c0e655e493b2c5c52843c426f7f2256',1,'Halide::Internal::Autoscheduler']]],
   ['stagemapofschedulefeatures_12',['StageMapOfScheduleFeatures',['../namespace_halide_1_1_internal_1_1_autoscheduler.html#ad942b8861f139a911d249d48f18cdc5b',1,'Halide::Internal::Autoscheduler']]],
   ['statevector_13',['StateVector',['../struct_halide_1_1_internal_1_1_autoscheduler_1_1_search_space.html#a1b311fd91afa47243fc7afe01f8a1915',1,'Halide::Internal::Autoscheduler::SearchSpace']]],
-  ['symbol_5fiterator_14',['symbol_iterator',['../class_halide_1_1_internal_1_1_elf_1_1_object.html#a9936801e0d75da8966b6feb235808e87',1,'Halide::Internal::Elf::Object']]],
-  ['symbollist_15',['SymbolList',['../class_halide_1_1_internal_1_1_elf_1_1_object.html#af9b7b4bc053cb5b0d06729f9270837d9',1,'Halide::Internal::Elf::Object']]]
+  ['symbol_5fiterator_14',['symbol_iterator',['../class_halide_1_1_internal_1_1_elf_1_1_object.html#a8183a6da917074a167547e7e8c3957a5',1,'Halide::Internal::Elf::Object']]],
+  ['symbollist_15',['SymbolList',['../class_halide_1_1_internal_1_1_elf_1_1_object.html#ad16bd82cbceff1656a99e183ccba2831',1,'Halide::Internal::Elf::Object']]]
 ];

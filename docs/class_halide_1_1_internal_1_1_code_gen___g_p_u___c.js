@@ -8,6 +8,7 @@ var class_halide_1_1_internal_1_1_code_gen___g_p_u___c =
     [ "CodeGen_GPU_C", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a5fc9700d37516ecac29b4beb104de5a3", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a7028e01449df6510a7ca4e9a1fe8f2d6", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a556cca592fc2dbe5191cc02fe83f642a", null ],
+    [ "print_extern_call", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#ac4d5babe68cc5911fd6e77a12776a581", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#aaf31ae3fe2a9a22d2afa93583ad4ac07", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#af92e20a5bf25e4ac52e5c8223feb731c", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a28dc45454c98854b0260ecf55c123c3f", null ],
@@ -54,5 +55,6 @@ var class_halide_1_1_internal_1_1_code_gen___g_p_u___c =
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a929d2af6dbd04e17c9bbb2df257874d9", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a4be0bacbadb19e2bf88332e6bfac159b", null ],
     [ "visit", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#acdf8cb4d943e67fc28cfe55a08da6df4", null ],
-    [ "vector_declaration_style", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#af663fa168a19ffaa5004c4c5bedec75b", null ]
+    [ "vector_declaration_style", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#af663fa168a19ffaa5004c4c5bedec75b", null ],
+    [ "abs_returns_unsigned_type", "class_halide_1_1_internal_1_1_code_gen___g_p_u___c.html#a3f8d63467ed00a6c0652c060e9eabb76", null ]
 ];

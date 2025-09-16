@@ -1,5 +1,6 @@
 var namespace_halide_1_1_py_torch =
 [
+    [ "Buffer", "class_halide_1_1_py_torch_1_1_buffer.html", "class_halide_1_1_py_torch_1_1_buffer" ],
     [ "UserContext", "struct_halide_1_1_py_torch_1_1_user_context.html", "struct_halide_1_1_py_torch_1_1_user_context" ],
     [ "UserContext", "namespace_halide_1_1_py_torch.html#a6bc8d3b161c16443e58751d7aac06b4c", null ],
     [ "get_dims", "namespace_halide_1_1_py_torch.html#a2329ce16deb25143eb6517bc29f78523", null ],

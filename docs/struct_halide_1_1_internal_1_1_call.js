@@ -1,6 +1,6 @@
 var struct_halide_1_1_internal_1_1_call =
 [
-    [ "ConstString", "struct_halide_1_1_internal_1_1_call.html#a335d5a9dca5de720c96a7c0f09dfcca4", null ],
+    [ "ConstString", "struct_halide_1_1_internal_1_1_call.html#a22787aaecb4250350f640c07acc43305", null ],
     [ "CallType", "struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393", [
       [ "Image", "struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393a627c8b7bd4ab3817dc8132e69c5194b4", null ],
       [ "Extern", "struct_halide_1_1_internal_1_1_call.html#a45d847325694df85e74150f770c1e393a0e9c32fc29933124d43d2463df3df57a", null ],
@@ -80,7 +80,15 @@ var struct_halide_1_1_internal_1_1_call =
       [ "skip_stages_marker", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a2f566ae7d198b96d32b731afd9c55005", null ],
       [ "sliding_window_marker", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a6d0541486a99d61df8652f85990c32c2", null ],
       [ "sorted_avg", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974adc8c2f2440e5b6ed4d7aa0cddb864b92", null ],
-      [ "strict_float", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a981d4dd9a68560ab9ef9ef591a782532", null ],
+      [ "strict_add", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974aa2ae5624516e7876aecf9db8d2340ac9", null ],
+      [ "strict_div", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a0764757e907eda84c7e8ccde95c83def", null ],
+      [ "strict_eq", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a71995314c3d4ff45757ba4812b9c867b", null ],
+      [ "strict_le", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974aca5dcaabe0d6f3cd5adb8fe84aebc91d", null ],
+      [ "strict_lt", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974afdc5e837e8c275758450048f9f5ce412", null ],
+      [ "strict_max", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974add6bacc762882763bb490e0ef2d5bce9", null ],
+      [ "strict_min", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a062829161ccfa1a23073e71f5a52dc22", null ],
+      [ "strict_mul", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a5c552149d206273394b26b33e8df7e52", null ],
+      [ "strict_sub", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974ac69c84587b77634a44d85fbb8313ef45", null ],
       [ "stringify", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a1e391311e798ed85648cf4f70c7c444a", null ],
       [ "target_arch_is", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974aeee5749b3e6a2cf843fca2c6ea79cb03", null ],
       [ "target_bits", "struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974abe18c4e02db9d3dad9910c1304763fef", null ],
@@ -107,6 +115,7 @@ var struct_halide_1_1_internal_1_1_call =
     [ "is_intrinsic", "struct_halide_1_1_internal_1_1_call.html#aa10267aa98e99893dd54182187ac68b4", null ],
     [ "is_tag", "struct_halide_1_1_internal_1_1_call.html#a235852b9c8b65e9a6e014571c4fd3d44", null ],
     [ "is_extern", "struct_halide_1_1_internal_1_1_call.html#a3ca5446b42e9854971a9869a9098b07d", null ],
+    [ "is_strict_float_intrinsic", "struct_halide_1_1_internal_1_1_call.html#a2b11d66e66c0f8034d2b937717e072b6", null ],
     [ "name", "struct_halide_1_1_internal_1_1_call.html#a4c30e353af50e357882ba9b02f6d3aa0", null ],
     [ "args", "struct_halide_1_1_internal_1_1_call.html#acb75ca0f33dbf170e1fcdf59c9bdf48e", null ],
     [ "call_type", "struct_halide_1_1_internal_1_1_call.html#a76805c16c470e73827363769fdd91b53", null ],

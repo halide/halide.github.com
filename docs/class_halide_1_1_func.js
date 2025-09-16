@@ -55,7 +55,6 @@ var class_halide_1_1_func =
     [ "num_update_definitions", "class_halide_1_1_func.html#a78585432af7129ce0e767f070aa3b2a6", null ],
     [ "is_extern", "class_halide_1_1_func.html#a06a38e09eb4696b1d37b640c639f6299", null ],
     [ "define_extern", "class_halide_1_1_func.html#ab8432d789980de9e281e0e54b70307f7", null ],
-    [ "define_extern", "class_halide_1_1_func.html#af9764c21ad6794e74d9aa4c069741e45", null ],
     [ "define_extern", "class_halide_1_1_func.html#a9965443aea3975bfe1b8f5787f47025b", null ],
     [ "define_extern", "class_halide_1_1_func.html#aec2685cc1459971deebca75fa6de2ee9", null ],
     [ "define_extern", "class_halide_1_1_func.html#a8df7a80d0dfa5f24c61f1346e4365bf6", null ],

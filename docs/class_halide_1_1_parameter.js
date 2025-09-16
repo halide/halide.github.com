@@ -52,6 +52,10 @@ var class_halide_1_1_parameter =
     [ "get_argument_estimates", "class_halide_1_1_parameter.html#abdbab6dfd3e43e2652f1374f26370f06", null ],
     [ "store_in", "class_halide_1_1_parameter.html#a3c481e3bd266a85939ab61fc913030a6", null ],
     [ "memory_type", "class_halide_1_1_parameter.html#acc61303e0c6427cc4a56c18a96a0db15", null ],
+    [ "trace_loads", "class_halide_1_1_parameter.html#ad3e6b2c5fb76a667d83c3a4330775f58", null ],
+    [ "is_tracing_loads", "class_halide_1_1_parameter.html#a74737efd452bd7d567b7cc5852049406", null ],
+    [ "add_trace_tag", "class_halide_1_1_parameter.html#a4d360b64f29166f5e8247a773bf41f24", null ],
+    [ "get_trace_tags", "class_halide_1_1_parameter.html#a5de566e4ce73b32817e2bbed0534779c", null ],
     [ "Pipeline", "class_halide_1_1_parameter.html#af9f0f1adbd5baee7830839447205af8d", null ],
     [ "contents", "class_halide_1_1_parameter.html#ab167114fd0b70429bb11b3189e9d4fe8", null ]
 ];

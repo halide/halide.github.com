@@ -336,6 +336,7 @@ var menudata={children:[
 {text:"w",url:"globals_type_w.html#index_w"}]},
 {text:"Enumerations",url:"globals_enum.html",children:[
 {text:"_",url:"globals_enum.html#index__5F"},
+{text:"b",url:"globals_enum.html#index_b"},
 {text:"d",url:"globals_enum.html#index_d"},
 {text:"h",url:"globals_enum.html#index_h"},
 {text:"q",url:"globals_enum.html#index_q"},

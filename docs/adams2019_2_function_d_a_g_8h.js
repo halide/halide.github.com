@@ -13,5 +13,10 @@ var adams2019_2_function_d_a_g_8h =
     [ "Halide::Internal::Autoscheduler::FunctionDAG::Node::Stage", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_node_1_1_stage.html", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_node_1_1_stage" ],
     [ "Halide::Internal::Autoscheduler::FunctionDAG::Edge", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_edge.html", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_edge" ],
     [ "Halide::Internal::Autoscheduler::FunctionDAG::Edge::BoundInfo", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_edge_1_1_bound_info.html", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_edge_1_1_bound_info" ],
-    [ "Bound", "adams2019_2_function_d_a_g_8h.html#a2a011e42e84f52018eba5ee85308452b", null ]
+    [ "Halide::Internal::Autoscheduler::map< K, T >", "class_halide_1_1_internal_1_1_autoscheduler_1_1map.html", "class_halide_1_1_internal_1_1_autoscheduler_1_1map" ],
+    [ "Halide::Internal::Autoscheduler::pair< T1, T2 >", "class_halide_1_1_internal_1_1_autoscheduler_1_1pair.html", "class_halide_1_1_internal_1_1_autoscheduler_1_1pair" ],
+    [ "Halide::Internal::Autoscheduler::string", "class_halide_1_1_internal_1_1_autoscheduler_1_1string.html", "class_halide_1_1_internal_1_1_autoscheduler_1_1string" ],
+    [ "Halide::Internal::Autoscheduler::unique_ptr< T >", "class_halide_1_1_internal_1_1_autoscheduler_1_1unique__ptr.html", "class_halide_1_1_internal_1_1_autoscheduler_1_1unique__ptr" ],
+    [ "Halide::Internal::Autoscheduler::vector< T >", "class_halide_1_1_internal_1_1_autoscheduler_1_1vector.html", "class_halide_1_1_internal_1_1_autoscheduler_1_1vector" ],
+    [ "Halide::Internal::Autoscheduler::Bound", "namespace_halide_1_1_internal_1_1_autoscheduler.html#a2a011e42e84f52018eba5ee85308452b", null ]
 ];

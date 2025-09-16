@@ -8,7 +8,7 @@ var searchData=
   ['registers_5',['Registers',['../namespace_halide_1_1_internal_1_1_autoscheduler.html#acc39d142f0727a4676f66e7f73be00a6aa9682ea50df45368189078864618a7cd',1,'Halide::Internal::Autoscheduler']]],
   ['registration_6',['registration',['../namespace_halide.html#a789944ad1a1864bd2b4580e52d66b2afa563873d38950b841aebf89c3be1b1a35',1,'Halide']]],
   ['reinterpret_7',['Reinterpret',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2a2939cc096ba90c44ede434ba24ed3436',1,'Halide::Internal']]],
-  ['releaselibrary_8',['ReleaseLibrary',['../namespace_message.html#ac596fe2a096add77b8b174a80c897b51a6bb210f02f1d820a627d47cf1ac7574f',1,'Message']]],
+  ['releaselibrary_8',['ReleaseLibrary',['../namespace_message.html#a428d1fe20242748db1807d58235d628aa6bb210f02f1d820a627d47cf1ac7574f',1,'Message']]],
   ['renamevar_9',['RenameVar',['../struct_halide_1_1_internal_1_1_split.html#a068a93a3cd662ac53acdfa1dab4f20faa5d7ac2e941e9a6c1729efca148741206',1,'Halide::Internal::Split']]],
   ['require_10',['require',['../struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a2d09470926c93193fd58fe509956ff13',1,'Halide::Internal::Call']]],
   ['require_5fmask_11',['require_mask',['../struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974ab51ba5795d5bcda751524734b5181e57',1,'Halide::Internal::Call']]],
@@ -23,8 +23,7 @@ var searchData=
   ['rounding_5fshift_5fright_20',['rounding_shift_right',['../struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974acea8efbd64571eb549fd7a048d4682dd',1,'Halide::Internal::Call']]],
   ['roundup_21',['RoundUp',['../namespace_halide.html#a6c6557df562bd7850664e70fdb8fea0fa16b999f69f07356ae94c65a20b832926',1,'Halide']]],
   ['roundupandblend_22',['RoundUpAndBlend',['../namespace_halide.html#a6c6557df562bd7850664e70fdb8fea0fa34b22708ec173d696719679ffd3dfb75',1,'Halide']]],
-  ['run_23',['Run',['../namespace_message.html#ac596fe2a096add77b8b174a80c897b51a1615b00cbca5296529a0d7d011f169e3',1,'Message']]],
-  ['runtime_24',['Runtime',['../struct_halide_1_1_internal_1_1_error_report.html#a0d0995b2caa9f1838f8a91fd22759430ae5f5e8312933376aec46ef899cd1f114',1,'Halide::Internal::ErrorReport']]],
-  ['rvaluereference_25',['RValueReference',['../structhalide__handle__cplusplus__type.html#a5aef5cc2d2d1194b93e036af106f86fcaacc8351ab7b03257da8ce01a9a21d1e3',1,'halide_handle_cplusplus_type']]],
-  ['rvv_26',['RVV',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fabdc14a9791fd72acb6cc6f3d2adbbd10',1,'Halide::Target']]]
+  ['run_23',['Run',['../namespace_message.html#a428d1fe20242748db1807d58235d628aa1615b00cbca5296529a0d7d011f169e3',1,'Message']]],
+  ['rvaluereference_24',['RValueReference',['../structhalide__handle__cplusplus__type.html#a5aef5cc2d2d1194b93e036af106f86fcaacc8351ab7b03257da8ce01a9a21d1e3',1,'halide_handle_cplusplus_type']]],
+  ['rvv_25',['RVV',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fabdc14a9791fd72acb6cc6f3d2adbbd10',1,'Halide::Target']]]
 ];

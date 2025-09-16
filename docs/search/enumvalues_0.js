@@ -7,7 +7,7 @@ var searchData=
   ['add_5fimage_5fchecks_5fmarker_4',['add_image_checks_marker',['../struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a6662e0b159b55396c523e2313873115b',1,'Halide::Internal::Call']]],
   ['alignend_5',['AlignEnd',['../namespace_halide.html#a751041c9a6cffe776b613f4dd04c3354a58a4774b4ffb202dc1be23bfff77a3af',1,'Halide']]],
   ['alignstart_6',['AlignStart',['../namespace_halide.html#a751041c9a6cffe776b613f4dd04c3354a7bdacdfaf12e9cd3af92850a628baf4b',1,'Halide']]],
-  ['alloc_7',['Alloc',['../namespace_message.html#ac596fe2a096add77b8b174a80c897b51a0c2a82cca7e71f36b1a167167706abc5',1,'Message']]],
+  ['alloc_7',['Alloc',['../namespace_message.html#a428d1fe20242748db1807d58235d628aa0c2a82cca7e71f36b1a167167706abc5',1,'Message']]],
   ['alloca_8',['alloca',['../struct_halide_1_1_internal_1_1_call.html#a3643a3e5cf73435e07215fca17949974a43f157e6526e0eaf732010eb1a777593',1,'Halide::Internal::Call']]],
   ['allocate_9',['Allocate',['../namespace_halide_1_1_internal.html#aee9e0b8e5376e2294d74ded8e7de9ef2ac9baacf6cca6c54626e594639081177f',1,'Halide::Internal']]],
   ['allocated_10',['Allocated',['../namespace_halide_1_1_runtime.html#a73f7124ef4cb605c30adbf8216681139a030218254584bb915dbaa23473bf1be7',1,'Halide::Runtime']]],
@@ -48,5 +48,7 @@ var searchData=
   ['avx512_5fknl_45',['AVX512_KNL',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa127077fe0f11b9909db6b366170d7dd4',1,'Halide::Target']]],
   ['avx512_5fsapphirerapids_46',['AVX512_SapphireRapids',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa542e6793a3c99b665becbe8a47d976d4',1,'Halide::Target']]],
   ['avx512_5fskylake_47',['AVX512_Skylake',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa7b522bc2d0021790ba47cb302bc4ca6f',1,'Halide::Target']]],
-  ['avx512_5fzen4_48',['AVX512_Zen4',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa1d1f7287a9f3bb84def09c025f44995b',1,'Halide::Target']]]
+  ['avx512_5fzen4_48',['AVX512_Zen4',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa1d1f7287a9f3bb84def09c025f44995b',1,'Halide::Target']]],
+  ['avx512_5fzen5_49',['AVX512_Zen5',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa2f022d84f053357b064224fe314ce0e6',1,'Halide::Target']]],
+  ['avxvnni_50',['AVXVNNI',['../struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faa67d4cb008bc80d3bf728d2f4c217e2f',1,'Halide::Target']]]
 ];

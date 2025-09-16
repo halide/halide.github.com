@@ -33,12 +33,12 @@ var _type_8h =
     [ "HALIDE_DECLARE_EXTERN_STRUCT_TYPE", "_type_8h.html#a4ef6cc6acecae17772fefa8f23490ec1", null ],
     [ "HALIDE_DECLARE_EXTERN_STRUCT_TYPE", "_type_8h.html#a0a0fee4c96fbd910eff2ba5fdee65ded", null ],
     [ "HALIDE_DECLARE_EXTERN_STRUCT_TYPE", "_type_8h.html#a64197b6ac19864614022173c1b1f648a", null ],
-    [ "Int", "_type_8h.html#a70a0c034814a65d55bb848fe9c96653b", null ],
-    [ "UInt", "_type_8h.html#a0eb5f455b5c4bce0c54575bc67bf9599", null ],
-    [ "Float", "_type_8h.html#a11df91175e8ac20ce33379c178e8c7bc", null ],
-    [ "BFloat", "_type_8h.html#a0e0f7fe222498c37bde1eaa2c771fb0c", null ],
-    [ "Bool", "_type_8h.html#ad26cb40c3218a0e075879e44374a4d9d", null ],
-    [ "Handle", "_type_8h.html#a92e876323440c13edf4fa63112050c8d", null ],
-    [ "type_of", "_type_8h.html#a230bbc98235cdeaea250aa9ab19f3312", null ],
-    [ "type_to_c_type", "_type_8h.html#a0834f79e4ba8398f31f2512cd4949ab3", null ]
+    [ "Halide::Int", "namespace_halide.html#a70a0c034814a65d55bb848fe9c96653b", null ],
+    [ "Halide::UInt", "namespace_halide.html#a0eb5f455b5c4bce0c54575bc67bf9599", null ],
+    [ "Halide::Float", "namespace_halide.html#a11df91175e8ac20ce33379c178e8c7bc", null ],
+    [ "Halide::BFloat", "namespace_halide.html#a0e0f7fe222498c37bde1eaa2c771fb0c", null ],
+    [ "Halide::Bool", "namespace_halide.html#ad26cb40c3218a0e075879e44374a4d9d", null ],
+    [ "Halide::Handle", "namespace_halide.html#a92e876323440c13edf4fa63112050c8d", null ],
+    [ "Halide::type_of", "namespace_halide.html#a230bbc98235cdeaea250aa9ab19f3312", null ],
+    [ "Halide::type_to_c_type", "namespace_halide.html#a0834f79e4ba8398f31f2512cd4949ab3", null ]
 ];

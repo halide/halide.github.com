@@ -109,6 +109,7 @@ var class_halide_1_1_internal_1_1_code_gen___c =
     [ "target", "class_halide_1_1_internal_1_1_code_gen___c.html#a8847f446f028934a603361ca65cd1810", null ],
     [ "output_kind", "class_halide_1_1_internal_1_1_code_gen___c.html#a4014409a66b1e25caaba62f90ec5a031", null ],
     [ "cache", "class_halide_1_1_internal_1_1_code_gen___c.html#af6d9429f3ca6c236a8da179c538009d2", null ],
+    [ "extern_function_name_map", "class_halide_1_1_internal_1_1_code_gen___c.html#acfff70db1d2502c9034f5e8960a03f5b", null ],
     [ "allocations", "class_halide_1_1_internal_1_1_code_gen___c.html#a77286af3480e2ebe58a59dd2969adb36", null ],
     [ "heap_allocations", "class_halide_1_1_internal_1_1_code_gen___c.html#a87cbd74760da08c7c276565caac885d6", null ],
     [ "have_user_context", "class_halide_1_1_internal_1_1_code_gen___c.html#abd679d9da0e82113f78358e8d0a75eb1", null ],

@@ -14,5 +14,5 @@ var anderson2021_2_function_d_a_g_8h =
     [ "Halide::Internal::Autoscheduler::FunctionDAG::Edge", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_edge.html", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_edge" ],
     [ "Halide::Internal::Autoscheduler::FunctionDAG::Edge::BoundInfo", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_edge_1_1_bound_info.html", "struct_halide_1_1_internal_1_1_autoscheduler_1_1_function_d_a_g_1_1_edge_1_1_bound_info" ],
     [ "Halide::Internal::Autoscheduler::ExprBranching", "class_halide_1_1_internal_1_1_autoscheduler_1_1_expr_branching.html", "class_halide_1_1_internal_1_1_autoscheduler_1_1_expr_branching" ],
-    [ "sanitize_names", "anderson2021_2_function_d_a_g_8h.html#ab67b41b0995ba09ed866c8ddaad3ffdf", null ]
+    [ "Halide::Internal::Autoscheduler::sanitize_names", "namespace_halide_1_1_internal_1_1_autoscheduler.html#ab67b41b0995ba09ed866c8ddaad3ffdf", null ]
 ];

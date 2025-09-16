@@ -448,7 +448,7 @@ var namespace_halide =
     [ "likely_if_innermost", "namespace_halide.html#acc3a484f14e9bdf4c7b4e16d74fe11ab", null ],
     [ "saturating_cast", "namespace_halide.html#a57a635db3b781aded60c79533001b9e1", null ],
     [ "saturating_cast", "namespace_halide.html#abe60c27f54efe535f84d7f94ce61c053", null ],
-    [ "strict_float", "namespace_halide.html#ab2ccca78986958e405d34f08f41a103a", null ],
+    [ "strict_float", "namespace_halide.html#a253aa716701aa1579cffd37c5fec9d70", null ],
     [ "unsafe_promise_clamped", "namespace_halide.html#a5f11f05c5df67082747354f264d30f17", null ],
     [ "scatter", "namespace_halide.html#aa0498c6cada8da13d05bf285a813d16d", null ],
     [ "gather", "namespace_halide.html#a435458ed41a7427361761df8b62fc047", null ],

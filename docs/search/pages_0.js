@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['and_20benchmarking_20halide_20generators_0',['Running and Benchmarking Halide Generators',['../md_doc_2_run_gen.html',1,'']]]
+  ['1_20obtain_20and_20build_20trunk_20llvm_20and_20clang_0',['1. Obtain and build trunk LLVM and Clang',['../md_doc_2_hexagon.html#autotoc_md1-obtain-and-build-trunk-llvm-and-clang',1,'']]]
 ];

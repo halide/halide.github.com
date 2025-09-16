@@ -1,7 +1,7 @@
 var class_halide_1_1_runtime_1_1_buffer =
 [
     [ "Dimension", "class_halide_1_1_runtime_1_1_buffer_1_1_dimension.html", "class_halide_1_1_runtime_1_1_buffer_1_1_dimension" ],
-    [ "ElemType", "class_halide_1_1_runtime_1_1_buffer.html#aa00d6eb2825b99eb73eb2fae9fd87e76", null ],
+    [ "ElemType", "class_halide_1_1_runtime_1_1_buffer.html#a181ca03d2303b7573498ab8e9ecec429", null ],
     [ "Buffer", "class_halide_1_1_runtime_1_1_buffer.html#afc2f18959c685bf0ba892f9a29e8d0b9", null ],
     [ "Buffer", "class_halide_1_1_runtime_1_1_buffer.html#a07609225c4ec4d7673000d7a79a57c8a", null ],
     [ "Buffer", "class_halide_1_1_runtime_1_1_buffer.html#ad048ce04fa6d13437e316e9dab19b82a", null ],

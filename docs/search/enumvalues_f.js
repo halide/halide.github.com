@@ -27,7 +27,6 @@ var searchData=
   ['purervar_24',['PureRVar',['../namespace_halide_1_1_internal.html#a5b8c72fcb8800b47e313c62f5416a4fead117eadbd7c1c4d821b3a598d54d03f2',1,'Halide::Internal']]],
   ['purevar_25',['PureVar',['../namespace_halide_1_1_internal.html#a5b8c72fcb8800b47e313c62f5416a4feafbbbe5ac592bfdafcfa397cd609d8117',1,'Halide::Internal']]],
   ['purgeable_26',['Purgeable',['../namespace_halide_1_1_runtime_1_1_internal.html#a5e2cba819a244ae4e1790aa60789d595af35e5e5dde655fcc7ec0b3e86b832d4c',1,'Halide::Runtime::Internal']]],
-  ['purifyrvar_27',['PurifyRVar',['../struct_halide_1_1_internal_1_1_split.html#a068a93a3cd662ac53acdfa1dab4f20faa829c0d1c2640386cc24994f103f7bbce',1,'Halide::Internal::Split']]],
-  ['python_5fextension_28',['python_extension',['../namespace_halide.html#a789944ad1a1864bd2b4580e52d66b2afab0c78a2d6b974f99eb59ff3194523260',1,'Halide']]],
-  ['pytorch_5fwrapper_29',['pytorch_wrapper',['../namespace_halide.html#a789944ad1a1864bd2b4580e52d66b2afae511a3b21360f6b2149b9464c7536a75',1,'Halide']]]
+  ['python_5fextension_27',['python_extension',['../namespace_halide.html#a789944ad1a1864bd2b4580e52d66b2afab0c78a2d6b974f99eb59ff3194523260',1,'Halide']]],
+  ['pytorch_5fwrapper_28',['pytorch_wrapper',['../namespace_halide.html#a789944ad1a1864bd2b4580e52d66b2afae511a3b21360f6b2149b9464c7536a75',1,'Halide']]]
 ];

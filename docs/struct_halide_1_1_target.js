@@ -35,16 +35,19 @@ var struct_halide_1_1_target =
       [ "ZnVer1", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a51e4f08f0114bc979b3c50785592007e", null ],
       [ "ZnVer2", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a961c78e7ba27911af6e07a7ee14abbb3", null ],
       [ "ZnVer3", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a28746ca502040b3cbd5d30519b898060", null ],
-      [ "ZnVer4", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a0512f0ceb4ae6e615bb354db6585be96", null ]
+      [ "ZnVer4", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a0512f0ceb4ae6e615bb354db6585be96", null ],
+      [ "ZnVer5", "struct_halide_1_1_target.html#a763bcdeae0f32eb9908106ea793ab9d9a99555b15e28c6f52d97b363310e43222", null ]
     ] ],
     [ "Feature", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43f", [
       [ "JIT", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fac04af3ed2dc70791a8ba8f793a746b30", null ],
       [ "Debug", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf3cc1f2941a6b4df016ac08e68b9c660", null ],
+      [ "EnableBacktraces", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa2a9b18be67fd76a8ea0bf651cc014cfa", null ],
       [ "NoAsserts", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa1fc53f322ecd95ae65274a9f16c71ac2", null ],
       [ "NoBoundsQuery", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa6f7593c40bf078bf7906ea1c391bcd80", null ],
       [ "SSE41", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faf6ada84d24838f818391b465b9a94165", null ],
       [ "AVX", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa620c10914ea92a26c16878ab73933b2b", null ],
       [ "AVX2", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fad7b64a080d84e2145fd219e9f7a33547", null ],
+      [ "AVXVNNI", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faa67d4cb008bc80d3bf728d2f4c217e2f", null ],
       [ "FMA", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa9764990d6a6294a8a23f8fb6598c2c88", null ],
       [ "FMA4", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa6ba1375f5f5982d91779173b71542e5f", null ],
       [ "F16C", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fafc9c513f157e362fa6851a66e5d2aa90", null ],
@@ -89,6 +92,7 @@ var struct_halide_1_1_target =
       [ "AVX512_Cannonlake", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa37434c314da6b640c8ac37e1b378225e", null ],
       [ "AVX512_SapphireRapids", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa542e6793a3c99b665becbe8a47d976d4", null ],
       [ "AVX512_Zen4", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa1d1f7287a9f3bb84def09c025f44995b", null ],
+      [ "AVX512_Zen5", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa2f022d84f053357b064224fe314ce0e6", null ],
       [ "TraceLoads", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fafca30f177d1e4bdac6551c43119d7893", null ],
       [ "TraceStores", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fad9b234dbac225381e9e9ea50ed83c75d", null ],
       [ "TraceRealizations", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa2bf7608dc0fbb54137134c1bcf91ffd8", null ],
@@ -136,6 +140,7 @@ var struct_halide_1_1_target =
       [ "Semihosting", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faa00f7e139f4bce1aeb62c9f727707624", null ],
       [ "AVX10_1", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa3f151905e87f889babe3f11b1565f914", null ],
       [ "X86APX", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fad3be491fb9bfc8fb8c907cd0d135ff9d", null ],
+      [ "Simulator", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43faaf814abb9ddb97ae1fd208377c33f143", null ],
       [ "FeatureEnd", "struct_halide_1_1_target.html#a9398276edd5784185e1a08f8a4dfc43fa17b9cbfef8d1e84e32c8aaa7b2936dbc", null ]
     ] ],
     [ "Target", "struct_halide_1_1_target.html#a6b25060c5ad61641d4f89d4501e2dbf9", null ],

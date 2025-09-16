@@ -26,6 +26,7 @@ var _halide_runtime_8h =
     [ "HALIDE_FUNCTION_ATTRS", "_halide_runtime_8h.html#a83937d3cfac5d949807b5f9522cb7fde", null ],
     [ "HALIDE_EXPORT_SYMBOL", "_halide_runtime_8h.html#a011fabf6af2c9c965cacaf866d579f8a", null ],
     [ "HALIDE_ATTRIBUTE_ALIGN", "_halide_runtime_8h.html#afaa0f73fc7954ac27a2c11020681cdf3", null ],
+    [ "BUFFER_FLAGS_UNDERLYING_TYPE", "_halide_runtime_8h.html#a982d4e588cfdbaf4f9a1c1982a6d9581", null ],
     [ "HALIDE_ATTRIBUTE_DEPRECATED", "_halide_runtime_8h.html#a9bb1030f4a2614c18adb6d088529f911", null ],
     [ "halide_print_t", "_halide_runtime_8h.html#a95ff0cf917a42d9d94858d965f0cea70", null ],
     [ "halide_error_handler_t", "_halide_runtime_8h.html#a51ba9ee9334354b8b260138b464bdaac", null ],
@@ -48,6 +49,7 @@ var _halide_runtime_8h =
     [ "halide_target_feature_t", "_halide_runtime_8h.html#a215e0bf22f304152800a8e2d23ccee4c", null ],
     [ "halide_can_use_target_features_t", "_halide_runtime_8h.html#a7756790d1df276babe85759aecb9214e", null ],
     [ "halide_dimension_t", "_halide_runtime_8h.html#a6f13e7e8488c33a21bdfefb666823be0", null ],
+    [ "halide_buffer_flags", "_halide_runtime_8h.html#a729f66e31f7dec7ffc5570111987e4ec", null ],
     [ "halide_buffer_t", "_halide_runtime_8h.html#aff80b56521d2a957df55d69ab81589a0", null ],
     [ "halide_type_code_t", "_halide_runtime_8h.html#a9f4c40f298e91dea4f532774dc57a450", [
       [ "halide_type_int", "_halide_runtime_8h.html#a9f4c40f298e91dea4f532774dc57a450a53ba65448e4cbe66680c29a1333c8bfa", null ],
@@ -123,11 +125,13 @@ var _halide_runtime_8h =
     [ "halide_target_feature_t", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3a", [
       [ "halide_target_feature_jit", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aade7b43403349f5e8490128ec8a353ea0", null ],
       [ "halide_target_feature_debug", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa269192ac4c709ac4cd58a224aaa4ebed", null ],
+      [ "halide_target_feature_enable_backtraces", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aad5490e48c28326f767a09277aba242ac", null ],
       [ "halide_target_feature_no_asserts", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa1091af1b1f0fd0f65a4cf11d9465421b", null ],
       [ "halide_target_feature_no_bounds_query", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aaf66b5dc5721dc9d3437418d2af78218a", null ],
       [ "halide_target_feature_sse41", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa8efcb48a15fdbfeb9a80f4e4b47f6c35", null ],
       [ "halide_target_feature_avx", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aae30ffae7b5e51bd142e5902c6b60d2a5", null ],
       [ "halide_target_feature_avx2", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa1b8d4c5f8ff39549eab349f8f9187f30", null ],
+      [ "halide_target_feature_avxvnni", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa6cc032093ab12fe16e0e32459f48fa27", null ],
       [ "halide_target_feature_fma", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa00ca2d6e033b225858ea63abb21123da", null ],
       [ "halide_target_feature_fma4", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa5c4a3ac722a0f391a41809f4fe1fa5e9", null ],
       [ "halide_target_feature_f16c", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aac3f0411bb6041392120209d5eb97dd20", null ],
@@ -164,6 +168,7 @@ var _halide_runtime_8h =
       [ "halide_target_feature_avx512_skylake", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa58fb5b7b5bc221459b800cc42930902f", null ],
       [ "halide_target_feature_avx512_cannonlake", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa591bbdef6ade866e52fa671d8ea2aed1", null ],
       [ "halide_target_feature_avx512_zen4", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa0966785198db800ffbc3a7f892c78614", null ],
+      [ "halide_target_feature_avx512_zen5", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa22370751d675a07b5e3adde620c68385", null ],
       [ "halide_target_feature_avx512_sapphirerapids", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa8d0583967260da27df1648419d4717e5", null ],
       [ "halide_target_feature_trace_loads", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa0de323126eca04377e205b6a67b93970", null ],
       [ "halide_target_feature_trace_stores", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa9d6461b681abeeb0ff4c850cfe4e1eb4", null ],
@@ -218,11 +223,12 @@ var _halide_runtime_8h =
       [ "halide_target_feature_semihosting", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa433f44f1eea39a3af05bf8591705234e", null ],
       [ "halide_target_feature_avx10_1", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa69cbb0b6f1d5e15a44a70251b559add3", null ],
       [ "halide_target_feature_x86_apx", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aafc593f88c62bf63ba04ac0939dc79323", null ],
+      [ "halide_target_feature_simulator", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa3af989461c63dc72fd5a20506572c1b0", null ],
       [ "halide_target_feature_end", "_halide_runtime_8h.html#a2ccb96b3d427fff8f1d68cc5f1e92f3aa3962d2fc2f69c69b85d29c4818d727c1", null ]
     ] ],
-    [ "halide_buffer_flags", "_halide_runtime_8h.html#a320c79a12e6121c7468cb203373e6afc", [
-      [ "halide_buffer_flag_host_dirty", "_halide_runtime_8h.html#a320c79a12e6121c7468cb203373e6afca1b91e0ac0aba5891e4c7219878da7460", null ],
-      [ "halide_buffer_flag_device_dirty", "_halide_runtime_8h.html#a320c79a12e6121c7468cb203373e6afca117e8a76112638ba6510e084e1dfb292", null ]
+    [ "BUFFER_FLAGS_UNDERLYING_TYPE", "_halide_runtime_8h.html#a578fbe67956458c1d20517ecd559c187", [
+      [ "halide_buffer_flag_host_dirty", "_halide_runtime_8h.html#a578fbe67956458c1d20517ecd559c187a1b91e0ac0aba5891e4c7219878da7460", null ],
+      [ "halide_buffer_flag_device_dirty", "_halide_runtime_8h.html#a578fbe67956458c1d20517ecd559c187a117e8a76112638ba6510e084e1dfb292", null ]
     ] ],
     [ "halide_argument_kind_t", "_halide_runtime_8h.html#afdce5dc7a11fa96f39baa1aee2333745", [
       [ "halide_argument_kind_input_scalar", "_halide_runtime_8h.html#afdce5dc7a11fa96f39baa1aee2333745a4cce082af093da2e1e886ed3a775b2b1", null ],

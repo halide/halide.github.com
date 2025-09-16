@@ -152,7 +152,6 @@ var namespace_halide_1_1_internal_1_1_i_r_matcher =
     [ "bitwise_or_reduce", "namespace_halide_1_1_internal_1_1_i_r_matcher.html#a86f76d20c53e195277c279e315c97e75", null ],
     [ "and_reduce", "namespace_halide_1_1_internal_1_1_i_r_matcher.html#a67fba2b048ff9dfde5b4fd084ae4a6de", null ],
     [ "and_reduce", "namespace_halide_1_1_internal_1_1_i_r_matcher.html#ad156714bf9d1b4d9991b828dd4ae5b38", null ],
-    [ "const_min", "namespace_halide_1_1_internal_1_1_i_r_matcher.html#aeeda156ac4dd5650fe120a1f0bae129e", null ],
     [ "operator<<", "namespace_halide_1_1_internal_1_1_i_r_matcher.html#a9b59e217d8f4e3fcd53e50b21dff2924", null ],
     [ "widen_right_add", "namespace_halide_1_1_internal_1_1_i_r_matcher.html#a378dd90e36680dbed49c9d161936df1b", null ],
     [ "widen_right_mul", "namespace_halide_1_1_internal_1_1_i_r_matcher.html#a3e62ce790bf5a53c22d19246b11a1879", null ],

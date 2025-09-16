@@ -19,8 +19,12 @@ var searchData=
   ['reinterpret_16',['Reinterpret',['../struct_halide_1_1_internal_1_1_reinterpret.html',1,'Halide::Internal']]],
   ['relocation_17',['Relocation',['../class_halide_1_1_internal_1_1_elf_1_1_relocation.html',1,'Halide::Internal::Elf']]],
   ['replacement_18',['Replacement',['../struct_halide_1_1_internal_1_1_associative_op_1_1_replacement.html',1,'Halide::Internal::AssociativeOp']]],
-  ['reverse_5fadaptor_19',['reverse_adaptor',['../struct_halide_1_1_internal_1_1reverse__adaptor.html',1,'Halide::Internal']]],
-  ['rewriter_20',['Rewriter',['../struct_halide_1_1_internal_1_1_i_r_matcher_1_1_rewriter.html',1,'Halide::Internal::IRMatcher']]],
-  ['runtimeerror_21',['RuntimeError',['../struct_halide_1_1_runtime_error.html',1,'Halide']]],
-  ['rvar_22',['RVar',['../class_halide_1_1_r_var.html',1,'Halide']]]
+  ['reportbase_19',['ReportBase',['../struct_halide_1_1_internal_1_1_report_base.html',1,'Halide::Internal']]],
+  ['reportbase_3c_20errorreport_3c_20exception_20_3e_20_3e_20',['ReportBase&lt; ErrorReport&lt; Exception &gt; &gt;',['../struct_halide_1_1_internal_1_1_report_base.html',1,'Halide::Internal']]],
+  ['reportbase_3c_20warningreport_20_3e_21',['ReportBase&lt; WarningReport &gt;',['../struct_halide_1_1_internal_1_1_report_base.html',1,'Halide::Internal']]],
+  ['reverse_5fadaptor_22',['reverse_adaptor',['../struct_halide_1_1_internal_1_1reverse__adaptor.html',1,'Halide::Internal']]],
+  ['reverse_5fiterator_23',['reverse_iterator',['../class_halide_1_1_internal_1_1_autoscheduler_1_1map_1_1reverse__iterator.html',1,'Halide::Internal::Autoscheduler::map&lt; K, T &gt;::reverse_iterator'],['../class_halide_1_1_internal_1_1_autoscheduler_1_1set_1_1reverse__iterator.html',1,'Halide::Internal::Autoscheduler::set&lt; K &gt;::reverse_iterator'],['../class_halide_1_1_internal_1_1_autoscheduler_1_1string_1_1reverse__iterator.html',1,'Halide::Internal::Autoscheduler::string::reverse_iterator'],['../class_halide_1_1_internal_1_1_autoscheduler_1_1unordered__set_1_1reverse__iterator.html',1,'Halide::Internal::Autoscheduler::unordered_set&lt; K &gt;::reverse_iterator'],['../class_halide_1_1_internal_1_1_autoscheduler_1_1vector_1_1reverse__iterator.html',1,'Halide::Internal::Autoscheduler::vector&lt; T &gt;::reverse_iterator']]],
+  ['rewriter_24',['Rewriter',['../struct_halide_1_1_internal_1_1_i_r_matcher_1_1_rewriter.html',1,'Halide::Internal::IRMatcher']]],
+  ['runtimeerror_25',['RuntimeError',['../struct_halide_1_1_runtime_error.html',1,'Halide']]],
+  ['rvar_26',['RVar',['../class_halide_1_1_r_var.html',1,'Halide']]]
 ];
