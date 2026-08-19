@@ -1,0 +1,717 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Custom Runtime Prefixes &#8212; Halide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1ee386da" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="_static/documentation_options.js?v=8a448e45"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'CustomRuntimes';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Fuzz testing" href="FuzzTesting.html" />
+    <link rel="prev" title="Contributing CMake code to Halide" href="CodeStyleCMake.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Halide</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorial/index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorial/index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="BuildingHalideWithCMake.html">Building Halide with CMake</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HalideCMakePackage.html">Using Halide from your CMake build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CodeStyleCMake.html">Contributing CMake code to Halide</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Custom Runtime Prefixes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FuzzTesting.html">Fuzz testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeneratorCache.html">Generator compile cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hexagon.html">Halide for Hexagon HVX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python.html">Halide Bindings for Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RunGen.html">Running and Benchmarking Halide Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vulkan.html">Vulkan Support for Halide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WebAssembly.html">WebAssembly Support for Halide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WebGPU.html">WebGPU support for Halide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="guides.html" class="nav-link">Guides</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Custom Runtime Prefixes</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="custom-runtime-prefixes">
+<h1>Custom Runtime Prefixes<a class="headerlink" href="#custom-runtime-prefixes" title="Link to this heading">#</a></h1>
+<p>Every Halide runtime exposes a set C ABI symbols consisting of common host
+functions – <code class="docutils literal notranslate"><span class="pre">halide_malloc</span></code>, <code class="docutils literal notranslate"><span class="pre">halide_free</span></code>, <code class="docutils literal notranslate"><span class="pre">halide_error</span></code>,
+<code class="docutils literal notranslate"><span class="pre">halide_do_par_for</span></code>, and so on – as well as target specific methods which
+handle device functionality – <code class="docutils literal notranslate"><span class="pre">halide_cuda_*</span></code>, <code class="docutils literal notranslate"><span class="pre">halide_direct3dcompute_*</span></code>,
+<code class="docutils literal notranslate"><span class="pre">halide_metal_*</span></code>, <code class="docutils literal notranslate"><span class="pre">halide_opencl_*</span></code>, <code class="docutils literal notranslate"><span class="pre">halide_vulkan_*</span></code>, etc. This C ABI also
+consists of mutable process-global state stored as global variables (e.g. the
+installed custom allocator, the thread pool, the memoization cache, the
+profiler, etc.). This works well when a program contains a single Halide
+runtime, but it becomes a problem when a program must contain <em>more than one</em>.</p>
+<p>Two independently produced components – say, two libraries that each embed
+their own AOT-compiled Halide pipelines and runtime – both define
+<code class="docutils literal notranslate"><span class="pre">halide_malloc</span></code> and both carry the same runtime state globals. When they are
+linked into one process the linker collapses those duplicate (weak/<code class="docutils literal notranslate"><span class="pre">linkonce</span></code>)
+symbols into a single copy, so the two components silently <em>share</em> one runtime.
+Installing a custom allocator or error handler for one then affects the other,
+and the two cannot be given different runtime configurations at all.</p>
+<p>Runtime prefixes solve this by letting you rename the runtime’s symbols with a
+prefix of your choosing, so that each component carries its own, independent
+runtime. This document describes the feature, the scopes it exposes, and how to
+use it from C++, from the <code class="docutils literal notranslate"><span class="pre">GenGen</span></code> command line, and from CMake.</p>
+<section id="scopes">
+<h2>Scopes<a class="headerlink" href="#scopes" title="Link to this heading">#</a></h2>
+<p>Rather than a single prefix, three independent prefixes are available, one per
+“visibility” of a runtime symbol. They correspond to the enum
+<code class="docutils literal notranslate"><span class="pre">Halide::RuntimeLinkage</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Import</strong> – the names a <em>generated kernel</em> uses to call into the runtime.
+When a pipeline is compiled with <code class="docutils literal notranslate"><span class="pre">no_runtime</span></code>, its calls to <code class="docutils literal notranslate"><span class="pre">halide_malloc</span></code>
+and friends are left as external references; the import prefix renames those
+references so they resolve against a matching prefixed runtime at link time.</p></li>
+<li><p><strong>Export</strong> – the names a <em>runtime library</em> makes externally visible. When you
+compile a standalone runtime, the export prefix renames the public C ABI it
+defines (<code class="docutils literal notranslate"><span class="pre">halide_malloc</span></code> becomes, e.g., <code class="docutils literal notranslate"><span class="pre">my_prefix_malloc</span></code>).</p></li>
+<li><p><strong>Internal</strong> – the names used <em>within</em> the runtime library. This covers the
+runtime’s own C++ symbols in the <code class="docutils literal notranslate"><span class="pre">Halide::Runtime::Internal</span></code> namespace,
+including the mutable state globals. Renaming these is what actually keeps two
+prefixed runtimes’ state independent; without it the state globals would still
+collide even if the public ABI were renamed.</p></li>
+</ul>
+<p>Each prefix is optional and they are set independently. A prefix replaces the
+leading <code class="docutils literal notranslate"><span class="pre">halide_</span></code> of the C ABI names; because the internal C++ symbols contain
+no <code class="docutils literal notranslate"><span class="pre">halide_</span></code> to replace, the internal prefix is prepended to them.</p>
+<p>The pipeline’s own entry points (the function you called <code class="docutils literal notranslate"><span class="pre">compile_to_*</span></code> on, its
+<code class="docutils literal notranslate"><span class="pre">_argv</span></code> wrapper, and its metadata) are never renamed, and neither are C library
+symbols.</p>
+</section>
+<section id="how-the-pieces-fit-together">
+<h2>How the pieces fit together<a class="headerlink" href="#how-the-pieces-fit-together" title="Link to this heading">#</a></h2>
+<p>For a component to link and run, the prefixes of its kernel and its runtime must
+agree:</p>
+<ul class="simple">
+<li><p>The kernel’s <strong>import</strong> prefix must equal the runtime’s <strong>export</strong> prefix, so
+the kernel’s calls resolve to the runtime’s definitions.</p></li>
+<li><p>The kernel’s <strong>internal</strong> prefix must equal the runtime’s <strong>internal</strong> prefix,
+for the same reason applied to any internal symbols they share.</p></li>
+</ul>
+<p>Different components use <em>different</em> prefixes from one another; that is what
+keeps them isolated. A typical setup for two components <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> is:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Runtime (<code class="docutils literal notranslate"><span class="pre">export</span></code>, <code class="docutils literal notranslate"><span class="pre">internal</span></code>)</p></th>
+<th class="head"><p>Kernel (<code class="docutils literal notranslate"><span class="pre">import</span></code>, <code class="docutils literal notranslate"><span class="pre">internal</span></code>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A_</span></code>, <code class="docutils literal notranslate"><span class="pre">A_internal_</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A_</span></code>, <code class="docutils literal notranslate"><span class="pre">A_internal_</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>B</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">B_</span></code>, <code class="docutils literal notranslate"><span class="pre">B_internal_</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">B_</span></code>, <code class="docutils literal notranslate"><span class="pre">B_internal_</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>When A and B are linked into one process, <code class="docutils literal notranslate"><span class="pre">A_malloc</span></code> and <code class="docutils literal notranslate"><span class="pre">B_malloc</span></code> (and their
+respective state globals) are distinct symbols, so each pipeline uses its own
+runtime and their state stays independent.</p>
+</section>
+<section id="backends">
+<h2>Backends<a class="headerlink" href="#backends" title="Link to this heading">#</a></h2>
+<p>Both the LLVM and the C backend honor runtime prefixes.</p>
+<ul class="simple">
+<li><p>The <strong>LLVM backend</strong> renames the symbols directly on the generated module: a
+definition takes the export prefix, a kernel-called external declaration takes
+the import prefix, and the runtime’s internal C++ symbols (including its state
+globals) take the internal prefix.</p></li>
+<li><p>The <strong>C backend</strong> emits a kernel that calls into an external runtime, so only
+the import prefix applies to it. It renames the runtime’s C ABI functions with
+a block of <code class="docutils literal notranslate"><span class="pre">#define</span> <span class="pre">halide_x</span> <span class="pre">&lt;prefix&gt;x</span></code> at the top of the generated source;
+the preprocessor rewrites the runtime’s function declarations and every call
+site consistently, while leaving types (<code class="docutils literal notranslate"><span class="pre">halide_buffer_t</span></code>), typedefs
+(<code class="docutils literal notranslate"><span class="pre">halide_malloc_t</span></code>), and enum values untouched. These <code class="docutils literal notranslate"><span class="pre">#define</span></code>s are emitted
+only into the generated C/C++ <em>source</em>, never the header, so several prefixed
+headers can still be included together.</p></li>
+</ul>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Runtime prefixes are not currently supported for JIT, but it’s something we
+would like to support in the future. The difficulty is that the JIT resolves
+runtime calls against a single process-global shared runtime which already
+exists. So, for now, requesting runtime prefixes on a JIT target will emit an
+error.</p></li>
+</ul>
+</section>
+<section id="usage-from-c">
+<h2>Usage from C++<a class="headerlink" href="#usage-from-c" title="Link to this heading">#</a></h2>
+<p>The prefixes are described by a <code class="docutils literal notranslate"><span class="pre">Halide::RuntimePrefixParams</span></code>, which wraps a
+<code class="docutils literal notranslate"><span class="pre">std::map&lt;RuntimeLinkage,</span> <span class="pre">std::string&gt;</span></code>.</p>
+<p>To compile a <strong>standalone runtime</strong> with a set of prefixes, pass the map to
+<code class="docutils literal notranslate"><span class="pre">compile_standalone_runtime</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Halide.h&quot;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">Halide</span><span class="p">;</span>
+
+<span class="n">Target</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_host_target</span><span class="p">();</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">RuntimeLinkage</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span><span class="n">RuntimeLinkage</span><span class="o">::</span><span class="n">Export</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;my_prefix_&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="n">RuntimeLinkage</span><span class="o">::</span><span class="n">Internal</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;my_prefix_internal_&quot;</span><span class="p">},</span>
+<span class="p">};</span>
+
+<span class="n">compile_standalone_runtime</span><span class="p">(</span><span class="s">&quot;my_prefix_runtime.o&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">ns</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>To compile a <strong>pipeline</strong> whose runtime calls match that runtime, apply the
+matching prefixes and compile with <code class="docutils literal notranslate"><span class="pre">no_runtime</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">Func</span><span class="w"> </span><span class="n">consumer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/* ... */</span><span class="p">;</span>
+<span class="n">Pipeline</span><span class="w"> </span><span class="nf">p</span><span class="p">(</span><span class="n">consumer</span><span class="p">);</span>
+
+<span class="n">Target</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_host_target</span><span class="p">().</span><span class="n">with_feature</span><span class="p">(</span><span class="n">Target</span><span class="o">::</span><span class="n">NoRuntime</span><span class="p">);</span>
+
+<span class="n">p</span><span class="p">.</span><span class="n">apply_runtime_prefixes</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">RuntimePrefixParams</span><span class="p">({</span>
+<span class="w">    </span><span class="p">{</span><span class="n">RuntimeLinkage</span><span class="o">::</span><span class="n">Import</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;my_prefix_&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="n">RuntimeLinkage</span><span class="o">::</span><span class="n">Internal</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;my_prefix_internal_&quot;</span><span class="p">},</span>
+<span class="p">}));</span>
+
+<span class="n">p</span><span class="p">.</span><span class="n">compile_to_module</span><span class="p">({},</span><span class="w"> </span><span class="s">&quot;my_pipeline&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">compile</span><span class="p">({{</span><span class="n">OutputFileType</span><span class="o">::</span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;my_pipeline.o&quot;</span><span class="p">},</span>
+<span class="w">              </span><span class="p">{</span><span class="n">OutputFileType</span><span class="o">::</span><span class="n">c_header</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;my_pipeline.h&quot;</span><span class="p">}});</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">apply_runtime_prefixes</span></code> records the prefixes on the pipeline; any subsequent
+<code class="docutils literal notranslate"><span class="pre">compile_to_*</span></code> for a non-JIT target then applies them. Calling it with a JIT
+target raises a <code class="docutils literal notranslate"><span class="pre">Halide::CompileError</span></code>.</p>
+<p>Inside a <code class="docutils literal notranslate"><span class="pre">Generator</span></code>, the prefixes travel on the <code class="docutils literal notranslate"><span class="pre">GeneratorContext</span></code> as
+<code class="docutils literal notranslate"><span class="pre">RuntimePrefixParams</span></code> and are applied automatically when the generator’s module
+is built; in practice these are supplied through the command line or CMake,
+described below.</p>
+</section>
+<section id="usage-from-the-gengen-command-line">
+<h2>Usage from the GenGen command line<a class="headerlink" href="#usage-from-the-gengen-command-line" title="Link to this heading">#</a></h2>
+<p>The prefixes are ordinary generator parameters named <code class="docutils literal notranslate"><span class="pre">runtime_prefixes.import</span></code>,
+<code class="docutils literal notranslate"><span class="pre">runtime_prefixes.export</span></code>, and <code class="docutils literal notranslate"><span class="pre">runtime_prefixes.internal</span></code>. Any of them may be
+omitted.</p>
+<p>To emit a prefixed <strong>standalone runtime</strong> (the <code class="docutils literal notranslate"><span class="pre">-r</span></code> output):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">my_generator</span> <span class="o">-</span><span class="n">r</span> <span class="n">my_prefix_runtime</span> <span class="o">-</span><span class="n">o</span> <span class="o">.</span> <span class="o">-</span><span class="n">e</span> <span class="nb">object</span> \
+    <span class="n">target</span><span class="o">=</span><span class="n">host</span> \
+    <span class="n">runtime_prefixes</span><span class="o">.</span><span class="n">export</span><span class="o">=</span><span class="n">my_prefix_</span> \
+    <span class="n">runtime_prefixes</span><span class="o">.</span><span class="n">internal</span><span class="o">=</span><span class="n">my_prefix_internal_</span>
+</pre></div>
+</div>
+<p>To emit a matching <strong>pipeline</strong> with <code class="docutils literal notranslate"><span class="pre">no_runtime</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">my_generator</span> <span class="o">-</span><span class="n">g</span> <span class="n">my_generator</span> <span class="o">-</span><span class="n">f</span> <span class="n">my_pipeline</span> <span class="o">-</span><span class="n">o</span> <span class="o">.</span> <span class="o">-</span><span class="n">e</span> <span class="nb">object</span><span class="p">,</span><span class="n">c_header</span> \
+    <span class="n">target</span><span class="o">=</span><span class="n">host</span><span class="o">-</span><span class="n">no_runtime</span> \
+    <span class="n">runtime_prefixes</span><span class="o">.</span><span class="n">import</span><span class="o">=</span><span class="n">my_prefix_</span> \
+    <span class="n">runtime_prefixes</span><span class="o">.</span><span class="n">internal</span><span class="o">=</span><span class="n">my_prefix_internal_</span>
+</pre></div>
+</div>
+</section>
+<section id="usage-from-cmake">
+<h2>Usage from CMake<a class="headerlink" href="#usage-from-cmake" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">add_halide_runtime</span></code> accepts a <code class="docutils literal notranslate"><span class="pre">PARAMS</span></code> argument that is forwarded to the
+runtime generator, and <code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code> already forwards <code class="docutils literal notranslate"><span class="pre">PARAMS</span></code> to the
+pipeline generator. Give a runtime its export/internal prefixes, and give each
+library its matching import/internal prefixes together with <code class="docutils literal notranslate"><span class="pre">USE_RUNTIME</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_halide_generator</span><span class="p">(</span><span class="s">my_pipeline.generator</span><span class="w"> </span><span class="s">SOURCES</span><span class="w"> </span><span class="s">my_pipeline_generator.cpp</span><span class="p">)</span>
+
+<span class="c"># A runtime with the &quot;my_prefix_&quot; prefix.</span>
+<span class="nb">add_halide_runtime</span><span class="p">(</span>
+<span class="w">    </span><span class="s">my_prefix_runtime</span>
+<span class="w">    </span><span class="s">PARAMS</span><span class="w"> </span><span class="s">runtime_prefixes.export=my_prefix_</span><span class="w"> </span><span class="s">runtime_prefixes.internal=my_prefix_internal_</span>
+<span class="p">)</span>
+
+<span class="c"># A pipeline that links against it. add_halide_library() compiles with</span>
+<span class="c"># no_runtime automatically when USE_RUNTIME is given.</span>
+<span class="nb">add_halide_library</span><span class="p">(</span>
+<span class="w">    </span><span class="s">my_pipeline</span>
+<span class="w">    </span><span class="s">FROM</span><span class="w"> </span><span class="s">my_pipeline.generator</span>
+<span class="w">    </span><span class="s">GENERATOR</span><span class="w"> </span><span class="s">my_pipeline</span>
+<span class="w">    </span><span class="s">USE_RUNTIME</span><span class="w"> </span><span class="s">my_prefix_runtime</span>
+<span class="w">    </span><span class="s">PARAMS</span><span class="w"> </span><span class="s">runtime_prefixes.import=my_prefix_</span><span class="w"> </span><span class="s">runtime_prefixes.internal=my_prefix_internal_</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Repeating this with a second, differently-prefixed runtime and library produces
+two components that can be linked into the same program without their runtimes
+colliding. For a complete, working example – three variants of one pipeline,
+each with its own runtime, linked into a single test that checks their state
+stays independent – see <code class="docutils literal notranslate"><span class="pre">test/generator/runtime_prefixes_iso_aottest.cpp</span></code> and
+its CMake wiring in <code class="docutils literal notranslate"><span class="pre">test/generator/CMakeLists.txt</span></code>.</p>
+</section>
+<section id="verifying-the-result">
+<h2>Verifying the result<a class="headerlink" href="#verifying-the-result" title="Link to this heading">#</a></h2>
+<p>The renaming happens on the symbols of the emitted object, so you can confirm it
+with <code class="docutils literal notranslate"><span class="pre">nm</span></code>. A stock runtime exports <code class="docutils literal notranslate"><span class="pre">halide_malloc</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nm my_prefix_runtime.o | grep malloc
+0000000000000000 T my_prefix_malloc
+</pre></div>
+</div>
+<p>and its internal state globals are prefixed as well:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nm my_prefix_runtime.o | grep custom_malloc
+0000000000000000 D my_prefix_internal__ZN6Halide7Runtime8Internal13custom_mallocE
+</pre></div>
+</div>
+<p>A <code class="docutils literal notranslate"><span class="pre">no_runtime</span></code> pipeline object correspondingly imports the renamed symbols
+rather than the stock <code class="docutils literal notranslate"><span class="pre">halide_</span></code> ones:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nm my_pipeline.o | grep malloc
+                 U my_prefix_malloc
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="CodeStyleCMake.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Contributing CMake code to Halide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="FuzzTesting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Fuzz testing</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scopes">Scopes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-pieces-fit-together">How the pieces fit together</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backends">Backends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-from-c">Usage from C++</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-from-the-gengen-command-line">Usage from the GenGen command line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage-from-cmake">Usage from CMake</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verifying-the-result">Verifying the result</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright The Halide team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

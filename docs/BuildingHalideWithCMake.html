@@ -1,0 +1,1269 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Building Halide with CMake &#8212; Halide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1ee386da" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="_static/documentation_options.js?v=8a448e45"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'BuildingHalideWithCMake';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using Halide from your CMake build" href="HalideCMakePackage.html" />
+    <link rel="prev" title="Guides" href="guides.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Halide</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorial/index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorial/index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Building Halide with CMake</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HalideCMakePackage.html">Using Halide from your CMake build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CodeStyleCMake.html">Contributing CMake code to Halide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CustomRuntimes.html">Custom Runtime Prefixes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FuzzTesting.html">Fuzz testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeneratorCache.html">Generator compile cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hexagon.html">Halide for Hexagon HVX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python.html">Halide Bindings for Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RunGen.html">Running and Benchmarking Halide Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vulkan.html">Vulkan Support for Halide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WebAssembly.html">WebAssembly Support for Halide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WebGPU.html">WebGPU support for Halide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="guides.html" class="nav-link">Guides</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Building Halide with CMake</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="building-halide-with-cmake">
+<h1>Building Halide with CMake<a class="headerlink" href="#building-halide-with-cmake" title="Link to this heading">#</a></h1>
+<p>This is a detailed guide to building Halide with CMake. If you want to learn how
+to use Halide in your own CMake projects, see <a class="reference internal" href="HalideCMakePackage.html"><span class="std std-doc">HalideCMakePackage.md</span></a>. If you
+are looking for Halide’s CMake coding guidelines, see <a class="reference internal" href="CodeStyleCMake.html"><span class="std std-doc">CodeStyleCMake.md</span></a>.</p>
+<section id="installing-cmake">
+<h2>Installing CMake<a class="headerlink" href="#installing-cmake" title="Link to this heading">#</a></h2>
+<p>This section covers installing a recent version of CMake and the correct
+dependencies for building and using Halide. If you have not used CMake before,
+we strongly suggest reading through the <a class="reference external" href="https://cmake.org/cmake/help/latest/">CMake documentation</a> first.</p>
+<p>Halide requires at least version 3.28. Fortunately, getting a recent version of
+CMake couldn’t be easier, and there are multiple good options on any system to
+do so. Generally, one should always have the most recent version of CMake
+installed system-wide. CMake is committed to backwards compatibility and even
+the most recent release can build projects over a decade old.</p>
+<section id="cross-platform">
+<h3>Cross-platform<a class="headerlink" href="#cross-platform" title="Link to this heading">#</a></h3>
+<p>Kitware provides packages for CMake on <a class="reference external" href="https://pypi.org/project/cmake/">PyPI</a> which can be installed
+via <code class="docutils literal notranslate"><span class="pre">pip</span></code> into a <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">virtual environment</a>. There are binary wheels available
+for nearly all relevant platforms, including:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>OS</p></th>
+<th class="head"><p>x86-32</p></th>
+<th class="head"><p>x86-64</p></th>
+<th class="head"><p>ARM64</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Windows</p></td>
+<td><p>:white_check_mark:</p></td>
+<td><p>:white_check_mark:</p></td>
+<td><p>:white_check_mark:</p></td>
+</tr>
+<tr class="row-odd"><td><p>macOS</p></td>
+<td><p>:x:</p></td>
+<td><p>10.10+</p></td>
+<td><p>11.0+ (incl. <code class="docutils literal notranslate"><span class="pre">universal2</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p>Linux (musl 1.1+)</p></td>
+<td><p>:white_check_mark:</p></td>
+<td><p>:white_check_mark:</p></td>
+<td><p>:white_check_mark:</p></td>
+</tr>
+<tr class="row-odd"><td><p>Linux (glibc)</p></td>
+<td><p>glibc 2.12+</p></td>
+<td><p>glibc 2.12+</p></td>
+<td><p>glibc 2.17+</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We recommend installing CMake using <a class="reference external" href="https://pipx.pypa.io/stable/">pipx</a> to avoid package conflicts and
+redundant installations. After installing pipx, run:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pipx<span class="w"> </span>install<span class="w"> </span>cmake
+</pre></div>
+</div>
+<p>Alternatively, you can use a normal virtual environment:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>cmake
+</pre></div>
+</div>
+<p>If you don’t want Python to manage your CMake installation, you can either
+follow the platform-specific instructions below or install CMake from
+<a class="reference external" href="https://cmake.org/download/">Kitware’s binary releases</a>. If all else fails, you might need
+to build CMake from source (e.g. on 32-bit ARM). In that case, follow the
+directions posted on <a class="reference external" href="https://cmake.org/install/">Kitware’s website</a>.</p>
+</section>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading">#</a></h3>
+<p>On Windows, there are two primary methods for installing an up-to-date CMake:</p>
+<ol class="arabic">
+<li><p>You can get CMake through the Visual Studio 2022 installer.</p></li>
+<li><p>You can use Windows’s built-in package manager, <a class="reference external" href="https://learn.microsoft.com/en-us/windows/package-manager/winget/">winget</a>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>winget<span class="w"> </span>install<span class="w"> </span>Kitware.CMake
+</pre></div>
+</div>
+</li>
+</ol>
+<p>We prefer the first option for its simplicity. See Microsoft’s
+<a class="reference external" href="https://docs.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio">documentation</a> for more details.</p>
+</section>
+<section id="macos">
+<h3>macOS<a class="headerlink" href="#macos" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://brew.sh">Homebrew</a> keeps its <a class="reference external" href="https://formulae.brew.sh/cask/cmake#default">CMake package</a> up to date. Simply run:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>cmake
+</pre></div>
+</div>
+</section>
+<section id="ubuntu-linux">
+<h3>Ubuntu Linux<a class="headerlink" href="#ubuntu-linux" title="Link to this heading">#</a></h3>
+<p>There are a few good ways to install CMake on Ubuntu:</p>
+<ol class="arabic simple">
+<li><p>If you’re running 24.04 LTS, then simply running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">cmake</span></code>
+will install CMake 3.28.</p></li>
+<li><p>If you’re running an older LTS or would like to use the newest CMake, try
+installing via the <a class="reference external" href="https://snapcraft.io/cmake">snap store</a>: <code class="docutils literal notranslate"><span class="pre">snap</span> <span class="pre">install</span> <span class="pre">cmake</span></code>. Note this will
+conflict with an APT-provided CMake.</p></li>
+<li><p>Kitware also provides an <a class="reference external" href="https://apt.kitware.com/">APT repository</a> with up-to-date
+releases. Compatible with 20.04 LTS+ and is the best option for 32-bit ARM.</p></li>
+</ol>
+<p>For other Linux distributions, check with your distribution’s package manager.</p>
+<p><strong>Note:</strong> On WSL 1, snap is not available; in this case, prefer to use APT. On
+WSL 2, all methods are available.</p>
+</section>
+<section id="optional-install-ninja">
+<h3>Optional: Install Ninja<a class="headerlink" href="#optional-install-ninja" title="Link to this heading">#</a></h3>
+<p>We strongly recommend using <a class="reference external" href="https://ninja-build.org/">Ninja</a> as your go-to CMake generator for working
+with Halide. It has a much richer dependency structure than the alternatives,
+and it is the only generator capable of producing accurate incremental builds.</p>
+<p>It is available in most package repositories:</p>
+<ul class="simple">
+<li><p>Python: <code class="docutils literal notranslate"><span class="pre">pipx</span> <span class="pre">install</span> <span class="pre">ninja</span></code></p></li>
+<li><p>Visual Studio Installer: alongside CMake</p></li>
+<li><p>winget: <code class="docutils literal notranslate"><span class="pre">winget</span> <span class="pre">install</span> <span class="pre">Ninja-build.Ninja</span></code></p></li>
+<li><p>Homebrew: <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">ninja</span></code></p></li>
+<li><p>APT: <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">install</span> <span class="pre">ninja-build</span></code></p></li>
+</ul>
+<p>You can also place a <a class="reference external" href="https://github.com/ninja-build/ninja/releases">pre-built binary</a> from their website in
+the PATH.</p>
+</section>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">#</a></h2>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
+<p>The following is a complete list of required and optional dependencies for
+building the core pieces of Halide.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dependency</p></th>
+<th class="head"><p>Version</p></th>
+<th class="head"><p>Required when…</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/llvm/llvm-project">LLVM</a></p></td>
+<td><p><em>see policy below</em></p></td>
+<td><p><em>always</em></p></td>
+<td><p>WebAssembly and X86 targets are required.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://clang.llvm.org">Clang</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">==LLVM</span></code></p></td>
+<td><p><em>always</em></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://lld.llvm.org/">LLD</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">==LLVM</span></code></p></td>
+<td><p><em>always</em></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/google/flatbuffers">flatbuffers</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~=23.5.26</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WITH_SERIALIZATION=ON</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/WebAssembly/wabt">wabt</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">==1.0.39</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Halide_WASM_BACKEND=wabt</span></code></p></td>
+<td><p>Does not have a stable API; exact version required.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://v8.dev">V8</a></p></td>
+<td><p>trunk</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Halide_WASM_BACKEND=V8</span></code></p></td>
+<td><p>Difficult to build. See <a class="reference internal" href="WebAssembly.html"><span class="std std-doc">WebAssembly.md</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.python.org/downloads/">Python</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;=3.10</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WITH_PYTHON_BINDINGS=ON</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/pybind/pybind11">pybind11</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~=2.11.1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WITH_PYTHON_BINDINGS=ON</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Halide maintains the following compatibility policy with LLVM: Halide version
+<code class="docutils literal notranslate"><span class="pre">N</span></code> supports LLVM versions <code class="docutils literal notranslate"><span class="pre">N</span></code>, <code class="docutils literal notranslate"><span class="pre">N-1</span></code>, and <code class="docutils literal notranslate"><span class="pre">N-2</span></code>. Our binary distributions
+always include the latest <code class="docutils literal notranslate"><span class="pre">N</span></code> patch at time of release. For most users, we
+recommend using a pre-packaged binary release of LLVM rather than trying to
+build it yourself.</p>
+<p>To build the apps, documentation, and tests, an extended set is needed.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dependency</p></th>
+<th class="head"><p>Required when…</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/module/FindCUDAToolkit.html">CUDA Toolkit</a></p></td>
+<td><p>building <code class="docutils literal notranslate"><span class="pre">apps/cuda_mat_mul</span></code></p></td>
+<td><p>When compiling Halide pipelines that use CUDA, only the drivers are needed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/module/FindDoxygen.html">Doxygen</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WITH_DOCS=ON</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://eigen.tuxfamily.org/dox/TopicCMakeGuide.html">Eigen3</a></p></td>
+<td><p>building <code class="docutils literal notranslate"><span class="pre">apps/linear_algebra</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/module/FindJPEG.html">libjpeg</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WITH_TESTS=ON</span></code></p></td>
+<td><p>Optionally used by <code class="docutils literal notranslate"><span class="pre">halide_image_io.h</span></code> and <code class="docutils literal notranslate"><span class="pre">Halide::ImageIO</span></code> in CMake.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/module/FindPNG.html">libpng</a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WITH_TESTS=ON</span></code></p></td>
+<td><p>(same as libjpeg)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/module/FindBLAS.html">BLAS</a></p></td>
+<td><p>building <code class="docutils literal notranslate"><span class="pre">apps/linear_algebra</span></code></p></td>
+<td><p><a class="reference external" href="http://math-atlas.sourceforge.net/">ATLAS</a> and <a class="reference external" href="https://www.openblas.net/">OpenBLAS</a> are supported implementations</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/module/FindOpenCL.html">OpenCL</a></p></td>
+<td><p>compiling pipelines with <code class="docutils literal notranslate"><span class="pre">opencl</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>It is best practice to configure your environment so that CMake can find
+dependencies without package-specific hints. For instance, if you want CMake to
+use a particular version of Python, create a virtual environment and activate it
+<em>before</em> configuring Halide. Similarly, the <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code> variable can be
+set to a local directory where from-source dependencies have been installed.
+Carefully consult the <a class="reference external" href="https://cmake.org/cmake/help/latest/command/find_package.html">find_package</a> documentation to learn how the search
+procedure works.</p>
+<p>If the build still fails to find a dependency, each package provides a bespoke
+interface for providing hints and overriding incorrect results. Documentation
+for these packages is linked in the table above.</p>
+</section>
+<section id="installing-dependencies">
+<h3>Installing dependencies<a class="headerlink" href="#installing-dependencies" title="Link to this heading">#</a></h3>
+<section id="vcpkg">
+<h4>vcpkg<a class="headerlink" href="#vcpkg" title="Link to this heading">#</a></h4>
+<p>Halide has first-class support for using <a class="reference external" href="https://github.com/Microsoft/vcpkg">vcpkg</a> to manage dependencies. The
+list of dependencies and features is contained inside <code class="docutils literal notranslate"><span class="pre">vcpkg.json</span></code> at the root
+of the repository. LLVM and Python must be provided by the system; vcpkg handles
+the remaining dependencies (flatbuffers, wabt, pybind11, libjpeg, libpng, etc.).</p>
+<p>Halide includes a <code class="docutils literal notranslate"><span class="pre">vcpkg-configuration.json</span></code> file that automatically configures
+<a class="reference external" href="https://learn.microsoft.com/en-us/vcpkg/concepts/overlay-ports">overlay ports</a> and overlay triplets. The overlay ports redirect
+LLVM and Python to system installations, preventing vcpkg from trying to build
+them. This configuration is applied automatically when vcpkg is used from the
+Halide source tree.</p>
+<p>When using the vcpkg toolchain file, you can set
+<code class="docutils literal notranslate"><span class="pre">-DVCPKG_MANIFEST_FEATURES=developer</span></code> to enable building all test dependencies
+(except Doxygen, which is not available on vcpkg).</p>
+<p>For convenience, we provide <a class="reference internal" href="#cmake-presets">CMake presets</a> that set these flags
+appropriately per-platform. They are documented further below.</p>
+</section>
+<section id="id1">
+<h4>Windows<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>On Windows, we recommend using <code class="docutils literal notranslate"><span class="pre">vcpkg</span></code> to install library dependencies.</p>
+<p>To build the documentation, you will need to install <a class="reference external" href="https://www.doxygen.nl/index.html">Doxygen</a>. This can be done
+either from the <a class="reference external" href="https://www.doxygen.nl/download.html">Doxygen website</a> or through <a class="reference external" href="https://learn.microsoft.com/en-us/windows/package-manager/winget/">winget</a>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>winget<span class="w"> </span>install<span class="w"> </span>DimitriVanHeesch.Doxygen
+</pre></div>
+</div>
+<p>To build the Python bindings, you will need to install Python 3. This should be
+done by running the official installer from the <a class="reference external" href="https://www.python.org/downloads/">Python website</a>. Be
+sure to download the debugging symbols through the installer. This will require
+using the “Advanced Installation” workflow. Although it is not strictly
+necessary, it is convenient to install Python system-wide on Windows (i.e.
+<code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files</span></code>) because CMake looks at standard paths and registry keys.
+This removes the need to manually set the <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p>
+<p>Once Python is installed, you can install the Python module dependencies in a
+<a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">virtual environment</a> by running</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>sync
+</pre></div>
+</div>
+<p>from the root of the repository.</p>
+</section>
+<section id="homebrew">
+<h4>Homebrew<a class="headerlink" href="#homebrew" title="Link to this heading">#</a></h4>
+<p>On macOS, it is possible to install all dependencies via <a class="reference external" href="https://brew.sh">Homebrew</a>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>llvm<span class="w"> </span>flatbuffers<span class="w"> </span>wabt<span class="w"> </span>python<span class="w"> </span>pybind11<span class="w"> </span>doxygen<span class="w"> </span>eigen<span class="w"> </span>libpng<span class="w"> </span>libjpeg-turbo<span class="w"> </span>openblas
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">llvm</span></code> package includes <code class="docutils literal notranslate"><span class="pre">clang</span></code>, <code class="docutils literal notranslate"><span class="pre">clang-format</span></code>, and <code class="docutils literal notranslate"><span class="pre">lld</span></code>, too. To ensure
+CMake can find LLVM, set the following cache variable:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmake<span class="w"> </span>...<span class="w"> </span>-DHalide_ROOT<span class="o">=</span>/opt/homebrew/opt/llvm
+</pre></div>
+</div>
+<p>Or use the <code class="docutils literal notranslate"><span class="pre">macOS</span></code> CMake preset, which does this for you.</p>
+</section>
+<section id="ubuntu-debian">
+<h4>Ubuntu / Debian<a class="headerlink" href="#ubuntu-debian" title="Link to this heading">#</a></h4>
+<p>On Ubuntu you should install the following packages (this includes the Python
+module dependencies):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt install clang-tools lld llvm-dev libclang-dev liblld-dev \
+    libpng-dev libjpeg-dev libgl-dev python3-dev python3-numpy \
+    python3-imageio python3-pybind11 libopenblas-dev libeigen3-dev \
+    libatlas-base-dev doxygen
+</pre></div>
+</div>
+</section>
+<section id="python">
+<h4>Python<a class="headerlink" href="#python" title="Link to this heading">#</a></h4>
+<p>When running the Python package, you will need to install additional
+dependencies. These are tabulated as constraints in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> and
+resolved to specific versions in <code class="docutils literal notranslate"><span class="pre">uv.lock</span></code>. They may be installed by running:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>sync<span class="w"> </span>--no-install-project
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="building-halide">
+<h2>Building Halide<a class="headerlink" href="#building-halide" title="Link to this heading">#</a></h2>
+<section id="basic-build">
+<h3>Basic build<a class="headerlink" href="#basic-build" title="Link to this heading">#</a></h3>
+<p>These instructions assume that your working directory is the Halide repository
+root.</p>
+<section id="id2">
+<h4>Windows<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<p>If you plan to use the Ninja generator, be sure to launch the developer command
+prompt corresponding to your intended environment. Note that whatever your
+intended target system (x86, x64, or ARM), you must use the 64-bit <em>host tools</em>
+because the 32-bit tools run out of memory during the linking step with LLVM.
+More information is available from <a class="reference external" href="https://learn.microsoft.com/en-us/cpp/build/building-on-the-command-line">Microsoft’s documentation</a>.</p>
+<p>You should either open the correct Developer Command Prompt directly or run the
+<a class="reference external" href="https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line#developer_command_file_locations"><code class="docutils literal notranslate"><span class="pre">vcvarsall.bat</span></code></a> script with the correct argument, i.e. one of the
+following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="s2">&quot;C:\Program Files (x86)\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat&quot;</span><span class="w"> </span>x64
+$<span class="w"> </span><span class="s2">&quot;C:\Program Files (x86)\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat&quot;</span><span class="w"> </span>x64_x86
+$<span class="w"> </span><span class="s2">&quot;C:\Program Files (x86)\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat&quot;</span><span class="w"> </span>x64_arm
+</pre></div>
+</div>
+<p>Then, assuming that vcpkg is installed to <code class="docutils literal notranslate"><span class="pre">D:\vcpkg</span></code>, simply run:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmake<span class="w"> </span>-G<span class="w"> </span>Ninja<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>--toolchain<span class="w"> </span>D:<span class="se">\v</span>cpkg<span class="se">\s</span>cripts<span class="se">\b</span>uildsystems<span class="se">\v</span>cpkg.cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
+$<span class="w"> </span>cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="se">\b</span>uild
+</pre></div>
+</div>
+<p>Valid values of <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code></a> are <code class="docutils literal notranslate"><span class="pre">Debug</span></code>,
+<code class="docutils literal notranslate"><span class="pre">RelWithDebInfo</span></code>, <code class="docutils literal notranslate"><span class="pre">MinSizeRel</span></code>, and <code class="docutils literal notranslate"><span class="pre">Release</span></code>. When using a single-configuration
+generator (like Ninja) you must specify a build type in the configuration step.</p>
+<p>Otherwise, if you wish to create a Visual Studio based build system, you can
+configure with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmake<span class="w"> </span>-G<span class="w"> </span><span class="s2">&quot;Visual Studio 17 2022&quot;</span><span class="w"> </span>-Thost<span class="o">=</span>x64<span class="w"> </span>-A<span class="w"> </span>x64<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>^
+<span class="w">        </span>--toolchain<span class="w"> </span>D:<span class="se">\v</span>cpkg<span class="se">\s</span>cripts<span class="se">\b</span>uildsystems<span class="se">\v</span>cpkg.cmake
+$<span class="w"> </span>cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="se">\b</span>uild<span class="w"> </span>--config<span class="w"> </span>Release<span class="w"> </span>-j<span class="w"> </span>%NUMBER_OF_PROCESSORS%
+</pre></div>
+</div>
+<p>Because the Visual Studio generator is a <em>multi-config generator</em>, you don’t set
+<code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code> at configure-time, but instead pass the configuration to the
+build (and test/install) commands with the <code class="docutils literal notranslate"><span class="pre">--config</span></code> flag. More documentation
+is available in the <a class="reference external" href="https://cmake.org/cmake/help/latest/guide/user-interaction/index.html#setting-build-variables">CMake User Interaction Guide</a>.</p>
+<p>The process is similar for 32-bit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">cmake</span> <span class="o">-</span><span class="n">G</span> <span class="s2">&quot;Visual Studio 17 2022&quot;</span> <span class="o">-</span><span class="n">Thost</span><span class="o">=</span><span class="n">x64</span> <span class="o">-</span><span class="n">A</span> <span class="n">Win32</span> <span class="o">-</span><span class="n">S</span> <span class="o">.</span> <span class="o">-</span><span class="n">B</span> <span class="n">build</span> <span class="o">^</span>
+        <span class="o">--</span><span class="n">toolchain</span> <span class="n">D</span><span class="p">:</span>\<span class="n">vcpkg</span>\<span class="n">scripts</span>\<span class="n">buildsystems</span>\<span class="n">vcpkg</span><span class="o">.</span><span class="n">cmake</span>
+<span class="o">&gt;</span> <span class="n">cmake</span> <span class="o">--</span><span class="n">build</span> <span class="o">.</span>\<span class="n">build</span> <span class="o">--</span><span class="n">config</span> <span class="n">Release</span> <span class="o">-</span><span class="n">j</span> <span class="o">%</span><span class="n">NUMBER_OF_PROCESSORS</span><span class="o">%</span>
+</pre></div>
+</div>
+<p>In both cases, the <code class="docutils literal notranslate"><span class="pre">-Thost=x64</span></code> flag ensures that the correct host tools are
+used.</p>
+<p><strong>Note:</strong> due to limitations in MSBuild, incremental builds using the VS
+generators will miss dependencies (including changes to headers in the
+<code class="docutils literal notranslate"><span class="pre">src/runtime</span></code> folder). We recommend using Ninja for day-to-day development and
+use Visual Studio only if you need it for packaging.</p>
+</section>
+<section id="macos-and-linux">
+<h4>macOS and Linux<a class="headerlink" href="#macos-and-linux" title="Link to this heading">#</a></h4>
+<p>The instructions here are straightforward. Assuming your environment is set up
+correctly, just run:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmake<span class="w"> </span>-G<span class="w"> </span>Ninja<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
+$<span class="w"> </span>cmake<span class="w"> </span>--build<span class="w"> </span>build
+</pre></div>
+</div>
+<p>If you omit <code class="docutils literal notranslate"><span class="pre">-G</span> <span class="pre">Ninja</span></code>, a Makefile-based generator will likely be used instead.
+In either case, <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code></a> must be set to one of the
+standard types: <code class="docutils literal notranslate"><span class="pre">Debug</span></code>, <code class="docutils literal notranslate"><span class="pre">RelWithDebInfo</span></code>, <code class="docutils literal notranslate"><span class="pre">MinSizeRel</span></code>, or <code class="docutils literal notranslate"><span class="pre">Release</span></code>.</p>
+</section>
+</section>
+<section id="cmake-presets">
+<h3>CMake Presets<a class="headerlink" href="#cmake-presets" title="Link to this heading">#</a></h3>
+<p>Halide provides several <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html">presets</a> to make the above commands more
+convenient.</p>
+<section id="common-presets">
+<h4>Common presets<a class="headerlink" href="#common-presets" title="Link to this heading">#</a></h4>
+<p>These presets do not use vcpkg. They assume that all dependencies are available
+via the system (e.g. Homebrew on macOS, APT on Linux).</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmake<span class="w"> </span>--preset<span class="o">=</span>macOS<span class="w">    </span><span class="c1"># Ninja generator, macOS host build, Homebrew deps</span>
+$<span class="w"> </span>cmake<span class="w"> </span>--preset<span class="o">=</span>debug<span class="w">    </span><span class="c1"># Debug mode, any single-config generator / compiler</span>
+$<span class="w"> </span>cmake<span class="w"> </span>--preset<span class="o">=</span>release<span class="w">  </span><span class="c1"># Release mode, any single-config generator / compiler</span>
+</pre></div>
+</div>
+</section>
+<section id="vcpkg-presets">
+<h4>Vcpkg presets<a class="headerlink" href="#vcpkg-presets" title="Link to this heading">#</a></h4>
+<p>The following presets use vcpkg to manage non-LLVM dependencies. LLVM and Python
+must be provided by the system.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Preset</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">win32</span></code></p></td>
+<td><p>Visual Studio 2022 generator, 32-bit build</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">win64</span></code></p></td>
+<td><p>Visual Studio 2022 generator, 64-bit build</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">macOS-vcpkg</span></code></p></td>
+<td><p>macOS build with vcpkg + Homebrew LLVM</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">debug-vcpkg</span></code></p></td>
+<td><p>Debug build for any single-config generator</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">release-vcpkg</span></code></p></td>
+<td><p>Release build for any single-config generator</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="sanitizer-presets">
+<h4>Sanitizer presets<a class="headerlink" href="#sanitizer-presets" title="Link to this heading">#</a></h4>
+<p>There are also presets to use some Clang sanitizers with the CMake build; at
+present, only Fuzzer and ASAN (Address Sanitizer) are supported, and only on
+linux-x86-64.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">linux-x64-asan</span></code>: Use the Address Sanitizer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">linux-x64-fuzzer</span></code>: Use the Clang fuzzer plugin</p></li>
+</ul>
+<p>To use these, you must build LLVM with additional options:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">DLLVM_ENABLE_PROJECTS</span><span class="o">=</span><span class="s2">&quot;clang;lld;clang-tools-extra&quot;</span>
+<span class="o">-</span><span class="n">DLLVM_ENABLE_RUNTIMES</span><span class="o">=</span><span class="s2">&quot;compiler-rt;libcxx;libcxxabi;libunwind&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="valgrind-and-intel-sde-presets">
+<h4>Valgrind and Intel SDE presets<a class="headerlink" href="#valgrind-and-intel-sde-presets" title="Link to this heading">#</a></h4>
+<p>These presets rerun the ordinary test suite under an external tool, using
+CTest’s native mechanisms.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">valgrind</span></code> preset reruns every registered test under <a class="reference external" href="https://valgrind.org/">valgrind</a> via CTest’s
+built-in <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/ctest.1.html#dashboard-client-steps">MemCheck</a> action. It configures a Debug build with
+<code class="docutils literal notranslate"><span class="pre">Halide_ENABLE_MEMCHECK=ON</span></code>, which pulls in the <a class="reference external" href="https://cmake.org/cmake/help/latest/module/CTest.html">CTest module</a> so
+that <code class="docutils literal notranslate"><span class="pre">ctest</span> <span class="pre">-T</span> <span class="pre">memcheck</span></code> works directly in the build tree (no CDash/dashboard
+submission required):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmake<span class="w"> </span>--preset<span class="w"> </span>valgrind
+$<span class="w"> </span>cmake<span class="w"> </span>--build<span class="w"> </span>--preset<span class="w"> </span>valgrind
+$<span class="w"> </span>ctest<span class="w"> </span>--preset<span class="w"> </span>valgrind<span class="w"> </span>-T<span class="w"> </span>memcheck
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">valgrind</span></code> test preset excludes the <code class="docutils literal notranslate"><span class="pre">no_memcheck</span></code> label. Valgrind (and its
+options and suppressions file) is configured via the standard
+<code class="docutils literal notranslate"><span class="pre">MEMORYCHECK_COMMAND</span></code>, <code class="docutils literal notranslate"><span class="pre">MEMORYCHECK_COMMAND_OPTIONS</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">MEMORYCHECK_SUPPRESSIONS_FILE</span></code> (<code class="docutils literal notranslate"><span class="pre">test/valgrind.supp</span></code>) cache variables.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">avx512-cannonlake</span></code> and <code class="docutils literal notranslate"><span class="pre">avx512-knights-landing</span></code> presets rerun every test
+under <a class="reference external" href="https://www.intel.com/content/www/us/en/developer/articles/tool/software-development-emulator.html">Intel SDE</a> to emulate an AVX-512-capable CPU on a host that
+lacks one. They set
+<a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_CROSSCOMPILING_EMULATOR.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_CROSSCOMPILING_EMULATOR</span></code></a> to
+<code class="docutils literal notranslate"><span class="pre">sde</span> <span class="pre">-cnl</span> <span class="pre">--</span></code> and <code class="docutils literal notranslate"><span class="pre">sde</span> <span class="pre">-knl</span> <span class="pre">--</span></code> respectively, so every <code class="docutils literal notranslate"><span class="pre">add_test</span></code>-registered
+executable runs under the emulator automatically. <code class="docutils literal notranslate"><span class="pre">sde</span></code> must be on your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmake<span class="w"> </span>--preset<span class="w"> </span>avx512-cannonlake
+$<span class="w"> </span>cmake<span class="w"> </span>--build<span class="w"> </span>--preset<span class="w"> </span>avx512-cannonlake
+$<span class="w"> </span>ctest<span class="w"> </span>--preset<span class="w"> </span>avx512-cannonlake
+</pre></div>
+</div>
+</section>
+</section>
+<section id="build-options">
+<h3>Build options<a class="headerlink" href="#build-options" title="Link to this heading">#</a></h3>
+<p>Halide reads and understands several options that can configure the build. The
+following are the most consequential and control how Halide is actually
+compiled.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html"><code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>Standard CMake variable that chooses whether to build as a static or shared library.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_LLVM_SHARED_LIBS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OFF</span></code></p></td>
+<td><p>Link to the shared version of LLVM. Not available on Windows.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_ENABLE_RTTI</span></code></p></td>
+<td><p><em>inherited from LLVM</em></p></td>
+<td><p>Enable RTTI when building Halide. Recommended to be set to <code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_ENABLE_EXCEPTIONS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>Enable exceptions when building Halide</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_TARGET</span></code></p></td>
+<td><p><em>empty</em></p></td>
+<td><p>The default target triple to use for <code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code> (and the generator tests, by extension)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_AUTOSCHEDULERS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>Enable building the autoschedulers. Requires <code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_SERIALIZATION</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>Include experimental Serialization/Deserialization features; also required for the <a class="reference internal" href="GeneratorCache.html"><span class="std std-doc">generator compile cache</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The following options are disabled by default when building Halide through the
+<a class="reference external" href="https://cmake.org/cmake/help/latest/command/add_subdirectory.html"> <code class="docutils literal notranslate"><span class="pre">add_subdirectory</span></code></a> or <a class="reference external" href="https://cmake.org/cmake/help/latest/module/FetchContent.html"><code class="docutils literal notranslate"><span class="pre">FetchContent</span></code></a>
+mechanisms. They control whether non-essential targets (like tests and
+documentation) are built.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_DOCS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OFF</span></code></p></td>
+<td><p>Enable building the documentation via Doxygen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_PACKAGING</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>Include the <code class="docutils literal notranslate"><span class="pre">install()</span></code> rules for Halide.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_PYTHON_BINDINGS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>Enable building Python 3 bindings</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_TESTS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>Enable building unit and integration tests</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_TUTORIALS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>Enable building the tutorials</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_UTILS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>Enable building various utilities including the trace visualizer</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The following options are <em>advanced</em> and should not be required in typical
+workflows. Generally, these are used by Halide’s own CI infrastructure, or as
+escape hatches for third-party packagers.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_CCACHE_BUILD</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OFF</span></code></p></td>
+<td><p>Use ccache with Halide-recommended settings to accelerate rebuilds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_ENABLE_MEMCHECK</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OFF</span></code></p></td>
+<td><p>Pull in the CTest module so <code class="docutils literal notranslate"><span class="pre">ctest</span> <span class="pre">-T</span> <span class="pre">memcheck</span></code> reruns the tests under valgrind. See the <code class="docutils literal notranslate"><span class="pre">valgrind</span></code> preset.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_CCACHE_PARAMS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CCACHE_CPP2=yes</span> <span class="pre">CCACHE_HASHDIR=yes</span> <span class="pre">CCACHE_SLOPPINESS=pch_defines</span></code></p></td>
+<td><p>Options to pass to <code class="docutils literal notranslate"><span class="pre">ccache</span></code> when using <code class="docutils literal notranslate"><span class="pre">Halide_CCACHE_BUILD</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_VERSION_OVERRIDE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">${Halide_VERSION}</span></code></p></td>
+<td><p>Override the VERSION for libHalide.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_SOVERSION_OVERRIDE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">${Halide_VERSION_MAJOR}</span></code></p></td>
+<td><p>Override the SOVERSION for libHalide. Expects a positive integer (i.e. not a version).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The following options control whether to build certain test subsets. They only
+apply when <code class="docutils literal notranslate"><span class="pre">WITH_TESTS=ON</span></code>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_TEST_AUTO_SCHEDULE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>enable the auto-scheduling tests</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_TEST_CORRECTNESS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>enable the correctness tests</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_TEST_ERROR</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>enable the expected-error tests</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_TEST_FUZZ</span></code></p></td>
+<td><p><em>detected</em></p></td>
+<td><p>enable the libfuzzer-based fuzz tests</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_TEST_GENERATOR</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>enable the AOT generator tests</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_TEST_PERFORMANCE</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>enable performance testing</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_TEST_RUNTIME</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>enable testing the runtime modules</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_TEST_WARNING</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ON</span></code></p></td>
+<td><p>enable the expected-warning tests</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The following option selects the execution engine for in-process WASM testing:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_WASM_BACKEND</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">wabt</span></code></p></td>
+<td><p>Select the backend for WASM testing. Can be <code class="docutils literal notranslate"><span class="pre">wabt</span></code>, <code class="docutils literal notranslate"><span class="pre">V8</span></code> or a false value such as <code class="docutils literal notranslate"><span class="pre">OFF</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="installing">
+<h3>Installing<a class="headerlink" href="#installing" title="Link to this heading">#</a></h3>
+<p>Once built, Halide will need to be installed somewhere before using it in a
+separate project. On any platform, this means running the
+<a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake.1.html#install-a-project"><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--install</span></code></a> command in one of two ways. For a
+single-configuration generator (like Ninja), run either:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmake<span class="w"> </span>--install<span class="w"> </span>./build<span class="w"> </span>--prefix<span class="w"> </span>/path/to/Halide-install
+$<span class="w"> </span>cmake<span class="w"> </span>--install<span class="w"> </span>.<span class="se">\b</span>uild<span class="w"> </span>--prefix<span class="w"> </span>X:<span class="se">\p</span>ath<span class="se">\t</span>o<span class="se">\H</span>alide-install
+</pre></div>
+</div>
+<p>For a multi-configuration generator (like Visual Studio) run:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmake<span class="w"> </span>--install<span class="w"> </span>./build<span class="w"> </span>--prefix<span class="w"> </span>/path/to/Halide-install<span class="w"> </span>--config<span class="w"> </span>Release
+$<span class="w"> </span>cmake<span class="w"> </span>--install<span class="w"> </span>.<span class="se">\b</span>uild<span class="w"> </span>--prefix<span class="w"> </span>X:<span class="se">\p</span>ath<span class="se">\t</span>o<span class="se">\H</span>alide-install<span class="w"> </span>--config<span class="w"> </span>Release
+</pre></div>
+</div>
+<p>Of course, make sure that you build the corresponding config before attempting
+to install it.</p>
+</section>
+</section>
+<section id="building-halide-with-pip">
+<h2>Building Halide with pip<a class="headerlink" href="#building-halide-with-pip" title="Link to this heading">#</a></h2>
+<p>Halide also supports installation via the standard Python packaging workflow.
+Running <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.</span></code> at the root of the repository will build a wheel and
+install it into the currently active Python environment.</p>
+<p>However, this comes with a few caveats:</p>
+<ol class="arabic simple">
+<li><p>The environment must be prepared for CMake to find its dependencies. This is
+easiest to do by setting either <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code> to pre-built dependencies
+or by setting <code class="docutils literal notranslate"><span class="pre">CMAKE_TOOLCHAIN_FILE</span></code> to vcpkg.</p></li>
+<li><p>The build settings are fixed, meaning that <code class="docutils literal notranslate"><span class="pre">wabt</span></code> is required on non-Windows
+systems, <code class="docutils literal notranslate"><span class="pre">flatbuffers</span></code> is always required, and the Python bindings must be
+built.</p></li>
+<li><p>The generated wheel will likely only work on your system. In particular, it
+will not be repaired with <code class="docutils literal notranslate"><span class="pre">auditwheel</span></code> or <code class="docutils literal notranslate"><span class="pre">delocate</span></code>.</p></li>
+</ol>
+<p>Even so, this is a very good method of installing Halide. It supports both
+Python and C++ <code class="docutils literal notranslate"><span class="pre">find_package</span></code> workflows.</p>
+<section id="using-ccache-with-pip-builds">
+<h3>Using ccache with pip builds<a class="headerlink" href="#using-ccache-with-pip-builds" title="Link to this heading">#</a></h3>
+<p>Because Python’s build infrastructure creates temporary CMake build directories,
+simply setting <code class="docutils literal notranslate"><span class="pre">CMAKE_CXX_COMPILER_LAUNCHER</span></code> to <code class="docutils literal notranslate"><span class="pre">ccache</span></code> is insufficient to
+produce a well-cached build. The following settings should serve as a starting
+point to configure your environment (assuming <code class="docutils literal notranslate"><span class="pre">$PWD</span></code> is the repository root) for
+using <code class="docutils literal notranslate"><span class="pre">ccache</span></code> with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.</span></code>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Point CMake to ccache</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_C_COMPILER_LAUNCHER</span><span class="o">=</span>ccache
+<span class="nb">export</span><span class="w"> </span><span class="nv">CMAKE_CXX_COMPILER_LAUNCHER</span><span class="o">=</span>ccache
+
+<span class="c1"># Settings to make ccache try to ignore the build directory</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CCACHE_BASEDIR</span><span class="o">=</span><span class="nv">$PWD</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CCACHE_NOHASHDIR</span><span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># Enable caching of pre-compiled headers and rewrite debug paths</span>
+<span class="c1"># -Xclang -fno-pch-timestamp is only necessary when using Clang (not GCC)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CCACHE_SLOPPINESS</span><span class="o">=</span>include_file_ctime,include_file_mtime,pch_defines,time_macros
+<span class="nb">export</span><span class="w"> </span><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;-Xclang -fno-pch-timestamp -fdebug-prefix-map=</span><span class="nv">$PWD</span><span class="s2">=.&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CFLAGS</span><span class="s2">&quot;</span>
+
+<span class="c1"># Locate the temporary build beneath $PWD so that CCACHE_BASEDIR works</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TMPDIR</span><span class="o">=</span><span class="nv">$PWD</span>/build/tmp
+
+<span class="c1"># If using uv, don&#39;t create a temporary venv</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">UV_NO_BUILD_ISOLATION</span><span class="o">=</span><span class="m">1</span>
+</pre></div>
+</div>
+<p>See the CCache documentation on <a class="reference external" href="https://ccache.dev/manual/4.11.3.html#_compiling_in_different_directories">compiling in different directories</a> and on
+using <a class="reference external" href="https://ccache.dev/manual/4.11.3.html#_precompiled_headers">precompiled headers</a> for more information about these settings. To check
+that ccache is working, run,</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w">  </span><span class="c1"># first run, populate cache</span>
+Resolved<span class="w"> </span><span class="m">4</span><span class="w"> </span>packages<span class="w"> </span><span class="k">in</span><span class="w"> </span>397ms
+<span class="w">      </span>Built<span class="w"> </span>halide<span class="w"> </span>@<span class="w"> </span>file:///Users/areinking/dev/Halide
+Prepared<span class="w"> </span><span class="m">1</span><span class="w"> </span>package<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">29</span>.17s
+Installed<span class="w"> </span><span class="m">1</span><span class="w"> </span>package<span class="w"> </span><span class="k">in</span><span class="w"> </span>8ms
+<span class="w"> </span>+<span class="w"> </span><span class="nv">halide</span><span class="o">==</span><span class="m">20</span>.0.0.dev87+gf6c939fd3.d20250724<span class="w"> </span><span class="o">(</span>from<span class="w"> </span>file:///Users/areinking/dev/Halide<span class="o">)</span>
+$<span class="w"> </span>ccache<span class="w"> </span>-z
+Statistics<span class="w"> </span>zeroed
+$<span class="w"> </span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w">  </span><span class="c1"># second run, reload from cache</span>
+Resolved<span class="w"> </span><span class="m">4</span><span class="w"> </span>packages<span class="w"> </span><span class="k">in</span><span class="w"> </span>338ms
+<span class="w">      </span>Built<span class="w"> </span>halide<span class="w"> </span>@<span class="w"> </span>file:///Users/areinking/dev/Halide
+Prepared<span class="w"> </span><span class="m">1</span><span class="w"> </span>package<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">10</span>.82s
+Uninstalled<span class="w"> </span><span class="m">1</span><span class="w"> </span>package<span class="w"> </span><span class="k">in</span><span class="w"> </span>7ms
+Installed<span class="w"> </span><span class="m">1</span><span class="w"> </span>package<span class="w"> </span><span class="k">in</span><span class="w"> </span>6ms
+<span class="w"> </span>~<span class="w"> </span><span class="nv">halide</span><span class="o">==</span><span class="m">20</span>.0.0.dev87+gf6c939fd3.d20250724<span class="w"> </span><span class="o">(</span>from<span class="w"> </span>file:///Users/areinking/dev/Halide<span class="o">)</span>
+$<span class="w"> </span>ccache<span class="w"> </span>-s
+Cacheable<span class="w"> </span>calls:<span class="w">   </span><span class="m">1079</span><span class="w"> </span>/<span class="w"> </span><span class="m">1080</span><span class="w"> </span><span class="o">(</span><span class="m">99</span>.91%<span class="o">)</span>
+<span class="w">  </span>Hits:<span class="w">            </span><span class="m">1079</span><span class="w"> </span>/<span class="w"> </span><span class="m">1079</span><span class="w"> </span><span class="o">(</span><span class="m">100</span>.0%<span class="o">)</span>
+<span class="w">    </span>Direct:<span class="w">        </span><span class="m">1079</span><span class="w"> </span>/<span class="w"> </span><span class="m">1079</span><span class="w"> </span><span class="o">(</span><span class="m">100</span>.0%<span class="o">)</span>
+<span class="w">    </span>Preprocessed:<span class="w">     </span><span class="m">0</span><span class="w"> </span>/<span class="w"> </span><span class="m">1079</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="m">0</span>.00%<span class="o">)</span>
+<span class="w">  </span>Misses:<span class="w">             </span><span class="m">0</span><span class="w"> </span>/<span class="w"> </span><span class="m">1079</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="m">0</span>.00%<span class="o">)</span>
+Uncacheable<span class="w"> </span>calls:<span class="w">    </span><span class="m">1</span><span class="w"> </span>/<span class="w"> </span><span class="m">1080</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="m">0</span>.09%<span class="o">)</span>
+Local<span class="w"> </span>storage:
+<span class="w">  </span>Cache<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>GB<span class="o">)</span>:<span class="w">  </span><span class="m">2</span>.2<span class="w"> </span>/<span class="w"> </span><span class="m">30</span>.0<span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="m">7</span>.24%<span class="o">)</span>
+<span class="w">  </span>Hits:<span class="w">            </span><span class="m">1079</span><span class="w"> </span>/<span class="w"> </span><span class="m">1079</span><span class="w"> </span><span class="o">(</span><span class="m">100</span>.0%<span class="o">)</span>
+<span class="w">  </span>Misses:<span class="w">             </span><span class="m">0</span><span class="w"> </span>/<span class="w"> </span><span class="m">1079</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="m">0</span>.00%<span class="o">)</span>
+</pre></div>
+</div>
+<p>On this test system (an M3 MacBook Pro), the build is three times faster, with a
+100% cache hit rate!</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="guides.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Guides</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="HalideCMakePackage.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using Halide from your CMake build</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-cmake">Installing CMake</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-platform">Cross-platform</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macos">macOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubuntu-linux">Ubuntu Linux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-install-ninja">Optional: Install Ninja</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencies">Dependencies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-dependencies">Installing dependencies</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vcpkg">vcpkg</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Windows</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#homebrew">Homebrew</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ubuntu-debian">Ubuntu / Debian</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-halide">Building Halide</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-build">Basic build</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Windows</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#macos-and-linux">macOS and Linux</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cmake-presets">CMake Presets</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#common-presets">Common presets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vcpkg-presets">Vcpkg presets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sanitizer-presets">Sanitizer presets</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#valgrind-and-intel-sde-presets">Valgrind and Intel SDE presets</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-options">Build options</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing">Installing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-halide-with-pip">Building Halide with pip</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ccache-with-pip-builds">Using ccache with pip builds</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright The Halide team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

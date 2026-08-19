@@ -1,0 +1,926 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Stage &#8212; Halide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=1ee386da" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/generated/Stage';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="VarOrRVar" href="VarOrRVar.html" />
+    <link rel="prev" title="ScheduleHandle" href="ScheduleHandle.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Halide</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../tutorial/index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../tutorial/index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="reference.html">All Types</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Argument_h.html">Argument.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Argument.html">Argument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ArgumentEstimates.html">ArgumentEstimates</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Buffer.html">Buffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Callable.html">Callable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Derivative.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeviceAPI.html">DeviceAPI</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Error_h.html">Error.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="CompileError.html">CompileError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CompileTimeErrorReporter.html">CompileTimeErrorReporter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Error.html">Error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="InternalError.html">InternalError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RuntimeError.html">RuntimeError</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Expr_h.html">Expr.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Expr.html">Expr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExprCompare.html">ExprCompare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MemoryType.html">MemoryType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Range.html">Range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Region.html">Region</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="ExternFuncArgument.html">ExternFuncArgument</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Float16_h.html">Float16.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="bfloat16_t.html">bfloat16_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="float16_t.html">float16_t</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="group_Func_h.html">Func.h</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="EvictionKey.html">EvictionKey</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Func.html">Func</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FuncRef.html">FuncRef</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FuncTupleElementRef.html">FuncTupleElementRef</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ScheduleHandle.html">ScheduleHandle</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VarOrRVar.html">VarOrRVar</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Generator_h.html">Generator.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Generator.html">Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GeneratorContext.html">GeneratorContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GeneratorInput.html">GeneratorInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GeneratorOutput.html">GeneratorOutput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GeneratorParam.html">GeneratorParam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NamesInterface.html">NamesInterface</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="GeneratorParamsMap.html">GeneratorParamsMap</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_HalideBuffer_h.html">HalideBuffer.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="PyTorch_Buffer.html">PyTorch::Buffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Runtime_AllInts.html">Runtime::AllInts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Runtime_AllocationHeader.html">Runtime::AllocationHeader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Runtime_Buffer.html">Runtime::Buffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Runtime_BufferDeviceOwnership.html">Runtime::BufferDeviceOwnership</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Runtime_DeviceRefCount.html">Runtime::DeviceRefCount</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_HalideRuntime_h.html">HalideRuntime.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="BUFFER_FLAGS_UNDERLYING_TYPE.html">BUFFER_FLAGS_UNDERLYING_TYPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_argument_kind_t.html">halide_argument_kind_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_buffer_flags.html">halide_buffer_flags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_buffer_t.html">halide_buffer_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_can_use_target_features_t.html">halide_can_use_target_features_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_device_interface_t.html">halide_device_interface_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_dimension_t.html">halide_dimension_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_do_loop_task_t.html">halide_do_loop_task_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_do_par_for_t.html">halide_do_par_for_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_do_parallel_tasks_t.html">halide_do_parallel_tasks_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_do_task_t.html">halide_do_task_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_error_code_t.html">halide_error_code_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_error_handler_t.html">halide_error_handler_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_filter_argument_t.html">halide_filter_argument_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_free_t.html">halide_free_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_get_library_symbol_t.html">halide_get_library_symbol_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_get_symbol_t.html">halide_get_symbol_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_load_library_t.html">halide_load_library_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_loop_task_t.html">halide_loop_task_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_malloc_t.html">halide_malloc_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_print_t.html">halide_print_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_profiler_func_kind.html">halide_profiler_func_kind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_scalar_value_t.html">halide_scalar_value_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_semaphore_init_t.html">halide_semaphore_init_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_semaphore_release_t.html">halide_semaphore_release_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_semaphore_try_acquire_t.html">halide_semaphore_try_acquire_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_target_feature_t.html">halide_target_feature_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_target_processor_t.html">halide_target_processor_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_task_t.html">halide_task_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_trace_event_code_t.html">halide_trace_event_code_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_trace_t.html">halide_trace_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_type_code_t.html">halide_type_code_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_type_t.html">halide_type_t</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="ImageParam.html">ImageParam</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Internal.html">Internal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Internal_AssociativeOp.html">Internal::AssociativeOp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_BaseExprNode.html">Internal::BaseExprNode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_BufferContents.html">Internal::BufferContents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_ConstantInterval.html">Internal::ConstantInterval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_Definition.html">Internal::Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_Dimension.html">Internal::Dimension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_Function.html">Internal::Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_FunctionPtr.html">Internal::FunctionPtr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_GeneratorBase.html">Internal::GeneratorBase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_GeneratorInput_Buffer.html">Internal::GeneratorInput_Buffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_IRMutator.html">Internal::IRMutator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_IntrusivePtr.html">Internal::IntrusivePtr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_JITCache.html">Internal::JITCache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_JITErrorBuffer.html">Internal::JITErrorBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_JITModule.html">Internal::JITModule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_LoweredFunc.html">Internal::LoweredFunc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_ReductionDomain.html">Internal::ReductionDomain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_ReductionVariable.html">Internal::ReductionVariable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_Split.html">Internal::Split</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_StageSchedule.html">Internal::StageSchedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_Stmt.html">Internal::Stmt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_StorageDim.html">Internal::StorageDim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_StubOutputBuffer.html">Internal::StubOutputBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_all_are_convertible.html">Internal::all_are_convertible</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_all_are_printable_args.html">Internal::all_are_printable_args</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_all_ints_and_optional_name.html">Internal::all_ints_and_optional_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_cond.html">Internal::cond</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_JITModule_h.html">JITModule.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="JITHandlers.html">JITHandlers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="JITUserContext.html">JITUserContext</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Module_h.html">Module.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="LinkageType.html">LinkageType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MetadataNameMap.html">MetadataNameMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Module.html">Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ModuleFactory.html">ModuleFactory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OutputFileType.html">OutputFileType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RuntimeLinkage.html">RuntimeLinkage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RuntimeNamespaceMap.html">RuntimeNamespaceMap</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="NameMangling.html">NameMangling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OutputImageParam.html">OutputImageParam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Param.html">Param</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Parameter_h.html">Parameter.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="BufferConstraint.html">BufferConstraint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Parameter.html">Parameter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Partition.html">Partition</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Pipeline_h.html">Pipeline.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="AutoSchedulerFn.html">AutoSchedulerFn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AutoSchedulerResults.html">AutoSchedulerResults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AutoschedulerParams.html">AutoschedulerParams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CustomLoweringPass.html">CustomLoweringPass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExternCFunction.html">ExternCFunction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExternSignature.html">ExternSignature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="JITExtern.html">JITExtern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Pipeline.html">Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RuntimePrefixParams.html">RuntimePrefixParams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="StmtOutputFormat.html">StmtOutputFormat</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="PrefetchBoundStrategy.html">PrefetchBoundStrategy</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_RDom_h.html">RDom.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RDom.html">RDom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RVar.html">RVar</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Realization.html">Realization</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Schedule_h.html">Schedule.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="FuseLoopLevel.html">FuseLoopLevel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LoopAlignStrategy.html">LoopAlignStrategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LoopLevel.html">LoopLevel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TailStrategy.html">TailStrategy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Target.html">Target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tuple.html">Tuple</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Type_h.html">Type.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Type.html">Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_cplusplus_type_name.html">halide_cplusplus_type_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_handle_cplusplus_type.html">halide_handle_cplusplus_type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_handle_traits.html">halide_handle_traits</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Var_h.html">Var.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="ImplicitVar.html">ImplicitVar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Var.html">Var</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">API Reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="reference.html" class="nav-link">All Types</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="group_Func_h.html" class="nav-link">Func.h</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Stage</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="stage">
+<h1>Stage<a class="headerlink" href="#stage" title="Link to this heading">#</a></h1>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N6Halide5StageE">
+<span id="_CPPv3N6Halide5StageE"></span><span id="_CPPv2N6Halide5StageE"></span><span id="Halide::Stage"></span><span class="target" id="class_halide_1_1_stage"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Stage</span></span></span><a class="headerlink" href="#_CPPv4N6Halide5StageE" title="Link to this definition">#</a><br /></dt>
+<dd><p>A single definition of a <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a>. </p>
+<p>May be a pure or update definition. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK6Halide5Stage12get_scheduleEv">
+<span id="_CPPv3NK6Halide5Stage12get_scheduleEv"></span><span id="_CPPv2NK6Halide5Stage12get_scheduleEv"></span><span id="Halide::Stage::get_scheduleC"></span><span class="target" id="class_halide_1_1_stage_1aa2f2793f8e9e9fead538e2cde9239d96"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">Internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="Internal_StageSchedule.html#_CPPv4N6Halide8Internal13StageScheduleE" title="Halide::Internal::StageSchedule"><span class="n"><span class="pre">StageSchedule</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_schedule</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK6Halide5Stage12get_scheduleEv" title="Link to this definition">#</a><br /></dt>
+<dd><p>Return the current StageSchedule associated with this <a class="reference internal" href="#class_halide_1_1_stage"><span class="std std-ref">Stage</span></a>. </p>
+<p>For introspection only: to modify schedule, use the <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a> interface. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK6Halide5Stage18dump_argument_listEv">
+<span id="_CPPv3NK6Halide5Stage18dump_argument_listEv"></span><span id="_CPPv2NK6Halide5Stage18dump_argument_listEv"></span><span id="Halide::Stage::dump_argument_listC"></span><span class="target" id="class_halide_1_1_stage_1aeae73b461d876d4d921474d5042dad65"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dump_argument_list</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK6Halide5Stage18dump_argument_listEv" title="Link to this definition">#</a><br /></dt>
+<dd><p>Return a string describing the current var list taking into account all the splits, reorders, and tiles. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK6Halide5Stage4nameEv">
+<span id="_CPPv3NK6Halide5Stage4nameEv"></span><span id="_CPPv2NK6Halide5Stage4nameEv"></span><span id="Halide::Stage::nameC"></span><span class="target" id="class_halide_1_1_stage_1a075401098fc0eb3fa260bbb93a21e80b"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">name</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK6Halide5Stage4nameEv" title="Link to this definition">#</a><br /></dt>
+<dd><p>Return the name of this stage, e.g. </p>
+<p>“f.update(2)” </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Halide5Stage7rfactorERKNSt6vectorINSt4pairI4RVar3VarEEEE">
+<span id="_CPPv3N6Halide5Stage7rfactorERKNSt6vectorINSt4pairI4RVar3VarEEEE"></span><span id="_CPPv2N6Halide5Stage7rfactorERKNSt6vectorINSt4pairI4RVar3VarEEEE"></span><span id="Halide::Stage::rfactor__std::vector:std::pair:RVar.Var::CR"></span><span class="target" id="class_halide_1_1_stage_1adf0d368ce824028616e88ddd36c51140"></span><a class="reference internal" href="Func.html#_CPPv4N6Halide4FuncE" title="Halide::Func"><span class="n"><span class="pre">Func</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rfactor</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="RVar.html#_CPPv4N6Halide4RVarE" title="Halide::RVar"><span class="n"><span class="pre">RVar</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="Var.html#_CPPv4N6Halide3VarE" title="Halide::Var"><span class="n"><span class="pre">Var</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">preserved</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Halide5Stage7rfactorERKNSt6vectorINSt4pairI4RVar3VarEEEE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Calling <a class="reference internal" href="#class_halide_1_1_stage_1adf0d368ce824028616e88ddd36c51140"><span class="std std-ref">rfactor()</span></a> on an associative update definition a <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a> will split the update into an intermediate which computes the partial results and replaces the current update definition with a new definition which merges the partial results. </p>
+<p>If called on a init/pure definition, this will throw an error. <a class="reference internal" href="#class_halide_1_1_stage_1adf0d368ce824028616e88ddd36c51140"><span class="std std-ref">rfactor()</span></a> will automatically infer the associative reduction operator and identity of the operator. If it can’t prove the operation is associative or if it cannot find an identity for that operator, this will throw an error. In addition, commutativity of the operator is required if <a class="reference internal" href="#class_halide_1_1_stage_1adf0d368ce824028616e88ddd36c51140"><span class="std std-ref">rfactor()</span></a> is called on the inner dimension but excluding the outer dimensions.</p>
+<p><a class="reference internal" href="#class_halide_1_1_stage_1adf0d368ce824028616e88ddd36c51140"><span class="std std-ref">rfactor()</span></a> takes as input ‘preserved’, which is a list of &lt;<a class="reference internal" href="RVar.html#class_halide_1_1_r_var"><span class="std std-ref">RVar</span></a>, <a class="reference internal" href="Var.html#class_halide_1_1_var"><span class="std std-ref">Var</span></a>&gt; pairs. The rvars not listed in ‘preserved’ are removed from the original <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a> and are lifted to the intermediate <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a>. The remaining rvars (the ones in ‘preserved’) are made pure in the intermediate <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a>. The intermediate <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a>’s update definition inherits all scheduling directives (e.g. split,fuse, etc.) applied to the original <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a>’s update definition. The loop order of the intermediate <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a>’s update definition is the same as the original, although the RVars in ‘preserved’ are replaced by the new pure Vars. The loop order of the intermediate <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a>’s init definition from innermost to outermost is the args’ order of the original <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a>’s init definition followed by the new pure Vars.</p>
+<p>The intermediate <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a> also inherits storage order from the original <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a> with the new pure Vars added to the outermost.</p>
+<p>For example, f.update(0).rfactor({{r.y, u}}) would rewrite a pipeline like this: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">+=</span> <span class="n">g</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">y</span><span class="p">);</span>
+</pre></div>
+</div>
+ into a pipeline like this: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f_intm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">f_intm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="o">+=</span> <span class="n">g</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">);</span>
+
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">+=</span> <span class="n">f_intm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">y</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<p>This has a variety of uses. You can use it to split computation of an associative reduction: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="n">RDom</span> <span class="n">r</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">96</span><span class="p">);</span>
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">));</span>
+<span class="n">f</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">rxo</span><span class="p">,</span> <span class="n">rxi</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">reorder</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">parallel</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="n">f</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">rfactor</span><span class="p">({{</span><span class="n">rxo</span><span class="p">,</span> <span class="n">u</span><span class="p">}})</span><span class="o">.</span><span class="n">compute_root</span><span class="p">()</span><span class="o">.</span><span class="n">parallel</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">parallel</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<p>, which is equivalent to: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parallel</span> <span class="k">for</span> <span class="n">u</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">to</span> <span class="mi">11</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">y</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">:</span>
+      <span class="n">f_intm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">inf</span>
+<span class="n">parallel</span> <span class="k">for</span> <span class="n">x</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">y</span><span class="p">:</span>
+    <span class="n">parallel</span> <span class="k">for</span> <span class="n">u</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">to</span> <span class="mi">11</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">rxi</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">to</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="n">f_intm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f_intm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">),</span> <span class="n">g</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">u</span> <span class="o">+</span> <span class="n">rxi</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">y</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">x</span><span class="p">:</span>
+    <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">parallel</span> <span class="k">for</span> <span class="n">x</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">y</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">rxo</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">to</span> <span class="mi">11</span><span class="p">:</span>
+      <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">f_intm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rxo</span><span class="p">))</span>
+</pre></div>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Halide5Stage12eager_inlineERKNSt6vectorI4FuncEE">
+<span id="_CPPv3N6Halide5Stage12eager_inlineERKNSt6vectorI4FuncEE"></span><span id="_CPPv2N6Halide5Stage12eager_inlineERKNSt6vectorI4FuncEE"></span><span id="Halide::Stage::eager_inline__std::vector:Func:CR"></span><span class="target" id="class_halide_1_1_stage_1a9c3f03a0ccee93e14c01b0c31e29ff0b"></span><a class="reference internal" href="#_CPPv4N6Halide5StageE" title="Halide::Stage"><span class="n"><span class="pre">Stage</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">eager_inline</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="Func.html#_CPPv4N6Halide4FuncE" title="Halide::Func"><span class="n"><span class="pre">Func</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">fs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Halide5Stage12eager_inlineERKNSt6vectorI4FuncEE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Immediately inline direct calls to each of the given Funcs into this stage’s definition. </p>
+<p>The Funcs are inlined in dependency order regardless of the order they are passed, so if one inlined <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a>’s body calls another, both are fully folded in.</p>
+<p>Unlike compute_inline(), which merely marks a <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a> to be inlined during lowering, <a class="reference internal" href="#class_halide_1_1_stage_1a9c3f03a0ccee93e14c01b0c31e29ff0b"><span class="std std-ref">eager_inline()</span></a> performs the substitution now, at schedule time, rewriting only this stage’s definition in place. This is useful to surface structure that other schedule-time directives (e.g. <a class="reference internal" href="#class_halide_1_1_stage_1adf0d368ce824028616e88ddd36c51140"><span class="std std-ref">rfactor()</span></a>) need to see.</p>
+<p>Each inlined <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a> must be inlinable: a pure <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a> (no update or extern definition) with no specializations, and with a schedule compatible with inlining (as for compute_inline()). The inlined Funcs are otherwise unchanged; only this stage’s calls to them are replaced. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Halide5Stage12compute_withE9LoopLevelRKNSt6vectorINSt4pairI9VarOrRVar17LoopAlignStrategyEEEE">
+<span id="_CPPv3N6Halide5Stage12compute_withE9LoopLevelRKNSt6vectorINSt4pairI9VarOrRVar17LoopAlignStrategyEEEE"></span><span id="_CPPv2N6Halide5Stage12compute_withE9LoopLevelRKNSt6vectorINSt4pairI9VarOrRVar17LoopAlignStrategyEEEE"></span><span id="Halide::Stage::compute_with__LoopLevel.std::vector:std::pair:VarOrRVar.LoopAlignStrategy::CR"></span><span class="target" id="class_halide_1_1_stage_1a3fd245c66c941885f339c824afd4532e"></span><a class="reference internal" href="#_CPPv4N6Halide5StageE" title="Halide::Stage"><span class="n"><span class="pre">Stage</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">compute_with</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="LoopLevel.html#_CPPv4N6Halide9LoopLevelE" title="Halide::LoopLevel"><span class="n"><span class="pre">LoopLevel</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">loop_level</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">pair</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="VarOrRVar.html#_CPPv4N6Halide9VarOrRVarE" title="Halide::VarOrRVar"><span class="n"><span class="pre">VarOrRVar</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="LoopAlignStrategy.html#_CPPv4N6Halide17LoopAlignStrategyE" title="Halide::LoopAlignStrategy"><span class="n"><span class="pre">LoopAlignStrategy</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">align</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Halide5Stage12compute_withE9LoopLevelRKNSt6vectorINSt4pairI9VarOrRVar17LoopAlignStrategyEEEE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Schedule the iteration over this stage to be fused with another stage ‘s’ from outermost loop to a given <a class="reference internal" href="LoopLevel.html#class_halide_1_1_loop_level"><span class="std std-ref">LoopLevel</span></a>. </p>
+<p>‘this’ stage will be computed AFTER ‘s’ in the innermost fused dimension. There should not be any dependencies between those two fused stages. If either of the stages being fused is a stage of an extern <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a>, this will throw an error.</p>
+<p>Note that the two stages that are fused together should have the same exact schedule from the outermost to the innermost fused dimension, and the stage we are calling compute_with on should not have specializations, e.g. f2.compute_with(f1, x) is allowed only if f2 has no specializations.</p>
+<p>Also, if a producer is desired to be computed at the fused loop level, the function passed to the compute_at() needs to be the “parent”. Consider the following code: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">+=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">;</span>
+<span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">+=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="n">f</span><span class="o">.</span><span class="n">compute_with</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+<span class="n">f</span><span class="o">.</span><span class="n">update</span><span class="p">()</span><span class="o">.</span><span class="n">compute_with</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">update</span><span class="p">(),</span> <span class="n">y</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<p>To compute ‘input’ at the fused loop level at dimension y, we specify input.compute_at(g, y) instead of input.compute_at(f, y) since ‘g’ is the “parent” for this fused loop (i.e. ‘g’ is computed first before ‘f’ is computed). On the other hand, to compute ‘input’ at the innermost dimension of ‘f’, we specify input.compute_at(f, x) instead of input.compute_at(g, x) since the x dimension of ‘f’ is not fused (only the y dimension is).</p>
+<p>Given the constraints, this has a variety of uses. Consider the following code: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
+<span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">;</span>
+<span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+<span class="n">f</span><span class="o">.</span><span class="n">compute_root</span><span class="p">();</span>
+<span class="n">g</span><span class="o">.</span><span class="n">compute_root</span><span class="p">();</span>
+<span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xo</span><span class="p">,</span> <span class="n">xi</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+<span class="n">g</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xo</span><span class="p">,</span> <span class="n">xi</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+<span class="n">g</span><span class="o">.</span><span class="n">compute_with</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">xo</span><span class="p">);</span>
+</pre></div>
+</div>
+</p>
+<p>This is equivalent to: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">y</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">xo</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">xi</span><span class="p">:</span>
+      <span class="n">f</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">xo</span> <span class="o">+</span> <span class="n">xi</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">xo</span> <span class="o">+</span> <span class="n">xi</span><span class="p">)</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="k">for</span> <span class="n">xi</span><span class="p">:</span>
+      <span class="n">g</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">xo</span> <span class="o">+</span> <span class="n">xi</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">xo</span> <span class="o">+</span> <span class="n">xi</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span>
+<span class="k">for</span> <span class="n">y</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">x</span><span class="p">:</span>
+    <span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</p>
+<p>The size of the dimensions of the stages computed_with do not have to match. Consider the following code where ‘g’ is half the size of ‘f’: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span> <span class="n">f_im</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">),</span> <span class="n">g_im</span><span class="p">(</span><span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+<span class="nb">input</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+<span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="p">);</span>
+<span class="n">g</span><span class="o">.</span><span class="n">compute_with</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">compute_at</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+<span class="n">Pipeline</span><span class="p">({</span><span class="n">f</span><span class="p">,</span> <span class="n">g</span><span class="p">})</span><span class="o">.</span><span class="n">realize</span><span class="p">({</span><span class="n">f_im</span><span class="p">,</span> <span class="n">g_im</span><span class="p">});</span>
+</pre></div>
+</div>
+</p>
+<p>This is equivalent to: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">to</span> <span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">to</span> <span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+    <span class="nb">input</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">;</span>
+  <span class="k">for</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">to</span> <span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+    <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">to</span> <span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">size</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+      <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</p>
+<p>‘align’ specifies how the loop iteration of each dimension of the two stages being fused should be aligned in the fused loop nests (see <a class="reference internal" href="LoopAlignStrategy.html#namespace_halide_1a751041c9a6cffe776b613f4dd04c3354"><span class="std std-ref">LoopAlignStrategy</span></a> for options). Consider the following loop nests: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">z</span> <span class="o">=</span> <span class="n">f_min_z</span> <span class="n">to</span> <span class="n">f_max_z</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">y</span> <span class="o">=</span> <span class="n">f_min_y</span> <span class="n">to</span> <span class="n">f_max_y</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="o">=</span> <span class="n">f_min_x</span> <span class="n">to</span> <span class="n">f_max_x</span><span class="p">:</span>
+      <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
+<span class="k">for</span> <span class="n">z</span> <span class="o">=</span> <span class="n">g_min_z</span> <span class="n">to</span> <span class="n">g_max_z</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">y</span> <span class="o">=</span> <span class="n">g_min_y</span> <span class="n">to</span> <span class="n">g_max_y</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="o">=</span> <span class="n">g_min_x</span> <span class="n">to</span> <span class="n">g_max_x</span><span class="p">:</span>
+      <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="o">-</span> <span class="n">z</span>
+</pre></div>
+</div>
+</p>
+<p>If no alignment strategy is specified, the following loop nest will be generated: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">z</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">f_min_z</span><span class="p">,</span> <span class="n">g_min_z</span><span class="p">)</span> <span class="n">to</span> <span class="nb">max</span><span class="p">(</span><span class="n">f_max_z</span><span class="p">,</span> <span class="n">g_max_z</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">f_min_y</span><span class="p">,</span> <span class="n">g_min_y</span><span class="p">)</span> <span class="n">to</span> <span class="nb">max</span><span class="p">(</span><span class="n">f_max_y</span><span class="p">,</span> <span class="n">g_max_y</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="o">=</span> <span class="n">f_min_x</span> <span class="n">to</span> <span class="n">f_max_x</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">f_min_z</span> <span class="o">&lt;=</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="n">f_max_z</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">f_min_y</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">f_max_y</span><span class="p">):</span>
+          <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="o">=</span> <span class="n">g_min_x</span> <span class="n">to</span> <span class="n">g_max_x</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">g_min_z</span> <span class="o">&lt;=</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="n">g_max_z</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">g_min_y</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">g_max_y</span><span class="p">):</span>
+          <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="o">-</span> <span class="n">z</span>
+</pre></div>
+</div>
+</p>
+<p>Instead, these alignment strategies: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">compute_with</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">{{</span><span class="n">z</span><span class="p">,</span> <span class="n">LoopAlignStrategy</span><span class="p">::</span><span class="n">AlignStart</span><span class="p">},</span> <span class="p">{</span><span class="n">y</span><span class="p">,</span> <span class="n">LoopAlignStrategy</span><span class="p">::</span><span class="n">AlignEnd</span><span class="p">}});</span>
+</pre></div>
+</div>
+ will produce the following loop nest: <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f_loop_min_z</span> <span class="o">=</span> <span class="n">f_min_z</span>
+<span class="n">f_loop_max_z</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">f_max_z</span><span class="p">,</span> <span class="p">(</span><span class="n">f_min_z</span> <span class="o">-</span> <span class="n">g_min_z</span><span class="p">)</span> <span class="o">+</span> <span class="n">g_max_z</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">z</span> <span class="o">=</span> <span class="n">f_min_z</span> <span class="n">to</span> <span class="n">f_loop_max_z</span><span class="p">:</span>
+  <span class="n">f_loop_min_y</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">f_min_y</span><span class="p">,</span> <span class="p">(</span><span class="n">f_max_y</span> <span class="o">-</span> <span class="n">g_max_y</span><span class="p">)</span> <span class="o">+</span> <span class="n">g_min_y</span><span class="p">)</span>
+  <span class="n">f_loop_max_y</span> <span class="o">=</span> <span class="n">f_max_y</span>
+  <span class="k">for</span> <span class="n">y</span> <span class="o">=</span> <span class="n">f_loop_min_y</span> <span class="n">to</span> <span class="n">f_loop_max_y</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="o">=</span> <span class="n">f_min_x</span> <span class="n">to</span> <span class="n">f_max_x</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">f_loop_min_z</span> <span class="o">&lt;=</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="n">f_loop_max_z</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">f_loop_min_y</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">f_loop_max_y</span><span class="p">):</span>
+          <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="o">=</span> <span class="n">g_min_x</span> <span class="n">to</span> <span class="n">g_max_x</span><span class="p">:</span>
+      <span class="n">g_shift_z</span> <span class="o">=</span> <span class="n">g_min_z</span> <span class="o">-</span> <span class="n">f_loop_min_z</span>
+      <span class="n">g_shift_y</span> <span class="o">=</span> <span class="n">g_max_y</span> <span class="o">-</span> <span class="n">f_loop_max_y</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">g_min_z</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="n">g_shift_z</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">g_max_z</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">g_min_y</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">g_shift_y</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">g_max_y</span><span class="p">):</span>
+          <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">g_shift_y</span><span class="p">,</span> <span class="n">z</span> <span class="o">+</span> <span class="n">g_shift_z</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">g_shift_y</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="n">g_shift_z</span><span class="p">)</span>
+</pre></div>
+</div>
+</p>
+<p><a class="reference internal" href="LoopAlignStrategy.html#namespace_halide_1a751041c9a6cffe776b613f4dd04c3354a7bdacdfaf12e9cd3af92850a628baf4b"><span class="std std-ref">LoopAlignStrategy::AlignStart</span></a> on dimension z will shift the loop iteration of ‘g’ at dimension z so that its starting value matches that of ‘f’. Likewise, <a class="reference internal" href="LoopAlignStrategy.html#namespace_halide_1a751041c9a6cffe776b613f4dd04c3354a58a4774b4ffb202dc1be23bfff77a3af"><span class="std std-ref">LoopAlignStrategy::AlignEnd</span></a> on dimension y will shift the loop iteration of ‘g’ at dimension y so that its end value matches that of ‘f’. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Halide5Stage5splitERK9VarOrRVarRK9VarOrRVarRK9VarOrRVarRK4Expr12TailStrategy">
+<span id="_CPPv3N6Halide5Stage5splitERK9VarOrRVarRK9VarOrRVarRK9VarOrRVarRK4Expr12TailStrategy"></span><span id="_CPPv2N6Halide5Stage5splitERK9VarOrRVarRK9VarOrRVarRK9VarOrRVarRK4Expr12TailStrategy"></span><span id="Halide::Stage::split__VarOrRVarCR.VarOrRVarCR.VarOrRVarCR.ExprCR.TailStrategy"></span><span class="target" id="class_halide_1_1_stage_1accee02c7cbd10ed1d9e06d192396d30d"></span><a class="reference internal" href="#_CPPv4N6Halide5StageE" title="Halide::Stage"><span class="n"><span class="pre">Stage</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">split</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="VarOrRVar.html#_CPPv4N6Halide9VarOrRVarE" title="Halide::VarOrRVar"><span class="n"><span class="pre">VarOrRVar</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">old</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="VarOrRVar.html#_CPPv4N6Halide9VarOrRVarE" title="Halide::VarOrRVar"><span class="n"><span class="pre">VarOrRVar</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">outer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="VarOrRVar.html#_CPPv4N6Halide9VarOrRVarE" title="Halide::VarOrRVar"><span class="n"><span class="pre">VarOrRVar</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">inner</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="Expr.html#_CPPv4N6Halide4ExprE" title="Halide::Expr"><span class="n"><span class="pre">Expr</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">factor</span></span>, <a class="reference internal" href="TailStrategy.html#_CPPv4N6Halide12TailStrategyE" title="Halide::TailStrategy"><span class="n"><span class="pre">TailStrategy</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">tail</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="TailStrategy.html#_CPPv4N6Halide12TailStrategyE" title="Halide::TailStrategy"><span class="n"><span class="pre">TailStrategy</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="TailStrategy.html#_CPPv4N6Halide12TailStrategy4AutoE" title="Halide::TailStrategy::Auto"><span class="n"><span class="pre">Auto</span></span></a><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Halide5Stage5splitERK9VarOrRVarRK9VarOrRVarRK9VarOrRVarRK4Expr12TailStrategy" title="Link to this definition">#</a><br /></dt>
+<dd><p>Scheduling calls that control how the domain of this stage is traversed. </p>
+<p>See the documentation for <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a> for the meanings. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Halide5Stage13stream_storesEv">
+<span id="_CPPv3N6Halide5Stage13stream_storesEv"></span><span id="_CPPv2N6Halide5Stage13stream_storesEv"></span><span id="Halide::Stage::stream_stores"></span><span class="target" id="class_halide_1_1_stage_1af36d3b1b6cfae73494843ad4f686215c"></span><a class="reference internal" href="#_CPPv4N6Halide5StageE" title="Halide::Stage"><span class="n"><span class="pre">Stage</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">stream_stores</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Halide5Stage13stream_storesEv" title="Link to this definition">#</a><br /></dt>
+<dd><p>Use non-temporal (streaming) stores for writes done by this <a class="reference internal" href="#class_halide_1_1_stage"><span class="std std-ref">Stage</span></a>. </p>
+<p>On targets that require it, Halide emits a fence immediately after this <a class="reference internal" href="#class_halide_1_1_stage"><span class="std std-ref">Stage</span></a>’s production to ensure the streamed values are visible to whatever reads them next. Only legal on a <a class="reference internal" href="#class_halide_1_1_stage"><span class="std std-ref">Stage</span></a> all of whose RVars (if any) are pure, i.e. already proven safe to parallelize: a <a class="reference internal" href="#class_halide_1_1_stage"><span class="std std-ref">Stage</span></a> with a genuine loop-carried self-dependency could otherwise observe data it streamed earlier in the same <a class="reference internal" href="#class_halide_1_1_stage"><span class="std std-ref">Stage</span></a>, before the fence. It is a user error to call this on a <a class="reference internal" href="#class_halide_1_1_stage"><span class="std std-ref">Stage</span></a> that doesn’t meet this condition. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Halide5Stage12stream_loadsEv">
+<span id="_CPPv3N6Halide5Stage12stream_loadsEv"></span><span id="_CPPv2N6Halide5Stage12stream_loadsEv"></span><span id="Halide::Stage::stream_loads"></span><span class="target" id="class_halide_1_1_stage_1a5ec4968b2917702c01bb92eefcd08f84"></span><a class="reference internal" href="#_CPPv4N6Halide5StageE" title="Halide::Stage"><span class="n"><span class="pre">Stage</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">stream_loads</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Halide5Stage12stream_loadsEv" title="Link to this definition">#</a><br /></dt>
+<dd><p>Use non-temporal (streaming) loads for every direct read this <a class="reference internal" href="#class_halide_1_1_stage"><span class="std std-ref">Stage</span></a> makes of another <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a> or external buffer (e.g. </p>
+<p>an <a class="reference internal" href="ImageParam.html#class_halide_1_1_image_param"><span class="std std-ref">ImageParam</span></a>). This is a hint to keep data that is only read once from displacing reusable data from the cache. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Halide5Stage12stream_loadsERKNSt6vectorI4FuncEE">
+<span id="_CPPv3N6Halide5Stage12stream_loadsERKNSt6vectorI4FuncEE"></span><span id="_CPPv2N6Halide5Stage12stream_loadsERKNSt6vectorI4FuncEE"></span><span id="Halide::Stage::stream_loads__std::vector:Func:CR"></span><span class="target" id="class_halide_1_1_stage_1ad51b4134534f6892d78e30cff2e7bd4a"></span><a class="reference internal" href="#_CPPv4N6Halide5StageE" title="Halide::Stage"><span class="n"><span class="pre">Stage</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">stream_loads</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="Func.html#_CPPv4N6Halide4FuncE" title="Halide::Func"><span class="n"><span class="pre">Func</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">funcs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Halide5Stage12stream_loadsERKNSt6vectorI4FuncEE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Use non-temporal (streaming) loads for this <a class="reference internal" href="#class_halide_1_1_stage"><span class="std std-ref">Stage</span></a>’s direct reads of the named Funcs. </p>
+<p>It is a user error to name this <a class="reference internal" href="#class_halide_1_1_stage"><span class="std std-ref">Stage</span></a>’s own <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a> (a self-load can’t be streamed). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK6Halide5Stage10split_varsEv">
+<span id="_CPPv3NK6Halide5Stage10split_varsEv"></span><span id="_CPPv2NK6Halide5Stage10split_varsEv"></span><span id="Halide::Stage::split_varsC"></span><span class="target" id="class_halide_1_1_stage_1a51968740bf33cc54e8362bdd56cb581d"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="VarOrRVar.html#_CPPv4N6Halide9VarOrRVarE" title="Halide::VarOrRVar"><span class="n"><span class="pre">VarOrRVar</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">split_vars</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK6Halide5Stage10split_varsEv" title="Link to this definition">#</a><br /></dt>
+<dd><p>Get the Vars and RVars of this definition, from innermost out, with splits applied. </p>
+<p>This represents all the potentially-valid compute_at sites for this <a class="reference internal" href="#class_halide_1_1_stage"><span class="std std-ref">Stage</span></a>. The RVars returned will be symbolic and not tied to a particular reduction domain, like the naked <a class="reference internal" href="RVar.html#class_halide_1_1_r_var"><span class="std std-ref">RVar</span></a> objects used as split outputs. Note that this list by default will end with the sentinel <a class="reference internal" href="Var.html#class_halide_1_1_var_1aae5374d79ed234db176e6a59057bdb1b"><span class="std std-ref">Var::outermost</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Halide5Stage11unscheduledEv">
+<span id="_CPPv3N6Halide5Stage11unscheduledEv"></span><span id="_CPPv2N6Halide5Stage11unscheduledEv"></span><span id="Halide::Stage::unscheduled"></span><span class="target" id="class_halide_1_1_stage_1af31af040ad702c3fa25208d1615254bd"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unscheduled</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Halide5Stage11unscheduledEv" title="Link to this definition">#</a><br /></dt>
+<dd><p>Assert that this stage has intentionally been given no schedule, and suppress the warning about unscheduled update definitions that would otherwise fire. </p>
+<p>This counts as a schedule, so calling this twice on the same <a class="reference internal" href="#class_halide_1_1_stage"><span class="std std-ref">Stage</span></a> will fail the assertion. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ScheduleHandle.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">ScheduleHandle</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="VarOrRVar.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">VarOrRVar</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide5StageE"><code class="docutils literal notranslate"><span class="pre">Halide::Stage</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4NK6Halide5Stage12get_scheduleEv"><code class="docutils literal notranslate"><span class="pre">get_schedule()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4NK6Halide5Stage18dump_argument_listEv"><code class="docutils literal notranslate"><span class="pre">dump_argument_list()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4NK6Halide5Stage4nameEv"><code class="docutils literal notranslate"><span class="pre">name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide5Stage7rfactorERKNSt6vectorINSt4pairI4RVar3VarEEEE"><code class="docutils literal notranslate"><span class="pre">rfactor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide5Stage12eager_inlineERKNSt6vectorI4FuncEE"><code class="docutils literal notranslate"><span class="pre">eager_inline()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide5Stage12compute_withE9LoopLevelRKNSt6vectorINSt4pairI9VarOrRVar17LoopAlignStrategyEEEE"><code class="docutils literal notranslate"><span class="pre">compute_with()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide5Stage5splitERK9VarOrRVarRK9VarOrRVarRK9VarOrRVarRK4Expr12TailStrategy"><code class="docutils literal notranslate"><span class="pre">split()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide5Stage13stream_storesEv"><code class="docutils literal notranslate"><span class="pre">stream_stores()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide5Stage12stream_loadsEv"><code class="docutils literal notranslate"><span class="pre">stream_loads()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide5Stage12stream_loadsERKNSt6vectorI4FuncEE"><code class="docutils literal notranslate"><span class="pre">stream_loads()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4NK6Halide5Stage10split_varsEv"><code class="docutils literal notranslate"><span class="pre">split_vars()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide5Stage11unscheduledEv"><code class="docutils literal notranslate"><span class="pre">unscheduled()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright The Halide team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

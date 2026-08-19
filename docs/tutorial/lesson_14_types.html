@@ -1,0 +1,986 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>14. The Halide type system &#8212; Halide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=1ee386da" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial/lesson_14_types';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="15. Generators" href="lesson_15.html" />
+    <link rel="prev" title="13. Tuples" href="lesson_13_tuples.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Halide</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lesson_01_basics.html">1. Getting started with Funcs, Vars, and Exprs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_02_input_image.html">2. Processing images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_03_debugging_1.html">3. Inspecting the generated code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_04_debugging_2.html">4. Debugging with tracing, print, and print_when</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_05_scheduling_1.html">5. Vectorize, parallelize, unroll and tile your code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_06_realizing_over_shifted_domains.html">6. Realizing Funcs over arbitrary domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_07_multi_stage_pipelines.html">7. Multi-stage pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_08_scheduling_2.html">8. Scheduling multi-stage pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_09_update_definitions.html">9. Multi-pass Funcs, update definitions, and reductions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesson_10.html">10. AOT compilation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesson_10_aot_compilation_generate.html">Compiling the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_10_aot_compilation_run.html">Running the compiled pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_11_cross_compilation.html">11. Cross-compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_12_using_the_gpu.html">12. Using the GPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_13_tuples.html">13. Tuples</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. The Halide type system</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesson_15.html">15. Generators</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesson_15_generators.html">Writing a generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_15_generators_usage.html">Command-line usage</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesson_16.html">16. RGB images and memory layouts</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesson_16_rgb_generate.html">Compiling the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_16_rgb_run.html">Running the compiled pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_17_predicated_rdom.html">17. Reductions over non-rectangular domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_18_parallel_associative_reductions.html">18. Factoring an associative reduction using rfactor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_19_wrapper_funcs.html">19. Wrapper Funcs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_20_cloning_funcs.html">20. Cloning Funcs</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesson_21.html">21. Auto-Scheduler</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesson_21_auto_scheduler_generate.html">Generating a schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_21_auto_scheduler_run.html">Running the compiled pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_22_jit_performance.html">22. JIT compilation performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_23_serialization.html">23. Serialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_24_async.html">24. Async execution</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Tutorial</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">14. The Halide type system</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="the-halide-type-system">
+<h1>14. The Halide type system<a class="headerlink" href="#the-halide-type-system" title="Link to this heading">#</a></h1>
+<div class="lesson-tabs">
+<script>
+(function () {
+  try {
+    if (sessionStorage.getItem("sphinx-design-tab-id-tab") === "python") {
+      document.documentElement.classList.add("pref-python");
+    }
+  } catch (e) {}
+  // design-tabs.js's own <script> tag (in <head>) runs, and so registers
+  // its DOMContentLoaded listener, before this inline script does (it's
+  // encountered later, while parsing the body) -- so by the time this
+  // listener fires, design-tabs.js has already set the correct radio's
+  // `checked` state to match. Once that's true, the "pref-python" class
+  // must come off: it forces Python's content to display via `!important`
+  // (see custom.css) regardless of which radio is actually checked, which
+  // is exactly what's needed to avoid a flash before that happens, but
+  // would otherwise permanently override the plain `:checked`-based
+  // styling for the rest of the page -- silently breaking a later click
+  // back to C++.
+  document.addEventListener("DOMContentLoaded", function () {
+    document.documentElement.classList.remove("pref-python");
+  });
+})();
+</script>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="cpp" for="sd-tab-item-0">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Halide tutorial lesson 14: The Halide type system</span>
+
+<span class="c1">// This lesson more precisely describes Halide&#39;s type system.</span>
+
+<span class="c1">// On linux, you can compile and run it like so:</span>
+<span class="c1">// g++ lesson_14*.cpp -g -I &lt;path/to/include&gt; -L &lt;path/to/lib&gt; -lHalide -lpthread -ldl -o lesson_14 -std=c++17</span>
+<span class="c1">// LD_LIBRARY_PATH=&lt;path/to/lib&gt; ./lesson_14</span>
+
+<span class="c1">// On macOS:</span>
+<span class="c1">// g++ lesson_14*.cpp -g -I &lt;path/to/include&gt; -L &lt;path/to/lib&gt; -lHalide -o lesson_14 -std=c++17</span>
+<span class="c1">// DYLD_LIBRARY_PATH=&lt;path/to/lib&gt; ./lesson_14</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Halide.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdio&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">Halide</span><span class="p">;</span>
+
+<span class="c1">// This function is used to demonstrate generic code at the end of</span>
+<span class="c1">// this lesson.</span>
+<span class="n">Expr</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">Expr</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">Expr</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// All Exprs have a scalar type, and all Funcs evaluate to one or</span>
+<span class="w">    </span><span class="c1">// more scalar types. The scalar types in Halide are unsigned</span>
+<span class="w">    </span><span class="c1">// integers of various bit widths, signed integers of the same set</span>
+<span class="w">    </span><span class="c1">// of bit widths, floating point numbers in single and double</span>
+<span class="w">    </span><span class="c1">// precision, and opaque handles (equivalent to void *). The</span>
+<span class="w">    </span><span class="c1">// following array contains all the legal types.</span>
+
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">valid_halide_types</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="n">UInt</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span><span class="w"> </span><span class="n">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span><span class="w"> </span><span class="n">UInt</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Int</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="n">Int</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span><span class="w"> </span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span><span class="w"> </span><span class="n">Int</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span>
+<span class="w">        </span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span><span class="w"> </span><span class="n">Float</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span><span class="w"> </span><span class="n">Handle</span><span class="p">()};</span>
+
+<span class="w">    </span><span class="c1">// Constructing and inspecting types.</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// You can programmatically examine the properties of a Halide</span>
+<span class="w">        </span><span class="c1">// type. This is useful when you write a C++ function that has</span>
+<span class="w">        </span><span class="c1">// Expr arguments and you wish to check their types:</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">).</span><span class="n">bits</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">Int</span><span class="p">(</span><span class="mi">8</span><span class="p">).</span><span class="n">is_int</span><span class="p">());</span>
+
+<span class="w">        </span><span class="c1">// You can also programmatically construct Types as a function of other Types.</span>
+<span class="w">        </span><span class="n">Type</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span>
+<span class="w">        </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">with_bits</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">bits</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">UInt</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// Or construct a Type from a C++ scalar type</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">type_of</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// The Type struct is also capable of representing vector types,</span>
+<span class="w">        </span><span class="c1">// but this is reserved for Halide&#39;s internal use. You should</span>
+<span class="w">        </span><span class="c1">// vectorize code by using Func::vectorize, not by attempting to</span>
+<span class="w">        </span><span class="c1">// construct vector expressions directly. You may encounter vector</span>
+<span class="w">        </span><span class="c1">// types if you programmatically manipulate lowered Halide code,</span>
+<span class="w">        </span><span class="c1">// but this is an advanced topic (see Func::add_custom_lowering_pass).</span>
+
+<span class="w">        </span><span class="c1">// You can query any Halide Expr for its type. An Expr</span>
+<span class="w">        </span><span class="c1">// representing a Var has type Int(32):</span>
+<span class="w">        </span><span class="n">Var</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">Expr</span><span class="p">(</span><span class="n">x</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// Most transcendental functions in Halide cast their inputs to a</span>
+<span class="w">        </span><span class="c1">// Float(32) and return a Float(32):</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// You can cast an Expr from one Type to another using the cast operator:</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">cast</span><span class="p">(</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="w"> </span><span class="n">x</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// This also comes in a template form that takes a C++ type.</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// You can also query any defined Func for the types it produces.</span>
+<span class="w">        </span><span class="n">Func</span><span class="w"> </span><span class="n">f1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">f1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">f1</span><span class="p">.</span><span class="n">types</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">));</span>
+
+<span class="w">        </span><span class="n">Func</span><span class="w"> </span><span class="n">f2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">f2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)};</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">f2</span><span class="p">.</span><span class="n">types</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">               </span><span class="n">f2</span><span class="p">.</span><span class="n">types</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Type promotion rules.</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// When you combine Exprs of different types (e.g. using &#39;+&#39;,</span>
+<span class="w">        </span><span class="c1">// &#39;*&#39;, etc), Halide uses a system of type promotion</span>
+<span class="w">        </span><span class="c1">// rules. These differ to C&#39;s rules. To demonstrate these</span>
+<span class="w">        </span><span class="c1">// we&#39;ll make some Exprs of each type.</span>
+<span class="w">        </span><span class="n">Var</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">u8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">u16</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">uint16_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">u32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">u64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">s8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">int8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">s16</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">int16_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">s32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">int32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">s64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">int64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">f32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">f64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// The rules are as follows, and are applied in the order they are</span>
+<span class="w">        </span><span class="c1">// written below.</span>
+
+<span class="w">        </span><span class="c1">// 1) It is an error to cast or use arithmetic operators on Exprs of type Handle().</span>
+
+<span class="w">        </span><span class="c1">// 2) If the types are the same, then no type conversions occur.</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Type</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">valid_halide_types</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Skip the handle type.</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">is_handle</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">            </span><span class="n">Expr</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<span class="w">            </span><span class="n">assert</span><span class="p">((</span><span class="n">e</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">type</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// 3) If one type is a float but the other is not, then the</span>
+<span class="w">        </span><span class="c1">// non-float argument is promoted to a float (possibly causing a</span>
+<span class="w">        </span><span class="c1">// loss of precision for large integers).</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">((</span><span class="n">u8</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f32</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">((</span><span class="n">f32</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s64</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">((</span><span class="n">u16</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f64</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Float</span><span class="p">(</span><span class="mi">64</span><span class="p">));</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">((</span><span class="n">f64</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s32</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Float</span><span class="p">(</span><span class="mi">64</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// 4) If both types are float, then the narrower argument is</span>
+<span class="w">        </span><span class="c1">// promoted to the wider bit-width.</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">((</span><span class="n">f64</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f32</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Float</span><span class="p">(</span><span class="mi">64</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// The rules above handle all the floating-point cases. The</span>
+<span class="w">        </span><span class="c1">// following three rules handle the integer cases.</span>
+
+<span class="w">        </span><span class="c1">// 5) If one of the arguments is an C++ int, and the other is</span>
+<span class="w">        </span><span class="c1">// a Halide::Expr, then the int is coerced to the type of the</span>
+<span class="w">        </span><span class="c1">// expression.</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">((</span><span class="n">u32</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">((</span><span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s16</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Int</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// If this rule would cause the integer to overflow, then Halide</span>
+<span class="w">        </span><span class="c1">// will trigger an error, e.g. uncommenting the following line</span>
+<span class="w">        </span><span class="c1">// will cause this program to terminate with an error.</span>
+<span class="w">        </span><span class="c1">// Expr bad = u8 + 257;</span>
+
+<span class="w">        </span><span class="c1">// 6) If both types are unsigned integers, or both types are</span>
+<span class="w">        </span><span class="c1">// signed integers, then the narrower argument is promoted to</span>
+<span class="w">        </span><span class="c1">// wider type.</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">((</span><span class="n">u32</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">u8</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">((</span><span class="n">s16</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s64</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Int</span><span class="p">(</span><span class="mi">64</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// 7) If one type is signed and the other is unsigned, both</span>
+<span class="w">        </span><span class="c1">// arguments are promoted to a signed integer with the greater of</span>
+<span class="w">        </span><span class="c1">// the two bit widths.</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">((</span><span class="n">u8</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s32</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">((</span><span class="n">u32</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s8</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// Note that this may silently overflow the unsigned type in the</span>
+<span class="w">        </span><span class="c1">// case where the bit widths are the same.</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">((</span><span class="n">u32</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s32</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+
+<span class="w">        </span><span class="c1">// When an unsigned Expr is converted to a wider signed type in</span>
+<span class="w">        </span><span class="c1">// this way, it is first widened to a wider unsigned type</span>
+<span class="w">        </span><span class="c1">// (zero-extended), and then reinterpreted as a signed</span>
+<span class="w">        </span><span class="c1">// integer. I.e. casting the UInt(8) value 255 to an Int(32)</span>
+<span class="w">        </span><span class="c1">// produces 255, not -1.</span>
+<span class="w">        </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">result32</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">evaluate</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">int32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">255</span><span class="p">)));</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">result32</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">255</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// When a signed type is explicitly converted to a wider unsigned</span>
+<span class="w">        </span><span class="c1">// type with the cast operator (the type promotion rules will</span>
+<span class="w">        </span><span class="c1">// never do this automatically), it is first converted to the</span>
+<span class="w">        </span><span class="c1">// wider signed type (sign-extended), and then reinterpreted as</span>
+<span class="w">        </span><span class="c1">// an unsigned integer. I.e. casting the Int(8) value -1 to a</span>
+<span class="w">        </span><span class="c1">// UInt(16) produces 65535, not 255.</span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">result16</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">evaluate</span><span class="o">&lt;</span><span class="kt">uint16_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">uint16_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">int8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">-1</span><span class="p">)));</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">result16</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">65535</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// The type Handle().</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Handle is used to represent opaque pointers. Applying</span>
+<span class="w">        </span><span class="c1">// type_of to any pointer type will return Handle()</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">type_of</span><span class="o">&lt;</span><span class="kt">void</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Handle</span><span class="p">());</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">type_of</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="o">**&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Handle</span><span class="p">());</span>
+
+<span class="w">        </span><span class="c1">// Handles are always stored as 64-bit, regardless of the compilation</span>
+<span class="w">        </span><span class="c1">// target.</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">Handle</span><span class="p">().</span><span class="n">bits</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">64</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// The main use of an Expr of type Handle is to pass</span>
+<span class="w">        </span><span class="c1">// it through Halide to other external code.</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Generic code.</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// The main explicit use of Type in Halide is to write Halide</span>
+<span class="w">        </span><span class="c1">// code parameterized by a Type. In C++ you&#39;d do this with</span>
+<span class="w">        </span><span class="c1">// templates. In Halide there&#39;s no need - you can inspect and</span>
+<span class="w">        </span><span class="c1">// modify the types dynamically at C++ runtime instead. The</span>
+<span class="w">        </span><span class="c1">// function defined below averages two expressions of any</span>
+<span class="w">        </span><span class="c1">// equal numeric type.</span>
+<span class="w">        </span><span class="n">Var</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">average</span><span class="p">(</span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="mf">3.0f</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">average</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">));</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">average</span><span class="p">(</span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">cast</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">)).</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Success!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Expr</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">Expr</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">Expr</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Types must match.</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">type</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">type</span><span class="p">());</span>
+
+<span class="w">    </span><span class="c1">// For floating point types:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">type</span><span class="p">().</span><span class="n">is_float</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// The &#39;2&#39; will be promoted to the floating point type due to</span>
+<span class="w">        </span><span class="c1">// rule 3 above.</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// For integer types, we must compute the intermediate value in a</span>
+<span class="w">    </span><span class="c1">// wider type to avoid overflow.</span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">narrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">type</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">wider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">narrow</span><span class="p">.</span><span class="n">with_bits</span><span class="p">(</span><span class="n">narrow</span><span class="p">.</span><span class="n">bits</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="p">(</span><span class="n">wider</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+<span class="w">    </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cast</span><span class="p">(</span><span class="n">wider</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cast</span><span class="p">(</span><span class="n">narrow</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="python" for="sd-tab-item-1">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+
+<span class="c1"># Halide tutorial lesson 14: The Halide type system</span>
+
+<span class="c1"># This lesson more precisely describes Halide&#39;s type system.</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">halide</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">hl</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># All Exprs have a scalar type, and all Funcs evaluate to one or</span>
+    <span class="c1"># more scalar types. The scalar types in Halide are unsigned</span>
+    <span class="c1"># integers of various bit widths, signed integers of the same set</span>
+    <span class="c1"># of bit widths, floating point numbers in single and double</span>
+    <span class="c1"># precision, and opaque handles (equivalent to void *). The</span>
+    <span class="c1"># following array contains all the legal types.</span>
+
+    <span class="n">valid_halide_types</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">Handle</span><span class="p">(),</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Constructing and inspecting types.</span>
+    <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># You can programmatically examine the properties of a Halide</span>
+        <span class="c1"># type. This is useful when you write a Python function that</span>
+        <span class="c1"># has hl.Expr arguments and you wish to check their types:</span>
+        <span class="k">assert</span> <span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">bits</span><span class="p">()</span> <span class="o">==</span> <span class="mi">8</span>
+        <span class="k">assert</span> <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">is_int</span><span class="p">()</span>
+
+        <span class="c1"># You can also programmatically construct Types as a function of other</span>
+        <span class="c1"># Types.</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">with_bits</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">bits</span><span class="p">()</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">t</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+
+        <span class="c1"># The Type struct is also capable of representing vector types,</span>
+        <span class="c1"># but this is reserved for Halide&#39;s internal use. You should</span>
+        <span class="c1"># vectorize code by using hl.Func::vectorize, not by attempting to</span>
+        <span class="c1"># construct vector expressions directly. You may encounter vector</span>
+        <span class="c1"># types if you programmatically manipulate lowered Halide code,</span>
+        <span class="c1"># but this is an advanced topic (see</span>
+        <span class="c1"># hl.Func::add_custom_lowering_pass).</span>
+
+        <span class="c1"># You can query any Halide hl.Expr for its type. An hl.Expr</span>
+        <span class="c1"># representing a hl.Var has type hl.Int(32):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">hl</span><span class="o">.</span><span class="n">Expr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+
+        <span class="c1"># Most transcendental functions in Halide hl.cast their inputs to a</span>
+        <span class="c1"># hl.Float(32) and return a hl.Float(32):</span>
+        <span class="k">assert</span> <span class="n">hl</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+
+        <span class="c1"># You can hl.cast an hl.Expr from one Type to another using the hl.cast</span>
+        <span class="c1"># operator:</span>
+        <span class="k">assert</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+        <span class="c1"># You can also query any defined hl.Func for the types it produces.</span>
+        <span class="n">f1</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;f1&quot;</span><span class="p">)</span>
+        <span class="n">f1</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">f1</span><span class="o">.</span><span class="n">types</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+        <span class="n">f2</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;f2&quot;</span><span class="p">)</span>
+        <span class="n">f2</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">hl</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="k">assert</span> <span class="n">f2</span><span class="o">.</span><span class="n">types</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span> <span class="ow">and</span> <span class="n">f2</span><span class="o">.</span><span class="n">types</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+
+    <span class="c1"># Type promotion rules.</span>
+    <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># When you combine Exprs of different types (e.g. using &#39;+&#39;,</span>
+        <span class="c1"># &#39;*&#39;, etc), Halide uses a system of type promotion</span>
+        <span class="c1"># rules. These aren&#39;t the same as Python&#39;s own type promotion</span>
+        <span class="c1"># rules. To demonstrate these we&#39;ll make some Exprs of each</span>
+        <span class="c1"># type.</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+        <span class="n">u8</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">u16</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">u32</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">u64</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">s8</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">s16</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">s32</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">s64</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">f32</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">f64</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+
+        <span class="c1"># The rules are as follows, and are applied in the order they are</span>
+        <span class="c1"># written below.</span>
+
+        <span class="c1"># 1) It is an error to hl.cast or use arithmetic operators on Exprs of</span>
+        <span class="c1"># type hl.Handle().</span>
+
+        <span class="c1"># 2) If the types are the same, then no type conversions occur.</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">valid_halide_types</span><span class="p">:</span>
+            <span class="c1"># Skip the handle type.</span>
+            <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">is_handle</span><span class="p">():</span>
+                <span class="k">continue</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="p">(</span><span class="n">e</span> <span class="o">+</span> <span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">e</span><span class="o">.</span><span class="n">type</span><span class="p">()</span>
+
+        <span class="c1"># 3) If one type is a float but the other is not, then the</span>
+        <span class="c1"># non-float argument is promoted to a float (possibly causing a</span>
+        <span class="c1"># loss of precision for large integers).</span>
+        <span class="k">assert</span> <span class="p">(</span><span class="n">u8</span> <span class="o">+</span> <span class="n">f32</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="p">(</span><span class="n">f32</span> <span class="o">+</span> <span class="n">s64</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="p">(</span><span class="n">u16</span> <span class="o">+</span> <span class="n">f64</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="p">(</span><span class="n">f64</span> <span class="o">+</span> <span class="n">s32</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+
+        <span class="c1"># 4) If both types are float, then the narrower argument is</span>
+        <span class="c1"># promoted to the wider bit-width.</span>
+        <span class="k">assert</span> <span class="p">(</span><span class="n">f64</span> <span class="o">+</span> <span class="n">f32</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+
+        <span class="c1"># The rules above handle all the floating-point cases. The</span>
+        <span class="c1"># following three rules handle the integer cases.</span>
+
+        <span class="c1"># 5) If one of the expressions is an integer constant, then it is</span>
+        <span class="c1"># coerced to the type of the other expression.</span>
+        <span class="k">assert</span> <span class="p">(</span><span class="n">u64</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="n">s16</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+
+        <span class="c1"># If this rule would cause the integer to overflow, then Halide</span>
+        <span class="c1"># will trigger an error, e.g. uncommenting the following line</span>
+        <span class="c1"># will cause this program to terminate with an error.</span>
+        <span class="c1"># hl.Expr bad = u8 + 257</span>
+
+        <span class="c1"># 6) If both types are unsigned integers, or both types are</span>
+        <span class="c1"># signed integers, then the narrower argument is promoted to</span>
+        <span class="c1"># wider type.</span>
+        <span class="k">assert</span> <span class="p">(</span><span class="n">u32</span> <span class="o">+</span> <span class="n">u8</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="p">(</span><span class="n">s16</span> <span class="o">+</span> <span class="n">s64</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+
+        <span class="c1"># 7) If one type is signed and the other is unsigned, both</span>
+        <span class="c1"># arguments are promoted to a signed integer with the greater of</span>
+        <span class="c1"># the two bit widths.</span>
+        <span class="k">assert</span> <span class="p">(</span><span class="n">u8</span> <span class="o">+</span> <span class="n">s32</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="p">(</span><span class="n">u32</span> <span class="o">+</span> <span class="n">s8</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+
+        <span class="c1"># Note that this may silently overflow the unsigned type in the</span>
+        <span class="c1"># case where the bit widths are the same.</span>
+        <span class="k">assert</span> <span class="p">(</span><span class="n">u32</span> <span class="o">+</span> <span class="n">s32</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+
+    <span class="c1">## TODO: evaluate&lt;X&gt; not yet exposed to python</span>
+
+    <span class="c1"># When an unsigned hl.Expr is converted to a wider signed type in</span>
+    <span class="c1"># this way, it is first widened to a wider unsigned type</span>
+    <span class="c1"># (zero-extended), and then reinterpreted as a signed</span>
+    <span class="c1"># integer. I.e. casting the hl.UInt(8) value 255 to an hl.Int(32)</span>
+    <span class="c1"># produces 255, not -1.</span>
+    <span class="c1"># int32_t result32 = evaluate&lt;int&gt;(hl.cast&lt;int32_t&gt;(hl.cast&lt;uint8_t&gt;(255)))</span>
+    <span class="c1"># assert result32 == 255</span>
+
+    <span class="c1"># When a signed type is explicitly converted to a wider unsigned</span>
+    <span class="c1"># type with the hl.cast operator (the type promotion rules will</span>
+    <span class="c1"># never do this automatically), it is first converted to the</span>
+    <span class="c1"># wider signed type (sign-extended), and then reinterpreted as</span>
+    <span class="c1"># an unsigned integer. I.e. casting the hl.Int(8) value -1 to a</span>
+    <span class="c1"># hl.UInt(16) produces 65535, not 255.</span>
+    <span class="c1"># uint16_t result16 = evaluate&lt;uint16_t&gt;(hl.cast&lt;uint16_t&gt;(hl.cast&lt;int8_t&gt;(-1)))</span>
+    <span class="c1"># assert result16 == 65535</span>
+
+    <span class="c1"># The type hl.Handle().</span>
+    <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># hl.Handle is used to represent opaque pointers. Applying</span>
+        <span class="c1"># type_of to any pointer type will return hl.Handle()</span>
+
+        <span class="c1"># Handles are always stored as 64-bit, regardless of the compilation</span>
+        <span class="c1"># target.</span>
+        <span class="k">assert</span> <span class="n">hl</span><span class="o">.</span><span class="n">Handle</span><span class="p">()</span><span class="o">.</span><span class="n">bits</span><span class="p">()</span> <span class="o">==</span> <span class="mi">64</span>
+
+        <span class="c1"># The main use of an hl.Expr of type hl.Handle is to pass</span>
+        <span class="c1"># it through Halide to other external code.</span>
+
+    <span class="c1"># Generic code.</span>
+    <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># The main explicit use of Type in Halide is to write Halide</span>
+        <span class="c1"># code parameterized by a Type. Even though Python itself is</span>
+        <span class="c1"># dynamically typed, an hl.Expr&#39;s type is fixed once it&#39;s</span>
+        <span class="c1"># built, so writing ordinary duck-typed Python code isn&#39;t</span>
+        <span class="c1"># enough to handle every Halide type generically. Instead you</span>
+        <span class="c1"># inspect and modify the types dynamically using Halide&#39;s own</span>
+        <span class="c1"># Type API. The function defined below averages two</span>
+        <span class="c1"># expressions of any equal numeric type.</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">average</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="n">x</span><span class="p">),</span> <span class="mf">3.0</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">average</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">average</span><span class="p">(</span>
+            <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">x</span><span class="p">),</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="mi">0</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">average</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">hl</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Expr</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">hl</span><span class="o">.</span><span class="n">Expr</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Expr</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+    <span class="s2">&quot;hl.Expr average(hl.Expr a, hl.Expr b)&quot;</span>
+    <span class="c1"># Types must match.</span>
+    <span class="k">assert</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">b</span><span class="o">.</span><span class="n">type</span><span class="p">()</span>
+
+    <span class="c1"># For floating point types:</span>
+    <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span><span class="p">()</span><span class="o">.</span><span class="n">is_float</span><span class="p">():</span>
+        <span class="c1"># The &#39;2&#39; will be promoted to the floating point type due to</span>
+        <span class="c1"># rule 3 above.</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="c1"># For integer types, we must compute the intermediate value in a</span>
+    <span class="c1"># wider type to avoid overflow.</span>
+    <span class="n">narrow</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">type</span><span class="p">()</span>
+    <span class="n">wider</span> <span class="o">=</span> <span class="n">narrow</span><span class="o">.</span><span class="n">with_bits</span><span class="p">(</span><span class="n">narrow</span><span class="o">.</span><span class="n">bits</span><span class="p">()</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">wider</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">wider</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">narrow</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lesson_13_tuples.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">13. Tuples</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lesson_15.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">15. Generators</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright The Halide team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1023 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Generating a schedule &#8212; Halide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=1ee386da" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial/lesson_21_auto_scheduler_generate';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Running the compiled pipeline" href="lesson_21_auto_scheduler_run.html" />
+    <link rel="prev" title="21. Auto-Scheduler" href="lesson_21.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Halide</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lesson_01_basics.html">1. Getting started with Funcs, Vars, and Exprs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_02_input_image.html">2. Processing images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_03_debugging_1.html">3. Inspecting the generated code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_04_debugging_2.html">4. Debugging with tracing, print, and print_when</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_05_scheduling_1.html">5. Vectorize, parallelize, unroll and tile your code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_06_realizing_over_shifted_domains.html">6. Realizing Funcs over arbitrary domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_07_multi_stage_pipelines.html">7. Multi-stage pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_08_scheduling_2.html">8. Scheduling multi-stage pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_09_update_definitions.html">9. Multi-pass Funcs, update definitions, and reductions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesson_10.html">10. AOT compilation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesson_10_aot_compilation_generate.html">Compiling the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_10_aot_compilation_run.html">Running the compiled pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_11_cross_compilation.html">11. Cross-compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_12_using_the_gpu.html">12. Using the GPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_13_tuples.html">13. Tuples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_14_types.html">14. The Halide type system</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesson_15.html">15. Generators</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesson_15_generators.html">Writing a generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_15_generators_usage.html">Command-line usage</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesson_16.html">16. RGB images and memory layouts</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesson_16_rgb_generate.html">Compiling the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_16_rgb_run.html">Running the compiled pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_17_predicated_rdom.html">17. Reductions over non-rectangular domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_18_parallel_associative_reductions.html">18. Factoring an associative reduction using rfactor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_19_wrapper_funcs.html">19. Wrapper Funcs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_20_cloning_funcs.html">20. Cloning Funcs</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="lesson_21.html">21. Auto-Scheduler</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Generating a schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_21_auto_scheduler_run.html">Running the compiled pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_22_jit_performance.html">22. JIT compilation performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_23_serialization.html">23. Serialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_24_async.html">24. Async execution</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Tutorial</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="lesson_21.html" class="nav-link">21. Auto-Scheduler</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Generating a schedule</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="generating-a-schedule">
+<h1>Generating a schedule<a class="headerlink" href="#generating-a-schedule" title="Link to this heading">#</a></h1>
+<div class="lesson-tabs">
+<script>
+(function () {
+  try {
+    if (sessionStorage.getItem("sphinx-design-tab-id-tab") === "python") {
+      document.documentElement.classList.add("pref-python");
+    }
+  } catch (e) {}
+  // design-tabs.js's own <script> tag (in <head>) runs, and so registers
+  // its DOMContentLoaded listener, before this inline script does (it's
+  // encountered later, while parsing the body) -- so by the time this
+  // listener fires, design-tabs.js has already set the correct radio's
+  // `checked` state to match. Once that's true, the "pref-python" class
+  // must come off: it forces Python's content to display via `!important`
+  // (see custom.css) regardless of which radio is actually checked, which
+  // is exactly what's needed to avoid a flash before that happens, but
+  // would otherwise permanently override the plain `:checked`-based
+  // styling for the rest of the page -- silently breaking a later click
+  // back to C++.
+  document.addEventListener("DOMContentLoaded", function () {
+    document.documentElement.classList.remove("pref-python");
+  });
+})();
+</script>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="cpp" for="sd-tab-item-0">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Halide tutorial lesson 21: Auto-Scheduler: generating a schedule</span>
+
+<span class="c1">// So far we have written Halide schedules by hand, but it is also possible to</span>
+<span class="c1">// ask Halide to suggest a reasonable schedule. We call this auto-scheduling.</span>
+<span class="c1">// This lesson demonstrates how to use the autoscheduler to generate a</span>
+<span class="c1">// copy-pasteable CPU schedule that can be subsequently improved upon.</span>
+
+<span class="c1">// On linux or macOS, you can compile and run it like so:</span>
+
+<span class="c1">// g++ lesson_21_auto_scheduler_generate.cpp &lt;path/to/tools&gt;/GenGen.cpp -g -std=c++17 -fno-rtti -I &lt;path/to/include&gt; -L &lt;path/to/lib&gt; -lHalide -lpthread -ldl -o lesson_21_generate</span>
+<span class="c1">// export LD_LIBRARY_PATH=&lt;path/to/lib&gt;   # For linux</span>
+<span class="c1">// export DYLD_LIBRARY_PATH=&lt;path/to/lib&gt; # For macOS</span>
+<span class="c1">// ./lesson_21_generate -o . -g auto_schedule_gen -f auto_schedule_false -e static_library,h,schedule target=host</span>
+<span class="c1">// ./lesson_21_generate -o . -g auto_schedule_gen -f auto_schedule_true -e static_library,h,schedule -p &lt;path/to/libautoschedule_mullapudi2016.so&gt; target=host autoscheduler=Mullapudi2016 autoscheduler.parallelism=32 autoscheduler.last_level_cache_size=16777216 autoscheduler.balance=40</span>
+<span class="c1">// g++ lesson_21_auto_scheduler_run.cpp -std=c++17 -I &lt;path/to/include&gt; -I &lt;path/to/tools&gt; auto_schedule_false.a auto_schedule_true.a -ldl -lpthread -o lesson_21_run</span>
+<span class="c1">// ./lesson_21_run</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Halide.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdio&gt;</span>
+
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">Halide</span><span class="p">;</span>
+
+<span class="c1">// We will define a generator to auto-schedule.</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AutoScheduled</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Halide</span><span class="o">::</span><span class="n">Generator</span><span class="o">&lt;</span><span class="n">AutoScheduled</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Input</span><span class="o">&lt;</span><span class="n">Buffer</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">input</span><span class="p">{</span><span class="s">&quot;input&quot;</span><span class="p">};</span>
+<span class="w">    </span><span class="n">Input</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">factor</span><span class="p">{</span><span class="s">&quot;factor&quot;</span><span class="p">};</span>
+
+<span class="w">    </span><span class="n">Output</span><span class="o">&lt;</span><span class="n">Buffer</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">output1</span><span class="p">{</span><span class="s">&quot;output1&quot;</span><span class="p">};</span>
+<span class="w">    </span><span class="n">Output</span><span class="o">&lt;</span><span class="n">Buffer</span><span class="o">&lt;</span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">output2</span><span class="p">{</span><span class="s">&quot;output2&quot;</span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">Expr</span><span class="w"> </span><span class="nf">sum3x3</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Func</span><span class="w"> </span><span class="o">&amp;</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Var</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Var</span><span class="w"> </span><span class="o">&amp;</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">               </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">               </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">generate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// For our algorithm, we&#39;ll use Harris corner detection.</span>
+<span class="w">        </span><span class="n">Func</span><span class="w"> </span><span class="n">in_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BoundaryConditions</span><span class="o">::</span><span class="n">repeat_edge</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">gray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.299f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">in_b</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.587f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">in_b</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.114f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">in_b</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Iy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gray</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">-1.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">gray</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                   </span><span class="n">gray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">-2.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">gray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">2.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                   </span><span class="n">gray</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">-1.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">gray</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Ix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gray</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">-1.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">gray</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                   </span><span class="n">gray</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">-2.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">gray</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">2.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                   </span><span class="n">gray</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">-1.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">gray</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mf">1.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Ixx</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Ix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Iyy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Iy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Iy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Ixy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Iy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Sxx</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum3x3</span><span class="p">(</span><span class="n">Ixx</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Syy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum3x3</span><span class="p">(</span><span class="n">Iyy</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Sxy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum3x3</span><span class="p">(</span><span class="n">Ixy</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">        </span><span class="n">det</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sxx</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Syy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Sxy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Sxy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">        </span><span class="n">trace</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sxx</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Syy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">        </span><span class="n">harris</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">det</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">0.04f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">trace</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">trace</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">        </span><span class="n">output1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">harris</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">        </span><span class="n">output2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">harris</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">schedule</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">using_autoscheduler</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// The autoscheduler requires estimates on all the input/output</span>
+<span class="w">            </span><span class="c1">// sizes and parameter values in order to compare different</span>
+<span class="w">            </span><span class="c1">// alternatives and decide on a good schedule.</span>
+
+<span class="w">            </span><span class="c1">// To provide estimates (min and extent values) for each dimension</span>
+<span class="w">            </span><span class="c1">// of the input images (&#39;input&#39;, &#39;filter&#39;, and &#39;bias&#39;), we use the</span>
+<span class="w">            </span><span class="c1">// set_estimates() method. set_estimates() takes in a list of</span>
+<span class="w">            </span><span class="c1">// (min, extent) of the corresponding dimension as arguments.</span>
+<span class="w">            </span><span class="n">input</span><span class="p">.</span><span class="n">set_estimates</span><span class="p">({{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">}});</span>
+
+<span class="w">            </span><span class="c1">// To provide estimates on the parameter values, we use the</span>
+<span class="w">            </span><span class="c1">// set_estimate() method.</span>
+<span class="w">            </span><span class="n">factor</span><span class="p">.</span><span class="n">set_estimate</span><span class="p">(</span><span class="mf">2.0f</span><span class="p">);</span>
+
+<span class="w">            </span><span class="c1">// To provide estimates (min and extent values) for each dimension</span>
+<span class="w">            </span><span class="c1">// of pipeline outputs, we use the set_estimates() method. set_estimates()</span>
+<span class="w">            </span><span class="c1">// takes in a list of (min, extent) for each dimension.</span>
+<span class="w">            </span><span class="n">output1</span><span class="p">.</span><span class="n">set_estimates</span><span class="p">({{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">}});</span>
+<span class="w">            </span><span class="n">output2</span><span class="p">.</span><span class="n">set_estimates</span><span class="p">({{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">}});</span>
+
+<span class="w">            </span><span class="c1">// Technically, the estimate values can be anything, but the closer</span>
+<span class="w">            </span><span class="c1">// they are to the actual use-case values, the better the generated</span>
+<span class="w">            </span><span class="c1">// schedule will be.</span>
+
+<span class="w">            </span><span class="c1">// To auto-schedule the pipeline, we don&#39;t have to do anything else:</span>
+<span class="w">            </span><span class="c1">// every Generator implicitly has a GeneratorParam named &quot;auto_scheduler.name&quot;;</span>
+<span class="w">            </span><span class="c1">// if this is set to the name of the Autoscheduler we want to use, Halide will</span>
+<span class="w">            </span><span class="c1">// apply it to all of our pipeline&#39;s outputs automatically.</span>
+
+<span class="w">            </span><span class="c1">// Every Generator also implicitly has additional, optional GeneratorParams that are</span>
+<span class="w">            </span><span class="c1">// dependent on the specific Autoscheduler select, which allows you to specify</span>
+<span class="w">            </span><span class="c1">// characteristics of the machine architecture</span>
+<span class="w">            </span><span class="c1">// for the autoscheduler; it&#39;s generally specified in your Makefile.</span>
+<span class="w">            </span><span class="c1">// If none is specified, the default machine parameters for a generic CPU</span>
+<span class="w">            </span><span class="c1">// architecture will be used by the autoscheduler.</span>
+
+<span class="w">            </span><span class="c1">// Let&#39;s see some arbitrary but plausible values for the machine parameters</span>
+<span class="w">            </span><span class="c1">// for the Mullapudi2016 Autoscheduler:</span>
+<span class="w">            </span><span class="c1">//</span>
+<span class="w">            </span><span class="c1">//      autoscheduler=Mullapudi2016</span>
+<span class="w">            </span><span class="c1">//      autoscheduler.parallelism=32</span>
+<span class="w">            </span><span class="c1">//      autoscheduler.last_level_cache_size=16777216</span>
+<span class="w">            </span><span class="c1">//      autoscheduler.balance=40</span>
+<span class="w">            </span><span class="c1">//</span>
+<span class="w">            </span><span class="c1">// These are the maximum level of parallelism</span>
+<span class="w">            </span><span class="c1">// available, the size of the last-level cache (in bytes), and the ratio</span>
+<span class="w">            </span><span class="c1">// between the cost of a miss at the last level cache and the cost</span>
+<span class="w">            </span><span class="c1">// of arithmetic on the target architecture, in that order.</span>
+
+<span class="w">            </span><span class="c1">// Note that when using the autoscheduler, no schedule should have</span>
+<span class="w">            </span><span class="c1">// been applied to the pipeline; otherwise, the autoscheduler will</span>
+<span class="w">            </span><span class="c1">// throw an error. The current autoscheduler cannot handle a</span>
+<span class="w">            </span><span class="c1">// partially-scheduled pipeline.</span>
+
+<span class="w">            </span><span class="c1">// If HL_DEBUG_CODEGEN is set to 3 or greater, the schedule will be dumped</span>
+<span class="w">            </span><span class="c1">// to stdout (along with much other information); a more useful way is</span>
+<span class="w">            </span><span class="c1">// to add &quot;schedule&quot; to the -e flag to the Generator. In CMake, this is</span>
+<span class="w">            </span><span class="c1">// done by passing the argument SCHEDULE &lt;outvar&gt; to add_halide_library().</span>
+<span class="w">            </span><span class="c1">// See doc/HalideCMakePackage.md for more detail.</span>
+
+<span class="w">            </span><span class="c1">// The generated schedule that is dumped to file is an actual</span>
+<span class="w">            </span><span class="c1">// Halide C++ source, which is readily copy-pasteable back into</span>
+<span class="w">            </span><span class="c1">// this very same source file with few modifications. Programmers</span>
+<span class="w">            </span><span class="c1">// can use this as a starting schedule and iteratively improve the</span>
+<span class="w">            </span><span class="c1">// schedule. Note that the current autoscheduler is only able to</span>
+<span class="w">            </span><span class="c1">// generate CPU schedules and only does tiling, simple vectorization</span>
+<span class="w">            </span><span class="c1">// and parallelization. It doesn&#39;t deal with line buffering, storage</span>
+<span class="w">            </span><span class="c1">// reordering, or factoring reductions.</span>
+
+<span class="w">            </span><span class="c1">// At the time of writing, the autoscheduler will produce the</span>
+<span class="w">            </span><span class="c1">// following schedule for the estimates and machine parameters</span>
+<span class="w">            </span><span class="c1">// declared above when run on this pipeline:</span>
+<span class="w">            </span><span class="c1">//</span>
+<span class="w">            </span><span class="c1">// Var x_i(&quot;x_i&quot;);</span>
+<span class="w">            </span><span class="c1">// Var x_i_vi(&quot;x_i_vi&quot;);</span>
+<span class="w">            </span><span class="c1">// Var x_i_vo(&quot;x_i_vo&quot;);</span>
+<span class="w">            </span><span class="c1">// Var x_o(&quot;x_o&quot;);</span>
+<span class="w">            </span><span class="c1">// Var x_vi(&quot;x_vi&quot;);</span>
+<span class="w">            </span><span class="c1">// Var x_vo(&quot;x_vo&quot;);</span>
+<span class="w">            </span><span class="c1">// Var y_i(&quot;y_i&quot;);</span>
+<span class="w">            </span><span class="c1">// Var y_o(&quot;y_o&quot;);</span>
+<span class="w">            </span><span class="c1">//</span>
+<span class="w">            </span><span class="c1">// Func Ix = pipeline.get_func(4);</span>
+<span class="w">            </span><span class="c1">// Func Iy = pipeline.get_func(7);</span>
+<span class="w">            </span><span class="c1">// Func gray = pipeline.get_func(3);</span>
+<span class="w">            </span><span class="c1">// Func harris = pipeline.get_func(14);</span>
+<span class="w">            </span><span class="c1">// Func output1 = pipeline.get_func(15);</span>
+<span class="w">            </span><span class="c1">// Func output2 = pipeline.get_func(16);</span>
+<span class="w">            </span><span class="c1">//</span>
+<span class="w">            </span><span class="c1">// {</span>
+<span class="w">            </span><span class="c1">//     Var x = Ix.args()[0];</span>
+<span class="w">            </span><span class="c1">//     Ix</span>
+<span class="w">            </span><span class="c1">//         .compute_at(harris, x_o)</span>
+<span class="w">            </span><span class="c1">//         .split(x, x_vo, x_vi, 8)</span>
+<span class="w">            </span><span class="c1">//         .vectorize(x_vi);</span>
+<span class="w">            </span><span class="c1">// }</span>
+<span class="w">            </span><span class="c1">// {</span>
+<span class="w">            </span><span class="c1">//     Var x = Iy.args()[0];</span>
+<span class="w">            </span><span class="c1">//     Iy</span>
+<span class="w">            </span><span class="c1">//         .compute_at(harris, x_o)</span>
+<span class="w">            </span><span class="c1">//         .split(x, x_vo, x_vi, 8)</span>
+<span class="w">            </span><span class="c1">//         .vectorize(x_vi);</span>
+<span class="w">            </span><span class="c1">// }</span>
+<span class="w">            </span><span class="c1">// {</span>
+<span class="w">            </span><span class="c1">//     Var x = gray.args()[0];</span>
+<span class="w">            </span><span class="c1">//     gray</span>
+<span class="w">            </span><span class="c1">//         .compute_at(harris, x_o)</span>
+<span class="w">            </span><span class="c1">//         .split(x, x_vo, x_vi, 8)</span>
+<span class="w">            </span><span class="c1">//         .vectorize(x_vi);</span>
+<span class="w">            </span><span class="c1">// }</span>
+<span class="w">            </span><span class="c1">// {</span>
+<span class="w">            </span><span class="c1">//     Var x = harris.args()[0];</span>
+<span class="w">            </span><span class="c1">//     Var y = harris.args()[1];</span>
+<span class="w">            </span><span class="c1">//     harris</span>
+<span class="w">            </span><span class="c1">//         .compute_root()</span>
+<span class="w">            </span><span class="c1">//         .split(x, x_o, x_i, 256)</span>
+<span class="w">            </span><span class="c1">//         .split(y, y_o, y_i, 128)</span>
+<span class="w">            </span><span class="c1">//         .reorder(x_i, y_i, x_o, y_o)</span>
+<span class="w">            </span><span class="c1">//         .split(x_i, x_i_vo, x_i_vi, 8)</span>
+<span class="w">            </span><span class="c1">//         .vectorize(x_i_vi)</span>
+<span class="w">            </span><span class="c1">//         .parallel(y_o)</span>
+<span class="w">            </span><span class="c1">//         .parallel(x_o);</span>
+<span class="w">            </span><span class="c1">// }</span>
+<span class="w">            </span><span class="c1">// {</span>
+<span class="w">            </span><span class="c1">//     Var x = output1.args()[0];</span>
+<span class="w">            </span><span class="c1">//     Var y = output1.args()[1];</span>
+<span class="w">            </span><span class="c1">//     output1</span>
+<span class="w">            </span><span class="c1">//         .compute_root()</span>
+<span class="w">            </span><span class="c1">//         .split(x, x_vo, x_vi, 8)</span>
+<span class="w">            </span><span class="c1">//         .vectorize(x_vi)</span>
+<span class="w">            </span><span class="c1">//         .parallel(y);</span>
+<span class="w">            </span><span class="c1">// }</span>
+<span class="w">            </span><span class="c1">// {</span>
+<span class="w">            </span><span class="c1">//     Var x = output2.args()[0];</span>
+<span class="w">            </span><span class="c1">//     Var y = output2.args()[1];</span>
+<span class="w">            </span><span class="c1">//     output2</span>
+<span class="w">            </span><span class="c1">//         .compute_root()</span>
+<span class="w">            </span><span class="c1">//         .split(x, x_vo, x_vi, 8)</span>
+<span class="w">            </span><span class="c1">//         .vectorize(x_vi)</span>
+<span class="w">            </span><span class="c1">//         .parallel(y);</span>
+<span class="w">            </span><span class="c1">// }</span>
+
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// This is where you would declare the schedule you have written by</span>
+<span class="w">            </span><span class="c1">// hand or paste the schedule generated by the autoscheduler.</span>
+<span class="w">            </span><span class="c1">// We will use a naive schedule here to compare the performance of</span>
+<span class="w">            </span><span class="c1">// the autoschedule with a basic schedule.</span>
+<span class="w">            </span><span class="n">gray</span><span class="p">.</span><span class="n">compute_root</span><span class="p">();</span>
+<span class="w">            </span><span class="n">Iy</span><span class="p">.</span><span class="n">compute_root</span><span class="p">();</span>
+<span class="w">            </span><span class="n">Ix</span><span class="p">.</span><span class="n">compute_root</span><span class="p">();</span>
+
+<span class="w">            </span><span class="c1">// As discussed earlier, the generated schedule that is dumped to</span>
+<span class="w">            </span><span class="c1">// file is an actual Halide C++ source, which is readily copy-pasteable</span>
+<span class="w">            </span><span class="c1">// back into this very same source file with few modifications.</span>
+<span class="w">            </span><span class="c1">// Or, developers can save the generated schedules to the source directory,</span>
+<span class="w">            </span><span class="c1">// and then include the generated schedule here.</span>
+<span class="w">            </span><span class="c1">//</span>
+<span class="w">            </span><span class="c1">// #include &quot;tutorial.schedule.h&quot;</span>
+<span class="w">            </span><span class="c1">// apply_schedule_auto_schedule_true(get_pipeline(), get_target());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Var</span><span class="w"> </span><span class="n">x</span><span class="p">{</span><span class="s">&quot;x&quot;</span><span class="p">},</span><span class="w"> </span><span class="n">y</span><span class="p">{</span><span class="s">&quot;y&quot;</span><span class="p">},</span><span class="w"> </span><span class="n">c</span><span class="p">{</span><span class="s">&quot;c&quot;</span><span class="p">};</span>
+<span class="w">    </span><span class="n">Func</span><span class="w"> </span><span class="n">gray</span><span class="p">,</span><span class="w"> </span><span class="n">Iy</span><span class="p">,</span><span class="w"> </span><span class="n">Ix</span><span class="p">,</span><span class="w"> </span><span class="n">Ixx</span><span class="p">,</span><span class="w"> </span><span class="n">Iyy</span><span class="p">,</span><span class="w"> </span><span class="n">Ixy</span><span class="p">,</span><span class="w"> </span><span class="n">Sxx</span><span class="p">,</span><span class="w"> </span><span class="n">Syy</span><span class="p">,</span><span class="w"> </span><span class="n">Sxy</span><span class="p">,</span><span class="w"> </span><span class="n">det</span><span class="p">,</span><span class="w"> </span><span class="n">trace</span><span class="p">,</span><span class="w"> </span><span class="n">harris</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// As in lesson 15, we register our generator and then compile this</span>
+<span class="c1">// file along with tools/GenGen.cpp.</span>
+<span class="n">HALIDE_REGISTER_GENERATOR</span><span class="p">(</span><span class="n">AutoScheduled</span><span class="p">,</span><span class="w"> </span><span class="n">auto_schedule_gen</span><span class="p">)</span>
+
+<span class="c1">// After compiling this file, see how to use it in</span>
+<span class="c1">// lesson_21_auto_scheduler_run.cpp</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="python" for="sd-tab-item-1">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+
+<span class="c1"># Halide tutorial lesson 21: Auto-Scheduler: generating a schedule</span>
+
+<span class="c1"># So far we have written Halide schedules by hand, but it is also possible to</span>
+<span class="c1"># ask Halide to suggest a reasonable schedule. We call this auto-scheduling.</span>
+<span class="c1"># This lesson demonstrates how to use the autoscheduler to generate a</span>
+<span class="c1"># copy-pasteable CPU schedule that can be subsequently improved upon.</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">halide</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">hl</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sum3x3</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">f</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="o">+</span> <span class="n">f</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+        <span class="o">+</span> <span class="n">f</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="o">+</span> <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="o">+</span> <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+        <span class="o">+</span> <span class="n">f</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="o">+</span> <span class="n">f</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="o">+</span> <span class="n">f</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+        <span class="o">+</span> <span class="n">f</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># We will define a generator to auto-schedule.</span>
+<span class="nd">@hl</span><span class="o">.</span><span class="n">generator</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;auto_schedule_gen&quot;</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">AutoScheduled</span><span class="p">:</span>
+    <span class="n">input_buf</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">InputBuffer</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">InputScalar</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
+
+    <span class="n">output1</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">OutputBuffer</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">output2</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">OutputBuffer</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">),</span> <span class="n">hl</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+
+        <span class="c1"># For our algorithm, we&#39;ll use Harris corner detection.</span>
+        <span class="n">in_b</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">BoundaryConditions</span><span class="o">.</span><span class="n">repeat_edge</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">input_buf</span><span class="p">)</span>
+
+        <span class="n">gray</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+        <span class="n">gray</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="mf">0.299</span><span class="p">)</span> <span class="o">*</span> <span class="n">in_b</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="o">+</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="mf">0.587</span><span class="p">)</span> <span class="o">*</span> <span class="n">in_b</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="o">+</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="mf">0.114</span><span class="p">)</span> <span class="o">*</span> <span class="n">in_b</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="n">Iy</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;Iy&quot;</span><span class="p">)</span>
+        <span class="n">Iy</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">gray</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">gray</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">gray</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">gray</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">gray</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">gray</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">Ix</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;Ix&quot;</span><span class="p">)</span>
+        <span class="n">Ix</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">gray</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">gray</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">gray</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">*</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">gray</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">*</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">gray</span><span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">gray</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">Ixx</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;Ixx&quot;</span><span class="p">)</span>
+        <span class="n">Ixx</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">Ix</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">*</span> <span class="n">Ix</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+        <span class="n">Iyy</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;Iyy&quot;</span><span class="p">)</span>
+        <span class="n">Iyy</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">Iy</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">*</span> <span class="n">Iy</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+        <span class="n">Ixy</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;Ixy&quot;</span><span class="p">)</span>
+        <span class="n">Ixy</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">Ix</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">*</span> <span class="n">Iy</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+        <span class="n">Sxx</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;Sxx&quot;</span><span class="p">)</span>
+        <span class="n">Sxx</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">sum3x3</span><span class="p">(</span><span class="n">Ixx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">Syy</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;Syy&quot;</span><span class="p">)</span>
+        <span class="n">Syy</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">sum3x3</span><span class="p">(</span><span class="n">Iyy</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">Sxy</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;Sxy&quot;</span><span class="p">)</span>
+        <span class="n">Sxy</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">sum3x3</span><span class="p">(</span><span class="n">Ixy</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">det</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;det&quot;</span><span class="p">)</span>
+        <span class="n">det</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">Sxx</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">*</span> <span class="n">Syy</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">-</span> <span class="n">Sxy</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">*</span> <span class="n">Sxy</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+        <span class="n">trace</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;trace&quot;</span><span class="p">)</span>
+        <span class="n">trace</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">Sxx</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">+</span> <span class="n">Syy</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+        <span class="n">harris</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;harris&quot;</span><span class="p">)</span>
+        <span class="n">harris</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">det</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">-</span> <span class="n">hl</span><span class="o">.</span><span class="n">f32</span><span class="p">(</span><span class="mf">0.04</span><span class="p">)</span> <span class="o">*</span> <span class="n">trace</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">*</span> <span class="n">trace</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">output1</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">harris</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">output2</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">factor</span> <span class="o">*</span> <span class="n">harris</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+
+        <span class="c1"># Python generators don&#39;t have a separate schedule() method --</span>
+        <span class="c1"># there&#39;s just generate(), so the scheduling below runs</span>
+        <span class="c1"># immediately after the algorithm above.</span>
+        <span class="k">if</span> <span class="n">g</span><span class="o">.</span><span class="n">using_autoscheduler</span><span class="p">():</span>
+            <span class="c1"># The autoscheduler requires estimates on all the input/output</span>
+            <span class="c1"># sizes and parameter values in order to compare different</span>
+            <span class="c1"># alternatives and decide on a good schedule.</span>
+
+            <span class="c1"># To provide estimates (min and extent values) for each dimension</span>
+            <span class="c1"># of the input images (&#39;input&#39;, &#39;filter&#39;, and &#39;bias&#39;), we use the</span>
+            <span class="c1"># set_estimates() method. set_estimates() takes in a list of</span>
+            <span class="c1"># (min, extent) of the corresponding dimension as arguments.</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">input_buf</span><span class="o">.</span><span class="n">set_estimates</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+
+            <span class="c1"># To provide estimates on the parameter values, we use the</span>
+            <span class="c1"># set_estimate() method.</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">factor</span><span class="o">.</span><span class="n">set_estimate</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+
+            <span class="c1"># To provide estimates (min and extent values) for each dimension</span>
+            <span class="c1"># of pipeline outputs, we use the set_estimates() method.</span>
+            <span class="c1"># set_estimates() takes in a list of (min, extent) for each</span>
+            <span class="c1"># dimension.</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">output1</span><span class="o">.</span><span class="n">set_estimates</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)])</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">output2</span><span class="o">.</span><span class="n">set_estimates</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)])</span>
+
+            <span class="c1"># Technically, the estimate values can be anything, but the</span>
+            <span class="c1"># closer they are to the actual use-case values, the better the</span>
+            <span class="c1"># generated schedule will be.</span>
+
+            <span class="c1"># To auto-schedule the pipeline, we don&#39;t have to do anything</span>
+            <span class="c1"># else: every Generator implicitly has a GeneratorParam named</span>
+            <span class="c1"># &quot;autoscheduler.name&quot;; if this is set to the name of the</span>
+            <span class="c1"># Autoscheduler we want to use, Halide will apply it to all of</span>
+            <span class="c1"># our pipeline&#39;s outputs automatically.</span>
+
+            <span class="c1"># Every Generator also implicitly has additional, optional</span>
+            <span class="c1"># GeneratorParams that are dependent on the specific</span>
+            <span class="c1"># Autoscheduler selected, which allows you to specify</span>
+            <span class="c1"># characteristics of the machine architecture for the</span>
+            <span class="c1"># autoscheduler; it&#39;s generally specified on the command line.</span>
+            <span class="c1"># If none is specified, the default machine parameters for a</span>
+            <span class="c1"># generic CPU architecture will be used by the autoscheduler.</span>
+
+            <span class="c1"># Let&#39;s see some arbitrary but plausible values for the machine</span>
+            <span class="c1"># parameters for the Mullapudi2016 Autoscheduler:</span>
+            <span class="c1">#</span>
+            <span class="c1">#      autoscheduler=Mullapudi2016</span>
+            <span class="c1">#      autoscheduler.parallelism=32</span>
+            <span class="c1">#      autoscheduler.last_level_cache_size=16777216</span>
+            <span class="c1">#      autoscheduler.balance=40</span>
+            <span class="c1">#</span>
+            <span class="c1"># These are the maximum level of parallelism available, the size</span>
+            <span class="c1"># of the last-level cache (in bytes), and the ratio between the</span>
+            <span class="c1"># cost of a miss at the last level cache and the cost of</span>
+            <span class="c1"># arithmetic on the target architecture, in that order.</span>
+
+            <span class="c1"># Note that when using the autoscheduler, no schedule should have</span>
+            <span class="c1"># been applied to the pipeline; otherwise, the autoscheduler will</span>
+            <span class="c1"># throw an error. The current autoscheduler cannot handle a</span>
+            <span class="c1"># partially-scheduled pipeline.</span>
+
+            <span class="c1"># If HL_DEBUG_CODEGEN is set to 3 or greater, the schedule will</span>
+            <span class="c1"># be dumped to stdout (along with much other information); a</span>
+            <span class="c1"># more useful way is to add &quot;schedule&quot; to the -e flag to the</span>
+            <span class="c1"># Generator. In CMake, this is done by passing the argument</span>
+            <span class="c1"># SCHEDULE &lt;outvar&gt; to add_halide_library(). See</span>
+            <span class="c1"># doc/HalideCMakePackage.md for more detail.</span>
+
+            <span class="c1"># The generated schedule that is dumped to file is actual</span>
+            <span class="c1"># Halide C++ source -- the autoscheduler always emits C++,</span>
+            <span class="c1"># regardless of the language the pipeline itself was</span>
+            <span class="c1"># written in. Translating it to the equivalent Python</span>
+            <span class="c1"># schedule calls is straightforward, and programmers can</span>
+            <span class="c1"># use it as a starting schedule and iteratively improve</span>
+            <span class="c1"># it. Note that the current autoscheduler is only able</span>
+            <span class="c1"># to generate CPU schedules and only does tiling, simple</span>
+            <span class="c1"># vectorization and parallelization. It doesn&#39;t deal with line</span>
+            <span class="c1"># buffering, storage reordering, or factoring reductions.</span>
+
+            <span class="c1"># At the time of writing, the autoscheduler will produce the</span>
+            <span class="c1"># following schedule for the estimates and machine parameters</span>
+            <span class="c1"># declared above when run on this pipeline (translated here</span>
+            <span class="c1"># into the equivalent Python calls):</span>
+            <span class="c1">#</span>
+            <span class="c1"># x_i = hl.Var(&quot;x_i&quot;)</span>
+            <span class="c1"># x_i_vi = hl.Var(&quot;x_i_vi&quot;)</span>
+            <span class="c1"># x_i_vo = hl.Var(&quot;x_i_vo&quot;)</span>
+            <span class="c1"># x_o = hl.Var(&quot;x_o&quot;)</span>
+            <span class="c1"># x_vi = hl.Var(&quot;x_vi&quot;)</span>
+            <span class="c1"># x_vo = hl.Var(&quot;x_vo&quot;)</span>
+            <span class="c1"># y_i = hl.Var(&quot;y_i&quot;)</span>
+            <span class="c1"># y_o = hl.Var(&quot;y_o&quot;)</span>
+            <span class="c1">#</span>
+            <span class="c1"># Ix = pipeline.get_func(4)</span>
+            <span class="c1"># Iy = pipeline.get_func(7)</span>
+            <span class="c1"># gray = pipeline.get_func(3)</span>
+            <span class="c1"># harris = pipeline.get_func(14)</span>
+            <span class="c1"># output1 = pipeline.get_func(15)</span>
+            <span class="c1"># output2 = pipeline.get_func(16)</span>
+            <span class="c1">#</span>
+            <span class="c1"># x = Ix.args()[0]</span>
+            <span class="c1"># Ix.compute_at(harris, x_o).split(x, x_vo, x_vi, 8).vectorize(x_vi)</span>
+            <span class="c1">#</span>
+            <span class="c1"># x = Iy.args()[0]</span>
+            <span class="c1"># Iy.compute_at(harris, x_o).split(x, x_vo, x_vi, 8).vectorize(x_vi)</span>
+            <span class="c1">#</span>
+            <span class="c1"># x = gray.args()[0]</span>
+            <span class="c1"># gray.compute_at(harris, x_o).split(x, x_vo, x_vi, 8).vectorize(x_vi)</span>
+            <span class="c1">#</span>
+            <span class="c1"># x = harris.args()[0]</span>
+            <span class="c1"># y = harris.args()[1]</span>
+            <span class="c1"># (</span>
+            <span class="c1">#     harris.compute_root()</span>
+            <span class="c1">#     .split(x, x_o, x_i, 256)</span>
+            <span class="c1">#     .split(y, y_o, y_i, 128)</span>
+            <span class="c1">#     .reorder(x_i, y_i, x_o, y_o)</span>
+            <span class="c1">#     .split(x_i, x_i_vo, x_i_vi, 8)</span>
+            <span class="c1">#     .vectorize(x_i_vi)</span>
+            <span class="c1">#     .parallel(y_o)</span>
+            <span class="c1">#     .parallel(x_o)</span>
+            <span class="c1"># )</span>
+            <span class="c1">#</span>
+            <span class="c1"># x = output1.args()[0]</span>
+            <span class="c1"># y = output1.args()[1]</span>
+            <span class="c1"># (</span>
+            <span class="c1">#     output1.compute_root()</span>
+            <span class="c1">#     .split(x, x_vo, x_vi, 8)</span>
+            <span class="c1">#     .vectorize(x_vi)</span>
+            <span class="c1">#     .parallel(y)</span>
+            <span class="c1"># )</span>
+            <span class="c1">#</span>
+            <span class="c1"># x = output2.args()[0]</span>
+            <span class="c1"># y = output2.args()[1]</span>
+            <span class="c1"># (</span>
+            <span class="c1">#     output2.compute_root()</span>
+            <span class="c1">#     .split(x, x_vo, x_vi, 8)</span>
+            <span class="c1">#     .vectorize(x_vi)</span>
+            <span class="c1">#     .parallel(y)</span>
+            <span class="c1"># )</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># This is where you would declare the schedule you have written</span>
+            <span class="c1"># by hand or paste the schedule generated by the autoscheduler.</span>
+            <span class="c1"># We will use a naive schedule here to compare the performance of</span>
+            <span class="c1"># the autoschedule with a basic schedule.</span>
+            <span class="n">gray</span><span class="o">.</span><span class="n">compute_root</span><span class="p">()</span>
+            <span class="n">Iy</span><span class="o">.</span><span class="n">compute_root</span><span class="p">()</span>
+            <span class="n">Ix</span><span class="o">.</span><span class="n">compute_root</span><span class="p">()</span>
+
+            <span class="c1"># As discussed earlier, the generated schedule that is dumped to</span>
+            <span class="c1"># file is actual Halide C++ source, which needs a straightforward</span>
+            <span class="c1"># translation to Python before it can be pasted back into this</span>
+            <span class="c1"># very same source file. Or, developers can save the generated</span>
+            <span class="c1"># schedules to the source directory, and then include the</span>
+            <span class="c1"># generated schedule here.</span>
+            <span class="c1">#</span>
+            <span class="c1"># import tutorial_schedule</span>
+            <span class="c1"># tutorial_schedule.apply_schedule_auto_schedule_true(g.get_pipeline(), g.target())</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">hl</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lesson_21.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">21. Auto-Scheduler</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lesson_21_auto_scheduler_run.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Running the compiled pipeline</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright The Halide team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

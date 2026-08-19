@@ -1,0 +1,1125 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>13. Tuples &#8212; Halide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=1ee386da" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial/lesson_13_tuples';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="14. The Halide type system" href="lesson_14_types.html" />
+    <link rel="prev" title="12. Using the GPU" href="lesson_12_using_the_gpu.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Halide</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lesson_01_basics.html">1. Getting started with Funcs, Vars, and Exprs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_02_input_image.html">2. Processing images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_03_debugging_1.html">3. Inspecting the generated code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_04_debugging_2.html">4. Debugging with tracing, print, and print_when</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_05_scheduling_1.html">5. Vectorize, parallelize, unroll and tile your code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_06_realizing_over_shifted_domains.html">6. Realizing Funcs over arbitrary domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_07_multi_stage_pipelines.html">7. Multi-stage pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_08_scheduling_2.html">8. Scheduling multi-stage pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_09_update_definitions.html">9. Multi-pass Funcs, update definitions, and reductions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesson_10.html">10. AOT compilation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesson_10_aot_compilation_generate.html">Compiling the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_10_aot_compilation_run.html">Running the compiled pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_11_cross_compilation.html">11. Cross-compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_12_using_the_gpu.html">12. Using the GPU</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Tuples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_14_types.html">14. The Halide type system</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesson_15.html">15. Generators</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesson_15_generators.html">Writing a generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_15_generators_usage.html">Command-line usage</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesson_16.html">16. RGB images and memory layouts</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesson_16_rgb_generate.html">Compiling the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_16_rgb_run.html">Running the compiled pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_17_predicated_rdom.html">17. Reductions over non-rectangular domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_18_parallel_associative_reductions.html">18. Factoring an associative reduction using rfactor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_19_wrapper_funcs.html">19. Wrapper Funcs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_20_cloning_funcs.html">20. Cloning Funcs</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesson_21.html">21. Auto-Scheduler</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesson_21_auto_scheduler_generate.html">Generating a schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_21_auto_scheduler_run.html">Running the compiled pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_22_jit_performance.html">22. JIT compilation performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_23_serialization.html">23. Serialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_24_async.html">24. Async execution</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Tutorial</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">13. Tuples</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tuples">
+<h1>13. Tuples<a class="headerlink" href="#tuples" title="Link to this heading">#</a></h1>
+<div class="lesson-tabs">
+<script>
+(function () {
+  try {
+    if (sessionStorage.getItem("sphinx-design-tab-id-tab") === "python") {
+      document.documentElement.classList.add("pref-python");
+    }
+  } catch (e) {}
+  // design-tabs.js's own <script> tag (in <head>) runs, and so registers
+  // its DOMContentLoaded listener, before this inline script does (it's
+  // encountered later, while parsing the body) -- so by the time this
+  // listener fires, design-tabs.js has already set the correct radio's
+  // `checked` state to match. Once that's true, the "pref-python" class
+  // must come off: it forces Python's content to display via `!important`
+  // (see custom.css) regardless of which radio is actually checked, which
+  // is exactly what's needed to avoid a flash before that happens, but
+  // would otherwise permanently override the plain `:checked`-based
+  // styling for the rest of the page -- silently breaking a later click
+  // back to C++.
+  document.addEventListener("DOMContentLoaded", function () {
+    document.documentElement.classList.remove("pref-python");
+  });
+})();
+</script>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="cpp" for="sd-tab-item-0">
+C++</label><div class="sd-tab-content docutils">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Halide tutorial lesson 13: Tuples</span>
+
+<span class="c1">// This lesson describes how to write Funcs that evaluate to multiple</span>
+<span class="c1">// values.</span>
+
+<span class="c1">// On linux, you can compile and run it like so:</span>
+<span class="c1">// g++ lesson_13*.cpp -g -I &lt;path/to/include&gt; -L &lt;path/to/lib&gt; -lHalide -lpthread -ldl -o lesson_13 -std=c++17</span>
+<span class="c1">// LD_LIBRARY_PATH=&lt;path/to/lib&gt; ./lesson_13</span>
+
+<span class="c1">// On macOS:</span>
+<span class="c1">// g++ lesson_13*.cpp -g -I &lt;path/to/include&gt; -L &lt;path/to/lib&gt; -lHalide -o lesson_13 -std=c++17</span>
+<span class="c1">// DYLD_LIBRARY_PATH=&lt;path/to/lib&gt; ./lesson_13</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Halide.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdio&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">Halide</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// So far Funcs (such as the one below) have evaluated to a single</span>
+<span class="w">    </span><span class="c1">// scalar value for each point in their domain.</span>
+<span class="w">    </span><span class="n">Func</span><span class="w"> </span><span class="n">single_valued</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Var</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">single_valued</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// One way to write a Func that returns a collection of values is</span>
+<span class="w">    </span><span class="c1">// to add an additional dimension that indexes that</span>
+<span class="w">    </span><span class="c1">// collection. This is how we typically deal with color. For</span>
+<span class="w">    </span><span class="c1">// example, the Func below represents a collection of three values</span>
+<span class="w">    </span><span class="c1">// for every x, y coordinate indexed by c.</span>
+<span class="w">    </span><span class="n">Func</span><span class="w"> </span><span class="n">color_image</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Var</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="n">color_image</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">select</span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">245</span><span class="p">,</span><span class="w">  </span><span class="c1">// Red value</span>
+<span class="w">                                  </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">   </span><span class="c1">// Green value</span>
+<span class="w">                                  </span><span class="mi">132</span><span class="p">);</span><span class="w">         </span><span class="c1">// Blue value</span>
+
+<span class="w">    </span><span class="c1">// Since this pattern appears quite often, Halide provides a</span>
+<span class="w">    </span><span class="c1">// syntactic sugar to write the code above as the following,</span>
+<span class="w">    </span><span class="c1">// using the &quot;mux&quot; function.</span>
+<span class="w">    </span><span class="c1">// color_image(x, y, c) = mux(c, {245, 42, 132});</span>
+
+<span class="w">    </span><span class="c1">// This method is often convenient because it makes it easy to</span>
+<span class="w">    </span><span class="c1">// operate on this Func in a way that treats each item in the</span>
+<span class="w">    </span><span class="c1">// collection equally:</span>
+<span class="w">    </span><span class="n">Func</span><span class="w"> </span><span class="n">brighter</span><span class="p">;</span>
+<span class="w">    </span><span class="n">brighter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color_image</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// However this method is also inconvenient for three reasons.</span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="c1">// 1) Funcs are defined over an infinite domain, so users of this</span>
+<span class="w">    </span><span class="c1">// Func can for example access color_image(x, y, -17), which is</span>
+<span class="w">    </span><span class="c1">// not a meaningful value and is probably indicative of a bug.</span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="c1">// 2) It requires a select, which can impact performance if not</span>
+<span class="w">    </span><span class="c1">// bounded and unrolled:</span>
+<span class="w">    </span><span class="c1">// brighter.bound(c, 0, 3).unroll(c);</span>
+<span class="w">    </span><span class="c1">//</span>
+<span class="w">    </span><span class="c1">// 3) With this method, all values in the collection must have the</span>
+<span class="w">    </span><span class="c1">// same type. While the above two issues are merely inconvenient,</span>
+<span class="w">    </span><span class="c1">// this one is a hard limitation that makes it impossible to</span>
+<span class="w">    </span><span class="c1">// express certain things in this way.</span>
+
+<span class="w">    </span><span class="c1">// It is also possible to represent a collection of values as a</span>
+<span class="w">    </span><span class="c1">// collection of Funcs:</span>
+<span class="w">    </span><span class="n">Func</span><span class="w"> </span><span class="n">func_array</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+<span class="w">    </span><span class="n">func_array</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">func_array</span><span class="p">[</span><span class="mi">1</span><span class="p">](</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="n">func_array</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// This method avoids the three problems above, but introduces a</span>
+<span class="w">    </span><span class="c1">// new annoyance. Because these are separate Funcs, it is</span>
+<span class="w">    </span><span class="c1">// difficult to schedule them so that they are all computed</span>
+<span class="w">    </span><span class="c1">// together inside a single loop over x, y.</span>
+
+<span class="w">    </span><span class="c1">// A third alternative is to define a Func as evaluating to a</span>
+<span class="w">    </span><span class="c1">// Tuple instead of an Expr. A Tuple is a fixed-size collection of</span>
+<span class="w">    </span><span class="c1">// Exprs. Each Expr in a Tuple may have a different type. The</span>
+<span class="w">    </span><span class="c1">// following function evaluates to an integer value (x+y), and a</span>
+<span class="w">    </span><span class="c1">// floating point value (sin(x*y)).</span>
+<span class="w">    </span><span class="n">Func</span><span class="w"> </span><span class="n">multi_valued</span><span class="p">;</span>
+<span class="w">    </span><span class="n">multi_valued</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tuple</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">));</span>
+
+<span class="w">    </span><span class="c1">// Realizing a tuple-valued Func returns a collection of</span>
+<span class="w">    </span><span class="c1">// Buffers. We call this a Realization. It&#39;s equivalent to a</span>
+<span class="w">    </span><span class="c1">// std::vector of Buffer objects:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Realization</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multi_valued</span><span class="p">.</span><span class="n">realize</span><span class="p">({</span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">});</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Buffer</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">im0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">        </span><span class="n">Buffer</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">im1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">im0</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">40</span><span class="p">);</span>
+<span class="w">        </span><span class="n">assert</span><span class="p">(</span><span class="n">im1</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sinf</span><span class="p">(</span><span class="mi">30</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">40</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// All Tuple elements are evaluated together over the same domain</span>
+<span class="w">    </span><span class="c1">// in the same loop nest, but stored in distinct allocations. The</span>
+<span class="w">    </span><span class="c1">// equivalent C++ code to the above is:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">multi_valued_0</span><span class="p">[</span><span class="mi">80</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="p">];</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">multi_valued_1</span><span class="p">[</span><span class="mi">80</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="p">];</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">multi_valued_0</span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">                </span><span class="n">multi_valued_1</span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sinf</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// When compiling ahead-of-time, a Tuple-valued Func evaluates</span>
+<span class="w">    </span><span class="c1">// into multiple distinct output halide_buffer_t structs. These appear in</span>
+<span class="w">    </span><span class="c1">// order at the end of the function signature:</span>
+<span class="w">    </span><span class="c1">// int multi_valued(...input buffers and params...,</span>
+<span class="w">    </span><span class="c1">//                  halide_buffer_t *output_1, halide_buffer_t *output_2);</span>
+
+<span class="w">    </span><span class="c1">// You can construct a Tuple by passing multiple Exprs to the</span>
+<span class="w">    </span><span class="c1">// Tuple constructor as we did above. Perhaps more elegantly, you</span>
+<span class="w">    </span><span class="c1">// can also take advantage of initializer lists and just</span>
+<span class="w">    </span><span class="c1">// enclose your Exprs in braces:</span>
+<span class="w">    </span><span class="n">Func</span><span class="w"> </span><span class="n">multi_valued_2</span><span class="p">;</span>
+<span class="w">    </span><span class="n">multi_valued_2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="p">)};</span>
+
+<span class="w">    </span><span class="c1">// Calls to a multi-valued Func cannot be treated as Exprs. The</span>
+<span class="w">    </span><span class="c1">// following is a syntax error:</span>
+<span class="w">    </span><span class="c1">// Func consumer;</span>
+<span class="w">    </span><span class="c1">// consumer(x, y) = multi_valued_2(x, y) + 10;</span>
+
+<span class="w">    </span><span class="c1">// Instead you must index a Tuple with square brackets to retrieve</span>
+<span class="w">    </span><span class="c1">// the individual Exprs:</span>
+<span class="w">    </span><span class="n">Expr</span><span class="w"> </span><span class="n">integer_part</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multi_valued_2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">    </span><span class="n">Expr</span><span class="w"> </span><span class="n">floating_part</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">multi_valued_2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">    </span><span class="n">Func</span><span class="w"> </span><span class="n">consumer</span><span class="p">;</span>
+<span class="w">    </span><span class="n">consumer</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">integer_part</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">floating_part</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">10.0f</span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// Tuple reductions.</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Tuples are particularly useful in reductions, as they allow</span>
+<span class="w">        </span><span class="c1">// the reduction to maintain complex state as it walks along</span>
+<span class="w">        </span><span class="c1">// its domain. The simplest example is an argmax.</span>
+
+<span class="w">        </span><span class="c1">// First we create a Buffer to take the argmax over.</span>
+<span class="w">        </span><span class="n">Func</span><span class="w"> </span><span class="n">input_func</span><span class="p">;</span>
+<span class="w">        </span><span class="n">input_func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Buffer</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_func</span><span class="p">.</span><span class="n">realize</span><span class="p">({</span><span class="mi">100</span><span class="p">});</span>
+
+<span class="w">        </span><span class="c1">// Then we define a 2-valued Tuple which tracks the index of</span>
+<span class="w">        </span><span class="c1">// the maximum value and the value itself.</span>
+<span class="w">        </span><span class="n">Func</span><span class="w"> </span><span class="n">arg_max</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// Pure definition.</span>
+<span class="w">        </span><span class="n">arg_max</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">(</span><span class="mi">0</span><span class="p">)};</span>
+
+<span class="w">        </span><span class="c1">// Update definition.</span>
+<span class="w">        </span><span class="n">RDom</span><span class="w"> </span><span class="n">r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">99</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">old_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arg_max</span><span class="p">()[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">old_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arg_max</span><span class="p">()[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">new_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">select</span><span class="p">(</span><span class="n">old_max</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">input</span><span class="p">(</span><span class="n">r</span><span class="p">),</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">old_index</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">new_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">input</span><span class="p">(</span><span class="n">r</span><span class="p">),</span><span class="w"> </span><span class="n">old_max</span><span class="p">);</span>
+<span class="w">        </span><span class="n">arg_max</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">new_index</span><span class="p">,</span><span class="w"> </span><span class="n">new_max</span><span class="p">};</span>
+
+<span class="w">        </span><span class="c1">// The equivalent C++ is:</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">arg_max_0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">arg_max_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="n">r</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">old_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arg_max_0</span><span class="p">;</span>
+<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">old_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arg_max_1</span><span class="p">;</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">new_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">old_max</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">input</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">old_index</span><span class="p">;</span>
+<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">new_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">input</span><span class="p">(</span><span class="n">r</span><span class="p">),</span><span class="w"> </span><span class="n">old_max</span><span class="p">);</span>
+<span class="w">            </span><span class="c1">// In a tuple update definition, all loads and computation</span>
+<span class="w">            </span><span class="c1">// are done before any stores, so that all Tuple elements</span>
+<span class="w">            </span><span class="c1">// are updated atomically with respect to recursive calls</span>
+<span class="w">            </span><span class="c1">// to the same Func.</span>
+<span class="w">            </span><span class="n">arg_max_0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_index</span><span class="p">;</span>
+<span class="w">            </span><span class="n">arg_max_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_max</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Let&#39;s verify that the Halide and C++ found the same maximum</span>
+<span class="w">        </span><span class="c1">// value and index.</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Realization</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arg_max</span><span class="p">.</span><span class="n">realize</span><span class="p">();</span>
+<span class="w">            </span><span class="n">Buffer</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">r0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">            </span><span class="n">Buffer</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">r1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="w">            </span><span class="n">assert</span><span class="p">(</span><span class="n">arg_max_0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">r0</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="w">            </span><span class="n">assert</span><span class="p">(</span><span class="n">arg_max_1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">r1</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="c1">// Halide provides argmax and argmin as built-in reductions</span>
+<span class="w">        </span><span class="c1">// similar to sum, product, maximum, and minimum. They return</span>
+<span class="w">        </span><span class="c1">// a Tuple consisting of the point in the reduction domain</span>
+<span class="w">        </span><span class="c1">// corresponding to that value, and the value itself. In the</span>
+<span class="w">        </span><span class="c1">// case of ties they return the first value found. We&#39;ll use</span>
+<span class="w">        </span><span class="c1">// one of these in the following section.</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Tuples for user-defined types.</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Tuples can also be a convenient way to represent compound</span>
+<span class="w">        </span><span class="c1">// objects such as complex numbers. Defining an object that</span>
+<span class="w">        </span><span class="c1">// can be converted to and from a Tuple is one way to extend</span>
+<span class="w">        </span><span class="c1">// Halide&#39;s type system with user-defined types.</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">Complex</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Expr</span><span class="w"> </span><span class="n">real</span><span class="p">,</span><span class="w"> </span><span class="n">imag</span><span class="p">;</span>
+
+<span class="w">            </span><span class="c1">// Construct from a Tuple</span>
+<span class="w">            </span><span class="n">Complex</span><span class="p">(</span><span class="n">Tuple</span><span class="w"> </span><span class="n">t</span><span class="p">)</span>
+<span class="w">                </span><span class="o">:</span><span class="w"> </span><span class="n">real</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span><span class="w"> </span><span class="n">imag</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// Construct from a pair of Exprs</span>
+<span class="w">            </span><span class="n">Complex</span><span class="p">(</span><span class="n">Expr</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">Expr</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
+<span class="w">                </span><span class="o">:</span><span class="w"> </span><span class="n">real</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">r</span><span class="p">)),</span><span class="w"> </span><span class="n">imag</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// Construct from a call to a Func by treating it as a Tuple</span>
+<span class="w">            </span><span class="n">Complex</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FuncRef</span><span class="w"> </span><span class="o">&amp;</span><span class="n">t</span><span class="p">)</span>
+<span class="w">                </span><span class="o">:</span><span class="w"> </span><span class="n">Complex</span><span class="p">(</span><span class="n">Tuple</span><span class="p">(</span><span class="n">t</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// Convert to a Tuple</span>
+<span class="w">            </span><span class="k">operator</span><span class="w"> </span><span class="n">Tuple</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">real</span><span class="p">,</span><span class="w"> </span><span class="n">imag</span><span class="p">};</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// Complex addition</span>
+<span class="w">            </span><span class="n">Complex</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Complex</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">real</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">real</span><span class="p">,</span><span class="w"> </span><span class="n">imag</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">imag</span><span class="p">};</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// Complex multiplication</span>
+<span class="w">            </span><span class="n">Complex</span><span class="w"> </span><span class="k">operator</span><span class="o">*</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Complex</span><span class="w"> </span><span class="o">&amp;</span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">real</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">real</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">imag</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">imag</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">real</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">imag</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">imag</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">real</span><span class="p">};</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// Complex magnitude, squared for efficiency</span>
+<span class="w">            </span><span class="n">Expr</span><span class="w"> </span><span class="n">magnitude_squared</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">real</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">real</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">imag</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">imag</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="c1">// Other complex operators would go here. The above are</span>
+<span class="w">            </span><span class="c1">// sufficient for this example.</span>
+<span class="w">        </span><span class="p">};</span>
+
+<span class="w">        </span><span class="c1">// Let&#39;s use the Complex struct to compute a Mandelbrot set.</span>
+<span class="w">        </span><span class="n">Func</span><span class="w"> </span><span class="n">mandelbrot</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// The initial complex value corresponding to an x, y coordinate</span>
+<span class="w">        </span><span class="c1">// in our Func.</span>
+<span class="w">        </span><span class="n">Complex</span><span class="w"> </span><span class="n">initial</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">15.0f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2.5f</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">6.0f</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">2.0f</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// Pure definition.</span>
+<span class="w">        </span><span class="n">Var</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
+<span class="w">        </span><span class="n">mandelbrot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Complex</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// We&#39;ll use an update definition to take 12 steps.</span>
+<span class="w">        </span><span class="n">RDom</span><span class="w"> </span><span class="n">r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Complex</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mandelbrot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// The following line uses the complex multiplication and</span>
+<span class="w">        </span><span class="c1">// addition we defined above.</span>
+<span class="w">        </span><span class="n">mandelbrot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">initial</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// We&#39;ll use another tuple reduction to compute the iteration</span>
+<span class="w">        </span><span class="c1">// number where the value first escapes a circle of radius 4.</span>
+<span class="w">        </span><span class="c1">// This can be expressed as an argmin of a boolean - we want</span>
+<span class="w">        </span><span class="c1">// the index of the first time the given boolean expression is</span>
+<span class="w">        </span><span class="c1">// false (we consider false to be less than true).  The argmax</span>
+<span class="w">        </span><span class="c1">// would return the index of the first time the expression is</span>
+<span class="w">        </span><span class="c1">// true.</span>
+
+<span class="w">        </span><span class="n">Expr</span><span class="w"> </span><span class="n">escape_condition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Complex</span><span class="p">(</span><span class="n">mandelbrot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">)).</span><span class="n">magnitude_squared</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">16.0f</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Tuple</span><span class="w"> </span><span class="n">first_escape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argmin</span><span class="p">(</span><span class="n">escape_condition</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// We only want the index, not the value, but argmin returns</span>
+<span class="w">        </span><span class="c1">// both, so we&#39;ll index the argmin Tuple expression using</span>
+<span class="w">        </span><span class="c1">// square brackets to get the Expr representing the index.</span>
+<span class="w">        </span><span class="n">Func</span><span class="w"> </span><span class="n">escape</span><span class="p">;</span>
+<span class="w">        </span><span class="n">escape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">first_escape</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+
+<span class="w">        </span><span class="c1">// Realize the pipeline and print the result as ascii art.</span>
+<span class="w">        </span><span class="n">Buffer</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">escape</span><span class="p">.</span><span class="n">realize</span><span class="p">({</span><span class="mi">61</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">});</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot; .:-~*={}&amp;%#@&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">height</span><span class="p">();</span><span class="w"> </span><span class="n">y</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="n">width</span><span class="p">();</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%c&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">code</span><span class="p">[</span><span class="n">result</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)]);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Success!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" data-sync-group="tab" data-sync-id="python" for="sd-tab-item-1">
+Python</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+
+<span class="c1"># Halide tutorial lesson 13: Tuples</span>
+
+<span class="c1"># This lesson describes how to write Funcs that evaluate to multiple</span>
+<span class="c1"># values.</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">halide</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">hl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># So far Funcs (such as the one below) have evaluated to a single</span>
+    <span class="c1"># scalar value for each point in their domain.</span>
+    <span class="n">single_valued</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">()</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">),</span> <span class="n">hl</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+    <span class="n">single_valued</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+    <span class="c1"># One way to write a hl.Func that returns a collection of values is</span>
+    <span class="c1"># to add an additional dimension which indexes that</span>
+    <span class="c1"># collection. This is how we typically deal with color. For</span>
+    <span class="c1"># example, the hl.Func below represents a collection of three values</span>
+    <span class="c1"># for every x, y coordinate indexed by c.</span>
+    <span class="n">color_image</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">()</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">)</span>
+    <span class="n">color_image</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="n">c</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="mi">245</span><span class="p">,</span>  <span class="c1"># Red value</span>
+        <span class="n">c</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="mi">42</span><span class="p">,</span>  <span class="c1"># Green value</span>
+        <span class="mi">132</span><span class="p">,</span>  <span class="c1"># Blue value</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Since this pattern appears quite often, Halide provides a</span>
+    <span class="c1"># syntactic sugar to write the code above as the following,</span>
+    <span class="c1"># using the &quot;mux&quot; function.</span>
+    <span class="c1"># color_image[x, y, c] = hl.mux(c, [245, 42, 132]);</span>
+
+    <span class="c1"># This method is often convenient because it makes it easy to</span>
+    <span class="c1"># operate on this hl.Func in a way that treats each item in the</span>
+    <span class="c1"># collection equally:</span>
+    <span class="n">brighter</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">()</span>
+    <span class="n">brighter</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">color_image</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span> <span class="o">+</span> <span class="mi">10</span>
+
+    <span class="c1"># However this method is also inconvenient for three reasons.</span>
+    <span class="c1">#</span>
+    <span class="c1"># 1) Funcs are defined over an infinite domain, so users of this</span>
+    <span class="c1"># hl.Func can for example access color_image(x, y, -17), which is</span>
+    <span class="c1"># not a meaningful value and is probably indicative of a bug.</span>
+    <span class="c1">#</span>
+    <span class="c1"># 2) It requires a hl.select, which can impact performance if not</span>
+    <span class="c1"># bounded and unrolled:</span>
+    <span class="c1"># brighter.bound(c, 0, 3).unroll(c)</span>
+    <span class="c1">#</span>
+    <span class="c1"># 3) With this method, all values in the collection must have the</span>
+    <span class="c1"># same type. While the above two issues are merely inconvenient,</span>
+    <span class="c1"># this one is a hard limitation that makes it impossible to</span>
+    <span class="c1"># express certain things in this way.</span>
+
+    <span class="c1"># It is also possible to represent a collection of values as a</span>
+    <span class="c1"># collection of Funcs:</span>
+    <span class="n">func_array</span> <span class="o">=</span> <span class="p">[</span><span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+    <span class="n">func_array</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="n">func_array</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">func_array</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="c1"># This method avoids the three problems above, but introduces a</span>
+    <span class="c1"># new annoyance. Because these are separate Funcs, it is</span>
+    <span class="c1"># difficult to schedule them so that they are all computed</span>
+    <span class="c1"># together inside a single loop over x, y.</span>
+
+    <span class="c1"># A third alternative is to define a hl.Func as evaluating to a</span>
+    <span class="c1"># Tuple instead of an hl.Expr. A Tuple is a fixed-size collection of</span>
+    <span class="c1"># Exprs which may have different type. The following function</span>
+    <span class="c1"># evaluates to an integer value (x+y), and a floating point value</span>
+    <span class="c1"># (hl.sin(x*y)).</span>
+    <span class="n">multi_valued</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;multi_valued&quot;</span><span class="p">)</span>
+    <span class="n">multi_valued</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">hl</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">))</span>
+
+    <span class="c1"># Realizing a tuple-valued hl.Func returns a collection of</span>
+    <span class="c1"># Buffers. We call this a Realization. It&#39;s equivalent to a</span>
+    <span class="c1"># std::vector of hl.Buffer/Image objects:</span>
+    <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">im1</span><span class="p">,</span> <span class="n">im2</span> <span class="o">=</span> <span class="n">multi_valued</span><span class="o">.</span><span class="n">realize</span><span class="p">([</span><span class="mi">80</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span>
+        <span class="k">assert</span> <span class="n">im1</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">im2</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">im1</span><span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span> <span class="o">==</span> <span class="mi">30</span> <span class="o">+</span> <span class="mi">40</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">im2</span><span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">30</span> <span class="o">*</span> <span class="mi">40</span><span class="p">))</span>
+
+    <span class="c1"># You can also pass a tuple of pre-allocated buffers to realize()</span>
+    <span class="c1"># rather than having new ones created. (The Buffers must have the correct</span>
+    <span class="c1"># types and have identical sizes.)</span>
+    <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">im1</span><span class="p">,</span> <span class="n">im2</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Buffer</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">60</span><span class="p">]),</span> <span class="n">hl</span><span class="o">.</span><span class="n">Buffer</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span>
+        <span class="n">multi_valued</span><span class="o">.</span><span class="n">realize</span><span class="p">((</span><span class="n">im1</span><span class="p">,</span> <span class="n">im2</span><span class="p">))</span>
+        <span class="k">assert</span> <span class="n">im1</span><span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span> <span class="o">==</span> <span class="mi">30</span> <span class="o">+</span> <span class="mi">40</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">im2</span><span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">30</span> <span class="o">*</span> <span class="mi">40</span><span class="p">))</span>
+
+    <span class="c1"># All Tuple elements are evaluated together over the same domain</span>
+    <span class="c1"># in the same loop nest, but stored in distinct allocations. The</span>
+    <span class="c1"># equivalent Python code to the above is:</span>
+    <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">multi_valued_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">80</span> <span class="o">*</span> <span class="mi">60</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="n">multi_valued_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">80</span> <span class="o">*</span> <span class="mi">60</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">yy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">80</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">xx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">60</span><span class="p">):</span>
+                <span class="n">multi_valued_0</span><span class="p">[</span><span class="n">xx</span> <span class="o">+</span> <span class="mi">60</span> <span class="o">*</span> <span class="n">yy</span><span class="p">]</span> <span class="o">=</span> <span class="n">xx</span> <span class="o">+</span> <span class="n">yy</span>
+                <span class="n">multi_valued_1</span><span class="p">[</span><span class="n">xx</span> <span class="o">+</span> <span class="mi">60</span> <span class="o">*</span> <span class="n">yy</span><span class="p">]</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xx</span> <span class="o">*</span> <span class="n">yy</span><span class="p">)</span>
+
+    <span class="c1"># When compiling ahead-of-time, a Tuple-valued hl.Func evaluates</span>
+    <span class="c1"># into multiple distinct output halide_buffer_t structs. These appear in</span>
+    <span class="c1"># order at the end of the function signature:</span>
+    <span class="c1"># int multi_valued(...input buffers and params..., halide_buffer_t</span>
+    <span class="c1"># *output_1, halide_buffer_t *output_2)</span>
+
+    <span class="c1"># You can construct a Tuple by passing multiple Exprs to the</span>
+    <span class="c1"># Tuple constructor as we did above. Perhaps more elegantly, you</span>
+    <span class="c1"># can also take advantage of initializer lists and just</span>
+    <span class="c1"># enclose your Exprs in braces:</span>
+    <span class="n">multi_valued_2</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;multi_valued_2&quot;</span><span class="p">)</span>
+    <span class="n">multi_valued_2</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">hl</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">))</span>
+
+    <span class="c1"># Calls to a multi-valued hl.Func cannot be treated as Exprs. The</span>
+    <span class="c1"># following is a syntax error:</span>
+    <span class="c1"># hl.Func consumer</span>
+    <span class="c1"># consumer[x, y] = multi_valued_2[x, y] + 10</span>
+
+    <span class="c1"># Instead you must index the returned object with square brackets</span>
+    <span class="c1"># to retrieve the individual Exprs:</span>
+    <span class="n">integer_part</span> <span class="o">=</span> <span class="n">multi_valued_2</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">floating_part</span> <span class="o">=</span> <span class="n">multi_valued_2</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">integer_part</span><span class="p">)</span> <span class="ow">is</span> <span class="n">hl</span><span class="o">.</span><span class="n">FuncTupleElementRef</span>
+    <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">floating_part</span><span class="p">)</span> <span class="ow">is</span> <span class="n">hl</span><span class="o">.</span><span class="n">FuncTupleElementRef</span>
+
+    <span class="n">consumer</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">()</span>
+    <span class="n">consumer</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">integer_part</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="n">floating_part</span> <span class="o">+</span> <span class="mf">10.0</span><span class="p">)</span>
+
+    <span class="c1"># Tuple reductions.</span>
+    <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Tuples are particularly useful in reductions, as they allow</span>
+        <span class="c1"># the reduction to maintain complex state as it walks along</span>
+        <span class="c1"># its domain. The simplest example is an argmax.</span>
+
+        <span class="c1"># First we create an Image to take the argmax over.</span>
+        <span class="n">input_func</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">()</span>
+        <span class="n">input_func</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="nb">input</span> <span class="o">=</span> <span class="n">input_func</span><span class="o">.</span><span class="n">realize</span><span class="p">([</span><span class="mi">100</span><span class="p">])</span>
+        <span class="k">assert</span> <span class="nb">input</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+
+        <span class="c1"># Then we defined a 2-valued Tuple which tracks the maximum value</span>
+        <span class="c1"># its index.</span>
+        <span class="n">arg_max</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">()</span>
+
+        <span class="c1"># Pure definition.</span>
+        <span class="c1"># (using [()] for zero-dimensional Funcs is a convention of this python interface)</span>
+        <span class="n">arg_max</span><span class="p">[()]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">input</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># Update definition.</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">RDom</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">)])</span>
+        <span class="n">old_index</span> <span class="o">=</span> <span class="n">arg_max</span><span class="p">[()][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">old_max</span> <span class="o">=</span> <span class="n">arg_max</span><span class="p">[()][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">new_index</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">old_max</span> <span class="o">&gt;</span> <span class="nb">input</span><span class="p">[</span><span class="n">r</span><span class="p">],</span> <span class="n">r</span><span class="p">,</span> <span class="n">old_index</span><span class="p">)</span>
+        <span class="n">new_max</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="n">r</span><span class="p">],</span> <span class="n">old_max</span><span class="p">)</span>
+        <span class="n">arg_max</span><span class="p">[()]</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_index</span><span class="p">,</span> <span class="n">new_max</span><span class="p">)</span>
+
+        <span class="c1"># The equivalent Python is:</span>
+        <span class="n">arg_max_0</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">arg_max_1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+            <span class="n">old_index</span> <span class="o">=</span> <span class="n">arg_max_0</span>
+            <span class="n">old_max</span> <span class="o">=</span> <span class="n">arg_max_1</span>
+            <span class="n">new_index</span> <span class="o">=</span> <span class="n">r</span> <span class="k">if</span> <span class="p">(</span><span class="n">old_max</span> <span class="o">&gt;</span> <span class="nb">input</span><span class="p">[</span><span class="n">r</span><span class="p">])</span> <span class="k">else</span> <span class="n">old_index</span>
+            <span class="n">new_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="n">r</span><span class="p">],</span> <span class="n">old_max</span><span class="p">)</span>
+            <span class="c1"># In a tuple update definition, all loads and computation</span>
+            <span class="c1"># are done before any stores, so that all Tuple elements</span>
+            <span class="c1"># are updated atomically with respect to recursive calls</span>
+            <span class="c1"># to the same hl.Func.</span>
+            <span class="n">arg_max_0</span> <span class="o">=</span> <span class="n">new_index</span>
+            <span class="n">arg_max_1</span> <span class="o">=</span> <span class="n">new_max</span>
+
+        <span class="c1"># Let&#39;s verify that Halide and the plain Python code found the</span>
+        <span class="c1"># same maximum value and index.</span>
+        <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">r0</span><span class="p">,</span> <span class="n">r1</span> <span class="o">=</span> <span class="n">arg_max</span><span class="o">.</span><span class="n">realize</span><span class="p">()</span>
+
+            <span class="k">assert</span> <span class="n">r0</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="n">r1</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Float</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="n">arg_max_0</span> <span class="o">==</span> <span class="n">r0</span><span class="p">[()]</span>
+            <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">arg_max_1</span><span class="p">,</span> <span class="n">r1</span><span class="p">[()])</span>
+
+        <span class="c1"># Halide provides argmax and hl.argmin as built-in reductions</span>
+        <span class="c1"># similar to sum, product, maximum, and minimum. They return</span>
+        <span class="c1"># a Tuple consisting of the point in the reduction domain</span>
+        <span class="c1"># corresponding to that value, and the value itself. In the</span>
+        <span class="c1"># case of ties they return the first value found. We&#39;ll use</span>
+        <span class="c1"># one of these in the following section.</span>
+
+    <span class="c1"># Tuples for user-defined types.</span>
+    <span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Tuples can also be a convenient way to represent compound</span>
+        <span class="c1"># objects such as complex numbers. Defining an object that</span>
+        <span class="c1"># can be converted to and from a Tuple is one way to extend</span>
+        <span class="c1"># Halide&#39;s type system with user-defined types.</span>
+        <span class="k">class</span><span class="w"> </span><span class="nc">Complex</span><span class="p">:</span>
+            <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Expr</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">imag</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Expr</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">i</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">=</span> <span class="n">r</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">imag</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">imag</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="k">def</span><span class="w"> </span><span class="nf">as_tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="s2">&quot;Convert to a Tuple&quot;</span>
+                <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+
+            <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+                <span class="s2">&quot;Complex addition&quot;</span>
+                <span class="k">return</span> <span class="n">Complex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">imag</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+
+            <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+                <span class="s2">&quot;Complex multiplication&quot;</span>
+                <span class="k">return</span> <span class="n">Complex</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">real</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">imag</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">imag</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">imag</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">imag</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">real</span><span class="p">,</span>
+                <span class="p">)</span>
+
+            <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+                <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">imag</span><span class="p">)[</span><span class="n">idx</span><span class="p">]</span>
+
+            <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="k">return</span> <span class="mi">2</span>
+
+            <span class="k">def</span><span class="w"> </span><span class="nf">magnitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="s2">&quot;Complex magnitude&quot;</span>
+                <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">real</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imag</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+
+            <span class="c1"># Other complex operators would go here. The above are</span>
+            <span class="c1"># sufficient for this example.</span>
+
+        <span class="c1"># Let&#39;s use the Complex struct to compute a Mandelbrot set.</span>
+        <span class="n">mandelbrot</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">()</span>
+
+        <span class="c1"># The initial complex value corresponding to an x, y coordinate</span>
+        <span class="c1"># in our hl.Func.</span>
+        <span class="n">initial</span> <span class="o">=</span> <span class="n">Complex</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mf">15.0</span> <span class="o">-</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">y</span> <span class="o">/</span> <span class="mf">6.0</span> <span class="o">-</span> <span class="mf">2.0</span><span class="p">)</span>
+
+        <span class="c1"># Pure definition.</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+        <span class="n">mandelbrot</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">Complex</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+        <span class="c1"># We&#39;ll use an update definition to take 12 steps.</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">RDom</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">)])</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="n">Complex</span><span class="p">(</span><span class="n">mandelbrot</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1"># The following line uses the complex multiplication and</span>
+        <span class="c1"># addition we defined above.</span>
+        <span class="n">mandelbrot</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">]</span> <span class="o">=</span> <span class="n">Complex</span><span class="p">(</span><span class="n">current</span> <span class="o">*</span> <span class="n">current</span><span class="p">)</span> <span class="o">+</span> <span class="n">initial</span>
+
+        <span class="c1"># We&#39;ll use another tuple reduction to compute the iteration</span>
+        <span class="c1"># number where the value first escapes a circle of radius 4.</span>
+        <span class="c1"># This can be expressed as an hl.argmin of a boolean - we want</span>
+        <span class="c1"># the index of the first time the given boolean expression is</span>
+        <span class="c1"># false (we consider false to be less than true).  The argmax</span>
+        <span class="c1"># would return the index of the first time the expression is</span>
+        <span class="c1"># true.</span>
+
+        <span class="n">escape_condition</span> <span class="o">=</span> <span class="n">Complex</span><span class="p">(</span><span class="n">mandelbrot</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">])</span><span class="o">.</span><span class="n">magnitude</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">16.0</span>
+        <span class="n">first_escape</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">escape_condition</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">first_escape</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">tuple</span>
+        <span class="c1"># We only want the index, not the value, but hl.argmin returns</span>
+        <span class="c1"># both, so we&#39;ll index the hl.argmin Tuple expression using</span>
+        <span class="c1"># square brackets to get the hl.Expr representing the index.</span>
+        <span class="n">escape</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">()</span>
+        <span class="n">escape</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">first_escape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># Realize the pipeline and print the result as ascii art.</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">escape</span><span class="o">.</span><span class="n">realize</span><span class="p">([</span><span class="mi">61</span><span class="p">,</span> <span class="mi">25</span><span class="p">])</span>
+        <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">type</span><span class="p">()</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot; .:-~*={&amp;%#@&quot;</span>
+        <span class="k">for</span> <span class="n">yy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">height</span><span class="p">()):</span>
+            <span class="k">for</span> <span class="n">xx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">width</span><span class="p">()):</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">code</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">pass</span>  <span class="c1"># is lesson 13 cpp version buggy ?</span>
+            <span class="nb">print</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="mi">0</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lesson_12_using_the_gpu.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">12. Using the GPU</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lesson_14_types.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">14. The Halide type system</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright The Halide team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

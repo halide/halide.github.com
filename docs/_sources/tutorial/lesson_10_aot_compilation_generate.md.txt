@@ -1,0 +1,196 @@
+# Compiling the pipeline
+
+<div class="lesson-tabs">
+<script>
+(function () {
+  try {
+    if (sessionStorage.getItem("sphinx-design-tab-id-tab") === "python") {
+      document.documentElement.classList.add("pref-python");
+    }
+  } catch (e) {}
+  // design-tabs.js's own <script> tag (in <head>) runs, and so registers
+  // its DOMContentLoaded listener, before this inline script does (it's
+  // encountered later, while parsing the body) -- so by the time this
+  // listener fires, design-tabs.js has already set the correct radio's
+  // `checked` state to match. Once that's true, the "pref-python" class
+  // must come off: it forces Python's content to display via `!important`
+  // (see custom.css) regardless of which radio is actually checked, which
+  // is exactly what's needed to avoid a flash before that happens, but
+  // would otherwise permanently override the plain `:checked`-based
+  // styling for the rest of the page -- silently breaking a later click
+  // back to C++.
+  document.addEventListener("DOMContentLoaded", function () {
+    document.documentElement.classList.remove("pref-python");
+  });
+})();
+</script>
+
+::::{tab-set}
+:::{tab-item} C++
+:sync: cpp
+
+```cpp
+// Halide tutorial lesson 10: AOT compilation: compiling the pipeline
+
+// This lesson demonstrates how to use Halide as an more traditional
+// ahead-of-time (AOT) compiler.
+
+// This lesson is split across two files. The first (this one), builds
+// a Halide pipeline and compiles it to a static library and
+// header. The second (lesson_10_aot_compilation_run.cpp), uses that
+// static library to actually run the pipeline. This means that
+// compiling this code is a multi-step process.
+
+// On linux, you can compile and run it like so:
+// g++ lesson_10*generate.cpp -g -std=c++17 -I <path/to/include> -L <path/to/lib> -lHalide -lpthread -ldl -o lesson_10_generate
+// LD_LIBRARY_PATH=<path/to/lib> ./lesson_10_generate
+// g++ lesson_10*run.cpp lesson_10_halide.a -std=c++17 -I <path/to/include> -lpthread -ldl -o lesson_10_run
+// ./lesson_10_run
+
+// On macOS:
+// g++ lesson_10*generate.cpp -g -std=c++17 -I <path/to/include> -L <path/to/lib> -lHalide -o lesson_10_generate
+// DYLD_LIBRARY_PATH=<path/to/lib> ./lesson_10_generate
+// g++ lesson_10*run.cpp lesson_10_halide.a -std=c++17 -o lesson_10_run -I <path/to/include>
+// ./lesson_10_run
+
+// The benefits of this approach are that the final program:
+// - Doesn't do any jit compilation at runtime, so it's fast.
+// - Doesn't depend on libHalide at all, so it's a small, easy-to-deploy binary.
+
+#include "Halide.h"
+#include <cstdio>
+using namespace Halide;
+
+int main() {
+
+    // We'll define a simple one-stage pipeline:
+    Func brighter;
+    Var x, y;
+
+    // The pipeline will depend on one scalar parameter.
+    Param<uint8_t> offset;
+
+    // And take one grayscale 8-bit input buffer. The first
+    // constructor argument gives the type of a pixel, and the second
+    // specifies the number of dimensions (not the number of
+    // channels!). For a grayscale image this is two; for a color
+    // image it's three. Currently, four dimensions is the maximum for
+    // inputs and outputs.
+    ImageParam input(type_of<uint8_t>(), 2);
+
+    // If we were jit-compiling, these would just be an int and a
+    // Buffer, but because we want to compile the pipeline once and
+    // have it work for any value of the parameter, we need to make a
+    // Param object, which can be used like an Expr, and an ImageParam
+    // object, which can be used like a Buffer.
+
+    // Define the Func.
+    brighter(x, y) = input(x, y) + offset;
+
+    // Schedule it.
+    brighter.vectorize(x, 16).parallel(y);
+
+    // This time, instead of calling brighter.realize(...), which
+    // would compile and run the pipeline immediately, we'll call a
+    // method that compiles the pipeline to a static library and header.
+    //
+    // For AOT-compiled code, we need to explicitly declare the
+    // arguments to the routine. This routine takes two. Arguments are
+    // usually Params or ImageParams.
+    brighter.compile_to_static_library("lesson_10_halide", {input, offset}, "brighter");
+
+    printf("Halide pipeline compiled, but not yet run.\n");
+
+    // To continue this lesson, look in the file lesson_10_aot_compilation_run.cpp
+
+    return 0;
+}
+```
+
+:::
+
+:::{tab-item} Python
+:sync: python
+
+```python
+#!/usr/bin/python3
+
+# Halide tutorial lesson 10.
+
+# This lesson demonstrates how to use Halide as an more traditional
+# ahead-of-time (AOT) compiler.
+
+# This lesson is split across two files. The first (this one), builds
+# a Halide pipeline and compiles it to an object file, a header and
+# a Python extension. The second (lesson_10_aot_compilation_run.py),
+# uses that object file to actually run the pipeline. This means that
+# compiling this code is a multi-step process.
+
+# The benefits of this approach are that the final program:
+# - Doesn't do any jit compilation at runtime, so it's fast.
+# - Doesn't depend on libHalide at all, so it's a small, easy-to-deploy binary.
+
+import halide as hl
+
+
+def main():
+    # We'll define a simple one-stage pipeline:
+    brighter = hl.Func("brighter")
+    x, y = hl.Var("x"), hl.Var("y")
+
+    # The pipeline will depend on one scalar parameter.
+    offset = hl.Param(hl.UInt(8), name="offset")
+
+    # And take one grayscale 8-bit input buffer. The first
+    # constructor argument gives the type of a pixel, and the second
+    # specifies the number of dimensions (not the number of
+    # channels!). For a grayscale image this is two for a color
+    # image it's three. Currently, four dimensions is the maximum for
+    # inputs and outputs.
+    input = hl.ImageParam(hl.UInt(8), 2)
+
+    # If we were jit-compiling, these would just be an int and a
+    # hl.Buffer, but because we want to compile the pipeline once and
+    # have it work for any value of the parameter, we need to make a
+    # hl.Param object, which can be used like an hl.Expr, and an hl.ImageParam
+    # object, which can be used like a hl.Buffer.
+
+    # Define the hl.Func.
+    brighter[x, y] = input[x, y] + offset
+
+    # Schedule it.
+    brighter.vectorize(x, 16).parallel(y)
+
+    # This time, instead of calling brighter.realize(...), which
+    # would compile and run the pipeline immediately, we'll call a
+    # method that compiles the pipeline to an object file and header.
+    #
+    # For AOT-compiled code, we need to explicitly declare the
+    # arguments to the routine. This routine takes two. Arguments are
+    # usually Params or ImageParams.
+    fname = "lesson_10_halide"
+    brighter.compile_to(
+        {
+            hl.OutputFileType.object: f"{fname}.o",
+            hl.OutputFileType.python_extension: f"{fname}.py.cpp",
+        },
+        [input, offset],
+        fname,
+    )
+
+    print("Halide pipeline compiled, but not yet run.")
+
+    # To continue this lesson, look in the file
+    # lesson_10_aot_compilation_run.py
+
+    return 0
+
+
+if __name__ == "__main__":
+    main()
+```
+
+:::
+::::
+
+</div>

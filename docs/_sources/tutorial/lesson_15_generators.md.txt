@@ -1,0 +1,352 @@
+# Writing a generator
+
+<div class="lesson-tabs">
+<script>
+(function () {
+  try {
+    if (sessionStorage.getItem("sphinx-design-tab-id-tab") === "python") {
+      document.documentElement.classList.add("pref-python");
+    }
+  } catch (e) {}
+  // design-tabs.js's own <script> tag (in <head>) runs, and so registers
+  // its DOMContentLoaded listener, before this inline script does (it's
+  // encountered later, while parsing the body) -- so by the time this
+  // listener fires, design-tabs.js has already set the correct radio's
+  // `checked` state to match. Once that's true, the "pref-python" class
+  // must come off: it forces Python's content to display via `!important`
+  // (see custom.css) regardless of which radio is actually checked, which
+  // is exactly what's needed to avoid a flash before that happens, but
+  // would otherwise permanently override the plain `:checked`-based
+  // styling for the rest of the page -- silently breaking a later click
+  // back to C++.
+  document.addEventListener("DOMContentLoaded", function () {
+    document.documentElement.classList.remove("pref-python");
+  });
+})();
+</script>
+
+::::{tab-set}
+:::{tab-item} C++
+:sync: cpp
+
+```cpp
+// Halide tutorial lesson 15: Generators: writing a generator
+
+// This lesson demonstrates how to encapsulate Halide pipelines into
+// reusable components called generators.
+
+// On linux, you can compile and run it like so:
+// g++ lesson_15*.cpp <path/to/tools>/GenGen.cpp -g -std=c++17 -fno-rtti -I <path/to/include> -L <path/to/lib> -lHalide -lpthread -ldl -o lesson_15_generate
+// bash lesson_15_generators_usage.sh
+
+// On macOS:
+// g++ lesson_15*.cpp <path/to/tools>/GenGen.cpp -g -std=c++17 -fno-rtti -I <path/to/include> -L <path/to/lib> -lHalide -o lesson_15_generate
+// bash lesson_15_generators_usage.sh
+
+#include "Halide.h"
+#include <cstdio>
+
+using namespace Halide;
+
+// Generators are a more structured way to do ahead-of-time
+// compilation of Halide pipelines. Instead of writing an int main()
+// with an ad-hoc command-line interface like we did in lesson 10, we
+// define a class that inherits from Halide::Generator.
+class MyFirstGenerator : public Halide::Generator<MyFirstGenerator> {
+public:
+    // We declare the Inputs to the Halide pipeline as public
+    // member variables. They'll appear in the signature of our generated
+    // function in the same order as we declare them.
+    Input<uint8_t> offset{"offset"};
+    Input<Buffer<uint8_t, 2>> input{"input"};
+
+    // We also declare the Outputs as public member variables.
+    Output<Buffer<uint8_t, 2>> brighter{"brighter"};
+
+    // Typically you declare your Vars at this scope as well, so that
+    // they can be used in any helper methods you add later.
+    Var x, y;
+
+    // We then define a method that constructs and return the Halide
+    // pipeline:
+    void generate() {
+        // In lesson 10, here is where we called
+        // Func::compile_to_file. In a Generator, we just need to
+        // define the Output(s) representing the output of the pipeline.
+        brighter(x, y) = input(x, y) + offset;
+
+        // Schedule it.
+        brighter.vectorize(x, 16).parallel(y);
+    }
+};
+
+// We compile this file along with tools/GenGen.cpp. That file defines
+// an "int main(...)" that provides the command-line interface to use
+// your generator class. We need to tell that code about our
+// generator. We do this like so:
+HALIDE_REGISTER_GENERATOR(MyFirstGenerator, my_first_generator)
+
+// If you like, you can put multiple Generators in the one file. This
+// could be a good idea if they share some common code. Let's define
+// another more complex generator:
+class MySecondGenerator : public Halide::Generator<MySecondGenerator> {
+public:
+    // This generator will take some compile-time parameters
+    // too. These let you compile multiple variants of a Halide
+    // pipeline. We'll define one that tells us whether or not to
+    // parallelize in our schedule:
+    GeneratorParam<bool> parallel{"parallel", /* default value */ true};
+
+    // ... and another representing a constant scale factor to use:
+    GeneratorParam<float> scale{"scale",
+                                1.0f /* default value */,
+                                0.0f /* minimum value */,
+                                100.0f /* maximum value */};
+
+    // You can define GeneratorParams of all the basic scalar
+    // types. For numeric types you can optionally provide a minimum
+    // and maximum value, as we did for scale above.
+
+    // You can also define GeneratorParams for enums. To make this
+    // work you must provide a mapping from strings to your enum
+    // values.
+    enum class Rotation { None,
+                          Clockwise,
+                          CounterClockwise };
+    GeneratorParam<Rotation> rotation{"rotation",
+                                      /* default value */
+                                      Rotation::None,
+                                      /* map from names to values */
+                                      {{"none", Rotation::None},
+                                       {"cw", Rotation::Clockwise},
+                                       {"ccw", Rotation::CounterClockwise}}};
+
+    // We'll use the same Inputs as before:
+    Input<uint8_t> offset{"offset"};
+    Input<Buffer<uint8_t, 2>> input{"input"};
+
+    // And a similar Output. Note that we don't specify a type for the Buffer:
+    // at compile-time, we must specify an explicit type via the "output.type"
+    // GeneratorParam (which is implicitly defined for this Output).
+    Output<Buffer<void, 2>> output{"output"};
+
+    // And we'll declare our Vars here as before.
+    Var x, y;
+
+    void generate() {
+        // Define the Func. We'll use the compile-time scale factor as
+        // well as the runtime offset param.
+        Func brighter;
+        brighter(x, y) = scale * (input(x, y) + offset);
+
+        // We'll possibly do some sort of rotation, depending on the
+        // enum. To get the value of a GeneratorParam, cast it to the
+        // corresponding type. This cast happens implicitly most of
+        // the time (e.g. with scale above).
+
+        Func rotated;
+        switch ((Rotation)rotation) {
+        case Rotation::None:
+            rotated(x, y) = brighter(x, y);
+            break;
+        case Rotation::Clockwise:
+            rotated(x, y) = brighter(y, 100 - x);
+            break;
+        case Rotation::CounterClockwise:
+            rotated(x, y) = brighter(100 - y, x);
+            break;
+        }
+
+        // We'll then cast to the desired output type.
+        output(x, y) = cast(output.type(), rotated(x, y));
+
+        // The structure of the pipeline depended on the generator
+        // params. So will the schedule.
+
+        // Let's start by vectorizing the output. We don't know the
+        // type though, so it's hard to pick a good factor. Generators
+        // provide a helper called "natural_vector_size" which will
+        // pick a reasonable factor for you given the type and the
+        // target you're compiling to.
+        output.vectorize(x, natural_vector_size(output.type()));
+
+        // Now we'll possibly parallelize it:
+        if (parallel) {
+            output.parallel(y);
+        }
+
+        // If there was a rotation, we'll schedule that to occur per
+        // scanline of the output and vectorize it according to its
+        // type.
+        if (rotation != Rotation::None) {
+            rotated
+                .compute_at(output, y)
+                .vectorize(x, natural_vector_size(rotated.types()[0]));
+        }
+    }
+};
+
+// Register our second generator:
+HALIDE_REGISTER_GENERATOR(MySecondGenerator, my_second_generator)
+
+// After compiling this file, see how to use it in
+// lesson_15_generators_build.sh
+```
+
+:::
+
+:::{tab-item} Python
+:sync: python
+
+```python
+#!/usr/bin/python3
+
+# Halide tutorial lesson 15: Generators: writing a generator
+
+# This lesson demonstrates how to encapsulate Halide pipelines into
+# reusable components called generators.
+
+import enum
+
+import halide as hl
+
+
+# Generators are a more structured way to do ahead-of-time
+# compilation of Halide pipelines. Instead of writing a main()
+# with an ad-hoc command-line interface like we did in lesson 10, we
+# define a class decorated with @hl.generator().
+@hl.generator(name="my_first_generator")
+class MyFirstGenerator:
+    # We declare the Inputs to the Halide pipeline as class-level
+    # attributes. They'll appear in the signature of our generated
+    # function in the same order as we declare them.
+    offset = hl.InputScalar(hl.UInt(8))
+    input_buf = hl.InputBuffer(hl.UInt(8), 2)
+
+    # We also declare the Output as a class-level attribute.
+    brighter = hl.OutputBuffer(hl.UInt(8), 2)
+
+    # We then define a method that constructs the Halide pipeline:
+    def generate(self):
+        g = self
+
+        # Typically you declare your Vars at the top of this method, so
+        # that they can be used in any helper methods you add later.
+        x, y = hl.Var("x"), hl.Var("y")
+
+        # In lesson 10, here is where we called
+        # Func.compile_to_file. In a Generator, we just need to
+        # define the Output(s) representing the output of the pipeline.
+        g.brighter[x, y] = g.input_buf[x, y] + g.offset
+
+        # Schedule it.
+        g.brighter.vectorize(x, 16).parallel(y)
+
+
+# If you like, you can put multiple Generators in the one file. This
+# could be a good idea if they share some common code. Let's define
+# another more complex generator:
+
+
+# This generator will take some compile-time parameters too. These let
+# you compile multiple variants of a Halide pipeline. We'll define one
+# that tells us whether or not to parallelize in our schedule, and
+# another representing a constant scale factor to use. You can define
+# GeneratorParams of all the basic scalar types (str, bool, int,
+# float). For numeric types, Halide's Generator API lets you
+# optionally provide a minimum and maximum value; the Python bindings
+# don't support that directly, so we just document the expected range
+# in a comment instead.
+#
+# Python's GeneratorParam also doesn't support enums directly, so to
+# make an enum-like GeneratorParam work, we provide a mapping from
+# strings to our enum values ourselves, the same way
+# apps/blur_generator.py does for its gpu_schedule param.
+class Rotation(enum.Enum):
+    NONE = 0
+    CLOCKWISE = 1
+    COUNTER_CLOCKWISE = 2
+
+
+_ROTATION_MAP = {
+    "none": Rotation.NONE,
+    "cw": Rotation.CLOCKWISE,
+    "ccw": Rotation.COUNTER_CLOCKWISE,
+}
+
+
+@hl.generator(name="my_second_generator")
+class MySecondGenerator:
+    parallel = hl.GeneratorParam(True)  # default value
+
+    # minimum value 0.0, maximum value 100.0
+    scale = hl.GeneratorParam(1.0)  # default value
+
+    rotation = hl.GeneratorParam("none")  # default value; "none", "cw", or "ccw"
+
+    # We'll use the same Inputs as before:
+    offset = hl.InputScalar(hl.UInt(8))
+    input_buf = hl.InputBuffer(hl.UInt(8), 2)
+
+    # And a similar Output. Note that we don't specify a type for the
+    # Buffer: at compile-time, we must specify an explicit type via the
+    # "output.type" GeneratorParam (which is implicitly defined for this
+    # Output).
+    output = hl.OutputBuffer(None, 2)
+
+    def generate(self):
+        g = self
+        x, y = hl.Var("x"), hl.Var("y")
+
+        # Define the Func. We'll use the compile-time scale factor as
+        # well as the runtime offset param.
+        brighter = hl.Func("brighter")
+        brighter[x, y] = g.scale * (g.input_buf[x, y] + g.offset)
+
+        # We'll possibly do some sort of rotation, depending on the
+        # enum. This will raise an exception for unknown strings, which
+        # is what we want.
+        rotation = _ROTATION_MAP[g.rotation]
+
+        rotated = hl.Func("rotated")
+        if rotation == Rotation.NONE:
+            rotated[x, y] = brighter[x, y]
+        elif rotation == Rotation.CLOCKWISE:
+            rotated[x, y] = brighter[y, 100 - x]
+        elif rotation == Rotation.COUNTER_CLOCKWISE:
+            rotated[x, y] = brighter[100 - y, x]
+
+        # We'll then cast to the desired output type.
+        g.output[x, y] = hl.cast(g.output.type(), rotated[x, y])
+
+        # The structure of the pipeline depended on the generator
+        # params. So will the schedule.
+
+        # Let's start by vectorizing the output. We don't know the
+        # type though, so it's hard to pick a good factor. Generators
+        # provide a helper called "natural_vector_size" which will
+        # pick a reasonable factor for you given the type and the
+        # target you're compiling to.
+        g.output.vectorize(x, g.natural_vector_size(g.output.type()))
+
+        # Now we'll possibly parallelize it:
+        if g.parallel:
+            g.output.parallel(y)
+
+        # If there was a rotation, we'll schedule that to occur per
+        # scanline of the output and vectorize it according to its
+        # type.
+        if rotation != Rotation.NONE:
+            rotated.compute_at(g.output, y).vectorize(
+                x, g.natural_vector_size(rotated.types()[0])
+            )
+
+
+if __name__ == "__main__":
+    hl.main()
+```
+
+:::
+::::
+
+</div>

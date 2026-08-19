@@ -1,0 +1,1198 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Using Halide from your CMake build &#8212; Halide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1ee386da" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="_static/documentation_options.js?v=8a448e45"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'HalideCMakePackage';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing CMake code to Halide" href="CodeStyleCMake.html" />
+    <link rel="prev" title="Building Halide with CMake" href="BuildingHalideWithCMake.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Halide</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorial/index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorial/index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="BuildingHalideWithCMake.html">Building Halide with CMake</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using Halide from your CMake build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CodeStyleCMake.html">Contributing CMake code to Halide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CustomRuntimes.html">Custom Runtime Prefixes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FuzzTesting.html">Fuzz testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeneratorCache.html">Generator compile cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hexagon.html">Halide for Hexagon HVX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python.html">Halide Bindings for Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RunGen.html">Running and Benchmarking Halide Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vulkan.html">Vulkan Support for Halide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WebAssembly.html">WebAssembly Support for Halide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WebGPU.html">WebGPU support for Halide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="guides.html" class="nav-link">Guides</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Using Halide from your CMake build</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="using-halide-from-your-cmake-build">
+<h1>Using Halide from your CMake build<a class="headerlink" href="#using-halide-from-your-cmake-build" title="Link to this heading">#</a></h1>
+<p>This is a detailed guide to building your own Halide programs with the official
+CMake package. If you need directions for building Halide, see
+<a class="reference internal" href="BuildingHalideWithCMake.html"><span class="std std-doc">BuildingHalideWithCMake.md</span></a>. If you are looking for Halide’s CMake coding
+guidelines, see <a class="reference internal" href="CodeStyleCMake.html"><span class="std std-doc">CodeStyleCMake.md</span></a>.</p>
+<p>This document assumes some basic familiarity with CMake but tries to be explicit
+in all its examples. To learn more about CMake, consult the
+<a class="reference external" href="https://cmake.org/cmake/help/latest/">documentation</a> and engage with the community on the
+<a class="reference external" href="https://discourse.cmake.org/">CMake Discourse</a>.</p>
+<section id="a-basic-cmake-project">
+<h2>A basic CMake project<a class="headerlink" href="#a-basic-cmake-project" title="Link to this heading">#</a></h2>
+<p>There are two main ways to use Halide in your application: as a <strong>JIT compiler</strong>
+for dynamic pipelines or an <strong>ahead-of-time (AOT) compiler</strong> for static
+pipelines. CMake provides robust support for both use cases.</p>
+<p>No matter how you intend to use Halide, you will need some basic CMake
+boilerplate.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.28</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">HalideExample</span><span class="p">)</span>
+
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD</span><span class="w"> </span><span class="s">17</span><span class="p">)</span><span class="w">  </span><span class="c"># or newer</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_STANDARD_REQUIRED</span><span class="w"> </span><span class="s">YES</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">CMAKE_CXX_EXTENSIONS</span><span class="w"> </span><span class="s">NO</span><span class="p">)</span>
+
+<span class="nb">find_package</span><span class="p">(</span><span class="s">Halide</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html"><code class="docutils literal notranslate"><span class="pre">cmake_minimum_required</span></code></a> command is required to be
+the first command executed in a CMake program. It disables all the deprecated
+behavior (“policies” in CMake lingo) from earlier versions. The
+<a class="reference external" href="https://cmake.org/cmake/help/latest/command/project.html"><code class="docutils literal notranslate"><span class="pre">project</span></code></a> command sets the name of the project (and accepts arguments
+for versioning, language support, etc.) and is required by CMake to be called
+immediately after setting the minimum version.</p>
+<p>The next three variables set the project-wide C++ standard. The first,
+<a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_CXX_STANDARD.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_CXX_STANDARD</span></code></a>, simply sets the standard version.
+Halide requires at least C++17. The second,
+<a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_CXX_STANDARD_REQUIRED.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_CXX_STANDARD_REQUIRED</span></code></a>, tells CMake to
+fail if the compiler cannot provide the requested standard version. Lastly,
+<a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_CXX_EXTENSIONS.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_CXX_EXTENSIONS</span></code></a> tells CMake to disable
+vendor-specific extensions to C++. This is not necessary to simply use Halide,
+but we do not allow such extensions in the Halide repo.</p>
+<p>Finally, we use <a class="reference external" href="https://cmake.org/cmake/help/latest/command/find_package.html"><code class="docutils literal notranslate"><span class="pre">find_package</span></code></a> to locate Halide on your system.
+When using the pip package on Linux and macOS, CMake’s <code class="docutils literal notranslate"><span class="pre">find_package</span></code> command
+should find Halide as long as you’re in the same virtual environment you
+installed it in. On Windows, you will need to add the virtual environment root
+directory to <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_PREFIX_PATH.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code></a>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmake<span class="w"> </span>-G<span class="w"> </span>Ninja<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>-DCMAKE_PREFIX_PATH<span class="o">=</span>%VIRTUAL_ENV%
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">find_package</span></code> cannot find Halide, set <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code> to the Halide
+installation directory.</p>
+<section id="jit-mode">
+<h3>JIT mode<a class="headerlink" href="#jit-mode" title="Link to this heading">#</a></h3>
+<p>To use Halide in JIT mode (like the <a class="reference external" href="https://halide-lang.org/tutorials/tutorial_introduction.html">tutorials</a> do, for
+example), you can simply link to <code class="docutils literal notranslate"><span class="pre">Halide::Halide</span></code>.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># ... same project setup as before ...</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">my_halide_app</span><span class="w"> </span><span class="s">main.cpp</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">my_halide_app</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">Halide::Halide</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then <code class="docutils literal notranslate"><span class="pre">Halide.h</span></code> will be available to your code and everything should just work.
+That’s it!</p>
+</section>
+<section id="aot-mode">
+<h3>AOT mode<a class="headerlink" href="#aot-mode" title="Link to this heading">#</a></h3>
+<p>Using Halide in AOT mode is more complicated so we’ll walk through it step by
+step. Note that this only applies to Halide generators, so it might be useful to
+re-read the <a class="reference external" href="https://halide-lang.org/tutorials/tutorial_lesson_15_generators.html">tutorial on generators</a>. Assume (like in
+the tutorial) that you have a source file named <code class="docutils literal notranslate"><span class="pre">my_generators.cpp</span></code> and that in
+it, you have generator classes <code class="docutils literal notranslate"><span class="pre">MyFirstGenerator</span></code> and <code class="docutils literal notranslate"><span class="pre">MySecondGenerator</span></code> with
+registered names <code class="docutils literal notranslate"><span class="pre">my_first_generator</span></code> and <code class="docutils literal notranslate"><span class="pre">my_second_generator</span></code> respectively.</p>
+<p>Then the first step is to add a <strong>generator executable</strong> to your build:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># ... same project setup as before ...</span>
+<span class="nb">add_halide_generator</span><span class="p">(</span><span class="s">my_generators</span><span class="w"> </span><span class="s">SOURCES</span><span class="w"> </span><span class="s">my_generators.cpp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using the generator executable, we can add a Halide library corresponding to
+<code class="docutils literal notranslate"><span class="pre">MyFirstGenerator</span></code>.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># ... continuing from above</span>
+<span class="nb">add_halide_library</span><span class="p">(</span><span class="s">my_first_generator</span><span class="w"> </span><span class="s">FROM</span><span class="w"> </span><span class="s">my_generators</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will create a static library target in CMake that corresponds to the output
+of running your generator. The second generator in the file requires generator
+parameters to be passed to it. These are also easy to handle:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># ... continuing from above</span>
+<span class="nb">add_halide_library</span><span class="p">(</span><span class="s">my_second_generator</span><span class="w"> </span><span class="s">FROM</span><span class="w"> </span><span class="s">my_generators</span>
+<span class="w">                   </span><span class="s">PARAMS</span><span class="w"> </span><span class="s">parallel=false</span><span class="w"> </span><span class="s">scale=3.0</span><span class="w"> </span><span class="s">rotation=ccw</span><span class="w"> </span><span class="s">output.type=uint16</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Adding multiple configurations is easy, too:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># ... continuing from above</span>
+<span class="nb">add_halide_library</span><span class="p">(</span><span class="s">my_second_generator_2</span><span class="w"> </span><span class="s">FROM</span><span class="w"> </span><span class="s">my_generators</span>
+<span class="w">                   </span><span class="s">GENERATOR</span><span class="w"> </span><span class="s">my_second_generator</span>
+<span class="w">                   </span><span class="s">PARAMS</span><span class="w"> </span><span class="s">scale=9.0</span><span class="w"> </span><span class="s">rotation=ccw</span><span class="w"> </span><span class="s">output.type=float32</span><span class="p">)</span>
+
+<span class="nb">add_halide_library</span><span class="p">(</span><span class="s">my_second_generator_3</span><span class="w"> </span><span class="s">FROM</span><span class="w"> </span><span class="s">my_generators</span>
+<span class="w">                   </span><span class="s">GENERATOR</span><span class="w"> </span><span class="s">my_second_generator</span>
+<span class="w">                   </span><span class="s">PARAMS</span><span class="w"> </span><span class="s">parallel=false</span><span class="w"> </span><span class="s">output.type=float64</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, we had to specify which generator to use (<code class="docutils literal notranslate"><span class="pre">my_second_generator</span></code>) since it
+uses the target name by default. The functions in these libraries will be named
+after the target names, <code class="docutils literal notranslate"><span class="pre">my_second_generator_2</span></code> and <code class="docutils literal notranslate"><span class="pre">my_second_generator_3</span></code>, by
+default, but it is possible to control this via the <code class="docutils literal notranslate"><span class="pre">FUNCTION_NAME</span></code> parameter.</p>
+<p>Each one of these targets, <code class="docutils literal notranslate"><span class="pre">&lt;GEN&gt;</span></code>, carries an associated <code class="docutils literal notranslate"><span class="pre">&lt;GEN&gt;.runtime</span></code>
+target, which is also a static library containing the Halide runtime. It is
+transitively linked through <code class="docutils literal notranslate"><span class="pre">&lt;GEN&gt;</span></code> to targets that link to <code class="docutils literal notranslate"><span class="pre">&lt;GEN&gt;</span></code>. On an
+operating system like Linux, where weak linking is available, this is not an
+issue. However, on Windows, this can fail due to symbol redefinitions. In these
+cases, you must declare that two Halide libraries share a runtime, like so:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># ... updating above</span>
+<span class="nb">add_halide_library</span><span class="p">(</span><span class="s">my_second_generator_2</span><span class="w"> </span><span class="s">FROM</span><span class="w"> </span><span class="s">my_generators</span>
+<span class="w">                   </span><span class="s">GENERATOR</span><span class="w"> </span><span class="s">my_second_generator</span>
+<span class="w">                   </span><span class="s">USE_RUNTIME</span><span class="w"> </span><span class="s">my_first_generator.runtime</span>
+<span class="w">                   </span><span class="s">PARAMS</span><span class="w"> </span><span class="s">scale=9.0</span><span class="w"> </span><span class="s">rotation=ccw</span><span class="w"> </span><span class="s">output.type=float32</span><span class="p">)</span>
+
+<span class="nb">add_halide_library</span><span class="p">(</span><span class="s">my_second_generator_3</span><span class="w"> </span><span class="s">FROM</span><span class="w"> </span><span class="s">my_generators</span>
+<span class="w">                   </span><span class="s">GENERATOR</span><span class="w"> </span><span class="s">my_second_generator</span>
+<span class="w">                   </span><span class="s">USE_RUNTIME</span><span class="w"> </span><span class="s">my_first_generator.runtime</span>
+<span class="w">                   </span><span class="s">PARAMS</span><span class="w"> </span><span class="s">parallel=false</span><span class="w"> </span><span class="s">output.type=float64</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will even work correctly when different combinations of targets are
+specified for each halide library. A “greatest common denominator” target will
+be chosen that is compatible with all of them (or the build will fail).</p>
+<section id="autoschedulers">
+<h4>Autoschedulers<a class="headerlink" href="#autoschedulers" title="Link to this heading">#</a></h4>
+<p>When the autoschedulers are included in the release package, they are very
+simple to apply to your own generators. For example, we could update the
+definition of the <code class="docutils literal notranslate"><span class="pre">my_first_generator</span></code> library above to use the <code class="docutils literal notranslate"><span class="pre">Adams2019</span></code>
+autoscheduler:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_halide_library</span><span class="p">(</span><span class="s">my_second_generator</span><span class="w"> </span><span class="s">FROM</span><span class="w"> </span><span class="s">my_generators</span>
+<span class="w">                   </span><span class="s">AUTOSCHEDULER</span><span class="w"> </span><span class="s">Halide::Adams2019</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="rungenmain">
+<h4>RunGenMain<a class="headerlink" href="#rungenmain" title="Link to this heading">#</a></h4>
+<p>Halide provides a generic driver for generators to be used during development
+for benchmarking and debugging. Suppose you have a generator executable called
+<code class="docutils literal notranslate"><span class="pre">my_gen</span></code> and a generator within called <code class="docutils literal notranslate"><span class="pre">my_filter</span></code>. Then you can pass a variable
+name to the <code class="docutils literal notranslate"><span class="pre">REGISTRATION</span></code> parameter of <code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code> which will contain
+the name of a generated C++ source that should be linked to <code class="docutils literal notranslate"><span class="pre">Halide::RunGenMain</span></code>
+and <code class="docutils literal notranslate"><span class="pre">my_filter</span></code>.</p>
+<p>For example:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_halide_library</span><span class="p">(</span><span class="s">my_filter</span><span class="w"> </span><span class="s">FROM</span><span class="w"> </span><span class="s">my_gen</span>
+<span class="w">                   </span><span class="s">REGISTRATION</span><span class="w"> </span><span class="s">filter_reg_cpp</span><span class="p">)</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">runner</span><span class="w"> </span><span class="o">${</span><span class="nv">filter_reg_cpp</span><span class="o">}</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">runner</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">my_filter</span><span class="w"> </span><span class="s">Halide::RunGenMain</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then you can run, debug, and benchmark your generator through the <code class="docutils literal notranslate"><span class="pre">runner</span></code>
+executable. Learn how to interact with these executables in
+<a class="reference internal" href="RunGen.html"><span class="std std-doc">RunGen.md</span></a>.</p>
+</section>
+</section>
+</section>
+<section id="halide-package-documentation">
+<h2>Halide package documentation<a class="headerlink" href="#halide-package-documentation" title="Link to this heading">#</a></h2>
+<p>Halide provides a CMake <em>package configuration</em> module. The intended way to use
+the CMake build is to run <code class="docutils literal notranslate"><span class="pre">find_package(Halide</span> <span class="pre">...)</span></code> in your <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>
+file. Closely read the <a class="reference external" href="https://cmake.org/cmake/help/latest/command/find_package.html"><code class="docutils literal notranslate"><span class="pre">find_package</span></code> documentation</a> before
+proceeding.</p>
+<section id="components">
+<h3>Components<a class="headerlink" href="#components" title="Link to this heading">#</a></h3>
+<p>The Halide package script understands a handful of optional components when
+loading the package.</p>
+<p>First, if you plan to use the Halide Image IO library, you will want to include
+the <code class="docutils literal notranslate"><span class="pre">png</span></code> and <code class="docutils literal notranslate"><span class="pre">jpeg</span></code> components when loading Halide.</p>
+<p>Second, Halide releases can contain a variety of configurations: static, shared,
+debug, release, etc. CMake handles Debug/Release configurations automatically,
+but generally only allows one type of library to be loaded.</p>
+<p>The package understands two components, <code class="docutils literal notranslate"><span class="pre">static</span></code> and <code class="docutils literal notranslate"><span class="pre">shared</span></code>, that specify
+which type of library you would like to load. For example, if you want to make
+sure that you link against shared Halide, you can write:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">Halide</span><span class="w"> </span><span class="s">REQUIRED</span><span class="w"> </span><span class="s">COMPONENTS</span><span class="w"> </span><span class="s">shared</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If the shared libraries are not available, this will result in a failure.</p>
+<p>If no component is specified, then the <code class="docutils literal notranslate"><span class="pre">Halide_SHARED_LIBS</span></code> variable is checked.
+If it is defined and set to true, then the shared libraries will be loaded or
+the package loading will fail. Similarly, if it is defined and set to false, the
+static libraries will be loaded.</p>
+<p>If no component is specified and <code class="docutils literal notranslate"><span class="pre">Halide_SHARED_LIBS</span></code> is <em>not</em> defined, then the
+<a class="reference external" href="https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html"><code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code></a> variable will be inspected. If it is
+<strong>not defined</strong> or <strong>defined and set to true</strong>, then it will attempt to load the
+shared libs and fall back to the static libs if they are not available.
+Similarly, if <code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> is <strong>defined and set to false</strong>, then it will
+try the static libs first then fall back to the shared libs.</p>
+<p>To ensure that the Python bindings are available, include the <code class="docutils literal notranslate"><span class="pre">Python</span></code>
+component.</p>
+<p>Finally, when <a class="reference internal" href="#cross-compiling">cross compiling</a>,
+<code class="docutils literal notranslate"><span class="pre">find_package(Halide</span> <span class="pre">REQUIRED)</span></code> never pulls in the compiled compiler/JIT library
+(<code class="docutils literal notranslate"><span class="pre">Halide::Halide</span></code>, <code class="docutils literal notranslate"><span class="pre">Halide::Generator</span></code>, etc.) unless you explicitly ask for it.
+Add the <code class="docutils literal notranslate"><span class="pre">JIT</span></code> component (or <code class="docutils literal notranslate"><span class="pre">Python</span></code>) to force it to be loaded even while
+cross-compiling:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">Halide</span><span class="w"> </span><span class="s">REQUIRED</span><span class="w"> </span><span class="s">COMPONENTS</span><span class="w"> </span><span class="s">JIT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This looks for a <code class="docutils literal notranslate"><span class="pre">HalideCompiler</span></code> package matching your current (target)
+platform and fails with a normal <code class="docutils literal notranslate"><span class="pre">find_package</span></code> error if none is found.
+<code class="docutils literal notranslate"><span class="pre">HalideCompiler</span></code> is the name of the underlying platform-specific package that
+actually contains the compiled libraries; you generally don’t need to
+<code class="docutils literal notranslate"><span class="pre">find_package(HalideCompiler)</span></code> directly, but its name is useful for
+<code class="docutils literal notranslate"><span class="pre">HalideCompiler_ROOT</span></code>/<code class="docutils literal notranslate"><span class="pre">-DHalideCompiler_DIR=...</span></code> when pointing CMake at a
+specific installed build.</p>
+<p>Autoscheduler plugins (see <a class="reference internal" href="#autoschedulers">Autoschedulers</a>) are resolved
+separately, via a <code class="docutils literal notranslate"><span class="pre">HalideAutoschedulers</span></code> package, and are always available to
+<code class="docutils literal notranslate"><span class="pre">add_halide_library(...</span> <span class="pre">AUTOSCHEDULER</span> <span class="pre">...)</span></code> regardless of cross-compiling –
+unlike <code class="docutils literal notranslate"><span class="pre">HalideCompiler</span></code>, this package’s targets are never linked against (only
+dlopen()’d, by their build path, at Generator run time), so there’s no reason to
+gate them behind the <code class="docutils literal notranslate"><span class="pre">JIT</span></code>/<code class="docutils literal notranslate"><span class="pre">Python</span></code> components.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">static</span></code>/<code class="docutils literal notranslate"><span class="pre">shared</span></code>, unlike <code class="docutils literal notranslate"><span class="pre">JIT</span></code>/<code class="docutils literal notranslate"><span class="pre">Python</span></code>, never force this load by
+themselves – requesting one merely records your preference for whichever
+package eventually loads the compiled compiler (whether that’s this same
+<code class="docutils literal notranslate"><span class="pre">find_package(Halide</span> <span class="pre">...)</span></code> call, because you’re not cross-compiling or also
+requested <code class="docutils literal notranslate"><span class="pre">JIT</span></code>/<code class="docutils literal notranslate"><span class="pre">Python</span></code>, or a later, unrelated one, such as the internal lookup
+<code class="docutils literal notranslate"><span class="pre">add_halide_generator</span></code> performs when it needs to build a generator). This
+preference is scoped to the current directory (and any subdirectories added
+after it), so independent parts of a project – so long as neither is a
+subdirectory of the other – can request different linkage without conflicting
+with each other. If one directory’s <code class="docutils literal notranslate"><span class="pre">find_package</span></code> call ends up loading the
+compiled compiler before a subdirectory requests the other flavor, that’s a real
+conflict (CMake can only load one flavor of <code class="docutils literal notranslate"><span class="pre">Halide::Halide</span></code> per directory
+scope) and fails cleanly with a descriptive error rather than silently keeping
+whichever flavor loaded first.</p>
+</section>
+<section id="variables">
+<h3>Variables<a class="headerlink" href="#variables" title="Link to this heading">#</a></h3>
+<p>Variables that control package loading:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_SHARED_LIBS</span></code></p></td>
+<td><p>override <code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> when loading the Halide package via <code class="docutils literal notranslate"><span class="pre">find_package</span></code>. Has no effect when using Halide via <code class="docutils literal notranslate"><span class="pre">add_subdirectory</span></code> as a Git or <code class="docutils literal notranslate"><span class="pre">FetchContent</span></code> submodule.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_RUNTIME_NO_THREADS</span></code></p></td>
+<td><p>skip linking of Threads library to runtime. Should be set if your toolchain does not support it (e.g. baremetal).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_RUNTIME_NO_DL_LIBS</span></code></p></td>
+<td><p>skip linking of DL library to runtime. Should be set if your toolchain does not support it (e.g. baremetal).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Variables set by the package:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_VERSION</span></code></p></td>
+<td><p>The full version string of the loaded Halide package</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_VERSION_MAJOR</span></code></p></td>
+<td><p>The major version of the loaded Halide package</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_VERSION_MINOR</span></code></p></td>
+<td><p>The minor version of the loaded Halide package</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_VERSION_PATCH</span></code></p></td>
+<td><p>The patch version of the loaded Halide package</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_VERSION_TWEAK</span></code></p></td>
+<td><p>The tweak version of the loaded Halide package</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_HOST_TARGET</span></code></p></td>
+<td><p>The Halide target triple corresponding to “host” for this build.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_CMAKE_TARGET</span></code></p></td>
+<td><p>The Halide target triple corresponding to the active CMake target.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_ENABLE_EXCEPTIONS</span></code></p></td>
+<td><p>Whether Halide was compiled with exception support</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_ENABLE_RTTI</span></code></p></td>
+<td><p>Whether Halide was compiled with RTTI</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">WITH_AUTOSCHEDULERS</span></code></p></td>
+<td><p>Whether the autoschedulers are available</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Variables that control package behavior:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_PYTHON_LAUNCHER</span></code></p></td>
+<td><p>Semicolon separated list containing a command to launch the Python interpreter. Can be used to set environment variables for Python generators.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_NO_DEFAULT_FLAGS</span></code></p></td>
+<td><p>Off by default. When enabled, suppresses recommended compiler flags that would be added by <code class="docutils literal notranslate"><span class="pre">add_halide_generator</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide_CACHE_DIR</span></code></p></td>
+<td><p>Defaults to <code class="docutils literal notranslate"><span class="pre">$ENV{HL_CACHE_DIR}</span></code>. When set, routes <code class="docutils literal notranslate"><span class="pre">HL_CACHE_DIR</span></code> to every generator/GenRT invocation so it can reuse cached artifacts instead of recompiling. See <a class="reference internal" href="GeneratorCache.html"><span class="std std-doc">doc/GeneratorCache.md</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="imported-targets">
+<h3>Imported targets<a class="headerlink" href="#imported-targets" title="Link to this heading">#</a></h3>
+<p>Halide defines the following targets that are available to users:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Imported target</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide::Halide</span></code></p></td>
+<td><p>this is the JIT-mode library to use when using Halide from C++.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide::Generator</span></code></p></td>
+<td><p>this is the target to use when manually defining a generator executable. It supplies a <code class="docutils literal notranslate"><span class="pre">main()</span></code> function.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide::Runtime</span></code></p></td>
+<td><p>adds include paths to the Halide runtime headers</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide::Tools</span></code></p></td>
+<td><p>adds include paths to the Halide tools, including the benchmarking utility.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide::ImageIO</span></code></p></td>
+<td><p>adds include paths to the Halide image IO utility. Depends on <code class="docutils literal notranslate"><span class="pre">PNG::PNG</span></code> and <code class="docutils literal notranslate"><span class="pre">JPEG::JPEG</span></code> if they exist or were loaded through the corresponding package components.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide::ThreadPool</span></code></p></td>
+<td><p>adds include paths to the Halide <em>simple</em> thread pool utility library. This is not the same as the runtime’s thread pool and is intended only for use by tests. Depends on <code class="docutils literal notranslate"><span class="pre">Threads::Threads</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide::RunGenMain</span></code></p></td>
+<td><p>used with the <code class="docutils literal notranslate"><span class="pre">REGISTRATION</span></code> parameter of <code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code> to create simple runners and benchmarking tools for Halide libraries.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The following targets only guaranteed when requesting the <code class="docutils literal notranslate"><span class="pre">Python</span></code> component
+(<code class="docutils literal notranslate"><span class="pre">Halide_Python_FOUND</span></code> will be true):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Imported target</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide::Python</span></code></p></td>
+<td><p>this is a Python 3 package that can be referenced as <code class="docutils literal notranslate"><span class="pre">$&lt;TARGET_FILE_DIR:Halide::Python&gt;/..</span></code> when setting up <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> for Python tests or the like from CMake.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The following targets only guaranteed when <code class="docutils literal notranslate"><span class="pre">WITH_AUTOSCHEDULERS</span></code> is true:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Imported target</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide::Adams2019</span></code></p></td>
+<td><p>the Adams et.al. 2019 autoscheduler (no GPU support)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide::Anderson2021</span></code></p></td>
+<td><p>the Anderson, et.al. 2021 autoscheduler (full GPU support)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Halide::Li2018</span></code></p></td>
+<td><p>the Li et.al. 2018 gradient autoscheduler (limited GPU support)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Halide::Mullapudi2016</span></code></p></td>
+<td><p>the Mullapudi et.al. 2016 autoscheduler (no GPU support)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>These come from a separate <code class="docutils literal notranslate"><span class="pre">HalideAutoschedulers</span></code> package (distinct from
+<code class="docutils literal notranslate"><span class="pre">HalideCompiler</span></code>), loaded automatically the first time
+<code class="docutils literal notranslate"><span class="pre">add_halide_library(...</span> <span class="pre">AUTOSCHEDULER</span> <span class="pre">...)</span></code> needs one – including while
+cross-compiling.</p>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h3>
+<p>The Halide package provides several useful functions for dealing with AOT
+compilation steps.</p>
+<section id="add-halide-generator">
+<h4><code class="docutils literal notranslate"><span class="pre">add_halide_generator</span></code><a class="headerlink" href="#add-halide-generator" title="Link to this heading">#</a></h4>
+<p>This function aids in creating cross-compilable builds that use Halide
+generators.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">add_halide_generator</span><span class="p">(</span>
+    <span class="n">target</span>
+    <span class="p">[</span><span class="n">PACKAGE_NAME</span> <span class="n">package</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">PACKAGE_NAMESPACE</span> <span class="n">namespace</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">EXPORT_FILE</span> <span class="n">export</span><span class="o">-</span><span class="n">file</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">PYSTUB</span> <span class="n">generator</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">LINK_LIBRARIES</span> <span class="n">lib1</span> <span class="o">...</span><span class="p">]</span>
+    <span class="p">[[</span><span class="n">SOURCES</span><span class="p">]</span> <span class="n">source1</span> <span class="o">...</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Every named argument is optional, and the function uses the following default
+arguments:</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">PACKAGE_NAME</span></code> is not provided, it defaults to
+<code class="docutils literal notranslate"><span class="pre">${PROJECT_NAME}-halide_generators</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">PACKAGE_NAMESPACE</span></code> is not provided, it defaults to
+<code class="docutils literal notranslate"><span class="pre">${PROJECT_NAME}::halide_generators::</span></code>.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">EXPORT_FILE</span></code> is not provided, it defaults to
+<code class="docutils literal notranslate"><span class="pre">${PROJECT_BINARY_DIR}/cmake/${ARG_PACKAGE_NAME}-config.cmake</span></code></p></li>
+</ul>
+<p>This function guarantees that a Halide generator target named
+<code class="docutils literal notranslate"><span class="pre">&lt;namespace&gt;&lt;target&gt;</span></code> is available. It will first search for a package named
+<code class="docutils literal notranslate"><span class="pre">&lt;package-name&gt;</span></code> using <code class="docutils literal notranslate"><span class="pre">find_package</span></code>; if it is found, it is assumed that it
+provides the target. Otherwise, it will create an executable target named
+<code class="docutils literal notranslate"><span class="pre">target</span></code> and an <code class="docutils literal notranslate"><span class="pre">ALIAS</span></code> target <code class="docutils literal notranslate"><span class="pre">&lt;namespace&gt;&lt;target&gt;</span></code>. This function also creates
+a custom target named <code class="docutils literal notranslate"><span class="pre">&lt;package-name&gt;</span></code> if it does not exist and <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> would
+exist. In this case, <code class="docutils literal notranslate"><span class="pre">&lt;package-name&gt;</span></code> will depend on <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code>, this enables
+easy building of <em>just</em> the Halide generators managed by this function.</p>
+<p>After the call, <code class="docutils literal notranslate"><span class="pre">&lt;PACKAGE_NAME&gt;_FOUND</span></code> will be set to true if the host
+generators were imported (and hence won’t be built). Otherwise, it will be set
+to false. This variable may be used to conditionally set properties on
+<code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code>.</p>
+<p>Please see
+<a class="reference external" href="https://github.com/halide/Halide/tree/main/test/integration/xc">test/integration/xc</a>
+for a simple example and
+<a class="reference external" href="https://github.com/halide/Halide/tree/main/apps/hannk">apps/hannk</a> for a
+complete app that uses it extensively.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">SOURCES</span></code> keyword marks the beginning of sources to be used to build
+<code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code>, if it is not loaded. All unparsed arguments will be interpreted as
+sources.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">LINK_LIBRARIES</span></code> argument lists libraries that should be linked to
+<code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> when it is being built in the present build system.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">PYSTUB</span></code> is specified, then a Python Extension will be built that wraps the
+Generator with CPython glue to allow use of the Generator Python 3. The result
+will be a shared library of the form <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;_pystub.&lt;soabi&gt;.so</span></code>, where
+<code class="docutils literal notranslate"><span class="pre">&lt;soabi&gt;</span></code> describes the specific Python version and platform (e.g.,
+<code class="docutils literal notranslate"><span class="pre">cpython-310-darwin</span></code> for Python 3.10 on macOS). See <a class="reference internal" href="Python.html"><span class="std std-doc">Python.md</span></a> for
+examples of use.</p>
+</section>
+<section id="add-halide-library">
+<h4><code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code><a class="headerlink" href="#add-halide-library" title="Link to this heading">#</a></h4>
+<p>This is the main function for managing generators in AOT compilation. The full
+signature follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">add_halide_library</span><span class="p">(</span><span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span> <span class="n">FROM</span> <span class="o">&lt;</span><span class="n">generator</span><span class="o">-</span><span class="n">target</span><span class="o">&gt;</span>
+                   <span class="p">[</span><span class="n">GENERATOR</span> <span class="n">generator</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
+                   <span class="p">[</span><span class="n">FUNCTION_NAME</span> <span class="n">function</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
+                   <span class="p">[</span><span class="n">NAMESPACE</span> <span class="n">cpp</span><span class="o">-</span><span class="n">namespace</span><span class="p">]</span>
+                   <span class="p">[</span><span class="n">USE_RUNTIME</span> <span class="n">hl</span><span class="o">-</span><span class="n">target</span><span class="p">]</span>
+                   <span class="p">[</span><span class="n">PARAMS</span> <span class="n">param1</span> <span class="p">[</span><span class="n">param2</span> <span class="o">...</span><span class="p">]]</span>
+                   <span class="p">[</span><span class="n">DEPENDS</span> <span class="p">[</span><span class="n">dep1</span> <span class="n">dep2</span> <span class="o">...</span><span class="p">]]</span>
+                   <span class="p">[</span><span class="n">TARGETS</span> <span class="n">target1</span> <span class="p">[</span><span class="n">target2</span> <span class="o">...</span><span class="p">]]</span>
+                   <span class="p">[</span><span class="n">FEATURES</span> <span class="n">feature1</span> <span class="p">[</span><span class="n">feature2</span> <span class="o">...</span><span class="p">]]</span>
+                   <span class="p">[</span><span class="n">FEATURES</span><span class="p">[</span><span class="o">&lt;</span><span class="n">triple</span><span class="o">&gt;</span><span class="p">]</span> <span class="n">feature1</span> <span class="p">[</span><span class="n">feature2</span> <span class="o">...</span><span class="p">]]</span>
+                   <span class="p">[</span><span class="n">PLUGINS</span> <span class="n">plugin1</span> <span class="p">[</span><span class="n">plugin2</span> <span class="o">...</span><span class="p">]]</span>
+                   <span class="p">[</span><span class="n">AUTOSCHEDULER</span> <span class="n">scheduler</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
+                   <span class="p">[</span><span class="n">FUNCTION_INFO_HEADER</span> <span class="n">OUTVAR</span><span class="p">]</span>
+                   <span class="p">[</span><span class="n">HEADER</span> <span class="n">OUTVAR</span><span class="p">]</span>
+                   <span class="p">[</span><span class="n">REGISTRATION</span> <span class="n">OUTVAR</span><span class="p">]</span>
+                   <span class="p">[</span><span class="o">&lt;</span><span class="n">extra</span><span class="o">-</span><span class="n">output</span><span class="o">&gt;</span> <span class="n">OUTVAR</span><span class="p">]</span>
+                   <span class="p">[</span><span class="n">GRADIENT_DESCENT</span><span class="p">]</span>
+                   <span class="p">[</span><span class="n">C_BACKEND</span><span class="p">]</span>
+                   <span class="p">[</span><span class="n">NO_THREADS</span><span class="p">]</span>
+                   <span class="p">[</span><span class="n">NO_DL_LIBS</span><span class="p">])</span>
+
+<span class="n">triple</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">arch</span><span class="o">&gt;-&lt;</span><span class="n">bits</span><span class="o">&gt;-&lt;</span><span class="n">os</span><span class="o">&gt;</span>
+<span class="n">arch</span>   <span class="o">=</span> <span class="n">x86</span> <span class="o">|</span> <span class="n">arm</span> <span class="o">|</span> <span class="n">powerpc</span> <span class="o">|</span> <span class="n">hexagon</span> <span class="o">|</span> <span class="n">wasm</span> <span class="o">|</span> <span class="n">riscv</span>
+<span class="n">bits</span>   <span class="o">=</span> <span class="mi">32</span> <span class="o">|</span> <span class="mi">64</span>
+<span class="n">os</span>     <span class="o">=</span> <span class="n">linux</span> <span class="o">|</span> <span class="n">windows</span> <span class="o">|</span> <span class="n">osx</span> <span class="o">|</span> <span class="n">android</span> <span class="o">|</span> <span class="n">ios</span> <span class="o">|</span> <span class="n">qurt</span> <span class="o">|</span> <span class="n">noos</span> <span class="o">|</span> <span class="n">fuchsia</span> <span class="o">|</span> <span class="n">wasmrt</span>
+
+<span class="n">extra</span><span class="o">-</span><span class="n">output</span> <span class="o">=</span> <span class="n">ASSEMBLY</span> <span class="o">|</span> <span class="n">BITCODE</span> <span class="o">|</span> <span class="n">COMPILER_LOG</span> <span class="o">|</span> <span class="n">C_SOURCE</span> <span class="o">|</span> <span class="n">FEATURIZATION</span>
+             <span class="o">|</span> <span class="n">HLPIPE</span> <span class="o">|</span> <span class="n">LLVM_ASSEMBLY</span> <span class="o">|</span> <span class="n">PYTHON_EXTENSION</span> <span class="o">|</span> <span class="n">PYTORCH_WRAPPER</span>
+             <span class="o">|</span> <span class="n">SCHEDULE</span> <span class="o">|</span> <span class="n">STMT</span> <span class="o">|</span> <span class="n">STMT_HTML</span>
+</pre></div>
+</div>
+<p>This function creates a called <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> corresponding to running the
+<code class="docutils literal notranslate"><span class="pre">&lt;generator-target&gt;</span></code> (an executable target which links to <code class="docutils literal notranslate"><span class="pre">Halide::Generator</span></code>)
+one time, using command line arguments derived from the other parameters.</p>
+<p>The arguments <code class="docutils literal notranslate"><span class="pre">GENERATOR</span></code> and <code class="docutils literal notranslate"><span class="pre">FUNCTION_NAME</span></code> default to <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code>. They
+correspond to the <code class="docutils literal notranslate"><span class="pre">-g</span></code> and <code class="docutils literal notranslate"><span class="pre">-f</span></code> command line flags, respectively.</p>
+<p><code class="docutils literal notranslate"><span class="pre">NAMESPACE</span></code> is syntactic sugar to specify the C++ namespace (if any) of the
+generated function; you can also specify the C++ namespace (if any) directly in
+the <code class="docutils literal notranslate"><span class="pre">FUNCTION_NAME</span></code> argument, but for repeated declarations or very long
+namespaces, specifying this separately can provide more readable build files.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">USE_RUNTIME</span></code> is not specified, this function will create another target
+called <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;.runtime</span></code> which corresponds to running the generator with <code class="docutils literal notranslate"><span class="pre">-r</span></code>
+and a compatible list of targets. This runtime target is an <code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code>
+dependency of <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code>. If multiple runtime targets need to be linked
+together, setting <code class="docutils literal notranslate"><span class="pre">USE_RUNTIME</span></code> to another Halide runtime library, <code class="docutils literal notranslate"><span class="pre">&lt;target2&gt;</span></code>
+will prevent the generation of <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;.runtime</span></code> and instead use
+<code class="docutils literal notranslate"><span class="pre">&lt;target2&gt;.runtime</span></code>. This argument is most commonly used in conjunction with
+<a class="reference internal" href="#add-halide-runtime"> <code class="docutils literal notranslate"><span class="pre">add_halide_runtime</span></code></a>.</p>
+<p>Parameters can be passed to a generator via the <code class="docutils literal notranslate"><span class="pre">PARAMS</span></code> argument. Parameters
+should be space-separated. Similarly, <code class="docutils literal notranslate"><span class="pre">TARGETS</span></code> is a space-separated list of
+targets for which to generate code in a single function. They must all share the
+same platform/bits/os triple (e.g. <code class="docutils literal notranslate"><span class="pre">arm-32-linux</span></code>). Features that are in common
+among all targets, including device libraries (like <code class="docutils literal notranslate"><span class="pre">cuda</span></code>) should go in
+<code class="docutils literal notranslate"><span class="pre">FEATURES</span></code>. If <code class="docutils literal notranslate"><span class="pre">TARGETS</span></code> is not specified, the value of <code class="docutils literal notranslate"><span class="pre">Halide_TARGET</span></code>
+specified at configure time will be used.</p>
+<p>Every element of <code class="docutils literal notranslate"><span class="pre">TARGETS</span></code> must begin with the same <code class="docutils literal notranslate"><span class="pre">arch-bits-os</span></code> triple. This
+function understands two <em>meta-triples</em>, <code class="docutils literal notranslate"><span class="pre">host</span></code> and <code class="docutils literal notranslate"><span class="pre">cmake</span></code>. The meta-triple
+<code class="docutils literal notranslate"><span class="pre">host</span></code> is equal to the <code class="docutils literal notranslate"><span class="pre">arch-bits-os</span></code> triple used to compile Halide along with
+all the supported instruction set extensions. On platforms that support running
+both 32 and 64-bit programs, this will not necessarily equal the platform the
+compiler is running on or that CMake is targeting.</p>
+<p>The meta-triple <code class="docutils literal notranslate"><span class="pre">cmake</span></code> is equal to the <code class="docutils literal notranslate"><span class="pre">arch-bits-os</span></code> of the current CMake
+target. This is useful if you want to make sure you are not unintentionally
+cross-compiling, which would result in an <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#imported-targets"><code class="docutils literal notranslate"><span class="pre">IMPORTED</span></code> target</a>
+being created. When <code class="docutils literal notranslate"><span class="pre">TARGETS</span></code> is empty and the <code class="docutils literal notranslate"><span class="pre">host</span></code> target would not
+cross-compile, then <code class="docutils literal notranslate"><span class="pre">host</span></code> will be used. Otherwise, <code class="docutils literal notranslate"><span class="pre">cmake</span></code> will be used and an
+author warning will be issued.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">CMAKE_OSX_ARCHITECTURES</span></code> is set and the <code class="docutils literal notranslate"><span class="pre">TARGETS</span></code> argument resolves to
+<code class="docutils literal notranslate"><span class="pre">cmake</span></code>, the generator will be run once for each architecture and the results
+will be fused together using <code class="docutils literal notranslate"><span class="pre">lipo</span></code>. This behavior extends to runtime targets.</p>
+<p>Sometimes, the generation will need to read files that were generated during the
+build. To declare dependencies on these files, use the <code class="docutils literal notranslate"><span class="pre">DEPENDS</span></code> argument. Paths
+listed here will be passed verbatim to <code class="docutils literal notranslate"><span class="pre">add_custom_command</span></code>, and so will be
+relative to the source directory. Use absolute paths when referring to files
+outside the source directory.</p>
+<p>To use an autoscheduler, set the <code class="docutils literal notranslate"><span class="pre">AUTOSCHEDULER</span></code> argument to a target named like
+<code class="docutils literal notranslate"><span class="pre">Namespace::Scheduler</span></code>, for example <code class="docutils literal notranslate"><span class="pre">Halide::Adams2019</span></code>. This will set the
+<code class="docutils literal notranslate"><span class="pre">autoscheduler</span></code> GeneratorParam on the generator command line to <code class="docutils literal notranslate"><span class="pre">Scheduler</span></code> and
+add the target to the list of plugins. Additional plugins can be loaded by
+setting the <code class="docutils literal notranslate"><span class="pre">PLUGINS</span></code> argument. If the argument to <code class="docutils literal notranslate"><span class="pre">AUTOSCHEDULER</span></code> does not
+contain <code class="docutils literal notranslate"><span class="pre">::</span></code> or it does not name a target, it will be passed to the <code class="docutils literal notranslate"><span class="pre">-s</span></code> flag
+verbatim.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">GRADIENT_DESCENT</span></code> is set, then the module will be built suitably for
+gradient descent calculation in TensorFlow or PyTorch. See
+<code class="docutils literal notranslate"><span class="pre">Generator::build_gradient_module()</span></code> for more documentation. This corresponds to
+passing <code class="docutils literal notranslate"><span class="pre">-d</span> <span class="pre">1</span></code> at the generator command line.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">C_BACKEND</span></code> option is set, this command will invoke the configured C++
+compiler on a generated source. Note that a <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;.runtime</span></code> target is <em>not</em>
+created in this case, and the <code class="docutils literal notranslate"><span class="pre">USE_RUNTIME</span></code> option is ignored. Other options
+work as expected.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">REGISTRATION</span></code> is set, the path (relative to <code class="docutils literal notranslate"><span class="pre">CMAKE_CURRENT_BINARY_DIR</span></code>) to
+the generated <code class="docutils literal notranslate"><span class="pre">.registration.cpp</span></code> file will be set in <code class="docutils literal notranslate"><span class="pre">OUTVAR</span></code>. This can be used
+to generate a runner for a Halide library that is useful for benchmarking and
+testing, as documented above. This is equivalent to setting <code class="docutils literal notranslate"><span class="pre">-e</span> <span class="pre">registration</span></code> at
+the generator command line.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">HEADER</span></code> is set, the path (relative to <code class="docutils literal notranslate"><span class="pre">CMAKE_CURRENT_BINARY_DIR</span></code>) to the
+generated <code class="docutils literal notranslate"><span class="pre">.h</span></code> header file will be set in <code class="docutils literal notranslate"><span class="pre">OUTVAR</span></code>. This can be used with
+<code class="docutils literal notranslate"><span class="pre">install(FILES)</span></code> to conveniently deploy the generated header along with your
+library.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">FUNCTION_INFO_HEADER</span></code> is set, the path (relative to
+<code class="docutils literal notranslate"><span class="pre">CMAKE_CURRENT_BINARY_DIR</span></code>) to the generated <code class="docutils literal notranslate"><span class="pre">.function_info.h</span></code> header file will
+be set in <code class="docutils literal notranslate"><span class="pre">OUTVAR</span></code>. This produces a file that contains <code class="docutils literal notranslate"><span class="pre">constexpr</span></code> descriptions
+of information about the generated functions (e.g., argument type and
+information). It is generated separately from the normal <code class="docutils literal notranslate"><span class="pre">HEADER</span></code> file because
+<code class="docutils literal notranslate"><span class="pre">HEADER</span></code> is intended to work with basic <code class="docutils literal notranslate"><span class="pre">extern</span> <span class="pre">&quot;C&quot;</span></code> linkage, while
+<code class="docutils literal notranslate"><span class="pre">FUNCTION_INFO_HEADER</span></code> requires C++17 or later to use effectively. (This can be
+quite useful for advanced usages, such as producing automatic call wrappers,
+etc.) Examples of usage can be found in the generated file.</p>
+<p>Each of the <code class="docutils literal notranslate"><span class="pre">extra-output</span></code> arguments directly correspond to an extra output (via
+<code class="docutils literal notranslate"><span class="pre">-e</span></code>) from the generator. The value <code class="docutils literal notranslate"><span class="pre">OUTVAR</span></code> names a variable into which a path
+(relative to <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_CURRENT_BINARY_DIR.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_CURRENT_BINARY_DIR</span></code></a>) to the
+extra file will be written.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">NO_THREADS</span></code> is passed, the library targets will not depend on
+<code class="docutils literal notranslate"><span class="pre">Threads::Threads</span></code>. It is your responsibility to link to an equivalent target.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">NO_DL_LIBS</span></code> is passed, the library targets will not depend on
+<code class="docutils literal notranslate"><span class="pre">${CMAKE_DL_LIBS}</span></code>. It is your responsibility to link to an equivalent library.</p>
+</section>
+<section id="add-halide-python-extension-library">
+<h4><code class="docutils literal notranslate"><span class="pre">add_halide_python_extension_library</span></code><a class="headerlink" href="#add-halide-python-extension-library" title="Link to this heading">#</a></h4>
+<p>This function wraps the outputs of one or more <code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code> targets with
+glue code to produce a Python Extension library.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">add_halide_python_extension_library</span><span class="p">(</span>
+    <span class="n">target</span>
+    <span class="p">[</span><span class="n">MODULE_NAME</span> <span class="n">module</span><span class="o">-</span><span class="n">name</span><span class="p">]</span>
+    <span class="n">HALIDE_LIBRARIES</span> <span class="n">library1</span> <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">HALIDE_LIBRARIES</span></code> is a list of one of more <code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code> targets. Each
+will be added to the extension as a callable method of the module. Note that
+every library specified must be built with the <code class="docutils literal notranslate"><span class="pre">PYTHON_EXTENSION</span></code> keyword
+specified, and all libraries must use the same Halide runtime.</p>
+<p>The result will be a shared library of the form <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;.&lt;soabi&gt;.so</span></code>, where
+<code class="docutils literal notranslate"><span class="pre">&lt;soabi&gt;</span></code> describes the specific Python version and platform (e.g.,
+<code class="docutils literal notranslate"><span class="pre">cpython-310-darwin</span></code> for Python 3.10 on macOS.)</p>
+</section>
+<section id="add-halide-runtime">
+<h4><code class="docutils literal notranslate"><span class="pre">add_halide_runtime</span></code><a class="headerlink" href="#add-halide-runtime" title="Link to this heading">#</a></h4>
+<p>This function generates a library containing a Halide runtime. Most user code
+will never need to use this, as <code class="docutils literal notranslate"><span class="pre">add_halide_library()</span></code> will call it for you if
+necessary. The most common use case is usually in conjunction with
+<code class="docutils literal notranslate"><span class="pre">add_halide_python_extension_library()</span></code>, as a way to ensure that all the halide
+libraries share an identical runtime.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">add_halide_runtime</span><span class="p">(</span>
+    <span class="n">target</span>
+    <span class="p">[</span><span class="n">TARGETS</span> <span class="n">target1</span> <span class="p">[</span><span class="n">target2</span> <span class="o">...</span><span class="p">]]</span>
+    <span class="p">[</span><span class="n">NO_THREADS</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">NO_DL_LIBS</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">TARGETS</span></code>, <code class="docutils literal notranslate"><span class="pre">NO_THREADS</span></code>, and <code class="docutils literal notranslate"><span class="pre">NO_DL_LIBS</span></code> arguments have identical semantics
+to the argument of the same name for
+<a class="reference internal" href="#add-halide-library"> <code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code></a>.</p>
+</section>
+</section>
+</section>
+<section id="cross-compiling">
+<h2>Cross compiling<a class="headerlink" href="#cross-compiling" title="Link to this heading">#</a></h2>
+<p>Cross-compiling in CMake can be tricky, since CMake doesn’t easily support
+compiling for both the host platform and the cross platform within the same
+build. Unfortunately, Halide generator executables are just about always
+designed to run on the host platform. Each project will be set up differently
+and have different requirements, but here are some suggestions for effective use
+of CMake in these scenarios.</p>
+<section id="use-add-halide-generator">
+<h3>Use <code class="docutils literal notranslate"><span class="pre">add_halide_generator</span></code><a class="headerlink" href="#use-add-halide-generator" title="Link to this heading">#</a></h3>
+<p>If you are writing new programs that use Halide, you might wish to use
+<code class="docutils literal notranslate"><span class="pre">add_halide_generator</span></code>. When using this helper, you are expected to build your
+project twice: once for your build host and again for your intended target.</p>
+<p>On the target-side build, a plain <code class="docutils literal notranslate"><span class="pre">find_package(Halide</span> <span class="pre">REQUIRED)</span></code> is all you
+need (no separate package name): it never pulls in the compiled compiler, and
+<code class="docutils literal notranslate"><span class="pre">add_halide_generator</span></code> will lazily load it under the hood only if it can’t find
+a prebuilt host generators package to import instead.</p>
+<p>When building the host build, you can use the <code class="docutils literal notranslate"><span class="pre">&lt;package-name&gt;</span></code> (see the
+documentation above) target to build <em>just</em> the generators. Then, in the target
+build, set <code class="docutils literal notranslate"><span class="pre">&lt;package-name&gt;_ROOT</span></code> to the host build directory.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cmake -G Ninja -S . -B build-host -DCMAKE_BUILD_TYPE=Release
+$ cmake --build build-host --target &lt;package-name&gt;
+$ cmake -G Ninja -S . -B build-target --toolchain /path/to/target-tc.cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -D&lt;package-name&gt;_ROOT:FILEPATH=$PWD/build-host
+$ cmake --build build-target
+</pre></div>
+</div>
+</section>
+<section id="use-a-super-build">
+<h3>Use a super-build<a class="headerlink" href="#use-a-super-build" title="Link to this heading">#</a></h3>
+<p>A CMake super-build consists of breaking down a project into subprojects that
+are isolated by <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html">toolchain</a>. The basic structure is to have an
+outermost project that only coordinates the sub-builds via the
+<a class="reference external" href="https://cmake.org/cmake/help/latest/module/ExternalProject.html"><code class="docutils literal notranslate"><span class="pre">ExternalProject</span></code></a> module.</p>
+<p>One would then use Halide to build a generator executable in one self-contained
+project, then export that target to be used in a separate project. The second
+project would be configured with the target <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html">toolchain</a> and
+would call <code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code> with no <code class="docutils literal notranslate"><span class="pre">TARGETS</span></code> option and set <code class="docutils literal notranslate"><span class="pre">FROM</span></code> equal to
+the name of the imported generator executable. Obviously, this is a significant
+increase in complexity over a typical CMake project.</p>
+<p>This is very compatible with the <code class="docutils literal notranslate"><span class="pre">add_halide_generator</span></code> strategy above.</p>
+</section>
+<section id="use-externalproject-directly">
+<h3>Use <code class="docutils literal notranslate"><span class="pre">ExternalProject</span></code> directly<a class="headerlink" href="#use-externalproject-directly" title="Link to this heading">#</a></h3>
+<p>A lighter weight alternative to the above is to use
+<a class="reference external" href="https://cmake.org/cmake/help/latest/module/ExternalProject.html"><code class="docutils literal notranslate"><span class="pre">ExternalProject</span></code></a> directly in your parent build. Configure
+the parent build with the target <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html">toolchain</a>, and configure
+the inner project to use the host toolchain. Then, manually create an
+<a class="reference external" href="https://cmake.org/cmake/help/latest/command/add_executable.html#imported-executables"><code class="docutils literal notranslate"><span class="pre">IMPORTED</span></code> target</a> for your generator executable and call
+<code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code> as described above.</p>
+<p>The main drawback of this approach is that creating accurate <code class="docutils literal notranslate"><span class="pre">IMPORTED</span></code> targets
+is difficult since predicting the names and locations of your binaries across
+all possible platform and CMake project generators is difficult. In particular,
+it is hard to predict executable extensions in cross-OS builds.</p>
+</section>
+<section id="use-an-emulator-or-run-on-device">
+<h3>Use an emulator or run on device<a class="headerlink" href="#use-an-emulator-or-run-on-device" title="Link to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_CROSSCOMPILING_EMULATOR.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_CROSSCOMPILING_EMULATOR</span></code></a> variable
+allows one to specify a command <em>prefix</em> to run a target-system binary on the
+host machine. One could set this to a custom shell script that uploads the
+generator executable, runs it on the device and copies back the results.</p>
+<p>Another option is to install <code class="docutils literal notranslate"><span class="pre">qemu-user-static</span></code> to transparently emulate the
+cross-built generator.</p>
+</section>
+<section id="bypass-cmake">
+<h3>Bypass CMake<a class="headerlink" href="#bypass-cmake" title="Link to this heading">#</a></h3>
+<p>The previous two options ensure that the targets generated by
+<code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code> will be <em>normal</em> static libraries. This approach does not
+use <a class="reference external" href="https://cmake.org/cmake/help/latest/module/ExternalProject.html"><code class="docutils literal notranslate"><span class="pre">ExternalProject</span></code></a>, but instead produces <code class="docutils literal notranslate"><span class="pre">IMPORTED</span></code>
+targets. The main drawback of <code class="docutils literal notranslate"><span class="pre">IMPORTED</span></code> targets is that they are considered
+second-class in CMake. In particular, they cannot be installed with the typical
+<a class="reference external" href="https://cmake.org/cmake/help/latest/command/install.html#targets"><code class="docutils literal notranslate"><span class="pre">install(TARGETS)</span></code> command</a>. Instead, they must be installed
+using <a class="reference external" href="https://cmake.org/cmake/help/latest/command/install.html#files"><code class="docutils literal notranslate"><span class="pre">install(FILES)</span></code></a> and the
+<a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html#target-dependent-queries"><code class="docutils literal notranslate"><span class="pre">$&lt;TARGET_FILE:tgt&gt;</span></code></a> generator expression.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="BuildingHalideWithCMake.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Building Halide with CMake</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="CodeStyleCMake.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Contributing CMake code to Halide</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-basic-cmake-project">A basic CMake project</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jit-mode">JIT mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aot-mode">AOT mode</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#autoschedulers">Autoschedulers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rungenmain">RunGenMain</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#halide-package-documentation">Halide package documentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components">Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables">Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imported-targets">Imported targets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-halide-generator"><code class="docutils literal notranslate"><span class="pre">add_halide_generator</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-halide-library"><code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-halide-python-extension-library"><code class="docutils literal notranslate"><span class="pre">add_halide_python_extension_library</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-halide-runtime"><code class="docutils literal notranslate"><span class="pre">add_halide_runtime</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-compiling">Cross compiling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-add-halide-generator">Use <code class="docutils literal notranslate"><span class="pre">add_halide_generator</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-a-super-build">Use a super-build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-externalproject-directly">Use <code class="docutils literal notranslate"><span class="pre">ExternalProject</span></code> directly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-an-emulator-or-run-on-device">Use an emulator or run on device</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bypass-cmake">Bypass CMake</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright The Halide team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1542 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>halide_target_feature_t &#8212; Halide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=1ee386da" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/generated/halide_target_feature_t';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="halide_target_processor_t" href="halide_target_processor_t.html" />
+    <link rel="prev" title="halide_semaphore_try_acquire_t" href="halide_semaphore_try_acquire_t.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Halide</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../tutorial/index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../tutorial/index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="reference.html">All Types</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Argument_h.html">Argument.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Argument.html">Argument</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ArgumentEstimates.html">ArgumentEstimates</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Buffer.html">Buffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Callable.html">Callable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Derivative.html">Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DeviceAPI.html">DeviceAPI</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Error_h.html">Error.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="CompileError.html">CompileError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CompileTimeErrorReporter.html">CompileTimeErrorReporter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Error.html">Error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="InternalError.html">InternalError</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RuntimeError.html">RuntimeError</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Expr_h.html">Expr.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Expr.html">Expr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExprCompare.html">ExprCompare</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MemoryType.html">MemoryType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Range.html">Range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Region.html">Region</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="ExternFuncArgument.html">ExternFuncArgument</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Float16_h.html">Float16.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="bfloat16_t.html">bfloat16_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="float16_t.html">float16_t</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Func_h.html">Func.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="EvictionKey.html">EvictionKey</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Func.html">Func</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FuncRef.html">FuncRef</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FuncTupleElementRef.html">FuncTupleElementRef</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ScheduleHandle.html">ScheduleHandle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Stage.html">Stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VarOrRVar.html">VarOrRVar</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Generator_h.html">Generator.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Generator.html">Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GeneratorContext.html">GeneratorContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GeneratorInput.html">GeneratorInput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GeneratorOutput.html">GeneratorOutput</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GeneratorParam.html">GeneratorParam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="NamesInterface.html">NamesInterface</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="GeneratorParamsMap.html">GeneratorParamsMap</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_HalideBuffer_h.html">HalideBuffer.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="PyTorch_Buffer.html">PyTorch::Buffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Runtime_AllInts.html">Runtime::AllInts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Runtime_AllocationHeader.html">Runtime::AllocationHeader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Runtime_Buffer.html">Runtime::Buffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Runtime_BufferDeviceOwnership.html">Runtime::BufferDeviceOwnership</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Runtime_DeviceRefCount.html">Runtime::DeviceRefCount</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="group_HalideRuntime_h.html">HalideRuntime.h</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="BUFFER_FLAGS_UNDERLYING_TYPE.html">BUFFER_FLAGS_UNDERLYING_TYPE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_argument_kind_t.html">halide_argument_kind_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_buffer_flags.html">halide_buffer_flags</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_buffer_t.html">halide_buffer_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_can_use_target_features_t.html">halide_can_use_target_features_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_device_interface_t.html">halide_device_interface_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_dimension_t.html">halide_dimension_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_do_loop_task_t.html">halide_do_loop_task_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_do_par_for_t.html">halide_do_par_for_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_do_parallel_tasks_t.html">halide_do_parallel_tasks_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_do_task_t.html">halide_do_task_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_error_code_t.html">halide_error_code_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_error_handler_t.html">halide_error_handler_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_filter_argument_t.html">halide_filter_argument_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_free_t.html">halide_free_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_get_library_symbol_t.html">halide_get_library_symbol_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_get_symbol_t.html">halide_get_symbol_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_load_library_t.html">halide_load_library_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_loop_task_t.html">halide_loop_task_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_malloc_t.html">halide_malloc_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_print_t.html">halide_print_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_profiler_func_kind.html">halide_profiler_func_kind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_scalar_value_t.html">halide_scalar_value_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_semaphore_init_t.html">halide_semaphore_init_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_semaphore_release_t.html">halide_semaphore_release_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_semaphore_try_acquire_t.html">halide_semaphore_try_acquire_t</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">halide_target_feature_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_target_processor_t.html">halide_target_processor_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_task_t.html">halide_task_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_trace_event_code_t.html">halide_trace_event_code_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_trace_t.html">halide_trace_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_type_code_t.html">halide_type_code_t</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_type_t.html">halide_type_t</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="ImageParam.html">ImageParam</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Internal.html">Internal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Internal_AssociativeOp.html">Internal::AssociativeOp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_BaseExprNode.html">Internal::BaseExprNode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_BufferContents.html">Internal::BufferContents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_ConstantInterval.html">Internal::ConstantInterval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_Definition.html">Internal::Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_Dimension.html">Internal::Dimension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_Function.html">Internal::Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_FunctionPtr.html">Internal::FunctionPtr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_GeneratorBase.html">Internal::GeneratorBase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_GeneratorInput_Buffer.html">Internal::GeneratorInput_Buffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_IRMutator.html">Internal::IRMutator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_IntrusivePtr.html">Internal::IntrusivePtr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_JITCache.html">Internal::JITCache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_JITErrorBuffer.html">Internal::JITErrorBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_JITModule.html">Internal::JITModule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_LoweredFunc.html">Internal::LoweredFunc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_ReductionDomain.html">Internal::ReductionDomain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_ReductionVariable.html">Internal::ReductionVariable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_Split.html">Internal::Split</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_StageSchedule.html">Internal::StageSchedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_Stmt.html">Internal::Stmt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_StorageDim.html">Internal::StorageDim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_StubOutputBuffer.html">Internal::StubOutputBuffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_all_are_convertible.html">Internal::all_are_convertible</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_all_are_printable_args.html">Internal::all_are_printable_args</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_all_ints_and_optional_name.html">Internal::all_ints_and_optional_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Internal_cond.html">Internal::cond</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_JITModule_h.html">JITModule.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="JITHandlers.html">JITHandlers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="JITUserContext.html">JITUserContext</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Module_h.html">Module.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="LinkageType.html">LinkageType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MetadataNameMap.html">MetadataNameMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Module.html">Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ModuleFactory.html">ModuleFactory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OutputFileType.html">OutputFileType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RuntimeLinkage.html">RuntimeLinkage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RuntimeNamespaceMap.html">RuntimeNamespaceMap</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="NameMangling.html">NameMangling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OutputImageParam.html">OutputImageParam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Param.html">Param</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Parameter_h.html">Parameter.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="BufferConstraint.html">BufferConstraint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Parameter.html">Parameter</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Partition.html">Partition</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Pipeline_h.html">Pipeline.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="AutoSchedulerFn.html">AutoSchedulerFn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AutoSchedulerResults.html">AutoSchedulerResults</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AutoschedulerParams.html">AutoschedulerParams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CustomLoweringPass.html">CustomLoweringPass</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExternCFunction.html">ExternCFunction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExternSignature.html">ExternSignature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="JITExtern.html">JITExtern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Pipeline.html">Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RuntimePrefixParams.html">RuntimePrefixParams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="StmtOutputFormat.html">StmtOutputFormat</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="PrefetchBoundStrategy.html">PrefetchBoundStrategy</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_RDom_h.html">RDom.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RDom.html">RDom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RVar.html">RVar</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Realization.html">Realization</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Schedule_h.html">Schedule.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="FuseLoopLevel.html">FuseLoopLevel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LoopAlignStrategy.html">LoopAlignStrategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LoopLevel.html">LoopLevel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TailStrategy.html">TailStrategy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="Target.html">Target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tuple.html">Tuple</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Type_h.html">Type.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Type.html">Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_cplusplus_type_name.html">halide_cplusplus_type_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_handle_cplusplus_type.html">halide_handle_cplusplus_type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_handle_traits.html">halide_handle_traits</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_Var_h.html">Var.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="ImplicitVar.html">ImplicitVar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Var.html">Var</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">API Reference</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="reference.html" class="nav-link">All Types</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="group_HalideRuntime_h.html" class="nav-link">HalideRuntime.h</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">halide_target_feature_t</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="halide-target-feature-t">
+<h1>halide_target_feature_t<a class="headerlink" href="#halide-target-feature-t" title="Link to this heading">#</a></h1>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv423halide_target_feature_t">
+<span id="_CPPv323halide_target_feature_t"></span><span id="_CPPv223halide_target_feature_t"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_t</span></span></span><a class="headerlink" href="#_CPPv423halide_target_feature_t" title="Link to this definition">#</a><br /></dt>
+<dd><p>Optional features a compilation Target can have. </p>
+<p>Be sure to keep this in sync with:<ol class="loweralpha simple">
+<li><p>the Feature enum in Target.h,</p></li>
+<li><p>the implementation of get_runtime_compatible_target in Target.cpp,</p></li>
+<li><p>PyEnums.cpp, if you add a new feature. </p></li>
+</ol>
+</p>
+<p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t25halide_target_feature_jitE">
+<span id="_CPPv3N23halide_target_feature_t25halide_target_feature_jitE"></span><span id="_CPPv2N23halide_target_feature_t25halide_target_feature_jitE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aade7b43403349f5e8490128ec8a353ea0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_jit</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_jitE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Generate code that will run immediately inside the calling process. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t27halide_target_feature_debugE">
+<span id="_CPPv3N23halide_target_feature_t27halide_target_feature_debugE"></span><span id="_CPPv2N23halide_target_feature_t27halide_target_feature_debugE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa269192ac4c709ac4cd58a224aaa4ebed"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_debug</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t27halide_target_feature_debugE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Turn on debug info and output for runtime code. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t39halide_target_feature_enable_backtracesE">
+<span id="_CPPv3N23halide_target_feature_t39halide_target_feature_enable_backtracesE"></span><span id="_CPPv2N23halide_target_feature_t39halide_target_feature_enable_backtracesE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aad5490e48c28326f767a09277aba242ac"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_enable_backtraces</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_enable_backtracesE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Preserve frame pointers and include unwind tables to support accurate backtraces for debugging and profiling. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t32halide_target_feature_no_assertsE">
+<span id="_CPPv3N23halide_target_feature_t32halide_target_feature_no_assertsE"></span><span id="_CPPv2N23halide_target_feature_t32halide_target_feature_no_assertsE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa1091af1b1f0fd0f65a4cf11d9465421b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_no_asserts</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t32halide_target_feature_no_assertsE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Disable all runtime checks, for slightly tighter code. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t37halide_target_feature_no_bounds_queryE">
+<span id="_CPPv3N23halide_target_feature_t37halide_target_feature_no_bounds_queryE"></span><span id="_CPPv2N23halide_target_feature_t37halide_target_feature_no_bounds_queryE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaf66b5dc5721dc9d3437418d2af78218a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_no_bounds_query</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t37halide_target_feature_no_bounds_queryE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Disable the bounds querying functionality. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t27halide_target_feature_sse41E">
+<span id="_CPPv3N23halide_target_feature_t27halide_target_feature_sse41E"></span><span id="_CPPv2N23halide_target_feature_t27halide_target_feature_sse41E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa8efcb48a15fdbfeb9a80f4e4b47f6c35"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_sse41</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t27halide_target_feature_sse41E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Use SSE 4.1 and earlier instructions. Only relevant on x86. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t25halide_target_feature_avxE">
+<span id="_CPPv3N23halide_target_feature_t25halide_target_feature_avxE"></span><span id="_CPPv2N23halide_target_feature_t25halide_target_feature_avxE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aae30ffae7b5e51bd142e5902c6b60d2a5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_avx</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_avxE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Use AVX 1 instructions. Only relevant on x86. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t26halide_target_feature_avx2E">
+<span id="_CPPv3N23halide_target_feature_t26halide_target_feature_avx2E"></span><span id="_CPPv2N23halide_target_feature_t26halide_target_feature_avx2E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa1b8d4c5f8ff39549eab349f8f9187f30"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_avx2</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_avx2E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Use AVX 2 instructions. Only relevant on x86. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_avxvnniE">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_avxvnniE"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_avxvnniE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa6cc032093ab12fe16e0e32459f48fa27"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_avxvnni</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_avxvnniE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable the AVX-VNNI features supported by AVX2 instructions. Supports 256-bit VNNI instructions without EVEX encoding. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t25halide_target_feature_fmaE">
+<span id="_CPPv3N23halide_target_feature_t25halide_target_feature_fmaE"></span><span id="_CPPv2N23halide_target_feature_t25halide_target_feature_fmaE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa00ca2d6e033b225858ea63abb21123da"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_fma</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_fmaE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable x86 FMA instruction. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t26halide_target_feature_fma4E">
+<span id="_CPPv3N23halide_target_feature_t26halide_target_feature_fma4E"></span><span id="_CPPv2N23halide_target_feature_t26halide_target_feature_fma4E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa5c4a3ac722a0f391a41809f4fe1fa5e9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_fma4</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_fma4E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable x86 (AMD) FMA4 instruction set. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t26halide_target_feature_f16cE">
+<span id="_CPPv3N23halide_target_feature_t26halide_target_feature_f16cE"></span><span id="_CPPv2N23halide_target_feature_t26halide_target_feature_f16cE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aac3f0411bb6041392120209d5eb97dd20"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_f16c</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_f16cE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable x86 16-bit float support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t28halide_target_feature_armv7sE">
+<span id="_CPPv3N23halide_target_feature_t28halide_target_feature_armv7sE"></span><span id="_CPPv2N23halide_target_feature_t28halide_target_feature_armv7sE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa5fa253bc01a2a59792fd5da6d351d35f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_armv7s</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t28halide_target_feature_armv7sE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Generate code for ARMv7s. Only relevant for 32-bit ARM. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_no_neonE">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_no_neonE"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_no_neonE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa5f1be27fa92915a8d2193f0bbeb9ada5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_no_neon</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_no_neonE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Avoid using NEON instructions. Only relevant for 32-bit ARM. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t25halide_target_feature_vsxE">
+<span id="_CPPv3N23halide_target_feature_t25halide_target_feature_vsxE"></span><span id="_CPPv2N23halide_target_feature_t25halide_target_feature_vsxE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaf10caf4d87b54ef2a1eeef0a1a9ef7a4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_vsx</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_vsxE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Use VSX instructions. Only relevant on POWERPC. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t37halide_target_feature_power_arch_2_07E">
+<span id="_CPPv3N23halide_target_feature_t37halide_target_feature_power_arch_2_07E"></span><span id="_CPPv2N23halide_target_feature_t37halide_target_feature_power_arch_2_07E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa995a835a73267a3edd9822c6d1927c3a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_power_arch_2_07</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t37halide_target_feature_power_arch_2_07E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Use POWER ISA 2.07 new instructions. Only relevant on POWERPC. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t26halide_target_feature_cudaE">
+<span id="_CPPv3N23halide_target_feature_t26halide_target_feature_cudaE"></span><span id="_CPPv2N23halide_target_feature_t26halide_target_feature_cudaE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aabaf8d7892508763403932f8e9e80b2e2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cuda</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_cudaE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable the CUDA runtime. Defaults to compute capability 2.0 (Fermi). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability30E">
+<span id="_CPPv3N23halide_target_feature_t39halide_target_feature_cuda_capability30E"></span><span id="_CPPv2N23halide_target_feature_t39halide_target_feature_cuda_capability30E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa5e16be3f2066021a8d24ee420d69b2a3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cuda_capability30</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability30E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable CUDA compute capability 3.0 (Kepler). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability32E">
+<span id="_CPPv3N23halide_target_feature_t39halide_target_feature_cuda_capability32E"></span><span id="_CPPv2N23halide_target_feature_t39halide_target_feature_cuda_capability32E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aad6cf6481cb5a8f405115dd91a7d71987"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cuda_capability32</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability32E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable CUDA compute capability 3.2 (Tegra K1). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability35E">
+<span id="_CPPv3N23halide_target_feature_t39halide_target_feature_cuda_capability35E"></span><span id="_CPPv2N23halide_target_feature_t39halide_target_feature_cuda_capability35E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa72e1c9e35b9184f0a8b7157374c81e9b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cuda_capability35</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability35E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable CUDA compute capability 3.5 (Kepler). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability50E">
+<span id="_CPPv3N23halide_target_feature_t39halide_target_feature_cuda_capability50E"></span><span id="_CPPv2N23halide_target_feature_t39halide_target_feature_cuda_capability50E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaa45190927a84bdeab2a4195eae0b47f6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cuda_capability50</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability50E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable CUDA compute capability 5.0 (Maxwell). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability61E">
+<span id="_CPPv3N23halide_target_feature_t39halide_target_feature_cuda_capability61E"></span><span id="_CPPv2N23halide_target_feature_t39halide_target_feature_cuda_capability61E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa5f6ed2f96b52eaeae62dc1beb66b74de"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cuda_capability61</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability61E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable CUDA compute capability 6.1 (Pascal). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability70E">
+<span id="_CPPv3N23halide_target_feature_t39halide_target_feature_cuda_capability70E"></span><span id="_CPPv2N23halide_target_feature_t39halide_target_feature_cuda_capability70E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa5c41735e9ecaf6299b4ca4cde53995a5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cuda_capability70</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability70E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable CUDA compute capability 7.0 (Volta). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability75E">
+<span id="_CPPv3N23halide_target_feature_t39halide_target_feature_cuda_capability75E"></span><span id="_CPPv2N23halide_target_feature_t39halide_target_feature_cuda_capability75E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aae994285f8cf6741104fc36429de829f8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cuda_capability75</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability75E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable CUDA compute capability 7.5 (Turing). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability80E">
+<span id="_CPPv3N23halide_target_feature_t39halide_target_feature_cuda_capability80E"></span><span id="_CPPv2N23halide_target_feature_t39halide_target_feature_cuda_capability80E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aac0cce4a39a07985e9d3480ad9b9fecb0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cuda_capability80</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability80E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable CUDA compute capability 8.0 (Ampere). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability86E">
+<span id="_CPPv3N23halide_target_feature_t39halide_target_feature_cuda_capability86E"></span><span id="_CPPv2N23halide_target_feature_t39halide_target_feature_cuda_capability86E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa510e0e93c604381bf7f5b6b374cce947"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cuda_capability86</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability86E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable CUDA compute capability 8.6 (Ampere). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability89E">
+<span id="_CPPv3N23halide_target_feature_t39halide_target_feature_cuda_capability89E"></span><span id="_CPPv2N23halide_target_feature_t39halide_target_feature_cuda_capability89E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaa8c6360ea74f2e2f5fd2ccad8f2f8547"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cuda_capability89</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability89E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable CUDA compute capability 8.9 (Ada). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability90E">
+<span id="_CPPv3N23halide_target_feature_t39halide_target_feature_cuda_capability90E"></span><span id="_CPPv2N23halide_target_feature_t39halide_target_feature_cuda_capability90E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa8a12f3eeb28c5bf69a9ec3174241a816"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cuda_capability90</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability90E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable CUDA compute capability 9.0 (Hopper). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t40halide_target_feature_cuda_capability100E">
+<span id="_CPPv3N23halide_target_feature_t40halide_target_feature_cuda_capability100E"></span><span id="_CPPv2N23halide_target_feature_t40halide_target_feature_cuda_capability100E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaeeff4f54e9fc09bf76f64446ee117dd6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cuda_capability100</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t40halide_target_feature_cuda_capability100E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable CUDA compute capability 10.0 (Blackwell). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t40halide_target_feature_cuda_capability120E">
+<span id="_CPPv3N23halide_target_feature_t40halide_target_feature_cuda_capability120E"></span><span id="_CPPv2N23halide_target_feature_t40halide_target_feature_cuda_capability120E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa094e6185e0008548dd51dad36537de1a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cuda_capability120</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t40halide_target_feature_cuda_capability120E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable CUDA compute capability 12.0 (Blackwell). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t28halide_target_feature_openclE">
+<span id="_CPPv3N23halide_target_feature_t28halide_target_feature_openclE"></span><span id="_CPPv2N23halide_target_feature_t28halide_target_feature_openclE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa9af51d9a3d2a16a2053dee312567da3a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_opencl</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t28halide_target_feature_openclE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable the OpenCL runtime. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t32halide_target_feature_cl_doublesE">
+<span id="_CPPv3N23halide_target_feature_t32halide_target_feature_cl_doublesE"></span><span id="_CPPv2N23halide_target_feature_t32halide_target_feature_cl_doublesE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa10dfd45f611103dce0fcdbf671b89e5a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cl_doubles</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t32halide_target_feature_cl_doublesE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable double support on OpenCL targets. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t33halide_target_feature_cl_atomic64E">
+<span id="_CPPv3N23halide_target_feature_t33halide_target_feature_cl_atomic64E"></span><span id="_CPPv2N23halide_target_feature_t33halide_target_feature_cl_atomic64E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa65d3ef99ab0c2a6347c9570cd78f2b57"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cl_atomic64</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_cl_atomic64E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable 64-bit atomics operations on OpenCL targets. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t34halide_target_feature_user_contextE">
+<span id="_CPPv3N23halide_target_feature_t34halide_target_feature_user_contextE"></span><span id="_CPPv2N23halide_target_feature_t34halide_target_feature_user_contextE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaf353c2e40c697e29b86a4e51829735df"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_user_context</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_user_contextE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Generated code takes a user_context pointer as first argument. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_profileE">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_profileE"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_profileE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa700fd7b1280a9175b7cb3d43fe2c1754"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_profile</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_profileE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Launch a sampling profiler alongside the Halide pipeline that monitors and reports the runtime used by each Func. Also injects a synchronous halide_device_sync after every GPU kernel launch so the profiler can attribute compute time correctly — see halide_profiler_func_stats for the trade-off. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t32halide_target_feature_no_runtimeE">
+<span id="_CPPv3N23halide_target_feature_t32halide_target_feature_no_runtimeE"></span><span id="_CPPv2N23halide_target_feature_t32halide_target_feature_no_runtimeE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa23b4add23a16a3cfe633b90f2fd6d292"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_no_runtime</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t32halide_target_feature_no_runtimeE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Do not include a copy of the Halide runtime in any generated object file or assembly. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t27halide_target_feature_metalE">
+<span id="_CPPv3N23halide_target_feature_t27halide_target_feature_metalE"></span><span id="_CPPv2N23halide_target_feature_t27halide_target_feature_metalE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa596a01105ce4f5896b14c69210899e35"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_metal</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t27halide_target_feature_metalE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable the (Apple) Metal runtime. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t42halide_target_feature_c_plus_plus_manglingE">
+<span id="_CPPv3N23halide_target_feature_t42halide_target_feature_c_plus_plus_manglingE"></span><span id="_CPPv2N23halide_target_feature_t42halide_target_feature_c_plus_plus_manglingE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa1efec7b26946ba7f59cc887dcd45ea22"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_c_plus_plus_mangling</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t42halide_target_feature_c_plus_plus_manglingE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Generate C++ mangled names for result function, et al. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t35halide_target_feature_large_buffersE">
+<span id="_CPPv3N23halide_target_feature_t35halide_target_feature_large_buffersE"></span><span id="_CPPv2N23halide_target_feature_t35halide_target_feature_large_buffersE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa00aee1f2d9370a407522de5378d9901c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_large_buffers</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t35halide_target_feature_large_buffersE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable 64-bit buffer indexing to support buffers &gt; 2GB. Ignored if bits != 64. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_128E">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_hvx_128E"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_hvx_128E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa5bbb70ba548793579bef24d7bd8ffd6a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hvx_128</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_128E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable HVX 128 byte mode. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_v62E">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_hvx_v62E"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_hvx_v62E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaac0b0401c077429c652dc5d2723756f0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hvx_v62</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_v62E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Hexagon v62 architecture. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t39halide_target_feature_fuzz_float_storesE">
+<span id="_CPPv3N23halide_target_feature_t39halide_target_feature_fuzz_float_storesE"></span><span id="_CPPv2N23halide_target_feature_t39halide_target_feature_fuzz_float_storesE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaf7f57223352cf39e7375d2e2af6004b2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_fuzz_float_stores</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_fuzz_float_storesE" title="Link to this definition">#</a><br /></dt>
+<dd><p>On every floating point store, set the last bit of the mantissa to zero. Pipelines for which the output is very different with this feature enabled may also produce very different output on different processors. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t36halide_target_feature_soft_float_abiE">
+<span id="_CPPv3N23halide_target_feature_t36halide_target_feature_soft_float_abiE"></span><span id="_CPPv2N23halide_target_feature_t36halide_target_feature_soft_float_abiE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa484bc02e560762b1c51c0bf254b00a9f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_soft_float_abi</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t36halide_target_feature_soft_float_abiE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable soft float ABI. This only enables the soft float ABI calling convention, which does not necessarily use soft floats. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t26halide_target_feature_msanE">
+<span id="_CPPv3N23halide_target_feature_t26halide_target_feature_msanE"></span><span id="_CPPv2N23halide_target_feature_t26halide_target_feature_msanE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa068da87b16c87dd104d9720fec39ec42"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_msan</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_msanE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable hooks for MSAN support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t28halide_target_feature_avx512E">
+<span id="_CPPv3N23halide_target_feature_t28halide_target_feature_avx512E"></span><span id="_CPPv2N23halide_target_feature_t28halide_target_feature_avx512E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaa237eaab3cbd8d646c075b74f9958ba0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_avx512</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t28halide_target_feature_avx512E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable the base AVX512 subset supported by all AVX512 architectures. The specific feature sets are AVX-512F and AVX512-CD. See <a class="reference external" href="https://en.wikipedia.org/wiki/AVX-512">https://en.wikipedia.org/wiki/AVX-512</a> for a description of each AVX subset. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t32halide_target_feature_avx512_knlE">
+<span id="_CPPv3N23halide_target_feature_t32halide_target_feature_avx512_knlE"></span><span id="_CPPv2N23halide_target_feature_t32halide_target_feature_avx512_knlE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaa2779d4303538045aa9317c5cfefde48"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_avx512_knl</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t32halide_target_feature_avx512_knlE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable the AVX512 features supported by Knight’s Landing chips, such as the Xeon Phi x200. This includes the base AVX512 set, and also AVX512-CD and AVX512-ER. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t36halide_target_feature_avx512_skylakeE">
+<span id="_CPPv3N23halide_target_feature_t36halide_target_feature_avx512_skylakeE"></span><span id="_CPPv2N23halide_target_feature_t36halide_target_feature_avx512_skylakeE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa58fb5b7b5bc221459b800cc42930902f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_avx512_skylake</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t36halide_target_feature_avx512_skylakeE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable the AVX512 features supported by Skylake Xeon server processors. This adds AVX512-VL, AVX512-BW, and AVX512-DQ to the base set. The main difference from the base AVX512 set is better support for small integer ops. Note that this does not include the Knight’s Landing features. Note also that these features are not available on Skylake desktop and mobile processors. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t39halide_target_feature_avx512_cannonlakeE">
+<span id="_CPPv3N23halide_target_feature_t39halide_target_feature_avx512_cannonlakeE"></span><span id="_CPPv2N23halide_target_feature_t39halide_target_feature_avx512_cannonlakeE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa591bbdef6ade866e52fa671d8ea2aed1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_avx512_cannonlake</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_avx512_cannonlakeE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable the AVX512 features expected to be supported by future Cannonlake processors. This includes all of the Skylake features, plus AVX512-IFMA and AVX512-VBMI. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t33halide_target_feature_avx512_zen4E">
+<span id="_CPPv3N23halide_target_feature_t33halide_target_feature_avx512_zen4E"></span><span id="_CPPv2N23halide_target_feature_t33halide_target_feature_avx512_zen4E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa0966785198db800ffbc3a7f892c78614"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_avx512_zen4</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_avx512_zen4E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable the AVX512 features supported by Zen4 processors. This include all of the Cannonlake features, plus AVX512-VNNI, AVX512-BF16, and more. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t33halide_target_feature_avx512_zen5E">
+<span id="_CPPv3N23halide_target_feature_t33halide_target_feature_avx512_zen5E"></span><span id="_CPPv2N23halide_target_feature_t33halide_target_feature_avx512_zen5E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa22370751d675a07b5e3adde620c68385"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_avx512_zen5</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_avx512_zen5E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable the AVX512 features supported by Zen5 processors. This include all of the Cannonlake features, plus AVX512-VNNI, AVX512-BF16, AVX-VNNI and more. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t43halide_target_feature_avx512_sapphirerapidsE">
+<span id="_CPPv3N23halide_target_feature_t43halide_target_feature_avx512_sapphirerapidsE"></span><span id="_CPPv2N23halide_target_feature_t43halide_target_feature_avx512_sapphirerapidsE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa8d0583967260da27df1648419d4717e5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_avx512_sapphirerapids</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t43halide_target_feature_avx512_sapphirerapidsE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable the AVX512 features supported by Sapphire Rapids processors. This include all of the Zen4 features, plus AVX-VNNI and AMX instructions. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t33halide_target_feature_trace_loadsE">
+<span id="_CPPv3N23halide_target_feature_t33halide_target_feature_trace_loadsE"></span><span id="_CPPv2N23halide_target_feature_t33halide_target_feature_trace_loadsE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa0de323126eca04377e205b6a67b93970"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_trace_loads</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_trace_loadsE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Trace all loads done by the pipeline. Equivalent to calling Func::trace_loads on every non-inlined Func. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t34halide_target_feature_trace_storesE">
+<span id="_CPPv3N23halide_target_feature_t34halide_target_feature_trace_storesE"></span><span id="_CPPv2N23halide_target_feature_t34halide_target_feature_trace_storesE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa9d6461b681abeeb0ff4c850cfe4e1eb4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_trace_stores</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_trace_storesE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Trace all stores done by the pipeline. Equivalent to calling Func::trace_stores on every non-inlined Func. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t40halide_target_feature_trace_realizationsE">
+<span id="_CPPv3N23halide_target_feature_t40halide_target_feature_trace_realizationsE"></span><span id="_CPPv2N23halide_target_feature_t40halide_target_feature_trace_realizationsE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa1cebf3f4e7137ca7f3a74b4c2049de4d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_trace_realizations</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t40halide_target_feature_trace_realizationsE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Trace all realizations done by the pipeline. Equivalent to calling Func::trace_realizations on every non-inlined Func. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t36halide_target_feature_trace_pipelineE">
+<span id="_CPPv3N23halide_target_feature_t36halide_target_feature_trace_pipelineE"></span><span id="_CPPv2N23halide_target_feature_t36halide_target_feature_trace_pipelineE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa62b1c56df255787c4888275f5f231fe8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_trace_pipeline</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t36halide_target_feature_trace_pipelineE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Trace the pipeline. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_v65E">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_hvx_v65E"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_hvx_v65E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa24c82b9a47277314e22da121f1bd3afb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hvx_v65</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_v65E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Hexagon v65 architecture. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_v66E">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_hvx_v66E"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_hvx_v66E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aafcc6d0b70a97d9745fa89939009c243d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hvx_v66</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_v66E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Hexagon v66 architecture. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_v68E">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_hvx_v68E"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_hvx_v68E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa696ef920f911837226ad41932e4fa5f4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hvx_v68</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_v68E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Hexagon v68 architecture. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_cl_halfE">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_cl_halfE"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_cl_halfE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa7e62bc4f299a2ee506ecc9f9a4c2e1d8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_cl_half</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_cl_halfE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable half support on OpenCL targets. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t34halide_target_feature_strict_floatE">
+<span id="_CPPv3N23halide_target_feature_t34halide_target_feature_strict_floatE"></span><span id="_CPPv2N23halide_target_feature_t34halide_target_feature_strict_floatE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa704512285d26323364e0ac4be27ea235"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_strict_float</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_strict_floatE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Turn off all non-IEEE floating-point optimization. Currently applies only to LLVM targets. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t26halide_target_feature_tsanE">
+<span id="_CPPv3N23halide_target_feature_t26halide_target_feature_tsanE"></span><span id="_CPPv2N23halide_target_feature_t26halide_target_feature_tsanE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa04299a57d262e533d583341eb2ab95e6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_tsan</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_tsanE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable hooks for TSAN support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t26halide_target_feature_asanE">
+<span id="_CPPv3N23halide_target_feature_t26halide_target_feature_asanE"></span><span id="_CPPv2N23halide_target_feature_t26halide_target_feature_asanE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa79533b07197f576db25b29532086ec11"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_asan</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_asanE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable hooks for ASAN support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t34halide_target_feature_d3d12computeE">
+<span id="_CPPv3N23halide_target_feature_t34halide_target_feature_d3d12computeE"></span><span id="_CPPv2N23halide_target_feature_t34halide_target_feature_d3d12computeE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa50db832a52ac3e6e126dd7d0dbaff6a5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_d3d12compute</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_d3d12computeE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Direct3D 12 Compute runtime. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t43halide_target_feature_check_unsafe_promisesE">
+<span id="_CPPv3N23halide_target_feature_t43halide_target_feature_check_unsafe_promisesE"></span><span id="_CPPv2N23halide_target_feature_t43halide_target_feature_check_unsafe_promisesE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaefa8e582ca33d5f579fcff6633ef7f9d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_check_unsafe_promises</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t43halide_target_feature_check_unsafe_promisesE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Insert assertions for promises. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t33halide_target_feature_hexagon_dmaE">
+<span id="_CPPv3N23halide_target_feature_t33halide_target_feature_hexagon_dmaE"></span><span id="_CPPv2N23halide_target_feature_t33halide_target_feature_hexagon_dmaE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaa0120c543cc8bedf464bac3db5d467b6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hexagon_dma</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_hexagon_dmaE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Hexagon DMA buffers. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t35halide_target_feature_embed_bitcodeE">
+<span id="_CPPv3N23halide_target_feature_t35halide_target_feature_embed_bitcodeE"></span><span id="_CPPv2N23halide_target_feature_t35halide_target_feature_embed_bitcodeE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa27059c7429ebfd330393abd1736c4b76"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_embed_bitcode</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t35halide_target_feature_embed_bitcodeE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Emulate clang -fembed-bitcode flag. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t42halide_target_feature_enable_llvm_loop_optE">
+<span id="_CPPv3N23halide_target_feature_t42halide_target_feature_enable_llvm_loop_optE"></span><span id="_CPPv2N23halide_target_feature_t42halide_target_feature_enable_llvm_loop_optE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa0e302d29180ab5ce1d40bea72c6e3877"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_enable_llvm_loop_opt</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t42halide_target_feature_enable_llvm_loop_optE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable loop vectorization + unrolling in LLVM. Overrides halide_target_feature_disable_llvm_loop_opt. (Ignored for non-LLVM targets.). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t34halide_target_feature_wasm_mvponlyE">
+<span id="_CPPv3N23halide_target_feature_t34halide_target_feature_wasm_mvponlyE"></span><span id="_CPPv2N23halide_target_feature_t34halide_target_feature_wasm_mvponlyE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aac3615ba04732ff64ade23461d4d6f98c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_wasm_mvponly</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_wasm_mvponlyE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Disable all extensions to WebAssembly codegen (including +sign-ext and +nontrapping-fptoint, which are on by default). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t34halide_target_feature_wasm_simd128E">
+<span id="_CPPv3N23halide_target_feature_t34halide_target_feature_wasm_simd128E"></span><span id="_CPPv2N23halide_target_feature_t34halide_target_feature_wasm_simd128E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa34f213cb539ffca7cecaf2ab7b904c90"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_wasm_simd128</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_wasm_simd128E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable +simd128 instructions for WebAssembly codegen. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t34halide_target_feature_wasm_threadsE">
+<span id="_CPPv3N23halide_target_feature_t34halide_target_feature_wasm_threadsE"></span><span id="_CPPv2N23halide_target_feature_t34halide_target_feature_wasm_threadsE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa0b2e15f8dbc44bd792ffe2bf610a1c8d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_wasm_threads</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_wasm_threadsE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable use of threads in WebAssembly codegen. Requires the use of a wasm runtime that provides pthread-compatible wrappers (typically, Emscripten with the -pthreads flag). Unsupported under WASI. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t38halide_target_feature_wasm_bulk_memoryE">
+<span id="_CPPv3N23halide_target_feature_t38halide_target_feature_wasm_bulk_memoryE"></span><span id="_CPPv2N23halide_target_feature_t38halide_target_feature_wasm_bulk_memoryE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa0426da0f7b2751316ec624928b83e3a2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_wasm_bulk_memory</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t38halide_target_feature_wasm_bulk_memoryE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable +bulk-memory instructions for WebAssembly codegen. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t28halide_target_feature_webgpuE">
+<span id="_CPPv3N23halide_target_feature_t28halide_target_feature_webgpuE"></span><span id="_CPPv2N23halide_target_feature_t28halide_target_feature_webgpuE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aabdb7ee46fdbf8ae329b28c79902f5246"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_webgpu</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t28halide_target_feature_webgpuE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable the WebGPU runtime. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t25halide_target_feature_sveE">
+<span id="_CPPv3N23halide_target_feature_t25halide_target_feature_sveE"></span><span id="_CPPv2N23halide_target_feature_t25halide_target_feature_sveE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaf96f6eed473e71596cf7a95e8fba4673"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_sve</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_sveE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARM Scalable Vector Extensions. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t26halide_target_feature_sve2E">
+<span id="_CPPv3N23halide_target_feature_t26halide_target_feature_sve2E"></span><span id="_CPPv2N23halide_target_feature_t26halide_target_feature_sve2E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa4be4a8674e19695fea6f11b638d65d2d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_sve2</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_sve2E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARM Scalable Vector Extensions v2. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t26halide_target_feature_sme2E">
+<span id="_CPPv3N23halide_target_feature_t26halide_target_feature_sme2E"></span><span id="_CPPv2N23halide_target_feature_t26halide_target_feature_sme2E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa97bee602793955e7fbeffbee9dad067a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_sme2</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_sme2E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARM Scalable Matrix Extensions v2. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t32halide_target_feature_sme_svl128E">
+<span id="_CPPv3N23halide_target_feature_t32halide_target_feature_sme_svl128E"></span><span id="_CPPv2N23halide_target_feature_t32halide_target_feature_sme_svl128E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaffbedd74db1e546b5abb702be1aa47f2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_sme_svl128</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t32halide_target_feature_sme_svl128E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Assume ARM SME streaming vector length is 128 bits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t32halide_target_feature_sme_svl256E">
+<span id="_CPPv3N23halide_target_feature_t32halide_target_feature_sme_svl256E"></span><span id="_CPPv2N23halide_target_feature_t32halide_target_feature_sme_svl256E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa8a344d11b5e8a97a09ab5840a0adf797"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_sme_svl256</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t32halide_target_feature_sme_svl256E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Assume ARM SME streaming vector length is 256 bits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t32halide_target_feature_sme_svl512E">
+<span id="_CPPv3N23halide_target_feature_t32halide_target_feature_sme_svl512E"></span><span id="_CPPv2N23halide_target_feature_t32halide_target_feature_sme_svl512E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa502fc64927a7cafc105ee8185db25d17"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_sme_svl512</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t32halide_target_feature_sme_svl512E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Assume ARM SME streaming vector length is 512 bits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t33halide_target_feature_sme_svl1024E">
+<span id="_CPPv3N23halide_target_feature_t33halide_target_feature_sme_svl1024E"></span><span id="_CPPv2N23halide_target_feature_t33halide_target_feature_sme_svl1024E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aab22a6441a600146abde843d3c93efa08"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_sme_svl1024</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_sme_svl1024E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Assume ARM SME streaming vector length is 1024 bits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t33halide_target_feature_sme_svl2048E">
+<span id="_CPPv3N23halide_target_feature_t33halide_target_feature_sme_svl2048E"></span><span id="_CPPv2N23halide_target_feature_t33halide_target_feature_sme_svl2048E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa7685bb6aeb8b8390823fb67d2b99d309"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_sme_svl2048</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_sme_svl2048E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Assume ARM SME streaming vector length is 2048 bits. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t25halide_target_feature_eglE">
+<span id="_CPPv3N23halide_target_feature_t25halide_target_feature_eglE"></span><span id="_CPPv2N23halide_target_feature_t25halide_target_feature_eglE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa69114eb66218ea947c31afc2e4c9a116"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_egl</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_eglE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Force use of EGL support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t34halide_target_feature_arm_dot_prodE">
+<span id="_CPPv3N23halide_target_feature_t34halide_target_feature_arm_dot_prodE"></span><span id="_CPPv2N23halide_target_feature_t34halide_target_feature_arm_dot_prodE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa8b4a2c1fe23f18c298a87abe7fc52603"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_arm_dot_prod</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_arm_dot_prodE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARMv8.2-a dotprod extension (i.e. udot and sdot instructions). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t30halide_target_feature_arm_fp16E">
+<span id="_CPPv3N23halide_target_feature_t30halide_target_feature_arm_fp16E"></span><span id="_CPPv2N23halide_target_feature_t30halide_target_feature_arm_fp16E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaa6a20768eb5e50aa54e93ff315f97425"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_arm_fp16</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t30halide_target_feature_arm_fp16E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARMv8.2-a half-precision floating point data processing. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t28halide_llvm_large_code_modelE">
+<span id="_CPPv3N23halide_target_feature_t28halide_llvm_large_code_modelE"></span><span id="_CPPv2N23halide_target_feature_t28halide_llvm_large_code_modelE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa3b97d2d3ddd66f0802976b392f0e1a69"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_llvm_large_code_model</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t28halide_llvm_large_code_modelE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Use the LLVM large code model to compile. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t25halide_target_feature_rvvE">
+<span id="_CPPv3N23halide_target_feature_t25halide_target_feature_rvvE"></span><span id="_CPPv2N23halide_target_feature_t25halide_target_feature_rvvE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa1315ae4adad1d3f3f982adb44dac6e99"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_rvv</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_rvvE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable RISCV “V” Vector Extension. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t28halide_target_feature_armv8aE">
+<span id="_CPPv3N23halide_target_feature_t28halide_target_feature_armv8aE"></span><span id="_CPPv2N23halide_target_feature_t28halide_target_feature_armv8aE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa7492575fe2a831253bf277de22e8d6ad"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_armv8a</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t28halide_target_feature_armv8aE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARMv8a instructions. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_armv81aE">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_armv81aE"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_armv81aE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aabb0e6df774584ada86b625a9b5b7078c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_armv81a</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv81aE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARMv8.1a instructions. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_armv82aE">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_armv82aE"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_armv82aE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaa7ed89ae933c2a0f0ab5d2be73cdc7a6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_armv82a</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv82aE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARMv8.2a instructions. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_armv83aE">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_armv83aE"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_armv83aE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaf1e76add3b61129215434c277b485835"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_armv83a</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv83aE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARMv8.3a instructions. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_armv84aE">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_armv84aE"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_armv84aE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaaeb9f2d79d23f44c760fab243f67f25e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_armv84a</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv84aE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARMv8.4a instructions. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_armv85aE">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_armv85aE"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_armv85aE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aad86c50f5f0248e29f37c13fa11fb77d3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_armv85a</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv85aE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARMv8.5a instructions. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_armv86aE">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_armv86aE"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_armv86aE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa2de72255092c6400fab771954cd8f78f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_armv86a</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv86aE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARMv8.6a instructions. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_armv87aE">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_armv87aE"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_armv87aE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa7b617ae94206c5ac0fc1340f48260392"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_armv87a</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv87aE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARMv8.7a instructions. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_armv88aE">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_armv88aE"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_armv88aE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa62b3268b6323b359be693a41693d6afd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_armv88a</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv88aE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARMv8.8a instructions. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_armv89aE">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_armv89aE"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_armv89aE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa5573c708264903f88d01e0e9ee516129"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_armv89a</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv89aE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable ARMv8.9a instructions. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t40halide_target_feature_sanitizer_coverageE">
+<span id="_CPPv3N23halide_target_feature_t40halide_target_feature_sanitizer_coverageE"></span><span id="_CPPv2N23halide_target_feature_t40halide_target_feature_sanitizer_coverageE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aac09d31cf3a2ab1782ef02d8903e86f81"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_sanitizer_coverage</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t40halide_target_feature_sanitizer_coverageE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable hooks for SanitizerCoverage support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t38halide_target_feature_profile_by_timerE">
+<span id="_CPPv3N23halide_target_feature_t38halide_target_feature_profile_by_timerE"></span><span id="_CPPv2N23halide_target_feature_t38halide_target_feature_profile_by_timerE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa3d974776b5f7d6cddcd2e2038ed8aafe"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_profile_by_timer</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t38halide_target_feature_profile_by_timerE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Alternative to halide_target_feature_profile using timer interrupt for systems without threads or applicartions that need to avoid them. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t27halide_target_feature_spirvE">
+<span id="_CPPv3N23halide_target_feature_t27halide_target_feature_spirvE"></span><span id="_CPPv2N23halide_target_feature_t27halide_target_feature_spirvE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa61a757e404885163cc0a8a13a00fd83d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_spirv</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t27halide_target_feature_spirvE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable SPIR-V code generation support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t28halide_target_feature_vulkanE">
+<span id="_CPPv3N23halide_target_feature_t28halide_target_feature_vulkanE"></span><span id="_CPPv2N23halide_target_feature_t28halide_target_feature_vulkanE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa37aa234291cdced2fc7a967073ecf441"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_vulkan</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t28halide_target_feature_vulkanE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Vulkan runtime support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t33halide_target_feature_vulkan_int8E">
+<span id="_CPPv3N23halide_target_feature_t33halide_target_feature_vulkan_int8E"></span><span id="_CPPv2N23halide_target_feature_t33halide_target_feature_vulkan_int8E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaf1177e1606d2a3afe4e922168f1b5f72"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_vulkan_int8</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_vulkan_int8E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Vulkan 8-bit integer support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t34halide_target_feature_vulkan_int16E">
+<span id="_CPPv3N23halide_target_feature_t34halide_target_feature_vulkan_int16E"></span><span id="_CPPv2N23halide_target_feature_t34halide_target_feature_vulkan_int16E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aac8e448d2d5be74e94288e21aaead3947"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_vulkan_int16</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_vulkan_int16E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Vulkan 16-bit integer support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t34halide_target_feature_vulkan_int64E">
+<span id="_CPPv3N23halide_target_feature_t34halide_target_feature_vulkan_int64E"></span><span id="_CPPv2N23halide_target_feature_t34halide_target_feature_vulkan_int64E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaf2af9762a2d78af22a95b982360fa937"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_vulkan_int64</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_vulkan_int64E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Vulkan 64-bit integer support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t36halide_target_feature_vulkan_float16E">
+<span id="_CPPv3N23halide_target_feature_t36halide_target_feature_vulkan_float16E"></span><span id="_CPPv2N23halide_target_feature_t36halide_target_feature_vulkan_float16E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa22189b958831a81f8f21c8b59b2e9854"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_vulkan_float16</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t36halide_target_feature_vulkan_float16E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Vulkan 16-bit float support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t36halide_target_feature_vulkan_float64E">
+<span id="_CPPv3N23halide_target_feature_t36halide_target_feature_vulkan_float64E"></span><span id="_CPPv2N23halide_target_feature_t36halide_target_feature_vulkan_float64E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa87991ab063bb3a4c3965ce77086e3f18"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_vulkan_float64</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t36halide_target_feature_vulkan_float64E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Vulkan 64-bit float support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t38halide_target_feature_vulkan_version10E">
+<span id="_CPPv3N23halide_target_feature_t38halide_target_feature_vulkan_version10E"></span><span id="_CPPv2N23halide_target_feature_t38halide_target_feature_vulkan_version10E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaf77e6816140418a1629229bc08fb763d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_vulkan_version10</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t38halide_target_feature_vulkan_version10E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Vulkan v1.0 runtime target support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t38halide_target_feature_vulkan_version12E">
+<span id="_CPPv3N23halide_target_feature_t38halide_target_feature_vulkan_version12E"></span><span id="_CPPv2N23halide_target_feature_t38halide_target_feature_vulkan_version12E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa8e330952177a0646f0cb6d4b6e86dbd2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_vulkan_version12</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t38halide_target_feature_vulkan_version12E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Vulkan v1.2 runtime target support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t38halide_target_feature_vulkan_version13E">
+<span id="_CPPv3N23halide_target_feature_t38halide_target_feature_vulkan_version13E"></span><span id="_CPPv2N23halide_target_feature_t38halide_target_feature_vulkan_version13E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa8dc7b8478aeba8540c70ab9ab7e89692"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_vulkan_version13</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t38halide_target_feature_vulkan_version13E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable Vulkan v1.3 runtime target support. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t33halide_target_feature_semihostingE">
+<span id="_CPPv3N23halide_target_feature_t33halide_target_feature_semihostingE"></span><span id="_CPPv2N23halide_target_feature_t33halide_target_feature_semihostingE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa433f44f1eea39a3af05bf8591705234e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_semihosting</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_semihostingE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Used together with Target::NoOS for the baremetal target built with semihosting library and run with semihosting mode where minimum I/O communication with a host PC is available. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_avx10_1E">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_avx10_1E"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_avx10_1E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa69cbb0b6f1d5e15a44a70251b559add3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_avx10_1</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_avx10_1E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Intel AVX10 version 1 support. vector_bits is used to indicate width. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t29halide_target_feature_x86_apxE">
+<span id="_CPPv3N23halide_target_feature_t29halide_target_feature_x86_apxE"></span><span id="_CPPv2N23halide_target_feature_t29halide_target_feature_x86_apxE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aafc593f88c62bf63ba04ac0939dc79323"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_x86_apx</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_x86_apxE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Intel x86 APX support. Covers initial set of features released as APX: egpr,push2pop2,ppx,ndd . </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t31halide_target_feature_simulatorE">
+<span id="_CPPv3N23halide_target_feature_t31halide_target_feature_simulatorE"></span><span id="_CPPv2N23halide_target_feature_t31halide_target_feature_simulatorE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa3af989461c63dc72fd5a20506572c1b0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_simulator</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_simulatorE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Target is for a simulator environment. Currently only applies to iOS. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm60E">
+<span id="_CPPv3N23halide_target_feature_t31halide_target_feature_hlsl_sm60E"></span><span id="_CPPv2N23halide_target_feature_t31halide_target_feature_hlsl_sm60E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa0d9d9544d5407e724f710c8c92b548db"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hlsl_sm60</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm60E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable D3D12 Shader Model 6.0 (DXIL, 64-bit types, wave intrinsics). Requires d3d12compute. Uses DXC compiler. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm61E">
+<span id="_CPPv3N23halide_target_feature_t31halide_target_feature_hlsl_sm61E"></span><span id="_CPPv2N23halide_target_feature_t31halide_target_feature_hlsl_sm61E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa6dad782682b8deb8855e6c1c9d9d676f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hlsl_sm61</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm61E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable D3D12 Shader Model 6.1. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm62E">
+<span id="_CPPv3N23halide_target_feature_t31halide_target_feature_hlsl_sm62E"></span><span id="_CPPv2N23halide_target_feature_t31halide_target_feature_hlsl_sm62E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aac58054fd5d23a14f0c0126e869e4a817"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hlsl_sm62</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm62E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable D3D12 Shader Model 6.2 (native 16-bit scalar types with -enable-16bit-types). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm63E">
+<span id="_CPPv3N23halide_target_feature_t31halide_target_feature_hlsl_sm63E"></span><span id="_CPPv2N23halide_target_feature_t31halide_target_feature_hlsl_sm63E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa76dff3b262c47f8e2bb80345de3b8bb3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hlsl_sm63</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm63E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable D3D12 Shader Model 6.3. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm64E">
+<span id="_CPPv3N23halide_target_feature_t31halide_target_feature_hlsl_sm64E"></span><span id="_CPPv2N23halide_target_feature_t31halide_target_feature_hlsl_sm64E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa0f3e4458bccf4a335c1da0101b4b7fec"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hlsl_sm64</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm64E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable D3D12 Shader Model 6.4. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm65E">
+<span id="_CPPv3N23halide_target_feature_t31halide_target_feature_hlsl_sm65E"></span><span id="_CPPv2N23halide_target_feature_t31halide_target_feature_hlsl_sm65E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa025da59b56591edd2d60dbc983d3cad5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hlsl_sm65</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm65E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable D3D12 Shader Model 6.5. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm66E">
+<span id="_CPPv3N23halide_target_feature_t31halide_target_feature_hlsl_sm66E"></span><span id="_CPPv2N23halide_target_feature_t31halide_target_feature_hlsl_sm66E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aad6b7bf5dd7135f30da1da821709300f9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hlsl_sm66</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm66E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable D3D12 Shader Model 6.6 (64-bit atomics, packed 8-bit types). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm67E">
+<span id="_CPPv3N23halide_target_feature_t31halide_target_feature_hlsl_sm67E"></span><span id="_CPPv2N23halide_target_feature_t31halide_target_feature_hlsl_sm67E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa278c14897da17e363490e003c762ac31"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hlsl_sm67</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm67E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable D3D12 Shader Model 6.7. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm68E">
+<span id="_CPPv3N23halide_target_feature_t31halide_target_feature_hlsl_sm68E"></span><span id="_CPPv2N23halide_target_feature_t31halide_target_feature_hlsl_sm68E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa62f9931c937c3a40da307902ec6fd36e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hlsl_sm68</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm68E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable D3D12 Shader Model 6.8. </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm69E">
+<span id="_CPPv3N23halide_target_feature_t31halide_target_feature_hlsl_sm69E"></span><span id="_CPPv2N23halide_target_feature_t31halide_target_feature_hlsl_sm69E"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aaa09655ba4d423463a736f75a4e7f567b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_hlsl_sm69</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm69E" title="Link to this definition">#</a><br /></dt>
+<dd><p>Enable D3D12 Shader Model 6.9 (long vectors 5-1024 lanes, native 16-bit/wave/int64 required). </p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N23halide_target_feature_t25halide_target_feature_endE">
+<span id="_CPPv3N23halide_target_feature_t25halide_target_feature_endE"></span><span id="_CPPv2N23halide_target_feature_t25halide_target_feature_endE"></span><span class="target" id="_halide_runtime_8h_1a2ccb96b3d427fff8f1d68cc5f1e92f3aa3962d2fc2f69c69b85d29c4818d727c1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halide_target_feature_end</span></span></span><a class="headerlink" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_endE" title="Link to this definition">#</a><br /></dt>
+<dd><p>A sentinel. Every target is considered to have this feature, and setting this feature does nothing. </p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="halide_semaphore_try_acquire_t.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">halide_semaphore_try_acquire_t</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="halide_target_processor_t.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">halide_target_processor_t</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv423halide_target_feature_t"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_t</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_jitE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_jit</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t27halide_target_feature_debugE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_debug</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_enable_backtracesE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_enable_backtraces</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t32halide_target_feature_no_assertsE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_no_asserts</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t37halide_target_feature_no_bounds_queryE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_no_bounds_query</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t27halide_target_feature_sse41E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_sse41</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_avxE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_avx</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_avx2E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_avx2</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_avxvnniE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_avxvnni</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_fmaE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_fma</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_fma4E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_fma4</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_f16cE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_f16c</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t28halide_target_feature_armv7sE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_armv7s</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_no_neonE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_no_neon</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_vsxE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_vsx</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t37halide_target_feature_power_arch_2_07E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_power_arch_2_07</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_cudaE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cuda</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability30E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cuda_capability30</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability32E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cuda_capability32</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability35E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cuda_capability35</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability50E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cuda_capability50</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability61E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cuda_capability61</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability70E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cuda_capability70</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability75E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cuda_capability75</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability80E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cuda_capability80</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability86E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cuda_capability86</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability89E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cuda_capability89</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_cuda_capability90E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cuda_capability90</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t40halide_target_feature_cuda_capability100E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cuda_capability100</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t40halide_target_feature_cuda_capability120E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cuda_capability120</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t28halide_target_feature_openclE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_opencl</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t32halide_target_feature_cl_doublesE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cl_doubles</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_cl_atomic64E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cl_atomic64</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_user_contextE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_user_context</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_profileE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_profile</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t32halide_target_feature_no_runtimeE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_no_runtime</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t27halide_target_feature_metalE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_metal</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t42halide_target_feature_c_plus_plus_manglingE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_c_plus_plus_mangling</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t35halide_target_feature_large_buffersE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_large_buffers</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_128E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hvx_128</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_v62E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hvx_v62</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_fuzz_float_storesE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_fuzz_float_stores</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t36halide_target_feature_soft_float_abiE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_soft_float_abi</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_msanE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_msan</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t28halide_target_feature_avx512E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_avx512</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t32halide_target_feature_avx512_knlE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_avx512_knl</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t36halide_target_feature_avx512_skylakeE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_avx512_skylake</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t39halide_target_feature_avx512_cannonlakeE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_avx512_cannonlake</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_avx512_zen4E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_avx512_zen4</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_avx512_zen5E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_avx512_zen5</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t43halide_target_feature_avx512_sapphirerapidsE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_avx512_sapphirerapids</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_trace_loadsE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_trace_loads</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_trace_storesE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_trace_stores</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t40halide_target_feature_trace_realizationsE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_trace_realizations</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t36halide_target_feature_trace_pipelineE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_trace_pipeline</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_v65E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hvx_v65</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_v66E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hvx_v66</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_hvx_v68E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hvx_v68</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_cl_halfE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_cl_half</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_strict_floatE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_strict_float</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_tsanE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_tsan</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_asanE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_asan</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_d3d12computeE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_d3d12compute</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t43halide_target_feature_check_unsafe_promisesE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_check_unsafe_promises</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_hexagon_dmaE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hexagon_dma</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t35halide_target_feature_embed_bitcodeE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_embed_bitcode</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t42halide_target_feature_enable_llvm_loop_optE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_enable_llvm_loop_opt</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_wasm_mvponlyE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_wasm_mvponly</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_wasm_simd128E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_wasm_simd128</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_wasm_threadsE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_wasm_threads</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t38halide_target_feature_wasm_bulk_memoryE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_wasm_bulk_memory</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t28halide_target_feature_webgpuE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_webgpu</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_sveE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_sve</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_sve2E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_sve2</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t26halide_target_feature_sme2E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_sme2</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t32halide_target_feature_sme_svl128E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_sme_svl128</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t32halide_target_feature_sme_svl256E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_sme_svl256</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t32halide_target_feature_sme_svl512E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_sme_svl512</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_sme_svl1024E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_sme_svl1024</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_sme_svl2048E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_sme_svl2048</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_eglE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_egl</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_arm_dot_prodE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_arm_dot_prod</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t30halide_target_feature_arm_fp16E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_arm_fp16</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t28halide_llvm_large_code_modelE"><code class="docutils literal notranslate"><span class="pre">halide_llvm_large_code_model</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_rvvE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_rvv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t28halide_target_feature_armv8aE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_armv8a</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv81aE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_armv81a</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv82aE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_armv82a</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv83aE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_armv83a</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv84aE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_armv84a</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv85aE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_armv85a</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv86aE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_armv86a</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv87aE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_armv87a</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv88aE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_armv88a</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_armv89aE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_armv89a</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t40halide_target_feature_sanitizer_coverageE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_sanitizer_coverage</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t38halide_target_feature_profile_by_timerE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_profile_by_timer</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t27halide_target_feature_spirvE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_spirv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t28halide_target_feature_vulkanE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_vulkan</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_vulkan_int8E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_vulkan_int8</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_vulkan_int16E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_vulkan_int16</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t34halide_target_feature_vulkan_int64E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_vulkan_int64</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t36halide_target_feature_vulkan_float16E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_vulkan_float16</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t36halide_target_feature_vulkan_float64E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_vulkan_float64</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t38halide_target_feature_vulkan_version10E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_vulkan_version10</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t38halide_target_feature_vulkan_version12E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_vulkan_version12</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t38halide_target_feature_vulkan_version13E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_vulkan_version13</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t33halide_target_feature_semihostingE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_semihosting</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_avx10_1E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_avx10_1</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t29halide_target_feature_x86_apxE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_x86_apx</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_simulatorE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_simulator</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm60E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hlsl_sm60</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm61E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hlsl_sm61</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm62E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hlsl_sm62</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm63E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hlsl_sm63</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm64E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hlsl_sm64</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm65E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hlsl_sm65</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm66E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hlsl_sm66</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm67E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hlsl_sm67</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm68E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hlsl_sm68</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t31halide_target_feature_hlsl_sm69E"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_hlsl_sm69</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N23halide_target_feature_t25halide_target_feature_endE"><code class="docutils literal notranslate"><span class="pre">halide_target_feature_end</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright The Halide team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

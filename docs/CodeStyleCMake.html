@@ -1,0 +1,944 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Contributing CMake code to Halide &#8212; Halide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1ee386da" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="_static/documentation_options.js?v=8a448e45"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'CodeStyleCMake';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Custom Runtime Prefixes" href="CustomRuntimes.html" />
+    <link rel="prev" title="Using Halide from your CMake build" href="HalideCMakePackage.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Halide</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorial/index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorial/index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="BuildingHalideWithCMake.html">Building Halide with CMake</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HalideCMakePackage.html">Using Halide from your CMake build</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Contributing CMake code to Halide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CustomRuntimes.html">Custom Runtime Prefixes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FuzzTesting.html">Fuzz testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeneratorCache.html">Generator compile cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hexagon.html">Halide for Hexagon HVX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python.html">Halide Bindings for Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RunGen.html">Running and Benchmarking Halide Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Vulkan.html">Vulkan Support for Halide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WebAssembly.html">WebAssembly Support for Halide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WebGPU.html">WebGPU support for Halide</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="guides.html" class="nav-link">Guides</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Contributing CMake code to Halide</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="contributing-cmake-code-to-halide">
+<h1>Contributing CMake code to Halide<a class="headerlink" href="#contributing-cmake-code-to-halide" title="Link to this heading">#</a></h1>
+<p>This document specifies the coding standards we adhere to when authoring new
+CMake code. If you need directions for building Halide, see
+<a class="reference internal" href="BuildingHalideWithCMake.html"><span class="std std-doc">BuildingHalideWithCMake.md</span></a>. If you are looking for Halide’s CMake package
+documentation, see <a class="reference internal" href="HalideCMakePackage.html"><span class="std std-doc">HalideCMakePackage.md</span></a>.</p>
+<p>This document is necessary for two major reasons. First, due to its long
+history, size, and dedication to backwards compatibility, CMake is <em>incredibly</em>
+difficult to learn and full of traps. Second, Halide bundles its own LLVM-based
+native code generator, which CMake deeply does not expect. This means we
+routinely push CMake’s build model to its limit.</p>
+<p>Therefore, we must be careful to write high-quality CMake code so that it is
+clear when CMake’s limitations are being tested. While not comprehensive, the
+guide outlines the code quality expectations we have as they apply to CMake.</p>
+<p>When contributing new CMake code to Halide, keep in mind that the minimum
+version is 3.28. Therefore, it is not only possible, but <em>required</em>, to use
+modern CMake best practices.</p>
+<section id="general-guidelines-and-best-practices">
+<h2>General guidelines and best practices<a class="headerlink" href="#general-guidelines-and-best-practices" title="Link to this heading">#</a></h2>
+<p>The following are some common mistakes that lead to subtly broken builds.</p>
+<ul class="simple">
+<li><p><strong>Reading the build directory.</strong> While setting up the build, the build
+directory should be considered <em>write only</em>. Using the build directory as a
+read/write temporary directory is acceptable as long as all temp files are
+cleaned up by the end of configuration.</p></li>
+<li><p><strong>Not using <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html">generator expressions</a>.</strong> Declarative is better than
+imperative and this is no exception. Conditionally adding to a target property
+can leak unwanted details about the build environment into packages. Some
+information is not accurate or available except via generator expressions,
+e.g. the build configuration.</p></li>
+<li><p><strong>Using the wrong variable.</strong> <code class="docutils literal notranslate"><span class="pre">CMAKE_SOURCE_DIR</span></code> doesn’t always point to the
+Halide source root. When someone uses Halide via
+<a class="reference external" href="https://cmake.org/cmake/help/latest/module/FetchContent.html"><code class="docutils literal notranslate"><span class="pre">FetchContent</span></code></a>, it will point to <em>their</em> source root instead.
+The correct variable is <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/PROJECT-NAME_SOURCE_DIR.html"><code class="docutils literal notranslate"><span class="pre">Halide_SOURCE_DIR</span></code></a>. If you
+want to know if the compiler is MSVC, check it directly with the
+<a class="reference external" href="https://cmake.org/cmake/help/latest/variable/MSVC.html"><code class="docutils literal notranslate"><span class="pre">MSVC</span></code></a> variable; don’t use <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/WIN32.html"><code class="docutils literal notranslate"><span class="pre">WIN32</span></code></a>. That will be wrong when
+compiling with clang on Windows. In most cases, however, a generator
+expression will be more appropriate.</p></li>
+<li><p><strong>Using directory properties.</strong> Directory properties have vexing behavior and
+are essentially deprecated from CMake 3.0+. Propagating target properties is
+the way of the future.</p></li>
+<li><p><strong>Using the wrong visibility.</strong> Target properties can be <code class="docutils literal notranslate"><span class="pre">PRIVATE</span></code>,
+<code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code>, or both (aka <code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code>). Pick the most conservative one for each
+scenario. Refer to the <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#transitive-usage-requirements">transitive usage requirements</a> docs
+for more information.</p></li>
+<li><p><strong>Needlessly expanding variables</strong> The <a class="reference external" href="https://cmake.org/cmake/help/latest/command/if.html"><code class="docutils literal notranslate"><span class="pre">if</span></code></a> and
+<a class="reference external" href="https://cmake.org/cmake/help/latest/command/foreach.html"><code class="docutils literal notranslate"><span class="pre">foreach</span></code></a> commands generally expand variables when provided
+by name. Expanding such variables manually can unintentionally change the
+behavior of the command. Use <code class="docutils literal notranslate"><span class="pre">foreach</span> <span class="pre">(item</span> <span class="pre">IN</span> <span class="pre">LISTS</span> <span class="pre">list)</span></code> instead of
+<code class="docutils literal notranslate"><span class="pre">foreach</span> <span class="pre">(item</span> <span class="pre">${list})</span></code>. Similarly, use <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(varA</span> <span class="pre">STREQUAL</span> <span class="pre">varB)</span></code> instead of
+<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(&quot;${varA}&quot;</span> <span class="pre">STREQUAL</span> <span class="pre">&quot;${varB}&quot;)</span></code> and <em>definitely</em> don’t use
+<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(${varA}</span> <span class="pre">STREQUAL</span> <span class="pre">${varB})</span></code> since that will fail (in the best case) if
+either variable’s value contains a semicolon (due to argument expansion).</p></li>
+</ul>
+<section id="prohibited-modules-list">
+<h3>Prohibited modules list<a class="headerlink" href="#prohibited-modules-list" title="Link to this heading">#</a></h3>
+<p>All deprecated, legacy, and “miscellaneous” (internal) modules are prohibited.
+The list of these may be found in the upstream documentation:
+https://cmake.org/cmake/help/latest/manual/cmake-modules.7.html#deprecated-modules</p>
+<section id="fetchcontent">
+<h4>FetchContent<a class="headerlink" href="#fetchcontent" title="Link to this heading">#</a></h4>
+<p>At the moment, only one supported module is prohibited: <code class="docutils literal notranslate"><span class="pre">FetchContent</span></code>. There
+are many reasons to avoid its use:</p>
+<ol class="arabic simple">
+<li><p>It brings third-party CMake code into the build, which can cause all sorts
+of issues. In the common case, third-party projects hard-code incompatible
+build settings, which are tricky to work around in CMake. In the worst case,
+they can set cache variables or directory properties that break the
+including project’s build. Worse still, those cache variables persist in
+<code class="docutils literal notranslate"><span class="pre">CMakeCache.txt</span></code> even after the dependency is removed or replaced, so the
+only reliable fix is a clean reconfigure. Because configuration is expected
+to be idempotent, these failures can be difficult to diagnose.</p></li>
+<li><p>It is a poor fit for cross-compilation scenarios that require separate host
+and target artifacts. FetchContent inlines the dependency’s project into the
+including build, so it is configured with the same toolchain as the rest of
+that build. For instance, a project may need both the flatbuffers compiler
+for the host system and the flatbuffers library for the target system. This
+scenario is not supported by FetchContent’s population model.</p></li>
+<li><p>It performs network access at configure time. This makes air-gapped and
+offline builds awkward. <code class="docutils literal notranslate"><span class="pre">FETCHCONTENT_FULLY_DISCONNECTED=ON</span></code> only works
+after a successful first configure and adds latency to every fresh
+configure. Source pinning is also weak: only commit SHAs are truly
+immutable, branch and tag refs can be moved server-side, and <code class="docutils literal notranslate"><span class="pre">URL_HASH</span></code> is
+opt-in. Package managers like vcpkg require hash-pinned archives by default
+and produce a baseline that can be locked.</p></li>
+<li><p>It does not maintain a persistent source or binary cache outside the build
+tree. Populated sources and build products live under the build directory by
+default, so deleting the build directory also deletes them. A fresh build
+can therefore require another download and rebuild of dependencies, rather
+than just rebuilding the top-level project. This also couples dependency
+iteration to the parent project: tweaking a dependency’s options forces a
+parent reconfigure, and the dependency cannot be built or tested in
+isolation.</p></li>
+<li><p>The above issues exacerbate diamond dependency problems. Even if a
+consistent version happens to be chosen, different intermediate dependencies
+along each branch might impose incompatible build settings. For instance,
+one project might try to enable an optional feature while another project
+disables it.</p></li>
+<li><p>Applying local fixes to dependencies is awkward. <code class="docutils literal notranslate"><span class="pre">FetchContent_Declare</span></code>’s
+<code class="docutils literal notranslate"><span class="pre">PATCH_COMMAND</span></code> runs an arbitrary shell snippet that is hard to review,
+version, or attribute. vcpkg ports keep patches as versioned <code class="docutils literal notranslate"><span class="pre">.patch</span></code> files
+alongside the portfile, so they appear in code review and survive upstream
+version bumps cleanly.</p></li>
+<li><p>It pollutes the cache and target environment, even when steps are taken to
+exclude test and utility targets. This clutters both graphical IDE
+interfaces and the diagnostic output of build tools like Ninja (e.g. its
+dependency graph and build profiler).</p></li>
+<li><p>Targets created by FetchContent are considered <em>first-party</em> targets,
+meaning that special care must be taken when writing installation and
+packaging rules. This complexity compounds when simultaneously supporting
+other dependency resolution mechanisms that create third-party (i.e.
+<code class="docutils literal notranslate"><span class="pre">IMPORTED</span></code>) targets.</p></li>
+<li><p>It produces no provenance, license, or SBOM metadata. Package managers like
+vcpkg and Conan emit machine-readable manifests of versions, licenses, and
+source hashes that compliance tooling can consume. FetchContent emits
+nothing, so every audit becomes a manual exercise.</p></li>
+<li><p>FetchContent requests can be intercepted by a Dependency Provider which can
+only be chosen by the top-level project. That means code that appears to
+vendor a specific source tree can instead be redirected to some other
+dependency resolution mechanism, such as a package manager. This makes the
+resulting targets and build settings less predictable, and it compounds the
+first-party versus imported-target packaging issues described above.</p></li>
+</ol>
+<p>After broader approval, third-party dependencies must be consumed with
+<code class="docutils literal notranslate"><span class="pre">find_package</span></code>. This also lets packagers and distributors substitute a system or
+pre-built copy, rather than forcing every downstream to rebuild dependencies
+from source. We use vcpkg in CI to manage our dependencies. If vcpkg lacks a
+port, you must write a custom port in <code class="docutils literal notranslate"><span class="pre">cmake/vcpkg-ports</span></code> (for the main Halide
+build) or <code class="docutils literal notranslate"><span class="pre">apps/vcpkg/ports</span></code> (for the apps).</p>
+</section>
+</section>
+<section id="prohibited-commands-list">
+<h3>Prohibited commands list<a class="headerlink" href="#prohibited-commands-list" title="Link to this heading">#</a></h3>
+<p>As mentioned above, using directory properties is brittle, and they are
+therefore <em>not allowed</em>. The following functions may not appear in any new CMake
+code.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Alternative</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">add_compile_definitions</span></code></p></td>
+<td><p>Use <a class="reference external" href="https://cmake.org/cmake/help/latest/command/target_compile_definitions.html"><code class="docutils literal notranslate"><span class="pre">target_compile_definitions</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">add_compile_options</span></code></p></td>
+<td><p>Use <a class="reference external" href="https://cmake.org/cmake/help/latest/command/target_compile_options.html"><code class="docutils literal notranslate"><span class="pre">target_compile_options</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">add_definitions</span></code></p></td>
+<td><p>Use <a class="reference external" href="https://cmake.org/cmake/help/latest/command/target_compile_definitions.html"><code class="docutils literal notranslate"><span class="pre">target_compile_definitions</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">add_link_options</span></code></p></td>
+<td><p>Use <a class="reference external" href="https://cmake.org/cmake/help/latest/command/target_link_options.html"><code class="docutils literal notranslate"><span class="pre">target_link_options</span></code></a>, but prefer not to use either</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">include_directories</span></code></p></td>
+<td><p>Use <a class="reference external" href="https://cmake.org/cmake/help/latest/command/target_include_directories.html"><code class="docutils literal notranslate"><span class="pre">target_include_directories</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">link_directories</span></code></p></td>
+<td><p>Use <a class="reference external" href="https://cmake.org/cmake/help/latest/command/target_link_libraries.html"><code class="docutils literal notranslate"><span class="pre">target_link_libraries</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">link_libraries</span></code></p></td>
+<td><p>Use <a class="reference external" href="https://cmake.org/cmake/help/latest/command/target_link_libraries.html"><code class="docutils literal notranslate"><span class="pre">target_link_libraries</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">remove_definitions</span></code></p></td>
+<td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-generator-expressions.7.html">Generator expressions</a> in <a class="reference external" href="https://cmake.org/cmake/help/latest/command/target_compile_definitions.html"><code class="docutils literal notranslate"><span class="pre">target_compile_definitions</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">set_directory_properties</span></code></p></td>
+<td><p>Use (cache) variables or target properties</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">set_property(DIRECTORY)</span></code></p></td>
+<td><p>Use (cache) variables or target properties (custom properties excluded, but require justification)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">target_link_libraries(target</span> <span class="pre">lib)</span></code></p></td>
+<td><p>Use <a class="reference external" href="https://cmake.org/cmake/help/latest/command/target_link_libraries.html"><code class="docutils literal notranslate"><span class="pre">target_link_libraries</span></code></a> <em>with a visibility specifier</em> (eg. <code class="docutils literal notranslate"><span class="pre">PRIVATE</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>As an example, it was once common practice to write code similar to this:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># WRONG: do not do this</span>
+<span class="nb">include_directories</span><span class="p">(</span><span class="s">include</span><span class="p">)</span>
+<span class="nb">add_library</span><span class="p">(</span><span class="s">my_lib</span><span class="w"> </span><span class="s">source1.cpp</span><span class="w"> </span><span class="s">..</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>However, this has two major pitfalls. First, it applies to <em>all</em> targets created
+in that directory, even those before the call to <code class="docutils literal notranslate"><span class="pre">include_directories</span></code> and those
+created in <a class="reference external" href="https://cmake.org/cmake/help/latest/command/include.html"><code class="docutils literal notranslate"><span class="pre">include()</span></code></a>-ed CMake files. As CMake files get larger and
+more complex, this behavior gets harder to pinpoint. This is particularly vexing
+when using the <code class="docutils literal notranslate"><span class="pre">link_libraries</span></code> or <code class="docutils literal notranslate"><span class="pre">add_definitions</span></code> commands. Second, this form
+does not provide a way to <em>propagate</em> the include directory to consumers of
+<code class="docutils literal notranslate"><span class="pre">my_lib</span></code>. The correct way to do this is:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># CORRECT</span>
+<span class="nb">add_library</span><span class="p">(</span><span class="s">my_lib</span><span class="w"> </span><span class="s">source1.cpp</span><span class="w"> </span><span class="s">...</span><span class="p">)</span>
+<span class="nb">target_sources</span><span class="p">(</span>
+<span class="w">    </span><span class="s">my_lib</span>
+<span class="w">    </span><span class="s">PUBLIC</span>
+<span class="w">    </span><span class="s">FILE_SET</span><span class="w"> </span><span class="s">HEADERS</span>
+<span class="w">    </span><span class="s">BASE_DIRS</span><span class="w"> </span><span class="s">include</span>
+<span class="w">    </span><span class="s">FILES</span><span class="w"> </span><span class="s">include/header1.h</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This is better in many ways. It only affects the target in question. It
+propagates the include path to the targets linking to it (via <code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code>). It also
+correctly exports the host-filesystem-specific include path when installing or
+packaging the target and installs the headers themselves, too.</p>
+<p>If common properties need to be grouped together, use an INTERFACE target
+(better) or write a function (worse).</p>
+<p>There are also several functions that are disallowed for other reasons:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Reason</p></th>
+<th class="head"><p>Alternative</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">aux_source_directory</span></code></p></td>
+<td><p>Interacts poorly with incremental builds and Git</p></td>
+<td><p>List source files explicitly</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">build_command</span></code></p></td>
+<td><p>CTest internal function</p></td>
+<td><p>Use CTest build-and-test mode via <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_CTEST_COMMAND.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_CTEST_COMMAND</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cmake_host_system_information</span></code></p></td>
+<td><p>Usually misleading information.</p></td>
+<td><p>Inspect <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html">toolchain</a> variables and use generator expressions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cmake_policy(...</span> <span class="pre">OLD)</span></code></p></td>
+<td><p>OLD policies are deprecated by definition.</p></td>
+<td><p>Instead, fix the code to work with the new policy.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">configure_file(...</span> <span class="pre">COPYONLY)</span></code></p></td>
+<td><p>Forces a reconfigure whenever the copied file changes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">file(COPY_FILE</span> <span class="pre">...)</span></code> (one-shot, e.g. install scripts) or <code class="docutils literal notranslate"><span class="pre">add_custom_command</span></code> + <code class="docutils literal notranslate"><span class="pre">copy_if_different</span></code> (build-time); or reference the source path directly if no copy is needed</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">create_test_sourcelist</span></code></p></td>
+<td><p>We use our own unit testing solution</p></td>
+<td><p>See the <a class="reference internal" href="#adding-tests">adding tests</a> section.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">define_property</span></code></p></td>
+<td><p>Adds unnecessary complexity</p></td>
+<td><p>Use a cache variable. Exceptions under special circumstances.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">enable_language</span></code></p></td>
+<td><p>Halide is C/C++ only</p></td>
+<td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/module/FindCUDAToolkit.html"><code class="docutils literal notranslate"><span class="pre">FindCUDAToolkit</span></code></a>, appropriately guarded.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">file(GLOB</span> <span class="pre">...)</span></code></p></td>
+<td><p>Interacts poorly with incremental builds and Git</p></td>
+<td><p>List source files explicitly. Allowed if not globbing for source files.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fltk_wrap_ui</span></code></p></td>
+<td><p>Halide does not use FLTK</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">include_external_msproject</span></code></p></td>
+<td><p>Halide must remain portable</p></td>
+<td><p>Write a CMake package config file or find module.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">include_guard</span></code></p></td>
+<td><p>Use of recursive inclusion is not allowed</p></td>
+<td><p>Write (recursive) functions.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">include_regular_expression</span></code></p></td>
+<td><p>Changes default dependency checking behavior</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">load_cache</span></code></p></td>
+<td><p>Superseded by <a class="reference external" href="https://cmake.org/cmake/help/latest/module/ExternalProject.html"><code class="docutils literal notranslate"><span class="pre">ExternalProject</span></code></a></p></td>
+<td><p>Write a vcpkg port or present a case for an exception.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">macro</span></code></p></td>
+<td><p>CMake macros are not hygienic and are therefore error-prone</p></td>
+<td><p>Use functions instead.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">site_name</span></code></p></td>
+<td><p>Privacy: do not want leak host name information</p></td>
+<td><p>Provide a cache variable, generate a unique name.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">variable_watch</span></code></p></td>
+<td><p>Debugging helper</p></td>
+<td><p>None. Not needed in production.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Do not introduce new dependencies without broader approval. Once approved, add
+dependencies to <code class="docutils literal notranslate"><span class="pre">vcpkg.json</span></code> or create a custom port, and consume them with
+<a class="reference external" href="https://cmake.org/cmake/help/latest/command/find_package.html"><code class="docutils literal notranslate"><span class="pre">find_package</span></code></a> rather than <code class="docutils literal notranslate"><span class="pre">FetchContent</span></code>.</p>
+</section>
+<section id="prohibited-variables-list">
+<h3>Prohibited variables list<a class="headerlink" href="#prohibited-variables-list" title="Link to this heading">#</a></h3>
+<p>Any variables that are specific to languages that are not enabled should, of
+course, be avoided. But of greater concern are variables that are easy to misuse
+or should not be overridden for our end-users. The following (non-exhaustive)
+list of variables shall not be used in code merged into main.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Reason</p></th>
+<th class="head"><p>Alternative</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_ROOT</span></code></p></td>
+<td><p>Code smell</p></td>
+<td><p>Rely on <code class="docutils literal notranslate"><span class="pre">find_package</span></code> search options; include <code class="docutils literal notranslate"><span class="pre">HINTS</span></code> if necessary</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_DEBUG_TARGET_PROPERTIES</span></code></p></td>
+<td><p>Debugging helper</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_FIND_DEBUG_MODE</span></code></p></td>
+<td><p>Debugging helper</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_RULE_MESSAGES</span></code></p></td>
+<td><p>Debugging helper</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_VERBOSE_MAKEFILE</span></code></p></td>
+<td><p>Debugging helper</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_BACKWARDS_COMPATIBILITY</span></code></p></td>
+<td><p>Deprecated</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TOOL</span></code></p></td>
+<td><p>Deprecated</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">${CMAKE_COMMAND}</span> <span class="pre">--build</span></code> or <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_MAKE_PROGRAM.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_MAKE_PROGRAM</span></code></a> (but see below)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_CACHEFILE_DIR</span></code></p></td>
+<td><p>Deprecated</p></td>
+<td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_BINARY_DIR.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_BINARY_DIR</span></code></a>, but see below</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_CFG_INTDIR</span></code></p></td>
+<td><p>Deprecated</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$&lt;CONFIG&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">$&lt;TARGET_FILE:..&gt;</span></code>, target resolution of <a class="reference external" href="https://cmake.org/cmake/help/latest/command/add_custom_command.html"><code class="docutils literal notranslate"><span class="pre">add_custom_command</span></code></a>, etc.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_CL_64</span></code></p></td>
+<td><p>Deprecated</p></td>
+<td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_SIZEOF_VOID_P.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_SIZEOF_VOID_P</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_COMPILER_IS_*</span></code></p></td>
+<td><p>Deprecated</p></td>
+<td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_COMPILER_ID.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_&lt;LANG&gt;_COMPILER_ID</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_HOME_DIRECTORY</span></code></p></td>
+<td><p>Deprecated</p></td>
+<td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_SOURCE_DIR.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_SOURCE_DIR</span></code></a>, but see below</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_DIRECTORY_LABELS</span></code></p></td>
+<td><p>Directory property</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code></p></td>
+<td><p>Only applies to single-config generators.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$&lt;CONFIG&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_*_FLAGS*</span></code> (w/o <code class="docutils literal notranslate"><span class="pre">_INIT</span></code>)</p></td>
+<td><p>User-only</p></td>
+<td><p>Write a <a class="reference external" href="https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html">toolchain</a> file with the corresponding <code class="docutils literal notranslate"><span class="pre">_INIT</span></code> variable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_COLOR_MAKEFILE</span></code></p></td>
+<td><p>User-only</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_ERROR_DEPRECATED</span></code></p></td>
+<td><p>User-only</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CMAKE_CONFIGURATION_TYPES</span></code></p></td>
+<td><p>We only support the four standard build types</p></td>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Of course feel free to insert debugging helpers <em>while developing</em> but please
+remove them before review. Finally, the following variables are allowed, but
+their use must be motivated:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Reason</p></th>
+<th class="head"><p>Alternative</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_SOURCE_DIR.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_SOURCE_DIR</span></code></a></p></td>
+<td><p>Points to global source root, not Halide’s.</p></td>
+<td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/variable/PROJECT-NAME_SOURCE_DIR.html"><code class="docutils literal notranslate"><span class="pre">Halide_SOURCE_DIR</span></code></a> or <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/PROJECT_SOURCE_DIR.html"><code class="docutils literal notranslate"><span class="pre">PROJECT_SOURCE_DIR</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_BINARY_DIR.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_BINARY_DIR</span></code></a></p></td>
+<td><p>Points to global build root, not Halide’s</p></td>
+<td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/variable/PROJECT-NAME_BINARY_DIR.html"><code class="docutils literal notranslate"><span class="pre">Halide_BINARY_DIR</span></code></a> or <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/PROJECT_BINARY_DIR.html"><code class="docutils literal notranslate"><span class="pre">PROJECT_BINARY_DIR</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_MAKE_PROGRAM.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_MAKE_PROGRAM</span></code></a></p></td>
+<td><p>CMake abstracts over differences in the build tool.</p></td>
+<td><p>Prefer CTest’s build and test mode or CMake’s <code class="docutils literal notranslate"><span class="pre">--build</span></code> mode</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_CROSSCOMPILING.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_CROSSCOMPILING</span></code></a></p></td>
+<td><p>Often misleading.</p></td>
+<td><p>Inspect relevant variables directly, eg. <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_SYSTEM_NAME.html"><code class="docutils literal notranslate"><span class="pre">CMAKE_SYSTEM_NAME</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html"><code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code></a></p></td>
+<td><p>Could override user setting</p></td>
+<td><p>None, but be careful to restore value when overriding for a dependency</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Any use of these functions or variables will block a PR.</p>
+</section>
+</section>
+<section id="adding-tests">
+<h2>Adding tests<a class="headerlink" href="#adding-tests" title="Link to this heading">#</a></h2>
+<p>When adding a file to any of the folders under <code class="docutils literal notranslate"><span class="pre">test</span></code>, be aware that CI expects
+that every <code class="docutils literal notranslate"><span class="pre">.c</span></code> and <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> appears in the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file <em>on its own
+line</em>, possibly as a comment. This is to avoid globbing and also to ensure that
+added files are not missed.</p>
+<p>For most test types, it should be as simple as adding to the existing lists.
+Generator tests are trickier, but following the existing examples is a safe way
+to go.</p>
+</section>
+<section id="adding-apps">
+<h2>Adding apps<a class="headerlink" href="#adding-apps" title="Link to this heading">#</a></h2>
+<p>If you’re contributing a new app to Halide: great! Thank you! There are a few
+guidelines you should follow when writing a new app.</p>
+<ul class="simple">
+<li><p>Write the app as if it were a top-level project. You should call
+<code class="docutils literal notranslate"><span class="pre">find_package(Halide)</span></code> and set the C++ version to 11.</p></li>
+<li><p>Call <a class="reference external" href="https://cmake.org/cmake/help/latest/command/enable_testing.html"><code class="docutils literal notranslate"><span class="pre">enable_testing()</span></code></a> and add a small test that runs the
+app.</p></li>
+<li><p>Don’t assume your app will have access to a GPU. Write your schedules to be
+robust to varying buildbot hardware.</p></li>
+<li><p>Don’t assume your app will be run on a specific OS, architecture, or bitness.
+Write your apps to be robust (ideally efficient) on all supported platforms.</p></li>
+<li><p>If you rely on any additional packages, don’t include them as <code class="docutils literal notranslate"><span class="pre">REQUIRED</span></code>,
+instead test to see if their targets are available and, if not, call
+<code class="docutils literal notranslate"><span class="pre">return()</span></code> before creating any targets. In this case, print a
+<code class="docutils literal notranslate"><span class="pre">message(STATUS</span> <span class="pre">&quot;[SKIP]</span> <span class="pre">...&quot;)</span></code>, too.</p></li>
+<li><p>Look at the existing apps for examples.</p></li>
+<li><p>Test your app with ctest before opening a PR. Apps are built as part of the
+test, rather than the main build.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="HalideCMakePackage.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Using Halide from your CMake build</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="CustomRuntimes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Custom Runtime Prefixes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-guidelines-and-best-practices">General guidelines and best practices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prohibited-modules-list">Prohibited modules list</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fetchcontent">FetchContent</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prohibited-commands-list">Prohibited commands list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prohibited-variables-list">Prohibited variables list</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-tests">Adding tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-apps">Adding apps</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright The Halide team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
