@@ -48,7 +48,7 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="RuntimePrefixParams" href="RuntimePrefixParams.html" />
+    <link rel="next" title="ProfilerScope" href="ProfilerScope.html" />
     <link rel="prev" title="JITExtern" href="JITExtern.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -334,6 +334,7 @@
 <li class="toctree-l3"><a class="reference internal" href="Func.html">Func</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FuncRef.html">FuncRef</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FuncTupleElementRef.html">FuncTupleElementRef</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FuncVec.html">FuncVec</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ScheduleHandle.html">ScheduleHandle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Stage.html">Stage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="VarOrRVar.html">VarOrRVar</a></li>
@@ -345,6 +346,7 @@
 <li class="toctree-l3"><a class="reference internal" href="GeneratorInput.html">GeneratorInput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GeneratorOutput.html">GeneratorOutput</a></li>
 <li class="toctree-l3"><a class="reference internal" href="GeneratorParam.html">GeneratorParam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="HalidoscopeArgs.html">HalidoscopeArgs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="NamesInterface.html">NamesInterface</a></li>
 </ul>
 </details></li>
@@ -381,6 +383,8 @@
 <li class="toctree-l3"><a class="reference internal" href="halide_malloc_t.html">halide_malloc_t</a></li>
 <li class="toctree-l3"><a class="reference internal" href="halide_print_t.html">halide_print_t</a></li>
 <li class="toctree-l3"><a class="reference internal" href="halide_profiler_func_kind.html">halide_profiler_func_kind</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_profiler_func_stats.html">halide_profiler_func_stats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="halide_profiler_pipeline_stats.html">halide_profiler_pipeline_stats</a></li>
 <li class="toctree-l3"><a class="reference internal" href="halide_scalar_value_t.html">halide_scalar_value_t</a></li>
 <li class="toctree-l3"><a class="reference internal" href="halide_semaphore_init_t.html">halide_semaphore_init_t</a></li>
 <li class="toctree-l3"><a class="reference internal" href="halide_semaphore_release_t.html">halide_semaphore_release_t</a></li>
@@ -394,6 +398,7 @@
 <li class="toctree-l3"><a class="reference internal" href="halide_type_t.html">halide_type_t</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="HalidoscopeOptions.html">HalidoscopeOptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ImageParam.html">ImageParam</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="group_Internal.html">Internal</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="Internal_AssociativeOp.html">Internal::AssociativeOp</a></li>
@@ -425,9 +430,15 @@
 <li class="toctree-l3"><a class="reference internal" href="Internal_cond.html">Internal::cond</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="group_IROperator_h.html">IROperator.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="FieldRef.html">FieldRef</a></li>
+<li class="toctree-l3"><a class="reference internal" href="StructFieldInit.html">StructFieldInit</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="group_JITModule_h.html">JITModule.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="JITHandlers.html">JITHandlers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="JITUserContext.html">JITUserContext</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ThreadPoolKeepAwake.html">ThreadPoolKeepAwake</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="group_Module_h.html">Module.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -458,7 +469,9 @@
 <li class="toctree-l3"><a class="reference internal" href="ExternSignature.html">ExternSignature</a></li>
 <li class="toctree-l3"><a class="reference internal" href="JITExtern.html">JITExtern</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ProfilerScope.html">ProfilerScope</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RuntimePrefixParams.html">RuntimePrefixParams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SeverResult.html">SeverResult</a></li>
 <li class="toctree-l3"><a class="reference internal" href="StmtOutputFormat.html">StmtOutputFormat</a></li>
 </ul>
 </details></li>
@@ -479,6 +492,8 @@
 <li class="toctree-l2"><a class="reference internal" href="Target.html">Target</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Tuple.html">Tuple</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="group_Type_h.html">Type.h</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="StructField.html">StructField</a></li>
+<li class="toctree-l3"><a class="reference internal" href="StructTypeInfo.html">StructTypeInfo</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Type.html">Type</a></li>
 <li class="toctree-l3"><a class="reference internal" href="halide_cplusplus_type_name.html">halide_cplusplus_type_name</a></li>
 <li class="toctree-l3"><a class="reference internal" href="halide_handle_cplusplus_type.html">halide_handle_cplusplus_type</a></li>
@@ -595,7 +610,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK6Halide8Pipeline7outputsEv">
-<span id="_CPPv3NK6Halide8Pipeline7outputsEv"></span><span id="_CPPv2NK6Halide8Pipeline7outputsEv"></span><span id="Halide::Pipeline::outputsC"></span><span class="target" id="class_halide_1_1_pipeline_1abad253981b11c820f37fc8699a164786"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="Func.html#_CPPv4N6Halide4FuncE" title="Halide::Func"><span class="n"><span class="pre">Func</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">outputs</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK6Halide8Pipeline7outputsEv" title="Link to this definition">#</a><br /></dt>
+<span id="_CPPv3NK6Halide8Pipeline7outputsEv"></span><span id="_CPPv2NK6Halide8Pipeline7outputsEv"></span><span id="Halide::Pipeline::outputsC"></span><span class="target" id="class_halide_1_1_pipeline_1adc4c6a3ab27e416d2d69d831a9757efc"></span><a class="reference internal" href="FuncVec.html#_CPPv4N6Halide7FuncVecE" title="Halide::FuncVec"><span class="n"><span class="pre">FuncVec</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">outputs</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK6Halide8Pipeline7outputsEv" title="Link to this definition">#</a><br /></dt>
 <dd><p>Get the Funcs this pipeline outputs. </p>
 </dd></dl>
 
@@ -603,6 +618,36 @@
 <dt class="sig sig-object cpp" id="_CPPv4NK6Halide8Pipeline12requirementsEv">
 <span id="_CPPv3NK6Halide8Pipeline12requirementsEv"></span><span id="_CPPv2NK6Halide8Pipeline12requirementsEv"></span><span id="Halide::Pipeline::requirementsC"></span><span class="target" id="class_halide_1_1_pipeline_1ac41ee292162ee56c37ad86ed980d87ba"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">Internal</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="Internal_Stmt.html#_CPPv4N6Halide8Internal4StmtE" title="Halide::Internal::Stmt"><span class="n"><span class="pre">Stmt</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requirements</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK6Halide8Pipeline12requirementsEv" title="Link to this definition">#</a><br /></dt>
 <dd><p>Get the requirements of this pipeline. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Halide8Pipeline5severERKNSt6vectorI4FuncEE">
+<span id="_CPPv3N6Halide8Pipeline5severERKNSt6vectorI4FuncEE"></span><span id="_CPPv2N6Halide8Pipeline5severERKNSt6vectorI4FuncEE"></span><span id="Halide::Pipeline::sever__std::vector:Func:CR"></span><span class="target" id="class_halide_1_1_pipeline_1a0c3caf7228c0754df53a1e3a33efcc66"></span><a class="reference internal" href="SeverResult.html#_CPPv4N6Halide11SeverResultE" title="Halide::SeverResult"><span class="n"><span class="pre">SeverResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sever</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="Func.html#_CPPv4N6Halide4FuncE" title="Halide::Func"><span class="n"><span class="pre">Func</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">to_sever</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Halide8Pipeline5severERKNSt6vectorI4FuncEE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Rewrite every call to each <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a> in <code class="docutils literal notranslate"><span class="pre">to_sever</span></code>, anywhere in this <a class="reference internal" href="#class_halide_1_1_pipeline"><span class="std std-ref">Pipeline</span></a>’s transitive call graph, to instead call a fresh <a class="reference internal" href="ImageParam.html#class_halide_1_1_image_param"><span class="std std-ref">ImageParam</span></a> of matching type and dimensionality &amp;#8212; severing this <a class="reference internal" href="#class_halide_1_1_pipeline"><span class="std std-ref">Pipeline</span></a>’s <em>computation</em> of <code class="docutils literal notranslate"><span class="pre">to_sever</span></code> (and anything only <code class="docutils literal notranslate"><span class="pre">to_sever</span></code> depended on) while preserving the shape contract those Funcs stood in for. </p>
+<p>This is eager and destructive, like rfactor(): by the time this call returns, none of this <a class="reference internal" href="#class_halide_1_1_pipeline"><span class="std std-ref">Pipeline</span></a>’s outputs depend on <code class="docutils literal notranslate"><span class="pre">to_sever</span></code> for their computation, only for the shape the returned ImageParams must satisfy.</p>
+<p>This turns work that would otherwise be recomputed on every <a class="reference internal" href="#class_halide_1_1_pipeline_1a28fa0638771ea3a0b6544551f7466fcb"><span class="std std-ref">realize()</span></a> &amp;#8212; e.g. quantizing a set of static weights &amp;#8212; into ordinary input data, supplied once from wherever <code class="docutils literal notranslate"><span class="pre">offline</span></code> was realized or compiled.</p>
+<p>Each <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a> in <code class="docutils literal notranslate"><span class="pre">to_sever</span></code> must be single-valued (no Tuples). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Halide8Pipeline5severERKNSt6vectorI4FuncEERKNSt6vectorI10ImageParamEE">
+<span id="_CPPv3N6Halide8Pipeline5severERKNSt6vectorI4FuncEERKNSt6vectorI10ImageParamEE"></span><span id="_CPPv2N6Halide8Pipeline5severERKNSt6vectorI4FuncEERKNSt6vectorI10ImageParamEE"></span><span id="Halide::Pipeline::sever__std::vector:Func:CR.std::vector:ImageParam:CR"></span><span class="target" id="class_halide_1_1_pipeline_1a3663607c25e2fed1bc65c9c5575e0a9f"></span><a class="reference internal" href="SeverResult.html#_CPPv4N6Halide11SeverResultE" title="Halide::SeverResult"><span class="n"><span class="pre">SeverResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sever</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="Func.html#_CPPv4N6Halide4FuncE" title="Halide::Func"><span class="n"><span class="pre">Func</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">to_sever</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="ImageParam.html#_CPPv4N6Halide10ImageParamE" title="Halide::ImageParam"><span class="n"><span class="pre">ImageParam</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">bind_to</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Halide8Pipeline5severERKNSt6vectorI4FuncEERKNSt6vectorI10ImageParamEE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Like <a class="reference internal" href="#class_halide_1_1_pipeline_1a0c3caf7228c0754df53a1e3a33efcc66"><span class="std std-ref">sever(const std::vector&lt;Func&gt; &amp;)</span></a> above, but binds each severed <a class="reference internal" href="Func.html#class_halide_1_1_func"><span class="std std-ref">Func</span></a> to a caller-supplied <a class="reference internal" href="ImageParam.html#class_halide_1_1_image_param"><span class="std std-ref">ImageParam</span></a> instead of minting a fresh one &amp;#8212; e.g. </p>
+<p>a <a class="reference internal" href="Generator.html#class_halide_1_1_generator"><span class="std std-ref">Generator</span></a>’s own Input&lt;Buffer&lt;&gt;&gt; (which converts to <a class="reference internal" href="ImageParam.html#class_halide_1_1_image_param"><span class="std std-ref">ImageParam</span></a> implicitly), so the online half’s severed input is exactly the port <code class="docutils literal notranslate"><span class="pre">configure()</span></code>/<code class="docutils literal notranslate"><span class="pre">add_input()</span></code> already declared, rather than an unrelated <a class="reference internal" href="ImageParam.html#class_halide_1_1_image_param"><span class="std std-ref">ImageParam</span></a> nothing else in the compiled artifact knows about. <code class="docutils literal notranslate"><span class="pre">bind_to</span></code> must have the same length as <code class="docutils literal notranslate"><span class="pre">to_sever</span></code>, and each <code class="docutils literal notranslate"><span class="pre">bind_to[i]</span></code> must have the same type and dimensionality as <code class="docutils literal notranslate"><span class="pre">to_sever[i]</span></code>. <code class="docutils literal notranslate"><span class="pre">online_inputs</span></code> in the result is <code class="docutils literal notranslate"><span class="pre">bind_to</span></code> itself, returned for symmetry with the other overload &amp;#8212; callers that already have <code class="docutils literal notranslate"><span class="pre">bind_to</span></code> don’t need it, but code generic over both overloads still gets a uniform result shape. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Halide8Pipeline5severERKNSt6vectorI4FuncEERKNSt6vectorINSt6stringEEE">
+<span id="_CPPv3N6Halide8Pipeline5severERKNSt6vectorI4FuncEERKNSt6vectorINSt6stringEEE"></span><span id="_CPPv2N6Halide8Pipeline5severERKNSt6vectorI4FuncEERKNSt6vectorINSt6stringEEE"></span><span id="Halide::Pipeline::sever__std::vector:Func:CR.std::vector:ss:CR"></span><span class="target" id="class_halide_1_1_pipeline_1ae57475ecfc372477b6a0c402e2f3c6ba"></span><a class="reference internal" href="SeverResult.html#_CPPv4N6Halide11SeverResultE" title="Halide::SeverResult"><span class="n"><span class="pre">SeverResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sever</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="Func.html#_CPPv4N6Halide4FuncE" title="Halide::Func"><span class="n"><span class="pre">Func</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">to_sever</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">names</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Halide8Pipeline5severERKNSt6vectorI4FuncEERKNSt6vectorINSt6stringEEE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Like <a class="reference internal" href="#class_halide_1_1_pipeline_1a0c3caf7228c0754df53a1e3a33efcc66"><span class="std std-ref">sever(const std::vector&lt;Func&gt; &amp;)</span></a> above, but names the fresh ImageParams it mints: <code class="docutils literal notranslate"><span class="pre">online_inputs[i]</span></code> is named <code class="docutils literal notranslate"><span class="pre">names[i]</span></code> instead of <code class="docutils literal notranslate"><span class="pre">to_sever[i].name()</span> <span class="pre">+</span> <span class="pre">&quot;_im&quot;</span></code>, and still takes its type and dimensionality from <code class="docutils literal notranslate"><span class="pre">to_sever[i]</span></code>. </p>
+<p>Useful when the online half’s inputs become ports of a compiled artifact, e.g. via a <a class="reference internal" href="Generator.html#class_halide_1_1_generator"><span class="std std-ref">Generator</span></a>’s add_input(const ImageParam &amp;), since their names are then part of its interface. <code class="docutils literal notranslate"><span class="pre">names</span></code> must have the same length as <code class="docutils literal notranslate"><span class="pre">to_sever</span></code>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Halide8Pipeline5severERKNSt6vectorI4FuncEENSt16initializer_listINSt6stringEEE">
+<span id="_CPPv3N6Halide8Pipeline5severERKNSt6vectorI4FuncEENSt16initializer_listINSt6stringEEE"></span><span id="_CPPv2N6Halide8Pipeline5severERKNSt6vectorI4FuncEENSt16initializer_listINSt6stringEEE"></span><span id="Halide::Pipeline::sever__std::vector:Func:CR.std::initializer_list:ss:"></span><span class="target" id="class_halide_1_1_pipeline_1a323a20889e5428fd3d33ba3495e2c639"></span><a class="reference internal" href="SeverResult.html#_CPPv4N6Halide11SeverResultE" title="Halide::SeverResult"><span class="n"><span class="pre">SeverResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sever</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="Func.html#_CPPv4N6Halide4FuncE" title="Halide::Func"><span class="n"><span class="pre">Func</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">to_sever</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">initializer_list</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">names</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Halide8Pipeline5severERKNSt6vectorI4FuncEENSt16initializer_listINSt6stringEEE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Disambiguates a braced list of string literals, e.g. </p>
+<p>sever({a, b}, {“a_in”, “b_in”}), which a std::vector&lt;ImageParam&gt; could otherwise also accept through its iterator-pair constructor. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -865,6 +910,16 @@
 <dd><p>Generate begin_pipeline and end_pipeline tracing calls for this pipeline. </p>
 </dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N6Halide8Pipeline11halidoscopeENSt6vectorI7int32_tEERK18HalidoscopeOptionsRK6Target">
+<span id="_CPPv3N6Halide8Pipeline11halidoscopeENSt6vectorI7int32_tEERK18HalidoscopeOptionsRK6Target"></span><span id="_CPPv2N6Halide8Pipeline11halidoscopeENSt6vectorI7int32_tEERK18HalidoscopeOptionsRK6Target"></span><span id="Halide::Pipeline::halidoscope__std::vector:int32_t:.HalidoscopeOptionsCR.TargetCR"></span><span class="target" id="class_halide_1_1_pipeline_1acace085317b640a34ef1a67689d0c588"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">halidoscope</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">int32_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">sizes</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="HalidoscopeOptions.html#_CPPv4N6Halide18HalidoscopeOptionsE" title="Halide::HalidoscopeOptions"><span class="n"><span class="pre">HalidoscopeOptions</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">options</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="HalidoscopeOptions.html#_CPPv4N6Halide18HalidoscopeOptionsE" title="Halide::HalidoscopeOptions"><span class="n"><span class="pre">HalidoscopeOptions</span></span></a><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="Target.html#_CPPv4N6Halide6TargetE" title="Halide::Target"><span class="n"><span class="pre">Target</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">target</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="Target.html#_CPPv4N6Halide6TargetE" title="Halide::Target"><span class="n"><span class="pre">Target</span></span></a><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N6Halide8Pipeline11halidoscopeENSt6vectorI7int32_tEERK18HalidoscopeOptionsRK6Target" title="Link to this definition">#</a><br /></dt>
+<dd><p>Development/debugging aid: run this pipeline once with full tracing enabled and then some number of times with the profiler enabled (see <a class="reference internal" href="HalidoscopeOptions.html#struct_halide_1_1_halidoscope_options_1a3186813d6eab0dc32d6d2577ef1e448f"><span class="std std-ref">HalidoscopeOptions::profile_runs</span></a>), write the resulting trace and profile to a temporary directory, and open them in the Halidoscope GUI (tools/halidoscope). </p>
+<p>The <code class="docutils literal notranslate"><a class="reference internal" href="#class_halide_1_1_pipeline_1acace085317b640a34ef1a67689d0c588"><span class="std std-ref"><span class="pre">halidoscope</span></span></a></code> executable is looked up on $PATH by default; set <a class="reference internal" href="HalidoscopeOptions.html#struct_halide_1_1_halidoscope_options_1a0fafa0e2508ed84cc99f3726488495f1"><span class="std std-ref">HalidoscopeOptions::path</span></a> to override that.</p>
+<p>These runs are purely for instrumentation. The output buffers, if any, are overwritten, but are not a meaningful realization for the caller. This method blocks until the Halidoscope window is closed, at which point the temporary directory is deleted.</p>
+<p>Not reentrant/thread-safe; do not call this concurrently with itself or with another Halide JIT realization in the same process.</p>
+<p>As with realize, the variants taking a <a class="reference internal" href="JITUserContext.html#struct_halide_1_1_j_i_t_user_context"><span class="std std-ref">JITUserContext</span></a> pass it to runtime functions, and a nullptr context is legal. </p>
+</dd></dl>
+
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
@@ -905,11 +960,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="RuntimePrefixParams.html"
+       href="ProfilerScope.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RuntimePrefixParams</p>
+        <p class="prev-next-title">ProfilerScope</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -939,6 +994,10 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide8Pipeline8PipelineERKNSt6vectorI4FuncEERKNSt6vectorIN8Internal4StmtEEE"><code class="docutils literal notranslate"><span class="pre">Pipeline()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4NK6Halide8Pipeline7outputsEv"><code class="docutils literal notranslate"><span class="pre">outputs()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4NK6Halide8Pipeline12requirementsEv"><code class="docutils literal notranslate"><span class="pre">requirements()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide8Pipeline5severERKNSt6vectorI4FuncEE"><code class="docutils literal notranslate"><span class="pre">sever()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide8Pipeline5severERKNSt6vectorI4FuncEERKNSt6vectorI10ImageParamEE"><code class="docutils literal notranslate"><span class="pre">sever()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide8Pipeline5severERKNSt6vectorI4FuncEERKNSt6vectorINSt6stringEEE"><code class="docutils literal notranslate"><span class="pre">sever()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide8Pipeline5severERKNSt6vectorI4FuncEENSt16initializer_listINSt6stringEEE"><code class="docutils literal notranslate"><span class="pre">sever()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4NK6Halide8Pipeline19apply_autoschedulerERK6TargetRK19AutoschedulerParams"><code class="docutils literal notranslate"><span class="pre">apply_autoscheduler()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4NK6Halide8Pipeline22apply_runtime_prefixesERK6TargetRK19RuntimePrefixParams"><code class="docutils literal notranslate"><span class="pre">apply_runtime_prefixes()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide8Pipeline8get_funcE6size_t"><code class="docutils literal notranslate"><span class="pre">get_func()</span></code></a></li>
@@ -977,6 +1036,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide8Pipeline16invalidate_cacheEv"><code class="docutils literal notranslate"><span class="pre">invalidate_cache()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide8Pipeline15add_requirementERK4ExprRKNSt6vectorI4ExprEE"><code class="docutils literal notranslate"><span class="pre">add_requirement()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide8Pipeline14trace_pipelineEv"><code class="docutils literal notranslate"><span class="pre">trace_pipeline()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide8Pipeline11halidoscopeENSt6vectorI7int32_tEERK18HalidoscopeOptionsRK6Target"><code class="docutils literal notranslate"><span class="pre">halidoscope()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide8Pipeline17add_autoschedulerERKNSt6stringERK15AutoSchedulerFn"><code class="docutils literal notranslate"><span class="pre">add_autoscheduler()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N6Halide8Pipeline14RealizationArgE"><code class="docutils literal notranslate"><span class="pre">Halide::Pipeline::RealizationArg</span></code></a></li>
 </ul>

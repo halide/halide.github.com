@@ -314,6 +314,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="lesson_15.html">15. Generators</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="lesson_15_generators.html">Writing a generator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lesson_15_generators_usage.html">Command-line usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_15_runtime.html">Running AOT code with the standalone runtime</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="lesson_16.html">16. RGB images and memory layouts</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -714,7 +715,7 @@ C++</label><div class="sd-tab-content docutils">
 <span class="w">            </span><span class="n">features_to_try</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Target</span><span class="o">::</span><span class="n">D3D12Compute</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">features_to_try</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Target</span><span class="o">::</span><span class="n">OpenCL</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">os</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Target</span><span class="o">::</span><span class="n">OSX</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">os</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Target</span><span class="o">::</span><span class="n">MacOS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">features_to_try</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Target</span><span class="o">::</span><span class="n">Metal</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">features_to_try</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Target</span><span class="o">::</span><span class="n">OpenCL</span><span class="p">);</span>
@@ -972,7 +973,7 @@ Python</label><div class="sd-tab-content docutils">
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="c1"># Load an input image.</span>
     <span class="n">image_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;../../tutorial/images/rgb.png&quot;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;../../../tutorial/images/rgb.png&quot;</span>
     <span class="p">)</span>
     <span class="nb">input</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Buffer</span><span class="p">(</span><span class="n">halide</span><span class="o">.</span><span class="n">imageio</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">))</span>
 
@@ -1020,7 +1021,7 @@ Python</label><div class="sd-tab-content docutils">
             <span class="c1"># D3D12Compute support is only available on 64-bit systems at present.</span>
             <span class="n">features_to_try</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">TargetFeature</span><span class="o">.</span><span class="n">D3D12Compute</span><span class="p">)</span>
         <span class="n">features_to_try</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">TargetFeature</span><span class="o">.</span><span class="n">OpenCL</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">target</span><span class="o">.</span><span class="n">os</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">TargetOS</span><span class="o">.</span><span class="n">OSX</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">target</span><span class="o">.</span><span class="n">os</span> <span class="o">==</span> <span class="n">hl</span><span class="o">.</span><span class="n">TargetOS</span><span class="o">.</span><span class="n">MacOS</span><span class="p">:</span>
         <span class="n">features_to_try</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">TargetFeature</span><span class="o">.</span><span class="n">Metal</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">features_to_try</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">TargetFeature</span><span class="o">.</span><span class="n">OpenCL</span><span class="p">)</span>

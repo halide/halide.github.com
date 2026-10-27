@@ -314,6 +314,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="lesson_15.html">15. Generators</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="lesson_15_generators.html">Writing a generator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lesson_15_generators_usage.html">Command-line usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_15_runtime.html">Running AOT code with the standalone runtime</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="lesson_16.html">16. RGB images and memory layouts</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -1003,9 +1004,8 @@ End pipeline consumer_root_y.0()</pre>
   produce consumer_root_y:
     for y.:
       produce producer_root_y:
-        for y:
-          for x:
-            producer_root_y(...) = ...
+        for x:
+          producer_root_y(...) = ...
       consume producer_root_y:
         for x:
           consumer_root_y(...) = ...</pre>
@@ -1177,9 +1177,7 @@ End pipeline consumer_root_x.0()</pre>
     for y.:
       for x.:
         produce producer_root_x:
-          for y:
-            for x:
-              producer_root_x(...) = ...
+          producer_root_x(...) = ...
         consume producer_root_x:
           consumer_root_x(...) = ...</pre>
 </div>
@@ -2232,9 +2230,8 @@ End pipeline consumer_store_root_compute_y.0()</pre>
   produce consumer_store_root_compute_y:
     for y.:
       produce producer_store_root_compute_y:
-        for y:
-          for x:
-            producer_store_root_compute_y(...) = ...
+        for x:
+          producer_store_root_compute_y(...) = ...
       consume producer_store_root_compute_y:
         for x:
           consumer_store_root_compute_y(...) = ...</pre>
@@ -2401,9 +2398,7 @@ End pipeline consumer_store_root_compute_x.0()</pre>
     for y.:
       for x.:
         produce producer_store_root_compute_x:
-          for y:
-            for x:
-              producer_store_root_compute_x(...) = ...
+          producer_store_root_compute_x(...) = ...
         consume producer_store_root_compute_x:
           consumer_store_root_compute_x(...) = ...</pre>
 </div>

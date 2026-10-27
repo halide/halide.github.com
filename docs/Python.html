@@ -372,9 +372,17 @@
                   
   <section id="halide-bindings-for-python">
 <h1>Halide Bindings for Python<a class="headerlink" href="#halide-bindings-for-python" title="Link to this heading">#</a></h1>
-<p>Halide provides Python bindings for most of its public API. Python 3.10 (or
+<p>Halide provides Python bindings for most of its public API. Python 3.12 (or
 higher) is required. The Python bindings are supported on 64-bit Linux, OSX, and
 Windows systems.</p>
+<p>The compiler and standalone runtime extensions use nanobind and CPython’s stable
+ABI. Their <code class="docutils literal notranslate"><span class="pre">cp312-abi3</span></code> wheels work unchanged on regular, GIL-enabled CPython
+3.12 and newer on the same platform. Free-threaded CPython and PyPy are not
+supported. This does not stabilize Halide’s C++ ABI or change the versioned
+runtime capsule API: keep the three Halide distributions at matching versions.
+Existing generator stubs must be rebuilt. New stubs use only the limited Python
+C API and dispatch through the compiler bindings; building them does not require
+nanobind.</p>
 <p>In addition to the ability to write just-in-time Halide code using Python, you
 can write <a class="reference internal" href="#halide-generators-in-python">Generators</a> using the Python bindings,
 which can simplify build-system integration (since no C++ metacompilation step
@@ -383,14 +391,32 @@ is required).</p>
 produce Python extensions that can be used within Python code.</p>
 <section id="acquiring-the-python-bindings">
 <h2>Acquiring the Python bindings<a class="headerlink" href="#acquiring-the-python-bindings" title="Link to this heading">#</a></h2>
-<p>As of Halide 19.0.0, we provide binary wheels on PyPI which include the Python
-bindings and the C++/CMake package for native development. Full releases may be
-installed with <code class="docutils literal notranslate"><span class="pre">pip</span></code> like so:</p>
+<p>As of Halide 19.0.0, we provide binary wheels on PyPI. Full releases may be
+installed with <code class="docutils literal notranslate"><span class="pre">pip</span></code> or added to a uv project like so:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>halide
+$<span class="w"> </span>uv<span class="w"> </span>add<span class="w"> </span>halide
 </pre></div>
 </div>
-<p>Every commit to <code class="docutils literal notranslate"><span class="pre">main</span></code> is published to a private PyPI index as a development
-version and these may be installed with a few extra flags:</p>
+<p>The published artifacts are split into three distributions that share the
+<code class="docutils literal notranslate"><span class="pre">halide</span></code> import package:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">halide</span></code> provides the compiler Python API. It depends on matching versions of
+the other two distributions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">halide-bin</span></code> provides <code class="docutils literal notranslate"><span class="pre">libHalide</span></code>, headers, command-line tools,
+autoschedulers, and the CMake package. Its wheel has no Python ABI dependency.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">halide-runtime</span></code> provides the standalone <code class="docutils literal notranslate"><span class="pre">halide.runtime</span></code> bindings for calling
+precompiled AOT code without <code class="docutils literal notranslate"><span class="pre">libHalide</span></code>, the compiler, or LLVM.</p></li>
+</ul>
+<p>Most users should install only <code class="docutils literal notranslate"><span class="pre">halide</span></code>; pip or uv installs its dependencies
+automatically. Install <code class="docutils literal notranslate"><span class="pre">halide-runtime</span></code> directly only for a runtime-only
+deployment. Install <code class="docutils literal notranslate"><span class="pre">halide-bin</span></code> directly when only the C++ compiler tools and
+development files are needed.</p>
+<p>Every commit to <code class="docutils literal notranslate"><span class="pre">main</span></code> is published to the Halide package index as a development
+version. With uv, add one to a project with:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>add<span class="w"> </span>halide<span class="w"> </span>--prerelease<span class="o">=</span>allow<span class="w"> </span>--index<span class="w"> </span>https://pypi.halide-lang.org/simple
+</pre></div>
+</div>
+<p>Or install it directly with pip:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>halide<span class="w"> </span>--pre<span class="w"> </span>--extra-index-url<span class="w"> </span>https://pypi.halide-lang.org/simple
 </pre></div>
 </div>
@@ -408,9 +434,23 @@ LLVM.</p>
 <p>Before configuring with CMake, you should ensure you have prerequisite packages
 installed in your local Python environment. The best way to get set up is to use
 a virtual environment with <code class="docutils literal notranslate"><span class="pre">uv</span></code>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>sync<span class="w"> </span>--no-install-project
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>sync<span class="w"> </span>--frozen<span class="w"> </span>--no-install-workspace
 </pre></div>
 </div>
+<p>The repository root is a uv workspace containing <code class="docutils literal notranslate"><span class="pre">halide-bin</span></code>, <code class="docutils literal notranslate"><span class="pre">halide-runtime</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">halide</span></code>. For CMake-based development, <code class="docutils literal notranslate"><span class="pre">--no-install-workspace</span></code> installs
+only external development dependencies and leaves the existing monolithic CMake
+build in control of the bindings. <code class="docutils literal notranslate"><span class="pre">--frozen</span></code> uses <code class="docutils literal notranslate"><span class="pre">uv.lock</span></code> without evaluating
+the workspace packages’ dynamic build metadata.</p>
+<p>To build and install the complete Python workspace into <code class="docutils literal notranslate"><span class="pre">.venv</span></code>, including the
+compiler, use:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>sync<span class="w"> </span>--all-packages
+$<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import halide&quot;</span>
+</pre></div>
+</div>
+<p>The compiler build can take considerable time. <code class="docutils literal notranslate"><span class="pre">--all-packages</span></code> is required
+because the repository root is a virtual project; workspace membership alone
+does not cause member packages to be installed.</p>
 <p>If you don’t have LLVM installed already, you can try using the same ones the
 buildbots use by adding <code class="docutils literal notranslate"><span class="pre">--group</span> <span class="pre">ci-llvm-&lt;VERSION&gt;</span></code> to the <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">sync</span></code> command,
 where <code class="docutils literal notranslate"><span class="pre">&lt;VERSION&gt;</span></code> is the LLVM major version number (e.g. <code class="docutils literal notranslate"><span class="pre">23</span></code>) or <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
@@ -419,12 +459,19 @@ where <code class="docutils literal notranslate"><span class="pre">&lt;VERSION&g
 <p>Ensure you have <code class="docutils literal notranslate"><span class="pre">flatbuffers</span></code> and <code class="docutils literal notranslate"><span class="pre">wabt</span></code> installed, too. (The wheel build does
 not use vcpkg for manylinux compatibility reasons, so these must be available as
 system packages or installed from source.)</p>
-<section id="using-wheel-infrastructure">
-<h3>Using wheel infrastructure<a class="headerlink" href="#using-wheel-infrastructure" title="Link to this heading">#</a></h3>
-<p>When using <code class="docutils literal notranslate"><span class="pre">uv</span></code>, this entire workflow can be run via:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--no-build-isolation
+<section id="building-the-wheel-packages">
+<h3>Building the wheel packages<a class="headerlink" href="#building-the-wheel-packages" title="Link to this heading">#</a></h3>
+<p>The repository root is not itself an installable Python package. Build the three
+workspace members in dependency order instead:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>uv<span class="w"> </span>build<span class="w"> </span>--package<span class="w"> </span>halide-bin
+$<span class="w"> </span>uv<span class="w"> </span>build<span class="w"> </span>--package<span class="w"> </span>halide-runtime<span class="w"> </span>--find-links<span class="w"> </span>dist
+$<span class="w"> </span>uv<span class="w"> </span>build<span class="w"> </span>--package<span class="w"> </span>halide<span class="w"> </span>--find-links<span class="w"> </span>dist
 </pre></div>
 </div>
+<p>The first command performs the full compiler build. The later builds use the
+matching <code class="docutils literal notranslate"><span class="pre">halide-bin</span></code> wheel in <code class="docutils literal notranslate"><span class="pre">dist/</span></code> as a build dependency. The resulting
+wheels are also placed in <code class="docutils literal notranslate"><span class="pre">dist/</span></code>. These are local, unrepaired wheels; release
+wheels are produced by the pip packaging workflow.</p>
 </section>
 <section id="using-cmake-directly">
 <h3>Using CMake directly<a class="headerlink" href="#using-cmake-directly" title="Link to this heading">#</a></h3>
@@ -806,9 +853,12 @@ is <em>created</em>:</p>
 <p>This compiles the Generator code in <code class="docutils literal notranslate"><span class="pre">logical_op_generator.py</span></code> with the
 registered name <code class="docutils literal notranslate"><span class="pre">logical_op_generator</span></code> to produce the target <code class="docutils literal notranslate"><span class="pre">xor_filter</span></code>, and
 then wraps the compiled output with a Python extension. The result will be a
-shared library of the form <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;.&lt;soabi&gt;.so</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;soabi&gt;</span></code> describes the
-specific Python version and platform (e.g., <code class="docutils literal notranslate"><span class="pre">cpython-310-darwin</span></code> for Python 3.10
-on OSX.)</p>
+stable-ABI shared library, such as <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;.abi3.so</span></code> on Linux/macOS or
+<code class="docutils literal notranslate"><span class="pre">&lt;target&gt;.pyd</span></code> on Windows. The same binary supports regular CPython 3.12 and
+newer. Each exported function is a callable <code class="docutils literal notranslate"><span class="pre">halide.runtime.Kernel</span></code>, so the
+environment where the extension is imported must have the matching
+<code class="docutils literal notranslate"><span class="pre">halide-runtime</span></code> package installed. The full <code class="docutils literal notranslate"><span class="pre">halide</span></code> package includes this
+dependency automatically.</p>
 <p>Note that you can combine multiple Halide libraries into a single Python module;
 this is convenient for packaging, but also because all the libraries in a single
 extension module share the same Halide runtime (and thus, the same caches,
@@ -898,6 +948,116 @@ Halide. But if you construct the numpy arrays yourself (like above), you can
 pass <code class="docutils literal notranslate"><span class="pre">order='F'</span></code> to make numpy use the Halide-compatible memory layout. If
 you’re passing in an array constructed somewhere else, the easiest thing to do
 is to <code class="docutils literal notranslate"><span class="pre">.transpose()</span></code> it before passing it to your Halide code.</p>
+</section>
+<section id="calling-aot-code-without-the-compiler-halide-runtime">
+<h3>Calling AOT Code Without the Compiler (<code class="docutils literal notranslate"><span class="pre">halide.runtime</span></code>)<a class="headerlink" href="#calling-aot-code-without-the-compiler-halide-runtime" title="Link to this heading">#</a></h3>
+<p>The approach above imports a Python extension that was produced at build time by
+<code class="docutils literal notranslate"><span class="pre">add_halide_python_extension_library</span></code>. Sometimes you instead want to load a
+precompiled Halide kernel <em>dynamically</em>, at runtime, from an ordinary shared
+library – and to do so in an environment that does not have the Halide compiler
+(or <code class="docutils literal notranslate"><span class="pre">libHalide</span></code>) installed at all. This is what the <code class="docutils literal notranslate"><span class="pre">halide.runtime</span></code> module is
+for: it is a small, standalone package that can load and call AOT-compiled
+Halide kernels without depending on <code class="docutils literal notranslate"><span class="pre">libHalide</span></code>.</p>
+<p>This is primarily useful for deployment. You can compile your pipelines on a
+build machine that has the full Halide toolchain, then ship only the resulting
+kernels plus this tiny runtime, and run them on machines that have neither the
+compiler nor LLVM installed.</p>
+<p>The full <code class="docutils literal notranslate"><span class="pre">halide</span></code> distribution depends on <code class="docutils literal notranslate"><span class="pre">halide-runtime</span></code>, so <code class="docutils literal notranslate"><span class="pre">halide.runtime</span></code>
+is available after installing <code class="docutils literal notranslate"><span class="pre">halide</span></code>. It is also published as a separate,
+<code class="docutils literal notranslate"><span class="pre">libHalide</span></code>-free wheel for exactly this deployment case:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>halide-runtime
+$<span class="w"> </span>uv<span class="w"> </span>add<span class="w"> </span>halide-runtime
+</pre></div>
+</div>
+<p>The standalone <code class="docutils literal notranslate"><span class="pre">halide-runtime</span></code> distribution contributes only the
+<code class="docutils literal notranslate"><span class="pre">halide.runtime</span></code> subpackage to the implicit <code class="docutils literal notranslate"><span class="pre">halide</span></code> namespace, so importing it
+does not load <code class="docutils literal notranslate"><span class="pre">libHalide</span></code>. When the full <code class="docutils literal notranslate"><span class="pre">halide</span></code> distribution is installed, its
+top-level package initializer loads the compiler normally.</p>
+<section id="producing-a-loadable-kernel">
+<h4>Producing a loadable kernel<a class="headerlink" href="#producing-a-loadable-kernel" title="Link to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">halide.runtime</span></code> loads a shared library that exports a Halide filter’s
+<code class="docutils literal notranslate"><span class="pre">&lt;name&gt;_argv</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;_metadata</span></code> symbols – the ordinary product of AOT
+compilation. Note that this is <em>not</em> the same artifact as the Python extension
+produced by <code class="docutils literal notranslate"><span class="pre">add_halide_python_extension_library</span></code>, which deliberately hides
+every symbol except its <code class="docutils literal notranslate"><span class="pre">PyInit_</span></code> entry point. Instead, link the AOT library
+into a plain shared module that keeps those symbols visible:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_halide_library</span><span class="p">(</span><span class="s">my_kernel</span><span class="w"> </span><span class="s">FROM</span><span class="w"> </span><span class="s">my_generator</span><span class="w"> </span><span class="s">GENERATOR</span><span class="w"> </span><span class="s">my_kernel</span><span class="p">)</span>
+
+<span class="c"># Wrap the static AOT library in a shared module, keeping the filter&#39;s</span>
+<span class="c"># _argv/_metadata symbols exported so they can be resolved at load time.</span>
+<span class="c"># (A MODULE library needs at least one source of its own; an empty stub is fine.)</span>
+<span class="nb">add_library</span><span class="p">(</span><span class="s">my_kernel_module</span><span class="w"> </span><span class="s">MODULE</span><span class="w"> </span><span class="s">stub.c</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">my_kernel_module</span><span class="w"> </span><span class="s">PRIVATE</span>
+<span class="w">                      </span><span class="s2">&quot;$&lt;LINK_LIBRARY:WHOLE_ARCHIVE,my_kernel&gt;&quot;</span><span class="p">)</span>
+<span class="nb">set_target_properties</span><span class="p">(</span><span class="s">my_kernel_module</span><span class="w"> </span><span class="s">PROPERTIES</span>
+<span class="w">                      </span><span class="s">PREFIX</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="s">OUTPUT_NAME</span><span class="w"> </span><span class="s">my_kernel</span>
+<span class="w">                      </span><span class="s">C_VISIBILITY_PRESET</span><span class="w"> </span><span class="s">default</span>
+<span class="w">                      </span><span class="s">CXX_VISIBILITY_PRESET</span><span class="w"> </span><span class="s">default</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Because <code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code> bundles a Halide runtime into the library by
+default, the resulting shared module is self-contained and, like
+<code class="docutils literal notranslate"><span class="pre">halide.runtime</span></code> itself, has no dependency on <code class="docutils literal notranslate"><span class="pre">libHalide</span></code>.</p>
+</section>
+<section id="loading-and-calling-a-kernel">
+<h4>Loading and calling a kernel<a class="headerlink" href="#loading-and-calling-a-kernel" title="Link to this heading">#</a></h4>
+<p>Once you have such a library, loading and calling it looks much like using the
+compiled extension above:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">halide.runtime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">hlr</span>
+
+<span class="c1"># dlopen the shared library and locate the Halide filter inside it. The filter</span>
+<span class="c1"># name defaults to the library&#39;s file name; pass name=... if it differs.</span>
+<span class="n">kernel</span> <span class="o">=</span> <span class="n">hlr</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/path/to/my_kernel.so&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_kernel&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># &quot;my_kernel&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>  <span class="c1"># the Target string it was compiled for</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">argument_names</span><span class="p">)</span>  <span class="c1"># e.g. [&#39;input&#39;, &#39;offset&#39;, &#39;output&#39;]</span>
+
+<span class="c1"># `kernel.arguments` gives the full calling convention: one dict per argument,</span>
+<span class="c1"># in argv order, with its name, kind (&#39;input_scalar&#39;, &#39;input_buffer&#39;, or</span>
+<span class="c1"># &#39;output_buffer&#39;), element type (e.g. &#39;uint8&#39;), and dimensions (0 for scalars).</span>
+<span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">kernel</span><span class="o">.</span><span class="n">arguments</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="n">arg</span>
+    <span class="p">)</span>  <span class="c1"># {&#39;name&#39;: &#39;input&#39;, &#39;kind&#39;: &#39;input_buffer&#39;, &#39;type&#39;: &#39;uint8&#39;, &#39;dimensions&#39;: 2}</span>
+
+<span class="n">input_buf</span> <span class="o">=</span> <span class="n">imageio</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;/path/to/some/file.png&quot;</span><span class="p">)</span>
+<span class="n">output_buf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">input_buf</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">input_buf</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="c1"># Arguments -- inputs, scalars, and the output buffer(s) -- are passed</span>
+<span class="c1"># positionally in the order given by kernel.argument_names, or by keyword,</span>
+<span class="c1"># in the Python manner:</span>
+<span class="n">kernel</span><span class="p">(</span><span class="n">input_buf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">output_buf</span><span class="p">)</span>
+<span class="c1"># kernel(input=input_buf, offset=5, output=output_buf)</span>
+</pre></div>
+</div>
+<p>As with the compiled extension, Halide does not allocate outputs for you: you
+must pass in a correctly-sized output buffer, and error conditions raise a
+Python exception rather than returning an int.</p>
+</section>
+<section id="the-halide-runtime-buffer-type">
+<h4>The <code class="docutils literal notranslate"><span class="pre">halide.runtime.Buffer</span></code> type<a class="headerlink" href="#the-halide-runtime-buffer-type" title="Link to this heading">#</a></h4>
+<p>Any object that supports the Python buffer protocol (such as a numpy array) may
+be passed directly to a kernel. For finer control, <code class="docutils literal notranslate"><span class="pre">halide.runtime.Buffer</span></code> wraps
+such an object as a Halide runtime buffer, without copying:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">buf</span> <span class="o">=</span> <span class="n">hlr</span><span class="o">.</span><span class="n">Buffer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">480</span><span class="p">,</span> <span class="mi">640</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span>
+<span class="n">buf</span><span class="o">.</span><span class="n">dimensions</span>  <span class="c1"># 2</span>
+<span class="n">buf</span><span class="o">.</span><span class="n">type</span>  <span class="c1"># &quot;uint8&quot;</span>
+<span class="n">buf</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># [480, 640]</span>
+
+<span class="n">view</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>  <span class="c1"># a zero-copy view of the same memory</span>
+</pre></div>
+</div>
+<p>Generated extensions expose these same <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> objects directly. Consequently,
+the same NumPy arrays, <code class="docutils literal notranslate"><span class="pre">halide.runtime.Buffer</span></code> objects, and <code class="docutils literal notranslate"><span class="pre">halide.Buffer</span></code>
+objects can be handed either to a kernel loaded via <code class="docutils literal notranslate"><span class="pre">halide.runtime.load</span></code> or to
+a kernel imported from a generated extension module.</p>
+<p>The same memory-order caveats described in the previous section apply here:
+numpy’s default row-major layout corresponds to Halide’s axes in reverse order,
+so construct your arrays with <code class="docutils literal notranslate"><span class="pre">order='F'</span></code> (or <code class="docutils literal notranslate"><span class="pre">.transpose()</span></code> them) when the axis
+order matters.</p>
+</section>
 </section>
 <section id="advanced-generator-related-topics">
 <h3>Advanced Generator-Related Topics<a class="headerlink" href="#advanced-generator-related-topics" title="Link to this heading">#</a></h3>
@@ -1156,7 +1316,7 @@ Rodrigo Benenson (2015) and the Halide open-source community.</p>
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acquiring-the-python-bindings">Acquiring the Python bindings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-python-bindings">Building the Python bindings</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-wheel-infrastructure">Using wheel infrastructure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-wheel-packages">Building the wheel packages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-cmake-directly">Using CMake directly</a></li>
 </ul>
 </li>
@@ -1177,6 +1337,12 @@ Rodrigo Benenson (2015) and the Halide open-source community.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-generator-for-jit-compilation">Using a Generator for JIT compilation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-generator-for-aot-compilation">Using a Generator for AOT compilation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calling-generator-produced-code-from-python">Calling Generator-Produced code from Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calling-aot-code-without-the-compiler-halide-runtime">Calling AOT Code Without the Compiler (<code class="docutils literal notranslate"><span class="pre">halide.runtime</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#producing-a-loadable-kernel">Producing a loadable kernel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-and-calling-a-kernel">Loading and calling a kernel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-halide-runtime-buffer-type">The <code class="docutils literal notranslate"><span class="pre">halide.runtime.Buffer</span></code> type</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-generator-related-topics">Advanced Generator-Related Topics</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generator-aliases">Generator Aliases</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-inputs-and-outputs">Dynamic Inputs and Outputs</a></li>

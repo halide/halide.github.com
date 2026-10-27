@@ -1,0 +1,697 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Running AOT code with the standalone runtime &#8212; Halide</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=1ee386da" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial/lesson_15_runtime';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="16. RGB images and memory layouts" href="lesson_16.html" />
+    <link rel="prev" title="Command-line usage" href="lesson_15_generators_usage.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Halide</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../guides.html">
+    Guides
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    Tutorial
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lesson_01_basics.html">1. Getting started with Funcs, Vars, and Exprs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_02_input_image.html">2. Processing images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_03_debugging_1.html">3. Inspecting the generated code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_04_debugging_2.html">4. Debugging with tracing, print, and print_when</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_05_scheduling_1.html">5. Vectorize, parallelize, unroll and tile your code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_06_realizing_over_shifted_domains.html">6. Realizing Funcs over arbitrary domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_07_multi_stage_pipelines.html">7. Multi-stage pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_08_scheduling_2.html">8. Scheduling multi-stage pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_09_update_definitions.html">9. Multi-pass Funcs, update definitions, and reductions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesson_10.html">10. AOT compilation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesson_10_aot_compilation_generate.html">Compiling the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_10_aot_compilation_run.html">Running the compiled pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_11_cross_compilation.html">11. Cross-compilation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_12_using_the_gpu.html">12. Using the GPU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_13_tuples.html">13. Tuples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_14_types.html">14. The Halide type system</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="lesson_15.html">15. Generators</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lesson_15_generators.html">Writing a generator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_15_generators_usage.html">Command-line usage</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Running AOT code with the standalone runtime</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesson_16.html">16. RGB images and memory layouts</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesson_16_rgb_generate.html">Compiling the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_16_rgb_run.html">Running the compiled pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_17_predicated_rdom.html">17. Reductions over non-rectangular domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_18_parallel_associative_reductions.html">18. Factoring an associative reduction using rfactor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_19_wrapper_funcs.html">19. Wrapper Funcs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_20_cloning_funcs.html">20. Cloning Funcs</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesson_21.html">21. Auto-Scheduler</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesson_21_auto_scheduler_generate.html">Generating a schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson_21_auto_scheduler_run.html">Running the compiled pipeline</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_22_jit_performance.html">22. JIT compilation performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_23_serialization.html">23. Serialization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_24_async.html">24. Async execution</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Tutorial</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="lesson_15.html" class="nav-link">15. Generators</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Running AOT code with the standalone runtime</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="running-aot-code-with-the-standalone-runtime">
+<h1>Running AOT code with the standalone runtime<a class="headerlink" href="#running-aot-code-with-the-standalone-runtime" title="Link to this heading">#</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+
+<span class="c1"># Halide tutorial lesson 15: Generators: running AOT code with the standalone runtime</span>
+
+<span class="c1"># This lesson demonstrates how to load and call a precompiled, ahead-of-time</span>
+<span class="c1"># (AOT) compiled Halide pipeline at runtime using the standalone &quot;halide.runtime&quot;</span>
+<span class="c1"># module.</span>
+
+<span class="c1"># This lesson can be built by invoking the command:</span>
+<span class="c1">#    make test_tutorial_lesson_15_runtime</span>
+<span class="c1"># in a shell with the current directory at python_bindings/</span>
+
+<span class="c1"># Lesson 10 showed how to AOT-compile a pipeline and call it through a generated</span>
+<span class="c1"># Python extension. This lesson shows another way to run AOT code: loading a</span>
+<span class="c1"># precompiled shared library dynamically and calling it, using only</span>
+<span class="c1"># &quot;halide.runtime&quot;. Unlike &quot;import halide&quot;, halide.runtime does not depend on</span>
+<span class="c1"># libHalide (the compiler) at all -- it is a small package whose whole job is to</span>
+<span class="c1"># run precompiled kernels.</span>
+
+<span class="c1"># This is useful for deployment: you can compile your pipelines on a build</span>
+<span class="c1"># machine that has the full Halide toolchain, then ship just the compiled kernels</span>
+<span class="c1"># and this tiny runtime, and run them on machines that have neither the compiler</span>
+<span class="c1"># nor LLVM installed.</span>
+
+<span class="c1"># There are two distinct phases below:</span>
+<span class="c1">#   1. Build time (needs the Halide compiler): compile a pipeline to a shared</span>
+<span class="c1">#      library. In a real project this happens in your build system.</span>
+<span class="c1">#   2. Deploy time (needs only halide.runtime): load that shared library and</span>
+<span class="c1">#      call it. This is the part you would actually ship.</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># The standalone halide-runtime distribution is all you need to *call*</span>
+<span class="c1"># precompiled kernels. This tutorial also has the full halide distribution</span>
+<span class="c1"># available for the build-time compilation step below.</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">halide.runtime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">hlr</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compile_pipeline</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+    <span class="c1"># Build time: AOT-compile a simple pipeline to a loadable shared library.</span>
+    <span class="c1"># Returns the path to the shared library, or None if this environment cannot</span>
+    <span class="c1"># build one (e.g. there is no C compiler on the PATH).</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">halide</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">hl</span>
+
+    <span class="c1"># A simple one-stage pipeline that brightens an image, just like lesson 10.</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">),</span> <span class="n">hl</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+    <span class="nb">input</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">ImageParam</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;input&quot;</span><span class="p">)</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Param</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">Int</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;offset&quot;</span><span class="p">)</span>
+    <span class="n">brighter</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">Func</span><span class="p">(</span><span class="s2">&quot;brighter&quot;</span><span class="p">)</span>
+    <span class="n">brighter</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">hl</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">hl</span><span class="o">.</span><span class="n">UInt</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="nb">input</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
+    <span class="n">brighter</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">parallel</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="c1"># Compile to a static library using the host target for the current machine</span>
+    <span class="c1"># so we can run it right away. This will generate a static library which bundles</span>
+    <span class="c1"># the necessary Halide runtime for the host. So the shared library we link</span>
+    <span class="c1"># below will be self-contained won&#39;t require the compiler from libHalide.</span>
+    <span class="c1">#</span>
+    <span class="c1"># Note: You can use the `no_runtime` target flag if you wish to create a</span>
+    <span class="c1">#       stand-alone static library for just the kernel, but you would need</span>
+    <span class="c1">#       to link in a matching runtime before you&#39;d be able to run it.</span>
+    <span class="n">archive</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;brighter.a&quot;</span><span class="p">)</span>
+    <span class="n">brighter</span><span class="o">.</span><span class="n">compile_to</span><span class="p">(</span>
+        <span class="p">{</span><span class="n">hl</span><span class="o">.</span><span class="n">OutputFileType</span><span class="o">.</span><span class="n">static_library</span><span class="p">:</span> <span class="n">archive</span><span class="p">},</span>
+        <span class="p">[</span><span class="nb">input</span><span class="p">,</span> <span class="n">offset</span><span class="p">],</span>
+        <span class="s2">&quot;brighter&quot;</span><span class="p">,</span>
+        <span class="n">hl</span><span class="o">.</span><span class="n">get_host_target</span><span class="p">(),</span>
+    <span class="p">)</span>
+
+    <span class="c1"># halide.runtime loads a *shared* library, so link the static library into</span>
+    <span class="c1"># one, taking care to keep the filter&#39;s symbols visible. In a real project</span>
+    <span class="c1"># your build system does this for you; see doc/Python.md for a CMake recipe.</span>
+    <span class="k">return</span> <span class="n">link_shared_library</span><span class="p">(</span><span class="n">archive</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;brighter&quot;</span><span class="p">),</span> <span class="s2">&quot;brighter&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">link_shared_library</span><span class="p">(</span><span class="n">archive</span><span class="p">,</span> <span class="n">stem</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="c1"># Link the static library `archive` into a shared library that exports the</span>
+    <span class="c1"># filter&#39;s `&lt;name&gt;_argv` / `&lt;name&gt;_metadata` entry points, so halide.runtime</span>
+    <span class="c1"># can resolve them. Returns the shared library path, or None if this</span>
+    <span class="c1"># environment has no suitable linker.</span>
+    <span class="n">system</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span>
+
+    <span class="c1"># In a real project, you&#39;d want to use a build system to do the linkage for</span>
+    <span class="c1"># you, but for the sake of this tutorial, we&#39;ll try and invoke the various</span>
+    <span class="c1"># platform toolchain&#39;s directly so we have a running example.</span>
+    <span class="k">if</span> <span class="n">system</span> <span class="o">==</span> <span class="s2">&quot;Windows&quot;</span><span class="p">:</span>
+        <span class="c1"># Use the MSVC linker (link.exe) if the Visual Studio toolchain is on the</span>
+        <span class="c1"># PATH (e.g. from a Developer Command Prompt). We wrap the static library</span>
+        <span class="c1"># into a DLL, listing the entry points to export in a .def file. /NOENTRY</span>
+        <span class="c1"># is fine here: the DLL shares the host process&#39;s already-initialized</span>
+        <span class="c1"># dynamic CRT, so it needs no startup code of its own.</span>
+        <span class="k">if</span> <span class="n">shutil</span><span class="o">.</span><span class="n">which</span><span class="p">(</span><span class="s2">&quot;link&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">library</span> <span class="o">=</span> <span class="n">stem</span> <span class="o">+</span> <span class="s2">&quot;.dll&quot;</span>
+        <span class="n">def_path</span> <span class="o">=</span> <span class="n">stem</span> <span class="o">+</span> <span class="s2">&quot;.def&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">def_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;EXPORTS</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">_argv</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">_metadata</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;link&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;/nologo&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;/DLL&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;/NOENTRY&quot;</span><span class="p">,</span>
+            <span class="n">archive</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;/DEF:</span><span class="si">{</span><span class="n">def_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;/OUT:</span><span class="si">{</span><span class="n">library</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="k">elif</span> <span class="n">system</span> <span class="o">==</span> <span class="s2">&quot;Darwin&quot;</span><span class="p">:</span>
+        <span class="n">library</span> <span class="o">=</span> <span class="n">stem</span> <span class="o">+</span> <span class="s2">&quot;.dylib&quot;</span>
+        <span class="n">cc</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CC&quot;</span><span class="p">,</span> <span class="s2">&quot;cc&quot;</span><span class="p">)</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">cc</span><span class="p">,</span> <span class="s2">&quot;-shared&quot;</span><span class="p">,</span> <span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="n">library</span><span class="p">,</span> <span class="s2">&quot;-Wl,-force_load,&quot;</span> <span class="o">+</span> <span class="n">archive</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">library</span> <span class="o">=</span> <span class="n">stem</span> <span class="o">+</span> <span class="s2">&quot;.so&quot;</span>
+        <span class="n">cc</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;CC&quot;</span><span class="p">,</span> <span class="s2">&quot;cc&quot;</span><span class="p">)</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">cc</span><span class="p">,</span>
+            <span class="s2">&quot;-shared&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
+            <span class="n">library</span><span class="p">,</span>
+            <span class="s2">&quot;-Wl,--whole-archive&quot;</span><span class="p">,</span>
+            <span class="n">archive</span><span class="p">,</span>
+            <span class="s2">&quot;-Wl,--no-whole-archive&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;-lpthread&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;-ldl&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">OSError</span><span class="p">,</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">library</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">directory</span><span class="p">:</span>
+        <span class="n">library</span> <span class="o">=</span> <span class="n">compile_pipeline</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">library</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># We couldn&#39;t produce a shared library to load in this environment,</span>
+            <span class="c1"># and the interesting part of the lesson needs one.</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[SKIP] could not build a shared library to load&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+        <span class="c1"># ------------------------------------------------------------------</span>
+        <span class="c1"># Deploy time: everything below uses only halide.runtime, not</span>
+        <span class="c1"># libHalide. This is the code you would actually ship to run</span>
+        <span class="c1"># precompiled kernels.</span>
+        <span class="c1"># ------------------------------------------------------------------</span>
+
+        <span class="c1"># Load the precompiled kernel. The filter name defaults to the library&#39;s</span>
+        <span class="c1"># file name; we pass it explicitly here for clarity.</span>
+        <span class="n">kernel</span> <span class="o">=</span> <span class="n">hlr</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">library</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;brighter&quot;</span><span class="p">)</span>
+
+        <span class="c1"># A loaded Kernel knows what it was compiled for and how it must be</span>
+        <span class="c1"># called. `kernel.arguments` describes the calling convention: one entry</span>
+        <span class="c1"># per argument, with its name, kind (input_scalar / input_buffer /</span>
+        <span class="c1"># output_buffer), element type, and dimensions.</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loaded kernel:&quot;</span><span class="p">,</span> <span class="n">kernel</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Compiled for target:&quot;</span><span class="p">,</span> <span class="n">kernel</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">kernel</span><span class="o">.</span><span class="n">arguments</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  argument:&quot;</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+
+        <span class="c1"># Let&#39;s make some input data to test with. Note that, as in lesson 10,</span>
+        <span class="c1"># when a numpy array is passed to Halide code its axes are reversed;</span>
+        <span class="c1"># since this pipeline is elementwise that doesn&#39;t affect the result.</span>
+        <span class="nb">input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">480</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">640</span><span class="p">):</span>
+                <span class="nb">input</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">^</span> <span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
+
+        <span class="c1"># Halide does not allocate outputs for us, so we provide a buffer for the</span>
+        <span class="c1"># result.</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">640</span><span class="p">,</span> <span class="mi">480</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+        <span class="n">offset</span> <span class="o">=</span> <span class="mi">5</span>
+
+        <span class="c1"># Call it. Arguments may be passed by position, in the order given by</span>
+        <span class="c1"># kernel.argument_names ...</span>
+        <span class="n">kernel</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+        <span class="c1"># ... or by name, in the Python manner:</span>
+        <span class="c1"># kernel(input=input, offset=offset, output=output)</span>
+        <span class="c1">#</span>
+        <span class="c1"># (Errors raise a Python exception rather than returning an int.)</span>
+
+        <span class="c1"># Now let&#39;s check the filter performed as advertised: it was supposed to</span>
+        <span class="c1"># add the offset to every input pixel, with uint8 wraparound.</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">expected</span><span class="p">),</span> <span class="s2">&quot;kernel produced the wrong result&quot;</span>
+
+        <span class="c1"># Everything worked!</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success!&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lesson_15_generators_usage.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Command-line usage</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lesson_16.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">16. RGB images and memory layouts</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright The Halide team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

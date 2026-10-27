@@ -811,11 +811,13 @@ sources.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">LINK_LIBRARIES</span></code> argument lists libraries that should be linked to
 <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> when it is being built in the present build system.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">PYSTUB</span></code> is specified, then a Python Extension will be built that wraps the
-Generator with CPython glue to allow use of the Generator Python 3. The result
-will be a shared library of the form <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;_pystub.&lt;soabi&gt;.so</span></code>, where
-<code class="docutils literal notranslate"><span class="pre">&lt;soabi&gt;</span></code> describes the specific Python version and platform (e.g.,
-<code class="docutils literal notranslate"><span class="pre">cpython-310-darwin</span></code> for Python 3.10 on macOS). See <a class="reference internal" href="Python.html"><span class="std std-doc">Python.md</span></a> for
-examples of use.</p>
+Generator with CPython glue. This requires regular CPython 3.12 or newer and its
+stable-ABI development headers, but does not require nanobind. Argument
+conversion and dispatch are handled by the installed Halide compiler bindings.
+The result is <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;_pystub.abi3.so</span></code> on Linux/macOS or <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;_pystub.pyd</span></code>
+on Windows, usable unchanged on newer regular CPython versions. Previously built
+pybind11 stubs must be rebuilt; Python ABI compatibility does not imply Halide
+C++ ABI compatibility. See <a class="reference internal" href="Python.html"><span class="std std-doc">Python.md</span></a> for examples of use.</p>
 </section>
 <section id="add-halide-library">
 <h4><code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code><a class="headerlink" href="#add-halide-library" title="Link to this heading">#</a></h4>
@@ -828,6 +830,7 @@ signature follows:</p>
                    <span class="p">[</span><span class="n">USE_RUNTIME</span> <span class="n">hl</span><span class="o">-</span><span class="n">target</span><span class="p">]</span>
                    <span class="p">[</span><span class="n">PARAMS</span> <span class="n">param1</span> <span class="p">[</span><span class="n">param2</span> <span class="o">...</span><span class="p">]]</span>
                    <span class="p">[</span><span class="n">DEPENDS</span> <span class="p">[</span><span class="n">dep1</span> <span class="n">dep2</span> <span class="o">...</span><span class="p">]]</span>
+                   <span class="p">[</span><span class="n">ENVIRONMENT</span> <span class="n">VAR1</span><span class="o">=</span><span class="n">value1</span> <span class="p">[</span><span class="n">VAR2</span><span class="o">=</span><span class="n">value2</span> <span class="o">...</span><span class="p">]]</span>
                    <span class="p">[</span><span class="n">TARGETS</span> <span class="n">target1</span> <span class="p">[</span><span class="n">target2</span> <span class="o">...</span><span class="p">]]</span>
                    <span class="p">[</span><span class="n">FEATURES</span> <span class="n">feature1</span> <span class="p">[</span><span class="n">feature2</span> <span class="o">...</span><span class="p">]]</span>
                    <span class="p">[</span><span class="n">FEATURES</span><span class="p">[</span><span class="o">&lt;</span><span class="n">triple</span><span class="o">&gt;</span><span class="p">]</span> <span class="n">feature1</span> <span class="p">[</span><span class="n">feature2</span> <span class="o">...</span><span class="p">]]</span>
@@ -845,7 +848,7 @@ signature follows:</p>
 <span class="n">triple</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">arch</span><span class="o">&gt;-&lt;</span><span class="n">bits</span><span class="o">&gt;-&lt;</span><span class="n">os</span><span class="o">&gt;</span>
 <span class="n">arch</span>   <span class="o">=</span> <span class="n">x86</span> <span class="o">|</span> <span class="n">arm</span> <span class="o">|</span> <span class="n">powerpc</span> <span class="o">|</span> <span class="n">hexagon</span> <span class="o">|</span> <span class="n">wasm</span> <span class="o">|</span> <span class="n">riscv</span>
 <span class="n">bits</span>   <span class="o">=</span> <span class="mi">32</span> <span class="o">|</span> <span class="mi">64</span>
-<span class="n">os</span>     <span class="o">=</span> <span class="n">linux</span> <span class="o">|</span> <span class="n">windows</span> <span class="o">|</span> <span class="n">osx</span> <span class="o">|</span> <span class="n">android</span> <span class="o">|</span> <span class="n">ios</span> <span class="o">|</span> <span class="n">qurt</span> <span class="o">|</span> <span class="n">noos</span> <span class="o">|</span> <span class="n">fuchsia</span> <span class="o">|</span> <span class="n">wasmrt</span>
+<span class="n">os</span>     <span class="o">=</span> <span class="n">linux</span> <span class="o">|</span> <span class="n">windows</span> <span class="o">|</span> <span class="n">macos</span> <span class="o">|</span> <span class="n">android</span> <span class="o">|</span> <span class="n">ios</span> <span class="o">|</span> <span class="n">qurt</span> <span class="o">|</span> <span class="n">noos</span> <span class="o">|</span> <span class="n">fuchsia</span> <span class="o">|</span> <span class="n">wasmrt</span>
 
 <span class="n">extra</span><span class="o">-</span><span class="n">output</span> <span class="o">=</span> <span class="n">ASSEMBLY</span> <span class="o">|</span> <span class="n">BITCODE</span> <span class="o">|</span> <span class="n">COMPILER_LOG</span> <span class="o">|</span> <span class="n">C_SOURCE</span> <span class="o">|</span> <span class="n">FEATURIZATION</span>
              <span class="o">|</span> <span class="n">HLPIPE</span> <span class="o">|</span> <span class="n">LLVM_ASSEMBLY</span> <span class="o">|</span> <span class="n">PYTHON_EXTENSION</span> <span class="o">|</span> <span class="n">PYTORCH_WRAPPER</span>
@@ -896,6 +899,10 @@ build. To declare dependencies on these files, use the <code class="docutils lit
 listed here will be passed verbatim to <code class="docutils literal notranslate"><span class="pre">add_custom_command</span></code>, and so will be
 relative to the source directory. Use absolute paths when referring to files
 outside the source directory.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ENVIRONMENT</span></code> sets environment variables (each <code class="docutils literal notranslate"><span class="pre">VAR=value</span></code>) for the generator
+invocations of this library only, via <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-E</span> <span class="pre">env</span></code>. For example,
+<code class="docutils literal notranslate"><span class="pre">ENVIRONMENT</span> <span class="pre">HL_LLVM_ARGS=-misched-regpressure=false</span></code> passes a flag to LLVM for
+just this library’s code generation. It does not affect the runtime target.</p>
 <p>To use an autoscheduler, set the <code class="docutils literal notranslate"><span class="pre">AUTOSCHEDULER</span></code> argument to a target named like
 <code class="docutils literal notranslate"><span class="pre">Namespace::Scheduler</span></code>, for example <code class="docutils literal notranslate"><span class="pre">Halide::Adams2019</span></code>. This will set the
 <code class="docutils literal notranslate"><span class="pre">autoscheduler</span></code> GeneratorParam on the generator command line to <code class="docutils literal notranslate"><span class="pre">Scheduler</span></code> and
@@ -950,12 +957,14 @@ glue code to produce a Python Extension library.</p>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">HALIDE_LIBRARIES</span></code> is a list of one of more <code class="docutils literal notranslate"><span class="pre">add_halide_library</span></code> targets. Each
-will be added to the extension as a callable method of the module. Note that
-every library specified must be built with the <code class="docutils literal notranslate"><span class="pre">PYTHON_EXTENSION</span></code> keyword
-specified, and all libraries must use the same Halide runtime.</p>
-<p>The result will be a shared library of the form <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;.&lt;soabi&gt;.so</span></code>, where
-<code class="docutils literal notranslate"><span class="pre">&lt;soabi&gt;</span></code> describes the specific Python version and platform (e.g.,
-<code class="docutils literal notranslate"><span class="pre">cpython-310-darwin</span></code> for Python 3.10 on macOS.)</p>
+will be added to the extension as a callable <code class="docutils literal notranslate"><span class="pre">halide.runtime.Kernel</span></code> object.
+Every library specified must be built with the <code class="docutils literal notranslate"><span class="pre">PYTHON_EXTENSION</span></code> keyword, and
+all libraries must use the same Halide runtime. Importing the resulting module
+requires the matching <code class="docutils literal notranslate"><span class="pre">halide-runtime</span></code> Python package.</p>
+<p>The result uses the CPython 3.12 stable ABI: <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;.abi3.so</span></code> on Linux/macOS
+or <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;.pyd</span></code> on Windows. Building requires the Python 3.12+ interpreter and
+<code class="docutils literal notranslate"><span class="pre">Development.SABIModule</span></code> CMake component. The binary can be imported unchanged
+on newer regular CPython versions; free-threaded Python is not supported.</p>
 </section>
 <section id="add-halide-runtime">
 <h4><code class="docutils literal notranslate"><span class="pre">add_halide_runtime</span></code><a class="headerlink" href="#add-halide-runtime" title="Link to this heading">#</a></h4>

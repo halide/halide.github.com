@@ -452,14 +452,21 @@ a number of them are fundamentally impractical to support in a hosted-Wasm
 environment and are disabled).</p>
 <p>In sum: don’t plan on using Halide JIT mode with Wasm unless you are working on
 the Halide library itself.</p>
+<p>The interpreter is a <em>JIT-only</em> facility. Which engine is used (and whether one
+is built at all) is controlled by the <code class="docutils literal notranslate"><span class="pre">Halide_WASM_BACKEND</span></code> CMake option, which
+defaults to <code class="docutils literal notranslate"><span class="pre">wabt</span></code>. This is the sole reason libHalide depends on wabt (or V8):
+if you don’t intend to JIT-execute Wasm, set <code class="docutils literal notranslate"><span class="pre">-DHalide_WASM_BACKEND=OFF</span></code> to
+build without that dependency. Doing so has <strong>no effect on AOT compilation</strong> —
+Halide still generates Wasm object files exactly as before; they simply run in
+an external engine (e.g. Node or a browser) rather than the in-process
+interpreter.</p>
 <section id="using-v8-as-the-interpreter">
 <h3>Using V8 as the interpreter<a class="headerlink" href="#using-v8-as-the-interpreter" title="Link to this heading">#</a></h3>
 <p>There is experimental support for using V8 as the interpreter in JIT mode,
-rather than WABT. This is enabled by the CMake command line options
-<code class="docutils literal notranslate"><span class="pre">-DWITH_V8=ON</span> <span class="pre">-DWITH_WABT=OFF</span></code> (only one of them can be used at a time). You
-must build V8 locally V8, then specify the path to the library and headers as
-CMake options. This is currently only tested on x86-64-Linux and requires v8
-version 9.8.177 as a minimum.</p>
+rather than WABT. This is selected with the CMake command line option
+<code class="docutils literal notranslate"><span class="pre">-DHalide_WASM_BACKEND=V8</span></code>. You must build V8 locally, then specify the path to
+the library and headers as CMake options. This is currently only tested on
+x86-64-Linux and requires v8 version 9.8.177 as a minimum.</p>
 <p>The canonical instructions to build V8 are at
 <a class="reference external" href="https://v8.dev/docs/build">v8.dev</a>, and
 <a class="reference external" href="https://v8.dev/docs/embed">there are examples for embedding v8</a>. The process
@@ -494,8 +501,7 @@ $ git checkout origin/9.8.177
 $ export HL_TARGET=wasm-32-wasmrt-wasm_simd128
 $ export HL_JIT_TARGET=${HL_TARGET}
 $ cmake -G Ninja \
-      -DWITH_WABT=OFF \
-      -DWITH_V8=ON \
+      -DHalide_WASM_BACKEND=V8 \
       -DV8_INCLUDE_DIR=$HOME/v8/v8/include \
       -DV8_LIBRARY=$HOME/v8/v8/out.gn/x64.release.sample/obj/libv8_monolith.a \
       -DHalide_TARGET=${HL_TARGET} \
